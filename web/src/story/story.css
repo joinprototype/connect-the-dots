@@ -1,0 +1,223 @@
+/* story.css: chapter player. A sticky stage (map / graph) beside scrolling cards. Calm: white cards with
+   soft shadows, a gray graph with the accent for what each shot adds, and quotes marked with the
+   --highlight token (yellow on light, a soft blue-gray in dark mode). */
+
+ctd-story {
+  --story-top: 58px;
+  --story-h: calc(100vh - var(--story-top));
+  --story-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.06);
+  --story-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08), 0 0 0 1px color-mix(in srgb, var(--rule) 60%, transparent);
+  /* graph colours, read by the graph view */
+  --graph-node: #8e8e93;
+  --graph-edge: #c7c7cc;
+  display: block;
+  position: relative;
+  margin: 2rem 0 3rem;
+}
+ctd-story.is-enhanced {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.75fr);
+  grid-template-rows: auto;
+  column-gap: clamp(16px, 3vw, 40px);
+  padding-right: var(--gutter, clamp(16px, 4vw, 48px));
+}
+ctd-story > script { display: none; }
+@media (prefers-color-scheme: dark) {
+  ctd-story {
+    --graph-node: #98989d;
+    --graph-edge: #48484a;
+    --story-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
+    --story-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 0 1px color-mix(in srgb, var(--rule) 60%, transparent);
+  }
+}
+
+/* ---------------------------------------------------------------- stage */
+ctd-story.is-enhanced .story-stage {
+  grid-column: 1; grid-row: 1;
+  position: sticky; top: var(--story-top); align-self: start;
+  height: var(--story-h); min-height: 420px;
+  overflow: hidden;
+  background: var(--paper-2);
+}
+/* "ctd-story" first: maplibre-gl.css, loaded later with the first map scene, sets the map layer's position
+   and its credits' background with equally specific selectors, and the later file wins a tie */
+ctd-story .story-layer { position: absolute; inset: 0; visibility: hidden; opacity: 0; transition: opacity .9s ease-in-out, visibility 0s linear .9s; }
+.story-stage[data-view="map"] .story-map,
+.story-stage[data-view="graph"] .story-graph { visibility: visible; opacity: 1; transition: opacity .9s ease-in-out, visibility 0s; }
+.story-map .maplibregl-canvas { outline: none; }
+ctd-story .story-map .maplibregl-ctrl-attrib { font: 400 0.72rem var(--font-ui); color: var(--muted); background: color-mix(in srgb, var(--paper) 85%, transparent); }
+/* MapLibre's credits are black text and a black "i": in --muted, readable in dark mode too */
+ctd-story .story-map .maplibregl-ctrl-attrib a { color: var(--muted); }
+ctd-story .story-map .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button { background: var(--muted); mask: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20fill-rule%3D%22evenodd%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20d%3D%22M4%2010a6%206%200%201%200%2012%200%206%206%200%201%200-12%200m5-3a1%201%200%201%200%202%200%201%201%200%201%200-2%200m0%203a1%201%200%201%201%202%200v3a1%201%200%201%201-2%200%22%2F%3E%3C%2Fsvg%3E") center / 24px no-repeat; }
+.story-graph { background: transparent; }
+.story-stage[data-map-failed] .story-map::after {
+  content: "The map could not load. The narration tells the same story.";
+  position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center;
+  font: italic 1rem var(--font-body); color: var(--muted);
+}
+
+/* HUD: the shot's time and perspective. */
+.story-hud {
+  position: absolute; z-index: 4; top: 16px; left: 16px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; pointer-events: none;
+}
+.story-hud > span {
+  display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 999px;
+  font: 500 0.88rem var(--font-ui); color: var(--ink);
+  background: var(--paper); box-shadow: var(--story-shadow-sm);
+}
+.story-hud-time { font-weight: 600 !important; font-variant-numeric: tabular-nums; }
+.story-hud-persp { font-style: italic; }
+.story-hud-count { color: var(--muted) !important; font-variant-numeric: tabular-nums; }
+.story-hud-past { color: var(--muted) !important; font-style: italic; }
+.story-hud > span[hidden] { display: none; }
+
+/* Map markers: a dot and a small label card. */
+.story-marker { pointer-events: none; }
+.story-marker-inner { display: flex; align-items: center; gap: 7px; }
+.story-marker-dot {
+  width: 12px; height: 12px; border-radius: 50%; flex: none;
+  background: var(--paper); border: 3px solid var(--graph-node);
+}
+.story-marker.is-focus .story-marker-dot { border-color: var(--accent); }
+.story-marker-label {
+  font: 600 0.86rem var(--font-ui); color: var(--ink); white-space: nowrap;
+  padding: 3px 8px; background: var(--paper); border-radius: 8px; box-shadow: var(--story-shadow-sm);
+}
+
+/* ---------------------------------------------------------------- overlay cards */
+.story-overlay { position: absolute; z-index: 3; inset: auto 20px 26px auto; width: min(420px, calc(100% - 40px)); pointer-events: none; }
+.story-card {
+  position: relative; margin: 0; padding: 18px 20px 16px; pointer-events: auto;
+  color: var(--ink); background: var(--paper);
+  border-radius: 14px; box-shadow: var(--story-shadow);
+}
+.story-tape { display: none; }
+.story-card-kicker { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; font: 500 0.84rem var(--font-ui); color: var(--muted); }
+.story-tier { padding: 0 7px; border-radius: 999px; background: var(--paper-2); color: var(--ink-2); }
+.story-card-title { margin: 0 0 2px; font: 600 1.12rem/1.3 var(--font-display); color: var(--ink); }
+.story-card-meta { margin: 0 0 10px; font: 400 0.88rem var(--font-ui); color: var(--muted); }
+.story-card-quote { margin: 8px 0 10px; padding: 0; }
+.story-card-quote p { margin: 0; font: italic 400 1.06rem/1.65 var(--font-body); color: var(--ink); }
+.story-card.is-quote .story-card-quote p { font-size: 1.3rem; line-height: 1.55; }
+/* The highlighter, like a highlight in a book (the token is never yellow on a dark background). */
+.story-hl {
+  color: inherit; padding: 0.06em 0.12em; margin: 0 -0.12em; background-color: transparent;
+  background-image: linear-gradient(var(--highlight), var(--highlight));
+  background-repeat: no-repeat; background-position: 0 85%; background-size: 100% 100%;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  border-radius: 0.2em;
+}
+.story-card-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
+.story-persp-badge {
+  display: inline-flex; padding: 2px 10px; border-radius: 999px; font: 500 0.82rem var(--font-ui);
+  border: 1px dashed var(--muted); color: var(--ink-2);
+}
+.story-card-link { font: 600 0.88rem var(--font-ui); color: var(--accent); text-decoration: none; }
+.story-card-link::after { content: " ↗"; }
+.story-card-caption { margin-top: 8px; font: 400 0.86rem var(--font-ui); color: var(--muted); }
+.story-card.is-image { padding: 10px 10px 8px; }
+.story-card.is-image img { display: block; width: 100%; height: auto; border-radius: 8px; }
+
+/* ---------------------------------------------------------------- controls */
+.story-controls {
+  grid-column: 1; grid-row: 1; align-self: start; justify-self: end; z-index: 6;
+  position: sticky; top: calc(var(--story-top) + 14px);
+  display: flex; align-items: center; gap: 12px; margin: 14px 16px 0 0;
+  padding: 5px 10px 5px 5px; border-radius: 999px;
+  background: var(--paper); box-shadow: var(--story-shadow);
+  font-family: var(--font-ui);
+}
+.story-watch {
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+  padding: 6px 14px 6px 11px; border-radius: 999px; border: 0;
+  background: var(--accent-fill); color: #fff; font: 600 0.9rem var(--font-ui);
+}
+.story-watch::before { content: ""; width: 0; height: 0; border-style: solid; border-width: 5px 0 5px 8px; border-color: transparent transparent transparent currentColor; }
+.story-watch.is-playing::before { width: 9px; height: 10px; border: 0; background: linear-gradient(90deg, currentColor 0 35%, transparent 35% 65%, currentColor 65%); }
+.story-watch:hover { background: var(--accent-fill-hover); }
+/* Listen (reads each scene aloud while watching): a quiet button. Pressed, it takes the accent and its
+   speaker's cross turns into sound waves, so the state is never carried by hue alone. */
+.story-listen {
+  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath fill='%23000' stroke='none' d='M1.5 5.5h3L9 2v12l-4.5-3.5h-3z'/%3E%3Cpath d='M11.5 6l3.5 4m0-4l-3.5 4'/%3E%3C/svg%3E");
+  display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
+  padding: 6px 14px 6px 11px; border-radius: 999px; border: 0;
+  background: var(--fill); color: var(--ink-2); font: 600 0.9rem var(--font-ui);
+}
+.story-listen::before {
+  content: ""; flex: none; width: 16px; height: 16px; background: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat;
+}
+.story-listen:hover { color: var(--ink); }
+.story-listen[aria-pressed="true"] {
+  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath fill='%23000' stroke='none' d='M1.5 5.5h3L9 2v12l-4.5-3.5h-3z'/%3E%3Cpath d='M11.2 5.6a3.4 3.4 0 0 1 0 4.8m2.1-6.9a6.4 6.4 0 0 1 0 9'/%3E%3C/svg%3E");
+  background: var(--accent-soft); color: var(--accent-ink);
+}
+.story-dots { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.story-dots li { display: flex; } /* no line box: wrapped rows of dots stay as tight as one */
+.story-dots button {
+  width: 9px; height: 9px; padding: 0; border-radius: 50%; cursor: pointer;
+  border: 0; background: var(--rule);
+}
+.story-dots button.is-past { background: var(--muted); }
+.story-dots button[aria-current="step"] { background: var(--accent); transform: scale(1.3); }
+
+/* ---------------------------------------------------------------- steps */
+ctd-story.is-enhanced .story-steps { grid-column: 2; grid-row: 1; padding: 30vh 0 45vh; }
+ctd-story .step { min-height: 78vh; display: flex; align-items: center; }
+ctd-story .step:first-child { min-height: 60vh; }
+ctd-story .step-card {
+  position: relative; width: 100%;
+  padding: 22px 24px 20px; border-radius: 14px;
+  font-family: var(--font-body); font-size: 1.1rem; line-height: 1.65; color: var(--ink);
+  background: var(--paper);
+  box-shadow: var(--story-shadow);
+  transition: box-shadow .5s, opacity .5s;
+  /* the cards before and after the current one step back a little; their text (the accent too) stays at 4.5:1 */
+  opacity: 0.9;
+}
+ctd-story:not(.is-enhanced) .step-card { opacity: 1; }
+ctd-story .step-card::before {
+  content: ""; position: absolute; left: 0; top: 20px; bottom: 20px; width: 3px; border-radius: 0 2px 2px 0;
+  background: transparent; transition: background-color .4s;
+}
+ctd-story .step.is-active .step-card { opacity: 1; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.09); }
+ctd-story .step.is-active .step-card::before { background: var(--accent); }
+ctd-story .step-card > :last-child { margin-bottom: 0; }
+ctd-story .step-card .step-explore { margin-top: 1rem; }
+ctd-story .step-card a.story-explore::after { content: "→"; }
+/* The proof card's source link for keyboard and screen-reader users (the stage is aria-hidden): shown on focus. */
+ctd-story .step-card .step-source { margin: 0.75rem 0 0; font: 600 0.88rem var(--font-ui); }
+ctd-story .step-card .step-source a { color: var(--accent); text-decoration: none; }
+ctd-story .step-card .step-source:not(:focus-within) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+ctd-story .step-card > :has(+ .step-source:last-child:not(:focus-within)) { margin-bottom: 0; }
+
+/* ---------------------------------------------------------------- small screens: stage on top, cards scroll beneath it */
+@media (max-width: 860px) {
+  ctd-story.is-enhanced { display: block; padding-right: 0; }
+  ctd-story.is-enhanced .story-stage {
+    position: sticky; top: var(--story-top); z-index: 3;
+    height: 54svh; min-height: 280px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  }
+  /* a long story's dots wrap to a second row rather than run off a narrow phone */
+  .story-controls { position: sticky; top: calc(var(--story-top) + 54svh - 48px); z-index: 4; margin: -46px 10px 0 auto; width: max-content; max-width: calc(100% - 20px); }
+  ctd-story.is-enhanced .story-steps { position: relative; z-index: 1; padding: 8svh 16px 30svh; }
+  ctd-story .step { min-height: 62svh; align-items: center; }
+  ctd-story .step:first-child { min-height: 40svh; }
+  ctd-story .step.is-active .step-card { transform: none; }
+  .story-hud { top: 10px; left: 10px; gap: 6px; }
+  .story-hud > span { font-size: 0.82rem; padding: 3px 9px; }
+  .story-hud-time { font-size: 0.98rem !important; }
+  .story-overlay { inset: auto 10px 56px 10px; width: auto; }
+  .story-card { padding: 14px 14px 12px; max-height: 58%; }
+  .story-card-title { font-size: 1rem; }
+  .story-card-meta, .story-card-kicker { font-size: 0.78rem; margin-bottom: 4px; }
+  .story-card-quote { margin: 4px 0 6px; }
+  .story-card-quote p, .story-card.is-quote .story-card-quote p { font-size: 0.95rem; line-height: 1.5; }
+  .story-card-foot { margin-top: 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ctd-story .step-card, ctd-story .step-card::before, .story-layer { transition: none !important; }
+  ctd-story .step.is-active .step-card { transform: none; }
+}

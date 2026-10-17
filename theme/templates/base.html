@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ site.title }}{% endblock %}</title>
+<meta name="description" content="{% block description %}{{ site.tagline }}{% endblock %}">
+{# link previews: the page's own title and description #}
+<meta property="og:title" content="{{ self.title() }}">
+<meta property="og:description" content="{{ self.description() }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="connect the dot">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ffffff'/%3E%3Cpath d='M7 21 L15 10 L25 17' fill='none' stroke='%231d1d1f' stroke-width='2'/%3E%3Ccircle cx='7' cy='21' r='3.2' fill='%230066cc'/%3E%3Ccircle cx='15' cy='10' r='3.2' fill='%230066cc'/%3E%3Ccircle cx='25' cy='17' r='3.2' fill='%230066cc'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="/static/site.css">
+<style>:root{ {% for l in site.layers %}--layer-{{ l.id }}: {{ l.color }};{% endfor %} }</style>
+{% if site.assets.islands_css %}<link rel="stylesheet" href="/assets/islands.css">{% endif %}
+{% if site.dev %}<script>
+/* dev only: report browser errors to the dev server log (.cache/client-errors.log) */
+(() => {
+  const send = (kind, msg, stack, where) => {
+    try {
+      navigator.sendBeacon('/__client-error', JSON.stringify({ kind, msg: String(msg), stack: String(stack || '').slice(0, 2000), where: String(where || ''), url: location.href, ua: navigator.userAgent }));
+    } catch (_) {}
+  };
+  addEventListener('error', (e) => send('error', e.message, e.error && e.error.stack, `${e.filename}:${e.lineno}:${e.colno}`));
+  addEventListener('unhandledrejection', (e) => send('rejection', e.reason && (e.reason.message || e.reason), e.reason && e.reason.stack));
+  const original = console.error;
+  console.error = (...args) => { send('console.error', args.map((a) => (a && a.stack) || String(a)).join(' ')); original.apply(console, args); };
+})();
+</script>{% endif %}
+{% block head %}{% endblock %}
+</head>
+<body class="{% block body_class %}page{% endblock %}">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="/" aria-label="connect the dot, home">
+    <svg class="brand-mark" viewBox="0 0 30 20" aria-hidden="true"><path d="M4 15 L13 5 L25 12"/><circle cx="4" cy="15" r="2.7"/><circle cx="13" cy="5" r="2.7"/><circle cx="25" cy="12" r="2.7"/></svg>
+    <span>connect the dot</span>
+  </a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="/c/">Stories</a>
+    <a href="/w/">Map</a>
+    <a href="/x/">Explore</a>
+  </nav>
+  <ctd-search class="site-search">
+    <form action="/x/" role="search">
+      <input type="search" name="focus" placeholder="Search people, places, events" aria-label="Search" autocomplete="off">
+    </form>
+  </ctd-search>
+</header>
+<main id="main">
+{% block main %}{% endblock %}
+</main>
+<footer class="site-footer">
+  <p class="footer-principle">A connection is not evidence of wrongdoing. Every line cites its sources, and every interpretation says whose it is. <a href="/about/">How this site works</a></p>
+  <p class="footer-build">Built {{ site.manifest.built }} from {% if site.manifest.commit %}commit {{ site.manifest.commit }}{% else %}uncommitted content{% endif %}, engine {{ site.manifest.engine }}, methodology {{ site.manifest.methodology[:8] }}.</p>
+</footer>
+{% if site.assets.islands_js %}<script type="module" src="/assets/islands.js"></script>{% endif %}
+{% block scripts %}{% endblock %}
+{% if site.dev %}<script>new EventSource('/__livereload').onmessage = () => location.reload();</script>{% endif %}
+</body>
+</html>

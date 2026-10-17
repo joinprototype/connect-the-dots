@@ -1,0 +1,31 @@
+# Editorial picks: which connections get a generated story on the home page and in Stories,
+# and which life stories sit on the home shelf. Ids are entity ids (aliases work too).
+# The first connection is drawn as the example route on the home page; the first four are the
+# "Try" links. Later ones appear in the Stories library only.
+# A pair can carry a note the route story states up front: {between: [a, b], note: "…"}.
+# `questions` are question pages as <question>/<entity id> (content/schema/questions.yaml): the Ask
+# form's "Try" links and the first books of the Questions shelf, always kept when pages are capped.
+connections:
+  - [moses, elon-musk]
+  - [bill-gates, ibm]
+  - [german-imperial-government, dissolution-of-the-soviet-union]
+  - [jeff-bezos, sputnik-1]
+  - [gutenberg-bible, spacex]
+  - between: [mark-zuckerberg, cia]
+    note: "Each step below is a documented business link. No source here says the CIA or In-Q-Tel had any role in Facebook."
+  - [jeff-bezos, google]
+  - [pope-john-xxiii, nikita-khrushchev]
+  - [sputnik-1, blue-origin]
+  - [rand-corporation, arpanet]
+  - between: [rise-of-cities-in-mesopotamia, bible]
+    note: "Two steps rest on one historian's account each, and say so. Movable type came first in China and Korea; this route follows the alphabet."
+lives: [bill-gates, jeff-bezos, mark-zuckerberg, soviet-union, vladimir-lenin, mikhail-gorbachev, cuban-missile-crisis, elon-musk]
+questions:
+  - behind/meta-platforms
+  - behind/blackrock
+  - behind/communist-party-of-the-soviet-union
+  - behind/soviet-union
+  - why/dissolution-of-the-soviet-union
+  - why/october-revolution
+  - benefited/dissolution-of-the-soviet-union
+  - benefited/october-revolution

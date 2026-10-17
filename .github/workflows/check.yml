@@ -1,0 +1,22 @@
+# Checks every pull request with `ctd check` (the rules in docs/content-model.md). `--base` also fails
+# when an entry id on the target branch disappears without an alias, so no URL breaks.
+# Only this check runs on GitHub; builds and deploys run locally (ADR-0007).
+name: check
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # every branch, so --base can read the target branch
+          persist-credentials: false
+      # rustup installs the toolchain pinned in rust-toolchain.toml on first use
+      - name: ctd check
+        run: cargo run -q -- check --base "origin/$GITHUB_BASE_REF"

@@ -1,0 +1,8 @@
+/target/
+/dist/
+/.cache/
+/web/node_modules/
+/web/dist/
+.DS_Store
+erl_crash.dump
+/.wrangler/

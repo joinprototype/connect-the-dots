@@ -1,0 +1,31 @@
+[package]
+name = "ctd"
+description = "connect-the-dot engine: validate, compile and serve the knowledge graph"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+anyhow = "1"
+axum = "0.8"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+clap = { version = "4", features = ["derive"] }
+flate2 = "1"
+futures-util = "0.3"
+hex = "0.4"
+indexmap = { version = "2", features = ["serde"] }
+minijinja = { version = "3", features = ["serde", "json", "urlencode", "loop_controls"] }
+notify = "8"
+pulldown-cmark = "0.13"
+rayon = "1"
+regex = "1"
+serde = { version = "1", features = ["derive"] }
+serde-saphyr = "2"
+serde_json = { version = "1", features = ["preserve_order"] }
+sha2 = "0.10"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "net", "time"] }
+tokio-stream = { version = "0.1", features = ["sync"] }
+tower-http = { version = "0.6", features = ["fs"] }
+ulid = "1"
+walkdir = "2"

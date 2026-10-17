@@ -1,0 +1,2468 @@
+{
+ "meta": {
+  "engine": "0.1.0-fixture",
+  "built": "2026-10-16T12:00:00Z",
+  "commit": "fixture",
+  "methodology": "fixture-a964686f"
+ },
+ "layers": {
+  "people": {
+   "label": "People",
+   "color": "#8e8e93"
+  },
+  "power": {
+   "label": "Power",
+   "color": "#8e8e93"
+  },
+  "money": {
+   "label": "Money",
+   "color": "#8e8e93"
+  },
+  "tech": {
+   "label": "Science & Tech",
+   "color": "#8e8e93"
+  },
+  "history": {
+   "label": "History",
+   "color": "#8e8e93"
+  },
+  "ideas": {
+   "label": "Ideas & Religion",
+   "color": "#8e8e93"
+  },
+  "places": {
+   "label": "Places",
+   "color": "#8e8e93"
+  }
+ },
+ "types": {
+  "person": {
+   "label": "Person",
+   "plural": "People",
+   "layer": "people",
+   "color": "#8e8e93"
+  },
+  "org": {
+   "label": "Organization",
+   "plural": "Organizations",
+   "layer": "power",
+   "color": "#8e8e93"
+  },
+  "place": {
+   "label": "Place",
+   "plural": "Places",
+   "layer": "places",
+   "color": "#8e8e93"
+  },
+  "event": {
+   "label": "Event",
+   "plural": "Events",
+   "layer": "history",
+   "color": "#8e8e93"
+  },
+  "work": {
+   "label": "Work",
+   "plural": "Works",
+   "layer": "ideas",
+   "color": "#8e8e93"
+  },
+  "artifact": {
+   "label": "Artifact",
+   "plural": "Artifacts",
+   "layer": "tech",
+   "color": "#8e8e93"
+  },
+  "concept": {
+   "label": "Concept",
+   "plural": "Concepts",
+   "layer": "ideas",
+   "color": "#8e8e93"
+  },
+  "tradition": {
+   "label": "Tradition",
+   "plural": "Traditions",
+   "layer": "ideas",
+   "color": "#8e8e93"
+  },
+  "group": {
+   "label": "Group",
+   "plural": "Groups",
+   "layer": "people",
+   "color": "#8e8e93"
+  }
+ },
+ "relations": {
+  "founded": {
+   "label": "founded",
+   "inverse": "founded by",
+   "layers": [
+    "people",
+    "power"
+   ],
+   "traversable": true,
+   "passive": false,
+   "sensitive": false
+  },
+  "ceo_of": {
+   "label": "CEO of",
+   "inverse": "CEO",
+   "layers": [
+    "power",
+    "money"
+   ],
+   "traversable": true,
+   "passive": false,
+   "sensitive": false
+  },
+  "chair_of": {
+   "label": "chair of",
+   "inverse": "chaired by",
+   "layers": [
+    "power"
+   ],
+   "traversable": true,
+   "passive": false,
+   "sensitive": false
+  },
+  "head_of": {
+   "label": "head of",
+   "inverse": "headed by",
+   "layers": [
+    "power"
+   ],
+   "traversable": true,
+   "passive": false,
+   "sensitive": false
+  },
+  "signatory_of": {
+   "label": "signed",
+   "inverse": "signed by",
+   "layers": [
+    "people",
+    "money"
+   ],
+   "traversable": true,
+   "passive": false,
+   "sensitive": false
+  },
+  "invested_in": {
+   "label": "invested in",
+   "inverse": "investors",
+   "layers": [
+    "money"
+   ],
+   "traversable": true,
+   "passive": false,
+   "sensitive": false
+  },
+  "holds_for_clients": {
+   "label": "holds shares for clients in",
+   "inverse": "shares held for clients by",
+   "layers": [
+    "money"
+   ],
+   "traversable": true,
+   "passive": true,
+   "sensitive": false
+  },
+  "contracted": {
+   "label": "awarded a contract to",
+   "inverse": "contracts from",
+   "layers": [
+    "money",
+    "tech"
+   ],
+   "traversable": true,
+   "passive": false,
+   "sensitive": false
+  },
+  "deployed": {
+   "label": "deployed",
+   "inverse": "deployed by",
+   "layers": [
+    "power",
+    "tech"
+   ],
+   "traversable": true,
+   "passive": false,
+   "sensitive": false
+  },
+  "involved": {
+   "label": "involved",
+   "inverse": "involved in",
+   "layers": [
+    "history"
+   ],
+   "traversable": true,
+   "passive": false,
+   "sensitive": false
+  },
+  "caused_by": {
+   "label": "caused by",
+   "inverse": "caused",
+   "layers": [
+    "history"
+   ],
+   "traversable": true,
+   "passive": false,
+   "sensitive": false
+  },
+  "led_to": {
+   "label": "led to",
+   "inverse": "followed from",
+   "layers": [
+    "history"
+   ],
+   "traversable": true,
+   "passive": false,
+   "sensitive": false
+  },
+  "scripture_of": {
+   "label": "scripture of",
+   "inverse": "scriptures",
+   "layers": [
+    "ideas"
+   ],
+   "traversable": true,
+   "passive": false,
+   "sensitive": false
+  },
+  "prophet_in": {
+   "label": "regarded as a prophet in",
+   "inverse": "prophets",
+   "layers": [
+    "ideas"
+   ],
+   "traversable": true,
+   "passive": false,
+   "sensitive": false
+  },
+  "patriarch_of": {
+   "label": "patriarch of",
+   "inverse": "patriarch",
+   "layers": [
+    "ideas",
+    "people"
+   ],
+   "traversable": true,
+   "passive": false,
+   "sensitive": false
+  },
+  "appears_in": {
+   "label": "appears in",
+   "inverse": "features",
+   "layers": [
+    "ideas"
+   ],
+   "traversable": true,
+   "passive": false,
+   "sensitive": false
+  },
+  "authored": {
+   "label": "authored",
+   "inverse": "author",
+   "layers": [
+    "ideas"
+   ],
+   "traversable": true,
+   "passive": false,
+   "sensitive": false
+  },
+  "influenced": {
+   "label": "influenced",
+   "inverse": "influenced by",
+   "layers": [
+    "ideas"
+   ],
+   "traversable": true,
+   "passive": false,
+   "sensitive": false
+  },
+  "born_in": {
+   "label": "born in",
+   "inverse": "birthplace of",
+   "layers": [
+    "places"
+   ],
+   "traversable": false,
+   "passive": false,
+   "sensitive": false
+  },
+  "located_in": {
+   "label": "located in",
+   "inverse": "location of",
+   "layers": [
+    "places"
+   ],
+   "traversable": false,
+   "passive": false,
+   "sensitive": false
+  },
+  "headquartered_in": {
+   "label": "headquartered in",
+   "inverse": "headquarters of",
+   "layers": [
+    "places"
+   ],
+   "traversable": false,
+   "passive": false,
+   "sensitive": false
+  }
+ },
+ "lenses": [
+  {
+   "id": "all",
+   "label": "Everything",
+   "view": "graph",
+   "layers": [
+    "people",
+    "power",
+    "money",
+    "tech",
+    "history",
+    "ideas",
+    "places"
+   ]
+  },
+  {
+   "id": "history",
+   "label": "History",
+   "view": "timeline",
+   "layers": [
+    "history",
+    "power"
+   ]
+  },
+  {
+   "id": "relations",
+   "label": "Relations",
+   "view": "graph",
+   "layers": [
+    "people",
+    "power"
+   ]
+  },
+  {
+   "id": "money",
+   "label": "Money",
+   "view": "graph",
+   "layers": [
+    "money"
+   ]
+  },
+  {
+   "id": "ideas",
+   "label": "Ideas & Religion",
+   "view": "graph",
+   "layers": [
+    "ideas"
+   ]
+  },
+  {
+   "id": "tech",
+   "label": "Science & Tech",
+   "view": "graph",
+   "layers": [
+    "tech"
+   ]
+  },
+  {
+   "id": "places",
+   "label": "Places",
+   "view": "map",
+   "layers": [
+    "places"
+   ]
+  }
+ ],
+ "methodology": {
+  "version": "0.1",
+  "beta": 1,
+  "lambda": 1,
+  "delta_undated": 0,
+  "k_paths": 5,
+  "reuse_penalty": 3,
+  "max_hops": 10,
+  "collapse_passive": true,
+  "hub_threshold": 500,
+  "evidence": {
+   "T1": 1,
+   "T2": 0.8,
+   "T3": 0.4,
+   "draft_factor": 0.5
+  },
+  "default_weight": 2,
+  "weights": {
+   "founded": 1,
+   "relative_of": 1,
+   "identified_with": 1,
+   "ceo_of": 1.5,
+   "chair_of": 1.5,
+   "head_of": 1.5,
+   "worked_at": 1.5,
+   "enacted": 1.5,
+   "intervened_in": 1.5,
+   "developed": 1.5,
+   "launched": 1.5,
+   "produced": 1.5,
+   "leads": 1.5,
+   "caused_by": 1.5,
+   "led_to": 1.5,
+   "central_figure_of": 1.5,
+   "scripture_of": 1.5,
+   "edition_of": 1.5,
+   "authored": 1.5,
+   "invested_in": 2,
+   "owns_stake": 2,
+   "acquired": 2,
+   "contracted": 2,
+   "involved": 2,
+   "prophet_in": 2,
+   "patriarch_of": 2,
+   "branch_of": 2,
+   "adopted": 2,
+   "member_of": 2.5,
+   "signatory_of": 2.5,
+   "part_of": 2.5,
+   "appears_in": 2.5,
+   "influenced": 2.5,
+   "holds_for_clients": 3
+  }
+ },
+ "nodes": [
+  {
+   "id": "elon-musk",
+   "type": "person",
+   "name": "Elon Musk",
+   "summary": "Entrepreneur; CEO of Tesla and SpaceX.",
+   "aliases": [
+    "Elon Reeve Musk"
+   ],
+   "when": {
+    "start": 1971.4876712328767,
+    "end": null,
+    "label": "b. 28 Jun 1971"
+   },
+   "coords": [
+    28.1881,
+    -25.7461
+   ],
+   "place": "pretoria",
+   "url": "/e/elon-musk/",
+   "degree": 6
+  },
+  {
+   "id": "spacex",
+   "type": "org",
+   "name": "SpaceX",
+   "summary": "Rocket and spacecraft maker founded in 2002.",
+   "aliases": [
+    "Space Exploration Technologies Corp."
+   ],
+   "when": {
+    "start": 2002,
+    "end": null,
+    "label": "2002–"
+   },
+   "coords": null,
+   "place": null,
+   "url": "/e/spacex/",
+   "degree": 3
+  },
+  {
+   "id": "tesla",
+   "type": "org",
+   "name": "Tesla",
+   "summary": "Electric vehicle and energy company.",
+   "aliases": [
+    "Tesla, Inc.",
+    "Tesla Motors"
+   ],
+   "when": {
+    "start": 2003,
+    "end": null,
+    "label": "2003–"
+   },
+   "coords": null,
+   "place": null,
+   "url": "/e/tesla/",
+   "degree": 4
+  },
+  {
+   "id": "bill-gates",
+   "type": "person",
+   "name": "Bill Gates",
+   "summary": "Co-founder of Microsoft; philanthropist.",
+   "aliases": [
+    "William Henry Gates III"
+   ],
+   "when": {
+    "start": 1955.8219178082193,
+    "end": null,
+    "label": "b. 28 Oct 1955"
+   },
+   "coords": null,
+   "place": null,
+   "url": "/e/bill-gates/",
+   "degree": 4
+  },
+  {
+   "id": "microsoft",
+   "type": "org",
+   "name": "Microsoft",
+   "summary": "Software company founded in 1975.",
+   "aliases": [
+    "Microsoft Corporation"
+   ],
+   "when": {
+    "start": 1975,
+    "end": null,
+    "label": "1975–"
+   },
+   "coords": null,
+   "place": null,
+   "url": "/e/microsoft/",
+   "degree": 5
+  },
+  {
+   "id": "blackrock",
+   "type": "org",
+   "name": "BlackRock",
+   "summary": "Asset manager; holds shares for clients, largely through index funds.",
+   "aliases": [
+    "BlackRock, Inc."
+   ],
+   "when": {
+    "start": 1988,
+    "end": null,
+    "label": "1988–"
+   },
+   "coords": null,
+   "place": null,
+   "url": "/e/blackrock/",
+   "degree": 2
+  },
+  {
+   "id": "vanguard",
+   "type": "org",
+   "name": "Vanguard",
+   "summary": "Asset manager known for index funds.",
+   "aliases": [
+    "The Vanguard Group"
+   ],
+   "when": {
+    "start": 1975,
+    "end": null,
+    "label": "1975–"
+   },
+   "coords": null,
+   "place": null,
+   "url": "/e/vanguard/",
+   "degree": 2
+  },
+  {
+   "id": "giving-pledge",
+   "type": "org",
+   "name": "The Giving Pledge",
+   "summary": "A public commitment by wealthy people to give away most of their wealth.",
+   "aliases": [],
+   "when": {
+    "start": 2010,
+    "end": null,
+    "label": "2010–"
+   },
+   "coords": null,
+   "place": null,
+   "url": "/e/giving-pledge/",
+   "degree": 2
+  },
+  {
+   "id": "pretoria",
+   "type": "place",
+   "name": "Pretoria",
+   "summary": "Administrative capital of South Africa.",
+   "aliases": [],
+   "when": null,
+   "coords": [
+    28.1881,
+    -25.7461
+   ],
+   "place": null,
+   "url": "/e/pretoria/",
+   "degree": 1
+  },
+  {
+   "id": "abraham",
+   "type": "person",
+   "name": "Abraham",
+   "summary": "Patriarch in the Hebrew Bible, the New Testament and the Quran.",
+   "aliases": [
+    "Ibrahim",
+    "Avraham",
+    "Abram"
+   ],
+   "when": null,
+   "coords": null,
+   "place": null,
+   "url": "/e/abraham/",
+   "degree": 5
+  },
+  {
+   "id": "moses",
+   "type": "person",
+   "name": "Moses",
+   "summary": "Prophet and lawgiver in Jewish, Christian and Islamic scripture.",
+   "aliases": [
+    "Musa",
+    "Moshe"
+   ],
+   "when": null,
+   "coords": null,
+   "place": null,
+   "url": "/e/moses/",
+   "degree": 5
+  },
+  {
+   "id": "judaism",
+   "type": "tradition",
+   "name": "Judaism",
+   "summary": "Religion of the Jewish people, rooted in the Hebrew Bible.",
+   "aliases": [],
+   "when": null,
+   "coords": null,
+   "place": null,
+   "url": "/e/judaism/",
+   "degree": 4
+  },
+  {
+   "id": "christianity",
+   "type": "tradition",
+   "name": "Christianity",
+   "summary": "Religion centred on the life and teachings of Jesus.",
+   "aliases": [],
+   "when": {
+    "start": 30,
+    "end": null,
+    "label": "c. 30 CE–"
+   },
+   "coords": null,
+   "place": null,
+   "url": "/e/christianity/",
+   "degree": 2
+  },
+  {
+   "id": "islam",
+   "type": "tradition",
+   "name": "Islam",
+   "summary": "Religion centred on the Quran and the prophet Muhammad.",
+   "aliases": [],
+   "when": {
+    "start": 610,
+    "end": null,
+    "label": "610–"
+   },
+   "coords": null,
+   "place": null,
+   "url": "/e/islam/",
+   "degree": 3
+  },
+  {
+   "id": "torah",
+   "type": "work",
+   "name": "Torah",
+   "summary": "The first five books of the Hebrew Bible.",
+   "aliases": [
+    "Pentateuch",
+    "Five Books of Moses"
+   ],
+   "when": {
+    "start": -449,
+    "end": null,
+    "label": "c. 450 BCE"
+   },
+   "coords": null,
+   "place": null,
+   "url": "/e/torah/",
+   "degree": 4
+  },
+  {
+   "id": "quran",
+   "type": "work",
+   "name": "Quran",
+   "summary": "The central religious text of Islam.",
+   "aliases": [
+    "Qur'an",
+    "Koran"
+   ],
+   "when": {
+    "start": 609,
+    "end": null,
+    "label": "c. 609–632"
+   },
+   "coords": null,
+   "place": null,
+   "url": "/e/quran/",
+   "degree": 3
+  },
+  {
+   "id": "cuban-missile-crisis",
+   "type": "event",
+   "name": "Cuban Missile Crisis",
+   "summary": "Thirteen-day nuclear standoff between the United States and the Soviet Union.",
+   "aliases": [
+    "October Crisis",
+    "Caribbean Crisis"
+   ],
+   "when": {
+    "start": 1962.7890410958903,
+    "end": 1962.8246575342466,
+    "label": "16–28 Oct 1962"
+   },
+   "coords": [
+    -79.5,
+    21.8
+   ],
+   "place": "cuba",
+   "url": "/e/cuban-missile-crisis/",
+   "degree": 6
+  },
+  {
+   "id": "john-f-kennedy",
+   "type": "person",
+   "name": "John F. Kennedy",
+   "summary": "35th President of the United States.",
+   "aliases": [
+    "JFK"
+   ],
+   "when": {
+    "start": 1917.4054794520548,
+    "end": 1963.8931506849315,
+    "label": "1917–1963"
+   },
+   "coords": [
+    -77.0369,
+    38.9072
+   ],
+   "place": "washington-dc",
+   "url": "/e/john-f-kennedy/",
+   "degree": 2
+  },
+  {
+   "id": "nikita-khrushchev",
+   "type": "person",
+   "name": "Nikita Khrushchev",
+   "summary": "First Secretary of the Soviet Communist Party, 1953–1964.",
+   "aliases": [
+    "Nikita Khrushchyov"
+   ],
+   "when": {
+    "start": 1894.2849315068493,
+    "end": 1971.695890410959,
+    "label": "1894–1971"
+   },
+   "coords": [
+    37.6173,
+    55.7558
+   ],
+   "place": "moscow",
+   "url": "/e/nikita-khrushchev/",
+   "degree": 2
+  },
+  {
+   "id": "soviet-missiles-in-cuba",
+   "type": "artifact",
+   "name": "Soviet missiles in Cuba",
+   "summary": "Medium-range ballistic missiles deployed to Cuba in 1962 (Operation Anadyr).",
+   "aliases": [
+    "Operation Anadyr"
+   ],
+   "when": {
+    "start": 1962.6666666666667,
+    "end": 1962.9166666666667,
+    "label": "Sep–Nov 1962"
+   },
+   "coords": [
+    -79.5,
+    21.8
+   ],
+   "place": "cuba",
+   "url": "/e/soviet-missiles-in-cuba/",
+   "degree": 3
+  },
+  {
+   "id": "jupiter-missiles-in-turkey",
+   "type": "artifact",
+   "name": "Jupiter missiles in Turkey",
+   "summary": "US medium-range ballistic missiles based near İzmir, 1961–1963.",
+   "aliases": [],
+   "when": {
+    "start": 1961,
+    "end": 1963.3333333333333,
+    "label": "1961–Apr 1963"
+   },
+   "coords": [
+    27.1428,
+    38.4237
+   ],
+   "place": "izmir",
+   "url": "/e/jupiter-missiles-in-turkey/",
+   "degree": 3
+  },
+  {
+   "id": "jupiter-withdrawal-1963",
+   "type": "event",
+   "name": "Withdrawal of the Jupiter missiles",
+   "summary": "Removal of the US Jupiter missiles from Turkey in April 1963.",
+   "aliases": [],
+   "when": {
+    "start": 1963.25,
+    "end": 1963.3333333333333,
+    "label": "Apr 1963"
+   },
+   "coords": [
+    27.1428,
+    38.4237
+   ],
+   "place": "izmir",
+   "url": "/e/jupiter-withdrawal-1963/",
+   "degree": 1
+  },
+  {
+   "id": "us-government",
+   "type": "org",
+   "name": "United States government",
+   "summary": "Federal government of the United States.",
+   "aliases": [
+    "US government",
+    "Washington"
+   ],
+   "when": {
+    "start": 1789,
+    "end": null,
+    "label": "1789–"
+   },
+   "coords": [
+    -77.0369,
+    38.9072
+   ],
+   "place": "washington-dc",
+   "url": "/e/us-government/",
+   "degree": 4
+  },
+  {
+   "id": "soviet-government",
+   "type": "org",
+   "name": "Government of the Soviet Union",
+   "summary": "Government of the USSR, 1922–1991.",
+   "aliases": [
+    "Soviet government",
+    "Moscow"
+   ],
+   "when": {
+    "start": 1922.9945205479453,
+    "end": 1991.986301369863,
+    "label": "1922–1991"
+   },
+   "coords": [
+    37.6173,
+    55.7558
+   ],
+   "place": "moscow",
+   "url": "/e/soviet-government/",
+   "degree": 3
+  },
+  {
+   "id": "cuba",
+   "type": "place",
+   "name": "Cuba",
+   "summary": "Island country in the Caribbean.",
+   "aliases": [],
+   "when": null,
+   "coords": [
+    -79.5,
+    21.8
+   ],
+   "place": null,
+   "url": "/e/cuba/",
+   "degree": 2
+  },
+  {
+   "id": "washington-dc",
+   "type": "place",
+   "name": "Washington, D.C.",
+   "summary": "Capital of the United States.",
+   "aliases": [
+    "Washington"
+   ],
+   "when": null,
+   "coords": [
+    -77.0369,
+    38.9072
+   ],
+   "place": null,
+   "url": "/e/washington-dc/",
+   "degree": 1
+  },
+  {
+   "id": "moscow",
+   "type": "place",
+   "name": "Moscow",
+   "summary": "Capital of Russia and of the Soviet Union.",
+   "aliases": [],
+   "when": null,
+   "coords": [
+    37.6173,
+    55.7558
+   ],
+   "place": null,
+   "url": "/e/moscow/",
+   "degree": 1
+  },
+  {
+   "id": "izmir",
+   "type": "place",
+   "name": "İzmir",
+   "summary": "City on the Aegean coast of Turkey.",
+   "aliases": [
+    "Izmir",
+    "Smyrna"
+   ],
+   "when": null,
+   "coords": [
+    27.1428,
+    38.4237
+   ],
+   "place": null,
+   "url": "/e/izmir/",
+   "degree": 1
+  }
+ ],
+ "edges": [
+  {
+   "id": "elon-musk#c1",
+   "from": "elon-musk",
+   "to": "spacex",
+   "rel": "founded",
+   "label": "founded",
+   "layers": [
+    "people",
+    "power"
+   ],
+   "when": {
+    "start": 2002,
+    "end": 2003,
+    "label": "2002"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-elon-musk",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "elon-musk#c2",
+   "from": "elon-musk",
+   "to": "tesla",
+   "rel": "ceo_of",
+   "label": "CEO of",
+   "layers": [
+    "power",
+    "money"
+   ],
+   "when": {
+    "start": 2008.75,
+    "end": null,
+    "label": "Oct 2008–"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "tesla-10k-2025",
+     "at": "Part III",
+     "quote": null
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "tesla"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "elon-musk#c3",
+   "from": "elon-musk",
+   "to": "tesla",
+   "rel": "invested_in",
+   "label": "invested in",
+   "detail": "led the Series A round",
+   "layers": [
+    "money"
+   ],
+   "when": {
+    "start": 2004,
+    "end": 2005,
+    "label": "2004"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-elon-musk",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "elon-musk#c4",
+   "from": "elon-musk",
+   "to": "pretoria",
+   "rel": "born_in",
+   "label": "born in",
+   "layers": [
+    "places"
+   ],
+   "when": null,
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-elon-musk",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": false,
+   "qualifiers": {}
+  },
+  {
+   "id": "elon-musk#c5",
+   "from": "elon-musk",
+   "to": "spacex",
+   "rel": "ceo_of",
+   "label": "CEO of",
+   "layers": [
+    "power",
+    "money"
+   ],
+   "when": {
+    "start": 2002,
+    "end": null,
+    "label": "2002–"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-elon-musk",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "elon-musk#c6",
+   "from": "elon-musk",
+   "to": "giving-pledge",
+   "rel": "signatory_of",
+   "label": "signed",
+   "layers": [
+    "people",
+    "money"
+   ],
+   "when": {
+    "start": 2012,
+    "end": 2013,
+    "label": "2012"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "giving-pledge-pledgers",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "giving-pledge"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "bill-gates#c1",
+   "from": "bill-gates",
+   "to": "microsoft",
+   "rel": "founded",
+   "label": "founded",
+   "detail": "co-founder",
+   "layers": [
+    "people",
+    "power"
+   ],
+   "when": {
+    "start": 1975,
+    "end": 1976,
+    "label": "1975"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-bill-gates",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {
+    "role": "co-founder"
+   }
+  },
+  {
+   "id": "bill-gates#c2",
+   "from": "bill-gates",
+   "to": "microsoft",
+   "rel": "ceo_of",
+   "label": "CEO of",
+   "layers": [
+    "power",
+    "money"
+   ],
+   "when": {
+    "start": 1975,
+    "end": 2000.0833333333333,
+    "label": "1975–Jan 2000"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-bill-gates",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "bill-gates#c3",
+   "from": "bill-gates",
+   "to": "giving-pledge",
+   "rel": "founded",
+   "label": "founded",
+   "detail": "co-founder",
+   "layers": [
+    "people",
+    "power"
+   ],
+   "when": {
+    "start": 2010,
+    "end": 2011,
+    "label": "2010"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-bill-gates",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {
+    "role": "co-founder"
+   }
+  },
+  {
+   "id": "bill-gates#c4",
+   "from": "bill-gates",
+   "to": "microsoft",
+   "rel": "chair_of",
+   "label": "chair of",
+   "layers": [
+    "power"
+   ],
+   "when": {
+    "start": 1981,
+    "end": 2014.1666666666667,
+    "label": "1981–Feb 2014"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-bill-gates",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "draft",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "blackrock#c1",
+   "from": "blackrock",
+   "to": "tesla",
+   "rel": "holds_for_clients",
+   "label": "holds shares for clients in",
+   "detail": "5.8%, as of 30 Jun 2026",
+   "layers": [
+    "money"
+   ],
+   "when": {
+    "start": 2026.4931506849316,
+    "end": 2026.4931506849316,
+    "label": "as of 30 Jun 2026"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "blackrock-13f-2026q2",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "blackrock"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": true,
+   "traversable": true,
+   "qualifiers": {
+    "percent": 5.8,
+    "as_of": "2026-06-30"
+   }
+  },
+  {
+   "id": "blackrock#c2",
+   "from": "blackrock",
+   "to": "microsoft",
+   "rel": "holds_for_clients",
+   "label": "holds shares for clients in",
+   "detail": "7.2%, as of 30 Jun 2026",
+   "layers": [
+    "money"
+   ],
+   "when": {
+    "start": 2026.4931506849316,
+    "end": 2026.4931506849316,
+    "label": "as of 30 Jun 2026"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "blackrock-13f-2026q2",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "blackrock"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": true,
+   "traversable": true,
+   "qualifiers": {
+    "percent": 7.2,
+    "as_of": "2026-06-30"
+   }
+  },
+  {
+   "id": "vanguard#c1",
+   "from": "vanguard",
+   "to": "tesla",
+   "rel": "holds_for_clients",
+   "label": "holds shares for clients in",
+   "detail": "7.1%, as of 30 Jun 2026",
+   "layers": [
+    "money"
+   ],
+   "when": {
+    "start": 2026.4931506849316,
+    "end": 2026.4931506849316,
+    "label": "as of 30 Jun 2026"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "vanguard-13f-2026q2",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "vanguard"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": true,
+   "traversable": true,
+   "qualifiers": {
+    "percent": 7.1,
+    "as_of": "2026-06-30"
+   }
+  },
+  {
+   "id": "vanguard#c2",
+   "from": "vanguard",
+   "to": "microsoft",
+   "rel": "holds_for_clients",
+   "label": "holds shares for clients in",
+   "detail": "8.9%, as of 30 Jun 2026",
+   "layers": [
+    "money"
+   ],
+   "when": {
+    "start": 2026.4931506849316,
+    "end": 2026.4931506849316,
+    "label": "as of 30 Jun 2026"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "vanguard-13f-2026q2",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "vanguard"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": true,
+   "traversable": true,
+   "qualifiers": {
+    "percent": 8.9,
+    "as_of": "2026-06-30"
+   }
+  },
+  {
+   "id": "us-government#c1",
+   "from": "us-government",
+   "to": "spacex",
+   "rel": "contracted",
+   "label": "awarded a contract to",
+   "detail": "Commercial Resupply Services, $1.6 billion",
+   "layers": [
+    "money",
+    "tech"
+   ],
+   "when": {
+    "start": 2008.9754098360656,
+    "end": 2008.9754098360656,
+    "label": "23 Dec 2008"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "nasa-crs-2008",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "us-government"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {
+    "amount": 1600000000,
+    "currency": "USD",
+    "title": "Commercial Resupply Services"
+   }
+  },
+  {
+   "id": "us-government#c2",
+   "from": "us-government",
+   "to": "jupiter-missiles-in-turkey",
+   "rel": "deployed",
+   "label": "deployed",
+   "layers": [
+    "power",
+    "tech"
+   ],
+   "when": {
+    "start": 1961,
+    "end": 1963.3333333333333,
+    "label": "1961–Apr 1963"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "frus-1961-63-v11",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "us-government"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "us-government#c3",
+   "from": "us-government",
+   "to": "washington-dc",
+   "rel": "headquartered_in",
+   "label": "headquartered in",
+   "layers": [
+    "places"
+   ],
+   "when": null,
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-cuban-missile-crisis",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": false,
+   "qualifiers": {}
+  },
+  {
+   "id": "soviet-government#c1",
+   "from": "soviet-government",
+   "to": "soviet-missiles-in-cuba",
+   "rel": "deployed",
+   "label": "deployed",
+   "layers": [
+    "power",
+    "tech"
+   ],
+   "when": {
+    "start": 1962.6666666666667,
+    "end": 1962.9166666666667,
+    "label": "Sep–Nov 1962"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-cuban-missile-crisis",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "soviet-government#c2",
+   "from": "soviet-government",
+   "to": "moscow",
+   "rel": "headquartered_in",
+   "label": "headquartered in",
+   "layers": [
+    "places"
+   ],
+   "when": null,
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-cuban-missile-crisis",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": false,
+   "qualifiers": {}
+  },
+  {
+   "id": "john-f-kennedy#c1",
+   "from": "john-f-kennedy",
+   "to": "us-government",
+   "rel": "head_of",
+   "label": "head of",
+   "detail": "President",
+   "layers": [
+    "power"
+   ],
+   "when": {
+    "start": 1961.0520547945205,
+    "end": 1963.8931506849315,
+    "label": "1961–1963"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-cuban-missile-crisis",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {
+    "title": "President"
+   }
+  },
+  {
+   "id": "nikita-khrushchev#c1",
+   "from": "nikita-khrushchev",
+   "to": "soviet-government",
+   "rel": "head_of",
+   "label": "head of",
+   "detail": "Premier",
+   "layers": [
+    "power"
+   ],
+   "when": {
+    "start": 1958.2328767123288,
+    "end": 1964.7868852459017,
+    "label": "1958–1964"
+   },
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-cuban-missile-crisis",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {
+    "title": "Premier"
+   }
+  },
+  {
+   "id": "cuban-missile-crisis#c1",
+   "from": "cuban-missile-crisis",
+   "to": "soviet-missiles-in-cuba",
+   "rel": "caused_by",
+   "label": "caused by",
+   "layers": [
+    "history"
+   ],
+   "when": null,
+   "according_to": [
+    "us-government"
+   ],
+   "sources": [
+    {
+     "id": "jfk-address-1962-10-22",
+     "at": "para 1",
+     "quote": "Within the past week, unmistakable evidence has established the fact that a series of offensive missile sites is now in preparation on that imprisoned island."
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "us-government"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "cuban-missile-crisis#c2",
+   "from": "cuban-missile-crisis",
+   "to": "jupiter-missiles-in-turkey",
+   "rel": "caused_by",
+   "label": "caused by",
+   "layers": [
+    "history"
+   ],
+   "when": null,
+   "according_to": [
+    "soviet-government"
+   ],
+   "sources": [
+    {
+     "id": "khrushchev-letter-1962-10-27",
+     "at": null,
+     "quote": "You are disturbed over Cuba. You say that this disturbs you because it is 90 miles by sea from the coast of the United States of America. But Turkey adjoins us."
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "soviet-government"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "cuban-missile-crisis#c3",
+   "from": "cuban-missile-crisis",
+   "to": "jupiter-withdrawal-1963",
+   "rel": "led_to",
+   "label": "led to",
+   "layers": [
+    "history"
+   ],
+   "when": null,
+   "according_to": [],
+   "sources": [
+    {
+     "id": "frus-1961-63-v11",
+     "at": null,
+     "quote": null
+    },
+    {
+     "id": "dobrynin-cable-1962-10-27",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "soviet-government",
+    "us-government"
+   ],
+   "cross_confirmed": true,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "cuban-missile-crisis#c4/1",
+   "from": "cuban-missile-crisis",
+   "to": "john-f-kennedy",
+   "rel": "involved",
+   "label": "involved",
+   "layers": [
+    "history"
+   ],
+   "when": null,
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-cuban-missile-crisis",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "cuban-missile-crisis#c4/2",
+   "from": "cuban-missile-crisis",
+   "to": "nikita-khrushchev",
+   "rel": "involved",
+   "label": "involved",
+   "layers": [
+    "history"
+   ],
+   "when": null,
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-cuban-missile-crisis",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "cuban-missile-crisis#c5",
+   "from": "cuban-missile-crisis",
+   "to": "cuba",
+   "rel": "located_in",
+   "label": "located in",
+   "layers": [
+    "places"
+   ],
+   "when": null,
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-cuban-missile-crisis",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": false,
+   "qualifiers": {}
+  },
+  {
+   "id": "soviet-missiles-in-cuba#c1",
+   "from": "soviet-missiles-in-cuba",
+   "to": "cuba",
+   "rel": "located_in",
+   "label": "located in",
+   "layers": [
+    "places"
+   ],
+   "when": null,
+   "according_to": [],
+   "sources": [
+    {
+     "id": "jfk-address-1962-10-22",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "us-government"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": false,
+   "qualifiers": {}
+  },
+  {
+   "id": "jupiter-missiles-in-turkey#c1",
+   "from": "jupiter-missiles-in-turkey",
+   "to": "izmir",
+   "rel": "located_in",
+   "label": "located in",
+   "layers": [
+    "places"
+   ],
+   "when": null,
+   "according_to": [],
+   "sources": [
+    {
+     "id": "frus-1961-63-v11",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "us-government"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": false,
+   "qualifiers": {}
+  },
+  {
+   "id": "abraham#c1",
+   "from": "abraham",
+   "to": "judaism",
+   "rel": "patriarch_of",
+   "label": "patriarch of",
+   "layers": [
+    "ideas",
+    "people"
+   ],
+   "when": null,
+   "according_to": [
+    "judaism"
+   ],
+   "sources": [
+    {
+     "id": "jps-tanakh-1917",
+     "at": "Genesis 17:5",
+     "quote": "for the father of a multitude of nations have I made thee."
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "judaism"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "abraham#c2",
+   "from": "abraham",
+   "to": "islam",
+   "rel": "patriarch_of",
+   "label": "patriarch of",
+   "layers": [
+    "ideas",
+    "people"
+   ],
+   "when": null,
+   "according_to": [
+    "islam"
+   ],
+   "sources": [
+    {
+     "id": "quran-pickthall-1930",
+     "at": "3:67",
+     "quote": "Abraham was not a Jew, nor yet a Christian; but he was an upright man who had surrendered (to Allah), and he was not of the idolaters."
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "islam"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "abraham#c3",
+   "from": "abraham",
+   "to": "christianity",
+   "rel": "patriarch_of",
+   "label": "patriarch of",
+   "layers": [
+    "ideas",
+    "people"
+   ],
+   "when": null,
+   "according_to": [
+    "christianity"
+   ],
+   "sources": [
+    {
+     "id": "kjv-1611",
+     "at": "Romans 4:16",
+     "quote": "the faith of Abraham; who is the father of us all"
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "christianity"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "abraham#c4",
+   "from": "abraham",
+   "to": "torah",
+   "rel": "appears_in",
+   "label": "appears in",
+   "layers": [
+    "ideas"
+   ],
+   "when": null,
+   "according_to": [],
+   "sources": [
+    {
+     "id": "jps-tanakh-1917",
+     "at": "Genesis 11:26–25:10",
+     "quote": null
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "judaism"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "abraham#c5",
+   "from": "abraham",
+   "to": "quran",
+   "rel": "appears_in",
+   "label": "appears in",
+   "layers": [
+    "ideas"
+   ],
+   "when": null,
+   "according_to": [],
+   "sources": [
+    {
+     "id": "quran-pickthall-1930",
+     "at": "2:124–141",
+     "quote": null
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "islam"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "moses#c1",
+   "from": "moses",
+   "to": "judaism",
+   "rel": "prophet_in",
+   "label": "regarded as a prophet in",
+   "layers": [
+    "ideas"
+   ],
+   "when": null,
+   "according_to": [
+    "judaism"
+   ],
+   "sources": [
+    {
+     "id": "jps-tanakh-1917",
+     "at": "Deuteronomy 34:10",
+     "quote": "And there hath not arisen a prophet since in Israel like unto Moses, whom the LORD knew face to face"
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "judaism"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "moses#c2",
+   "from": "moses",
+   "to": "islam",
+   "rel": "prophet_in",
+   "label": "regarded as a prophet in",
+   "layers": [
+    "ideas"
+   ],
+   "when": null,
+   "according_to": [
+    "islam"
+   ],
+   "sources": [
+    {
+     "id": "quran-pickthall-1930",
+     "at": "19:51",
+     "quote": "And make mention in the Scripture of Moses. Lo! he was chosen, and he was a messenger (of Allah), a prophet."
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "islam"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "moses#c3",
+   "from": "moses",
+   "to": "torah",
+   "rel": "authored",
+   "label": "authored",
+   "layers": [
+    "ideas"
+   ],
+   "when": null,
+   "according_to": [
+    "judaism"
+   ],
+   "sources": [
+    {
+     "id": "britannica-torah",
+     "at": "Authorship",
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "moses#c4",
+   "from": "moses",
+   "to": "torah",
+   "rel": "appears_in",
+   "label": "appears in",
+   "layers": [
+    "ideas"
+   ],
+   "when": null,
+   "according_to": [],
+   "sources": [
+    {
+     "id": "jps-tanakh-1917",
+     "at": "Exodus 2–Deuteronomy 34",
+     "quote": null
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "judaism"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "moses#c5",
+   "from": "moses",
+   "to": "quran",
+   "rel": "appears_in",
+   "label": "appears in",
+   "layers": [
+    "ideas"
+   ],
+   "when": null,
+   "according_to": [],
+   "sources": [
+    {
+     "id": "quran-pickthall-1930",
+     "at": "20:9–98",
+     "quote": null
+    }
+   ],
+   "tier": "T1",
+   "voices": [
+    "islam"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "torah#c1",
+   "from": "torah",
+   "to": "judaism",
+   "rel": "scripture_of",
+   "label": "scripture of",
+   "layers": [
+    "ideas"
+   ],
+   "when": null,
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-torah",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "quran#c1",
+   "from": "quran",
+   "to": "islam",
+   "rel": "scripture_of",
+   "label": "scripture of",
+   "layers": [
+    "ideas"
+   ],
+   "when": null,
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-quran",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  },
+  {
+   "id": "judaism#c1",
+   "from": "judaism",
+   "to": "christianity",
+   "rel": "influenced",
+   "label": "influenced",
+   "layers": [
+    "ideas"
+   ],
+   "when": null,
+   "according_to": [],
+   "sources": [
+    {
+     "id": "britannica-christianity",
+     "at": null,
+     "quote": null
+    }
+   ],
+   "tier": "T2",
+   "voices": [
+    "encyclopaedia-britannica"
+   ],
+   "cross_confirmed": false,
+   "status": "published",
+   "passive": false,
+   "traversable": true,
+   "qualifiers": {}
+  }
+ ],
+ "perspectives": [
+  {
+   "id": "christianity",
+   "name": "Christianity",
+   "claims": 1
+  },
+  {
+   "id": "islam",
+   "name": "Islam",
+   "claims": 2
+  },
+  {
+   "id": "judaism",
+   "name": "Judaism",
+   "claims": 3
+  },
+  {
+   "id": "soviet-government",
+   "name": "Government of the Soviet Union",
+   "claims": 1
+  },
+  {
+   "id": "us-government",
+   "name": "United States government",
+   "claims": 1
+  }
+ ],
+ "sources": {
+  "britannica-elon-musk": {
+   "title": "Elon Musk",
+   "publisher": "encyclopaedia-britannica",
+   "url": "https://www.britannica.com/money/Elon-Musk",
+   "tier": "T2",
+   "voice": "encyclopaedia-britannica",
+   "published": "2026",
+   "archive_url": null,
+   "publisher_name": "Encyclopaedia britannica"
+  },
+  "tesla-10k-2025": {
+   "title": "Tesla, Inc. annual report (Form 10-K), fiscal year 2025",
+   "publisher": "tesla",
+   "url": "https://ir.tesla.com/",
+   "tier": "T1",
+   "voice": "tesla",
+   "published": "2026",
+   "archive_url": null,
+   "publisher_name": "Tesla"
+  },
+  "giving-pledge-pledgers": {
+   "title": "The Giving Pledge: pledgers",
+   "publisher": "giving-pledge",
+   "url": "https://givingpledge.org/",
+   "tier": "T1",
+   "voice": "giving-pledge",
+   "published": "2026",
+   "archive_url": null,
+   "publisher_name": "The Giving Pledge"
+  },
+  "britannica-bill-gates": {
+   "title": "Bill Gates",
+   "publisher": "encyclopaedia-britannica",
+   "url": "https://www.britannica.com/money/Bill-Gates",
+   "tier": "T2",
+   "voice": "encyclopaedia-britannica",
+   "published": "2026",
+   "archive_url": null,
+   "publisher_name": "Encyclopaedia britannica"
+  },
+  "blackrock-13f-2026q2": {
+   "title": "BlackRock, Inc. Form 13F-HR, quarter ended 30 June 2026",
+   "publisher": "blackrock",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001364742&type=13F-HR",
+   "tier": "T1",
+   "voice": "blackrock",
+   "published": "2026-08",
+   "archive_url": null,
+   "publisher_name": "BlackRock"
+  },
+  "vanguard-13f-2026q2": {
+   "title": "The Vanguard Group Form 13F-HR, quarter ended 30 June 2026",
+   "publisher": "vanguard",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000102909&type=13F-HR",
+   "tier": "T1",
+   "voice": "vanguard",
+   "published": "2026-08",
+   "archive_url": null,
+   "publisher_name": "Vanguard"
+  },
+  "nasa-crs-2008": {
+   "title": "NASA awards Space Station Commercial Resupply Services contracts",
+   "publisher": "us-government",
+   "url": "https://www.nasa.gov/",
+   "tier": "T1",
+   "voice": "us-government",
+   "published": "2008-12-23",
+   "archive_url": null,
+   "publisher_name": "United States government"
+  },
+  "jps-tanakh-1917": {
+   "title": "The Holy Scriptures according to the Masoretic Text (JPS 1917)",
+   "publisher": "jewish-publication-society",
+   "url": "https://www.sefaria.org/texts/Tanakh",
+   "tier": "T1",
+   "voice": "judaism",
+   "published": "1917",
+   "archive_url": null,
+   "publisher_name": "Jewish publication society"
+  },
+  "quran-pickthall-1930": {
+   "title": "The Meaning of the Glorious Koran (Pickthall)",
+   "publisher": "marmaduke-pickthall",
+   "url": "https://quran.com/",
+   "tier": "T1",
+   "voice": "islam",
+   "published": "1930",
+   "archive_url": null,
+   "publisher_name": "Marmaduke pickthall"
+  },
+  "kjv-1611": {
+   "title": "The Holy Bible, King James Version",
+   "publisher": "church-of-england",
+   "url": "https://www.kingjamesbibleonline.org/",
+   "tier": "T1",
+   "voice": "christianity",
+   "published": "1611",
+   "archive_url": null,
+   "publisher_name": "Church of england"
+  },
+  "britannica-torah": {
+   "title": "Torah",
+   "publisher": "encyclopaedia-britannica",
+   "url": "https://www.britannica.com/topic/Torah",
+   "tier": "T2",
+   "voice": "encyclopaedia-britannica",
+   "published": "2026",
+   "archive_url": null,
+   "publisher_name": "Encyclopaedia britannica"
+  },
+  "britannica-quran": {
+   "title": "Qurʾān",
+   "publisher": "encyclopaedia-britannica",
+   "url": "https://www.britannica.com/topic/Quran",
+   "tier": "T2",
+   "voice": "encyclopaedia-britannica",
+   "published": "2026",
+   "archive_url": null,
+   "publisher_name": "Encyclopaedia britannica"
+  },
+  "britannica-christianity": {
+   "title": "Christianity",
+   "publisher": "encyclopaedia-britannica",
+   "url": "https://www.britannica.com/topic/Christianity",
+   "tier": "T2",
+   "voice": "encyclopaedia-britannica",
+   "published": "2026",
+   "archive_url": null,
+   "publisher_name": "Encyclopaedia britannica"
+  },
+  "jfk-address-1962-10-22": {
+   "title": "Address on the Soviet arms buildup in Cuba",
+   "publisher": "us-government",
+   "url": "https://www.jfklibrary.org/learn/about-jfk/historic-speeches/address-during-the-cuban-missile-crisis",
+   "tier": "T1",
+   "voice": "us-government",
+   "published": "1962-10-22",
+   "archive_url": null,
+   "publisher_name": "United States government"
+  },
+  "khrushchev-letter-1962-10-27": {
+   "title": "Message from Chairman Khrushchev to President Kennedy",
+   "publisher": "soviet-government",
+   "url": "https://history.state.gov/historicaldocuments/frus1961-63v06",
+   "tier": "T1",
+   "voice": "soviet-government",
+   "published": "1962-10-27",
+   "archive_url": null,
+   "publisher_name": "Government of the Soviet Union"
+  },
+  "frus-1961-63-v11": {
+   "title": "Foreign Relations of the United States, 1961–1963, Volume XI: Cuban Missile Crisis and Aftermath",
+   "publisher": "us-government",
+   "url": "https://history.state.gov/historicaldocuments/frus1961-63v11",
+   "tier": "T1",
+   "voice": "us-government",
+   "published": "1996",
+   "archive_url": null,
+   "publisher_name": "United States government"
+  },
+  "dobrynin-cable-1962-10-27": {
+   "title": "Dobrynin to the Soviet Foreign Ministry on his meeting with Robert Kennedy",
+   "publisher": "soviet-government",
+   "url": "https://digitalarchive.wilsoncenter.org/",
+   "tier": "T1",
+   "voice": "soviet-government",
+   "published": "1962-10-27",
+   "archive_url": null,
+   "publisher_name": "Government of the Soviet Union"
+  },
+  "britannica-cuban-missile-crisis": {
+   "title": "Cuban missile crisis",
+   "publisher": "encyclopaedia-britannica",
+   "url": "https://www.britannica.com/event/Cuban-missile-crisis",
+   "tier": "T2",
+   "voice": "encyclopaedia-britannica",
+   "published": "2026",
+   "archive_url": null,
+   "publisher_name": "Encyclopaedia britannica"
+  }
+ }
+}

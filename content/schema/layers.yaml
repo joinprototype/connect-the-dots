@@ -1,0 +1,10 @@
+# Layers: families of relations. A lens shows a set of layers.
+# Colors stay neutral on purpose (docs/ux-vision.md): meaning comes from labels and shape,
+# the one accent color is reserved for focus, selection and the active path.
+people:  {label: People,         color: "#6e6e73"}
+power:   {label: Power,          color: "#6e6e73"}
+money:   {label: Money,          color: "#6e6e73"}
+tech:    {label: Science & Tech, color: "#6e6e73"}
+history: {label: History,        color: "#6e6e73"}
+ideas:   {label: Ideas & Faith,  color: "#6e6e73"}
+places:  {label: Places,         color: "#6e6e73"}

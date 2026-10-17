@@ -1,0 +1,225 @@
+/* world.css: the open-world map, calm and light (dark with prefers-color-scheme). Only site tokens for
+   colours and fonts. No CSS filters or backdrop-filter over the WebGL canvas: Safari re-rasterizes them
+   on every frame. */
+
+/* The viewer fills its root, which must be positioned: #world-root here, .ctdx-world in the explorer. */
+#world-root { position: relative; display: block; }
+.world-page #world-root { flex: 1; height: calc(100dvh - var(--ctdw-top, 58px)); min-height: 420px; }
+
+.ctdw, .ctdw * { box-sizing: border-box; }
+.ctdw {
+  --ctdw-hair: color-mix(in srgb, var(--night-rule) 70%, transparent);
+  --ctdw-fill: color-mix(in srgb, var(--night-ink) 8%, var(--night-2));
+  --ctdw-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.06);
+  --ctdw-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--ctdw-hair);
+  /* graph colours, read by the viewer */
+  --graph-node: #8e8e93;
+  --graph-edge: #c7c7cc;
+  position: absolute; inset: 0; overflow: hidden;
+  background: var(--paper); color: var(--night-ink);
+  font-family: var(--font-ui); font-size: 0.94rem; line-height: 1.35;
+  -webkit-user-select: none; user-select: none;
+}
+@media (prefers-color-scheme: dark) {
+  .ctdw {
+    --graph-node: #98989d;
+    --graph-edge: #48484a;
+    --ctdw-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
+    --ctdw-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--ctdw-hair);
+  }
+}
+.ctdw button { font: inherit; color: inherit; }
+/* a solid accent ring, as on the reading pages: at least 3:1 against every surface in both modes */
+.ctdw :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
+
+/* ---------------------------------------------------------------- stage: the plain surface, no grid */
+.ctdw-stage { position: absolute; inset: 0; background: var(--paper); }
+.ctdw-stage canvas { position: absolute; inset: 0; outline: none; }
+/* the map canvas takes keyboard focus: show it with an inset ring that the stage cannot clip */
+/* !important: deck.gl sets an inline "outline: none" on its canvas */
+.ctdw-stage canvas:focus-visible { outline: 3px solid var(--accent) !important; outline-offset: -3px; }
+
+/* ---------------------------------------------------------------- the Earth (?view=earth): a MapLibre globe in place of the stage */
+/* .ctdw first: maplibre-gl.css (loaded later) gives its container position: relative and its own font */
+.ctdw .ctdw-earth { position: absolute; inset: 0; z-index: 0; background: var(--paper); font: inherit; }
+/* the hidden view keeps its size (no resize when it comes back); MapLibre's controls set their own visibility */
+.ctdw:not(.is-earth) .ctdw-earth, .ctdw.is-earth .ctdw-stage, .ctdw.is-earth .ctdw-regions { visibility: hidden; }
+.ctdw:not(.is-earth) .ctdw-earth .maplibregl-control-container { display: none; }
+.ctdw-earth .maplibregl-canvas:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; border-radius: 0; }
+/* the basemap's credits (MapLibre's compact control), quiet in both modes, below the HUD row */
+.ctdw-earth .maplibregl-ctrl-top-right { top: 40px; }
+.ctdw-earth .maplibregl-ctrl-attrib.maplibregl-compact {
+  color: var(--night-muted); background: var(--night-2); box-shadow: var(--ctdw-shadow-sm); font: 400 0.72rem/20px var(--font-ui);
+}
+.ctdw-earth .maplibregl-ctrl-attrib a { color: var(--night-muted); }
+.ctdw-earth .maplibregl-ctrl-attrib a:hover { color: var(--night-ink); }
+.ctdw-earth .maplibregl-ctrl-attrib-button:focus { box-shadow: none; } /* the site's own ring shows instead */
+/* MapLibre's "i" is black: the same icon in --night-muted (#66666b, dark #98989d) */
+.ctdw-earth .maplibregl-ctrl-attrib-button { background-color: transparent !important; background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%2366666b%22%20fill-rule%3D%22evenodd%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20d%3D%22M4%2010a6%206%200%201%200%2012%200%206%206%200%201%200-12%200m5-3a1%201%200%201%200%202%200%201%201%200%201%200-2%200m0%203a1%201%200%201%201%202%200v3a1%201%200%201%201-2%200%22%2F%3E%3C%2Fsvg%3E"); }
+@media (prefers-color-scheme: dark) {
+  .ctdw-earth .maplibregl-ctrl-attrib-button { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%2398989d%22%20fill-rule%3D%22evenodd%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20d%3D%22M4%2010a6%206%200%201%200%2012%200%206%206%200%201%200-12%200m5-3a1%201%200%201%200%202%200%201%201%200%201%200-2%200m0%203a1%201%200%201%201%202%200v3a1%201%200%201%201-2%200%22%2F%3E%3C%2Fsvg%3E"); }
+}
+
+/* ---------------------------------------------------------------- overlays */
+.ctdw-hud { position: absolute; z-index: 3; top: 14px; left: 16px; display: flex; flex-wrap: wrap; gap: 6px; pointer-events: none; max-width: calc(100% - 32px); }
+.ctdw-hud > span {
+  display: inline-flex; align-items: center; gap: 7px; padding: 5px 11px; border-radius: 999px;
+  font-size: 0.82rem; font-weight: 500; font-variant-numeric: tabular-nums;
+  background: var(--night-2); box-shadow: var(--ctdw-shadow-sm);
+}
+.ctdw-hud > span[hidden] { display: none; }
+.ctdw-hud-title { font-weight: 600 !important; }
+.ctdw-hud-count { color: var(--night-muted); }
+/* "Links | Earth" (/w/ only): a segmented control where the title would be */
+.ctdw-views {
+  display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; pointer-events: auto;
+  background: var(--ctdw-fill); box-shadow: var(--ctdw-shadow-sm);
+}
+.ctdw-views button {
+  border: 0; border-radius: 999px; padding: 2px 12px; cursor: pointer; background: transparent;
+  color: var(--night-muted); font-size: 0.82rem; font-weight: 500; line-height: 1.35;
+}
+.ctdw-views button:hover { color: var(--night-ink); }
+.ctdw-views button[aria-pressed="true"] { background: var(--selected); color: var(--night-ink); font-weight: 600; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14); }
+.ctdw-hint { position: absolute; z-index: 3; top: 50px; left: 18px; right: 18px; margin: 0; font-size: 0.8rem; color: var(--night-muted); pointer-events: none; }
+
+/* Region names: quiet map lettering at each region's centre. Clicks go through to the map, which
+   hit-tests the names itself, so panning and zooming work everywhere. */
+.ctdw-regions { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.ctdw-region {
+  position: absolute; left: 0; top: 0; max-width: 11em; padding: 1px 6px; border-radius: 6px;
+  text-align: center; overflow-wrap: break-word;
+  font: 600 0.69rem/1.25 var(--font-ui); letter-spacing: 0.06em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--night-ink) 74%, var(--paper));
+  /* a soft wash of the page keeps the name legible over the dots and links beneath it */
+  background: color-mix(in srgb, var(--paper) 80%, transparent);
+}
+/* while an era is picked the lit dots matter; the region names step back to the quiet text (still 4.5:1) */
+.ctdw-regions.is-era .ctdw-region { color: var(--night-muted); }
+
+.ctdw-zoom {
+  position: absolute; z-index: 3; right: 14px; bottom: 40px; display: grid; overflow: hidden;
+  border-radius: 12px; background: var(--night-2); box-shadow: var(--ctdw-shadow), 0 0 0 1px var(--ctdw-hair);
+}
+/* an Earth that could not be drawn has nothing to zoom or move through (Links keeps its controls) */
+.ctdw.is-earth.is-earth-failed .ctdw-zoom, .ctdw.is-earth.is-earth-failed .ctdw-era { display: none; }
+.ctdw-zoom button { width: 34px; height: 34px; cursor: pointer; font-size: 1.05rem; line-height: 1; border: 0; background: transparent; color: var(--night-ink); }
+.ctdw-zoom button + button { border-top: 1px solid var(--ctdw-hair); }
+.ctdw-zoom button:hover { background: var(--ctdw-fill); }
+/* the group clips anything outside it (rounded corners): draw the ring inside the button */
+.ctdw-zoom button:focus-visible { outline-offset: -3px; }
+
+.ctdw-legend {
+  position: absolute; z-index: 3; left: 12px; bottom: 32px; margin: 0; padding: 5px 12px; list-style: none; border-radius: 12px;
+  display: flex; flex-wrap: wrap; gap: 4px 12px; max-width: min(620px, 70%); font-size: 0.8rem; color: var(--night-muted); pointer-events: none;
+  background: var(--night-2); box-shadow: var(--ctdw-shadow-sm);
+}
+.ctdw-legend li { display: inline-flex; align-items: center; gap: 6px; }
+.ctdw-legend li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+.ctdw-notice {
+  position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; margin: 0; padding: 8px 16px; text-align: center; pointer-events: none;
+  font: italic 400 0.84rem var(--font-body); color: var(--night-muted);
+}
+
+/* ---------------------------------------------------------------- era: one native range input */
+.ctdw-era {
+  position: absolute; z-index: 3; left: 16px; bottom: 36px; width: min(380px, calc(100% - 96px));
+  padding: 9px 14px 5px; border-radius: 14px; background: var(--night-2); box-shadow: var(--ctdw-shadow), 0 0 0 1px var(--ctdw-hair);
+}
+.ctdw-era-head { display: flex; align-items: baseline; gap: 10px; }
+.ctdw-era-label { font-weight: 600; font-variant-numeric: tabular-nums; }
+.ctdw-era-note { margin-left: auto; font-size: 0.78rem; color: var(--night-muted); }
+.ctdw-era input[type="range"] {
+  -webkit-appearance: none; appearance: none; display: block; width: 100%; height: 28px; margin: 2px 0 0;
+  background: transparent; cursor: pointer;
+}
+.ctdw-era input[type="range"]::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: var(--night-rule); }
+.ctdw-era input[type="range"]::-moz-range-track { height: 4px; border-radius: 4px; background: var(--night-rule); }
+.ctdw-era input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 22px; height: 22px; margin-top: -9px; border: 0; border-radius: 50%;
+  background: #fff; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 0 0 0.5px rgba(0, 0, 0, 0.12);
+}
+.ctdw-era input[type="range"]::-moz-range-thumb {
+  width: 22px; height: 22px; border: 0; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+/* the card opens above the era bar */
+.ctdw.has-era .ctdw-card { bottom: calc(36px + var(--ctdw-era-h, 64px) + 10px); }
+
+.ctdw-tooltip {
+  position: absolute; z-index: 6; left: 0; top: 0; pointer-events: none; max-width: 280px;
+  display: grid; gap: 2px; padding: 8px 12px 9px; border-radius: 10px;
+  background: var(--night-2); box-shadow: var(--ctdw-shadow), 0 0 0 1px var(--ctdw-hair);
+}
+.ctdw-tooltip strong { font-weight: 600; font-size: 0.95rem; }
+.ctdw-tooltip span { color: var(--night-muted); font-size: 0.8rem; }
+
+.ctdw-card {
+  position: absolute; z-index: 5; left: 16px; bottom: 64px; width: min(320px, calc(100% - 32px));
+  padding: 16px 18px 14px; border-radius: 14px; background: var(--night-2); box-shadow: var(--ctdw-shadow), 0 0 0 1px var(--ctdw-hair);
+  -webkit-user-select: text; user-select: text;
+}
+.ctdw-card h2 { font: 600 1.4rem/1.15 var(--font-display); margin: 4px 28px 12px 0; color: var(--night-ink); }
+.ctdw-kind { margin: 0; font-size: 0.84rem; font-weight: 500; color: var(--night-muted); }
+.ctdw-card-close {
+  position: absolute; top: 10px; right: 10px; width: 26px; height: 26px; border-radius: 50%; cursor: pointer;
+  border: 0; background: var(--ctdw-fill); color: var(--night-muted); font-size: 1.05rem; line-height: 1;
+}
+.ctdw-card-close:hover { color: var(--night-ink); }
+.ctdw-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.ctdw-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; text-decoration: none;
+  padding: 8px 16px; border-radius: 999px; border: 0; background: var(--ctdw-fill); color: var(--night-ink); font-weight: 600; font-size: 0.9rem;
+}
+.ctdw-btn:hover { background: color-mix(in srgb, var(--night-ink) 14%, var(--night-2)); color: var(--night-ink); }
+/* white on --accent-fill: at least 4.5:1 in both modes */
+.ctdw-btn.is-primary { background: var(--accent-fill); color: #fff; }
+.ctdw-btn.is-primary:hover { background: var(--accent-fill-hover); color: #fff; }
+.ctdw-meta { margin: 10px 0 0; font-size: 0.78rem; color: var(--night-muted); font-variant-numeric: tabular-nums; }
+/* the Earth: the other entries at the card's spot, each a link to its page. The list scrolls, with
+   room around each link for its focus ring. */
+.ctdw-list-head { margin: 14px 0 0; font-size: 0.78rem; font-weight: 600; color: var(--night-muted); }
+.ctdw-list { list-style: none; margin: 0 -6px; padding: 4px 6px; max-height: min(32vh, 260px); overflow-y: auto; }
+.ctdw-list li { display: grid; gap: 1px; padding: 7px 0; border-top: 1px solid var(--ctdw-hair); }
+.ctdw-list li:first-child { border-top: 0; padding-top: 0; }
+.ctdw-list-name { font-weight: 600; color: var(--night-ink); text-decoration: none; }
+.ctdw-list-name[href]::after { content: " ›"; color: var(--night-muted); }
+.ctdw-list-name[href]:hover { color: var(--accent); }
+.ctdw-list-name:focus-visible { outline-offset: 0; border-radius: 4px; }
+.ctdw-list-meta { font-size: 0.8rem; color: var(--night-muted); }
+
+.ctdw-stats {
+  position: absolute; z-index: 4; top: 12px; right: 12px; margin: 0; padding: 9px 12px; border-radius: 12px;
+  font: 500 11.5px/1.5 var(--font-mono); color: var(--night-ink); white-space: pre; pointer-events: none;
+  background: var(--night-2); box-shadow: var(--ctdw-shadow), 0 0 0 1px var(--ctdw-hair);
+}
+.ctdw.is-soak .ctdw-stats { box-shadow: var(--ctdw-shadow), 0 0 0 1.5px var(--accent); }
+
+.ctdw-state {
+  position: absolute; inset: 0; z-index: 8; display: grid; place-content: center; justify-items: center; gap: 12px; text-align: center; padding: 24px;
+  background: var(--night-2); color: var(--night-muted);
+}
+.ctdw-state p { margin: 0; max-width: 46ch; }
+.ctdw-state.is-error p:first-child { color: var(--night-ink); font-size: 1.05rem; }
+.ctdw-note { font-size: 0.86rem; }
+.ctdw-loader {
+  width: 60px; height: 20px;
+  background: radial-gradient(circle, var(--accent) 3.5px, transparent 4px) 0 50% / 20px 20px repeat-x;
+  animation: ctdw-pulse 1.1s ease-in-out infinite;
+}
+@keyframes ctdw-pulse { 50% { opacity: 0.35; } }
+
+/* Inside the explorer the app shows its own HUD, zoom buttons, key and notice. */
+.ctdw.is-embedded .ctdw-hud, .ctdw.is-embedded .ctdw-zoom { display: none; }
+
+@media (max-width: 760px) {
+  /* phones keep only the sentence about regions */
+  .ctdw-hint-how { display: none; }
+  .ctdw-legend { max-width: calc(100% - 72px); bottom: 34px; }
+  .ctdw-card { left: 8px; right: 8px; width: auto; bottom: 58px; }
+  .ctdw-era { left: 8px; right: 56px; width: auto; bottom: 34px; }
+  .ctdw.has-era .ctdw-card { bottom: calc(34px + var(--ctdw-era-h, 64px) + 8px); }
+  .ctdw-stats { font-size: 10.5px; top: auto; bottom: 120px; right: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ctdw *, .ctdw-loader { animation: none !important; transition: none !important; }
+}

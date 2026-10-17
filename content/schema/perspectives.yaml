@@ -1,0 +1,13 @@
+# Contested sets: perspectives that tell competing stories about the same events.
+# A fact whose sources include voices from two different members of one set is shown as
+# "Confirmed by opposing sides". A source's voice is its `voice` field (or its publisher).
+contested:
+  - id: cold-war
+    label: Cold War superpowers
+    members: [us-government, soviet-government]
+  - id: revolution-1917
+    label: "1917: Imperial Germany, the Bolsheviks and the Provisional Government"
+    members: [german-imperial-government, bolsheviks, russian-provisional-government]
+  - id: soviet-collapse
+    label: Accounts of the Soviet collapse
+    members: [us-government, soviet-government, russian-government]

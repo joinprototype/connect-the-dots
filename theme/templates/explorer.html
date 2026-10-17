@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Explorer: connect the dot{% endblock %}
+{% block body_class %}explorer-page{% endblock %}
+{% block head %}{% if site.assets.explorer_css %}<link rel="stylesheet" href="/assets/explorer.css">{% endif %}{% endblock %}
+{% block main %}
+<h1 class="sr-only">Explore connections</h1>
+<div id="explorer-root"><noscript><p class="empty">The explorer needs JavaScript. Every connection is also listed on each entry's page.</p></noscript></div>
+{% endblock %}
+{% block scripts %}{% if site.assets.explorer_js %}<script type="module" src="/assets/explorer.js"></script>{% endif %}{% endblock %}

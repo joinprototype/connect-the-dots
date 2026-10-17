@@ -1,0 +1,142 @@
+# Relation types. A claim `rel` must be one of these.
+#   from / to   allowed entity types of the owning entity and the target ("any" = all types)
+#   owner       which side's file holds the claim (always "from" in v0)
+#   layers      which layers (and therefore lenses) show it
+#   temporal    whether `when` is meaningful
+#   qualifiers  extra fields allowed on the claim
+#   traversable used by the path finder (default true)
+#   passive     collapsed by default ("index funds")
+#   sensitive   stricter sourcing and review (two independent T1/T2 voices or one T1); a claim that
+#               falls short is withheld from the site until it is sourced
+#   kinship     a family relation; entity pages gather these into "Family ties". Only joins types with
+#               `family: true`. Its `role` describes the claim's owner: `role: mother` = from is to's mother
+#   attributed  an interpretation: every claim must name whose account it is (`according_to`);
+#               must be `traversable: false`, so routes never run through one side's account
+#   identity    the same body under a new name (`became`): question answers about the later form
+#               include the earlier one. Joins two entries of one type; never `attributed`
+#   noun        the label is not a verb (a title, a noun or a participle: "CEO of", "born in"), so a
+#               sentence puts it after a comma: "Mike Markkula, CEO of Apple"
+#   background  shown in a person's "Background" card: born in, citizen of, educated at (ADR-0016)
+#   inverse_reads how the inverse joins a sentence: after a comma by default ("Apple, founded by Steve
+#               Jobs"); `verb` ("includes", "caused"); or `list`, a plural that names the others ("Apple,
+#               board members: Mike Markkula and Arthur Rock")
+
+# --- people & power ---------------------------------------------------------
+founded:
+  {label: founded, inverse: founded by, from: [person, org, group, place], to: [org, tradition, artifact, work, concept, group, place], owner: from, layers: [people, power], temporal: true, qualifiers: [role]}
+ceo_of:
+  {label: CEO of, inverse: CEO, from: [person], to: [org], owner: from, layers: [power, money], temporal: true, noun: true}
+chair_of:
+  {label: chair of, inverse: chaired by, from: [person], to: [org], owner: from, layers: [power], temporal: true, qualifiers: [title], noun: true}
+head_of:
+  {label: head of, inverse: headed by, from: [person], to: [org, place, tradition, group], owner: from, layers: [power], temporal: true, qualifiers: [title], noun: true}
+member_of:
+  {label: member of, inverse: members, from: [person, org, place], to: [org, group, tradition], owner: from, layers: [people], temporal: true, qualifiers: [role], noun: true, inverse_reads: list}
+worked_at:
+  {label: worked at, inverse: people who worked here, from: [person], to: [org], owner: from, layers: [people], temporal: true, qualifiers: [role, title], inverse_reads: list}
+relative_of:
+  {label: relative of, inverse: relative of, from: [person], to: [person], owner: from, layers: [people], qualifiers: [role], sensitive: true, kinship: true, noun: true}
+# Citizenship (ADR-0016), dated when a source dates it (a naturalization, a renunciation). Never a
+# route: sharing a passport is not a connection.
+citizen_of:
+  {label: citizen of, inverse: citizens, from: [person], to: [place], owner: from, layers: [people], temporal: true, traversable: false, noun: true, inverse_reads: list, background: true}
+signatory_of:
+  {label: signed, inverse: signed by, from: [person, org], to: [work, org, concept], owner: from, layers: [people, money], temporal: true}
+enacted:
+  {label: signed into law, inverse: enacted by, from: [person, org], to: [concept, work, org], owner: from, layers: [power], temporal: true}
+intervened_in:
+  {label: intervened in, inverse: interventions, from: [person, org], to: [event], owner: from, layers: [power, history], temporal: true, qualifiers: [role], inverse_reads: list}
+leads:
+  {label: leads, inverse: led by, from: [person, org], to: [event, group, org, place], owner: from, layers: [history, power], temporal: true}
+# Backstories (pack 2): schools and board seats are where many doors open.
+educated_at:
+  {label: educated at, inverse: alumni and students, from: [person], to: [org], owner: from, layers: [people], temporal: true, qualifiers: [role, title], noun: true, inverse_reads: list, background: true}
+board_member_of:
+  {label: board member of, inverse: board members, from: [person], to: [org], owner: from, layers: [power, people], temporal: true, qualifiers: [role, title], noun: true, inverse_reads: list}
+
+# --- money ------------------------------------------------------------------
+invested_in:
+  {label: invested in, inverse: investors, from: [person, org], to: [org], owner: from, layers: [money], temporal: true, qualifiers: [amount, currency, role], inverse_reads: list}
+holds_for_clients:
+  {label: holds shares for clients in, inverse: shares held for clients by, from: [org], to: [org], owner: from, layers: [money], temporal: true, qualifiers: [percent, shares, as_of], passive: true}
+owns_stake:
+  {label: owns a stake in, inverse: stakeholders, from: [person, org], to: [org], owner: from, layers: [money], temporal: true, qualifiers: [percent, shares, as_of], inverse_reads: list}
+acquired:
+  {label: acquired, inverse: acquired by, from: [person, org], to: [org, artifact], owner: from, layers: [money], temporal: true, qualifiers: [amount, currency]}
+contracted:
+  {label: awarded a contract to, inverse: contracts from, from: [org], to: [org], owner: from, layers: [money, tech], temporal: true, qualifiers: [amount, currency, title]}
+# Money given without buying a stake (subsidies, grants, secret payments). Use invested_in for equity.
+funded:
+  {label: funded, inverse: funded by, from: [person, org, place, group], to: [org, person, group, event], owner: from, layers: [money, power], temporal: true, qualifiers: [amount, currency, role]}
+# A broker sending its customers' orders to a market maker to be executed. When the market maker pays
+# for them (payment for order flow), say so in a `note`: such an arrangement need not be a contract.
+routed_orders_to:
+  {label: routed customer orders to, inverse: received customer orders from, from: [org], to: [org], owner: from, layers: [money], temporal: true, inverse_reads: verb}
+
+# --- science & tech ---------------------------------------------------------
+developed:
+  {label: developed, inverse: developed by, from: [person, org], to: [artifact, concept, work], owner: from, layers: [tech], temporal: true, qualifiers: [role]}
+launched:
+  {label: launched, inverse: launched by, from: [org, person], to: [artifact], owner: from, layers: [tech], temporal: true}
+produced:
+  {label: produced, inverse: produced by, from: [person, org], to: [work, artifact], owner: from, layers: [tech, ideas], temporal: true}
+deployed:
+  {label: deployed, inverse: deployed by, from: [org], to: [artifact], owner: from, layers: [power, tech], temporal: true}
+
+# --- history ----------------------------------------------------------------
+involved:
+  {label: involved, inverse: involved in, from: [event], to: [person, org, place, group, artifact], owner: from, layers: [history], qualifiers: [role]}
+# The same body under a new name or form: a party renamed, a company reorganised, a city renamed.
+# Lets a long-lived thing be two entries, each with honest dates, without breaking its line.
+# `identity`: answers about the later form include the earlier one ("as the Bolsheviks"); both
+# sides of a claim must have the same type, and an identity is never `attributed`.
+became:
+  {label: became, inverse: formerly, from: [org, group, place, tradition, artifact], to: [org, group, place, tradition, artifact], owner: from, layers: [history], temporal: true, qualifiers: [title], identity: true}
+part_of:
+  {label: part of, inverse: includes, from: [event, org, place, work, artifact, tradition], to: [event, org, place, tradition, work, group], owner: from, layers: [history], temporal: true, noun: true, inverse_reads: verb}
+caused_by:
+  {label: caused by, inverse: caused, from: [event], to: [event, artifact, concept], owner: from, layers: [history], noun: true, inverse_reads: verb}
+led_to:
+  {label: led to, inverse: followed from, from: [event, artifact, concept, work], to: [event, org, artifact, concept, work], owner: from, layers: [history], inverse_reads: verb}
+adopted:
+  {label: adopted, inverse: adopted by, from: [org, place, group], to: [concept, work], owner: from, layers: [power, ideas], temporal: true}
+
+# "Who benefited" is an interpretation: give it `according_to` and quote the voice that says so.
+benefited_from:
+  {label: benefited from, inverse: benefited, from: any, to: [event], owner: from, layers: [power, history], attributed: true, traversable: false, inverse_reads: verb}
+# The mirror of benefited_from ("who lost"), equally interpretive and attributed.
+harmed_by:
+  {label: harmed by, inverse: harmed, from: any, to: [event], owner: from, layers: [power, history], attributed: true, traversable: false, noun: true, inverse_reads: verb}
+# --- ideas & religion -------------------------------------------------------
+scripture_of:
+  {label: scripture of, inverse: scriptures, from: [work], to: [tradition], owner: from, layers: [ideas], noun: true, inverse_reads: list}
+prophet_in:
+  {label: regarded as a prophet in, inverse: prophets, from: [person], to: [tradition], owner: from, layers: [ideas], noun: true, inverse_reads: list}
+central_figure_of:
+  {label: central figure of, inverse: central figure, from: [person], to: [tradition], owner: from, layers: [ideas], noun: true}
+patriarch_of:
+  {label: patriarch of, inverse: patriarch, from: [person], to: [tradition, group], owner: from, layers: [ideas, people], noun: true}
+appears_in:
+  {label: appears in, inverse: features, from: [person, place, event, artifact], to: [work], owner: from, layers: [ideas], qualifiers: [role], inverse_reads: verb}
+authored:
+  {label: authored, inverse: author, from: [person, org], to: [work], owner: from, layers: [ideas], temporal: true}
+edition_of:
+  {label: edition of, inverse: editions, from: [work], to: [work], owner: from, layers: [ideas, tech], noun: true, inverse_reads: list}
+branch_of:
+  {label: branch of, inverse: branches, from: [tradition, org], to: [tradition], owner: from, layers: [ideas], noun: true, inverse_reads: list}
+influenced:
+  {label: influenced, inverse: influenced by, from: [person, work, tradition, concept, event], to: [person, work, tradition, concept, org, event], owner: from, layers: [ideas]}
+identified_with:
+  {label: identified with, inverse: identified with, from: [person, place, concept], to: [person, place, concept], owner: from, layers: [ideas], noun: true}
+
+# --- places -----------------------------------------------------------------
+born_in:
+  {label: born in, inverse: birthplace of, from: [person], to: [place], owner: from, layers: [places], traversable: false, noun: true, background: true}
+located_in:
+  {label: located in, inverse: location of, from: [place, event, org, artifact], to: [place], owner: from, layers: [places], traversable: false, noun: true}
+headquartered_in:
+  {label: headquartered in, inverse: headquarters of, from: [org], to: [place], owner: from, layers: [places], traversable: false, noun: true}
+
+# --- meta -------------------------------------------------------------------
+distinct_from:
+  {label: not the same as, inverse: not the same as, from: any, to: any, owner: from, layers: [], traversable: false, noun: true}

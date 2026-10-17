@@ -1,0 +1,50 @@
+# Questions readers can ask (docs/decisions/0015-ask-anything.md). The engine knows none of these
+# words: each question names the relations that answer it, in groups whose labels readers see.
+# The order is the order of the Ask picker.
+#   ask       the sentence: {x} is the subject ({a} and {b} the two ends of a route); ends with "?"
+#   route     true: answered by ranked routes (the explorer and the featured route stories)
+#   subjects  entity types the question is asked about. Never people or families (`family: true`
+#             types): their pages show family ties and every link. "Who is behind" is asked only
+#             about bodies that have founders, leaders and owners, never about events or ideas.
+#   shows     what every answer page shows, and `not` what it does not: both are printed on the page
+#   groups    a label and its relations: `in` = links that point at {x}, `out` = links {x} owns.
+#             `empty` is said when no link answers the group; without it an empty group is left out.
+#   min       names an answer needs for its own page (two or more accounts always earn one)
+# `ctd check` refuses family, sensitive and index-fund relations here, family types as subjects,
+# and the banned words below.
+banned_words: [mastermind, puppet, orchestrated, controlled, secretly, cabal, plot]
+questions:
+  - id: connected
+    ask: "How are {a} and {b} connected?"
+    route: true
+    shows: routes of sourced links
+    not: influence, intent or wrongdoing
+  - id: behind
+    ask: "Who is behind {x}?"
+    subjects: [org, place, artifact]
+    shows: documented founders, leaders, board members, funders and owners
+    not: who made decisions, or why
+    groups:
+      - {label: Founded by, in: [founded]}
+      - {label: Led by, in: [leads, head_of, ceo_of, chair_of]}
+      - {label: Board, in: [board_member_of]}
+      - {label: Money in, in: [funded, invested_in]}
+      - {label: Owners, in: [owns_stake, acquired]}
+    min: 2
+  - id: why
+    ask: "Why did {x} happen?"
+    subjects: [event]
+    shows: causes on the record, then each account's causes side by side
+    not: a single settled cause
+    groups:
+      - {label: Causes, out: [caused_by], in: [led_to]}
+    min: 2
+  - id: benefited
+    ask: "Who benefited from {x}?"
+    subjects: [event]
+    shows: who gained or lost, in the words of whoever says so
+    not: that anyone caused it
+    groups:
+      - {label: Gained, in: [benefited_from], empty: "No account in our sources says who gained."}
+      - {label: Lost, in: [harmed_by], empty: "No account in our sources says who lost."}
+    min: 1

@@ -1,0 +1,13 @@
+{# Helpers shared by the page templates. Import with {% from "macros.html" import count %}. #}
+
+{# A count with its noun: "1 date", "2 dates". Pass the plural when it is not the noun plus "s":
+   count(n, "entry", "entries"). #}
+{% macro count(n, one, many=none) %}{{ n }} {{ one if n == 1 else (many or one ~ "s") }}{% endmacro %}
+
+{# A link's status in plain words, the same everywhere: a draft is "Being verified", a disputed
+   link "Disputed", a deprecated one "Withdrawn". Published links carry no mark. #}
+{% macro status_badge(status) %}{% if status == "draft" %}<span class="badge draft" title="Not yet verified against its source">Being verified</span>{% elif status == "disputed" %}<span class="badge disputed">Disputed</span>{% elif status == "deprecated" %}<span class="badge disputed">Withdrawn</span>{% endif %}{% endmacro %}
+
+{# Question pages as a grouped list of rows, like Settings: the asked sentence, its counts under it
+   ("8 links", "7 links, 6 accounts") and a chevron. Items: { title, url, counts? }. #}
+{% macro question_rows(items, label=none) %}<ul class="ask-rows"{% if label %} aria-label="{{ label }}"{% endif %}>{% for f in items %}<li><a href="{{ f.url }}"><span class="ask-row-q">{{ f.title }}</span>{% if f.counts %}<span class="ask-row-n">{{ f.counts }}</span>{% endif %}</a></li>{% endfor %}</ul>{% endmacro %}

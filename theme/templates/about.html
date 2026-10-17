@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% from "macros.html" import count %}
+{# How the site works, in readers' words: the proof on every link, what a connection is not, the
+   questions and their scope, how routes are ranked, families, and how to correct something. #}
+{% block title %}How this site works – connect the dot{% endblock %}
+{% block description %}Every link shows its proof and every interpretation says whose it is. A connection is not evidence of wrongdoing.{% endblock %}
+{% block body_class %}about-page{% endblock %}
+{% block main %}
+<article class="entity about">
+  <header class="about-head">
+    <h1>How this site works</h1>
+    <p class="answer-scope">An open map of sourced connections between people, organizations, places and events: {{ count(stats.entities, "entry", "entries") }} and {{ count(stats.claims, "link") }} so far, each with its sources.</p>
+  </header>
+
+  <section class="about-part">
+    <h2>Every link shows its proof</h2>
+    <p>Each link names its sources and how strong the strongest one is:</p>
+    <dl class="facts about-tiers">
+      {% for t in tiers %}<div><dt><span class="badge tier">{{ t.label }}</span></dt><dd>{{ t.description }}</dd></div>{% endfor %}
+    </dl>
+    <p>And it says how settled it is:</p>
+    <dl class="facts about-marks">
+      <div><dt><span class="badge attrib">According to …</span></dt><dd>One side's account, not established fact. Accounts sit side by side, none ranked first, each quoting only its own words.</dd></div>
+      <div><dt><span class="badge confirmed">Both sides agree</span></dt><dd>Records from opposing sides confirm it.</dd></div>
+      <div><dt><span class="badge">Disputed</span></dt><dd>Shown apart, with the reason, and never counted.</dd></div>
+      <div><dt><span class="badge draft">Being verified</span></dt><dd>Not yet checked against its sources; never counted.</dd></div>
+    </dl>
+    <p>A withdrawn link is never used. It stays listed, marked, on its entry's own page.</p>
+  </section>
+
+  <section class="about-part">
+    <h2>A connection is not evidence of wrongdoing</h2>
+    <p>A link says that two things are connected and how we know. It does not say why, that anyone meant anything by it, or that anyone did wrong.</p>
+  </section>
+
+  <section class="about-part">
+    <h2>The questions you can ask</h2>
+    <p>Each answer page says what it shows and what it does not.</p>
+    <ul class="ask-rows">
+      {% for q in questions %}<li><a href="{{ q.url }}"><span class="ask-row-q">{{ q.title }}</span><span class="ask-row-n">{{ q.shows }} {{ q.not }}</span></a></li>{% endfor %}
+    </ul>
+  </section>
+
+  <section class="about-part">
+    <h2>How routes are ranked</h2>
+    <p>Shorter routes through well-backed links come first. Links that rest on weaker sources, and steps through very connected hubs, count as longer, so the most specific routes rise to the top. The rule is public and versioned{% if methodology %} (methodology {{ methodology }}){% endif %}. Links that are one side's account of who gained or lost never become steps in a route.</p>
+  </section>
+
+  <section class="about-part">
+    <h2>Families</h2>
+    <p>Family ties are shown only for public figures in their public roles, and only with a primary record or two independent sources. No minors, and no relatives without a public role.</p>
+  </section>
+
+  <section class="about-part">
+    <h2>Something missing or wrong?</h2>
+    <p>Every page shows the file it comes from. Propose a source or a correction with a pull request to that file: every change is reviewed, and every page keeps its history.</p>
+  </section>
+</article>
+{% endblock %}

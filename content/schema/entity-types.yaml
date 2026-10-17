@@ -1,0 +1,14 @@
+# Entity types. Folder name under content/entities/ must equal the type id.
+# `layer` decides the type's color.
+# `family: true` marks types that can have family ties: kinship relations may only join these.
+# `span` is what an entry's own dates are called on its life line ("Span" when unset).
+# `map: true` marks types that are points on the map: they need coords, and stories show them there.
+person:    {label: Person,       plural: People,        layer: people, family: true, span: Life}
+org:       {label: Organization, plural: Organizations, layer: power, span: Active}
+place:     {label: Place,        plural: Places,        layer: places, map: true}
+event:     {label: Event,        plural: Events,        layer: history}
+work:      {label: Work,         plural: Works,         layer: ideas}    # texts, scriptures, laws, documents, films
+artifact:  {label: Artifact,     plural: Artifacts,     layer: tech}     # technologies, systems, weapons, networks, objects
+concept:   {label: Concept,      plural: Concepts,      layer: ideas}    # ideas, doctrines, policies, mottos
+tradition: {label: Tradition,    plural: Traditions,    layer: ideas, span: Active}    # religions, schools of thought, movements
+group:     {label: Group,        plural: Groups,        layer: people, family: true}   # peoples, communities, families

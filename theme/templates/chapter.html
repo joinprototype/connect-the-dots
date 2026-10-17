@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% from "macros.html" import count %}
+{% block title %}{{ chapter.title }}{{ " –" if chapter.title[-1:] == "?" else ":" }} connect the dot{% endblock %}
+{% block description %}{{ chapter.summary or chapter.subtitle or chapter.title }}{% endblock %}
+{% block body_class %}chapter-page{% endblock %}
+{% block head %}{% if site.assets.story_css %}<link rel="stylesheet" href="/assets/story.css">{% endif %}{% endblock %}
+{% block main %}
+<article class="chapter">
+  <header class="chapter-head">
+    {% if chapter.back %}<p class="chapter-back"><a href="{{ chapter.back.url }}">Back to {{ chapter.back.label }}</a></p>{% endif %}
+    <h1>{{ chapter.title }}</h1>
+    {% if chapter.subtitle %}<p class="chapter-subtitle">{{ chapter.subtitle }}</p>{% endif %}
+    <p class="chapter-byline">{{ count(chapter.shot_count, "scene") }}{% if chapter.generated %}, drawn from sourced links{% elif chapter.authors %}, written by {{ chapter.authors|join(", ")|replace("github:", "@") }}{% endif %}. Scroll to play, or press Watch.</p>
+  </header>
+  {% if chapter.intro_html|trim %}<div class="prose chapter-intro">{{ chapter.intro_html|safe }}</div>{% endif %}
+  <ctd-story chapter="{{ chapter.id }}">
+    <script type="application/json" class="ctd-shots">{{ chapter.shots_json|safe }}</script>
+    <div class="story-stage" aria-hidden="true"></div>
+    <div class="story-steps">
+      {% for s in chapter.steps %}
+      <section class="step" data-shot="{{ s.shot }}">
+        <div class="step-card">
+          {% if s.time_label %}<p class="step-time">{{ s.time_label }}</p>{% endif %}
+          {{ s.narration_html|safe }}
+          {% if s.explore %}<p class="step-explore"><a class="button" href="{{ s.explore_url }}">Explore from here</a></p>{% endif %}
+        </div>
+      </section>
+      {% endfor %}
+    </div>
+  </ctd-story>
+  {% if chapter.outro_html|trim %}<div class="prose chapter-outro">{{ chapter.outro_html|safe }}</div>{% endif %}
+</article>
+{% endblock %}
+{% block scripts %}{% if site.assets.story_js %}<script type="module" src="/assets/story.js"></script>{% endif %}{% endblock %}

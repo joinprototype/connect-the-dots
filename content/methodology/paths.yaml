@@ -1,0 +1,57 @@
+# Path-ranking methodology (public, changed only by reviewed PR).
+# cost(hop) = w_rel × (1 + beta·(1 − p)) + lambda·½·(ln(1+deg_rel(u)) + ln(1+deg_rel(v))) + delta_undated
+#   p        evidence strength of the claim (T1 = 1.0, T2 = 0.8, T3 = 0.4; draft × 0.5)
+#   deg_rel  degree of the node for that relation type, so a fund's many holdings don't penalize its founder link
+version: "0.3"                # 0.3: `became` (renamed bodies) as a near-identity step; benefited/harmed leave routes
+                              # 0.2: pack 2 adds family, funding, board and school links
+beta: 1.0
+lambda: 1.0
+delta_undated: 0.0          # applied only when a time filter is active
+k_paths: 5
+reuse_penalty: 3.0          # added per reused intermediate node, for diverse alternatives
+max_hops: 10
+collapse_passive: true      # passive holdings collapse into one "index funds" node by default
+hub_threshold: 500
+evidence: {T1: 1.0, T2: 0.8, T3: 0.4, draft_factor: 0.5}
+default_weight: 2.0
+weights:
+  founded: 1.0
+  relative_of: 1.0
+  funded: 1.0
+  became: 1.0                  # same body, new name: a near-identity step
+  identified_with: 1.0
+  ceo_of: 1.5
+  chair_of: 1.5
+  head_of: 1.5
+  worked_at: 1.5
+  board_member_of: 1.5
+  enacted: 1.5
+  intervened_in: 1.5
+  developed: 1.5
+  launched: 1.5
+  produced: 1.5
+  leads: 1.5
+  caused_by: 1.5
+  led_to: 1.5
+  central_figure_of: 1.5
+  scripture_of: 1.5
+  edition_of: 1.5
+  authored: 1.5
+  invested_in: 1.5             # was 2.0: early money is a strong, specific tie
+  educated_at: 2.0
+  owns_stake: 2.0
+  acquired: 2.0
+  contracted: 2.0
+  involved: 2.0
+  prophet_in: 2.0
+  patriarch_of: 2.0
+  branch_of: 2.0
+  adopted: 2.0
+  member_of: 2.5
+  signatory_of: 2.5
+  part_of: 2.5
+  appears_in: 2.5
+  influenced: 2.5
+  benefited_from: 2.5          # interpretive, always attributed; not used for routes (traversable: false)
+  harmed_by: 2.5
+  holds_for_clients: 3.0

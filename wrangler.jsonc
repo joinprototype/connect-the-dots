@@ -1,0 +1,14 @@
+// Cloudflare Workers static assets: the site is plain files (ADR-0002, ADR-0006).
+// Deploy (needs a Cloudflare login; see docs/deploy.md):
+//   cargo run --release -q -- check && cargo run --release -q -- build && npx wrangler@4 deploy
+{
+  "name": "connect-the-dot",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    // dist/404.html is the "Not on the map yet" page
+    "not_found_handling": "404-page",
+    // /e/elon-musk serves /e/elon-musk/index.html and redirects to the trailing slash
+    "html_handling": "auto-trailing-slash"
+  }
+}

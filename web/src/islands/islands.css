@@ -1,0 +1,41 @@
+/* islands.css: styles for reading-page islands. Colors and fonts come only from site tokens. */
+
+/* ---------------------------------------------------------------- search */
+ctd-search, .ctd-search { position: relative; display: block; }
+.ctd-search-results {
+  /* The field sits at the right end of the header: align the list to its right edge and keep it inside the window. */
+  position: absolute; z-index: 40; top: calc(100% + 8px); left: auto; right: 0;
+  width: max(100%, min(420px, calc(100vw - 32px)));
+  margin: 0; padding: 6px; list-style: none;
+  max-height: min(70vh, 460px); overflow: auto;
+  background: var(--paper);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.12), 0 0 0 1px color-mix(in srgb, var(--rule) 70%, transparent);
+  font-family: var(--font-ui);
+}
+.ctd-search-results [role="option"] {
+  display: grid; grid-template-columns: 1fr auto; gap: 0 12px; align-items: baseline;
+  padding: 8px 10px; border-radius: 10px; cursor: pointer;
+}
+.ctd-search-results [role="option"][aria-selected="true"] { background: color-mix(in srgb, var(--accent) 10%, var(--paper)); }
+.ctd-search-name { font-weight: 600; font-size: 1rem; color: var(--ink); }
+.ctd-search-name mark { color: var(--accent); background: none; padding: 0; }
+.ctd-search-meta { font-size: 0.84rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 16em; }
+.ctd-search-name { min-width: 0; overflow-wrap: anywhere; }
+.ctd-search-summary {
+  grid-column: 1 / -1; font-family: var(--font-body); font-size: 0.9rem; color: var(--ink-2);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.ctd-search-empty { padding: 10px; color: var(--muted); }
+.explorer-page .ctd-search-results { background: var(--night-2); }
+.explorer-page .ctd-search-name { color: var(--night-ink); }
+.explorer-page .ctd-search-summary { color: var(--night-muted); }
+.explorer-page .ctd-search-results [role="option"][aria-selected="true"] { background: color-mix(in srgb, var(--accent) 14%, var(--night-2)); }
+
+/* ---------------------------------------------------------------- lens chips (the look comes from site.css) */
+ctd-lens-chips { display: block; }
+/* a lens with no links on this page: in quiet text, still readable (never faded below 4.5:1) */
+ctd-lens-chips button[data-empty] { color: var(--muted); }
+.ctd-chip-count { font-size: 0.85em; font-variant-numeric: tabular-nums; opacity: 0.8; margin-left: 4px; }
+ctd-lens-chips button[data-empty] .ctd-chip-count { opacity: 1; }
+.ctd-chips-fallback { display: flex; flex-wrap: wrap; gap: 8px; }

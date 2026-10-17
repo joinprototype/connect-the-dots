@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% from "macros.html" import count, status_badge, question_rows %}
+{# The answer to one question about one entry (docs/design/ask-anything.md §4), in reading order:
+   the question, its scope line and counts, Play; the fixed notice; lines on the record; each account
+   in its own equal column, A to Z; Disputed; Being verified (never counted); further questions; the
+   folded proof. Every line carries its badges and footnotes. #}
+{% macro line(l, in_column=false) %}
+<li class="claim status-{{ l.status }}" data-edge="{{ l.edge_id }}">
+  <a class="claim-target" href="{{ l.other.url }}">{{ l.other.name }}</a>
+  <span class="split-phrase">{{ l.phrase }}</span>
+  {% if l.when %}<span class="claim-when">{{ l.when }}</span>{% endif %}
+  {% if l.detail %}<span class="claim-detail">{{ l.detail }}</span>{% endif %}
+  <span class="badges">
+    {% if l.form %}<a class="badge attrib" href="{{ l.form.node.url }}">{{ l.form.label }}</a>{% endif %}
+    {# in a column the column says whose account it is #}
+    {% if not in_column %}{% for a in l.according_to %}<a class="badge attrib" href="{{ a.url }}">According to {{ a.name }}</a>{% endfor %}{% endif %}
+    {% if l.cross_confirmed %}<span class="badge confirmed" title="Records from opposing sides agree on this">Both sides agree</span>{% endif %}
+    {{ status_badge(l.status) }}
+    {% if l.tier_label %}<span class="badge tier" title="Strongest source for this line">{{ l.tier_label }}</span>{% endif %}
+    {# the footnotes share the badges' last row, so a long badge never leaves them on a row of their own #}
+    <span class="refs">{% for n in l.refs %}<a href="#src-{{ n }}" aria-label="Source {{ n }}">{{ n }}</a>{% endfor %}</span>
+  </span>
+  {% if in_column and l.quote %}<q class="answer-quote"><mark>{{ l.quote }}</mark></q>{% endif %}
+  {% if l.reason %}<p class="claim-note">{% if l.status == "disputed" %}Disputed: {% endif %}{{ l.reason }}</p>{% endif %}
+  {% if l.note %}<p class="claim-note">{{ l.note }}</p>{% endif %}
+</li>
+{% endmacro %}
+{% macro more(n) %}{% if n %}<p class="index-more"><a href="{{ question.explore_url }}">and {{ n }} more ›</a></p>{% endif %}{% endmacro %}
+{% block title %}{{ question.title }} – connect the dot{% endblock %}
+{% block description %}{{ question.shows }} {{ question.not }} A connection is not evidence of wrongdoing.{% endblock %}
+{% block body_class %}question-page{% endblock %}
+{% block main %}
+{% set on_record = records|selectattr("lines")|list %}
+{% set unanswered = records|rejectattr("lines")|list %}
+{# whether any line was recorded about an earlier form, for "How this answer is built" #}
+{% set ns = namespace(form=false) %}
+{% for part in records + accounts + [disputed, drafts] %}{% for l in part.lines %}{% if l.form %}{% set ns.form = true %}{% endif %}{% endfor %}{% endfor %}
+<article class="entity answer">
+  <header class="answer-head">
+    <p class="chapter-back"><a href="{{ x.url }}">‹ {{ x.name }}</a></p>
+    <h1>{{ question.title }}</h1>
+    {% if x.aliases %}<p class="answer-meta">Also known as {{ x.aliases|join(", ") }}</p>{% endif %}
+    <div class="answer-scope"><p>{{ question.shows }}</p><p>{{ question.not }}</p></div>
+    <p class="answer-meta">{{ count(counts.links, "link") }}{% if counts.accounts %} · {{ count(counts.accounts, "account") }}{% endif %}{% if x.when %} · {{ x.when }}{% endif %}</p>
+    <p class="entity-actions">
+      {% if question.story_url %}<a class="button primary" href="{{ question.story_url }}">Play</a>{% endif %}
+      <a class="button" href="{{ question.explore_url }}">Explore</a>
+    </p>
+    <p class="answer-notice">A connection is not evidence of wrongdoing.</p>
+  </header>
+
+  {% if over_time %}
+  {# tenures on one axis, the same design as an entry's life line; moments stay in the lists below #}
+  <figure class="glance-card lifeline answer-over-time">
+    <figcaption>Over time</figcaption>
+    <ol class="ll-rows">
+      {% for r in over_time.rows %}
+      <li class="ll-row{% if r.according_to %} attributed{% endif %}{% if r.status in ["draft", "disputed"] %} status-{{ r.status }}{% endif %}">
+        <span class="ll-name">{{ r.phrase }} <a href="{{ r.url }}">{{ r.name }}</a>{% if r.detail %}<span class="ll-flag"> ({{ r.detail }})</span>{% endif %}{% if r.status == "disputed" %}<span class="ll-flag">, disputed</span>{% elif r.status == "draft" %}<span class="ll-flag">, being verified</span>{% endif %}{% if r.according_to %}<span class="ll-flag">, according to {{ r.according_to|join(" and ") }}</span>{% endif %}</span>
+        <span class="ll-when">{{ r.when }}</span>
+        <span class="ll-track" aria-hidden="true"><span class="ll-bar{% if r.point %} point{% endif %}" style="left: {{ r.left }}%; width: {{ r.width }}%"></span></span>
+      </li>
+      {% endfor %}
+      <li class="ll-axis" aria-hidden="true"><span class="ll-ticks">{% for t in over_time.ticks %}<span style="left: {{ t.left }}%">{{ t.label }}</span>{% endfor %}</span></li>
+    </ol>
+  </figure>
+  {% endif %}
+
+  {% if on_record %}
+  <section class="answer-part" aria-labelledby="record-h">
+    <h2 id="record-h">On the record</h2>
+    <p class="answer-note">Sourced links that no one presents as their own account, as recorded so far. Others may exist.</p>
+    {% for g in on_record %}
+    <section class="claim-group">
+      <h3>{{ g.label }}</h3>
+      <ul class="claims">{% for l in g.lines %}{{ line(l) }}{% endfor %}</ul>{{ more(g.more) }}
+    </section>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if accounts %}
+  <section class="answer-part" aria-labelledby="accounts-h">
+    <h2 id="accounts-h">Each account</h2>
+    <p class="answer-note">{% if counts.accounts == 1 %}One account recorded. Others may exist.{% else %}A to Z, none ranked above another.{% endif %}</p>
+    {% for s in shared %}<p class="answer-shared">Named in {{ s.n }} of the {{ counts.accounts }} accounts recorded here{% if s.group %} ({{ s.group }}){% endif %}: {% for n in s.names %}<a href="{{ n.url }}">{{ n.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</p>{% endfor %}
+    <div class="account-cols">
+      {% for c in accounts %}
+      <div class="account">
+        <p class="account-who">According to <a href="{{ c.who.url }}">{{ c.who.name }}</a></p>
+        <ul class="claims">{% for l in c.lines %}{{ line(l, true) }}{% endfor %}</ul>
+        {{ more(c.more) }}
+      </div>
+      {% endfor %}
+    </div>
+    {% if more_accounts %}<p class="index-more"><a href="{{ question.explore_url }}">and {{ count(more_accounts, "more account") }} ›</a></p>{% endif %}
+    {# a group nobody answers says so in one muted line, so Gained never stands without Lost #}
+    {% for g in unanswered %}<p class="answer-empty"><b>{{ g.label }}.</b> {{ g.empty }}</p>{% endfor %}
+  </section>
+  {% elif unanswered %}
+  <div class="answer-part">
+    {% for g in unanswered %}<p class="answer-empty"><b>{{ g.label }}.</b> {{ g.empty }}</p>{% endfor %}
+  </div>
+  {% endif %}
+
+  {% if disputed.lines %}
+  <section class="answer-part" aria-labelledby="disputed-h">
+    <h2 id="disputed-h">Disputed</h2>
+    <p class="answer-note">Listed apart, each with the reason, and never counted.</p>
+    <ul class="claims">{% for l in disputed.lines %}{{ line(l) }}{% endfor %}</ul>
+    {{ more(disputed.more) }}
+  </section>
+  {% endif %}
+
+  {% if drafts.lines %}
+  <section class="answer-part answer-drafts" aria-labelledby="drafts-h">
+    <h2 id="drafts-h">Being verified</h2>
+    <p class="answer-note">Not yet checked against their sources, so never counted.</p>
+    <ul class="claims">{% for l in drafts.lines %}{{ line(l) }}{% endfor %}</ul>
+    {{ more(drafts.more) }}
+  </section>
+  {% endif %}
+
+  {% if further %}
+  <section class="answer-part" aria-labelledby="further-h">
+    <h2 id="further-h">Going further</h2>
+    {{ question_rows(further) }}
+  </section>
+  {% endif %}
+
+  {% if ask_next %}
+  <section class="answer-part" aria-labelledby="next-h">
+    <h2 id="next-h">Ask next</h2>
+    {{ question_rows(ask_next) }}
+  </section>
+  {% endif %}
+
+  <div class="folds">
+    {% if sources %}
+    <details class="fold sources" id="proof">
+      <summary>Proof <span class="count">{{ count(sources|length, "source") }}</span></summary>
+      <ol class="source-list">
+        {% for s in sources %}
+        <li id="src-{{ s.n }}">
+          <span class="src-title">{% if s.url %}<a href="{{ s.url }}" rel="external">{{ s.title }}</a>{% else %}{{ s.title }}{% endif %}</span>{% if s.publisher %}, {% if s.publisher_url %}<a href="{{ s.publisher_url }}">{{ s.publisher }}</a>{% else %}{{ s.publisher }}{% endif %}{% endif %}{% if s.published %}, {{ s.published }}{% endif %}.
+          <span class="badge tier">{{ s.tier_label }}</span>
+          {% if s.archive_url %}<a class="archived" href="{{ s.archive_url }}">Archived copy</a>{% endif %}
+          {% for q in s.quotes %}<blockquote><mark>{{ q }}</mark></blockquote>{% endfor %}
+        </li>
+        {% endfor %}
+      </ol>
+    </details>
+    {% endif %}
+    <details class="fold" id="how">
+      <summary>How this answer is built</summary>
+      <div class="prose">
+        <p>Lines on the record come first: sourced links that no one presents as their own account, each with its strongest source. Then every account recorded here gets its own column, A to Z, none ranked above another. A column quotes only that account's own words and shows the strength of its own sources. Disputed lines are listed apart, with the reason, and lines still being verified come last. Neither is counted. Withdrawn lines are never shown.</p>
+        {% if ns.form %}<p>What was recorded about an earlier form of {{ x.sentence }}, the same body under an older name, answers too, and each such line says so.</p>{% endif %}
+        <p>When a list is longer than the page shows, the links the public methodology ranks strongest stay{% if methodology %} (methodology {{ methodology }}){% endif %}, and the rest open in the explorer.</p>
+      </div>
+    </details>
+  </div>
+  <p class="file-path">Know a source we are missing? Propose it with a pull request to <code>{{ x.rel_path }}</code>.</p>
+  <script src="/static/folds.js" defer></script>
+</article>
+{% endblock %}

@@ -1,0 +1,6 @@
+# Lenses: named ways of looking at the same subject (like map modes). Keep the list short.
+- {id: all,     label: Everything,     view: graph,    layers: [people, power, money, tech, history, ideas, places]}
+- {id: power,   label: People & power, view: graph,    layers: [people, power]}
+- {id: money,   label: Money,          view: graph,    layers: [money]}
+- {id: ideas,   label: Ideas & tech,   view: graph,    layers: [ideas, tech]}
+- {id: history, label: History,        view: timeline, layers: [history, power]}

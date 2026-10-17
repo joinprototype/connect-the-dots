@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Stories: connect the dot{% endblock %}
+{% macro book(b) %}<a class="book" href="{{ b.url }}">
+      <span class="book-cover">{{ b.cover|safe }}</span>
+      <span class="book-kind">{{ b.kind }}</span>
+      <span class="book-title">{{ b.title }}</span>
+      {% if b.subtitle %}<span class="book-sub">{{ b.subtitle }}</span>{% endif %}
+    </a>{% endmacro %}
+{% block main %}
+<section class="page-head">
+  <h1>Stories</h1>
+  <p class="page-lede">Every story is drawn from sourced links. Pause on any scene and explore from there.</p>
+</section>
+{% if chapters %}
+<section class="shelf-section" aria-labelledby="written-h">
+  <h2 id="written-h">Written</h2>
+  <div class="shelf">{% for c in chapters %}{{ book(c) }}{% endfor %}</div>
+</section>
+{% endif %}
+{% if connections %}
+<section class="shelf-section" aria-labelledby="connections-h">
+  <h2 id="connections-h">Connections</h2>
+  <div class="shelf">{% for c in connections %}{{ book(c) }}{% endfor %}</div>
+</section>
+{% endif %}
+{% if questions %}
+<section class="shelf-section" aria-labelledby="questions-h">
+  <h2 id="questions-h">Questions{% if questions_more %} <span class="count">{{ questions|length + questions_more }}</span>{% endif %}</h2>
+  <div class="shelf">{% for c in questions %}{{ book(c) }}{% endfor %}</div>
+  {% if questions_more %}<p class="index-more">Showing the {{ questions|length }} with the most links. {% if questions_more == 1 %}The other one is in search.{% else %}The other {{ questions_more }} are in search.{% endif %}</p>{% endif %}
+</section>
+{% endif %}
+{% for shelf in lives %}
+<section class="shelf-section" aria-labelledby="lives-{{ loop.index }}">
+  <h2 id="lives-{{ loop.index }}">{{ shelf.label }}{% if shelf.more %} <span class="count">{{ shelf.items|length + shelf.more }}</span>{% endif %}</h2>
+  <div class="shelf">{% for c in shelf.items %}{{ book(c) }}{% endfor %}</div>
+  {% if shelf.more %}<p class="index-more">Showing the {{ shelf.items|length }} with the most links. {% if shelf.more == 1 %}The other one is in search.{% else %}The other {{ shelf.more }} are in search.{% endif %}</p>{% endif %}
+</section>
+{% endfor %}
+{% if not chapters and not connections and not questions and not lives %}
+<p class="empty">No stories yet. A story is a markdown file in content/chapters/ with scene blocks.</p>
+{% endif %}
+<div class="shelf-end"></div>
+{% endblock %}

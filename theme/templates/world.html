@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Map: connect the dot{% endblock %}
+{% block description %}Every entry on one map: the links between them, or the Earth. Pick an era, zoom in to a single dot and open its page.{% endblock %}
+{% block body_class %}explorer-page world-page{% endblock %}
+{% block head %}{% if site.assets.world_css %}<link rel="stylesheet" href="/assets/world.css">{% endif %}{% endblock %}
+{% block main %}
+<h1 class="sr-only">Map</h1>
+<div id="world-root" data-src="/world/"><noscript><p class="empty">The map needs JavaScript. Every entry also has its own page.</p></noscript></div>
+{% endblock %}
+{% block scripts %}{% if site.assets.world_js %}<script type="module" src="/assets/world.js"></script>{% endif %}{% endblock %}

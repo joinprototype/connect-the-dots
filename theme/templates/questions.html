@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{# One question's index (/q/<q>/): its scope line, the fixed notice and its richest answers. The Ask
+   form sends here without JavaScript, so it also links back to Ask with the question picked. #}
+{% block title %}{{ question.title }} – connect the dot{% endblock %}
+{% block description %}{{ question.shows }} {{ question.not }} A connection is not evidence of wrongdoing.{% endblock %}
+{% block body_class %}questions-page{% endblock %}
+{% block main %}
+<section class="page-head answer-head">
+  <p class="chapter-back"><a href="/?q={{ question.id|urlencode }}">‹ Ask</a></p>
+  <h1>{{ question.title }}</h1>
+  <div class="answer-scope"><p>{{ question.shows }}</p><p>{{ question.not }}</p></div>
+  <p class="answer-notice">A connection is not evidence of wrongdoing.</p>
+</section>
+<section class="atlas-index" aria-label="Answers">
+  {% if pages %}
+  <ul class="ask-rows">
+    {% for p in pages %}
+    <li><a href="{{ p.url }}"><span class="ask-row-q">{{ p.title }}</span>{% if p.counts %}<span class="ask-row-n">{{ p.counts }}</span>{% endif %}</a>{% if p.story_url and p.story_url != p.url %}<a class="button" href="{{ p.story_url }}" aria-label="Play: {{ p.title }}">Play</a>{% endif %}</li>
+    {% endfor %}
+  </ul>
+  {% if more %}<p class="index-more">Showing the {{ pages|length }} with the most links. The other {{ more }} are in search.</p>{% endif %}
+  {% else %}
+  <p class="empty">No sourced answer yet.</p>
+  {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+{% from "macros.html" import count, status_badge, question_rows %}
+{# A link's status in a glance card: its badge, then why it is disputed. Withdrawn links never reach these cards. #}
+{% macro mark(x) %}{% if x.draft or x.disputed %}{{ status_badge("draft" if x.draft else "disputed") }}{% endif %}{% if x.disputed and x.reason %}<span class="glance-reason">{{ x.reason }}</span>{% endif %}{% endmacro %}
+{% block title %}{{ entity.name }}: connect the dot{% endblock %}
+{% block description %}{{ entity.summary or entity.name }}{% endblock %}
+{% block body_class %}entity-page{% endblock %}
+{% block main %}
+<article class="entity" style="--c: {{ entity.color }}">
+  <header class="entity-head">
+    <div class="entity-cover">{% if entity.image and entity.image.url %}<img src="{{ entity.image.url }}" alt="{{ entity.name }}">{% else %}{{ entity.cover|safe }}{% endif %}</div>
+    <div class="entity-title">
+      <p class="entity-kind">{{ entity.type_label }}</p>
+      <h1>{{ entity.name }}</h1>
+      {% if entity.summary %}<p class="entity-summary">{{ entity.summary }}</p>{% endif %}
+      <p class="entity-meta">{{ entity.evidence_line }}</p>
+      <p class="entity-actions">
+        {% if entity.story_url %}<a class="button primary" href="{{ entity.story_url }}">Play the story</a>{% endif %}
+        <a class="button" href="/x/?focus={{ entity.id }}">Explore connections</a>
+        {% if entity.coords %}<a class="entity-map" href="/w/?view=earth&amp;focus={{ entity.id }}">On the map ›</a>{% endif %}
+      </p>
+    </div>
+  </header>
+  {% if entity.when or entity.place or entity.aliases or entity.same_as %}
+  <dl class="facts">
+    {% if entity.when %}<div><dt>Dates</dt><dd>{{ entity.when }}</dd></div>{% endif %}
+    {% if entity.place %}<div><dt>Place</dt><dd><a href="{{ entity.place.url }}">{{ entity.place.name }}</a></dd></div>{% endif %}
+    {% if entity.aliases %}<div><dt>Also known as</dt><dd>{{ entity.aliases|join(", ") }}</dd></div>{% endif %}
+    {% for s in entity.same_as %}<div><dt>{{ s.key|replace("_", " ")|capitalize }}</dt><dd>{% if s.url %}<a href="{{ s.url }}" rel="external">{{ s.value }}</a>{% else %}{{ s.value }}{% endif %}</dd></div>{% endfor %}
+  </dl>
+  {% endif %}
+
+  {# the questions answered about this entry, only on its own page, then "How are … and … connected?" #}
+  {% if questions or connect %}{{ question_rows(questions + ([connect] if connect else []), "Questions about " ~ entity.name) }}{% endif %}
+
+  {% set d = dossier %}
+  {% if background or d.family or d.lifeline or d.holders or d.holdings or d.split or here %}
+  <section class="dossier" aria-label="At a glance">
+    {% if background %}
+    {# who a person is (ADR-0016): sourced lines on this page only, never links #}
+    <figure class="glance-card background">
+      <figcaption>Background</figcaption>
+      <ul class="bg-list">
+        {% for r in background.rows %}<li>{{ r.phrase|capitalize }} <a href="{{ r.node.url }}">{{ r.node.name }}</a>{% if r.detail %} <span class="claim-detail">{{ r.detail }}</span>{% endif %}{% if r.when %} <span class="here-meta">{{ r.when }}</span>{% endif %} {{ mark(r) }}<span class="refs">{% for n in r.refs %}<a href="#src-{{ n }}" aria-label="Source {{ n }}">{{ n }}</a>{% endfor %}</span></li>{% endfor %}
+        {% for l in background.lines %}<li>{{ l.text }}<span class="refs">{% for n in l.refs %}<a href="#src-{{ n }}" aria-label="Source {{ n }}">{{ n }}</a>{% endfor %}</span></li>{% endfor %}
+      </ul>
+    </figure>
+    {% endif %}
+    {% if here %}
+    <figure class="glance-card here">
+      <figcaption>In {{ entity.name }}</figcaption>
+      <ul class="here-list">
+        {% for i in here.items %}<li><a href="{{ i.node.url }}">{{ i.node.name }}</a> <span class="here-meta">{{ i.type_label }}{% if i.when %} · {{ i.when }}{% endif %}</span></li>{% endfor %}
+      </ul>
+      {% if here.more %}<p class="index-more"><a href="/x/?focus={{ entity.id }}">and {{ here.more }} more ›</a></p>{% endif %}
+    </figure>
+    {% endif %}
+    {% if d.family %}
+    <figure class="glance-card family">
+      <figcaption>Family ties</figcaption>
+      <ul class="tie-list">
+        {% for t in d.family %}
+        <li>
+          <p class="tie-who">{% if t.self_role %}{{ t.self_role|capitalize }} of <a href="{{ t.node.url }}">{{ t.node.name }}</a>{% else %}<a href="{{ t.node.url }}">{{ t.node.name }}</a>{% if t.role %}, {{ t.role }}{% endif %}{% endif %}
+            {% for a in t.according_to %}<a class="badge attrib" href="{{ a.url }}">According to {{ a.name }}</a>{% else %}{% if t.attributed %}<span class="badge attrib">One side's account</span>{% endif %}{% endfor %}{{ mark(t) }}</p>
+          {% if t.did %}
+          <ul class="tie-did">
+            {% for p in t.did %}<li><span class="split-phrase">{{ p.phrase }}</span> <a href="{{ p.other.url }}">{{ p.other.name }}</a>{% if p.detail %} <span class="claim-detail">{{ p.detail }}</span>{% endif %}{% if p.when %} <span class="split-when">{{ p.when }}</span>{% endif %}{% for a in p.according_to %} <a class="badge attrib" href="{{ a.url }}">According to {{ a.name }}</a>{% endfor %} {{ mark(p) }}</li>{% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </figure>
+    {% endif %}
+    {% if d.lifeline %}
+    <figure class="glance-card lifeline">
+      <figcaption>Over time</figcaption>
+      {# one row per tenure: what and who, when, and a bar on the shared axis #}
+      <ol class="ll-rows">
+        {% for r in d.lifeline.rows %}
+        <li class="ll-row{% if r.own %} own{% endif %}{% if r.according_to %} attributed{% endif %}{% if r.status in ["draft", "disputed"] %} status-{{ r.status }}{% endif %}">
+          <span class="ll-name">{{ r.phrase }}{% if r.name %} <a href="{{ r.url }}">{{ r.name }}</a>{% endif %}{% if r.detail %}<span class="ll-flag"> ({{ r.detail }})</span>{% endif %}{% if r.status == "disputed" %}<span class="ll-flag">, disputed</span>{% elif r.status == "draft" %}<span class="ll-flag">, being verified</span>{% endif %}{% if r.according_to %}<span class="ll-flag">, according to {{ r.according_to|join(" and ") }}</span>{% endif %}</span>
+          <span class="ll-when">{{ r.when }}</span>
+          <span class="ll-track" aria-hidden="true"><span class="ll-bar{% if r.point %} point{% endif %}" style="left: {{ r.left }}%; width: {{ r.width }}%"></span></span>
+        </li>
+        {% endfor %}
+        <li class="ll-axis" aria-hidden="true"><span class="ll-ticks">{% for t in d.lifeline.ticks %}<span style="left: {{ t.left }}%">{{ t.label }}</span>{% endfor %}</span></li>
+      </ol>
+      {% if d.lifeline.more %}<p class="ll-more"><a href="#timeline">{{ d.lifeline.more }} more in the Timeline ›</a></p>{% endif %}
+    </figure>
+    {% endif %}
+    {% for block in [("holders", "Who holds " ~ entity.name), ("holdings", entity.name ~ " holds")] %}
+    {% set rows = d[block[0]] %}
+    {% if rows %}
+    <figure class="glance-card shares">
+      <figcaption>{{ block[1] }}</figcaption>
+      <ul class="share-list">
+        {% for h in rows %}
+        <li class="{{ 'passive' if h.passive else 'owned' }}">
+          <a class="share-name" href="{{ h.node.url }}">{{ h.node.name }}</a>
+          <span class="share-track"><span class="share-bar" style="width: {{ h.percent / d.share_scale * 100 }}%"></span></span>
+          <span class="share-pct">{{ h.percent }}%</span>
+          <span class="share-note">{{ 'held for clients' if h.passive else 'owned' }}{% if h.as_of %}, as of {{ h.as_of }}{% endif %}</span>
+        </li>
+        {% endfor %}
+      </ul>
+      {% if rows|selectattr("passive")|list %}<p class="glance-note">Index-fund managers hold these shares for the people invested in their funds, who get their gains and losses. The managers vote them, in part or in full.</p>{% endif %}
+    </figure>
+    {% endif %}
+    {% endfor %}
+    {% if d.split %}
+    <figure class="glance-card split">
+      <figcaption>How each side tells it</figcaption>
+      <div class="split-cols">
+        {% for side in d.split.sides %}
+        <div class="split-col">
+          <p class="split-who">According to <a href="{{ side.who.url }}">{{ side.who.name }}</a></p>
+          <ul>{% for c in side.claims %}<li><span class="split-phrase">{{ c.phrase }}</span> <a href="{{ c.other.url }}">{{ c.other.name }}</a>{% if c.when %} <span class="split-when">{{ c.when }}</span>{% endif %} {{ mark(c) }}</li>{% endfor %}</ul>
+        </div>
+        {% endfor %}
+      </div>
+      {% if d.split.confirmed %}
+      <div class="split-confirmed">
+        <p class="split-who">Records from opposing sides confirm</p>
+        <ul>{% for c in d.split.confirmed %}<li><span class="split-phrase">{{ c.phrase }}</span> <a href="{{ c.other.url }}">{{ c.other.name }}</a>{% if c.when %} <span class="split-when">{{ c.when }}</span>{% endif %} {{ mark(c) }}</li>{% endfor %}</ul>
+      </div>
+      {% endif %}
+      {% if split_url %}<p class="glance-more"><a href="{{ split_url }}">Side by side, with proof ›</a></p>{% endif %}
+    </figure>
+    {% endif %}
+  </section>
+  {% endif %}
+
+  <section id="overview" aria-label="Overview">
+    {% if entity.body_html|trim %}<div class="prose">{{ entity.body_html|safe }}</div>{% endif %}
+    <div class="connections-head">
+      <h2 class="connections-h">Connections <span class="count">{{ claims_count }}</span></h2>
+      {% if groups %}
+      <ctd-lens-chips focus="{{ entity.id }}">
+        <div class="lens-chips" role="group" aria-label="Show">
+          {% for l in site.lenses %}<button type="button" data-lens="{{ l.id }}" data-layers="{{ l.layers|join(' ') }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ l.label }}</button>{% endfor %}
+        </div>
+      </ctd-lens-chips>
+      {% endif %}
+    </div>
+    {% if not groups %}<p class="empty">No connections yet. Add the first one with a pull request.</p>{% endif %}
+    {% for g in groups %}
+    <section class="claim-group" data-layers="{{ g.layers }}">
+      <h3>{{ g.phrase }}</h3>
+      <ul class="claims">
+        {% for c in g.items %}
+        {# plain words, as in the explorer: a deprecated link reads "Withdrawn" #}
+        {% set status_word = "Withdrawn" if c.status == "deprecated" else c.status|capitalize %}
+        <li class="claim status-{{ c.status }}" data-layers="{{ c.layers }}" data-edge="{{ c.edge_id }}">
+          <a class="claim-target" href="{{ c.other.url }}">{{ c.other.name }}</a>
+          {% if c.when %}<span class="claim-when">{{ c.when }}</span>{% endif %}
+          {% if c.detail %}<span class="claim-detail">{{ c.detail }}</span>{% endif %}
+          <span class="badges">
+            {% for a in c.according_to %}<a class="badge attrib" href="{{ a.url }}">According to {{ a.name }}</a>{% endfor %}
+            {% if c.cross_confirmed %}<span class="badge confirmed" title="Records from opposing sides agree on this">Both sides agree</span>{% endif %}
+            {% if c.passive %}<span class="badge passive" title="Shares managed on behalf of fund investors. This is not ownership by the manager.">Held for clients</span>{% endif %}
+            {{ status_badge(c.status) }}
+            {% if c.tier_label %}<span class="badge tier" title="Strongest source behind this link">{{ c.tier_label }}</span>{% endif %}
+          </span>
+          <span class="refs">{% for n in c.refs %}<a href="#src-{{ n }}" aria-label="Source {{ n }}">{{ n }}</a>{% endfor %}</span>
+          {% if c.reason %}<p class="claim-note">{% if c.status not in ["published", "draft"] %}{{ status_word }}: {% endif %}{{ c.reason }}</p>{% endif %}
+          {% if c.note %}<p class="claim-note">{{ c.note }}</p>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endfor %}
+  </section>
+
+  <div class="folds">
+    {% if timeline %}
+    <details class="fold" id="timeline">
+      <summary>Timeline <span class="count">{{ count(timeline|length, "date") }}</span></summary>
+      <ol class="timeline">
+        {% for t in timeline %}
+        <li class="tl-item{% if t.own %} own{% endif %} status-{{ t.status }}" data-layers="{{ t.layers }}">
+          <span class="tl-when">{{ t.when }}</span>
+          <span class="tl-text">
+            {% if t.own %}{{ t.subject.name }}{% else %}<a href="{{ t.subject.url }}">{{ t.subject.name }}</a> {{ t.phrase }} <a href="{{ t.object.url }}">{{ t.object.name }}</a>{% endif %}
+            {% for a in t.according_to %}<span class="badge attrib">According to {{ a.name }}</span>{% endfor %}
+            {{ status_badge(t.status) }}
+          </span>
+        </li>
+        {% endfor %}
+      </ol>
+    </details>
+    {% endif %}
+
+    {% if sources %}
+    <details class="fold sources" id="proof">
+      <summary>Proof <span class="count">{{ count(sources|length, "source") }}</span></summary>
+      <ol class="source-list">
+        {% for s in sources %}
+        <li id="src-{{ s.n }}">
+          <span class="src-title">{% if s.url %}<a href="{{ s.url }}" rel="external">{{ s.title }}</a>{% else %}{{ s.title }}{% endif %}</span>{% if s.publisher %}, {% if s.publisher_url %}<a href="{{ s.publisher_url }}">{{ s.publisher }}</a>{% else %}{{ s.publisher }}{% endif %}{% endif %}{% if s.published %}, {{ s.published }}{% endif %}.
+          <span class="badge tier">{{ s.tier_label }}</span>
+          {% if s.archive_url %}<a class="archived" href="{{ s.archive_url }}">Archived copy</a>{% endif %}
+          {% for q in s.quotes %}<blockquote><mark>{{ q }}</mark></blockquote>{% endfor %}
+        </li>
+        {% endfor %}
+      </ol>
+    </details>
+    {% endif %}
+
+    <details class="fold" id="history">
+      <summary>Page history <span class="count">{% if history %}{{ count(history|length, "change") }}{% else %}not committed yet{% endif %}</span></summary>
+      {% if history %}
+      <ol class="history">
+        {% for h in history %}<li><time>{{ h.date }}</time><span class="h-subject">{{ h.subject }}</span><span class="h-author">{{ h.author }}</span><span class="h-hash">{{ h.hash }}</span></li>{% endfor %}
+      </ol>
+      {% else %}
+      <p class="empty">This page's file has not been committed yet. Once it is, every change shows here with its author and pull request.</p>
+      {% endif %}
+      <p class="file-path">Edit this page: <code>{{ entity.rel_path }}</code></p>
+    </details>
+  </div>
+  <script src="/static/folds.js" defer></script>
+</article>
+{% endblock %}

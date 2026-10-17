@@ -1,0 +1,7 @@
+# Source tiers. T4 is rejected by `ctd check`.
+# `primary: true`: one such source is enough for a sensitive link (family ties) or a historical figure's
+# background line; `strong: true`: two independent voices of these are enough.
+T1: {label: Primary record,           description: "Filings, court records, official archives and publications; the text itself for 'the text says' claims.", primary: true}
+T2: {label: Scholarship & press,      description: "Peer-reviewed work, reference works, established newspapers and broadcasters.", strong: true}
+T3: {label: Self-published,           description: "Allowed only for a subject's statements about itself."}
+T4: {label: Deprecated,               description: "Known unreliable. Rejected.", rejected: true}
