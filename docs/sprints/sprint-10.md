@@ -1,52 +1,74 @@
 # Sprint 10: Ready for a million entries
 
 - Starts: 2026-10-17 · Length: 1 week
-- Status: proposed at the Sprint 9 review; the founder can redirect it at any time
+- Status: active (proposed at the Sprint 9 review; scope revised after the design review, ADR-0017; the founder can redirect it at any time)
 
 ## Goal
 
-Every page stays small however big the graph grows. An entry page, a story and the explorer load what they show, not the whole graph, and search loads only the names that match. A synthetic build of a million entries proves it.
+Pages load what they show ([ADR-0017](../decisions/0017-pages-load-what-they-show.md)), with no visible change to today's site:
+- the explorer and routes read one slim structure file;
+- an entry's details load when it is opened;
+- a story carries its own data;
+- search loads only the words that match;
+- hub and type pages stay bounded.
+
+The threshold where the explorer needs a route service is measured and stated.
 
 ## Why now
 
 The founder asked what a page weighs with millions of dots.
-- Entry, question and story pages are already constant, about 8 KB of compressed HTML each.
-- The Map already streams tiles (Sprint 2: 1M dots at 60 fps).
-- The explorer and the story graphs download all of `graph.json`, though. That file is 164 KB compressed for 338 entries, about 0.5 KB per entry, so roughly 500 MB at a million.
-- `search.json` would grow to about 75 MB.
+- **Already constant:** entry, question and story pages, about 8 KB of compressed HTML each.
+- **Already scales:** the Map streams tiles (Sprint 2: 1M dots at 60 fps).
+- **Whole-graph downloads:** the explorer, every story and every route question download all of `graph.json`: 164 KB for 338 entries, roughly 500 MB at a million.
+- **Search:** `search.json` would reach about 75 MB.
+- **Whole lists:** a hub's page and the type pages list everything.
 
-Bulk imports (Wikidata identities, filings) are on the roadmap. These two files have to be split first.
+Bulk imports (Wikidata identities, filings) are on the roadmap, so this comes first.
+
+The first design (per-entry files with a growing browser index) was reviewed and rejected as too complex for what it buys. See ADR-0017.
 
 ## Scope
 
 ### Must
-- [ ] **S10-01 Neighbourhood files.** The build writes `data/e/<id>.json` for every entry: the entry, its links (with their sources and quotes), the entries at their other ends (name, type, dates, coords) and the sources they cite. Shared vocabulary (types, relations, lenses, tiers, perspectives, questions, methodology) moves to one small `data/schema.json`.
-- [ ] **S10-02 The browser loads neighbourhoods.** The explorer starts from the focus entry's file and loads a neighbour's file when it opens. A story loads the files of the entries its scenes name. Routes ("How are A and B connected?") load neighbourhoods breadth-first, up to the route limit, with a clear message when a route is too long to find in the browser.
-- [ ] **S10-03 Search by prefix.** `data/search/<xx>.json`, split by the first two letters of each name and alias, plus a small index of the most-linked entries for the empty search box. The Ask form and site search load one prefix file per query.
-- [ ] **S10-04 Proof at scale.** A synthetic content set of 1,000,000 entries (the Sprint 2 generator, extended to entries and links) builds, and:
-  - every neighbourhood and search file stays under 50 KB compressed (hubs split or capped, with "and N more");
-  - opening the explorer, a story and a search transfers under 300 KB in total;
-  - build time and peak memory are recorded.
+- [ ] **S10-01 Engine data files.** These live in `data/`:
+  - `schema.json` (vocabulary);
+  - `graph-slim.json` (every entry and link, structure fields only);
+  - `e/<id>.json` (one entry's details, hubs capped at 100 links per kind with "and N more");
+  - `search/<n>.json` and `search/index.json` (word ranges; one file while it fits).
+
+  `graph.json` is written only with `ctd build --graph`. Builds stay byte-reproducible.
+- [ ] **S10-02 Stories carry their own data.** Each story page embeds the entries, links and sources its scenes name. The player reads that and `schema.json`.
+- [ ] **S10-03 The explorer reads the slim file**, and an entry's detail file when opened. Routes, filters, the index-funds model, perspectives and the year range work as today. Route results are identical for every featured pair and a random sample, with filters.
+- [ ] **S10-04 Search and Ask read the search files.** Ask keeps its own matcher; entries carry a `rank`. Every name and alias is found as today.
+- [ ] **S10-05 Bounded pages.**
+  - A hub's entry page lists 100 links per kind, with "and N more" opening the explorer.
+  - Type pages split by first letter past 500 entries.
+  - `/data/*` gets cache headers.
+- [ ] **S10-06 Proof.**
+  - On today's site, no page requests `graph.json` (a sweep check), the sweep is clean, and the demo pages look the same.
+  - A synthetic data-only build at 100k and at 1M entries records each file type's largest size and the slim file's size against its 1 MB budget.
+  - The build warns when the slim file passes the budget.
 
 ### Should
-- [ ] **S10-05** Page history in one batched, rename-aware `git log` pass (backlog F9), so it no longer runs once per entry.
-- [ ] **S10-06** Re-run the contrast audit's review, one browser at a time (stopped in Sprint 9).
+- [ ] **S10-07** Page history in one batched, rename-aware `git log` pass (backlog F9).
+- [ ] **S10-08** Re-run the contrast audit's review, one browser at a time.
 
 ### Not in this sprint
-- Serving long-tail pages from R2 through a Worker (past about 80k files). Deploy is on hold.
-- A server-side path API (needed past about a million traversable links).
+- The route service (built when the slim file nears its budget).
+- R2 for long-tail files. Deploy is on hold.
+- Searching routes from both ends.
 
 ## Demo script
 
-1. Build the synthetic million: the build time, and the size of the largest neighbourhood file.
-2. Open the explorer on a hub and expand three neighbours. The network panel shows a few small files and no `graph.json`.
-3. Search for a name: one prefix file loads.
-4. The real site behaves as before: same pages, same stories, and 0 problems in the sweep.
+1. Open the explorer on BlackRock: the network panel shows the slim file and BlackRock's detail file, and no `graph.json`.
+2. Open the BlackRock chapter: no data request beyond `schema.json`.
+3. Search "nazarbayev": one search file.
+4. The synthetic numbers: the slim file at 100k and 1M against its budget, and the largest detail and search files.
 
 ## Exit criteria
 
-- With the real content, every page looks and behaves exactly as before (sweep clean; stories, explorer and Map unchanged).
-- No page downloads `graph.json`. The file remains only for tools that ask for it.
+- Today's site looks and behaves exactly as before: sweep clean, stories, explorer, routes and the Map unchanged.
+- No page downloads `graph.json`.
 - 0 console errors and 0 CSP violations.
 
 ## Self-check (before the demo)

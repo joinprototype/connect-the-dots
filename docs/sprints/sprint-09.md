@@ -189,7 +189,6 @@ The first showcase chapter. A reader can watch and listen to "Who owns BlackRock
 - **Open-start dates** ("until 5 January 2022") still parse as one day. Five links keep the date in a note, and Tesla's holders card shows The Vanguard Group's pre-2026 stake next to Vanguard Capital Management's, each with its own "as of".
 - **Long names can go unlabelled in a crowded scene.** A name that fits nowhere whole is left out, as PNC is in the chapter's 1995 scene on a phone. The narration names it.
 - **The contrast audit's own review was stopped** to spare the laptop. Its fixes passed the full sweep (0 low-contrast texts in 54,093), and it will re-run one browser at a time.
-- **The repository on GitHub was renamed** to `joinprototype/connect-the-dots`. Pushes follow GitHub's redirect; the local remote still names the old path.
 
 ## Review
 
