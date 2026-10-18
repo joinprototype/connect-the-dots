@@ -280,6 +280,8 @@ Shot fields (from the chapter's `scene` blocks, or generated; the build adds `t`
 | `duration` | Seconds in watch mode; with Listen on, the scene also waits for its narration to be read |
 | `explore` | Show the "Explore from here" button, which links to `/x/?focus=&lens=&p=&t=` |
 
+**The map view** flies to each shot's `camera` and marks its places. Once the camera settles, no marker (dot or name) is left under the quote card, the time pills or the controls: the map moves as little as it can, up or left, or, when no small move does it (on a phone the card spans the width), zooms out until every marker fits the room left. Where a marker names a place, the basemap does not name it again.
+
 **The graph view** keeps what earlier shots revealed and draws the world as of the shot's `t`: what has not begun is hidden, and what is over is faded.
 - **A shot's own reveals are never faded.** What a shot itself reveals (`reveal`, `focus`, the ends of `reveal_claims`) is its subject, so its `t` never hides or fades it.
 - **The camera frames that subject.** The camera frames those entries, not everything shown so far.

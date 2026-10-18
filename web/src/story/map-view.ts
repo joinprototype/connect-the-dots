@@ -1,12 +1,12 @@
 // Lazy chunk: MapLibre globe for map shots. It brings MapLibre's stylesheet along (story.css does not carry it).
 import { gsap } from 'gsap';
-import { Map as MapLibre, Marker, setWorkerUrl, type GeoJSONSource } from 'maplibre-gl';
+import { LngLatBounds, Map as MapLibre, Marker, setWorkerUrl, type GeoJSONSource } from 'maplibre-gl';
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url';
 import { tokenRgb } from '../lib/color';
 import type { GraphIndex } from '../lib/data';
 import { el } from '../lib/dom';
 import type { Shot } from '../lib/types';
-import { calmBasemap, loadMapCss, MAP_STYLE, rgb } from '../world/basemap';
+import { calmBasemap, hideBasemapNames, loadMapCss, MAP_STYLE, rgb } from '../world/basemap';
 
 export interface MapView {
   apply(shot: Shot, reduced: boolean): void;
@@ -66,6 +66,8 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
   let wantGlobe = first?.globe !== false;
   const markers = new Map<string, Marker>();
   let routeTween: gsap.core.Tween | null = null;
+  /** The shot shown now: a camera that settles after the reader moved on leaves the map alone. */
+  let current = '';
 
   map.on('style.load', () => {
     try {
@@ -143,6 +145,78 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
     });
   }
 
+  /** What sits over the map, in its pixels: the time pills, the quote card, the player's controls. */
+  function covers(): { x0: number; y0: number; x1: number; y1: number }[] {
+    const host = container.getBoundingClientRect();
+    const story = container.closest('ctd-story');
+    return [...(story?.querySelectorAll<HTMLElement>('.story-hud, .story-overlay .story-card, .story-controls') ?? [])]
+      .filter((e) => e.offsetWidth && e.offsetHeight)
+      .map((e) => {
+        const r = e.getBoundingClientRect();
+        return { x0: r.left - host.left, y0: r.top - host.top, x1: r.right - host.left, y1: r.bottom - host.top };
+      })
+      .filter((b) => b.x1 > 0 && b.y1 > 0 && b.x0 < host.width && b.y0 < host.height);
+  }
+
+  /**
+   * Once the camera has settled, moves it as little as it can (up or left) so that no marker, dot or
+   * label, sits under the quote card, the time pills or the controls, with every marker still on the map.
+   * When no small move does it (on a phone the card spans the width), it zooms out until every marker
+   * fits in the room left. Like the story graph, which keeps its names out from under them.
+   */
+  function clearCovers(reduced: boolean): void {
+    const host = container.getBoundingClientRect();
+    const W = host.width;
+    const H = host.height;
+    const pad = 10;
+    const boxes = covers();
+    const rects = [...markers.values()].map((m) => {
+      const r = m.getElement().getBoundingClientRect();
+      return { x0: r.left - host.left, y0: r.top - host.top, x1: r.right - host.left, y1: r.bottom - host.top };
+    });
+    if (!rects.length || !boxes.length) return;
+    const hits = (dx: number, dy: number) =>
+      rects.some((r) => boxes.some((b) => r.x1 - dx + pad > b.x0 && r.x0 - dx - pad < b.x1 && r.y1 - dy + pad > b.y0 && r.y0 - dy - pad < b.y1));
+    const inside = (dx: number, dy: number) => rects.every((r) => r.x0 - dx >= pad && r.x1 - dx <= W - pad && r.y0 - dy >= pad && r.y1 - dy <= H - pad);
+    if (!hits(0, 0)) return;
+    // how far content must move up, or left, to clear every card it is under
+    let up = 0;
+    let left = 0;
+    for (const r of rects) {
+      for (const b of boxes) {
+        if (!(r.x1 + pad > b.x0 && r.x0 - pad < b.x1 && r.y1 + pad > b.y0 && r.y0 - pad < b.y1)) continue;
+        up = Math.max(up, r.y1 + pad - b.y0);
+        left = Math.max(left, r.x1 + pad - b.x0);
+      }
+    }
+    const moves = [
+      [0, up],
+      [left, 0],
+      [left, up],
+    ].sort((a, b) => Math.hypot(a[0], a[1]) - Math.hypot(b[0], b[1]));
+    const move = moves.find(([dx, dy]) => !hits(dx, dy) && inside(dx, dy));
+    if (move) {
+      map.panBy([move[0], move[1]], { duration: reduced ? 0 : 600 });
+      return;
+    }
+    const spots = [...markers.values()].map((m) => m.getLngLat());
+    const bounds = spots.reduce((bb, p) => bb.extend(p), new LngLatBounds(spots[0], spots[0]));
+    // the bands the pills, the card and the controls take, and room for the names right of the dots
+    let top = pad;
+    let bottom = pad;
+    for (const b of boxes) {
+      if (b.y1 <= H / 2) top = Math.max(top, b.y1 + pad);
+      else bottom = Math.max(bottom, H - b.y0 + pad);
+    }
+    const label = Math.max(...rects.map((r) => r.x1 - r.x0));
+    if (top + bottom + 40 >= H || label + 2 * pad + 40 >= W) return;
+    map.fitBounds(bounds, {
+      padding: { top: top + pad, bottom: bottom + pad, left: 2 * pad, right: label + pad },
+      maxZoom: map.getZoom(),
+      duration: reduced ? 0 : 600,
+    });
+  }
+
   function apply(shot: Shot, reduced: boolean): void {
     const run = () => {
       const c = shot.camera;
@@ -160,6 +234,12 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
         if (reduced) map.jumpTo(target);
         else map.flyTo({ ...target, duration: (c.duration ?? 3.5) * 1000, curve: 1.5, essential: false });
       }
+      // when it has settled (and the quote card has come in), keep the markers clear of what covers the map
+      const shotId = shot.shot;
+      const settle = () => window.setTimeout(() => current === shotId && clearCovers(reduced), reduced ? 0 : 300);
+      if (c && !reduced) map.once('moveend', settle);
+      else settle();
+      current = shotId;
       const routeIds = (shot.routes ?? []).flat();
       const all = [...new Set([...(shot.places ?? []), ...routeIds, ...(shot.focus && idx.nodes.get(shot.focus)?.coords ? [shot.focus] : [])])];
       // One marker per spot: an entity placed at its birthplace (or headquarters) would otherwise sit on
@@ -174,6 +254,11 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
         ids.push(id);
       }
       setMarkers(ids, shot.focus, reduced);
+      // our markers name these places: the basemap does not say them again
+      hideBasemapNames(
+        map,
+        ids.map((id) => idx.nodes.get(id)?.name ?? '').filter(Boolean),
+      );
       const lines: LonLat[][] = [];
       for (const [a, b] of shot.routes ?? []) {
         const pa = idx.nodes.get(a)?.coords;
