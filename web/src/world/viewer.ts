@@ -3,11 +3,14 @@
 import { Deck, OrthographicView, type DeckProps, type PickingInfo } from '@deck.gl/core';
 import type { _Tile2DHeader as Tile2DHeader, _TileLoadProps as TileLoadProps } from '@deck.gl/geo-layers';
 import { ScatterplotLayer } from '@deck.gl/layers';
-import { rgbOf, tokenRgb, tokenString, type RGB } from '../lib/color';
+import { cssColorToRgb, tokenRgb, tokenString, type RGB } from '../lib/color';
+import { fetchJson } from '../lib/data';
+import { el } from '../lib/dom';
 import { currentUrl, replaceUrl } from '../lib/history';
+import type { Box } from '../lib/labels';
 import type { Earth, EarthEntry, EarthSpot, Insets } from './earth';
 import { eraAlpha, erasOf, type Era } from './era';
-import { buildTileRender, releaseTile, WORLD_SIZE, WorldTileLayer, type TileEra, type TileRender, type WorldStyle } from './layers';
+import { buildTileRender, clamp01, NO_DEPTH, releaseTile, WORLD_SIZE, WorldTileLayer, type TileEra, type TileRender, type WorldStyle } from './layers';
 import { runSoak } from './soak';
 import { FpsMeter, fmtInt, fmtMB, heapBytes, MB, Meter, type TileCounts } from './stats';
 import {
@@ -84,13 +87,6 @@ const HOW: Record<View, string> = {
 /** Zooms above the content fit over which region names fade out and the dots' own names fade in. */
 const REGION_FADE: [number, number] = [0.7, 1.5];
 
-interface Box {
-  x0: number;
-  y0: number;
-  x1: number;
-  y1: number;
-}
-
 /** A region name on the map: an HTML label the viewer places over the canvas (clicks go through to the map). */
 interface RegionLabel {
   region: WorldRegion;
@@ -101,7 +97,6 @@ interface RegionLabel {
   box: Box | null;
 }
 
-const clamp01 = (v: number) => (v < 0 ? 0 : v > 1 ? 1 : v);
 const inBox = (b: Box, x: number, y: number, slop = 0) => x >= b.x0 - slop && x <= b.x1 + slop && y >= b.y0 - slop && y <= b.y1 + slop;
 
 /** Resolve ?src= / data-src: same-origin only, always ending with "/". */
@@ -120,19 +115,6 @@ export function resolveWorldSrc(value: string | null | undefined, fallback = '/w
 
 /** Only same-site paths may become links (entities.json comes from the same origin, but be strict). */
 const safeHref = (url: unknown): string | null => (typeof url === 'string' && /^\/(?!\/)/.test(url) ? url : null);
-
-function el<K extends keyof HTMLElementTagNameMap>(tag: K, cls?: string, text?: string): HTMLElementTagNameMap[K] {
-  const e = document.createElement(tag);
-  if (cls) e.className = cls;
-  if (text != null) e.textContent = text;
-  return e;
-}
-
-async function fetchJson<T>(url: string): Promise<T> {
-  const res = await fetch(url, { credentials: 'same-origin' });
-  if (!res.ok) throw new Error(`${url} returned ${res.status}`);
-  return (await res.json()) as T;
-}
 
 /** Rejects when the world cannot load. On /w/ the viewer's own message stays up; embedded, it is removed. */
 export async function mountWorld(root: HTMLElement, opts: WorldOptions): Promise<WorldHandle> {
@@ -257,7 +239,6 @@ class WorldViewer implements WorldHandle {
     this.stateEl.append(el('span', 'ctdw-loader'), el('p', '', 'Charting the world…'));
     this.wrap.append(this.stage, this.tooltip, this.card, this.statsEl, this.stateEl);
     for (const child of [...root.children]) if (child.tagName === 'NOSCRIPT') child.remove();
-    root.classList.add('ctdw-root');
     root.append(this.wrap);
     this.fitHeight();
     window.addEventListener('resize', this.onResize);
@@ -323,24 +304,16 @@ class WorldViewer implements WorldHandle {
     const ink = tokenRgb('--night-ink', [29, 29, 31], this.root);
     const nodeGray = tokenRgb('--graph-node', [142, 142, 147], this.wrap);
     const edgeGray = tokenRgb('--graph-edge', [199, 199, 204], this.wrap);
-    const pal = m.palette.length ? m.palette : ['#8e8e93'];
-    const nodeRgba = new Uint8Array(pal.length * 4);
-    const edgeRgb = new Uint8Array(pal.length * 3);
-    pal.forEach((_hex, i) => {
-      nodeRgba.set([Math.round(nodeGray[0]), Math.round(nodeGray[1]), Math.round(nodeGray[2]), 255], i * 4);
-      edgeRgb.set([Math.round(edgeGray[0]), Math.round(edgeGray[1]), Math.round(edgeGray[2])], i * 3);
-    });
     const content = m.kind === 'content';
     const rgba = (c: RGB): [number, number, number, number] => [Math.round(c[0]), Math.round(c[1]), Math.round(c[2]), 255];
     return {
-      nodeRgba,
-      edgeRgb,
+      nodeRgba: Uint8Array.from(rgba(nodeGray)),
+      edgeRgb: Uint8Array.from(rgba(edgeGray).slice(0, 3)),
       // size is in world units: radius_px = size * S * 2^zoom * factor, clamped. Deeper worlds get a
       // smaller factor so the densest zoom still shows dots rather than discs.
       radiusScale: S * 2 ** (3 - m.maxzoom) * (content ? 2.4 : 3) * (this.opts.radiusFactor ?? 1),
       minCorePx: content ? 4 : 1.35,
       maxCorePx: content ? 13 : 11,
-      glow: 1,
       ink: rgba(ink),
       night: rgba(ground),
       font: tokenString('--font-ui', 'system-ui, sans-serif', this.root),
@@ -681,17 +654,16 @@ class WorldViewer implements WorldHandle {
     const index = t.index as TileIndex;
     const url = `${this.opts.src}${index.z}/${index.x}/${index.y}.bin`;
     const res = await fetch(url, { signal: t.signal, credentials: 'same-origin' });
-    if (res.status === 404 || res.status === 410) return buildTileRender(emptyTile(index), this.style, 0);
+    if (res.status === 404 || res.status === 410) return buildTileRender(emptyTile(index), this.style);
     if (!res.ok) throw new Error(`${url} returned ${res.status}`);
     const buffer = await res.arrayBuffer();
     if (t.signal?.aborted) throw new DOMException('aborted', 'AbortError');
     // Static hosts with an HTML fallback answer missing tiles with a page: treat as empty.
-    if ((res.headers.get('content-type') ?? '').includes('text/html')) return buildTileRender(emptyTile(index), this.style, 0);
+    if ((res.headers.get('content-type') ?? '').includes('text/html')) return buildTileRender(emptyTile(index), this.style);
     const t0 = performance.now();
     const tile = parseTile(buffer, index);
-    const render = buildTileRender(tile, this.style, 0);
-    render.parseMs = performance.now() - t0;
-    this.parse.add(render.parseMs);
+    const render = buildTileRender(tile, this.style);
+    this.parse.add(performance.now() - t0);
     return render;
   };
 
@@ -716,7 +688,8 @@ class WorldViewer implements WorldHandle {
       maxRequests: 6,
       maxCacheByteSize: this.budget,
       onTileError: this.tileError,
-      onTileUnload: (tile: Tile2DHeader<TileRender>) => this.unloadTile(tile),
+      // a tile left the cache: drop its arrays (hover and selection hold copies, not references)
+      onTileUnload: releaseTile,
       pickable: true,
       style: this.style,
       labelAvoid: this.labelAvoid,
@@ -739,11 +712,6 @@ class WorldViewer implements WorldHandle {
     return m.maxzoom;
   }
 
-  /** A tile left the cache: drop its arrays (hover and selection hold copies, not references). */
-  private unloadTile(tile: Tile2DHeader<TileRender>): void {
-    releaseTile(tile);
-  }
-
   /** The layer instance we pass to deck receives its state (deck transfers state onto the newest instance). */
   private liveTileset(): { tiles: Tile2DHeader<TileRender>[]; bytes: number; labels: number } | null {
     const layer = this.tileLayer;
@@ -754,14 +722,13 @@ class WorldViewer implements WorldHandle {
 
   private counts(): TileCounts {
     const ts = this.liveTileset();
-    const c: TileCounts = { cached: 0, loaded: 0, visible: 0, loading: 0, cacheBytes: 0, nodes: 0, edges: 0, labels: 0, zoomLevel: 0 };
+    const c: TileCounts = { cached: 0, visible: 0, loading: 0, cacheBytes: 0, nodes: 0, edges: 0, labels: 0, zoomLevel: 0 };
     c.zoomLevel = Math.max(0, Math.min(this.manifest.maxzoom, Math.ceil(this.zoom)));
     if (!ts) return c;
     c.cacheBytes = ts.bytes;
     c.labels = ts.labels;
     for (const t of ts.tiles) {
       c.cached++;
-      if (t.isLoaded) c.loaded++;
       if (t.isLoading) c.loading++;
       if (t.isVisible && t.content) {
         c.visible++;
@@ -911,7 +878,7 @@ class WorldViewer implements WorldHandle {
       radiusMaxPixels: this.style.maxCorePx + 1,
       getFillColor: a,
       pickable: false,
-      parameters: { depthWriteEnabled: false, depthCompare: 'always' },
+      parameters: NO_DEPTH,
     });
     const ringLayer = new ScatterplotLayer<Ring>({
       id: 'world-rings',
@@ -928,7 +895,7 @@ class WorldViewer implements WorldHandle {
       getLineWidth: (d: Ring) => (d.selected ? 2 : 1.5),
       getLineColor: (d: Ring) => (d.selected ? a : [ink[0], ink[1], ink[2], 170]),
       pickable: false,
-      parameters: { depthWriteEnabled: false, depthCompare: 'always' },
+      parameters: NO_DEPTH,
     });
     this.deck.setProps({ layers: [this.getTileLayer(), dotLayer, ringLayer] } as never);
   }
@@ -1290,7 +1257,6 @@ class WorldViewer implements WorldHandle {
     if (this.device || !this.deck || this.failure) this.releaseDeck();
     this.tileLayer = null;
     this.wrap.remove();
-    this.root.classList.remove('ctdw-root');
   }
 
   /**
@@ -1313,7 +1279,7 @@ class WorldViewer implements WorldHandle {
 function hasHues(palette: string[]): boolean {
   const hues = new Set<number>();
   for (const hex of palette) {
-    const [r, g, b] = rgbOf(hex).map((v) => v / 255);
+    const [r, g, b] = cssColorToRgb(hex).map((v) => v / 255);
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
     if (max - min < 0.12) continue;

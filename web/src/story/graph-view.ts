@@ -9,6 +9,7 @@ import { FADED_TEXT_ALPHA, glColor, mix, tokenRgb, tokenString, type RGB } from 
 import type { GraphIndex } from '../lib/data';
 import { timeState } from '../lib/dates';
 import { edgeTime } from '../lib/filters';
+import { hash01 } from '../lib/hash';
 import { measureText } from '../lib/labels';
 import { capPixelRatio, drawPlacedLabels, makeHoverDrawer } from '../lib/sigma-draw';
 import type { GEdge, Shot } from '../lib/types';
@@ -23,15 +24,6 @@ export interface GraphView {
 interface Step {
   nodes: Set<string>;
   edges: Set<string>;
-}
-
-function hash01(s: string, salt = 0): number {
-  let h = 0x811c9dc5 ^ salt;
-  for (let i = 0; i < s.length; i++) {
-    h ^= s.charCodeAt(i);
-    h = Math.imul(h, 0x01000193);
-  }
-  return ((h >>> 0) % 100000) / 100000;
 }
 
 export function createGraphView(container: HTMLElement, idx: GraphIndex, shots: Shot[]): GraphView {
@@ -95,10 +87,9 @@ export function createGraphView(container: HTMLElement, idx: GraphIndex, shots: 
       settings: { ...forceAtlas2.inferSettings(graph), gravity: 2, scalingRatio: 30, strongGravityMode: true, slowDown: 2 },
     });
   } else {
-    graph.forEachNode((id, _a) => {
-      const i = [...all.nodes].sort().indexOf(id);
-      graph.mergeNodeAttributes(id, { x: i * 20, y: 0 });
-    });
+    // the nodes were added in sorted order, and graphology keeps it
+    let i = 0;
+    graph.forEachNode((id) => graph.mergeNodeAttributes(id, { x: i++ * 20, y: 0 }));
   }
 
   let step = -1;

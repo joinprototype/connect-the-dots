@@ -21,7 +21,7 @@ export interface EarthEntry extends WorldEntity {
 }
 
 export interface EarthSpot {
-  /** Index in `Earth.spots`, and the dot's feature id. */
+  /** Index in the spot list, and the dot's feature id. */
   i: number;
   /** [lon, lat] */
   at: [number, number];
@@ -52,7 +52,6 @@ export interface EarthOptions {
 }
 
 export interface Earth {
-  readonly spots: EarthSpot[];
   /** Entries drawn, over all spots. */
   readonly entries: number;
   spotOf(id: string): EarthSpot | undefined;
@@ -304,7 +303,6 @@ export async function createEarth(container: HTMLElement, opts: EarthOptions): P
   });
 
   return {
-    spots,
     entries: byId.size,
     spotOf: (id) => byId.get(id),
     setEra(next) {

@@ -2,7 +2,7 @@ import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'rea
 import { sentence, sourceView } from '../lib/claims';
 import { claimNotes, statusWords, tierLabel } from '../lib/plain';
 import { nameOf, type GraphIndex } from '../lib/data';
-import { formatYear } from '../lib/dates';
+import { formatYear, MONTHS_AFTER } from '../lib/dates';
 import { fuzzySearch, splitRanges } from '../lib/fuzzy';
 import type { GEdge, GNode } from '../lib/types';
 
@@ -251,8 +251,6 @@ export function TimeSlider(props: {
   const toPos = (y: number) => 1 - Math.pow(Math.max(0, Math.min(1, (max - y) / span)), 1 / CURVE);
   const [playing, setPlaying] = useState(false);
   const raf = useRef(0);
-  const posRef = useRef(props.t == null ? 1 : toPos(props.t));
-  posRef.current = props.t == null ? posRef.current : toPos(props.t);
   const onChange = useRef(props.onChange);
   onChange.current = props.onChange;
   // Input events can fire far more often than frames: keep the thumb where the pointer is (draft) and
@@ -276,7 +274,8 @@ export function TimeSlider(props: {
   useEffect(() => {
     if (!playing) return;
     let last = performance.now();
-    let pos = props.t == null || posRef.current >= 0.999 ? 0 : posRef.current;
+    const from = props.t == null ? 0 : toPos(props.t);
+    let pos = from >= 0.999 ? 0 : from;
     let lastYear = NaN;
     const step = (now: number) => {
       pos = Math.min(1, pos + (now - last) / 14000);
@@ -310,7 +309,7 @@ export function TimeSlider(props: {
 
   const pos = draft != null ? draft : props.t == null ? 1 : toPos(props.t);
   const shownT = draft != null ? toYear(draft) : props.t;
-  const label = shownT == null ? 'All time' : formatYear(shownT, max - min < 300 || shownT > 1800);
+  const label = shownT == null ? 'All time' : formatYear(shownT, max - min < 300 || shownT > MONTHS_AFTER);
   return (
     <div className="ctdx-time">
       <div className="ctdx-time-head">

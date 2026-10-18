@@ -1,4 +1,5 @@
 import { loadGraph } from '../lib/data';
+import { el } from '../lib/dom';
 import { dispatchLens, currentLens } from '../lib/events';
 import { currentUrl, replaceUrl } from '../lib/history';
 
@@ -18,7 +19,6 @@ export class CtdLensChips extends HTMLElement {
     document.addEventListener('ctd:lens', this.onLens);
     if (this.ready) return;
     this.ready = true;
-    this.classList.add('ctd-lens-chips');
 
     let chips = [...this.querySelectorAll<HTMLButtonElement>('button[data-lens]')];
     const needGraph = !chips.length || chips.some((b) => !b.hasAttribute('data-layers') && b.dataset.lens !== 'all');
@@ -31,17 +31,15 @@ export class CtdLensChips extends HTMLElement {
       }
     }
     if (!chips.length) {
-      const wrap = document.createElement('div');
-      wrap.className = 'lens-chips ctd-chips-fallback';
+      const wrap = el('div', 'lens-chips ctd-chips-fallback');
       wrap.setAttribute('role', 'group');
       wrap.setAttribute('aria-label', 'Lens');
       this.append(wrap);
       chips = graphLenses.map((l) => {
-        const b = document.createElement('button');
+        const b = el('button', '', l.label);
         b.type = 'button';
         b.dataset.lens = l.id;
         b.dataset.layers = l.layers.join(' ');
-        b.textContent = l.label;
         wrap.append(b);
         return b;
       });
@@ -52,16 +50,10 @@ export class CtdLensChips extends HTMLElement {
       const fromGraph = graphLenses.find((l) => l.id === id)?.layers;
       const layers = id === 'all' ? null : b.hasAttribute('data-layers') ? parseLayers(b.dataset.layers) : (fromGraph ?? null);
       this.layersOf.set(id, layers);
-      b.classList.add('ctd-chip');
       b.type = 'button';
       if (layers?.length) b.style.setProperty('--chip', `var(--layer-${layers[0]})`);
       const count = layers ? claims.filter((li) => parseLayers(li.dataset.layers).some((l) => layers.includes(l))).length : claims.length;
-      if (claims.length && !b.querySelector('.ctd-chip-count')) {
-        const c = document.createElement('span');
-        c.className = 'ctd-chip-count';
-        c.textContent = String(count);
-        b.append(c);
-      }
+      if (claims.length && !b.querySelector('.ctd-chip-count')) b.append(el('span', 'ctd-chip-count', String(count)));
       if (claims.length && count === 0) b.dataset.empty = '';
       b.addEventListener('click', () => {
         this.apply(id);

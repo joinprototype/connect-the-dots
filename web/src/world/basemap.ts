@@ -2,6 +2,7 @@
 import type { Map as MapLibre } from 'maplibre-gl';
 import mapCss from 'maplibre-gl/dist/maplibre-gl.css?url';
 import { cssColorToRgb, mix, tokenRgb, type RGB } from '../lib/color';
+import { loadStylesheet } from '../lib/dom';
 
 export const MAP_STYLE = 'https://tiles.openfreemap.org/styles/positron';
 
@@ -13,13 +14,7 @@ let mapCssLoaded: Promise<void> | undefined;
  * page's own CSS, so the rules that restyle MapLibre's are more specific, not later.
  */
 export function loadMapCss(): Promise<void> {
-  return (mapCssLoaded ??= new Promise((resolve) => {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = mapCss;
-    link.onload = link.onerror = () => resolve();
-    document.head.append(link);
-  }));
+  return (mapCssLoaded ??= loadStylesheet(mapCss));
 }
 
 export const rgb = (c: RGB) => `rgb(${Math.round(c[0])}, ${Math.round(c[1])}, ${Math.round(c[2])})`;

@@ -1,6 +1,6 @@
 import type { CtdDate, GEdge, GraphData } from './types';
 
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+export const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 /** Astronomical year number -> display text. 1962 -> "1962", 30 -> "30 CE", -449 -> "450 BCE". */
 export function formatYearNumber(year: number): string {
@@ -15,6 +15,14 @@ export function formatYear(t: number, month = false): string {
   if (!month || year <= 0) return formatYearNumber(year);
   const m = Math.min(11, Math.max(0, Math.floor((t - year) * 12 + 1e-6)));
   return `${MONTHS[m]} ${formatYearNumber(year)}`;
+}
+
+/** Times after this year show their month ("Oct 1962"); earlier ones only the year ("1066"). */
+export const MONTHS_AFTER = 1800;
+
+/** A time the explorer is "as of", as shown. */
+export function formatAsOf(t: number): string {
+  return formatYear(t, t > MONTHS_AFTER);
 }
 
 /**

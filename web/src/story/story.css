@@ -21,7 +21,6 @@ ctd-story.is-enhanced {
   column-gap: clamp(16px, 3vw, 40px);
   padding-right: var(--gutter, clamp(16px, 4vw, 48px));
 }
-ctd-story > script { display: none; }
 @media (prefers-color-scheme: dark) {
   ctd-story {
     --graph-node: #98989d;
@@ -69,7 +68,6 @@ ctd-story .story-map .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button { ba
 .story-hud-persp { font-style: italic; }
 .story-hud-count { color: var(--muted) !important; font-variant-numeric: tabular-nums; }
 .story-hud-past { color: var(--muted) !important; font-style: italic; }
-.story-hud > span[hidden] { display: none; }
 
 /* Map markers: a dot and a small label card. */
 .story-marker { pointer-events: none; }
@@ -91,7 +89,6 @@ ctd-story .story-map .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button { ba
   color: var(--ink); background: var(--paper);
   border-radius: 14px; box-shadow: var(--story-shadow);
 }
-.story-tape { display: none; }
 .story-card-kicker { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; font: 500 0.84rem var(--font-ui); color: var(--muted); }
 .story-tier { padding: 0 7px; border-radius: 999px; background: var(--paper-2); color: var(--ink-2); }
 .story-card-title { margin: 0 0 2px; font: 600 1.12rem/1.3 var(--font-display); color: var(--ink); }
@@ -204,7 +201,6 @@ ctd-story .step-card > :has(+ .step-source:last-child:not(:focus-within)) { marg
   ctd-story.is-enhanced .story-steps { position: relative; z-index: 1; padding: 8svh 16px 30svh; }
   ctd-story .step { min-height: 62svh; align-items: center; }
   ctd-story .step:first-child { min-height: 40svh; }
-  ctd-story .step.is-active .step-card { transform: none; }
   .story-hud { top: 10px; left: 10px; gap: 6px; }
   .story-hud > span { font-size: 0.82rem; padding: 3px 9px; }
   .story-hud-time { font-size: 0.98rem !important; }
@@ -215,9 +211,4 @@ ctd-story .step-card > :has(+ .step-source:last-child:not(:focus-within)) { marg
   .story-card-quote { margin: 4px 0 6px; }
   .story-card-quote p, .story-card.is-quote .story-card-quote p { font-size: 0.95rem; line-height: 1.5; }
   .story-card-foot { margin-top: 4px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  ctd-story .step-card, ctd-story .step-card::before, .story-layer { transition: none !important; }
-  ctd-story .step.is-active .step-card { transform: none; }
 }

@@ -1,14 +1,12 @@
 import { useMemo, type ReactNode } from 'react';
 import { detailOf, kinshipRole, sentence, sentenceText } from '../lib/claims';
 import { nameOf, type GraphIndex } from '../lib/data';
-import { formatYear } from '../lib/dates';
+import { formatAsOf } from '../lib/dates';
 import { edgeTime, META_LABEL, nodeTime, passiveModel, type Vis } from '../lib/filters';
 import type { PathResult } from '../lib/paths';
-import { entityStoryUrl, routeStoryUrl, routeSummary } from '../lib/plain';
+import { entityStoryUrl, NOTICE, routeStoryUrl, routeSummary } from '../lib/plain';
 import type { GEdge } from '../lib/types';
 import { Badges, ClaimCard, Sentence, typeDot } from './ui';
-
-const NOTICE = 'A connection is not evidence of wrongdoing.';
 
 // ------------------------------------------------------------------ an entry
 
@@ -37,7 +35,7 @@ export function NodeDetails(props: {
   const hidden = groups.reduce((s, [, list]) => s + list.filter((x) => x.vis === 'hide').length, 0);
   const past = groups.reduce((s, [, list]) => s + list.filter((x) => x.vis === 'past').length, 0);
   const t = props.t ?? null;
-  const asOf = t != null ? formatYear(t, t > 1800) : '';
+  const asOf = t != null ? formatAsOf(t) : '';
   const own = nodeTime(idx, id, t);
   const story = entityStoryUrl(idx.data, id);
   return (
@@ -106,7 +104,7 @@ export function EdgeDetails(props: { idx: GraphIndex; id: string; t?: number | n
   if (!e) return null;
   const t = props.t ?? null;
   const time = edgeTime(idx, e, t);
-  const asOf = t != null ? formatYear(t, t > 1800) : '';
+  const asOf = t != null ? formatAsOf(t) : '';
   const rel = idx.data.relations[e.rel];
   const siblings = (idx.incident.get(e.from) ?? []).filter(
     (x) => x.id !== e.id && ((x.from === e.from && x.to === e.to) || (x.from === e.to && x.to === e.from)),

@@ -13,7 +13,7 @@ interface DataCache {
 const g = globalThis as typeof globalThis & { __ctdData?: DataCache };
 const cache: DataCache = (g.__ctdData ??= {});
 
-async function fetchJson<T>(url: string): Promise<T> {
+export async function fetchJson<T>(url: string): Promise<T> {
   const res = await fetch(url, { credentials: 'same-origin' });
   if (!res.ok) throw new Error(`connect-the-dot: ${url} returned ${res.status}`);
   return (await res.json()) as T;

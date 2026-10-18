@@ -2,15 +2,9 @@
 import { gsap } from 'gsap';
 import { edgesForRef, sourceView } from '../lib/claims';
 import { nameOf, type GraphIndex } from '../lib/data';
+import { el } from '../lib/dom';
 import { tierLabel } from '../lib/plain';
 import type { Shot } from '../lib/types';
-
-function el<K extends keyof HTMLElementTagNameMap>(tag: K, cls?: string, text?: string): HTMLElementTagNameMap[K] {
-  const e = document.createElement(tag);
-  if (cls) e.className = cls;
-  if (text != null) e.textContent = text;
-  return e;
-}
 
 /** The quote to show: the overlay's own, else one from a source of a claim this shot reveals. */
 function findQuote(idx: GraphIndex, shot: Shot, sourceId?: string): string | null {
@@ -68,7 +62,6 @@ export class Overlay {
     const persp = shot.perspective ? nameOf(idx, shot.perspective) : '';
     if (o.kind === 'image' && o.image) {
       const fig = el('figure', 'story-card is-image');
-      fig.append(el('span', 'story-tape'));
       const img = el('img');
       img.src = o.image;
       img.alt = o.caption ?? '';
@@ -81,7 +74,6 @@ export class Overlay {
     if (o.kind === 'source' && o.source) {
       const s = sourceView(idx, o.source);
       const fig = el('figure', 'story-card is-source');
-      fig.append(el('span', 'story-tape'));
       const kicker = el('p', 'story-card-kicker');
       kicker.append(el('span', 'story-card-kind', 'Proof'));
       const strength = tierLabel(this.idx.data, s.tier);
@@ -112,7 +104,6 @@ export class Overlay {
     }
     if (quote) {
       const fig = el('figure', 'story-card is-quote');
-      fig.append(el('span', 'story-tape'));
       const bq = el('blockquote', 'story-card-quote');
       const p = el('p');
       p.append(el('mark', 'story-hl', quote));

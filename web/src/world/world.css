@@ -3,10 +3,9 @@
    on every frame. */
 
 /* The viewer fills its root, which must be positioned: #world-root here, .ctdx-world in the explorer. */
-#world-root { position: relative; display: block; }
+#world-root { position: relative; }
 .world-page #world-root { flex: 1; height: calc(100dvh - var(--ctdw-top, 58px)); min-height: 420px; }
 
-.ctdw, .ctdw * { box-sizing: border-box; }
 .ctdw {
   --ctdw-hair: color-mix(in srgb, var(--night-rule) 70%, transparent);
   --ctdw-fill: color-mix(in srgb, var(--night-ink) 8%, var(--night-2));
@@ -67,7 +66,6 @@
   font-size: 0.82rem; font-weight: 500; font-variant-numeric: tabular-nums;
   background: var(--night-2); box-shadow: var(--ctdw-shadow-sm);
 }
-.ctdw-hud > span[hidden] { display: none; }
 .ctdw-hud-title { font-weight: 600 !important; }
 .ctdw-hud-count { color: var(--night-muted); }
 /* "Links | Earth" (/w/ only): a segmented control where the title would be */
@@ -219,7 +217,4 @@
   .ctdw-era { left: 8px; right: 56px; width: auto; bottom: 34px; }
   .ctdw.has-era .ctdw-card { bottom: calc(34px + var(--ctdw-era-h, 64px) + 8px); }
   .ctdw-stats { font-size: 10.5px; top: auto; bottom: 120px; right: 8px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .ctdw *, .ctdw-loader { animation: none !important; transition: none !important; }
 }

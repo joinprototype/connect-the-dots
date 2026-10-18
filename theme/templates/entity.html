@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import count, status_badge, question_rows %}
+{% from "macros.html" import count, status_badge, question_rows, refs, proof_fold, lifeline %}
 {# A link's status in a glance card: its badge, then why it is disputed. Withdrawn links never reach these cards. #}
 {% macro mark(x) %}{% if x.draft or x.disputed %}{{ status_badge("draft" if x.draft else "disputed") }}{% endif %}{% if x.disputed and x.reason %}<span class="glance-reason">{{ x.reason }}</span>{% endif %}{% endmacro %}
 {% block title %}{{ entity.name }}: connect the dot{% endblock %}
@@ -41,8 +41,8 @@
     <figure class="glance-card background">
       <figcaption>Background</figcaption>
       <ul class="bg-list">
-        {% for r in background.rows %}<li>{{ r.phrase|capitalize }} <a href="{{ r.node.url }}">{{ r.node.name }}</a>{% if r.detail %} <span class="claim-detail">{{ r.detail }}</span>{% endif %}{% if r.when %} <span class="here-meta">{{ r.when }}</span>{% endif %} {{ mark(r) }}<span class="refs">{% for n in r.refs %}<a href="#src-{{ n }}" aria-label="Source {{ n }}">{{ n }}</a>{% endfor %}</span></li>{% endfor %}
-        {% for l in background.lines %}<li>{{ l.text }}<span class="refs">{% for n in l.refs %}<a href="#src-{{ n }}" aria-label="Source {{ n }}">{{ n }}</a>{% endfor %}</span></li>{% endfor %}
+        {% for r in background.rows %}<li>{{ r.phrase|capitalize }} <a href="{{ r.node.url }}">{{ r.node.name }}</a>{% if r.detail %} <span class="claim-detail">{{ r.detail }}</span>{% endif %}{% if r.when %} <span class="here-meta">{{ r.when }}</span>{% endif %} {{ mark(r) }}{{ refs(r.refs) }}</li>{% endfor %}
+        {% for l in background.lines %}<li>{{ l.text }}{{ refs(l.refs) }}</li>{% endfor %}
       </ul>
     </figure>
     {% endif %}
@@ -76,17 +76,7 @@
     {% if d.lifeline %}
     <figure class="glance-card lifeline">
       <figcaption>Over time</figcaption>
-      {# one row per tenure: what and who, when, and a bar on the shared axis #}
-      <ol class="ll-rows">
-        {% for r in d.lifeline.rows %}
-        <li class="ll-row{% if r.own %} own{% endif %}{% if r.according_to %} attributed{% endif %}{% if r.status in ["draft", "disputed"] %} status-{{ r.status }}{% endif %}">
-          <span class="ll-name">{{ r.phrase }}{% if r.name %} <a href="{{ r.url }}">{{ r.name }}</a>{% endif %}{% if r.detail %}<span class="ll-flag"> ({{ r.detail }})</span>{% endif %}{% if r.status == "disputed" %}<span class="ll-flag">, disputed</span>{% elif r.status == "draft" %}<span class="ll-flag">, being verified</span>{% endif %}{% if r.according_to %}<span class="ll-flag">, according to {{ r.according_to|join(" and ") }}</span>{% endif %}</span>
-          <span class="ll-when">{{ r.when }}</span>
-          <span class="ll-track" aria-hidden="true"><span class="ll-bar{% if r.point %} point{% endif %}" style="left: {{ r.left }}%; width: {{ r.width }}%"></span></span>
-        </li>
-        {% endfor %}
-        <li class="ll-axis" aria-hidden="true"><span class="ll-ticks">{% for t in d.lifeline.ticks %}<span style="left: {{ t.left }}%">{{ t.label }}</span>{% endfor %}</span></li>
-      </ol>
+      {{ lifeline(d.lifeline) }}
       {% if d.lifeline.more %}<p class="ll-more"><a href="#timeline">{{ d.lifeline.more }} more in the Timeline ›</a></p>{% endif %}
     </figure>
     {% endif %}
@@ -163,7 +153,7 @@
             {{ status_badge(c.status) }}
             {% if c.tier_label %}<span class="badge tier" title="Strongest source behind this link">{{ c.tier_label }}</span>{% endif %}
           </span>
-          <span class="refs">{% for n in c.refs %}<a href="#src-{{ n }}" aria-label="Source {{ n }}">{{ n }}</a>{% endfor %}</span>
+          {{ refs(c.refs) }}
           {% if c.reason %}<p class="claim-note">{% if c.status not in ["published", "draft"] %}{{ status_word }}: {% endif %}{{ c.reason }}</p>{% endif %}
           {% if c.note %}<p class="claim-note">{{ c.note }}</p>{% endif %}
         </li>
@@ -192,21 +182,7 @@
     </details>
     {% endif %}
 
-    {% if sources %}
-    <details class="fold sources" id="proof">
-      <summary>Proof <span class="count">{{ count(sources|length, "source") }}</span></summary>
-      <ol class="source-list">
-        {% for s in sources %}
-        <li id="src-{{ s.n }}">
-          <span class="src-title">{% if s.url %}<a href="{{ s.url }}" rel="external">{{ s.title }}</a>{% else %}{{ s.title }}{% endif %}</span>{% if s.publisher %}, {% if s.publisher_url %}<a href="{{ s.publisher_url }}">{{ s.publisher }}</a>{% else %}{{ s.publisher }}{% endif %}{% endif %}{% if s.published %}, {{ s.published }}{% endif %}.
-          <span class="badge tier">{{ s.tier_label }}</span>
-          {% if s.archive_url %}<a class="archived" href="{{ s.archive_url }}">Archived copy</a>{% endif %}
-          {% for q in s.quotes %}<blockquote><mark>{{ q }}</mark></blockquote>{% endfor %}
-        </li>
-        {% endfor %}
-      </ol>
-    </details>
-    {% endif %}
+    {{ proof_fold(sources) }}
 
     <details class="fold" id="history">
       <summary>Page history <span class="count">{% if history %}{{ count(history|length, "change") }}{% else %}not committed yet{% endif %}</span></summary>

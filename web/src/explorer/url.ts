@@ -25,8 +25,8 @@ export function resolveEntity(idx: GraphIndex, value: string | null | undefined)
   return null;
 }
 
-export function readUrl(idx: GraphIndex, search = location.search): UrlState {
-  const q = new URLSearchParams(search);
+export function readUrl(idx: GraphIndex): UrlState {
+  const q = new URLSearchParams(location.search);
   const entity = (k: string) => resolveEntity(idx, q.get(k));
   const lens = q.get('lens');
   const p = q.get('p');

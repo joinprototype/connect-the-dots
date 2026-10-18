@@ -1,5 +1,6 @@
 // Reading claims as sentences, shared by the explorer and the story player.
 import { nameOf, type GraphIndex } from './data';
+import { MONTHS } from './dates';
 import type { GEdge, SourceDef } from './types';
 
 export interface Sentence {
@@ -71,8 +72,6 @@ export function edgesForRef(idx: GraphIndex, ref: string): GEdge[] {
   for (const [id, e] of idx.edges) if (claimRefMatches(id, ref)) out.push(e);
   return out;
 }
-
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 /** "1962-10-22" -> "22 Oct 1962"; "2026-08" -> "Aug 2026"; anything else unchanged. */
 export function prettyDate(s: string | null | undefined): string {

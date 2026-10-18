@@ -7,7 +7,6 @@ import './explorer.css';
 
 const el = document.getElementById('explorer-root');
 if (el) {
-  el.classList.add('ctdx-root');
   createRoot(el).render(
     <StrictMode>
       <ExplorerBoundary>

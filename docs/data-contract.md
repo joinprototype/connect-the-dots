@@ -146,6 +146,8 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 - fonts: `--font-display`, `--font-body`, `--font-ui`, `--font-mono`;
 - misc: `--radius`, `--shadow`, `--shadow-lift`, `--measure`, `--gutter`.
 
+`site.css` also supplies the base rules the scripts' markup relies on: border-box sizing, `[hidden]` (`display: none !important`), `.sr-only` (visually hidden, still read aloud) and a reduced-motion reset (no animations or transitions when `prefers-reduced-motion: reduce`).
+
 **Islands** (custom elements, light DOM):
 
 | Element | Behaviour |

@@ -4,10 +4,10 @@
 // For non-geospatial views deck.gl picks tile z = ceil(viewport.zoom + zoomOffset) and tile (x, y, z)
 // covers [x, x + 1) * tileSize / 2^z, so with these numbers deck's tile (x, y, z) is exactly the
 // contract's tile (x, y, z), and each tile is drawn 256-512 px wide.
-import { LayerExtension, type Layer, type LayersList, type UpdateParameters } from '@deck.gl/core';
+import { LayerExtension, type Layer, type LayersList } from '@deck.gl/core';
 import { TileLayer, type _Tile2DHeader as Tile2DHeader } from '@deck.gl/geo-layers';
 import { LineLayer, ScatterplotLayer, TextLayer } from '@deck.gl/layers';
-import { anchorOf, baselineOf, CLUSTER_FONT_PX, measureText, NODE_FONT_PX, offsetOf, placeLabels, Spot, type PlacedLabel } from '../lib/labels';
+import { anchorOf, baselineOf, CLUSTER_FONT_PX, measureText, NODE_FONT_PX, offsetOf, placeLabels, Spot, type Box, type PlacedLabel } from '../lib/labels';
 import { hasLabel, labelAt, type WorldTile } from './tiles';
 
 export const WORLD_SIZE = 512;
@@ -16,16 +16,14 @@ type RGBA = [number, number, number, number];
 
 /** Everything the per-tile builders need, resolved once from the manifest and the CSS tokens. */
 export interface WorldStyle {
-  /** palette index -> node RGBA (4 bytes each). */
+  /** palette index -> node RGBA (4 bytes each); one gray entry serves every index. */
   nodeRgba: Uint8Array;
-  /** palette index -> edge RGB, slightly washed towards the night ink. */
+  /** palette index -> edge RGB (3 bytes each); one gray entry serves every index. */
   edgeRgb: Uint8Array;
   /** Common units per world unit times the size factor (radius = size * radiusScale). */
   radiusScale: number;
   minCorePx: number;
   maxCorePx: number;
-  /** Drawn radius / core radius: the halo around each dot. */
-  glow: number;
   ink: RGBA;
   night: RGBA;
   font: string;
@@ -61,15 +59,14 @@ export interface TileRender {
   labels: TileLabel[];
   /** CPU bytes (response buffer + derived arrays) plus the GPU bytes uploaded for it. */
   byteLength: number;
-  parseMs: number;
   /** performance.now() when first drawn, and the lowest minzoom that fades in (see fadeFromFor). */
   bornAt?: number;
   fadeFrom?: number;
 }
 
-const clamp01 = (v: number) => (v < 0 ? 0 : v > 1 ? 1 : v);
+export const clamp01 = (v: number) => (v < 0 ? 0 : v > 1 ? 1 : v);
 
-export function buildTileRender(tile: WorldTile, style: WorldStyle, parseMs: number): TileRender {
+export function buildTileRender(tile: WorldTile, style: WorldStyle): TileRender {
   const { n, m } = tile;
   const S = WORLD_SIZE;
   const pal = Math.max(1, style.nodeRgba.length / 4);
@@ -138,7 +135,6 @@ export function buildTileRender(tile: WorldTile, style: WorldStyle, parseMs: num
     },
     labels,
     byteLength: tile.byteLength + derived + gpu + labels.length * 96,
-    parseMs,
   };
 }
 
@@ -224,28 +220,21 @@ export function fadeFromFor(header: Tile2DHeader<TileRender>): number {
 
 const FADE_MS = 520;
 
+const NODE_UNIFORMS = /* glsl */ `\
+layout(std140) uniform ctdNodeUniforms {
+  float fade;
+  float fadeFrom;
+  float core;
+  float coreAlpha;
+  float halo;
+  float pickCore;
+} ctdNode;
+`;
+
 const nodeModule = {
   name: 'ctdNode',
-  vs: /* glsl */ `\
-layout(std140) uniform ctdNodeUniforms {
-  float fade;
-  float fadeFrom;
-  float core;
-  float coreAlpha;
-  float halo;
-  float pickCore;
-} ctdNode;
-`,
-  fs: /* glsl */ `\
-layout(std140) uniform ctdNodeUniforms {
-  float fade;
-  float fadeFrom;
-  float core;
-  float coreAlpha;
-  float halo;
-  float pickCore;
-} ctdNode;
-`,
+  vs: NODE_UNIFORMS,
+  fs: NODE_UNIFORMS,
   uniformTypes: {
     fade: 'f32',
     fadeFrom: 'f32',
@@ -341,6 +330,9 @@ export class EdgeFadeExtension extends LayerExtension {
   }
 }
 
+/** Flat layers: no depth test or writes, so later layers draw over earlier ones. */
+export const NO_DEPTH = { depthWriteEnabled: false, depthCompare: 'always' } as const;
+
 /**
  * Edges are stored in the tile of each endpoint (docs/world-tiles.md), and best-available refinement
  * briefly draws a parent and its children together. MAX blending of premultiplied colours makes a
@@ -355,14 +347,10 @@ const edgeParameters = {
   blendAlphaOperation: 'max',
   blendAlphaSrcFactor: 'one',
   blendAlphaDstFactor: 'one',
-  depthWriteEnabled: false,
-  depthCompare: 'always',
+  ...NO_DEPTH,
 } as const;
 
-const nodeParameters = { depthWriteEnabled: false, depthCompare: 'always' } as const;
-
 const FONT_SETTINGS = { sdf: true, fontSize: 48, buffer: 8, radius: 12, cutoff: 0.2, smoothing: 0.12 };
-const LABEL_PARAMETERS = { depthWriteEnabled: false, depthCompare: 'always' } as const;
 
 const nodeStyle = new NodeStyleExtension();
 const edgeFade = new EdgeFadeExtension();
@@ -372,7 +360,7 @@ const edgeFade = new EdgeFadeExtension();
 export interface WorldTileLayerProps {
   style: WorldStyle;
   /** Screen boxes (px, canvas coordinates) labels must keep clear of: HUD, legend, card. Mutated in place. */
-  labelAvoid?: { boxes: { x0: number; y0: number; x1: number; y1: number }[] };
+  labelAvoid?: { boxes: Box[] };
   /** Bumps when the label set should be rebuilt even if the visible tiles did not change. */
   labelVersion?: number;
   showLabels?: boolean;
@@ -438,7 +426,7 @@ export class WorldTileLayer extends TileLayer<TileRender, WorldTileLayerProps> {
       );
     }
     if (render.nodes.length) {
-      const glow = cluster ? 1.15 : style.glow;
+      const glow = cluster ? 1.15 : 1; // drawn radius / core radius: clusters get a halo
       layers.push(
         new ScatterplotLayer({
           id: `${props.id}-nodes`,
@@ -451,7 +439,7 @@ export class WorldTileLayer extends TileLayer<TileRender, WorldTileLayerProps> {
           filled: true,
           antialiasing: false,
           pickable: true,
-          parameters: nodeParameters as never,
+          parameters: NO_DEPTH as never,
           extensions: [nodeStyle],
           bornAt: render.bornAt,
           fadeFrom: render.fadeFrom,
@@ -564,7 +552,7 @@ export class WorldTileLayer extends TileLayer<TileRender, WorldTileLayerProps> {
       fontSettings: FONT_SETTINGS,
       outlineWidth: 5,
       outlineColor: [style.night[0], style.night[1], style.night[2], 235],
-      parameters: LABEL_PARAMETERS,
+      parameters: NO_DEPTH,
       updateTriggers: { getSize: v, getTextAnchor: v, getAlignmentBaseline: v, getPixelOffset: v, getColor: era?.version ?? 0 },
     } as never);
   }
@@ -581,5 +569,3 @@ export function releaseTile(header: Tile2DHeader<TileRender>): void {
   header.content = null;
   (header as { layers?: unknown }).layers = null;
 }
-
-export type { UpdateParameters };

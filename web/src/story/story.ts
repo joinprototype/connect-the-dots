@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { sourceView } from '../lib/claims';
 import { loadGraphIndex, nameOf, type GraphIndex } from '../lib/data';
 import { formatYear } from '../lib/dates';
+import { el } from '../lib/dom';
 import { emit } from '../lib/events';
 import type { Shot } from '../lib/types';
 import { explorerHref } from '../explorer/url';
@@ -50,11 +51,13 @@ function remember(on: boolean): void {
   }
 }
 
-/** What Listen reads for a scene: each paragraph of its card as plain text, without the date line, the
- *  "Explore from here" button or the source link. */
+/** The parts of a scene's card that are not its narration: the date line, "Explore from here" and the source link. */
+const NOT_NARRATION = '.step-time, .step-explore, .step-source';
+
+/** What Listen reads for a scene: each paragraph of its card as plain text, without NOT_NARRATION. */
 function narration(step: HTMLElement | undefined): string[] {
-  const parts = step?.querySelectorAll('.step-card > :not(.step-time, .step-explore, .step-source)') ?? [];
-  return [...parts].map((el) => (el.textContent ?? '').replace(/\s+/g, ' ').trim()).filter(Boolean);
+  const parts = step?.querySelectorAll(`.step-card > :not(${NOT_NARRATION})`) ?? [];
+  return [...parts].map((part) => (part.textContent ?? '').replace(/\s+/g, ' ').trim()).filter(Boolean);
 }
 
 /** A voice on this device that speaks English, the default first. Online voices (Chrome's "Google …") would
@@ -66,7 +69,7 @@ function englishVoice(): SpeechSynthesisVoice | undefined {
 
 /** A scene's name for its dot: the first sentence of its narration ("The US story."), else its date. */
 function sceneTitle(step: HTMLElement | undefined, shot: Shot): string {
-  const p = [...(step?.querySelectorAll<HTMLElement>('.step-card > p') ?? [])].find((x) => !x.matches('.step-time, .step-explore, .step-source'));
+  const p = step?.querySelector(`.step-card > p:not(${NOT_NARRATION})`);
   const text = (p?.textContent ?? '').replace(/\s+/g, ' ').trim();
   // Up to the first full stop that ends a sentence (not an initial, as in "John F. Kennedy").
   const first = /^.+?[a-z0-9”")\]][.!?](?=\s+[A-Z“"(]|$)/.exec(text)?.[0] ?? text;
@@ -176,10 +179,7 @@ export class CtdStory extends HTMLElement {
         this.decorateSources(idx);
         this.setupScroll();
       })
-      .catch((err) => {
-        console.warn('ctd-story: graph data unavailable', err);
-        this.classList.add('is-failed');
-      });
+      .catch((err) => console.warn('ctd-story: graph data unavailable', err));
   }
 
   disconnectedCallback(): void {
@@ -205,14 +205,9 @@ export class CtdStory extends HTMLElement {
   };
 
   private buildStage(): void {
-    this.stage = this.querySelector<HTMLElement>('.story-stage') ?? this.insertBefore(document.createElement('div'), this.firstChild);
+    this.stage = this.querySelector<HTMLElement>('.story-stage') ?? this.insertBefore(el('div'), this.firstChild);
     this.stage.classList.add('story-stage');
-    const layer = (cls: string) => {
-      const d = document.createElement('div');
-      d.className = cls;
-      this.stage.append(d);
-      return d;
-    };
+    const layer = (cls: string) => this.stage.appendChild(el('div', cls));
     this.layers = {
       map: layer('story-layer story-map'),
       graph: layer('story-layer story-graph'),
@@ -220,32 +215,22 @@ export class CtdStory extends HTMLElement {
     };
     this.unfocusable.observe(this.stage, { childList: true, subtree: true });
     const hud = layer('story-hud');
-    const time = document.createElement('span');
-    time.className = 'story-hud-time';
-    const past = document.createElement('span');
-    past.className = 'story-hud-past';
+    const time = el('span', 'story-hud-time'), past = el('span', 'story-hud-past'), persp = el('span', 'story-hud-persp'), count = el('span', 'story-hud-count');
     past.hidden = true;
-    const persp = document.createElement('span');
-    persp.className = 'story-hud-persp';
-    const count = document.createElement('span');
-    count.className = 'story-hud-count';
     hud.append(time, past, persp, count);
     this.hud = { time, past, persp, count };
 
     // Controls live outside the aria-hidden stage.
-    const controls = document.createElement('div');
-    controls.className = 'story-controls';
-    this.watchBtn = document.createElement('button');
+    const controls = el('div', 'story-controls');
+    this.watchBtn = el('button', 'story-watch');
     this.watchBtn.type = 'button';
-    this.watchBtn.className = 'story-watch';
     this.watchBtn.addEventListener('click', () => (this.watching ? this.stopWatch() : this.startWatch()));
     this.setWatchLabel();
-    const nav = document.createElement('ol');
-    nav.className = 'story-dots';
+    const nav = el('ol', 'story-dots');
     nav.setAttribute('aria-label', 'Scenes');
     this.dots = this.shots.map((s, i) => {
-      const li = document.createElement('li');
-      const b = document.createElement('button');
+      const li = el('li');
+      const b = el('button');
       b.type = 'button';
       const title = sceneTitle(this.steps[i], s);
       b.setAttribute('aria-label', title ? `Scene ${i + 1}: ${title}` : `Scene ${i + 1}`);
@@ -259,10 +244,8 @@ export class CtdStory extends HTMLElement {
     });
     controls.append(this.watchBtn);
     if (speech) {
-      const listen = (this.listenBtn = document.createElement('button'));
+      const listen = (this.listenBtn = el('button', 'story-listen', 'Listen'));
       listen.type = 'button';
-      listen.className = 'story-listen';
-      listen.textContent = 'Listen';
       listen.setAttribute('aria-pressed', String(this.listening));
       listen.addEventListener('click', () => this.setListening(!this.listening));
       controls.append(listen);
@@ -278,17 +261,14 @@ export class CtdStory extends HTMLElement {
       const shot = this.shots[i];
       const card = step.querySelector('.step-card');
       if (card && !card.querySelector('.step-time') && (shot.time_label || shot.t != null)) {
-        const p = document.createElement('p');
-        p.className = 'step-time';
-        p.textContent = shot.time_label ?? formatYear(shot.t!, true);
-        card.prepend(p);
+        card.prepend(el('p', 'step-time', shot.time_label ?? formatYear(shot.t!, true)));
       }
     });
   }
 
   private blockFocus(): void {
-    for (const el of this.stage.querySelectorAll<HTMLElement>('a[href], button, summary, input, select, textarea, [tabindex]')) {
-      if (el.tabIndex !== -1) el.tabIndex = -1;
+    for (const node of this.stage.querySelectorAll<HTMLElement>('a[href], button, summary, input, select, textarea, [tabindex]')) {
+      if (node.tabIndex !== -1) node.tabIndex = -1;
     }
   }
 
@@ -302,14 +282,11 @@ export class CtdStory extends HTMLElement {
       const s = o?.kind === 'source' && o.source ? sourceView(idx, o.source) : null;
       const card = step.querySelector('.step-card');
       if (!s?.url || !card || card.querySelector('.step-source')) return;
-      const p = document.createElement('p');
-      p.className = 'step-source';
-      const a = document.createElement('a');
+      const p = el('p', 'step-source');
+      const a = p.appendChild(el('a', '', `Read the source: ${s.title}`));
       a.href = s.url;
       a.target = '_blank';
       a.rel = 'external noopener noreferrer';
-      a.textContent = `Read the source: ${s.title}`;
-      p.append(a);
       card.append(p);
     });
   }
@@ -321,22 +298,17 @@ export class CtdStory extends HTMLElement {
       if (!shot.explore) return;
       const card = step.querySelector('.step-card') ?? step;
       // The shot's own lens, perspective and time; the focus carries forward from earlier shots if unset.
-      const focus = shot.focus ?? [...this.shots.slice(0, i)].reverse().find((s) => s.focus)?.focus ?? null;
+      const focus = shot.focus ?? this.shots.slice(0, i).reverse().find((s) => s.focus)?.focus ?? null;
       const href = explorerHref({ focus, lens: shot.lens, p: shot.perspective, t: shot.t ?? null });
-      const ctx = { focus };
       let a = card.querySelector<HTMLAnchorElement>('.step-explore a, a.story-explore');
       if (!a) {
-        const p = document.createElement('p');
-        p.className = 'step-explore';
-        a = document.createElement('a');
-        a.className = 'button';
-        a.textContent = 'Explore from here';
-        p.append(a);
+        const p = el('p', 'step-explore');
+        a = p.appendChild(el('a', 'button', 'Explore from here'));
         card.append(p);
       }
       a.href = href;
       a.classList.add('story-explore');
-      if (ctx.focus) a.title = `Open ${nameOf(idx, ctx.focus)} in the explorer`;
+      if (focus) a.title = `Open ${nameOf(idx, focus)} in the explorer`;
     });
   }
 

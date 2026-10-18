@@ -11,3 +11,43 @@
 {# Question pages as a grouped list of rows, like Settings: the asked sentence, its counts under it
    ("8 links", "7 links, 6 accounts") and a chevron. Items: { title, url, counts? }. #}
 {% macro question_rows(items, label=none) %}<ul class="ask-rows"{% if label %} aria-label="{{ label }}"{% endif %}>{% for f in items %}<li><a href="{{ f.url }}"><span class="ask-row-q">{{ f.title }}</span>{% if f.counts %}<span class="ask-row-n">{{ f.counts }}</span>{% endif %}</a></li>{% endfor %}</ul>{% endmacro %}
+
+{# A line's footnotes: one link per source number, to its entry in the Proof list. #}
+{% macro refs(list) %}<span class="refs">{% for n in list %}<a href="#src-{{ n }}" aria-label="Source {{ n }}">{{ n }}</a>{% endfor %}</span>{% endmacro %}
+
+{# The folded Proof list the footnotes point to: each source with its strength, an archived copy
+   and the quoted words. Nothing when there are no sources. #}
+{% macro proof_fold(sources) %}{% if sources %}<details class="fold sources" id="proof">
+      <summary>Proof <span class="count">{{ count(sources|length, "source") }}</span></summary>
+      <ol class="source-list">
+        {% for s in sources %}
+        <li id="src-{{ s.n }}">
+          <span class="src-title">{% if s.url %}<a href="{{ s.url }}" rel="external">{{ s.title }}</a>{% else %}{{ s.title }}{% endif %}</span>{% if s.publisher %}, {% if s.publisher_url %}<a href="{{ s.publisher_url }}">{{ s.publisher }}</a>{% else %}{{ s.publisher }}{% endif %}{% endif %}{% if s.published %}, {{ s.published }}{% endif %}.
+          <span class="badge tier">{{ s.tier_label }}</span>
+          {% if s.archive_url %}<a class="archived" href="{{ s.archive_url }}">Archived copy</a>{% endif %}
+          {% for q in s.quotes %}<blockquote><mark>{{ q }}</mark></blockquote>{% endfor %}
+        </li>
+        {% endfor %}
+      </ol>
+    </details>{% endif %}{% endmacro %}
+
+{# A life line, { rows, ticks }: one row per tenure (what and who, when, and a bar on the shared
+   axis), then the axis with its year ticks. #}
+{% macro lifeline(l) %}<ol class="ll-rows">
+        {% for r in l.rows %}
+        <li class="ll-row{% if r.own %} own{% endif %}{% if r.according_to %} attributed{% endif %}{% if r.status in ["draft", "disputed"] %} status-{{ r.status }}{% endif %}">
+          <span class="ll-name">{{ r.phrase }}{% if r.name %} <a href="{{ r.url }}">{{ r.name }}</a>{% endif %}{% if r.detail %}<span class="ll-flag"> ({{ r.detail }})</span>{% endif %}{% if r.status == "disputed" %}<span class="ll-flag">, disputed</span>{% elif r.status == "draft" %}<span class="ll-flag">, being verified</span>{% endif %}{% if r.according_to %}<span class="ll-flag">, according to {{ r.according_to|join(" and ") }}</span>{% endif %}</span>
+          <span class="ll-when">{{ r.when }}</span>
+          <span class="ll-track" aria-hidden="true"><span class="ll-bar{% if r.point %} point{% endif %}" style="left: {{ r.left }}%; width: {{ r.width }}%"></span></span>
+        </li>
+        {% endfor %}
+        <li class="ll-axis" aria-hidden="true"><span class="ll-ticks">{% for t in l.ticks %}<span style="left: {{ t.left }}%">{{ t.label }}</span>{% endfor %}</span></li>
+      </ol>{% endmacro %}
+
+{# A story's cover on a shelf: cover art, kind, title and subtitle. #}
+{% macro book(b) %}<a class="book" href="{{ b.url }}">
+      <span class="book-cover">{{ b.cover|safe }}</span>
+      <span class="book-kind">{{ b.kind }}</span>
+      <span class="book-title">{{ b.title }}</span>
+      {% if b.subtitle %}<span class="book-sub">{{ b.subtitle }}</span>{% endif %}
+    </a>{% endmacro %}

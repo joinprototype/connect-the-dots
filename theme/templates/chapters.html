@@ -1,11 +1,6 @@
 {% extends "base.html" %}
+{% from "macros.html" import book %}
 {% block title %}Stories: connect the dot{% endblock %}
-{% macro book(b) %}<a class="book" href="{{ b.url }}">
-      <span class="book-cover">{{ b.cover|safe }}</span>
-      <span class="book-kind">{{ b.kind }}</span>
-      <span class="book-title">{{ b.title }}</span>
-      {% if b.subtitle %}<span class="book-sub">{{ b.subtitle }}</span>{% endif %}
-    </a>{% endmacro %}
 {% block main %}
 <section class="page-head">
   <h1>Stories</h1>

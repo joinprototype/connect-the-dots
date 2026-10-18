@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { loadGraphIndex, type GraphIndex } from '../lib/data';
-import { dataYearRange, entryYearRange, formatYear } from '../lib/dates';
+import { dataYearRange, entryYearRange, formatAsOf } from '../lib/dates';
 import { emit } from '../lib/events';
 import { edgeTime, edgeVis, lensLayers, META_ID, META_LABEL, type Filters } from '../lib/filters';
 import { findPaths } from '../lib/paths';
+import { NOTICE } from '../lib/plain';
 import type { GEdge, GNode } from '../lib/types';
 import type { WorldHandle } from '../world/embed';
 import { ExplorerEngine, type Selection } from './engine';
@@ -237,8 +238,6 @@ function Explorer({ idx }: { idx: GraphIndex }): ReactNode {
   }, [focus]);
 
   // World mode (?view=world): the whole-map tile viewer, loaded on demand (deck.gl is a separate chunk).
-  const selectNodeRef = useRef(selectNode);
-  selectNodeRef.current = selectNode;
   const focusRef = useRef(focus);
   focusRef.current = focus;
   useEffect(() => {
@@ -266,7 +265,7 @@ function Explorer({ idx }: { idx: GraphIndex }): ReactNode {
           onPick: (entity) => {
             if (!entity || !idx.nodes.has(entity.id)) return;
             pickedInWorld.current = entity.id;
-            selectNodeRef.current(entity.id);
+            selectNode(entity.id);
           },
         });
         if (cancelled) {
@@ -524,7 +523,7 @@ function Explorer({ idx }: { idx: GraphIndex }): ReactNode {
             ) : (
               <>
                 <span className="ctdx-hud-lens">{lensDef?.label ?? 'Everything'}</span>
-                {t != null ? <span className="ctdx-hud-time">as of {formatYear(t, t > 1800)}</span> : null}
+                {t != null ? <span className="ctdx-hud-time">as of {formatAsOf(t)}</span> : null}
                 {p !== 'all' ? <span className="ctdx-hud-p">{p === 'facts' ? 'Documented facts only' : `${persp.find((x) => x.id === p)?.name ?? p}'s account`}</span> : null}
                 {scope.size >= NODE_BUDGET ? <span className="ctdx-hud-budget">Showing the {NODE_BUDGET} closest</span> : null}
               </>
@@ -544,10 +543,10 @@ function Explorer({ idx }: { idx: GraphIndex }): ReactNode {
             <li className="is-accent">{view === 'graph' ? 'Selected or route' : 'Selected'}</li>
             {view === 'graph' ? <li className="is-line">Link</li> : null}
             {view === 'graph' ? <li className="is-faint">One side’s account, or being verified</li> : null}
-            {view === 'graph' && t != null ? <li className="is-past">Faded: over by {formatYear(t, t > 1800)}</li> : null}
+            {view === 'graph' && t != null ? <li className="is-past">Faded: over by {formatAsOf(t)}</li> : null}
           </ul>
         )}
-        <p className="ctdx-footer-notice">A connection is not evidence of wrongdoing.</p>
+        <p className="ctdx-footer-notice">{NOTICE}</p>
       </section>
 
       <aside className="ctdx-panel ctdx-right" aria-label="Details">

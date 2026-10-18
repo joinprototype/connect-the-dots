@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import count %}
+{% from "macros.html" import count, book %}
 {% block body_class %}home{% endblock %}
 {# the picker shows the checked question's sentence; browsers without :has() show every sentence #}
 {% block head %}{% if questions|length > 1 %}<style>.ask:has(.ask-pick :checked) .ask-panel { display: none; }{% for q in questions %} .ask:has(.ask-pick [value="{{ q.id }}"]:checked) .ask-panel[data-q="{{ q.id }}"]{% if not loop.last %},{% endif %}{% endfor %} { display: block; }</style>{% endif %}{% endblock %}
@@ -76,12 +76,7 @@
   <h2 id="shelf-h">Stories</h2>
   <div class="shelf">
     {% for b in shelf %}
-    <a class="book" href="{{ b.url }}">
-      <span class="book-cover">{{ b.cover|safe }}</span>
-      <span class="book-kind">{{ b.kind }}</span>
-      <span class="book-title">{{ b.title }}</span>
-      {% if b.subtitle %}<span class="book-sub">{{ b.subtitle }}</span>{% endif %}
-    </a>
+    {{ book(b) }}
     {% endfor %}
   </div>
 </section>

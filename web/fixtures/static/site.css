@@ -53,6 +53,10 @@ a { color: var(--ink); text-decoration-color: var(--accent); text-underline-offs
 h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.1; margin: 0; }
 h2 { margin: 2rem 0 0.8rem; }
 [hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
 .skip-link { position: absolute; left: -999px; }
 .site-header { display: flex; align-items: center; gap: 24px; padding: 12px 32px; border-bottom: 1px solid var(--rule); background: var(--paper); position: sticky; top: 0; z-index: 20; font-family: var(--font-ui); }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--font-display); font-weight: 600; }

@@ -64,7 +64,6 @@ export class Meter {
 
 export interface TileCounts {
   cached: number;
-  loaded: number;
   visible: number;
   loading: number;
   cacheBytes: number;

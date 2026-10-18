@@ -1,4 +1,5 @@
 import { loadSearch, prettifyId } from '../lib/data';
+import { el } from '../lib/dom';
 import { requestFocus } from '../lib/events';
 import { fuzzySearch, splitRanges, type FuzzyHit } from '../lib/fuzzy';
 import type { SearchEntry } from '../lib/types';
@@ -24,7 +25,7 @@ export class CtdSearch extends HTMLElement {
     this.classList.add('ctd-search');
     let input = this.querySelector('input');
     if (!input) {
-      input = document.createElement('input');
+      input = el('input');
       input.type = 'search';
       input.placeholder = this.getAttribute('placeholder') ?? 'Search people, places, ideas…';
       input.setAttribute('aria-label', 'Search');
@@ -38,9 +39,8 @@ export class CtdSearch extends HTMLElement {
     input.setAttribute('aria-expanded', 'false');
     input.setAttribute('aria-controls', `${id}-list`);
 
-    this.list = document.createElement('ul');
+    this.list = el('ul', 'ctd-search-results');
     this.list.id = `${id}-list`;
-    this.list.className = 'ctd-search-results';
     this.list.setAttribute('role', 'listbox');
     this.list.hidden = true;
     (input.closest('form') ?? input).after(this.list);
@@ -85,40 +85,20 @@ export class CtdSearch extends HTMLElement {
   private render(emptyText: string): void {
     const list = this.list;
     list.replaceChildren();
-    if (!this.hits.length) {
-      const li = document.createElement('li');
-      li.className = 'ctd-search-empty';
-      li.textContent = emptyText;
-      list.append(li);
-    }
+    if (!this.hits.length) list.append(el('li', 'ctd-search-empty', emptyText));
     this.hits.forEach((hit, i) => {
-      const li = document.createElement('li');
+      const li = el('li');
       li.id = `${list.id}-${i}`;
       li.dataset.index = String(i);
       li.dataset.type = hit.item.type;
       li.setAttribute('role', 'option');
       li.setAttribute('aria-selected', String(i === this.active));
-      const name = document.createElement('span');
-      name.className = 'ctd-search-name';
+      const name = el('span', 'ctd-search-name');
       const shown = hit.isAlias ? hit.item.name : hit.text;
       const ranges = hit.isAlias ? [] : hit.ranges;
-      for (const part of splitRanges(shown, ranges)) {
-        if (part.hit) {
-          const m = document.createElement('mark');
-          m.textContent = part.text;
-          name.append(m);
-        } else name.append(part.text);
-      }
-      const meta = document.createElement('span');
-      meta.className = 'ctd-search-meta';
-      meta.textContent = prettifyId(hit.item.type) + (hit.isAlias ? ` · also “${hit.text}”` : '');
-      li.append(name, meta);
-      if (hit.item.summary) {
-        const s = document.createElement('span');
-        s.className = 'ctd-search-summary';
-        s.textContent = hit.item.summary;
-        li.append(s);
-      }
+      for (const part of splitRanges(shown, ranges)) name.append(part.hit ? el('mark', '', part.text) : part.text);
+      li.append(name, el('span', 'ctd-search-meta', prettifyId(hit.item.type) + (hit.isAlias ? ` · also “${hit.text}”` : '')));
+      if (hit.item.summary) li.append(el('span', 'ctd-search-summary', hit.item.summary));
       list.append(li);
     });
     list.hidden = false;

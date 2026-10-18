@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import count, status_badge, question_rows %}
+{% from "macros.html" import count, status_badge, question_rows, refs, proof_fold, lifeline %}
 {# The answer to one question about one entry (docs/design/ask-anything.md §4), in reading order:
    the question, its scope line and counts, Play; the fixed notice; lines on the record; each account
    in its own equal column, A to Z; Disputed; Being verified (never counted); further questions; the
@@ -18,7 +18,7 @@
     {{ status_badge(l.status) }}
     {% if l.tier_label %}<span class="badge tier" title="Strongest source for this line">{{ l.tier_label }}</span>{% endif %}
     {# the footnotes share the badges' last row, so a long badge never leaves them on a row of their own #}
-    <span class="refs">{% for n in l.refs %}<a href="#src-{{ n }}" aria-label="Source {{ n }}">{{ n }}</a>{% endfor %}</span>
+    {{ refs(l.refs) }}
   </span>
   {% if in_column and l.quote %}<q class="answer-quote"><mark>{{ l.quote }}</mark></q>{% endif %}
   {% if l.reason %}<p class="claim-note">{% if l.status == "disputed" %}Disputed: {% endif %}{{ l.reason }}</p>{% endif %}
@@ -53,16 +53,7 @@
   {# tenures on one axis, the same design as an entry's life line; moments stay in the lists below #}
   <figure class="glance-card lifeline answer-over-time">
     <figcaption>Over time</figcaption>
-    <ol class="ll-rows">
-      {% for r in over_time.rows %}
-      <li class="ll-row{% if r.according_to %} attributed{% endif %}{% if r.status in ["draft", "disputed"] %} status-{{ r.status }}{% endif %}">
-        <span class="ll-name">{{ r.phrase }} <a href="{{ r.url }}">{{ r.name }}</a>{% if r.detail %}<span class="ll-flag"> ({{ r.detail }})</span>{% endif %}{% if r.status == "disputed" %}<span class="ll-flag">, disputed</span>{% elif r.status == "draft" %}<span class="ll-flag">, being verified</span>{% endif %}{% if r.according_to %}<span class="ll-flag">, according to {{ r.according_to|join(" and ") }}</span>{% endif %}</span>
-        <span class="ll-when">{{ r.when }}</span>
-        <span class="ll-track" aria-hidden="true"><span class="ll-bar{% if r.point %} point{% endif %}" style="left: {{ r.left }}%; width: {{ r.width }}%"></span></span>
-      </li>
-      {% endfor %}
-      <li class="ll-axis" aria-hidden="true"><span class="ll-ticks">{% for t in over_time.ticks %}<span style="left: {{ t.left }}%">{{ t.label }}</span>{% endfor %}</span></li>
-    </ol>
+    {{ lifeline(over_time) }}
   </figure>
   {% endif %}
 
@@ -136,21 +127,7 @@
   {% endif %}
 
   <div class="folds">
-    {% if sources %}
-    <details class="fold sources" id="proof">
-      <summary>Proof <span class="count">{{ count(sources|length, "source") }}</span></summary>
-      <ol class="source-list">
-        {% for s in sources %}
-        <li id="src-{{ s.n }}">
-          <span class="src-title">{% if s.url %}<a href="{{ s.url }}" rel="external">{{ s.title }}</a>{% else %}{{ s.title }}{% endif %}</span>{% if s.publisher %}, {% if s.publisher_url %}<a href="{{ s.publisher_url }}">{{ s.publisher }}</a>{% else %}{{ s.publisher }}{% endif %}{% endif %}{% if s.published %}, {{ s.published }}{% endif %}.
-          <span class="badge tier">{{ s.tier_label }}</span>
-          {% if s.archive_url %}<a class="archived" href="{{ s.archive_url }}">Archived copy</a>{% endif %}
-          {% for q in s.quotes %}<blockquote><mark>{{ q }}</mark></blockquote>{% endfor %}
-        </li>
-        {% endfor %}
-      </ol>
-    </details>
-    {% endif %}
+    {{ proof_fold(sources) }}
     <details class="fold" id="how">
       <summary>How this answer is built</summary>
       <div class="prose">

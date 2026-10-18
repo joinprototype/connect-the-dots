@@ -46,7 +46,7 @@ export function measureText(text: string, px: number, family: string, weight = 5
   return ctx.measureText(text).width;
 }
 
-interface Box {
+export interface Box {
   x0: number;
   y0: number;
   x1: number;

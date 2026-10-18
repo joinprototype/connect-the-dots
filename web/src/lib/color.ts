@@ -49,10 +49,6 @@ export function mix(a: RGB, b: RGB, t: number): RGB {
   return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
 }
 
-export function rgbOf(color: string): RGB {
-  return parseHex(color) ?? cssColorToRgb(color);
-}
-
 /**
  * Sigma blends with premultiplied alpha (gl.ONE, gl.ONE_MINUS_SRC_ALPHA), so translucent colors
  * must be premultiplied to fade properly on any background.
@@ -73,12 +69,3 @@ export function cssRgba(rgb: RGB, alpha = 1): string {
  * in light mode and 7:1 in dark.
  */
 export const FADED_TEXT_ALPHA = 0.65;
-
-/** Relative luminance, 0..1. */
-export function luminance([r, g, b]: RGB): number {
-  const f = (v: number) => {
-    const s = v / 255;
-    return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
-  };
-  return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
-}

@@ -4,6 +4,7 @@ import { Map as MapLibre, Marker, setWorkerUrl, type GeoJSONSource } from 'mapli
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url';
 import { tokenRgb } from '../lib/color';
 import type { GraphIndex } from '../lib/data';
+import { el } from '../lib/dom';
 import type { Shot } from '../lib/types';
 import { calmBasemap, loadMapCss, MAP_STYLE, rgb } from '../world/basemap';
 
@@ -121,9 +122,8 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
     const keep = new Set(ids);
     for (const [id, m] of markers) {
       if (keep.has(id)) continue;
-      const el = m.getElement();
       if (reduced) m.remove();
-      else gsap.to(el.firstElementChild, { autoAlpha: 0, scale: 0.6, duration: 0.3, onComplete: () => m.remove() });
+      else gsap.to(m.getElement().firstElementChild, { autoAlpha: 0, scale: 0.6, duration: 0.3, onComplete: () => m.remove() });
       markers.delete(id);
     }
     ids.forEach((id, i) => {
@@ -131,18 +131,11 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
       if (!n?.coords) return;
       let m = markers.get(id);
       if (!m) {
-        const el = document.createElement('div');
-        el.className = 'story-marker';
-        const inner = document.createElement('div');
-        inner.className = 'story-marker-inner';
-        const dot = document.createElement('span');
-        dot.className = 'story-marker-dot';
-        const label = document.createElement('span');
-        label.className = 'story-marker-label';
-        label.textContent = n.name;
-        inner.append(dot, label);
-        el.append(inner);
-        m = new Marker({ element: el, anchor: 'left', offset: [-7, 0] }).setLngLat(n.coords).addTo(map);
+        const inner = el('div', 'story-marker-inner');
+        inner.append(el('span', 'story-marker-dot'), el('span', 'story-marker-label', n.name));
+        const marker = el('div', 'story-marker');
+        marker.append(inner);
+        m = new Marker({ element: marker, anchor: 'left', offset: [-7, 0] }).setLngLat(n.coords).addTo(map);
         markers.set(id, m);
         if (!reduced) gsap.from(inner, { autoAlpha: 0, y: 8, duration: 0.5, delay: 0.6 + i * 0.15, ease: 'back.out(2)' });
       }

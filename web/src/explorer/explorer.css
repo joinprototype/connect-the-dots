@@ -2,8 +2,6 @@
    the "night" tokens are the app surfaces (light by default, dark with prefers-color-scheme).
    One accent for selection, focus and paths; meaning is never carried by hue alone. */
 
-.ctdx-root { display: block; }
-.ctdx, .ctdx * { box-sizing: border-box; }
 .ctdx {
   --ctdx-fill: color-mix(in srgb, var(--night-ink) 6%, var(--night-2));
   --ctdx-fill-2: color-mix(in srgb, var(--night-ink) 10%, var(--night-2));
@@ -37,7 +35,6 @@
 .ctdx button, .ctdx input, .ctdx select { font: inherit; color: inherit; }
 /* a solid accent ring, as on the reading pages: at least 3:1 against every surface in both modes */
 .ctdx :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
-.ctdx .sr-only, .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* ---------------------------------------------------------------- loading / error */
 .ctdx-state {
@@ -193,7 +190,6 @@
 /* ---------------------------------------------------------------- canvas */
 .ctdx-canvas { grid-area: canvas; position: relative; min-width: 0; min-height: 0; overflow: hidden; background: var(--paper); }
 .ctdx-stage { position: absolute; inset: 0; }
-.ctdx-stage[hidden] { display: none; }
 /* Its own stacking context: nothing the world viewer draws (loading or error panels) covers the controls. */
 .ctdx-world { position: absolute; inset: 0; z-index: 0; }
 .ctdx-world-failed {
@@ -300,8 +296,6 @@
 .ctdx-row { border: 0; background: none; padding: 0; cursor: pointer; text-align: left; font-weight: 500; color: var(--night-ink); }
 .ctdx-row:hover .ctdx-row-name, .ctdx-row:hover { color: var(--accent); }
 .ctdx-detail { color: var(--night-muted); font-weight: 400; }
-.ctdx-claim-id { margin-top: 16px; color: var(--night-muted); font-size: 0.78rem; }
-.ctdx-claim-id code { font-family: var(--font-mono); }
 
 .ctdx-claim { position: relative; margin: 10px 0; padding: 14px 16px; border-radius: var(--ctdx-card); background: var(--night-2); box-shadow: var(--ctdx-shadow), 0 0 0 1px var(--ctdx-hair); }
 .ctdx-claim.is-attributed { box-shadow: var(--ctdx-shadow); outline: 1px dashed var(--night-rule); outline-offset: -1px; }
@@ -329,7 +323,7 @@
 .ctdx-badge.is-when { font-variant-numeric: tabular-nums; }
 .ctdx-badge.is-tier { font-variant-numeric: tabular-nums; color: var(--night-muted); }
 .ctdx-badge.is-attrib { background: transparent; border: 1px dashed var(--night-muted); }
-.ctdx-badge.is-draft, .ctdx-badge.is-disputed { background: transparent; border-color: var(--night-rule); color: var(--night-muted); }
+.ctdx-badge.is-draft { background: transparent; border-color: var(--night-rule); color: var(--night-muted); }
 .ctdx-badge.is-confirmed::before { content: "✓"; font-weight: 700; }
 .ctdx-badge.is-passive { background: transparent; border: 1px dotted var(--night-muted); color: var(--night-muted); }
 .ctdx-badge.is-past, .ctdx-badge.is-future { background: transparent; border: 1px dashed var(--night-rule); color: var(--night-muted); margin-left: 4px; }
@@ -349,14 +343,9 @@
 }
 .ctdx-path-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
 .ctdx-path-title span[aria-hidden] { color: var(--accent); }
-.ctdx-path-stats { display: flex; gap: 22px; margin: 10px 0; }
-.ctdx-path-stats div { display: grid; }
-.ctdx-path-stats dt { font-size: 0.84rem; color: var(--night-muted); }
-.ctdx-path-stats dd { margin: 0; font: 600 1.2rem var(--font-ui); font-variant-numeric: tabular-nums; }
 .ctdx-flags { display: flex; gap: 6px; flex-wrap: wrap; }
 .ctdx-notice { margin: 18px 0 0; padding: 12px 14px; border-radius: 12px; font-size: 0.84rem; color: var(--night-muted); background: var(--night); }
 .ctdx-notice strong { color: var(--night-ink); font-family: var(--font-body); font-style: italic; font-weight: 500; }
-.ctdx-section-h.is-a, .ctdx-section-h.is-b, .ctdx-section-h.is-both { color: var(--night-ink); }
 .ctdx-diff-pick { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0 4px; }
 .ctdx-diff-list li { padding-top: 7px; padding-bottom: 7px; }
 .ctdx-note.is-past { color: var(--night-ink); }
@@ -374,8 +363,4 @@
   .ctdx-right .ctdx-tabs { position: static; }
   .ctdx-legend { display: none; }
   .ctdx-hud { max-width: calc(100% - 32px); top: 56px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ctdx *, .ctdx-loader { animation: none !important; transition: none !important; }
 }

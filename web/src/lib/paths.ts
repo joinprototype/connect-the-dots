@@ -21,10 +21,6 @@ export interface PathOptions {
   allowEdge?: (e: GEdge) => boolean;
   /** A time filter is active, so undated claims pay delta_undated. */
   timeFilterActive?: boolean;
-  /** Defaults to methodology.k_paths. */
-  k?: number;
-  /** Defaults to methodology.max_hops. */
-  maxHops?: number;
 }
 
 export interface PathHop {
@@ -32,11 +28,7 @@ export interface PathHop {
   /** Traversal order (not necessarily the claim's direction). */
   from: string;
   to: string;
-  /** True when the hop follows the claim's own direction (from -> to). */
-  forward: boolean;
   cost: number;
-  /** Evidence strength used in the cost. */
-  p: number;
 }
 
 export interface PathResult {
@@ -44,8 +36,6 @@ export interface PathResult {
   hops: PathHop[];
   /** Methodology cost without diversity penalties. */
   cost: number;
-  /** Weakest evidence strength along the path. */
-  weakest: number;
   flags: string[];
 }
 
@@ -77,20 +67,18 @@ export function hopCost(
   degU: number,
   degV: number,
   timeFilterActive: boolean,
-): { cost: number; p: number } {
+): number {
   const w = m.weights[e.rel] ?? m.default_weight;
   const p = evidenceStrength(m, e);
   let cost = w * (1 + m.beta * (1 - p)) + m.lambda * 0.5 * (Math.log1p(degU) + Math.log1p(degV));
   if (timeFilterActive && !e.when) cost += m.delta_undated;
-  return { cost, p };
+  return cost;
 }
 
 interface Arc {
   to: string;
   edge: GEdge;
-  forward: boolean;
   cost: number;
-  p: number;
 }
 
 interface Label {
@@ -166,9 +154,9 @@ export function buildArcs(idx: GraphIndex, opts: PathOptions = {}): Map<string, 
     if (opts.allowEdge && !opts.allowEdge(e)) continue;
     const du = deg.get(e.from)?.get(e.rel) ?? 0;
     const dv = deg.get(e.to)?.get(e.rel) ?? 0;
-    const { cost, p } = hopCost(m, e, du, dv, !!opts.timeFilterActive);
-    add(e.from, { to: e.to, edge: e, forward: true, cost, p });
-    add(e.to, { to: e.from, edge: e, forward: false, cost, p });
+    const cost = hopCost(m, e, du, dv, !!opts.timeFilterActive);
+    add(e.from, { to: e.to, edge: e, cost });
+    add(e.to, { to: e.from, edge: e, cost });
   }
   return arcs;
 }
@@ -218,7 +206,7 @@ function search(
 function unwind(idx: GraphIndex, end: Label): PathResult {
   const hops: PathHop[] = [];
   for (let l: Label | null = end; l && l.arc && l.prev; l = l.prev) {
-    hops.push({ edge: l.arc.edge, from: l.prev.node, to: l.node, forward: l.arc.forward, cost: l.arc.cost, p: l.arc.p });
+    hops.push({ edge: l.arc.edge, from: l.prev.node, to: l.node, cost: l.arc.cost });
   }
   hops.reverse();
   const nodes = hops.length ? [hops[0].from, ...hops.map((h) => h.to)] : [end.node];
@@ -231,7 +219,6 @@ function unwind(idx: GraphIndex, end: Label): PathResult {
     nodes,
     hops,
     cost: hops.reduce((s, h) => s + h.cost, 0),
-    weakest: hops.length ? Math.min(...hops.map((h) => h.p)) : 1,
     flags,
   };
 }
@@ -240,8 +227,8 @@ function unwind(idx: GraphIndex, end: Label): PathResult {
 export function findPaths(idx: GraphIndex, from: string, to: string, opts: PathOptions = {}): PathResult[] {
   if (!idx.nodes.has(from) || !idx.nodes.has(to) || from === to) return [];
   const m = idx.data.methodology;
-  const k = Math.max(1, opts.k ?? m.k_paths ?? 5);
-  const maxHops = Math.max(1, opts.maxHops ?? m.max_hops ?? 10);
+  const k = Math.max(1, m.k_paths ?? 5);
+  const maxHops = Math.max(1, m.max_hops ?? 10);
   const penalty = m.reuse_penalty ?? 3;
   const arcs = buildArcs(idx, opts);
 

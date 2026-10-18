@@ -5,7 +5,7 @@ import type { Attributes } from 'graphology-types';
 import type Sigma from 'sigma';
 import type { NodeDisplayData, PartialButFor } from 'sigma/types';
 import { cssRgba, type RGB } from './color';
-import { canvasAnchor, measureText, placeLabels, Spot, type PlacedLabel } from './labels';
+import { canvasAnchor, measureText, placeLabels, Spot, type Box, type PlacedLabel } from './labels';
 
 type DrawData = PartialButFor<NodeDisplayData, 'x' | 'y' | 'size' | 'label' | 'color'>;
 
@@ -28,8 +28,6 @@ function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: numbe
 }
 
 const labelWidths = new Map<string, number>();
-
-type Box = { x0: number; y0: number; x1: number; y1: number };
 
 /**
  * Where makeHoverDrawer's card goes for a dot at (x, y) of radius r in a view `width` wide: right of

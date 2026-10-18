@@ -2,6 +2,9 @@
 import type { GraphData, GEdge } from './types';
 import type { PathResult } from './paths';
 
+/** Shown wherever connections are: on route explanations, under the explorer and on the map. */
+export const NOTICE = 'A connection is not evidence of wrongdoing.';
+
 /** Fallback for older graph.json files without `tiers` (content/schema/source-tiers.yaml is the source). */
 const TIER_LABELS: Record<string, string> = {
   T1: 'Primary record',

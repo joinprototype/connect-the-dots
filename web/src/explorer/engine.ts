@@ -21,6 +21,7 @@ import {
   type Vis,
 } from '../lib/filters';
 import type { PathResult } from '../lib/paths';
+import { hash01 } from '../lib/hash';
 import { capPixelRatio, drawPlacedLabels, makeHoverDrawer } from '../lib/sigma-draw';
 
 export type Selection = { kind: 'node'; id: string } | { kind: 'edge'; id: string } | null;
@@ -58,17 +59,6 @@ interface EdgeAttrs {
   meta: boolean;
   weight: number;
   [key: string]: unknown;
-}
-
-
-/** FNV-1a hash -> [0, 1), for deterministic seeding. */
-function hash01(s: string, salt = 0): number {
-  let h = 0x811c9dc5 ^ salt;
-  for (let i = 0; i < s.length; i++) {
-    h ^= s.charCodeAt(i);
-    h = Math.imul(h, 0x01000193);
-  }
-  return ((h >>> 0) % 100000) / 100000;
 }
 
 export class ExplorerEngine {
@@ -447,24 +437,13 @@ export class ExplorerEngine {
 
   // ------------------------------------------------------------------ camera
 
-  /** Frame the node and its visible neighbours. */
-  flyTo(id: string): void {
-    const node = this.displayNode(id);
-    if (!this.graph.hasNode(node)) return;
-    const ids = new Set([node]);
-    this.graph.forEachEdge(node, (edge, _a, s, t) => {
-      if ((this.edgeVisMap.get(edge) ?? 'hide') !== 'hide') ids.add(s === node ? t : s);
-    });
-    this.frame([...ids], 0.6);
-  }
-
-  private frame(ids: string[], minRatio: number): void {
+  private frame(ids: string[]): void {
     const pts = ids.map((n) => this.sigma.getNodeDisplayData(n)).filter((d): d is NodeDisplayData => !!d && !d.hidden);
     if (!pts.length) return;
     const xs = pts.map((p) => p.x);
     const ys = pts.map((p) => p.y);
     const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
-    const ratio = Math.max(pts.length === 1 ? minRatio : 0.2, Math.min(1.2, Math.max(x1 - x0, y1 - y0) * 1.5 + 0.08));
+    const ratio = Math.max(pts.length === 1 ? 0.6 : 0.2, Math.min(1.2, Math.max(x1 - x0, y1 - y0) * 1.5 + 0.08));
     const state = { x: (x0 + x1) / 2, y: (y0 + y1) / 2, ratio };
     const cam = this.sigma.getCamera();
     if (this.reducedMotion) cam.setState(state);
@@ -472,7 +451,7 @@ export class ExplorerEngine {
   }
 
   fitPath(path: PathResult): void {
-    this.frame([...new Set(path.nodes.map((n) => this.displayNode(n)))], 0.6);
+    this.frame([...new Set(path.nodes.map((n) => this.displayNode(n)))]);
   }
 
   /** Frame everything that is drawn (after the explored neighbourhood grows). */
@@ -481,13 +460,7 @@ export class ExplorerEngine {
     this.graph.forEachNode((node) => {
       if ((this.nodeVis.get(node) ?? 'hide') !== 'hide') ids.push(node);
     });
-    this.frame(ids, 0.6);
-  }
-
-  resetCamera(): void {
-    const cam = this.sigma.getCamera();
-    if (this.reducedMotion) cam.setState({ x: 0.5, y: 0.5, ratio: 1, angle: 0 });
-    else void cam.animatedReset({ duration: 500 });
+    this.frame(ids);
   }
 
   zoom(factor: number): void {
