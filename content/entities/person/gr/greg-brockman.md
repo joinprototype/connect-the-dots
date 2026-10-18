@@ -35,4 +35,10 @@ claims:
     role: "donor"
     src:
       - {s: openai-2015-12-11-introducing-openai, quote: "Sam, Greg, Elon, Reid Hoffman, Jessica Livingston, Peter Thiel, Amazon Web Services (AWS), Infosys, and YC Research are donating to support OpenAI. In total, these funders have committed $1 billion, although we expect to only spend a tiny fraction of this in the next few years."}
+  - id: c5
+    rel: invested_in
+    to: scale-ai
+    note: "Index Ventures' 2018 release lists him among individual investors to that date and writes 'OpenAPI co-founder' (sic); the round, date and amount are not stated."
+    src:
+      - {s: index-ventures-2018-08-07-scale-announces-18-million-series, quote: "Individual investors included OpenAPI co-founder Greg Brockman, Quora co-founder Charlie Cheever, Jonathan Swanson, co-founder of Thumbtack, Xamarin co-founder Nat Friedman, ZEIT founder Guillermo Rauch and Parse co-founder Ilya Sukhar."}
 ---

@@ -122,4 +122,11 @@ claims:
     src:
       - {s: yc-2014-02-21-sam-altman-for-president, quote: "I’m delighted to announce that Sam Altman has agreed to become president of Y Combinator starting next batch."}
       - {s: britannica-sam-altman, quote: "Sam Altman (born April 22, 1985, Chicago, Illinois, U.S.) is an American entrepreneur who was president of the start-up accelerator Y Combinator from 2014 to 2019 and chief executive officer (CEO) of the artificial intelligence (AI) company OpenAI beginning in 2019."}
+  - id: c16
+    rel: board_member_of
+    to: expedia-group
+    when: "2019-09-10/2023-06-01"
+    src:
+      - {s: expedia-group-2019-09-10-expedia-group-inc-form-8, at: "Item 5.02", quote: "elected Samuel Altman to fill the newly-created directorship. Mr. Altman is the Chief Executive Officer and a member of the Board of Directors of OpenAI an organization dedicated to ensuring artificial intelligence benefits all of humanity."}
+      - {s: expedia-group-2023-06-02-expedia-group-inc-form-8, at: "(a) Samuel Altman Resignation", quote: "Effective as of June 1, 2023, Samuel Altman resigned from the Expedia Group, Inc. (the “Company”) Board of Directors (the “Board”)."}
 ---

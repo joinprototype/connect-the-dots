@@ -23,4 +23,16 @@ claims:
     note: "Announced by Sam Altman, then YC's president, as a non-profit research lab."
     src:
       - {s: yc-2015-10-07-yc-research, quote: "So we’re starting a new research lab, which we’re calling YC Research, to work on some of these areas."}
+  - id: c3
+    rel: invested_in
+    to: scale-ai
+    when: "2016"
+    role: "Summer 2016 batch"
+    note: "Also took part in the 2018 Series B as an existing investor. Scale’s 2018 release describes the May 2017 Series A as led by Accel and Y Combinator."
+    src:
+      - {s: y-combinator-undated-scale-ai-data-centric-infrastructure, at: "company page, batch label", quote: "Summer 2016"}
+      - {s: forbes-2019-12-22-how-22-year-old-founder, at: "Forbes contributor article; read via Internet Archive capture of 2024-12-24 (https://web.archive.org/web/20241224145842/https://www.forbes.com/sites/stevenli1/2019/12/22/scale-ai-growth-story/)", quote: "drop out of MIT, and start Scale AI after accepting an initial investment from YCombinator"}
+      - {s: techcrunch-2018-08-07-scale-whose-army-humans-annotate, quote: "This latest funding round was led by Index, with existing investors Accel and Y Combinator (where Scale was incubated), also participated in this Series B"}
+      - {s: index-ventures-2018-08-07-scale-announces-18-million-series, at: "Scale’s press release, as posted by Index Ventures", quote: "including a $4.5 million Series A in May 2017 led by Accel and Y Combinator."}
+      - {s: y-combinator-undated-scale-ai-data-centric-infrastructure, at: "company facts", quote: "Batch: Summer 2016"}
 ---

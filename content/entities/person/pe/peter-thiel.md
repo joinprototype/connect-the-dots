@@ -69,6 +69,27 @@ claims:
     src:
       - {s: nyt-2017-02-01-thiel-new-zealand, at: "paragraph 2", quote: "The 49-year-old investor, who was born in Germany, was granted New Zealand citizenship in 2011 but kept his American citizenship."}
       - {s: cbs-ap-2017-02-01-thiel-new-zealand, at: "paragraph 10", quote: "The 2011 documents show that Thiel also remained a citizen of Germany, where he was born."}
+  - id: c10
+    rel: worked_at
+    to: founders-fund
+    when: "2005/.."
+    title: "Partner"
+    note: "TechCrunch quoted a statement from Thiel about Scale in its report on the August 2019 Series C."
+    src:
+      - {s: meta-platforms-2012-02-01-facebook-inc-registration-statement-form, at: "Management", quote: "Since 2005, Mr. Thiel has been a Partner of Founders Fund, a venture capital firm."}
+      - {s: techcrunch-2019-08-05-scale-ai-22-year-old, quote: "Scale AI will last over time because it provides core infrastructure to the most important players in the space,” Founders Fund partner and former Trump advisor Peter Thiel said in a statement."}
+      - {s: founders-fund-undated-peter-thiel-founders-fund, at: "team page, biography", quote: "He is a partner at Founders Fund, a Silicon Valley venture capital firm that has funded companies including SpaceX and Airbnb."}
+      - {s: techcrunch-2019-08-05-scale-ai-22-year-old, quote: "Founders Fund partner and former Trump advisor Peter Thiel said in a statement."}
+  - id: c11
+    rel: invested_in
+    to: quora
+    when: "2012-05"
+    role: "led the $50 million round"
+    note: "TechCrunch reported that Thiel led the round personally and not through Founders Fund; his own amount is not stated."
+    src:
+      - {s: techcrunch-2012-05-14-quora-raises-50m-at-400m, quote: "it looks like Facebook board member Peter Thiel has beat out many other investors including a much-rumored KPCB to lead the round."}
+      - {s: techcrunch-2012-05-14-quora-raises-50m-at-400m, quote: "Thiel is leading personally and not through Founders Fund, breaking up the remaining $30 million between Matrix and Northbridge."}
+      - {s: techcrunch-2012-05-14-quora-raises-50m-at-400m, quote: "Q&A site Quora has raised $50 million at a $400 million pre-money valuation according to a report by the Wall Street Journal and confirmed to me by the founders themselves."}
 ---
 
 Peter Thiel co-founded [[paypal]] in 1998, where he crossed paths with [[elon-musk]], and became [[meta-platforms|Facebook]]'s first outside investor in 2004: $500,000 for 10.2%. He sat on Facebook's board from April 2005 to May 2022.
