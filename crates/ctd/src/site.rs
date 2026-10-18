@@ -26,7 +26,6 @@ mod dossier;
 mod history;
 mod question;
 
-use dossier::dossier;
 use history::{History, git};
 use question::{answer_counts, answer_view};
 
@@ -627,47 +626,8 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
             }
         }
         timeline.sort_by(|a, b| a.start.total_cmp(&b.start));
-        // who a person is (ADR-0016): where they were born, citizenship, education, and the sourced
-        // background lines; heritage stays on this page and is never a link
-        let background = {
-            let rows: Vec<Value> = items
-                .iter()
-                .filter(|(e, outgoing)| *outgoing && e.status != "deprecated" && kb.schema.relations[&e.rel].background)
-                .map(|(e, _)| {
-                    json!({ "phrase": kb.schema.relations[&e.rel].label, "node": cx.node(&e.to), "when": e.when.as_ref().map(|w| &w.label),
-                            "detail": link_detail(kb, e, true), "refs": notes.refs(&e.sources),
-                            "draft": e.status == "draft", "disputed": e.status == "disputed", "reason": e.reason })
-                })
-                .collect();
-            let lines: Vec<Value> = ent.background.iter().map(|b| json!({ "text": b.text, "refs": notes.refs(&b.sources) })).collect();
-            if rows.is_empty() && lines.is_empty() { Value::Null } else { json!({ "rows": rows, "lines": lines }) }
-        };
-        // what courts and regulators decided about it (ADR-0018): each case's steps together, in date
-        // order, with the caveats of the relations it holds
-        let legal = {
-            let mut steps: Vec<&Edge> =
-                items.iter().filter(|(e, out)| *out && e.status != "deprecated" && kb.schema.relations[&e.rel].legal).map(|(e, _)| *e).collect();
-            steps.sort_by(|a, b| a.start().total_cmp(&b.start()).then(a.id.cmp(&b.id)));
-            let mut cases: Vec<(Option<&str>, Vec<Value>)> = Vec::new();
-            let mut caveats: Vec<&str> = Vec::new();
-            for e in steps {
-                let rel = &kb.schema.relations[&e.rel];
-                if let Some(c) = rel.caveat.as_deref()
-                    && !caveats.contains(&c)
-                {
-                    caveats.push(c);
-                }
-                let step = json!({ "when": e.when.as_ref().map(|w| &w.label), "phrase": rel.label, "node": cx.node(&e.to), "detail": link_detail(kb, e, true),
-                                   "refs": notes.refs(&e.sources), "draft": e.status == "draft", "disputed": e.status == "disputed", "reason": e.reason, "note": e.note });
-                let case = e.qualifiers.get("case").and_then(Value::as_str);
-                match cases.iter_mut().find(|(c, _)| case.is_some() && *c == case) {
-                    Some((_, list)) => list.push(step),
-                    None => cases.push((case, vec![step])),
-                }
-            }
-            let cases: Vec<Value> = cases.into_iter().map(|(case, steps)| json!({ "case": case, "steps": steps })).collect();
-            if cases.is_empty() { Value::Null } else { json!({ "cases": cases, "caveats": caveats }) }
-        };
+        let background = dossier::background(&cx, ent, &items, &mut notes);
+        let legal = dossier::legal(&cx, &items, &mut notes);
         let srcs = notes.sources(kb);
         let place = ent.place.as_ref().map(|p| cx.node(p));
         let here = here_of.get(ent.id.as_str()).map(|list| {
@@ -685,7 +645,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
             }
             None => None,
         };
-        let glance = dossier(&cx, ent, &items, now);
+        let glance = dossier::dossier(&cx, ent, &items, now);
         let evidence_line = {
             let primary = items.iter().filter(|(e, _)| e.tier.as_ref().and_then(|t| kb.schema.tiers.get(t)).is_some_and(|t| t.primary)).count();
             let drafts = items.iter().filter(|(e, _)| e.status == "draft").count();

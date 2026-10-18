@@ -1,9 +1,9 @@
-//! The dossier at the top of an entity page: family ties, the life line, holders and holdings,
-//! and "How each side tells it".
+//! The dossier at the top of an entity page: background, family ties, the life line, holders and
+//! holdings, "How each side tells it", and legal records.
 
 use serde_json::{Value, json};
 
-use super::{Ctx, link_detail, link_phrase};
+use super::{Ctx, Footnotes, link_detail, link_phrase};
 use crate::{
     edtf::Span,
     kb::{Edge, Entity},
@@ -273,4 +273,48 @@ mod tests {
         }
         assert_eq!(said, [r#""vox": "acme" draft null"#, r#""lex": "beta" disputed "Lex alone says so.""#]);
     }
+}
+
+/// Who a person is (ADR-0016): where they were born, citizenship, education, and the sourced
+/// background lines. Heritage stays on this page and is never a link. Null when there is none.
+pub(super) fn background(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], notes: &mut Footnotes) -> Value {
+    let kb = cx.kb;
+    let rows: Vec<Value> = items
+        .iter()
+        .filter(|(e, outgoing)| *outgoing && e.status != "deprecated" && kb.schema.relations[&e.rel].background)
+        .map(|(e, _)| {
+            json!({ "phrase": kb.schema.relations[&e.rel].label, "node": cx.node(&e.to), "when": e.when.as_ref().map(|w| &w.label),
+                    "detail": link_detail(kb, e, true), "refs": notes.refs(&e.sources),
+                    "draft": e.status == "draft", "disputed": e.status == "disputed", "reason": e.reason })
+        })
+        .collect();
+    let lines: Vec<Value> = ent.background.iter().map(|b| json!({ "text": b.text, "refs": notes.refs(&b.sources) })).collect();
+    if rows.is_empty() && lines.is_empty() { Value::Null } else { json!({ "rows": rows, "lines": lines }) }
+}
+
+/// What courts and regulators decided about it (ADR-0018): each case's steps together, in date order,
+/// with the caveats of the relations it holds. Null when there is none.
+pub(super) fn legal(cx: &Ctx, items: &[(&Edge, bool)], notes: &mut Footnotes) -> Value {
+    let kb = cx.kb;
+    let mut steps: Vec<&Edge> = items.iter().filter(|(e, out)| *out && e.status != "deprecated" && kb.schema.relations[&e.rel].legal).map(|(e, _)| *e).collect();
+    steps.sort_by(|a, b| a.start().total_cmp(&b.start()).then(a.id.cmp(&b.id)));
+    let mut cases: Vec<(Option<&str>, Vec<Value>)> = Vec::new();
+    let mut caveats: Vec<&str> = Vec::new();
+    for e in steps {
+        let rel = &kb.schema.relations[&e.rel];
+        if let Some(c) = rel.caveat.as_deref()
+            && !caveats.contains(&c)
+        {
+            caveats.push(c);
+        }
+        let step = json!({ "when": e.when.as_ref().map(|w| &w.label), "phrase": rel.label, "node": cx.node(&e.to), "detail": link_detail(kb, e, true),
+                           "refs": notes.refs(&e.sources), "draft": e.status == "draft", "disputed": e.status == "disputed", "reason": e.reason, "note": e.note });
+        let case = e.qualifiers.get("case").and_then(Value::as_str);
+        match cases.iter_mut().find(|(c, _)| case.is_some() && *c == case) {
+            Some((_, list)) => list.push(step),
+            None => cases.push((case, vec![step])),
+        }
+    }
+    let cases: Vec<Value> = cases.into_iter().map(|(case, steps)| json!({ "case": case, "steps": steps })).collect();
+    if cases.is_empty() { Value::Null } else { json!({ "cases": cases, "caveats": caveats }) }
 }
