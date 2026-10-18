@@ -32,7 +32,7 @@ An entry's page shows what courts and regulators decided about it, each step of 
 - [x] **S11-05 Listen reads quote cards**: after a scene's narration, "In their words:" and the quote, with who said it.
 
 ### Should
-- [ ] **S11-06** The explorer merges parallel links between two entries into one line with a count, as the story graph does (backlog).
+- [x] **S11-06** The explorer merges parallel links between two entries into one line, a little thicker for each link (backlog). 64 pairs have several links today, up to 7 (Eric Schmidt and Google).
 
 ### Not in this sprint
 - Cases as entries of their own; pardons, sentences and civil suits (ADR-0018, "Revisit when").
@@ -55,14 +55,13 @@ An entry's page shows what courts and regulators decided about it, each step of 
 ## Self-check (before the demo)
 
 - [x] Tests and lints pass (65 engine tests, clippy, typecheck)
-- [x] Phone sweep clean (static build, CSP enforced, `--a11y`): 699 pages, 0 problems; contrast 55,041 texts, 0 too low
+- [x] Phone sweep clean (static build, CSP enforced, `--a11y`): 707 pages with the later records, 0 problems; contrast 55,904 texts, 0 too low
 - [x] Demo script executed; screenshots saved in `docs/sprints/sprint-11/` (Watch with Listen not heard: no voice in headless Chrome)
 - [x] Docs and ADRs updated (ADR-0018, content model, data contract, CONTRIBUTING recipe 7)
 - [x] Known issues listed
 
 ## Known issues
 
-- **S11-06** (Should) is not done: parallel links between two entries still overlap in the explorer. Clicking one shows the others under "Also between them".
 - Listen reading quote cards was checked in code and for errors, not by ear: headless Chrome has no voice.
 
 ## Review

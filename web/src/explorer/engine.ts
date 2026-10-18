@@ -23,6 +23,7 @@ import {
 import type { PathResult } from '../lib/paths';
 import { hash01 } from '../lib/hash';
 import { capPixelRatio, drawPlacedLabels, makeHoverDrawer } from '../lib/sigma-draw';
+import type { GEdge } from '../lib/types';
 
 export type Selection = { kind: 'node'; id: string } | { kind: 'edge'; id: string } | null;
 
@@ -78,6 +79,10 @@ export class ExplorerEngine {
   private emphasis: { nodes: Set<string>; edges: Set<string>; strong: boolean } | null = null;
   /** Fund holdings drawn as their own line although grouped: see ownLines(). */
   private ungrouped = new Set<string>();
+  /** Links between the same two entries are drawn as one line: each hidden one → the drawn one. */
+  private drawnAs = new Map<string, string>();
+  /** A drawn line that stands for several links → how many. */
+  private parallel = new Map<string, number>();
   private hovered: string | null = null;
   private selectListeners: ((s: Selection) => void)[] = [];
   private ro: ResizeObserver;
@@ -257,7 +262,8 @@ export class ExplorerEngine {
   /** Edge drawn for a claim (collapsed passive claims are drawn as meta-edges). */
   displayEdge(claimId: string): string {
     const e = this.idx.edges.get(claimId);
-    return e && e.passive && this.collapsed() && !this.ungrouped.has(claimId) ? metaEdgeId(e.to) : claimId;
+    if (e && e.passive && this.collapsed() && !this.ungrouped.has(claimId)) return metaEdgeId(e.to);
+    return this.drawnAs.get(claimId) ?? claimId;
   }
 
   /**
@@ -314,10 +320,45 @@ export class ExplorerEngine {
       const any = [...this.pm.byTarget.keys()].some((t) => ev.get(metaEdgeId(t)) !== 'hide');
       nv.set(META_ID, collapsed && any ? 'show' : 'hide');
     }
+    this.mergeParallel(ev);
     this.edgeVisMap = ev;
     this.nodeVis = nv;
     this.emphasis = this.computeEmphasis();
     this.sigma?.refresh();
+  }
+
+  /**
+   * Several links shown between the same two entries are drawn as one line, a little thicker for each
+   * (the panel lists them all, under "Also between them"). The line drawn is the most visible one,
+   * documented fact before an account or a draft.
+   */
+  private mergeParallel(ev: Map<string, Vis>): void {
+    this.drawnAs = new Map();
+    this.parallel = new Map();
+    const pairs = new Map<string, GEdge[]>();
+    for (const [id, v] of ev) {
+      const e = this.idx.edges.get(id);
+      if (!e || v === 'hide') continue;
+      const key = e.from < e.to ? `${e.from} ${e.to}` : `${e.to} ${e.from}`;
+      pairs.set(key, [...(pairs.get(key) ?? []), e]);
+    }
+    const rank: Record<Vis, number> = { show: 0, past: 1, dim: 2, hide: 3 };
+    for (const list of pairs.values()) {
+      if (list.length < 2) continue;
+      list.sort(
+        (a, b) =>
+          rank[ev.get(a.id)!] - rank[ev.get(b.id)!] ||
+          Number(isFaint(a)) - Number(isFaint(b)) ||
+          Number(a.passive) - Number(b.passive) ||
+          (a.id < b.id ? -1 : 1),
+      );
+      const [drawn, ...rest] = list;
+      this.parallel.set(drawn.id, list.length);
+      for (const e of rest) {
+        this.drawnAs.set(e.id, drawn.id);
+        ev.set(e.id, 'hide');
+      }
+    }
   }
 
   private computeEmphasis(): { nodes: Set<string>; edges: Set<string>; strong: boolean } | null {
@@ -400,11 +441,14 @@ export class ExplorerEngine {
     let rgb = data.rgb;
     if (vis === 'dim') alpha *= 0.35;
     else if (vis === 'past') alpha *= 0.45;
+    // a line that stands for several links is a little thicker for each
+    const size = data.size + Math.min(2.4, ((this.parallel.get(edge) ?? 1) - 1) * 0.6);
+    res.size = size;
     const emph = this.emphasis;
     if (emph) {
       if (emph.edges.has(edge)) {
         alpha = data.faint ? 0.75 : 1;
-        res.size = data.size * (emph.strong ? 2.4 : 1.8);
+        res.size = size * (emph.strong ? 2.4 : 1.8);
         res.zIndex = 2;
         rgb = emph.strong ? this.accent : mix(rgb, this.ink, 0.45);
       } else alpha *= emph.strong ? 0.15 : 0.25;
@@ -412,7 +456,7 @@ export class ExplorerEngine {
     if (this.hovered && (this.graph.source(edge) === this.hovered || this.graph.target(edge) === this.hovered)) {
       alpha = Math.max(alpha, 0.95);
       if (!emph?.strong || !emph.edges.has(edge)) rgb = mix(rgb, this.ink, 0.45);
-      res.size = Math.max(res.size ?? data.size, data.size + 0.6);
+      res.size = Math.max(res.size ?? size, size + 0.6);
     }
     res.color = glColor(rgb, alpha);
     return res;

@@ -8,7 +8,7 @@ _Add ideas here with date and who suggested them._
 
 - 2026-10-16 (Sprint 1 self-check): decide time-slider semantics (snapshot vs cumulative history).
 - 2026-10-16 (Sprint 1 self-check): golden test that the TS explorer and Rust `ctd path` return identical paths and costs.
-- 2026-10-16 (Sprint 1 self-check): ego-graph label collision and parallel-edge drawing. Labels done (explorer in Sprint 3, story graphs in Sprint 9); parallel edges remain.
+- ~~2026-10-16 (Sprint 1 self-check): ego-graph label collision and parallel-edge drawing.~~ Labels done (explorer in Sprint 3, story graphs in Sprint 9); parallel links merged in the explorer in Sprint 11.
 - 2026-10-16 (Sprint 1 self-check): verify the two draft claims (Gise at ARPA 1958; crisis → Pacem in Terris) or drop them.
 - 2026-10-16 (Sprint 1 self-check): perspectives.yaml covers only the Cold War pair; add contested sets as new domains arrive.
 - 2026-10-17 (content pack 2): verify the draft `william-boyce-thompson#c2` (Red Cross money in 1917) against Kennan or Hagedorn, or drop it; find a primary Reagan-official source for the SDI/arms-race view (only the Reagan Library exhibit is cited); kremlin.ru is unreachable from outside Russia, so its three sources rely on Internet Archive copies.
@@ -17,7 +17,7 @@ _Add ideas here with date and who suggested them._
 - ~~2026-10-17 (Sprint 3): browse pages per type (`/t/<type>/`). Built in Sprint 4 as one A–Z page per type; split them into pages once a type passes a few thousand entries.~~ Done in Sprint 10: past 500 entries, one page per first letter.
 - ~~2026-10-17 (Sprint 3): the Ask form resolves names on the client against 400 embedded names, then `search.json`. At large scale, shard `search.json` by prefix.~~ Done in Sprint 10: search files by word range (ADR-0017).
 - 2026-10-17 (Sprint 2 viewer): a tile index in the world manifest, so large worlds stop requesting empty tiles (404s).
-- 2026-10-17 (Sprint 3): explorer graph. Parallel links between the same pair still overlap; draw them curved or merged with a count, as the story graph does.
+- ~~2026-10-17 (Sprint 3): explorer graph. Parallel links between the same pair still overlap; draw them curved or merged with a count, as the story graph does.~~ Done in Sprint 11: one line, thicker for each link.
 - 2026-10-17 (Sprint 4 v1 cut): Ask anything, later parts. See [design/ask-anything.md](design/ask-anything.md) "Later":
   - `ties`, causes of causes, embedded "further" sub-answers;
   - ~~an "Over time" band on question pages~~ (done in Sprint 8);
