@@ -33,7 +33,7 @@ export type TimeState = 'current' | 'past' | 'future';
 
 export function timeState(when: CtdDate | null | undefined, t: number | null | undefined): TimeState {
   if (t == null || !when) return 'current';
-  if (t < when.start) return 'future';
+  if (t < when.start && !when.open_start) return 'future';
   if (when.end != null && t > when.end) return 'past';
   return 'current';
 }

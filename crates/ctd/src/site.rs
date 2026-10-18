@@ -642,6 +642,32 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
             let lines: Vec<Value> = ent.background.iter().map(|b| json!({ "text": b.text, "refs": notes.refs(&b.sources) })).collect();
             if rows.is_empty() && lines.is_empty() { Value::Null } else { json!({ "rows": rows, "lines": lines }) }
         };
+        // what courts and regulators decided about it (ADR-0018): each case's steps together, in date
+        // order, with the caveats of the relations it holds
+        let legal = {
+            let mut steps: Vec<&Edge> =
+                items.iter().filter(|(e, out)| *out && e.status != "deprecated" && kb.schema.relations[&e.rel].legal).map(|(e, _)| *e).collect();
+            steps.sort_by(|a, b| a.start().total_cmp(&b.start()).then(a.id.cmp(&b.id)));
+            let mut cases: Vec<(Option<&str>, Vec<Value>)> = Vec::new();
+            let mut caveats: Vec<&str> = Vec::new();
+            for e in steps {
+                let rel = &kb.schema.relations[&e.rel];
+                if let Some(c) = rel.caveat.as_deref()
+                    && !caveats.contains(&c)
+                {
+                    caveats.push(c);
+                }
+                let step = json!({ "when": e.when.as_ref().map(|w| &w.label), "phrase": rel.label, "node": cx.node(&e.to), "detail": link_detail(kb, e, true),
+                                   "refs": notes.refs(&e.sources), "draft": e.status == "draft", "disputed": e.status == "disputed", "reason": e.reason, "note": e.note });
+                let case = e.qualifiers.get("case").and_then(Value::as_str);
+                match cases.iter_mut().find(|(c, _)| case.is_some() && *c == case) {
+                    Some((_, list)) => list.push(step),
+                    None => cases.push((case, vec![step])),
+                }
+            }
+            let cases: Vec<Value> = cases.into_iter().map(|(case, steps)| json!({ "case": case, "steps": steps })).collect();
+            if cases.is_empty() { Value::Null } else { json!({ "cases": cases, "caveats": caveats }) }
+        };
         let srcs = notes.sources(kb);
         let place = ent.place.as_ref().map(|p| cx.node(p));
         let here = here_of.get(ent.id.as_str()).map(|list| {
@@ -705,7 +731,8 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
         let html = render(
             "entity.html",
             json!({ "site": &site, "entity": entity, "groups": groups, "timeline": timeline, "sources": srcs, "history": history.of(&ent.rel_path),
-                    "claims_count": items.len(), "dossier": glance, "here": here, "background": background, "questions": questions, "connect": connect, "split_url": split_url }),
+                    "claims_count": items.len(), "dossier": glance, "here": here, "background": background, "legal": legal, "questions": questions,
+                    "connect": connect, "split_url": split_url }),
         )?;
         write(&out.join("e").join(&ent.id).join("index.html"), html)?;
         let details = data::details(kb, ent, &kept, story_url.as_deref(), asked);
@@ -1068,6 +1095,50 @@ mod tests {
         assert_eq!((link_phrase(&kb, mother, false), link_detail(&kb, mother, false)), ("relative of".to_string(), Some("mother".to_string())));
         let founded = kb.edges.iter().find(|e| e.id == "ann#c3").unwrap();
         assert_eq!(link_phrase(&kb, founded, false), "founded by");
+    }
+
+    #[test]
+    fn legal_records_show_each_cases_steps_together_in_date_order() {
+        let relations = "founded: {label: founded, inverse: founded by, from: [person, org], to: [org], layers: [power], temporal: true}\n\
+            charged_by: {label: charged by, inverse: charged, from: [person, org], to: [org], layers: [power], temporal: true, qualifiers: [title, case], \
+            sensitive: true, traversable: false, legal: true, noun: true, caveat: \"A charge is an accusation, not a finding of guilt.\"}\n\
+            settled_with: {label: settled with, inverse: settled with, from: [person, org], to: [org], layers: [power], temporal: true, \
+            qualifiers: [title, case, amount, currency], sensitive: true, traversable: false, legal: true}\n";
+        let files = vec![
+            crate::testkit::file("content/schema/relations.yaml", relations),
+            crate::testkit::source("rec", "T1"),
+            crate::testkit::entity(
+                "person",
+                "ann",
+                "Ann",
+                "  - {id: c1, rel: settled_with, to: agency, when: 2018-09-29, case: Agency v. Ann, amount: 20000000, currency: USD, title: without admitting or denying, src: [{s: rec, quote: Ann settled.}]}\n\
+                 \x20 - {id: c2, rel: charged_by, to: agency, when: 2018-09-27, case: Agency v. Ann, title: securities fraud, src: [{s: rec, quote: Ann was charged.}]}\n\
+                 \x20 - {id: c3, rel: settled_with, to: board, when: 2015, src: [{s: rec, quote: An earlier matter.}]}\n",
+            ),
+            crate::testkit::entity("org", "agency", "Agency", ""),
+            crate::testkit::entity("org", "board", "Board", ""),
+        ];
+        let root = write_repo("site-legal", &files).unwrap();
+        super::copy_dir(&Path::new(env!("CARGO_MANIFEST_DIR")).join("../../theme"), &root.join("theme")).unwrap();
+        let (kb, diags) = crate::load_kb(&root).unwrap();
+        assert!(diags.iter().all(|d| d.level != crate::diag::Level::Error), "{diags:?}");
+        let out = root.join("dist");
+        super::build(&root, &kb, &super::Opts { out: out.clone(), dev: false, graph: false }).unwrap();
+        let page = std::fs::read_to_string(out.join("e/ann/index.html")).unwrap();
+        let card = &page[page.find(">Legal records<").expect("the card")..];
+        let at = |text: &str| card.find(text).unwrap_or_else(|| panic!("{text} is not in the card"));
+        // the 2015 matter stands alone and comes first; the case's charge comes before its settlement
+        assert!(at("Board") < at("Agency v. Ann") && at("Agency v. Ann") < at("Charged by") && card[at("Charged by")..].contains("Settled with"));
+        assert!(card.contains("securities fraud") && card.contains("$20M") && card.contains("A charge is an accusation, not a finding of guilt."));
+        // a legal step needs its date, and the schema keeps legal records strict and out of routes
+        let undated = crate::testkit::entity("person", "bob", "Bob", "  - {id: c1, rel: charged_by, to: agency, src: [{s: rec, quote: Bob.}]}\n");
+        let (_, diags) = crate::testkit::load("site-legal-undated", &[files[0].clone(), files[1].clone(), files[3].clone(), undated]);
+        assert!(!crate::testkit::said(&diags, "needs the date of that step").is_empty());
+        let loose = relations.replace("settled_with: {label: settled with, inverse: settled with, from: [person, org], to: [org], layers: [power], temporal: true, \
+            qualifiers: [title, case, amount, currency], sensitive: true, traversable: false, legal: true}", "settled_with: {label: settled with, inverse: settled with, from: [person, org], to: [org], legal: true, sensitive: true}");
+        let err = crate::testkit::try_load("site-legal-loose", &[crate::testkit::file("content/schema/relations.yaml", &loose)]).err().expect("refused");
+        assert!(err.to_string().contains("must also be `sensitive: true` and `traversable: false`"), "{err}");
+        let _ = std::fs::remove_dir_all(&root);
     }
 
     #[test]

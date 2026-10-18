@@ -92,6 +92,9 @@ pub struct ClaimIn {
     pub currency: Option<String>,
     #[serde(default, deserialize_with = "opt_text")]
     pub as_of: Option<String>,
+    /// The legal case a step belongs to, as the record names it ("SEC v. Elon Musk"): ADR-0018.
+    #[serde(default)]
+    pub case: Option<String>,
     #[serde(flatten)]
     pub extra: BTreeMap<String, serde_json::Value>,
 }
@@ -109,6 +112,7 @@ impl ClaimIn {
             num("amount", self.amount),
             text("currency", &self.currency),
             text("as_of", &self.as_of),
+            text("case", &self.case),
         ]
         .into_iter()
         .flatten()

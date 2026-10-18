@@ -54,6 +54,7 @@ Directories hold at most ~2,500 entries, against GitHub's 3,000 guideline. `ctd 
 | Year, month, day | `1962`, `1962-10`, `1962-10-16` |
 | Interval | `1962-10-16/1962-10-28` |
 | Open end | `2008-10/..` |
+| Open start: only the end is known | `../2009-12-01` reads "until 1 Dec 2009" and holds at any time before then |
 | Approximate / uncertain | `1250~` / `1250?` |
 | BCE | Negative years in astronomical numbering: `0000` = 1 BCE, `-0449` = 450 BCE |
 
@@ -162,6 +163,7 @@ Source tiers:
   - when the voices come from two members of a contested set in `schema/perspectives.yaml` (e.g. `[us-government, soviet-government]`), an unattributed, non-draft claim gets the "confirmed by opposing sides" badge.
 - **Narrative diff:** the claims attributed to perspective A but not B, and the reverse.
 - **No evaluative labels on people.** Record events through sensitive relations, with sources: convicted, charged, settled, sanctioned.
+- **Legal records** ([ADR-0018](decisions/0018-legal-records.md)): `charged_by`, `convicted_by`, `acquitted_by`, `overturned_by`, `settled_with` and `sanctioned_by` run from the one a record is about to whoever decided. Each is dated (`when` is required), sensitive, and never a route step. `title` says what the record calls it ("securities fraud", "without admitting or denying the allegations"); `case` names the case as the record does, and the steps of one case sit together on the page, in date order. The person's or company's page gathers them in a "Legal records" card, with each relation's `caveat` ("A charge is an accusation, not a finding of guilt.").
 
 ## Schema files
 
@@ -184,6 +186,8 @@ founded:
   identity: false             # true = the same body under a new name (`became`): answers include earlier forms
   noun: false                 # true = the label is not a verb ("CEO of"): sentences put it after a comma
   inverse_reads: comma        # how the inverse joins a sentence: comma ("founded by"), verb ("includes") or list ("board members")
+  legal: false                # true = a step of a legal case (ADR-0018): must be sensitive and not traversable; claims need `when`
+  caveat: null                # a plain sentence shown with records of this relation
 relative_of:
   {label: relative of, inverse: relative of, from: [person], to: [person], owner: from, layers: [people], qualifiers: [role], sensitive: true, kinship: true}
 benefited_from:
@@ -433,5 +437,6 @@ Shot fields (v0; the full list is in [data-contract.md](data-contract.md)):
 16. `featured.yaml` names existing entities. A pair that names one entity twice is an error. A repeated pair or life, a pair with no route, and a life with fewer than two links give warnings. A featured question must be `<question>/<entity id>` for a question with pages (error); one with no page, or listed twice, gives a warning.
 17. `questions.yaml` (`ctd` refuses to load a file that breaks these): ids are unique; `ask` holds its placeholders and ends with "?"; `shows` and `not` are present and not empty; non-route questions have `subjects`, `groups` and a `min` of at least 1; every relation exists, appears once, and is not `kinship`, `sensitive` or `passive` (family lives on entity pages); every subject type is reachable by a group relation; no text uses a banned word; unknown fields are errors.
 18. An `identity` relation is never `attributed` (load error), and each identity claim joins two entries of the same type (error).
+    A `legal` relation is `sensitive` and not `traversable` (load error), and every legal claim has `when` (error).
 19. `in_sentence` may only add "the" and lower the first letter of the name (error otherwise).
 20. An attributed claim on a relation that answers a question needs a quote, or it is left off question pages (warning).

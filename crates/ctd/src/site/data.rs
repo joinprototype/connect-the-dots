@@ -37,9 +37,14 @@ pub fn gzip_len(bytes: &[u8]) -> usize {
     gz.write_all(bytes).and_then(|()| gz.finish()).map_or(0, |v| v.len())
 }
 
-/// A date as `[start, end, label]`, or 0 when there is none.
+/// A date as `[start, end, label]`, with a fourth element, 1, when only its end is known; 0 when there
+/// is none.
 fn span(w: Option<&Span>) -> Value {
-    w.map_or(json!(0), |w| json!([w.start, w.end, w.label]))
+    match w {
+        None => json!(0),
+        Some(w) if w.open_start => json!([w.start, w.end, w.label, 1]),
+        Some(w) => json!([w.start, w.end, w.label]),
+    }
 }
 
 /// An entry as the story player and graph.json read it (graph.json adds its summary and aliases).

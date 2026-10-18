@@ -175,9 +175,28 @@ fn link_shot(kb: &Kb, id: &str, e: &Edge, revealed: &mut Vec<String>) -> Value {
     if let Some(o) = quote_overlay(kb, e) {
         shot.insert("overlay".into(), o);
     }
-    shot.insert("narration".into(), json!(caption(kb, e, true, true)));
+    shot.insert("narration".into(), json!(format!("{}{}", caption(kb, e, true, true), caveats(kb, &[e]))));
     shot.insert("duration".into(), json!(7));
     Value::Object(shot)
+}
+
+/// The caveats of the relations a scene's links use, each once, as a closing paragraph ("A charge
+/// is an accusation, not a finding of guilt."): ADR-0018.
+fn caveats(kb: &Kb, links: &[&Edge]) -> String {
+    let mut said: Vec<&str> = Vec::new();
+    for e in links {
+        if let Some(c) = kb.schema.relations[&e.rel].caveat.as_deref()
+            && !said.contains(&c)
+        {
+            said.push(c);
+        }
+    }
+    said.iter().map(|c| format!("\n\n{c}")).collect()
+}
+
+/// The case a legal step belongs to (ADR-0018), if it names one.
+fn case_of<'e>(kb: &Kb, e: &'e Edge) -> Option<&'e str> {
+    kb.schema.relations[&e.rel].legal.then(|| e.qualifiers.get("case").and_then(Value::as_str)).flatten()
 }
 
 /// One link as a story tells it: its date (label, and start for ordering), what it says alone, and
@@ -268,7 +287,7 @@ fn year_shots(kb: &Kb, id: &str, links: &[&Edge], revealed: &mut Vec<String>) ->
             "shot": name, "view": "graph", "focus": id, "reveal": reveal,
             "reveal_claims": edges.iter().map(|e| e.id.clone()).collect::<Vec<_>>(),
             "t": edges[0].when.as_ref().map(|w| w.start), "time_label": label,
-            "narration": paragraphs(part, &label), "duration": (5 + 2 * part.len()).min(16),
+            "narration": format!("{}{}", paragraphs(part, &label), caveats(kb, &edges)), "duration": (5 + 2 * part.len()).min(16),
         });
         if let Some(o) = edges.iter().find_map(|e| quote_overlay(kb, e)) {
             shot["overlay"] = o;
@@ -417,7 +436,11 @@ pub fn entity_story(kb: &Kb, id: &str) -> Option<Draft> {
 
     // dated connections, in time order: one scene per year, so a busy year (a founding, with its
     // founders, officers and board) plays as one scene, not a string of one-line ones
-    let dated: Vec<&Edge> = mine.iter().filter(|(e, _)| e.when.is_some() && !kin(e)).map(|(e, _)| *e).take(MAX_DATED).collect();
+    let all_dated: Vec<&Edge> = mine.iter().filter(|(e, _)| e.when.is_some() && !kin(e)).map(|(e, _)| *e).collect();
+    let mut dated: Vec<&Edge> = all_dated.iter().take(MAX_DATED).copied().collect();
+    // a case is never cut short: a charge told is told with its later steps (ADR-0018)
+    let cases: HashSet<&str> = dated.iter().filter_map(|e| case_of(kb, e)).collect();
+    dated.extend(all_dated.iter().skip(MAX_DATED).filter(|e| case_of(kb, e).is_some_and(|c| cases.contains(c))));
     for year in dated.chunk_by(|a, b| year_of(a) == year_of(b)) {
         match year {
             [e] => shots.push(link_shot(kb, id, e, &mut revealed)),
@@ -806,6 +829,33 @@ pub(crate) mod tests {
         assert!(all.contains("**Founded by.** *1903:* *As the Reds, until Mar 1918:* [[ann|Ann]] *founded* [[reds|the Reds]]."), "{all}");
         let record = d.shots.iter().find(|s| s["shot"] == "record-0").unwrap();
         assert_eq!(record["reveal_claims"], json!(["reds#c1", "ann#c1", "bob#c1"]));
+    }
+
+    #[test]
+    fn a_life_story_never_tells_a_charge_without_its_later_steps() {
+        let relations = file(
+            "content/schema/relations.yaml",
+            "founded: {label: founded, inverse: founded by, from: [person], to: [org], layers: [power], temporal: true}\n\
+             charged_by: {label: charged by, inverse: charged, from: [person], to: [org], layers: [power], temporal: true, qualifiers: [title, case], \
+             sensitive: true, traversable: false, legal: true, noun: true, caveat: \"A charge is an accusation, not a finding of guilt.\"}\n\
+             settled_with: {label: settled with, inverse: settled with, from: [person], to: [org], layers: [power], temporal: true, \
+             qualifiers: [title, case, amount, currency], sensitive: true, traversable: false, legal: true}\n",
+        );
+        // twelve foundings, then a charge, then (past the twelve dated links a story tells) its settlement
+        let mut claims: String = (0..11).map(|i| format!("  - {{id: c{i}, rel: founded, to: corp, when: {}, src: [{{s: rec}}]}}\n", 1990 + i)).collect();
+        claims.push_str("  - {id: c20, rel: charged_by, to: agency, when: 2018-09-27, case: A v. Ann, src: [{s: rec}]}\n");
+        claims.push_str("  - {id: c21, rel: founded, to: corp, when: 2018-09-28, src: [{s: rec}]}\n");
+        claims.push_str("  - {id: c22, rel: settled_with, to: agency, when: 2018-09-29, case: A v. Ann, src: [{s: rec}]}\n");
+        let (kb, _) = load(
+            "stories-legal",
+            &[relations, entity("org", "corp", "Corp", ""), entity("org", "agency", "Agency", ""), entity("person", "ann", "Ann", &claims), source("rec", "T1")],
+        );
+        let d = entity_story(&kb, "ann").unwrap();
+        let told: Vec<&str> = d.shots.iter().flat_map(|s| s["reveal_claims"].as_array().into_iter().flatten()).filter_map(|c| c.as_str()).collect();
+        assert!(told.contains(&"ann#c20") && told.contains(&"ann#c22"), "the charge and its settlement: {told:?}");
+        assert!(!told.contains(&"ann#c21"), "other links past the cap stay out");
+        let scene = d.shots.iter().find(|s| s["reveal_claims"].as_array().is_some_and(|c| c.iter().any(|x| x == "ann#c20"))).unwrap();
+        assert!(scene["narration"].as_str().unwrap().ends_with("\n\nA charge is an accusation, not a finding of guilt."), "{}", scene["narration"]);
     }
 
     #[test]

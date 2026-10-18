@@ -1,7 +1,7 @@
 # Sprint 10: Ready for a million entries
 
 - Starts: 2026-10-17 · Length: 1 week
-- Status: active (proposed at the Sprint 9 review; scope revised after the design review, ADR-0017; the founder can redirect it at any time)
+- Status: built and self-checked (2026-10-18, commit b85bdb1); demo and review with the founder pending
 
 ## Goal
 
@@ -55,7 +55,7 @@ The first design (per-entry files with a growing browser index) was reviewed and
 
 ### Should
 - [x] **S10-07** Page history in one batched, rename-aware `git log` pass (backlog F9). Already so (`site/history.rs`); marked done in the backlog.
-- [ ] **S10-08** Re-run the contrast audit's review, one browser at a time.
+- [x] **S10-08** Re-run the contrast audit's review, one browser at a time. The phone sweep's contrast check: 54,433 texts, 0 too low (380 over canvas or images, unverifiable).
 
 ### Not in this sprint
 - The route service (built when the slim file nears its budget).
@@ -77,11 +77,11 @@ The first design (per-entry files with a growing browser index) was reviewed and
 
 ## Self-check (before the demo)
 
-- [ ] Tests and lints pass
-- [ ] Phone sweep clean (static build, CSP enforced, `--a11y`)
-- [ ] Demo script executed; screenshots and numbers saved in `docs/sprints/sprint-10/`
-- [ ] Docs and ADRs updated (data contract: neighbourhood and search files)
-- [ ] Known issues listed
+- [x] Tests and lints pass (63 engine tests, clippy, typecheck)
+- [x] Phone sweep clean (static build, CSP enforced, `--a11y`): 695 pages, 0 problems, no `graph.json` request
+- [x] Demo script executed; screenshots and numbers saved in `docs/sprints/sprint-10/`
+- [x] Docs and ADRs updated (data contract: slim, detail and search files; ADR-0017 with the measured numbers)
+- [x] Known issues listed
 
 ## Known issues
 

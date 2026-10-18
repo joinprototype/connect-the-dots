@@ -107,6 +107,14 @@ pub struct Relation {
     /// Shown in a person's "Background" card (born in, citizen of, educated at): ADR-0016.
     #[serde(default)]
     pub background: bool,
+    /// A step of a legal case (charged, convicted, settled …), shown in the "Legal records" card
+    /// of the one the record is about: ADR-0018.
+    #[serde(default)]
+    pub legal: bool,
+    /// A plain sentence shown with records of this relation ("A charge is an accusation, not a
+    /// finding of guilt.").
+    #[serde(default)]
+    pub caveat: Option<String>,
 }
 
 /// How a phrase joins a sentence: "Apple, *founded by* Steve Jobs" (after a comma), "The Cold War
@@ -350,6 +358,10 @@ impl Schema {
             // an interpretation is one side's account: routes never run through it
             if r.attributed && r.traversable {
                 return Err(anyhow!("relation `{id}` is `attributed`, so it must also be `traversable: false`"));
+            }
+            // a legal record is strictly sourced, and nobody is connected through a court (ADR-0018)
+            if r.legal && (!r.sensitive || r.traversable) {
+                return Err(anyhow!("relation `{id}` is a legal record (`legal`), so it must also be `sensitive: true` and `traversable: false`"));
             }
             // an earlier form answers for a later one only when they are the same body on the record
             if r.identity && r.attributed {

@@ -20,6 +20,10 @@
 #   inverse_reads how the inverse joins a sentence: after a comma by default ("Apple, founded by Steve
 #               Jobs"); `verb` ("includes", "caused"); or `list`, a plural that names the others ("Apple,
 #               board members: Mike Markkula and Arthur Rock")
+#   legal       a step of a legal case (ADR-0018): shown in the "Legal records" card of the one it is
+#               about, beside the other steps of its `case`. Must be sensitive and not traversable, and
+#               every claim needs `when`
+#   caveat      a plain sentence shown with records of this relation ("A charge is an accusation …")
 
 # --- people & power ---------------------------------------------------------
 founded:
@@ -53,6 +57,25 @@ educated_at:
   {label: educated at, inverse: alumni and students, from: [person], to: [org], owner: from, layers: [people], temporal: true, qualifiers: [role, title], noun: true, inverse_reads: list, background: true}
 board_member_of:
   {label: board member of, inverse: board members, from: [person], to: [org], owner: from, layers: [power, people], temporal: true, qualifiers: [role, title], noun: true, inverse_reads: list}
+
+# --- legal records (ADR-0018) ------------------------------------------------
+# A step of a case, from the one the record is about to whoever decided, dated, in the record's own
+# words (`title`: "securities fraud", "without admitting or denying the allegations"). `case` names the
+# case as the record does; its steps sit together on the page. Sourced from the court's, regulator's
+# or government's own record, and never a route: being charged by one regulator connects nobody.
+charged_by:
+  {label: charged by, inverse: charged, from: [person, org], to: [org, place], owner: from, layers: [power], temporal: true, qualifiers: [title, case], sensitive: true, traversable: false, legal: true, noun: true, inverse_reads: verb, caveat: "A charge is an accusation, not a finding of guilt."}
+convicted_by:
+  {label: convicted by, inverse: convicted, from: [person, org], to: [org, place], owner: from, layers: [power], temporal: true, qualifiers: [title, case], sensitive: true, traversable: false, legal: true, noun: true, inverse_reads: verb}
+acquitted_by:
+  {label: acquitted by, inverse: acquitted, from: [person, org], to: [org, place], owner: from, layers: [power], temporal: true, qualifiers: [title, case], sensitive: true, traversable: false, legal: true, noun: true, inverse_reads: verb}
+# A court that set aside an earlier decision in the same case: a conviction, a fine.
+overturned_by:
+  {label: decision overturned by, inverse: overturned a decision about, from: [person, org], to: [org, place], owner: from, layers: [power], temporal: true, qualifiers: [title, case], sensitive: true, traversable: false, legal: true, noun: true, inverse_reads: verb}
+settled_with:
+  {label: settled with, inverse: settled with, from: [person, org], to: [org, place], owner: from, layers: [power, money], temporal: true, qualifiers: [title, case, amount, currency], sensitive: true, traversable: false, legal: true, inverse_reads: verb}
+sanctioned_by:
+  {label: sanctioned by, inverse: sanctioned, from: [person, org], to: [org, place], owner: from, layers: [power], temporal: true, qualifiers: [title, case], sensitive: true, traversable: false, legal: true, noun: true, inverse_reads: verb}
 
 # --- money ------------------------------------------------------------------
 invested_in:

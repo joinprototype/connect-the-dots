@@ -32,7 +32,8 @@ claims:
     rel: chair_of
     to: security-council-of-kazakhstan
     title: "Chairman"
-    note: "He kept the chair after leaving the presidency in March 2019; President Kassym-Jomart Tokayev took it over on 5 January 2022. Until 5 January 2022."
+    when: "../2022-01-05"
+    note: "He kept the chair after leaving the presidency in March 2019; President Kassym-Jomart Tokayev took it over on 5 January 2022."
     src:
       - {s: akorda-2019-03-19-nazarbayev-address, at: "23rd paragraph", quote: "I remain the Chairman of the Security Council, which is vested with serious powers."}
       - {s: aljazeera-2022-01-28-tokayev-party-chair, at: "13th paragraph", quote: "Tokayev took over Nazarbayev’s most powerful position – chairmanship of the national security council – on January 5"}
@@ -40,7 +41,8 @@ claims:
     rel: chair_of
     to: nur-otan
     title: "Chairman"
-    note: "He announced in 2021 that he would hand over the party leadership; an extraordinary party congress elected President Kassym-Jomart Tokayev chairman on 28 January 2022. Until 28 January 2022."
+    when: "../2022-01-28"
+    note: "He announced in 2021 that he would hand over the party leadership; an extraordinary party congress elected President Kassym-Jomart Tokayev chairman on 28 January 2022."
     src:
       - {s: akorda-2019-03-19-nazarbayev-address, at: "23rd paragraph", quote: "I remain the Chairman of the Nur Otan party, a member of the Constitutional Council."}
       - {s: aljazeera-2022-01-28-tokayev-party-chair, at: "1st paragraph", quote: "Kazakhstan’s President Kassym-Jomart Tokayev has been voted chairman of the governing party, replacing his mentor and former head of state Nursultan Nazarbayev"}

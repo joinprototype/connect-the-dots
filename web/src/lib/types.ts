@@ -5,6 +5,9 @@ export interface CtdDate {
   start: number;
   end: number | null;
   label: string;
+  /** Only the end is known ("until 1 Dec 2009"): it holds at any time before then, and `start` is
+   *  where its end falls, for ordering. */
+  open_start?: boolean;
 }
 
 export interface LayerDef {

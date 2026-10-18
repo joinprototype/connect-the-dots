@@ -91,7 +91,8 @@ export function indexGraph(data: GraphData): GraphIndex {
   };
 }
 
-type SlimDate = [number, number | null, string] | 0;
+/** `[start, end, label]`, plus 1 when only the end is known; 0 when undated. */
+type SlimDate = [number, number | null, string, 1?] | 0;
 /** graph-slim.json: entries `[id, name, type, degree, when, coords, place]`, links `[from, to, relation,
  *  claim, when, tier, extra?]` with entry indexes for ends and places (docs/data-contract.md). */
 interface Slim {
@@ -99,7 +100,7 @@ interface Slim {
   edges: [number, number, string, string, SlimDate, string | null, { according_to?: string[]; status?: string; voices?: string[] }?][];
 }
 
-const date = (w: SlimDate): CtdDate | null => (w ? { start: w[0], end: w[1], label: w[2] } : null);
+const date = (w: SlimDate): CtdDate | null => (w ? { start: w[0], end: w[1], label: w[2], ...(w[3] ? { open_start: true } : {}) } : null);
 
 /** The slim file's rows as entries and links: structure only, until an entry's details are loaded. */
 export function decodeSlim(schema: Schema, slim: Slim): Pick<GraphData, 'nodes' | 'edges'> {

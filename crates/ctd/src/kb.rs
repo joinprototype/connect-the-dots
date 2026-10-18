@@ -247,6 +247,10 @@ pub fn detail(q: &BTreeMap<String, Value>) -> Option<String> {
     if let Some(Value::String(r)) = q.get("role") {
         parts.push(r.clone());
     }
+    // an amount before the words about it: "$20M, without admitting or denying the allegations"
+    if let Some(a) = q.get("amount").and_then(Value::as_f64) {
+        parts.push(fmt_amount(a, q.get("currency").and_then(Value::as_str)));
+    }
     if let Some(Value::String(t)) = q.get("title") {
         parts.push(t.clone());
     }
@@ -255,9 +259,6 @@ pub fn detail(q: &BTreeMap<String, Value>) -> Option<String> {
     }
     if let Some(s) = q.get("shares").and_then(Value::as_f64) {
         parts.push(format!("{} share{}", fmt_num(s), if s == 1.0 { "" } else { "s" }));
-    }
-    if let Some(a) = q.get("amount").and_then(Value::as_f64) {
-        parts.push(fmt_amount(a, q.get("currency").and_then(Value::as_str)));
     }
     if let Some(Value::String(d)) = q.get("as_of") {
         let label = edtf::parse(d).map(|s| s.label).unwrap_or_else(|_| d.clone());
@@ -666,6 +667,13 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
             });
             if when.is_some() && !rel.temporal {
                 diags.push(Diag::warn(file, format!("`{}` is not a temporal relation; `when` is ignored", c.rel)).claim(&cid));
+            }
+            if rel.legal && c.when.is_none() {
+                diags.push(
+                    Diag::err(file, format!("`{}` is a legal record, so it needs the date of that step", c.rel))
+                        .claim(&cid)
+                        .hint("add `when:` (the day of the charge, decision or settlement)"),
+                );
             }
             if let (Some(w), Some(life)) = (&when, &from.when)
                 && from.kind == "person"

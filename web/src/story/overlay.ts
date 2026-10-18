@@ -21,6 +21,8 @@ function findQuote(idx: GraphIndex, shot: Shot, sourceId?: string): string | nul
 export class Overlay {
   private current: HTMLElement | null = null;
   private key = '';
+  /** What Listen reads after the scene's narration: the card's quote, and who said it. */
+  words: string[] = [];
 
   constructor(
     private layer: HTMLElement,
@@ -33,6 +35,7 @@ export class Overlay {
     if (key === this.key) return;
     this.key = key;
     this.hide(reduced);
+    this.words = [];
     if (!o) return;
     const card = this.build(shot);
     if (!card) return;
@@ -88,6 +91,7 @@ export class Overlay {
         p.append('“', el('mark', 'story-hl', quote), '”');
         bq.append(p);
         fig.append(bq);
+        this.words = [`The source says: ${quote}`];
       }
       const foot = el('div', 'story-card-foot');
       if (persp) foot.append(el('span', 'story-persp-badge', `${persp}'s account`));
@@ -111,6 +115,7 @@ export class Overlay {
       fig.append(bq);
       if (o.caption) fig.append(el('figcaption', 'story-card-caption', o.caption));
       if (persp) fig.append(el('span', 'story-persp-badge', `${persp}'s account`));
+      this.words = [`In their words: ${quote}`, ...(o.caption ? [o.caption] : [])];
       return fig;
     }
     return null;

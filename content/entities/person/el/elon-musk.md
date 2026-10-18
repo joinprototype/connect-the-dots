@@ -118,6 +118,27 @@ claims:
       - {s: cbc-2025-02-23-musk-citizenship-petition, quote: "Musk was born in Pretoria, South Africa, but has Canadian citizenship through his Regina-born mother."}
       - {s: freshdialogues-2013-02-07-musk-chm-transcript, at: "Computer History Museum event, 22 January 2013", quote: "But she was born in Canada, so I actually filled out the forms for her and got her a Canadian passport, and me too. Within three weeks of getting my Canadian passport, I was in Canada.", by: elon-musk}
       - {s: globe-2023-09-10-isaacson-musk-canada, at: "book excerpt", quote: "He went to the Canadian consulate on his own, got application forms for a passport, and filled them out not only for himself but for his mother brother, and sister (but not father). The approvals came through in late May, 1989."}
+  - id: c16
+    rel: charged_by
+    to: sec
+    when: "2018-09-27"
+    case: "SEC v. Elon Musk"
+    title: "securities fraud"
+    src:
+      - {s: sec-2018-09-27-musk-charged, quote: "charged Elon Musk, CEO and Chairman of Silicon Valley-based Tesla Inc., with securities fraud for a series of false and misleading tweets about a potential transaction to take Tesla private."}
+  - id: c17
+    rel: settled_with
+    to: sec
+    when: "2018-09-29"
+    case: "SEC v. Elon Musk"
+    title: "without admitting or denying the SEC’s allegations"
+    amount: 20000000
+    currency: USD
+    note: "He also agreed to step down as Tesla's chairman."
+    src:
+      - {s: sec-2018-09-29-musk-tesla-settle, quote: "Musk and Tesla will each pay a separate $20 million penalty."}
+      - {s: sec-2018-09-29-musk-tesla-settle, quote: "Musk will step down as Tesla’s Chairman and be replaced by an independent Chairman."}
+      - {s: sec-2018-09-29-musk-tesla-settle, quote: "Musk and Tesla have agreed to settle the charges against them without admitting or denying the SEC’s allegations."}
 ---
 
 Elon Musk is a South African-born entrepreneur based in the United States. He has led [[spacex]] since founding it in 2002 and has been chief executive of [[tesla]] since October 2008, after joining the company as an early investor and board chair in 2004.

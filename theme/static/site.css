@@ -274,6 +274,12 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
 .here-list a { color: var(--ink); font-weight: 500; }
 .here-meta { font-size: 0.85rem; color: var(--muted); }
 .bg-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+/* legal records (ADR-0018): a case, then its steps in date order */
+.legal-case + .legal-case { margin-top: 14px; }
+.legal-case-h { margin: 0 0 6px; font: 600 0.92rem var(--font-ui); color: var(--ink-2); }
+.legal-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.legal-note { display: block; margin-top: 2px; font-size: 0.88rem; color: var(--muted); }
+.legal-caveat { margin: 14px 0 0; font-size: 0.88rem; color: var(--muted); }
 
 /* the life line: one row per tenure; one grid for all rows (subgrid), so the dates column fits
    the longest dates and every bar sits on one shared time axis */

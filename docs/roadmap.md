@@ -58,15 +58,19 @@ Startup sprints: the order below is a best guess and is re-decided at every spri
 
   See [sprints/sprint-09.md](sprints/sprint-09.md).
 
+- **Sprint 10: pages load what they show** (2026-10-18, [ADR-0017](decisions/0017-pages-load-what-they-show.md)).
+  - The explorer and the Map read one slim structure file (17 KB gzip instead of 164 KB), and an entry's details when it is opened.
+  - Stories carry their own data; search reads files by word range; hub and type pages stay bounded.
+  - Synthetic builds at 100k and 1M entries: entry, story and search files stay small at any scale; the static explorer holds about 40k links, past which routes need the route service.
+  - See [sprints/sprint-10.md](sprints/sprint-10.md).
+
 ## Now
 
-- **Sprint 10: Scale** ([ADR-0017](decisions/0017-pages-load-what-they-show.md)). Pages load what they show:
-  - **Explorer and routes:** one slim structure file, and an entry's details when it is opened, instead of the whole `graph.json`.
-  - **Stories:** each carries its own data.
-  - **Search:** files by word range.
-  - **Proof:** synthetic builds at 100k and 1M entries. The static explorer holds about 40k links; past that, routes need the route service.
-
-  This comes before any bulk import (Wikidata, filings). The founder can redirect it.
+- **Sprint 11: the record, step by step** ([ADR-0018](decisions/0018-legal-records.md)).
+  - Legal records (charged, convicted, acquitted, overturned, settled, sanctioned), each step of a case beside the others, never a route.
+  - The first records on primary sources: the SEC and Musk and Tesla, Citadel Securities, Robinhood; FINRA and Robinhood.
+  - Dates with only an end ("until 1 Dec 2009"), and Listen reading each side's quote.
+  - See [sprints/sprint-11.md](sprints/sprint-11.md). The founder can redirect it.
 
 ## Next (candidates, chosen at review)
 

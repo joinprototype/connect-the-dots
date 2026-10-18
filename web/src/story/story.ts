@@ -453,7 +453,8 @@ export class CtdStory extends HTMLElement {
     if (this.listening && i === this.target) {
       waiting++;
       window.setTimeout(() => {
-        if (run === this.run) this.say(narration(this.steps[i]), next);
+        // the narration, then the words on the scene's quote card (each side heard in its own words)
+        if (run === this.run) this.say([...narration(this.steps[i]), ...(this.overlay?.words ?? [])], next);
       }, VOICE_DELAY);
     }
     this.timer = window.setTimeout(next, (this.shots[i]?.duration ?? 6) * 1000);

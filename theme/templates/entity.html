@@ -34,7 +34,7 @@
   {% if questions or connect %}{{ question_rows(questions + ([connect] if connect else []), "Questions about " ~ entity.name) }}{% endif %}
 
   {% set d = dossier %}
-  {% if background or d.family or d.lifeline or d.holders or d.holdings or d.split or here %}
+  {% if background or legal or d.family or d.lifeline or d.holders or d.holdings or d.split or here %}
   <section class="dossier" aria-label="At a glance">
     {% if background %}
     {# who a person is (ADR-0016): sourced lines on this page only, never links #}
@@ -117,6 +117,21 @@
       </div>
       {% endif %}
       {% if split_url %}<p class="glance-more"><a href="{{ split_url }}">Side by side, with proof ›</a></p>{% endif %}
+    </figure>
+    {% endif %}
+    {% if legal %}
+    {# what courts and regulators decided (ADR-0018), last: who a person is and what they did come first #}
+    <figure class="glance-card legal">
+      <figcaption>Legal records</figcaption>
+      {% for c in legal.cases %}
+      <div class="legal-case">
+        {% if c.case %}<p class="legal-case-h">{{ c.case }}</p>{% endif %}
+        <ol class="legal-steps">
+          {% for s in c.steps %}<li>{% if s.when %}<span class="here-meta">{{ s.when }}</span> {% endif %}{{ s.phrase|capitalize }} <a href="{{ s.node.url }}">{{ s.node.name }}</a>{% if s.detail %}: <span class="claim-detail">{{ s.detail }}</span>{% endif %} {{ mark(s) }}{{ refs(s.refs) }}{% if s.note %}<span class="legal-note">{{ s.note }}</span>{% endif %}</li>{% endfor %}
+        </ol>
+      </div>
+      {% endfor %}
+      {% for c in legal.caveats %}<p class="legal-caveat">{{ c }}</p>{% endfor %}
     </figure>
     {% endif %}
   </section>

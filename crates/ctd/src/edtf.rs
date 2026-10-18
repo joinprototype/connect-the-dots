@@ -3,7 +3,9 @@
 //! Supported: `1962`, `1962-10`, `1962-10-16`, negative (astronomical) years such as
 //! `-0449` (= 450 BCE), the qualifiers `~` (approximate), `?` (uncertain) and `%` (both),
 //! intervals `a/b`, and open ends `..` or an empty side.
-//! Dates become decimal years: `start` inclusive, `end` exclusive, `None` = open.
+//! Dates become decimal years: `start` inclusive, `end` exclusive, `None` = open. An interval with an
+//! open start (`../2009-12-01`, "until 1 Dec 2009") has `open_start`, and its `start` is where its end
+//! falls, for ordering: it holds at any time before its end.
 
 use serde::Serialize;
 
@@ -32,12 +34,16 @@ pub struct Span {
     pub start_label: String,
     #[serde(skip)]
     pub open_end: bool,
+    /// Only the end is known ("until 1 Dec 2009"): it holds at any time before then.
+    #[serde(skip_serializing_if = "std::ops::Not::not")]
+    pub open_start: bool,
 }
 
 impl Span {
     /// Written as a range ("1998/2001", "2015/.."), not as one date: a tenure rather than a moment.
+    /// A range with an open start is not one: with no start, it has no bar to draw.
     pub fn is_range(&self) -> bool {
-        self.open_end || self.label != self.start_label
+        !self.open_start && (self.open_end || self.label != self.start_label)
     }
 }
 
@@ -197,10 +203,10 @@ pub fn parse(raw: &str) -> Result<Span, String> {
             return Err(format!("`{raw}` ends before it starts"));
         }
         let label = interval_label(pa.as_ref(), pb.as_ref());
-        Ok(Span { start, end, label, start_label, open_end: pb.is_none() })
+        Ok(Span { start, end, label, start_label, open_end: pb.is_none(), open_start: pa.is_none() })
     } else {
         let p = parse_point(s)?;
-        Ok(Span { start: p.start(), end: Some(p.end()), label: p.label(), start_label: p.label(), open_end: false })
+        Ok(Span { start: p.start(), end: Some(p.end()), label: p.label(), start_label: p.label(), open_end: false, open_start: false })
     }
 }
 
@@ -271,6 +277,12 @@ mod tests {
         assert_eq!(open.label, "Oct 2008 –");
         assert!(parse("1970/1960").is_err());
         assert_eq!(parse("-1999/-1499").unwrap().label, "2000–1500 BCE");
+        // only the end known: placed at its end, holding before it, and no tenure
+        let until = parse("../2009-12-01").unwrap();
+        assert_eq!((until.label.as_str(), until.open_start, until.end), ("until 1 Dec 2009", true, Some(parse("2009-12-01").unwrap().end.unwrap())));
+        assert!(!until.is_range() && parse("2001/..").unwrap().is_range());
+        assert_eq!(serde_json::to_value(&until).unwrap()["open_start"], true);
+        assert!(serde_json::to_value(parse("1962").unwrap()).unwrap().get("open_start").is_none());
     }
 
     #[test]

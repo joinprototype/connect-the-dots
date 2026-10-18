@@ -42,6 +42,7 @@ A date is `{ "start": <decimal year>, "end": <decimal year|null>, "label": "<hum
 - `start` is inclusive and `end` exclusive. A point date lasts its own precision: `end` = `start + 1/365` (`1/366` in a leap year) for a day, `start + 1/12` for a month, `start + 1` for a year. An interval ends where its last point ends.
 - `end: null` means open or ongoing.
 - `label` is ready to display, e.g. `"16–28 Oct 1962"`, `"c. 450 BCE"`, `"2008 –"`.
+- `open_start: true` (present only then): only the end is known, as in `"until 1 Dec 2009"`. `start` is where the end falls, for ordering; the date holds at any time before its end, so a time view never shows it as not yet begun. In `graph-slim.json` such a date is `[start, end, label, 1]`.
 
 ## `data/schema.json`
 
@@ -220,6 +221,8 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 
 **Entity page:** a person's page may open with a "Background" card: the links whose relation has `background: true` (born in, citizen of, educated at), and the entry's `background` lines, each with footnotes. Background lines are on that page only. They are in no data file (`graph-slim.json`, `e/<id>.json`, `search/`, a story's data and shots, nor `graph.json`), by rule ([ADR-0016](decisions/0016-who-a-person-is.md)), and a test checks it.
 
+**Entity page:** the one a legal record is about gets a "Legal records" card ([ADR-0018](decisions/0018-legal-records.md)): its links on `legal` relations, grouped by `case`, each case's steps in date order, then the `caveat` of each relation it holds.
+
 **Entity page:** no tabs. Timeline, Proof and Page history are `details.fold` sections (`#timeline`, `#proof` with `li#src-<n>`, `#history`). A small inline script opens the fold that holds the URL's hash target, so footnote links (`#src-<n>`) work. No island is involved.
 
 **Explorer:** `/x/index.html` contains `<div id="explorer-root"></div>` (optional `data-world`: the world URL, default `/world/`) and loads `/assets/explorer.js` and `/assets/explorer.css`. Its state lives in the query string:
@@ -255,7 +258,7 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 ```
 A step card may hold `p.step-time` and `p.step-explore`. The page loads `/assets/story.js` and `/assets/story.css`; MapLibre and `/assets/maplibre-gl.css` load only when the story first shows a map scene.
 
-**Listen** (in watch mode, off unless the viewer turns it on) reads each child of a step's `.step-card` aloud as plain text, one utterance per paragraph, with the browser's own speech (Web Speech API), leaving out `p.step-time` and `p.step-explore`. The narration HTML is what is heard. The viewer's choice is kept in `localStorage` under `ctd-listen` (`1` or `0`).
+**Listen** (in watch mode, off unless the viewer turns it on) reads each child of a step's `.step-card` aloud as plain text, one utterance per paragraph, with the browser's own speech (Web Speech API), leaving out `p.step-time` and `p.step-explore`. The narration HTML is what is heard. Then it reads the scene's quote card: "In their words:" and the quote, then its caption (who said it), or "The source says:" and a proof card's quote. The viewer's choice is kept in `localStorage` under `ctd-listen` (`1` or `0`).
 
 Shot fields (from the chapter's `scene` blocks, or generated; the build adds `t`, `time_label` and `narration_html`). A `reveal_claims` entry `<entity>#<claim>` matches that edge and any `<entity>#<claim>/<n>` edges:
 
@@ -298,6 +301,7 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 - `groups[]`: `{ phrase, layers, items[], more }`, one group per phrase; `more` counts a hub's links of that kind past its 100 strongest (on the kind's last group), which the explorer shows. An item is one link: `edge_id`, `phrase`, `outgoing`, `other` (`id`, `name`, `kind`, `type_label`, `url`), `when`, `detail`, `according_to[]` (`id`, `name`, `url`), `tier_label`, `status`, `cross_confirmed`, `passive`, `layers`, `refs` (source numbers), `note`, `reason`. On a family link the owner's page gets the phrase `"<role> of"` (lowercase, e.g. "mother of") and a `detail` without the role; the other person's page gets the inverse and a `detail` that starts with the role.
 - `dossier`: `family`, `lifeline`, `holders`, `holdings` and `split`, each null when empty, plus `share_scale` (the largest percent shown, at least 10).
 - `background` (people, else null; ADR-0016): `{ rows[{ phrase, node, when, detail, refs, draft, disputed, reason }], lines[{ text, refs }] }`. `rows` are the person's own links whose relation has `background: true` (born in, citizen of, educated at); `lines` are the entry's sourced `background` lines. The lines appear on this page only.
+- `legal` (or null; ADR-0018): `{ cases[{ case, steps[{ when, phrase, node, detail, refs, draft, disputed, reason, note }] }], caveats[] }`. Cases come in the order of their first step, and `case` is null for a step that names none (it stands alone); `caveats` are the sentences of the relations the card holds.
 - `here` (places only, else null): `{ items[{ node, type_label, when }], more }`, the entries whose `place` is this entry, by date then name, at most 12.
   - `family[]`: `{ node, role, self_role, draft, disputed, reason, attributed, according_to[], did[] }`. `self_role` is set on the owner's page ("Mother of …"), `role` on the other person's page ("…, mother"). `did[]` (up to four): `{ phrase, other, detail, when, draft, disputed, reason, according_to[] }`.
   - `lifeline`: `{ rows[], ticks[{ left, label }], more }`, or null. Tenures only (links dated as a range, such as "2001-07/2011-04" or "2015-10/.."): a moment such as a founding is told in the Timeline. The first row is the entry's own span when it has one (`own: true`, `phrase` "Life", "Active" or "Span", `when`); then up to 8 tenures, the longest kept, by start date. A tenure row: `{ own: false, phrase, name, url, detail, when, according_to[] (names), status, reason, left, width, point }`; `left` and `width` are percent of the shared axis, and `point` marks a tenure of a year or less. `more`: tenures left out, all of them in the Timeline.

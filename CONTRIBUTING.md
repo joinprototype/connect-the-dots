@@ -375,7 +375,40 @@ Reviewers add the rest. A line is never inferred from a name, a face or a relati
 
 To take a link back, mark it `deprecated` with a reason rather than deleting it, so readers can see that it was withdrawn and why.
 
-### 7. Write a story
+### 7. Add a legal record
+
+A charge, a conviction, an acquittal, a decision overturned on appeal, a settlement or a sanction ([ADR-0018](docs/decisions/0018-legal-records.md)). Write it in the file of the one the record is about, as a link to whoever decided: a court, a regulator or a government. The SEC's 2018 case against Elon Musk (`content/entities/person/el/elon-musk.md`):
+
+```yaml
+  - id: c16
+    rel: charged_by
+    to: sec
+    when: "2018-09-27"
+    case: "SEC v. Elon Musk"
+    title: "securities fraud"
+    src:
+      - {s: sec-2018-09-27-musk-charged, quote: "charged Elon Musk, CEO and Chairman of Silicon Valley-based Tesla Inc., with securities fraud for a series of false and misleading tweets about a potential transaction to take Tesla private."}
+  - id: c17
+    rel: settled_with
+    to: sec
+    when: "2018-09-29"
+    case: "SEC v. Elon Musk"
+    title: "without admitting or denying the SEC’s allegations"
+    amount: 20000000
+    currency: USD
+    src:
+      - {s: sec-2018-09-29-musk-tesla-settle, quote: "Musk and Tesla have agreed to settle the charges against them without admitting or denying the SEC’s allegations."}
+```
+
+- **The relations:** `charged_by`, `convicted_by`, `acquitted_by`, `overturned_by`, `settled_with` and `sanctioned_by`.
+- **`when` is required:** the day of that step. Without it, `ctd check` fails with `` `charged_by` is a legal record, so it needs the date of that step ``.
+- **`case`** names the case as the record does. Steps with the same `case` sit together in the page's "Legal records" card, in date order, so a settlement or an appeal shows next to the charge.
+- **`title`** is what the record calls it, in its words: the charge, or the terms ("without admitting or denying"). Never a word of your own about anyone.
+- **The source** is the court's, regulator's or government's own record: a judgment, a complaint, an order, a press release or a sanctions list. Legal records are sensitive, so the rule of recipe 4 applies.
+- **Every step.** A charge shown without its outcome misleads: when a case was settled, dismissed, decided or overturned, add that step too.
+- **Review.** A legal record needs two approvals, as a family link does.
+
+### 8. Write a story
 
 A story (a chapter) is one file, `content/chapters/<id>.md`: front matter, an introduction, a `scene` block, and a closing paragraph. Here is the start of `content/chapters/who-owns-blackrock-and-vanguard.md`, its first and fourteenth scenes, and its last line:
 
@@ -481,6 +514,7 @@ Messages you are likely to meet:
 | `` `ceo_of` cannot point to a person (bill-gates) `` | The relation does not join these types; the hint lists the ones it allows. |
 | `` `relative_of` is sensitive: it needs one T1 record or two independent T1/T2 voices; withheld until sourced `` | Add sources (recipe 4). |
 | `` `benefited_from` is always someone's account: add `according_to` `` | Name whose account it is (recipe 6). |
+| `` `charged_by` is a legal record, so it needs the date of that step `` | Add `when`, the day of that step (recipe 7). |
 | `background line 1: a living person's background is only what they have said themselves` | Cite a source in their voice, or a quote marked `by` them (recipe 5). |
 | `background line 1: needs one T1 source or two independent T1/T2 voices` | A historical figure needs stronger sources. |
 | `quote is longer than 300 characters` | Quote only the words that prove the link. |
