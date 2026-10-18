@@ -77,17 +77,19 @@ Stages:
 4. Intern ids and build the graph.
 5. Derive reverse claims, backlinks and confirmation badges.
 6. Render pages.
-7. Write data shards and the search index.
+7. Write the data files (schema, slim structure, one detail file per entry, search by word range).
 8. *(planned)* History index, layout and tiles.
 
 ```
 dist/
   e/<id>/index.html          entity pages            c/<id>/index.html   chapters
-  x/                         explorer app            data/graph.json     (Sprint 1; graph.bin CSR later)
-  data/e/<id>.json           neighbourhood shards (planned)    data/search.json    (Pagefind later)
-  history/<id>.json          (planned)               tiles/world-<ver>.pmtiles (planned)
-  build-manifest.json        engine version, content commit, methodology hash, world version
+  x/                         explorer app            world/              the Map's tiles
+  data/schema.json           vocabulary              data/graph-slim.json   every entry and link, structure only
+  data/e/<id>.json           one entry's words and proof          data/search/   search entries by word range
+  build-manifest.json        engine version, content commit, methodology hash, counts
 ```
+
+Pages load what they show ([ADR-0017](decisions/0017-pages-load-what-they-show.md)): entry, question and story pages stay the same size at any scale (a story embeds its own data); the explorer reads the slim file, about 27 bytes gzip per link of today's content (its entries included), until it passes its 1 MB budget at about 40,000 links, when the explorer and routes move to the route service.
 
 What a build writes today, file by file, is in [data-contract.md](data-contract.md).
 

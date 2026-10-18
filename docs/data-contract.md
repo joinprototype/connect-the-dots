@@ -18,9 +18,12 @@ dist/
   about/index.html           how the site works: the proof marks, the questions and their scope, the methodology
   _redirects                 "/e/<alias>/ /e/<id>/ 301", one line per slug alias
   _headers                   security headers and the Content-Security-Policy for every file (Cloudflare format)
-  t/<type>/index.html        every entry of one type, A to Z
-  data/graph.json            whole graph (small, loaded at once)
-  data/search.json           search index
+  t/<type>/index.html        every entry of one type, A to Z (past 500, its letters; t/<type>/<letter>/ lists one)
+  data/schema.json           the vocabulary: types, relations, lenses, tiers, questions, methodology, route stories
+  data/graph-slim.json       every entry and link, structure only: what the explorer draws and routes price
+  data/e/<id>.json           one entry's words and proof, loaded when it is opened
+  data/search/index.json     the search files' word ranges      data/search/<n>.json   search entries by word
+  data/graph.json            only with `ctd build --graph`: everything in one file, for tools; no page reads it
   world/                     manifest.json, entities.json, {z}/{x}/{y}.bin (world-tiles.md)
   static/site.css            theme CSS and tokens (from theme/static/)
   assets/                    built by web/ (Vite): islands.js|css, explorer.js|css, story.js|css, world.js|css, maplibre-gl.css (loaded by the story maps and the Map's Earth when they first draw a map), chunks/
@@ -28,7 +31,9 @@ dist/
   .ctd-build                 marks the folder as a build, so the next build may empty it
 ```
 
-An entry gets a life story when it has at least two links that are not withdrawn. A featured pair gets a route story when a route joins them. A question gets a page about an entry when its answer names at least the question's `min` entries or gives two accounts (at most 5,000 pages per question, featured first, then the richest), and that page gets a story when it has two published lines or two accounts. `graph.json.stories` lists all three.
+An entry gets a life story when it has at least two links that are not withdrawn. A featured pair gets a route story when a route joins them. A question gets a page about an entry when its answer names at least the question's `min` entries or gives two accounts (at most 5,000 pages per question, featured first, then the richest), and that page gets a story when it has two published lines or two accounts. `schema.json` lists the route stories; an entry's detail file names its life story and its question pages.
+
+**Pages load what they show** ([ADR-0017](decisions/0017-pages-load-what-they-show.md)). Entry, question and type pages need no data file. The explorer and the Map's Earth read `schema.json` and `graph-slim.json`, and the explorer loads an entry's `e/<id>.json` when a panel shows it or its links. A story reads its own data from its page and `schema.json`. Search and Ask read `search/`. No page reads `graph.json`; the QA sweep fails one that does. All of `data/` is served with `Cache-Control: public, max-age=300, stale-while-revalidate=86400`.
 
 ## Dates
 
@@ -38,7 +43,9 @@ A date is `{ "start": <decimal year>, "end": <decimal year|null>, "label": "<hum
 - `end: null` means open or ongoing.
 - `label` is ready to display, e.g. `"16–28 Oct 1962"`, `"c. 450 BCE"`, `"2008 –"`.
 
-## `data/graph.json`
+## `data/schema.json`
+
+The vocabulary, with the route stories:
 
 ```jsonc
 {
@@ -50,9 +57,7 @@ A date is `{ "start": <decimal year>, "end": <decimal year|null>, "label": "<hum
                              "identity": false } },
   "lenses":   [ { "id": "money", "label": "Money", "view": "graph", "layers": ["money"] } ],
   "tiers":    { "T1": { "label": "Primary record", "description": "…", "rejected": false } },  // description may be null; users see labels, never codes
-  "stories":  { "entities": ["elon-musk", "…"],          // ids with a generated life story at /e/<id>/story/
-                "paths": ["moses--elon-musk", "…"],       // "<from>--<to>", directional: a route story at /p/<from>--<to>/
-                "questions": ["behind/meta-platforms", "…"] },   // "<q>/<id>", sorted: a question story at /q/<q>/<id>/story/
+  "stories":  { "paths": ["moses--elon-musk", "…"] },     // "<from>--<to>", directional: a route story at /p/<from>--<to>/
   "questions": [ {                                        // content/schema/questions.yaml, in Ask-picker order
     "id": "behind", "ask": "Who is behind {x}?",          // {x} = the subject; a route question has {a} and {b}
     "label": "Who is behind",                             // the words before the first blank: the picker's segment label
@@ -60,11 +65,19 @@ A date is `{ "start": <decimal year>, "end": <decimal year|null>, "label": "<hum
     "subjects": ["org", "place", "…"],                    // entity types it is asked about ([] for a route question); never a family type
     "shows": "documented founders, …", "not": "who made decisions, or why",   // raw; pages print "Shows ….", "Not …."
     "groups": [ { "label": "Founded by", "in": ["founded"], "out": [], "empty": null } ],
-    "min": 2,
-    "pages": { "meta-platforms": { "title": "Who is behind Meta Platforms?", "url": "/q/behind/meta-platforms/",
-                                   "links": 8, "accounts": 0, "story": true } }   // by entity id; {} when none
+    "min": 2
   } ],
   "methodology": { /* content/methodology/paths.yaml as JSON */ },
+  "perspectives": [ { "id": "us-government", "name": "United States government", "claims": 4 } ]   // every according_to target, with its claim count
+}
+```
+
+## Entries, links and sources
+
+The data files hold entries (`nodes`), links (`edges`) and sources in these shapes, or parts of them (see each file below):
+
+```jsonc
+{
   "nodes": [ {
     "id": "elon-musk", "type": "person", "name": "Elon Musk", "summary": "…",   // summary may be null
     "aliases": ["Elon Reeve Musk"],
@@ -94,7 +107,6 @@ A date is `{ "start": <decimal year>, "end": <decimal year|null>, "label": "<hum
                                         // on disputed/deprecated claims a note that repeats the reason (exactly,
                                         // or as its first words) is dropped; any other note is kept as written
   } ],
-  "perspectives": [ { "id": "us-government", "name": "United States government", "claims": 4 } ],   // every according_to target, with its claim count
   "sources": { "spacex-company-history": { "title": "…", "publisher": "spacex", "publisher_name": "SpaceX",
                "url": "https://…", "tier": "T1", "voice": "spacex", "published": "2002", "published_label": "2002",
                "archive_url": null } }   // url and archive_url: http(s) or null
@@ -117,20 +129,71 @@ A date is `{ "start": <decimal year>, "end": <decimal year|null>, "label": "<hum
 
 **Both sides agree** (`cross_confirmed`): the claim has no `according_to`, is published (not a draft, disputed or withdrawn), and its `voices` include two members of one contested set in `content/schema/perspectives.yaml`.
 
-## `data/search.json`
+## `data/graph-slim.json`
 
-```json
-[ { "id": "moses", "name": "Moses", "aliases": ["Musa", "Moshe"], "type": "person", "summary": "…", "url": "/e/moses/" },
-  { "id": "meta-platforms", "name": "Meta Platforms", "aliases": ["Facebook"], "type": "org", "summary": "…", "when": "2004 –", "url": "/e/meta-platforms/", "q": ["behind"] },
-  { "id": "thirteen-days", "name": "Thirteen Days, Two Stories", "aliases": [], "type": "chapter", "summary": "…", "url": "/c/thirteen-days/" },
-  { "id": "behind/meta-platforms", "name": "Who is behind Meta Platforms?", "aliases": ["Who is behind Facebook?"], "type": "question", "summary": "8 links", "url": "/q/behind/meta-platforms/" } ]
+Every entry and link, with only what the explorer draws and routes price, as rows:
+
+```jsonc
+{
+  "nodes": [ ["elon-musk", "Elon Musk", "person", 12, [1971.49, null, "28 Jun 1971 –"], 0, 41] ],
+  //          id           name         type     degree when (or 0)                      coords place
+  "edges": [ [17, 52, "founded", "c1", [2002, 2003, "2002"], "T1"],
+  //          from to  rel       claim when (or 0)            tier (or null)
+             [17, 9, "benefited_from", "c7", 0, "T2", { "according_to": ["us-government"], "status": "draft" }] ]
+}
 ```
+- **An entry** is `[id, name, type, degree, when, coords, place]`. `coords` is its own `[lon, lat]` or 0. `place` is the index of the entry it is set in, or -1. An entry without coords of its own is drawn at its place's (the node's `coords` above), and its `url` is `/e/<id>/`.
+- **A link** is `[from, to, rel, claim, when, tier]`, with its ends as entry indexes. Its id is `<from id>#<claim>`. `label`, `layers`, `passive` and `traversable` are its relation's. An object follows when any of these is not the default: `according_to` (default `[]`), `status` (default `published`) and `voices`, which is there only on a link both sides agree on (`cross_confirmed`).
+- **Left out:** summaries, aliases, qualifiers, notes and sources. They are in the entries' detail files.
+- **Size:** 17 KB gzip today (338 entries, 642 links). Its budget is 1 MB gzip, which holds about 40,000 links of today's kind. Past it the build warns, and the explorer and routes need the route service ([ADR-0017](decisions/0017-pages-load-what-they-show.md)).
 
-Entities come first, best-connected first (then by name), then written chapters (`type: "chapter"`), then question pages (`type: "question"`, question by question in `questions.yaml` order, featured first, then the richest). Go to `url`; only entity entries can be shown in place by the explorer or the map.
+## `data/e/<id>.json`
+
+One entry's words and proof, loaded when the explorer opens the entry or shows one of its links:
+
+```jsonc
+{
+  "id": "blackrock", "summary": "American asset manager founded in 1988.", "aliases": ["BlackRock, Inc."],
+  "story": "/e/blackrock/story/",        // its life story, or null
+  "asked": [ { "q": "behind", "title": "Who is behind BlackRock?", "url": "/q/behind/blackrock/",
+               "links": 9, "accounts": 0, "counts": "9 links" } ],   // the question pages about it
+  "links": [ { "id": "blackrock#c3", "sources": [ { "id": "…", "at": null, "quote": "…" } ],
+               "detail": "$240M", "qualifiers": { "amount": 240000000, "currency": "USD" }, "note": "…", "reason": "…" } ],
+               // detail, qualifiers, note and reason only when set
+  "sources": { "…": { /* as in "Entries, links and sources" */ } }   // the sources its links cite
+}
+```
+- **Its links:** every link touching the entry, both directions. A hub keeps the 100 strongest of each kind (relation and direction), ranked as answers rank them (`methodology` cost); the rest are in the slim file, and a link past the cap of one end is in the other end's file. Its entry page lists the same links, with "and N more" opening the explorer.
+- **Never in it:** an entry's `background` lines (ADR-0016).
+
+## A story's own data
+
+A story page embeds the entries, links and sources its scenes name, beside its shots (`script.ctd-story-data`, see "Chapter" below): `{ "nodes": [...], "edges": [...], "sources": {...} }` in the shapes above, with links in full. Its entries are the scenes' `focus`, `perspective`, `reveal`, `places` and `routes`, and the ends, accounts and quoted speakers of the links its scenes reveal (`reveal_claims`). Its sources are those links' and the overlays'. The player reads this and `schema.json`, and nothing else.
+
+## `data/search/`
+
+The search entries, filed by word:
+
+```jsonc
+// data/search/index.json: each file's first word (the first file's is "")
+{ "files": ["", "kennedy", "smith"] }
+// data/search/<n>.json
+{ "entries": [ { "id": "meta-platforms", "name": "Meta Platforms", "aliases": ["Facebook"], "type": "org", "summary": "…",
+                 "when": "2004 –", "url": "/e/meta-platforms/", "q": ["behind"], "rank": 41 } ],
+  "words": [ ["facebook", [0]], ["meta", [0]], ["meta platforms", [0]] ] }   // a word and its entries' places in `entries`
+```
+- **Entries:** entities (best-connected first, then by name), then written chapters (`type: "chapter"`), then question pages (`type: "question"`, question by question in `questions.yaml` order, featured first, then the richest). `rank` is an entry's place in that order, across files. Go to `url`; only entity entries can be shown in place by the explorer or the map.
+- **Words:** each entry is filed under every word, and every pair of neighbouring words, of its name and aliases. A word is folded: lower case, accents dropped, apostrophes and full stops removed, split at everything else that is not a letter or digit ("O'Brien" is `obrien`). A word lists its 100 best entries; a longer query finds the rest.
+- **Files:** the words are sorted and cut into files between words, at about 50 KB gzip. While everything fits in one file, which is today, that file holds every entry and no `words`: search reads all of it.
+- **Looking up a query:** fold its words, take each word and each pair of neighbouring words, find the file whose range holds it (and the next file when its first word starts with it), and gather the entries under the words that start with it.
 - `q` (entity entries only, present when non-empty): the ids of the questions with a page about this entry, in `questions.yaml` order. The Ask form uses it for names it does not embed.
 - `when` (entity entries only): the entry's dates as a label, or null. "Which one?" lists show it.
 - A question page's `aliases` are its question asked with the subject's other names, so "Who is behind Facebook?" finds Meta's page.
 - A question entry's `name` is the asked sentence, its `summary` its counts ("7 links, 6 accounts"). Code that wants only entities filters out `chapter` and `question` entries.
+
+## `data/graph.json` (only with `ctd build --graph`)
+
+Everything in one file, for tools and tests: `schema.json`'s fields, plus every node (with `summary` and `aliases`), every edge in full and every source, `questions[].pages` (the answer pages by entity id: `title`, `url`, `links`, `accounts`, `story`) and `stories.entities` and `stories.questions` (the ids with a life story, and the `<q>/<id>` answers with a story). No page reads it.
 
 ## Page markup the scripts rely on
 
@@ -152,10 +215,10 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 
 | Element | Behaviour |
 |---|---|
-| `<ctd-search>` | Enhances the server's `<form role="search"><input>` (without JavaScript it submits to `/x/?focus=<text>`). Reads `search.json`; Enter or click goes to the result's `url`. On the explorer and world pages (`html[data-ctd-explorer]`) it first dispatches a cancelable `ctd:focus` `{id}`; a page that can show the entry calls `preventDefault()` and the search stays put. |
-| `<ctd-lens-chips focus="<id>">` | Holds server-rendered chips, `button[data-lens][data-layers]` (`data-layers`: the lens's layer ids, space-separated), so it needs no `graph.json`; without chips it builds them from `graph.json`. Clicking dispatches `ctd:lens` `{lens}` on `document`, hides `li.claim` items whose `data-layers` miss the lens layers (and any `.claim-group` left empty), and keeps `?lens=` in the URL. Lens `all` shows everything. |
+| `<ctd-search>` | Enhances the server's `<form role="search"><input>` (without JavaScript it submits to `/x/?focus=<text>`). Reads `search/` (the entries for the typed words); Enter or click goes to the result's `url`. On the explorer and world pages (`html[data-ctd-explorer]`) it first dispatches a cancelable `ctd:focus` `{id}`; a page that can show the entry calls `preventDefault()` and the search stays put. |
+| `<ctd-lens-chips focus="<id>">` | Holds server-rendered chips, `button[data-lens][data-layers]` (`data-layers`: the lens's layer ids, space-separated), so it needs no data file; without chips it builds them from `schema.json`. Clicking dispatches `ctd:lens` `{lens}` on `document`, hides `li.claim` items whose `data-layers` miss the lens layers (and any `.claim-group` left empty), and keeps `?lens=` in the URL. Lens `all` shows everything. |
 
-**Entity page:** a person's page may open with a "Background" card: the links whose relation has `background: true` (born in, citizen of, educated at), and the entry's `background` lines, each with footnotes. Background lines are on that page only. They are in no data file the browser reads (`graph.json`, `search.json`, story shots), by rule ([ADR-0016](decisions/0016-who-a-person-is.md)), and a test checks it.
+**Entity page:** a person's page may open with a "Background" card: the links whose relation has `background: true` (born in, citizen of, educated at), and the entry's `background` lines, each with footnotes. Background lines are on that page only. They are in no data file (`graph-slim.json`, `e/<id>.json`, `search/`, a story's data and shots, nor `graph.json`), by rule ([ADR-0016](decisions/0016-who-a-person-is.md)), and a test checks it.
 
 **Entity page:** no tabs. Timeline, Proof and Page history are `details.fold` sections (`#timeline`, `#proof` with `li#src-<n>`, `#history`). A small inline script opens the fold that holds the URL's hash target, so footnote links (`#src-<n>`) work. No island is involved.
 
@@ -172,7 +235,7 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 - **Links** draws the world tiles ([world-tiles.md](world-tiles.md), which has the field details):
   - It opens on the manifest's `bounds`, and ⌂ returns there.
   - Zoomed out it names the manifest's `regions`; clicking a name flies to it. Zooming in fades the names out and the dots' own names in.
-- **Earth** (`?view=earth`) draws `graph.json`'s nodes that have `coords` on a MapLibre globe, with the story maps' calm OpenFreeMap basemap, so like them it fetches from `tiles.openfreemap.org` (ADR-0014). MapLibre and `/assets/maplibre-gl.css` load only when Earth is opened.
+- **Earth** (`?view=earth`) draws the entries in `graph-slim.json` that have `coords` (their own or their place's) on a MapLibre globe, with the story maps' calm OpenFreeMap basemap, so like them it fetches from `tiles.openfreemap.org` (ADR-0014). MapLibre and `/assets/maplibre-gl.css` load only when Earth is opened.
   - One dot per spot: entries with the same `coords` (to about 100 m, such as an entry and its `place`) share it. It is named after the entry with coords of its own, else the best-connected one, and is a little bigger where more entries are. Gray; the accent marks the selected one.
   - It opens on the whole planet, turned to where the spots are, and ⌂ returns there. With `focus`, it centres the entry's spot and opens the entry's card.
   - Site search shows an entry there when it has a place; for the others it opens their page.
@@ -183,6 +246,7 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 ```html
 <ctd-story chapter="<id>">
   <script type="application/json" class="ctd-shots">[ …shots… ]</script>
+  <script type="application/json" class="ctd-story-data">{ "nodes": […], "edges": […], "sources": {…} }</script>
   <div class="story-stage" aria-hidden="true"></div>
   <div class="story-steps">
     <section class="step" data-shot="<shot name>"><div class="step-card">…narration HTML…</div></section>
@@ -231,7 +295,7 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 
 `entity.html`:
 - `entity`: `id`, `name`, `kind`, `type_label`, `summary`, `when` (label), `aliases`, `same_as` (`key`, `value`, `url`), `place`, `image`, `body_html`, `rel_path`, `url`, `story_url`, `coords`, `cover` (SVG), `evidence_line`. `coords` is `[lon, lat]` as in `graph.json` (its own, or its place's) or null; when set, the page links "On the map ›" to `/w/?view=earth&focus=<id>`.
-- `groups[]`: `{ phrase, layers, items[] }`, one group per phrase. An item is one link: `edge_id`, `phrase`, `outgoing`, `other` (`id`, `name`, `kind`, `type_label`, `url`), `when`, `detail`, `according_to[]` (`id`, `name`, `url`), `tier_label`, `status`, `cross_confirmed`, `passive`, `layers`, `refs` (source numbers), `note`, `reason`. On a family link the owner's page gets the phrase `"<role> of"` (lowercase, e.g. "mother of") and a `detail` without the role; the other person's page gets the inverse and a `detail` that starts with the role.
+- `groups[]`: `{ phrase, layers, items[], more }`, one group per phrase; `more` counts a hub's links of that kind past its 100 strongest (on the kind's last group), which the explorer shows. An item is one link: `edge_id`, `phrase`, `outgoing`, `other` (`id`, `name`, `kind`, `type_label`, `url`), `when`, `detail`, `according_to[]` (`id`, `name`, `url`), `tier_label`, `status`, `cross_confirmed`, `passive`, `layers`, `refs` (source numbers), `note`, `reason`. On a family link the owner's page gets the phrase `"<role> of"` (lowercase, e.g. "mother of") and a `detail` without the role; the other person's page gets the inverse and a `detail` that starts with the role.
 - `dossier`: `family`, `lifeline`, `holders`, `holdings` and `split`, each null when empty, plus `share_scale` (the largest percent shown, at least 10).
 - `background` (people, else null; ADR-0016): `{ rows[{ phrase, node, when, detail, refs, draft, disputed, reason }], lines[{ text, refs }] }`. `rows` are the person's own links whose relation has `background: true` (born in, citizen of, educated at); `lines` are the entry's sourced `background` lines. The lines appear on this page only.
 - `here` (places only, else null): `{ items[{ node, type_label, when }], more }`, the entries whose `place` is this entry, by date then name, at most 12.
@@ -246,11 +310,11 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 - `connect`: `{ title: "How is Bill Gates connected to …?", url: "/x/?from=bill-gates" }` from the route question, or null.
 - `split_url`: the first question page about this entry with two or more accounts (for "How each side tells it"), or null.
 
-`chapter.html`: `chapter` (`id`, `title`, `subtitle`, `summary`, `authors`, `intro_html`, `outro_html`, `shots_json`, `steps[]`, `shot_count`; generated stories add `generated`, `back` and `explore_url`) and `history`. A question story's `subtitle` is its scope line, its `intro_html` the notice and its `back` the question page.
+`chapter.html`: `chapter` (`id`, `title`, `subtitle`, `summary`, `authors`, `intro_html`, `outro_html`, `shots_json`, `data_json` (the story's own data), `steps[]`, `shot_count`; generated stories add `generated`, `back` and `explore_url`) and `history`. A question story's `subtitle` is its scope line, its `intro_html` the notice and its `back` the question page.
 
 `home.html` also gets `questions[]`, one per question in Ask-picker order: `{ id, ask, label, route, subjects, shows, not, url, names[], more, try[] }`.
 - `shows` and `not` are full sentences ("Shows ….", "Not ….").
-- `names[]` (up to 100, featured first, then the richest; `[]` for a route question): `{ id, name, aliases, url }`, where `url` is the answer page. `more`: pages not embedded (find them through `search.json` `q`).
+- `names[]` (up to 100, featured first, then the richest; `[]` for a route question): `{ id, name, aliases, url }`, where `url` is the answer page. `more`: pages not embedded (find them through the search entries' `q`).
 - `try[]`: the featured pages for this question, `{ id, name, url }`, `name` as it reads in a sentence ("the Bolsheviks").
 - A name whose type is not in `subjects` is not asked about ("Not asked about people"); a subject with no page has no sourced answer yet.
 
@@ -277,4 +341,4 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 
 `questions.html` (`/q/<q>/`): `question` (`{ id, ask, label, title, shows, not, url, route, subjects }`, `title` with "…" in its blanks), `pages[]` (up to 100: `{ title, url, counts, story_url }`) and `more`.
 
-`type.html` (`/t/<type>/`): `type` (`{ id, label, plural }`), `total`, and `letters[]`: `{ letter, items[{ node, when, summary }] }`, A to Z by name (`#` for names that do not start with a letter).
+`type.html` (`/t/<type>/`): `type` (`{ id, label, plural }`), `total`, and `letters[]`: `{ letter, url, items[{ node, when, summary }] }`, A to Z by name (`#` for names that do not start with a letter), `url` the letter's anchor. Past 500 entries the type is `split`: its page gets the letters without items, each `url` is the letter's page (`/t/<type>/<letter>/`, `other` for `#`), and each letter's page also gets `letter`, its own group.

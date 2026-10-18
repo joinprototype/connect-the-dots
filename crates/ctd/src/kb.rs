@@ -182,6 +182,19 @@ impl Kb {
         list.iter().map(|&(ei, outgoing)| (&self.edges[ei], outgoing))
     }
 
+    /// How many links touch `id`.
+    pub fn degree(&self, id: &str) -> usize {
+        self.index.get(id).map_or(0, |&i| self.links[i].len())
+    }
+
+    /// Every entry, best-connected first, then by name: a name that several entries share means
+    /// the best-connected one.
+    pub fn ranked(&self) -> Vec<&Entity> {
+        let mut list: Vec<&Entity> = self.entities.iter().collect();
+        list.sort_by(|a, b| self.degree(&b.id).cmp(&self.degree(&a.id)).then_with(|| a.name.cmp(&b.name)));
+        list
+    }
+
     /// The `role` on a family link ("mother"). It describes the claim's owner (`from`) relative to
     /// its target, so `relative_of` + `role: mother` reads "from is the mother of to".
     pub fn kin_role<'e>(&self, e: &'e Edge) -> Option<&'e str> {

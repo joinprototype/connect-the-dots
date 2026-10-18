@@ -24,15 +24,21 @@ enum Cmd {
     },
     /// Compile content into a static site
     Build {
-        /// Output directory (relative to the root)
-        #[arg(long, default_value = "dist")]
-        out: PathBuf,
+        /// Output directory, relative to the root (default: dist, or .cache/data-synth with --synthetic)
+        #[arg(long)]
+        out: Option<PathBuf>,
         /// Include the live-reload script
         #[arg(long)]
         dev: bool,
         /// Build even if `check` finds errors
         #[arg(long)]
         allow_errors: bool,
+        /// Also write data/graph.json (everything in one file, for tools; no page reads it)
+        #[arg(long)]
+        graph: bool,
+        /// Instead: make this many synthetic entries, write their slim and search files, and report every data file's size
+        #[arg(long)]
+        synthetic: Option<usize>,
     },
     /// Dev server: watch files, rebuild, live reload
     Serve {
@@ -87,7 +93,13 @@ fn run(cli: Cli) -> Result<ExitCode> {
             );
             Ok(if errors > 0 { ExitCode::FAILURE } else { ExitCode::SUCCESS })
         }
-        Cmd::Build { out, dev, allow_errors } => {
+        Cmd::Build { out, dev, allow_errors, graph, synthetic } => {
+            if let Some(n) = synthetic {
+                let out = root.join(out.unwrap_or_else(|| PathBuf::from(".cache/data-synth")));
+                ctd::synthetic::report(&root, n, 7, &out)?;
+                return Ok(ExitCode::SUCCESS);
+            }
+            let out = out.unwrap_or_else(|| PathBuf::from("dist"));
             let (kb, diags) = ctd::load_kb(&root)?;
             let (errors, warnings) = ctd::diag::print(&diags);
             if errors > 0 && !allow_errors {
@@ -95,7 +107,7 @@ fn run(cli: Cli) -> Result<ExitCode> {
                 return Ok(ExitCode::FAILURE);
             }
             let out = if out.is_absolute() { out } else { root.join(out) };
-            let m = ctd::site::build(&root, &kb, &ctd::site::Opts { out: out.clone(), dev })?;
+            let m = ctd::site::build(&root, &kb, &ctd::site::Opts { out: out.clone(), dev, graph })?;
             println!(
                 "built {} entities, {} claims, {} sources, {} chapters into {} ({}, {})",
                 m.entities,

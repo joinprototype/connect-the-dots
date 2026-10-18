@@ -107,6 +107,9 @@ export interface GEdge {
   note?: string;
   /** Why a claim is disputed or deprecated. */
   reason?: string;
+  /** The explorer has loaded this link's words and proof (qualifiers, note, sources): see loadDetails.
+   *  A story's own links always carry them. */
+  full?: boolean;
 }
 
 export interface Perspective {
@@ -136,14 +139,10 @@ export interface TierDef {
   rejected: boolean;
 }
 
-/** Stories the build generated: life stories at /e/<id>/story/, route stories at /p/<a>--<b>/
- *  and question stories at /q/<q>/<id>/story/. */
+/** The route stories the build generated, at /p/<a>--<b>/ ("a--b", directional). An entry's life story
+ *  is in its detail file (`story`). */
 export interface StoryIndex {
-  entities: string[];
-  /** "a--b", directional. */
   paths: string[];
-  /** "<q>/<id>", sorted. */
-  questions: string[];
 }
 
 /** One group of a question: links pointing at the subject (`in`) or owned by it (`out`). */
@@ -169,8 +168,6 @@ export interface QuestionDef {
   not: string;
   groups: QuestionGroup[];
   min: number;
-  /** Answer pages by entity id; {} when none. */
-  pages: Record<string, { title: string; url: string; links: number; accounts: number; story: boolean }>;
 }
 
 export interface GraphData {
@@ -203,6 +200,8 @@ export interface SearchEntry {
   url: string;
   /** Entity entries: the questions with a page about this entry. */
   q?: string[];
+  /** Best-connected first, across all search files. */
+  rank: number;
 }
 
 export interface ShotCamera {

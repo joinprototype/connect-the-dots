@@ -3,8 +3,9 @@ import { sentence, sourceView } from '../lib/claims';
 import { claimNotes, statusWords, tierLabel } from '../lib/plain';
 import { nameOf, type GraphIndex } from '../lib/data';
 import { formatYear, MONTHS_AFTER } from '../lib/dates';
-import { fuzzySearch, splitRanges } from '../lib/fuzzy';
-import type { GEdge, GNode } from '../lib/types';
+import { fuzzySearch, splitRanges, type FuzzyHit } from '../lib/fuzzy';
+import { candidates } from '../lib/search';
+import type { GEdge, SearchEntry } from '../lib/types';
 
 // ------------------------------------------------------------------ autocomplete
 
@@ -25,7 +26,21 @@ export function EntityPicker(props: {
   const [editing, setEditing] = useState(false);
   const [active, setActive] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
-  const hits = useMemo(() => (editing && text.trim() ? fuzzySearch(idx.data.nodes, text, 7) : []), [idx, text, editing]);
+  const [hits, setHits] = useState<FuzzyHit<SearchEntry>[]>([]);
+  useEffect(() => {
+    if (!editing || !text.trim()) {
+      setHits([]);
+      return;
+    }
+    let live = true;
+    // names and aliases come from search; only entries on the map can be picked
+    void candidates(text)
+      .catch(() => [])
+      .then((list) => live && setHits(fuzzySearch(list.filter((e) => idx.nodes.has(e.id) && e.type in idx.data.types), text, 7)));
+    return () => {
+      live = false;
+    };
+  }, [idx, text, editing]);
   const shown = editing ? text : value ? nameOf(idx, value) : '';
   const open = editing && text.trim().length > 0;
 
@@ -114,7 +129,7 @@ export function EntityPicker(props: {
   );
 }
 
-export function typeDot(idx: GraphIndex, n: GNode | undefined): React.CSSProperties {
+export function typeDot(idx: GraphIndex, n: { type: string } | undefined): React.CSSProperties {
   const layer = n ? idx.data.types[n.type]?.layer : undefined;
   return { ['--dot' as string]: layer ? `var(--layer-${layer})` : 'var(--night-muted)' };
 }

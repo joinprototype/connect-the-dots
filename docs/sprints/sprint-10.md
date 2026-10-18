@@ -30,27 +30,31 @@ The first design (per-entry files with a growing browser index) was reviewed and
 ## Scope
 
 ### Must
-- [ ] **S10-01 Engine data files.** These live in `data/`:
+- [x] **S10-01 Engine data files.** These live in `data/`:
   - `schema.json` (vocabulary);
   - `graph-slim.json` (every entry and link, structure fields only);
   - `e/<id>.json` (one entry's details, hubs capped at 100 links per kind with "and N more");
   - `search/<n>.json` and `search/index.json` (word ranges; one file while it fits).
 
   `graph.json` is written only with `ctd build --graph`. Builds stay byte-reproducible.
-- [ ] **S10-02 Stories carry their own data.** Each story page embeds the entries, links and sources its scenes name. The player reads that and `schema.json`.
-- [ ] **S10-03 The explorer reads the slim file**, and an entry's detail file when opened. Routes, filters, the index-funds model, perspectives and the year range work as today. Route results are identical for every featured pair and a random sample, with filters.
-- [ ] **S10-04 Search and Ask read the search files.** Ask keeps its own matcher; entries carry a `rank`. Every name and alias is found as today.
-- [ ] **S10-05 Bounded pages.**
+  - Built in `crates/ctd/src/site/data.rs`. Two builds differ only in their timestamps. The slim file is rows (objects were 34% bigger), and a detail file has no "and N more": the slim file has every link.
+- [x] **S10-02 Stories carry their own data.** Each story page embeds the entries, links and sources its scenes name. The player reads that and `schema.json`.
+- [x] **S10-03 The explorer reads the slim file**, and an entry's detail file when opened. Routes, filters, the index-funds model, perspectives and the year range work as today. Route results are identical for every featured pair and a random sample, with filters.
+  - Panels load the detail files of what they show (`useWords`). Routes: 1,200 of 1,200 comparisons identical ([numbers](sprint-10/numbers.md)). Names and aliases in From, To and `?focus=` resolve through search.
+- [x] **S10-04 Search and Ask read the search files.** Ask keeps its own matcher; entries carry a `rank`. Every name and alias is found as today.
+  - Ask moved from `theme/static/ask.js` into the islands bundle (`web/src/islands/ask.ts`), so it shares the search loader. One file holds every entry today, as before.
+- [x] **S10-05 Bounded pages.**
   - A hub's entry page lists 100 links per kind, with "and N more" opening the explorer.
   - Type pages split by first letter past 500 entries.
   - `/data/*` gets cache headers.
-- [ ] **S10-06 Proof.**
+- [x] **S10-06 Proof.**
   - On today's site, no page requests `graph.json` (a sweep check), the sweep is clean, and the demo pages look the same.
   - A synthetic data-only build at 100k and at 1M entries records each file type's largest size and the slim file's size against its 1 MB budget.
   - The build warns when the slim file passes the budget.
+  - `ctd build --synthetic <n>`: 1M entries in 35 s. The slim file holds about 40k links of today's kind within 1 MB ([numbers](sprint-10/numbers.md)).
 
 ### Should
-- [ ] **S10-07** Page history in one batched, rename-aware `git log` pass (backlog F9).
+- [x] **S10-07** Page history in one batched, rename-aware `git log` pass (backlog F9). Already so (`site/history.rs`); marked done in the backlog.
 - [ ] **S10-08** Re-run the contrast audit's review, one browser at a time.
 
 ### Not in this sprint
@@ -80,6 +84,11 @@ The first design (per-entry files with a growing browser index) was reviewed and
 - [ ] Known issues listed
 
 ## Known issues
+
+- Search forgives typos ("nazarbaev") only while it is one file. Past that, a query's words must start like the name's.
+- A link past the 100-per-kind cap at both of its ends (two hubs) has no detail file: the explorer shows its sentence without qualifiers or proof. None today.
+- In the explorer, a link's qualifiers and proof appear a moment after its panel opens (its detail file loading).
+- The hand-made dev fixture site (`web/fixtures/`) is gone: it mimicked the old data files. `npm run dev` now serves a `ctd build` output with the browser code live.
 
 ## Review
 

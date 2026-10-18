@@ -1,7 +1,7 @@
 //! Renders the static site and the data files described in docs/data-contract.md.
 
 use std::{
-    collections::{BTreeSet, HashMap},
+    collections::{BTreeMap, BTreeSet, HashMap},
     fs,
     path::{Path, PathBuf},
 };
@@ -15,10 +15,13 @@ use walkdir::WalkDir;
 use crate::{
     answers::{self, Answer},
     kb::{Edge, EdgeSrc, Entity, Kb},
-    markdown, plural,
+    markdown,
+    paths::Params,
+    plural,
     schema::NEUTRAL,
 };
 
+pub mod data;
 mod dossier;
 mod history;
 mod question;
@@ -30,6 +33,8 @@ use question::{answer_counts, answer_view};
 pub struct Opts {
     pub out: PathBuf,
     pub dev: bool,
+    /// Also write `data/graph.json`, everything in one file, for tools and tests. No page reads it.
+    pub graph: bool,
 }
 
 #[derive(Debug, Clone, Serialize)]
@@ -89,6 +94,8 @@ struct Group {
     color: String,
     layers: String,
     items: Vec<ClaimView>,
+    /// Links of this kind past the page's cap (a hub's), which the explorer shows.
+    more: usize,
 }
 
 #[derive(Serialize)]
@@ -217,8 +224,11 @@ const HEADERS: &str = "/*\n  X-Content-Type-Options: nosniff\n  X-Frame-Options:
 Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()\n  Cross-Origin-Opener-Policy: same-origin\n  \
 Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; \
 connect-src 'self' https://tiles.openfreemap.org; worker-src 'self' blob:; child-src 'self' blob:; font-src 'self'; object-src 'none'; \
-base-uri 'self'; form-action 'self'; frame-ancestors 'none'\n";
+base-uri 'self'; form-action 'self'; frame-ancestors 'none'\n\
+/data/*\n  Cache-Control: public, max-age=300, stale-while-revalidate=86400\n";
 
+/// A type's page lists every entry up to this many; past it, one page per first letter.
+const TYPE_PAGE_MAX: usize = 500;
 /// Featured question stories on the home shelf (the rest are in the Stories library).
 const HOME_QUESTIONS: usize = 4;
 /// Entries a place's page lists as set there.
@@ -412,19 +422,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
 
     let cx = Ctx { kb };
 
-    // ---- data files ---------------------------------------------------------------
-    let degree = |e: &Entity| kb.index.get(&e.id).map_or(0, |&i| kb.links[i].len());
-    let nodes: Vec<Value> = kb
-        .entities
-        .iter()
-        .map(|e| {
-            json!({
-                "id": e.id, "type": e.kind, "name": e.name, "summary": e.summary, "aliases": e.aliases,
-                "when": e.when, "coords": kb.coords(e), "place": e.place,
-                "url": format!("/e/{}/", e.id), "degree": degree(e),
-            })
-        })
-        .collect();
+    // ---- data files (docs/data-contract.md, ADR-0017) --------------------------------
     let types: serde_json::Map<String, Value> = kb
         .schema
         .types
@@ -444,24 +442,23 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
         })
         .collect();
     let perspectives: Vec<Value> = kb.perspectives.iter().map(|(id, n)| json!({ "id": id, "name": kb.name_of(id), "claims": n })).collect();
-    let sources: serde_json::Map<String, Value> = kb
-        .sources
-        .values()
-        .map(|s| {
-            let publisher_name = s.publisher.as_ref().map(|p| kb.name_of(p));
-            (
-                s.id.clone(),
-                json!({ "title": s.title, "publisher": s.publisher, "publisher_name": publisher_name, "url": s.url, "tier": s.tier,
-                        "voice": s.voice, "published": s.published, "published_label": s.published_label, "archive_url": s.archive_url }),
-            )
-        })
-        .collect();
-    let mut graph = json!({
+    let mut schema = json!({
         "meta": { "engine": manifest.engine, "built": manifest.built, "commit": manifest.commit, "methodology": manifest.methodology },
         "layers": kb.schema.layers, "types": types, "relations": relations, "lenses": kb.schema.lenses, "tiers": kb.schema.tiers,
-        "methodology": kb.schema.methodology, "nodes": nodes, "edges": kb.edges, "perspectives": perspectives, "sources": sources,
+        "methodology": kb.schema.methodology, "perspectives": perspectives,
     });
-    // graph.json is written at the end, once the generated stories are known (`stories`)
+    // schema.json is written at the end, once the generated stories are known (`stories`)
+    let slim = data::slim(kb);
+    let slim_gz = data::gzip_len(&slim);
+    if slim_gz > data::SLIM_BUDGET {
+        eprintln!(
+            "warning: data/graph-slim.json is {} KB gzip, past its {} KB budget: the explorer and routes need the route service (ADR-0017)",
+            slim_gz / 1024,
+            data::SLIM_BUDGET / 1024
+        );
+    }
+    write(&out.join("data").join("graph-slim.json"), slim)?;
+    let by_id: BTreeMap<&str, &Edge> = kb.edges.iter().map(|e| (e.id.as_str(), e)).collect();
 
     // question pages are computed once, before the pages and data that link to them
     let pages = answers::pages(kb);
@@ -478,12 +475,11 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     }
 
     // best-connected first: a name that matches several entries resolves to the best-connected one
-    let mut ranked: Vec<&Entity> = kb.entities.iter().collect();
-    ranked.sort_by(|a, b| degree(b).cmp(&degree(a)).then_with(|| a.name.cmp(&b.name)));
+    let ranked = kb.ranked();
     let mut search: Vec<Value> = ranked
         .iter()
         .map(|e| {
-            let mut entry = json!({ "id": e.id, "name": e.name, "aliases": e.aliases, "type": e.kind, "summary": e.summary, "when": e.when.as_ref().map(|w| &w.label), "url": format!("/e/{}/", e.id) });
+            let mut entry = data::search_entry(e);
             if let Some(qs) = asked.get(e.id.as_str()) {
                 entry["q"] = json!(qs);
             }
@@ -500,7 +496,9 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
         let aliases: Vec<String> = std::iter::once(&a.x.name).chain(&a.x.aliases).map(|n| q.ask.replace("{x}", n)).filter(|t| *t != answers::title(kb, q, &a.x.id)).collect();
         search.push(json!({ "id": id, "name": answers::title(kb, q, &a.x.id), "aliases": aliases, "type": "question", "summary": answer_counts(a), "url": format!("/q/{id}/") }));
     }
-    write(&out.join("data").join("search.json"), serde_json::to_vec(&search)?)?;
+    let search_dir = out.join("data").join("search");
+    let search_index = data::search(&search, |n, bytes| write(&search_dir.join(format!("{n}.json")), bytes))?;
+    write(&search_dir.join("index.json"), search_index)?;
 
     // ---- templates ----------------------------------------------------------------
     let mut env = Environment::new();
@@ -525,7 +523,8 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
         let chapter = json!({
             "id": draft.id, "title": draft.title, "subtitle": draft.subtitle, "summary": draft.summary, "authors": [],
             "intro_html": markdown::render(&draft.intro_md, &resolver), "outro_html": markdown::render(&draft.outro_md, &resolver),
-            "shots_json": script_json(&shots)?, "steps": steps, "shot_count": shots.len(), "generated": true,
+            "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &by_id, &shots))?,
+            "steps": steps, "shot_count": shots.len(), "generated": true,
             "back": back, "explore_url": draft.explore_url,
         });
         write(&dest.join("index.html"), render("chapter.html", json!({ "site": &site, "chapter": chapter, "history": [] }))?)
@@ -547,6 +546,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     }
     let mut lives: Vec<(String, usize, Value)> = Vec::new();
     let mut story_ids: Vec<String> = Vec::new();
+    let params = Params::from(&kb.schema.methodology);
     for ent in &kb.entities {
         let mut items: Vec<(&Edge, bool)> = kb.links_of(&ent.id).collect();
         // one group per phrase: an owner's family links sit together by role ("mother of", "wife of")
@@ -557,8 +557,11 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
                 .then(a.start().total_cmp(&b.start()))
                 .then(a.id.cmp(&b.id))
         });
+        // a hub's page and detail file keep the strongest links of each kind; the explorer has the rest
+        let (kept, more) = data::keep_per_kind(&params, &items);
         let mut notes = Footnotes::default();
         let mut groups: Vec<Group> = Vec::new();
+        let mut last_of_kind: HashMap<(&str, bool), usize> = HashMap::new();
         let mut timeline: Vec<TimelineItem> = Vec::new();
         if let Some(w) = &ent.when {
             timeline.push(TimelineItem {
@@ -574,7 +577,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
                 status: "published".into(),
             });
         }
-        for (e, outgoing) in &items {
+        for (e, outgoing) in &kept {
             let phrase = link_phrase(kb, e, *outgoing);
             let refs = notes.refs(&e.sources);
             let view = ClaimView {
@@ -614,7 +617,13 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
             }
             match groups.last_mut() {
                 Some(g) if g.phrase == phrase => g.items.push(view),
-                _ => groups.push(Group { phrase, color: cx.color(e), layers: e.layers.join(" "), items: vec![view] }),
+                _ => groups.push(Group { phrase, color: cx.color(e), layers: e.layers.join(" "), items: vec![view], more: 0 }),
+            }
+            last_of_kind.insert((e.rel.as_str(), *outgoing), groups.len() - 1);
+        }
+        for (kind, n) in &more {
+            if let Some(&g) = last_of_kind.get(kind) {
+                groups[g].more += n;
             }
         }
         timeline.sort_by(|a, b| a.start.total_cmp(&b.start));
@@ -678,7 +687,14 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
                                                               "kind": plural(items.len(), "link"), "cover": entity["cover"] })));
         }
         // questions about this entry, only on its own page (never "behind" a person: no such page)
-        let questions: Vec<Value> = (0..kb.schema.questions.len()).filter_map(|qi| page_ref(qi, &ent.id)).take(ROWS).collect();
+        let asked: Vec<Value> = (0..kb.schema.questions.len())
+            .filter_map(|qi| {
+                let mut page = page_ref(qi, &ent.id)?;
+                page["q"] = json!(kb.schema.questions[qi].id);
+                Some(page)
+            })
+            .collect();
+        let questions: Vec<Value> = asked.iter().take(ROWS).cloned().collect();
         let split_url = (0..kb.schema.questions.len())
             .filter_map(|qi| page_at.get(&(qi, ent.id.as_str())))
             .find(|a| a.accounts_total() >= 2)
@@ -692,6 +708,8 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
                     "claims_count": items.len(), "dossier": glance, "here": here, "background": background, "questions": questions, "connect": connect, "split_url": split_url }),
         )?;
         write(&out.join("e").join(&ent.id).join("index.html"), html)?;
+        let details = data::details(kb, ent, &kept, story_url.as_deref(), asked);
+        write(&out.join("data").join("e").join(format!("{}.json", ent.id)), serde_json::to_vec(&details)?)?;
     }
 
     // ---- alias redirects ------------------------------------------------------------
@@ -750,7 +768,8 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
         let chapter = json!({
             "id": ch.id, "title": ch.title, "subtitle": ch.subtitle, "summary": ch.summary, "authors": ch.authors,
             "intro_html": markdown::render(&ch.intro_md, &resolver), "outro_html": markdown::render(&ch.outro_md, &resolver),
-            "shots_json": script_json(&shots)?, "steps": steps, "url": format!("/c/{}/", ch.id), "shot_count": shots.len(),
+            "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &by_id, &shots))?,
+            "steps": steps, "url": format!("/c/{}/", ch.id), "shot_count": shots.len(),
         });
         let html = render("chapter.html", json!({ "site": &site, "chapter": &chapter, "history": history.of(&ch.rel_path) }))?;
         write(&out.join("c").join(&ch.id).join("index.html"), html)?;
@@ -872,8 +891,28 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
                 _ => letters.push((first, vec![item])),
             }
         }
-        let letters: Vec<Value> = letters.into_iter().map(|(letter, items)| json!({ "letter": letter, "items": items })).collect();
-        let ctx = json!({ "site": &site, "type": { "id": tid, "label": t.label, "plural": t.plural }, "total": list.len(), "letters": letters });
+        // past TYPE_PAGE_MAX entries, the type's page lists the letters and each letter has a page
+        let split = list.len() > TYPE_PAGE_MAX;
+        let slug = |l: &str| if l == "#" { "other".to_string() } else { l.to_lowercase() };
+        let letters: Vec<Value> = letters
+            .into_iter()
+            .enumerate()
+            .map(|(i, (letter, items))| {
+                let url = if split { format!("/t/{tid}/{}/", slug(&letter)) } else { format!("#l-{}", i + 1) };
+                json!({ "letter": letter, "url": url, "items": items })
+            })
+            .collect();
+        let ty = json!({ "id": tid, "label": t.label, "plural": t.plural });
+        let ctx = if split {
+            let nav: Vec<Value> = letters.iter().map(|g| json!({ "letter": g["letter"], "url": g["url"] })).collect();
+            for g in &letters {
+                let ctx = json!({ "site": &site, "type": ty, "total": list.len(), "letters": nav, "split": true, "letter": g });
+                write(&out.join("t").join(tid).join(slug(g["letter"].as_str().unwrap_or("#"))).join("index.html"), render("type.html", ctx)?)?;
+            }
+            json!({ "site": &site, "type": ty, "total": list.len(), "letters": nav, "split": true })
+        } else {
+            json!({ "site": &site, "type": ty, "total": list.len(), "letters": letters })
+        };
         write(&out.join("t").join(tid).join("index.html"), render("type.html", ctx)?)?;
     }
     // the Ask form: each question with the answers it can open at once (the rest via search.json `q`)
@@ -957,31 +996,51 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
         write(&out.join("q").join(&q.id).join("index.html"), render("questions.html", ctx)?)?;
     }
 
-    // which questions have pages about which entries, for rows in the explorer
-    graph["questions"] = kb
+    schema["questions"] = kb
         .schema
         .questions
         .iter()
-        .enumerate()
-        .map(|(qi, q)| {
+        .map(|q| {
             let mut v = json!(q);
             v["label"] = json!(answers::label(q));
-            v["pages"] = pages
+            v
+        })
+        .collect();
+    schema["stories"] = json!({ "paths": path_ids });
+    if opts.graph {
+        // everything in one file, for tools and tests: the schema, every entry and link with its
+        // words and proof, every source, and which entries have question pages and stories
+        let mut graph = schema.clone();
+        for (qi, q) in graph["questions"].as_array_mut().into_iter().flatten().enumerate() {
+            let qd = &kb.schema.questions[qi];
+            q["pages"] = pages
                 .iter()
                 .filter(|a| a.q == qi)
                 .map(|a| {
                     let id = a.id(kb);
-                    let page = json!({ "title": answers::title(kb, q, &a.x.id), "url": format!("/q/{id}/"), "links": a.links,
+                    let page = json!({ "title": answers::title(kb, qd, &a.x.id), "url": format!("/q/{id}/"), "links": a.links,
                                        "accounts": a.accounts_total(), "story": question_stories.contains(&id) });
                     (a.x.id.clone(), page)
                 })
                 .collect::<serde_json::Map<String, Value>>()
                 .into();
-            v
-        })
-        .collect();
-    graph["stories"] = json!({ "entities": story_ids, "paths": path_ids, "questions": question_stories });
-    write(&out.join("data").join("graph.json"), serde_json::to_vec(&graph)?)?;
+        }
+        graph["stories"] = json!({ "entities": story_ids, "paths": schema["stories"]["paths"], "questions": question_stories });
+        graph["nodes"] = kb
+            .entities
+            .iter()
+            .map(|e| {
+                let mut n = data::node(kb, e);
+                n["summary"] = json!(e.summary);
+                n["aliases"] = json!(e.aliases);
+                n
+            })
+            .collect();
+        graph["edges"] = json!(kb.edges);
+        graph["sources"] = Value::Object(kb.sources.values().map(|s| (s.id.clone(), data::source(kb, s))).collect());
+        write(&out.join("data").join("graph.json"), serde_json::to_vec(&graph)?)?;
+    }
+    write(&out.join("data").join("schema.json"), serde_json::to_vec(&schema)?)?;
 
     write(&out.join("build-manifest.json"), serde_json::to_vec_pretty(&manifest)?)?;
     Ok(manifest)
@@ -1017,12 +1076,12 @@ mod tests {
         super::copy_dir(&Path::new(env!("CARGO_MANIFEST_DIR")).join("../../theme"), &root.join("theme")).unwrap();
         let (kb, _) = crate::load_kb(&root).unwrap();
         let out = root.join("dist");
-        super::build(&root, &kb, &super::Opts { out: out.clone(), dev: false }).unwrap();
+        super::build(&root, &kb, &super::Opts { out: out.clone(), dev: false, graph: true }).unwrap();
         let read = |p: &str| std::fs::read_to_string(out.join(p)).unwrap_or_default();
         let page = read("e/zoe/index.html");
         assert!(page.contains("Raised Catholic") && page.contains(">Background<"), "{page}");
         // never a link, a node, a search entry or a story line (ADR-0016)
-        for file in ["data/graph.json", "data/search.json"] {
+        for file in ["data/graph.json", "data/graph-slim.json", "data/schema.json", "data/search/0.json", "data/e/zoe.json"] {
             let text = read(file);
             assert!(!text.is_empty() && !text.contains("Raised Catholic") && !text.contains("Leeds"), "{file}");
         }
@@ -1041,7 +1100,7 @@ mod tests {
         super::copy_dir(&Path::new(env!("CARGO_MANIFEST_DIR")).join("../../theme"), &root.join("theme")).unwrap();
         let (kb, _) = crate::load_kb(&root).unwrap();
         let out = root.join("dist");
-        super::build(&root, &kb, &super::Opts { out: out.clone(), dev: false }).unwrap();
+        super::build(&root, &kb, &super::Opts { out: out.clone(), dev: false, graph: true }).unwrap();
         let read = |p: &str| std::fs::read_to_string(out.join(p)).unwrap_or_default();
         // exactly the answers that reach `min` names or two accounts; never "behind" a person
         let mut pages: Vec<String> = walkdir::WalkDir::new(out.join("q"))
@@ -1076,12 +1135,18 @@ mod tests {
         for q in ["connected", "behind", "why", "benefited"] {
             assert!(read(&format!("q/{q}/index.html")).contains("A connection is not evidence of wrongdoing."), "index of {q}");
         }
-        // question pages are ordinary search entries; their stories are listed in graph.json
-        let search: Value = serde_json::from_str(&read("data/search.json")).unwrap();
-        let asked: Vec<&str> = search.as_array().unwrap().iter().filter(|e| e["type"] == "question").map(|e| e["name"].as_str().unwrap()).collect();
+        // question pages are ordinary search entries, and an entry's detail file lists them
+        let index: Value = serde_json::from_str(&read("data/search/index.json")).unwrap();
+        assert_eq!(index["files"], json!([""]), "one search file while everything fits");
+        let mut search: Vec<Value> = serde_json::from_str::<Value>(&read("data/search/0.json")).unwrap()["entries"].as_array().unwrap().clone();
+        search.sort_by_key(|e| e["rank"].as_u64());
+        let asked: Vec<&str> = search.iter().filter(|e| e["type"] == "question").map(|e| e["name"].as_str().unwrap()).collect();
         assert_eq!(asked, ["Who is behind Party?", "Who is behind the Reds?", "Why did Fall happen?", "Who benefited from Fall?"]);
-        let party = search.as_array().unwrap().iter().find(|e| e["id"] == "party").unwrap();
+        let party = search.iter().find(|e| e["id"] == "party").unwrap();
         assert_eq!(party["q"], json!(["behind"]));
+        let details: Value = serde_json::from_str(&read("data/e/party.json")).unwrap();
+        assert_eq!(details["asked"][0]["url"], "/q/behind/party/");
+        assert!(!read("data/schema.json").contains("\"pages\""), "which entries have pages is in their own files");
         let graph: Value = serde_json::from_str(&read("data/graph.json")).unwrap();
         assert_eq!(graph["stories"]["questions"], json!(["behind/party", "behind/reds", "why/fall"]));
         assert_eq!(graph["questions"][2]["pages"]["fall"]["accounts"], 3);

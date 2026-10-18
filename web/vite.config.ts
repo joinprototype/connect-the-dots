@@ -29,31 +29,32 @@ const MIME: Record<string, string> = {
 };
 
 /**
- * Dev only: serve a site that looks like `ctd build` output.
- * - pages, /data/* and /static/* come from web/fixtures/ (or from $CTD_DIST, e.g. ../dist);
+ * Dev only: serve a `ctd build` output with the browser code live.
+ * - pages, /data/* and /static/* come from ../dist (or $CTD_DIST), so run `ctd build` first;
  * - /assets/<entry>.js maps to the TypeScript source, so HMR works;
- * - /assets/<entry>.css is empty in dev, because Vite injects the CSS imported by each entry.
- * - /world/ and /world-synth/ (tile pyramids) come from the site root; $CTD_WORLD and $CTD_WORLD_SYNTH
- *   point them elsewhere (e.g. CTD_WORLD_SYNTH=../.cache/world-synth for the Rust 1M world). With
- *   $CTD_DIST, /world-synth/ falls back to ../.cache/world-synth like `ctd serve`. Missing tiles are 404s.
+ * - /assets/<entry>.css is empty in dev, because Vite injects the CSS imported by each entry;
+ * - /static/site.css is ../theme/static/site.css, so theme edits show without a rebuild;
+ * - /world/ and /world-synth/ (tile pyramids) come from the site, /world-synth/ from ../.cache/world-synth
+ *   (`ctd world --synthetic <n>`) like `ctd serve`; $CTD_WORLD and $CTD_WORLD_SYNTH point them elsewhere.
+ *   Missing tiles are 404s.
  * `apply: 'serve'` keeps all of this out of `vite build`.
  */
-function siteFixtures(): Plugin {
-  const siteRoot = process.env.CTD_DIST ? resolve(process.env.CTD_DIST) : join(here, 'fixtures');
+function devSite(): Plugin {
+  const siteRoot = resolve(process.env.CTD_DIST ?? join(here, '../dist'));
   const cacheSynth = join(here, '../.cache/world-synth');
   const worlds: Record<string, string> = {
     '/world/': process.env.CTD_WORLD ? resolve(process.env.CTD_WORLD) : join(siteRoot, 'world'),
     '/world-synth/': process.env.CTD_WORLD_SYNTH
       ? resolve(process.env.CTD_WORLD_SYNTH)
-      : process.env.CTD_DIST && !existsSync(join(siteRoot, 'world-synth')) && existsSync(cacheSynth)
+      : !existsSync(join(siteRoot, 'world-synth')) && existsSync(cacheSynth)
         ? cacheSynth
         : join(siteRoot, 'world-synth'),
   };
-  // Prefer the real theme CSS when it is next door; CTD_THEME=fixture forces the stand-in.
   const themeCss = join(here, '../theme/static/site.css');
-  const useTheme = !process.env.CTD_DIST && process.env.CTD_THEME !== 'fixture' && existsSync(themeCss);
+  const useTheme = existsSync(themeCss);
+  if (!existsSync(join(siteRoot, 'index.html'))) console.warn(`vite: no site at ${siteRoot}; run \`cargo run -q -- build\` first`);
   return {
-    name: 'ctd-site-fixtures',
+    name: 'ctd-dev-site',
     apply: 'serve',
     configureServer(server) {
       server.middlewares.use(async (req, res, next) => {
@@ -136,11 +137,11 @@ function siteFixtures(): Plugin {
 }
 
 export default defineConfig(({ command }) => ({
-  // Built files are served from /assets/ by the site; the dev server serves the fixture site from /.
+  // Built files are served from /assets/ by the site; the dev server serves the built site from /.
   base: command === 'build' ? '/assets/' : '/',
   appType: 'custom',
   publicDir: false,
-  plugins: [react(), siteFixtures()],
+  plugins: [react(), devSite()],
   server: { port: 5173 },
   build: {
     outDir: 'dist',

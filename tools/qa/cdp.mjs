@@ -1,6 +1,7 @@
 // Headless-Chrome QA harness: open a page, run an action script, collect every JS error.
 // Usage: node tools/qa/cdp.mjs <url> [actions.js] [--wait=ms] [--shot=file.png] [--scheme=light|dark] [--size=390x844]
-// Prints JSON: { url, errors: [...], logs: [...], result } and exits non-zero if errors were seen.
+// Prints JSON: { url, errors: [...], logs: [...], data: [the /data/ files requested], result } and exits
+// non-zero if errors were seen.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { launch } from './chrome.mjs';
 
@@ -24,9 +25,13 @@ setTimeout(() => { console.log(JSON.stringify({ url, errors: ['harness timeout']
 
 const errors = [];
 const logs = [];
+const data = [];
 ws.addEventListener('message', (ev) => {
   const msg = JSON.parse(ev.data);
-  if (msg.method === 'Runtime.exceptionThrown') {
+  if (msg.method === 'Network.requestWillBeSent') {
+    const path = new URL(msg.params.request.url).pathname;
+    if (path.startsWith('/data/')) data.push(path);
+  } else if (msg.method === 'Runtime.exceptionThrown') {
     const d = msg.params.exceptionDetails;
     errors.push(`exception: ${d.exception?.description || d.text} @ ${d.url || ''}:${d.lineNumber}`);
   } else if (msg.method === 'Runtime.consoleAPICalled') {
@@ -41,6 +46,7 @@ ws.addEventListener('message', (ev) => {
 await send('Runtime.enable');
 await send('Log.enable');
 await send('Page.enable');
+await send('Network.enable');
 if (scheme) await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-color-scheme', value: scheme }] });
 if (size) {
   const [width, height] = size.split('x').map(Number);
@@ -60,5 +66,5 @@ if (shot) {
   if (img.result?.data) writeFileSync(shot, Buffer.from(img.result.data, 'base64'));
   else errors.push(`screenshot failed: ${JSON.stringify(img.error ?? img)}`);
 }
-console.log(JSON.stringify({ url, errors, logs: logs.slice(-15), result }, null, 1));
+console.log(JSON.stringify({ url, errors, logs: logs.slice(-15), data, result }, null, 1));
 done(errors.length ? 1 : 0);

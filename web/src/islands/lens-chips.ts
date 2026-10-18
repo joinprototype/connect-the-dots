@@ -1,4 +1,4 @@
-import { loadGraph } from '../lib/data';
+import { loadSchema } from '../lib/data';
 import { el } from '../lib/dom';
 import { dispatchLens, currentLens } from '../lib/events';
 import { currentUrl, replaceUrl } from '../lib/history';
@@ -8,7 +8,7 @@ const parseLayers = (s: string | null | undefined): string[] => (s ?? '').split(
 /**
  * <ctd-lens-chips focus="<id>">: one chip per lens. Clicking a chip dispatches `ctd:lens` {lens}
  * on document and hides li.claim items whose data-layers miss the lens's layers ("all" shows all).
- * Uses server-rendered button[data-lens] chips when present; otherwise builds them from graph.json.
+ * Uses server-rendered button[data-lens] chips when present; otherwise builds them from schema.json.
  */
 export class CtdLensChips extends HTMLElement {
   private layersOf = new Map<string, string[] | null>();
@@ -25,7 +25,7 @@ export class CtdLensChips extends HTMLElement {
     let graphLenses: { id: string; label: string; layers: string[] }[] = [];
     if (needGraph) {
       try {
-        graphLenses = (await loadGraph()).lenses;
+        graphLenses = (await loadSchema()).lenses;
       } catch {
         graphLenses = [];
       }

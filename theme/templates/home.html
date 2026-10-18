@@ -46,7 +46,6 @@
   <datalist id="ask-names">{% for n in ask_names %}<option value="{{ n.name }}"></option>{% endfor %}</datalist>
   <script type="application/json" id="ask-data">{{ {"questions": asks, "names": ask_names, "complete": ask_names|length >= stats.entities}|tojson }}</script>
   <script type="application/json" id="ask-types">{ {% for g in groups %}{{ g.id|tojson }}: [{{ g.items[0].node.type_label|tojson }}, {{ g.label|lower|tojson }}]{% if not loop.last %}, {% endif %}{% endfor %} }</script>
-  <script src="/static/ask.js" defer></script>
 </section>
 
 {% if route %}

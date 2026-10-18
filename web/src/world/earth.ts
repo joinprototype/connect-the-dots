@@ -1,11 +1,11 @@
 // Lazy chunk: the Map's Earth view (/w/?view=earth). MapLibre draws the story maps' calm OpenFreeMap
-// basemap (ADR-0014) as a globe, with one grey dot per spot where entries are: graph.json `coords`, an
+// basemap (ADR-0014) as a globe, with one grey dot per spot where entries are: graph-slim.json `coords`, an
 // entry's own or its place's, so an entry and its place share a dot. The era and the selection are
 // feature state read by paint expressions: picking an era never rebuilds the data.
 import { AttributionControl, Map as MapLibre, setWorkerUrl, type ExpressionSpecification } from 'maplibre-gl';
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url';
 import { FADED_TEXT_ALPHA, tokenRgb } from '../lib/color';
-import { loadGraph } from '../lib/data';
+import { loadGraphIndex } from '../lib/data';
 import type { GNode, GraphData } from '../lib/types';
 import { calmBasemap, loadMapCss, MAP_STYLE, rgb } from './basemap';
 import { ERA_DIM, eraAlpha, type Era } from './era';
@@ -134,9 +134,9 @@ function middle(spots: EarthSpot[]): [number, number] {
   return [Math.atan2(y, x) / RAD, Math.max(-HOME_MAX_LAT, Math.min(HOME_MAX_LAT, lat))];
 }
 
-/** Rejects when graph.json or WebGL is missing; a basemap that fails later goes to opts.onFail. */
+/** Rejects when the slim file or WebGL is missing; a basemap that fails later goes to opts.onFail. */
 export async function createEarth(container: HTMLElement, opts: EarthOptions): Promise<Earth> {
-  const [data] = await Promise.all([loadGraph(), loadMapCss()]);
+  const [{ data }] = await Promise.all([loadGraphIndex(), loadMapCss()]);
   const spots = spotsOf(data);
   const byId = new Map(spots.flatMap((s) => s.entries.map((e) => [e.id, s] as const)));
   const grey = tokenRgb('--graph-node', [142, 142, 147], container);

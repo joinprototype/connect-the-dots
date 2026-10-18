@@ -10,9 +10,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.node.json",
-    "fixtures": "node fixtures/make-fixtures.mjs",
-    "fixtures:world": "node fixtures/make-world.mjs"
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.node.json"
   },
   "dependencies": {
     "@deck.gl/core": "9.4.0",

@@ -14,8 +14,8 @@ _Add ideas here with date and who suggested them._
 - 2026-10-17 (content pack 2): verify the draft `william-boyce-thompson#c2` (Red Cross money in 1917) against Kennan or Hagedorn, or drop it; find a primary Reagan-official source for the SDI/arms-race view (only the Reagan Library exhibit is cited); kremlin.ru is unreachable from outside Russia, so its three sources rely on Internet Archive copies.
 - 2026-10-17 (founder): question pages. "Who is behind X?", "Why did X happen?", "Who benefited from X?" as first-class answers, alongside "How is A connected to B?".
 - 2026-10-17 (founder): eagle view. One continuous zoom from planet (eras, regions) down to a single dot and its proof.
-- 2026-10-17 (Sprint 3): browse pages per type (`/t/<type>/`). Built in Sprint 4 as one A–Z page per type; split them into pages once a type passes a few thousand entries.
-- 2026-10-17 (Sprint 3): the Ask form resolves names on the client against 400 embedded names, then `search.json`. At large scale, shard `search.json` by prefix.
+- ~~2026-10-17 (Sprint 3): browse pages per type (`/t/<type>/`). Built in Sprint 4 as one A–Z page per type; split them into pages once a type passes a few thousand entries.~~ Done in Sprint 10: past 500 entries, one page per first letter.
+- ~~2026-10-17 (Sprint 3): the Ask form resolves names on the client against 400 embedded names, then `search.json`. At large scale, shard `search.json` by prefix.~~ Done in Sprint 10: search files by word range (ADR-0017).
 - 2026-10-17 (Sprint 2 viewer): a tile index in the world manifest, so large worlds stop requesting empty tiles (404s).
 - 2026-10-17 (Sprint 3): explorer graph. Parallel links between the same pair still overlap; draw them curved or merged with a count, as the story graph does.
 - 2026-10-17 (Sprint 4 v1 cut): Ask anything, later parts. See [design/ask-anything.md](design/ask-anything.md) "Later":
@@ -27,7 +27,7 @@ _Add ideas here with date and who suggested them._
   - page-size warnings and richness scoring.
 - 2026-10-17 (Sprint 3 review, F13; widened in Sprint 7): self-host the basemap of the story maps and the Map's Earth view, so neither makes a third-party request: vector tiles as PMTiles on R2, the style and sprites next to them, and the label glyphs served locally (or place names drawn as HTML labels in the system font). Today map scenes call `tiles.openfreemap.org` ([ADR-0014](decisions/0014-calm-design.md)).
 - ~~2026-10-17 (Sprint 3 review, F28): `ctd check` should fail when an entity id disappears without becoming an alias.~~ Done in Sprint 5: `ctd check --base <ref>` (uids tell a rename from a removal). Use `--base origin/main` in the pull-request check once the repo is on GitHub.
-- 2026-10-17 (Sprint 3 review, F9): page history runs one `git log --follow` per entry and chapter, about 8 minutes at 50k entries. Read it in one batched, rename-aware pass.
+- ~~2026-10-17 (Sprint 3 review, F9): page history runs one `git log --follow` per entry and chapter, about 8 minutes at 50k entries. Read it in one batched, rename-aware pass.~~ Done: one `git log --name-status` per build, renames followed (`crates/ctd/src/site/history.rs`).
 - ~~2026-10-17 (Sprint 3 review, F2): a Content-Security-Policy in `_headers`.~~ Done in Sprint 6 (see deploy.md).
 - 2026-10-17 (Sprint 7 review): on the Earth, draw country entries (the United States, Cuba, the Soviet Union) as quiet outlines or labels instead of centre dots, so a country never reads as one spot.
 - 2026-10-17 (Sprint 6 review): an accessibility audit beyond structure: contrast in both modes, and a VoiceOver pass through Ask, an answer page, a story and the explorer.
@@ -39,9 +39,9 @@ _Add ideas here with date and who suggested them._
 - ~~2026-10-17 (Sprint 8 review): plural inverse phrases read stiffly in story sentences ("GameStop, *stakeholders* Ryan Cohen").~~ Done in Sprint 9 (`inverse_reads: list`).
 - 2026-10-17 (Sprint 9, founder): relations for court and sanctions records (charged, convicted, acquitted, sanctioned), sensitive and always dated, so legal matters stop living in notes. Needs an ADR: who decided, which court, and appeals and reversals shown next to the original decision.
 - 2026-10-17 (Sprint 9, founder: "imagine all the public figures, historical people"): a scale plan, before roughly 50k entries:
-  - neighbourhood shards (`data/e/<id>.json`) instead of one `graph.json` for the explorer and stories;
-  - `search.json` sharded by prefix;
-  - page history read in one batched pass (F9);
+  - ~~neighbourhood shards (`data/e/<id>.json`) instead of one `graph.json` for the explorer and stories;~~ done in Sprint 10 as a slim structure file, detail files and stories that carry their own data (ADR-0017);
+  - ~~`search.json` sharded by prefix;~~ done in Sprint 10, by word range;
+  - ~~page history read in one batched pass (F9);~~ done;
   - long-tail pages served from R2 through a Worker (past about 80k files).
   - Content at that scale comes from bulk imports (Wikidata identities, SEC EDGAR, company registries, open ownership data), marked as being verified until checked.
 - 2026-10-17 (Sprint 9 research): a relation for disputing a finding (an account that says a claimed effect is not shown). The common-ownership debate is told only in the chapter, because "harmed by" could carry the academics' account but nothing could carry the firms' rebuttal, so a question page would have shown one side.

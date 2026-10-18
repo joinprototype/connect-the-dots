@@ -2,11 +2,11 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { sourceView } from '../lib/claims';
-import { loadGraphIndex, nameOf, type GraphIndex } from '../lib/data';
+import { nameOf, storyIndex, type GraphIndex } from '../lib/data';
 import { formatYear } from '../lib/dates';
 import { el } from '../lib/dom';
 import { emit } from '../lib/events';
-import type { Shot } from '../lib/types';
+import type { GraphData, Shot } from '../lib/types';
 import { explorerHref } from '../explorer/url';
 import type { GraphView } from './graph-view';
 import type { MapView } from './map-view';
@@ -170,7 +170,14 @@ export class CtdStory extends HTMLElement {
     window.addEventListener('pagehide', this.onLeave);
     document.addEventListener('visibilitychange', this.onLeave);
 
-    loadGraphIndex()
+    // the entries, links and sources the scenes name, embedded beside the shots (with schema.json)
+    let own: Pick<GraphData, 'nodes' | 'edges' | 'sources'> = { nodes: [], edges: [], sources: {} };
+    try {
+      own = JSON.parse(this.querySelector('script.ctd-story-data')?.textContent || 'null') ?? own;
+    } catch (err) {
+      console.warn('ctd-story: invalid story data JSON', err);
+    }
+    storyIndex(own)
       .then((idx) => {
         if (!this.isConnected) return;
         this.idx = idx;
@@ -179,7 +186,7 @@ export class CtdStory extends HTMLElement {
         this.decorateSources(idx);
         this.setupScroll();
       })
-      .catch((err) => console.warn('ctd-story: graph data unavailable', err));
+      .catch((err) => console.warn('ctd-story: story data unavailable', err));
   }
 
   disconnectedCallback(): void {

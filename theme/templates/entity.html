@@ -159,6 +159,7 @@
         </li>
         {% endfor %}
       </ul>
+      {% if g.more %}<p class="index-more"><a href="/x/?focus={{ entity.id }}">and {{ g.more }} more ›</a></p>{% endif %}
     </section>
     {% endfor %}
   </section>

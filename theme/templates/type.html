@@ -1,18 +1,19 @@
 {% extends "base.html" %}
 {% from "macros.html" import count %}
-{# Every entry of one type (/t/<type>/), A to Z: where the home index's "and N more" leads. #}
-{% block title %}{{ type.plural }} – connect the dot{% endblock %}
+{# Every entry of one type (/t/<type>/), A to Z: where the home index's "and N more" leads. A type with
+   many entries (`split`) lists its letters here, and each letter has a page (/t/<type>/<letter>/). #}
+{% block title %}{{ type.plural }}{% if letter %}: {{ letter.letter }}{% endif %} – connect the dot{% endblock %}
 {% block description %}Every {{ type.label|lower }} on the map, A to Z.{% endblock %}
 {% block body_class %}type-page{% endblock %}
 {% block main %}
 <section class="page-head">
-  <p class="chapter-back"><a href="/#index-h">‹ On the map</a></p>
-  <h1>{{ type.plural }}</h1>
-  <p class="index-intro">{{ count(total, type.label|lower, type.plural|lower) }}, A to Z.</p>
-  {% if letters|length > 1 %}<nav class="letters" aria-label="Jump to a letter">{% for g in letters %}<a href="#l-{{ loop.index }}">{{ g.letter }}</a>{% endfor %}</nav>{% endif %}
+  {% if letter %}<p class="chapter-back"><a href="/t/{{ type.id }}/">‹ {{ type.plural }}</a></p>{% else %}<p class="chapter-back"><a href="/#index-h">‹ On the map</a></p>{% endif %}
+  <h1>{{ type.plural }}{% if letter %}: {{ letter.letter }}{% endif %}</h1>
+  <p class="index-intro">{% if letter %}{{ count(letter.items|length, type.label|lower, type.plural|lower) }} of {{ total }}, A to Z.{% else %}{{ count(total, type.label|lower, type.plural|lower) }}, A to Z.{% if split %} Pick a letter.{% endif %}{% endif %}</p>
+  {% if letters|length > 1 %}<nav class="letters" aria-label="{{ 'Letters' if split else 'Jump to a letter' }}">{% for g in letters %}<a href="{{ g.url }}"{% if letter and g.letter == letter.letter %} aria-current="page"{% endif %}>{{ g.letter }}</a>{% endfor %}</nav>{% endif %}
 </section>
 <section class="atlas-index" aria-label="{{ type.plural }}">
-  {% for g in letters %}
+  {% for g in ([letter] if letter else ([] if split else letters)) %}
   <section class="letter-group" id="l-{{ loop.index }}">
     <h2>{{ g.letter }}</h2>
     <ul class="type-list">

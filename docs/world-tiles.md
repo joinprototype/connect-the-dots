@@ -43,7 +43,7 @@ The "open world" is a 2D map of the whole graph, cut into a quadtree of tiles th
 - **`entities.json` dates:** `start` and `end` are the entry's own dates as decimal years ([data-contract.md](data-contract.md) "Dates": `end` exclusive, `null` = ongoing), rounded to 0.001. Both are absent when the entry is undated. The map's era slider dims the dots whose dates miss the era, and the undated ones.
 - **Orientation:** a content build turns its map to the previous build's orientation (rotation or mirror, 2D Procrustes over shared entity ids; state in `.cache/world-state.json`), then normalises it into the square. The angle is snapped to 1e-4 rad, so an unchanged graph rebuilds byte for byte. Scale and shift are not carried over, so the map cannot shrink over many builds. Builds before this rule had shrunk the content world to about 13% of the square.
 
-A content world draws the same entities and links as `data/graph.json`, except withdrawn links and links on no layer ("not the same as"), so a withheld claim (see [data-contract.md](data-contract.md)) is not in the tiles either.
+A content world draws the same entities and links as `data/graph-slim.json`, except withdrawn links and links on no layer ("not the same as"), so a withheld claim (see [data-contract.md](data-contract.md)) is not in the tiles either.
 
 ## Tile binary layout (little-endian)
 

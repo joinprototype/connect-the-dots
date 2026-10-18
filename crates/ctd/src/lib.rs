@@ -15,6 +15,7 @@ pub mod schema;
 pub mod serve;
 pub mod site;
 pub mod stories;
+pub mod synthetic;
 #[cfg(test)]
 mod testkit;
 pub mod world;
@@ -63,7 +64,7 @@ pub fn rebuild(root: &Path, out: &Path, dev: bool) {
     match load_kb(root) {
         Ok((kb, diags)) => {
             let (errors, warnings) = diag::print(&diags);
-            let built = site::build(root, &kb, &site::Opts { out: staging.clone(), dev })
+            let built = site::build(root, &kb, &site::Opts { out: staging.clone(), dev, graph: false })
                 .and_then(|m| swap_in(&staging, out, &cache.join("dist-old")).map(|()| m));
             match built {
                 Ok(m) => println!(

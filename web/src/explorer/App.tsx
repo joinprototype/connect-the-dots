@@ -11,17 +11,17 @@ import { ExplorerEngine, type Selection } from './engine';
 import { guard, useThrottledValue } from './guard';
 import { EdgeDetails, Intro, MetaDetails, NarrativeDiff, NodeDetails, PathExplanation, PathList } from './panels';
 import { EntityPicker, TimeSlider } from './ui';
-import { readUrl, writeUrl } from './url';
+import { readUrl, writeUrl, type UrlState } from './url';
 
 /** Never a hairball: at most this many entities are drawn, and at most this many are kept open. */
 const NODE_BUDGET = 60;
 const MAX_OPEN = 6;
 
 export function App(): ReactNode {
-  const [idx, setIdx] = useState<GraphIndex | null>(null);
+  const [ready, setReady] = useState<{ idx: GraphIndex; initial: UrlState } | null>(null);
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
-    loadGraphIndex().then(setIdx, (e: unknown) => setError(String(e)));
+    loadGraphIndex().then(async (idx) => setReady({ idx, initial: await readUrl(idx) }), (e: unknown) => setError(String(e)));
   }, []);
   if (error) {
     return (
@@ -31,7 +31,7 @@ export function App(): ReactNode {
       </div>
     );
   }
-  if (!idx) {
+  if (!ready) {
     return (
       <div className="ctdx ctdx-state" aria-busy="true">
         <span className="ctdx-loader" aria-hidden="true" />
@@ -39,7 +39,7 @@ export function App(): ReactNode {
       </div>
     );
   }
-  return <Explorer idx={idx} />;
+  return <Explorer idx={ready.idx} initial={ready.initial} />;
 }
 
 /** The side whose accounts touch the most of the same entries: the likeliest other side. */
@@ -76,8 +76,7 @@ function suggestionsOf(idx: GraphIndex, count = 6): GNode[] {
   return out;
 }
 
-function Explorer({ idx }: { idx: GraphIndex }): ReactNode {
-  const initial = useMemo(() => readUrl(idx), [idx]);
+function Explorer({ idx, initial }: { idx: GraphIndex; initial: UrlState }): ReactNode {
   const [focus, setFocus] = useState<string | null>(initial.focus);
   /** Entries whose links are open, oldest first (the focus is the last one). */
   const [open, setOpen] = useState<string[]>(initial.focus ? [initial.focus] : []);

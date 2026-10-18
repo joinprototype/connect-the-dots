@@ -1,26 +1,28 @@
-"""A static server for QA that sends the headers in <dir>/_headers (the "/*" block) with every
-response, so a sweep sees what Cloudflare would enforce, such as the Content-Security-Policy.
+"""A static server for QA that sends the headers in <dir>/_headers with each response whose path a
+block matches ("/*" every one, "/data/*" those under /data/), so a sweep sees what Cloudflare would
+enforce, such as the Content-Security-Policy.
 Usage: python3 tools/qa/serve-headers.py <dir> [port]"""
 import http.server, os, sys
 
 root = sys.argv[1]
 port = int(sys.argv[2]) if len(sys.argv) > 2 else 4430
-headers = []
+rules = []  # (path prefix, [(header, value)])
 with open(os.path.join(root, '_headers')) as f:
-    block = False
     for line in f:
-        if not line.startswith(' '):
-            block = line.strip() == '/*'
-        elif block and ':' in line:
+        if line.strip() and not line.startswith(' '):
+            rules.append((line.strip().rstrip('*'), []))
+        elif rules and ':' in line:
             k, v = line.strip().split(':', 1)
-            headers.append((k.strip(), v.strip()))
+            rules[-1][1].append((k.strip(), v.strip()))
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *a, **kw):
         super().__init__(*a, directory=root, **kw)
     def end_headers(self):
-        for k, v in headers:
-            self.send_header(k, v)
+        for prefix, headers in rules:
+            if self.path.startswith(prefix):
+                for k, v in headers:
+                    self.send_header(k, v)
         super().end_headers()
     def log_message(self, *a):
         pass

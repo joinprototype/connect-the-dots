@@ -1,7 +1,8 @@
-import { loadSearch, prettifyId } from '../lib/data';
+import { prettifyId } from '../lib/data';
 import { el } from '../lib/dom';
 import { requestFocus } from '../lib/events';
 import { fuzzySearch, splitRanges, type FuzzyHit } from '../lib/fuzzy';
+import { candidates } from '../lib/search';
 import type { SearchEntry } from '../lib/types';
 
 let uid = 0;
@@ -16,8 +17,6 @@ export class CtdSearch extends HTMLElement {
   private list!: HTMLUListElement;
   private hits: FuzzyHit<SearchEntry>[] = [];
   private active = -1;
-  private entries: SearchEntry[] | null = null;
-  private failed = false;
 
   connectedCallback(): void {
     if (this.input) return;
@@ -45,7 +44,8 @@ export class CtdSearch extends HTMLElement {
     this.list.hidden = true;
     (input.closest('form') ?? input).after(this.list);
 
-    input.addEventListener('focus', () => void this.ensureEntries());
+    // the search index (and, while there is only one, the search file) loads on focus
+    input.addEventListener('focus', () => void candidates('').catch(() => undefined));
     input.addEventListener('input', () => void this.update());
     input.addEventListener('keydown', (e) => this.onKey(e));
     this.addEventListener('focusout', (e) => {
@@ -62,21 +62,11 @@ export class CtdSearch extends HTMLElement {
     });
   }
 
-  private async ensureEntries(): Promise<SearchEntry[] | null> {
-    if (this.entries || this.failed) return this.entries;
-    try {
-      this.entries = await loadSearch();
-    } catch {
-      this.failed = true;
-    }
-    return this.entries;
-  }
-
   private async update(): Promise<void> {
     const q = this.input!.value;
-    const entries = await this.ensureEntries();
-    if (q !== this.input!.value) return; // a newer keystroke won
     if (!q.trim()) return this.close();
+    const entries = await candidates(q).catch(() => null);
+    if (q !== this.input!.value) return; // a newer keystroke won
     this.hits = entries ? fuzzySearch(entries, q, 8) : [];
     this.active = this.hits.length ? 0 : -1;
     this.render(entries ? 'No matches' : 'Search is unavailable right now');

@@ -1,11 +1,12 @@
 // Plain words for the reader. Readers never see tier codes, "claims", "edges", costs or hops.
+import type { GraphIndex } from './data';
 import type { GraphData, GEdge } from './types';
 import type { PathResult } from './paths';
 
 /** Shown wherever connections are: on route explanations, under the explorer and on the map. */
 export const NOTICE = 'A connection is not evidence of wrongdoing.';
 
-/** Fallback for older graph.json files without `tiers` (content/schema/source-tiers.yaml is the source). */
+/** Fallback for a schema.json without `tiers` (content/schema/source-tiers.yaml is the source). */
 const TIER_LABELS: Record<string, string> = {
   T1: 'Primary record',
   T2: 'Scholarship & press',
@@ -18,9 +19,9 @@ export function tierLabel(data: GraphData | null | undefined, tier: string | nul
   return data?.tiers?.[tier]?.label ?? TIER_LABELS[tier] ?? '';
 }
 
-/** The life story of an entry, if the build made one. */
-export function entityStoryUrl(data: GraphData, id: string): string | null {
-  return data.stories?.entities.includes(id) ? `/e/${encodeURIComponent(id)}/story/` : null;
+/** The life story of an entry, once its details are loaded, if the build made one. */
+export function entityStoryUrl(idx: GraphIndex, id: string): string | null {
+  return idx.details.get(id)?.story ?? null;
 }
 
 /** The story of a route, if one exists for this direction (path stories are directional: a--b only). */

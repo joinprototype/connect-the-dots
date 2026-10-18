@@ -1222,7 +1222,7 @@ class WorldViewer implements WorldHandle {
     }
     const msg = String((err as Error)?.message ?? err);
     const webgl = /webgl|context|device/i.test(msg);
-    const build = 'build it with "ctd world --synthetic 100000" or "ctd build", or run "npm run fixtures:world" for the dev fixture';
+    const build = 'build it with "ctd world --synthetic 100000" or "ctd build"';
     console.error(`connect-the-dot world: ${webgl ? 'no WebGL 2' : `${this.opts.src} could not be loaded; ${build}`}`, err);
     this.failure ??= err instanceof Error ? err : new Error(msg);
     if (this.opts.embedded) {

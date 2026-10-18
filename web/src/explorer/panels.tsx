@@ -7,6 +7,7 @@ import type { PathResult } from '../lib/paths';
 import { entityStoryUrl, NOTICE, routeStoryUrl, routeSummary } from '../lib/plain';
 import type { GEdge } from '../lib/types';
 import { Badges, ClaimCard, Sentence, typeDot } from './ui';
+import { useWords } from './words';
 
 // ------------------------------------------------------------------ an entry
 
@@ -21,6 +22,7 @@ export function NodeDetails(props: {
   onConnectFrom: (id: string) => void;
 }): ReactNode {
   const { idx, id } = props;
+  useWords(idx, [id]);
   const n = idx.nodes.get(id)!;
   const type = idx.data.types[n.type];
   const groups = useMemo(() => {
@@ -37,7 +39,7 @@ export function NodeDetails(props: {
   const t = props.t ?? null;
   const asOf = t != null ? formatAsOf(t) : '';
   const own = nodeTime(idx, id, t);
-  const story = entityStoryUrl(idx.data, id);
+  const story = entityStoryUrl(idx, id);
   return (
     <div className="ctdx-details">
       <p className="ctdx-kind" style={typeDot(idx, n)}>
@@ -101,14 +103,15 @@ export function NodeDetails(props: {
 export function EdgeDetails(props: { idx: GraphIndex; id: string; t?: number | null; onEntity: (id: string) => void; onEdge: (id: string) => void }): ReactNode {
   const { idx } = props;
   const e = idx.edges.get(props.id);
+  const siblings = e
+    ? (idx.incident.get(e.from) ?? []).filter((x) => x.id !== e.id && ((x.from === e.from && x.to === e.to) || (x.from === e.to && x.to === e.from)))
+    : [];
+  useWords(idx, [], e ? [e, ...siblings] : []);
   if (!e) return null;
   const t = props.t ?? null;
   const time = edgeTime(idx, e, t);
   const asOf = t != null ? formatAsOf(t) : '';
   const rel = idx.data.relations[e.rel];
-  const siblings = (idx.incident.get(e.from) ?? []).filter(
-    (x) => x.id !== e.id && ((x.from === e.from && x.to === e.to) || (x.from === e.to && x.to === e.from)),
-  );
   // A family role reads the same from both sides ("Mary Maxwell Gates, mother of Bill Gates").
   const otherWay = sentenceText(sentence(idx, e, e.to));
   return (
@@ -145,6 +148,7 @@ export function EdgeDetails(props: { idx: GraphIndex; id: string; t?: number | n
 export function MetaDetails(props: { idx: GraphIndex; expanded: boolean; onExpand: (v: boolean) => void; onEntity: (id: string) => void }): ReactNode {
   const { idx } = props;
   const pm = useMemo(() => passiveModel(idx), [idx]);
+  useWords(idx, [], pm.edges);
   return (
     <div className="ctdx-details">
       <p className="ctdx-kind">Grouped</p>
@@ -214,6 +218,7 @@ export function PathExplanation(props: {
   onEntity: (id: string) => void;
 }): ReactNode {
   const { idx, path } = props;
+  useWords(idx, [], path.hops.map((h) => h.edge));
   const story = routeStoryUrl(idx.data, path.nodes[0], path.nodes[path.nodes.length - 1]);
   return (
     <div className="ctdx-details">
@@ -285,6 +290,7 @@ export function NarrativeDiff(props: {
     const both = edges.filter((e) => e.cross_confirmed && e.voices.includes(a) && e.voices.includes(b));
     return { onlyA, onlyB, confirmed: both };
   }, [idx, a, b]);
+  useWords(idx, [], [...lists.onlyA, ...lists.onlyB, ...lists.confirmed]);
   if (persp.length < 1) return <p className="ctdx-note">Nothing here is told by one side only yet, so there is nothing to compare.</p>;
 
   const select = (value: string, set: (v: string) => void, label: string) => (

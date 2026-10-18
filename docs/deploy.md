@@ -31,7 +31,7 @@ Config: `wrangler.jsonc` at the repo root. It serves `dist/` with these rules:
   - Today the site has about 1,250 files (270 entries, their stories and question pages, world tiles).
   - World tiles grow fastest: the 1M-node synthetic world is 2,693 tiles.
   - Past roughly 50k files, move tiles and long-tail pages to R2 (ADR-0006).
-- **File size:** at most 25 MiB per asset. The largest files today are the lazily loaded map and deck.gl chunks (about 1 MB each, uncompressed). graph.json is about 0.3 MB.
+- **File size:** at most 25 MiB per asset. The largest files today are the lazily loaded map and deck.gl chunks (about 1 MB each, uncompressed). The data files are small: `graph-slim.json` is about 65 KB (17 KB gzip), a detail file a few KB.
 - **Third-party requests:** story maps and the Map's Earth view load OpenFreeMap tiles and glyphs (ADR-0014). Everything else is same-origin.
 
 ## Before the first public deploy

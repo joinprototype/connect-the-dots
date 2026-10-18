@@ -1,17 +1,16 @@
 # web/: browser code for connect-the-dot
 
-The Rust engine (`ctd build`) renders every page and writes `dist/data/graph.json`, `dist/data/search.json` and the world tiles.
+The Rust engine (`ctd build`) renders every page and writes the data files (`dist/data/`: `schema.json`, `graph-slim.json`,
+`e/<id>.json`, `search/`) and the world tiles.
 This package builds the browser code that enhances those pages. `ctd build` copies `web/dist/` to `dist/assets/`
 (and `ctd serve` re-copies it whenever `web/dist/` changes).
 The contracts are [`docs/data-contract.md`](../docs/data-contract.md) and [`docs/world-tiles.md`](../docs/world-tiles.md).
 
 ```sh
 npm install
-npm run dev             # fixture site on http://localhost:5173 (HMR)
+npm run dev             # the built site (../dist) on http://localhost:5173, with this code live (HMR)
 npm run typecheck       # tsc for src/ and vite.config.ts
 npm run build           # writes web/dist/
-npm run fixtures        # regenerate web/fixtures/ from fixtures/make-fixtures.mjs
-npm run fixtures:world  # write the world fixtures (fixtures/world-synth/, fixtures/world/, fixtures/w/index.html)
 ```
 
 ## Bundles
@@ -25,8 +24,7 @@ npm run fixtures:world  # write the world fixtures (fixtures/world-synth/, fixtu
 | `chunks/*.js` | shared or lazy code | | `deck` (deck.gl 9.4 + luma.gl, only on world pages and in the explorer's world mode), `sigma` (sigma 3 + graphology + ForceAtlas2, explorer and story), `gsap`, `map-view` (MapLibre 6, lazy), `preload-helper` and small shared libs. |
 | `chunks/maplibre-gl-worker-*.mjs` | MapLibre's worker | `map-view` | Copied as is and passed to `setWorkerUrl`. |
 
-`vite build` emits only these files. The fixtures are never part of it: entries are TypeScript modules, not HTML,
-and `publicDir` is off. Built files expect to be served from `/assets/` (`base: '/assets/'`).
+`vite build` emits only these files: entries are TypeScript modules, not HTML, and `publicDir` is off. Built files expect to be served from `/assets/` (`base: '/assets/'`).
 The `preload-helper` chunk is pinned on purpose: left to the bundler it ended up inside the deck.gl chunk, which made
 `islands.js` import deck.gl on every page.
 
@@ -45,8 +43,9 @@ carried by hue alone: attributed and draft claims are a lighter gray, past thing
 
 ## Islands (`src/islands/`)
 
-- `<ctd-search>`: enhances the server's `<input>`. The dropdown is a fuzzy match on names and aliases (`src/lib/fuzzy.ts`: whole name, prefix, word and substring matches first; scattered-letter matches only when nothing else matches) and supports arrow keys, Enter and Escape. It is right-aligned to the field and never wider than `min(420px, 100vw - 32px)`. On the explorer and world pages it dispatches a cancelable `ctd:focus` (`requestFocus()` in `src/lib/events.ts`): a page that can show the entry calls `preventDefault()` and the search stays put; anything else (chapters, entries not on the map, a world still loading) goes to the result's page.
-- `<ctd-lens-chips>`: uses the server's `button[data-lens]` chips, or builds them from `graph.json`. It shows counts, hides `li.claim` items (and emptied `.claim-group`s) whose `data-layers` miss the lens, dispatches `ctd:lens`, and keeps `?lens=` in the URL.
+- `<ctd-search>`: enhances the server's `<input>`. The dropdown is a fuzzy match on the names and aliases of the entries the search files give for the text (`src/lib/search.ts`: every entry while there is one file) (`src/lib/fuzzy.ts`: whole name, prefix, word and substring matches first; scattered-letter matches only when nothing else matches) and supports arrow keys, Enter and Escape. It is right-aligned to the field and never wider than `min(420px, 100vw - 32px)`. On the explorer and world pages it dispatches a cancelable `ctd:focus` (`requestFocus()` in `src/lib/events.ts`): a page that can show the entry calls `preventDefault()` and the search stays put; anything else (chapters, entries not on the map, a world still loading) goes to the result's page.
+- `<ctd-lens-chips>`: uses the server's `button[data-lens]` chips, or builds them from `schema.json`. It shows counts, hides `li.claim` items (and emptied `.claim-group`s) whose `data-layers` miss the lens, dispatches `ctd:lens`, and keeps `?lens=` in the URL.
+- The Ask form on the home page (`src/islands/ask.ts`) turns names into pages with its own matcher (names with or without "the"; exact, then prefix, then word starts; best-connected first by `rank`). It reads the names the page embeds, the search files for the rest, and an entry's detail file to name its other question pages.
 - Data is fetched once per page: `src/lib/data.ts` keeps one promise per file on `globalThis`, shared by every bundle on the page.
 - URL updates (`?lens=`, the explorer state) all go through `src/lib/history.ts`: at most one `history.replaceState` per 300 ms, trailing, inside `try/catch`. Safari throws a `SecurityError` after 100 history writes in 10 seconds; see "Safari crash" below.
 - The tabs and the `<ctd-ego-graph>` island were removed when entity pages moved to folded sections and an "Explore connections" link (no template uses them). The ego graph's Sprint 2 fixes (no overlapping labels, parallel links merged into one line with a count) were built and checked first; the label placement lives on in `src/lib/labels.ts`, used by the explorer and the world map.
@@ -59,10 +58,11 @@ carried by hue alone: attributed and draft claims are a lighter gray, past thing
   - lens, time and perspective visibility, and passive collapse. Sigma's pixel ratio is capped at 2.
   - Passive collapse folds holders whose every link is passive into "Index funds"; their holdings are drawn as that group's lines. A holding on the shown route (or the selected link) whose holder is drawn as itself, like BlackRock, is drawn as the holder's own line, so the route never breaks off at a faded group dot.
 - **Search first:** with no `focus` and no `from`/`to`, nothing is drawn; the canvas shows one field ("Start from a person, place or event") and suggestion chips (the most connected entry of each kind). Picking an entry draws its links; clicking a dot (or picking another entry) opens that one's links too. At most 6 entries stay open and at most 60 entries are drawn (most recent first, then by degree), so it never becomes a hairball. With a route, the routes' entries are drawn.
-- **Plain words** (`src/lib/plain.ts`): "link", "proof", tier labels from `graph.json.tiers` ("Primary record", "Scholarship & press", "Self-published"; a built-in copy covers older files), "Both sides agree", "X's account", "Being verified", "Disputed", "Withdrawn".
+- **Data** (ADR-0017): the explorer draws everything from `graph-slim.json` and `schema.json`; when a panel shows an entry or links, `useWords` (`words.ts`) loads the detail files that hold their words and proof (`e/<id>.json`: an entry's summary, aliases and life story, its links' qualifiers, notes and sources) and renders again. A link is looked up in its owner's file, then its target's (a hub's file keeps the strongest 100 links of each kind). What is drawn never depends on what is loaded. From, To and `?focus=` take aliases through the search files.
+- **Plain words** (`src/lib/plain.ts`): "link", "proof", tier labels from `schema.json` `tiers` ("Primary record", "Scholarship & press", "Self-published"; a built-in copy covers older files), "Both sides agree", "X's account", "Being verified", "Disputed", "Withdrawn".
 - **Why a link is disputed:** link cards and route steps (`ClaimCard`) show "Disputed: <reason>" (or "Withdrawn: …") and the author's note from the claim's `reason` and `note`, as entry pages do, in quiet italic lines under the badges. A note that only repeats the reason is left out; one that repeats it and says more takes its place (`claimNotes` in `src/lib/plain.ts`).
 - **Family roles** (`src/lib/claims.ts` `kinshipRole`): on a relation with `kinship: true`, the claim's `role` qualifier describes its owner (`from`). Link cards and route steps always read from the owner ("Mary Maxwell Gates, mother of Bill Gates"); the owner's panel lists "Mother of Bill Gates" and the other person's panel "Mary Maxwell Gates · mother". The story graph labels the arrow "mother of".
-- **Play:** when `graph.json.stories.entities` has the focused entry, the details panel leads with "Play the story" (`/e/<id>/story/`); when `stories.paths` has the shown route as `from--to` (directional), the route panel shows "Play this route" (`/p/<from>--<to>/`). One accent button per panel. Routes read "2 links, all backed by primary records"; no costs, hops or tier codes, and "How routes are ranked" folds a plain explanation.
+- **Play:** when the focused entry's detail file names its life story, the details panel leads with "Play the story" (`/e/<id>/story/`); when `schema.json` `stories.paths` has the shown route as `from--to` (directional), the route panel shows "Play this route" (`/p/<from>--<to>/`). One accent button per panel. Routes read "2 links, all backed by primary records"; no costs, hops or tier codes, and "How routes are ranked" folds a plain explanation.
 - **Labels** in the explorer, like the ego graph, are placed by `src/lib/labels.ts` (emphasized entries first, then the biggest dots), never overlapping each other, dots or the hover cards.
 - **React** (`App.tsx`, `ui.tsx`, `panels.tsx`) owns only the controls. It passes a view object (filters, scope, selection, route) to `engine.setView()`.
   - **Left panel:** search; "Show" (the lenses as a segmented control); "Find a route" (From and To take names or aliases, also in the URL; picking To shows the routes). "More" folds the accounts select, the time slider (ease curve, play, "All time", BCE labels) and the index-fund options; it opens by itself when one of them is set.
@@ -90,6 +90,7 @@ source (`src/lib/history.ts`), plus the per-frame slider coalescing, the throttl
 
 ## Story player (`src/story/`)
 
+- **Data:** a story reads its own entries, links and sources from its page (`script.ctd-story-data`, beside the shots) and the vocabulary from `schema.json`, nothing else (ADR-0017).
 - **Layout:** a sticky stage sits beside the scrolling `.step` cards. Below 860 px the stage is stacked above the cards.
 - **Scrolling:** ScrollTrigger activates a shot when its step crosses the trigger line.
 - **Map shots** (`map-view.ts`, lazy): MapLibre (pixel ratio capped at 2) with the OpenFreeMap Positron style on the globe projection, quieted to the page surface: land is `--paper`, water a faint tint, borders and roads hairlines, and the only basemap labels are countries (smaller ones from zoom 3) and capitals (from zoom 4), in `--night-muted` without halos. `flyTo` camera moves; one labelled marker per spot (an entry placed at its birthplace replaces that place's marker); great-circle `routes` in the accent, drawn progressively. The basemap (style, vector tiles, sprites, and the Noto Sans glyphs for its labels) comes from `tiles.openfreemap.org`, a third-party host: a story with a map scene makes about 20 requests there. MapLibre's stylesheet (`/assets/maplibre-gl.css`, 83 KB) is not part of `story.css`: `loadMapCss()` (`src/world/basemap.ts`, shared with the Earth view) links it when the first map is made, so stories without a map scene never load it. It comes after `story.css`, so the story's rules that override it start with `ctd-story` to be more specific.
@@ -137,37 +138,29 @@ other origins are ignored), `?focus=<entity id>` (content worlds), `?stats=0|1`,
 
 SwiftShader (software WebGL, as in CI screenshots) renders correctly but at 30-40 fps; those numbers are not representative.
 
-## Dev fixtures (`fixtures/`)
+## Dev server
 
-`npm run dev` serves a site that looks like `ctd build` output.
+`npm run dev` serves a `ctd build` output with this code live, so run `cargo run -q -- build` first (and again after
+content or template changes; `ctd serve` is the other way to work, rebuilding everything on save).
 
-**Generated by `fixtures/make-fixtures.mjs`:**
-- **Data:** `data/graph.json` and `data/search.json`: 28 entities and 42 claims across three small worlds (tech and money, Abrahamic religions, the Cuban Missile Crisis), with attributed claims from 5 perspectives, one cross-confirmed claim (`cuban-missile-crisis#c3`), passive holdings, a multi-target claim (`#c4/1`, `#c4/2`), a draft claim, and BCE dates (Torah, c. 450 BCE). Layer colours are neutral, like the schema. Holding percentages are illustrative.
-- **Pages:** one entity page per entity (`/e/<id>/`), `/x/`, `/c/`, the 5-shot chapter `/c/thirteen-days-two-stories/`, the home page and `404.html`. Their markup mirrors `theme/templates/`.
-
-**Generated by `fixtures/make-world.mjs`** (`npm run fixtures:world`, under a second; git-ignored except the page):
-- `world-synth/`: 50,000 nodes in power-law communities with cross links and three mega-hubs (1,200 links each); zoom 0-6, cluster tiles below zoom 2, 600-node quota; ~3,400 tiles, 14.5 MB. Same semantics as `crates/ctd/src/world.rs`.
-- `world/`: a content world built from `data/graph.json`, with `entities.json`.
-- `w/index.html`: the `/w/` page (mirrors `theme/templates/world.html`).
-
-**Written by hand:** `static/site.css` is a stand-in that defines the contract's tokens.
-
-**How the dev server maps requests** (`vite.config.ts`, `apply: 'serve'` only):
-- `/assets/<entry>.js` serves the TypeScript source, and the `<script>` tags in fixture pages are rewritten to point at it.
+**How it maps requests** (`vite.config.ts`, `apply: 'serve'` only):
+- Pages and `/data/*` come from `../dist`, or `$CTD_DIST`.
+- `/assets/<entry>.js` serves the TypeScript source, and the `<script>` tags in pages are rewritten to point at it.
 - `/assets/<entry>.css` is empty in dev, because each entry imports its own CSS.
-- `/static/site.css` serves `../theme/static/site.css` when that file exists, else the stand-in. Set `CTD_THEME=fixture` to force the stand-in.
-- `/world/` and `/world-synth/` are tile pyramids (missing tiles are plain 404s). `CTD_WORLD=<dir>` and `CTD_WORLD_SYNTH=<dir>` point them elsewhere, e.g. `CTD_WORLD_SYNTH=../.cache/world-synth` for the Rust 1M world.
-- `CTD_DIST=../dist npm run dev` serves pages and data from a real `ctd build` output instead of the fixtures (`/world-synth/` then falls back to `../.cache/world-synth`, like `ctd serve`).
+- `/static/site.css` serves `../theme/static/site.css`, so theme edits show without a rebuild.
+- `/world/` and `/world-synth/` are tile pyramids (missing tiles are plain 404s). `/world-synth/` falls back to
+  `../.cache/world-synth` (`ctd world --synthetic 1000000`), like `ctd serve`. `CTD_WORLD=<dir>` and
+  `CTD_WORLD_SYNTH=<dir>` point them elsewhere.
 
 Useful URLs:
 - `/e/elon-musk/`
 - `/x/?from=bill-gates&to=elon-musk`, `/x/?t=1999&focus=cuban-missile-crisis`, `/x/?view=world&focus=elon-musk`
-- `/c/thirteen-days-two-stories/#shot-us-story`
+- `/c/who-owns-blackrock-and-vanguard/`
 - `/w/`, `/w/?src=/world-synth/`, `/w/?src=/world-synth/&soak=1&soakSec=60`
 
 ## Assumptions about the contracts
 
-- `li.claim[data-layers]` is space- or comma-separated. Lens chips may arrive without `data-layers`, in which case the layers are read from `graph.json`.
+- `li.claim[data-layers]` is space- or comma-separated. Lens chips may arrive without `data-layers`, in which case the layers are read from `schema.json`.
 - Time filter: "as of t" (see the explorer section). Point-dated works and events become "past" after their date and stay visible, faded.
 - Perspective = a specific id shows facts and that perspective's claims, and dims other attributed claims. The path finder may still use dimmed claims, because only hidden claims are excluded.
 - The narrative diff compares claims whose `according_to` includes A but not B, and the reverse. "Both sides agree" lists only `cross_confirmed` claims whose voices include both A and B; when there are none it says so (it never stands in other confirmed links). Perspective B defaults to the perspective sharing the most entities with A.

@@ -11,7 +11,7 @@ These docs are the project's shared memory: what we are building, why, what we d
 | [architecture.md](architecture.md) | How the system works and where it is going | Any sprint that changes the design |
 | [content-model.md](content-model.md) | File formats: entities, claims, sources, schema, chapters, featured picks; `ctd check` rules | The format changes (with an ADR) |
 | [../CONTRIBUTING.md](../CONTRIBUTING.md) | How to add entries, links, sources, background lines and stories by pull request: rules, worked examples, checks, checklist | The format, `ctd check` or the review rules change |
-| [data-contract.md](data-contract.md) | What `ctd build` writes and the browser code reads: files, `graph.json`, `search.json`, page markup, template context | The output changes (with the web code) |
+| [data-contract.md](data-contract.md) | What `ctd build` writes and the browser code reads: files, the data files (`schema.json`, `graph-slim.json`, `e/<id>.json`, `search/`), page markup, template context | The output changes (with the web code) |
 | [world-tiles.md](world-tiles.md) | The world map's manifest and binary tiles | The tile format changes (with the viewer) |
 | [ux-vision.md](ux-vision.md) | The design brief: three places, one accent, plain words | Founder feedback on look and feel |
 | [deploy.md](deploy.md) | Preview and production hosting | Hosting changes |

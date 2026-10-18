@@ -1,6 +1,7 @@
 import type { GraphIndex } from '../lib/data';
 import { roundYear } from '../lib/dates';
 import { currentUrl, replaceUrl } from '../lib/history';
+import { candidates } from '../lib/search';
 
 /** Explorer state in the query string: focus, lens, p, t, from, to, view. */
 export interface UrlState {
@@ -14,31 +15,32 @@ export interface UrlState {
   view: 'graph' | 'world';
 }
 
-/** An entity id, or a name or alias typed by a person ("Bill Gates", "JFK"), resolved to an id. */
-export function resolveEntity(idx: GraphIndex, value: string | null | undefined): string | null {
+/** An entity id, or a name or alias typed by a person ("Bill Gates", "JFK"), resolved to an id. Aliases
+ *  are looked up through search (the slim file has names only). */
+export async function resolveEntity(idx: GraphIndex, value: string | null | undefined): Promise<string | null> {
   const v = (value ?? '').trim();
   if (!v) return null;
   if (idx.nodes.has(v)) return v;
   const key = v.toLocaleLowerCase();
   for (const n of idx.data.nodes) if (n.name.toLocaleLowerCase() === key) return n.id;
-  for (const n of idx.data.nodes) if (n.aliases?.some((a) => a.toLocaleLowerCase() === key)) return n.id;
-  return null;
+  const found = await candidates(v).catch(() => []);
+  return found.find((e) => idx.nodes.has(e.id) && e.aliases?.some((a) => a.toLocaleLowerCase() === key))?.id ?? null;
 }
 
-export function readUrl(idx: GraphIndex): UrlState {
+export async function readUrl(idx: GraphIndex): Promise<UrlState> {
   const q = new URLSearchParams(location.search);
-  const entity = (k: string) => resolveEntity(idx, q.get(k));
+  const [focus, from, to] = await Promise.all(['focus', 'from', 'to'].map((k) => resolveEntity(idx, q.get(k))));
   const lens = q.get('lens');
   const p = q.get('p');
   const t = q.get('t');
   const tn = t != null && t !== '' ? Number(t) : NaN;
   return {
-    focus: entity('focus'),
+    focus,
     lens: lens && idx.lenses.has(lens) ? lens : 'all',
     p: p === 'facts' || (p && idx.perspectives.has(p)) ? p : 'all',
     t: Number.isFinite(tn) ? tn : null,
-    from: entity('from'),
-    to: entity('to'),
+    from,
+    to,
     view: q.get('view') === 'world' ? 'world' : 'graph',
   };
 }

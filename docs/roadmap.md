@@ -60,11 +60,11 @@ Startup sprints: the order below is a best guess and is re-decided at every spri
 
 ## Now
 
-- **Next sprint (proposed): Scale.** Every page should stay a few hundred KB at a million entries.
-  - **Explorer and stories:** load small per-entry neighbourhood files (`data/e/<id>.json`) instead of the whole `graph.json`.
-  - **Search:** split by prefix.
-  - **Page history:** read in one batched pass.
-  - **Proof:** a synthetic million-entry build.
+- **Sprint 10: Scale** ([ADR-0017](decisions/0017-pages-load-what-they-show.md)). Pages load what they show:
+  - **Explorer and routes:** one slim structure file, and an entry's details when it is opened, instead of the whole `graph.json`.
+  - **Stories:** each carries its own data.
+  - **Search:** files by word range.
+  - **Proof:** synthetic builds at 100k and 1M entries. The static explorer holds about 40k links; past that, routes need the route service.
 
   This comes before any bulk import (Wikidata, filings). The founder can redirect it.
 

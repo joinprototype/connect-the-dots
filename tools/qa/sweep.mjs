@@ -54,10 +54,13 @@ ws.addEventListener('message', (ev) => {
   else if (msg.method === 'Runtime.exceptionThrown') errors.push(msg.params.exceptionDetails.exception?.description || msg.params.exceptionDetails.text);
   else if (msg.method === 'Runtime.consoleAPICalled' && msg.params.type === 'error') errors.push(msg.params.args.map((a) => a.value ?? a.description ?? '').join(' '));
   else if (msg.method === 'Log.entryAdded' && msg.params.entry.level === 'error') errors.push(`${msg.params.entry.text} ${msg.params.entry.url || ''}`);
+  // pages load what they show (ADR-0017): no page reads the whole graph
+  else if (msg.method === 'Network.requestWillBeSent' && /\/data\/(graph|search)\.json(\?|$)/.test(msg.params.request.url)) errors.push(`requested ${msg.params.request.url}`);
 });
 await send('Runtime.enable');
 await send('Log.enable');
 await send('Page.enable');
+await send('Network.enable');
 if (scheme) await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-color-scheme', value: scheme }] });
 if (size) {
   const [width, height] = size.split('x').map(Number);

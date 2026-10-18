@@ -28,9 +28,11 @@ An open, interactive "connect the dots" knowledge graph. A Rust engine (`ctd`) c
 cargo run -q -- check                 # validate content (exit 1 on errors)
 cargo run -q -- check --base origin/main   # also: every entry id at that ref still exists or is an alias (URLs never break)
 cargo run -q -- fmt                   # assign permanent uids
-cargo run -q -- build                 # content/ + theme/ + web/dist → dist/
+cargo run -q -- build                 # content/ + theme/ + web/dist → dist/ (--graph also writes data/graph.json for tools)
+cargo run -q -- build --synthetic 100000   # made-up entries on the real schema: every data file's size against its budget
 cargo run -q -- serve                 # dev server on http://127.0.0.1:4321 with live reload (builds into .cache/serve/; dist/ is production only)
 npm --prefix web run build            # rebuild islands / explorer / story bundles into web/dist
+npm --prefix web run dev              # the built dist/ with the browser code live (HMR)
 cargo test && cargo clippy            # engine tests and lints
 node tools/qa/cdp.mjs <url> [actions.js] --shot=out.png --scheme=light   # headless Chrome check: errors, logs, screenshot
 node tools/qa/sweep.mjs --scheme=dark --size=390x844 [--only=/q/]       # every built page: console errors, sideways scroll

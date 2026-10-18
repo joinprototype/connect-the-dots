@@ -15,6 +15,7 @@
   {% if chapter.intro_html|trim %}<div class="prose chapter-intro">{{ chapter.intro_html|safe }}</div>{% endif %}
   <ctd-story chapter="{{ chapter.id }}">
     <script type="application/json" class="ctd-shots">{{ chapter.shots_json|safe }}</script>
+    <script type="application/json" class="ctd-story-data">{{ chapter.data_json|safe }}</script>
     <div class="story-stage" aria-hidden="true"></div>
     <div class="story-steps">
       {% for s in chapter.steps %}
