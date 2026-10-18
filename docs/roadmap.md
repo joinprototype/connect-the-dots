@@ -74,6 +74,8 @@ Startup sprints: the order below is a best guess and is re-decided at every spri
 
 ## Next (candidates, chosen at review)
 
+- **Sprint 12 (proposed): the Big Three, and both sides of the debate** ([sprints/sprint-12.md](sprints/sprint-12.md)). State Street beside BlackRock and Vanguard, and a relation for disputing a finding, so the common-ownership debate shows each side in its own words.
+
 - **Story v1.**
   - Map-to-graph morph.
   - Borders changing through time.
