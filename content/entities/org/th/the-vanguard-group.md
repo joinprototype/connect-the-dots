@@ -69,6 +69,21 @@ claims:
     note: "Launched as First Index Investment Trust."
     src:
       - {s: vanguard-our-history, at: "1976: “Vanguard democratizes indexing”", quote: "Vanguard democratizes mutual fund indexing with its First Index Investment Trust (now Vanguard 500 Index Fund) offering lower costs and broad diversification to individual investors for the first time."}
+  - id: c9
+    rel: settled_with
+    to: sec
+    when: "2025-01-17"
+    case: "In the Matter of The Vanguard Group, Inc."
+    title: "misleading statements about potential tax consequences for investors in its target retirement funds; without admitting or denying the findings"
+    amount: 106410000
+    currency: USD
+    note: "In June 2026 the SEC said $146.41 million had been collected from Vanguard, after a court rejected a class settlement that was to count toward the total."
+    src:
+      - {s: sec-2025-01-17-vanguard, quote: "and a $13.5 million civil penalty, for a total amount of $106.41 million to be distributed to affected investors through a Fair Fund."}
+      - {s: sec-33-11359-vanguard, quote: "These proceedings arise out of misleading statements by Vanguard concerning potential tax consequences to investors in the Vanguard Investor Target Retirement Funds"}
+      - {s: sec-33-11359-vanguard, at: "Section II", quote: "without admitting or denying the findings herein"}
+      - {s: sec-34-105804-vanguard-fair-fund, quote: "Because the court in the class action rejected the settlement, Vanguard was required to pay the additional $40 million to the Fair Fund."}
+      - {s: sec-34-105804-vanguard-fair-fund, quote: "The Fair Fund includes the $146,410,000.00 collected from the Respondent."}
 ---
 
 The Vanguard Group was founded by [[john-c-bogle]]: incorporated in September 1974, it began operations in May 1975 and is owned by its funds, which are owned by their investors. Its index funds hold large stakes in [[tesla]], [[microsoft]] and [[amazon]] on behalf of clients.

@@ -52,6 +52,18 @@ claims:
     note: "$8.53 billion in BlackRock shares at closing plus $6.65 billion in cash. BGI brought the iShares exchange-traded funds."
     src:
       - {s: blackrock-10k-2009, at: "Item 7, Overview (sentence begins \"On December 1, 2009,\")", quote: "BlackRock acquired from Barclays Bank PLC (“Barclays”) all of the outstanding equity interests of subsidiaries of Barclays conducting the business of Barclays Global Investors (“BGI”) in exchange for capital shares valued at closing of $8.53 billion and $6.65 billion in cash"}
+  - id: c7
+    rel: settled_with
+    to: sec
+    when: "2017-01-17"
+    case: "In the Matter of BlackRock, Inc."
+    title: "removing whistleblower incentives in separation agreements; without admitting or denying the findings"
+    amount: 340000
+    currency: USD
+    src:
+      - {s: sec-2017-01-17-blackrock, quote: "has agreed to pay a $340,000 penalty to settle charges that it improperly used separation agreements"}
+      - {s: sec-34-79804-blackrock, quote: "Through its conduct described above, BlackRock violated Rule 21F-17 under the Exchange Act."}
+      - {s: sec-34-79804-blackrock, at: "Section II", quote: "without admitting or denying the findings herein"}
 ---
 
 BlackRock was founded in 1988 by [[larry-fink]] and seven partners. Through its index and active funds it holds shares in [[tesla]], [[microsoft]] and [[amazon]] for its clients; it does not own those shares for itself.
