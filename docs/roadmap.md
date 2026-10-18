@@ -48,9 +48,25 @@ Startup sprints: the order below is a best guess and is re-decided at every spri
 
 - **Sprint 8: watch and listen** (2026-10-17). "Listen" reads a story aloud as it plays, with the browser's own voice; question pages show their answer over time; story pages load the map stylesheet only with a map. Captions now read as sentences. See [sprints/sprint-08.md](sprints/sprint-08.md).
 
+- **Sprint 9: Who owns BlackRock and Vanguard?** (2026-10-17). It added:
+  - the first showcase chapter (17 scenes, every quote verified), with the common-ownership debate in each side's own words;
+  - who a person is: citizenship, and background in a person's own words, never a connector (ADR-0016);
+  - Larry Fink's and Sam Altman's paths, and the Nazarbayev family's documented roles;
+  - life stories that play by year, a reworked story graph, and the explorer's slider spanning the focus's years;
+  - a tested contributor guide with a pull-request check;
+  - a simpler engine with reproducible builds.
+
+  See [sprints/sprint-09.md](sprints/sprint-09.md).
+
 ## Now
 
-- **Sprint 9: Who owns BlackRock and Vanguard?** The first showcase chapter: BlackRock's start inside Blackstone, Vanguard's mutual structure, today's holders, and the common-ownership debate in each side's own words. See [sprints/sprint-09.md](sprints/sprint-09.md).
+- **Next sprint (proposed): Scale.** Every page should stay a few hundred KB at a million entries.
+  - **Explorer and stories:** load small per-entry neighbourhood files (`data/e/<id>.json`) instead of the whole `graph.json`.
+  - **Search:** split by prefix.
+  - **Page history:** read in one batched pass.
+  - **Proof:** a synthetic million-entry build.
+
+  This comes before any bulk import (Wikidata, filings). The founder can redirect it.
 
 ## Next (candidates, chosen at review)
 

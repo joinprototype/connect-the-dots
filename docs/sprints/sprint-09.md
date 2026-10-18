@@ -1,7 +1,7 @@
 # Sprint 9: Who owns BlackRock and Vanguard?
 
 - Starts: 2026-10-17 · Length: 1 week
-- Status: active (proposed at the Sprint 8 review; the founder can redirect it at any time)
+- Status: **done** (2026-10-17). S9-01 to S9-06 are done and reviewed; the founder's requests that arrived during the sprint are listed under Also done.
 
 ## Goal
 
@@ -60,7 +60,7 @@ The first showcase chapter. A reader can watch and listen to "Who owns BlackRock
       - Scene times now sit on the event dates.
       - Narrations are about 45 words or fewer, and Watch durations follow the reading time.
 
-- [ ] **S9-06 Who a person is** (founder, 2026-10-17; [ADR-0016](../decisions/0016-who-a-person-is.md)). A "Background" card on person pages:
+- [x] **S9-06 Who a person is** (founder, 2026-10-17; [ADR-0016](../decisions/0016-who-a-person-is.md)). A "Background" card on person pages:
   - born (date and place), citizenship (`citizen_of`), education;
   - `background:` lines on parents, upbringing and heritage, in the person's own words (historical figures from scholarship).
   - Heritage is never a link, group, count, filter, map layer or route.
@@ -171,18 +171,36 @@ The first showcase chapter. A reader can watch and listen to "Who owns BlackRock
 
 ## Self-check (before the demo)
 
-- [ ] Tests and lints pass
+- [x] Tests and lints pass: `cargo test` 60/60, clippy clean, web typecheck and build, `ctd check` 0 errors and 0 warnings (338 entries, 642 links, 411 sources)
 - [x] Phone sweep clean (static build, CSP enforced, `--a11y`): 695 pages, 0 problems (2026-10-17, dark, 390x844). The new contrast check read 54,093 texts: 0 below the WCAG ratio, and 336 unverifiable (canvas, image or gradient behind).
-- [ ] Demo script executed; screenshots saved in `docs/sprints/sprint-09/`
-- [ ] Docs and ADRs updated
-- [ ] Known issues listed
+- [x] Demo script executed; screenshots saved in `docs/sprints/sprint-09/`: 36 screenshots (dark and light, desktop and phone) of the chapter and two of its scenes, "Who is behind BlackRock?", Larry Fink, Sam Altman's story, Nursultan Nazarbayev, the Google story and the Stories shelf. No console errors.
+- [x] Docs and ADRs updated:
+  - ADR-0016 (who a person is);
+  - content model: background lines, `citizen_of`, `noun` and `inverse_reads`, `span` and `map` on types, `primary` and `strong` on tiers;
+  - data contract: the graph view's rules and the `background` context;
+  - `CONTRIBUTING.md`, with a pull-request template and a GitHub check;
+  - the README;
+  - CLAUDE.md: the heritage rule and QA browsers.
+- [x] Known issues listed
 
 ## Known issues
 
+- **Two links have no relation.** The firms' rebuttal in the common-ownership debate is told only in the chapter, because nothing can say "disputes a finding". Court and sanctions records live in notes. Both are in the backlog.
+- **Open-start dates** ("until 5 January 2022") still parse as one day. Five links keep the date in a note, and Tesla's holders card shows The Vanguard Group's pre-2026 stake next to Vanguard Capital Management's, each with its own "as of".
+- **Long names can go unlabelled in a crowded scene.** A name that fits nowhere whole is left out, as PNC is in the chapter's 1995 scene on a phone. The narration names it.
+- **The contrast audit's own review was stopped** to spare the laptop. Its fixes passed the full sweep (0 low-contrast texts in 54,093), and it will re-run one browser at a time.
+- **The repository on GitHub was renamed** to `joinprototype/connect-the-dots`. Pushes follow GitHub's redirect; the local remote still names the old path.
+
 ## Review
 
-- What worked:
-- What felt wrong:
-- New ideas (moved to the backlog):
-- Decisions (ADRs):
-- Next sprint goal:
+- **What worked:**
+  - Research in strands, each followed by an independent verbatim verifier, in about a dozen runs. Every link and quote in the chapter, the people packs and the Nazarbayev pack was re-fetched and checked word for word.
+  - A sentence-by-sentence fact check of the chapter caught two real errors (the "largest holders", Bogle's 30%) and three framing problems before anyone read it.
+  - A second agent followed the contributor guide word for word on a throwaway copy, and its 19 gaps and four engine problems were fixed.
+  - The refactor was proven by builds that are identical file by file.
+- **What felt wrong:**
+  - Headless Chrome left behind by interrupted runs overloaded the founder's laptop (load 47). QA now runs one browser at a time through one self-cleaning launcher.
+  - Every agent ran on the top model, even for plain web lookups. Models are now matched to the task.
+- **New ideas (moved to the backlog):** a relation for disputing a finding; relations for court and sanctions records; proper open-start dates; Listen reading the quote cards; a scale plan (neighbourhood shards, sharded search, R2 pages) before bulk imports.
+- **Decisions (ADRs):** ADR-0016, who a person is: citizenship as a link, and background and heritage only as sourced lines on the person's own page, never a connector.
+- **Next sprint goal:** proposed in [roadmap.md](../roadmap.md): scale (neighbourhood shards and sharded search), so the explorer and stories stay small at a million entries, before any bulk import.
