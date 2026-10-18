@@ -11,8 +11,13 @@ use std::{
 use anyhow::Result;
 use axum::{
     Router,
-    http::StatusCode,
-    response::sse::{Event, KeepAlive, Sse},
+    extract::Request,
+    http::{HeaderValue, StatusCode, header},
+    middleware::{self, Next},
+    response::{
+        Response,
+        sse::{Event, KeepAlive, Sse},
+    },
     routing::{get, post},
 };
 use futures_util::Stream;
@@ -24,6 +29,14 @@ use tower_http::services::{ServeDir, ServeFile};
 fn sse(rx: broadcast::Receiver<()>) -> Sse<impl Stream<Item = Result<Event, Infallible>>> {
     let stream = BroadcastStream::new(rx).filter_map(|m| m.ok()).map(|_| Ok(Event::default().data("reload")));
     Sse::new(stream).keep_alive(KeepAlive::default())
+}
+
+/// Every response says `no-cache`: the browser checks each file again (a 304 when it has not changed),
+/// so after a rebuild a page never mixes new files with cached old ones.
+async fn no_cache(req: Request, next: Next) -> Response {
+    let mut res = next.run(req).await;
+    res.headers_mut().insert(header::CACHE_CONTROL, HeaderValue::from_static("no-cache"));
+    res
 }
 
 fn relevant(ev: &notify::Result<notify::Event>) -> bool {
@@ -104,7 +117,8 @@ pub fn run(root: PathBuf, port: u16) -> Result<()> {
                     async move { sse(rx) }
                 }),
             )
-            .fallback_service(files);
+            .fallback_service(files)
+            .layer(middleware::from_fn(no_cache));
         let addr = SocketAddr::from(([127, 0, 0, 1], port));
         let listener = tokio::net::TcpListener::bind(addr).await?;
         println!("\n  connect·the·dot dev server → http://{addr}/\n  watching content/, theme/, web/dist/ (Ctrl+C to stop)\n");
