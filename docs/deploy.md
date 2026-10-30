@@ -8,7 +8,9 @@ The site is static files (ADR-0002), hosted on Cloudflare Workers static assets 
 | --- | --- | --- |
 | 1. Preview | `tools/deploy.sh` | Anyone with its long Version URL. Nothing goes live. For real phones and review. |
 | 2. Live, unlisted | `tools/deploy.sh live` | Anyone with `dots.joinprototype.com`. Search engines are told not to list it. |
-| 3. Public | Set `LISTED = true` in `crates/ctd/src/site.rs`, commit, `tools/deploy.sh live` | Everyone. Only after the lists below are done. |
+| 3. Public | Set `LISTED = true` in `crates/ctd/src/site.rs`, commit, `tools/deploy.sh live` | Everyone, through search engines too. |
+
+We are on step 3: the founder chose to list the site on 2026-10-30, in 0.1.1, with the legal list below still open. Previews keep `noindex` whatever `LISTED` says.
 
 Costs nothing new. The domain is already ours, the `joinprototype.com` zone is on Cloudflare, and requests to static assets are free and unlimited on any plan.
 
@@ -26,7 +28,7 @@ Every live deploy is a release, starting at 0.1.0. The number lives in one place
 
 - **Patch** (0.1.0 to 0.1.1): content and fixes.
 - **Minor** (0.1.1 to 0.2.0): something new a reader can see or use.
-- **1.0** waits for the public launch and the list under step 3.
+- **1.0** waits for the list under step 3.
 
 To release: raise the version, add it to [CHANGELOG.md](../CHANGELOG.md), commit, push, and run `tools/deploy.sh live`. The script refuses a version that is already out, one missing from the changelog, and a commit that is not on GitHub: under the AGPL, the source of what runs has to be public.
 

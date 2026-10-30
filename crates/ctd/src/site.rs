@@ -217,9 +217,9 @@ const INDEX_PER_TYPE: usize = 12;
 const SHELF_MAX: usize = 24;
 /// The site's address, for the few things that cannot be relative.
 const SITE_URL: &str = "https://dots.joinprototype.com";
-/// Whether search engines may list the site. False until the public launch (docs/deploy.md):
-/// the site can be live while only people with the link find it.
-const LISTED: bool = false;
+/// Whether search engines may list the site (docs/deploy.md). Previews never are: HEADERS has
+/// their rule.
+const LISTED: bool = true;
 /// Response headers for every file (Cloudflare `_headers`): no sniffing, no framing, no
 /// referrer beyond the origin, no device APIs, and a Content-Security-Policy. Scripts come only
 /// from the site itself (theme/static, web/dist); the story maps' tiles, glyphs and sprites come
@@ -231,7 +231,8 @@ Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'
 connect-src 'self' https://tiles.openfreemap.org; worker-src 'self' blob:; child-src 'self' blob:; font-src 'self'; object-src 'none'; \
 base-uri 'self'; form-action 'self'; frame-ancestors 'none'\n\
 /data/*\n  Cache-Control: public, max-age=300, stale-while-revalidate=86400\n\
-/assets/chunks/*\n  Cache-Control: public, max-age=31536000, immutable\n";
+/assets/chunks/*\n  Cache-Control: public, max-age=31536000, immutable\n\
+https://:version.:subdomain.workers.dev/*\n  X-Robots-Tag: noindex\n";
 
 /// A type's page lists every entry up to this many; past it, one page per first letter.
 const TYPE_PAGE_MAX: usize = 500;
@@ -1387,7 +1388,8 @@ mod tests {
         assert_eq!(pages, ["q/behind/party", "q/behind/reds", "q/benefited/fall", "q/why/fall"]);
         assert!(!out.join("q/behind/ann").exists() && !out.join("q/behind/party-press").exists());
         assert!(read("_headers").contains("X-Content-Type-Options: nosniff"), "security headers for the host");
-        assert_eq!(read("_headers").contains("X-Robots-Tag: noindex"), !LISTED, "unlisted until the public launch");
+        assert_eq!(read("_headers").starts_with("/*\n  X-Robots-Tag: noindex"), !LISTED, "the site follows LISTED");
+        assert!(read("_headers").contains("workers.dev/*\n  X-Robots-Tag: noindex"), "previews are never listed");
         // every page has one address, which the sitemap lists
         let sitemap = read("sitemap.xml");
         assert!(sitemap.contains(&format!("<loc>{SITE_URL}/</loc>")), "the home page: {sitemap}");
