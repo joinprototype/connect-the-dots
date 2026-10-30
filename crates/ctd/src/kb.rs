@@ -13,7 +13,7 @@ use serde_json::Value;
 use crate::{
     diag::Diag,
     edtf::{self, Span},
-    load::{ChapterDoc, EntityDoc, Featured, Pick, Raw, SourceDoc},
+    load::{BorderDoc, ChapterDoc, EntityDoc, Featured, Pick, Raw, SourceDoc},
     markdown,
     model::ClaimIn,
     schema::{Schema, parse_yaml},
@@ -125,6 +125,14 @@ impl Edge {
     }
 }
 
+/// A polity's historical borders: the years its file covers. The site copies the file itself.
+#[derive(Debug, Clone)]
+pub struct Border {
+    pub source: String,
+    pub periods: Vec<(i32, i32)>,
+    pub rel_path: String,
+}
+
 #[derive(Debug, Clone)]
 pub struct Chapter {
     pub id: String,
@@ -150,6 +158,8 @@ pub struct Kb {
     pub perspectives: IndexMap<String, usize>,
     /// Editorial picks from `content/featured.yaml`, resolved to entity ids.
     pub featured: crate::load::Featured,
+    /// Historical borders a story can draw, by file name (ADR-0020).
+    pub borders: BTreeMap<String, Border>,
     /// Each entity's links, by entity index: (edge index, true when the entity owns the claim).
     /// Built once, so pages and stories never scan every edge.
     pub links: Vec<Vec<(usize, bool)>>,
@@ -418,7 +428,8 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
         links[index[&e.from]].push((ei, true));
         links[index[&e.to]].push((ei, false));
     }
-    let mut kb = Kb { schema, entities, index, aliases, sources, edges, chapters: Vec::new(), perspectives, featured: Default::default(), links };
+    let borders = read_borders(&raw.borders, &sources, &mut diags);
+    let mut kb = Kb { schema, entities, index, aliases, sources, edges, chapters: Vec::new(), perspectives, featured: Default::default(), borders, links };
     kb.featured = read_featured(&kb, &raw.featured, &mut diags);
     read_chapters(&mut kb, &raw.chapters, &held, &mut diags);
     warn_uncited_sources(&kb, &held, &mut diags);
@@ -1044,6 +1055,25 @@ fn read_chapters(kb: &mut Kb, docs: &[ChapterDoc], held: &[Edge], diags: &mut Ve
     kb.chapters.sort_by(|a, b| b.featured.cmp(&a.featured).then(a.title.cmp(&b.title)));
 }
 
+/// Border files (ADR-0020): each names a source, and has at least one period.
+fn read_borders(docs: &[BorderDoc], sources: &IndexMap<String, Source>, diags: &mut Vec<Diag>) -> BTreeMap<String, Border> {
+    let mut out = BTreeMap::new();
+    for doc in docs {
+        let b = &doc.border;
+        if !SLUG.is_match(&doc.stem) {
+            diags.push(Diag::err(&doc.rel_path, "a borders file name must be a slug"));
+        } else if !sources.contains_key(&b.source) {
+            diags.push(Diag::err(&doc.rel_path, format!("source `{}` does not exist", b.source)));
+        } else if b.name.trim().is_empty() || b.features.is_empty() {
+            diags.push(Diag::err(&doc.rel_path, "a borders file needs a `name` and at least one period"));
+        } else {
+            let periods = b.features.iter().map(|f| (f.properties.from, f.properties.to)).collect();
+            out.insert(doc.stem.clone(), Border { source: b.source.clone(), periods, rel_path: doc.rel_path.clone() });
+        }
+    }
+    out
+}
+
 /// A source cited by no claim, background line, finding or chapter quote card.
 fn warn_uncited_sources(kb: &Kb, held: &[Edge], diags: &mut Vec<Diag>) {
     let cited: HashSet<&str> = kb
@@ -1055,6 +1085,7 @@ fn warn_uncited_sources(kb: &Kb, held: &[Edge], diags: &mut Vec<Diag>) {
         .chain(kb.entities.iter().filter_map(|e| e.finding.as_ref()))
         .map(|s| s.id.as_str())
         .chain(kb.chapters.iter().flat_map(|c| &c.shots).filter_map(|s| s.pointer("/overlay/source").and_then(Value::as_str)))
+        .chain(kb.borders.values().map(|b| b.source.as_str()))
         .collect();
     for s in kb.sources.values() {
         if !cited.contains(s.id.as_str()) {
@@ -1205,6 +1236,17 @@ fn chapter(kb: &Kb, doc: &ChapterDoc, withheld: &HashSet<&str>, diags: &mut Vec<
                         obj.insert("time_label".into(), Value::from(span.label));
                     }
                     Err(e) => diags.push(Diag::err(file, format!("shot `{name}`: time: {e}"))),
+                }
+            }
+            // borders name a file, and a shot's date picks the period: one with no period draws nothing
+            let year = obj.get("t").and_then(Value::as_f64).map(|t| t.floor() as i32);
+            for id in obj.get("borders").and_then(Value::as_array).into_iter().flatten().filter_map(Value::as_str) {
+                match kb.borders.get(id) {
+                    None => diags.push(Diag::err(file, format!("shot `{name}`: no borders file `{id}`")).hint("see content/borders/")),
+                    Some(b) if !year.is_some_and(|y| b.periods.iter().any(|&(from, to)| from <= y && y <= to)) => {
+                        diags.push(Diag::warn(file, format!("shot `{name}`: `{id}` has no borders for this shot's date")));
+                    }
+                    Some(_) => {}
                 }
             }
             shots.push(shot);
@@ -1475,5 +1517,25 @@ pub(crate) mod tests {
         assert_eq!(shown("ann#c2"), (Some("Records disagree."), Some("A copy.")));
         // a published claim shows no status, so its note is left as written
         assert_eq!(shown("ann#c3"), (Some("Records disagree."), Some("Records disagree.")));
+    }
+
+    #[test]
+    fn a_shots_borders_name_a_file_and_a_date_it_covers() {
+        let chapter = |borders: &str, time: &str| {
+            file(
+                "content/chapters/ch.md",
+                &format!("---\nid: ch\ntype: chapter\ntitle: Ch\n---\n\n```scene\n- shot: one\n  time: \"{time}\"\n  borders: [{borders}]\n```\n"),
+            )
+        };
+        let shape = |source: &str| file("content/borders/rome.json", &format!(r#"{{"name":"Rome","source":"{source}","features":[{{"properties":{{"from":100,"to":200}}}}]}}"#));
+        let check = |name: &str, extra: Vec<crate::testkit::File>| {
+            let mut files = vec![source("rec", "T1")];
+            files.extend(extra);
+            load(name, &files).1
+        };
+        assert!(said(&check("kb-borders-ok", vec![shape("rec"), chapter("rome", "0150")]), "borders").is_empty());
+        assert!(!said(&check("kb-borders-date", vec![shape("rec"), chapter("rome", "0300")]), "has no borders for this shot's date").is_empty());
+        assert!(!said(&check("kb-borders-file", vec![shape("rec"), chapter("carthage", "0150")]), "no borders file `carthage`").is_empty());
+        assert!(!said(&check("kb-borders-source", vec![shape("nobody"), chapter("rome", "0150")]), "source `nobody` does not exist").is_empty());
     }
 }

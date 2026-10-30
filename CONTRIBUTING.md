@@ -491,6 +491,7 @@ Explore further: open [[blackrock]]'s page for its owners over time, or read "Wh
 | `reveal` | Entries that appear. |
 | `reveal_claims` | Links that draw, as `<entry id>#<link id>`, such as `larry-fink#c4`. |
 | `places` | Entries to mark on the map: places, or entries whose place has coordinates. |
+| `borders` | Historical borders to draw, by file name in `content/borders/`, such as `[russia, german-empire]`. The shot's `time` picks the year, and the first is drawn in the accent color. Look at the result: a border can be wrong even when it is sourced. |
 | `routes` | Lines to draw on the map: `[[from-id, to-id], …]`. |
 | `overlay` | A card. `{kind: quote, source, quote, caption}` is a quote card; `kind: source` shows the source as proof, with the quote highlighted; `kind: image` takes `image` (an address) and `caption`. A card without `quote` borrows the quote of a revealed link from the same source, or shows nothing. |
 | `narration` | The scene's text, in Markdown. Listen reads it aloud. |

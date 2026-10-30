@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { LngLatBounds, Map as MapLibre, Marker, setWorkerUrl, type GeoJSONSource } from 'maplibre-gl';
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url';
 import { tokenRgb } from '../lib/color';
-import type { GraphIndex } from '../lib/data';
+import { loadJson, type GraphIndex } from '../lib/data';
 import { el } from '../lib/dom';
 import type { Shot } from '../lib/types';
 import type { Placed } from './morph';
@@ -16,6 +16,16 @@ export interface MapView extends Placed {
 }
 
 type LonLat = [number, number];
+
+/** One polity's borders (`data/borders/<id>.json`): a period per feature, years inclusive. */
+interface BorderFile {
+  name: string;
+  features: { type: 'Feature'; properties: { from: number; to: number }; geometry: GeoJSON.Geometry }[];
+}
+
+const BORDER_CREDIT = '<a href="https://github.com/Seshat-Global-History-Databank/cliopatria">Cliopatria</a> (CC BY 4.0), simplified';
+const BORDER_FILL = 0.16;
+const BORDER_LINE = 0.75;
 
 /** Great-circle arc between two points, unwrapped across the antimeridian. */
 function arc(a: LonLat, b: LonLat, n = 72): LonLat[] {
@@ -47,6 +57,10 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
   await loadMapCss();
   setWorkerUrl(workerUrl);
   const accent = tokenRgb('--accent', [180, 24, 94], container);
+  const gray = tokenRgb('--graph-node', [142, 142, 147], container);
+  const borderKey = el('div', 'story-borders');
+  borderKey.hidden = true;
+  container.append(borderKey);
   const first = shots.find((s) => s.camera)?.camera;
 
   const map = new MapLibre({
@@ -67,6 +81,7 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
   let wantGlobe = first?.globe !== false;
   const markers = new Map<string, Marker>();
   let routeTween: gsap.core.Tween | null = null;
+  let borderTween: gsap.core.Tween | null = null;
   /** The shot shown now: a camera that settles after the reader moved on leaves the map alone. */
   let current = '';
 
@@ -77,6 +92,9 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
       /* projection unsupported: stay flat */
     }
     calmBasemap(map, container);
+    map.addSource('ctd-borders', { type: 'geojson', data: { type: 'FeatureCollection', features: [] }, attribution: BORDER_CREDIT });
+    map.addLayer({ id: 'ctd-borders-fill', type: 'fill', source: 'ctd-borders', paint: { 'fill-color': ['get', 'color'], 'fill-opacity': 0 } });
+    map.addLayer({ id: 'ctd-borders-line', type: 'line', source: 'ctd-borders', paint: { 'line-color': ['get', 'color'], 'line-width': 1.4, 'line-opacity': 0 } });
     map.addSource('ctd-routes', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
     map.addLayer({
       id: 'ctd-routes-halo',
@@ -119,6 +137,46 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
     const state = { p: 0 };
     draw(0.02);
     routeTween = gsap.to(state, { p: 1, duration: 2.2, delay: 0.5, ease: 'power2.inOut', onUpdate: () => draw(state.p) });
+  }
+
+  /** The first polity in the accent, the others gray: each shot says whose story it tells. */
+  async function setBorders(shot: Shot, reduced: boolean): Promise<void> {
+    const ids = shot.borders ?? [];
+    const year = shot.t == null ? null : Math.floor(shot.t);
+    const files = await Promise.all(ids.map((id) => loadJson<BorderFile>(`/data/borders/${id}.json`)));
+    if (current !== shot.shot) return;
+    const shown = files.flatMap((f, i) => {
+      const row = f.features.find((p) => year !== null && p.properties.from <= year && year <= p.properties.to);
+      return row ? [{ name: f.name, color: rgb(i === 0 ? accent : gray), row }] : [];
+    });
+    const src = map.getSource('ctd-borders') as GeoJSONSource | undefined;
+    if (!src) return;
+    void src.setData({
+      type: 'FeatureCollection',
+      features: shown.map((s) => ({ type: 'Feature', properties: { color: s.color }, geometry: s.row.geometry })),
+    });
+    borderTween?.kill();
+    const fade = (p: number) => {
+      map.setPaintProperty('ctd-borders-fill', 'fill-opacity', BORDER_FILL * p);
+      map.setPaintProperty('ctd-borders-line', 'line-opacity', BORDER_LINE * p);
+    };
+    if (reduced || !shown.length) fade(1);
+    else {
+      const state = { p: 0 };
+      fade(0);
+      borderTween = gsap.to(state, { p: 1, duration: 0.9, ease: 'power1.inOut', onUpdate: () => fade(state.p) });
+    }
+    borderKey.replaceChildren(
+      ...shown.map((s) => {
+        const swatch = el('i');
+        swatch.style.background = s.color;
+        const item = el('span', 'story-borders-item', s.name);
+        item.prepend(swatch);
+        return item;
+      }),
+      el('span', 'story-borders-note', 'Approximate borders: Cliopatria'),
+    );
+    borderKey.hidden = !shown.length;
   }
 
   function setMarkers(ids: string[], focus: string | undefined, reduced: boolean): void {
@@ -267,6 +325,7 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
         if (pa && pb) lines.push(arc(pa, pb));
       }
       setRoutes(lines, reduced);
+      setBorders(shot, reduced).catch((err) => console.warn('ctd-story: borders failed', err));
     };
     if (ready) run();
     else pending = run;
@@ -285,6 +344,7 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
     },
     destroy: () => {
       routeTween?.kill();
+      borderTween?.kill();
       for (const m of markers.values()) m.remove();
       map.remove();
     },

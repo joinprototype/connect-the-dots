@@ -494,6 +494,9 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     let pages = QuestionPages::new(kb);
     let ranked = kb.ranked();
     write_search(kb, &pages, &ranked, out)?;
+    for (id, b) in &kb.borders {
+        write(&out.join("data").join("borders").join(format!("{id}.json")), fs::read(root.join(&b.rel_path))?)?;
+    }
 
     // ---- pages -------------------------------------------------------------------
     let mut env = Environment::new();

@@ -70,6 +70,31 @@ pub struct SourceDoc {
     pub src: SourceIn,
 }
 
+/// A polity's historical borders (ADR-0020): only what the checks read. The shapes stay in the file.
+#[derive(Deserialize)]
+pub struct BorderIn {
+    pub name: String,
+    pub source: String,
+    pub features: Vec<BorderPeriod>,
+}
+
+#[derive(Deserialize)]
+pub struct BorderPeriod {
+    pub properties: BorderYears,
+}
+
+#[derive(Deserialize)]
+pub struct BorderYears {
+    pub from: i32,
+    pub to: i32,
+}
+
+pub struct BorderDoc {
+    pub rel_path: String,
+    pub stem: String,
+    pub border: BorderIn,
+}
+
 pub struct ChapterDoc {
     pub rel_path: String,
     pub stem: String,
@@ -82,6 +107,7 @@ pub struct Raw {
     pub entities: Vec<EntityDoc>,
     pub sources: Vec<SourceDoc>,
     pub chapters: Vec<ChapterDoc>,
+    pub borders: Vec<BorderDoc>,
     pub featured: Featured,
     pub diags: Vec<Diag>,
     pub dir_counts: BTreeMap<String, usize>,
@@ -194,6 +220,18 @@ pub fn load(root: &Path) -> Raw {
         match parse_yaml::<ChapterFront>(&format!("\n{fm}")) {
             Ok(front) => raw.chapters.push(ChapterDoc { rel_path: file, stem: stem(&p), front, body: body.to_string() }),
             Err(e) => raw.diags.push(Diag::err(&file, format!("invalid frontmatter: {e}"))),
+        }
+    }
+
+    for p in files(&content.join("borders")) {
+        let file = rel(root, &p);
+        if ext(&p) != "json" {
+            continue;
+        }
+        let Some(text) = read(&p, &file, &mut raw.diags) else { continue };
+        match serde_json::from_str::<BorderIn>(&text) {
+            Ok(border) => raw.borders.push(BorderDoc { rel_path: file, stem: stem(&p), border }),
+            Err(e) => raw.diags.push(Diag::err(&file, format!("invalid borders file: {e}"))),
         }
     }
 

@@ -23,3 +23,4 @@ One short file per decision: context, decision, consequences, and when to revisi
 | [0017](0017-pages-load-what-they-show.md) | Pages load what they show: a slim structure for the explorer and routes, an entry's details on demand, stories with their own data, search by word range; a route service past about 55k links | accepted |
 | [0018](0018-legal-records.md) | Legal records: what courts and regulators decided, every step of a case side by side, never a route | accepted |
 | [0019](0019-disputing-a-finding.md) | Disputing a finding: a study's words, then each disputer's own, nothing decided, never a route | accepted |
+| [0020](0020-historical-borders.md) | Historical borders: a few polities cut from Cliopatria, drawn by a story's date; no shape rather than a wrong one | accepted |

@@ -240,6 +240,8 @@ export interface Shot {
   reveal_claims?: string[];
   places?: string[];
   routes?: [string, string][];
+  /** Historical borders to draw, by file in `data/borders/`; the shot's date picks the period. */
+  borders?: string[];
   overlay?: ShotOverlay | null;
   narration?: string;
   narration_html?: string;

@@ -90,7 +90,7 @@ _Add ideas here with date and who suggested them._
 ### E4 Storytelling
 - ~~Watch mode with narration audio~~ Done in Sprint 8 ("Listen", the browser's own voice). Captions in other languages remain.
 - ~~Map → graph morph transition~~ Done in Sprint 15.
-- Borders through time (OpenHistoricalMap / Cliopatria) driven by the time cursor
+- ~~Borders through time~~ Done in Sprint 17 for story maps ([ADR-0020](decisions/0020-historical-borders.md)). Next: the other chapters (the Cold War in Thirteen Days), then the Map's era slider.
 - Document overlay with a highlighted quote
 - Video export: step frames in a headless browser, encode to MP4
 - Showcase chapters: "Who owns BlackRock and Vanguard?" and one history or religion chapter

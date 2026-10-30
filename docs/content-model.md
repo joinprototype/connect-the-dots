@@ -414,6 +414,7 @@ Shot fields (v0; the full list is in [data-contract.md](data-contract.md)):
 | `reveal` | Entities that appear |
 | `reveal_claims` | Claims whose links draw |
 | `places`, `routes` | Places to mark and lines to draw on the map |
+| `borders` | Historical borders to draw, by file name in `content/borders/`; the shot's date picks the period ([ADR-0020](decisions/0020-historical-borders.md)) |
 | `overlay` | Source card, image or quote |
 | `duration` | Seconds in watch mode |
 | `narration` | Voice-over text |

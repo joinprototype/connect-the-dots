@@ -22,6 +22,7 @@ dist/
   data/schema.json           the vocabulary: types, relations, lenses, tiers, questions, methodology, route stories
   data/graph-slim.json       every entry and link, structure only: what the explorer draws and routes price
   data/e/<id>.json           one entry's words and proof, loaded when it is opened
+  data/borders/<id>.json     one polity's historical borders, loaded by a story that draws them (ADR-0020)
   data/search/index.json     the search files' word ranges      data/search/<n>.json   search entries by word
   data/graph.json            only with `ctd build --graph`: everything in one file, for tools; no page reads it
   world/                     manifest.json, entities.json, {z}/{x}/{y}.bin (world-tiles.md)
@@ -170,6 +171,10 @@ One entry's words and proof, loaded when the explorer opens the entry or shows o
 ## A story's own data
 
 A story page embeds the entries, links and sources its scenes name, beside its shots (`script.ctd-story-data`, see "Chapter" below): `{ "nodes": [...], "edges": [...], "sources": {...} }` in the shapes above, with links in full. Its entries are the scenes' `focus`, `perspective`, `reveal`, `places` and `routes`, and the ends, accounts and quoted speakers of the links its scenes reveal (`reveal_claims`). Its sources are those links' and the overlays'. The player reads this and `schema.json`, and nothing else.
+
+## `data/borders/<id>.json`
+
+A GeoJSON FeatureCollection, copied from `content/borders/`: `name` (what the key says), `source` (a source id), and one feature per period, with `properties.from` and `properties.to` (years, inclusive) and a MultiPolygon. A shot's `borders` lists ids; the story takes the feature whose years hold the floor of the shot's `t`, and draws nothing for an id with none.
 
 ## `data/search/`
 

@@ -92,10 +92,13 @@ Startup sprints: the order below is a best guess and is re-decided at every spri
 - **Sprint 16: comfortable on a phone** ([sprints/sprint-16.md](sprints/sprint-16.md)). Built; review pending.
   - A phone check in the sweep, tap targets, fields that no longer zoom on iOS, and stories that work on a sideways phone.
 
+- **Sprint 17: borders through time** ([ADR-0020](decisions/0020-historical-borders.md), [sprints/sprint-17.md](sprints/sprint-17.md)). Built; demo and review pending.
+  - Story maps show the world of their date, from a few polities cut from Cliopatria: first in the Soviet chapter.
+
 ## Next (candidates, chosen at review)
 
 - **Story v1.**
-  - Borders changing through time (needs a historical dataset, its license and hosting).
+  - Borders in the other chapters.
   - A "capture shot" tool.
 - **Contribution loop.**
   - "Edit this page" links, and Issue Form → PR bot.

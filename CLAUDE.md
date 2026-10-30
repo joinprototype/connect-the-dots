@@ -46,4 +46,4 @@ node tools/qa/paths-golden.mjs <dir>                                     # the R
 # makes each instance cost several CPU cores.
 ```
 
-Layout: `crates/ctd` (engine), `theme/` (MiniJinja templates + site.css tokens), `web/` (TypeScript bundles), `content/` (schema, methodology, entities, sources, chapters). The browser code reads only what `docs/data-contract.md` describes.
+Layout: `crates/ctd` (engine), `theme/` (MiniJinja templates + site.css tokens), `web/` (TypeScript bundles), `content/` (schema, methodology, entities, sources, chapters, borders). The browser code reads only what `docs/data-contract.md` describes.

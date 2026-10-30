@@ -70,6 +70,15 @@ ctd-story .story-map .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button { ba
 .story-hud-past { color: var(--muted) !important; font-style: italic; }
 
 /* Map markers: a dot and a small label card. */
+/* which borders a map shows, and that they are approximate */
+.story-borders {
+  position: absolute; z-index: 2; top: 54px; left: 16px; display: flex; flex-direction: column; gap: 2px; padding: 6px 10px; border-radius: 10px;
+  font: 500 0.8rem/1.35 var(--font-ui); color: var(--ink); background: var(--paper); box-shadow: var(--story-shadow-sm);
+}
+.story-borders[hidden] { display: none; }
+.story-borders-item { display: flex; align-items: center; gap: 6px; }
+.story-borders-item i { width: 10px; height: 10px; border-radius: 3px; }
+.story-borders-note { font-weight: 400; font-size: 0.75rem; color: var(--muted); }
 /* the dots that fly between the map and the graph */
 .story-morph { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
 .story-morph-dot {
@@ -218,6 +227,7 @@ ctd-story .step-card > :has(+ .step-source:last-child:not(:focus-within)) { marg
   ctd-story .step { min-height: 62svh; align-items: center; }
   ctd-story .step:first-child { min-height: 40svh; }
   .story-hud { top: 10px; left: 10px; gap: 6px; }
+  .story-borders { top: 44px; left: 10px; }
   .story-hud > span { font-size: 0.82rem; padding: 3px 9px; }
   .story-hud-time { font-size: 0.98rem !important; }
   .story-overlay { inset: auto 10px 56px 10px; width: auto; }
@@ -235,6 +245,7 @@ ctd-story .step-card > :has(+ .step-source:last-child:not(:focus-within)) { marg
   .story-dots { display: none; }
   .story-controls { width: max-content; margin-top: 8px; }
   .story-hud { top: 56px; left: 8px; }
+  .story-borders { top: 92px; left: 8px; }
   .story-overlay { inset: auto 8px 8px 8px; width: auto; }
   .story-card { padding: 10px 12px; max-height: 62svh; }
   .story-card-quote { margin: 0 0 4px; }

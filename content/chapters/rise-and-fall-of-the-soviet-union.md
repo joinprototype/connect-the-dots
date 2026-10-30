@@ -16,6 +16,7 @@ Lines marked "according to" are one side's account. Where records from opposing 
   view: map
   camera: {globe: true, center: [30, 54], zoom: 2.6, duration: 6}
   places: [petrograd, zurich, berlin, moscow]
+  borders: [russia, german-empire]
   time: "1917-03-15"
   reveal: [february-revolution, nicholas-ii, russian-provisional-government]
   reveal_claims: [february-revolution#c2, february-revolution#c1]
@@ -28,6 +29,7 @@ Lines marked "according to" are one side's account. Where records from opposing 
   camera: {center: [18, 54], zoom: 3.4, pitch: 30, duration: 4}
   perspective: german-imperial-government
   places: [zurich, berlin, petrograd]
+  borders: [russia, german-empire]
   routes: [[zurich, berlin], [berlin, petrograd]]
   time: "1917-04-16"
   reveal: [lenin-sealed-train, vladimir-lenin, german-imperial-government, petrograd]
@@ -60,6 +62,7 @@ Lines marked "according to" are one side's account. Where records from opposing 
   view: map
   camera: {center: [30.3, 59.9], zoom: 5, pitch: 30, duration: 4}
   places: [petrograd]
+  borders: [russia, german-empire]
   time: "1917-11-07"
   reveal: [october-revolution, bolsheviks, vladimir-lenin, leon-trotsky, russian-provisional-government]
   reveal_claims: [october-revolution#c1, october-revolution#c2, october-revolution#c3, october-revolution#c4]
@@ -72,6 +75,7 @@ Lines marked "according to" are one side's account. Where records from opposing 
   camera: {center: [23.7, 52.1], zoom: 4, duration: 4}
   perspective: erich-ludendorff
   places: [brest-belarus, berlin, moscow]
+  borders: [german-empire]
   time: "1918-03-03"
   reveal: [treaty-of-brest-litovsk, german-imperial-government, russia, erich-ludendorff]
   reveal_claims: [treaty-of-brest-litovsk#c1, treaty-of-brest-litovsk#c2, german-imperial-government#c4, german-imperial-government#c5]
@@ -83,6 +87,7 @@ Lines marked "according to" are one side's account. Where records from opposing 
   view: map
   camera: {center: [37.6, 53], zoom: 3.6, duration: 4}
   places: [moscow, ukraine, belarus]
+  borders: [soviet-union]
   time: "1922-12-30"
   reveal: [founding-of-the-ussr, soviet-union, russia, ukraine, belarus, joseph-stalin, soviet-right-of-secession]
   reveal_claims: [founding-of-the-ussr#c1, founding-of-the-ussr#c2, founding-of-the-ussr#c3, founding-of-the-ussr#c4, soviet-union#c1]
@@ -104,6 +109,7 @@ Lines marked "according to" are one side's account. Where records from opposing 
   view: map
   camera: {center: [31, 54], zoom: 3.6, pitch: 25, duration: 4}
   places: [moscow, belarus, ukraine]
+  borders: [soviet-union]
   time: "1991-12-08"
   reveal: [august-coup-1991, boris-yeltsin, belovezha-accords, leonid-kravchuk, stanislav-shushkevich, dissolution-of-the-soviet-union]
   reveal_claims: [august-coup-1991#c1, belovezha-accords#c1, belovezha-accords#c2, belovezha-accords#c3, belovezha-accords#c4, dissolution-of-the-soviet-union#c1]

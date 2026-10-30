@@ -42,6 +42,6 @@ Config: `wrangler.jsonc` at the repo root. It serves `dist/` with these rules:
   - The story maps may fetch from `tiles.openfreemap.org` and run blob workers.
   - Inline styles stay allowed: content is escaped, and the life line and covers position things with `style` attributes.
   - Test locally with `python3 tools/qa/serve-headers.py <build dir> 4430`, which sends `_headers` like Cloudflare does, then sweep that port. Violations show up as console errors.
-- [ ] A custom domain.
+- [ ] A custom domain. Candidate: `dots.joinprototype.com`. The `joinprototype.com` zone is already on Cloudflare, so a Worker can take it as a custom domain with no new purchase. The site uses relative URLs, so nothing in the build names a domain.
 - [ ] Turn off the dev-only client error reporter. `ctd build` (no `--dev`) already omits it.
 - [ ] Decide on the licenses (ADR-0011, still proposed).
