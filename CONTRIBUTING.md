@@ -10,7 +10,7 @@ This guide covers the rules, setting up, worked examples copied from the reposit
 - **A pull request is a proposal.** Review comments are the discussion, a trusted reviewer's approval is the verification, and a merge means accepted ([ADR-0003](docs/decisions/0003-github-as-identity-and-discussion.md)). One approval is the default; family links and other sensitive links need two.
 - **GitHub checks every pull request** with `ctd check` (see [Check your work](#check-your-work)). Builds and deploys run on a maintainer's machine ([ADR-0007](docs/decisions/0007-local-builds.md)).
 - **Issues** are for questions, disputes and research requests.
-- **Licenses** are not decided yet. [ADR-0011](docs/decisions/0011-repos-and-licenses.md) proposes CC0 for structured data and CC BY-SA 4.0 for prose and stories.
+- **Licenses:** structured data is CC0, prose and stories are CC BY-SA 4.0, and code is AGPL-3.0 ([LICENSE.md](LICENSE.md)). Your contribution takes the license of the part you changed. Sign off your commits with `git commit -s`.
 
 ## The rules
 

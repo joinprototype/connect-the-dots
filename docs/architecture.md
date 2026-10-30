@@ -52,7 +52,7 @@ content/           schema/, methodology/, entities/, sources/, chapters/  (see c
 docs/              you are here
 ```
 
-At public launch the repo splits, with history kept, into `engine` (crates, web, theme, docs) and `content` (content). A private `ops` repo holds deploy configs and runbooks. See [ADR-0011](decisions/0011-repos-and-licenses.md).
+The repo stays one piece when it goes public. It can split into `engine` and `content` later, once outside contributions make that worth doing. See [ADR-0011](decisions/0011-repos-and-licenses.md).
 
 ## 4. The `ctd` CLI
 

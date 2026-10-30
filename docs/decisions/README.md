@@ -14,7 +14,7 @@ One short file per decision: context, decision, consequences, and when to revisi
 | [0008](0008-reading-pages.md) | Rust-rendered HTML (MiniJinja) with vanilla islands; React only for apps; no SSR framework | accepted |
 | [0009](0009-explorer.md) | Close views with sigma now; streaming world with deck.gl tiles after the scale spike | accepted |
 | [0010](0010-storytelling-chapters.md) | Chapters are markdown plus scene blocks; scroll / watch / explore modes | accepted |
-| [0011](0011-repos-and-licenses.md) | Monorepo now, split at launch; licenses | proposed |
+| [0011](0011-repos-and-licenses.md) | One public monorepo; licenses | accepted |
 | [0012](0012-english-only.md) | English only for now | accepted |
 | [0013](0013-world-layout.md) | World layout: communities + pivot MDS + alignment between builds | accepted |
 | [0014](0014-calm-design.md) | Calm design: three places (Ask, Stories, Map), one accent, neutral layers, plain words, generated covers | accepted |

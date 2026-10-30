@@ -1,9 +1,15 @@
 // Cloudflare Workers static assets: the site is plain files (ADR-0002, ADR-0006).
-// Deploy (needs a Cloudflare login; see docs/deploy.md):
-//   cargo run --release -q -- check && cargo run --release -q -- build && npx wrangler@4 deploy
+// Deploy with tools/deploy.sh (see docs/deploy.md).
 {
   "name": "connect-the-dot",
+  // the joinprototype account, where the joinprototype.com zone and Kaizu's site live
+  "account_id": "bac6b44f61931c1030eb6448018a84a5",
   "compatibility_date": "2026-10-01",
+  // one public address: the first deploy creates its DNS record and certificate
+  "routes": [{ "pattern": "dots.joinprototype.com", "custom_domain": true }],
+  "workers_dev": false,
+  // the Version URLs that previews use; off by default once workers_dev is off
+  "preview_urls": true,
   "assets": {
     "directory": "./dist",
     // dist/404.html is the "Not on the map yet" page

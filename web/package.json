@@ -2,6 +2,7 @@
   "name": "@connect-the-dot/web",
   "private": true,
   "version": "0.1.0",
+  "license": "AGPL-3.0-only",
   "description": "Browser code for connect-the-dot: reading-page islands, the explorer app, the story player and the world viewer.",
   "type": "module",
   "engines": {

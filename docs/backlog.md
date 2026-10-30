@@ -123,8 +123,8 @@ _Add ideas here with date and who suggested them._
   - legal entity, terms of service
   - content policy (rules for living people, inclusion policy)
   - privacy notice, DMCA agent, takedown runbook
-- Licenses decision ([ADR-0011](decisions/0011-repos-and-licenses.md)), domain name, privacy-friendly analytics
-- Split the monorepo into public engine and content repos (plus private ops) at launch; mirror off GitHub
+- ~~Licenses decision ([ADR-0011](decisions/0011-repos-and-licenses.md)), domain name.~~ Done in Sprint 18. Privacy-friendly analytics remains.
+- Mirror off GitHub; split into engine and content repos if outside contributions make it worth doing (ADR-0011)
 
 ## Icebox (v2 and beyond)
 

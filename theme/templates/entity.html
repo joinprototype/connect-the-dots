@@ -243,7 +243,7 @@
       {% else %}
       <p class="empty">This page's file has not been committed yet. Once it is, every change shows here with its author and pull request.</p>
       {% endif %}
-      <p class="file-path">Edit this page: <code>{{ entity.rel_path }}</code></p>
+      <p class="file-path">Edit this page: <a href="{{ site.repo }}/edit/main/{{ entity.rel_path }}"><code>{{ entity.rel_path }}</code></a></p>
     </details>
   </div>
   <script src="/static/folds.js" defer></script>

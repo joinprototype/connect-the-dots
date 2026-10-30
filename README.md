@@ -12,4 +12,4 @@ An open, interactive map of knowledge where anyone can connect the dots, and see
 
 Anyone can add people, organizations, places, events, sourced links and stories with a pull request. Start with [CONTRIBUTING.md](CONTRIBUTING.md): the rules, set-up, worked examples and a checklist. Every pull request is checked with `ctd check`.
 
-License: to be decided; see [ADR-0011](docs/decisions/0011-repos-and-licenses.md).
+Code is AGPL-3.0, structured data is CC0 and writing is CC BY-SA 4.0: see [LICENSE.md](LICENSE.md).

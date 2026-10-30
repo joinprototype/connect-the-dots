@@ -56,7 +56,7 @@
 </main>
 <footer class="site-footer">
   <p class="footer-principle">A connection is not evidence of wrongdoing. Every line cites its sources, and every interpretation says whose it is. <a href="/about/">How this site works</a></p>
-  <p class="footer-build">Built {{ site.manifest.built }} from {% if site.manifest.commit %}commit {{ site.manifest.commit }}{% else %}uncommitted content{% endif %}, engine {{ site.manifest.engine }}, methodology {{ site.manifest.methodology[:8] }}.</p>
+  <p class="footer-build">Built {{ site.manifest.built }} from {% if site.manifest.commit %}commit {{ site.manifest.commit }}{% else %}uncommitted content{% endif %}, engine {{ site.manifest.engine }}, methodology {{ site.manifest.methodology[:8] }}. <a href="{{ site.repo }}">Source</a> · <a href="{{ site.repo }}/blob/main/LICENSE.md">License</a></p>
 </footer>
 {% if site.assets.islands_js %}<script type="module" src="/assets/islands.js"></script>{% endif %}
 {% block scripts %}{% endblock %}

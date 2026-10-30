@@ -215,16 +215,21 @@ const ASK_NAMES: usize = 400;
 const INDEX_PER_TYPE: usize = 12;
 /// How many covers one shelf of the Stories library shows (richest stories first).
 const SHELF_MAX: usize = 24;
+/// Whether search engines may list the site. False until the public launch (docs/deploy.md):
+/// the site can be live while only people with the link find it.
+const LISTED: bool = false;
 /// Response headers for every file (Cloudflare `_headers`): no sniffing, no framing, no
 /// referrer beyond the origin, no device APIs, and a Content-Security-Policy. Scripts come only
 /// from the site itself (theme/static, web/dist); the story maps' tiles, glyphs and sprites come
-/// from OpenFreeMap (ADR-0014), and MapLibre runs its workers from blob URLs.
+/// from OpenFreeMap (ADR-0014), and MapLibre runs its workers from blob URLs. Chunks have their
+/// hash in the name, so they never change.
 const HEADERS: &str = "/*\n  X-Content-Type-Options: nosniff\n  X-Frame-Options: DENY\n  Referrer-Policy: strict-origin-when-cross-origin\n  \
 Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()\n  Cross-Origin-Opener-Policy: same-origin\n  \
 Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; \
 connect-src 'self' https://tiles.openfreemap.org; worker-src 'self' blob:; child-src 'self' blob:; font-src 'self'; object-src 'none'; \
 base-uri 'self'; form-action 'self'; frame-ancestors 'none'\n\
-/data/*\n  Cache-Control: public, max-age=300, stale-while-revalidate=86400\n";
+/data/*\n  Cache-Control: public, max-age=300, stale-while-revalidate=86400\n\
+/assets/chunks/*\n  Cache-Control: public, max-age=31536000, immutable\n";
 
 /// A type's page lists every entry up to this many; past it, one page per first letter.
 const TYPE_PAGE_MAX: usize = 500;
@@ -505,6 +510,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     let site = json!({
         "title": "connect·the·dot",
         "tagline": "Connect the dots. See the evidence and the perspectives behind every line.",
+        "repo": "https://github.com/joinprototype/connect-the-dots",
         "dev": opts.dev, "assets": assets, "lenses": kb.schema.lenses, "layers": layers, "manifest": manifest,
     });
     let by_id = kb.edges.iter().map(|e| (e.id.as_str(), e)).collect();
@@ -841,8 +847,8 @@ fn alias_pages(s: &Site) -> Result<()> {
         write(&s.out.join("e").join(alias).join("index.html"), html)?;
     }
     write(&s.out.join("_redirects"), redirects)?;
-    write(&s.out.join("_headers"), HEADERS)?;
-    write(&s.out.join("_headers"), HEADERS)
+    let headers = if LISTED { HEADERS.to_string() } else { HEADERS.replacen("/*\n", "/*\n  X-Robots-Tag: noindex\n", 1) };
+    write(&s.out.join("_headers"), headers)
 }
 
 fn question_pages(s: &Site, pages: &QuestionPages) -> Result<QuestionShelf> {
@@ -1182,7 +1188,7 @@ mod tests {
 
     use serde_json::{Value, json};
 
-    use super::{link_detail, link_phrase, script_json};
+    use super::{LISTED, link_detail, link_phrase, script_json};
     use crate::{
         stories::tests::family,
         testkit::{load, write_repo},
@@ -1352,6 +1358,7 @@ mod tests {
         assert_eq!(pages, ["q/behind/party", "q/behind/reds", "q/benefited/fall", "q/why/fall"]);
         assert!(!out.join("q/behind/ann").exists() && !out.join("q/behind/party-press").exists());
         assert!(read("_headers").contains("X-Content-Type-Options: nosniff"), "security headers for the host");
+        assert_eq!(read("_headers").contains("X-Robots-Tag: noindex"), !LISTED, "unlisted until the public launch");
         // every entry of a type, A to Z, on its own page
         let orgs = read("t/org/index.html");
         let at = |name: &str| orgs.find(&format!(">{name}</a>")).unwrap_or(usize::MAX);

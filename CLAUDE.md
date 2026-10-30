@@ -34,6 +34,7 @@ cargo run -q -- serve                 # dev server on http://127.0.0.1:4321 with
 npm --prefix web run build            # rebuild islands / explorer / story bundles into web/dist
 npm --prefix web run dev              # the built dist/ with the browser code live (HMR)
 cargo test && cargo clippy            # engine tests and lints
+tools/deploy.sh [live]                # preview upload, or production at dots.joinprototype.com (docs/deploy.md); both put content online
 node tools/qa/cdp.mjs <url> [actions.js] --shot=out.png --scheme=light   # headless Chrome check: errors, logs, screenshot
 node tools/qa/sweep.mjs --scheme=dark --size=390x844 [--only=/q/]       # every built page: console errors, sideways scroll
 node tools/qa/sweep.mjs --touch --size=390x844                           # also tap targets, small text, fields that zoom on iOS; try 320x640 and 844x390
