@@ -215,6 +215,8 @@ const ASK_NAMES: usize = 400;
 const INDEX_PER_TYPE: usize = 12;
 /// How many covers one shelf of the Stories library shows (richest stories first).
 const SHELF_MAX: usize = 24;
+/// The site's address, for the few things that cannot be relative.
+const SITE_URL: &str = "https://dots.joinprototype.com";
 /// Whether search engines may list the site. False until the public launch (docs/deploy.md):
 /// the site can be live while only people with the link find it.
 const LISTED: bool = false;
@@ -554,7 +556,34 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     }
     write(&out.join("data").join("schema.json"), serde_json::to_vec(&schema)?)?;
     write(&out.join("build-manifest.json"), serde_json::to_vec_pretty(&manifest)?)?;
+    write_addresses(out)?;
     Ok(manifest)
+}
+
+/// Gives every page its canonical address and lists it in the sitemap. Runs last, because a
+/// page's address is where it landed. Redirect pages name their target already and stay out.
+fn write_addresses(out: &Path) -> Result<()> {
+    let mut urls = Vec::new();
+    for entry in WalkDir::new(out) {
+        let entry = entry?;
+        if entry.file_name() != "index.html" {
+            continue;
+        }
+        let html = fs::read_to_string(entry.path())?;
+        if html.contains("rel=\"canonical\"") {
+            continue;
+        }
+        let dir = entry.path().parent().unwrap_or(out).strip_prefix(out)?.to_string_lossy().replace('\\', "/");
+        let url = if dir.is_empty() { format!("{SITE_URL}/") } else { format!("{SITE_URL}/{dir}/") };
+        write(entry.path(), html.replacen("</head>", &format!("<link rel=\"canonical\" href=\"{url}\">\n</head>"), 1))?;
+        urls.push(url);
+    }
+    urls.sort();
+    let list: String = urls.iter().map(|url| format!("  <url><loc>{url}</loc></url>\n")).collect();
+    let sitemap = format!("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n{list}</urlset>\n");
+    write(&out.join("sitemap.xml"), sitemap)?;
+    // Open to crawlers even while unlisted: one that is kept out never reads the noindex.
+    write(&out.join("robots.txt"), format!("User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n"))
 }
 
 /// Copies the theme's static files and the web bundles; returns which bundles exist.
@@ -1188,7 +1217,7 @@ mod tests {
 
     use serde_json::{Value, json};
 
-    use super::{LISTED, link_detail, link_phrase, script_json};
+    use super::{LISTED, SITE_URL, link_detail, link_phrase, script_json};
     use crate::{
         stories::tests::family,
         testkit::{load, write_repo},
@@ -1359,6 +1388,12 @@ mod tests {
         assert!(!out.join("q/behind/ann").exists() && !out.join("q/behind/party-press").exists());
         assert!(read("_headers").contains("X-Content-Type-Options: nosniff"), "security headers for the host");
         assert_eq!(read("_headers").contains("X-Robots-Tag: noindex"), !LISTED, "unlisted until the public launch");
+        // every page has one address, which the sitemap lists
+        let sitemap = read("sitemap.xml");
+        assert!(sitemap.contains(&format!("<loc>{SITE_URL}/</loc>")), "the home page: {sitemap}");
+        assert!(sitemap.contains(&format!("<loc>{SITE_URL}/q/behind/party/</loc>")), "a question page: {sitemap}");
+        assert!(read("q/behind/party/index.html").contains(&format!("<link rel=\"canonical\" href=\"{SITE_URL}/q/behind/party/\">")));
+        assert!(read("robots.txt").contains(&format!("Sitemap: {SITE_URL}/sitemap.xml")));
         // every entry of a type, A to Z, on its own page
         let orgs = read("t/org/index.html");
         let at = |name: &str| orgs.find(&format!(">{name}</a>")).unwrap_or(usize::MAX);

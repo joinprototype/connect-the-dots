@@ -17,21 +17,24 @@ The repo is public, and the site runs at dots.joinprototype.com.
 ### Must
 - [x] **S18-01 The address:** `wrangler.jsonc` takes the domain as a Custom Domain and turns off `workers.dev`, so the site has one public address. Version URLs stay on for previews.
 - [x] **S18-02 Unlisted:** `LISTED` in `site.rs`. While false, every response says `X-Robots-Tag: noindex`, previews included. A header, not `robots.txt`, because a crawler that is kept out never reads the noindex.
-- [x] **S18-03 `tools/deploy.sh`:** refuses a dirty tree, checks URLs against what is live, builds, uploads a preview or deploys, and tags the deploy.
+- [x] **S18-03 `tools/deploy.sh`:** refuses a dirty tree, checks URLs against the last release, builds, and uploads a preview or releases.
 - [x] **S18-04 Caching:** chunks have a hash in the name, so they cache for a year. Everything else revalidates, as Cloudflare does by default.
 - [x] **S18-05 Corrections:** pages link to their file on GitHub, the About page offers issues too, and the footer links the source and license.
 - [x] **S18-06 License:** [LICENSE.md](../../LICENSE.md), on the terms of [ADR-0011](../decisions/0011-repos-and-licenses.md), now accepted. Cliopatria's borders, quotations, images and libraries keep their own terms.
 - [ ] **S18-07 Public repo:** push, then open the repo. The corrections route depends on it. Needs the founder's go.
 - [ ] **S18-08 Live:** `tools/deploy.sh live`, then the checks in `docs/deploy.md`. Needs S18-07 and the founder's go, and their word on whether search engines may list it yet (`LISTED`).
 
+- [ ] **S18-09 Versions:** the founder's word on 2026-10-30: start at 0.1.0. `version` in `Cargo.toml` is the one number, the footer shows it, [CHANGELOG.md](../../CHANGELOG.md) says what changed, and `tools/deploy.sh live` tags each release. Waits for the 0.1.0 release itself.
+- [x] **S18-10 Addresses:** `sitemap.xml`, `robots.txt` and a canonical link on every page. Cloudflare's own `robots.txt` was being served, with no sitemap. While `LISTED` is false, search engines can read all of this but are told not to list the pages.
+
 ### Found on the way
-- [x] **The repo scan:** no secrets or key files in the tree or in history. A research digest names scratch folders on the founder's Mac, which is harmless.
+- [x] **The repo scan:** no secrets or key files in any version of any file. History was cleaned once, before 0.1.0: commits carry a private address, and the research notes moved out of the repo.
 - [x] **GSAP is not open source,** which the AGPL would not allow by itself. LICENSE.md adds a section 7 permission.
 - [x] **`_headers` was written twice** in a row. Now once.
 
 ### Not in this sprint
 - The legal list in `docs/deploy.md`.
-- A sitemap, `robots.txt` and share images.
+- Share images.
 - Self-hosting the basemap, analytics.
 
 ## Demo script
@@ -58,8 +61,8 @@ The repo is public, and the site runs at dots.joinprototype.com.
 
 ## Known issues
 
+- Cloudflare's zone adds Web Analytics and bot-detection scripts to every page. The Content-Security-Policy blocks them, so they never run, but every page logs console errors until they are turned off on the zone (`docs/deploy.md`).
 - Whether `versions upload` works on a Worker that was never deployed is undocumented; `docs/deploy.md` has the way around it.
-- The `deployed` tag lives on this Mac only. A deploy from another machine starts from `origin/main`.
 - A Version URL is public to anyone who has it. Cloudflare Access can put a sign-in in front of it if that stops being enough.
 
 ## Review
