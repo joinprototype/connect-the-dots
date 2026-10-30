@@ -66,16 +66,17 @@ claims:
     title: "deferred prosecution agreement, over secret commissions charged to transition management clients"
     amount: 32300000
     currency: USD
-    note: "The company agreed that the Information's allegations and the statement of facts are true and accurate. The term ran three years from the later of the filing or a monitor's retention. No record of how the charge ended is cited here."
+    note: "The company agreed that the Information's allegations and the statement of facts are true and accurate. The term ran three years from the later of the filing or a monitor's retention, and its 2020 annual report says the monitor's term was extended to 2021."
     src:
       - {s: doj-2017-01-18-state-street, quote: "has entered into a deferred prosecution agreement and agreed to pay a $32.3 million criminal penalty to resolve the government’s criminal investigation into a scheme to defraud at least six of the bank’s clients through secret commissions applied to billions of dollars of securities trades."}
       - {s: doj-2017-01-17-state-street-dpa, at: "Paragraph 2", quote: "that the allegations described in the Information and the facts described in the attached Statement of Facts are true and accurate."}
       - {s: state-street-8k-2017-01-18, at: "Item 1.01", quote: "a copy of such agreement (which was entered into on January 17, 2017)"}
+      - {s: state-street-10k-2020, quote: "under which we agreed to retain an independent compliance and ethics monitor for a term which has now been extended to 2021 (subject to further extension)"}
   - id: c8
     rel: charged_by
     to: us-department-of-justice
     when: "2021-05-13"
-    case: "United States v. State Street Corporation, No. 21cr10153"
+    case: "United States v. State Street Corporation, No. 1:21-cr-10153"
     title: "one count of conspiracy to commit wire fraud"
     src:
       - {s: doj-2021-05-13-state-street-information, at: "Caption", quote: "Criminal No. 21cr10153 Violation: Count One: Conspiracy to Commit Wire Fraud (18 U.S.C. § 1349)"}
@@ -84,14 +85,32 @@ claims:
     rel: settled_with
     to: us-department-of-justice
     when: "2021-05-13"
-    case: "United States v. State Street Corporation, No. 21cr10153"
+    case: "United States v. State Street Corporation, No. 1:21-cr-10153"
     title: "deferred prosecution agreement, over secret markups on expenses charged to custody clients"
     amount: 115000000
     currency: USD
-    note: "The Justice Department reports the company's admissions in its release. The agreement also required a compliance monitor for two years. No record of how the charge ended is cited here."
+    note: "The Justice Department reports the company's admissions in its release. The agreement also required a compliance monitor for two years."
     src:
       - {s: doj-2021-05-13-state-street, quote: "entered into a deferred prosecution agreement and agreed to pay a $115 million criminal penalty to resolve charges that it engaged in a scheme to defraud a number of the bank’s clients by secretly overcharging for expenses related to the bank’s custody of client assets."}
       - {s: doj-2021-05-13-state-street, quote: "According to State Street’s admissions, between 1998 and 2015, bank executives conspired to add secret markups to “out-of-pocket” (OOP) expenses charged to the bank’s clients"}
+  - id: c10
+    rel: charge_dismissed_by
+    to: us-department-of-justice
+    when: "2022-07-28"
+    case: "United States v. State Street Corporation, No. 1:17-cr-10008"
+    note: "The court ordered the dismissal the next day and closed the case on 1 August 2022."
+    src:
+      - {s: courtlistener-1-17-cr-10008, at: "Docket entry 20, 28 July 2022", quote: "DISMISSAL as to State Street Corporation"}
+      - {s: courtlistener-1-17-cr-10008, at: "Docket entry 21, 29 July 2022", quote: "Judge Indira Talwani: ORDER entered. DISMISSAL OF THE INFORMATION."}
+  - id: c11
+    rel: charge_dismissed_by
+    to: us-department-of-justice
+    when: "2024-02-29"
+    case: "United States v. State Street Corporation, No. 1:21-cr-10153"
+    note: "The court closed the case on 4 March 2024."
+    src:
+      - {s: courtlistener-1-21-cr-10153, at: "Docket entry 28, 29 February 2024", quote: "Dismissal by Government"}
+      - {s: courtlistener-1-21-cr-10153, at: "Docket header", quote: "Date Terminated: March 4, 2024"}
 ---
 
 State Street Corporation is the parent of [[state-street-bank-and-trust]] and of the asset manager [[state-street-investment-management]]. With [[blackrock]] and [[the-vanguard-group]] it is one of the "Big Three" index-fund managers. Through its funds it holds shares in [[tesla]], [[microsoft]] and [[amazon]] for its clients; it does not own those shares for itself.

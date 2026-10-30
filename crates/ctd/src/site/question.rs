@@ -79,6 +79,7 @@ fn line_view(cx: &Ctx, q: &Question, l: &Line, column: Option<&str>, notes: &mut
         "tier_label": answers::tier(kb, e, column).and_then(|t| kb.schema.tiers.get(t)).map(|t| &t.label),
         "cross_confirmed": e.cross_confirmed, "status": e.status, "reason": e.reason, "note": e.note,
         "refs": notes.refs(&e.sources), "quote": answers::own_words(kb, e, column).and_then(|s| s.quote.as_ref()), "form": form,
+        "about": l.about.map(|(id, _)| cx.node(id)),
     })
 }
 

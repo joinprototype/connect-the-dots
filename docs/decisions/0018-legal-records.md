@@ -16,7 +16,7 @@ The founder asked for court and sanctions records (Sprint 9): charged, convicted
 
 ## Decision
 
-1. **Six relations, flagged `legal: true`**, each from the person or organization the record is about to whoever decided:
+1. **Seven relations, flagged `legal: true`**, each from the person or organization the record is about to whoever decided:
 
    | Relation | Reads | To |
    |---|---|---|
@@ -26,6 +26,7 @@ The founder asked for court and sanctions records (Sprint 9): charged, convicted
    | `overturned_by` | "decision overturned by" | the court that set aside an earlier decision in the same case |
    | `settled_with` | "settled with" | a regulator or the other party |
    | `sanctioned_by` | "sanctioned by" | a government or body that imposes sanctions |
+   | `charge_dismissed_by` | "charge dismissed by" | whoever dropped the charge (added in Sprint 13, for cases that end without a trial) |
 
    - **Qualifiers:** `title` is what the record calls it ("securities fraud", "without admitting or denying the allegations"), in the record's words. `case` names the case as the record does ("SEC v. Elon Musk"). Settlements and fines take `amount` and `currency`.
    - **The verbs are the record's.** No other word judges anyone: no "fraudster" and no "criminal", here or anywhere (as for every claim).
@@ -55,4 +56,4 @@ The founder asked for court and sanctions records (Sprint 9): charged, convicted
 ## Revisit when
 
 - A case needs its own page (many parties, many steps): make cases entries.
-- Pardons, sentences or civil suits are needed: add a relation, with the same flags.
+- Pardons, sentences or civil suits are needed: add a relation, with the same flags, as `charge_dismissed_by` was.

@@ -8,6 +8,8 @@
 #             about bodies that have founders, leaders and owners, never about events or ideas.
 #   shows     what every answer page shows, and `not` what it does not: both are printed on the page
 #   groups    a label and its relations: `in` = links that point at {x}, `out` = links {x} owns.
+#             `via` follows those links of {x} one step first, so `in` and `out` read the entries they
+#             reach, and each line names that entry (a dispute of a study about {x}: ADR-0019).
 #             `empty` is said when no link answers the group; without it an empty group is left out.
 #   min       names an answer needs for its own page (two or more accounts always earn one)
 # `ctd check` refuses family, sensitive and index-fund relations here, family types as subjects,
@@ -42,9 +44,10 @@ questions:
   - id: benefited
     ask: "Who benefited from {x}?"
     subjects: [event]
-    shows: who gained or lost, in the words of whoever says so
+    shows: who gained or lost, and who disputes a study that says so, in the words of whoever says it
     not: that anyone caused it
     groups:
       - {label: Gained, in: [benefited_from], empty: "No account in our sources says who gained."}
       - {label: Lost, in: [harmed_by], empty: "No account in our sources says who lost."}
+      - {label: Disputes the finding, via: [appears_in], in: [disputes_finding]}
     min: 1

@@ -8,6 +8,7 @@
 <li class="claim status-{{ l.status }}" data-edge="{{ l.edge_id }}">
   <a class="claim-target" href="{{ l.other.url }}">{{ l.other.name }}</a>
   <span class="split-phrase">{{ l.phrase }}</span>
+  {% if l.about %}<a class="claim-target" href="{{ l.about.url }}">{{ l.about.name }}</a>{% endif %}
   {% if l.when %}<span class="claim-when">{{ l.when }}</span>{% endif %}
   {% if l.detail %}<span class="claim-detail">{{ l.detail }}</span>{% endif %}
   <span class="badges">
@@ -33,8 +34,8 @@
 {% set on_record = records|selectattr("lines")|list %}
 {% set unanswered = records|rejectattr("lines")|list %}
 {# whether any line was recorded about an earlier form, for "How this answer is built" #}
-{% set ns = namespace(form=false) %}
-{% for part in records + accounts + [disputed, drafts] %}{% for l in part.lines %}{% if l.form %}{% set ns.form = true %}{% endif %}{% endfor %}{% endfor %}
+{% set ns = namespace(form=false, about=false) %}
+{% for part in records + accounts + [disputed, drafts] %}{% for l in part.lines %}{% if l.form %}{% set ns.form = true %}{% endif %}{% if l.about %}{% set ns.about = true %}{% endif %}{% endfor %}{% endfor %}
 <article class="entity answer">
   <header class="answer-head">
     <p class="chapter-back"><a href="{{ x.url }}">‹ {{ x.name }}</a></p>
@@ -133,6 +134,7 @@
       <div class="prose">
         <p>Lines on the record come first: sourced links that no one presents as their own account, each with its strongest source. Then every account recorded here gets its own column, A to Z, none ranked above another. A column quotes only that account's own words and shows the strength of its own sources. Disputed lines are listed apart, with the reason, and lines still being verified come last. Neither is counted. Withdrawn lines are never shown.</p>
         {% if ns.form %}<p>What was recorded about an earlier form of {{ x.sentence }}, the same body under an older name, answers too, and each such line says so.</p>{% endif %}
+        {% if ns.about %}<p>A dispute of a study about {{ x.sentence }} answers too, and each such line names the study.</p>{% endif %}
         <p>When a list is longer than the page shows, the links the public methodology ranks strongest stay{% if methodology %} (methodology {{ methodology }}){% endif %}, and the rest open in the explorer.</p>
       </div>
     </details>

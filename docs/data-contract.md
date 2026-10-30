@@ -346,6 +346,7 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
   - `quote`: in an account column, only words from a source that speaks for that account (its `voice` or `author`); elsewhere the line's first quote; or null.
   - `tier_label`: the strongest source's tier. In an account column, another account's own sources do not count.
   - `form`: null, or `{ node, label: "as the Bolsheviks (until 8 Mar 1918)" }` when the line was recorded about an earlier form of the subject.
+  - `about`: null, or the node a line is about when a group's `via` reached it: "BlackRock disputes a finding of <study>" on a page about an event.
 - Every page prints its scope line and the fixed notice "A connection is not evidence of wrongdoing."; "and N more" links go to `question.explore_url`.
 
 `questions.html` (`/q/<q>/`): `question` (`{ id, ask, label, title, shows, not, url, route, subjects }`, `title` with "…" in its blanks), `pages[]` (up to 100: `{ title, url, counts, story_url }`) and `more`.

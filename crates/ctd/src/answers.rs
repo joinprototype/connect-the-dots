@@ -11,6 +11,9 @@
 //!
 //! An earlier form of X (whatever became X through an `identity` relation, up to three steps
 //! back) answers for X: the CPSU's page includes what was recorded about the Bolsheviks.
+//!
+//! A group with `via` also reads one step along those links of X: a dispute of a study about X
+//! answers a question about X, and the line names the study (ADR-0019).
 
 use std::collections::{HashMap, HashSet};
 
@@ -43,6 +46,8 @@ pub struct Line<'a> {
     pub group: usize,
     /// For a line about an earlier form of X: the identity link that joins that form on.
     pub form: Option<&'a Edge>,
+    /// For a line reached through a group's `via`: the entry it is about, and the link from X to it.
+    pub about: Option<(&'a str, &'a Edge)>,
     /// The link's date, or, for a link that carries no time between two entries of the same
     /// type (an event caused by an event), the other entry's own dates.
     pub when: Option<&'a Span>,
@@ -226,18 +231,30 @@ fn build<'a>(kb: &'a Kb, p: &Params, qi: usize, x: &'a Entity) -> Answer<'a> {
     let q = &kb.schema.questions[qi];
     let forms = forms(kb, &x.id);
     let mut lines = Vec::new();
+    let mut take = |e: &'a Edge, outgoing: bool, group: usize, form: Option<&'a Edge>, about: Option<(&'a str, &'a Edge)>| {
+        let other = e.other(outgoing);
+        // withdrawn links never appear, and an account is quoted or left off (`ctd check` warns)
+        let unquoted = !e.according_to.is_empty() && e.sources.iter().all(|s| s.quote.is_none());
+        if e.status == "deprecated" || e.sources.is_empty() || unquoted || forms.iter().any(|(f, _)| *f == other) {
+            return;
+        }
+        let own_time = !kb.schema.relations[&e.rel].temporal;
+        let when = e.when.as_ref().or_else(|| kb.entity(other).filter(|o| own_time && o.kind == x.kind).and_then(|o| o.when.as_ref()));
+        lines.push(Line { edge: e, other, outgoing, group, form, about, when, cost: p.link_cost(e) });
+    };
     for &(form, via) in &forms {
         for (e, outgoing) in kb.links_of(form) {
-            let Some(group) = q.groups.iter().position(|g| if outgoing { &g.out } else { &g.into }.contains(&e.rel)) else { continue };
-            let other = e.other(outgoing);
-            // withdrawn links never appear, and an account is quoted or left off (`ctd check` warns)
-            let unquoted = !e.according_to.is_empty() && e.sources.iter().all(|s| s.quote.is_none());
-            if e.status == "deprecated" || e.sources.is_empty() || unquoted || forms.iter().any(|(f, _)| *f == other) {
-                continue;
+            if let Some(group) = q.groups.iter().position(|g| g.via.is_empty() && if outgoing { &g.out } else { &g.into }.contains(&e.rel)) {
+                take(e, outgoing, group, via, None);
             }
-            let own_time = !kb.schema.relations[&e.rel].temporal;
-            let when = e.when.as_ref().or_else(|| kb.entity(other).filter(|o| own_time && o.kind == x.kind).and_then(|o| o.when.as_ref()));
-            lines.push(Line { edge: e, other, outgoing, group, form: via, when, cost: p.link_cost(e) });
+        }
+    }
+    for (group, g) in q.groups.iter().enumerate().filter(|(_, g)| !g.via.is_empty()) {
+        for (step, outgoing) in kb.links_of(&x.id).filter(|(e, _)| e.status == "published" && g.via.contains(&e.rel)) {
+            let about = step.other(outgoing);
+            for (e, out) in kb.links_of(about).filter(|&(e, out)| if out { &g.out } else { &g.into }.contains(&e.rel)) {
+                take(e, out, group, None, Some((about, step)));
+            }
         }
     }
 
@@ -592,5 +609,42 @@ pub(crate) mod tests {
         let attributed = file("content/schema/relations.yaml", "became: {label: became, inverse: formerly, from: [org], to: [org], identity: true, attributed: true, traversable: false}\n");
         let err = try_load("answers-identity", &[attributed]).err().expect("an identity is on the record");
         assert!(err.to_string().contains("cannot be `attributed`"), "{err}");
+    }
+
+    #[test]
+    fn a_group_with_via_reads_the_disputes_of_a_study_about_x() {
+        let mut files = schema();
+        for (path, text) in &mut files {
+            if path.ends_with("entity-types.yaml") {
+                text.push_str("work: {label: Work, plural: Works, layer: power}\n");
+            } else if path.ends_with("relations.yaml") {
+                text.push_str("appears_in: {label: appears in, inverse: features, from: [event], to: [work], layers: [power]}\n\
+                    disputes_finding: {label: disputes a finding of, inverse: finding disputed by, from: [org, work], to: [work], layers: [power], temporal: true, attributed: true, traversable: false, dispute: true}\n");
+            } else if path.ends_with("questions.yaml") {
+                *text = text.replace("{label: Lost, in: [harmed_by], empty: No account here says who lost.}]", "{label: Lost, in: [harmed_by], empty: No account here says who lost.}, {label: Disputes the finding, via: [appears_in], in: [disputes_finding]}]");
+            }
+        }
+        let refused: Vec<File> = files.iter().map(|(p, t)| (p.clone(), t.replace("via: [appears_in]", "via: [nope]"))).collect();
+        files.extend([
+            source("rec", "T1"),
+            file("content/entities/work/st/study.md", "---\nid: study\ntype: work\nname: Study\nfinding: {s: rec, quote: Fares rose.}\nclaims: []\n---\n"),
+            event("fares", "Fares", "2014", "  - {id: c1, rel: appears_in, to: study, src: [{s: rec}]}\n"),
+            entity("org", "flyers", "Flyers", "  - {id: c1, rel: harmed_by, to: fares, according_to: [study], src: [{s: rec, quote: Flyers paid., by: study}]}\n"),
+            entity("org", "firm", "Firm", "  - {id: c1, rel: disputes_finding, to: study, when: 2019, according_to: [firm], src: [{s: rec, quote: Too fragile., by: firm}]}\n"),
+        ]);
+        let (kb, diags) = load("answers-via", &files);
+        assert!(diags.iter().all(|d| d.level != crate::diag::Level::Error), "{diags:?}");
+        let a = answer(&kb, 3, "fares").unwrap();
+        let who: Vec<&str> = a.accounts.iter().map(|(w, _)| *w).collect();
+        assert_eq!(who, ["firm", "study"], "each side keeps a column, A to Z");
+        let line = &a.accounts[0].1.lines[0];
+        assert_eq!((line.other, line.phrase(&kb), line.about.map(|(id, _)| id)), ("firm", "disputes a finding of", Some("study")), "the line names the study, not X");
+        // the story draws the study and the link to it, and tells the study's name
+        let story = crate::stories::answer_story(&kb, &a, &[]).unwrap();
+        let shot = story.shots.iter().find(|s| s["narration"].as_str().is_some_and(|n| n.contains("Too fragile") || n.contains("disputes a finding"))).expect("the dispute is told");
+        assert!(shot["narration"].as_str().unwrap().contains("Study"), "{shot}");
+        assert!(shot["reveal"].as_array().unwrap().contains(&"study".into()) && shot["reveal_claims"].as_array().unwrap().contains(&"fares#c1".into()), "{shot}");
+        let err = try_load("answers-via-unknown", &refused).err().expect("refused");
+        assert!(err.to_string().contains("unknown relation `nope`"), "{err}");
     }
 }

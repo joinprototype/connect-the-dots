@@ -25,21 +25,21 @@ The common-ownership debate lived only in a chapter. A study says fares were hig
 6. **A reply is the same relation.** When the authors answer, they dispute the critic's finding, on the critic's page. Neither side gets the last word by design: the card shows what is on the record, by date.
 7. **Who paid for the work is said where a source says it,** in a neutral note: "Analysis Group is a consultant BlackRock hired."
 
+8. **On a question page (Sprint 13),** a question group can look one step along a link: `via: [appears_in]`, `in: [disputes_finding]` reads the works X appears in. Each disputer then gets an equal column, A to Z, beside the study's own account, and each line names the study. Without this, a `harmed_by` account would have shown one side.
+
 ## Rejected
 
 - **`status: disputed` on a study's link:** our data would be judging. It is also one flag where the debate has several voices and dates.
 - **Disputes aimed at the event** ("common ownership of US airlines"): the disputes answer a paper's method and numbers, not an event.
 - **A separate `finds` relation from a study to its subject:** a second relation for one quote, with no target that says more than the study's page does.
 - **Showing a score or a count of sides:** two papers against one proves nothing. Nothing is counted.
-- **Question pages in this sprint:** see "Revisit when".
 
 ## Consequences
 
 - **Content:** Azar, Schmalz and Tecu (2018) and Elhauge (2016) get findings. Dennis, Gerardi and Schenone (2022) and the authors' 2022 reply become entries. BlackRock, the 2022 study, the 2022 reply, Isabel Tecu and Einer Elhauge hold the disputes.
-- **Pages:** a "The debate" card. The "How each side tells it" card leaves disputes out, since the debate card tells them.
+- **Pages:** a "The debate" card. The "How each side tells it" card leaves disputes out, since the debate card tells them. "Who benefited from common ownership of US airlines?" has a page, with the study's account and every dispute.
 - **Explorer:** an ordinary attributed link. No browser code changes.
 
 ## Revisit when
 
-- **A question page must show a debate.** "Who benefited from common ownership of US airlines?" needs a `harmed_by` account from the study, and a way to bring in disputes of a work about the event: a question group that looks one step along a relation (`via: [appears_in]`, `in: [disputes_finding]`). Until then there is no `harmed_by` link, so no page shows one side.
 - **Findings need to be compared across several works:** make findings entries of their own.

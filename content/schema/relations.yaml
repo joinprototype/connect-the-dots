@@ -75,6 +75,9 @@ acquitted_by:
 # A court that set aside an earlier decision in the same case: a conviction, a fine.
 overturned_by:
   {label: decision overturned by, inverse: overturned a decision about, from: [person, org], to: [org, place], owner: from, layers: [power], temporal: true, qualifiers: [title, case], sensitive: true, traversable: false, legal: true, noun: true, inverse_reads: verb}
+# A charge dropped: the last step of a case that ends without a trial.
+charge_dismissed_by:
+  {label: charge dismissed by, inverse: dismissed a charge against, from: [person, org], to: [org, place], owner: from, layers: [power], temporal: true, qualifiers: [title, case], sensitive: true, traversable: false, legal: true, noun: true, inverse_reads: verb}
 settled_with:
   {label: settled with, inverse: settled with, from: [person, org], to: [org, place], owner: from, layers: [power, money], temporal: true, qualifiers: [title, case, amount, currency], sensitive: true, traversable: false, legal: true, inverse_reads: verb}
 sanctioned_by:

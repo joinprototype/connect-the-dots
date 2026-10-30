@@ -617,10 +617,10 @@ fn lines_shot(kb: &Kb, name: &str, x: &str, lines: &[&Line], account: Option<&st
     let mut reveal: Vec<String> = vec![x.to_string()];
     let mut claims: Vec<&str> = Vec::new();
     for l in lines {
-        for n in [l.form.map(|f| f.from.as_str()), Some(l.other)].into_iter().flatten() {
+        for n in [l.form.map(|f| f.from.as_str()), l.about.map(|(id, _)| id), Some(l.other)].into_iter().flatten() {
             add(&mut reveal, n);
         }
-        claims.extend(l.form.map(|f| f.id.as_str()).into_iter().chain([l.edge.id.as_str()]));
+        claims.extend(l.form.into_iter().chain(l.about.map(|(_, step)| step)).map(|e| e.id.as_str()).chain([l.edge.id.as_str()]));
     }
     let mut shot = json!({ "shot": name, "view": "graph", "focus": x, "reveal": reveal, "reveal_claims": claims, "narration": narration, "duration": seconds });
     if let Some(w) = lines.first().and_then(|l| l.date()) {
@@ -716,7 +716,7 @@ pub fn answer_story(kb: &Kb, a: &Answer, next: &[(String, String)]) -> Option<Dr
     }
     let mut seen: Vec<String> = vec![x.to_string()];
     for l in a.published().chain(&a.disputed.lines) {
-        for n in [l.form.map(|f| f.from.as_str()), Some(l.other)].into_iter().flatten() {
+        for n in [l.form.map(|f| f.from.as_str()), l.about.map(|(id, _)| id), Some(l.other)].into_iter().flatten() {
             add(&mut seen, n);
         }
     }

@@ -214,4 +214,4 @@ Every line drawn below is a sourced link, and every quote is the speaker's own w
   duration: 13
 ```
 
-Explore further: open [[blackrock]]'s page for its owners over time, or read "Who is behind BlackRock?" on its question page.
+Explore further: open [[blackrock]]'s page for its owners over time, read "Who is behind BlackRock?" on its question page, or see every side at once on "Who benefited from common ownership of US airlines?".

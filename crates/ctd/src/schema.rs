@@ -158,6 +158,10 @@ pub struct QuestionGroup {
     pub into: Vec<String>,
     #[serde(default)]
     pub out: Vec<String>,
+    /// Links of X to follow one step first: `in` and `out` then read the entries they reach, so a
+    /// dispute of a study about X answers a question about X (ADR-0019).
+    #[serde(default)]
+    pub via: Vec<String>,
     /// Said when no link answers the group; without it an empty group is left out.
     #[serde(default)]
     pub empty: Option<String>,
@@ -283,6 +287,12 @@ fn check_questions(qs: &[Question], banned: &[String], relations: &IndexMap<Stri
                 }
                 if rel.sensitive || rel.kinship || rel.passive {
                     return fail(format!("`{r}` is a family, sensitive or index-fund relation, so it never answers a question (family ties live on entity pages)"));
+                }
+            }
+            for r in &g.via {
+                let Some(rel) = relations.get(r) else { return fail(format!("unknown relation `{r}`")) };
+                if rel.sensitive || rel.kinship || rel.passive || rel.attributed {
+                    return fail(format!("`via` needs a plain link on the record, and `{r}` is not one"));
                 }
             }
         }

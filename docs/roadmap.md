@@ -78,6 +78,10 @@ Startup sprints: the order below is a best guess and is re-decided at every spri
   - The chapter gains the second study and the authors' reply; a company's holders card keeps each filing's own date.
   - See [sprints/sprint-12.md](sprints/sprint-12.md).
 
+- **Sprint 13: Ask shows the debate** ([sprints/sprint-13.md](sprints/sprint-13.md)). Built; demo and review pending.
+  - "Who benefited from common ownership of US airlines?" has a page: the study's account and every dispute, each in an equal column.
+  - State Street's two criminal cases now end with their dismissals, from the dockets.
+
 ## Next (candidates, chosen at review)
 
 - **Story v1.**

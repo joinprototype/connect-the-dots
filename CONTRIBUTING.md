@@ -399,6 +399,7 @@ Then `disputes_finding` goes in the file of whoever disputes it, with their own 
 - **The source must name the study, or plainly answer it.** A letter against a general idea is not a dispute of a study: leave it out.
 - **A reply is the same link,** from the authors' reply to the critic's study, which then needs its own `finding`.
 - **Say who paid in a neutral `note`,** only where a source says so. Never a word of your own about who is right.
+- **On a question page:** when an event `appears_in` the study, each dispute gets its own column on "Who benefited from …?", naming the study.
 
 ### 7. Add a legal record
 
@@ -425,7 +426,7 @@ A charge, a conviction, an acquittal, a decision overturned on appeal, a settlem
       - {s: sec-2018-09-29-musk-tesla-settle, quote: "Musk and Tesla have agreed to settle the charges against them without admitting or denying the SEC’s allegations."}
 ```
 
-- **The relations:** `charged_by`, `convicted_by`, `acquitted_by`, `overturned_by`, `settled_with` and `sanctioned_by`.
+- **The relations:** `charged_by`, `convicted_by`, `acquitted_by`, `overturned_by`, `charge_dismissed_by`, `settled_with` and `sanctioned_by`.
 - **`when` is required:** the day of that step. Without it, `ctd check` fails with `` `charged_by` is a legal record, so it needs the date of that step ``.
 - **`case`** names the case as the record does. Steps with the same `case` sit together in the page's "Legal records" card, in date order, so a settlement or an appeal shows next to the charge.
 - **`title`** is what the record calls it, in its words: the charge, or the terms ("without admitting or denying"). Never a word of your own about anyone.

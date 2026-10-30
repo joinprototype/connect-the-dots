@@ -59,11 +59,11 @@ State Street joins BlackRock and Vanguard on the map, each holding shares for it
 
 ## Known issues
 
-- How the two deferred prosecution cases ended is not on the record here: no dismissal was found, and each note says so. A charge shown without its outcome is what ADR-0018 warns about, so this should be closed from the dockets.
+- ~~How the two deferred prosecution cases ended is not on the record here.~~ Closed in Sprint 13: both were dismissed, on the dockets.
 - State Street's rows show shares, not a percent, because its filings give none. BlackRock's and Vanguard's percents have their own, different dates.
 - Dennis, Gerardi and Schenone's abstract says "prior research", and the journal's disclosure statement could not be read (the publisher declined automated access). The working paper's disclosure names only a university research fund.
-- The authors' reply and Azar and Vives are working papers, marked T3. No journal publication was verified.
-- "Who benefited from common ownership of US airlines?" has no page: ADR-0019, "Revisit when".
+- The authors' reply and Azar and Vives are working papers: scholarship (T2), not peer-reviewed, and each title says so. No journal publication was verified.
+- ~~"Who benefited from common ownership of US airlines?" has no page.~~ Closed in Sprint 13.
 
 ## Review
 

@@ -11,11 +11,13 @@ claims:
   - id: c1
     rel: holds_for_clients
     to: tesla
-    percent: 5.7
-    shares: 188797465
-    as_of: 2025-09-15
-    note: "Percentage from Tesla's proxy table; the share count comes from BlackRock's Schedule 13G filed in January 2024."
-    src: [{s: tesla-proxy-2025, at: "Ownership of Securities, as of September 15, 2025", quote: "The foregoing information is based solely on Schedule 13G of Blackrock, Inc. filed on January 29, 2024"}]
+    percent: 4.96
+    shares: 196348742
+    as_of: 2026-09-30
+    note: "BlackRock reported sole voting power over 180,605,472 of them. Tesla's 2025 proxy table gave 5.7%, from a 2024 filing."
+    src:
+      - {s: blackrock-13ga-4-2026-10-27-tesla, at: "Item 4(a) and (b)", quote: "Amount beneficially owned: 196348742 (b) Percent of class: 4.96 %"}
+      - {s: tesla-proxy-2025, at: "Ownership of Securities, as of September 15, 2025", quote: "The foregoing information is based solely on Schedule 13G of Blackrock, Inc. filed on January 29, 2024"}
   - id: c2
     rel: holds_for_clients
     to: microsoft
