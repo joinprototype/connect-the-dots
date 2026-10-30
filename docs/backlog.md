@@ -8,6 +8,7 @@ _Add ideas here with date and who suggested them._
 
 - 2026-10-16 (Sprint 1 self-check): decide time-slider semantics (snapshot vs cumulative history).
 - ~~2026-10-16 (Sprint 1 self-check): golden test that the TS explorer and Rust `ctd path` return identical paths and costs.~~ Done in Sprint 14: `tools/qa/paths-golden.mjs`, which found a hop-limit bug in the Rust one.
+- 2026-10-30 (Sprint 16): try the site on a real iPhone and Android phone: the iOS zoom fix, pinch and drag in the explorer and the Map, the morph, and Listen.
 - 2026-10-30 (Sprint 14): unit tests for the browser's pure logic (`web/src/lib/`: filters, dates, claims). Node runs TypeScript by itself, so `node --test` needs no new dependency. There are none today.
 - ~~2026-10-16 (Sprint 1 self-check): ego-graph label collision and parallel-edge drawing.~~ Labels done (explorer in Sprint 3, story graphs in Sprint 9); parallel links merged in the explorer in Sprint 11.
 - 2026-10-16 (Sprint 1 self-check): verify the two draft claims (Gise at ARPA 1958; crisis → Pacem in Terris) or drop them.

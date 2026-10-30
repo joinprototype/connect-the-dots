@@ -363,4 +363,9 @@
   .ctdx-right .ctdx-tabs { position: static; }
   .ctdx-legend { display: none; }
   .ctdx-hud { max-width: calc(100% - 32px); top: 56px; }
+  /* under 16px, iOS zooms the page when a field takes focus */
+  .ctdx-picker input, .ctdx-field select, .ctdx-field input { font-size: 16px; }
+  .ctdx-time input[type="range"] { height: 32px; }
+  .ctdx-toggle input { flex: none; width: 24px; height: 24px; margin-top: 0; }
+  .ctdx-ticks { font-size: 0.75rem; }
 }

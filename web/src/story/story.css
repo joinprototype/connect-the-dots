@@ -44,7 +44,7 @@ ctd-story .story-layer { position: absolute; inset: 0; visibility: hidden; opaci
 .story-stage[data-view="map"] .story-map,
 .story-stage[data-view="graph"] .story-graph { visibility: visible; opacity: 1; transition: opacity .9s ease-in-out, visibility 0s; }
 .story-map .maplibregl-canvas { outline: none; }
-ctd-story .story-map .maplibregl-ctrl-attrib { font: 400 0.72rem var(--font-ui); color: var(--muted); background: color-mix(in srgb, var(--paper) 85%, transparent); }
+ctd-story .story-map .maplibregl-ctrl-attrib { font: 400 0.75rem var(--font-ui); color: var(--muted); background: color-mix(in srgb, var(--paper) 85%, transparent); }
 /* MapLibre's credits are black text and a black "i": in --muted, readable in dark mode too */
 ctd-story .story-map .maplibregl-ctrl-attrib a { color: var(--muted); }
 ctd-story .story-map .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button { background: var(--muted); mask: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20fill-rule%3D%22evenodd%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20d%3D%22M4%2010a6%206%200%201%200%2012%200%206%206%200%201%200-12%200m5-3a1%201%200%201%200%202%200%201%201%200%201%200-2%200m0%203a1%201%200%201%201%202%200v3a1%201%200%201%201-2%200%22%2F%3E%3C%2Fsvg%3E") center / 24px no-repeat; }
@@ -196,15 +196,24 @@ ctd-story .step-card .step-source:not(:focus-within) { position: absolute; width
 ctd-story .step-card > :has(+ .step-source:last-child:not(:focus-within)) { margin-bottom: 0; }
 
 /* ---------------------------------------------------------------- small screens: stage on top, cards scroll beneath it */
-@media (max-width: 860px) {
+/* one column in portrait; a phone on its side is wide and short, so it keeps the side-by-side layout */
+@media (max-width: 860px) and (orientation: portrait) {
   ctd-story.is-enhanced { display: block; padding-right: 0; }
   ctd-story.is-enhanced .story-stage {
     position: sticky; top: var(--story-top); z-index: 3;
     height: 54svh; min-height: 280px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   }
-  /* a long story's dots wrap to a second row rather than run off a narrow phone */
-  .story-controls { position: sticky; top: calc(var(--story-top) + 54svh - 48px); z-index: 4; margin: -46px 10px 0 auto; width: max-content; max-width: calc(100% - 20px); }
+  /* one row however long the story, each dot a tall target; a slip lands on the next scene, which is harmless */
+  .story-dots { flex: 1; flex-wrap: nowrap; gap: 0; min-width: 0; }
+  .story-dots li { flex: 1 1 0; min-width: 0; }
+  .story-dots button { position: relative; width: 100%; height: 28px; background: none; transform: none; }
+  .story-dots button::before { content: ""; position: absolute; top: 50%; left: 50%; width: 7px; height: 7px; margin: -3.5px; border-radius: 50%; background: var(--rule); }
+  .story-dots button.is-past { background: none; }
+  .story-dots button.is-past::before { background: var(--muted); }
+  .story-dots button[aria-current="step"] { background: none; transform: none; }
+  .story-dots button[aria-current="step"]::before { background: var(--accent); transform: scale(1.4); }
+  .story-controls { position: sticky; top: calc(var(--story-top) + 54svh - 48px); z-index: 4; margin: -46px 10px 0; width: calc(100% - 20px); box-sizing: border-box; }
   ctd-story.is-enhanced .story-steps { position: relative; z-index: 1; padding: 8svh 16px 30svh; }
   ctd-story .step { min-height: 62svh; align-items: center; }
   ctd-story .step:first-child { min-height: 40svh; }
@@ -218,4 +227,17 @@ ctd-story .step-card > :has(+ .step-source:last-child:not(:focus-within)) { marg
   .story-card-quote { margin: 4px 0 6px; }
   .story-card-quote p, .story-card.is-quote .story-card-quote p { font-size: 0.95rem; line-height: 1.5; }
   .story-card-foot { margin-top: 4px; }
+}
+
+/* a phone on its side: the quote stays small and wide, and the dots give way to the scene count */
+@media (max-height: 500px) {
+  ctd-story.is-enhanced .story-stage { min-height: 0; }
+  .story-dots { display: none; }
+  .story-controls { width: max-content; margin-top: 8px; }
+  .story-hud { top: 56px; left: 8px; }
+  .story-overlay { inset: auto 8px 8px 8px; width: auto; }
+  .story-card { padding: 10px 12px; max-height: 62svh; }
+  .story-card-quote { margin: 0 0 4px; }
+  .story-card-quote p, .story-card.is-quote .story-card-quote p { font-size: 0.88rem; line-height: 1.4; }
+  .story-card-meta, .story-card-kicker { font-size: 0.75rem; margin-bottom: 2px; }
 }

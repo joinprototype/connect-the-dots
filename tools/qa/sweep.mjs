@@ -8,6 +8,9 @@
 // svg or background image behind it is counted as unverifiable, not failed; a one-colour gradient (the story
 // highlighter) counts as that colour. Skipped: disabled controls, text inside svg, list markers. Text drawn on a
 // canvas (graph and map names) is outside it. Run both schemes and both sizes: tokens and layouts differ.
+// --touch reports what is hard to use on a phone, summed over the pages: tap targets under 24px (WCAG 2.5.8; a link
+// inside a sentence is exempt), text under 12px, fields under 16px (iOS zooms the page on focus), and anything past
+// the right edge of the screen, which the sideways-scroll check misses when an ancestor clips it. Run with --size.
 // Prints one line per page with a problem, one indented line per low-contrast text (ratio, selector, text, text
 // colour on background colour), then a summary; exits non-zero if any page had one.
 import { readdirSync, readFileSync } from 'node:fs';
@@ -22,6 +25,7 @@ const size = opt('size', '');
 const wait = Number(opt('wait', '500'));
 const only = opt('only', '');
 const a11y = process.argv.includes('--a11y');
+const touch = process.argv.includes('--touch');
 
 // every page: dist/**/index.html, as a URL path, without alias redirects
 const pages = [];
@@ -65,6 +69,7 @@ if (scheme) await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefe
 if (size) {
   const [width, height] = size.split('x').map(Number);
   await send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 2, mobile: true });
+  await send('Emulation.setTouchEmulationEnabled', { enabled: true });
 }
 
 const PROBE = `(() => { document.querySelectorAll('details').forEach((d) => { d.open = true; });
@@ -85,6 +90,42 @@ const A11Y = `(() => {
   if (imgs.length) out.push(imgs.length + ' img without alt');
   return out.join('; ');
 })()`;
+// What is hard to use on a phone, run in the page as `(${phone})()`: { "<kind> <what>": [count, an example] }.
+function phone() {
+  const out = {};
+  const add = (key, example = '') => (out[key] = [(out[key]?.[0] ?? 0) + 1, example]);
+  const shown = (e) => {
+    const s = getComputedStyle(e);
+    // a box a pixel wide is hidden for screen readers and keyboards
+    return e.getClientRects().length > 0 && s.visibility !== 'hidden' && +s.opacity > 0 && (e.parentElement?.offsetWidth ?? 2) > 1;
+  };
+  const name = (e) => `${e.tagName.toLowerCase()}${e.classList.length ? `.${[...e.classList].slice(0, 2).join('.')}` : ''}${e.parentElement?.classList.length ? ` in .${e.parentElement.classList[0]}` : ''}`;
+  for (const e of document.querySelectorAll('a[href], button, input:not([type=hidden]), select, textarea, summary, [role=button]')) {
+    if (!shown(e)) continue;
+    const r = e.getBoundingClientRect();
+    const words = [...(e.parentElement?.childNodes ?? [])].some((n) => n.nodeType === 3 && /\S/.test(n.textContent));
+    const inline = getComputedStyle(e).display === 'inline' && words;
+    if (!inline && (r.width < 24 || r.height < 24)) add(`small target ${name(e)}`, `${Math.round(r.width)}x${Math.round(r.height)}`);
+    if (e.matches('input:not([type=range], [type=checkbox]), select, textarea') && parseFloat(getComputedStyle(e).fontSize) < 16) add(`field under 16px ${name(e)}`);
+  }
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+    const e = n.parentElement;
+    if (!/\S/.test(n.textContent) || !e || !shown(e) || e.closest('script, style, noscript')) continue;
+    const px = parseFloat(getComputedStyle(e).fontSize);
+    if (px < 12) add(`small text ${name(e)}`, `${px}px`);
+  }
+  for (const e of document.body.querySelectorAll('*')) {
+    if (!shown(e) || e.closest('canvas, svg, .maplibregl-map')) continue;
+    const r = e.getBoundingClientRect();
+    if (r.right <= innerWidth + 1 || r.left >= innerWidth || r.height === 0) continue;
+    let held = false;
+    for (let a = e.parentElement; a && !held; a = a.parentElement) held = /auto|scroll/.test(getComputedStyle(a).overflowX);
+    if (!held) add(`past the edge ${name(e)}`);
+  }
+  return out;
+}
+
 // Text contrast, run in the page as `(${contrast})()`: self-contained, no outside names.
 function contrast() {
   for (const a of document.getAnimations()) try { a.finish(); } catch {} // settled colours, not a fade-in
@@ -192,6 +233,7 @@ function contrast() {
 }
 let bad = 0;
 let lowPages = 0, lowTexts = 0, unsure = 0, checked = 0;
+const phoneTotals = {};
 for (const path of todo) {
   errors = [];
   const load = new Promise((r) => { loaded = r; setTimeout(r, 15000); });
@@ -201,6 +243,14 @@ for (const path of todo) {
   const overflow = (await send('Runtime.evaluate', { expression: PROBE, returnByValue: true })).result?.result?.value;
   const access = a11y ? (await send('Runtime.evaluate', { expression: A11Y, returnByValue: true })).result?.result?.value : '';
   const low = a11y ? (await send('Runtime.evaluate', { expression: `(${contrast})()`, returnByValue: true })).result : null;
+  if (touch) {
+    const found = (await send('Runtime.evaluate', { expression: `(${phone})()`, returnByValue: true })).result?.result?.value ?? {};
+    for (const [what, [n, example]] of Object.entries(found)) {
+      const t = (phoneTotals[what] ??= { n: 0, pages: 0, first: path, example });
+      t.n += n;
+      t.pages++;
+    }
+  }
   if (low?.exceptionDetails) errors.push(`contrast check: ${low.exceptionDetails.exception?.description}`);
   const fails = low?.result?.value?.fails ?? [];
   unsure += low?.result?.value?.unsure ?? 0;
@@ -215,5 +265,10 @@ for (const path of todo) {
   }
 }
 console.log(`${todo.length} pages, ${bad} with problems (${scheme || 'default scheme'}, ${size || '1440x900'})`);
+if (touch) {
+  const rows = Object.entries(phoneTotals).sort((a, b) => b[1].pages - a[1].pages || b[1].n - a[1].n);
+  console.log(`phone: ${rows.length} kinds of problem`);
+  for (const [what, t] of rows) console.log(`  ${t.pages} pages, ${t.n}×  ${what} ${t.example}  (first on ${t.first})`);
+}
 if (a11y) console.log(`contrast: ${checked} texts checked, ${lowTexts} low on ${lowPages} pages, ${unsure} unverifiable (canvas, image, svg or gradient behind)`);
 done(bad ? 1 : 0);

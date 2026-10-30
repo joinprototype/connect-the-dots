@@ -553,6 +553,25 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
   /* the link keeps its name (aria-label); the wordmark would push the links to a row of their own */
   .brand span { display: none; }
 }
+/* a phone on its side: the header scrolls away, so the page keeps its little height */
+@media (max-height: 500px) {
+  .site-header { position: static; }
+}
+/* phones and tablets: what a finger taps is at least 24px (WCAG 2.5.8), and bigger where it costs no room;
+   fields are 16px, under which iOS zooms the page on focus */
+@media (max-width: 760px), (pointer: coarse) {
+  .site-search input { font-size: 16px; }
+  .brand { padding-block: 13px; margin-block: -13px; }
+  .site-nav a { display: inline-block; padding-block: 10px; margin-block: -10px; }
+  .refs { gap: 4px; flex-wrap: wrap; }
+  .refs a { display: inline-flex; align-items: center; justify-content: center; min-width: 26px; min-height: 26px; padding: 0 6px; }
+  .badge { min-height: 24px; }
+  li a { padding-block: 2px; }
+  .route-dot::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; }
+  .facts a, li > a:only-child, .index-list a, .type-list a, .here-list a, .chapter-back a, .index-more a, .glance-more a, .ll-more a, .src-title a { display: inline-block; padding-block: 3px; }
+  /* a name wraps here: there is no room to cut it short and no hover to read the rest */
+  .ll-name { white-space: normal; overflow: visible; }
+}
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

@@ -25,6 +25,9 @@ import { hash01 } from '../lib/hash';
 import { capPixelRatio, drawPlacedLabels, makeHoverDrawer } from '../lib/sigma-draw';
 import type { GEdge } from '../lib/types';
 
+/** Below this width the labels stay whole, inside the view. */
+const PHONE_WIDTH = 600;
+
 export type Selection = { kind: 'node'; id: string } | { kind: 'edge'; id: string } | null;
 
 export interface EngineView {
@@ -476,6 +479,8 @@ export class ExplorerEngine {
       weight: 500,
       priority: (node, d) => (emph?.nodes.has(node) ? 1e6 : 0) + (d.forceLabel ? 5e5 : 0) + this.sigma.scaleSize(d.size),
       hovered: this.hovered ?? undefined,
+      // a phone has room for few names, and a cut-off name reads as a fault
+      inside: this.sigma.getDimensions().width < PHONE_WIDTH,
     });
   }
 

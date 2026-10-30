@@ -216,5 +216,9 @@
   .ctdw-card { left: 8px; right: 8px; width: auto; bottom: 58px; }
   .ctdw-era { left: 8px; right: 56px; width: auto; bottom: 34px; }
   .ctdw.has-era .ctdw-card { bottom: calc(34px + var(--ctdw-era-h, 64px) + 8px); }
-  .ctdw-stats { font-size: 10.5px; top: auto; bottom: 120px; right: 8px; }
+  .ctdw-stats { font-size: 12px; top: auto; bottom: 120px; right: 8px; }
+}
+@media (max-width: 760px), (pointer: coarse) {
+  .ctdw-views button { min-height: 32px; }
+  .ctdw-region { font-size: 12px; }
 }

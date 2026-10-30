@@ -89,6 +89,9 @@ Startup sprints: the order below is a best guess and is re-decided at every spri
 - **Sprint 15: the map becomes the graph** ([sprints/sprint-15.md](sprints/sprint-15.md)). Built; demo and review pending.
   - When a story moves between the map and the graph, dots fly between them: a pin fans out into the entries based there, and they gather back.
 
+- **Sprint 16: comfortable on a phone** ([sprints/sprint-16.md](sprints/sprint-16.md)). Built; review pending.
+  - A phone check in the sweep, tap targets, fields that no longer zoom on iOS, and stories that work on a sideways phone.
+
 ## Next (candidates, chosen at review)
 
 - **Story v1.**
