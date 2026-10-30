@@ -2,11 +2,12 @@
 
 An open, interactive map of knowledge where anyone can connect the dots, and see the evidence and the perspectives behind every line.
 
-**Status:** pre-alpha, built and checked locally. Sprint 9 ("Who owns BlackRock and Vanguard?", the first showcase story) is under way; see the [roadmap](docs/roadmap.md).
+**Live at [dots.joinprototype.com](https://dots.joinprototype.com).** Pre-alpha and open source, made by [Prototype](https://joinprototype.com). What changed in each version is in the [changelog](CHANGELOG.md), and what comes next is in the [roadmap](docs/roadmap.md).
 
 - Vision: [docs/vision.md](docs/vision.md)
 - How we work and where everything lives: [docs/README.md](docs/README.md)
-- Current sprint: [docs/sprints/sprint-09.md](docs/sprints/sprint-09.md)
+- Sprints: [docs/sprints](docs/sprints)
+- Deploying: [docs/deploy.md](docs/deploy.md)
 
 ## Contributing
 

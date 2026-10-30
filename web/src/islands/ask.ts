@@ -75,6 +75,81 @@ async function entriesFor(text: string): Promise<SearchEntry[]> {
   return all.filter((e) => e.type !== 'chapter' && e.type !== 'question');
 }
 
+/**
+ * Suggestions under a field. A datalist's list is placed by the browser, which can open it far from the field,
+ * even over another window beside this one. So with JavaScript we draw our own; the datalist is the fallback.
+ */
+function suggest(input: HTMLInputElement, names: Named[], id: string): void {
+  input.removeAttribute('list');
+  const box = el('span', 'ask-box');
+  const list = el('ul', 'ask-suggest');
+  list.id = id;
+  list.hidden = true;
+  list.setAttribute('role', 'listbox');
+  list.setAttribute('aria-label', 'Suggestions');
+  input.replaceWith(box);
+  box.append(input, list);
+  input.setAttribute('role', 'combobox');
+  input.setAttribute('aria-autocomplete', 'list');
+  input.setAttribute('aria-controls', id);
+  input.setAttribute('aria-expanded', 'false');
+  let active = -1;
+
+  const mark = (i: number) => {
+    active = i;
+    [...list.children].forEach((row, n) => row.setAttribute('aria-selected', String(n === i)));
+    if (i < 0) input.removeAttribute('aria-activedescendant');
+    else input.setAttribute('aria-activedescendant', list.children[i].id);
+  };
+  const close = () => {
+    list.hidden = true;
+    input.setAttribute('aria-expanded', 'false');
+    mark(-1);
+  };
+  const choose = (name: string) => {
+    input.value = name;
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    close();
+  };
+  const open = () => {
+    const q = norm(input.value);
+    const hits = q ? find(names, q).map((h) => h.e) : names;
+    const shown = hits.slice(0, 6).filter((n) => norm(n.name) !== q);
+    list.replaceChildren(
+      ...shown.map((n, i) => {
+        const row = el('li', '', n.name);
+        row.id = `${id}-${i}`;
+        row.setAttribute('role', 'option');
+        // the field keeps focus, so the list is still there for the click
+        row.addEventListener('mousedown', (ev) => ev.preventDefault());
+        row.addEventListener('click', () => choose(n.name));
+        return row;
+      }),
+    );
+    list.hidden = !shown.length;
+    input.setAttribute('aria-expanded', String(!list.hidden));
+    mark(-1);
+  };
+
+  input.addEventListener('focus', open);
+  input.addEventListener('input', () => {
+    if (document.activeElement === input) open();
+  });
+  input.addEventListener('blur', close);
+  input.addEventListener('keydown', (ev) => {
+    const count = list.children.length;
+    if (ev.key === 'Escape') close();
+    else if (ev.key === 'Enter' && active >= 0) {
+      ev.preventDefault();
+      choose(list.children[active].textContent ?? '');
+    } else if ((ev.key === 'ArrowDown' || ev.key === 'ArrowUp') && count) {
+      ev.preventDefault();
+      if (list.hidden) open();
+      else mark(ev.key === 'ArrowDown' ? (active + 1) % count : (active <= 0 ? count : active) - 1);
+    }
+  });
+}
+
 /** One row of the answer card: a link with a quiet line under it. */
 function row(url: string, name: string, meta: string, go = false): HTMLLIElement {
   const li = el('li');
@@ -214,6 +289,7 @@ export function startAsk(): void {
   for (const form of document.querySelectorAll<HTMLFormElement>('.ask-form')) {
     const q = questions.get(form.dataset.q ?? '');
     if (!q) continue;
+    for (const input of form.querySelectorAll('input')) suggest(input, q.route ? data.names : q.names, `ask-suggest-${q.id}-${input.name}`);
     // the search index (and while there is one, the search file) loads early
     form.addEventListener('focusin', () => void candidates('').catch(() => undefined), { once: true });
     form.addEventListener('submit', (ev) => {

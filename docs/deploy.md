@@ -39,11 +39,6 @@ Config: `wrangler.jsonc` at the repo root. It serves `dist/` with these rules:
 - `/e/<id>` serves `/e/<id>/index.html` and redirects to the trailing slash;
 - the domain is the only public address (`workers_dev: false`); Version URLs stay on for previews.
 
-## The first deploy
-
-- **The domain is free.** `dots.joinprototype.com` had no DNS record on 2026-10-30. A Custom Domain refuses a hostname that has a CNAME, so check again if someone adds one. The deploy creates the record and the certificate.
-- **Not known yet:** Cloudflare's docs do not say whether `versions upload` works for a Worker that was never deployed. If it refuses, remove `routes` from `wrangler.jsonc` for one `npx wrangler@4 deploy`: that creates the Worker with no public address. Then put `routes` back.
-
 ## After every live deploy
 
 ```sh
