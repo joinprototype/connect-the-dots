@@ -86,11 +86,13 @@ Startup sprints: the order below is a best guess and is re-decided at every spri
   - The engine's two largest functions became named stages, with the site byte-for-byte the same; footnotes now run in reading order.
   - The Rust and TypeScript route finders are checked against each other, which found and fixed a hop-limit bug in the Rust one.
 
+- **Sprint 15: the map becomes the graph** ([sprints/sprint-15.md](sprints/sprint-15.md)). Built; demo and review pending.
+  - When a story moves between the map and the graph, dots fly between them: a pin fans out into the entries based there, and they gather back.
+
 ## Next (candidates, chosen at review)
 
 - **Story v1.**
-  - Map-to-graph morph.
-  - Borders changing through time.
+  - Borders changing through time (needs a historical dataset, its license and hosting).
   - A "capture shot" tool.
 - **Contribution loop.**
   - "Edit this page" links, and Issue Form → PR bot.

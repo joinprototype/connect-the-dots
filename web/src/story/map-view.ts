@@ -6,9 +6,10 @@ import { tokenRgb } from '../lib/color';
 import type { GraphIndex } from '../lib/data';
 import { el } from '../lib/dom';
 import type { Shot } from '../lib/types';
+import type { Placed } from './morph';
 import { calmBasemap, hideBasemapNames, loadMapCss, MAP_STYLE, rgb } from '../world/basemap';
 
-export interface MapView {
+export interface MapView extends Placed {
   apply(shot: Shot, reduced: boolean): void;
   resize(): void;
   destroy(): void;
@@ -274,6 +275,14 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
   return {
     apply,
     resize: () => map.resize(),
+    shown: () => [...markers.keys()],
+    where(id) {
+      const m = markers.get(id);
+      if (!m) return null;
+      const p = map.project(m.getLngLat());
+      const inside = p.x >= 0 && p.y >= 0 && p.x <= container.clientWidth && p.y <= container.clientHeight;
+      return inside ? { x: p.x, y: p.y } : null;
+    },
     destroy: () => {
       routeTween?.kill();
       for (const m of markers.values()) m.remove();

@@ -88,7 +88,7 @@ _Add ideas here with date and who suggested them._
 
 ### E4 Storytelling
 - ~~Watch mode with narration audio~~ Done in Sprint 8 ("Listen", the browser's own voice). Captions in other languages remain.
-- Map → graph morph transition
+- ~~Map → graph morph transition~~ Done in Sprint 15.
 - Borders through time (OpenHistoricalMap / Cliopatria) driven by the time cursor
 - Document overlay with a highlighted quote
 - Video export: step frames in a headless browser, encode to MP4

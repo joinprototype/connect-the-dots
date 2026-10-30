@@ -13,8 +13,9 @@ import { hash01 } from '../lib/hash';
 import { measureText } from '../lib/labels';
 import { capPixelRatio, drawPlacedLabels, makeHoverDrawer } from '../lib/sigma-draw';
 import type { GEdge, Shot } from '../lib/types';
+import type { Placed } from './morph';
 
-export interface GraphView {
+export interface GraphView extends Placed {
   /** Show shot i; returns how many of the revealed entities and claims were already over at the shot's time. */
   apply(i: number, reduced: boolean): { past: number };
   resize(): void;
@@ -334,6 +335,11 @@ export function createGraphView(container: HTMLElement, idx: GraphIndex, shots: 
     },
     resize() {
       renderer.refresh();
+    },
+    shown: () => [...visibleNodes()].filter((id) => renderer.getNodeDisplayData(id) && !renderer.getNodeDisplayData(id)?.hidden),
+    where(id) {
+      const d = renderer.getNodeDisplayData(id);
+      return d && !d.hidden ? renderer.framedGraphToViewport(d) : null;
     },
     destroy() {
       for (const t of tweens.splice(0)) t.kill();

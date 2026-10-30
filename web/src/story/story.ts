@@ -10,6 +10,7 @@ import type { GraphData, Shot } from '../lib/types';
 import { explorerHref } from '../explorer/url';
 import type { GraphView } from './graph-view';
 import type { MapView } from './map-view';
+import { fly, spots, type Flight, type Placed, type Spots } from './morph';
 import { Overlay } from './overlay';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -90,7 +91,7 @@ export class CtdStory extends HTMLElement {
   private steps: HTMLElement[] = [];
   private views: View[] = [];
   private stage!: HTMLElement;
-  private layers!: { map: HTMLElement; graph: HTMLElement; overlay: HTMLElement };
+  private layers!: { map: HTMLElement; graph: HTMLElement; morph: HTMLElement; overlay: HTMLElement };
   private hud!: { time: HTMLElement; past: HTMLElement; persp: HTMLElement; count: HTMLElement };
   private watchBtn!: HTMLButtonElement;
   private listenBtn?: HTMLButtonElement;
@@ -99,6 +100,9 @@ export class CtdStory extends HTMLElement {
   private idx?: GraphIndex;
   private map?: Promise<MapView>;
   private graph?: Promise<GraphView>;
+  /** The views once loaded: leaving one reads where its dots are right then. */
+  private loaded: { map?: MapView; graph?: GraphView } = {};
+  private flight?: Flight;
   private current = -1;
   private view: View | null = null;
   private triggers: ScrollTrigger[] = [];
@@ -198,9 +202,11 @@ export class CtdStory extends HTMLElement {
     window.removeEventListener('pagehide', this.onLeave);
     document.removeEventListener('visibilitychange', this.onLeave);
     this.stopWatch();
+    this.flight?.stop();
     void this.map?.then((m) => m.destroy());
     void this.graph?.then((g) => g.destroy());
     this.map = this.graph = undefined;
+    this.loaded = {};
     this.started = false;
   }
 
@@ -218,6 +224,7 @@ export class CtdStory extends HTMLElement {
     this.layers = {
       map: layer('story-layer story-map'),
       graph: layer('story-layer story-graph'),
+      morph: layer('story-morph'),
       overlay: layer('story-overlay'),
     };
     this.unfocusable.observe(this.stage, { childList: true, subtree: true });
@@ -343,11 +350,15 @@ export class CtdStory extends HTMLElement {
   }
 
   private ensureMap(): Promise<MapView> {
-    return (this.map ??= import('./map-view').then((m) => m.createMapView(this.layers.map, this.idx!, this.shots)));
+    return (this.map ??= import('./map-view')
+      .then((m) => m.createMapView(this.layers.map, this.idx!, this.shots))
+      .then((v) => (this.loaded.map = v)));
   }
 
   private ensureGraph(): Promise<GraphView> {
-    return (this.graph ??= import('./graph-view').then((m) => m.createGraphView(this.layers.graph, this.idx!, this.shots)));
+    return (this.graph ??= import('./graph-view')
+      .then((m) => m.createGraphView(this.layers.graph, this.idx!, this.shots))
+      .then((v) => (this.loaded.graph = v)));
   }
 
   private activate(i: number): void {
@@ -360,11 +371,19 @@ export class CtdStory extends HTMLElement {
       d.setAttribute('aria-current', j === i ? 'step' : 'false');
       d.classList.toggle('is-past', j < i);
     });
+    // where the dots of the view being left are, before anything moves them
+    this.flight?.stop();
+    const leaving = this.view && this.view !== view && !this.reduced ? this.loaded[this.view] : undefined;
+    const from = leaving ? spots(leaving) : undefined;
     this.switchView(view);
 
     if (view === 'map') {
       void this.ensureMap()
-        .then((m) => this.current === i && m.apply(shot, this.reduced))
+        .then((m) => {
+          if (this.current !== i) return;
+          m.apply(shot, this.reduced);
+          this.morph(from, m);
+        })
         .catch((err) => this.fail('map', err));
     }
     // The graph view keeps up with every shot, so cumulative reveals are right when it shows.
@@ -373,6 +392,7 @@ export class CtdStory extends HTMLElement {
         if (this.current !== i) return;
         if (view === 'graph') g.resize();
         const { past } = g.apply(i, this.reduced || view !== 'graph');
+        if (view === 'graph') this.morph(from, g);
         // Graph shots show the world as of the shot: explain the faded part.
         this.hud.past.hidden = !(past && view === 'graph');
         this.hud.past.textContent = past ? `faded: already over by ${shot.time_label ?? formatYear(shot.t!, true)}` : '';
@@ -391,6 +411,12 @@ export class CtdStory extends HTMLElement {
     if (shot.t != null) emit('ctd:time', { t: shot.t });
     if (shot.focus) emit('ctd:focus', { id: shot.focus });
     if (this.watching) this.scheduleNext();
+  }
+
+  /** The dots of the view just left fly to the same entries in the view now shown. */
+  private morph(from: Spots | undefined, to: Placed): void {
+    const place = (id: string) => this.idx?.nodes.get(id)?.coords?.map((v) => v.toFixed(3)).join(',');
+    if (from) this.flight = fly(this.layers.morph, from, to, place, this.shots[this.current]?.focus);
   }
 
   private switchView(view: View): void {

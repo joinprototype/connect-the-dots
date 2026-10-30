@@ -70,6 +70,13 @@ ctd-story .story-map .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button { ba
 .story-hud-past { color: var(--muted) !important; font-style: italic; }
 
 /* Map markers: a dot and a small label card. */
+/* the dots that fly between the map and the graph */
+.story-morph { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.story-morph-dot {
+  position: absolute; top: -6px; left: -6px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--graph-node); box-shadow: 0 0 0 2px var(--paper);
+}
+.story-morph-dot.is-focus { background: var(--accent); }
 .story-marker { pointer-events: none; }
 .story-marker-inner { display: flex; align-items: center; gap: 7px; }
 .story-marker-dot {
