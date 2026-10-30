@@ -46,7 +46,7 @@ When a story moves between the map and the graph, the entries travel with it: ea
 
 ## Known issues
 
-- Checked by sampling dot positions and one frozen frame (`docs/sprints/sprint-15/`), not by eye at full speed: headless Chrome draws the map in software, so it needs your eye in the demo.
+- Measured, not yet watched: on a real GPU (Apple M3 Pro, headless Chrome on Metal) a flight takes 1.1 to 1.2 s and lands 0 to 4 px from its target, at a steady 60 fps. One of seven runs had a 181 ms stall that did not come back, with dots on or off. How it feels still needs your eye in the demo.
 - Thirteen Days' move from the graph back to the map has nothing in common, so it stays a crossfade.
 - The dots do not carry names: both ends already show them.
 
