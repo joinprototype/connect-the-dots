@@ -11,27 +11,30 @@ claims:
   - id: c1
     rel: holds_for_clients
     to: tesla
+    when: "../2026-01-12"
     percent: 6.9
     shares: 229805491
     as_of: 2025-09-15
     note: "Percentage from Tesla's proxy table; the share count comes from Vanguard's Schedule 13G filed in February 2024. On 27 March 2026 The Vanguard Group reported 0 Tesla shares (Schedule 13G/A No. 4) after an internal realignment on 12 January 2026. Vanguard Capital Management now reports the funds' holding: 5.61% as of 31 March 2026."
-    src: [{s: tesla-proxy-2025, at: "Ownership of Securities, as of September 15, 2025", quote: "The foregoing information is based solely on Schedule 13G of The Vanguard Group filed on February 13, 2024"}]
+    src: [{s: tesla-proxy-2025, at: "Ownership of Securities, as of September 15, 2025", quote: "The foregoing information is based solely on Schedule 13G of The Vanguard Group filed on February 13, 2024"}, {s: vanguard-13ga-4-2026-03-27-tesla, at: "Comment for Type of Reporting Person", quote: "On January 12, 2026, The Vanguard Group, Inc. went through an internal realignment."}]
   - id: c2
     rel: holds_for_clients
     to: microsoft
+    when: "../2026-01-12"
     percent: 8.95
     shares: 664882153
     as_of: 2025-09-30
     note: "Percentage from Microsoft's proxy table; the share count comes from Vanguard's Schedule 13G/A filed in February 2024. On 27 March 2026 The Vanguard Group reported 0 Microsoft shares (Schedule 13G/A No. 10) after an internal realignment on 12 January 2026. Vanguard Capital Management now reports the funds' holding: 7.48% as of 31 March 2026."
-    src: [{s: msft-proxy-2025, at: "Principal Shareholders, as of 09/30/2025", quote: "All information about The Vanguard Group, Inc. is based on a Schedule 13G/A filed with the SEC on February 13, 2024."}]
+    src: [{s: msft-proxy-2025, at: "Principal Shareholders, as of 09/30/2025", quote: "All information about The Vanguard Group, Inc. is based on a Schedule 13G/A filed with the SEC on February 13, 2024."}, {s: vanguard-13ga-10-2026-03-27-microsoft, at: "Comment for Type of Reporting Person", quote: "On January 12, 2026, The Vanguard Group, Inc. went through an internal realignment."}]
   - id: c3
     rel: holds_for_clients
     to: amazon
+    when: "../2026-01-12"
     percent: 7.2
     shares: 771052550
     as_of: 2026-02-24
     note: "Percentage from Amazon's proxy table; the share count is as of December 31, 2023. Amazon notes that Vanguard later reported a realignment that removed some subsidiaries' holdings from its beneficial ownership. On 26 March 2026 The Vanguard Group reported 0 Amazon shares (Schedule 13G/A No. 8) after an internal realignment on 12 January 2026. Vanguard Capital Management now reports the funds' holding: 6.77% as of 31 March 2026."
-    src: [{s: amazon-proxy-2026, at: "Security ownership table, as of February 24, 2026", quote: "Based on information provided in a Schedule 13G filed February 13, 2024."}]
+    src: [{s: amazon-proxy-2026, at: "Security ownership table, as of February 24, 2026", quote: "Based on information provided in a Schedule 13G filed February 13, 2024."}, {s: vanguard-13ga-8-2026-03-26-amazon, at: "Comment for Type of Reporting Person", quote: "On January 12, 2026, The Vanguard Group, Inc. went through an internal realignment."}]
   - id: c4
     rel: distinct_from
     to: project-vanguard
@@ -42,6 +45,7 @@ claims:
   - id: c5
     rel: holds_for_clients
     to: blackrock
+    when: "../2026-01-12"
     percent: 8.31
     as_of: "2025-03-28"
     shares: 12890008

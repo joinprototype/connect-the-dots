@@ -37,4 +37,17 @@ claims:
     role: "opening example"
     src:
       - {s: elhauge-2016-hlr-horizontal-shareholding, at: "p. 1267", quote: "For example, from 2013 to 2015, seven shareholders who controlled 60.0% of United Airlines also controlled big chunks of United’s major rivals, including 27.5% of Delta Airlines, 27.3% of JetBlue Airlines, and 23.3% of Southwest Airlines"}
+  - id: c5
+    rel: appears_in
+    to: common-ownership-does-not-have-anticompetitive-effects
+    role: "subject of the study"
+    src:
+      - {s: dennis-gerardi-schenone-2022-jof, at: "Abstract", quote: "Prior research has shown that these institutional “common owners” induce anticompetitive pricing behavior in the airline industry."}
+  - id: c6
+    rel: involved
+    to: state-street
+    role: "shareholder in competing airlines"
+    note: "Shares held through funds for clients. Whether this common ownership raised fares is disputed."
+    src:
+      - {s: blackrock-ftc-hearing-8-letter-2019-01-15, at: "Part I (PDF p. 10)", quote: "75-85% of shares during any given quarter of AST’s analysis are managed by traditional investment managers of diversified portfolios (such as BlackRock, Capital Group, Fidelity, State Street Global Investors, T.Rowe Price, and Vanguard)"}
 ---

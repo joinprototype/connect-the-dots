@@ -21,3 +21,5 @@ One short file per decision: context, decision, consequences, and when to revisi
 | [0015](0015-ask-anything.md) | Ask anything: questions are data; records, account columns, Disputed and drafts kept apart; scope line and notice on every answer | accepted |
 | [0016](0016-who-a-person-is.md) | Who a person is: family ties, citizenship as a link, heritage only as a sourced line on the person's own page, never a connector | accepted |
 | [0017](0017-pages-load-what-they-show.md) | Pages load what they show: a slim structure for the explorer and routes, an entry's details on demand, stories with their own data, search by word range; a route service past about 55k links | accepted |
+| [0018](0018-legal-records.md) | Legal records: what courts and regulators decided, every step of a case side by side, never a route | accepted |
+| [0019](0019-disputing-a-finding.md) | Disputing a finding: a study's words, then each disputer's own, nothing decided, never a route | accepted |

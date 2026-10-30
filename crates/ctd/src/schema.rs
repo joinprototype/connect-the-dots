@@ -111,6 +111,10 @@ pub struct Relation {
     /// of the one the record is about: ADR-0018.
     #[serde(default)]
     pub legal: bool,
+    /// One side saying a study's finding is not shown ("disputes a finding of"): ADR-0019. Each
+    /// claim is its owner's own account, quoted in its words, about a work with a `finding`.
+    #[serde(default)]
+    pub dispute: bool,
     /// A plain sentence shown with records of this relation ("A charge is an accusation, not a
     /// finding of guilt.").
     #[serde(default)]
@@ -362,6 +366,10 @@ impl Schema {
             // a legal record is strictly sourced, and nobody is connected through a court (ADR-0018)
             if r.legal && (!r.sensitive || r.traversable) {
                 return Err(anyhow!("relation `{id}` is a legal record (`legal`), so it must also be `sensitive: true` and `traversable: false`"));
+            }
+            // a dispute is one side's account (ADR-0019)
+            if r.dispute && !r.attributed {
+                return Err(anyhow!("relation `{id}` is a `dispute`, so it must also be `attributed: true`"));
             }
             // an earlier form answers for a later one only when they are the same body on the record
             if r.identity && r.attributed {

@@ -223,6 +223,8 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 
 **Entity page:** the one a legal record is about gets a "Legal records" card ([ADR-0018](decisions/0018-legal-records.md)): its links on `legal` relations, grouped by `case`, each case's steps in date order, then the `caveat` of each relation it holds.
 
+**Entity page:** a work with a `finding`, and anyone who disputes one, gets a "The debate" card ([ADR-0019](decisions/0019-disputing-a-finding.md)): the finding, then who disputes it and what it disputes, by date, each in its own words, then the relation's `caveat`.
+
 **Entity page:** no tabs. Timeline, Proof and Page history are `details.fold` sections (`#timeline`, `#proof` with `li#src-<n>`, `#history`). A small inline script opens the fold that holds the URL's hash target, so footnote links (`#src-<n>`) work. No island is involved.
 
 **Explorer:** `/x/index.html` contains `<div id="explorer-root"></div>` (optional `data-world`: the world URL, default `/world/`) and loads `/assets/explorer.js` and `/assets/explorer.css`. Its state lives in the query string:
@@ -304,10 +306,11 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 - `dossier`: `family`, `lifeline`, `holders`, `holdings` and `split`, each null when empty, plus `share_scale` (the largest percent shown, at least 10).
 - `background` (people, else null; ADR-0016): `{ rows[{ phrase, node, when, detail, refs, draft, disputed, reason }], lines[{ text, refs }] }`. `rows` are the person's own links whose relation has `background: true` (born in, citizen of, educated at); `lines` are the entry's sourced `background` lines. The lines appear on this page only.
 - `legal` (or null; ADR-0018): `{ cases[{ case, steps[{ when, phrase, node, detail, refs, draft, disputed, reason, note }] }], caveats[] }`. Cases come in the order of their first step, and `case` is null for a step that names none (it stands alone); `caveats` are the sentences of the relations the card holds.
+- `debate` (or null; ADR-0019): `{ finding, disputed_by[], disputes[], caveats[] }`. `finding`: `{ quote, refs }`, or null. A side: `{ node, when, quote, refs, draft, disputed, reason, note }`, by date; `quote` is that side's own words.
 - `here` (places only, else null): `{ items[{ node, type_label, when }], more }`, the entries whose `place` is this entry, by date then name, at most 12.
   - `family[]`: `{ node, role, self_role, draft, disputed, reason, attributed, according_to[], did[] }`. `self_role` is set on the owner's page ("Mother of …"), `role` on the other person's page ("…, mother"). `did[]` (up to four): `{ phrase, other, detail, when, draft, disputed, reason, according_to[] }`.
   - `lifeline`: `{ rows[], ticks[{ left, label }], more }`, or null. Tenures only (links dated as a range, such as "2001-07/2011-04" or "2015-10/.."): a moment such as a founding is told in the Timeline. The first row is the entry's own span when it has one (`own: true`, `phrase` "Life", "Active" or "Span", `when`); then up to 8 tenures, the longest kept, by start date. A tenure row: `{ own: false, phrase, name, url, detail, when, according_to[] (names), status, reason, left, width, point }`; `left` and `width` are percent of the shared axis, and `point` marks a tenure of a year or less. `more`: tenures left out, all of them in the Timeline.
-  - `holders[]`, `holdings[]`: `{ node, percent, passive, as_of, edge }`.
+  - `holders[]`, `holdings[]`: `{ node, percent, shares, shares_n, passive, as_of, edge, refs }`. Owners first, then what is held for clients; within each, by percent, then rows with shares alone. `percent` is null when a filing gives only shares; `shares` is the count as displayed. A stake that ended (a range or an open start, with an end in the past) is left out; a dated snapshot stays, with its date. Rows are never summed: each has its own date and source.
   - `split` (two or more accounts): `{ sides[{ who, claims[{ phrase, other, when, draft, disputed, reason }] }], confirmed[{ phrase, other, when, disputed, reason }] }`.
 - `timeline[]`: `{ when, start, phrase, subject, object, layers, according_to[], own, status }`, read from the claim's owner.
 - `sources[]`: `{ n, id, title, publisher, publisher_url, published, url, archive_url, tier_label, quotes[] }`.

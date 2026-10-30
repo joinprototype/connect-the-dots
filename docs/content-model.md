@@ -164,6 +164,7 @@ Source tiers:
 - **Narrative diff:** the claims attributed to perspective A but not B, and the reverse.
 - **No evaluative labels on people.** Record events through sensitive relations, with sources: convicted, charged, settled, sanctioned.
 - **Legal records** ([ADR-0018](decisions/0018-legal-records.md)): `charged_by`, `convicted_by`, `acquitted_by`, `overturned_by`, `settled_with` and `sanctioned_by` run from the one a record is about to whoever decided. Each is dated (`when` is required), sensitive, and never a route step. `title` says what the record calls it ("securities fraud", "without admitting or denying the allegations"); `case` names the case as the record does, and the steps of one case sit together on the page, in date order. The person's or company's page gathers them in a "Legal records" card, with each relation's `caveat` ("A charge is an accusation, not a finding of guilt.").
+- **Disputing a finding** ([ADR-0019](decisions/0019-disputing-a-finding.md)): a `work` may carry a `finding`, one citation quoting what it found. `disputes_finding` runs from whoever disputes (a person, an organization or a work) to that work. It is always its owner's account (`according_to: [<owner>]`), quoted in the owner's words, and never a route step. The study's page and the disputer's page show it in a "The debate" card, by date, and nothing decides between the sides.
 
 ## Schema files
 
@@ -187,6 +188,7 @@ founded:
   noun: false                 # true = the label is not a verb ("CEO of"): sentences put it after a comma
   inverse_reads: comma        # how the inverse joins a sentence: comma ("founded by"), verb ("includes") or list ("board members")
   legal: false                # true = a step of a legal case (ADR-0018): must be sensitive and not traversable; claims need `when`
+  dispute: false              # true = one side saying a finding is not shown (ADR-0019): must be attributed; see below
   caveat: null                # a plain sentence shown with records of this relation
 relative_of:
   {label: relative of, inverse: relative of, from: [person], to: [person], owner: from, layers: [people], qualifiers: [role], sensitive: true, kinship: true}
@@ -438,5 +440,6 @@ Shot fields (v0; the full list is in [data-contract.md](data-contract.md)):
 17. `questions.yaml` (`ctd` refuses to load a file that breaks these): ids are unique; `ask` holds its placeholders and ends with "?"; `shows` and `not` are present and not empty; non-route questions have `subjects`, `groups` and a `min` of at least 1; every relation exists, appears once, and is not `kinship`, `sensitive` or `passive` (family lives on entity pages); every subject type is reachable by a group relation; no text uses a banned word; unknown fields are errors.
 18. An `identity` relation is never `attributed` (load error), and each identity claim joins two entries of the same type (error).
     A `legal` relation is `sensitive` and not `traversable` (load error), and every legal claim has `when` (error).
+    A `dispute` relation is `attributed` (load error). Each claim names only its owner in `according_to`, quotes the owner's own words, and points to a work with a `finding`; a `finding` is quoted and sits only on a type a dispute can point to (errors).
 19. `in_sentence` may only add "the" and lower the first letter of the name (error otherwise).
 20. An attributed claim on a relation that answers a question needs a quote, or it is left off question pages (warning).

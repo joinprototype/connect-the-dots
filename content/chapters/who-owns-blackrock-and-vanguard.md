@@ -100,11 +100,11 @@ Every line drawn below is a sourced link, and every quote is the speaker's own w
   lens: "money"
   focus: "blackrock"
   time: "2026-03"
-  reveal: ["blackrock", "vanguard-capital-management", "tesla", "microsoft", "amazon"]
-  reveal_claims: ["blackrock#c1", "blackrock#c2", "blackrock#c3", "vanguard-capital-management#c2", "vanguard-capital-management#c3", "vanguard-capital-management#c4"]
+  reveal: ["blackrock", "vanguard-capital-management", "state-street", "tesla", "microsoft", "amazon"]
+  reveal_claims: ["blackrock#c1", "blackrock#c2", "blackrock#c3", "vanguard-capital-management#c2", "vanguard-capital-management#c3", "vanguard-capital-management#c4", "state-street#c1", "state-street#c2", "state-street#c3"]
   overlay: {kind: "quote", source: "blackrock-viewpoint-2017-03-common-ownership", quote: "They have made broadly diversified index portfolios accessible to even the smallest investor, serving to help reduce complexity, lower costs, and provide a degree of protection against overexposure to the risk of individual stocks.", caption: "BlackRock on index funds, ViewPoint, March 2017"}
-  narration: "**Holding for clients.** Through their funds, each firm holds roughly 5% to 8% of companies such as Tesla, Microsoft and Amazon, for its clients: mostly the people invested in the funds, who get the gains and losses. The firms manage the shares and vote part of them."
-  duration: 17
+  narration: "**Holding for clients.** Through their funds, each firm holds roughly 5% to 8% of companies such as Tesla, Microsoft and Amazon, for its clients: mostly the people invested in the funds, who get the gains and losses. A third big manager, State Street, reports hundreds of millions of shares in Microsoft and Amazon the same way. The firms manage the shares and vote part of them."
+  duration: 20
 
 - shot: "legal-argument"
   view: "graph"
@@ -122,7 +122,7 @@ Every line drawn below is a sourced link, and every quote is the speaker's own w
   lens: "money"
   focus: "blackrock"
   time: "2017-04"
-  reveal: ["blackrock", "the-vanguard-group", "microsoft"]
+  reveal: ["blackrock", "the-vanguard-group", "state-street", "microsoft"]
   overlay: {kind: "quote", source: "fichtner-heemskerk-garcia-bernardo-2017-big-three", quote: "We comprehensively map the ownership of the Big Three in the United States and find that together they constitute the largest shareholder in 88 percent of the S&P 500 firms.", caption: "Jan Fichtner, Eelke M. Heemskerk and Javier Garcia-Bernardo, Business and Politics, 2017"}
   narration: "**2017: the Big Three.** A study by Jan Fichtner, Eelke M. Heemskerk and Javier Garcia-Bernardo found BlackRock, Vanguard and State Street together to be the largest shareholder in 88% of S&P 500 companies, siding with company management in more than 90% of votes."
   duration: 15
@@ -134,7 +134,7 @@ Every line drawn below is a sourced link, and every quote is the speaker's own w
   time: "2018-05"
   reveal: ["common-ownership-of-us-airlines", "anticompetitive-effects-of-common-ownership", "jose-azar", "martin-c-schmalz", "isabel-tecu", "blackrock", "the-vanguard-group"]
   reveal_claims: ["common-ownership-of-us-airlines#c1", "common-ownership-of-us-airlines#c2", "common-ownership-of-us-airlines#c3", "jose-azar#c1", "martin-c-schmalz#c1", "isabel-tecu#c1"]
-  overlay: {kind: "quote", source: "azar-schmalz-tecu-2018-jof", quote: "we find that airline ticket prices are 3% to 7% higher due to common ownership, compared to a counterfactual world in which firms are separately owned", caption: "José Azar, Martin C. Schmalz and Isabel Tecu, The Journal of Finance, 2018"}
+  overlay: {kind: "quote", source: "azar-schmalz-tecu-2018-jof", quote: "we find that airline ticket prices are 3% to 7% higher due to common ownership, compared to a counterfactual world in which firms are separately owned or in which firms ignore the anticompetitive incentives of their owners due to common ownership", caption: "José Azar, Martin C. Schmalz and Isabel Tecu, The Journal of Finance, 2018"}
   narration: "**2018: the airline study.** Studying U.S. airlines from 2001 to 2014, José Azar, Martin C. Schmalz and Isabel Tecu reported fares 3% to 7% higher than if the airlines had been separately owned. They called reduced competition a hidden social cost of diversification."
   duration: 15
 
@@ -153,8 +153,8 @@ Every line drawn below is a sourced link, and every quote is the speaker's own w
   lens: "all"
   focus: "blackrock"
   time: "2019-01-15"
-  reveal: ["blackrock", "common-ownership-of-us-airlines"]
-  reveal_claims: ["common-ownership-of-us-airlines#c1"]
+  reveal: ["blackrock", "common-ownership-of-us-airlines", "anticompetitive-effects-of-common-ownership"]
+  reveal_claims: ["common-ownership-of-us-airlines#c1", "common-ownership-of-us-airlines#c3", "blackrock#c8"]
   overlay: {kind: "quote", source: "blackrock-ftc-hearing-8-letter-2019-01-15", quote: "When the aforementioned erroneous assumptions are corrected, Analysis Group finds no statistically significant relationship between ‘common ownership’ and airline ticket prices.", caption: "BlackRock, letter to the U.S. Federal Trade Commission, 15 January 2019"}
   narration: "**2019: BlackRock replies.** In 2017 BlackRock called the evidence fragile. In a 2019 letter to the U.S. Federal Trade Commission it cited Analysis Group, a consultant it hired, which reported that with two of the study's assumptions changed, the link to fares lost statistical significance."
   duration: 16
@@ -175,9 +175,31 @@ Every line drawn below is a sourced link, and every quote is the speaker's own w
   lens: "all"
   focus: "common-ownership-of-us-airlines"
   time: "2021-09"
-  reveal: ["isabel-tecu", "common-ownership-of-us-airlines", "anticompetitive-effects-of-common-ownership", "blackrock", "the-vanguard-group"]
-  overlay: {kind: "quote", source: "tecu-2021-antitrust-common-ownership", quote: "Azar and Vives also show that the effects documented by AST are not driven by the “Big Three” index investors BlackRock, Vanguard, and State Street", caption: "Isabel Tecu, Antitrust, Fall 2021"}
-  narration: "**2021: later work.** Isabel Tecu wrote that later work by Azar and the economist Xavier Vives found the fare effects were not driven by BlackRock, Vanguard and State Street. She added that the critics' studies do not show that no such effects exist."
+  reveal: ["jose-azar", "common-ownership-of-us-airlines", "anticompetitive-effects-of-common-ownership", "blackrock", "the-vanguard-group", "state-street"]
+  overlay: {kind: "quote", source: "azar-vives-2021-revisiting", quote: "We also find that common ownership by the “Big Three” (BlackRock, Vanguard and State Street) is associated with lower airline prices, while common ownership by shareholders other than the Big Three is associated with higher prices.", caption: "José Azar and Xavier Vives, working paper, September 2021"}
+  narration: "**2021: later work.** In a working paper, Azar and the economist Xavier Vives reported that common ownership by BlackRock, Vanguard and State Street went with lower airline prices, and common ownership by other shareholders with higher ones."
+  duration: 15
+
+- shot: "second-study"
+  view: "graph"
+  lens: "all"
+  focus: "common-ownership-does-not-have-anticompetitive-effects"
+  time: "2022-09"
+  reveal: ["common-ownership-does-not-have-anticompetitive-effects", "anticompetitive-effects-of-common-ownership", "common-ownership-of-us-airlines", "patrick-dennis", "kristopher-gerardi", "carola-schenone"]
+  reveal_claims: ["common-ownership-does-not-have-anticompetitive-effects#c1", "common-ownership-of-us-airlines#c5", "patrick-dennis#c1", "kristopher-gerardi#c1", "carola-schenone#c1"]
+  overlay: {kind: "quote", source: "dennis-gerardi-schenone-2022-jof", quote: "This paper reevaluates this evidence and shows that the documented positive correlation between common ownership and airline ticket prices stems from the market share component of the common ownership measure, and not the ownership and control components.", caption: "Patrick Dennis, Kristopher Gerardi and Carola Schenone, The Journal of Finance, 2022"}
+  narration: "**2022: a second study.** In the same journal, Patrick Dennis, Kristopher Gerardi and Carola Schenone reported that the link between common ownership and fares came from the airlines' market shares, not from who owned them or who controlled them."
+  duration: 16
+
+- shot: "authors-reply"
+  view: "graph"
+  lens: "all"
+  focus: "common-ownership-does-not-have-anticompetitive-effects"
+  time: "2022-09"
+  reveal: ["common-ownership-does-not-have-anticompetitive-effects", "refutation-of-common-ownership-does-not-have-anticompetitive-effects", "jose-azar", "martin-c-schmalz", "isabel-tecu", "einer-elhauge"]
+  reveal_claims: ["refutation-of-common-ownership-does-not-have-anticompetitive-effects#c1", "isabel-tecu#c3", "einer-elhauge#c3", "jose-azar#c2", "martin-c-schmalz#c2", "isabel-tecu#c2"]
+  overlay: {kind: "quote", source: "azar-schmalz-tecu-2022-refutation", quote: "Contrary to DGS’ claims, ownership changes do predict price changes once one constructs a valid placebo that actually separates the variation from market shares from the variation in ownership.", caption: "José Azar, Martin C. Schmalz and Isabel Tecu, working paper, August 2022"}
+  narration: "**2022: the authors reply.** Azar, Schmalz and Tecu answered that ownership changes do predict price changes. Tecu had already written that such studies do not show that no such effects exist, and Elhauge had answered an earlier draft."
   duration: 15
 
 - shot: "explore"
@@ -185,7 +207,7 @@ Every line drawn below is a sourced link, and every quote is the speaker's own w
   lens: "all"
   focus: "blackrock"
   time: "2026-03"
-  reveal: ["blackrock", "the-vanguard-group", "vanguard-funds", "vanguard-capital-management", "larry-fink", "john-c-bogle", "blackstone", "pnc-financial-services", "merrill-lynch", "barclays", "kuwait-investment-authority", "tesla", "microsoft", "amazon", "common-ownership-of-us-airlines"]
+  reveal: ["blackrock", "the-vanguard-group", "state-street", "vanguard-funds", "vanguard-capital-management", "larry-fink", "john-c-bogle", "blackstone", "pnc-financial-services", "merrill-lynch", "barclays", "kuwait-investment-authority", "tesla", "microsoft", "amazon", "common-ownership-of-us-airlines", "anticompetitive-effects-of-common-ownership", "common-ownership-does-not-have-anticompetitive-effects"]
   overlay: {kind: "quote", source: "europarl-2020-05-common-ownership-study", quote: "To conclude, whether and in which circumstances common ownership is beneficial or deleterious for competition, innovation, and, ultimately, citizen welfare is still an open debate.", caption: "Study for the European Parliament, May 2020"}
   narration: "**Still open.** A 2020 study for the European Parliament called it still an open debate whether common ownership helps or harms competition. Every line here is a sourced link: open the explorer to follow any of them."
   explore: true

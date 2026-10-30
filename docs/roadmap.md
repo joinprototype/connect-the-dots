@@ -66,15 +66,19 @@ Startup sprints: the order below is a best guess and is re-decided at every spri
 
 ## Now
 
-- **Sprint 11: the record, step by step** ([ADR-0018](decisions/0018-legal-records.md)).
+- **Sprint 11: the record, step by step** ([ADR-0018](decisions/0018-legal-records.md)). Built; demo and review pending.
   - Legal records (charged, convicted, acquitted, overturned, settled, sanctioned), each step of a case beside the others, never a route.
   - The first records on primary sources: the SEC and Musk and Tesla, Citadel Securities, Robinhood; FINRA and Robinhood.
   - Dates with only an end ("until 1 Dec 2009"), and Listen reading each side's quote.
-  - See [sprints/sprint-11.md](sprints/sprint-11.md). The founder can redirect it.
+  - See [sprints/sprint-11.md](sprints/sprint-11.md).
+
+- **Sprint 12: the Big Three, and both sides of the debate** ([ADR-0019](decisions/0019-disputing-a-finding.md)). Built; demo and review pending.
+  - State Street beside BlackRock and Vanguard: its parts, its holdings for clients, and its legal records on primary sources.
+  - A relation for disputing a finding: a "The debate" card on a study's page, each side in its own words, nothing decided.
+  - The chapter gains the second study and the authors' reply; a company's holders card keeps each filing's own date.
+  - See [sprints/sprint-12.md](sprints/sprint-12.md).
 
 ## Next (candidates, chosen at review)
-
-- **Sprint 12 (proposed): the Big Three, and both sides of the debate** ([sprints/sprint-12.md](sprints/sprint-12.md)). State Street beside BlackRock and Vanguard, and a relation for disputing a finding, so the common-ownership debate shows each side in its own words.
 
 - **Story v1.**
   - Map-to-graph morph.

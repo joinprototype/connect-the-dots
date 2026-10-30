@@ -64,6 +64,15 @@ claims:
       - {s: sec-2017-01-17-blackrock, quote: "has agreed to pay a $340,000 penalty to settle charges that it improperly used separation agreements"}
       - {s: sec-34-79804-blackrock, quote: "Through its conduct described above, BlackRock violated Rule 21F-17 under the Exchange Act."}
       - {s: sec-34-79804-blackrock, at: "Section II", quote: "without admitting or denying the findings herein"}
+  - id: c8
+    rel: disputes_finding
+    to: anticompetitive-effects-of-common-ownership
+    when: "2019-01-15"
+    according_to: [blackrock]
+    note: "The letter calls the study the “AST Paper”. Analysis Group is a consultant BlackRock hired."
+    src:
+      - {s: blackrock-ftc-hearing-8-letter-2019-01-15, at: "Part I", quote: "When the aforementioned erroneous assumptions are corrected, Analysis Group finds no statistically significant relationship between ‘common ownership’ and airline ticket prices."}
+      - {s: blackrock-ftc-hearing-8-letter-2019-01-15, at: "Part I", quote: "This testing was performed by a third party consultant, Analysis Group, hired by BlackRock."}
 ---
 
 BlackRock was founded in 1988 by [[larry-fink]] and seven partners. Through its index and active funds it holds shares in [[tesla]], [[microsoft]] and [[amazon]] for its clients; it does not own those shares for itself.

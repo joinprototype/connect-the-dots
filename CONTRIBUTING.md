@@ -375,6 +375,31 @@ Reviewers add the rest. A line is never inferred from a name, a face or a relati
 
 To take a link back, mark it `deprecated` with a reason rather than deleting it, so readers can see that it was withdrawn and why.
 
+**Disputing a study's finding** ([ADR-0019](docs/decisions/0019-disputing-a-finding.md)). First the study quotes what it found, with `finding` above `claims` (`content/entities/work/an/anticompetitive-effects-of-common-ownership.md`):
+
+```yaml
+finding: {s: azar-schmalz-tecu-2018-jof, at: "Introduction", quote: "we find that airline ticket prices are 3% to 7% higher due to common ownership, compared to a counterfactual world in which firms are separately owned or in which firms ignore the anticompetitive incentives of their owners due to common ownership"}
+```
+
+Then `disputes_finding` goes in the file of whoever disputes it, with their own words (`content/entities/org/bl/blackrock.md`):
+
+```yaml
+  - id: c8
+    rel: disputes_finding
+    to: anticompetitive-effects-of-common-ownership
+    when: "2019-01-15"
+    according_to: [blackrock]
+    note: "The letter calls the study the “AST Paper”. Analysis Group is a consultant BlackRock hired."
+    src:
+      - {s: blackrock-ftc-hearing-8-letter-2019-01-15, at: "Part I", quote: "When the aforementioned erroneous assumptions are corrected, Analysis Group finds no statistically significant relationship between ‘common ownership’ and airline ticket prices."}
+```
+
+- **`according_to` names the owner of the link and nobody else.** Anything else fails: `` `disputes_finding` is one side's own account ``.
+- **Quote their words:** a source in their voice, or a quote marked `by` them. A study that disputes a study uses `by: <its entry id>`. Without it: `` `disputes_finding` needs BlackRock's own words ``.
+- **The source must name the study, or plainly answer it.** A letter against a general idea is not a dispute of a study: leave it out.
+- **A reply is the same link,** from the authors' reply to the critic's study, which then needs its own `finding`.
+- **Say who paid in a neutral `note`,** only where a source says so. Never a word of your own about who is right.
+
 ### 7. Add a legal record
 
 A charge, a conviction, an acquittal, a decision overturned on appeal, a settlement or a sanction ([ADR-0018](docs/decisions/0018-legal-records.md)). Write it in the file of the one the record is about, as a link to whoever decided: a court, a regulator or a government. The SEC's 2018 case against Elon Musk (`content/entities/person/el/elon-musk.md`):

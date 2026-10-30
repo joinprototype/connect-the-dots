@@ -1,12 +1,13 @@
 //! The dossier at the top of an entity page: background, family ties, the life line, holders and
-//! holdings, "How each side tells it", and legal records.
+//! holdings, "How each side tells it", the debate about a study, and legal records.
 
 use serde_json::{Value, json};
 
 use super::{Ctx, Footnotes, link_detail, link_phrase};
 use crate::{
+    answers,
     edtf::Span,
-    kb::{Edge, Entity},
+    kb::{Edge, Entity, fmt_num},
 };
 
 fn nice_ticks(lo: f64, hi: f64) -> Vec<(f64, String)> {
@@ -54,7 +55,7 @@ const LIFELINE_ROWS: usize = 8;
 
 /// The at-a-glance band of an entity page: family ties, life line, holders and the perspective
 /// split. Server-rendered, no JavaScript.
-pub(super) fn dossier(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], now: f64) -> Value {
+pub(super) fn dossier(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], now: f64, notes: &mut Footnotes) -> Value {
     let kb = cx.kb;
     // withdrawn (deprecated) links stay listed, marked, under Connections, but never reach the glance band
     let items: Vec<(&Edge, bool)> = items.iter().copied().filter(|(e, _)| e.status != "deprecated").collect();
@@ -97,20 +98,33 @@ pub(super) fn dossier(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], now: f64)
         }
     }
 
-    // holders (who holds this) and holdings (what this holds)
+    // holders (who holds this) and holdings (what this holds): a stake that ended is told by the life
+    // line and the Timeline, a dated snapshot stays with its date. A filing may give shares and no
+    // percent: no bar and no sum, since each line has its own date.
     let mut holders = Vec::new();
     let mut holdings = Vec::new();
     for (e, outgoing) in items {
         // a stake: a relation that takes a percent
-        if !kb.schema.relations[&e.rel].qualifiers.iter().any(|q| q == "percent") {
+        let ended = e.when.as_ref().is_some_and(|w| (w.is_range() || w.open_start) && w.end.is_some_and(|end| end <= now));
+        if ended || !kb.schema.relations[&e.rel].qualifiers.iter().any(|q| q == "percent") {
             continue;
         }
-        let Some(p) = e.qualifiers.get("percent").and_then(Value::as_f64) else { continue };
+        let p = e.qualifiers.get("percent").and_then(Value::as_f64);
+        let shares = e.qualifiers.get("shares").and_then(Value::as_f64);
+        if p.is_none() && shares.is_none() {
+            continue;
+        }
         let as_of = e.qualifiers.get("as_of").and_then(Value::as_str).map(|d| crate::edtf::parse(d).map(|s| s.label).unwrap_or_else(|_| d.to_string()));
-        let row = |id: &str| json!({ "node": cx.node(id), "percent": p, "passive": e.passive, "as_of": as_of, "edge": e.id });
+        let refs = notes.refs(&e.sources);
+        let row = |id: &str| json!({ "node": cx.node(id), "percent": p, "shares": shares.map(fmt_num), "shares_n": shares, "passive": e.passive, "as_of": as_of, "edge": e.id, "refs": refs });
         if *outgoing { holdings.push(row(&e.to)) } else { holders.push(row(&e.from)) }
     }
-    let by_pct = |a: &Value, b: &Value| b["percent"].as_f64().unwrap_or(0.0).total_cmp(&a["percent"].as_f64().unwrap_or(0.0));
+    // owners, then what is held for clients, together; within each by percent, then shares alone
+    let by_pct = |a: &Value, b: &Value| {
+        let key = |r: &Value| (r["passive"] == false, r["percent"].as_f64().unwrap_or(-1.0), r["shares_n"].as_f64().unwrap_or(0.0));
+        let (x, y) = (key(a), key(b));
+        y.0.cmp(&x.0).then(y.1.total_cmp(&x.1)).then(y.2.total_cmp(&x.2))
+    };
     holders.sort_by(by_pct);
     holdings.sort_by(by_pct);
     let scale = holders.iter().chain(holdings.iter()).filter_map(|r| r["percent"].as_f64()).fold(10.0f64, f64::max);
@@ -143,8 +157,9 @@ pub(super) fn dossier(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], now: f64)
     }
 
     // perspective split
+    // (a dispute has its own card: the debate, each side in its own words)
     let mut sides: Vec<(String, Vec<Value>)> = Vec::new();
-    for (e, outgoing) in items {
+    for (e, outgoing) in items.iter().filter(|(e, _)| !kb.schema.relations[&e.rel].dispute) {
         for p in &e.according_to {
             let other = e.other(*outgoing);
             let claim = json!({ "phrase": link_phrase(kb, e, *outgoing), "other": cx.node(other),
@@ -202,6 +217,31 @@ pub(super) fn background(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], notes:
     if rows.is_empty() && lines.is_empty() { Value::Null } else { json!({ "rows": rows, "lines": lines }) }
 }
 
+/// A study's finding and who disputes it, each in their own words (ADR-0019): the finding, then
+/// every dispute of it and every finding this entry disputes, in date order. Null when there is none.
+pub(super) fn debate(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], notes: &mut Footnotes) -> Value {
+    let kb = cx.kb;
+    let mut sides: Vec<(&Edge, bool)> = items.iter().copied().filter(|(e, _)| e.status != "deprecated" && kb.schema.relations[&e.rel].dispute).collect();
+    if ent.finding.is_none() && sides.is_empty() {
+        return Value::Null;
+    }
+    sides.sort_by(|a, b| a.0.start().total_cmp(&b.0.start()).then(a.0.id.cmp(&b.0.id)));
+    let finding = ent.finding.as_ref().map(|f| json!({ "quote": f.quote, "refs": notes.refs(std::slice::from_ref(f)) }));
+    let (mut disputed_by, mut disputes) = (Vec::new(), Vec::new());
+    let mut caveats: Vec<&str> = Vec::new();
+    for (e, outgoing) in sides {
+        if let Some(c) = kb.schema.relations[&e.rel].caveat.as_deref()
+            && !caveats.contains(&c)
+        {
+            caveats.push(c);
+        }
+        let side = json!({ "node": cx.node(e.other(outgoing)), "when": e.when.as_ref().map(|w| &w.label), "quote": answers::own_words(kb, e, Some(&e.from)).and_then(|s| s.quote.as_ref()),
+                           "refs": notes.refs(&e.sources), "draft": e.status == "draft", "disputed": e.status == "disputed", "reason": e.reason, "note": e.note });
+        if outgoing { disputes.push(side) } else { disputed_by.push(side) }
+    }
+    json!({ "finding": finding, "disputed_by": disputed_by, "disputes": disputes, "caveats": caveats })
+}
+
 /// What courts and regulators decided about it (ADR-0018): each case's steps together, in date order,
 /// with the caveats of the relations it holds. Null when there is none.
 pub(super) fn legal(cx: &Ctx, items: &[(&Edge, bool)], notes: &mut Footnotes) -> Value {
@@ -235,7 +275,7 @@ mod tests {
 
     use super::dossier;
     use crate::{
-        site::Ctx,
+        site::{Ctx, Footnotes},
         stories::tests::family,
         testkit::{entity, file, load, source},
     };
@@ -254,7 +294,7 @@ mod tests {
         let cx = Ctx { kb: &kb };
         let glance = |id: &str| {
             let items: Vec<_> = kb.links_of(id).collect();
-            dossier(&cx, kb.entity(id).unwrap(), &items, 2026.0)
+            dossier(&cx, kb.entity(id).unwrap(), &items, 2026.0, &mut Footnotes::default())
         };
         let ann = glance("ann");
         assert!(ann["lifeline"].is_null(), "moments (founding Epsilon in 2001) are told in the Timeline, not as dots");
@@ -302,7 +342,7 @@ mod tests {
         );
         let cx = Ctx { kb: &kb };
         let items: Vec<_> = kb.links_of("ann").collect();
-        let ann = dossier(&cx, kb.entity("ann").unwrap(), &items, 2026.0);
+        let ann = dossier(&cx, kb.entity("ann").unwrap(), &items, 2026.0, &mut Footnotes::default());
         // the withdrawn aunt never reaches Family ties; the disputed mother says why
         let family = ann["family"].as_array().unwrap();
         assert_eq!(family.len(), 1, "{family:?}");

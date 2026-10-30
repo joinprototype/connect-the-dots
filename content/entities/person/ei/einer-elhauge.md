@@ -21,4 +21,12 @@ claims:
     src:
       - {s: hls-einer-elhauge-profile, at: "Academic Appointment and Employment History", quote: "Professor of Law, Harvard Law School (1995 - Present)"}
       - {s: hls-einer-elhauge-profile, at: "Academic Appointment and Employment History", quote: "Carroll and Milton Petrie Professor of Law, Harvard Law School (2005 - Present)"}
+  - id: c3
+    rel: disputes_finding
+    to: common-ownership-does-not-have-anticompetitive-effects
+    when: "2020"
+    according_to: [einer-elhauge]
+    note: "He answers a 2019 draft of the paper."
+    src:
+      - {s: elhauge-2020-hblr-horizontal-shareholding-harms, quote: "But their claims are based on three modifications to the regression, none of which support their conclusion."}
 ---

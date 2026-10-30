@@ -34,7 +34,7 @@
   {% if questions or connect %}{{ question_rows(questions + ([connect] if connect else []), "Questions about " ~ entity.name) }}{% endif %}
 
   {% set d = dossier %}
-  {% if background or legal or d.family or d.lifeline or d.holders or d.holdings or d.split or here %}
+  {% if background or debate or legal or d.family or d.lifeline or d.holders or d.holdings or d.split or here %}
   <section class="dossier" aria-label="At a glance">
     {% if background %}
     {# who a person is (ADR-0016): sourced lines on this page only, never links #}
@@ -89,13 +89,18 @@
         {% for h in rows %}
         <li class="{{ 'passive' if h.passive else 'owned' }}">
           <a class="share-name" href="{{ h.node.url }}">{{ h.node.name }}</a>
+          {% if h.percent %}
           <span class="share-track"><span class="share-bar" style="width: {{ h.percent / d.share_scale * 100 }}%"></span></span>
           <span class="share-pct">{{ h.percent }}%</span>
-          <span class="share-note">{{ 'held for clients' if h.passive else 'owned' }}{% if h.as_of %}, as of {{ h.as_of }}{% endif %}</span>
+          {% else %}
+          <span class="share-count">{{ h.shares }} shares</span>
+          {% endif %}
+          <span class="share-note">{{ 'held for clients' if h.passive else 'owned' }}{% if h.as_of %}, as of {{ h.as_of }}{% endif %}{{ refs(h.refs) }}</span>
         </li>
         {% endfor %}
       </ul>
       {% if rows|selectattr("passive")|list %}<p class="glance-note">Index-fund managers hold these shares for the people invested in their funds, who get their gains and losses. The managers vote them, in part or in full.</p>{% endif %}
+      {% if rows|rejectattr("percent")|list %}<p class="glance-note">Each line is from its own filing and date, so they do not add up. Some filings report a number of shares and no percent.</p>{% endif %}
     </figure>
     {% endif %}
     {% endfor %}
@@ -117,6 +122,35 @@
       </div>
       {% endif %}
       {% if split_url %}<p class="glance-more"><a href="{{ split_url }}">Side by side, with proof ›</a></p>{% endif %}
+    </figure>
+    {% endif %}
+    {% if debate %}
+    {# a study's finding and who disputes it, each in their own words (ADR-0019): nothing here decides between them #}
+    <figure class="glance-card debate">
+      <figcaption>The debate</figcaption>
+      {% if debate.finding %}
+      <div class="debate-part">
+        <p class="debate-h">What it found</p>
+        <p class="debate-said"><q class="answer-quote"><mark>{{ debate.finding.quote }}</mark></q>{{ refs(debate.finding.refs) }}</p>
+      </div>
+      {% endif %}
+      {% for part in [("Who disputes it", debate.disputed_by), ("What it disputes", debate.disputes)] %}
+      {% if part[1] %}
+      <div class="debate-part">
+        <p class="debate-h">{{ part[0] }}</p>
+        <ul class="debate-list">
+          {% for s in part[1] %}
+          <li>
+            <a href="{{ s.node.url }}">{{ s.node.name }}</a>{% if s.when %} <span class="here-meta">{{ s.when }}</span>{% endif %} {{ mark(s) }}
+            <p class="debate-said">{% if s.quote %}<q class="answer-quote"><mark>{{ s.quote }}</mark></q>{% endif %}{{ refs(s.refs) }}</p>
+            {% if s.note %}<span class="legal-note">{{ s.note }}</span>{% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% for c in debate.caveats %}<p class="legal-caveat">{{ c }}</p>{% endfor %}
     </figure>
     {% endif %}
     {% if legal %}

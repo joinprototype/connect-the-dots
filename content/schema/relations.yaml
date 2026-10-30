@@ -23,6 +23,9 @@
 #   legal       a step of a legal case (ADR-0018): shown in the "Legal records" card of the one it is
 #               about, beside the other steps of its `case`. Must be sensitive and not traversable, and
 #               every claim needs `when`
+#   dispute     one side saying a study's finding is not shown (ADR-0019): shown in "The debate" on the
+#               study's page and the disputer's. Must be attributed; each claim is its owner's own
+#               account (`according_to: [<owner>]`), quoted in its words, about a work with a `finding`
 #   caveat      a plain sentence shown with records of this relation ("A charge is an accusation …")
 
 # --- people & power ---------------------------------------------------------
@@ -130,6 +133,11 @@ benefited_from:
 # The mirror of benefited_from ("who lost"), equally interpretive and attributed.
 harmed_by:
   {label: harmed by, inverse: harmed, from: any, to: [event], owner: from, layers: [power, history], attributed: true, traversable: false, noun: true, inverse_reads: verb}
+# One side says a study's finding is not shown, in its own words (ADR-0019). Never a verdict: the page
+# prints both sides, and nothing here decides between them. Never a route: disputing a study connects
+# nobody to it.
+disputes_finding:
+  {label: disputes a finding of, inverse: finding disputed by, from: [person, org, work], to: [work], owner: from, layers: [ideas], temporal: true, attributed: true, traversable: false, dispute: true, caveat: "Each side is quoted in its own words. Whether a finding holds is not decided here."}
 # --- ideas & religion -------------------------------------------------------
 scripture_of:
   {label: scripture of, inverse: scriptures, from: [work], to: [tradition], owner: from, layers: [ideas], noun: true, inverse_reads: list}

@@ -150,6 +150,9 @@ pub struct EntityFront {
     /// People only: sourced lines about where they come from (ADR-0016).
     #[serde(default)]
     pub background: Vec<BackgroundIn>,
+    /// What a study found, in its own words: one quoted citation (ADR-0019).
+    #[serde(default)]
+    pub finding: Option<SrcRef>,
     #[serde(flatten)]
     pub extra: BTreeMap<String, serde_json::Value>,
 }

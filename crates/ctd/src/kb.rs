@@ -50,6 +50,8 @@ pub struct Entity {
     /// Sourced lines about where a person comes from (ADR-0016). Shown on that person's page only:
     /// never serialized, so never in graph.json, search.json, stories or answers.
     pub background: Vec<Background>,
+    /// What a study found, in its own words (ADR-0019): the quote a dispute answers.
+    pub finding: Option<EdgeSrc>,
 }
 
 /// A line about where a person comes from, with its sources (ADR-0016). Never a link.
@@ -204,7 +206,7 @@ impl Kb {
 }
 
 /// Whole numbers above four digits get thousands separators ("717,323,438"); years stay as they are.
-fn fmt_num(v: f64) -> String {
+pub(crate) fn fmt_num(v: f64) -> String {
     if v.fract() != 0.0 || v.abs() >= 1e15 {
         return format!("{v}");
     }
@@ -472,6 +474,7 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
             body: doc.body.clone(),
             rel_path: file.clone(),
             background: Vec::new(),
+            finding: None,
         });
         ok_docs.push(di);
     }
@@ -628,6 +631,24 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
         entities[i].background = lines;
     }
 
+    // ---- findings (ADR-0019) --------------------------------------------------------
+    // Only on a type that a dispute can point to, and always quoted: a dispute answers these words.
+    for &di in &ok_docs {
+        let doc = &raw.entities[di];
+        let (f, file) = (&doc.front, &doc.rel_path);
+        let Some(s) = &f.finding else { continue };
+        unknown_src_fields(file, std::slice::from_ref(s), &mut diags);
+        if !schema.relations.values().any(|r| r.dispute && r.to.allows(&f.kind)) {
+            diags.push(Diag::err(file, format!("a {} has no `finding`", f.kind)).hint("say it in the summary or the text, or as a sourced claim"));
+        } else if !sources.contains_key(&s.s) {
+            diags.push(Diag::err(file, format!("finding: source `{}` does not exist", s.s)));
+        } else if s.quote.as_ref().is_none_or(|q| q.trim().is_empty() || q.chars().count() > MAX_QUOTE) {
+            diags.push(Diag::err(file, format!("finding: quote the study's own words, in at most {MAX_QUOTE} characters")));
+        } else {
+            entities[index[&f.id]].finding = Some(EdgeSrc { id: s.s.clone(), at: s.at.clone(), quote: s.quote.clone(), by: None });
+        }
+    }
+
     // ---- claims → edges -------------------------------------------------------
     // relations that answer a question: their accounts must quote their source
     let answering: HashSet<&str> = schema.questions.iter().flat_map(|q| &q.groups).flat_map(|g| g.into.iter().chain(&g.out)).map(String::as_str).collect();
@@ -750,6 +771,22 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
                         .hint("name the person, government or scholar who makes this claim"),
                 );
             }
+            // a dispute is its owner's own account, in its own words (ADR-0019)
+            if rel.dispute {
+                if according_to != [from.id.clone()] {
+                    diags.push(Diag::err(file, format!("`{}` is one side's own account: write `according_to: [{}]`", c.rel, from.id)).claim(&cid));
+                }
+                let own = esrc.iter().any(|s| {
+                    s.quote.is_some() && (s.by.as_ref() == Some(&from.id) || sources.get(&s.id).is_some_and(|src| src.voice == from.id || src.author.as_ref() == Some(&from.id)))
+                });
+                if !own {
+                    diags.push(
+                        Diag::err(file, format!("`{}` needs {}'s own words", c.rel, from.name))
+                            .claim(&cid)
+                            .hint(format!("quote a source in their voice (`voice: {}`), or mark the quote `by: {}`", from.id, from.id)),
+                    );
+                }
+            }
             // A sensitive claim short of its sources stays in its file but never reaches the site (no
             // page, story or graph.json) until it is sourced: a warning for a draft, otherwise an error.
             let withheld = rel.sensitive && !well_sourced(&schema, cited);
@@ -787,6 +824,9 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
                 if target.id == from.id {
                     diags.push(Diag::err(file, "claim points to its own entity").claim(&cid));
                     continue;
+                }
+                if rel.dispute && target.finding.is_none() {
+                    diags.push(Diag::err(file, format!("`{}` disputes a finding, and {} quotes none", c.rel, target.id)).claim(&cid).hint("add `finding: {s: <source-id>, quote: \"…\"}` to that entry"));
                 }
                 if rel.identity && target.kind != from.kind {
                     diags.push(Diag::err(file, format!("`{}` joins two forms of one body, so both must be a {}", c.rel, from.kind)).claim(&cid));
@@ -945,6 +985,7 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
         .chain(&held)
         .flat_map(|e| e.sources.iter())
         .chain(kb.entities.iter().flat_map(|e| &e.background).flat_map(|b| &b.sources))
+        .chain(kb.entities.iter().filter_map(|e| e.finding.as_ref()))
         .map(|s| s.id.as_str())
         .chain(kb.chapters.iter().flat_map(|c| &c.shots).filter_map(|s| s.pointer("/overlay/source").and_then(Value::as_str)))
         .collect();

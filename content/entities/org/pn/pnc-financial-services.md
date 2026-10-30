@@ -31,6 +31,7 @@ claims:
   - id: c3
     rel: owns_stake
     to: blackrock
+    when: "../2020-05-15"
     percent: 70
     as_of: "1999-12-31"
     note: "After the initial public offering of 1 October 1999 (9 million shares at $14 each). PNC's 2020 exit is already recorded."

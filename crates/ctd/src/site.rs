@@ -627,7 +627,9 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
         }
         timeline.sort_by(|a, b| a.start.total_cmp(&b.start));
         let background = dossier::background(&cx, ent, &items, &mut notes);
+        let debate = dossier::debate(&cx, ent, &items, &mut notes);
         let legal = dossier::legal(&cx, &items, &mut notes);
+        let glance = dossier::dossier(&cx, ent, &items, now, &mut notes);
         let srcs = notes.sources(kb);
         let place = ent.place.as_ref().map(|p| cx.node(p));
         let here = here_of.get(ent.id.as_str()).map(|list| {
@@ -645,7 +647,6 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
             }
             None => None,
         };
-        let glance = dossier::dossier(&cx, ent, &items, now);
         let evidence_line = {
             let primary = items.iter().filter(|(e, _)| e.tier.as_ref().and_then(|t| kb.schema.tiers.get(t)).is_some_and(|t| t.primary)).count();
             let drafts = items.iter().filter(|(e, _)| e.status == "draft").count();
@@ -691,7 +692,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
         let html = render(
             "entity.html",
             json!({ "site": &site, "entity": entity, "groups": groups, "timeline": timeline, "sources": srcs, "history": history.of(&ent.rel_path),
-                    "claims_count": items.len(), "dossier": glance, "here": here, "background": background, "legal": legal, "questions": questions,
+                    "claims_count": items.len(), "dossier": glance, "here": here, "background": background, "debate": debate, "legal": legal, "questions": questions,
                     "connect": connect, "split_url": split_url }),
         )?;
         write(&out.join("e").join(&ent.id).join("index.html"), html)?;
@@ -1099,6 +1100,70 @@ mod tests {
         let err = crate::testkit::try_load("site-legal-loose", &[crate::testkit::file("content/schema/relations.yaml", &loose)]).err().expect("refused");
         assert!(err.to_string().contains("must also be `sensitive: true` and `traversable: false`"), "{err}");
         let _ = std::fs::remove_dir_all(&root);
+    }
+
+    #[test]
+    fn a_debate_quotes_each_side_and_holders_keep_their_own_dates() {
+        use crate::testkit::{entity, file, load, said, source, try_load};
+        let types = "person: {label: Person, plural: People, layer: people, family: true}\norg: {label: Organization, plural: Organizations, layer: power}\nwork: {label: Work, plural: Works, layer: power}\n";
+        let relations = "holds_for_clients: {label: holds shares for clients in, inverse: shares held for clients by, from: [org], to: [org], layers: [power], temporal: true, qualifiers: [percent, shares, as_of], passive: true}\n\
+            disputes_finding: {label: disputes a finding of, inverse: finding disputed by, from: [person, org, work], to: [work], layers: [power], temporal: true, attributed: true, traversable: false, dispute: true, caveat: Not decided here.}\n";
+        let study = |id: &str, quote: &str, claims: &str| {
+            let list = if claims.is_empty() { " []\n".to_string() } else { format!("\n{claims}") };
+            file(&format!("content/entities/work/{}/{id}.md", &id[..2]), &format!("---\nid: {id}\ntype: work\nname: {id}\nfinding: {{s: paper, quote: \"{quote}\"}}\nclaims:{list}---\n"))
+        };
+        let files = vec![
+            file("content/schema/entity-types.yaml", types),
+            file("content/schema/relations.yaml", relations),
+            source("paper", "T2"),
+            study("study", "Fares rose.", ""),
+            study("reply", "Fares held.", "  - {id: c1, rel: disputes_finding, to: study, when: 2022, according_to: [reply], src: [{s: paper, quote: Not shown., by: reply}]}\n"),
+            entity("org", "firm", "Firm", "  - {id: c1, rel: disputes_finding, to: study, when: 2019, according_to: [firm], src: [{s: paper, quote: Too fragile., by: firm}]}\n"),
+            entity("org", "acme", "Acme", ""),
+            entity("org", "alpha", "Alpha", "  - {id: c1, rel: holds_for_clients, to: acme, percent: 5.5, as_of: 2026-03-31, src: [{s: paper, quote: a}]}\n"),
+            entity("org", "beta", "Beta", "  - {id: c1, rel: holds_for_clients, to: acme, shares: 1200, as_of: 2026-06-30, src: [{s: paper, quote: b}]}\n"),
+            entity("org", "gone", "Gone", "  - {id: c1, rel: holds_for_clients, to: acme, percent: 9, when: \"../2020-01-12\", src: [{s: paper, quote: c}]}\n"),
+            entity("org", "once", "Once", "  - {id: c1, rel: holds_for_clients, to: acme, percent: 3, when: 2004-06-30, src: [{s: paper, quote: d}]}\n"),
+        ];
+        let root = write_repo("site-debate", &files).unwrap();
+        super::copy_dir(&Path::new(env!("CARGO_MANIFEST_DIR")).join("../../theme"), &root.join("theme")).unwrap();
+        let (kb, diags) = crate::load_kb(&root).unwrap();
+        assert!(diags.iter().all(|d| d.level != crate::diag::Level::Error), "{diags:?}");
+        let out = root.join("dist");
+        super::build(&root, &kb, &super::Opts { out: out.clone(), dev: false, graph: false }).unwrap();
+        let page = |id: &str| std::fs::read_to_string(out.join(format!("e/{id}/index.html"))).unwrap();
+        let study_page = page("study");
+        let card = &study_page[study_page.find(">The debate<").expect("the card")..];
+        let at = |text: &str| card.find(text).unwrap_or_else(|| panic!("{text} is not in the card"));
+        // the finding first, then each side by date, in its own words, and no verdict
+        assert!(at("Fares rose.") < at("Who disputes it") && at("Too fragile.") < at("Not shown.") && at("Not shown.") < at("Not decided here."));
+        let reply_page = page("reply");
+        assert!(reply_page.contains("What it disputes"), "the disputer's page tells it too");
+        // each holder keeps its date, a snapshot too; the one that ended is left to the Timeline
+        let acme = page("acme");
+        let card = &acme[acme.find(">Who holds Acme<").expect("the card")..acme.find("id=\"overview\"").unwrap()];
+        assert!(card.contains("5.5%") && card.contains("31 Mar 2026") && card.contains("shares") && card.contains("30 Jun 2026"), "{card}");
+        assert!(card.find("Alpha") < card.find("Once") && card.find("Once") < card.find("Beta") && !card.contains("Gone"), "{card}");
+        assert!(!study_page.contains("How each side tells it"), "the debate card tells it");
+        let _ = std::fs::remove_dir_all(&root);
+
+        // a dispute is its owner's own account, in its own words, about a quoted finding
+        let check = |name: &str, extra: Vec<crate::testkit::File>| {
+            let mut all = files[..4].to_vec();
+            all.extend(extra);
+            load(name, &all).1
+        };
+        let borrowed = entity("org", "firm", "Firm", "  - {id: c1, rel: disputes_finding, to: study, according_to: [study], src: [{s: paper, quote: Not so.}]}\n");
+        let diags = check("site-debate-borrowed", vec![borrowed]);
+        assert!(!said(&diags, "one side's own account").is_empty() && !said(&diags, "needs Firm's own words").is_empty(), "{diags:?}");
+        let unquoted = file("content/entities/work/pl/plain.md", "---\nid: plain\ntype: work\nname: Plain\nclaims: []\n---\n");
+        let at_nothing = entity("org", "firm", "Firm", "  - {id: c1, rel: disputes_finding, to: plain, according_to: [firm], src: [{s: paper, quote: Not so., by: firm}]}\n");
+        assert!(!said(&check("site-debate-nothing", vec![unquoted, at_nothing]), "quotes none").is_empty());
+        let on_an_org = file("content/entities/org/ac/acme.md", "---\nid: acme\ntype: org\nname: Acme\nfinding: {s: paper, quote: Up.}\nclaims: []\n---\n");
+        assert!(!said(&check("site-debate-org", vec![on_an_org]), "has no `finding`").is_empty());
+        let open = relations.replace("attributed: true, traversable: false, dispute: true", "traversable: false, dispute: true");
+        let err = try_load("site-debate-open", &[file("content/schema/entity-types.yaml", types), file("content/schema/relations.yaml", &open)]).err().expect("refused");
+        assert!(err.to_string().contains("must also be `attributed: true`"), "{err}");
     }
 
     #[test]
