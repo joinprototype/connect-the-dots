@@ -387,27 +387,95 @@ fn story_parts(cx: &Ctx, shots: &[Value]) -> (Vec<Value>, Vec<Value>) {
     (out, steps)
 }
 
+/// The question pages, computed once, before the pages and data that link to them.
+struct QuestionPages<'a> {
+    kb: &'a Kb,
+    list: Vec<Answer<'a>>,
+    at: HashMap<(usize, &'a str), usize>,
+}
+
+impl<'a> QuestionPages<'a> {
+    fn new(kb: &'a Kb) -> Self {
+        let list = answers::pages(kb);
+        let at = list.iter().enumerate().map(|(i, a)| ((a.q, a.x.id.as_str()), i)).collect();
+        QuestionPages { kb, list, at }
+    }
+
+    fn get(&self, qi: usize, x: &str) -> Option<&Answer<'a>> {
+        self.at.get(&(qi, x)).map(|&i| &self.list[i])
+    }
+
+    /// How another page links to the answer of question `qi` about `x`.
+    fn card(&self, qi: usize, x: &str) -> Option<Value> {
+        let kb = self.kb;
+        self.get(qi, x).map(|a| {
+            json!({ "title": answers::title(kb, &kb.schema.questions[qi], x), "url": format!("/q/{}/", a.id(kb)),
+                    "links": a.links, "accounts": a.accounts_total(), "counts": answer_counts(a) })
+        })
+    }
+}
+
+/// What every page writer shares: the base, the output folder, the templates and the `site` context.
+struct Site<'a> {
+    kb: &'a Kb,
+    cx: Ctx<'a>,
+    out: &'a Path,
+    history: History,
+    site: Value,
+    env: Environment<'a>,
+    by_id: BTreeMap<&'a str, &'a Edge>,
+}
+
+impl Site<'_> {
+    fn render(&self, name: &str, ctx: Value) -> Result<String> {
+        self.env
+            .get_template(name)
+            .with_context(|| format!("template {name}"))?
+            .render(minijinja::Value::from(Serde(ctx)))
+            .with_context(|| format!("rendering {name}"))
+    }
+
+    /// A generated story, at `dest`: a life, a route or an answer.
+    fn story_page(&self, dest: PathBuf, draft: &crate::stories::Draft, back: Option<Value>) -> Result<()> {
+        let (kb, cx) = (self.kb, &self.cx);
+        let (shots, steps) = story_parts(cx, &draft.shots);
+        let resolver = cx.resolver();
+        let chapter = json!({
+            "id": draft.id, "title": draft.title, "subtitle": draft.subtitle, "summary": draft.summary, "authors": [],
+            "intro_html": markdown::render(&draft.intro_md, &resolver), "outro_html": markdown::render(&draft.outro_md, &resolver),
+            "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &self.by_id, &shots))?,
+            "steps": steps, "shot_count": shots.len(), "generated": true,
+            "back": back, "explore_url": draft.explore_url,
+        });
+        write(&dest.join("index.html"), self.render("chapter.html", json!({ "site": &self.site, "chapter": chapter, "history": [] }))?)
+    }
+}
+
+/// Generated life stories: (type, links, card), and the ids that have one.
+#[derive(Default)]
+struct Lives {
+    all: Vec<(String, usize, Value)>,
+    ids: Vec<String>,
+}
+
+/// The question stories, as shelves: the home page's, the library's, how many it leaves out, and their ids.
+struct QuestionShelf {
+    featured: Vec<Value>,
+    books: Vec<Value>,
+    more: usize,
+    stories: BTreeSet<String>,
+}
+
+/// The featured route stories: their cards, and each pair's URL.
+struct Routes {
+    connections: Vec<Value>,
+    urls: HashMap<(String, String), String>,
+}
+
 pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     let out = &opts.out;
     prepare_out(root, out)?;
-    let history = History::load(root);
-
-    let theme_static = root.join("theme").join("static");
-    if theme_static.exists() {
-        copy_dir(&theme_static, &out.join("static"))?;
-    }
-    let web_dist = root.join("web").join("dist");
-    if web_dist.exists() {
-        copy_dir(&web_dist, &out.join("assets"))?;
-    }
-    let has_asset = |name: &str| out.join("assets").join(name).exists();
-    let assets = json!({
-        "islands_js": has_asset("islands.js"), "islands_css": has_asset("islands.css"),
-        "explorer_js": has_asset("explorer.js"), "explorer_css": has_asset("explorer.css"),
-        "world_js": has_asset("world.js"), "world_css": has_asset("world.css"),
-        "story_js": has_asset("story.js"), "story_css": has_asset("story.css"),
-    });
-
+    let assets = copy_assets(root, out)?;
     let manifest = Manifest {
         engine: env!("CARGO_PKG_VERSION").into(),
         built: chrono::Utc::now().to_rfc3339_opts(chrono::SecondsFormat::Secs, true),
@@ -419,9 +487,87 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
         chapters: kb.chapters.len(),
     };
 
-    let cx = Ctx { kb };
-
     // ---- data files (docs/data-contract.md, ADR-0017) --------------------------------
+    // schema.json is written at the end, once the generated stories are known
+    let mut schema = schema_json(kb, &manifest);
+    write_slim(kb, out)?;
+    let pages = QuestionPages::new(kb);
+    let ranked = kb.ranked();
+    write_search(kb, &pages, &ranked, out)?;
+
+    // ---- pages -------------------------------------------------------------------
+    let mut env = Environment::new();
+    env.set_loader(path_loader(root.join("theme").join("templates")));
+    let layers: Vec<Value> = kb.schema.layers.iter().map(|(id, l)| json!({ "id": id, "label": l.label, "color": l.color })).collect();
+    let site = json!({
+        "title": "connect·the·dot",
+        "tagline": "Connect the dots. See the evidence and the perspectives behind every line.",
+        "dev": opts.dev, "assets": assets, "lenses": kb.schema.lenses, "layers": layers, "manifest": manifest,
+    });
+    let by_id = kb.edges.iter().map(|e| (e.id.as_str(), e)).collect();
+    let s = Site { kb, cx: Ctx { kb }, out, history: History::load(root), site, env, by_id };
+
+    let lives = entity_pages(&s, &pages)?;
+    alias_pages(&s)?;
+    let questions = question_pages(&s, &pages)?;
+    let chapters = chapter_pages(&s)?;
+    let routes = route_stories(&s)?;
+    library_page(&s, &chapters, &routes, &lives, &questions)?;
+    home_page(&s, &pages, &ranked, &chapters, &routes, &lives, &questions)?;
+    type_pages(&s)?;
+    for (dir, template) in [("x", "explorer.html"), ("w", "world.html")] {
+        write(&out.join(dir).join("index.html"), s.render(template, json!({ "site": &s.site }))?)?;
+    }
+    if !kb.entities.is_empty() {
+        let (g, spec) = crate::world::from_kb(kb);
+        crate::world::build(&g, &spec, &out.join("world"), Some(&root.join(".cache").join("world-state.json")))?;
+    }
+    write(&out.join("404.html"), s.render("404.html", json!({ "site": &s.site }))?)?;
+    about_page(&s)?;
+    question_indexes(&s, &pages, &routes, &questions.stories)?;
+
+    schema["questions"] = kb
+        .schema
+        .questions
+        .iter()
+        .map(|q| {
+            let mut v = json!(q);
+            v["label"] = json!(answers::label(q));
+            v
+        })
+        .collect();
+    // which stories exist, so the explorer can offer "Play the story" / "Play this route"
+    let mut path_ids: Vec<String> = routes.urls.keys().map(|(a, b)| format!("{a}--{b}")).collect();
+    path_ids.sort();
+    schema["stories"] = json!({ "paths": path_ids });
+    if opts.graph {
+        write_graph(kb, out, &schema, &pages, &lives, &questions.stories)?;
+    }
+    write(&out.join("data").join("schema.json"), serde_json::to_vec(&schema)?)?;
+    write(&out.join("build-manifest.json"), serde_json::to_vec_pretty(&manifest)?)?;
+    Ok(manifest)
+}
+
+/// Copies the theme's static files and the web bundles; returns which bundles exist.
+fn copy_assets(root: &Path, out: &Path) -> Result<Value> {
+    let theme_static = root.join("theme").join("static");
+    if theme_static.exists() {
+        copy_dir(&theme_static, &out.join("static"))?;
+    }
+    let web_dist = root.join("web").join("dist");
+    if web_dist.exists() {
+        copy_dir(&web_dist, &out.join("assets"))?;
+    }
+    let has_asset = |name: &str| out.join("assets").join(name).exists();
+    Ok(json!({
+        "islands_js": has_asset("islands.js"), "islands_css": has_asset("islands.css"),
+        "explorer_js": has_asset("explorer.js"), "explorer_css": has_asset("explorer.css"),
+        "world_js": has_asset("world.js"), "world_css": has_asset("world.css"),
+        "story_js": has_asset("story.js"), "story_css": has_asset("story.css"),
+    }))
+}
+
+fn schema_json(kb: &Kb, manifest: &Manifest) -> Value {
     let types: serde_json::Map<String, Value> = kb
         .schema
         .types
@@ -441,12 +587,14 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
         })
         .collect();
     let perspectives: Vec<Value> = kb.perspectives.iter().map(|(id, n)| json!({ "id": id, "name": kb.name_of(id), "claims": n })).collect();
-    let mut schema = json!({
+    json!({
         "meta": { "engine": manifest.engine, "built": manifest.built, "commit": manifest.commit, "methodology": manifest.methodology },
         "layers": kb.schema.layers, "types": types, "relations": relations, "lenses": kb.schema.lenses, "tiers": kb.schema.tiers,
         "methodology": kb.schema.methodology, "perspectives": perspectives,
-    });
-    // schema.json is written at the end, once the generated stories are known (`stories`)
+    })
+}
+
+fn write_slim(kb: &Kb, out: &Path) -> Result<()> {
     let slim = data::slim(kb);
     let slim_gz = data::gzip_len(&slim);
     if slim_gz > data::SLIM_BUDGET {
@@ -456,25 +604,16 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
             data::SLIM_BUDGET / 1024
         );
     }
-    write(&out.join("data").join("graph-slim.json"), slim)?;
-    let by_id: BTreeMap<&str, &Edge> = kb.edges.iter().map(|e| (e.id.as_str(), e)).collect();
+    write(&out.join("data").join("graph-slim.json"), slim)
+}
 
-    // question pages are computed once, before the pages and data that link to them
-    let pages = answers::pages(kb);
-    let page_at: HashMap<(usize, &str), &Answer> = pages.iter().map(|a| ((a.q, a.x.id.as_str()), a)).collect();
-    let page_ref = |qi: usize, x: &str| {
-        page_at.get(&(qi, x)).map(|a| {
-            json!({ "title": answers::title(kb, &kb.schema.questions[qi], x), "url": format!("/q/{}/", a.id(kb)),
-                    "links": a.links, "accounts": a.accounts_total(), "counts": answer_counts(a) })
-        })
-    };
+/// The search files: entries best-connected first, so a name that matches several resolves to the
+/// best-connected one, then chapters and question pages.
+fn write_search(kb: &Kb, pages: &QuestionPages, ranked: &[&Entity], out: &Path) -> Result<()> {
     let mut asked: HashMap<&str, Vec<&str>> = HashMap::new();
-    for a in &pages {
+    for a in &pages.list {
         asked.entry(a.x.id.as_str()).or_default().push(kb.schema.questions[a.q].id.as_str());
     }
-
-    // best-connected first: a name that matches several entries resolves to the best-connected one
-    let ranked = kb.ranked();
     let mut search: Vec<Value> = ranked
         .iter()
         .map(|e| {
@@ -488,7 +627,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     for c in &kb.chapters {
         search.push(json!({ "id": c.id, "name": c.title, "aliases": [], "type": "chapter", "summary": c.summary, "url": format!("/c/{}/", c.id) }));
     }
-    for a in &pages {
+    for a in &pages.list {
         let id = a.id(kb);
         let q = &kb.schema.questions[a.q];
         // "Who is behind Facebook?" finds Meta's page
@@ -497,39 +636,11 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     }
     let search_dir = out.join("data").join("search");
     let search_index = data::search(&search, |n, bytes| write(&search_dir.join(format!("{n}.json")), bytes))?;
-    write(&search_dir.join("index.json"), search_index)?;
+    write(&search_dir.join("index.json"), search_index)
+}
 
-    // ---- templates ----------------------------------------------------------------
-    let mut env = Environment::new();
-    env.set_loader(path_loader(root.join("theme").join("templates")));
-    let layers: Vec<Value> = kb.schema.layers.iter().map(|(id, l)| json!({ "id": id, "label": l.label, "color": l.color })).collect();
-    let site = json!({
-        "title": "connect·the·dot",
-        "tagline": "Connect the dots. See the evidence and the perspectives behind every line.",
-        "dev": opts.dev, "assets": assets, "lenses": kb.schema.lenses, "layers": layers, "manifest": manifest,
-    });
-    let render = |name: &str, ctx: Value| -> Result<String> {
-        env.get_template(name)
-            .with_context(|| format!("template {name}"))?
-            .render(minijinja::Value::from(Serde(ctx)))
-            .with_context(|| format!("rendering {name}"))
-    };
-
-    let now = question::now();
-    let render_story = |dest: PathBuf, draft: &crate::stories::Draft, back: Option<Value>| -> Result<()> {
-        let (shots, steps) = story_parts(&cx, &draft.shots);
-        let resolver = cx.resolver();
-        let chapter = json!({
-            "id": draft.id, "title": draft.title, "subtitle": draft.subtitle, "summary": draft.summary, "authors": [],
-            "intro_html": markdown::render(&draft.intro_md, &resolver), "outro_html": markdown::render(&draft.outro_md, &resolver),
-            "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &by_id, &shots))?,
-            "steps": steps, "shot_count": shots.len(), "generated": true,
-            "back": back, "explore_url": draft.explore_url,
-        });
-        write(&dest.join("index.html"), render("chapter.html", json!({ "site": &site, "chapter": chapter, "history": [] }))?)
-    };
-
-    // ---- entity pages -------------------------------------------------------------
+fn entity_pages(s: &Site, pages: &QuestionPages) -> Result<Lives> {
+    let kb = s.kb;
     // a place's page lists what is set there (`place`), by date, then name
     let mut here_of: HashMap<&str, Vec<&Entity>> = HashMap::new();
     for e in &kb.entities {
@@ -543,190 +654,210 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
             start(a).total_cmp(&start(b)).then_with(|| a.name.cmp(&b.name))
         });
     }
-    let mut lives: Vec<(String, usize, Value)> = Vec::new();
-    let mut story_ids: Vec<String> = Vec::new();
+    let mut lives = Lives::default();
     let params = Params::from(&kb.schema.methodology);
+    let now = question::now();
     for ent in &kb.entities {
-        let mut items: Vec<(&Edge, bool)> = kb.links_of(&ent.id).collect();
-        // one group per phrase: an owner's family links sit together by role ("mother of", "wife of")
-        items.sort_by(|(a, ao), (b, bo)| {
-            let order = |e: &Edge| kb.schema.relations.get_index_of(&e.rel).unwrap_or(usize::MAX);
-            (order(a), !*ao, ao.then(|| kb.kin_role(a)).flatten())
-                .cmp(&(order(b), !*bo, bo.then(|| kb.kin_role(b)).flatten()))
-                .then(a.start().total_cmp(&b.start()))
-                .then(a.id.cmp(&b.id))
+        entity_page(s, pages, ent, &here_of, &params, now, &mut lives)?;
+    }
+    Ok(lives)
+}
+
+fn entity_page(s: &Site, pages: &QuestionPages, ent: &Entity, here_of: &HashMap<&str, Vec<&Entity>>, params: &Params, now: f64, lives: &mut Lives) -> Result<()> {
+    let (kb, cx) = (s.kb, &s.cx);
+    let mut items: Vec<(&Edge, bool)> = kb.links_of(&ent.id).collect();
+    // one group per phrase: an owner's family links sit together by role ("mother of", "wife of")
+    items.sort_by(|(a, ao), (b, bo)| {
+        let order = |e: &Edge| kb.schema.relations.get_index_of(&e.rel).unwrap_or(usize::MAX);
+        (order(a), !*ao, ao.then(|| kb.kin_role(a)).flatten())
+            .cmp(&(order(b), !*bo, bo.then(|| kb.kin_role(b)).flatten()))
+            .then(a.start().total_cmp(&b.start()))
+            .then(a.id.cmp(&b.id))
+    });
+    // a hub's page and detail file keep the strongest links of each kind; the explorer has the rest
+    let (kept, more) = data::keep_per_kind(params, &items);
+    let mut notes = Footnotes::default();
+    // footnotes number in reading order: the cards at the top of the page, then its connections
+    let background = dossier::background(cx, ent, &items, &mut notes);
+    let glance = dossier::dossier(cx, ent, &items, now, &mut notes);
+    let debate = dossier::debate(cx, ent, &items, &mut notes);
+    let legal = dossier::legal(cx, &items, &mut notes);
+    let (groups, timeline) = connections(cx, ent, &kept, &more, &mut notes);
+    let srcs = notes.sources(kb);
+    let place = ent.place.as_ref().map(|p| cx.node(p));
+    let here = here_of.get(ent.id.as_str()).map(|list| {
+        let items: Vec<Value> = list
+            .iter()
+            .take(HERE_MAX)
+            .map(|e| json!({ "node": cx.node(&e.id), "type_label": kb.schema.type_label(&e.kind), "when": e.when.as_ref().map(|w| &w.label) }))
+            .collect();
+        json!({ "items": items, "more": list.len().saturating_sub(HERE_MAX) })
+    });
+    let story_url = match crate::stories::entity_story(kb, &ent.id) {
+        Some(draft) => {
+            s.story_page(s.out.join("e").join(&ent.id).join("story"), &draft, Some(json!({ "url": format!("/e/{}/", ent.id), "label": ent.name })))?;
+            Some(format!("/e/{}/story/", ent.id))
+        }
+        None => None,
+    };
+    let evidence_line = {
+        let primary = items.iter().filter(|(e, _)| e.tier.as_ref().and_then(|t| kb.schema.tiers.get(t)).is_some_and(|t| t.primary)).count();
+        let drafts = items.iter().filter(|(e, _)| e.status == "draft").count();
+        let mut line = plural(items.len(), "link");
+        if !items.is_empty() {
+            line.push_str(&format!(", {primary} backed by primary records"));
+        }
+        if drafts > 0 {
+            line.push_str(&format!(", {drafts} still being verified"));
+        }
+        line
+    };
+    let entity = json!({
+        "id": ent.id, "name": ent.name, "kind": ent.kind, "type_label": kb.schema.type_label(&ent.kind),
+        "color": kb.schema.type_color(&ent.kind), "summary": ent.summary, "when": ent.when.as_ref().map(|w| w.label.clone()),
+        "aliases": display_aliases(ent), "same_as": same_as_links(ent), "place": place, "image": ent.image,
+        "body_html": markdown::render(&ent.body, &cx.resolver()), "rel_path": ent.rel_path, "url": format!("/e/{}/", ent.id),
+        "coords": kb.coords(ent), "story_url": story_url,
+        "cover": crate::covers::entity(&ent.id, &ent.name, items.len()),
+        "evidence_line": evidence_line,
+    });
+    if let Some(url) = &story_url {
+        lives.ids.push(ent.id.clone());
+        lives.all.push((ent.kind.clone(), items.len(), json!({ "title": ent.name, "subtitle": ent.summary, "url": url,
+                                                          "kind": plural(items.len(), "link"), "cover": entity["cover"] })));
+    }
+    // questions about this entry, only on its own page (never "behind" a person: no such page)
+    let asked: Vec<Value> = (0..kb.schema.questions.len())
+        .filter_map(|qi| {
+            let mut page = pages.card(qi, &ent.id)?;
+            page["q"] = json!(kb.schema.questions[qi].id);
+            Some(page)
+        })
+        .collect();
+    let questions: Vec<Value> = asked.iter().take(ROWS).cloned().collect();
+    let split_url = (0..kb.schema.questions.len())
+        .filter_map(|qi| pages.get(qi, &ent.id))
+        .find(|a| a.accounts_total() >= 2)
+        .map(|a| format!("/q/{}/", a.id(kb)));
+    let connect = kb.schema.questions.iter().find(|q| q.route).map(|q| {
+        json!({ "title": q.ask.replace("{a}", &kb.sentence_name(&ent.id)).replace("{b}", "…"), "url": format!("/x/?from={}", ent.id) })
+    });
+    let html = s.render(
+        "entity.html",
+        json!({ "site": &s.site, "entity": entity, "groups": groups, "timeline": timeline, "sources": srcs, "history": s.history.of(&ent.rel_path),
+                "claims_count": items.len(), "dossier": glance, "here": here, "background": background, "debate": debate, "legal": legal, "questions": questions,
+                "connect": connect, "split_url": split_url }),
+    )?;
+    write(&s.out.join("e").join(&ent.id).join("index.html"), html)?;
+    let details = data::details(kb, ent, &kept, story_url.as_deref(), asked);
+    write(&s.out.join("data").join("e").join(format!("{}.json", ent.id)), serde_json::to_vec(&details)?)?;
+    Ok(())
+}
+
+/// The Connections list, one group per phrase, and the Timeline.
+fn connections(cx: &Ctx, ent: &Entity, kept: &[(&Edge, bool)], more: &HashMap<(&str, bool), usize>, notes: &mut Footnotes) -> (Vec<Group>, Vec<TimelineItem>) {
+    let kb = cx.kb;
+    let mut groups: Vec<Group> = Vec::new();
+    let mut last_of_kind: HashMap<(&str, bool), usize> = HashMap::new();
+    let mut timeline: Vec<TimelineItem> = Vec::new();
+    if let Some(w) = &ent.when {
+        timeline.push(TimelineItem {
+            when: w.label.clone(),
+            start: w.start,
+            phrase: kb.schema.type_label(&ent.kind),
+            subject: cx.node(&ent.id),
+            object: None,
+            layers: String::new(),
+            color: kb.schema.type_color(&ent.kind),
+            according_to: Vec::new(),
+            own: true,
+            status: "published".into(),
         });
-        // a hub's page and detail file keep the strongest links of each kind; the explorer has the rest
-        let (kept, more) = data::keep_per_kind(&params, &items);
-        let mut notes = Footnotes::default();
-        let mut groups: Vec<Group> = Vec::new();
-        let mut last_of_kind: HashMap<(&str, bool), usize> = HashMap::new();
-        let mut timeline: Vec<TimelineItem> = Vec::new();
-        if let Some(w) = &ent.when {
+    }
+    for (e, outgoing) in kept {
+        let phrase = link_phrase(kb, e, *outgoing);
+        let refs = notes.refs(&e.sources);
+        let view = ClaimView {
+            edge_id: e.id.clone(),
+            phrase: phrase.clone(),
+            outgoing: *outgoing,
+            other: cx.node(e.other(*outgoing)),
+            when: e.when.as_ref().map(|w| w.label.clone()),
+            start: e.when.as_ref().map(|w| w.start),
+            detail: link_detail(kb, e, *outgoing),
+            according_to: cx.attrib(&e.according_to),
+            tier: e.tier.clone(),
+            tier_label: e.tier.as_ref().and_then(|t| kb.schema.tiers.get(t)).map(|t| t.label.clone()),
+            status: e.status.clone(),
+            cross_confirmed: e.cross_confirmed,
+            passive: e.passive,
+            layers: e.layers.join(" "),
+            color: cx.color(e),
+            refs,
+            note: e.note.clone(),
+            reason: e.reason.clone(),
+        };
+        if let Some(w) = &e.when {
+            // read from the owner (`from`), as the claim is written: "Mary Maxwell Gates mother of Bill Gates"
             timeline.push(TimelineItem {
                 when: w.label.clone(),
                 start: w.start,
-                phrase: kb.schema.type_label(&ent.kind),
-                subject: cx.node(&ent.id),
-                object: None,
-                layers: String::new(),
-                color: kb.schema.type_color(&ent.kind),
-                according_to: Vec::new(),
-                own: true,
-                status: "published".into(),
-            });
-        }
-        for (e, outgoing) in &kept {
-            let phrase = link_phrase(kb, e, *outgoing);
-            let refs = notes.refs(&e.sources);
-            let view = ClaimView {
-                edge_id: e.id.clone(),
-                phrase: phrase.clone(),
-                outgoing: *outgoing,
-                other: cx.node(e.other(*outgoing)),
-                when: e.when.as_ref().map(|w| w.label.clone()),
-                start: e.when.as_ref().map(|w| w.start),
-                detail: link_detail(kb, e, *outgoing),
-                according_to: cx.attrib(&e.according_to),
-                tier: e.tier.clone(),
-                tier_label: e.tier.as_ref().and_then(|t| kb.schema.tiers.get(t)).map(|t| t.label.clone()),
-                status: e.status.clone(),
-                cross_confirmed: e.cross_confirmed,
-                passive: e.passive,
+                phrase: link_phrase(kb, e, true),
+                subject: cx.node(&e.from),
+                object: Some(cx.node(&e.to)),
                 layers: e.layers.join(" "),
                 color: cx.color(e),
-                refs,
-                note: e.note.clone(),
-                reason: e.reason.clone(),
-            };
-            if let Some(w) = &e.when {
-                // read from the owner (`from`), as the claim is written: "Mary Maxwell Gates mother of Bill Gates"
-                timeline.push(TimelineItem {
-                    when: w.label.clone(),
-                    start: w.start,
-                    phrase: link_phrase(kb, e, true),
-                    subject: cx.node(&e.from),
-                    object: Some(cx.node(&e.to)),
-                    layers: e.layers.join(" "),
-                    color: cx.color(e),
-                    according_to: cx.attrib(&e.according_to),
-                    own: false,
-                    status: e.status.clone(),
-                });
-            }
-            match groups.last_mut() {
-                Some(g) if g.phrase == phrase => g.items.push(view),
-                _ => groups.push(Group { phrase, color: cx.color(e), layers: e.layers.join(" "), items: vec![view], more: 0 }),
-            }
-            last_of_kind.insert((e.rel.as_str(), *outgoing), groups.len() - 1);
+                according_to: cx.attrib(&e.according_to),
+                own: false,
+                status: e.status.clone(),
+            });
         }
-        for (kind, n) in &more {
-            if let Some(&g) = last_of_kind.get(kind) {
-                groups[g].more += n;
-            }
+        match groups.last_mut() {
+            Some(g) if g.phrase == phrase => g.items.push(view),
+            _ => groups.push(Group { phrase, color: cx.color(e), layers: e.layers.join(" "), items: vec![view], more: 0 }),
         }
-        timeline.sort_by(|a, b| a.start.total_cmp(&b.start));
-        let background = dossier::background(&cx, ent, &items, &mut notes);
-        let debate = dossier::debate(&cx, ent, &items, &mut notes);
-        let legal = dossier::legal(&cx, &items, &mut notes);
-        let glance = dossier::dossier(&cx, ent, &items, now, &mut notes);
-        let srcs = notes.sources(kb);
-        let place = ent.place.as_ref().map(|p| cx.node(p));
-        let here = here_of.get(ent.id.as_str()).map(|list| {
-            let items: Vec<Value> = list
-                .iter()
-                .take(HERE_MAX)
-                .map(|e| json!({ "node": cx.node(&e.id), "type_label": kb.schema.type_label(&e.kind), "when": e.when.as_ref().map(|w| &w.label) }))
-                .collect();
-            json!({ "items": items, "more": list.len().saturating_sub(HERE_MAX) })
-        });
-        let story_url = match crate::stories::entity_story(kb, &ent.id) {
-            Some(draft) => {
-                render_story(out.join("e").join(&ent.id).join("story"), &draft, Some(json!({ "url": format!("/e/{}/", ent.id), "label": ent.name })))?;
-                Some(format!("/e/{}/story/", ent.id))
-            }
-            None => None,
-        };
-        let evidence_line = {
-            let primary = items.iter().filter(|(e, _)| e.tier.as_ref().and_then(|t| kb.schema.tiers.get(t)).is_some_and(|t| t.primary)).count();
-            let drafts = items.iter().filter(|(e, _)| e.status == "draft").count();
-            let mut line = plural(items.len(), "link");
-            if !items.is_empty() {
-                line.push_str(&format!(", {primary} backed by primary records"));
-            }
-            if drafts > 0 {
-                line.push_str(&format!(", {drafts} still being verified"));
-            }
-            line
-        };
-        let entity = json!({
-            "id": ent.id, "name": ent.name, "kind": ent.kind, "type_label": kb.schema.type_label(&ent.kind),
-            "color": kb.schema.type_color(&ent.kind), "summary": ent.summary, "when": ent.when.as_ref().map(|w| w.label.clone()),
-            "aliases": display_aliases(ent), "same_as": same_as_links(ent), "place": place, "image": ent.image,
-            "body_html": markdown::render(&ent.body, &cx.resolver()), "rel_path": ent.rel_path, "url": format!("/e/{}/", ent.id),
-            "coords": kb.coords(ent), "story_url": story_url,
-            "cover": crate::covers::entity(&ent.id, &ent.name, items.len()),
-            "evidence_line": evidence_line,
-        });
-        if let Some(url) = &story_url {
-            story_ids.push(ent.id.clone());
-            lives.push((ent.kind.clone(), items.len(), json!({ "title": ent.name, "subtitle": ent.summary, "url": url,
-                                                              "kind": plural(items.len(), "link"), "cover": entity["cover"] })));
-        }
-        // questions about this entry, only on its own page (never "behind" a person: no such page)
-        let asked: Vec<Value> = (0..kb.schema.questions.len())
-            .filter_map(|qi| {
-                let mut page = page_ref(qi, &ent.id)?;
-                page["q"] = json!(kb.schema.questions[qi].id);
-                Some(page)
-            })
-            .collect();
-        let questions: Vec<Value> = asked.iter().take(ROWS).cloned().collect();
-        let split_url = (0..kb.schema.questions.len())
-            .filter_map(|qi| page_at.get(&(qi, ent.id.as_str())))
-            .find(|a| a.accounts_total() >= 2)
-            .map(|a| format!("/q/{}/", a.id(kb)));
-        let connect = kb.schema.questions.iter().find(|q| q.route).map(|q| {
-            json!({ "title": q.ask.replace("{a}", &kb.sentence_name(&ent.id)).replace("{b}", "…"), "url": format!("/x/?from={}", ent.id) })
-        });
-        let html = render(
-            "entity.html",
-            json!({ "site": &site, "entity": entity, "groups": groups, "timeline": timeline, "sources": srcs, "history": history.of(&ent.rel_path),
-                    "claims_count": items.len(), "dossier": glance, "here": here, "background": background, "debate": debate, "legal": legal, "questions": questions,
-                    "connect": connect, "split_url": split_url }),
-        )?;
-        write(&out.join("e").join(&ent.id).join("index.html"), html)?;
-        let details = data::details(kb, ent, &kept, story_url.as_deref(), asked);
-        write(&out.join("data").join("e").join(format!("{}.json", ent.id)), serde_json::to_vec(&details)?)?;
+        last_of_kind.insert((e.rel.as_str(), *outgoing), groups.len() - 1);
     }
+    for (kind, n) in more {
+        if let Some(&g) = last_of_kind.get(kind) {
+            groups[g].more += n;
+        }
+    }
+    timeline.sort_by(|a, b| a.start.total_cmp(&b.start));
+    (groups, timeline)
+}
 
-    // ---- alias redirects ------------------------------------------------------------
+fn alias_pages(s: &Site) -> Result<()> {
+    let kb = s.kb;
     let mut redirects = String::new();
     for (alias, &i) in &kb.aliases {
         let target = &kb.entities[i];
         let url = format!("/e/{}/", target.id);
         redirects.push_str(&format!("/e/{alias}/ {url} 301\n"));
-        let html = render("redirect.html", json!({ "site": &site, "url": url, "name": target.name }))?;
-        write(&out.join("e").join(alias).join("index.html"), html)?;
+        let html = s.render("redirect.html", json!({ "site": &s.site, "url": url, "name": target.name }))?;
+        write(&s.out.join("e").join(alias).join("index.html"), html)?;
     }
-    write(&out.join("_redirects"), redirects)?;
-    write(&out.join("_headers"), HEADERS)?;
+    write(&s.out.join("_redirects"), redirects)?;
+    write(&s.out.join("_headers"), HEADERS)?;
+    write(&s.out.join("_headers"), HEADERS)
+}
 
-    // ---- question pages and their stories -------------------------------------------------------
+fn question_pages(s: &Site, pages: &QuestionPages) -> Result<QuestionShelf> {
+    let (kb, cx) = (s.kb, &s.cx);
     let mut question_stories: BTreeSet<String> = BTreeSet::new();
     let mut question_books: Vec<(Option<usize>, usize, Value)> = Vec::new();
-    for a in &pages {
+    for a in &pages.list {
         let q = &kb.schema.questions[a.q];
         let id = a.id(kb);
         let title = answers::title(kb, q, &a.x.id);
-        let dir = out.join("q").join(&q.id).join(&a.x.id);
-        let further: Vec<Value> = a.names_by_strength().into_iter().filter_map(|n| page_ref(a.q, n)).take(FURTHER).collect();
-        let ask_next: Vec<Value> = (0..kb.schema.questions.len()).filter(|&j| j != a.q).filter_map(|j| page_ref(j, &a.x.id)).collect();
+        let dir = s.out.join("q").join(&q.id).join(&a.x.id);
+        let further: Vec<Value> = a.names_by_strength().into_iter().filter_map(|n| pages.card(a.q, n)).take(FURTHER).collect();
+        let ask_next: Vec<Value> = (0..kb.schema.questions.len()).filter(|&j| j != a.q).filter_map(|j| pages.card(j, &a.x.id)).collect();
         let next: Vec<(String, String)> =
             ask_next.iter().map(|v| (v["title"].as_str().unwrap_or_default().to_string(), v["url"].as_str().unwrap_or_default().to_string())).collect();
         let story_url = match crate::stories::answer_story(kb, a, &next) {
             Some(draft) => {
-                render_story(dir.join("story"), &draft, Some(json!({ "url": format!("/q/{id}/"), "label": title })))?;
+                s.story_page(dir.join("story"), &draft, Some(json!({ "url": format!("/q/{id}/"), "label": title })))?;
                 let book = json!({ "title": title, "subtitle": answer_counts(a), "url": format!("/q/{id}/story/"), "kind": "Question",
                                    "cover": crate::covers::entity(&id, &title, a.links) });
                 question_books.push((kb.featured.questions.iter().position(|f| *f == id), a.links + a.accounts_total(), book));
@@ -735,7 +866,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
             }
             None => None,
         };
-        write(&dir.join("index.html"), render("question.html", answer_view(&cx, &site, a, story_url.as_deref(), further, ask_next))?)?;
+        write(&dir.join("index.html"), s.render("question.html", answer_view(cx, &s.site, a, story_url.as_deref(), further, ask_next))?)?;
     }
     // the Questions shelf: featured first, in featured.yaml order, then the richest, across questions
     question_books.sort_by(|a, b| match (a.0, b.0) {
@@ -744,54 +875,57 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
         (None, Some(_)) => std::cmp::Ordering::Greater,
         (None, None) => b.1.cmp(&a.1),
     });
-    let featured_questions: Vec<Value> = question_books.iter().filter(|q| q.0.is_some()).take(HOME_QUESTIONS).map(|q| q.2.clone()).collect();
-    let questions_more = question_books.len().saturating_sub(SHELF_MAX);
-    let question_books: Vec<Value> = question_books.into_iter().take(SHELF_MAX).map(|(_, _, v)| v).collect();
+    Ok(QuestionShelf {
+        featured: question_books.iter().filter(|q| q.0.is_some()).take(HOME_QUESTIONS).map(|q| q.2.clone()).collect(),
+        more: question_books.len().saturating_sub(SHELF_MAX),
+        books: question_books.into_iter().take(SHELF_MAX).map(|(_, _, v)| v).collect(),
+        stories: question_stories,
+    })
+}
 
-    // ---- chapters -------------------------------------------------------------------
+fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
+    let (kb, cx) = (s.kb, &s.cx);
     let mut chapter_cards = Vec::new();
     for ch in &kb.chapters {
         let resolver = cx.resolver();
-        let (shots, steps) = story_parts(&cx, &ch.shots);
+        let (shots, steps) = story_parts(cx, &ch.shots);
         let chapter = json!({
             "id": ch.id, "title": ch.title, "subtitle": ch.subtitle, "summary": ch.summary, "authors": ch.authors,
             "intro_html": markdown::render(&ch.intro_md, &resolver), "outro_html": markdown::render(&ch.outro_md, &resolver),
-            "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &by_id, &shots))?,
+            "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &s.by_id, &shots))?,
             "steps": steps, "url": format!("/c/{}/", ch.id), "shot_count": shots.len(),
         });
-        let html = render("chapter.html", json!({ "site": &site, "chapter": &chapter, "history": history.of(&ch.rel_path) }))?;
-        write(&out.join("c").join(&ch.id).join("index.html"), html)?;
+        let html = s.render("chapter.html", json!({ "site": &s.site, "chapter": &chapter, "history": s.history.of(&ch.rel_path) }))?;
+        write(&s.out.join("c").join(&ch.id).join("index.html"), html)?;
         chapter_cards.push(json!({ "id": ch.id, "title": ch.title, "subtitle": ch.subtitle, "summary": ch.summary, "url": format!("/c/{}/", ch.id), "shots": shots.len(), "kind": plural(shots.len(), "scene"),
                                    "cover": crate::covers::entity(&ch.id, &ch.title, shots.len()) }));
     }
+    Ok(chapter_cards)
+}
 
-    // ---- home, explorer, 404 ------------------------------------------------------------
-    // editorial picks live in content/featured.yaml (validated by `ctd check`)
-    let featured_pairs: Vec<(&str, &str)> = kb.featured.connections.iter().map(|c| (c.ids()[0].as_str(), c.ids()[1].as_str())).collect();
-    let mut shelf: Vec<Value> = chapter_cards
-        .iter()
-        .map(|c| json!({ "title": c["title"], "subtitle": c["subtitle"], "url": c["url"], "kind": "Story", "cover": c["cover"] }))
-        .collect();
-    let mut path_story_url: HashMap<(String, String), String> = HashMap::new();
+fn route_stories(s: &Site) -> Result<Routes> {
+    let kb = s.kb;
+    let mut urls: HashMap<(String, String), String> = HashMap::new();
     let mut connections: Vec<Value> = Vec::new();
     for c in &kb.featured.connections {
         let [a, b] = c.ids();
         if let Some(draft) = crate::stories::path_story(kb, a, b, c.note()) {
             let stops = draft.shots.len().saturating_sub(1);
-            render_story(out.join("p").join(format!("{a}--{b}")), &draft, None)?;
-            path_story_url.insert((a.clone(), b.clone()), format!("/p/{a}--{b}/"));
+            s.story_page(s.out.join("p").join(format!("{a}--{b}")), &draft, None)?;
+            urls.insert((a.clone(), b.clone()), format!("/p/{a}--{b}/"));
             connections.push(json!({ "title": draft.title, "subtitle": draft.subtitle, "url": format!("/p/{a}--{b}/"), "kind": "Connection",
                                      "cover": crate::covers::route(&draft.id, &draft.title, stops) }));
         }
     }
-    // the founder's questions come right after the written stories
-    shelf.extend(featured_questions);
-    shelf.extend(connections.iter().cloned());
+    Ok(Routes { connections, urls })
+}
 
-    // the library: written stories, connections, then every generated life story by type, richest first
+/// The library: written stories, connections, then every generated life story by type, richest first.
+fn library_page(s: &Site, chapters: &[Value], routes: &Routes, lives: &Lives, questions: &QuestionShelf) -> Result<()> {
+    let kb = s.kb;
     let mut life_shelves = Vec::new();
     for (tid, t) in &kb.schema.types {
-        let mut list: Vec<&(String, usize, Value)> = lives.iter().filter(|(k, _, _)| k == tid).collect();
+        let mut list: Vec<&(String, usize, Value)> = lives.all.iter().filter(|(k, _, _)| k == tid).collect();
         if list.is_empty() {
             continue;
         }
@@ -800,17 +934,35 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
         life_shelves.push(json!({ "label": t.plural, "items": list.iter().take(SHELF_MAX).map(|(_, _, v)| v).collect::<Vec<_>>(), "more": more }));
     }
     write(
-        &out.join("c").join("index.html"),
-        render(
+        &s.out.join("c").join("index.html"),
+        s.render(
             "chapters.html",
-            json!({ "site": &site, "chapters": &chapter_cards, "connections": connections, "lives": life_shelves,
-                    "questions": question_books, "questions_more": questions_more }),
+            json!({ "site": &s.site, "chapters": chapters, "connections": routes.connections, "lives": life_shelves,
+                    "questions": questions.books, "questions_more": questions.more }),
         )?,
-    )?;
+    )
+}
+
+fn stats(kb: &Kb) -> Value {
+    json!({ "entities": kb.entities.len(), "claims": kb.edges.len(), "sources": kb.sources.len(),
+            "perspectives": kb.perspectives.len(), "cross_confirmed": kb.edges.iter().filter(|e| e.cross_confirmed).count() })
+}
+
+fn home_page(s: &Site, pages: &QuestionPages, ranked: &[&Entity], chapters: &[Value], routes: &Routes, lives: &Lives, questions: &QuestionShelf) -> Result<()> {
+    let (kb, cx) = (s.kb, &s.cx);
+    // editorial picks live in content/featured.yaml (validated by `ctd check`)
+    let featured_pairs: Vec<(&str, &str)> = kb.featured.connections.iter().map(|c| (c.ids()[0].as_str(), c.ids()[1].as_str())).collect();
+    let mut shelf: Vec<Value> = chapters
+        .iter()
+        .map(|c| json!({ "title": c["title"], "subtitle": c["subtitle"], "url": c["url"], "kind": "Story", "cover": c["cover"] }))
+        .collect();
+    // the founder's questions come right after the written stories
+    shelf.extend(questions.featured.iter().cloned());
+    shelf.extend(routes.connections.iter().cloned());
     let paths: Vec<Value> = featured_pairs
         .iter()
         .map(|(a, b)| json!({ "from": cx.node(a), "to": cx.node(b), "url": format!("/x/?from={a}&to={b}"),
-                              "story_url": path_story_url.get(&(a.to_string(), b.to_string())) }))
+                              "story_url": routes.urls.get(&(a.to_string(), b.to_string())) }))
         .collect();
     // The hero draws one real route, computed by the same ranking the explorer uses.
     let route = featured_pairs
@@ -832,12 +984,12 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
                 })
                 .collect();
             Some(json!({ "stops": stops, "hops": p.hops.len(), "url": format!("/x/?from={a}&to={b}"),
-                         "story_url": path_story_url.get(&(a.to_string(), b.to_string())),
+                         "story_url": routes.urls.get(&(a.to_string(), b.to_string())),
                          "from": cx.node(a), "to": cx.node(b) }))
         });
     for fid in kb.featured.lives.iter().map(String::as_str) {
         if let Some(e) = kb.entity(fid)
-            && story_ids.iter().any(|s| s == fid)
+            && lives.ids.iter().any(|s| s == fid)
         {
             let links = kb.links_of(fid).count();
             shelf.push(json!({ "title": format!("The story of {}", e.name), "subtitle": e.summary, "url": format!("/e/{fid}/story/"),
@@ -863,7 +1015,41 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
         let more = of_type.len().saturating_sub(INDEX_PER_TYPE);
         type_groups.push(json!({ "id": tid, "label": t.plural, "color": kb.schema.type_color(tid), "items": items, "more": more }));
     }
-    // one page per type: every entry, A to Z, where the index's "and N more" leads
+    let ask_questions: Vec<Value> = kb
+        .schema
+        .questions
+        .iter()
+        .enumerate()
+        .map(|(qi, q)| {
+            let mine: Vec<&Answer> = pages.list.iter().filter(|a| a.q == qi).collect();
+            let prefix = format!("{}/", q.id);
+            let tries: Vec<Value> = kb
+                .featured
+                .questions
+                .iter()
+                .filter_map(|f| pages.get(qi, f.strip_prefix(&prefix)?))
+                .map(|a| json!({ "id": a.x.id, "name": kb.sentence_name(&a.x.id), "url": format!("/q/{}/", a.id(kb)) }))
+                .collect();
+            let names: Vec<Value> = mine
+                .iter()
+                .take(ASK_PER_QUESTION)
+                .map(|a| json!({ "id": a.x.id, "name": a.x.name, "aliases": a.x.aliases, "url": format!("/q/{}/", a.id(kb)) }))
+                .collect();
+            let [shows, not] = answers::scope(q);
+            json!({ "id": q.id, "ask": q.ask, "label": answers::label(q), "route": q.route, "subjects": q.subjects, "shows": shows, "not": not,
+                    "url": format!("/q/{}/", q.id), "names": names, "more": mine.len().saturating_sub(ASK_PER_QUESTION), "try": tries })
+        })
+        .collect();
+    write(
+        &s.out.join("index.html"),
+        s.render("home.html", json!({ "site": &s.site, "chapters": chapters, "paths": paths, "route": route, "groups": type_groups, "stats": stats(kb),
+                                      "shelf": shelf, "ask_names": ask_names, "questions": ask_questions }))?,
+    )
+}
+
+/// One page per type: every entry, A to Z, where the index's "and N more" leads.
+fn type_pages(s: &Site) -> Result<()> {
+    let (kb, cx) = (s.kb, &s.cx);
     for (tid, t) in &kb.schema.types {
         let mut list: Vec<&Entity> = kb.entities.iter().filter(|e| &e.kind == tid).collect();
         if list.is_empty() {
@@ -894,56 +1080,21 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
         let ctx = if split {
             let nav: Vec<Value> = letters.iter().map(|g| json!({ "letter": g["letter"], "url": g["url"] })).collect();
             for g in &letters {
-                let ctx = json!({ "site": &site, "type": ty, "total": list.len(), "letters": nav, "split": true, "letter": g });
-                write(&out.join("t").join(tid).join(slug(g["letter"].as_str().unwrap_or("#"))).join("index.html"), render("type.html", ctx)?)?;
+                let ctx = json!({ "site": &s.site, "type": ty, "total": list.len(), "letters": nav, "split": true, "letter": g });
+                write(&s.out.join("t").join(tid).join(slug(g["letter"].as_str().unwrap_or("#"))).join("index.html"), s.render("type.html", ctx)?)?;
             }
-            json!({ "site": &site, "type": ty, "total": list.len(), "letters": nav, "split": true })
+            json!({ "site": &s.site, "type": ty, "total": list.len(), "letters": nav, "split": true })
         } else {
-            json!({ "site": &site, "type": ty, "total": list.len(), "letters": letters })
+            json!({ "site": &s.site, "type": ty, "total": list.len(), "letters": letters })
         };
-        write(&out.join("t").join(tid).join("index.html"), render("type.html", ctx)?)?;
+        write(&s.out.join("t").join(tid).join("index.html"), s.render("type.html", ctx)?)?;
     }
-    // the Ask form: each question with the answers it can open at once (the rest via search.json `q`)
-    let ask_questions: Vec<Value> = kb
-        .schema
-        .questions
-        .iter()
-        .enumerate()
-        .map(|(qi, q)| {
-            let mine: Vec<&Answer> = pages.iter().filter(|a| a.q == qi).collect();
-            let prefix = format!("{}/", q.id);
-            let tries: Vec<Value> = kb
-                .featured
-                .questions
-                .iter()
-                .filter_map(|f| page_at.get(&(qi, f.strip_prefix(&prefix)?)))
-                .map(|a| json!({ "id": a.x.id, "name": kb.sentence_name(&a.x.id), "url": format!("/q/{}/", a.id(kb)) }))
-                .collect();
-            let names: Vec<Value> = mine
-                .iter()
-                .take(ASK_PER_QUESTION)
-                .map(|a| json!({ "id": a.x.id, "name": a.x.name, "aliases": a.x.aliases, "url": format!("/q/{}/", a.id(kb)) }))
-                .collect();
-            let [shows, not] = answers::scope(q);
-            json!({ "id": q.id, "ask": q.ask, "label": answers::label(q), "route": q.route, "subjects": q.subjects, "shows": shows, "not": not,
-                    "url": format!("/q/{}/", q.id), "names": names, "more": mine.len().saturating_sub(ASK_PER_QUESTION), "try": tries })
-        })
-        .collect();
-    let stats = json!({ "entities": kb.entities.len(), "claims": kb.edges.len(), "sources": kb.sources.len(),
-                        "perspectives": kb.perspectives.len(), "cross_confirmed": kb.edges.iter().filter(|e| e.cross_confirmed).count() });
-    write(
-        &out.join("index.html"),
-        render("home.html", json!({ "site": &site, "chapters": &chapter_cards, "paths": paths, "route": route, "groups": type_groups, "stats": stats,
-                                   "shelf": shelf, "ask_names": ask_names, "questions": ask_questions }))?,
-    )?;
-    write(&out.join("x").join("index.html"), render("explorer.html", json!({ "site": &site }))?)?;
-    write(&out.join("w").join("index.html"), render("world.html", json!({ "site": &site }))?)?;
-    if !kb.entities.is_empty() {
-        let (g, spec) = crate::world::from_kb(kb);
-        crate::world::build(&g, &spec, &out.join("world"), Some(&root.join(".cache").join("world-state.json")))?;
-    }
-    write(&out.join("404.html"), render("404.html", json!({ "site": &site }))?)?;
-    // how the site works: the badges, the questions' scope lines, the methodology
+    Ok(())
+}
+
+/// How the site works: the badges, the questions' scope lines, the methodology.
+fn about_page(s: &Site) -> Result<()> {
+    let kb = s.kb;
     let tiers: Vec<Value> =
         kb.schema.tiers.values().filter(|t| !t.rejected).map(|t| json!({ "label": t.label, "description": t.description })).collect();
     let asks: Vec<Value> = kb
@@ -955,83 +1106,71 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
             json!({ "title": answers::blank(q), "shows": shows, "not": not, "url": format!("/q/{}/", q.id) })
         })
         .collect();
-    let about = json!({ "site": &site, "tiers": tiers, "questions": asks, "stats": stats, "methodology": kb.schema.methodology.get("version") });
-    write(&out.join("about").join("index.html"), render("about.html", about)?)?;
-    // which stories exist, so the explorer can offer "Play the story" / "Play this route"
-    let mut path_ids: Vec<String> = path_story_url.keys().map(|(a, b)| format!("{a}--{b}")).collect();
-    path_ids.sort();
+    let about = json!({ "site": &s.site, "tiers": tiers, "questions": asks, "stats": stats(kb), "methodology": kb.schema.methodology.get("version") });
+    write(&s.out.join("about").join("index.html"), s.render("about.html", about)?)
+}
 
-    // ---- one index per question: its richest answers (a route question lists the route stories)
+/// One index per question: its richest answers (a route question lists the route stories).
+fn question_indexes(s: &Site, pages: &QuestionPages, routes: &Routes, stories: &BTreeSet<String>) -> Result<()> {
+    let kb = s.kb;
     for (qi, q) in kb.schema.questions.iter().enumerate() {
         let items: Vec<Value> = if q.route {
-            connections.iter().map(|c| json!({ "title": c["title"], "url": c["url"], "counts": c["subtitle"], "story_url": c["url"] })).collect()
+            routes.connections.iter().map(|c| json!({ "title": c["title"], "url": c["url"], "counts": c["subtitle"], "story_url": c["url"] })).collect()
         } else {
             pages
+                .list
                 .iter()
                 .filter(|a| a.q == qi)
                 .map(|a| {
                     let id = a.id(kb);
-                    let story_url = question_stories.contains(&id).then(|| format!("/q/{id}/story/"));
+                    let story_url = stories.contains(&id).then(|| format!("/q/{id}/story/"));
                     json!({ "title": answers::title(kb, q, &a.x.id), "url": format!("/q/{id}/"), "counts": answer_counts(a), "story_url": story_url })
                 })
                 .collect()
         };
         let [shows, not] = answers::scope(q);
-        let ctx = json!({ "site": &site,
+        let ctx = json!({ "site": &s.site,
             "question": { "id": q.id, "ask": q.ask, "label": answers::label(q), "title": answers::blank(q), "shows": shows, "not": not,
                           "url": format!("/q/{}/", q.id), "route": q.route, "subjects": q.subjects },
             "more": items.len().saturating_sub(ASK_PER_QUESTION), "pages": items.into_iter().take(ASK_PER_QUESTION).collect::<Vec<_>>() });
-        write(&out.join("q").join(&q.id).join("index.html"), render("questions.html", ctx)?)?;
+        write(&s.out.join("q").join(&q.id).join("index.html"), s.render("questions.html", ctx)?)?;
     }
+    Ok(())
+}
 
-    schema["questions"] = kb
-        .schema
-        .questions
+/// Everything in one file, for tools and tests: the schema, every entry and link with its words and
+/// proof, every source, and which entries have question pages and stories.
+fn write_graph(kb: &Kb, out: &Path, schema: &Value, pages: &QuestionPages, lives: &Lives, stories: &BTreeSet<String>) -> Result<()> {
+        let mut graph = schema.clone();
+    for (qi, q) in graph["questions"].as_array_mut().into_iter().flatten().enumerate() {
+        let qd = &kb.schema.questions[qi];
+        q["pages"] = pages
+            .list
+            .iter()
+            .filter(|a| a.q == qi)
+            .map(|a| {
+                let id = a.id(kb);
+                let page = json!({ "title": answers::title(kb, qd, &a.x.id), "url": format!("/q/{id}/"), "links": a.links,
+                                   "accounts": a.accounts_total(), "story": stories.contains(&id) });
+                (a.x.id.clone(), page)
+            })
+            .collect::<serde_json::Map<String, Value>>()
+            .into();
+    }
+    graph["stories"] = json!({ "entities": lives.ids, "paths": schema["stories"]["paths"], "questions": stories });
+    graph["nodes"] = kb
+        .entities
         .iter()
-        .map(|q| {
-            let mut v = json!(q);
-            v["label"] = json!(answers::label(q));
-            v
+        .map(|e| {
+            let mut n = data::node(kb, e);
+            n["summary"] = json!(e.summary);
+            n["aliases"] = json!(e.aliases);
+            n
         })
         .collect();
-    schema["stories"] = json!({ "paths": path_ids });
-    if opts.graph {
-        // everything in one file, for tools and tests: the schema, every entry and link with its
-        // words and proof, every source, and which entries have question pages and stories
-        let mut graph = schema.clone();
-        for (qi, q) in graph["questions"].as_array_mut().into_iter().flatten().enumerate() {
-            let qd = &kb.schema.questions[qi];
-            q["pages"] = pages
-                .iter()
-                .filter(|a| a.q == qi)
-                .map(|a| {
-                    let id = a.id(kb);
-                    let page = json!({ "title": answers::title(kb, qd, &a.x.id), "url": format!("/q/{id}/"), "links": a.links,
-                                       "accounts": a.accounts_total(), "story": question_stories.contains(&id) });
-                    (a.x.id.clone(), page)
-                })
-                .collect::<serde_json::Map<String, Value>>()
-                .into();
-        }
-        graph["stories"] = json!({ "entities": story_ids, "paths": schema["stories"]["paths"], "questions": question_stories });
-        graph["nodes"] = kb
-            .entities
-            .iter()
-            .map(|e| {
-                let mut n = data::node(kb, e);
-                n["summary"] = json!(e.summary);
-                n["aliases"] = json!(e.aliases);
-                n
-            })
-            .collect();
-        graph["edges"] = json!(kb.edges);
-        graph["sources"] = Value::Object(kb.sources.values().map(|s| (s.id.clone(), data::source(kb, s))).collect());
-        write(&out.join("data").join("graph.json"), serde_json::to_vec(&graph)?)?;
-    }
-    write(&out.join("data").join("schema.json"), serde_json::to_vec(&schema)?)?;
-
-    write(&out.join("build-manifest.json"), serde_json::to_vec_pretty(&manifest)?)?;
-    Ok(manifest)
+    graph["edges"] = json!(kb.edges);
+    graph["sources"] = Value::Object(kb.sources.values().map(|s| (s.id.clone(), data::source(kb, s))).collect());
+    write(&out.join("data").join("graph.json"), serde_json::to_vec(&graph)?)
 }
 
 #[cfg(test)]
@@ -1145,6 +1284,7 @@ mod tests {
         assert!(card.contains("5.5%") && card.contains("31 Mar 2026") && card.contains("shares") && card.contains("30 Jun 2026"), "{card}");
         assert!(card.find("Alpha") < card.find("Once") && card.find("Once") < card.find("Beta") && !card.contains("Gone"), "{card}");
         assert!(!study_page.contains("How each side tells it"), "the debate card tells it");
+        assert!(acme.find("#src-1").unwrap() < acme.find("Connections").unwrap(), "footnotes number from the top of the page");
         let _ = std::fs::remove_dir_all(&root);
 
         // a dispute is its owner's own account, in its own words, about a quoted finding

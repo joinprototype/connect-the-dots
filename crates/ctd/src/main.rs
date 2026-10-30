@@ -70,6 +70,9 @@ enum Cmd {
         include_passive: bool,
         #[arg(long, default_value_t = 10)]
         max_hops: usize,
+        /// Print the routes as JSON (nodes and cost), for tools
+        #[arg(long)]
+        json: bool,
     },
 }
 
@@ -157,7 +160,7 @@ fn run(cli: Cli) -> Result<ExitCode> {
             }
             Ok(ExitCode::SUCCESS)
         }
-        Cmd::Path { from, to, k, include_passive, max_hops } => {
+        Cmd::Path { from, to, k, include_passive, max_hops, json } => {
             let (kb, _) = ctd::load_kb(&root)?;
             for id in [&from, &to] {
                 if kb.resolve(id).is_none() {
@@ -167,6 +170,11 @@ fn run(cli: Cli) -> Result<ExitCode> {
             }
             let (a, b) = (kb.resolve(&from).unwrap().id.clone(), kb.resolve(&to).unwrap().id.clone());
             let paths = ctd::paths::find(&kb, &a, &b, &ctd::paths::Options { k, include_passive, max_hops });
+            if json {
+                let routes: Vec<_> = paths.iter().map(|p| serde_json::json!({ "nodes": p.nodes, "cost": p.cost })).collect();
+                println!("{}", serde_json::Value::from(routes));
+                return Ok(ExitCode::SUCCESS);
+            }
             if paths.is_empty() {
                 println!("No connection found between {} and {} (passive holdings {}).", kb.name_of(&a), kb.name_of(&b), if include_passive { "included" } else { "excluded" });
                 return Ok(ExitCode::FAILURE);

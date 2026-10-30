@@ -13,8 +13,9 @@ use serde_json::Value;
 use crate::{
     diag::Diag,
     edtf::{self, Span},
-    load::{ChapterDoc, Raw},
+    load::{ChapterDoc, EntityDoc, Featured, Pick, Raw, SourceDoc},
     markdown,
+    model::ClaimIn,
     schema::{Schema, parse_yaml},
 };
 
@@ -362,23 +363,77 @@ fn well_sourced<'s>(schema: &Schema, cited: impl IntoIterator<Item = &'s Source>
     voices.len() >= 2
 }
 
+/// What the stages after the entries read: the schema, the entry files that passed, and the names
+/// and sources to resolve against.
+struct Names<'a> {
+    schema: &'a Schema,
+    docs: Vec<&'a EntityDoc>,
+    index: &'a HashMap<String, usize>,
+    aliases: &'a BTreeMap<String, usize>,
+    sources: &'a IndexMap<String, Source>,
+}
+
+impl Names<'_> {
+    fn resolve(&self, id: &str) -> Option<usize> {
+        self.index.get(id).or_else(|| self.aliases.get(id)).copied()
+    }
+}
+
+/// A misspelled key in a source reference would silently drop what it carries (a quote).
+fn unknown_src_fields(file: &str, refs: &[crate::model::SrcRef], diags: &mut Vec<Diag>) {
+    for k in refs.iter().flat_map(|s| s.extra.keys()) {
+        diags.push(Diag::warn(file, format!("unknown source field `{k}`")).hint("a source reference takes s, at, quote and by"));
+    }
+}
+
+/// Validates and assembles the files, stage by stage: entries, sources, aliases, then what cites
+/// them (background lines, findings, claims), and last what needs the whole base (featured picks,
+/// chapters, sources nobody cites).
 pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
     let mut diags = raw.diags;
-
     for (dir, n) in &raw.dir_counts {
         if *n > MAX_DIR {
             diags.push(Diag::warn(dir, format!("{n} files in one directory (GitHub guidance is ≤3,000)")).hint("shard deeper"));
         }
     }
 
-    // ---- entities -------------------------------------------------------------
+    let (mut entities, index, ok_docs) = read_entities(&schema, &raw.entities, &mut diags);
+    let mut sources = read_sources(&schema, &raw.sources, &index, &mut diags);
+    let aliases = read_aliases(&entities, &index, &sources, &mut diags);
+    // a renamed entry's old id still names it: a source in its voice speaks in the current id
+    for s in sources.values_mut() {
+        if let Some(&i) = index.get(&s.voice).or_else(|| aliases.get(&s.voice)) {
+            s.voice = entities[i].id.clone();
+        }
+    }
+    let cx = Names { schema: &schema, docs: ok_docs.iter().map(|&di| &raw.entities[di]).collect(), index: &index, aliases: &aliases, sources: &sources };
+    read_backgrounds(&cx, &mut entities, &mut diags);
+    read_findings(&cx, &mut entities, &mut diags);
+    let (mut edges, held) = read_claims(&cx, &entities, &mut diags);
+    check_prose(&cx, &entities, &mut diags);
+    let perspectives = confirm_across_sides(&schema, &index, &mut edges, &mut diags);
+
+    let mut links: Vec<Vec<(usize, bool)>> = vec![Vec::new(); entities.len()];
+    for (ei, e) in edges.iter().enumerate() {
+        links[index[&e.from]].push((ei, true));
+        links[index[&e.to]].push((ei, false));
+    }
+    let mut kb = Kb { schema, entities, index, aliases, sources, edges, chapters: Vec::new(), perspectives, featured: Default::default(), links };
+    kb.featured = read_featured(&kb, &raw.featured, &mut diags);
+    read_chapters(&mut kb, &raw.chapters, &held, &mut diags);
+    warn_uncited_sources(&kb, &held, &mut diags);
+    (kb, diags)
+}
+
+/// Entries: ids, types, dates and fields. Returns those that passed, by id, with their indexes in `docs`.
+fn read_entities(schema: &Schema, docs: &[EntityDoc], diags: &mut Vec<Diag>) -> (Vec<Entity>, HashMap<String, usize>, Vec<usize>) {
     let mut entities: Vec<Entity> = Vec::new();
     let mut index: HashMap<String, usize> = HashMap::new();
     let mut ok_docs: Vec<usize> = Vec::new();
     let mut uids: HashMap<String, String> = HashMap::new();
     let mut missing_uid = 0usize;
 
-    for (di, doc) in raw.entities.iter().enumerate() {
+    for (di, doc) in docs.iter().enumerate() {
         let f = &doc.front;
         let file = &doc.rel_path;
         let mut valid = true;
@@ -478,10 +533,15 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
         });
         ok_docs.push(di);
     }
+    if missing_uid > 0 {
+        diags.push(Diag::warn("content/", format!("{} without a uid", crate::plural(missing_uid, "entity file"))).hint("run `ctd fmt` to assign permanent ids"));
+    }
+    (entities, index, ok_docs)
+}
 
-    // ---- sources --------------------------------------------------------------
+fn read_sources(schema: &Schema, docs: &[SourceDoc], index: &HashMap<String, usize>, diags: &mut Vec<Diag>) -> IndexMap<String, Source> {
     let mut sources: IndexMap<String, Source> = IndexMap::new();
-    for doc in &raw.sources {
+    for doc in docs {
         let s = &doc.src;
         let file = &doc.rel_path;
         if !SLUG.is_match(&s.id) || s.id != doc.stem {
@@ -507,8 +567,8 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
         if s.url.is_none() {
             diags.push(Diag::warn(file, "source has no url"));
         }
-        let url = web_url(file, "url", s.url.as_ref(), &mut diags);
-        let archive_url = web_url(file, "archive_url", s.archive_url.as_ref(), &mut diags);
+        let url = web_url(file, "url", s.url.as_ref(), diags);
+        let archive_url = web_url(file, "archive_url", s.archive_url.as_ref(), diags);
         for k in s.extra.keys() {
             diags.push(Diag::warn(file, format!("unknown field `{k}`")));
         }
@@ -537,11 +597,10 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
             },
         );
     }
-    if missing_uid > 0 {
-        diags.push(Diag::warn("content/", format!("{} without a uid", crate::plural(missing_uid, "entity file"))).hint("run `ctd fmt` to assign permanent ids"));
-    }
+    sources
+}
 
-    // ---- aliases ----------------------------------------------------------------
+fn read_aliases(entities: &[Entity], index: &HashMap<String, usize>, sources: &IndexMap<String, Source>, diags: &mut Vec<Diag>) -> BTreeMap<String, usize> {
     let mut aliases: BTreeMap<String, usize> = BTreeMap::new();
     for (i, e) in entities.iter().enumerate() {
         for a in &e.aliases {
@@ -555,26 +614,14 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
             }
         }
     }
-    let resolve = |id: &str| index.get(id).or_else(|| aliases.get(id)).copied();
-    // a renamed entry's old id still names it: a source in its voice speaks in the current id
-    for s in sources.values_mut() {
-        if let Some(i) = resolve(&s.voice) {
-            s.voice = entities[i].id.clone();
-        }
-    }
-    // a misspelled key in a source reference would silently drop what it carries (a quote)
-    let unknown_src_fields = |file: &str, refs: &[crate::model::SrcRef], diags: &mut Vec<Diag>| {
-        for k in refs.iter().flat_map(|s| s.extra.keys()) {
-            diags.push(Diag::warn(file, format!("unknown source field `{k}`")).hint("a source reference takes s, at, quote and by"));
-        }
-    };
+    aliases
+}
 
-    // ---- background lines (ADR-0016) -----------------------------------------------
-    // People only; every source quoted; a living person's lines in their own words (a source in their
-    // voice, or a quote `by` them), a historical figure's from one T1 or two independent T1/T2 voices.
-    // A line short of that is an error and never shown.
-    for &di in &ok_docs {
-        let doc = &raw.entities[di];
+/// Background lines (ADR-0016): people only, every source quoted, a living person's lines in their
+/// own words (a source in their voice, or a quote `by` them), a historical figure's from one T1 or
+/// two independent T1/T2 voices. A line short of that is an error and never shown.
+fn read_backgrounds(cx: &Names, entities: &mut [Entity], diags: &mut Vec<Diag>) {
+    for doc in &cx.docs {
         let (f, file) = (&doc.front, &doc.rel_path);
         if f.background.is_empty() {
             continue;
@@ -583,11 +630,11 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
             diags.push(Diag::err(file, "only people have `background` lines").hint("say it in the summary or the text, or as a sourced claim"));
             continue;
         }
-        let i = index[&f.id];
+        let i = cx.index[&f.id];
         let living = entities[i].when.as_ref().is_none_or(|w| w.open_end);
         let mut lines = Vec::new();
         for (n, b) in f.background.iter().enumerate() {
-            unknown_src_fields(file, &b.src, &mut diags);
+            unknown_src_fields(file, &b.src, diags);
             let at = format!("background line {}", n + 1);
             if b.text.trim().is_empty() || b.text.chars().count() > MAX_BACKGROUND || b.text.contains(['[', ']', '|']) {
                 diags.push(Diag::err(file, format!("{at}: text must be 1 to {MAX_BACKGROUND} characters, without [, ] or |")));
@@ -596,7 +643,7 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
             let (mut own, mut ok) = (false, !b.src.is_empty());
             let (mut found, mut cited) = (Vec::new(), Vec::new());
             for s in &b.src {
-                let Some(src) = sources.get(&s.s) else {
+                let Some(src) = cx.sources.get(&s.s) else {
                     diags.push(Diag::err(file, format!("{at}: source `{}` does not exist", s.s)));
                     ok = false;
                     continue;
@@ -608,7 +655,7 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
                         ok = false;
                     }
                 }
-                let by = s.by.as_deref().and_then(&resolve).map(|i| entities[i].id.clone());
+                let by = s.by.as_deref().and_then(|b| cx.resolve(b)).map(|i| entities[i].id.clone());
                 if let (Some(b), None) = (&s.by, &by) {
                     diags.push(Diag::err(file, format!("{at}: `by: {b}` is not an entry")));
                     ok = false;
@@ -622,7 +669,7 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
             }
             if living && !own {
                 diags.push(Diag::err(file, format!("{at}: a living person's background is only what they have said themselves")).hint(format!("cite a source in their voice (`voice: {}`), or a quote of theirs with `by: {}`", f.id, f.id)));
-            } else if !(living || well_sourced(&schema, cited)) {
+            } else if !(living || well_sourced(cx.schema, cited)) {
                 diags.push(Diag::err(file, format!("{at}: needs one T1 source or two independent T1/T2 voices")));
             } else {
                 lines.push(Background { text: b.text.clone(), sources: found });
@@ -630,33 +677,92 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
         }
         entities[i].background = lines;
     }
+}
 
-    // ---- findings (ADR-0019) --------------------------------------------------------
-    // Only on a type that a dispute can point to, and always quoted: a dispute answers these words.
-    for &di in &ok_docs {
-        let doc = &raw.entities[di];
+/// Findings (ADR-0019): only on a type a dispute can point to, and always quoted, since a dispute
+/// answers these words.
+fn read_findings(cx: &Names, entities: &mut [Entity], diags: &mut Vec<Diag>) {
+    for doc in &cx.docs {
         let (f, file) = (&doc.front, &doc.rel_path);
         let Some(s) = &f.finding else { continue };
-        unknown_src_fields(file, std::slice::from_ref(s), &mut diags);
-        if !schema.relations.values().any(|r| r.dispute && r.to.allows(&f.kind)) {
+        unknown_src_fields(file, std::slice::from_ref(s), diags);
+        if !cx.schema.relations.values().any(|r| r.dispute && r.to.allows(&f.kind)) {
             diags.push(Diag::err(file, format!("a {} has no `finding`", f.kind)).hint("say it in the summary or the text, or as a sourced claim"));
-        } else if !sources.contains_key(&s.s) {
+        } else if !cx.sources.contains_key(&s.s) {
             diags.push(Diag::err(file, format!("finding: source `{}` does not exist", s.s)));
         } else if s.quote.as_ref().is_none_or(|q| q.trim().is_empty() || q.chars().count() > MAX_QUOTE) {
             diags.push(Diag::err(file, format!("finding: quote the study's own words, in at most {MAX_QUOTE} characters")));
         } else {
-            entities[index[&f.id]].finding = Some(EdgeSrc { id: s.s.clone(), at: s.at.clone(), quote: s.quote.clone(), by: None });
+            entities[cx.index[&f.id]].finding = Some(EdgeSrc { id: s.s.clone(), at: s.at.clone(), quote: s.quote.clone(), by: None });
         }
     }
+}
 
-    // ---- claims → edges -------------------------------------------------------
+/// The citations of one claim, as `read_claims` keeps them.
+struct Cited<'a> {
+    refs: Vec<EdgeSrc>,
+    voices: BTreeSet<String>,
+    sources: Vec<&'a Source>,
+    /// The strongest tier among them.
+    best: Option<String>,
+}
+
+fn cite<'a>(cx: &Names<'a>, entities: &[Entity], file: &str, cid: &str, c: &ClaimIn, diags: &mut Vec<Diag>) -> Cited<'a> {
+    let mut cited = Cited { refs: Vec::new(), voices: BTreeSet::new(), sources: Vec::new(), best: None };
+    for s in &c.src {
+        let Some(src) = cx.sources.get(&s.s) else {
+            diags.push(
+                Diag::err(file, format!("source `{}` does not exist", s.s))
+                    .claim(cid)
+                    .hint(format!("create content/sources/{}/{}.yaml", s.s.chars().take(2).collect::<String>(), s.s)),
+            );
+            continue;
+        };
+        if let Some(q) = &s.quote
+            && q.chars().count() > MAX_QUOTE
+        {
+            diags.push(Diag::err(file, format!("quote is longer than {MAX_QUOTE} characters")).claim(cid));
+        }
+        cited.voices.insert(src.voice.clone());
+        cited.sources.push(src);
+        if cited.best.as_ref().is_none_or(|b| cx.schema.tier_rank(&src.tier) < cx.schema.tier_rank(b)) {
+            cited.best = Some(src.tier.clone());
+        }
+        // `by`: the entry whose words the quote is (a speaker quoted in a news report)
+        let by = s.by.as_deref().and_then(|b| {
+            let known = cx.resolve(b).filter(|_| s.quote.is_some()).map(|i| entities[i].id.clone());
+            if known.is_none() {
+                diags.push(Diag::err(file, format!("`by: {b}` needs a quote and an existing entry id")).claim(cid));
+            }
+            known
+        });
+        cited.refs.push(EdgeSrc { id: s.s.clone(), at: s.at.clone(), quote: s.quote.clone(), by });
+    }
+    cited
+}
+
+/// What is wrong with a dispute, as (message, hint): it must be its owner's own account, in its own
+/// words (ADR-0019).
+fn dispute_faults(cx: &Names, rel: &str, from: &Entity, according_to: &[String], refs: &[EdgeSrc]) -> Vec<(String, String)> {
+    let mut faults = Vec::new();
+    if according_to != [from.id.clone()] {
+        faults.push((format!("`{rel}` is one side's own account: write `according_to: [{}]`", from.id), "name the owner of this link and nobody else".to_string()));
+    }
+    let own = refs.iter().any(|s| s.quote.is_some() && (s.by.as_ref() == Some(&from.id) || cx.sources.get(&s.id).is_some_and(|src| src.voice == from.id || src.author.as_ref() == Some(&from.id))));
+    if !own {
+        faults.push((format!("`{rel}` needs {}'s own words", from.name), format!("quote a source in their voice (`voice: {}`), or mark the quote `by: {}`", from.id, from.id)));
+    }
+    faults
+}
+
+/// Claims become edges: (published, withheld). A sensitive claim short of its sources is withheld.
+fn read_claims(cx: &Names, entities: &[Entity], diags: &mut Vec<Diag>) -> (Vec<Edge>, Vec<Edge>) {
     // relations that answer a question: their accounts must quote their source
-    let answering: HashSet<&str> = schema.questions.iter().flat_map(|q| &q.groups).flat_map(|g| g.into.iter().chain(&g.out)).map(String::as_str).collect();
+    let answering: HashSet<&str> = cx.schema.questions.iter().flat_map(|q| &q.groups).flat_map(|g| g.into.iter().chain(&g.out)).map(String::as_str).collect();
     let mut edges: Vec<Edge> = Vec::new();
     let mut held: Vec<Edge> = Vec::new();
-    for &di in &ok_docs {
-        let doc = &raw.entities[di];
-        let from = &entities[index[&doc.front.id]];
+    for doc in &cx.docs {
+        let from = &entities[cx.index[&doc.front.id]];
         let file = &doc.rel_path;
         let mut seen: HashSet<String> = HashSet::new();
         for (ci, c) in doc.front.claims.iter().enumerate() {
@@ -668,7 +774,7 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
                 diags.push(Diag::err(file, "claim id used twice in this file").claim(&cid));
                 continue;
             }
-            let Some(rel) = schema.relations.get(&c.rel) else {
+            let Some(rel) = cx.schema.relations.get(&c.rel) else {
                 diags.push(Diag::err(file, format!("unknown relation `{}`", c.rel)).claim(&cid).hint("see content/schema/relations.yaml"));
                 continue;
             };
@@ -705,48 +811,16 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
             }
             let mut according_to = Vec::new();
             for a in &c.according_to {
-                match resolve(a) {
+                match cx.resolve(a) {
                     Some(i) => according_to.push(entities[i].id.clone()),
                     None => diags.push(Diag::err(file, format!("according_to `{a}` is not an entity")).claim(&cid)),
                 }
             }
-            unknown_src_fields(file, &c.src, &mut diags);
+            unknown_src_fields(file, &c.src, diags);
             if c.src.is_empty() {
                 diags.push(Diag::err(file, "claim has no source").claim(&cid).hint("add `src: [{s: <source-id>, quote: \"<the source's exact words>\"}]`"));
             }
-            let mut esrc = Vec::new();
-            let mut voices: BTreeSet<String> = BTreeSet::new();
-            let mut cited = Vec::new();
-            let mut best: Option<String> = None;
-            for s in &c.src {
-                let Some(src) = sources.get(&s.s) else {
-                    diags.push(
-                        Diag::err(file, format!("source `{}` does not exist", s.s))
-                            .claim(&cid)
-                            .hint(format!("create content/sources/{}/{}.yaml", s.s.chars().take(2).collect::<String>(), s.s)),
-                    );
-                    continue;
-                };
-                if let Some(q) = &s.quote
-                    && q.chars().count() > MAX_QUOTE
-                {
-                    diags.push(Diag::err(file, format!("quote is longer than {MAX_QUOTE} characters")).claim(&cid));
-                }
-                voices.insert(src.voice.clone());
-                cited.push(src);
-                if best.as_ref().is_none_or(|b| schema.tier_rank(&src.tier) < schema.tier_rank(b)) {
-                    best = Some(src.tier.clone());
-                }
-                // `by`: the entry whose words the quote is (a speaker quoted in a news report)
-                let by = s.by.as_deref().and_then(|b| {
-                    let known = resolve(b).filter(|_| s.quote.is_some()).map(|i| entities[i].id.clone());
-                    if known.is_none() {
-                        diags.push(Diag::err(file, format!("`by: {b}` needs a quote and an existing entry id")).claim(&cid));
-                    }
-                    known
-                });
-                esrc.push(EdgeSrc { id: s.s.clone(), at: s.at.clone(), quote: s.quote.clone(), by });
-            }
+            let Cited { refs: esrc, voices, sources: cited, best } = cite(cx, entities, file, &cid, c, diags);
             let mut qualifiers = BTreeMap::new();
             for (q, v) in c.qualifiers() {
                 if !(rel.qualifiers.iter().any(|x| x == q) || (q == "currency" && rel.qualifiers.iter().any(|x| x == "amount"))) {
@@ -771,25 +845,14 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
                         .hint("name the person, government or scholar who makes this claim"),
                 );
             }
-            // a dispute is its owner's own account, in its own words (ADR-0019)
             if rel.dispute {
-                if according_to != [from.id.clone()] {
-                    diags.push(Diag::err(file, format!("`{}` is one side's own account: write `according_to: [{}]`", c.rel, from.id)).claim(&cid));
-                }
-                let own = esrc.iter().any(|s| {
-                    s.quote.is_some() && (s.by.as_ref() == Some(&from.id) || sources.get(&s.id).is_some_and(|src| src.voice == from.id || src.author.as_ref() == Some(&from.id)))
-                });
-                if !own {
-                    diags.push(
-                        Diag::err(file, format!("`{}` needs {}'s own words", c.rel, from.name))
-                            .claim(&cid)
-                            .hint(format!("quote a source in their voice (`voice: {}`), or mark the quote `by: {}`", from.id, from.id)),
-                    );
+                for (msg, hint) in dispute_faults(cx, &c.rel, from, &according_to, &esrc) {
+                    diags.push(Diag::err(file, msg).claim(&cid).hint(hint));
                 }
             }
             // A sensitive claim short of its sources stays in its file but never reaches the site (no
             // page, story or graph.json) until it is sourced: a warning for a draft, otherwise an error.
-            let withheld = rel.sensitive && !well_sourced(&schema, cited);
+            let withheld = rel.sensitive && !well_sourced(cx.schema, cited);
             if withheld {
                 let msg = format!("`{}` is sensitive: it needs one T1 record or two independent T1/T2 voices; withheld until sourced", c.rel);
                 diags.push(if status == "draft" { Diag::warn(file, msg) } else { Diag::err(file, msg) }.claim(&cid));
@@ -806,7 +869,7 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
                 _ => (c.reason.clone(), c.note.clone()),
             };
             for (ti, t) in targets.iter().enumerate() {
-                let Some(tidx) = resolve(t) else {
+                let Some(tidx) = cx.resolve(t) else {
                     diags.push(Diag::err(file, format!("target `{t}` does not exist")).claim(&cid).hint("create the entity or fix the id"));
                     continue;
                 };
@@ -857,30 +920,14 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
             }
         }
     }
+    (edges, held)
+}
 
-    // ---- perspectives and cross-perspective confirmation ----------------------
-    let mut perspectives: IndexMap<String, usize> = IndexMap::new();
-    for e in &edges {
-        for a in &e.according_to {
-            *perspectives.entry(a.clone()).or_default() += 1;
-        }
-    }
-    for set in &schema.contested {
-        for m in &set.members {
-            if !index.contains_key(m) {
-                diags.push(Diag::err("content/schema/perspectives.yaml", format!("contested set `{}`: `{m}` is not an entity", set.id)));
-            }
-        }
-    }
-    for e in &mut edges {
-        let opposing = schema.contested.iter().any(|set| set.members.iter().filter(|m| e.voices.contains(m)).count() >= 2);
-        e.cross_confirmed = opposing && e.status == "published" && e.according_to.is_empty();
-    }
-
-    // ---- prose: wikilinks and personal data ------------------------------------
-    for e in &entities {
+/// Links, then the prose rules: wikilinks that resolve, and no personal contact data.
+fn check_prose(cx: &Names, entities: &[Entity], diags: &mut Vec<Diag>) {
+    for e in entities {
         for t in markdown::wikilink_targets(&e.body) {
-            if resolve(&t).is_none() {
+            if cx.resolve(&t).is_none() {
                 diags.push(Diag::warn(&e.rel_path, format!("[[{t}]] has no page yet (wanted)")));
             }
         }
@@ -892,15 +939,32 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
             diags.push(Diag::err(&e.rel_path, "looks like a phone number; no personal contact data in content"));
         }
     }
+}
 
-    let mut links: Vec<Vec<(usize, bool)>> = vec![Vec::new(); entities.len()];
-    for (ei, e) in edges.iter().enumerate() {
-        links[index[&e.from]].push((ei, true));
-        links[index[&e.to]].push((ei, false));
+/// Counts each account, and marks what sources from opposing sides confirm.
+fn confirm_across_sides(schema: &Schema, index: &HashMap<String, usize>, edges: &mut [Edge], diags: &mut Vec<Diag>) -> IndexMap<String, usize> {
+    let mut perspectives: IndexMap<String, usize> = IndexMap::new();
+    for e in edges.iter() {
+        for a in &e.according_to {
+            *perspectives.entry(a.clone()).or_default() += 1;
+        }
     }
-    let mut kb = Kb { schema, entities, index, aliases, sources, edges, chapters: Vec::new(), perspectives, featured: Default::default(), links };
+    for set in &schema.contested {
+        for m in &set.members {
+            if !index.contains_key(m) {
+                diags.push(Diag::err("content/schema/perspectives.yaml", format!("contested set `{}`: `{m}` is not an entity", set.id)));
+            }
+        }
+    }
+    for e in edges.iter_mut() {
+        let opposing = schema.contested.iter().any(|set| set.members.iter().filter(|m| e.voices.contains(m)).count() >= 2);
+        e.cross_confirmed = opposing && e.status == "published" && e.according_to.is_empty();
+    }
+    perspectives
+}
 
-    // ---- featured picks ------------------------------------------------------------
+/// `featured.yaml`: each pick names an entry and has what its shelf needs (warnings otherwise).
+fn read_featured(kb: &Kb, raw: &Featured, diags: &mut Vec<Diag>) -> Featured {
     const FEATURED: &str = "content/featured.yaml";
     let pick = |id: &str, diags: &mut Vec<Diag>| match kb.resolve(id) {
         Some(e) => Some(e.id.clone()),
@@ -909,11 +973,11 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
             None
         }
     };
-    let route = crate::paths::Options::stories(&kb, 1);
-    let mut featured = crate::load::Featured::default();
-    for c in &raw.featured.connections {
+    let route = crate::paths::Options::stories(kb, 1);
+    let mut featured = Featured::default();
+    for c in &raw.connections {
         let [a, b] = c.ids();
-        let (Some(a), Some(b)) = (pick(a, &mut diags), pick(b, &mut diags)) else { continue };
+        let (Some(a), Some(b)) = (pick(a, diags), pick(b, diags)) else { continue };
         if a == b {
             diags.push(Diag::err(FEATURED, format!("connection from `{a}` to itself")).hint("a connection needs two different entities"));
             continue;
@@ -922,29 +986,29 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
             diags.push(Diag::warn(FEATURED, format!("connection `{a}` → `{b}` is listed twice")));
             continue;
         }
-        if crate::paths::find(&kb, &a, &b, &route).is_empty() {
+        if crate::paths::find(kb, &a, &b, &route).is_empty() {
             diags.push(Diag::warn(FEATURED, format!("no route from `{a}` to `{b}`, so it gets no story")).hint(format!(
                 "routes run at most {} steps and skip index-fund holdings; add sourced links or pick another pair",
                 route.max_hops
             )));
         }
         featured.connections.push(match c.note() {
-            Some(note) => crate::load::Pick::Noted { between: [a, b], note: note.to_string() },
-            None => crate::load::Pick::Pair([a, b]),
+            Some(note) => Pick::Noted { between: [a, b], note: note.to_string() },
+            None => Pick::Pair([a, b]),
         });
     }
-    for id in &raw.featured.lives {
-        let Some(id) = pick(id, &mut diags) else { continue };
+    for id in &raw.lives {
+        let Some(id) = pick(id, diags) else { continue };
         if featured.lives.contains(&id) {
             diags.push(Diag::warn(FEATURED, format!("life `{id}` is listed twice")));
             continue;
         }
-        if crate::stories::entity_story(&kb, &id).is_none() {
+        if crate::stories::entity_story(kb, &id).is_none() {
             diags.push(Diag::warn(FEATURED, format!("`{id}` has fewer than two links, so it has no life story for the shelf")));
         }
         featured.lives.push(id);
     }
-    for page in &raw.featured.questions {
+    for page in &raw.questions {
         let Some((qid, x)) = page.split_once('/') else {
             diags.push(Diag::err(FEATURED, format!("question `{page}` must be `<question>/<entity id>`")).hint("e.g. behind/meta-platforms"));
             continue;
@@ -953,36 +1017,39 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
             diags.push(Diag::err(FEATURED, format!("`{qid}` is not a question with pages")).hint("see content/schema/questions.yaml"));
             continue;
         };
-        let Some(x) = pick(x, &mut diags) else { continue };
+        let Some(x) = pick(x, diags) else { continue };
         let id = format!("{qid}/{x}");
         if featured.questions.contains(&id) {
             diags.push(Diag::warn(FEATURED, format!("question `{id}` is listed twice")));
             continue;
         }
-        if !crate::answers::answer(&kb, qi, &x).is_some_and(|a| a.earns_page(&kb.schema.questions[qi])) {
+        if !crate::answers::answer(kb, qi, &x).is_some_and(|a| a.earns_page(&kb.schema.questions[qi])) {
             diags.push(Diag::warn(FEATURED, format!("`{id}` has no page: too few sourced names")).hint("add sourced links or pick another entry"));
         }
         featured.questions.push(id);
     }
-    kb.featured = featured;
+    featured
+}
 
-    // ---- chapters ----------------------------------------------------------------
+fn read_chapters(kb: &mut Kb, docs: &[ChapterDoc], held: &[Edge], diags: &mut Vec<Diag>) {
     let withheld: HashSet<&str> = held.iter().map(|e| e.id.as_str()).collect();
     let mut chapter_ids: HashSet<String> = HashSet::new();
-    for doc in &raw.chapters {
-        if let Some(ch) = chapter(&kb, doc, &withheld, &mut diags)
+    for doc in docs {
+        if let Some(ch) = chapter(kb, doc, &withheld, diags)
             && chapter_ids.insert(ch.id.clone())
         {
             kb.chapters.push(ch);
         }
     }
     kb.chapters.sort_by(|a, b| b.featured.cmp(&a.featured).then(a.title.cmp(&b.title)));
+}
 
-    // ---- orphan sources: cited by no claim, background line or chapter quote card ----------
+/// A source cited by no claim, background line, finding or chapter quote card.
+fn warn_uncited_sources(kb: &Kb, held: &[Edge], diags: &mut Vec<Diag>) {
     let cited: HashSet<&str> = kb
         .edges
         .iter()
-        .chain(&held)
+        .chain(held)
         .flat_map(|e| e.sources.iter())
         .chain(kb.entities.iter().flat_map(|e| &e.background).flat_map(|b| &b.sources))
         .chain(kb.entities.iter().filter_map(|e| e.finding.as_ref()))
@@ -994,7 +1061,6 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
             diags.push(Diag::warn(&s.rel_path, "source is not cited by any claim or story"));
         }
     }
-    (kb, diags)
 }
 
 /// Splits chapter markdown into prose segments and ```scene YAML blocks.

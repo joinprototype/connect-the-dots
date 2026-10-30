@@ -82,6 +82,10 @@ Startup sprints: the order below is a best guess and is re-decided at every spri
   - "Who benefited from common ownership of US airlines?" has a page: the study's account and every dispute, each in an equal column.
   - State Street's two criminal cases now end with their dismissals, from the dockets.
 
+- **Sprint 14: tidy the engine** ([sprints/sprint-14.md](sprints/sprint-14.md)). Built; review pending.
+  - The engine's two largest functions became named stages, with the site byte-for-byte the same; footnotes now run in reading order.
+  - The Rust and TypeScript route finders are checked against each other, which found and fixed a hop-limit bug in the Rust one.
+
 ## Next (candidates, chosen at review)
 
 - **Story v1.**

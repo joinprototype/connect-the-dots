@@ -37,4 +37,6 @@ A sprint is one week by default and has one goal that a demo can prove.
 - Decisions are cheap to reverse early. Write a ten-line ADR and move on.
 - New ideas go to the backlog **Inbox** first. They enter a sprint at planning, unless they change the current sprint's goal.
 - Docs follow the code. Update `architecture.md` or `content-model.md` in the same change that alters behaviour.
+- Keep sprint screenshots few and small: one per demo step at most, as JPEG. They are most of the repository's weight.
+- Prove a refactor: build before and after, and compare every file, ignoring the build timestamp.
 - The examples in these docs (Musk, BlackRock, the Bible, GameStop, the Cold War, Santa Monica) are test cases for a generic engine. They are not the scope, and no domain logic is hard-coded.

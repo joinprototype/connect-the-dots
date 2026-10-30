@@ -7,7 +7,7 @@ use super::{Ctx, Footnotes, link_detail, link_phrase};
 use crate::{
     answers,
     edtf::Span,
-    kb::{Edge, Entity, fmt_num},
+    kb::{Edge, EdgeSrc, Entity, fmt_num},
 };
 
 fn nice_ticks(lo: f64, hi: f64) -> Vec<(f64, String)> {
@@ -56,13 +56,24 @@ const LIFELINE_ROWS: usize = 8;
 /// The at-a-glance band of an entity page: family ties, life line, holders and the perspective
 /// split. Server-rendered, no JavaScript.
 pub(super) fn dossier(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], now: f64, notes: &mut Footnotes) -> Value {
-    let kb = cx.kb;
     // withdrawn (deprecated) links stay listed, marked, under Connections, but never reach the glance band
     let items: Vec<(&Edge, bool)> = items.iter().copied().filter(|(e, _)| e.status != "deprecated").collect();
     let items = items.as_slice();
+    let (holders, holdings, scale) = stakes(cx, items, now, notes);
+    json!({
+        "family": family(cx, items),
+        "lifeline": lifeline(cx, ent, items, now),
+        "holders": if holders.is_empty() { Value::Null } else { json!(holders) },
+        "holdings": if holdings.is_empty() { Value::Null } else { json!(holdings) },
+        "share_scale": scale,
+        "split": split(cx, items),
+    })
+}
 
-    // life line: one row per tenure (a leader's years, a board seat), the longest kept. A moment,
-    // such as a founding or a round of money, is told in the Timeline, where its words fit.
+/// One row per tenure (a leader's years, a board seat), the longest kept. A moment, such as a
+/// founding or a round of money, is told in the Timeline, where its words fit.
+fn lifeline(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], now: f64) -> Value {
+    let kb = cx.kb;
     let mut lifeline = Value::Null;
     let span_of = |w: &Span| (w.start, w.end.unwrap_or(if w.open_end { now.max(w.start + 0.5) } else { w.start + 1.0 }));
     let mut tenures: Vec<(&Edge, bool, (f64, f64))> =
@@ -97,10 +108,17 @@ pub(super) fn dossier(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], now: f64,
             lifeline = json!({ "rows": rows, "ticks": axis.ticks(), "more": more });
         }
     }
+    lifeline
+}
 
-    // holders (who holds this) and holdings (what this holds): a stake that ended is told by the life
-    // line and the Timeline, a dated snapshot stays with its date. A filing may give shares and no
-    // percent: no bar and no sum, since each line has its own date.
+/// A row of the holders card, with its share count and sources.
+type Stake<'a> = (Value, f64, &'a [EdgeSrc]);
+
+/// Who holds this and what this holds: (holders, holdings, the scale of their bars). A stake that
+/// ended is told by the life line and the Timeline, a dated snapshot stays with its date. A filing
+/// may give shares and no percent: no bar and no sum, since each line has its own date.
+fn stakes(cx: &Ctx, items: &[(&Edge, bool)], now: f64, notes: &mut Footnotes) -> (Vec<Value>, Vec<Value>, f64) {
+    let kb = cx.kb;
     let mut holders = Vec::new();
     let mut holdings = Vec::new();
     for (e, outgoing) in items {
@@ -115,21 +133,34 @@ pub(super) fn dossier(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], now: f64,
             continue;
         }
         let as_of = e.qualifiers.get("as_of").and_then(Value::as_str).map(|d| crate::edtf::parse(d).map(|s| s.label).unwrap_or_else(|_| d.to_string()));
-        let refs = notes.refs(&e.sources);
-        let row = |id: &str| json!({ "node": cx.node(id), "percent": p, "shares": shares.map(fmt_num), "shares_n": shares, "passive": e.passive, "as_of": as_of, "edge": e.id, "refs": refs });
+        let row = |id: &str| (json!({ "node": cx.node(id), "percent": p, "shares": shares.map(fmt_num), "passive": e.passive, "as_of": as_of, "edge": e.id }), shares.unwrap_or(0.0), e.sources.as_slice());
         if *outgoing { holdings.push(row(&e.to)) } else { holders.push(row(&e.from)) }
     }
     // owners, then what is held for clients, together; within each by percent, then shares alone
-    let by_pct = |a: &Value, b: &Value| {
-        let key = |r: &Value| (r["passive"] == false, r["percent"].as_f64().unwrap_or(-1.0), r["shares_n"].as_f64().unwrap_or(0.0));
+    fn by_pct(a: &Stake, b: &Stake) -> std::cmp::Ordering {
+        let key = |r: &Stake| (r.0["passive"] == false, r.0["percent"].as_f64().unwrap_or(-1.0), r.1);
         let (x, y) = (key(a), key(b));
         y.0.cmp(&x.0).then(y.1.total_cmp(&x.1)).then(y.2.total_cmp(&x.2))
-    };
+    }
     holders.sort_by(by_pct);
     holdings.sort_by(by_pct);
-    let scale = holders.iter().chain(holdings.iter()).filter_map(|r| r["percent"].as_f64()).fold(10.0f64, f64::max);
+    let scale = holders.iter().chain(holdings.iter()).filter_map(|r| r.0["percent"].as_f64()).fold(10.0f64, f64::max);
+    // numbered as shown: the rows are sorted first
+    let mut shown = |rows: Vec<Stake>| -> Vec<Value> {
+        rows.into_iter()
+            .map(|(mut row, _, sources)| {
+                row["refs"] = json!(notes.refs(sources));
+                row
+            })
+            .collect()
+    };
+    let (holders, holdings) = (shown(holders), shown(holdings));
+    (holders, holdings, scale)
+}
 
-    // family ties: kinship links, each with what that relative did (their own links)
+/// Kinship links, each with what that relative did (their own links). Null when there is none.
+fn family(cx: &Ctx, items: &[(&Edge, bool)]) -> Value {
+    let kb = cx.kb;
     let mut family: Vec<Value> = Vec::new();
     for (e, outgoing) in items {
         if !kb.schema.relations[&e.rel].kinship {
@@ -155,8 +186,12 @@ pub(super) fn dossier(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], now: f64,
             "did": did,
         }));
     }
+    if family.is_empty() { Value::Null } else { json!(family) }
+}
 
-    // perspective split
+/// "How each side tells it": each account's links, when two or more tell this entry.
+fn split(cx: &Ctx, items: &[(&Edge, bool)]) -> Value {
+    let kb = cx.kb;
     // (a dispute has its own card: the debate, each side in its own words)
     let mut sides: Vec<(String, Vec<Value>)> = Vec::new();
     for (e, outgoing) in items.iter().filter(|(e, _)| !kb.schema.relations[&e.rel].dispute) {
@@ -180,7 +215,7 @@ pub(super) fn dossier(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], now: f64,
                     "disputed": e.status == "disputed", "reason": e.reason })
         })
         .collect();
-    let split = if sides.len() >= 2 {
+    if sides.len() >= 2 {
         json!({
             // every account gets its column: hiding some would make the split one-sided
             "sides": sides.into_iter().map(|(p, claims)| json!({ "who": cx.node(&p), "claims": claims })).collect::<Vec<_>>(),
@@ -188,16 +223,7 @@ pub(super) fn dossier(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], now: f64,
         })
     } else {
         Value::Null
-    };
-
-    json!({
-        "family": if family.is_empty() { Value::Null } else { json!(family) },
-        "lifeline": lifeline,
-        "holders": if holders.is_empty() { Value::Null } else { json!(holders) },
-        "holdings": if holdings.is_empty() { Value::Null } else { json!(holdings) },
-        "share_scale": scale,
-        "split": split,
-    })
+    }
 }
 
 /// Who a person is (ADR-0016): where they were born, citizenship, education, and the sourced
@@ -248,24 +274,26 @@ pub(super) fn legal(cx: &Ctx, items: &[(&Edge, bool)], notes: &mut Footnotes) ->
     let kb = cx.kb;
     let mut steps: Vec<&Edge> = items.iter().filter(|(e, out)| *out && e.status != "deprecated" && kb.schema.relations[&e.rel].legal).map(|(e, _)| *e).collect();
     steps.sort_by(|a, b| a.start().total_cmp(&b.start()).then(a.id.cmp(&b.id)));
-    let mut cases: Vec<(Option<&str>, Vec<Value>)> = Vec::new();
+    let mut grouped: Vec<(Option<&str>, Vec<&Edge>)> = Vec::new();
     let mut caveats: Vec<&str> = Vec::new();
     for e in steps {
-        let rel = &kb.schema.relations[&e.rel];
-        if let Some(c) = rel.caveat.as_deref()
+        if let Some(c) = kb.schema.relations[&e.rel].caveat.as_deref()
             && !caveats.contains(&c)
         {
             caveats.push(c);
         }
-        let step = json!({ "when": e.when.as_ref().map(|w| &w.label), "phrase": rel.label, "node": cx.node(&e.to), "detail": link_detail(kb, e, true),
-                           "refs": notes.refs(&e.sources), "draft": e.status == "draft", "disputed": e.status == "disputed", "reason": e.reason, "note": e.note });
         let case = e.qualifiers.get("case").and_then(Value::as_str);
-        match cases.iter_mut().find(|(c, _)| case.is_some() && *c == case) {
-            Some((_, list)) => list.push(step),
-            None => cases.push((case, vec![step])),
+        match grouped.iter_mut().find(|(c, _)| case.is_some() && *c == case) {
+            Some((_, list)) => list.push(e),
+            None => grouped.push((case, vec![e])),
         }
     }
-    let cases: Vec<Value> = cases.into_iter().map(|(case, steps)| json!({ "case": case, "steps": steps })).collect();
+    // numbered as the card shows them: case by case
+    let mut step = |e: &Edge| {
+        json!({ "when": e.when.as_ref().map(|w| &w.label), "phrase": kb.schema.relations[&e.rel].label, "node": cx.node(&e.to), "detail": link_detail(kb, e, true),
+                "refs": notes.refs(&e.sources), "draft": e.status == "draft", "disputed": e.status == "disputed", "reason": e.reason, "note": e.note })
+    };
+    let cases: Vec<Value> = grouped.into_iter().map(|(case, list)| json!({ "case": case, "steps": list.into_iter().map(&mut step).collect::<Vec<_>>() })).collect();
     if cases.is_empty() { Value::Null } else { json!({ "cases": cases, "caveats": caveats }) }
 }
 

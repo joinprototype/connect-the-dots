@@ -36,6 +36,7 @@ npm --prefix web run dev              # the built dist/ with the browser code li
 cargo test && cargo clippy            # engine tests and lints
 node tools/qa/cdp.mjs <url> [actions.js] --shot=out.png --scheme=light   # headless Chrome check: errors, logs, screenshot
 node tools/qa/sweep.mjs --scheme=dark --size=390x844 [--only=/q/]       # every built page: console errors, sideways scroll
+node tools/qa/paths-golden.mjs <dir>                                     # the Rust and TypeScript route finders agree on a built site
 # for a full sweep, build to a scratch dir and serve it statically (the dev server's live reload slows long runs):
 #   ctd build --out <dir> && python3 tools/qa/serve-headers.py <dir> 4420; sweep.mjs --dist=<dir> --base=http://127.0.0.1:4420
 #   (serve-headers.py sends dist/_headers, so the Content-Security-Policy is enforced: no inline scripts in templates)

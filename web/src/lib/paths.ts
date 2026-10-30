@@ -1,4 +1,5 @@
-// Path finder (Sprint 1, TypeScript; the Rust kernel replaces it later).
+// Path finder for the explorer. `crates/ctd/src/paths.rs` is its twin for stories and the home page:
+// `tools/qa/paths-golden.mjs` checks that they agree.
 //
 // cost(hop) = w_rel * (1 + beta * (1 - p))
 //           + lambda * 0.5 * (ln(1 + deg_rel(u)) + ln(1 + deg_rel(v)))
