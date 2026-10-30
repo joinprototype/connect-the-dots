@@ -26,6 +26,7 @@ The repo is public, and the site runs at dots.joinprototype.com.
 - [x] **S18-09 Versions:** the founder's word on 2026-10-30: start at 0.1.0. `version` in `Cargo.toml` is the one number, the footer shows it, [CHANGELOG.md](../../CHANGELOG.md) says what changed, and `tools/deploy.sh live` tags each release.
 - [x] **S18-10 Addresses:** `sitemap.xml`, `robots.txt` and a canonical link on every page. Cloudflare's own `robots.txt` was being served, with no sitemap. While `LISTED` is false, search engines can read all of this but are told not to list the pages.
 - [x] **S18-11 Listed:** the founder chose to list the site in 0.1.1, ahead of the legal list. Previews keep `noindex`, which a real preview confirmed, and the sitemap is in Search Console.
+- [x] **S18-12 Link previews:** every page shares with one image (`tools/og-card.html`) and its own title, description and address.
 
 ### Found on the way
 - [x] **The repo scan:** no secrets or key files in any version of any file. History was cleaned once, before 0.1.0: commits carry a private address, and the research notes moved out of the repo.
@@ -35,7 +36,7 @@ The repo is public, and the site runs at dots.joinprototype.com.
 
 ### Not in this sprint
 - The legal list in `docs/deploy.md`.
-- Share images.
+- A share image per page.
 - Self-hosting the basemap, analytics.
 
 ## Demo script

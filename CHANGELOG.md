@@ -2,6 +2,10 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.1.3 (2026-10-30)
+
+- A link to any page now shows a preview image when it is shared, with that page's own title and description.
+
 ## 0.1.2 (2026-10-30)
 
 - Ask: suggestions now open right under the field. The browser's own list could open far away, even over another window.

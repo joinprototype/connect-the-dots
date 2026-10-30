@@ -513,6 +513,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     let site = json!({
         "title": "connect·the·dot",
         "tagline": "Connect the dots. See the evidence and the perspectives behind every line.",
+        "url": SITE_URL,
         "repo": "https://github.com/joinprototype/connect-the-dots",
         "dev": opts.dev, "assets": assets, "lenses": kb.schema.lenses, "layers": layers, "manifest": manifest,
     });
@@ -576,7 +577,8 @@ fn write_addresses(out: &Path) -> Result<()> {
         }
         let dir = entry.path().parent().unwrap_or(out).strip_prefix(out)?.to_string_lossy().replace('\\', "/");
         let url = if dir.is_empty() { format!("{SITE_URL}/") } else { format!("{SITE_URL}/{dir}/") };
-        write(entry.path(), html.replacen("</head>", &format!("<link rel=\"canonical\" href=\"{url}\">\n</head>"), 1))?;
+        let address = format!("<link rel=\"canonical\" href=\"{url}\">\n<meta property=\"og:url\" content=\"{url}\">\n</head>");
+        write(entry.path(), html.replacen("</head>", &address, 1))?;
         urls.push(url);
     }
     urls.sort();
@@ -1394,7 +1396,11 @@ mod tests {
         let sitemap = read("sitemap.xml");
         assert!(sitemap.contains(&format!("<loc>{SITE_URL}/</loc>")), "the home page: {sitemap}");
         assert!(sitemap.contains(&format!("<loc>{SITE_URL}/q/behind/party/</loc>")), "a question page: {sitemap}");
-        assert!(read("q/behind/party/index.html").contains(&format!("<link rel=\"canonical\" href=\"{SITE_URL}/q/behind/party/\">")));
+        let page = read("q/behind/party/index.html");
+        assert!(page.contains(&format!("<link rel=\"canonical\" href=\"{SITE_URL}/q/behind/party/\">")));
+        // a shared link shows this page's address, with the absolute image a preview needs
+        assert!(page.contains(&format!("<meta property=\"og:url\" content=\"{SITE_URL}/q/behind/party/\">")));
+        assert!(page.contains(&format!("<meta property=\"og:image\" content=\"{SITE_URL}/static/og.png\">")));
         assert!(read("robots.txt").contains(&format!("Sitemap: {SITE_URL}/sitemap.xml")));
         // every entry of a type, A to Z, on its own page
         let orgs = read("t/org/index.html");
