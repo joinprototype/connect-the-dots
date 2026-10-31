@@ -2,6 +2,10 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.1.4 (2026-10-31)
+
+- GitHub now shows the code's license by name. The footer's License link opens the page that covers code, data and writing.
+
 ## 0.1.3 (2026-10-30)
 
 - A link to any page now shows a preview image when it is shared, with that page's own title and description.
@@ -23,4 +27,4 @@ The first version online, at [dots.joinprototype.com](https://dots.joinprototype
 - Four illustrated stories that play by scrolling or by Listen, with maps that show the borders of their date
 - The explorer and the Map, from one dot to the whole Earth
 - Made for phones as well as laptops
-- Open: the code and data are public, and [LICENSE.md](LICENSE.md) says on what terms
+- Open: the code and data are public, and [LICENSING.md](LICENSING.md) says on what terms

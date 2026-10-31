@@ -80,7 +80,7 @@ To undo a deploy: `npx wrangler@4 rollback` makes the version before it live at 
   - Test locally with `python3 tools/qa/serve-headers.py <build dir> 4430`, which sends `_headers` like Cloudflare does, then sweep that port. Violations show up as console errors.
 - [x] A custom domain: `dots.joinprototype.com`, in `wrangler.jsonc`. The site uses relative URLs. Only the sitemap, `robots.txt` and canonical links name the domain (`SITE_URL` in `site.rs`).
 - [x] The dev-only client error reporter is off: `ctd build` (no `--dev`) omits it.
-- [x] Licenses: [LICENSE.md](../LICENSE.md) (ADR-0011).
+- [x] Licenses: [LICENSING.md](../LICENSING.md) (ADR-0011).
 - [ ] The legal list in the backlog (E6): terms, a privacy notice that names OpenFreeMap's map requests, a content policy for living people, a takedown runbook. The site carries court records and "who is behind" answers about living people, so have a lawyer read it first.
 - [x] `sitemap.xml`, `robots.txt` and a canonical link on every page, written last in the build. One sitemap holds 50,000 addresses, so split it before then.
 - [x] A share image on every page, with the page's own title and description. To remake it from `tools/og-card.html`, run `node tools/qa/cdp.mjs "file://$PWD/tools/og-card.html" --size=1200x630 --scheme=dark --shot=theme/static/og.png`, then `sips -z 630 1200 theme/static/og.png`. A card per page is in the backlog (E3).

@@ -16,7 +16,7 @@
   - A site about bias and "who is behind it" cannot run on a secret ranking algorithm.
   - Fork PRs get no secrets, so a private engine would break contributor checks.
   - The data is open anyway; our moat is community, data quality and presentation.
-- **Licenses,** in [LICENSE.md](../../LICENSE.md):
+- **Licenses,** in [LICENSING.md](../../LICENSING.md):
   - Structured data: **CC0 1.0**, compatible with Wikidata.
   - Prose and chapters: **CC BY-SA 4.0**, compatible with Wikipedia.
   - Code: **AGPL-3.0**, so modified versions that are distributed or served must publish their source.

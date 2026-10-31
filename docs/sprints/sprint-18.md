@@ -20,7 +20,7 @@ The repo is public, and the site runs at dots.joinprototype.com.
 - [x] **S18-03 `tools/deploy.sh`:** refuses a dirty tree, checks URLs against the last release, builds, and uploads a preview or releases.
 - [x] **S18-04 Caching:** chunks have a hash in the name, so they cache for a year. Everything else revalidates, as Cloudflare does by default.
 - [x] **S18-05 Corrections:** pages link to their file on GitHub, the About page offers issues too, and the footer links the source and license.
-- [x] **S18-06 License:** [LICENSE.md](../../LICENSE.md), on the terms of [ADR-0011](../decisions/0011-repos-and-licenses.md), now accepted. Cliopatria's borders, quotations, images and libraries keep their own terms.
+- [x] **S18-06 License:** [LICENSING.md](../../LICENSING.md), on the terms of [ADR-0011](../decisions/0011-repos-and-licenses.md), now accepted. Cliopatria's borders, quotations, images and libraries keep their own terms.
 - [x] **S18-07 Public repo:** opened on 2026-10-30, so the corrections route works.
 - [x] **S18-08 Live:** 0.1.0 is at dots.joinprototype.com, checked with the list in `docs/deploy.md`.
 - [x] **S18-09 Versions:** the founder's word on 2026-10-30: start at 0.1.0. `version` in `Cargo.toml` is the one number, the footer shows it, [CHANGELOG.md](../../CHANGELOG.md) says what changed, and `tools/deploy.sh live` tags each release.
@@ -30,7 +30,8 @@ The repo is public, and the site runs at dots.joinprototype.com.
 
 ### Found on the way
 - [x] **The repo scan:** no secrets or key files in any version of any file. History was cleaned once, before 0.1.0: commits carry a private address, and the research notes moved out of the repo.
-- [x] **GSAP is not open source,** which the AGPL would not allow by itself. LICENSE.md adds a section 7 permission.
+- [x] **GSAP is not open source,** which the AGPL would not allow by itself. LICENSING.md adds a section 7 permission.
+- [x] **GitHub could not name the license,** because `LICENSE.md` held a table of several. It now holds the AGPL text, and the table is `LICENSING.md`.
 - [x] **`_headers` was written twice** in a row. Now once.
 - [x] **Suggestions opened in the wrong place.** With two browsers side by side, the browser's own list for a datalist opened over the other one. The Ask form now draws its own list under the field, with arrow keys, Enter and Escape. The datalist stays for readers without JavaScript.
 
