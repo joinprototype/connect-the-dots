@@ -154,6 +154,8 @@ class WorldViewer implements WorldHandle {
   private device: GpuDevice | null = null;
   private style!: WorldStyle;
   private entities: WorldEntity[] | null = null;
+  /** By zoom, the tiles that exist. */
+  private tileIndex: Map<number, Set<number>> | null = null;
   private entityIndex = new Map<string, number>();
   private target: [number, number] = [S / 2, S / 2];
   private zoom = 0;
@@ -254,6 +256,11 @@ class WorldViewer implements WorldHandle {
     const src = this.opts.src;
     this.manifest = checkManifest(await fetchJson<unknown>(`${src}manifest.json`));
     const m = this.manifest;
+    if (m.tile_index) {
+      // a map's grid is mostly empty: knowing which tiles exist, ask for no others
+      const index = await fetchJson<Record<string, number[]>>(`${src}${m.tile_index}`).catch(() => null);
+      if (index) this.tileIndex = new Map(Object.entries(index).map(([z, list]) => [Number(z), new Set(list)]));
+    }
     if (m.entities) {
       try {
         const list = await fetchJson<unknown[]>(new URL(m.entities, new URL(src, location.href)).pathname);
@@ -665,6 +672,9 @@ class WorldViewer implements WorldHandle {
 
   private loadTile = async (t: TileLoadProps): Promise<TileRender> => {
     const index = t.index as TileIndex;
+    if (this.tileIndex && !this.tileIndex.get(index.z)?.has(index.x * 2 ** index.z + index.y)) {
+      return buildTileRender(emptyTile(index), this.style);
+    }
     const url = `${this.opts.src}${index.z}/${index.x}/${index.y}.bin`;
     const res = await fetch(url, { signal: t.signal, credentials: 'same-origin' });
     if (res.status === 404 || res.status === 410) return buildTileRender(emptyTile(index), this.style);

@@ -4,6 +4,7 @@ id: we-choose-the-moon
 type: chapter
 title: We Choose the Moon
 subtitle: How a Cold War race took people to the Moon, who built the rocket, what it cost, and why it stopped
+cover: https://images-assets.nasa.gov/image/as08-14-2383/as08-14-2383~medium.jpg
 summary: In 1961 a president asked what could beat the Soviets in space. Eight years later two people walked on the Moon. Here is how, in the words of those who were there.
 ---
 

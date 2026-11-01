@@ -141,6 +141,8 @@ pub struct Chapter {
     pub summary: Option<String>,
     pub authors: Vec<String>,
     pub featured: bool,
+    /// A photograph for its cover; otherwise one is drawn from its map.
+    pub cover: Option<String>,
     pub intro_md: String,
     pub outro_md: String,
     pub shots: Vec<Value>,
@@ -1284,6 +1286,7 @@ fn chapter(kb: &Kb, doc: &ChapterDoc, withheld: &HashSet<&str>, diags: &mut Vec<
         summary: f.summary.clone(),
         authors: f.authors.clone(),
         featured: f.featured,
+        cover: f.cover.clone().filter(|u| WEB_URL.is_match(u)),
         intro_md: prose.first().cloned().unwrap_or_default(),
         outro_md: prose.iter().skip(1).cloned().collect::<Vec<_>>().join("\n"),
         shots,

@@ -4,6 +4,7 @@ id: the-plumbers
 type: chapter
 title: The Plumbers
 subtitle: How a White House unit built to stop leaks led to a burglary, a recording system nobody knew about, and the end of a presidency
+cover: https://visit.archives.gov/sites/default/files/catalog/president-nixon-departing-white-house.jpg
 summary: After the Pentagon Papers, the White House set up a unit to stop leaks. Three years later the President resigned. Here is the road between, from court records, the tapes and those who were in the room.
 ---
 

@@ -566,6 +566,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
         "url": SITE_URL,
         "repo": "https://github.com/joinprototype/connect-the-dots",
         "dev": opts.dev, "assets": assets, "lenses": kb.schema.lenses, "layers": layers, "manifest": manifest,
+        "atlas": atlas.as_ref().map(|a| a.entries.len()),
     });
     let by_id = kb.edges.iter().map(|e| (e.id.as_str(), e)).collect();
     let s = Site { kb, cx: Ctx { kb }, out, history: History::load(root), site, env, by_id, stories: stories_of(kb) };
@@ -814,7 +815,7 @@ fn entity_page(s: &Site, pages: &QuestionPages, ent: &Entity, here_of: &HashMap<
         "color": kb.schema.type_color(&ent.kind), "summary": ent.summary, "when": ent.when.as_ref().map(|w| w.label.clone()),
         "aliases": display_aliases(ent), "same_as": same_as_links(ent), "place": place, "image": ent.image,
         "body_html": markdown::render(&ent.body, &cx.resolver()), "rel_path": ent.rel_path, "url": format!("/e/{}/", ent.id),
-        "coords": kb.coords(ent), "story_url": story_url,
+        "coords": kb.coords(ent), "story_url": story_url, "wikidata": ent.same_as.get("wikidata"),
         "cover": crate::covers::entity(&ent.id, &ent.name, items.len()),
         "evidence_line": evidence_line,
     });
@@ -1015,7 +1016,7 @@ fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
         .iter()
         .map(|ch| {
             json!({ "id": ch.id, "title": ch.title, "subtitle": ch.subtitle, "summary": ch.summary, "url": format!("/c/{}/", ch.id), "shots": ch.shots.len(), "kind": plural(ch.shots.len(), "scene"),
-                    "cover": chapter_cover(kb, ch) })
+                    "cover": ch.cover.as_ref().map_or_else(|| chapter_cover(kb, ch), |u| format!(r#"<img class="cover-art cover-photo" src="{}" alt="" loading="lazy">"#, markdown::escape(u))) })
         })
         .collect();
     for (i, ch) in kb.chapters.iter().enumerate() {

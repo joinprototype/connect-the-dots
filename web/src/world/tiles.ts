@@ -193,6 +193,8 @@ export interface WorldManifest {
   stats?: { tiles?: number; max_tile_nodes?: number; max_tile_edges?: number; max_tile_bytes?: number; max_tile_gzip?: number; bytes?: number };
   /** Content worlds: file name of the node index -> { id, name, url, start?, end? } table. */
   entities?: string | null;
+  /** File listing the tiles that exist, by zoom: `x * 2^z + y`. */
+  tile_index?: string | null;
   stability?: { aligned_nodes?: number; mean_drift?: number | null } | null;
   /** [x0, y0, x1, y1] around every node, in world units: the viewer opens on it. Null when absent or invalid. */
   bounds?: [number, number, number, number] | null;

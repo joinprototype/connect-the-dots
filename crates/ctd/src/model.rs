@@ -213,6 +213,8 @@ pub struct ChapterFront {
     pub authors: Vec<String>,
     #[serde(default)]
     pub featured: bool,
+    #[serde(default)]
+    pub cover: Option<String>,
     #[serde(flatten)]
     pub extra: BTreeMap<String, serde_json::Value>,
 }

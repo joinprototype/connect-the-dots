@@ -32,6 +32,7 @@ The "open world" is a 2D map of the whole graph, cut into a quadtree of tiles th
   "build_ms": 1387,
   "stats": { "tiles": 227, "max_tile_nodes": 1500, "max_tile_edges": 8192, "max_tile_bytes": 188028,
              "max_tile_gzip": 91222, "bytes": 21592732 },
+  "tile_index": "index.json",               // which tiles exist, {"<z>": [x * 2^z + y, ...]}: most of a big map's grid is empty
   "entities": "entities.json",              // content worlds: node index → { id, name, url, start?, end? }; null on synthetic worlds
   "stability": { "aligned_nodes": 69, "mean_drift": 0.0149 },  // vs the previous build (content worlds); 0 and null otherwise
   "bounds": [0.13, 0.04, 0.87, 0.96],       // [x0, y0, x1, y1] around every node, in world units: the viewer opens on it

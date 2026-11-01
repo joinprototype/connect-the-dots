@@ -176,6 +176,8 @@ pub fn from_kb(kb: &Kb, atlas: Option<&crate::atlas::Atlas>) -> (WorldGraph, Spe
     let mut may_name: Vec<bool> = kb.entities.iter().map(|e| !kb.schema.types.get(&e.kind).is_some_and(|t| t.family)).collect();
     let mut ids = None;
     if let Some(a) = atlas {
+        // at this scale a region is named after a place, never after a team or a study
+        may_name.iter_mut().zip(&kb.entities).for_each(|(m, e)| *m = e.kind == "place");
         let hand = crate::atlas::curated(kb);
         let mut tile_ids: Vec<u32> = (0..kb.entities.len() as u32).collect();
         let node: Vec<u32> = a
@@ -188,7 +190,6 @@ pub fn from_kb(kb: &Kb, atlas: Option<&crate::atlas::Atlas>) -> (WorldGraph, Spe
                     color.push(ink(e.kind()));
                     labels.push(e.name.clone());
                     keys.push(format!("Q{}", e.qid));
-                    // a region of the atlas is named after a place, never after a team or a fund
                     may_name.push(e.kind() == "place");
                     tile_ids.push(crate::atlas::ATLAS_IDS + e.qid);
                     new
@@ -720,10 +721,10 @@ const MAX_REGIONS: usize = 24;
 
 /// The biggest communities (ties: the lower community index first), each named after its
 /// best-connected member. `members[c]` lists community c's nodes, best-connected first.
-fn regions(members: &[Vec<u32>], labels: &[String], may_name: Option<&[bool]>, center: &[[f32; 2]], radius: &[f32]) -> Vec<Region> {
+fn regions(members: &[Vec<u32>], labels: &[String], may_name: Option<&[bool]>, center: &[[f32; 2]], radius: &[f32], gathered: &[Option<u8>]) -> Vec<Region> {
     // named after its best-connected member that may name it; a region of people only goes unnamed
     let name = |c: usize| members[c].iter().find(|&&i| may_name.is_none_or(|m| m[i as usize])).map(|&i| labels[i as usize].clone());
-    let mut order: Vec<usize> = (0..members.len()).filter(|&c| members[c].len() >= MIN_REGION && name(c).is_some()).collect();
+    let mut order: Vec<usize> = (0..members.len()).filter(|&c| gathered[c].is_none() && members[c].len() >= MIN_REGION && name(c).is_some()).collect();
     order.sort_by_key(|&c| (std::cmp::Reverse(members[c].len()), c));
     order.truncate(MAX_REGIONS);
     order
@@ -815,7 +816,8 @@ fn gzip_len(bytes: &[u8]) -> usize {
 const GATHER_ABOVE: usize = 20_000;
 const SMALL_COMMUNITY: usize = 8;
 
-fn gather_small(comm: &mut [u32], nc: usize, color: &[u8]) -> usize {
+/// Returns how many communities there now are; those holding gathered entries are the last ones.
+fn gather_small(comm: &mut [u32], nc: usize, color: &[u8]) -> (usize, Vec<Option<u8>>) {
     let mut size = vec![0usize; nc];
     for &c in comm.iter() {
         size[c as usize] += 1;
@@ -828,13 +830,26 @@ fn gather_small(comm: &mut [u32], nc: usize, color: &[u8]) -> usize {
             kept += 1;
         }
     }
+    let mut ink: HashMap<u32, u8> = HashMap::new();
     for (i, c) in comm.iter_mut().enumerate() {
         *c = match next[*c as usize] {
-            u32::MAX => kept + color[i] as u32,
+            u32::MAX => {
+                ink.insert(kept + color[i] as u32, color[i]);
+                kept + color[i] as u32
+            }
             kept_as => kept_as,
         };
     }
-    renumber(comm)
+    // community numbers stay in order of first use, so read back which disc holds which ink
+    let before: Vec<u32> = comm.to_vec();
+    let total = renumber(comm);
+    let mut gathered = vec![None; total];
+    for (old, new) in before.iter().zip(comm.iter()) {
+        if let Some(&i) = ink.get(old) {
+            gathered[*new as usize] = Some(i);
+        }
+    }
+    (total, gathered)
 }
 
 /// Communities, ranks and places, before the map is fitted to the unit square.
@@ -845,6 +860,8 @@ struct Placed {
     cpos: Vec<[f64; 2]>,
     crad: Vec<f64>,
     members: Vec<Vec<u32>>,
+    /// The ink of a community of gathered entries; None for one found by its links.
+    gathered: Vec<Option<u8>>,
     /// Summed links between communities.
     meta: Vec<(u32, u32, f32)>,
     pos: Vec<[f64; 2]>,
@@ -858,8 +875,9 @@ struct Placed {
 fn place(g: &WorldGraph) -> Placed {
     let n = g.n;
     let (mut comm, mut nc) = cluster(n, &g.edges);
+    let mut gathered = vec![None; nc];
     if n > GATHER_ABOVE {
-        nc = gather_small(&mut comm, nc, &g.color);
+        (nc, gathered) = gather_small(&mut comm, nc, &g.color);
     }
     let mut csize = vec![0usize; nc];
     for &c in &comm {
@@ -904,7 +922,7 @@ fn place(g: &WorldGraph) -> Placed {
             pos[i as usize] = [cpos[c][0] + d * a.cos(), cpos[c][1] + d * a.sin()];
         }
     }
-    Placed { nc, csize, cpos, crad, members, meta: meta_edges(&comm, &g.edges), pos, degree, rank, rank_of }
+    Placed { nc, csize, cpos, crad, members, gathered, meta: meta_edges(&comm, &g.edges), pos, degree, rank, rank_of }
 }
 
 /// The map in the unit square.
@@ -1182,9 +1200,32 @@ fn write_manifest(spec: &Spec, stats: &Stats, bounds: [f32; 4], regions: &[Regio
         "stats": { "tiles": stats.tiles, "max_tile_nodes": stats.max_tile_nodes, "max_tile_edges": stats.max_tile_edges,
                    "max_tile_bytes": stats.max_tile_bytes, "max_tile_gzip": stats.max_tile_gzip, "bytes": stats.bytes },
         "entities": spec.entities.as_ref().map(|_| "entities.json"),
+        "tile_index": "index.json",
         "stability": { "aligned_nodes": stats.aligned_nodes, "mean_drift": stats.drift },
     });
     fs::write(out.join("manifest.json"), serde_json::to_vec_pretty(&manifest)?)?;
+    Ok(())
+}
+
+/// Which tiles exist: `{"<z>": [x * 2^z + y, ...]}`. Most of a big map's grid is empty, and a viewer
+/// that knows it asks for nothing there.
+fn write_tile_index(out: &Path, maxzoom: u8) -> Result<()> {
+    let mut index = serde_json::Map::new();
+    for z in 0..=maxzoom {
+        let mut found: Vec<u64> = Vec::new();
+        let Ok(columns) = fs::read_dir(out.join(z.to_string())) else { continue };
+        for column in columns.flatten() {
+            let Some(x) = column.file_name().to_str().and_then(|s| s.parse::<u64>().ok()) else { continue };
+            for tile in fs::read_dir(column.path())?.flatten() {
+                if let Some(y) = tile.path().file_stem().and_then(|s| s.to_str()).and_then(|s| s.parse::<u64>().ok()) {
+                    found.push((x << z) + y);
+                }
+            }
+        }
+        found.sort_unstable();
+        index.insert(z.to_string(), json!(found));
+    }
+    fs::write(out.join("index.json"), serde_json::to_vec(&index)?)?;
     Ok(())
 }
 
@@ -1284,7 +1325,14 @@ pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> R
     if let Some(ents) = &spec.entities {
         fs::write(out.join("entities.json"), serde_json::to_vec(ents)?)?;
     }
-    let named = g.labels.as_ref().map(|l| regions(&p.members, l, g.may_name.as_deref(), &square.centers, &square.radii)).unwrap_or_default();
+    let mut named = g.labels.as_ref().map(|l| regions(&p.members, l, g.may_name.as_deref(), &square.centers, &square.radii, &p.gathered)).unwrap_or_default();
+    // the discs of entries with few links say what they hold
+    for (c, ink) in p.gathered.iter().enumerate() {
+        if let Some(label) = ink.and_then(|i| spec.palette_labels.get(i as usize)) {
+            named.push(Region { label: format!("More: {}", label.to_lowercase()), x: square.centers[c][0], y: square.centers[c][1], r: square.radii[c], size: p.members[c].len() });
+        }
+    }
+    write_tile_index(out, maxzoom)?;
     write_manifest(spec, &stats, square.bounds(), &named, out)?;
     write_picture(g, spec, &p, &square, out)?;
     Ok(stats)
@@ -1392,7 +1440,7 @@ mod tests {
         let members = vec![vec![0u32, 1, 2], vec![3, 4, 5]];
         let labels: Vec<String> = ["Ann", "Acme", "Bob", "Cy", "Di", "Ed"].map(String::from).to_vec();
         let may_name = [false, true, false, false, false, false];
-        let r = regions(&members, &labels, Some(&may_name), &[[0.3, 0.3], [0.7, 0.7]], &[0.1, 0.1]);
+        let r = regions(&members, &labels, Some(&may_name), &[[0.3, 0.3], [0.7, 0.7]], &[0.1, 0.1], &[None, None]);
         let names: Vec<&str> = r.iter().map(|r| r.label.as_str()).collect();
         assert_eq!(names, ["Acme"], "the best-connected non-person names it; a region of people only goes unnamed");
     }

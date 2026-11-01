@@ -87,21 +87,25 @@ def main() -> None:
     never = {qid(r[0]) for path in glob.glob(f"{RAW}/not-*.tsv.gz") for r in rows(path) if r}
     print(f"{len(never)} left out by class", flush=True)
     classes = {qid(r[0]) for r in rows(f"{RAW}/classes.tsv.gz") if r}
+    names = {qid(r[0]): text(r[1]) for r in rows(f"{RAW}/label-mul.tsv.gz") if len(r) > 1}
+    names.update({qid(r[0]): text(r[1]) for r in rows(f"{RAW}/label-en.tsv.gz") if len(r) > 1})
+    lines = {qid(r[0]): text(r[1]) for r in rows(f"{RAW}/description-en.tsv.gz") if len(r) > 1}
+    print(f"{len(names)} names, {len(lines)} summaries", flush=True)
     best: dict[str, tuple] = {}
     for kind, roots in PASSES:
         for root in roots:
             for r in rows(f"{RAW}/type-{kind}-{root}.tsv.gz"):
-                if len(r) < 3:
+                if len(r) < 2:
                     continue
                 q = qid(r[0])
-                if q in never or (q in best and not r[2].endswith("@en")):
+                if q in never or q in best:
                     continue
-                name = text(r[2])
+                name = names.get(q, "")
                 if not name or name.startswith("Q") and name[1:].isdigit() or NOT_A_NAME.search(name):
                     continue
                 links = int(re.sub(r"\D", "", r[1].split("^^")[0]) or 0)
                 as_type = "concept" if q in classes and kind not in ("person", "place", "tradition") else kind
-                best[q] = (as_type, links, name, text(r[3]) if len(r) > 3 else "")
+                best[q] = (as_type, links, name, lines.get(q, ""))
         print(f"{kind}: {sum(1 for v in best.values() if v[0] == kind)}", flush=True)
     chosen: dict[str, tuple] = {}
     by_kind = collections.defaultdict(list)

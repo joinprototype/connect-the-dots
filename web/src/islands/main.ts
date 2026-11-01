@@ -1,6 +1,7 @@
 // islands.js: progressive enhancement for reading pages. Light DOM, no framework.
 import './islands.css';
 import { startAsk } from './ask';
+import { CtdAtlasLinks } from './atlas-links';
 import { CtdLensChips } from './lens-chips';
 import { CtdSearch } from './search';
 
@@ -10,4 +11,5 @@ function define(name: string, ctor: CustomElementConstructor): void {
 
 define('ctd-search', CtdSearch);
 define('ctd-lens-chips', CtdLensChips);
+define('ctd-atlas-links', CtdAtlasLinks);
 startAsk();

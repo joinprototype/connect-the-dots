@@ -2,40 +2,11 @@
 // holds that entry, so an entry costs the same at a thousand dots or a million. Moving to a
 // neighbour swaps the page in place; nothing outside the current entry is ever loaded or drawn.
 import './atlas.css';
+import { atlasEntry, hrefOf, INKS, KINDS, type Entry, type Neighbour } from '../lib/atlas';
 import { el } from '../lib/dom';
 
-const SHARDS = 4096;
-const KINDS = ['Person', 'Event', 'Work', 'Place', 'Organization', 'Artifact', 'Tradition', 'Concept'];
-const INKS = ['--tomato', '--amber', '--plum', '--leaf', '--accent-fill', '--sky', '--plum', '--plum'];
 /** How many neighbours the constellation draws. */
 const STARS = 28;
-
-/** [Wikidata number, name, kind, id of the entry written by hand] */
-type Neighbour = [number, string, number, string?];
-type Group = [string, Neighbour[], number];
-interface Entry {
-  n: string;
-  k: number;
-  g: Group[];
-  d?: string;
-  y?: string;
-  c?: [number, number];
-  i?: string;
-  u?: string;
-}
-
-const shards = new Map<number, Promise<Record<string, Entry>>>();
-function shard(q: number): Promise<Record<string, Entry>> {
-  const n = q % SHARDS;
-  let got = shards.get(n);
-  if (!got) {
-    got = fetch(`/data/a/${n}.json`).then((r) => (r.ok ? r.json() : {}));
-    shards.set(n, got);
-  }
-  return got;
-}
-
-const hrefOf = (n: Neighbour) => (n[3] ? `/e/${n[3]}/` : `/a/?q=Q${n[0]}`);
 
 function picture(file: string): string {
   return `https://commons.wikimedia.org/wiki/Special:FilePath/${file}?width=500`;
@@ -138,8 +109,7 @@ function render(root: HTMLElement, q: string, e: Entry, go: (n: Neighbour) => vo
 
 function start(root: HTMLElement): void {
   const show = async (q: string) => {
-    const number = Number(q.slice(1));
-    const e = /^Q\d+$/.test(q) ? (await shard(number))[q] : undefined;
+    const e = /^Q\d+$/.test(q) ? await atlasEntry(q) : undefined;
     if (!e) {
       document.title = 'Not on the map yet: Connect the Dots';
       root.replaceChildren(el('h1', '', 'Not on the map yet'), el('p', 'atlas-summary', 'Search for it above, or start from the Map.'));

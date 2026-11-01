@@ -12,7 +12,6 @@ crime, and every interpretive property ("influenced by", "has cause"). ADR-0022 
 import argparse
 import gzip
 import os
-import shutil
 import sys
 import time
 import urllib.error
@@ -69,7 +68,13 @@ def run(name: str, query: str) -> None:
         started = time.time()
         try:
             with urllib.request.urlopen(req, timeout=1800) as res, gzip.open(path + ".part", "wb", 3) as out:
-                shutil.copyfileobj(res, out, 1 << 20)
+                tail = b""
+                while chunk := res.read(1 << 20):
+                    out.write(chunk)
+                    tail = (tail + chunk)[-200:]
+            # QLever answers 200 and stops mid-file when a query outruns its limit
+            if b"timed out" in tail or b"Error" in tail:
+                raise TimeoutError(f"cut short: {tail[-60:]!r}")
             os.rename(path + ".part", path)
             print(f"{name}: {os.path.getsize(path) >> 20} MB gzip in {time.time() - started:.0f} s", flush=True)
             time.sleep(2)
@@ -90,10 +95,12 @@ def main() -> None:
     for kind, roots in TYPES.items():
         for root in roots:
             path = "wdt:P31" if kind == "person" else "wdt:P31/wdt:P279*"
-            # many names now sit under "mul", the label for every language, with no English copy
-            run(f"type-{kind}-{root}", f"""SELECT DISTINCT ?i ?s ?l ?d WHERE {{ ?i {known} ?i {path} wd:{root} .
-              ?i rdfs:label ?l . FILTER(LANG(?l) = "en" || LANG(?l) = "mul")
-              OPTIONAL {{ ?i schema:description ?d . FILTER(LANG(?d) = "en" || LANG(?d) = "mul") }} }}""")
+            run(f"type-{kind}-{root}", f"SELECT DISTINCT ?i ?s WHERE {{ ?i {known} ?i {path} wd:{root} }}")
+    # names apart from types: joined in one query they outrun the service's time limit. Many names now
+    # sit under "mul", the label for every language, with no English copy.
+    for lang in ("en", "mul"):
+        run(f"label-{lang}", f'SELECT ?i ?v WHERE {{ ?i {known} ?i rdfs:label ?v . FILTER(LANG(?v) = "{lang}") }}')
+    run("description-en", f'SELECT ?i ?v WHERE {{ ?i {known} ?i schema:description ?v . FILTER(LANG(?v) = "en") }}')
     # a class of things ("priest", "airplane") is a concept, whatever else its parents make it
     run("classes", f"SELECT DISTINCT ?i WHERE {{ ?i {known} ?i wdt:P279 ?c }}")
     for root in EXCLUDED:

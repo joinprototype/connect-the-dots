@@ -236,6 +236,8 @@
     </details>
     {% endif %}
 
+    {% if entity.wikidata %}<ctd-atlas-links q="{{ entity.wikidata }}"></ctd-atlas-links>{% endif %}
+
     {{ proof_fold(sources) }}
 
     <details class="fold" id="history">

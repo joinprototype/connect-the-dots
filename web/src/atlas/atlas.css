@@ -14,14 +14,4 @@
 .atlas-star text { font: 600 12.5px var(--font-ui); fill: var(--ink-2); }
 .atlas-star:hover text { fill: var(--accent); }
 .atlas-sun { stroke: var(--paper); stroke-width: 5; }
-.atlas-groups { columns: 2 320px; column-gap: 40px; margin-top: 1.4rem; }
-.atlas-group { break-inside: avoid; margin-bottom: 1.4rem; }
-.atlas-group h2 { font-size: 1.06rem; margin: 0 0 0.3rem; color: var(--ink-2); }
-.atlas-group ul { list-style: none; margin: 0; padding: 0; }
-.atlas-group li { padding: 3px 0; }
-.atlas-group a { display: inline-flex; align-items: baseline; gap: 8px; color: var(--ink); font-weight: 500; }
-.atlas-group a::before { content: ""; flex: none; width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--accent)); transform: translateY(-1px); }
-.atlas-group a:hover { color: var(--accent); }
-.atlas-more { margin: 4px 0 0; font-size: 0.9rem; color: var(--muted); }
-.atlas-note { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.95rem; color: var(--muted); max-width: 66ch; }
 @media (max-width: 600px) { .atlas-side { flex-basis: 132px; } .atlas-photo { width: 132px; } }

@@ -293,6 +293,19 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
 .type-list a { color: var(--ink); font-weight: 500; }
 .type-summary { display: block; font-size: 0.88rem; color: var(--muted); }
 
+/* ---------------------------------------------------------------- the atlas: links from open data */
+ctd-atlas-links { display: block; }
+.atlas-groups { columns: 2 320px; column-gap: 40px; margin-top: 1rem; --amber: #e08a00; }
+.atlas-group { break-inside: avoid; margin-bottom: 1.4rem; }
+.atlas-group h2, .atlas-group h3 { font-size: 1.06rem; margin: 0 0 0.3rem; color: var(--ink-2); }
+.atlas-group ul { list-style: none; margin: 0; padding: 0; }
+.atlas-group li { padding: 3px 0; }
+.atlas-group a { display: inline-flex; align-items: baseline; gap: 8px; color: var(--ink); font-weight: 500; }
+.atlas-group a::before { content: ""; flex: none; width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--accent)); transform: translateY(-1px); }
+.atlas-group a:hover { color: var(--accent); }
+.atlas-more { margin: 4px 0 0; font-size: 0.9rem; color: var(--muted); }
+.atlas-note { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.95rem; color: var(--muted); max-width: 66ch; }
+
 /* ---------------------------------------------------------------- entity */
 .entity { max-width: 1080px; margin: 0 auto; padding: clamp(28px, 5vw, 56px) var(--gutter) 3rem; }
 .entity-head { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: clamp(22px, 4vw, 44px); align-items: start; }

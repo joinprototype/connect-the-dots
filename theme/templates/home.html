@@ -12,7 +12,8 @@
 <section class="ask">
   <img class="ask-picture" src="/world/picture.svg" alt="" width="1000" height="1000">
   <h1>Ask how anything connects.</h1>
-  <p class="ask-lede">Every link shows its proof. Every interpretation says whose it is.</p>
+  {% if site.atlas %}<p class="ask-lede">A million things in the world, linked. What we wrote by hand shows its proof. What came from open data says so.</p>
+  {% else %}<p class="ask-lede">Every link shows its proof. Every interpretation says whose it is.</p>{% endif %}
   {% if asks|length > 1 %}
   <div class="ask-pick" role="radiogroup" aria-label="Question">
     {% for q in asks %}<label class="ask-seg"><input type="radio" name="ask-q" id="ask-pick-{{ q.id }}" value="{{ q.id }}"{% if loop.first %} checked{% endif %}><span>{{ q.label }}</span></label>{% endfor %}

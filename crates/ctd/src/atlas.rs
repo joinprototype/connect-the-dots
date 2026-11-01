@@ -201,3 +201,46 @@ pub fn search(a: &Atlas, kb: &Kb) -> Vec<Value> {
         .map(|e| json!({ "id": format!("Q{}", e.qid), "name": e.name, "aliases": [], "type": e.kind(), "summary": e.summary.chars().take(70).collect::<String>(), "when": e.years(), "url": format!("/a/?q=Q{}", e.qid) }))
         .collect()
 }
+
+#[cfg(test)]
+mod tests {
+    use std::io::Write;
+
+    use flate2::{Compression, write::GzEncoder};
+
+    use super::*;
+    use crate::testkit::{entity, file, load as load_kb, write_repo};
+
+    fn gz(path: &Path, text: &str) {
+        let mut out = GzEncoder::new(File::create(path).unwrap(), Compression::fast());
+        out.write_all(text.as_bytes()).unwrap();
+        out.finish().unwrap();
+    }
+
+    #[test]
+    fn a_written_entry_wins_and_links_are_best_known_first() {
+        let root = write_repo("atlas", &[]).unwrap();
+        let dir = root.join(".cache/atlas");
+        fs::create_dir_all(&dir).unwrap();
+        // one person, one place in the atlas, and a place written by hand
+        gz(&dir.join("entries.tsv.gz"), "Q1\tperson\t50\tAda\tA writer\t1900\t1950\t0\t\t\tAda.jpg\nQ2\tplace\t90\tBig Town\t\t\t\t0\t2.5\t3.5\t\nQ3\tplace\t10\tSmall Town\t\t\t\t0\t\t\t\n");
+        gz(&dir.join("links.tsv.gz"), "Q1\tborn_in\tQ3\nQ1\tborn_in\tQ2\n");
+        let mut hand = entity("org", "big-town", "Big Town", "");
+        hand.1 = hand.1.replacen("name:", "same_as: {wikidata: Q2}\nname:", 1);
+        let relation = "born_in: {label: born in, inverse: birthplace of, from: [person], to: [org]}\n";
+        let (kb, diags) = load_kb("atlas-kb", &[hand, file("content/schema/relations.yaml", relation)]);
+        assert!(diags.iter().all(|d| d.level != crate::diag::Level::Error), "{diags:?}");
+        let a = load(&root).unwrap().expect("an atlas");
+        assert_eq!(a.entries[0].qid, 2, "best known first");
+        assert!(search(&a, &kb).iter().all(|row| row["id"] != "Q2"), "a written entry is already in search");
+        write(&a, &kb, &root).unwrap();
+        let read = |q: u32| -> Value { serde_json::from_slice(&fs::read(root.join(format!("data/a/{}.json", q % SHARDS))).unwrap()).unwrap() };
+        assert_eq!(read(2)["Q2"]["u"], "/e/big-town/");
+        let ada = &read(1)["Q1"];
+        assert_eq!(ada["y"], "1900–1950");
+        let links = &ada["g"][0];
+        assert_eq!(links[1][0][1], "Big Town", "the better known place first, under its written name");
+        assert_eq!(links[1][0][3], "big-town");
+        assert_eq!(links[1][1][1], "Small Town");
+    }
+}
