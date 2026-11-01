@@ -26,9 +26,11 @@ Costs nothing new. The domain is already ours, the `joinprototype.com` zone is o
 
 Every live deploy is a release, starting at 0.1.0. The number lives in one place, `version` in the root `Cargo.toml`, and the footer of every page shows it.
 
-- **Patch** (0.1.0 to 0.1.1): content and fixes.
-- **Minor** (0.1.1 to 0.2.0): something new a reader can see or use.
+- **Patch** (0.4.0 to 0.4.1): the default. New stories, entries, fixes and small features.
+- **Minor** (0.4.3 to 0.5.0): rare. A new part of the site, or a real change in what it can do.
 - **1.0** waits for the list under step 3.
+
+Only a deploy moves the number: a commit that never goes live has none of its own. Published numbers stay as they are.
 
 To release: raise the version, add it to [CHANGELOG.md](../CHANGELOG.md), commit, push, and run `tools/deploy.sh live`. The script refuses a version that is already out, one missing from the changelog, and a commit that is not on GitHub: under the AGPL, the source of what runs has to be public.
 
