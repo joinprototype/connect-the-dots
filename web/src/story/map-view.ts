@@ -224,7 +224,7 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
   function covers(): { x0: number; y0: number; x1: number; y1: number }[] {
     const host = container.getBoundingClientRect();
     const story = container.closest('ctd-story');
-    return [...(story?.querySelectorAll<HTMLElement>('.story-hud, .story-overlay .story-card, .story-controls') ?? [])]
+    return [...(story?.querySelectorAll<HTMLElement>('.story-hud, .story-overlay .story-card:not(.is-leaving), .story-controls') ?? [])]
       .filter((e) => e.offsetWidth && e.offsetHeight)
       .map((e) => {
         const r = e.getBoundingClientRect();

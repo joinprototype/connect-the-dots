@@ -171,7 +171,7 @@ export function createGraphView(container: HTMLElement, idx: GraphIndex, shots: 
   function covers(): { x0: number; y0: number; x1: number; y1: number }[] {
     const host = container.getBoundingClientRect();
     const story = container.closest('ctd-story');
-    return [...(story?.querySelectorAll<HTMLElement>('.story-hud, .story-overlay .story-card, .story-controls') ?? [])]
+    return [...(story?.querySelectorAll<HTMLElement>('.story-hud, .story-overlay .story-card:not(.is-leaving), .story-controls') ?? [])]
       .filter((el) => el.offsetWidth && el.offsetHeight)
       .map((el) => {
         const r = el.getBoundingClientRect();
@@ -226,7 +226,7 @@ export function createGraphView(container: HTMLElement, idx: GraphIndex, shots: 
       else if (b.x1 - b.x0 > W * 0.6 && b.y0 >= H / 2) bottom = Math.max(bottom, H - b.y0 + dot + 6);
     }
     // Keep the overlay card's corner free: give up whichever band (bottom or right) costs less room.
-    const cards = shot?.overlay ? container.parentElement?.querySelectorAll<HTMLElement>('.story-overlay .story-card') : undefined;
+    const cards = shot?.overlay ? container.parentElement?.querySelectorAll<HTMLElement>('.story-overlay .story-card:not(.is-leaving)') : undefined;
     const card = cards && cards.length ? cards[cards.length - 1] : null;
     if (card && card.offsetHeight && card.offsetWidth) {
       // Measured from where the card sits in the pane (on phones it stands above the controls), by layout

@@ -2,6 +2,11 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.2.1 (2026-10-31)
+
+- Stories on phones: a scene with a long quote or a big number no longer hides its graph under the card.
+- On short phones, the card over a story keeps to a few lines, so the map or graph stays in view.
+
 ## 0.2.0 (2026-10-31)
 
 - Two new stories. "The Week the Buying Stopped" follows GameStop in January 2021 through each party's own records. "From Clay to Print" follows writing from accounts in Uruk to a printed Bible in Mainz, with who wrote the Torah as each side tells it.

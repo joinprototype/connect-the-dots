@@ -1,7 +1,7 @@
 # Sprint 19: Two new stories
 
 - Starts: 2026-10-31, at the founder's word · Length: 1 week
-- Status: released in 0.2.0 (2026-10-31); demo and review with the founder pending
+- Status: released in 0.2.0, phone fixes in 0.2.1 (2026-10-31); demo and review with the founder pending
 
 ## Goal
 
@@ -30,6 +30,9 @@ GameStop and the road from clay to print each play as a story, and the Cold War'
 - [x] **Names piled up on a phone** in the last scene of the clay chapter. Where names overlap, the later ones give way and their dots stay. `camera.fit` keeps every marker on screen.
 - [x] **The "faded" pill ran under Watch** on a story with many scenes. The pills now wrap beside the controls.
 - [x] **Two links said less than the truth.** The Jikji and the Gutenberg Bible now share `made_with` movable type, and the Dead Sea Scrolls `holds_copies_of` the Torah, instead of stand-ins.
+
+- [x] **Found after 0.2.0 went live: blank graphs on phones.** The card leaving a scene stayed in the layout for its fade, stacked above the new one. Under a tall card it counted as a band across the top of the stage, so the graph framed its dots under the card, in 5 GameStop scenes and 3 of BlackRock's. The sweep could not see it, since a graph is drawn on a canvas, and the scenes looked at by hand were other ones. The leaving card now leaves the layout at once, and `tools/qa/scene-fit.js` measures every graph scene. Fixed in 0.2.1.
+- [x] **On a short phone the card covered the stage:** 13 BlackRock scenes at 320x640 lost their dots. Below 720 px high, a card keeps to three lines of quote, and the scene below says who speaks.
 
 ### Not in this sprint
 - The Map's era slider.

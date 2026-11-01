@@ -55,8 +55,13 @@ export class Overlay {
     const old = this.current;
     this.current = null;
     if (!old) return;
-    if (reduced) old.remove();
-    else gsap.to(old, { autoAlpha: 0, y: -8, duration: 0.3, ease: 'power2.in', onComplete: () => old.remove() });
+    if (reduced) {
+      old.remove();
+      return;
+    }
+    // out of the layout at once: the card coming in takes the place, and the views frame around it alone
+    old.classList.add('is-leaving');
+    gsap.to(old, { autoAlpha: 0, y: -8, duration: 0.3, ease: 'power2.in', onComplete: () => old.remove() });
   }
 
   private build(shot: Shot): HTMLElement | null {

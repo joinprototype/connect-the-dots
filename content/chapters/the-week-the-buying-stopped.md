@@ -19,7 +19,7 @@ This story keeps to the records: filings, testimony to Congress, a regulator's r
   time: "2021-01"
   reveal: [gamestop-short-squeeze, gamestop, robinhood]
   reveal_claims: [gamestop#c1, robinhood#c2, gamestop-short-squeeze#c2]
-  overlay: {kind: stat, value: "2,700%", label: "GameStop's rise, from its low of 8 January to its high of 28 January", source: sec-staff-report-2021-10-14, quote: "Overall, GME’s intraday share price increased approximately 2,700% from its intraday low on January 8 to its intraday high on January 28, followed by a decrease of over 86% from that day to the closing price at the end of the first week of February."}
+  overlay: {kind: stat, value: "2,700%", label: "GameStop's rise, from its low of 8 January to its high of 28 January", source: sec-staff-report-2021-10-14, quote: "GME’s intraday share price increased approximately 2,700% from its intraday low on January 8 to its intraday high on January 28"}
   narration: "**One stock.** GameStop, a video game retailer based in Grapevine, Texas, saw its share price rise about 2,700% between 8 and 28 January 2021. Then Robinhood, a broker in Menlo Park, California, stopped its customers from buying more."
   duration: 12
 
@@ -50,7 +50,7 @@ This story keeps to the records: filings, testimony to Congress, a regulator's r
   time: "2021-01-11"
   reveal: [ryan-cohen, gamestop, retail-investors, gamestop-short-squeeze]
   reveal_claims: [ryan-cohen#c1, gamestop-short-squeeze#c6, gamestop-short-squeeze#c5]
-  overlay: {kind: stat, value: "Nearly 900,000", label: "Accounts trading GameStop in one day by 27 January, from under 10,000 early in the month", source: sec-staff-report-2021-10-14, quote: "by January 27, the number of unique accounts trading GME on a given day increased from less than 10,000 at the beginning of the month to nearly 900,000."}
+  overlay: {kind: stat, value: "Nearly 900,000", label: "Accounts trading GameStop in one day by 27 January, from under 10,000 early in the month", source: sec-staff-report-2021-10-14, quote: "the number of unique accounts trading GME on a given day increased from less than 10,000 at the beginning of the month to nearly 900,000"}
   narration: "**The crowd.** On 11 January GameStop named Ryan Cohen, of Chewy, to its board, and media attention grew. Early in the month fewer than 10,000 accounts traded the stock in a day. By 27 January nearly 900,000 did."
   duration: 12
 
@@ -70,7 +70,7 @@ This story keeps to the records: filings, testimony to Congress, a regulator's r
   time: "2021-01-27"
   reveal: [nscc, nscc-margin-calls-january-2021, robinhood]
   reveal_claims: [nscc-margin-calls-january-2021#c1]
-  overlay: {kind: stat, value: "$6.9 billion", label: "Called from 36 clearing members in one day, 27 January", source: sec-staff-report-2021-10-14, quote: "On January 27, 2021, in response to market activity during the trading session, NSCC made intraday margin calls from 36 clearing members totaling $6.9 billion, bringing the total required margin across all members to $25.5 billion."}
+  overlay: {kind: stat, value: "$6.9 billion", label: "Called from 36 clearing members in one day, 27 January", source: sec-staff-report-2021-10-14, quote: "NSCC made intraday margin calls from 36 clearing members totaling $6.9 billion"}
   narration: "**The deposit call.** Trades then took two business days to settle, and a clearing house, NSCC, holds deposits from its members until they do. On 27 January GameStop closed at its high of $347.51, and NSCC called for $6.9 billion more."
   duration: 13
 
@@ -80,7 +80,7 @@ This story keeps to the records: filings, testimony to Congress, a regulator's r
   time: "2021-01-28"
   reveal: [robinhood, vlad-tenev, nscc, nscc-margin-calls-january-2021, robinhood-trading-restrictions-2021, gamestop]
   reveal_claims: [nscc-margin-calls-january-2021#c2, robinhood-trading-restrictions-2021#c3, robinhood-trading-restrictions-2021#c2, robinhood-trading-restrictions-2021#c1]
-  overlay: {kind: stat, value: "About $3 billion", label: "Robinhood's deposit shortfall that morning, by its own account", source: hfsc-2021-02-18-tenev-testimony, quote: "At approximately 5:11 a.m. EST on January 28, the NSCC sent Robinhood Securities an automated notice stating that Robinhood Securities had a deposit deficit of approximately $3 billion."}
+  overlay: {kind: stat, value: "About $3 billion", label: "Robinhood's deposit shortfall that morning, by its own account", source: hfsc-2021-02-18-tenev-testimony, quote: "an automated notice stating that Robinhood Securities had a deposit deficit of approximately $3 billion"}
   narration: "**Before dawn.** Early on 28 January NSCC told Robinhood it was about $3 billion short, according to Vlad Tenev, its chief executive. Within hours customers could sell GameStop but not buy it. Robinhood says the limits were necessary to meet its deposit requirements."
   duration: 13
 
