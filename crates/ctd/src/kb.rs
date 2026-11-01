@@ -1124,6 +1124,118 @@ fn split_scenes(body: &str) -> (Vec<String>, Vec<String>) {
     (prose, scenes)
 }
 
+/// The shot fields that name entries: an id, a list of ids, or a list of pairs of ids.
+const SHOT_ENTRIES: [&str; 5] = ["focus", "perspective", "reveal", "places", "routes"];
+
+/// Every entry id a shot names, with the field that names it.
+pub fn shot_entries(shot: &Value) -> impl Iterator<Item = (&'static str, &str)> {
+    fn items(v: &Value) -> &[Value] {
+        v.as_array().map_or(std::slice::from_ref(v), Vec::as_slice)
+    }
+    SHOT_ENTRIES.into_iter().flat_map(move |field| items(&shot[field]).iter().flat_map(items).filter_map(Value::as_str).map(move |id| (field, id)))
+}
+
+fn shot_name(shot: &Value) -> &str {
+    shot["shot"].as_str().unwrap_or("?")
+}
+
+/// A renamed entry's old id still names it, but the page knows only current ids.
+fn use_current_ids(kb: &Kb, shot: &mut Value) {
+    fn current(kb: &Kb, v: &mut Value) {
+        if let Some(list) = v.as_array_mut() {
+            list.iter_mut().for_each(|x| current(kb, x));
+        } else if let Some(e) = v.as_str().and_then(|id| kb.resolve(id)) {
+            *v = Value::from(e.id.clone());
+        }
+    }
+    for field in SHOT_ENTRIES {
+        if let Some(v) = shot.get_mut(field) {
+            current(kb, v);
+        }
+    }
+    for v in shot.get_mut("reveal_claims").and_then(Value::as_array_mut).into_iter().flatten() {
+        if let Some((who, rest)) = v.as_str().and_then(|r| r.split_once('#'))
+            && let Some(e) = kb.resolve(who)
+        {
+            *v = Value::from(format!("{}#{rest}", e.id));
+        }
+    }
+}
+
+/// What a chapter's shots may refer to, gathered once.
+struct ShotRefs<'a> {
+    edges: HashSet<&'a str>,
+    lenses: HashSet<&'a str>,
+    withheld: &'a HashSet<&'a str>,
+}
+
+/// Everything a shot names must exist: entries, claims, its overlay's source, its lens and view.
+fn check_shot_refs(kb: &Kb, refs: &ShotRefs, file: &str, shot: &Value, diags: &mut Vec<Diag>) {
+    let name = shot_name(shot);
+    for (field, id) in shot_entries(shot) {
+        if kb.resolve(id).is_none() {
+            diags.push(Diag::err(file, format!("shot `{name}`: {field} `{id}` is not an entity")));
+        }
+    }
+    for r in shot["reveal_claims"].as_array().into_iter().flatten().filter_map(Value::as_str) {
+        let prefix = format!("{r}/");
+        let known = |ids: &HashSet<&str>| ids.contains(r) || ids.iter().any(|e| e.starts_with(&prefix));
+        if known(refs.withheld) {
+            diags.push(Diag::warn(file, format!("shot `{name}`: claim `{r}` is withheld until sourced")));
+        } else if !known(&refs.edges) {
+            diags.push(Diag::err(file, format!("shot `{name}`: claim `{r}` does not exist")).hint("use <entity-id>#<claim-id>"));
+        }
+    }
+    let overlay = &shot["overlay"];
+    if let Some(src) = overlay["source"].as_str()
+        && !kb.sources.contains_key(src)
+    {
+        diags.push(Diag::err(file, format!("shot `{name}`: overlay source `{src}` does not exist")));
+    }
+    // a big number shows its proof beside it
+    if overlay["kind"].as_str() == Some("stat") {
+        for field in ["value", "label", "source", "quote"].into_iter().filter(|f| overlay.get(*f).is_none()) {
+            diags.push(Diag::err(file, format!("shot `{name}`: a stat card needs `{field}`")));
+        }
+    }
+    if let Some(l) = shot["lens"].as_str()
+        && !refs.lenses.contains(l)
+    {
+        diags.push(Diag::err(file, format!("shot `{name}`: unknown lens `{l}`")));
+    }
+    if shot["view"].as_str().is_some_and(|v| !matches!(v, "map" | "graph" | "timeline")) {
+        diags.push(Diag::err(file, format!("shot `{name}`: view must be map, graph or timeline")));
+    }
+}
+
+/// Reads a shot's date, then checks its borders: a file with no period for that date draws nothing.
+fn date_shot(kb: &Kb, file: &str, shot: &mut Value, diags: &mut Vec<Diag>) {
+    let name = shot_name(shot).to_string();
+    let time = shot.get("time").cloned().map(|v| match v {
+        Value::String(s) => s,
+        other => other.to_string(),
+    });
+    if let Some(t) = time {
+        match edtf::parse(&t) {
+            Ok(span) => {
+                shot["t"] = Value::from(span.start);
+                shot["time_label"] = Value::from(span.label);
+            }
+            Err(e) => diags.push(Diag::err(file, format!("shot `{name}`: time: {e}"))),
+        }
+    }
+    let year = shot.get("t").and_then(Value::as_f64).map(|t| t.floor() as i32);
+    for id in shot["borders"].as_array().into_iter().flatten().filter_map(Value::as_str) {
+        match kb.borders.get(id) {
+            None => diags.push(Diag::err(file, format!("shot `{name}`: no borders file `{id}`")).hint("see content/borders/")),
+            Some(b) if !year.is_some_and(|y| b.periods.iter().any(|&(from, to)| from <= y && y <= to)) => {
+                diags.push(Diag::warn(file, format!("shot `{name}`: `{id}` has no borders for this shot's date")));
+            }
+            Some(_) => {}
+        }
+    }
+}
+
 fn chapter(kb: &Kb, doc: &ChapterDoc, withheld: &HashSet<&str>, diags: &mut Vec<Diag>) -> Option<Chapter> {
     let f = &doc.front;
     let file = &doc.rel_path;
@@ -1132,8 +1244,11 @@ fn chapter(kb: &Kb, doc: &ChapterDoc, withheld: &HashSet<&str>, diags: &mut Vec<
         return None;
     }
     let (prose, scenes) = split_scenes(&doc.body);
-    let edge_ids: HashSet<&str> = kb.edges.iter().map(|e| e.id.as_str()).collect();
-    let lens_ids: HashSet<&str> = kb.schema.lenses.iter().map(|l| l.id.as_str()).collect();
+    let refs = ShotRefs {
+        edges: kb.edges.iter().map(|e| e.id.as_str()).collect(),
+        lenses: kb.schema.lenses.iter().map(|l| l.id.as_str()).collect(),
+        withheld,
+    };
     let mut shots = Vec::new();
     for block in scenes {
         let list: Vec<Value> = match parse_yaml(&block) {
@@ -1144,117 +1259,13 @@ fn chapter(kb: &Kb, doc: &ChapterDoc, withheld: &HashSet<&str>, diags: &mut Vec<
             }
         };
         for mut shot in list {
-            let Some(obj) = shot.as_object_mut() else {
+            if !shot.is_object() {
                 diags.push(Diag::err(file, "each shot must be a mapping"));
                 continue;
-            };
-            let name = obj.get("shot").and_then(Value::as_str).unwrap_or("?").to_string();
-            // a renamed entry's old id still names it, but the page knows only current ids
-            let current = |v: &mut Value| {
-                if let Some(e) = v.as_str().and_then(|id| kb.resolve(id)) {
-                    *v = Value::from(e.id.clone());
-                }
-            };
-            for field in ["focus", "perspective"] {
-                if let Some(v) = obj.get_mut(field) {
-                    current(v);
-                }
             }
-            for field in ["reveal", "places", "routes"] {
-                for v in obj.get_mut(field).and_then(Value::as_array_mut).into_iter().flatten() {
-                    match v.as_array_mut() {
-                        Some(pair) => pair.iter_mut().for_each(current),
-                        None => current(v),
-                    }
-                }
-            }
-            for v in obj.get_mut("reveal_claims").and_then(Value::as_array_mut).into_iter().flatten() {
-                if let Some((who, rest)) = v.as_str().and_then(|r| r.split_once('#'))
-                    && let Some(e) = kb.resolve(who)
-                {
-                    *v = Value::from(format!("{}#{rest}", e.id));
-                }
-            }
-            let ent = |id: &str, field: &str, diags: &mut Vec<Diag>| {
-                if kb.resolve(id).is_none() {
-                    diags.push(Diag::err(file, format!("shot `{name}`: {field} `{id}` is not an entity")));
-                }
-            };
-            for field in ["focus", "perspective"] {
-                if let Some(id) = obj.get(field).and_then(Value::as_str) {
-                    ent(id, field, diags);
-                }
-            }
-            for field in ["reveal", "places"] {
-                if let Some(list) = obj.get(field).and_then(Value::as_array) {
-                    for id in list.iter().filter_map(Value::as_str) {
-                        ent(id, field, diags);
-                    }
-                }
-            }
-            if let Some(routes) = obj.get("routes").and_then(Value::as_array) {
-                for r in routes {
-                    for id in r.as_array().into_iter().flatten().filter_map(Value::as_str) {
-                        ent(id, "routes", diags);
-                    }
-                }
-            }
-            if let Some(list) = obj.get("reveal_claims").and_then(Value::as_array) {
-                for r in list.iter().filter_map(Value::as_str) {
-                    let prefix = format!("{r}/");
-                    let known = |ids: &HashSet<&str>| ids.contains(r) || ids.iter().any(|e| e.starts_with(&prefix));
-                    if known(withheld) {
-                        diags.push(Diag::warn(file, format!("shot `{name}`: claim `{r}` is withheld until sourced")));
-                    } else if !known(&edge_ids) {
-                        diags.push(Diag::err(file, format!("shot `{name}`: claim `{r}` does not exist")).hint("use <entity-id>#<claim-id>"));
-                    }
-                }
-            }
-            if let Some(src) = obj.get("overlay").and_then(|o| o.get("source")).and_then(Value::as_str)
-                && !kb.sources.contains_key(src)
-            {
-                diags.push(Diag::err(file, format!("shot `{name}`: overlay source `{src}` does not exist")));
-            }
-            // a big number shows its proof beside it
-            if let Some(o) = obj.get("overlay").filter(|o| o.get("kind").and_then(Value::as_str) == Some("stat")) {
-                for field in ["value", "label", "source", "quote"].into_iter().filter(|f| o.get(*f).is_none()) {
-                    diags.push(Diag::err(file, format!("shot `{name}`: a stat card needs `{field}`")));
-                }
-            }
-            if let Some(l) = obj.get("lens").and_then(Value::as_str)
-                && !lens_ids.contains(l)
-            {
-                diags.push(Diag::err(file, format!("shot `{name}`: unknown lens `{l}`")));
-            }
-            if let Some(v) = obj.get("view").and_then(Value::as_str)
-                && !matches!(v, "map" | "graph" | "timeline")
-            {
-                diags.push(Diag::err(file, format!("shot `{name}`: view must be map, graph or timeline")));
-            }
-            let time = obj.get("time").cloned().map(|v| match v {
-                Value::String(s) => s,
-                other => other.to_string(),
-            });
-            if let Some(t) = time {
-                match edtf::parse(&t) {
-                    Ok(span) => {
-                        obj.insert("t".into(), Value::from(span.start));
-                        obj.insert("time_label".into(), Value::from(span.label));
-                    }
-                    Err(e) => diags.push(Diag::err(file, format!("shot `{name}`: time: {e}"))),
-                }
-            }
-            // borders name a file, and a shot's date picks the period: one with no period draws nothing
-            let year = obj.get("t").and_then(Value::as_f64).map(|t| t.floor() as i32);
-            for id in obj.get("borders").and_then(Value::as_array).into_iter().flatten().filter_map(Value::as_str) {
-                match kb.borders.get(id) {
-                    None => diags.push(Diag::err(file, format!("shot `{name}`: no borders file `{id}`")).hint("see content/borders/")),
-                    Some(b) if !year.is_some_and(|y| b.periods.iter().any(|&(from, to)| from <= y && y <= to)) => {
-                        diags.push(Diag::warn(file, format!("shot `{name}`: `{id}` has no borders for this shot's date")));
-                    }
-                    Some(_) => {}
-                }
-            }
+            use_current_ids(kb, &mut shot);
+            check_shot_refs(kb, &refs, file, &shot, diags);
+            date_shot(kb, file, &mut shot, diags);
             shots.push(shot);
         }
     }

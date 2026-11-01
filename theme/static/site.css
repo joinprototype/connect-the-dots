@@ -499,7 +499,6 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
 .page-head { max-width: 1180px; margin: 0 auto; padding: clamp(40px, 8vw, 88px) var(--gutter) 1rem; }
 .page-head h1 { font-size: clamp(2.3rem, 5vw, 3.6rem); letter-spacing: -0.025em; }
 .page-lede { font-size: 1.15rem; color: var(--muted); max-width: 52ch; margin-top: 0.8rem; }
-.story-index { max-width: 1180px; margin: 0 auto; padding: 1rem var(--gutter) 3rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 30px 24px; }
 .chapter-head { max-width: 1180px; margin: 0 auto; padding: clamp(40px, 8vw, 96px) var(--gutter) 0.5rem; }
 .chapter-head h1 { font-size: clamp(2.5rem, 6.5vw, 4.8rem); letter-spacing: -0.03em; line-height: 1.02; max-width: 17ch; text-wrap: balance; }
 .chapter-subtitle { font: 400 clamp(1.15rem, 2vw, 1.4rem)/1.4 var(--font-body); color: var(--ink-2); margin-top: 1rem; max-width: 46ch; }

@@ -56,6 +56,9 @@ Santa Monica, the last of our test cases without a story, plays as one: an airfi
 - [x] Docs updated (CHANGELOG, roadmap, backlog, data contract)
 - [x] Known issues listed
 
+### After the release
+- [x] **A refactor pass, with the site byte for byte the same.** The world's `build` went from 320 lines to 56, in named stages. A chapter's checks went from 149 lines to 49, and the shot fields that name entries are now listed once, where they were listed three times, so a new field cannot be missed. One CSS rule nothing used is gone. The proof: 1,430 files the same but for the build time, the CSS rule and the world's timer; a 60,000-node world's tiles the same; a chapter broken on purpose gives the same 32 lines of errors.
+
 ## Known issues
 
 - Not tried on a real phone or GPU. The globe scenes need several seconds to settle in software rendering.

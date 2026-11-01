@@ -2,7 +2,7 @@
 //! (format in docs/world-tiles.md). Deterministic: the same graph always yields the same world.
 #![allow(clippy::needless_range_loop)]
 
-use std::{collections::HashMap, fs, io::Write, path::Path, time::Instant};
+use std::{borrow::Cow, collections::HashMap, fs, io::Write, path::Path, time::Instant};
 
 use anyhow::Result;
 use rayon::prelude::*;
@@ -742,15 +742,26 @@ fn gzip_len(bytes: &[u8]) -> usize {
     enc.finish().map(|v| v.len()).unwrap_or(0)
 }
 
-/// Builds the world: clusters, layout, level of detail, tiles and manifest under `out`.
-pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> Result<Stats> {
-    let t0 = Instant::now();
-    let n = g.n;
-    if out.exists() {
-        fs::remove_dir_all(out)?;
-    }
-    fs::create_dir_all(out)?;
+/// Communities, ranks and places, before the map is fitted to the unit square.
+struct Placed {
+    /// Number of communities; the next five have one row each.
+    nc: usize,
+    csize: Vec<usize>,
+    cpos: Vec<[f64; 2]>,
+    crad: Vec<f64>,
+    members: Vec<Vec<u32>>,
+    /// Summed links between communities.
+    meta: Vec<(u32, u32, f32)>,
+    pos: Vec<[f64; 2]>,
+    degree: Vec<f64>,
+    /// Nodes, most important first, and each node's place in that order.
+    rank: Vec<u32>,
+    rank_of: Vec<u32>,
+}
 
+/// Finds the communities, lays them out, and places each one's nodes on a disc.
+fn place(g: &WorldGraph) -> Placed {
+    let n = g.n;
     let (comm, nc) = cluster(n, &g.edges);
     let mut csize = vec![0usize; nc];
     for &c in &comm {
@@ -765,8 +776,7 @@ pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> R
     let hub_limit = 500u32.max((n / 2000) as u32);
     let layout_edges: Vec<(u32, u32, f32)> =
         g.edges.iter().copied().filter(|&(a, b, _)| count[a as usize] <= hub_limit && count[b as usize] <= hub_limit).collect();
-    let meta = meta_edges(&comm, &g.edges);
-    let (mut cpos, crad) = layout_clusters(&csize, &meta_edges(&comm, &layout_edges));
+    let (cpos, crad) = layout_clusters(&csize, &meta_edges(&comm, &layout_edges));
 
     // degree (weighted) and importance rank
     let mut degree = vec![0f64; n];
@@ -796,51 +806,68 @@ pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> R
             pos[i as usize] = [cpos[c][0] + d * a.cos(), cpos[c][1] + d * a.sin()];
         }
     }
-    // keep the previous build's orientation, then normalise into the unit square
-    let prev: Option<HashMap<String, [f32; 2]>> = state.and_then(|p| fs::read_to_string(p).ok()).and_then(|t| serde_json::from_str(&t).ok());
-    let mut aligned = 0;
-    if let (Some(prev), Some(keys)) = (&prev, &g.keys) {
-        aligned = orient(&mut pos, &mut cpos, keys, prev);
-    }
-    let (mut minx, mut miny, mut maxx, mut maxy) = (f64::MAX, f64::MAX, f64::MIN, f64::MIN);
-    for c in 0..nc {
-        minx = minx.min(cpos[c][0] - crad[c]);
-        maxx = maxx.max(cpos[c][0] + crad[c]);
-        miny = miny.min(cpos[c][1] - crad[c]);
-        maxy = maxy.max(cpos[c][1] + crad[c]);
-    }
-    let scale = 0.94 / (maxx - minx).max(maxy - miny).max(1e-9);
-    let (cx, cy) = ((minx + maxx) / 2.0, (miny + maxy) / 2.0);
-    let norm = |p: [f64; 2]| -> [f32; 2] { [((p[0] - cx) * scale + 0.5) as f32, ((p[1] - cy) * scale + 0.5) as f32] };
-    let npos: Vec<[f32; 2]> = pos.iter().map(|&p| norm(p)).collect();
-    let cnorm: Vec<[f32; 2]> = cpos.iter().map(|&p| norm(p)).collect();
-    let crad_n: Vec<f32> = crad.iter().map(|&r| (r * scale) as f32).collect();
-    // drift: how far the nodes placed last time moved, in the square
-    let drift = match (&prev, &g.keys) {
-        (Some(prev), Some(keys)) if aligned >= 3 => {
-            let moved: Vec<f64> = keys
-                .iter()
-                .zip(&npos)
-                .filter_map(|(k, p)| prev.get(k).map(|q| (((p[0] - q[0]) as f64).powi(2) + ((p[1] - q[1]) as f64).powi(2)).sqrt()))
-                .collect();
-            Some(moved.iter().sum::<f64>() / moved.len() as f64)
+    Placed { nc, csize, cpos, crad, members, meta: meta_edges(&comm, &g.edges), pos, degree, rank, rank_of }
+}
+
+/// The map in the unit square.
+struct Square {
+    nodes: Vec<[f32; 2]>,
+    centers: Vec<[f32; 2]>,
+    radii: Vec<f32>,
+}
+
+impl Square {
+    fn fit(p: &Placed) -> Square {
+        let (mut minx, mut miny, mut maxx, mut maxy) = (f64::MAX, f64::MAX, f64::MIN, f64::MIN);
+        for c in 0..p.nc {
+            minx = minx.min(p.cpos[c][0] - p.crad[c]);
+            maxx = maxx.max(p.cpos[c][0] + p.crad[c]);
+            miny = miny.min(p.cpos[c][1] - p.crad[c]);
+            maxy = maxy.max(p.cpos[c][1] + p.crad[c]);
         }
-        _ => None,
-    };
-    if let (Some(path), Some(keys)) = (state, &g.keys) {
-        let snapshot: HashMap<&str, [f32; 2]> = keys.iter().map(String::as_str).zip(npos.iter().copied()).collect();
-        if let Some(dir) = path.parent() {
-            fs::create_dir_all(dir)?;
-        }
-        fs::write(path, serde_json::to_vec(&snapshot)?)?;
+        let scale = 0.94 / (maxx - minx).max(maxy - miny).max(1e-9);
+        let (cx, cy) = ((minx + maxx) / 2.0, (miny + maxy) / 2.0);
+        let norm = |p: &[f64; 2]| -> [f32; 2] { [((p[0] - cx) * scale + 0.5) as f32, ((p[1] - cy) * scale + 0.5) as f32] };
+        Square { nodes: p.pos.iter().map(norm).collect(), centers: p.cpos.iter().map(norm).collect(), radii: p.crad.iter().map(|&r| (r * scale) as f32).collect() }
     }
 
-    // zoom levels: deepest zoom where every tile holds at most MAX_TILE_NODES nodes
+    /// Where the nodes are: the viewer opens on them.
+    fn bounds(&self) -> [f32; 4] {
+        if self.nodes.is_empty() {
+            return [0.0, 0.0, 1.0, 1.0];
+        }
+        self.nodes.iter().fold([f32::MAX, f32::MAX, f32::MIN, f32::MIN], |b, p| [b[0].min(p[0]), b[1].min(p[1]), b[2].max(p[0]), b[3].max(p[1])])
+    }
+}
+
+/// How far the nodes placed last time moved, in the square; None until 3 could be aligned.
+fn mean_drift(prev: Option<&HashMap<String, [f32; 2]>>, keys: Option<&[String]>, nodes: &[[f32; 2]], aligned: usize) -> Option<f64> {
+    let (prev, keys) = (prev?, keys?);
+    if aligned < 3 {
+        return None;
+    }
+    let moved: Vec<f64> =
+        keys.iter().zip(nodes).filter_map(|(k, p)| prev.get(k).map(|q| (((p[0] - q[0]) as f64).powi(2) + ((p[1] - q[1]) as f64).powi(2)).sqrt())).collect();
+    Some(moved.iter().sum::<f64>() / moved.len() as f64)
+}
+
+/// Remembers where every node is, for the next build to keep this orientation.
+fn write_state(path: &Path, keys: &[String], nodes: &[[f32; 2]]) -> Result<()> {
+    let snapshot: HashMap<&str, [f32; 2]> = keys.iter().map(String::as_str).zip(nodes.iter().copied()).collect();
+    if let Some(dir) = path.parent() {
+        fs::create_dir_all(dir)?;
+    }
+    fs::write(path, serde_json::to_vec(&snapshot)?)?;
+    Ok(())
+}
+
+/// The deepest zoom needed: where every tile holds at most MAX_TILE_NODES nodes, 3 at least.
+fn deepest_zoom(nodes: &[[f32; 2]]) -> u8 {
     let mut maxzoom = 0u8;
     for z in 0..=14u8 {
         let mut counts: HashMap<(u32, u32), usize> = HashMap::new();
         let mut worst = 0;
-        for p in &npos {
+        for p in nodes {
             let e = counts.entry(tile_of(p[0], p[1], z)).or_default();
             *e += 1;
             worst = worst.max(*e);
@@ -850,14 +877,15 @@ pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> R
             break;
         }
     }
-    let maxzoom = maxzoom.max(3);
-    let cluster_zoom: u8 = if nc >= 60 && n > 20_000 { 2 } else { 0 };
+    maxzoom.max(3)
+}
 
-    // minzoom: greedy quota per tile, most important nodes first
-    let mut minzoom = vec![maxzoom; n];
+/// Each node's first zoom: a greedy quota per tile, most important nodes first.
+fn min_zooms(rank: &[u32], nodes: &[[f32; 2]], cluster_zoom: u8, maxzoom: u8) -> Vec<u8> {
+    let mut minzoom = vec![maxzoom; nodes.len()];
     let mut counts: Vec<HashMap<(u32, u32), usize>> = vec![HashMap::new(); (maxzoom + 1) as usize];
-    for &i in &rank {
-        let p = npos[i as usize];
+    for &i in rank {
+        let p = nodes[i as usize];
         let mut chosen = maxzoom;
         'z: for z in cluster_zoom..=maxzoom {
             for zz in z..maxzoom {
@@ -873,70 +901,68 @@ pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> R
             *counts[zz as usize].entry(tile_of(p[0], p[1], zz)).or_default() += 1;
         }
     }
+    minzoom
+}
 
-    // node display size (world units at zoom 0) and labels
-    let size_of = |i: usize| (0.0006 * (1.0 + degree[i].sqrt().min(40.0) * 0.35)) as f32;
-    let default_labels: Vec<String>;
-    let labels: &Vec<String> = match &g.labels {
-        Some(l) => l,
-        None => {
-            default_labels = (0..n).map(|i| format!("{} {i}", g.label_prefix)).collect();
-            &default_labels
-        }
-    };
-    let label_zoom = |i: usize| -> u8 {
-        if g.labels.is_some() || rank_of[i] < 200 { minzoom[i] } else { (minzoom[i] + 2).min(maxzoom) }
-    };
-    let cluster_label: Vec<String> = members
-        .iter()
-        .enumerate()
-        .map(|(c, list)| match (&g.labels, list.first()) {
-            (Some(l), Some(&top)) => l[top as usize].clone(),
-            _ => format!("Region {c}"),
-        })
-        .collect();
+fn write_tile(out: &Path, z: u8, x: u32, y: u32, bytes: &[u8]) {
+    let dir = out.join(z.to_string()).join(x.to_string());
+    let _ = fs::create_dir_all(&dir);
+    let _ = fs::write(dir.join(format!("{y}.bin")), bytes);
+}
 
-    let mut stats = Stats { nodes: n, edges: g.edges.len(), clusters: nc, maxzoom, cluster_zoom, ..Stats::default() };
-    let mut largest: Vec<Vec<u8>> = Vec::new();
-    let mut remember = |bytes: Vec<u8>, stats: &mut Stats| {
-        stats.tiles += 1;
-        stats.bytes += bytes.len();
-        stats.max_tile_bytes = stats.max_tile_bytes.max(bytes.len());
-        largest.push(bytes);
-        largest.sort_by_key(|b| std::cmp::Reverse(b.len()));
-        largest.truncate(8);
-    };
+/// What it takes to write a level's tiles.
+struct Tiles<'a> {
+    g: &'a WorldGraph,
+    p: &'a Placed,
+    square: &'a Square,
+    out: &'a Path,
+    minzoom: Vec<u8>,
+    maxzoom: u8,
+    labels: Cow<'a, [String]>,
+}
 
-    // cluster tiles (zoomed out): regions and summed links between them
-    let cmax = meta.iter().map(|e| e.2).fold(1e-9f32, f32::max);
-    for z in 0..cluster_zoom {
+impl Tiles<'_> {
+    /// A zoomed-out level: regions and the summed links between them.
+    fn clusters(&self, z: u8) -> Vec<Vec<u8>> {
+        let (p, centers) = (self.p, &self.square.centers);
+        let meta = &p.meta;
+        let cmax = meta.iter().map(|e| e.2).fold(1e-9f32, f32::max);
+        let name: Vec<String> = p
+            .members
+            .iter()
+            .enumerate()
+            .map(|(c, list)| match (&self.g.labels, list.first()) {
+                (Some(l), Some(&top)) => l[top as usize].clone(),
+                _ => format!("Region {c}"),
+            })
+            .collect();
         let mut tiles: HashMap<(u32, u32), (Vec<usize>, Vec<usize>)> = HashMap::new();
-        for c in 0..nc {
-            tiles.entry(tile_of(cnorm[c][0], cnorm[c][1], z)).or_default().0.push(c);
+        for c in 0..p.nc {
+            tiles.entry(tile_of(centers[c][0], centers[c][1], z)).or_default().0.push(c);
         }
         for (ei, &(a, b, _)) in meta.iter().enumerate() {
-            let (ta, tb) = (tile_of(cnorm[a as usize][0], cnorm[a as usize][1], z), tile_of(cnorm[b as usize][0], cnorm[b as usize][1], z));
+            let (ta, tb) = (tile_of(centers[a as usize][0], centers[a as usize][1], z), tile_of(centers[b as usize][0], centers[b as usize][1], z));
             tiles.entry(ta).or_default().1.push(ei);
             if tb != ta {
                 tiles.entry(tb).or_default().1.push(ei);
             }
         }
-        let written: Vec<Vec<u8>> = tiles
+        tiles
             .into_par_iter()
             .map(|((x, y), (mut cl, mut es))| {
-                cl.sort_by_key(|&c| std::cmp::Reverse(csize[c]));
+                cl.sort_by_key(|&c| std::cmp::Reverse(p.csize[c]));
                 let shown_labels = 40usize;
                 let nodes: Vec<TileNode> = cl
                     .iter()
                     .enumerate()
                     .map(|(k, &c)| TileNode {
-                        x: cnorm[c][0],
-                        y: cnorm[c][1],
+                        x: centers[c][0],
+                        y: centers[c][1],
                         id: c as u32,
-                        size: crad_n[c],
+                        size: self.square.radii[c],
                         color: (c % 7) as u8,
                         minzoom: 0,
-                        label: if k < shown_labels { cluster_label[c].as_str() } else { "" },
+                        label: if k < shown_labels { name[c].as_str() } else { "" },
                     })
                     .collect();
                 es.sort_by(|&p, &q| meta[q].2.total_cmp(&meta[p].2));
@@ -945,30 +971,30 @@ pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> R
                     .iter()
                     .map(|&ei| {
                         let (a, b, w) = meta[ei];
-                        let (pa, pb) = (cnorm[a as usize], cnorm[b as usize]);
+                        let (pa, pb) = (centers[a as usize], centers[b as usize]);
                         ([pa[0], pa[1], pb[0], pb[1]], (a % 7) as u8, ((w / cmax).sqrt() * 255.0) as u8)
                     })
                     .collect();
                 let bytes = encode(true, &nodes, &edges);
-                let dir = out.join(z.to_string()).join(x.to_string());
-                let _ = fs::create_dir_all(&dir);
-                let _ = fs::write(dir.join(format!("{y}.bin")), &bytes);
+                write_tile(self.out, z, x, y, &bytes);
                 bytes
             })
-            .collect();
-        for b in written {
-            remember(b, &mut stats);
-        }
+            .collect()
     }
 
-    // node tiles: every node visible at this zoom, plus links whose ends are both visible
-    let wmax = g.edges.iter().map(|e| e.2).fold(1e-9f32, f32::max);
-    for z in cluster_zoom..=maxzoom {
+    /// A level of nodes: every node visible at this zoom, plus links whose ends are both visible.
+    /// Each tile comes back with its counts of nodes and links.
+    fn nodes(&self, z: u8) -> Vec<(Vec<u8>, usize, usize)> {
+        let (g, p, npos, minzoom) = (self.g, self.p, &self.square.nodes, &self.minzoom);
+        let wmax = g.edges.iter().map(|e| e.2).fold(1e-9f32, f32::max);
+        let label_zoom = |i: usize| -> u8 {
+            if g.labels.is_some() || p.rank_of[i] < 200 { minzoom[i] } else { (minzoom[i] + 2).min(self.maxzoom) }
+        };
         let mut tiles: HashMap<(u32, u32), (Vec<u32>, Vec<u32>)> = HashMap::new();
-        for &i in &rank {
+        for &i in &p.rank {
             if minzoom[i as usize] <= z {
-                let p = npos[i as usize];
-                tiles.entry(tile_of(p[0], p[1], z)).or_default().0.push(i);
+                let q = npos[i as usize];
+                tiles.entry(tile_of(q[0], q[1], z)).or_default().0.push(i);
             }
         }
         for (ei, &(a, b, _)) in g.edges.iter().enumerate() {
@@ -987,7 +1013,7 @@ pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> R
                 t.1.push(ei as u32);
             }
         }
-        let written: Vec<(Vec<u8>, usize, usize)> = tiles
+        tiles
             .into_par_iter()
             .map(|((x, y), (ns, mut es))| {
                 let nodes: Vec<TileNode> = ns
@@ -998,19 +1024,19 @@ pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> R
                             x: npos[i][0],
                             y: npos[i][1],
                             id: i as u32,
-                            size: size_of(i),
+                            size: (0.0006 * (1.0 + p.degree[i].sqrt().min(40.0) * 0.35)) as f32,
                             color: g.color[i],
                             minzoom: minzoom[i],
-                            label: if label_zoom(i) <= z { labels[i].as_str() } else { "" },
+                            label: if label_zoom(i) <= z { self.labels[i].as_str() } else { "" },
                         }
                     })
                     .collect();
-                es.sort_by(|&p, &q| {
+                es.sort_by(|&a, &b| {
                     let score = |e: u32| {
                         let (a, b, _) = g.edges[e as usize];
-                        rank_of[a as usize].max(rank_of[b as usize])
+                        p.rank_of[a as usize].max(p.rank_of[b as usize])
                     };
-                    score(p).cmp(&score(q)).then(p.cmp(&q))
+                    score(a).cmp(&score(b)).then(a.cmp(&b))
                 });
                 es.truncate(MAX_TILE_EDGES);
                 let edges: Vec<([f32; 4], u8, u8)> = es
@@ -1022,36 +1048,34 @@ pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> R
                     })
                     .collect();
                 let bytes = encode(false, &nodes, &edges);
-                let dir = out.join(z.to_string()).join(x.to_string());
-                let _ = fs::create_dir_all(&dir);
-                let _ = fs::write(dir.join(format!("{y}.bin")), &bytes);
+                write_tile(self.out, z, x, y, &bytes);
                 (bytes, nodes.len(), edges.len())
             })
-            .collect();
-        for (b, nn, ne) in written {
-            stats.max_tile_nodes = stats.max_tile_nodes.max(nn);
-            stats.max_tile_edges = stats.max_tile_edges.max(ne);
-            remember(b, &mut stats);
-        }
+            .collect()
     }
-    stats.max_tile_gzip = largest.iter().map(|b| gzip_len(b)).max().unwrap_or(0);
-    stats.drift = drift;
-    stats.aligned_nodes = aligned;
-    stats.build_ms = t0.elapsed().as_millis();
+}
 
-    if let Some(ents) = &spec.entities {
-        fs::write(out.join("entities.json"), serde_json::to_vec(ents)?)?;
+/// Adds up the tiles as they are written, keeping the largest few to gzip once at the end.
+struct Tally {
+    stats: Stats,
+    largest: Vec<Vec<u8>>,
+}
+
+impl Tally {
+    fn add(&mut self, bytes: Vec<u8>) {
+        self.stats.tiles += 1;
+        self.stats.bytes += bytes.len();
+        self.stats.max_tile_bytes = self.stats.max_tile_bytes.max(bytes.len());
+        self.largest.push(bytes);
+        self.largest.sort_by_key(|b| std::cmp::Reverse(b.len()));
+        self.largest.truncate(8);
     }
-    // where the nodes are (the viewer opens on them), and the regions it names when zoomed out
-    let bounds = if n == 0 {
-        [0.0, 0.0, 1.0, 1.0]
-    } else {
-        npos.iter().fold([f32::MAX, f32::MAX, f32::MIN, f32::MIN], |b, p| [b[0].min(p[0]), b[1].min(p[1]), b[2].max(p[0]), b[3].max(p[1])])
-    };
-    let regions = g.labels.as_ref().map(|l| regions(&members, l, g.may_name.as_deref(), &cnorm, &crad_n)).unwrap_or_default();
+}
+
+fn write_manifest(spec: &Spec, stats: &Stats, bounds: [f32; 4], regions: &[Region], out: &Path) -> Result<()> {
     let manifest = json!({
-        "version": 0, "kind": spec.kind, "nodes": n, "edges": g.edges.len(), "clusters": nc,
-        "maxzoom": maxzoom, "cluster_zoom": cluster_zoom, "tile_quota": QUOTA,
+        "version": 0, "kind": spec.kind, "nodes": stats.nodes, "edges": stats.edges, "clusters": stats.clusters,
+        "maxzoom": stats.maxzoom, "cluster_zoom": stats.cluster_zoom, "tile_quota": QUOTA,
         "bounds": bounds, "regions": regions,
         "palette": spec.palette, "palette_labels": spec.palette_labels,
         "built": chrono::Utc::now().to_rfc3339_opts(chrono::SecondsFormat::Secs, true),
@@ -1062,6 +1086,64 @@ pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> R
         "stability": { "aligned_nodes": stats.aligned_nodes, "mean_drift": stats.drift },
     });
     fs::write(out.join("manifest.json"), serde_json::to_vec_pretty(&manifest)?)?;
+    Ok(())
+}
+
+/// Builds the world: clusters, layout, level of detail, tiles and manifest under `out`.
+pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> Result<Stats> {
+    let t0 = Instant::now();
+    if out.exists() {
+        fs::remove_dir_all(out)?;
+    }
+    fs::create_dir_all(out)?;
+
+    let mut p = place(g);
+    // keep the previous build's orientation, then normalise into the unit square
+    let prev: Option<HashMap<String, [f32; 2]>> = state.and_then(|p| fs::read_to_string(p).ok()).and_then(|t| serde_json::from_str(&t).ok());
+    let aligned = match (&prev, &g.keys) {
+        (Some(prev), Some(keys)) => orient(&mut p.pos, &mut p.cpos, keys, prev),
+        _ => 0,
+    };
+    let square = Square::fit(&p);
+    let drift = mean_drift(prev.as_ref(), g.keys.as_deref(), &square.nodes, aligned);
+    if let (Some(path), Some(keys)) = (state, &g.keys) {
+        write_state(path, keys, &square.nodes)?;
+    }
+
+    let maxzoom = deepest_zoom(&square.nodes);
+    let cluster_zoom: u8 = if p.nc >= 60 && g.n > 20_000 { 2 } else { 0 };
+    let labels: Cow<[String]> = match &g.labels {
+        Some(l) => l.into(),
+        None => (0..g.n).map(|i| format!("{} {i}", g.label_prefix)).collect::<Vec<_>>().into(),
+    };
+    let minzoom = min_zooms(&p.rank, &square.nodes, cluster_zoom, maxzoom);
+    let tiles = Tiles { g, p: &p, square: &square, out, minzoom, maxzoom, labels };
+
+    let stats = Stats { nodes: g.n, edges: g.edges.len(), clusters: p.nc, maxzoom, cluster_zoom, ..Stats::default() };
+    let mut tally = Tally { stats, largest: Vec::new() };
+    for z in 0..cluster_zoom {
+        for bytes in tiles.clusters(z) {
+            tally.add(bytes);
+        }
+    }
+    for z in cluster_zoom..=maxzoom {
+        for (bytes, nodes, edges) in tiles.nodes(z) {
+            tally.stats.max_tile_nodes = tally.stats.max_tile_nodes.max(nodes);
+            tally.stats.max_tile_edges = tally.stats.max_tile_edges.max(edges);
+            tally.add(bytes);
+        }
+    }
+    let mut stats = tally.stats;
+    stats.max_tile_gzip = tally.largest.iter().map(|b| gzip_len(b)).max().unwrap_or(0);
+    stats.drift = drift;
+    stats.aligned_nodes = aligned;
+    stats.build_ms = t0.elapsed().as_millis();
+
+    if let Some(ents) = &spec.entities {
+        fs::write(out.join("entities.json"), serde_json::to_vec(ents)?)?;
+    }
+    let named = g.labels.as_ref().map(|l| regions(&p.members, l, g.may_name.as_deref(), &square.centers, &square.radii)).unwrap_or_default();
+    write_manifest(spec, &stats, square.bounds(), &named, out)?;
     Ok(stats)
 }
 

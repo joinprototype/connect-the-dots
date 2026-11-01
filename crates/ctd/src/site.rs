@@ -14,7 +14,7 @@ use walkdir::WalkDir;
 
 use crate::{
     answers::{self, Answer},
-    kb::{Edge, EdgeSrc, Entity, Kb},
+    kb::{Chapter, Edge, EdgeSrc, Entity, Kb},
     markdown,
     paths::Params,
     plural,
@@ -431,11 +431,11 @@ impl<'a> QuestionPages<'a> {
 /// The written stories that name each entry, the one with the most scenes on it first. An entry's page
 /// shows the first few: it is where a reader arrives from a search, and a story is the way in.
 fn stories_of(kb: &Kb) -> HashMap<String, Vec<Value>> {
-    let mut found: HashMap<&str, Vec<(usize, &crate::kb::Chapter)>> = HashMap::new();
+    let mut found: HashMap<&str, Vec<(usize, &Chapter)>> = HashMap::new();
     for ch in &kb.chapters {
         let mut scenes: BTreeMap<&str, usize> = BTreeMap::new();
         for shot in &ch.shots {
-            for id in data::shot_names(shot).collect::<BTreeSet<_>>() {
+            for id in crate::kb::shot_entries(shot).map(|(_, id)| id).collect::<BTreeSet<_>>() {
                 *scenes.entry(id).or_default() += 1;
             }
         }
@@ -443,12 +443,14 @@ fn stories_of(kb: &Kb) -> HashMap<String, Vec<Value>> {
             found.entry(id).or_default().push((n, ch));
         }
     }
-    let rows = |mut chs: Vec<(usize, &crate::kb::Chapter)>| {
-        chs.sort_by_key(|&(n, _)| std::cmp::Reverse(n));
-        let row = |ch: &crate::kb::Chapter| json!({ "title": ch.title, "url": format!("/c/{}/", ch.id), "counts": plural(ch.shots.len(), "scene") });
-        chs.iter().take(STORIES_ON_PAGE).map(|&(_, ch)| row(ch)).collect()
-    };
-    found.into_iter().map(|(id, chs)| (id.to_string(), rows(chs))).collect()
+    let row = |ch: &Chapter| json!({ "title": ch.title, "url": format!("/c/{}/", ch.id), "counts": plural(ch.shots.len(), "scene") });
+    found
+        .into_iter()
+        .map(|(id, mut chs)| {
+            chs.sort_by_key(|&(n, _)| std::cmp::Reverse(n));
+            (id.to_string(), chs.iter().take(STORIES_ON_PAGE).map(|&(_, ch)| row(ch)).collect())
+        })
+        .collect()
 }
 
 struct Site<'a> {

@@ -173,12 +173,6 @@ fn list(v: &Value) -> impl Iterator<Item = &str> {
     v.as_array().into_iter().flatten().filter_map(Value::as_str)
 }
 
-/// The entries a scene names by id: its focus, perspective, reveals, places and route ends.
-pub(super) fn shot_names(shot: &Value) -> impl Iterator<Item = &str> {
-    let own = ["focus", "perspective"].into_iter().filter_map(|k| shot[k].as_str());
-    own.chain(list(&shot["reveal"])).chain(list(&shot["places"])).chain(shot["routes"].as_array().into_iter().flatten().flat_map(list))
-}
-
 /// What a story's scenes name, embedded in its page: the entries (focus, reveals, places, route ends,
 /// the ends of revealed links, accounts and speakers), the links its scenes reveal, and the sources
 /// those cite or an overlay shows. The player reads this and schema.json, nothing else.
@@ -187,7 +181,7 @@ pub fn story(kb: &Kb, by_id: &BTreeMap<&str, &Edge>, shots: &[Value]) -> Value {
     let mut links: BTreeMap<&str, &Edge> = BTreeMap::new();
     let mut cited: BTreeSet<&str> = BTreeSet::new();
     for shot in shots {
-        names.extend(shot_names(shot));
+        names.extend(crate::kb::shot_entries(shot).map(|(_, id)| id));
         cited.extend(shot["overlay"]["source"].as_str());
         for r in list(&shot["reveal_claims"]) {
             // "<entity>#<claim>" also names that claim's "/<n>" links, one per target
