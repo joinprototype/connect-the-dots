@@ -109,6 +109,10 @@ Startup sprints: the order below is a best guess and is re-decided at every spri
   - Santa Monica, the last test case without a story, gets one: the 1924 flight, Project RAND, Baran's network and the Pentagon Papers, with the ARPANET's builders and Baran each in their own words.
   - Entries and written stories end with a way to correct them.
 
+- **Sprint 22: a million dots, with life in them** ([ADR-0022](decisions/0022-dots-and-lines.md), [ADR-0023](decisions/0023-the-atlas.md), [sprints/sprint-22.md](sprints/sprint-22.md)).
+  - The atlas: a million entries from open data, marked as such, on about 9,000 files. The Map holds them at 60 fps on a real GPU.
+  - A new look, stories on white, pictures, and four stories: the Moon, Watergate, the bomb and the crash of 2008.
+
 ## Next (candidates, chosen at review)
 
 - **Story v1.**

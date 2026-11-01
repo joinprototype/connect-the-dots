@@ -4,6 +4,11 @@ What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versio
 
 ## 0.4.1 (2026-11-01)
 
+- A million dots. The best-known people, places, works and events in the world are now on the Map, each with its own page, drawn from open data and marked as such. What we wrote by hand stays apart and keeps its proof.
+- The Map is one round world, with every region named, and it stays smooth at a million dots: it only draws what is in view.
+- Search finds all of them.
+- Four new stories: "We Choose the Moon", "The Plumbers" on Watergate, "The Most Terrible Bomb" on the road to Hiroshima and Nagasaki, and "The Crash of 2008".
+- Pictures: story scenes and entries now show freely licensed photos, each credited.
 - A new look: real typefaces, colour that means something, every story in its own ink, and the real map of links on the home page.
 - Stories now read on white, whatever your system's dark mode says.
 - Dots on the Map, in stories and in the explorer take the colour of what they are.
