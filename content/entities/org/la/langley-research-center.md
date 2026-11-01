@@ -4,6 +4,7 @@ id: langley-research-center
 type: org
 name: "Langley Research Center"
 summary: "NASA research center in Hampton, Virginia."
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/f/ff/Langley_research_center.jpg", license: "Public domain", author: "NASA", page: "https://commons.wikimedia.org/wiki/File:Langley_research_center.jpg"}
 same_as: {wikidata: Q618731}
 coords: [-76.3803, 37.0913]
 claims:

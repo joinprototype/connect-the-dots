@@ -5,6 +5,7 @@ type: event
 name: "Apollo program"
 aliases: ["Project Apollo", "Apollo"]
 summary: "NASA program that landed people on the Moon between 1969 and 1972."
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Apollo_CSM_lunar_orbit.jpg/960px-Apollo_CSM_lunar_orbit.jpg", license: "Public domain", author: "NASA", page: "https://commons.wikimedia.org/wiki/File:Apollo_CSM_lunar_orbit.jpg"}
 same_as: {wikidata: Q46611}
 when: "1961/1972"
 claims:

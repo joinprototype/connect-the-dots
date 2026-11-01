@@ -4,6 +4,7 @@ id: william-safire
 type: person
 name: "William Safire"
 summary: "American speechwriter for President Nixon and later a columnist."
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/6/6f/President_Bush_presents_William_Safire_the_2006_President_Medal_of_Freedom_%28cropped%29.jpg", license: "Public domain", author: "White House photo by Shealah Craighead.", page: "https://commons.wikimedia.org/wiki/File:President_Bush_presents_William_Safire_the_2006_President_Medal_of_Freedom_(cropped).jpg"}
 same_as: {wikidata: Q254983}
 when: "1929/2009"
 claims:

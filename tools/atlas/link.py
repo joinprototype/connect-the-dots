@@ -46,6 +46,13 @@ def main() -> None:
         q = fixes.get(f[0], f[3])
         if q.startswith("Q"):
             qid[f[0]] = q
+    # entries that came with their id: they want a picture too
+    done = {}
+    for path in glob.glob("content/entities/*/*/*.md"):
+        head = open(path).read().split("\n---", 1)[0]
+        if (m := re.search(r"^same_as:.*wikidata: (Q\d+)", head, re.M)) and not re.search(r"^image:", head, re.M):
+            done[re.search(r"^id: (.+)$", head, re.M)[1]] = m[1]
+    qid.update(done)
     ids = sorted(set(qid.values()))
     pictures: dict[str, str] = {}
     for i in range(0, len(ids), 50):
@@ -71,10 +78,12 @@ def main() -> None:
         eid = re.search(r"^id: (.+)$", head, re.M)[1]
         kind = re.search(r"^type: (.+)$", head, re.M)[1]
         q = qid.get(eid)
-        if not q or re.search(r"^same_as:.*wikidata", head, re.M):
+        if not q:
             continue
         add = []
-        if re.search(r"^same_as: \{", head, re.M):
+        if re.search(r"^same_as:.*wikidata", head, re.M):
+            pass
+        elif re.search(r"^same_as: \{", head, re.M):
             head = re.sub(r"^same_as: \{", f"same_as: {{wikidata: {q}, ", head, flags=re.M)
         else:
             add.append(f"same_as: {{wikidata: {q}}}")
@@ -85,7 +94,7 @@ def main() -> None:
             lic = plain(meta.get("LicenseShortName", {}).get("value", ""))
             author = plain(meta.get("Artist", {}).get("value", ""))[:90]
             if FREE.search(lic) and not UNFREE.search(lic):
-                add.append(f"image: {{url: {json.dumps(im['thumburl'])}, license: {json.dumps(lic)}, author: {json.dumps(author or 'Unknown')}, page: {json.dumps(im['descriptionurl'])}}}")
+                add.append(f"image: {{url: {json.dumps(im['thumburl'].split('?')[0])}, license: {json.dumps(lic)}, author: {json.dumps(author or 'Unknown')}, page: {json.dumps(im['descriptionurl'])}}}")
                 pictured += 1
         if add:
             head = re.sub(r"^(summary:.*)$", lambda m: m[1] + "\n" + "\n".join(add), head, count=1, flags=re.M)

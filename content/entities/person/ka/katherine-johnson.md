@@ -4,6 +4,7 @@ id: katherine-johnson
 type: person
 name: "Katherine Johnson"
 summary: "American mathematician at NASA's Langley Research Center."
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Katherine_Johnson_1983.jpg/960px-Katherine_Johnson_1983.jpg", license: "Public domain", author: "NASA", page: "https://commons.wikimedia.org/wiki/File:Katherine_Johnson_1983.jpg"}
 same_as: {wikidata: Q11740}
 when: "1918/2020"
 claims:

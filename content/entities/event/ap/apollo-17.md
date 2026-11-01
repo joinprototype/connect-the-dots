@@ -4,6 +4,7 @@ id: apollo-17
 type: event
 name: "Apollo 17"
 summary: "Last crewed Moon landing, in December 1972."
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Apollo_17_crew.jpg/960px-Apollo_17_crew.jpg", license: "Public domain", author: "NASA", page: "https://commons.wikimedia.org/wiki/File:Apollo_17_crew.jpg"}
 same_as: {wikidata: Q180971}
 when: "1972-12-07/1972-12-19"
 claims:

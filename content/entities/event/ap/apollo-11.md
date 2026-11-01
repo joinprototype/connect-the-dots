@@ -4,6 +4,7 @@ id: apollo-11
 type: event
 name: "Apollo 11"
 summary: "First crewed landing on the Moon, in July 1969."
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Apollo_11_Crew.jpg/960px-Apollo_11_Crew.jpg", license: "Public domain", author: "NASA", page: "https://commons.wikimedia.org/wiki/File:Apollo_11_Crew.jpg"}
 same_as: {wikidata: Q43653}
 when: "1969-07-16/1969-07-24"
 place: cape-kennedy

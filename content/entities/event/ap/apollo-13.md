@@ -4,6 +4,7 @@ id: apollo-13
 type: event
 name: "Apollo 13"
 summary: "Moon mission aborted in April 1970 after an explosion; the crew came home safely."
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Apollo_13_Prime_Crew.jpg/960px-Apollo_13_Prime_Crew.jpg", license: "Public domain", author: "NASA", page: "https://commons.wikimedia.org/wiki/File:Apollo_13_Prime_Crew.jpg"}
 same_as: {wikidata: Q182252}
 when: "1970-04-11/1970-04-17"
 claims:

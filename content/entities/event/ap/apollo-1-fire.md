@@ -5,6 +5,7 @@ type: event
 name: "Apollo 1 fire"
 aliases: ["Apollo 1", "AS-204"]
 summary: "Cabin fire during a ground test on 27 January 1967 that killed three astronauts."
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Apollo_1_Prime_Crew_-_GPN-2000-001159.jpg/960px-Apollo_1_Prime_Crew_-_GPN-2000-001159.jpg", license: "Public domain", author: "NASA", page: "https://commons.wikimedia.org/wiki/File:Apollo_1_Prime_Crew_-_GPN-2000-001159.jpg"}
 same_as: {wikidata: Q194082}
 when: "1967-01-27"
 place: cape-kennedy

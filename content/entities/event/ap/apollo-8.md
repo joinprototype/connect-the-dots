@@ -4,6 +4,7 @@ id: apollo-8
 type: event
 name: "Apollo 8"
 summary: "First crewed flight to the Moon, in December 1968."
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Apollo_8_Crewmembers_-_GPN-2000-001125.jpg/960px-Apollo_8_Crewmembers_-_GPN-2000-001125.jpg", license: "Public domain", author: "NASA", page: "https://commons.wikimedia.org/wiki/File:Apollo_8_Crewmembers_-_GPN-2000-001125.jpg"}
 same_as: {wikidata: Q184201}
 when: "1968-12-21/1968-12-27"
 claims:
