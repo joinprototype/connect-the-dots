@@ -224,8 +224,9 @@ ctd-story .step-card > :has(+ .step-source:last-child:not(:focus-within)) { marg
     height: 54svh; min-height: 280px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   }
-  /* one row however long the story, each dot a tall target; a slip lands on the next scene, which is harmless */
-  .story-dots { flex: 1; flex-wrap: nowrap; gap: 0; min-width: 0; }
+  /* one row however long the story, each dot a tall target; a slip lands on the next scene, which is
+     harmless, and a finger can slide along the row */
+  .story-dots { flex: 1; flex-wrap: nowrap; gap: 0; min-width: 0; touch-action: pan-y; }
   .story-dots li { flex: 1 1 0; min-width: 0; }
   .story-dots button { position: relative; width: 100%; height: 28px; background: none; transform: none; }
   .story-dots button::before { content: ""; position: absolute; top: 50%; left: 50%; width: 7px; height: 7px; margin: -3.5px; border-radius: 50%; background: var(--rule); }

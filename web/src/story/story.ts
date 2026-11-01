@@ -258,6 +258,19 @@ export class CtdStory extends HTMLElement {
       nav.append(li);
       return b;
     });
+    // a long story's dots are too narrow to aim at with a finger: slide along the row instead
+    let slidTo = -1;
+    nav.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'touch') return;
+      const { left, width } = nav.getBoundingClientRect();
+      const i = Math.floor(((e.clientX - left) / width) * this.shots.length);
+      if (i === slidTo || !this.dots[i]) return;
+      slidTo = i;
+      this.stopWatch();
+      this.scrollToStep(i);
+    });
+    nav.addEventListener('pointerup', () => (slidTo = -1));
+    nav.addEventListener('pointercancel', () => (slidTo = -1));
     controls.append(this.watchBtn);
     if (speech) {
       const listen = (this.listenBtn = el('button', 'story-listen', 'Listen'));

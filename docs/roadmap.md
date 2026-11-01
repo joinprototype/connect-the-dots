@@ -111,7 +111,7 @@ Startup sprints: the order below is a best guess and is re-decided at every spri
 
 - **Sprint 22: a million dots, with life in them** ([ADR-0022](decisions/0022-dots-and-lines.md), [ADR-0023](decisions/0023-the-atlas.md), [sprints/sprint-22.md](sprints/sprint-22.md)).
   - The atlas: a million entries from open data, marked as such, on about 9,000 files. The Map holds them at 60 fps on a real GPU.
-  - A new look, stories on white, pictures, and four stories: the Moon, Watergate, the bomb and the crash of 2008.
+  - A new look, stories on white, pictures, and six stories: the Moon, Watergate, the bomb, the crash of 2008, Standard Oil and July 1914.
 
 ## Next (candidates, chosen at review)
 

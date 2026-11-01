@@ -17,7 +17,7 @@ The founder, after 0.4.0: stories "sometimes feel empty", get to a million dots 
 - [x] **S22-01 A new look** ([ADR-0022](../decisions/0022-dots-and-lines.md)): Bricolage Grotesque and Literata, print inks that mean something, each story its own ink, covers in colour, stories on white, the real map on the home page.
 - [x] **S22-02 Pictures.** Entries are linked to Wikidata by hand-reviewed match, and 270 carry a freely licensed picture with its author and license. Each story scene shows one; a scene can fill the stage with a photograph.
 - [x] **S22-03 The atlas** ([ADR-0023](../decisions/0023-the-atlas.md)): a million of the best-known things in the world, from Wikidata, marked as open data, in 4,096 shards.
-- [x] **S22-04 Four more top stories:** "We Choose the Moon" (17 scenes), "The Plumbers" (16), "The Most Terrible Bomb" (20) and "The Crash of 2008" (19). Death tolls say who counted; the case for and against the bomb, and the commission's majority and dissents, each get their full say.
+- [x] **S22-04 Six more top stories:** "We Choose the Moon" (17 scenes), "The Plumbers" (16), "The Most Terrible Bomb" (20), "The Crash of 2008" (19), "The Trust" on Standard Oil (18) and "Thirty-Seven Days" on July 1914 (20). Death tolls say who counted; the case for and against the bomb, and the commission's majority and dissents, each get their full say.
 - [x] **S22-05 The million on the Map,** under Cloudflare's limit of 20,000 files: 1,000,174 dots, 2,484,598 links, 8,928 files, 773 MB, built in 14.5 s with 2.4 GB of memory.
 - [x] **S22-06 Fast on a real GPU:** first tile in 142 ms, 4 tiles and 375 KB to open, 59.8 fps average over a 30 s flight (lowest 59.2), at most 25,505 dots drawn.
 
@@ -67,7 +67,7 @@ The founder, after 0.4.0: stories "sometimes feel empty", get to a million dots 
 - **218,805 living people are in the atlas.** Their facts come from Wikidata and nobody here has read them. They are limited to the list in ADR-0023 (years only, no labels), marked as open data, kept out of search engines, and each page has "Something wrong?". The founder should know this is the main risk of the atlas.
 - Atlas dots ignore the era slider, and routes do not reach them.
 - Wikidata misfiles some items (Facebook as an artifact, the Renaissance as an organization).
-- Scene dots on phones are 16 by 28 px, under the 24 px target, in every story. With 20 scenes they cannot be wider in one row.
+- Scene dots on phones are as narrow as 8 by 28 px in a 20-scene story, under the 24 px target. They cannot be wider in one row, so a finger can now slide along the row to pick a scene.
 - A story's map shows today's country names.
 - Nothing here has been tried on a real phone, only an emulated one.
 - The legal list in `docs/deploy.md` is still open.
