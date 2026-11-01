@@ -4,6 +4,8 @@ id: mira-murati
 type: person
 name: "Mira Murati"
 summary: "Engineer; named OpenAI's interim CEO on 17 November 2023."
+same_as: {wikidata: Q116706551}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Guests_at_the_2026_Met_Gala_274_%28Mira_Murati%29.jpg", license: "CC BY 4.0", author: "SWinxy", page: "https://commons.wikimedia.org/wiki/File:Guests_at_the_2026_Met_Gala_274_(Mira_Murati).jpg"}
 claims:
   - id: c1
     rel: head_of

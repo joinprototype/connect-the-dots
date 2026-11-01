@@ -6,6 +6,7 @@ name: IBM PC
 in_sentence: "the IBM PC"
 aliases: [IBM Personal Computer, IBM 5150]
 summary: IBM's first personal computer, launched in August 1981.
+same_as: {wikidata: Q80031078}
 when: 1981-08-12
 ---
 

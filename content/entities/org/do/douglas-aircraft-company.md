@@ -6,6 +6,8 @@ name: "Douglas Aircraft Company"
 in_sentence: "the Douglas Aircraft Company"
 aliases: ["Douglas Aircraft", "Douglas Aircraft Co."]
 summary: "American aircraft maker founded by Donald Douglas, with its plant at Santa Monica's airport."
+same_as: {wikidata: Q201815}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/4/41/Bilstein_00459_McDonnell_Douglas_DC-10_N1903U_%28mfr%29.jpg", license: "Public domain", author: "SDASM Archives", page: "https://commons.wikimedia.org/wiki/File:Bilstein_00459_McDonnell_Douglas_DC-10_N1903U_(mfr).jpg"}
 place: santa-monica
 claims:
   - id: c1

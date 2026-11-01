@@ -5,6 +5,8 @@ type: person
 name: "Alexander Ulyanov"
 aliases: ["Aleksandr Ulyanov", "Alexander Ilyich Ulyanov", "Aleksandr Ilich Ulyanov"]
 summary: "Vladimir Lenin's elder brother; a St Petersburg University student hanged in 1887 for taking part in an attempt on the life of Emperor Alexander III."
+same_as: {wikidata: Q333241}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Aleksandr_Ulyanov.jpg", license: "Public domain", author: "Unknown authorUnknown author", page: "https://commons.wikimedia.org/wiki/File:Aleksandr_Ulyanov.jpg"}
 when: "1866/1887-05-20"
 claims:
   - id: c1

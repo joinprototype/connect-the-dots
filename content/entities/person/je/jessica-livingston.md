@@ -4,6 +4,8 @@ id: jessica-livingston
 type: person
 name: "Jessica Livingston"
 summary: "American investor, a co-founder of Y Combinator; one of OpenAI's launch donors."
+same_as: {wikidata: Q4261025}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/8/85/Jessica_Livingston_in_2007.jpg", license: "CC BY 2.0", author: "Gabor Cselle from San Francisco", page: "https://commons.wikimedia.org/wiki/File:Jessica_Livingston_in_2007.jpg"}
 claims:
   - id: c1
     rel: funded

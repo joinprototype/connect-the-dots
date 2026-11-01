@@ -6,7 +6,7 @@
 {% block body_class %}chapter-page{% endblock %}
 {% block head %}{% if site.assets.story_css %}<link rel="stylesheet" href="/assets/story.css">{% endif %}{% endblock %}
 {% block main %}
-<article class="chapter">
+<article class="chapter" style="--story: {{ chapter.ink.bg }}; --story-ink: {{ chapter.ink.fg }}; --story-text: {{ chapter.ink.text }}">
   <header class="chapter-head">
     {% if chapter.back %}<p class="chapter-back"><a href="{{ chapter.back.url }}">Back to {{ chapter.back.label }}</a></p>{% endif %}
     <h1>{{ chapter.title }}</h1>
@@ -22,6 +22,7 @@
       {% for s in chapter.steps %}
       <section class="step" data-shot="{{ s.shot }}">
         <div class="step-card">
+          {% if s.picture %}<img class="step-picture" src="{{ s.picture.url }}" alt="{{ s.picture.name }}" loading="lazy" decoding="async">{% endif %}
           {% if s.time_label %}<p class="step-time">{{ s.time_label }}</p>{% endif %}
           {{ s.narration_html|safe }}
           {% if s.explore %}<p class="step-explore"><a class="button" href="{{ s.explore_url }}">Explore from here</a></p>{% endif %}
@@ -31,6 +32,8 @@
     </div>
   </ctd-story>
   {% if chapter.outro_html|trim %}<div class="prose chapter-outro">{{ chapter.outro_html|safe }}</div>{% endif %}
+  {% set pictures = chapter.steps|selectattr("picture")|list %}
+  {% if pictures %}<div class="chapter-outro"><p class="file-path page-fix">Pictures, from Wikimedia Commons: {% for s in pictures %}<a href="{{ s.picture.page }}">{{ s.picture.name }}</a>, {{ s.picture.author }}, {{ s.picture.license }}{% if not loop.last %}; {% else %}.{% endif %}{% endfor %}</p></div>{% endif %}
   {% if chapter.rel_path %}<div class="chapter-outro">{{ corrections(site, chapter.title, chapter.url, chapter.rel_path) }}</div>{% endif %}
 </article>
 {% if chapter.next %}

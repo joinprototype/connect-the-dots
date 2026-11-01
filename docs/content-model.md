@@ -416,6 +416,8 @@ Shot fields (v0; the full list is in [data-contract.md](data-contract.md)):
 | `overlay` | Source card, image, quote, or big number with its proof (`kind: stat`) |
 | `duration` | Seconds in watch mode |
 | `narration` | Voice-over text |
+| `photo` | A photograph over the whole stage: `{url, alt, credit}`. Public domain or free license only |
+| `picture` | Which entry's picture the scene shows, or `none`. By default its focus, or the first thing it reveals with a picture; each picture shows once |
 | `explore` | Show the "Explore from here" button |
 
 ## `ctd check` rules (v0)

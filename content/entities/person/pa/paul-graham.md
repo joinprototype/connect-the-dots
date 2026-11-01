@@ -4,6 +4,8 @@ id: paul-graham
 type: person
 name: "Paul Graham"
 summary: "Programmer, essayist and investor; co-founder of Viaweb (1995) and Y Combinator (2005), which he ran until 2014."
+same_as: {wikidata: Q92650}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Paulgraham_240x320.jpg", license: "Public domain", author: "Cr\u00e9dit photo: Sarah Harlin", page: "https://commons.wikimedia.org/wiki/File:Paulgraham_240x320.jpg"}
 claims:
   - id: c1
     rel: founded

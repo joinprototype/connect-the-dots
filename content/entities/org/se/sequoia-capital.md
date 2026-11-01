@@ -4,6 +4,7 @@ id: sequoia-capital
 type: org
 name: "Sequoia Capital"
 summary: "Silicon Valley venture capital firm, formed in 1972."
+same_as: {wikidata: Q1852025}
 when: "1972/.."
 claims:
   - id: c1

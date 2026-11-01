@@ -5,6 +5,8 @@ type: person
 name: "Robert Tappan Morris"
 aliases: ["Robert Morris", "Robert T. Morris"]
 summary: "Computer scientist and MIT professor; co-founder of Viaweb (1995) and Y Combinator (2005)."
+same_as: {wikidata: Q92647}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/8/86/Robert_Tappan_Morris.jpg", license: "CC BY-SA 3.0", author: "Trevor Blackwell", page: "https://commons.wikimedia.org/wiki/File:Robert_Tappan_Morris.jpg"}
 claims:
   - id: c1
     rel: founded

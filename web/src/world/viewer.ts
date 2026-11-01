@@ -80,6 +80,8 @@ interface Picked {
 export type View = 'links' | 'earth';
 
 const S = WORLD_SIZE;
+/** A tile's node id from here up is an atlas entry (ADR-0023): the rest is its Wikidata number. */
+const ATLAS_IDS = 2 ** 31;
 const TILE_LAYER_ID = 'world-tiles';
 const HOW: Record<View, string> = {
   links: 'Scroll to zoom, drag to pan, click a dot.',
@@ -299,16 +301,14 @@ class WorldViewer implements WorldHandle {
 
   private makeStyle(): WorldStyle {
     const m = this.manifest;
-    // Calm map: gray dots and lines on the page surface; the accent marks the selection only.
-    // Palette hues are not used for drawing (meaning is never hue-only); see hasHues() for the legend.
+    // Dots in the ink of what they are, quiet gray lines on the page surface; the legend names the inks.
     const ground = tokenRgb('--paper', [255, 255, 255], this.root);
     const ink = tokenRgb('--night-ink', [29, 29, 31], this.root);
-    const nodeGray = tokenRgb('--graph-node', [142, 142, 147], this.wrap);
     const edgeGray = tokenRgb('--graph-edge', [199, 199, 204], this.wrap);
     const content = m.kind === 'content';
     const rgba = (c: RGB): [number, number, number, number] => [Math.round(c[0]), Math.round(c[1]), Math.round(c[2]), 255];
     return {
-      nodeRgba: Uint8Array.from(rgba(nodeGray)),
+      nodeRgba: Uint8Array.from(m.palette.flatMap((c) => rgba(cssColorToRgb(c)))),
       edgeRgb: Uint8Array.from(rgba(edgeGray).slice(0, 3)),
       // size is in world units: radius_px = size * S * 2^zoom * factor, clamped. Deeper worlds get a
       // smaller factor so the densest zoom still shows dots rather than discs.
@@ -930,6 +930,11 @@ class WorldViewer implements WorldHandle {
 
   private entityOf(p: Picked): WorldEntity | null {
     if (p.cluster || !this.entities) return null;
+    // an atlas entry has no row in entities.json: its id says where its page is
+    if (p.id >= ATLAS_IDS) {
+      const q = `Q${p.id - ATLAS_IDS}`;
+      return { id: q, name: p.label, url: `/a/?q=${q}`, start: null, end: null };
+    }
     const e = this.entities[p.id];
     return e && e.id ? e : null;
   }

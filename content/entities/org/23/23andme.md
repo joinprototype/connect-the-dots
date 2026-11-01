@@ -5,6 +5,7 @@ type: org
 name: "23andMe"
 aliases: ["23andMe, Inc.", "23andMe Holding Co."]
 summary: "Consumer genetic-testing company in California, co-founded in 2006 by Anne Wojcicki."
+same_as: {wikidata: Q216272}
 when: "2006/.."
 claims: []
 ---

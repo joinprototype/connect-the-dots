@@ -5,6 +5,7 @@ type: person
 name: "Mike Markkula"
 aliases: ["A. C. Markkula, Jr.", "Armas Clifford Markkula"]
 summary: "Early Apple investor and director from 1977. He was chairman from 1977 to 1981 and again from 1993 to 1996, and president and CEO from 1981 to 1983."
+same_as: {wikidata: Q369783}
 when: "1942/.."
 claims:
   - id: c1

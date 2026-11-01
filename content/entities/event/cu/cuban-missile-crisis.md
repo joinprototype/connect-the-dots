@@ -6,6 +6,8 @@ name: Cuban Missile Crisis
 in_sentence: the Cuban Missile Crisis
 aliases: [October Crisis, Caribbean Crisis]
 summary: Thirteen-day confrontation in October 1962 between the United States and the Soviet Union over Soviet missiles in Cuba.
+same_as: {wikidata: Q128160}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Soviet-R-12-nuclear-ballistic_missile.jpg/960px-Soviet-R-12-nuclear-ballistic_missile.jpg", license: "Public domain", author: "Central Intelligence Agency", page: "https://commons.wikimedia.org/wiki/File:Soviet-R-12-nuclear-ballistic_missile.jpg"}
 when: "1962-10-16/1962-10-28"
 place: cuba
 claims:

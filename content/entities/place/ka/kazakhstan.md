@@ -5,6 +5,7 @@ type: place
 name: Kazakhstan
 aliases: [Republic of Kazakhstan, Kazakh SSR]
 summary: "Country in Central Asia; a Soviet republic until December 1991."
+same_as: {wikidata: Q232}
 coords: [66.9237, 48.0196]
 claims:
   - id: c1

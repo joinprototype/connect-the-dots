@@ -5,6 +5,8 @@ type: person
 name: "Ronald Wayne"
 aliases: ["Ron Wayne", "Ronald G. Wayne"]
 summary: "Third partner in the April 1976 Apple Computer Company partnership, holding 10%; he withdrew eleven days later."
+same_as: {wikidata: Q332591}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/f/fa/RonaldWayneMacworld2009.jpg", license: "CC BY-SA 3.0", author: "Kottke_Wayne.jpg: Aljawad derivative work: Nightscream (talk)", page: "https://commons.wikimedia.org/wiki/File:RonaldWayneMacworld2009.jpg"}
 when: "1934/.."
 claims:
   - id: c1

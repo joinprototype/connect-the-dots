@@ -6,6 +6,8 @@ name: Russian Provisional Government
 in_sentence: "the Russian Provisional Government"
 aliases: [Provisional Government]
 summary: "Russia's government between the abdication of Nicholas II and the Bolshevik seizure of power (March–November 1917)."
+same_as: {wikidata: Q239543}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/First_Provisional.jpg/960px-First_Provisional.jpg", license: "Public domain", author: "Published by Russian Information Bureau, NY, 1918", page: "https://commons.wikimedia.org/wiki/File:First_Provisional.jpg"}
 when: "1917-03-15/1917-11-08"
 place: petrograd
 claims:

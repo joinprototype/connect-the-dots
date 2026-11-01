@@ -5,6 +5,8 @@ type: org
 name: "Tiger Global Management"
 aliases: ["Tiger Global"]
 summary: "New York-based technology-focused investment firm."
+same_as: {wikidata: Q95413215}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Solow_Building_New_York_August_2012.jpg/960px-Solow_Building_New_York_August_2012.jpg", license: "CC BY-SA 3.0", author: "King of Hearts", page: "https://commons.wikimedia.org/wiki/File:Solow_Building_New_York_August_2012.jpg"}
 claims:
   - id: c1
     rel: invested_in

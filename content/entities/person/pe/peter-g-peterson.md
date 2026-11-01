@@ -5,6 +5,8 @@ type: person
 name: "Peter G. Peterson"
 aliases: ["Pete Peterson", "Peter George Peterson"]
 summary: "Co-founder of Blackstone; US Secretary of Commerce in 1972–73."
+same_as: {wikidata: Q456216}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/3/3b/PeterGeorgePeterson.jpg", license: "Public domain", author: "Unknown", page: "https://commons.wikimedia.org/wiki/File:PeterGeorgePeterson.jpg"}
 when: "1926-06-05/2018-03-20"
 claims:
   - id: c1

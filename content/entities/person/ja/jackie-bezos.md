@@ -5,6 +5,7 @@ type: person
 name: Jackie Bezos
 aliases: [Jacklyn Gise Bezos, Jacklyn Bezos]
 summary: Mother of Jeff Bezos; early Amazon investor; co-founder of the Bezos Family Foundation.
+same_as: {wikidata: Q92464290}
 when: "1946/2025-08-14"
 claims:
   - id: c1

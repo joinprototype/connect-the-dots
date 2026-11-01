@@ -5,6 +5,7 @@ type: person
 name: John Opel
 aliases: [John R. Opel, John Roberts Opel]
 summary: IBM president (1974–1983) and chief executive (1981–1985).
+same_as: {wikidata: Q1701260}
 when: "1925/2011-11-03"
 claims:
   - id: c1

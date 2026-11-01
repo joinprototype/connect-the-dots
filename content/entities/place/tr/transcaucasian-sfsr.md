@@ -6,6 +6,7 @@ name: Transcaucasian Soviet Federative Socialist Republic
 in_sentence: "the Transcaucasian Soviet Federative Socialist Republic"
 aliases: [Transcaucasian SFSR, TSFSR]
 summary: "Federation of Soviet Georgia, Armenia and Azerbaijan; one of the four founding republics of the USSR in December 1922."
+same_as: {wikidata: Q12972106}
 when: "1922-03-12/1936-12-05"
 coords: [44.8271, 41.7151]    # Tbilisi, its capital
 claims:

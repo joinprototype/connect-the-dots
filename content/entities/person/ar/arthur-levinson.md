@@ -5,6 +5,7 @@ type: person
 name: "Arthur Levinson"
 aliases: ["Arthur D. Levinson", "Art Levinson"]
 summary: "Biochemist and Genentech chief executive; Google director from 2004."
+same_as: {wikidata: Q709063}
 claims:
   - id: c1
     rel: board_member_of

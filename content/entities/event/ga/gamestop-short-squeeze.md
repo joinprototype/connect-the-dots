@@ -6,6 +6,8 @@ name: "GameStop short squeeze"
 in_sentence: "the GameStop short squeeze"
 aliases: ["January 2021 GME market events", "GameStop trading frenzy", "meme stock episode"]
 summary: "GameStop's share price rose about 2,700% between 8 and 28 January 2021, then fell more than 86% by early February. The episode is widely called a short squeeze."
+same_as: {wikidata: Q105086394}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/GameStop_%2814666287269%29.jpg/960px-GameStop_%2814666287269%29.jpg", license: "CC BY 2.0", author: "Mike Mozart from Funny YouTube, USA", page: "https://commons.wikimedia.org/wiki/File:GameStop_(14666287269).jpg"}
 when: "2021-01-08/2021-02-05"
 claims:
   - id: c1

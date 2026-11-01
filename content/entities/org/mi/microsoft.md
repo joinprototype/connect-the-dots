@@ -5,6 +5,8 @@ type: org
 name: Microsoft
 aliases: [Microsoft Corporation]
 summary: American software and cloud-computing company founded in 1975.
+same_as: {wikidata: Q2283}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Aerial_Microsoft_West_Campus_August_2009.jpg/960px-Aerial_Microsoft_West_Campus_August_2009.jpg", license: "Public domain", author: "Jelson25", page: "https://commons.wikimedia.org/wiki/File:Aerial_Microsoft_West_Campus_August_2009.jpg"}
 when: "1975/.."
 claims:
   - id: c1

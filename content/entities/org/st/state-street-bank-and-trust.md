@@ -5,6 +5,7 @@ type: org
 name: "State Street Bank and Trust Company"
 aliases: ["State Street Bank", "State Street Bank and Trust"]
 summary: "Custody bank in Boston and the principal banking subsidiary of State Street Corporation; it traces its beginnings to 1792."
+same_as: {wikidata: Q7603549}
 place: boston
 claims:
   - id: c1

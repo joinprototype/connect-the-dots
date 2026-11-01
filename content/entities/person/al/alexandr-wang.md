@@ -5,6 +5,8 @@ type: person
 name: "Alexandr Wang"
 aliases: ["Alex Wang", "Alexander Wang"]
 summary: "Co-founder of Scale AI and its CEO until June 2025; Chief AI Officer at Meta since June 2025."
+same_as: {wikidata: Q112629173}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/0/06/Guillaume_Pousaz_%26_Alexandr_Wang_-_The_Grove_2022_%28Wang_crop%29.jpg", license: "CC BY 2.0", author: "Village Global", page: "https://commons.wikimedia.org/wiki/File:Guillaume_Pousaz_%26_Alexandr_Wang_-_The_Grove_2022_(Wang_crop).jpg"}
 when: "1997-01/.."
 place: los-alamos-new-mexico
 background:

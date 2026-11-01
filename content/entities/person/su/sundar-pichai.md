@@ -4,6 +4,8 @@ id: sundar-pichai
 type: person
 name: "Sundar Pichai"
 summary: "CEO of Google since October 2015 and of Alphabet since December 2019."
+same_as: {wikidata: Q3503829}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Sundar_Pichai_-_2023_%28cropped%29.jpg", license: "CC BY 4.0", author: "Photographer: Lukasz Kobus (European Commission)", page: "https://commons.wikimedia.org/wiki/File:Sundar_Pichai_-_2023_(cropped).jpg"}
 claims:
   - id: c1
     rel: ceo_of

@@ -5,6 +5,7 @@ type: person
 name: "Dinara Kulibayeva"
 aliases: ["Dinara Nursultanovna Kulibayeva", "Dinara Kulibaeva"]
 summary: "Businesswoman; chair of the board of directors of the Kazakh-British Technical University from 2004."
+same_as: {wikidata: Q464735}
 when: "1967/.."
 place: kazakhstan
 claims:

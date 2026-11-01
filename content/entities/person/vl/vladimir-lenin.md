@@ -5,6 +5,8 @@ type: person
 name: Vladimir Lenin
 aliases: [Vladimir Ilyich Lenin, Vladimir Ulyanov, N. Lenin, Lenin]
 summary: Leader of the Bolsheviks; head of the Soviet government from November 1917 until his death in 1924.
+same_as: {wikidata: Q1394}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Vlad%C3%ADmir_Lenin_%28fotograf%C3%ADa_coloreada%29.jpg/960px-Vlad%C3%ADmir_Lenin_%28fotograf%C3%ADa_coloreada%29.jpg", license: "Public domain", author: "Pavel Zhukov", page: "https://commons.wikimedia.org/wiki/File:Vlad%C3%ADmir_Lenin_(fotograf%C3%ADa_coloreada).jpg"}
 when: "1870-04-22/1924-01-21"
 background:
   - {text: "Born in Simbirsk in 1870.", src: [{s: lenin-1917-unfinished-autobiography, at: "Collected Works, vol. 41, p. 430", quote: "My name is Vladimir Ilyich Ulyanov. I was born in Simbirsk on April 10, 1870."}, {s: bbc-history-vladimir-lenin, at: "paragraph 2", quote: "Vladimir Ilich Ulyanov was born in Simbirsk on the Volga River on 22 April 1870 into a well-educated family."}]}

@@ -5,6 +5,7 @@ type: org
 name: "State Street Investment Management"
 aliases: ["State Street Global Advisors", "SSGA"]
 summary: "The asset manager of State Street Corporation, previously named State Street Global Advisors."
+same_as: {wikidata: Q7603552}
 claims:
   - id: c1
     rel: part_of

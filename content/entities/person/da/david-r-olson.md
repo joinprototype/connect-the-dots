@@ -4,5 +4,6 @@ id: david-r-olson
 type: person
 name: "David R. Olson"
 summary: "University Professor Emeritus at the Ontario Institute for Studies in Education, University of Toronto; author of The World on Paper and of Britannica's article on writing."
+same_as: {wikidata: Q16097268}
 claims: []
 ---

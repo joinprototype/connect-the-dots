@@ -4,6 +4,8 @@ id: albuquerque
 type: place
 name: Albuquerque
 summary: "City in New Mexico, United States."
+same_as: {wikidata: Q34804}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Albuquerque_Infobox_Photo.png", license: "CC BY-SA 3.0", author: "Danae Hurst, Asaavedra32, John Phelan, Luigi Novi crop, montage and hue/contrast changes: ", page: "https://commons.wikimedia.org/wiki/File:Albuquerque_Infobox_Photo.png"}
 coords: [-106.6504, 35.0844]
 ---
 

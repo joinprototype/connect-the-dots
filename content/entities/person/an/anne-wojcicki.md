@@ -4,6 +4,8 @@ id: anne-wojcicki
 type: person
 name: "Anne Wojcicki"
 summary: "Co-founder of the genetics company 23andMe and its CEO from 2010 to 2025; younger sister of Susan Wojcicki and former wife of Sergey Brin."
+same_as: {wikidata: Q2069573}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Anne_Wojcicki_%2836938473750%29_%28cropped%29.jpg/960px-Anne_Wojcicki_%2836938473750%29_%28cropped%29.jpg", license: "CC BY 2.0", author: "TechCrunch", page: "https://commons.wikimedia.org/wiki/File:Anne_Wojcicki_(36938473750)_(cropped).jpg"}
 claims:
   - id: c1
     rel: founded

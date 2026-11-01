@@ -5,6 +5,7 @@ type: org
 name: "Loopt"
 aliases: ["Loopt, Inc."]
 summary: "Mobile location-sharing company co-founded by Sam Altman in 2005; in Y Combinator's first batch; bought by Green Dot in March 2012."
+same_as: {wikidata: Q6675901}
 when: "2005/2012-03"
 claims: []
 ---

@@ -5,6 +5,7 @@ type: org
 name: "Halyk Bank"
 aliases: ["JSC Halyk Bank", "Halyk Bank of Kazakhstan"]
 summary: "Kazakh commercial bank, founded in 1923 as a savings bank; listed in Almaty, Astana and London."
+same_as: {wikidata: Q1046186}
 when: "1923/.."
 place: kazakhstan
 claims: []

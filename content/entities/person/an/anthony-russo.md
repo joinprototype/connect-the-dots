@@ -5,6 +5,8 @@ type: person
 name: "Anthony Russo"
 aliases: ["Tony Russo", "Anthony Joseph Russo"]
 summary: "American analyst, formerly at the RAND Corporation, who helped Daniel Ellsberg copy the Pentagon Papers."
+same_as: {wikidata: Q4773397}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Anthony_Russo_on_Crisis_73.jpg/960px-Anthony_Russo_on_Crisis_73.jpg", license: "Public domain", author: "Rupert Garc\u00eda", page: "https://commons.wikimedia.org/wiki/File:Anthony_Russo_on_Crisis_73.jpg"}
 claims:
   - id: c1
     rel: worked_at

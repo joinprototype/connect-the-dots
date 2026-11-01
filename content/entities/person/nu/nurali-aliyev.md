@@ -5,6 +5,7 @@ type: person
 name: "Nurali Aliyev"
 aliases: ["Nurali Aliev"]
 summary: "Businessman and banker; deputy mayor of Astana from 2014 to 2016."
+same_as: {wikidata: Q4062303}
 when: "1985/.."
 place: kazakhstan
 claims:

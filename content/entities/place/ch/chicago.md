@@ -4,6 +4,7 @@ id: chicago
 type: place
 name: "Chicago"
 summary: "City in Illinois, United States."
+same_as: {wikidata: Q1297}
 coords: [-87.6298, 41.8781]
 claims: []
 ---

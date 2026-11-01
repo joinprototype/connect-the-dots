@@ -5,6 +5,8 @@ type: person
 name: "Henry H. Arnold"
 aliases: ["Hap Arnold", "Henry Arnold", "General Arnold"]
 summary: "U.S. general who led the Army Air Forces in the Second World War."
+same_as: {wikidata: Q436102}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Henry_Harley_Arnold.jpg/960px-Henry_Harley_Arnold.jpg", license: "Public domain", author: "Unknown authorUnknown author", page: "https://commons.wikimedia.org/wiki/File:Henry_Harley_Arnold.jpg"}
 when: "1886/1950"
 claims:
   - id: c1

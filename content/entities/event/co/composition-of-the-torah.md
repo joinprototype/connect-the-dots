@@ -5,6 +5,7 @@ type: event
 name: "Composition of the Torah"
 in_sentence: "the composition of the Torah"
 summary: "Modern source-critical account of how the first five books of the Bible came together over about five centuries; tradition ascribes them to Moses."
+same_as: {wikidata: Q85753709}
 when: "-0999~/-0499~"
 claims:
   - id: c1

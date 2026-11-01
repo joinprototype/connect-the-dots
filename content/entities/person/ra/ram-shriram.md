@@ -5,6 +5,8 @@ type: person
 name: "Ram Shriram"
 aliases: ["K. Ram Shriram"]
 summary: "Investor and former Amazon executive; Google director from 1998."
+same_as: {wikidata: Q12988436}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/RamShriramBio.jpg/960px-RamShriramBio.jpg", license: "CC BY-SA 4.0", author: "Jenrosecir", page: "https://commons.wikimedia.org/wiki/File:RamShriramBio.jpg"}
 claims:
   - id: c1
     rel: board_member_of

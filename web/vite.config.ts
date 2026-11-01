@@ -12,6 +12,7 @@ const ENTRIES = {
   explorer: 'src/explorer/main.tsx',
   story: 'src/story/main.ts',
   world: 'src/world/main.ts',
+  atlas: 'src/atlas/main.ts',
 } as const;
 const ENTRY_RE = new RegExp(`^/assets/(${Object.keys(ENTRIES).join('|')})\\.(js|css)$`);
 

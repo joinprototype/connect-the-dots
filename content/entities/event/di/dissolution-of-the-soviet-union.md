@@ -6,6 +6,8 @@ name: Dissolution of the Soviet Union
 in_sentence: the dissolution of the Soviet Union
 aliases: [Collapse of the Soviet Union, Dissolution of the USSR, Fall of the Soviet Union]
 summary: "The end of the USSR in December 1991: Gorbachev resigned on 25 December and the Union ceased to exist on 26 December."
+same_as: {wikidata: Q5167679}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/RIAN_archive_140800_Signing_of_Protocol_on_Establishing_Commonwealth_of_Independent_States.jpg/960px-RIAN_archive_140800_Signing_of_Protocol_on_Establishing_Commonwealth_of_Independent_States.jpg", license: "CC BY-SA 3.0", author: "Yuriy Kuydin / \u042e\u0440\u0438\u0439 \u041a\u0443\u0439\u0434\u0438\u043d", page: "https://commons.wikimedia.org/wiki/File:RIAN_archive_140800_Signing_of_Protocol_on_Establishing_Commonwealth_of_Independent_States.jpg"}
 when: "1991-12-25/1991-12-26"
 place: moscow
 claims:

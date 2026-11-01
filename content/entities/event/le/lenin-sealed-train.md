@@ -5,6 +5,7 @@ type: event
 name: Lenin's sealed train
 aliases: [The sealed train, Lenin's return to Russia]
 summary: "Lenin's journey from Switzerland across Germany to Petrograd in April 1917, arranged with the German government."
+same_as: {wikidata: Q4365184}
 when: "1917-04-09/1917-04-16"
 place: zurich
 claims:

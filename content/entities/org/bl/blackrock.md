@@ -5,6 +5,8 @@ type: org
 name: BlackRock
 aliases: ["BlackRock, Inc."]
 summary: American asset manager founded in 1988.
+same_as: {wikidata: Q219635}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/50_Hudson_Yards.png/960px-50_Hudson_Yards.png", license: "CC BY-SA 4.0", author: "Dazzling4", page: "https://commons.wikimedia.org/wiki/File:50_Hudson_Yards.png"}
 when: "1988/.."
 place: new-york-city
 claims:

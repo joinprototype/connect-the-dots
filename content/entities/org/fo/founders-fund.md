@@ -4,6 +4,7 @@ id: founders-fund
 type: org
 name: "Founders Fund"
 summary: "San Francisco-based venture capital firm."
+same_as: {wikidata: Q1439864}
 claims:
   - id: c1
     rel: invested_in

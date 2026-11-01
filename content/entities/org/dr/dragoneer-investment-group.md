@@ -5,6 +5,7 @@ type: org
 name: "Dragoneer Investment Group"
 aliases: ["Dragoneer"]
 summary: "San Francisco-based growth investment firm."
+same_as: {wikidata: Q107575343}
 claims:
   - id: c1
     rel: invested_in

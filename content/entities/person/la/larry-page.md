@@ -4,6 +4,8 @@ id: larry-page
 type: person
 name: "Larry Page"
 summary: "Co-founder of Google; its CEO 1998–2001 and 2011–2015, then CEO of Alphabet until 2019."
+same_as: {wikidata: Q4934}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Larry_Page_in_the_European_Parliament%2C_17.06.2009.jpg/960px-Larry_Page_in_the_European_Parliament%2C_17.06.2009.jpg", license: "CC BY-SA 4.0", author: "Marcin Mycielski, European Parliament (Stansfield)", page: "https://commons.wikimedia.org/wiki/File:Larry_Page_in_the_European_Parliament,_17.06.2009.jpg"}
 claims:
   - id: c1
     rel: board_member_of

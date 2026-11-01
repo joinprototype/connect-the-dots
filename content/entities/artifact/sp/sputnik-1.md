@@ -5,6 +5,8 @@ type: artifact
 name: Sputnik 1
 aliases: [Sputnik, Sputnik-1]
 summary: "First artificial Earth satellite, launched by the Soviet Union on 4 October 1957."
+same_as: {wikidata: Q80811}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Sputnik.jpg/960px-Sputnik.jpg", license: "CC BY-SA 3.0", author: "Unknown", page: "https://commons.wikimedia.org/wiki/File:Sputnik.jpg"}
 when: 1957-10-04
 claims:
   - id: c1

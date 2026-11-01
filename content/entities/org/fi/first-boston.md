@@ -5,5 +5,6 @@ type: org
 name: "First Boston"
 aliases: ["The First Boston Corporation", "First Boston Corp."]
 summary: "American investment bank, later part of Credit Suisse."
+same_as: {wikidata: Q5452563}
 claims: []
 ---

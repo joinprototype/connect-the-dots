@@ -6,6 +6,8 @@ name: United States
 in_sentence: "the United States"
 aliases: [United States of America, USA, US]
 summary: Country in North America.
+same_as: {wikidata: Q30}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/United_States_-_Location_Map_%282013%29_-_USA_-_UNOCHA.svg/960px-United_States_-_Location_Map_%282013%29_-_USA_-_UNOCHA.svg.png", license: "CC BY 3.0", author: "UN Office for the Coordination of Humanitarian Affairs (OCHA)", page: "https://commons.wikimedia.org/wiki/File:United_States_-_Location_Map_(2013)_-_USA_-_UNOCHA.svg"}
 coords: [-98.58, 39.83]
 claims:
   - id: c1

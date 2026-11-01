@@ -5,6 +5,8 @@ type: person
 name: Vladimir Putin
 aliases: [Vladimir Vladimirovich Putin]
 summary: President of Russia (1999–2008 and since 2012).
+same_as: {wikidata: Q7747}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Putin_V_2026_08_10.png/960px-Putin_V_2026_08_10.png", license: "CC BY 4.0", author: "\u041f\u0440\u0435\u0441\u0441-\u0441\u043b\u0443\u0436\u0431\u0430 \u041f\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442\u0430 \u0420\u043e\u0441\u0441\u0438\u0438", page: "https://commons.wikimedia.org/wiki/File:Putin_V_2026_08_10.png"}
 when: "1952-10-07/.."
 claims:
   - id: c1

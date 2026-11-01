@@ -6,6 +6,8 @@ name: Belovezha Accords
 in_sentence: "the Belovezha Accords"
 aliases: [Belavezha Accords, Agreement Establishing the Commonwealth of Independent States]
 summary: "The agreement of 8 December 1991 in which Russia, Ukraine and Belarus declared the Soviet Union dissolved and founded the Commonwealth of Independent States."
+same_as: {wikidata: Q76986}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/RIAN_archive_848095_Signing_the_Agreement_to_eliminate_the_USSR_and_establish_the_Commonwealth_of_Independent_States.jpg/960px-RIAN_archive_848095_Signing_the_Agreement_to_eliminate_the_USSR_and_establish_the_Commonwealth_of_Independent_States.jpg", license: "CC BY-SA 3.0", author: "U. Ivanov / \u042e. \u0418\u0432\u0430\u043d\u043e\u0432", page: "https://commons.wikimedia.org/wiki/File:RIAN_archive_848095_Signing_the_Agreement_to_eliminate_the_USSR_and_establish_the_Commonwealth_of_Independent_States.jpg"}
 when: 1991-12-08
 place: belarus
 claims:

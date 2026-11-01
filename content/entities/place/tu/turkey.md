@@ -5,6 +5,8 @@ type: place
 name: Turkey
 aliases: ["Türkiye", Republic of Turkey]
 summary: Country bridging southeastern Europe and western Asia.
+same_as: {wikidata: Q43}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Historical_peninsula_and_modern_skyline_of_Istanbul.jpg/960px-Historical_peninsula_and_modern_skyline_of_Istanbul.jpg", license: "CC0", author: "Hunanuk", page: "https://commons.wikimedia.org/wiki/File:Historical_peninsula_and_modern_skyline_of_Istanbul.jpg"}
 coords: [35.2, 39.0]
 claims:
   - id: c1

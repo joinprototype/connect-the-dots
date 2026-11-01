@@ -4,5 +4,6 @@ id: ronald-hendel
 type: person
 name: "Ronald Hendel"
 summary: "Scholar of the Hebrew Bible at the University of California, Berkeley."
+same_as: {wikidata: Q89409403}
 claims: []
 ---

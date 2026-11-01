@@ -5,6 +5,7 @@ type: person
 name: Lawrence Preston Gise
 aliases: [Preston Gise]
 summary: US government official who headed Atomic Energy Commission operations in Albuquerque; maternal grandfather of Jeff Bezos.
+same_as: {wikidata: Q102434015}
 place: albuquerque
 claims:
   - id: c1

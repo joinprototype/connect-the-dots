@@ -4,6 +4,8 @@ id: bret-taylor
 type: person
 name: "Bret Taylor"
 summary: "American technology executive; chair of OpenAI's board since November 2023."
+same_as: {wikidata: Q4961964}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Bret_Taylor_-_TechCrunch_Real-Time_Stream_Crunchup_-_2009.jpg/960px-Bret_Taylor_-_TechCrunch_Real-Time_Stream_Crunchup_-_2009.jpg", license: "CC BY 2.0", author: "Brian Solis", page: "https://commons.wikimedia.org/wiki/File:Bret_Taylor_-_TechCrunch_Real-Time_Stream_Crunchup_-_2009.jpg"}
 claims:
   - id: c1
     rel: chair_of

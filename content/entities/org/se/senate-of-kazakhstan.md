@@ -6,6 +6,7 @@ name: "Senate of Kazakhstan"
 in_sentence: "the Senate of Kazakhstan"
 aliases: ["Senate of the Parliament of the Republic of Kazakhstan"]
 summary: "Upper house of Kazakhstan's Parliament under the 1995 Constitution."
+same_as: {wikidata: Q1316045}
 when: "1996-01-30/.."
 place: kazakhstan
 claims: []

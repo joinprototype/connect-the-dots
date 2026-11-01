@@ -5,6 +5,7 @@ type: org
 name: "Samruk-Kazyna"
 aliases: ["Sovereign Wealth Fund Samruk-Kazyna", "JSC Samruk-Kazyna"]
 summary: "Kazakhstan's sovereign wealth fund, founded in 2008 by presidential decree; the government is its sole shareholder."
+same_as: {wikidata: Q4407014}
 when: "2008/.."
 place: kazakhstan
 claims:

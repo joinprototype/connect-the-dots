@@ -5,6 +5,7 @@ type: org
 name: "Green Dot"
 aliases: ["Green Dot Corporation", "Green Dot Corp."]
 summary: "American consumer banking and payments company known for prepaid debit cards; it bought Loopt in 2012."
+same_as: {wikidata: Q16975278}
 claims:
   - id: c1
     rel: acquired

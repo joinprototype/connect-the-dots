@@ -5,6 +5,8 @@ type: person
 name: Warren Buffett
 aliases: [Warren Edward Buffett]
 summary: American investor; co-founder of the Giving Pledge.
+same_as: {wikidata: Q47213}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Warren_Buffett_KU_Visit.jpg/960px-Warren_Buffett_KU_Visit.jpg", license: "CC BY-SA 2.0", author: "Mark Hirschey", page: "https://commons.wikimedia.org/wiki/File:Warren_Buffett_KU_Visit.jpg"}
 when: "1930-08-30/.."
 claims:
   - id: c1

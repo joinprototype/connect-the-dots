@@ -5,6 +5,8 @@ type: person
 name: Nikita Khrushchev
 aliases: [Nikita Sergeyevich Khrushchev]
 summary: Soviet leader; Chairman of the Council of Ministers of the USSR (1958–1964).
+same_as: {wikidata: Q35314}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Nikita_Khrushchev_official_portrait.jpg/960px-Nikita_Khrushchev_official_portrait.jpg", license: "Public domain", author: "TASS / distributed by Associated Press", page: "https://commons.wikimedia.org/wiki/File:Nikita_Khrushchev_official_portrait.jpg"}
 when: "1894-04-15/1971-09-11"
 claims:
   - id: c1

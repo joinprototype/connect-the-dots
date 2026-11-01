@@ -5,6 +5,7 @@ type: org
 name: "Greenoaks Capital"
 aliases: ["Greenoaks"]
 summary: "San Francisco-based investment firm."
+same_as: {wikidata: Q108704611}
 claims:
   - id: c1
     rel: invested_in

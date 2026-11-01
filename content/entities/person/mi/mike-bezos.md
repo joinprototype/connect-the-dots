@@ -5,6 +5,7 @@ type: person
 name: Mike Bezos
 aliases: [Miguel A. Bezos, Miguel Bezos]
 summary: Engineer; father of Jeff Bezos, who took his name; early Amazon investor; co-founder of the Bezos Family Foundation.
+same_as: {wikidata: Q97748633}
 claims:
   - id: c1
     rel: relative_of

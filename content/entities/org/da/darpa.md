@@ -5,6 +5,7 @@ type: org
 name: DARPA
 aliases: [Defense Advanced Research Projects Agency, ARPA, Advanced Research Projects Agency]
 summary: "US defense research agency, founded in 1958 as ARPA in response to Sputnik."
+same_as: {wikidata: Q207361}
 when: "1958-02-07/.."
 claims:
   - id: c1

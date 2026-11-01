@@ -4,6 +4,8 @@ id: google-earth
 type: artifact
 name: Google Earth
 summary: Virtual globe software launched by Google in 2005, based on Keyhole's EarthViewer.
+same_as: {wikidata: Q42274}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/NASA_World_Wind_-_Google_Earth_bar.png/960px-NASA_World_Wind_-_Google_Earth_bar.png", license: "Public domain", author: "EEIM", page: "https://commons.wikimedia.org/wiki/File:NASA_World_Wind_-_Google_Earth_bar.png"}
 when: "2005/.."
 ---
 

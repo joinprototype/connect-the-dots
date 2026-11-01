@@ -4,6 +4,7 @@ id: uruk
 type: place
 name: "Uruk"
 summary: "Ancient city in southern Mesopotamia, in what is now Iraq, where the earliest known writing was made on clay tablets."
+same_as: {wikidata: Q168518}
 coords: [45.6361, 31.3228]
 claims: []
 ---

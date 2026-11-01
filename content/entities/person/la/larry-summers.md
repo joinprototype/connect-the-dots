@@ -5,6 +5,8 @@ type: person
 name: "Larry Summers"
 aliases: ["Lawrence Summers", "Lawrence H. Summers"]
 summary: "American economist; named to OpenAI's board in November 2023."
+same_as: {wikidata: Q317953}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/9/99/Lawrence_Summers_Treasury_portrait.jpg", license: "Public domain", author: "United States Department of Treasury", page: "https://commons.wikimedia.org/wiki/File:Lawrence_Summers_Treasury_portrait.jpg"}
 claims:
   - id: c1
     rel: board_member_of

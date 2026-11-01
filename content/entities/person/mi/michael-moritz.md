@@ -4,6 +4,8 @@ id: michael-moritz
 type: person
 name: "Michael Moritz"
 summary: "Venture capitalist at Sequoia Capital; Google director from 1999."
+same_as: {wikidata: Q3124567}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Michael_Moritz_1.jpg", license: "CC BY 2.0", author: "b_d_solis", page: "https://commons.wikimedia.org/wiki/File:Michael_Moritz_1.jpg"}
 claims:
   - id: c1
     rel: board_member_of

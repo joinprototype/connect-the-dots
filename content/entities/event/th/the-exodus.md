@@ -5,6 +5,8 @@ type: event
 name: The Exodus
 in_sentence: "the Exodus"
 summary: "Narrative of the Israelites' departure from slavery in Egypt, told in the Book of Exodus."
+same_as: {wikidata: Q1290338}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/David_Roberts-IsraelitesLeavingEgypt_1828.jpg/960px-David_Roberts-IsraelitesLeavingEgypt_1828.jpg", license: "Public domain", author: "David Roberts", page: "https://commons.wikimedia.org/wiki/File:David_Roberts-IsraelitesLeavingEgypt_1828.jpg"}
 claims:
   - id: c1
     rel: appears_in

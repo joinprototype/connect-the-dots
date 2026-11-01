@@ -4,6 +4,7 @@ id: citadel-securities
 type: org
 name: "Citadel Securities"
 summary: "Market maker founded in 2002 by Ken Griffin and partners; a separate firm from Citadel."
+same_as: {wikidata: Q93355369}
 when: "2002/.."
 claims:
   - id: c1

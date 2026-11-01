@@ -4,6 +4,7 @@ id: yc-research
 type: org
 name: "YC Research"
 summary: "Nonprofit research arm set up by Y Combinator in 2015; one of OpenAI's launch donors."
+same_as: {wikidata: Q119857231}
 claims:
   - id: c1
     rel: funded

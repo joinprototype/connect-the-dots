@@ -5,6 +5,8 @@ type: person
 name: Jeff Bezos
 aliases: [Jeffrey Preston Bezos, Jeffrey P. Bezos]
 summary: Founder and executive chair of Amazon; founder of Blue Origin.
+same_as: {wikidata: Q312556}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Jeff_Bezos_at_Amazon_Spheres_Grand_Opening_in_Seattle_-_2018_%2839074799225%29_%28cropped%29.jpg", license: "CC BY 2.0", author: "Seattle City Council from Seattle", page: "https://commons.wikimedia.org/wiki/File:Jeff_Bezos_at_Amazon_Spheres_Grand_Opening_in_Seattle_-_2018_(39074799225)_(cropped).jpg"}
 when: "1964-01-12/.."
 place: albuquerque
 background:

@@ -6,6 +6,8 @@ name: Treaty of Brest-Litovsk
 in_sentence: the Treaty of Brest-Litovsk
 aliases: [Peace of Brest-Litovsk, Brest-Litovsk]
 summary: "Separate peace signed on 3 March 1918 between Soviet Russia and the Central Powers, taking Russia out of the First World War."
+same_as: {wikidata: Q122371}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Traktat_brzeski_1918.jpg/960px-Traktat_brzeski_1918.jpg", license: "Public domain", author: "Unknown authorUnknown author", page: "https://commons.wikimedia.org/wiki/File:Traktat_brzeski_1918.jpg"}
 when: 1918-03-03
 place: brest-belarus
 claims:

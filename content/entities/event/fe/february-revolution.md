@@ -6,6 +6,8 @@ name: February Revolution
 in_sentence: "the February Revolution"
 aliases: [February Revolution of 1917, March Revolution]
 summary: "The uprising in Petrograd in March 1917 (February in the old Russian calendar) that ended the monarchy."
+same_as: {wikidata: Q101534}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/9/99/Arrest_of_generals.jpg", license: "Public domain", author: "Ivan Vladimirov", page: "https://commons.wikimedia.org/wiki/File:Arrest_of_generals.jpg"}
 when: "1917-03-08/1917-03-16"
 place: petrograd
 claims:

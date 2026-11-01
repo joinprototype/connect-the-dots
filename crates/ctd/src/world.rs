@@ -22,6 +22,8 @@ pub struct WorldGraph {
     pub keys: Option<Vec<String>>,
     /// Nodes that may name a region; None: all. A region is never lettered with a person's name.
     pub may_name: Option<Vec<bool>>,
+    /// What each node is called in its tile; None: its place here.
+    pub ids: Option<Vec<u32>>,
 }
 
 pub struct Spec {
@@ -146,18 +148,16 @@ pub fn synthetic(n: usize, seed: u64) -> WorldGraph {
             }
         }
     }
-    WorldGraph { n, edges, color, labels: None, label_prefix: "Node", keys: None, may_name: None }
+    WorldGraph { n, edges, color, labels: None, label_prefix: "Node", keys: None, may_name: None, ids: None }
 }
 
-/// The real content graph as a world: colors by entity type, labels = names.
-pub fn from_kb(kb: &Kb) -> (WorldGraph, Spec) {
+/// The real content graph as a world: colors by entity type, labels = names. With an atlas, its
+/// entries join the graph: one written by hand stays a single dot, and takes the atlas's links too.
+pub fn from_kb(kb: &Kb, atlas: Option<&crate::atlas::Atlas>) -> (WorldGraph, Spec) {
     let palette = kb.schema.layers.values().map(|l| l.color.clone()).collect();
     let palette_labels = kb.schema.layers.values().map(|l| l.label.clone()).collect();
-    let color = kb
-        .entities
-        .iter()
-        .map(|e| kb.schema.types.get(&e.kind).and_then(|t| kb.schema.layers.get_index_of(&t.layer)).unwrap_or(0) as u8)
-        .collect();
+    let ink = |kind: &str| kb.schema.types.get(kind).and_then(|t| kb.schema.layers.get_index_of(&t.layer)).unwrap_or(0) as u8;
+    let mut color: Vec<u8> = kb.entities.iter().map(|e| ink(&e.kind)).collect();
     let mut edges = Vec::new();
     for e in &kb.edges {
         // withdrawn links and links on no layer ("not the same as") never pull entries together
@@ -170,7 +170,37 @@ pub fn from_kb(kb: &Kb) -> (WorldGraph, Spec) {
             edges.push((a as u32, b as u32, w));
         }
     }
-    let labels = kb.entities.iter().map(|e| e.name.clone()).collect();
+    let mut labels: Vec<String> = kb.entities.iter().map(|e| e.name.clone()).collect();
+    let mut keys: Vec<String> = kb.entities.iter().map(|e| e.id.clone()).collect();
+    // people and families (types with family ties) never name a region: it would read as theirs
+    let mut may_name: Vec<bool> = kb.entities.iter().map(|e| !kb.schema.types.get(&e.kind).is_some_and(|t| t.family)).collect();
+    let mut ids = None;
+    if let Some(a) = atlas {
+        let hand = crate::atlas::curated(kb);
+        let mut tile_ids: Vec<u32> = (0..kb.entities.len() as u32).collect();
+        let node: Vec<u32> = a
+            .entries
+            .iter()
+            .map(|e| match hand.get(&e.qid) {
+                Some(&c) => c as u32,
+                None => {
+                    let new = labels.len() as u32;
+                    color.push(ink(e.kind()));
+                    labels.push(e.name.clone());
+                    keys.push(format!("Q{}", e.qid));
+                    // a region of the atlas is named after a place, never after a team or a fund
+                    may_name.push(e.kind() == "place");
+                    tile_ids.push(crate::atlas::ATLAS_IDS + e.qid);
+                    new
+                }
+            })
+            .collect();
+        edges.extend(a.links.iter().map(|&(x, r, y)| {
+            let shapes_map = kb.schema.relations.get(&a.relations[r as usize]).is_some_and(|rel| rel.traversable);
+            (node[x as usize], node[y as usize], if shapes_map { 0.6 } else { 0.15 })
+        }));
+        ids = Some(tile_ids);
+    }
     // The entry's own dates (decimal years, data-contract.md "Dates"), for the map's era slider.
     let year = |y: f64| (y * 1000.0).round() / 1000.0;
     let entities = kb
@@ -187,14 +217,14 @@ pub fn from_kb(kb: &Kb) -> (WorldGraph, Spec) {
         .collect();
     (
         WorldGraph {
-            n: kb.entities.len(),
+            n: labels.len(),
             edges,
             color,
             labels: Some(labels),
             label_prefix: "",
-            keys: Some(kb.entities.iter().map(|e| e.id.clone()).collect()),
-            // people and families (types with family ties) never name a region: it would read as theirs
-            may_name: Some(kb.entities.iter().map(|e| !kb.schema.types.get(&e.kind).is_some_and(|t| t.family)).collect()),
+            keys: Some(keys),
+            may_name: Some(may_name),
+            ids,
         },
         Spec { kind: "content", palette, palette_labels, entities: Some(entities) },
     )
@@ -465,7 +495,7 @@ fn layout_clusters(size: &[usize], meta: &[(u32, u32, f32)]) -> (Vec<[f64; 2]>, 
         sb.cmp(&sa).then(a[0].cmp(&b[0]))
     });
     let mut pos = vec![[0.0f64; 2]; c];
-    let mut placed: Vec<([f64; 2], f64)> = Vec::new();
+    let (mut core, mut spiral) = (0.0f64, 0.0f64);
     for (ci, list) in comps.iter().enumerate() {
         let mut local_of = HashMap::with_capacity(list.len());
         for (li, &g) in list.iter().enumerate() {
@@ -511,22 +541,18 @@ fn layout_clusters(size: &[usize], meta: &[(u32, u32, f32)]) -> (Vec<[f64; 2]>, 
             }
             extent = extent.max((p[0] * p[0] + p[1] * p[1]).sqrt() + lrad[li]);
         }
-        // place the component: the largest at the origin, the rest on a spiral around it
+        // place the component: the largest at the origin, the rest on one spiral around it, each
+        // past the area of those before it. A real graph has a component per lonely entry, so a
+        // place must cost the same however many came first. `separate` settles what still touches.
         let mut center = [0.0, 0.0];
-        if ci > 0 {
-            let mut t = 0usize;
-            loop {
-                let a = t as f64 * GOLDEN;
-                let d = placed[0].1 + extent + (t as f64).sqrt() * extent.max(1.0);
-                let cand = [d * a.cos(), d * a.sin()];
-                if placed.iter().all(|(p, r)| ((cand[0] - p[0]).powi(2) + (cand[1] - p[1]).powi(2)).sqrt() > r + extent) {
-                    center = cand;
-                    break;
-                }
-                t += 1;
-            }
+        if ci == 0 {
+            core = extent;
+        } else {
+            spiral += extent * extent;
+            let d = core + extent + 2.2 * spiral.sqrt();
+            let a = ci as f64 * GOLDEN;
+            center = [d * a.cos(), d * a.sin()];
         }
-        placed.push((center, extent));
         for (li, &g) in list.iter().enumerate() {
             pos[g] = [center[0] + local[li][0], center[1] + local[li][1]];
         }
@@ -535,16 +561,58 @@ fn layout_clusters(size: &[usize], meta: &[(u32, u32, f32)]) -> (Vec<[f64; 2]>, 
     (pos, radius)
 }
 
+/// A uniform grid over discs, as a game's physics uses: a disc only meets those in the cells it
+/// covers, so a round costs what touches rather than every pair. Each disc sits in each cell its box
+/// covers; the few big discs cover many cells, the many small ones one or two.
+struct Grid {
+    cell: f64,
+    cells: HashMap<(i32, i32), Vec<u32>>,
+}
+
+impl Grid {
+    fn span(&self, p: [f64; 2], r: f64) -> impl Iterator<Item = (i32, i32)> + use<> {
+        let cell = self.cell;
+        let at = |v: f64| (v / cell).floor() as i32;
+        let (x0, x1, y0, y1) = (at(p[0] - r), at(p[0] + r), at(p[1] - r), at(p[1] + r));
+        (x0..=x1).flat_map(move |x| (y0..=y1).map(move |y| (x, y)))
+    }
+
+    fn new(pos: &[[f64; 2]], reach: &[f64], cell: f64) -> Grid {
+        let mut grid = Grid { cell, cells: HashMap::with_capacity(pos.len()) };
+        for (i, (&p, &r)) in pos.iter().zip(reach).enumerate() {
+            for key in grid.span(p, r) {
+                grid.cells.entry(key).or_default().push(i as u32);
+            }
+        }
+        grid
+    }
+
+    /// Discs that may touch one at `p` with reach `r`, in order, each once.
+    fn near(&self, p: [f64; 2], r: f64) -> Vec<u32> {
+        let mut found: Vec<u32> = self.span(p, r).filter_map(|key| self.cells.get(&key)).flatten().copied().collect();
+        found.sort_unstable();
+        found.dedup();
+        found
+    }
+}
+
 /// Overlap removal: pushes discs apart until each pair clears the sum of their radii plus a margin.
 fn separate(pos: &mut [[f64; 2]], radius: &[f64]) {
     let c = pos.len();
+    let reach: Vec<f64> = radius.iter().map(|r| r * 1.08).collect();
+    // a cell about the size of most discs: smaller and each covers many, larger and each holds many
+    let mut sizes = reach.clone();
+    sizes.sort_by(|a, b| a.total_cmp(b));
+    let cell = (sizes[sizes.len() * 9 / 10] * 2.0).max(1e-6);
     for _ in 0..80 {
         let snapshot = pos.to_vec();
+        let grid = Grid::new(&snapshot, &reach, cell);
         let push: Vec<[f64; 2]> = (0..c)
             .into_par_iter()
             .map(|i| {
                 let (mut px, mut py) = (0.0, 0.0);
-                for j in 0..c {
+                for j in grid.near(snapshot[i], reach[i]) {
+                    let j = j as usize;
                     if j == i {
                         continue;
                     }
@@ -742,6 +810,33 @@ fn gzip_len(bytes: &[u8]) -> usize {
     enc.finish().map(|v| v.len()).unwrap_or(0)
 }
 
+/// A big world has many entries with few links. Left apart they would each be a community, strung out
+/// around the map and stretching it thin; together, by ink, they make a few large discs.
+const GATHER_ABOVE: usize = 20_000;
+const SMALL_COMMUNITY: usize = 8;
+
+fn gather_small(comm: &mut [u32], nc: usize, color: &[u8]) -> usize {
+    let mut size = vec![0usize; nc];
+    for &c in comm.iter() {
+        size[c as usize] += 1;
+    }
+    let mut next: Vec<u32> = vec![u32::MAX; nc];
+    let mut kept = 0u32;
+    for (c, &s) in size.iter().enumerate() {
+        if s >= SMALL_COMMUNITY {
+            next[c] = kept;
+            kept += 1;
+        }
+    }
+    for (i, c) in comm.iter_mut().enumerate() {
+        *c = match next[*c as usize] {
+            u32::MAX => kept + color[i] as u32,
+            kept_as => kept_as,
+        };
+    }
+    renumber(comm)
+}
+
 /// Communities, ranks and places, before the map is fitted to the unit square.
 struct Placed {
     /// Number of communities; the next five have one row each.
@@ -762,7 +857,10 @@ struct Placed {
 /// Finds the communities, lays them out, and places each one's nodes on a disc.
 fn place(g: &WorldGraph) -> Placed {
     let n = g.n;
-    let (comm, nc) = cluster(n, &g.edges);
+    let (mut comm, mut nc) = cluster(n, &g.edges);
+    if n > GATHER_ABOVE {
+        nc = gather_small(&mut comm, nc, &g.color);
+    }
     let mut csize = vec![0usize; nc];
     for &c in &comm {
         csize[c as usize] += 1;
@@ -951,6 +1049,7 @@ impl Tiles<'_> {
             .into_par_iter()
             .map(|((x, y), (mut cl, mut es))| {
                 cl.sort_by_key(|&c| std::cmp::Reverse(p.csize[c]));
+                cl.truncate(MAX_TILE_NODES);
                 let shown_labels = 40usize;
                 let nodes: Vec<TileNode> = cl
                     .iter()
@@ -1023,7 +1122,7 @@ impl Tiles<'_> {
                         TileNode {
                             x: npos[i][0],
                             y: npos[i][1],
-                            id: i as u32,
+                            id: g.ids.as_ref().map_or(i as u32, |ids| ids[i]),
                             size: (0.0006 * (1.0 + p.degree[i].sqrt().min(40.0) * 0.35)) as f32,
                             color: g.color[i],
                             minzoom: minzoom[i],
@@ -1089,6 +1188,49 @@ fn write_manifest(spec: &Spec, stats: &Stats, bounds: [f32; 4], regions: &[Regio
     Ok(())
 }
 
+/// How many nodes the map's picture shows.
+const PICTURE_NODES: usize = 1600;
+
+/// A picture of the map, for the home page: the best-connected nodes in their inks, and the links
+/// between them. A zero-length round stroke is a dot, so a thousand dots are one short path per ink.
+fn write_picture(g: &WorldGraph, spec: &Spec, p: &Placed, square: &Square, out: &Path) -> Result<()> {
+    // a fair sample of the map, best known first: the whole map's shape, not its few great hubs
+    let step = (p.rank.len() / PICTURE_NODES).max(1);
+    let top: Vec<u32> = p.rank.iter().step_by(step).copied().collect();
+    let shown: HashMap<u32, usize> = top.iter().enumerate().map(|(i, &n)| (n, i)).collect();
+    let (x0, y0, x1, y1) = top.iter().fold((f32::MAX, f32::MAX, f32::MIN, f32::MIN), |b, &n| {
+        let q = square.nodes[n as usize];
+        (b.0.min(q[0]), b.1.min(q[1]), b.2.max(q[0]), b.3.max(q[1]))
+    });
+    let scale = 960.0 / (x1 - x0).max(y1 - y0).max(1e-6);
+    let at = |n: u32| {
+        let q = square.nodes[n as usize];
+        (20.0 + (q[0] - x0) * scale, 20.0 + (q[1] - y0) * scale)
+    };
+    let mut lines = String::new();
+    for &(a, b, _) in &g.edges {
+        if shown.contains_key(&a) && shown.contains_key(&b) && lines.len() < 12_000 {
+            let ((ax, ay), (bx, by)) = (at(a), at(b));
+            lines.push_str(&format!("M{ax:.0} {ay:.0}L{bx:.0} {by:.0}"));
+        }
+    }
+    let mut dots: Vec<String> = vec![String::new(); spec.palette.len().max(1) * 3];
+    for (i, &n) in top.iter().enumerate() {
+        let (x, y) = at(n);
+        let big = if i < 40 { 0 } else if i < 300 { 1 } else { 2 };
+        dots[(g.color[n as usize] as usize % spec.palette.len().max(1)) * 3 + big].push_str(&format!("M{x:.0} {y:.0}h0"));
+    }
+    let mut svg = format!(r##"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="{lines}" fill="none" stroke="#9a9dc4" stroke-opacity=".35" stroke-width="1"/>"##);
+    for (i, d) in dots.iter().enumerate().filter(|(_, d)| !d.is_empty()) {
+        let width = [17, 11, 7][i % 3];
+        let ink = spec.palette.get(i / 3).map_or("#2346d6", String::as_str);
+        svg.push_str(&format!(r#"<path d="{d}" stroke="{ink}" stroke-width="{width}" stroke-linecap="round"/>"#));
+    }
+    svg.push_str("</svg>");
+    fs::write(out.join("picture.svg"), svg)?;
+    Ok(())
+}
+
 /// Builds the world: clusters, layout, level of detail, tiles and manifest under `out`.
 pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> Result<Stats> {
     let t0 = Instant::now();
@@ -1144,6 +1286,7 @@ pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> R
     }
     let named = g.labels.as_ref().map(|l| regions(&p.members, l, g.may_name.as_deref(), &square.centers, &square.radii)).unwrap_or_default();
     write_manifest(spec, &stats, square.bounds(), &named, out)?;
+    write_picture(g, spec, &p, &square, out)?;
     Ok(stats)
 }
 
@@ -1197,7 +1340,7 @@ mod tests {
         labels.extend(["Gamma".to_string(), "Delta".to_string()]);
         edges.push((labels.len() as u32 - 2, labels.len() as u32 - 1, 1.0));
         let n = labels.len();
-        let g = WorldGraph { n, edges, color: vec![0; n], labels: Some(labels), label_prefix: "", keys: None, may_name: None };
+        let g = WorldGraph { n, edges, color: vec![0; n], labels: Some(labels), label_prefix: "", keys: None, may_name: None, ids: None };
         let spec = Spec { kind: "content", palette: vec!["#6e6e73".into()], palette_labels: vec!["All".into()], entities: None };
         let manifest = |run: u32| -> Value {
             let dir = std::env::temp_dir().join(format!("ctd-world-regions-{}-{run}", std::process::id()));

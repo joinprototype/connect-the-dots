@@ -5,6 +5,8 @@ type: person
 name: Johannes Gutenberg
 aliases: [Johann Gutenberg, Johannes Gensfleisch zur Laden zum Gutenberg]
 summary: German printer credited with introducing movable metal type to Europe.
+same_as: {wikidata: Q8958}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Gutenberg.jpg/960px-Gutenberg.jpg", license: "Public domain", author: "Unknown", page: "https://commons.wikimedia.org/wiki/File:Gutenberg.jpg"}
 when: "1400~/1468-02-03?"
 place: mainz
 claims:

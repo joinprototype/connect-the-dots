@@ -4,6 +4,8 @@ id: ryan-cohen
 type: person
 name: "Ryan Cohen"
 summary: "Investor and co-founder of Chewy; GameStop director from January 2021, chairman from June 2021 and CEO from September 2023."
+same_as: {wikidata: Q55114633}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Ryan_Cohen_2019.jpg/960px-Ryan_Cohen_2019.jpg", license: "CC BY-SA 2.0", author: "Bill Jerome", page: "https://commons.wikimedia.org/wiki/File:Ryan_Cohen_2019.jpg"}
 claims:
   - id: c1
     rel: board_member_of

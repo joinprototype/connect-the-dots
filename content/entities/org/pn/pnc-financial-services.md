@@ -6,6 +6,8 @@ name: "PNC Financial Services Group"
 in_sentence: "the PNC Financial Services Group"
 aliases: ["PNC", "The PNC Financial Services Group, Inc."]
 summary: "American financial services company based in Pittsburgh, Pennsylvania."
+same_as: {wikidata: Q38928}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/PNCColumbus.JPG/960px-PNCColumbus.JPG", license: "Public domain", author: "Huney420", page: "https://commons.wikimedia.org/wiki/File:PNCColumbus.JPG"}
 claims:
   - id: c1
     rel: owns_stake

@@ -5,6 +5,8 @@ type: org
 name: D. E. Shaw & Co.
 aliases: [D. E. Shaw, D.E. Shaw, D. E. Shaw group]
 summary: New York investment firm founded in 1988 that applies computing to finance.
+same_as: {wikidata: Q1151402}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/f/fd/D._E._Shaw_%26_Co._Headquarters.png", license: "CC BY-SA 3.0", author: "1166 Avenue of the Americas", page: "https://commons.wikimedia.org/wiki/File:D._E._Shaw_%26_Co._Headquarters.png"}
 when: "1988/.."
 place: new-york-city
 claims:

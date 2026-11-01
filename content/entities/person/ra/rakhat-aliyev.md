@@ -5,6 +5,8 @@ type: person
 name: "Rakhat Aliyev"
 aliases: ["Rakhat Aliev"]
 summary: "Kazakh official and diplomat; first deputy foreign minister (2005–2007) and ambassador to Austria."
+same_as: {wikidata: Q701515}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Rakhat_Aliyev.jpg/960px-Rakhat_Aliyev.jpg", license: "CC BY-SA 3.0", author: "Evstafiev", page: "https://commons.wikimedia.org/wiki/File:Rakhat_Aliyev.jpg"}
 when: "1962/2015-02-24"
 place: kazakhstan
 claims:

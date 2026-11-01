@@ -5,6 +5,8 @@ type: org
 name: "Barclays"
 aliases: ["Barclays PLC", "Barclays Bank PLC"]
 summary: "British bank headquartered in London."
+same_as: {wikidata: Q245343}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Barclays_HQ.jpg/960px-Barclays_HQ.jpg", license: "CC BY-SA 3.0", author: "Secretlondon", page: "https://commons.wikimedia.org/wiki/File:Barclays_HQ.jpg"}
 claims:
   - id: c1
     rel: owns_stake

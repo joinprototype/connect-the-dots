@@ -4,6 +4,8 @@ id: reid-hoffman
 type: person
 name: "Reid Hoffman"
 summary: "American entrepreneur and investor; one of OpenAI's launch donors and a board member in 2019."
+same_as: {wikidata: Q211098}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/2022_Reid_Hoffman_%28cropped%29.jpg/960px-2022_Reid_Hoffman_%28cropped%29.jpg", license: "CC BY 2.0", author: "U.S. Secretary of Defense", page: "https://commons.wikimedia.org/wiki/File:2022_Reid_Hoffman_(cropped).jpg"}
 claims:
   - id: c1
     rel: board_member_of

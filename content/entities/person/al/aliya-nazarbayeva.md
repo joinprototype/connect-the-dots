@@ -5,6 +5,7 @@ type: person
 name: "Aliya Nazarbayeva"
 aliases: ["Aliya Nursultanovna Nazarbayeva"]
 summary: "Businesswoman; head of a construction company."
+same_as: {wikidata: Q4312090}
 when: "1980/.."
 place: kazakhstan
 claims:

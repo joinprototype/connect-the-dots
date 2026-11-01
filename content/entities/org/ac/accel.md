@@ -5,6 +5,7 @@ type: org
 name: Accel
 aliases: [Accel Partners]
 summary: American venture capital firm; Facebook's first venture investor.
+same_as: {wikidata: Q2578125}
 claims:
   - id: c1
     rel: invested_in

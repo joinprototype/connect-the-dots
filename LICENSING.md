@@ -14,6 +14,7 @@ Copyright 2026 the connect-the-dot contributors.
 
 - **Historical borders.** The files in `content/borders/` are adapted from [Cliopatria](https://github.com/Seshat-Global-History-Databank/cliopatria) 0.2.1 by the Seshat Global History Databank, under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). [Their README](content/borders/README.md) lists the changes.
 - **Quotations.** Words quoted from a cited source belong to their authors and publishers.
+- **Fonts.** Bricolage Grotesque and Literata, in `theme/static/fonts/`, are under the SIL Open Font License 1.1 (`OFL.txt` there).
 - **Images.** Each image keeps the license named next to it.
 - **Libraries.** Each library the code uses keeps its own license.
 

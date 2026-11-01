@@ -5,6 +5,8 @@ type: org
 name: Meta Platforms
 aliases: [Facebook, "Facebook, Inc.", Thefacebook, Meta, facebook]
 summary: American social media company founded as Thefacebook in 2004; renamed Meta Platforms in 2021.
+same_as: {wikidata: Q380}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Meta_HQ_2023.png/960px-Meta_HQ_2023.png", license: "CC BY-SA 4.0", author: "InvadingInvader", page: "https://commons.wikimedia.org/wiki/File:Meta_HQ_2023.png"}
 when: "2004/.."
 place: menlo-park
 claims:

@@ -4,6 +4,7 @@ id: politifact
 type: org
 name: PolitiFact
 summary: American fact-checking website run by the Poynter Institute.
+same_as: {wikidata: Q3394318}
 when: "2007/.."
 claims:
   - id: c1

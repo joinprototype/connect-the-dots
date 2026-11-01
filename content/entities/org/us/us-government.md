@@ -6,6 +6,8 @@ name: United States government
 in_sentence: the United States government
 aliases: [US government, U.S. government, Federal government of the United States]
 summary: The federal government of the United States.
+same_as: {wikidata: Q48525}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/White_House_north_side.JPG/960px-White_House_north_side.JPG", license: "CC BY-SA 3.0", author: "Martin Falbisoner", page: "https://commons.wikimedia.org/wiki/File:White_House_north_side.JPG"}
 when: "1789/.."
 place: washington-dc
 claims:

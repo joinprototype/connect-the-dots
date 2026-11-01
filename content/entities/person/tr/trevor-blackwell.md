@@ -4,6 +4,8 @@ id: trevor-blackwell
 type: person
 name: "Trevor Blackwell"
 summary: "Roboticist and computer scientist; one of the four founders of Y Combinator in 2005."
+same_as: {wikidata: Q4088422}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Trevor_Blackwell.jpg", license: "CC BY 2.0", author: "The original uploader was Tlbtlbtlb at English Wikipedia.", page: "https://commons.wikimedia.org/wiki/File:Trevor_Blackwell.jpg"}
 claims:
   - id: c1
     rel: founded

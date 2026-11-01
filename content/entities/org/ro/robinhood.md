@@ -5,6 +5,7 @@ type: org
 name: "Robinhood Markets"
 aliases: ["Robinhood Markets, Inc.", "Robinhood"]
 summary: "American retail brokerage and financial services company founded in 2013."
+same_as: {wikidata: Q18155123}
 when: "2013/.."
 claims:
   - id: c1

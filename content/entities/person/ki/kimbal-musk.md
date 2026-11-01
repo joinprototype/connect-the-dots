@@ -4,6 +4,8 @@ id: kimbal-musk
 type: person
 name: "Kimbal Musk"
 summary: "Entrepreneur and restaurateur; co-founder of Zip2 with his brother Elon Musk; Tesla director since 2004."
+same_as: {wikidata: Q6409751}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/5/54/Kimbal_Musk_%28cropped%29.jpg", license: "CC BY-SA 3.0", author: "Wikiupdate1019", page: "https://commons.wikimedia.org/wiki/File:Kimbal_Musk_(cropped).jpg"}
 claims:
   - id: c1
     rel: relative_of

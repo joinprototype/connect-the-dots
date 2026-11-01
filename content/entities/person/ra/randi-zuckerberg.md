@@ -4,6 +4,8 @@ id: randi-zuckerberg
 type: person
 name: "Randi Zuckerberg"
 summary: "Facebook's director of marketing from 2005 to 2011, then founder of her own media firm; sister of Mark Zuckerberg."
+same_as: {wikidata: Q292708}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Randi_Zuckerberg_WEF_2012_%28cropped%29.jpg/960px-Randi_Zuckerberg_WEF_2012_%28cropped%29.jpg", license: "CC BY-SA 2.0", author: "World Economic Forum", page: "https://commons.wikimedia.org/wiki/File:Randi_Zuckerberg_WEF_2012_(cropped).jpg"}
 claims:
   - id: c1
     rel: relative_of

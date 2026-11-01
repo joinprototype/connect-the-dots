@@ -6,6 +6,7 @@ name: Soviet people
 in_sentence: "the Soviet people"
 aliases: [citizens of the USSR, Soviet citizens]
 summary: "The citizens of the Soviet Union."
+same_as: {wikidata: Q1633149}
 claims:
   - id: c1
     rel: harmed_by

@@ -6,6 +6,8 @@ name: "Jikji"
 in_sentence: "the Jikji"
 aliases: ["Buljo jikji simche yojeol", "Anthology of Great Buddhist Priests' Zen Teachings"]
 summary: "Korean Buddhist text that UNESCO calls the oldest existing book of movable metal print in the world."
+same_as: {wikidata: Q494611}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Korean_book-Jikji-Selected_Teachings_of_Buddhist_Sages_and_Seon_Masters-1377.jpg", license: "Public domain", author: "Authored by Baegun Hwaseng (1289-1374), a master of Seon Buddhism in Korea, and published ", page: "https://commons.wikimedia.org/wiki/File:Korean_book-Jikji-Selected_Teachings_of_Buddhist_Sages_and_Seon_Masters-1377.jpg"}
 claims:
   - id: c1
     rel: made_with

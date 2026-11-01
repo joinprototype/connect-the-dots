@@ -6,6 +6,8 @@ name: Soviet government
 in_sentence: "the Soviet government"
 aliases: [Government of the Soviet Union, Government of the USSR]
 summary: The government of the Soviet Union (1922–1991).
+same_as: {wikidata: Q2148}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Ministers_of_the_USSR_-_Stalin.jpg/960px-Ministers_of_the_USSR_-_Stalin.jpg", license: "Public domain", author: "Government of the USSR", page: "https://commons.wikimedia.org/wiki/File:Ministers_of_the_USSR_-_Stalin.jpg"}
 when: "1922-12-30/1991-12-26"
 place: moscow
 claims:

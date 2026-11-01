@@ -5,6 +5,8 @@ type: person
 name: William Boyce Thompson
 aliases: [William B. Thompson, W. B. Thompson]
 summary: American mining financier; head of the American Red Cross mission to Russia in 1917.
+same_as: {wikidata: Q3568455}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/3/31/William_Boyce_Thompson_circa_1928.jpg", license: "CC0", author: "Unknown authorUnknown author", page: "https://commons.wikimedia.org/wiki/File:William_Boyce_Thompson_circa_1928.jpg"}
 when: "1869-05-13/1930-06-27"
 claims:
   - id: c1

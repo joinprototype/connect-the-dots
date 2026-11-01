@@ -5,6 +5,8 @@ type: person
 name: "Albert Wohlstetter"
 aliases: ["Albert J. Wohlstetter"]
 summary: "American strategist at the RAND Corporation."
+same_as: {wikidata: Q324947}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/1985-Nov-7-Wohlstetter-Nitze-Medal-of-Freedom-C31804-20_%28cropped%29_-_Albert_Wohlstetter.tif/lossy-page1-330px-1985-Nov-7-Wohlstetter-Nitze-Medal-of-Freedom-C31804-20_%28cropped%29_-_Albert_Wohlstetter.tif.jpg", license: "Public domain", author: "Peter J. Souza, White House official photographer", page: "https://commons.wikimedia.org/wiki/File:1985-Nov-7-Wohlstetter-Nitze-Medal-of-Freedom-C31804-20_(cropped)_-_Albert_Wohlstetter.tif"}
 when: "1913/1997"
 claims:
   - id: c1

@@ -5,6 +5,8 @@ type: person
 name: "Dariga Nazarbayeva"
 aliases: ["Dariga Nursultanovna Nazarbayeva", "Darigha Nazarbaeva"]
 summary: "Politician; chair of the Senate of Kazakhstan from 2019 to 2020, and earlier a deputy speaker of the Mazhilis."
+same_as: {wikidata: Q376532}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Dariga_Nazarbayeva_2019_%28cropped%29.jpg/960px-Dariga_Nazarbayeva_2019_%28cropped%29.jpg", license: "CC BY 4.0", author: "council.gov.ru", page: "https://commons.wikimedia.org/wiki/File:Dariga_Nazarbayeva_2019_(cropped).jpg"}
 when: "1963/.."
 place: kazakhstan
 claims:

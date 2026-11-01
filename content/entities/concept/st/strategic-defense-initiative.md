@@ -6,6 +6,7 @@ name: Strategic Defense Initiative
 in_sentence: "the Strategic Defense Initiative"
 aliases: [SDI, Star Wars]
 summary: Reagan administration program, announced on 23 March 1983, to research a missile defense system.
+same_as: {wikidata: Q211031}
 when: "1983-03-23/.."
 ---
 

@@ -5,6 +5,8 @@ type: person
 name: Elon Musk
 aliases: [Elon Reeve Musk]
 summary: "Entrepreneur; founder and CEO of SpaceX, CEO of Tesla."
+same_as: {wikidata: Q317521}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Elon_Musk_%2854816836217%29_%28cropped_2%29_%28b%29.jpg/960px-Elon_Musk_%2854816836217%29_%28cropped_2%29_%28b%29.jpg", license: "CC BY-SA 4.0", author: "Gage Skidmore", page: "https://commons.wikimedia.org/wiki/File:Elon_Musk_(54816836217)_(cropped_2)_(b).jpg"}
 when: "1971-06-28/.."
 place: pretoria
 background:

@@ -6,6 +6,7 @@ name: "Kuwait Investment Authority"
 in_sentence: "the Kuwait Investment Authority"
 aliases: ["KIA"]
 summary: "Investment body that acts for and on behalf of the Government of the State of Kuwait."
+same_as: {wikidata: Q1794766}
 claims:
   - id: c1
     rel: owns_stake

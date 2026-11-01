@@ -5,6 +5,8 @@ type: person
 name: Serhii Plokhy
 aliases: [Serhii Plokhii, Serhiy Plokhy]
 summary: Ukrainian-American historian; professor of Ukrainian history at Harvard University.
+same_as: {wikidata: Q1257297}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/S_Plokhy.jpg/960px-S_Plokhy.jpg", license: "CC BY-SA 4.0", author: "Anntinomy", page: "https://commons.wikimedia.org/wiki/File:S_Plokhy.jpg"}
 when: "1957/.."
 claims:
   - id: c1

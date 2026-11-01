@@ -4,6 +4,8 @@ id: stanford-university
 type: org
 name: "Stanford University"
 summary: "Private research university in Stanford, California."
+same_as: {wikidata: Q41506}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Stanford_Oval_May_2011_panorama.jpg/960px-Stanford_Oval_May_2011_panorama.jpg", license: "CC BY-SA 3.0", author: "King of Hearts", page: "https://commons.wikimedia.org/wiki/File:Stanford_Oval_May_2011_panorama.jpg"}
 claims:
   - id: c1
     rel: invested_in

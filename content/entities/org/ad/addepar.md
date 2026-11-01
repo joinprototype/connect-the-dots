@@ -4,4 +4,5 @@ id: addepar
 type: org
 name: "Addepar"
 summary: "Global data and AI company serving the financial services industry."
+same_as: {wikidata: Q16974220}
 ---

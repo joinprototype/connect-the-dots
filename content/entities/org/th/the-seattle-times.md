@@ -4,6 +4,7 @@ id: the-seattle-times
 type: org
 name: The Seattle Times
 summary: Daily newspaper in Seattle, Washington.
+same_as: {wikidata: Q221718}
 place: seattle
 ---
 

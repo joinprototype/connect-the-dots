@@ -6,6 +6,8 @@ name: First World War
 in_sentence: "the First World War"
 aliases: [World War I, WWI, Great War]
 summary: "Global war of 1914–1918 between the Allied Powers, with Russia among them until 1918, and the Central Powers."
+same_as: {wikidata: Q361}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/WWImontage.jpg/960px-WWImontage.jpg", license: "Public domain", author: "User:Hohum", page: "https://commons.wikimedia.org/wiki/File:WWImontage.jpg"}
 when: "1914-07-28/1918-11-11"
 ---
 

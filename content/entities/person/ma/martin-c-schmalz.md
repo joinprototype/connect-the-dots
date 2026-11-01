@@ -5,6 +5,7 @@ type: person
 name: "Martin C. Schmalz"
 aliases: ["Martin Schmalz"]
 summary: "Finance economist at the University of Oxford's Saïd Business School; co-author of a 2018 study of common ownership of US airlines."
+same_as: {wikidata: Q82339436}
 claims:
   - id: c1
     rel: authored

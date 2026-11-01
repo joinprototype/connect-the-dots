@@ -4,6 +4,7 @@ id: islam
 type: tradition
 name: Islam
 summary: Monotheistic religion based on the Quran and the teachings of Muhammad.
+same_as: {wikidata: Q432}
 ---
 
 Islam regards [[muhammad]] as the final prophet and the [[quran]] as revealed scripture. It also honors [[abraham]], [[moses]] and [[jesus]] as prophets.

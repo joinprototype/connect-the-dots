@@ -5,6 +5,8 @@ type: person
 name: John F. Kennedy
 aliases: [JFK, John Fitzgerald Kennedy]
 summary: "35th President of the United States (1961–1963)."
+same_as: {wikidata: Q9696}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/John_F._Kennedy%2C_White_House_color_photo_portrait.jpg/960px-John_F._Kennedy%2C_White_House_color_photo_portrait.jpg", license: "Public domain", author: "Cecil W. Stoughton", page: "https://commons.wikimedia.org/wiki/File:John_F._Kennedy,_White_House_color_photo_portrait.jpg"}
 when: "1917-05-29/1963-11-22"
 claims:
   - id: c1

@@ -4,6 +4,8 @@ id: priscilla-chan
 type: person
 name: "Priscilla Chan"
 summary: "Pediatrician; co-founder of the Chan Zuckerberg Initiative; wife of Mark Zuckerberg."
+same_as: {wikidata: Q20900227}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Priscilla_Chan_at_SXSW_2025_01_%28cropped_3%29.jpg/960px-Priscilla_Chan_at_SXSW_2025_01_%28cropped_3%29.jpg", license: "CC BY 4.0", author: "Rosiestep", page: "https://commons.wikimedia.org/wiki/File:Priscilla_Chan_at_SXSW_2025_01_(cropped_3).jpg"}
 claims:
   - id: c1
     rel: relative_of

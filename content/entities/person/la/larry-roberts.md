@@ -5,6 +5,8 @@ type: person
 name: "Larry Roberts"
 aliases: ["Lawrence G. Roberts", "Larry G. Roberts"]
 summary: "American computer scientist who led the building of the ARPANET at ARPA."
+same_as: {wikidata: Q92935}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Larry_Roberts.jpg", license: "CC BY-SA 4.0", author: "Unknown authorUnknown author", page: "https://commons.wikimedia.org/wiki/File:Larry_Roberts.jpg"}
 when: "1937/2018"
 claims:
   - id: c1

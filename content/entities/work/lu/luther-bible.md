@@ -6,6 +6,8 @@ name: "Luther Bible"
 in_sentence: "the Luther Bible"
 aliases: ["Bible of Martin Luther", "Lutherbibel"]
 summary: "German-language Bible of Martin Luther, first printed complete at Wittenberg by Hans Lufft in 1534."
+same_as: {wikidata: Q1571095}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Lutherbibel.jpg/960px-Lutherbibel.jpg", license: "Public domain", author: "Torsten Schleese", page: "https://commons.wikimedia.org/wiki/File:Lutherbibel.jpg"}
 when: "1534"
 place: wittenberg
 claims:

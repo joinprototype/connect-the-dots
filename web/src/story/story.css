@@ -1,6 +1,5 @@
-/* story.css: chapter player. A sticky stage (map / graph) beside scrolling cards. Calm: white cards with
-   soft shadows, a gray graph with the accent for what each shot adds, and quotes marked with the
-   --highlight token (yellow on light, a soft blue-gray in dark mode). */
+/* story.css: chapter player. A sticky stage (map / graph) beside scrolling cards on white, in the
+   story's own ink (--story), dots in the colour of what they are, and quotes marked in sun yellow. */
 
 ctd-story {
   --story-top: 58px;
@@ -8,8 +7,8 @@ ctd-story {
   --story-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.06);
   --story-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08), 0 0 0 1px color-mix(in srgb, var(--rule) 60%, transparent);
   /* graph colours, read by the graph view */
-  --graph-node: #8e8e93;
-  --graph-edge: #c7c7cc;
+  --graph-node: #8d90b0;
+  --graph-edge: #c3c6df;
   display: block;
   position: relative;
   margin: 2rem 0 3rem;
@@ -63,6 +62,12 @@ ctd-story .story-map .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button { ba
 .story-hud-persp { font-style: italic; }
 .story-hud-count { color: var(--muted) !important; font-variant-numeric: tabular-nums; }
 .story-hud-past { color: var(--muted) !important; font-style: italic; }
+
+/* a photograph over the whole stage; the card and the time stay on top of it */
+.story-photo { position: absolute; inset: 0; z-index: 2; margin: 0; opacity: 0; transition: opacity .6s ease-in-out; background: #171a3a; }
+.story-photo.is-shown { opacity: 1; }
+.story-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.story-photo figcaption { position: absolute; left: 10px; bottom: 8px; padding: 2px 8px; border-radius: 6px; font: 500 0.75rem var(--font-ui); color: #fff; background: rgba(23, 26, 58, 0.62); }
 
 /* Map markers: a dot and a small label card. */
 /* which borders a map shows, and that they are approximate */
@@ -172,8 +177,8 @@ ctd-story .story-map .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button { ba
   width: 9px; height: 9px; padding: 0; border-radius: 50%; cursor: pointer;
   border: 0; background: var(--rule);
 }
-.story-dots button.is-past { background: var(--muted); }
-.story-dots button[aria-current="step"] { background: var(--accent); transform: scale(1.3); }
+.story-dots button.is-past { background: var(--story-text, var(--muted)); opacity: 0.55; }
+.story-dots button[aria-current="step"] { background: var(--story-text, var(--accent)); transform: scale(1.5); }
 
 /* ---------------------------------------------------------------- steps */
 ctd-story.is-enhanced .story-steps { grid-column: 2; grid-row: 1; padding: 30vh 0 45vh; }
@@ -185,17 +190,18 @@ ctd-story .step-card {
   font-family: var(--font-body); font-size: 1.1rem; line-height: 1.65; color: var(--ink);
   background: var(--paper);
   box-shadow: var(--story-shadow);
-  transition: box-shadow .5s, opacity .5s;
-  /* the cards before and after the current one step back a little; their text (the accent too) stays at 4.5:1 */
-  opacity: 0.9;
+  transition: box-shadow .5s;
 }
-ctd-story:not(.is-enhanced) .step-card { opacity: 1; }
 ctd-story .step-card::before {
-  content: ""; position: absolute; left: 0; top: 20px; bottom: 20px; width: 3px; border-radius: 0 2px 2px 0;
+  content: ""; position: absolute; left: 0; top: 20px; bottom: 20px; width: 5px; border-radius: 0 3px 3px 0;
   background: transparent; transition: background-color .4s;
 }
-ctd-story .step.is-active .step-card { opacity: 1; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.09); }
-ctd-story .step.is-active .step-card::before { background: var(--accent); }
+ctd-story .step.is-active .step-card { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.09); }
+ctd-story .step.is-active .step-card::before { background: var(--story, var(--accent)); }
+/* a scene's picture runs to the card's edges */
+ctd-story .step-picture { display: block; width: calc(100% + 48px); max-width: none; aspect-ratio: 16 / 10; margin: -22px -24px 14px; object-fit: cover; object-position: 50% 22%; border-radius: 14px 14px 0 0; background: var(--paper-2); }
+/* each scene opens on its name, set large in the story's ink */
+ctd-story .step-card p > strong:first-child { display: block; margin-bottom: 0.15em; font: 750 1.5rem/1.15 var(--font-display); letter-spacing: -0.02em; color: var(--story-text, var(--ink)); }
 ctd-story .step-card > :last-child { margin-bottom: 0; }
 ctd-story .step-card .step-explore { margin-top: 1rem; }
 ctd-story .step-card a.story-explore::after { content: "→"; }
@@ -222,7 +228,7 @@ ctd-story .step-card > :has(+ .step-source:last-child:not(:focus-within)) { marg
   .story-dots button.is-past { background: none; }
   .story-dots button.is-past::before { background: var(--muted); }
   .story-dots button[aria-current="step"] { background: none; transform: none; }
-  .story-dots button[aria-current="step"]::before { background: var(--accent); transform: scale(1.4); }
+  .story-dots button[aria-current="step"]::before { background: var(--story-text, var(--accent)); transform: scale(1.5); }
   .story-controls { position: sticky; top: calc(var(--story-top) + 54svh - 48px); z-index: 4; margin: -46px 10px 0; width: calc(100% - 20px); box-sizing: border-box; }
   ctd-story.is-enhanced .story-steps { position: relative; z-index: 1; padding: 8svh 16px 30svh; }
   ctd-story .step { min-height: 62svh; align-items: center; }

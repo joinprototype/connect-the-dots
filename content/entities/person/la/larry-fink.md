@@ -5,6 +5,8 @@ type: person
 name: Larry Fink
 aliases: [Laurence D. Fink, Laurence Douglas Fink]
 summary: "Co-founder, chairman and CEO of BlackRock."
+same_as: {wikidata: Q3218882}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Larry_Fink_with_Valdis_Dombrovskis_%28cropped%29.jpg/960px-Larry_Fink_with_Valdis_Dombrovskis_%28cropped%29.jpg", license: "CC BY 4.0", author: "Kena Betancur/European Commission", page: "https://commons.wikimedia.org/wiki/File:Larry_Fink_with_Valdis_Dombrovskis_(cropped).jpg"}
 when: "1952-11-02/.."
 background:
   - {text: "His mother taught English at Cal Northridge; his father owned a shoe store.", src: [{s: blackrock-2024-chairmans-letter, at: "opening section, “Time to rethink retirement”", quote: "My mom taught English at the local state college (Cal Northridge), and my dad owned a shoe store."}]}

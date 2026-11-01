@@ -5,6 +5,8 @@ type: person
 name: "Jerome"
 aliases: ["St. Jerome", "Saint Jerome", "Eusebius Hieronymus"]
 summary: "Biblical translator and monastic leader who settled in Bethlehem; known for the Latin Bible called the Vulgate."
+same_as: {wikidata: Q44248}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Francisco_de_Zurbar%C3%A1n_041.jpg/960px-Francisco_de_Zurbar%C3%A1n_041.jpg", license: "CC0", author: "Francisco de Zurbar\u00e1n", page: "https://commons.wikimedia.org/wiki/File:Francisco_de_Zurbar%C3%A1n_041.jpg"}
 when: "0347~/0419~"
 place: bethlehem
 claims:

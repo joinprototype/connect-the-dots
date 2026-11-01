@@ -4,6 +4,8 @@ id: berlin
 type: place
 name: Berlin
 summary: Capital of Germany.
+same_as: {wikidata: Q64}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Cityscape_Berlin.jpg/960px-Cityscape_Berlin.jpg", license: "CC BY-SA 3.0", author: "Thomas Wolf, www.foto-tw.de", page: "https://commons.wikimedia.org/wiki/File:Cityscape_Berlin.jpg"}
 coords: [13.405, 52.52]
 ---
 

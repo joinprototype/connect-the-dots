@@ -5,6 +5,8 @@ type: person
 name: Mark Zuckerberg
 aliases: [Mark Elliot Zuckerberg]
 summary: Founder, chair and chief executive of Meta Platforms (Facebook).
+same_as: {wikidata: Q36215}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg/960px-Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg", license: "CC BY 2.0", author: "Anthony Quintano from Westminster, United States", page: "https://commons.wikimedia.org/wiki/File:Mark_Zuckerberg_F8_2019_Keynote_(32830578717)_(cropped).jpg"}
 when: "1984-05-14/.."
 background:
   - {text: "Was raised Jewish.", src: [{s: toi-2017-01-02-zuckerberg-religion, at: "his reply to a comment on his Facebook post of 25 December 2016, as quoted", quote: "No. I was raised Jewish and then I went through a period where I questioned things, but now I believe religion is very important.", by: mark-zuckerberg}]}

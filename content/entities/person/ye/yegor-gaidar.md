@@ -5,6 +5,8 @@ type: person
 name: Yegor Gaidar
 aliases: [Yegor Timurovich Gaidar]
 summary: Russian economist; acting prime minister of Russia in 1992.
+same_as: {wikidata: Q82695}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Gaidar_in_2008_-_crop.jpg/960px-Gaidar_in_2008_-_crop.jpg", license: "CC BY-SA 3.0", author: "J\u00fcrg Vollmer / Maiakinfo", page: "https://commons.wikimedia.org/wiki/File:Gaidar_in_2008_-_crop.jpg"}
 when: "1956-03-19/2009-12-16"
 claims:
   - id: c1

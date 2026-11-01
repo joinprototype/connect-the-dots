@@ -5,6 +5,7 @@ type: person
 name: Muhammad
 aliases: [Muhammad ibn Abdullah, Prophet Muhammad, Mohammed]
 summary: Arab religious leader regarded in Islam as the final prophet.
+same_as: {wikidata: Q9458}
 when: "0570~/0632-06-08"
 place: mecca
 claims:

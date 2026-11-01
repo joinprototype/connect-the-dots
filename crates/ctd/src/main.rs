@@ -144,7 +144,7 @@ fn run(cli: Cli) -> Result<ExitCode> {
                 }
                 None => {
                     let (kb, _) = ctd::load_kb(&root)?;
-                    let (g, spec) = ctd::world::from_kb(&kb);
+                    let (g, spec) = ctd::world::from_kb(&kb, None);
                     (g, spec, ".cache/world")
                 }
             };

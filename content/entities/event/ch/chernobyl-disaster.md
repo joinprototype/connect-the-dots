@@ -6,6 +6,8 @@ name: Chernobyl disaster
 in_sentence: "the Chernobyl disaster"
 aliases: [Chernobyl accident, Chornobyl disaster]
 summary: The explosion of reactor 4 at the Chernobyl nuclear power plant in Soviet Ukraine on 26 April 1986.
+same_as: {wikidata: Q486}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/IAEA_02790015_%285613115146%29.jpg/960px-IAEA_02790015_%285613115146%29.jpg", license: "CC BY-SA 2.0", author: "IAEA Imagebank", page: "https://commons.wikimedia.org/wiki/File:IAEA_02790015_(5613115146).jpg"}
 when: 1986-04-26
 place: chernobyl
 claims:

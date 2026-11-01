@@ -5,6 +5,7 @@ type: org
 name: "Barclays Global Investors"
 aliases: ["BGI"]
 summary: "Barclays' investment management business, which pioneered the iShares exchange-traded funds; bought by BlackRock in 2009."
+same_as: {wikidata: Q4034850}
 claims:
   - id: c1
     rel: part_of

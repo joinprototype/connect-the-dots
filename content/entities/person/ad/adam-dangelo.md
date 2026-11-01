@@ -5,6 +5,8 @@ type: person
 name: "Adam D'Angelo"
 aliases: ["Adam D’Angelo"]
 summary: "American entrepreneur, CEO of Quora; an OpenAI board member since at least 2019."
+same_as: {wikidata: Q4208213}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/3/38/Adam_D%27Angelo_in_2011.jpg", license: "CC BY 2.0", author: "Philip Neustrom from San Francisco, USA", page: "https://commons.wikimedia.org/wiki/File:Adam_D%27Angelo_in_2011.jpg"}
 claims:
   - id: c1
     rel: board_member_of

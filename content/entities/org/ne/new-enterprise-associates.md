@@ -5,6 +5,7 @@ type: org
 name: "New Enterprise Associates"
 aliases: ["NEA"]
 summary: "American venture capital firm; a backer of Loopt."
+same_as: {wikidata: Q17083173}
 claims:
   - id: c1
     rel: invested_in

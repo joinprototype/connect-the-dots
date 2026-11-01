@@ -5,6 +5,7 @@ type: concept
 name: In God We Trust
 aliases: [In God we trust]
 summary: Official national motto of the United States since 1956.
+same_as: {wikidata: Q270871}
 when: "1956-07-30/.."
 ---
 

@@ -5,6 +5,7 @@ type: org
 name: PayPal
 aliases: [PayPal Holdings, "PayPal, Inc."]
 summary: Online payments company co-founded in 1998; owned by eBay from 2002 to 2015.
+same_as: {wikidata: Q483959}
 when: "1998/.."
 ---
 

@@ -6,6 +6,8 @@ name: Quran
 in_sentence: "the Quran"
 aliases: [Qur'an, Koran]
 summary: The central religious text of Islam.
+same_as: {wikidata: Q428}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/c/c4/AndalusQuran.JPG", license: "Public domain", author: "Unknown", page: "https://commons.wikimedia.org/wiki/File:AndalusQuran.JPG"}
 claims:
   - id: c1
     rel: scripture_of

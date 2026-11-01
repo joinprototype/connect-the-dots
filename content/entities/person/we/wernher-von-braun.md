@@ -5,6 +5,8 @@ type: person
 name: Wernher von Braun
 aliases: [Wernher Magnus Maximilian Freiherr von Braun]
 summary: German-born rocket engineer; led US Army missile development and directed NASA's Marshall Space Flight Center.
+same_as: {wikidata: Q57384}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Wernher_von_Braun.jpg/960px-Wernher_von_Braun.jpg", license: "Public domain", author: "NASA/MSFC", page: "https://commons.wikimedia.org/wiki/File:Wernher_von_Braun.jpg"}
 when: "1912-03-23/1977-06-16"
 claims:
   - id: c1
@@ -24,6 +26,11 @@ claims:
     title: Center Director
     note: "The Redstone Arsenal biography gives February 1970 as the end of his term."
     src: [{s: nasa-msfc-history, at: "Marshall Center Directors", quote: "Dr. Wernher von Braun July 1960–January 1970"}]
+  - id: c4
+    rel: developed
+    to: saturn-v
+    src:
+      - {s: nasa-von-braun-bio, at: "Wernher von Braun", quote: "Accordingly, von Braun became director of NASA’s Marshall Space Flight Center and the chief architect of the Saturn V launch vehicle, the superbooster that would propel Americans to the Moon."}
 ---
 
 Wernher von Braun led rocket development for the US Army at Redstone Arsenal, including the [[jupiter-missile]]. In July 1960 he and his team moved to [[nasa]], where he was the first director of the [[marshall-space-flight-center]].

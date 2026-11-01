@@ -4,6 +4,7 @@ id: melvin-dresher
 type: person
 name: "Melvin Dresher"
 summary: "American mathematician at the RAND Corporation."
+same_as: {wikidata: Q6813958}
 when: "1911/1992"
 claims:
   - id: c1

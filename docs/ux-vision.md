@@ -1,6 +1,6 @@
 # UX vision: ask how anything connects, see the proof
 
-> Rewritten 2026-10-17 after founder feedback: "I actually like the stories", "we do not need so many colors… make it like the Apple Books app, simple and usable", "think like Jony Ive and Steve Jobs". This page is the design brief; it beats any earlier styling decision.
+> This page is the design brief; it beats any earlier styling decision. Rewritten 2026-11-01: the Apple Books look (ADR-0014) gave way to dots and lines ([ADR-0022](decisions/0022-dots-and-lines.md)): warm, lively, made with love.
 
 ## The product in one line
 
@@ -24,23 +24,22 @@ Entity pages are the "book pages" these three lead to:
 
 ## Say no
 
-No social features, no editor, and no seven-lens control panels in the MVP UI. No decorative color, glow or grid. No jargon: users see "primary record", "link", "proof", "both sides agree", "one side's account", never T1, claim, edge or tier.
+No social features, no editor, and no seven-lens control panels in the MVP UI. No colour without a meaning. No jargon: users see "primary record", "link", "proof", "both sides agree", "one side's account", never T1, claim, edge or tier.
 
 ## Materials and type
 
-- **Palette:** white and Apple gray. Ink `#1d1d1f`, secondary `#66666b`, separators `#d2d2d7`.
-  - Secondary is a shade darker than Apple's `#6e6e73`, so it keeps 4.5:1 on the gray and tinted surfaces too: a selected row, a badge, the "both sides agree" card.
-- **Contrast:** every text keeps 4.5:1 on what is behind it in both modes (3:1 from 24 px, or 18.66 px bold). Text that steps back (an ended link, an empty lens, an entry outside the picked era) turns to the secondary gray or a light fade that still keeps 4.5:1, never fainter. `node tools/qa/sweep.mjs --a11y` checks every page.
-- **One accent,** `#0066cc`, for links, selection, the focus dot and the active path.
-- **Highlighter** only for quoted proof, as in Books:
-  - yellow `#fde68a` on light paper;
-  - a soft blue-gray `#1f374f` in dark mode.
-
-  Never yellow on black. Founder, 2026-10-17: "yellow on black is hard to see, hurts my eyes".
-- **Type:** system fonts only. `ui-serif` / New York for reading and titles; `system-ui` / SF for controls. No web-font downloads. The one exception is the OpenFreeMap basemap of the story maps and the Map's Earth view: its country and capital names, and the names on the Earth's dots, are drawn with its glyphs until we host it ourselves ([ADR-0014](decisions/0014-calm-design.md)).
-- **Shapes:** rounded cards (12–16 px), soft shadows, generous white space, segmented controls.
+- **The idea:** dots and lines. A thick line runs through routes and story progress, and every dot has a colour.
+- **Palette:** white paper, deep indigo ink `#171a3a`, secondary `#565a80`, separators `#cfd2e8`.
+- **Print inks,** each with a job:
+  - tomato for people, cobalt for power, teal for money, sky for science and tech, amber for history, plum for ideas and faith, leaf for places (`content/schema/layers.yaml`);
+  - each story takes one ink by its id, for its cover, header and scene titles;
+  - cobalt `#2346d6` for links, tomato `#d4351f` for the one thing to press.
+- **Contrast:** every text keeps 4.5:1 on what is behind it in both modes (3:1 from 24 px, or 18.66 px bold). Text that steps back (an ended link, an empty lens, an entry outside the picked era) turns to the secondary or a light fade that still keeps 4.5:1, never fainter. `node tools/qa/sweep.mjs --a11y` checks every page.
+- **Highlighter** only for quoted proof: sun yellow `#ffe27a` on paper, a soft blue `#2d3f7d` in dark mode. Never yellow on black. Founder, 2026-10-17: "yellow on black is hard to see, hurts my eyes".
+- **Type:** Bricolage Grotesque for titles and controls, set large and tight; Literata for reading. Both hosted here. The basemap's country and capital names are drawn with its own glyphs until we host it ourselves.
+- **Shapes:** books have a spine (6 px on the left, 14 on the right), buttons are pills, cards are 16 px.
 - **Stories read on white,** in every mode: long reading needs paper (founder, 2026-11-01).
-- **Dark mode** follows the system setting everywhere else.
+- **Dark mode** follows the system setting everywhere else, in deep indigo.
   - No yellow or other warm accent text on dark backgrounds.
   - "Being verified" is a dashed neutral outline in both modes.
 

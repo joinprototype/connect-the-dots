@@ -4,6 +4,8 @@ id: francis-desouza
 type: person
 name: "Francis deSouza"
 summary: "Technology executive; named CEO of Scale AI effective August 10, 2026. Previously Chief Operating Officer of Google Cloud and CEO of Illumina."
+same_as: {wikidata: Q5482914}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Francis_deSouza.jpg/960px-Francis_deSouza.jpg", license: "CC BY-SA 4.0", author: "CDBeckwith", page: "https://commons.wikimedia.org/wiki/File:Francis_deSouza.jpg"}
 claims:
   - id: c1
     rel: ceo_of

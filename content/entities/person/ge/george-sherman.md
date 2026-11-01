@@ -5,6 +5,7 @@ type: person
 name: "George Sherman"
 aliases: ["George E. Sherman"]
 summary: "American retail executive, named GameStop's chief executive in March 2019 after leading Victra."
+same_as: {wikidata: Q745414}
 claims:
   - id: c1
     rel: ceo_of

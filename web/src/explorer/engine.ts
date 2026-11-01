@@ -4,7 +4,7 @@ import Graph from 'graphology';
 import forceAtlas2 from 'graphology-layout-forceatlas2';
 import Sigma from 'sigma';
 import type { EdgeDisplayData, NodeDisplayData } from 'sigma/types';
-import { FADED_TEXT_ALPHA, glColor, mix, tokenRgb, tokenString, type RGB } from '../lib/color';
+import { cssColorToRgb, FADED_TEXT_ALPHA, glColor, mix, tokenRgb, tokenString, type RGB } from '../lib/color';
 import type { GraphIndex } from '../lib/data';
 import { timeState } from '../lib/dates';
 import {
@@ -171,7 +171,7 @@ export class ExplorerEngine {
     const maxDeg = Math.max(1, ...idx.data.nodes.map((n) => n.degree));
     for (const n of idx.data.nodes) {
       const type = idx.data.types[n.type];
-      const rgb = this.nodeGray;
+      const rgb = type?.color ? cssColorToRgb(type.color) : this.nodeGray;
       graph.addNode(n.id, {
         x: 0,
         y: 0,

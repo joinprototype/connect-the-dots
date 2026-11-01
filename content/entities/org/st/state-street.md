@@ -5,9 +5,10 @@ type: org
 name: "State Street Corporation"
 aliases: ["State Street", "State Street Corp"]
 summary: "American financial holding company in Boston, organized in 1969; the parent of State Street Bank and Trust and of the asset manager State Street Investment Management."
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/State_Street_Bank_-_One_Congress%2C_Boston%2C_MA.jpg/960px-State_Street_Bank_-_One_Congress%2C_Boston%2C_MA.jpg", license: "CC0", author: "Daderot", page: "https://commons.wikimedia.org/wiki/File:State_Street_Bank_-_One_Congress,_Boston,_MA.jpg"}
 when: "1969/.."
 place: boston
-same_as: {sec_cik: 93751}
+same_as: {wikidata: Q2037125, sec_cik: 93751}
 claims:
   - id: c1
     rel: holds_for_clients

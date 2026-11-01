@@ -4,6 +4,8 @@ id: sue-desmond-hellmann
 type: person
 name: "Sue Desmond-Hellmann"
 summary: "American physician and executive, former CEO of the Bill & Melinda Gates Foundation; elected to OpenAI's board in March 2024."
+same_as: {wikidata: Q7647750}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/SDH-3249.jpg/960px-SDH-3249.jpg", license: "CC BY-SA 4.0", author: "Huyclef", page: "https://commons.wikimedia.org/wiki/File:SDH-3249.jpg"}
 claims:
   - id: c1
     rel: board_member_of

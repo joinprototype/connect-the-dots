@@ -4,6 +4,8 @@ id: andy-bechtolsheim
 type: person
 name: "Andy Bechtolsheim"
 summary: "Co-founder of Sun Microsystems; invested in Google in 1998."
+same_as: {wikidata: Q65344}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Andreas_bechtolsheim.jpg/960px-Andreas_bechtolsheim.jpg", license: "CC BY-SA 3.0", author: "Norbert Stuhrmann", page: "https://commons.wikimedia.org/wiki/File:Andreas_bechtolsheim.jpg"}
 claims:
   - id: c1
     rel: invested_in

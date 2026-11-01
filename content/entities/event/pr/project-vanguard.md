@@ -5,6 +5,8 @@ type: event
 name: Project Vanguard
 aliases: [Vanguard satellite program]
 summary: US Navy-led program of 1955–1959 to launch the first American satellite.
+same_as: {wikidata: Q179527}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/b/bb/Vanguard_rocket.jpg", license: "Public domain", author: "U.S. Navy", page: "https://commons.wikimedia.org/wiki/File:Vanguard_rocket.jpg"}
 when: "1955/1959"
 claims:
   - id: c1

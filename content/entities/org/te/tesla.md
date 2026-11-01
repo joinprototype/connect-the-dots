@@ -5,6 +5,8 @@ type: org
 name: Tesla
 aliases: ["Tesla, Inc.", Tesla Motors]
 summary: American maker of electric vehicles and energy-storage products.
+same_as: {wikidata: Q478214}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Tesla_Visit_3_%289267529364%29.jpg/960px-Tesla_Visit_3_%289267529364%29.jpg", license: "CC BY 2.0", author: "Windell Oskay from Sunnyvale, CA, USA", page: "https://commons.wikimedia.org/wiki/File:Tesla_Visit_3_(9267529364).jpg"}
 when: "2003/.."
 claims:
   - id: c1

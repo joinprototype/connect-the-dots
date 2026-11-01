@@ -5,6 +5,7 @@ type: person
 name: "Timur Kulibayev"
 aliases: ["Timur Askarovich Kulibayev", "Timur Kulibaev"]
 summary: "Businessman; chaired the KAZENERGY association (2005–2023) and the Atameken business chamber (2013–2022)."
+same_as: {wikidata: Q984618}
 when: "1966/.."
 place: kazakhstan
 claims:

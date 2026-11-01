@@ -20,7 +20,7 @@ An open, interactive "connect the dots" knowledge graph. A Rust engine (`ctd`) c
 - Builds run locally; only `ctd check` belongs in GitHub Actions.
 - English only for now.
 - Prefer fast, direct work over long multi-agent runs.
-- UI follows `docs/ux-vision.md` (Apple Books simplicity): neutral palette, one accent `#0066cc`, system fonts, plain words. Users never see T1/claim/edge/tier jargon.
+- UI follows `docs/ux-vision.md` (dots and lines, [ADR-0022](docs/decisions/0022-dots-and-lines.md)): warm and lively, print inks that mean something, Bricolage Grotesque and Literata, stories on white, plain words. Users never see T1/claim/edge/tier jargon.
 
 ## Commands
 

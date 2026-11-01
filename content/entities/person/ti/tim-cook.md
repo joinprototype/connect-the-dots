@@ -5,6 +5,8 @@ type: person
 name: "Tim Cook"
 aliases: ["Timothy D. Cook"]
 summary: "Apple's CEO from August 2011 to September 2026 and its executive chair since then."
+same_as: {wikidata: Q265852}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Tim_Cook_in_New_York_City_-_2026_%28cropped%29.jpg/960px-Tim_Cook_in_New_York_City_-_2026_%28cropped%29.jpg", license: "CC BY 4.0", author: "Dati Bendo / European Union", page: "https://commons.wikimedia.org/wiki/File:Tim_Cook_in_New_York_City_-_2026_(cropped).jpg"}
 when: "1960/.."
 claims:
   - id: c1

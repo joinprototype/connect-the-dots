@@ -5,6 +5,7 @@ type: org
 name: "Y Combinator"
 aliases: ["YC"]
 summary: "Startup investment firm founded in March 2005 by Paul Graham, Jessica Livingston, Robert Morris and Trevor Blackwell; it funds startups in batches."
+same_as: {wikidata: Q2616400}
 when: "2005-03/.."
 claims:
   - id: c1

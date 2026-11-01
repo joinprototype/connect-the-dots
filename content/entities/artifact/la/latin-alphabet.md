@@ -6,6 +6,7 @@ name: "Latin alphabet"
 in_sentence: "the Latin alphabet"
 aliases: ["Roman alphabet"]
 summary: "Alphabet of the Romans, developed from the Etruscan alphabet before 600 BCE; today the most widely used alphabetic writing system in the world."
+same_as: {wikidata: Q41670}
 when: "-0699~/-0599~"
 claims:
   - id: c1

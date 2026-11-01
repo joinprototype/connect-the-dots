@@ -4,6 +4,7 @@ id: us-airlines
 type: group
 name: "US airlines"
 summary: "Airlines that sell tickets on routes within the United States."
+same_as: {wikidata: Q17669721}
 claims:
   - id: c1
     rel: benefited_from

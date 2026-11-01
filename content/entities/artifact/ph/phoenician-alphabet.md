@@ -5,6 +5,8 @@ type: artifact
 name: "Phoenician alphabet"
 in_sentence: "the Phoenician alphabet"
 summary: "Consonant alphabet of the Phoenician cities, carried around the Mediterranean by traders; the probable ancestor of the Greek alphabet."
+same_as: {wikidata: Q26752}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/0/05/Gezer_calendar_close_up.jpg", license: "CC BY-SA 3.0", author: "oncenawhile", page: "https://commons.wikimedia.org/wiki/File:Gezer_calendar_close_up.jpg"}
 when: "-1099~/-0049~"
 place: byblos
 claims:

@@ -5,6 +5,7 @@ type: org
 name: "Scale AI"
 aliases: ["Scale"]
 summary: "San Francisco AI company that provides data, model evaluations and AI applications to AI labs, enterprises and governments. Founded in 2016 (Y Combinator Summer 2016 batch)."
+same_as: {wikidata: Q112629176}
 when: "2016/.."
 claims:
   - id: c1

@@ -5,6 +5,8 @@ type: person
 name: Fidel Castro
 aliases: [Fidel Castro Ruz, Fidel Alejandro Castro Ruz]
 summary: Cuban revolutionary leader; Prime Minister of Cuba (1959–1976).
+same_as: {wikidata: Q11256}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Fidel_Castro_1950s.jpg", license: "Public domain", author: "Unknown (Mondadori Publishers)", page: "https://commons.wikimedia.org/wiki/File:Fidel_Castro_1950s.jpg"}
 when: "1926-08-13/2016-11-25"
 place: cuba
 claims:

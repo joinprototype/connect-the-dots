@@ -5,6 +5,7 @@ type: place
 name: "Shamalgan"
 aliases: ["Chemolgan"]
 summary: "Village in Karasai District, Almaty Region, Kazakhstan; formerly Chemolgan."
+same_as: {wikidata: Q374060}
 coords: [76.5367, 43.1942]
 claims: []
 ---

@@ -5,6 +5,8 @@ type: person
 name: "Sam Altman"
 aliases: ["Samuel Altman"]
 summary: "American entrepreneur; co-chair of OpenAI at its December 2015 launch and its CEO since 2019, apart from November 17-29, 2023."
+same_as: {wikidata: Q7407093}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Sam_Altman_speaking_at_TED_%28cropped%29.jpg/960px-Sam_Altman_speaking_at_TED_%28cropped%29.jpg", license: "CC BY 2.0", author: "Steve Jurvetson", page: "https://commons.wikimedia.org/wiki/File:Sam_Altman_speaking_at_TED_(cropped).jpg"}
 when: "1985-04-22/.."
 background:
   - {text: "Grew up in St. Louis.", src: [{s: senate-commerce-2025-05-08-altman-testimony, at: "closing paragraph", quote: "To close on a personal note, I grew up in St. Louis, part of a close-knit and competitive family that played 20 Questions to guess what we were having for dessert."}]}

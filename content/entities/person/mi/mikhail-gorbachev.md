@@ -5,6 +5,8 @@ type: person
 name: Mikhail Gorbachev
 aliases: [Mikhail Sergeyevich Gorbachev, Gorbachev]
 summary: "Last leader of the Soviet Union: Communist Party General Secretary from 1985, President of the USSR 1990–1991."
+same_as: {wikidata: Q30487}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/GorbachevMS.jpg/960px-GorbachevMS.jpg", license: "CC BY-SA 4.0", author: "Leo Medvedev/\u041b\u0435\u0432 \u041b\u0435\u043e\u043d\u0438\u0434\u043e\u0432\u0438\u0447 \u041c\u0435\u0434\u0432\u0435\u0434\u0435\u0432", page: "https://commons.wikimedia.org/wiki/File:GorbachevMS.jpg"}
 when: "1931-03-02/2022-08-30"
 claims:
   - id: c1

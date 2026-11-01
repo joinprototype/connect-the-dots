@@ -4,7 +4,10 @@ What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versio
 
 ## 0.4.1 (2026-11-01)
 
+- A new look: real typefaces, colour that means something, every story in its own ink, and the real map of links on the home page.
 - Stories now read on white, whatever your system's dark mode says.
+- Dots on the Map, in stories and in the explorer take the colour of what they are.
+- A dark mode in deep indigo instead of black.
 
 ## 0.4.0 (2026-11-01)
 

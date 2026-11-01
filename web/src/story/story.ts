@@ -91,6 +91,7 @@ export class CtdStory extends HTMLElement {
   private steps: HTMLElement[] = [];
   private views: View[] = [];
   private stage!: HTMLElement;
+  private photo: HTMLElement | null = null;
   private layers!: { map: HTMLElement; graph: HTMLElement; morph: HTMLElement; overlay: HTMLElement };
   private hud!: { time: HTMLElement; past: HTMLElement; persp: HTMLElement; count: HTMLElement };
   private watchBtn!: HTMLButtonElement;
@@ -401,6 +402,7 @@ export class CtdStory extends HTMLElement {
       .catch((err) => this.fail('graph', err));
 
     this.overlay?.show(shot, this.reduced);
+    this.showPhoto(i);
     const timeText = shot.time_label ?? (shot.t != null ? formatYear(shot.t, true) : '');
     this.hud.time.textContent = timeText;
     this.hud.time.hidden = !timeText;
@@ -418,6 +420,32 @@ export class CtdStory extends HTMLElement {
   private morph(from: Spots | undefined, to: Placed): void {
     const place = (id: string) => this.idx?.nodes.get(id)?.coords?.map((v) => v.toFixed(3)).join(',');
     if (from) this.flight = fly(this.layers.morph, from, to, place, this.shots[this.current]?.focus);
+  }
+
+  /** A scene's photograph over the whole stage. The next scene's is fetched ahead, nothing further. */
+  private showPhoto(i: number): void {
+    const next = this.shots[i + 1]?.photo?.url;
+    if (next) new Image().src = next;
+    const photo = this.shots[i]?.photo;
+    const old = this.photo;
+    if (old?.dataset.url === photo?.url) return;
+    this.photo = null;
+    if (photo) {
+      const fig = el('figure', 'story-photo');
+      fig.dataset.url = photo.url;
+      const img = el('img');
+      img.src = photo.url;
+      img.alt = photo.alt ?? '';
+      fig.append(img);
+      if (photo.credit) fig.append(el('figcaption', '', photo.credit));
+      this.stage.append(fig);
+      this.photo = fig;
+      requestAnimationFrame(() => fig.classList.add('is-shown'));
+    }
+    if (old) {
+      old.classList.remove('is-shown');
+      setTimeout(() => old.remove(), 700);
+    }
   }
 
   private switchView(view: View): void {

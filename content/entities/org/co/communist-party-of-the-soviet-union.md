@@ -6,6 +6,8 @@ name: Communist Party of the Soviet Union
 in_sentence: the Communist Party of the Soviet Union
 aliases: ["Russian Communist Party (Bolsheviks)", "All-Union Communist Party (Bolsheviks)", CPSU]
 summary: "The ruling party of Soviet Russia and the Soviet Union: the Bolsheviks under a new name, from March 1918 to 1991."
+same_as: {wikidata: Q79854}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/SESBeko_Alderdi_Komunistaren_kongresua.PNG/960px-SESBeko_Alderdi_Komunistaren_kongresua.PNG", license: "CC BY-SA 3.0", author: "Unknown authorUnknown author", page: "https://commons.wikimedia.org/wiki/File:SESBeko_Alderdi_Komunistaren_kongresua.PNG"}
 when: "1918-03-08/1991"
 place: moscow
 claims:

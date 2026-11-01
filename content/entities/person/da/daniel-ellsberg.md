@@ -4,6 +4,8 @@ id: daniel-ellsberg
 type: person
 name: "Daniel Ellsberg"
 summary: "American strategic analyst who worked at the RAND Corporation and copied the Pentagon Papers."
+same_as: {wikidata: Q431085}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/a/ad/Daniel_Ellsberg_at_1972_press_conference_%28cropped_3%29.jpg", license: "Public domain", author: "Gotfryd, Bernard, photographer", page: "https://commons.wikimedia.org/wiki/File:Daniel_Ellsberg_at_1972_press_conference_(cropped_3).jpg"}
 when: "1931-04-07/2023-06-16"
 claims:
   - id: c1

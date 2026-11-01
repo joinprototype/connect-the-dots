@@ -4,6 +4,7 @@ id: patrick-dennis
 type: person
 name: "Patrick Dennis"
 summary: "Co-author of a 2022 study of common ownership and airline ticket prices in The Journal of Finance."
+same_as: {wikidata: Q222708}
 claims:
   - id: c1
     rel: authored

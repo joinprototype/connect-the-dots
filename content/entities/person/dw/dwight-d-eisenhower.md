@@ -5,6 +5,8 @@ type: person
 name: Dwight D. Eisenhower
 aliases: [Dwight David Eisenhower, Ike]
 summary: "34th President of the United States (1953–1961)."
+same_as: {wikidata: Q9916}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Dwight_D._Eisenhower%2C_official_photo_portrait%2C_May_29%2C_1959.jpg/960px-Dwight_D._Eisenhower%2C_official_photo_portrait%2C_May_29%2C_1959.jpg", license: "Public domain", author: "White House", page: "https://commons.wikimedia.org/wiki/File:Dwight_D._Eisenhower,_official_photo_portrait,_May_29,_1959.jpg"}
 when: "1890-10-14/1969-03-28"
 claims:
   - id: c1

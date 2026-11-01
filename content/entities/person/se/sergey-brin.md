@@ -4,6 +4,8 @@ id: sergey-brin
 type: person
 name: "Sergey Brin"
 summary: "Co-founder of Google; its president from 1998, and president of Alphabet 2015–2019."
+same_as: {wikidata: Q92764}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Sergey_Brin_Ted_2010_%28cropped%29.jpg/960px-Sergey_Brin_Ted_2010_%28cropped%29.jpg", license: "CC BY 2.0", author: "Steve Jurvetson", page: "https://commons.wikimedia.org/wiki/File:Sergey_Brin_Ted_2010_(cropped).jpg"}
 background:
   - {text: "Came to the United States at the age of six.", src: [{s: achievement-sergey-brin, at: "interview, London, 28 October 2000", quote: "I came to the U.S. at the age of six", by: sergey-brin}]}
   - {text: "Has spoken of being Jewish, especially in Russia, and of being an immigrant in the US.", src: [{s: moment-2007-story-of-sergey-brin, at: "interview with the author", quote: "I do somewhat feel like a minority,” he says. “Being Jewish, especially in Russia, is one aspect of that. Then, being an immigrant in the U.S.", by: sergey-brin}]}

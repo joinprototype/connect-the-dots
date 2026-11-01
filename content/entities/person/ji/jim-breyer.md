@@ -5,6 +5,8 @@ type: person
 name: Jim Breyer
 aliases: [James W. Breyer, James Breyer]
 summary: Venture capitalist; Accel partner who led its 2005 investment in Facebook.
+same_as: {wikidata: Q4096251}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Jim_Breyer_Venture_Capitalist.jpg/960px-Jim_Breyer_Venture_Capitalist.jpg", license: "CC BY-SA 3.0", author: "Bkahvedzic", page: "https://commons.wikimedia.org/wiki/File:Jim_Breyer_Venture_Capitalist.jpg"}
 when: "1961/.."
 claims:
   - id: c1

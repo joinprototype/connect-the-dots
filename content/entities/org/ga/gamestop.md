@@ -5,6 +5,8 @@ type: org
 name: "GameStop"
 aliases: ["GameStop Corp.", "GME"]
 summary: "American video game retailer listed on the New York Stock Exchange as GME."
+same_as: {wikidata: Q202210}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/GameStop_%2814666287269%29.jpg/960px-GameStop_%2814666287269%29.jpg", license: "CC BY 2.0", author: "Mike Mozart from Funny YouTube, USA", page: "https://commons.wikimedia.org/wiki/File:GameStop_(14666287269).jpg"}
 claims:
   - id: c1
     rel: headquartered_in

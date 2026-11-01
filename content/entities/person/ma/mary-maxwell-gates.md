@@ -5,6 +5,7 @@ type: person
 name: Mary Maxwell Gates
 aliases: [Mary Gates, Mary M. Gates]
 summary: Seattle civic leader, University of Washington regent and United Way board member; mother of Bill Gates.
+same_as: {wikidata: Q454928}
 when: "1929/1994-06-10"
 place: seattle
 claims:

@@ -4,6 +4,7 @@ id: first-flight-around-the-world
 type: event
 name: "First flight around the world"
 summary: "Flight by U.S. Army Air Service crews in 1924, in Douglas World Cruisers. Four planes started and two finished."
+same_as: {wikidata: Q5454118}
 when: "1924-04-06/1924-09-28"
 place: seattle
 claims:

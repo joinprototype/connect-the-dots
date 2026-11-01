@@ -247,6 +247,8 @@ export interface Shot {
   /** Historical borders to draw, by file in `data/borders/`; the shot's date picks the period. */
   borders?: string[];
   overlay?: ShotOverlay | null;
+  /** A photograph over the whole stage. */
+  photo?: { url: string; alt?: string; credit?: string } | null;
   narration?: string;
   narration_html?: string;
   duration?: number;

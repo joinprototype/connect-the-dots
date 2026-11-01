@@ -4,6 +4,7 @@ id: max-altman
 type: person
 name: "Max Altman"
 summary: "Venture investor; a co-founder of Saga Ventures; brother of Sam Altman."
+same_as: {wikidata: Q106646851}
 claims:
   - id: c1
     rel: relative_of

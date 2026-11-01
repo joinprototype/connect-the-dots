@@ -5,6 +5,7 @@ type: person
 name: "Donald Douglas"
 aliases: ["Donald Wills Douglas", "Donald W. Douglas Sr."]
 summary: "American aircraft designer who founded the Douglas Aircraft Company in 1921."
+same_as: {wikidata: Q1240497}
 when: "1892/1981"
 claims:
   - id: c1

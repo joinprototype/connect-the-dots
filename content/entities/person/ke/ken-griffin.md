@@ -5,6 +5,7 @@ type: person
 name: "Ken Griffin"
 aliases: ["Kenneth C. Griffin", "Kenneth Griffin"]
 summary: "American investor; founder and CEO of Citadel and co-founder of Citadel Securities."
+same_as: {wikidata: Q141272383}
 claims:
   - id: c1
     rel: ceo_of

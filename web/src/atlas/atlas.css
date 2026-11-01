@@ -1,0 +1,27 @@
+/* atlas.css: one page for every entry of the atlas. Plainer than a page written by hand, and says so. */
+.atlas { max-width: 1080px; margin: 0 auto; padding: clamp(28px, 5vw, 56px) var(--gutter) 3rem; --amber: #e08a00; }
+.atlas-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px clamp(22px, 4vw, 44px); }
+.atlas-words { flex: 1 1 340px; min-width: 0; }
+.atlas-words h1 { font-size: clamp(2.6rem, 6.4vw, 4.8rem); font-weight: 800; letter-spacing: -0.035em; line-height: 0.98; overflow-wrap: anywhere; }
+.atlas-summary { font: 400 1.25rem/1.45 var(--font-body); color: var(--ink-2); margin: 0.8rem 0 0.4rem; max-width: 46ch; }
+.atlas-years { font-weight: 650; color: var(--ink-2); margin: 0; }
+.atlas-side { flex: 0 0 200px; }
+.atlas-photo { display: block; width: 200px; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 20%; border-radius: 6px 14px 14px 6px; box-shadow: var(--shadow); background: var(--paper-2); }
+.atlas-credit { display: block; margin-top: 8px; font-size: 0.78rem; color: var(--muted); text-decoration: underline; }
+.atlas-stars { display: block; width: 100%; height: auto; margin: 1.6rem 0 0.6rem; border-radius: 18px; background: var(--paper-2); }
+.atlas-ray { stroke: var(--rule); stroke-width: 1.4; }
+.atlas-star { cursor: pointer; }
+.atlas-star text { font: 600 12.5px var(--font-ui); fill: var(--ink-2); }
+.atlas-star:hover text { fill: var(--accent); }
+.atlas-sun { stroke: var(--paper); stroke-width: 5; }
+.atlas-groups { columns: 2 320px; column-gap: 40px; margin-top: 1.4rem; }
+.atlas-group { break-inside: avoid; margin-bottom: 1.4rem; }
+.atlas-group h2 { font-size: 1.06rem; margin: 0 0 0.3rem; color: var(--ink-2); }
+.atlas-group ul { list-style: none; margin: 0; padding: 0; }
+.atlas-group li { padding: 3px 0; }
+.atlas-group a { display: inline-flex; align-items: baseline; gap: 8px; color: var(--ink); font-weight: 500; }
+.atlas-group a::before { content: ""; flex: none; width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--accent)); transform: translateY(-1px); }
+.atlas-group a:hover { color: var(--accent); }
+.atlas-more { margin: 4px 0 0; font-size: 0.9rem; color: var(--muted); }
+.atlas-note { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.95rem; color: var(--muted); max-width: 66ch; }
+@media (max-width: 600px) { .atlas-side { flex-basis: 132px; } .atlas-photo { width: 132px; } }

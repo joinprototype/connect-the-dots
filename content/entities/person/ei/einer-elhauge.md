@@ -5,6 +5,7 @@ type: person
 name: "Einer Elhauge"
 aliases: ["Einer R. Elhauge"]
 summary: "Legal scholar; Carroll and Milton Petrie Professor of Law at Harvard Law School."
+same_as: {wikidata: Q112454783}
 claims:
   - id: c1
     rel: authored

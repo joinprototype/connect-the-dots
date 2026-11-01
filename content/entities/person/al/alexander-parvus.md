@@ -5,6 +5,8 @@ type: person
 name: Alexander Parvus
 aliases: [Alexander Helphand, Parvus, Helphand, Israel Lazarevich Gelfand]
 summary: Russian-born German socialist and businessman who urged the German government to finance revolution in Russia.
+same_as: {wikidata: Q57552}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/5/59/Parvus_Alexander.jpg", license: "Public domain", author: "Unknown photographer", page: "https://commons.wikimedia.org/wiki/File:Parvus_Alexander.jpg"}
 when: "1867-08-27/1924-12-12"
 claims:
   - id: c1

@@ -5,6 +5,8 @@ type: org
 name: IBM
 aliases: [International Business Machines, International Business Machines Corporation]
 summary: American computer and technology company.
+same_as: {wikidata: Q37156}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/IBM_Watson.PNG/960px-IBM_Watson.PNG", license: "CC BY-SA 3.0", author: "Clockready", page: "https://commons.wikimedia.org/wiki/File:IBM_Watson.PNG"}
 when: "1911/.."
 claims:
   - id: c1

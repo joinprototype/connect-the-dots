@@ -5,6 +5,7 @@ type: person
 name: Moses
 aliases: [Moshe, Musa]
 summary: "Prophet and lawgiver in Judaism, Christianity and Islam; in the Hebrew Bible, leader of the Exodus."
+same_as: {wikidata: Q100155310}
 claims:
   - id: c1
     rel: leads

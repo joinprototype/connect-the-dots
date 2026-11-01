@@ -4,6 +4,8 @@ id: erich-ludendorff
 type: person
 name: Erich Ludendorff
 summary: German general; First Quartermaster General of the German army (1916–1918).
+same_as: {wikidata: Q58579}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Erich_Ludendorff.jpg/960px-Erich_Ludendorff.jpg", license: "Public domain", author: "Alexander Binder", page: "https://commons.wikimedia.org/wiki/File:Erich_Ludendorff.jpg"}
 when: "1865-04-09/1937-12-20"
 ---
 

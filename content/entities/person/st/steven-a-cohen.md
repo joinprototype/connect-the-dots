@@ -5,6 +5,8 @@ type: person
 name: "Steven A. Cohen"
 aliases: ["Steve Cohen", "Steven Cohen"]
 summary: "American investor; founder and CEO of Point72."
+same_as: {wikidata: Q590212}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Stephen_Cohen_at_Mets_Stadium.jpg", license: "CC0", author: "JetSetJeri2", page: "https://commons.wikimedia.org/wiki/File:Stephen_Cohen_at_Mets_Stadium.jpg"}
 claims:
   - id: c1
     rel: ceo_of

@@ -6,6 +6,8 @@ name: Gutenberg Bible
 in_sentence: the Gutenberg Bible
 aliases: ["42-line Bible", Mazarin Bible]
 summary: Latin Bible printed in Mainz around 1455; the first major book printed in Europe with movable metal type.
+same_as: {wikidata: Q158075}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Gutenberg_Bible%2C_Lenox_Copy%2C_New_York_Public_Library%2C_2009._Pic_01.jpg/960px-Gutenberg_Bible%2C_Lenox_Copy%2C_New_York_Public_Library%2C_2009._Pic_01.jpg", license: "CC BY-SA 2.0", author: "NYC Wanderer (Kevin Eng)", page: "https://commons.wikimedia.org/wiki/File:Gutenberg_Bible,_Lenox_Copy,_New_York_Public_Library,_2009._Pic_01.jpg"}
 when: "1455~"
 place: mainz
 claims:

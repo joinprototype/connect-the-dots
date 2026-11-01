@@ -4,6 +4,7 @@ id: nicole-seligman
 type: person
 name: "Nicole Seligman"
 summary: "American lawyer, former general counsel of Sony; elected to OpenAI's board in March 2024."
+same_as: {wikidata: Q13560785}
 claims:
   - id: c1
     rel: board_member_of

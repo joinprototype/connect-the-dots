@@ -10,6 +10,7 @@
    without JavaScript a route question opens the explorer, any other question its index of answers. #}
 {% set asks = questions or [{"id": "route", "ask": "How are {a} and {b} connected?", "label": "How are", "route": true, "subjects": [], "url": "/x/", "names": [], "more": 0, "try": []}] %}
 <section class="ask">
+  <img class="ask-picture" src="/world/picture.svg" alt="" width="1000" height="1000">
   <h1>Ask how anything connects.</h1>
   <p class="ask-lede">Every link shows its proof. Every interpretation says whose it is.</p>
   {% if asks|length > 1 %}

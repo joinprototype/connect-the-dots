@@ -5,6 +5,7 @@ type: org
 name: "Blackstone"
 aliases: ["The Blackstone Group", "Blackstone Inc.", "The Blackstone Group L.P.", "The Blackstone Group Inc."]
 summary: "American alternative asset manager founded in 1985 by Stephen A. Schwarzman and Peter G. Peterson."
+same_as: {wikidata: Q37562619}
 when: "1985/.."
 claims:
   - id: c1

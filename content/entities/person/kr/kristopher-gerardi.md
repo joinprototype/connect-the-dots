@@ -4,6 +4,7 @@ id: kristopher-gerardi
 type: person
 name: "Kristopher Gerardi"
 summary: "Co-author of a 2022 study of common ownership and airline ticket prices in The Journal of Finance."
+same_as: {wikidata: Q41805109}
 claims:
   - id: c1
     rel: authored

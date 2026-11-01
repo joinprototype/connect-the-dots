@@ -5,6 +5,7 @@ type: org
 name: Keyhole
 aliases: [Keyhole Corp., "Keyhole, Inc."]
 summary: Digital mapping start-up (2001–2004) backed by In-Q-Tel; its EarthViewer became Google Earth.
+same_as: {wikidata: Q3548128}
 when: "2001/2004-10"
 claims:
   - id: c1

@@ -5,6 +5,8 @@ type: person
 name: Bill Gates
 aliases: [William Henry Gates III]
 summary: Co-founder of Microsoft; co-founder of the Giving Pledge.
+same_as: {wikidata: Q5284}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/8/88/Bill_Gates_at_the_European_Commission_-_2025_-_P067383-987995_%28cropped%29.jpg", license: "CC BY 4.0", author: "Bogdan Hoyaux / European Union", page: "https://commons.wikimedia.org/wiki/File:Bill_Gates_at_the_European_Commission_-_2025_-_P067383-987995_(cropped).jpg"}
 when: "1955-10-28/.."
 place: seattle
 background:

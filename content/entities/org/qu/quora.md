@@ -4,4 +4,5 @@ id: quora
 type: org
 name: "Quora"
 summary: "Question-and-answer website co-founded by Adam D'Angelo."
+same_as: {wikidata: Q51711}
 ---

@@ -5,6 +5,8 @@ type: org
 name: Google
 aliases: [Google Inc., Google LLC]
 summary: American internet search and technology company, founded in 1998; part of Alphabet since 2015.
+same_as: {wikidata: Q95}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Googleplex_HQ_%28cropped%29.jpg/960px-Googleplex_HQ_%28cropped%29.jpg", license: "CC BY-SA 4.0", author: "Asoundd", page: "https://commons.wikimedia.org/wiki/File:Googleplex_HQ_(cropped).jpg"}
 when: "1998/.."
 claims:
   - id: c1

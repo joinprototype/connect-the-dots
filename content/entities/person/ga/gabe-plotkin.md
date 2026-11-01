@@ -5,6 +5,8 @@ type: person
 name: "Gabe Plotkin"
 aliases: ["Gabriel Plotkin"]
 summary: "American investor; founder and chief investment officer of Melvin Capital."
+same_as: {wikidata: Q119771170}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Gabe_Plotkin_Headshot.jpg/960px-Gabe_Plotkin_Headshot.jpg", license: "CC BY-SA 4.0", author: "Gabe Plotkin", page: "https://commons.wikimedia.org/wiki/File:Gabe_Plotkin_Headshot.jpg"}
 claims:
   - id: c1
     rel: founded

@@ -5,6 +5,7 @@ type: org
 name: The Vanguard Group
 aliases: [Vanguard, "The Vanguard Group, Inc."]
 summary: "American investment-management company, incorporated by John C. Bogle in September 1974; it began operations in May 1975."
+same_as: {wikidata: Q849363}
 when: "1974-09-24/.."
 place: malvern-pennsylvania
 claims:

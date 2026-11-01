@@ -5,6 +5,7 @@ type: person
 name: Stanislav Shushkevich
 aliases: [Stanislau Shushkevich, Stanislaw Szuszkiewicz]
 summary: First head of state of independent Belarus (1991–1994).
+same_as: {wikidata: Q113846587}
 when: "1934-12-15/2022-05"
 claims:
   - id: c1

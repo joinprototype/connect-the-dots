@@ -5,6 +5,8 @@ type: person
 name: "Steve Wozniak"
 aliases: ["Stephen G. Wozniak", "Woz"]
 summary: "Co-founder of Apple and designer of its first computers; an Apple director from 1977 to 1978."
+same_as: {wikidata: Q483382}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Steve_Wozniak_by_Gage_Skidmore.jpg/960px-Steve_Wozniak_by_Gage_Skidmore.jpg", license: "CC BY-SA 3.0", author: "Gage Skidmore", page: "https://commons.wikimedia.org/wiki/File:Steve_Wozniak_by_Gage_Skidmore.jpg"}
 when: "1950/.."
 claims:
   - id: c1

@@ -5,6 +5,8 @@ type: person
 name: Paul Allen
 aliases: [Paul Gardner Allen, Paul G. Allen]
 summary: Co-founder of Microsoft; investor and philanthropist.
+same_as: {wikidata: Q162005}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Paul_G._Allen_%28cropped%29.jpg/960px-Paul_G._Allen_%28cropped%29.jpg", license: "CC BY-SA 3.0", author: "Miles Harris", page: "https://commons.wikimedia.org/wiki/File:Paul_G._Allen_(cropped).jpg"}
 when: "1953-01-21/2018-10-15"
 place: seattle
 claims:

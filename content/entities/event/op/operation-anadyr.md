@@ -5,6 +5,7 @@ type: event
 name: Operation Anadyr
 aliases: [Anadyr]
 summary: Code name of the 1962 Soviet deployment of missiles and troops to Cuba.
+same_as: {wikidata: Q1931877}
 when: 1962
 place: cuba
 claims:

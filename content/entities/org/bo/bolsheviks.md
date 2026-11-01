@@ -6,6 +6,8 @@ name: Bolsheviks
 in_sentence: the Bolsheviks
 aliases: [Bolshevik Party]
 summary: "Lenin's party, a faction from 1903; in March 1918 it renamed itself the Russian Communist Party (Bolsheviks)."
+same_as: {wikidata: Q83372}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Kustodiev_The_Bolshevik.jpg/960px-Kustodiev_The_Bolshevik.jpg", license: "Public domain", author: "Boris Kustodiev", page: "https://commons.wikimedia.org/wiki/File:Kustodiev_The_Bolshevik.jpg"}
 when: "1903/1918-03-08"
 place: moscow
 claims:

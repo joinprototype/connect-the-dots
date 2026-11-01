@@ -5,5 +5,6 @@ type: person
 name: "Robert Lechêne"
 aliases: ["Robert Lechene"]
 summary: "Journalist and popular-science writer; author of L'Imprimerie, de Gutenberg à l'électron and of Britannica's article on printing."
+same_as: {wikidata: Q16855338}
 claims: []
 ---

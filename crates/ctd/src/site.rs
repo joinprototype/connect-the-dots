@@ -368,10 +368,26 @@ fn same_as_links(e: &Entity) -> Vec<Value> {
 }
 
 /// Shots with rendered narration, plus the step cards for the chapter template.
+/// A scene's picture: what `picture:` names, or else its subject or the first thing it reveals that
+/// has one. Each picture shows once in a story; `picture: none` leaves a scene without.
+fn scene_picture(kb: &Kb, shot: &Value, used: &mut BTreeSet<String>) -> Option<Value> {
+    let chosen = shot["picture"].as_str();
+    if chosen == Some("none") || !shot["photo"].is_null() {
+        return None;
+    }
+    let revealed = shot["reveal"].as_array().into_iter().flatten().filter_map(Value::as_str);
+    chosen.into_iter().chain(shot["focus"].as_str()).chain(revealed).filter_map(|id| kb.entity(id)).find_map(|e| {
+        let image = e.image.as_ref()?;
+        let url = image["url"].as_str()?;
+        used.insert(url.to_string()).then(|| json!({ "url": url, "name": e.name, "author": image["author"], "license": image["license"], "page": image["page"] }))
+    })
+}
+
 fn story_parts(cx: &Ctx, shots: &[Value]) -> (Vec<Value>, Vec<Value>) {
     let resolver = cx.resolver();
     let mut out = shots.to_vec();
     let mut steps = Vec::new();
+    let mut pictured = BTreeSet::new();
     for shot in &mut out {
         let narration = shot.get("narration").and_then(Value::as_str).unwrap_or("").to_string();
         let html = markdown::render(&narration, &resolver);
@@ -394,6 +410,7 @@ fn story_parts(cx: &Ctx, shots: &[Value]) -> (Vec<Value>, Vec<Value>) {
             "explore": shot.get("explore").and_then(Value::as_bool).unwrap_or(false),
             "explore_url": format!("/x/?{}", q.join("&")),
             "time_label": shot.get("time_label"),
+            "picture": scene_picture(cx.kb, shot, &mut pictured),
         }));
     }
     (out, steps)
@@ -483,7 +500,7 @@ impl Site<'_> {
             "id": draft.id, "title": draft.title, "subtitle": draft.subtitle, "summary": draft.summary, "authors": [],
             "intro_html": markdown::render(&draft.intro_md, &resolver), "outro_html": markdown::render(&draft.outro_md, &resolver),
             "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &self.by_id, &shots))?,
-            "steps": steps, "shot_count": shots.len(), "generated": true,
+            "steps": steps, "shot_count": shots.len(), "generated": true, "ink": crate::covers::ink(&draft.id),
             "back": back, "explore_url": draft.explore_url,
         });
         write(&dest.join("index.html"), self.render("chapter.html", json!({ "site": &self.site, "chapter": chapter, "history": [] }))?)
@@ -532,7 +549,9 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     write_slim(kb, out)?;
     let pages = QuestionPages::new(kb);
     let ranked = kb.ranked();
-    write_search(kb, &pages, &ranked, out)?;
+    // the dev server leaves the atlas out: it is for the built site, and takes a minute
+    let atlas = if opts.dev { None } else { crate::atlas::load(root)? };
+    write_search(kb, &pages, &ranked, atlas.as_ref(), out)?;
     for (id, b) in &kb.borders {
         write(&out.join("data").join("borders").join(format!("{id}.json")), fs::read(root.join(&b.rel_path))?)?;
     }
@@ -562,8 +581,12 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     for (dir, template) in [("x", "explorer.html"), ("w", "world.html")] {
         write(&out.join(dir).join("index.html"), s.render(template, json!({ "site": &s.site }))?)?;
     }
+    if let Some(a) = &atlas {
+        crate::atlas::write(a, kb, out)?;
+        write(&out.join("a").join("index.html"), s.render("atlas.html", json!({ "site": &s.site, "entries": a.entries.len() }))?)?;
+    }
     if !kb.entities.is_empty() {
-        let (g, spec) = crate::world::from_kb(kb);
+        let (g, spec) = crate::world::from_kb(kb, atlas.as_ref());
         crate::world::build(&g, &spec, &out.join("world"), Some(&root.join(".cache").join("world-state.json")))?;
     }
     write(&out.join("404.html"), s.render("404.html", json!({ "site": &s.site }))?)?;
@@ -635,6 +658,7 @@ fn copy_assets(root: &Path, out: &Path) -> Result<Value> {
         "islands_js": has_asset("islands.js"), "islands_css": has_asset("islands.css"),
         "explorer_js": has_asset("explorer.js"), "explorer_css": has_asset("explorer.css"),
         "world_js": has_asset("world.js"), "world_css": has_asset("world.css"),
+        "atlas_js": has_asset("atlas.js"), "atlas_css": has_asset("atlas.css"),
         "story_js": has_asset("story.js"), "story_css": has_asset("story.css"),
     }))
 }
@@ -681,7 +705,7 @@ fn write_slim(kb: &Kb, out: &Path) -> Result<()> {
 
 /// The search files: entries best-connected first, so a name that matches several resolves to the
 /// best-connected one, then chapters and question pages.
-fn write_search(kb: &Kb, pages: &QuestionPages, ranked: &[&Entity], out: &Path) -> Result<()> {
+fn write_search(kb: &Kb, pages: &QuestionPages, ranked: &[&Entity], atlas: Option<&crate::atlas::Atlas>, out: &Path) -> Result<()> {
     let mut asked: HashMap<&str, Vec<&str>> = HashMap::new();
     for a in &pages.list {
         asked.entry(a.x.id.as_str()).or_default().push(kb.schema.questions[a.q].id.as_str());
@@ -706,6 +730,7 @@ fn write_search(kb: &Kb, pages: &QuestionPages, ranked: &[&Entity], out: &Path) 
         let aliases: Vec<String> = std::iter::once(&a.x.name).chain(&a.x.aliases).map(|n| q.ask.replace("{x}", n)).filter(|t| *t != answers::title(kb, q, &a.x.id)).collect();
         search.push(json!({ "id": id, "name": answers::title(kb, q, &a.x.id), "aliases": aliases, "type": "question", "summary": answer_counts(a), "url": format!("/q/{id}/") }));
     }
+    search.extend(atlas.map(|a| crate::atlas::search(a, kb)).unwrap_or_default());
     let search_dir = out.join("data").join("search");
     let search_index = data::search(&search, |n, bytes| write(&search_dir.join(format!("{n}.json")), bytes))?;
     write(&search_dir.join("index.json"), search_index)
@@ -795,8 +820,11 @@ fn entity_page(s: &Site, pages: &QuestionPages, ent: &Entity, here_of: &HashMap<
     });
     if let Some(url) = &story_url {
         lives.ids.push(ent.id.clone());
+        // on a shelf, an entry with a picture shows it instead of its drawing
+        let photo = ent.image.as_ref().and_then(|i| i["url"].as_str());
+        let cover = photo.map_or(entity["cover"].clone(), |u| json!(format!(r#"<img class="cover-art cover-photo" src="{}" alt="" loading="lazy">"#, markdown::escape(u))));
         lives.all.push((ent.kind.clone(), items.len(), json!({ "title": ent.name, "subtitle": ent.summary, "url": url,
-                                                          "kind": plural(items.len(), "link"), "cover": entity["cover"] })));
+                                                          "kind": plural(items.len(), "link"), "cover": cover })));
     }
     // questions about this entry, only on its own page (never "behind" a person: no such page)
     let asked: Vec<Value> = (0..kb.schema.questions.len())
@@ -997,7 +1025,7 @@ fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
             "id": ch.id, "title": ch.title, "subtitle": ch.subtitle, "summary": ch.summary, "authors": ch.authors,
             "intro_html": markdown::render(&ch.intro_md, &resolver), "outro_html": markdown::render(&ch.outro_md, &resolver),
             "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &s.by_id, &shots))?,
-            "steps": steps, "url": format!("/c/{}/", ch.id), "shot_count": shots.len(), "rel_path": ch.rel_path,
+            "steps": steps, "url": format!("/c/{}/", ch.id), "shot_count": shots.len(), "rel_path": ch.rel_path, "ink": crate::covers::ink(&ch.id),
             // the stories after this one, round the shelf: a reader who finishes has somewhere to go
             "next": cards.iter().cycle().skip(i + 1).take(cards.len() - 1).take(NEXT_STORIES).collect::<Vec<_>>(),
         });

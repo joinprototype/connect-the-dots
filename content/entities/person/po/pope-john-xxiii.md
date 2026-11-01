@@ -5,6 +5,8 @@ type: person
 name: Pope John XXIII
 aliases: [John XXIII, Angelo Giuseppe Roncalli, Saint John XXIII]
 summary: Pope of the Catholic Church from 1958 to 1963.
+same_as: {wikidata: Q23873}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Ioannes_XXIII%2C_by_De_Agostini%2C_1958%E2%80%931963.jpg/960px-Ioannes_XXIII%2C_by_De_Agostini%2C_1958%E2%80%931963.jpg", license: "Public domain", author: "De Agostini Editore", page: "https://commons.wikimedia.org/wiki/File:Ioannes_XXIII,_by_De_Agostini,_1958%E2%80%931963.jpg"}
 when: "1881-11-25/1963-06-03"
 claims:
   - id: c1

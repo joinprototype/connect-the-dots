@@ -6,6 +6,7 @@ name: Perestroika
 in_sentence: "perestroika"
 aliases: [Restructuring]
 summary: "Gorbachev's program of economic and political restructuring of the Soviet system, 1985–1991."
+same_as: {wikidata: Q1989723}
 when: "1985/1991"
 ---
 

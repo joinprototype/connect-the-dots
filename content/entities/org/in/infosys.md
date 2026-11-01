@@ -5,6 +5,8 @@ type: org
 name: "Infosys"
 aliases: ["Infosys Limited"]
 summary: "Indian information-technology services company; one of OpenAI's launch donors."
+same_as: {wikidata: Q26989}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Infosys_%284911287704%29.jpg/960px-Infosys_%284911287704%29.jpg", license: "CC BY-SA 2.0", author: "Ashwin Kumar from Bangalore, India", page: "https://commons.wikimedia.org/wiki/File:Infosys_(4911287704).jpg"}
 claims:
   - id: c1
     rel: funded

@@ -6,6 +6,8 @@ name: Soviet withdrawal from Afghanistan
 in_sentence: "the Soviet withdrawal from Afghanistan"
 aliases: [Withdrawal of Soviet troops from Afghanistan]
 summary: "The pull-out of Soviet forces from Afghanistan, May 1988 to 15 February 1989, ending a war begun in December 1979."
+same_as: {wikidata: Q509561}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/f/f7/RIAN_archive_58833_Withdrawal_of_Soviet_troops_from_Afghanistan.jpg", license: "CC BY-SA 3.0", author: "A. Solomonov / \u0410. \u0421\u043e\u043b\u043e\u043c\u043e\u043d\u043e\u0432", page: "https://commons.wikimedia.org/wiki/File:RIAN_archive_58833_Withdrawal_of_Soviet_troops_from_Afghanistan.jpg"}
 when: "1988-05-15/1989-02-15"
 place: afghanistan
 claims:

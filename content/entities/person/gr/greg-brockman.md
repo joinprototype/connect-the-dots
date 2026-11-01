@@ -5,6 +5,8 @@ type: person
 name: "Greg Brockman"
 aliases: ["Gregory Brockman"]
 summary: "American software engineer; OpenAI's CTO at its 2015 launch, later its chairman and president."
+same_as: {wikidata: Q100604534}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Disrupt_SF_TechCrunch_Disrupt_San_Francisco_2019_-_Day_2_%2848838200316%29_%28cropped%29.jpg/960px-Disrupt_SF_TechCrunch_Disrupt_San_Francisco_2019_-_Day_2_%2848838200316%29_%28cropped%29.jpg", license: "CC BY 2.0", author: "TechCrunch", page: "https://commons.wikimedia.org/wiki/File:Disrupt_SF_TechCrunch_Disrupt_San_Francisco_2019_-_Day_2_(48838200316)_(cropped).jpg"}
 claims:
   - id: c1
     rel: board_member_of

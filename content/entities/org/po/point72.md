@@ -5,6 +5,7 @@ type: org
 name: "Point72"
 aliases: ["Point72 Asset Management", "Point72 Asset Management, L.P."]
 summary: "Investment firm founded and led by Steven A. Cohen."
+same_as: {wikidata: Q2204741}
 claims:
   - id: c1
     rel: invested_in

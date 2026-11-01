@@ -4,6 +4,8 @@ id: paul-baran
 type: person
 name: "Paul Baran"
 summary: "American engineer who worked at the RAND Corporation from 1959 to 1968 and developed an early form of packet switching."
+same_as: {wikidata: Q92617}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/2/27/Paul_Baran.jpg", license: "CC BY-SA 3.0", author: "Andreu Ve\u00e0, WiWiW.org", page: "https://commons.wikimedia.org/wiki/File:Paul_Baran.jpg"}
 when: "1926-04-29/2011-03-26"
 claims:
   - id: c1

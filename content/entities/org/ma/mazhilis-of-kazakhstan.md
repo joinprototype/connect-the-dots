@@ -6,6 +6,7 @@ name: "Mazhilis"
 in_sentence: "the Mazhilis"
 aliases: ["Majilis", "Mazhilis of the Parliament of Kazakhstan"]
 summary: "Lower house of Kazakhstan's Parliament under the 1995 Constitution."
+same_as: {wikidata: Q1247199}
 when: "1996/.."
 place: kazakhstan
 claims: []

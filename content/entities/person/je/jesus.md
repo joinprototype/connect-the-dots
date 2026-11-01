@@ -5,6 +5,7 @@ type: person
 name: Jesus
 aliases: [Jesus of Nazareth, Jesus Christ, Isa]
 summary: Jewish preacher from Galilee; the central figure of Christianity and a prophet in Islam.
+same_as: {wikidata: Q302}
 when: "-0003~/0030~"
 claims:
   - id: c1

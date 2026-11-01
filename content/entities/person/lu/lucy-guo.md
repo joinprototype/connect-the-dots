@@ -4,6 +4,8 @@ id: lucy-guo
 type: person
 name: "Lucy Guo"
 summary: "Co-founder of Scale AI, which she left in 2018."
+same_as: {wikidata: Q85467479}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/f/fe/Lucy_Guo_Summit_Dec2025_%28cropped%29.png", license: "CC0", author: "KBDBK", page: "https://commons.wikimedia.org/wiki/File:Lucy_Guo_Summit_Dec2025_(cropped).png"}
 claims:
   - id: c1
     rel: founded

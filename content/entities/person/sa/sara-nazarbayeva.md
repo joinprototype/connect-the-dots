@@ -5,6 +5,8 @@ type: person
 name: "Sara Nazarbayeva"
 aliases: ["Sara Alpysovna Nazarbayeva"]
 summary: "Founder and president of the Bobek children's charity fund from 1992; wife of Nursultan Nazarbayev."
+same_as: {wikidata: Q2667651}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/4/45/Sara_Nazarbayeva.jpeg", license: "CC BY-SA 4.0", author: "AyodeleA1", page: "https://commons.wikimedia.org/wiki/File:Sara_Nazarbayeva.jpeg"}
 when: "1941/.."
 place: kazakhstan
 claims:

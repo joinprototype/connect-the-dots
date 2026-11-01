@@ -4,6 +4,8 @@ id: alexandria
 type: place
 name: "Alexandria"
 summary: "Port city on the Mediterranean coast of Egypt, founded by Alexander the Great and a centre of Greek-speaking Jewish life."
+same_as: {wikidata: Q87}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/AlexandriaSkyline.jpg/960px-AlexandriaSkyline.jpg", license: "CC BY-SA 4.0", author: "ASaber91", page: "https://commons.wikimedia.org/wiki/File:AlexandriaSkyline.jpg"}
 coords: [29.9187, 31.2001]
 claims:
   - id: c1

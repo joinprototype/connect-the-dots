@@ -5,6 +5,7 @@ type: concept
 name: "Packet switching"
 in_sentence: "packet switching"
 summary: "Way of sending data through a network in separate blocks, or packets, each routed on its own and reassembled at the destination."
+same_as: {wikidata: Q193446}
 claims:
   - id: c1
     rel: led_to

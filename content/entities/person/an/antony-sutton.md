@@ -5,6 +5,8 @@ type: person
 name: Antony C. Sutton
 aliases: [Antony Sutton, Anthony Sutton]
 summary: British-born American economist and author of books on Western financing of the Soviet Union.
+same_as: {wikidata: Q607968}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Antonysutton.jpg", license: "CC BY-SA 3.0", author: "Claritablue", page: "https://commons.wikimedia.org/wiki/File:Antonysutton.jpg"}
 when: "1925-02-14/2002-06-17"
 claims:
   - id: c1

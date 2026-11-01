@@ -4,6 +4,8 @@ id: ilya-sutskever
 type: person
 name: "Ilya Sutskever"
 summary: "Machine-learning researcher; OpenAI's research director at its 2015 launch and later its chief scientist."
+same_as: {wikidata: Q21712134}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Ilya_Sutskever_and_Sam_Altman_in_TAU_%28cropped%29.jpg", license: "CC BY-SA 4.0", author: "Eladkarmel", page: "https://commons.wikimedia.org/wiki/File:Ilya_Sutskever_and_Sam_Altman_in_TAU_(cropped).jpg"}
 claims:
   - id: c1
     rel: board_member_of

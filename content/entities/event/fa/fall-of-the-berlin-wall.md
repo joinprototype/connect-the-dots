@@ -6,6 +6,8 @@ name: Fall of the Berlin Wall
 in_sentence: "the fall of the Berlin Wall"
 aliases: [Opening of the Berlin Wall]
 summary: The opening of the border between East and West Berlin on 9 November 1989.
+same_as: {wikidata: Q69163529}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/BerlinWall-BrandenburgGate.jpg/960px-BerlinWall-BrandenburgGate.jpg", license: "CC BY 3.0", author: "Sue Ream, photographer (San Francisco, California)", page: "https://commons.wikimedia.org/wiki/File:BerlinWall-BrandenburgGate.jpg"}
 when: 1989-11-09
 place: berlin
 claims:

@@ -5,6 +5,8 @@ type: person
 name: "Rob Kapito"
 aliases: ["Robert S. Kapito", "Robert Kapito"]
 summary: "Co-founder of BlackRock and its president since 2007."
+same_as: {wikidata: Q7349476}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Robert_Steven_Kapito_%28cropped%29.jpg", license: "CC BY-SA 3.0", author: "Wilson Center", page: "https://commons.wikimedia.org/wiki/File:Robert_Steven_Kapito_(cropped).jpg"}
 claims:
   - id: c1
     rel: founded

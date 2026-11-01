@@ -5,6 +5,8 @@ type: person
 name: "Maye Musk"
 aliases: ["Maye Haldeman Musk"]
 summary: "Model and nutritionist; mother of Elon and Kimbal Musk."
+same_as: {wikidata: Q24007468}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Maye_Musk_in_2015.jpg/960px-Maye_Musk_in_2015.jpg", license: "CC BY 2.0", author: "Luan Luu", page: "https://commons.wikimedia.org/wiki/File:Maye_Musk_in_2015.jpg"}
 claims:
   - id: c1
     rel: relative_of

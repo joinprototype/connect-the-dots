@@ -6,6 +6,7 @@ name: Soviet Union
 in_sentence: the Soviet Union
 aliases: [USSR, Union of Soviet Socialist Republics]
 summary: "Federal socialist state in Eurasia, 1922–1991."
+same_as: {wikidata: Q15180}
 when: "1922-12-30/1991-12-26"
 coords: [94.0, 62.0]
 claims:

@@ -5,7 +5,7 @@ import forceAtlas2 from 'graphology-layout-forceatlas2';
 import Sigma from 'sigma';
 import type { EdgeDisplayData, NodeDisplayData } from 'sigma/types';
 import { edgesForRef, sentence } from '../lib/claims';
-import { FADED_TEXT_ALPHA, glColor, mix, tokenRgb, tokenString, type RGB } from '../lib/color';
+import { cssColorToRgb, FADED_TEXT_ALPHA, glColor, mix, tokenRgb, tokenString, type RGB } from '../lib/color';
 import type { GraphIndex } from '../lib/data';
 import { timeState } from '../lib/dates';
 import { edgeTime } from '../lib/filters';
@@ -56,6 +56,11 @@ export function createGraphView(container: HTMLElement, idx: GraphIndex, shots: 
   });
   const all = cumulative[cumulative.length - 1] ?? { nodes: new Set<string>(), edges: new Set<string>() };
 
+  // a dot takes the ink of what it is: people, places, works
+  const typeColor = (type: string): RGB => {
+    const c = idx.data.types[type]?.color;
+    return c ? cssColorToRgb(c) : nodeGray;
+  };
   const graph = new Graph({ multi: true, type: 'directed' });
   const maxDeg = Math.max(1, ...[...all.nodes].map((id) => idx.nodes.get(id)?.degree ?? 1));
   for (const id of [...all.nodes].sort()) {
@@ -65,7 +70,7 @@ export function createGraphView(container: HTMLElement, idx: GraphIndex, shots: 
       x: Math.cos(a) * 10,
       y: Math.sin(a) * 10,
       size: 7 + 7 * Math.sqrt((n.degree || 1) / maxDeg),
-      rgb: nodeGray,
+      rgb: typeColor(n.type),
       label: n.name,
       subLabel: idx.data.types[n.type]?.label ?? n.type,
     });
@@ -131,7 +136,7 @@ export function createGraphView(container: HTMLElement, idx: GraphIndex, shots: 
       const isFocus = shot?.focus === node;
       const base = data.rgb as RGB;
       res.size = (data.size as number) * (isFocus ? 1.35 : 1) * (0.2 + 0.8 * p);
-      res.color = glColor(isFocus ? accent : time === 'past' ? mix(base, paper, 0.55) : isNew ? mix(base, ink, 0.35) : base);
+      res.color = glColor(time === 'past' && !isFocus ? mix(base, paper, 0.55) : base);
       res.highlighted = isFocus;
       res.forceLabel = true;
       res.zIndex = isFocus ? 3 : isNew ? 2 : 1;

@@ -5,6 +5,8 @@ type: artifact
 name: 86-DOS
 aliases: [QDOS, Quick and Dirty Operating System]
 summary: Operating system written at Seattle Computer Products; bought by Microsoft and shipped with the IBM PC as PC DOS.
+same_as: {wikidata: Q1550345}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/4/40/86-DOS_running_assembler_and_HEX2BIN_%28screenshot%29.png", license: "Public domain", author: "User:Retron", page: "https://commons.wikimedia.org/wiki/File:86-DOS_running_assembler_and_HEX2BIN_(screenshot).png"}
 when: 1980
 ---
 

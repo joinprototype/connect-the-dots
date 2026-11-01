@@ -5,6 +5,7 @@ type: person
 name: "Stanley Wojcicki"
 aliases: ["Stanley G. Wojcicki", "Stanislaw Jerzy Wojcicki"]
 summary: "Particle physicist; Stanford physics professor from 1966 and twice chair of its physics department; father of Susan and Anne Wojcicki."
+same_as: {wikidata: Q2331842}
 when: "1937/2023-05-31"
 claims:
   - id: c1

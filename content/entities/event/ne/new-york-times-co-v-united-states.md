@@ -4,6 +4,7 @@ id: new-york-times-co-v-united-states
 type: event
 name: "New York Times Co. v. United States"
 summary: "U.S. Supreme Court case of 1971, decided 6 to 3: the government had not met its burden to stop publication of the Pentagon Papers."
+same_as: {wikidata: Q7014761}
 when: "1971-06-30"
 claims:
   - id: c1

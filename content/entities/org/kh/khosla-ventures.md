@@ -4,6 +4,7 @@ id: khosla-ventures
 type: org
 name: "Khosla Ventures"
 summary: "Silicon Valley venture capital firm; an early investor in OpenAI LP."
+same_as: {wikidata: Q6402513}
 claims:
   - id: c1
     rel: invested_in

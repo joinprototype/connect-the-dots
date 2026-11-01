@@ -4,6 +4,8 @@ id: susan-wojcicki
 type: person
 name: "Susan Wojcicki"
 summary: "Google's 16th employee, whose Menlo Park garage was Google's first office; CEO of YouTube from 2014 to 2023."
+same_as: {wikidata: Q55183}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Susan_Wojcicki_%2829393944130%29_%28cropped%29.jpg/960px-Susan_Wojcicki_%2829393944130%29_%28cropped%29.jpg", license: "CC BY 2.0", author: "TechCrunch", page: "https://commons.wikimedia.org/wiki/File:Susan_Wojcicki_(29393944130)_(cropped).jpg"}
 when: "1968/2024-08-09"
 claims:
   - id: c1

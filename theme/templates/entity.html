@@ -8,7 +8,10 @@
 {% block main %}
 <article class="entity" style="--c: {{ entity.color }}">
   <header class="entity-head">
-    <div class="entity-cover">{% if entity.image and entity.image.url %}<img src="{{ entity.image.url }}" alt="{{ entity.name }}">{% else %}{{ entity.cover|safe }}{% endif %}</div>
+    <div class="entity-side">
+      <div class="entity-cover">{% if entity.image and entity.image.url %}<img src="{{ entity.image.url }}" alt="{{ entity.name }}" decoding="async">{% else %}{{ entity.cover|safe }}{% endif %}</div>
+      {% if entity.image and entity.image.url %}<p class="entity-credit"><a href="{{ entity.image.page }}">{{ entity.image.author }}</a>, {{ entity.image.license }}</p>{% endif %}
+    </div>
     <div class="entity-title">
       <p class="entity-kind">{{ entity.type_label }}</p>
       <h1>{{ entity.name }}</h1>

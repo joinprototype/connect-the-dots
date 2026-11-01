@@ -5,6 +5,8 @@ type: person
 name: "Esther Wojcicki"
 aliases: ["Esther Hochman"]
 summary: "Educator who founded the Media Arts Program at Palo Alto High School; author of How to Raise Successful People; mother of Susan and Anne Wojcicki."
+same_as: {wikidata: Q550045}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Esther_Wojcicki_%28cropped%29.jpg/960px-Esther_Wojcicki_%28cropped%29.jpg", license: "CC BY 2.0", author: "Joi Ito", page: "https://commons.wikimedia.org/wiki/File:Esther_Wojcicki_(cropped).jpg"}
 claims:
   - id: c1
     rel: relative_of

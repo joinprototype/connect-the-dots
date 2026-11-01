@@ -4,6 +4,7 @@ id: christianity
 type: tradition
 name: Christianity
 summary: Religion based on the life and teachings of Jesus.
+same_as: {wikidata: Q5043}
 ---
 
 Christianity centers on [[jesus]]. Its scripture is the [[bible]]; its largest church is the [[catholic-church]].

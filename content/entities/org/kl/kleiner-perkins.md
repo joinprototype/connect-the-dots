@@ -5,6 +5,7 @@ type: org
 name: Kleiner Perkins
 aliases: [Kleiner Perkins Caufield & Byers, KPCB]
 summary: Silicon Valley venture capital firm.
+same_as: {wikidata: Q4346838}
 claims:
   - id: c1
     rel: invested_in

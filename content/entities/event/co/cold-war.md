@@ -5,6 +5,8 @@ type: event
 name: Cold War
 in_sentence: "the Cold War"
 summary: "Rivalry between the United States and the Soviet Union and their allies, about 1947–1991."
+same_as: {wikidata: Q8683}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/US_Army_tanks_face_off_against_Soviet_tanks%2C_Berlin_1961.jpg/960px-US_Army_tanks_face_off_against_Soviet_tanks%2C_Berlin_1961.jpg", license: "Public domain", author: "U.S. Army photo Photo Credit: USAMHI", page: "https://commons.wikimedia.org/wiki/File:US_Army_tanks_face_off_against_Soviet_tanks,_Berlin_1961.jpg"}
 when: "1947/1991"
 claims:
   - id: c1

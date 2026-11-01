@@ -5,4 +5,5 @@ type: org
 name: "Hudson River Trading"
 aliases: ["HRT"]
 summary: "New York-based quantitative trading firm."
+same_as: {wikidata: Q25245262}
 ---

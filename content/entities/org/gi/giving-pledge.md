@@ -6,6 +6,7 @@ name: The Giving Pledge
 in_sentence: the Giving Pledge
 aliases: [Giving Pledge]
 summary: Campaign started in 2010 that asks the very wealthy to commit most of their wealth to philanthropy.
+same_as: {wikidata: Q203807}
 when: "2010-06/.."
 ---
 

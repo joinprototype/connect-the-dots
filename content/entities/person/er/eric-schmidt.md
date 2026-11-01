@@ -5,6 +5,8 @@ type: person
 name: "Eric Schmidt"
 aliases: ["Eric E. Schmidt"]
 summary: "Google CEO 2001–2011 and executive chairman of Google and then Alphabet, 2011–2018."
+same_as: {wikidata: Q92747}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Eric_Schmidt_at_the_37th_G8_Summit_in_Deauville_037.jpg/960px-Eric_Schmidt_at_the_37th_G8_Summit_in_Deauville_037.jpg", license: "CC BY 3.0", author: "Guillaume Paumier", page: "https://commons.wikimedia.org/wiki/File:Eric_Schmidt_at_the_37th_G8_Summit_in_Deauville_037.jpg"}
 claims:
   - id: c1
     rel: board_member_of

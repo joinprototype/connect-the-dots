@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Atlas: Connect the Dots{% endblock %}
+{% block description %}{{ entries }} of the best-known things in the world, from open data.{% endblock %}
+{% block head %}<meta name="robots" content="noindex">{% if site.assets.atlas_css %}<link rel="stylesheet" href="/assets/atlas.css">{% endif %}{% endblock %}
+{% block body_class %}atlas-page{% endblock %}
+{% block main %}
+<article class="atlas" id="atlas-root"><noscript><p class="empty">This page needs JavaScript. Pages written by hand do not.</p></noscript></article>
+{% endblock %}
+{% block scripts %}{% if site.assets.atlas_js %}<script type="module" src="/assets/atlas.js"></script>{% endif %}{% endblock %}

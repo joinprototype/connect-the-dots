@@ -6,6 +6,8 @@ name: Central Intelligence Agency
 in_sentence: the Central Intelligence Agency
 aliases: [CIA]
 summary: Civilian foreign intelligence agency of the United States government, established in 1947.
+same_as: {wikidata: Q37230}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Aerial_view_of_the_Central_Intelligence_Agency_headquarters%2C_Langley%2C_Virginia_-_Corrected_and_Cropped.jpg/960px-Aerial_view_of_the_Central_Intelligence_Agency_headquarters%2C_Langley%2C_Virginia_-_Corrected_and_Cropped.jpg", license: "Public domain", author: "Carol M. Highsmith", page: "https://commons.wikimedia.org/wiki/File:Aerial_view_of_the_Central_Intelligence_Agency_headquarters,_Langley,_Virginia_-_Corrected_and_Cropped.jpg"}
 when: "1947/.."
 place: langley-virginia
 claims:

@@ -6,6 +6,8 @@ name: Moscow–Washington hotline
 in_sentence: "the Moscow–Washington hotline"
 aliases: [Hotline, Direct Communications Link, Washington–Moscow hotline]
 summary: "Direct communications link between the US and Soviet heads of government, agreed in June 1963."
+same_as: {wikidata: Q735219}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Jimmy_Carter_Library_and_Museum_99.JPG/960px-Jimmy_Carter_Library_and_Museum_99.JPG", license: "CC BY 3.0", author: "User:Piotrus", page: "https://commons.wikimedia.org/wiki/File:Jimmy_Carter_Library_and_Museum_99.JPG"}
 when: "1963/.."
 claims:
   - id: c1

@@ -6,6 +6,7 @@ name: "Chan Zuckerberg Initiative"
 in_sentence: "the Chan Zuckerberg Initiative"
 aliases: ["CZI", "Chan Zuckerberg Initiative, LLC"]
 summary: "Philanthropic organization set up as a limited liability company, founded in December 2015 by Priscilla Chan and Mark Zuckerberg."
+same_as: {wikidata: Q21623039}
 when: "2015-12/.."
 claims:
   - id: c1

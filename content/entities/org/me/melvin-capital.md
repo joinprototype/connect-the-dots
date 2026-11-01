@@ -5,6 +5,7 @@ type: org
 name: "Melvin Capital"
 aliases: ["Melvin Capital Management", "Melvin Capital Management LP"]
 summary: "Hedge fund founded by Gabe Plotkin in December 2014."
+same_as: {wikidata: Q85784879}
 claims:
   - id: c1
     rel: harmed_by

@@ -5,6 +5,8 @@ type: person
 name: Peter Thiel
 aliases: [Peter A. Thiel, Peter Andreas Thiel]
 summary: Investor; co-founder of PayPal and Palantir; Facebook's first outside investor.
+same_as: {wikidata: Q705525}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Peter_Thiel_by_Gage_Skidmore.jpg/960px-Peter_Thiel_by_Gage_Skidmore.jpg", license: "CC BY-SA 3.0", author: "Gage Skidmore", page: "https://commons.wikimedia.org/wiki/File:Peter_Thiel_by_Gage_Skidmore.jpg"}
 when: "1967-10-11/.."
 claims:
   - id: c1

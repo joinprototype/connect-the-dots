@@ -4,6 +4,7 @@ id: index-ventures
 type: org
 name: "Index Ventures"
 summary: "Venture capital firm that invests from seed stage to IPO."
+same_as: {wikidata: Q3809397}
 claims:
   - id: c1
     rel: invested_in

@@ -5,6 +5,7 @@ type: org
 name: "Meta Superintelligence Labs"
 aliases: ["MSL"]
 summary: "Meta's overall AI organization, announced on June 30, 2025; at launch it included Meta's foundations, product and FAIR teams and a new lab for next-generation models."
+same_as: {wikidata: Q135397403}
 when: "2025-06-30/.."
 claims:
   - id: c1

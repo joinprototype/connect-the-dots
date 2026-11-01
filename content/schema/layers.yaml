@@ -1,10 +1,10 @@
 # Layers: families of relations. A lens shows a set of layers.
-# Colors stay neutral on purpose (docs/ux-vision.md): meaning comes from labels and shape,
-# the one accent color is reserved for focus, selection and the active path.
-people:  {label: People,         color: "#6e6e73"}
-power:   {label: Power,          color: "#6e6e73"}
-money:   {label: Money,          color: "#6e6e73"}
-tech:    {label: Science & Tech, color: "#6e6e73"}
-history: {label: History,        color: "#6e6e73"}
-ideas:   {label: Ideas & Faith,  color: "#6e6e73"}
-places:  {label: Places,         color: "#6e6e73"}
+# Each family has a print ink (docs/ux-vision.md). Colour helps; meaning never rests on it alone:
+# labels and shape say the same.
+people:  {label: People,         color: "#e23d28"}
+power:   {label: Power,          color: "#2346d6"}
+money:   {label: Money,          color: "#0f8f8f"}
+tech:    {label: Science & Tech, color: "#0a79b5"}
+history: {label: History,        color: "#e08a00"}
+ideas:   {label: Ideas & Faith,  color: "#7b36b8"}
+places:  {label: Places,         color: "#0b8457"}

@@ -5,6 +5,8 @@ type: place
 name: Cuba
 aliases: [Republic of Cuba]
 summary: Island country in the Caribbean.
+same_as: {wikidata: Q241}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Santa_Clara_%28Cuba%29.jpg/960px-Santa_Clara_%28Cuba%29.jpg", license: "CC BY-SA 4.0", author: "\u0412\u0438\u043a\u0442\u043e\u0440 \u041f\u0438\u043d\u0447\u0443\u043a (\u0430\u0432\u0442\u043e\u0440 \u0444\u043e\u0442\u043e \u0438 \u043a\u043d\u0438\u0433\u0438)", page: "https://commons.wikimedia.org/wiki/File:Santa_Clara_(Cuba).jpg"}
 coords: [-79.0, 21.6]
 claims:
   - id: c1

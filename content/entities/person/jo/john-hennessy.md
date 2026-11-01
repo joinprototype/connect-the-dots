@@ -5,6 +5,7 @@ type: person
 name: "John Hennessy"
 aliases: ["John L. Hennessy"]
 summary: "Computer scientist; president of Stanford University from 2000; Google director from 2004."
+same_as: {wikidata: Q15979078}
 claims:
   - id: c1
     rel: board_member_of

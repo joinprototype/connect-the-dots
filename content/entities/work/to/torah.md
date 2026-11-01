@@ -6,6 +6,8 @@ name: Torah
 in_sentence: "the Torah"
 aliases: [Pentateuch, Five Books of Moses]
 summary: The five books of Moses; the first part of the Hebrew Bible.
+same_as: {wikidata: Q34990}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/b/b2/Torah2.jpg", license: "Public domain", author: "Unknown", page: "https://commons.wikimedia.org/wiki/File:Torah2.jpg"}
 claims:
   - id: c1
     rel: scripture_of

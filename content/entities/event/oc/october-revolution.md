@@ -6,6 +6,8 @@ name: October Revolution
 in_sentence: the October Revolution
 aliases: [Bolshevik Revolution, October Revolution of 1917, Great October Socialist Revolution]
 summary: "The Bolshevik seizure of power in Petrograd on 7 November 1917 (25 October in the old Russian calendar)."
+same_as: {wikidata: Q42976}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/b/b4/After_the_capture_of_the_Winter_Palace_26_October_1917.jpg", license: "Public domain", author: "Pyotr Novitsky", page: "https://commons.wikimedia.org/wiki/File:After_the_capture_of_the_Winter_Palace_26_October_1917.jpg"}
 when: "1917-11-07/1917-11-08"
 place: petrograd
 claims:

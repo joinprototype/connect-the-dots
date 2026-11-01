@@ -5,6 +5,8 @@ type: org
 name: "Merrill Lynch"
 aliases: ["Merrill Lynch & Co., Inc.", "Merrill"]
 summary: "American brokerage and investment bank; part of Bank of America since 2009."
+same_as: {wikidata: Q334122}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Merrill_Lynch_-_panoramio.jpg/960px-Merrill_Lynch_-_panoramio.jpg", license: "CC BY-SA 3.0", author: "H\u00e4nsel und Gretel", page: "https://commons.wikimedia.org/wiki/File:Merrill_Lynch_-_panoramio.jpg"}
 claims:
   - id: c1
     rel: owns_stake

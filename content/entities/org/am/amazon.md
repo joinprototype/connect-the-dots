@@ -5,6 +5,8 @@ type: org
 name: Amazon
 aliases: [Amazon.com, "Amazon.com, Inc."]
 summary: American e-commerce and cloud-computing company founded by Jeff Bezos in 1994.
+same_as: {wikidata: Q3884}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Amazon_Tower_I_topped_out%2C_June_2015.jpg/960px-Amazon_Tower_I_topped_out%2C_June_2015.jpg", license: "CC BY-SA 2.0", author: "SounderBruce", page: "https://commons.wikimedia.org/wiki/File:Amazon_Tower_I_topped_out,_June_2015.jpg"}
 when: "1994/.."
 claims:
   - id: c1

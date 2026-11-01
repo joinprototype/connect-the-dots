@@ -1186,6 +1186,11 @@ fn check_shot_refs(kb: &Kb, refs: &ShotRefs, file: &str, shot: &Value, diags: &m
             diags.push(Diag::err(file, format!("shot `{name}`: claim `{r}` does not exist")).hint("use <entity-id>#<claim-id>"));
         }
     }
+    if let Some(url) = shot["photo"]["url"].as_str()
+        && !WEB_URL.is_match(url)
+    {
+        diags.push(Diag::err(file, format!("shot `{name}`: photo url must be an http(s) address")));
+    }
     let overlay = &shot["overlay"];
     if let Some(src) = overlay["source"].as_str()
         && !kb.sources.contains_key(src)

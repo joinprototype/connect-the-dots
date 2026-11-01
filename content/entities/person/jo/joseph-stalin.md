@@ -5,6 +5,8 @@ type: person
 name: Joseph Stalin
 aliases: [Iosif Stalin, Joseph Vissarionovich Stalin, Stalin]
 summary: Soviet leader; General Secretary of the Communist Party from 1922 until his death in 1953.
+same_as: {wikidata: Q855}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Joseph_Stalin_official_portrait.jpg/960px-Joseph_Stalin_official_portrait.jpg", license: "Public domain", author: "Ivan Shagin", page: "https://commons.wikimedia.org/wiki/File:Joseph_Stalin_official_portrait.jpg"}
 when: "1878-12-18/1953-03-05"
 claims:
   - id: c1

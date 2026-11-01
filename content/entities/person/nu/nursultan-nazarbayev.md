@@ -4,6 +4,8 @@ id: nursultan-nazarbayev
 type: person
 name: Nursultan Nazarbayev
 summary: "President of Kazakhstan until March 2019, when he stepped down in an address to the nation."
+same_as: {wikidata: Q57394}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Nursultan_Nazarbayev_%282020-03-10%29_%28cropped%29.jpg", license: "CC BY 4.0", author: "http://en.kremlin.ru", page: "https://commons.wikimedia.org/wiki/File:Nursultan_Nazarbayev_(2020-03-10)_(cropped).jpg"}
 when: "1940-07-06/.."
 place: kazakhstan
 background:

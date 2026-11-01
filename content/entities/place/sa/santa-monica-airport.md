@@ -5,6 +5,8 @@ type: place
 name: "Santa Monica Airport"
 aliases: ["Clover Field", "Santa Monica Municipal Airport"]
 summary: "Airfield in Santa Monica, California, dedicated as Clover Field in 1923 and due to close at the end of 2028."
+same_as: {wikidata: Q7419789}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/b/bc/Santa_Monica_Airport_-_California.jpg", license: "Public domain", author: "United States Geological Survey (USGS)", page: "https://commons.wikimedia.org/wiki/File:Santa_Monica_Airport_-_California.jpg"}
 when: "1923-04-15/.."
 coords: [-118.4512, 34.0158]
 claims:

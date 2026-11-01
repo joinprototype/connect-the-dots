@@ -5,6 +5,7 @@ type: person
 name: "Susan Wagner"
 aliases: ["Susan L. Wagner", "Sue Wagner"]
 summary: "Co-founder and former vice chairman of BlackRock; Apple director since 2014."
+same_as: {wikidata: Q17388808}
 claims:
   - id: c1
     rel: founded

@@ -5,6 +5,8 @@ type: person
 name: "Steve Jobs"
 aliases: ["Steven P. Jobs"]
 summary: "Co-founder of Apple. He was its CEO from 1997 to 2011 and its chairman from August 2011 until his death in October 2011."
+same_as: {wikidata: Q19837}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Steve_Jobs_Headshot_2010-CROP2.jpg/960px-Steve_Jobs_Headshot_2010-CROP2.jpg", license: "CC BY-SA 3.0", author: "MetalGearLiquid, based on File:Steve_Jobs_Headshot_2010-CROP.jpg made by Matt Yohe", page: "https://commons.wikimedia.org/wiki/File:Steve_Jobs_Headshot_2010-CROP2.jpg"}
 when: "1955/2011"
 claims:
   - id: c1

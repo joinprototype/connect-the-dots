@@ -5,6 +5,7 @@ type: org
 name: Seattle Computer Products
 aliases: [SCP]
 summary: Seattle-area hardware maker that wrote 86-DOS and sold it to Microsoft.
+same_as: {wikidata: Q1093670}
 claims:
   - id: c1
     rel: developed

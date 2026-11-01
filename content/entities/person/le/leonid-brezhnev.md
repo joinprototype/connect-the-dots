@@ -5,6 +5,8 @@ type: person
 name: Leonid Brezhnev
 aliases: [Leonid Ilyich Brezhnev, Brezhnev]
 summary: "Soviet leader: head of the Communist Party from October 1964 until his death in 1982, and head of state from 1977."
+same_as: {wikidata: Q765165}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Leonid_Brezjnev%2C_leider_van_de_Sovjet-Unie%2C_Bestanddeelnr_925-6564.jpg/960px-Leonid_Brezjnev%2C_leider_van_de_Sovjet-Unie%2C_Bestanddeelnr_925-6564.jpg", license: "CC0", author: "Vladimir Musaelyan", page: "https://commons.wikimedia.org/wiki/File:Leonid_Brezjnev,_leider_van_de_Sovjet-Unie,_Bestanddeelnr_925-6564.jpg"}
 when: "1906-12-19/1982-11-10"
 claims:
   - id: c1

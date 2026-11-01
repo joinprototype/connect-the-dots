@@ -5,6 +5,8 @@ type: person
 name: "Nadezhda Krupskaya"
 aliases: ["Nadezhda Konstantinovna Krupskaya", "N. K. Krupskaya", "Nadya Krupskaya"]
 summary: "Bolshevik organiser and Soviet education official; Vladimir Lenin's wife from 1898 until his death in 1924."
+same_as: {wikidata: Q215637}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/KrupskayaY_1922PorMariaUlyanova_%28cropped%29.jpg/960px-KrupskayaY_1922PorMariaUlyanova_%28cropped%29.jpg", license: "Public domain", author: "Maria Ulyanova", page: "https://commons.wikimedia.org/wiki/File:KrupskayaY_1922PorMariaUlyanova_(cropped).jpg"}
 when: "1869-02-26/1939-02-27"
 claims:
   - id: c1

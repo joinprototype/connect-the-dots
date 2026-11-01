@@ -5,6 +5,7 @@ type: org
 name: In-Q-Tel
 aliases: [IQT]
 summary: Not-for-profit strategic investment firm set up by the CIA in 1999.
+same_as: {wikidata: Q3109467}
 when: "1999/.."
 claims:
   - id: c1

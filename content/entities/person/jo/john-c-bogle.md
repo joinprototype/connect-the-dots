@@ -5,6 +5,8 @@ type: person
 name: John C. Bogle
 aliases: [Jack Bogle, John Clifton Bogle]
 summary: Founder of the Vanguard Group and pioneer of index mutual funds.
+same_as: {wikidata: Q504824}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/0/09/Photo_of_a_John_C._Bogle_By_Bill_Cramer.jpg", license: "CC BY-SA 4.0", author: "BillCramer", page: "https://commons.wikimedia.org/wiki/File:Photo_of_a_John_C._Bogle_By_Bill_Cramer.jpg"}
 when: "1929-05-08/2019-01-16"
 background:
   - {text: "Born in Montclair, New Jersey, in 1929.", src: [{s: vanguard-2019-01-16-bogle-passing-release, at: "Personal information", quote: "Mr. Bogle was born May 8, 1929, in Montclair, New Jersey."}, {s: ap-2019-01-16-bogle-dies, at: "background paragraph", quote: "John Clifton Bogle was born in May 1929 in Montclair, New Jersey"}]}

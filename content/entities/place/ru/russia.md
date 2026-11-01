@@ -5,6 +5,8 @@ type: place
 name: Russia
 aliases: [Russian Federation, RSFSR, Soviet Russia, Russian Soviet Federative Socialist Republic]
 summary: "Country in Eastern Europe and North Asia; as Soviet Russia (RSFSR) a founding republic of the USSR, and the Russian Federation since December 1991."
+same_as: {wikidata: Q159}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Russia_87.74494E_66.20034N.jpg/960px-Russia_87.74494E_66.20034N.jpg", license: "Public domain", author: "Unknown", page: "https://commons.wikimedia.org/wiki/File:Russia_87.74494E_66.20034N.jpg"}
 coords: [105.3188, 61.524]
 claims:
   - id: c1

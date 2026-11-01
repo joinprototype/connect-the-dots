@@ -4,6 +4,7 @@ id: merrill-flood
 type: person
 name: "Merrill Flood"
 summary: "American mathematician at the RAND Corporation."
+same_as: {wikidata: Q6820214}
 when: "1908/1991"
 claims:
   - id: c1

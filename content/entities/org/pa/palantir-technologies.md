@@ -5,6 +5,7 @@ type: org
 name: Palantir Technologies
 aliases: [Palantir]
 summary: Data-analysis software company founded in 2003, first for US intelligence work.
+same_as: {wikidata: Q2047336}
 when: "2003/.."
 ---
 

@@ -5,6 +5,8 @@ type: person
 name: John Doerr
 aliases: [L. John Doerr]
 summary: Venture capitalist at Kleiner Perkins; early board member of Amazon and Google.
+same_as: {wikidata: Q1380459}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/John_Doerr.jpg/960px-John_Doerr.jpg", license: "CC BY 2.0", author: "Pierre Omidyar", page: "https://commons.wikimedia.org/wiki/File:John_Doerr.jpg"}
 when: "1951/.."
 claims:
   - id: c1

@@ -6,6 +6,7 @@ name: "Printing press"
 in_sentence: "the printing press"
 aliases: ["Gutenberg press", "Movable-type printing press"]
 summary: "Machine that pushes paper against inked movable type; Johannes Gutenberg designed and built the first known mechanized one in Europe, about 1439–1450."
+same_as: {wikidata: Q124085828}
 when: "1439/1450~"
 claims:
   - id: c1

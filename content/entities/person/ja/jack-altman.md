@@ -4,6 +4,8 @@ id: jack-altman
 type: person
 name: "Jack Altman"
 summary: "Entrepreneur and investor; co-founded the HR software company Lattice in 2015 and was its CEO until January 2024; brother of Sam Altman."
+same_as: {wikidata: Q136430975}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Jack_Altman%2C_at_The_Grove%2C_in_2022.jpg/960px-Jack_Altman%2C_at_The_Grove%2C_in_2022.jpg", license: "CC BY 2.0", author: "Village Global", page: "https://commons.wikimedia.org/wiki/File:Jack_Altman,_at_The_Grove,_in_2022.jpg"}
 claims:
   - id: c1
     rel: relative_of

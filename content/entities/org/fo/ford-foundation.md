@@ -5,6 +5,8 @@ type: org
 name: "Ford Foundation"
 in_sentence: "the Ford Foundation"
 summary: "American private foundation."
+same_as: {wikidata: Q1313036}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Ford_Foundation_HQ_jeh.JPG/960px-Ford_Foundation_HQ_jeh.JPG", license: "Public domain", author: "Jim.henderson", page: "https://commons.wikimedia.org/wiki/File:Ford_Foundation_HQ_jeh.JPG"}
 claims:
   - id: c1
     rel: funded

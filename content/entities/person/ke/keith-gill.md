@@ -5,6 +5,7 @@ type: person
 name: "Keith Gill"
 aliases: ["Keith Patrick Gill"]
 summary: "American individual investor who posted analysis of GameStop stock on social media."
+same_as: {wikidata: Q62610165}
 claims:
   - id: c1
     rel: invested_in

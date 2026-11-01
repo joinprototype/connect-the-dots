@@ -5,6 +5,8 @@ type: place
 name: Belarus
 aliases: [Byelorussia, Belorussia]
 summary: Country in Eastern Europe; a founding republic of the Soviet Union, independent since 1991.
+same_as: {wikidata: Q184}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Satellite_image_of_Belarus_in_December_2002.jpg/960px-Satellite_image_of_Belarus_in_December_2002.jpg", license: "Public domain", author: "Unknown", page: "https://commons.wikimedia.org/wiki/File:Satellite_image_of_Belarus_in_December_2002.jpg"}
 coords: [27.9534, 53.7098]
 claims:
   - id: c1

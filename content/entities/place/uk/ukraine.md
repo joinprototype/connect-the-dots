@@ -4,6 +4,8 @@ id: ukraine
 type: place
 name: Ukraine
 summary: Country in Eastern Europe; a founding republic of the Soviet Union, independent since 1991.
+same_as: {wikidata: Q212}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Maidan_Nezalezhnosti_view.jpg/960px-Maidan_Nezalezhnosti_view.jpg", license: "CC BY-SA 4.0", author: "Juan Antonio Segal", page: "https://commons.wikimedia.org/wiki/File:Maidan_Nezalezhnosti_view.jpg"}
 coords: [31.1656, 48.3794]
 claims:
   - id: c1

@@ -4,6 +4,8 @@ id: baiju-bhatt
 type: person
 name: "Baiju Bhatt"
 summary: "Co-founder of Robinhood Markets; its co-CEO from 2013 to 2020."
+same_as: {wikidata: Q55760424}
+image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/TechCrunch_Disrupt_San_Francisco_2018_-_day_2_%2843802635144%29.jpg/960px-TechCrunch_Disrupt_San_Francisco_2018_-_day_2_%2843802635144%29.jpg", license: "CC BY 2.0", author: "TechCrunch", page: "https://commons.wikimedia.org/wiki/File:TechCrunch_Disrupt_San_Francisco_2018_-_day_2_(43802635144).jpg"}
 claims:
   - id: c1
     rel: ceo_of

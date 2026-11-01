@@ -4,6 +4,8 @@ id: john-ternus
 type: person
 name: "John Ternus"
 summary: "Apple's CEO since 1 September 2026, previously its senior vice president of hardware engineering."
+same_as: {wikidata: Q106028933}
+image: {url: "https://upload.wikimedia.org/wikipedia/commons/d/d0/John_Ternus_at_the_Apple_50th_Anniversary_Kickoff.jpg", license: "CC BY 4.0", author: "Tessa Bury", page: "https://commons.wikimedia.org/wiki/File:John_Ternus_at_the_Apple_50th_Anniversary_Kickoff.jpg"}
 claims:
   - id: c1
     rel: board_member_of

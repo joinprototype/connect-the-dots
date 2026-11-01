@@ -1,6 +1,7 @@
 //! connect-the-dot engine.
 
 pub mod answers;
+pub mod atlas;
 pub mod covers;
 pub mod diag;
 pub mod edtf;
