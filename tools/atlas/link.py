@@ -19,8 +19,8 @@ FREE = re.compile(r"^(public domain|pd\b|cc0|cc[ -]by(-sa)?\b)", re.I)
 UNFREE = re.compile(r"\b(nc|nd)\b|non-?commercial|fair use", re.I)
 # no picture of a prophet or a religion's symbol: for many readers that is not a neutral thing to show
 NO_PICTURE_TYPES = {"tradition", "concept", "group"}
-# nor a war's collage, which may show the dead, nor a chart that says nothing to a reader
-NO_PICTURE = {"jesus", "muhammad", "moses", "abraham", "world-war-ii", "financial-crisis-of-2008"}
+# nor a war's collage or a killing, which may show the dead, nor a chart that says nothing to a reader
+NO_PICTURE = {"jesus", "muhammad", "moses", "abraham", "world-war-ii", "financial-crisis-of-2008", "assassination-of-franz-ferdinand"}
 
 
 def get(base: str, **params) -> dict:
