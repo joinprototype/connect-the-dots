@@ -517,6 +517,7 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
 /* ---------------------------------------------------------------- footer */
 .site-footer { padding: 26px var(--gutter) 34px; color: var(--muted); background: var(--paper-2); font-size: 0.9rem; }
 .footer-principle { font: italic 400 1rem/1.5 var(--font-body); color: var(--ink-2); max-width: 70ch; }
+.footer-maker { margin: 0 0 6px; }
 .footer-build { margin: 0; }
 
 /* ---------------------------------------------------------------- responsive, motion */

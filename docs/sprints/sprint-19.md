@@ -1,7 +1,7 @@
 # Sprint 19: Two new stories
 
 - Starts: 2026-10-31, at the founder's word · Length: 1 week
-- Status: released in 0.2.0, phone fixes in 0.2.1 (2026-10-31); demo and review with the founder pending
+- Status: released in 0.2.0, phone fixes in 0.2.1, one name in 0.2.2 (2026-10-31); demo and review with the founder pending
 
 ## Goal
 
@@ -33,6 +33,7 @@ GameStop and the road from clay to print each play as a story, and the Cold War'
 
 - [x] **Found after 0.2.0 went live: blank graphs on phones.** The card leaving a scene stayed in the layout for its fade, stacked above the new one. Under a tall card it counted as a band across the top of the stage, so the graph framed its dots under the card, in 5 GameStop scenes and 3 of BlackRock's. The sweep could not see it, since a graph is drawn on a canvas, and the scenes looked at by hand were other ones. The leaving card now leaves the layout at once, and `tools/qa/scene-fit.js` measures every graph scene. Fixed in 0.2.1.
 - [x] **On a short phone the card covered the stage:** 13 BlackRock scenes at 320x640 lost their dots. Below 720 px high, a card keeps to three lines of quote, and the scene below says who speaks.
+- [x] **One name:** pages said "connect the dot" while the repo and the studio say Connect the Dots. Titles, the header and the share image now say Connect the Dots, the home title and description say what the site is, and the footer links to Prototype. Internal names (`ctd`, the crate, the package) stay.
 
 ### Not in this sprint
 - The Map's era slider.

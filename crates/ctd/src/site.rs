@@ -513,8 +513,8 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     env.set_loader(path_loader(root.join("theme").join("templates")));
     let layers: Vec<Value> = kb.schema.layers.iter().map(|(id, l)| json!({ "id": id, "label": l.label, "color": l.color })).collect();
     let site = json!({
-        "title": "connect·the·dot",
-        "tagline": "Connect the dots. See the evidence and the perspectives behind every line.",
+        "title": "Connect the Dots: an open map of knowledge",
+        "tagline": "An open map of how people, organizations, places and events connect. Every line shows its proof, and every interpretation says whose it is.",
         "url": SITE_URL,
         "repo": "https://github.com/joinprototype/connect-the-dots",
         "dev": opts.dev, "assets": assets, "lenses": kb.schema.lenses, "layers": layers, "manifest": manifest,

@@ -2,7 +2,7 @@
 {% from "macros.html" import count, status_badge, question_rows, refs, proof_fold, lifeline %}
 {# A link's status in a glance card: its badge, then why it is disputed. Withdrawn links never reach these cards. #}
 {% macro mark(x) %}{% if x.draft or x.disputed %}{{ status_badge("draft" if x.draft else "disputed") }}{% endif %}{% if x.disputed and x.reason %}<span class="glance-reason">{{ x.reason }}</span>{% endif %}{% endmacro %}
-{% block title %}{{ entity.name }}: connect the dot{% endblock %}
+{% block title %}{{ entity.name }}: Connect the Dots{% endblock %}
 {% block description %}{{ entity.summary or entity.name }}{% endblock %}
 {% block body_class %}entity-page{% endblock %}
 {% block main %}

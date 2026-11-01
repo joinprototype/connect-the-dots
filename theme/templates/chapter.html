@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% from "macros.html" import book, count %}
-{% block title %}{{ chapter.title }}{{ " –" if chapter.title[-1:] == "?" else ":" }} connect the dot{% endblock %}
+{% block title %}{{ chapter.title }}{{ " –" if chapter.title[-1:] == "?" else ":" }} Connect the Dots{% endblock %}
 {% block description %}{{ chapter.summary or chapter.subtitle or chapter.title }}{% endblock %}
 {% block body_class %}chapter-page{% endblock %}
 {% block head %}{% if site.assets.story_css %}<link rel="stylesheet" href="/assets/story.css">{% endif %}{% endblock %}

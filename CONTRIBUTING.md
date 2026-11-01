@@ -1,6 +1,6 @@
-# Contributing to connect-the-dot
+# Contributing to Connect the Dots
 
-connect-the-dot is an open map of how people, organizations, places, events and ideas connect. Every line on it is a link backed by a source you can check, and readers can see whose account each link is. The whole site is built from plain text files in this repository, so you add to it with a pull request.
+Connect the Dots is an open map of how people, organizations, places, events and ideas connect. Every line on it is a link backed by a source you can check, and readers can see whose account each link is. The whole site is built from plain text files in this repository, so you add to it with a pull request.
 
 This guide covers the rules, setting up, worked examples copied from the repository, how to write a story that plays well, how to check your work, and a checklist for your pull request. The full reference for every field is [docs/content-model.md](docs/content-model.md).
 

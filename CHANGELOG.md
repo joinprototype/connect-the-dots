@@ -2,6 +2,12 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.2.2 (2026-10-31)
+
+- The site now goes by Connect the Dots everywhere, including link previews and the share image.
+- The home page's title and description say what the site is.
+- The footer of every page says who makes it, with a link to Prototype.
+
 ## 0.2.1 (2026-10-31)
 
 - Stories on phones: a scene with a long quote or a big number no longer hides its graph under the card.

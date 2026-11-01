@@ -9,11 +9,11 @@
 <meta property="og:title" content="{{ self.title() }}">
 <meta property="og:description" content="{{ self.description() }}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="connect the dot">
+<meta property="og:site_name" content="Connect the Dots">
 <meta property="og:image" content="{{ site.url|safe }}/static/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="connect the dot: ask how anything connects. A route of sourced links from Moses to Elon Musk.">
+<meta property="og:image:alt" content="Connect the Dots: ask how anything connects. A route of sourced links from Moses to Elon Musk.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ffffff'/%3E%3Cpath d='M7 21 L15 10 L25 17' fill='none' stroke='%231d1d1f' stroke-width='2'/%3E%3Ccircle cx='7' cy='21' r='3.2' fill='%230066cc'/%3E%3Ccircle cx='15' cy='10' r='3.2' fill='%230066cc'/%3E%3Ccircle cx='25' cy='17' r='3.2' fill='%230066cc'/%3E%3C/svg%3E">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
@@ -40,9 +40,9 @@
 <body class="{% block body_class %}page{% endblock %}">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
-  <a class="brand" href="/" aria-label="connect the dot, home">
+  <a class="brand" href="/" aria-label="Connect the Dots, home">
     <svg class="brand-mark" viewBox="0 0 30 20" aria-hidden="true"><path d="M4 15 L13 5 L25 12"/><circle cx="4" cy="15" r="2.7"/><circle cx="13" cy="5" r="2.7"/><circle cx="25" cy="12" r="2.7"/></svg>
-    <span>connect the dot</span>
+    <span>Connect the Dots</span>
   </a>
   <nav class="site-nav" aria-label="Main">
     <a href="/c/">Stories</a>
@@ -60,6 +60,7 @@
 </main>
 <footer class="site-footer">
   <p class="footer-principle">A connection is not evidence of wrongdoing. Every line cites its sources, and every interpretation says whose it is. <a href="/about/">How this site works</a></p>
+  <p class="footer-maker">Made by <a href="https://joinprototype.com/">Prototype</a> in Santa Monica.</p>
   <p class="footer-build">Version {{ site.manifest.engine }}, built {{ site.manifest.built }} from {% if site.manifest.commit %}commit {{ site.manifest.commit }}{% else %}uncommitted content{% endif %}, methodology {{ site.manifest.methodology[:8] }}. <a href="{{ site.repo }}">Source</a> · <a href="{{ site.repo }}/blob/main/LICENSING.md">License</a></p>
 </footer>
 {% if site.assets.islands_js %}<script type="module" src="/assets/islands.js"></script>{% endif %}

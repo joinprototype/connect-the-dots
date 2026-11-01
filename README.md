@@ -1,4 +1,4 @@
-# connect-the-dot
+# Connect the Dots
 
 An open, interactive map of knowledge where anyone can connect the dots, and see the evidence and the perspectives behind every line.
 
