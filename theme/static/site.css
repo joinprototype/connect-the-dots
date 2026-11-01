@@ -2,7 +2,8 @@
    Direction (docs/ux-vision.md): Apple Books-like simplicity. White and Apple gray, ink text,
    ONE accent for links, selection and paths. Highlighted proof is yellow on paper, a soft blue-gray
    in dark mode: never yellow on black (founder: hard to read, hurts the eyes). System fonts:
-   New York (ui-serif) for reading and titles, SF (system-ui) for controls. Dark mode follows the system. */
+   New York (ui-serif) for reading and titles, SF (system-ui) for controls. Dark mode follows the
+   system, except stories, which read on white. */
 
 :root {
   /* surfaces: paper is the page, paper-2 a grouped area on it, sheet a card on it. raised lifts a
@@ -46,9 +47,12 @@
   color-scheme: light dark;
 }
 
+/* stories read on white in every mode: the page sets data-theme="light" */
+:root[data-theme="light"] { color-scheme: light; }
+
 @media (prefers-color-scheme: dark) {
   /* off-black paper and slightly dimmed white: less glare for long reading */
-  :root {
+  :root:not([data-theme="light"]) {
     --paper: #111113;
     --paper-2: #1c1c1e;
     --sheet: #1c1c1e;

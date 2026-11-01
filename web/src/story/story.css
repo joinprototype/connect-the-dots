@@ -21,14 +21,6 @@ ctd-story.is-enhanced {
   column-gap: clamp(16px, 3vw, 40px);
   padding-right: var(--gutter, clamp(16px, 4vw, 48px));
 }
-@media (prefers-color-scheme: dark) {
-  ctd-story {
-    --graph-node: #98989d;
-    --graph-edge: #48484a;
-    --story-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
-    --story-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 0 1px color-mix(in srgb, var(--rule) 60%, transparent);
-  }
-}
 
 /* ---------------------------------------------------------------- stage */
 ctd-story.is-enhanced .story-stage {

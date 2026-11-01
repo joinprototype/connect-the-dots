@@ -2,6 +2,10 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.4.1 (2026-11-01)
+
+- Stories now read on white, whatever your system's dark mode says.
+
 ## 0.4.0 (2026-11-01)
 
 - A new story, "The Airfield and the Think Tank": one airfield in Santa Monica, from the first flight around the world to a satellite and a network on paper and the Pentagon Papers, with the ARPANET's builders and Paul Baran each in their own words.

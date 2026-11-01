@@ -39,7 +39,8 @@ No social features, no editor, and no seven-lens control panels in the MVP UI. N
   Never yellow on black. Founder, 2026-10-17: "yellow on black is hard to see, hurts my eyes".
 - **Type:** system fonts only. `ui-serif` / New York for reading and titles; `system-ui` / SF for controls. No web-font downloads. The one exception is the OpenFreeMap basemap of the story maps and the Map's Earth view: its country and capital names, and the names on the Earth's dots, are drawn with its glyphs until we host it ourselves ([ADR-0014](decisions/0014-calm-design.md)).
 - **Shapes:** rounded cards (12–16 px), soft shadows, generous white space, segmented controls.
-- **Dark mode** follows the system setting.
+- **Stories read on white,** in every mode: long reading needs paper (founder, 2026-11-01).
+- **Dark mode** follows the system setting everywhere else.
   - No yellow or other warm accent text on dark backgrounds.
   - "Being verified" is a dashed neutral outline in both modes.
 
