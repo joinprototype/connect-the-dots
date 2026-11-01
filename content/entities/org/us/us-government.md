@@ -54,6 +54,13 @@ claims:
     note: "Through the U.S. Army Air Service. In 1924 Douglas World Cruisers became the first aircraft to fly around the world."
     src:
       - {s: boeing-2026-04-22-california-companies, at: "Douglas Aircraft Co. (founded in Santa Monica, CA)", quote: "Douglas won the U.S. Army Air Service contract for an aircraft to attempt the first around-the-world flight using modified DT-2s called Douglas World Cruisers (DWC)."}
+  - id: c8
+    rel: produced
+    to: pentagon-papers
+    when: "1967/1969"
+    src:
+      - {s: nara-pentagon-papers, at: "Pentagon Papers (intro)", quote: "The Pentagon Papers, officially titled \"Report of the Office of the Secretary of Defense Vietnam Task Force\", was commissioned by Secretary of Defense Robert McNamara in 1967."}
+      - {s: fjc-pentagon-papers-federal-courts-2019, at: "Introduction, p. 1", quote: "commissioned by Secretary of Defense Robert McNamara and prepared by a Pentagon task force between 1967 and 1969."}
 ---
 
 The federal government of the [[united-states]], seated in [[washington-dc]]. In this graph it is also a perspective: claims marked "according to the United States government" follow official US accounts, such as [[john-f-kennedy]]'s address of 22 October 1962.

@@ -1,7 +1,7 @@
 # Sprint 20: The Map is worth opening
 
 - Starts: 2026-10-31, at the founder's word · Length: 1 week
-- Status: built; release waits for the founder's go; demo and review pending
+- Status: released in 0.3.0 (2026-11-01); demo and review with the founder pending
 
 ## Goal
 

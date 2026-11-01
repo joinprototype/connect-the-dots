@@ -217,6 +217,8 @@ const INDEX_PER_TYPE: usize = 12;
 const SHELF_MAX: usize = 24;
 /// The site's address, for the few things that cannot be relative.
 const SITE_URL: &str = "https://dots.joinprototype.com";
+/// How many written stories an entry's page lists.
+const STORIES_ON_PAGE: usize = 3;
 /// Whether search engines may list the site (docs/deploy.md). Previews never are: HEADERS has
 /// their rule.
 const LISTED: bool = true;
@@ -426,6 +428,29 @@ impl<'a> QuestionPages<'a> {
 }
 
 /// What every page writer shares: the base, the output folder, the templates and the `site` context.
+/// The written stories that name each entry, the one with the most scenes on it first. An entry's page
+/// shows the first few: it is where a reader arrives from a search, and a story is the way in.
+fn stories_of(kb: &Kb) -> HashMap<String, Vec<Value>> {
+    let mut found: HashMap<&str, Vec<(usize, &crate::kb::Chapter)>> = HashMap::new();
+    for ch in &kb.chapters {
+        let mut scenes: BTreeMap<&str, usize> = BTreeMap::new();
+        for shot in &ch.shots {
+            for id in data::shot_names(shot).collect::<BTreeSet<_>>() {
+                *scenes.entry(id).or_default() += 1;
+            }
+        }
+        for (id, n) in scenes {
+            found.entry(id).or_default().push((n, ch));
+        }
+    }
+    let rows = |mut chs: Vec<(usize, &crate::kb::Chapter)>| {
+        chs.sort_by_key(|&(n, _)| std::cmp::Reverse(n));
+        let row = |ch: &crate::kb::Chapter| json!({ "title": ch.title, "url": format!("/c/{}/", ch.id), "counts": plural(ch.shots.len(), "scene") });
+        chs.iter().take(STORIES_ON_PAGE).map(|&(_, ch)| row(ch)).collect()
+    };
+    found.into_iter().map(|(id, chs)| (id.to_string(), rows(chs))).collect()
+}
+
 struct Site<'a> {
     kb: &'a Kb,
     cx: Ctx<'a>,
@@ -434,6 +459,8 @@ struct Site<'a> {
     site: Value,
     env: Environment<'a>,
     by_id: BTreeMap<&'a str, &'a Edge>,
+    /// Each entry's written stories, as rows for its page.
+    stories: HashMap<String, Vec<Value>>,
 }
 
 impl Site<'_> {
@@ -520,7 +547,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
         "dev": opts.dev, "assets": assets, "lenses": kb.schema.lenses, "layers": layers, "manifest": manifest,
     });
     let by_id = kb.edges.iter().map(|e| (e.id.as_str(), e)).collect();
-    let s = Site { kb, cx: Ctx { kb }, out, history: History::load(root), site, env, by_id };
+    let s = Site { kb, cx: Ctx { kb }, out, history: History::load(root), site, env, by_id, stories: stories_of(kb) };
 
     let lives = entity_pages(&s, &pages)?;
     alias_pages(&s)?;
@@ -789,7 +816,7 @@ fn entity_page(s: &Site, pages: &QuestionPages, ent: &Entity, here_of: &HashMap<
         "entity.html",
         json!({ "site": &s.site, "entity": entity, "groups": groups, "timeline": timeline, "sources": srcs, "history": s.history.of(&ent.rel_path),
                 "claims_count": items.len(), "dossier": glance, "here": here, "background": background, "debate": debate, "legal": legal, "questions": questions,
-                "connect": connect, "split_url": split_url }),
+                "connect": connect, "split_url": split_url, "stories": s.stories.get(&ent.id).cloned().unwrap_or_default() }),
     )?;
     write(&s.out.join("e").join(&ent.id).join("index.html"), html)?;
     let details = data::details(kb, ent, &kept, story_url.as_deref(), asked);
@@ -968,7 +995,7 @@ fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
             "id": ch.id, "title": ch.title, "subtitle": ch.subtitle, "summary": ch.summary, "authors": ch.authors,
             "intro_html": markdown::render(&ch.intro_md, &resolver), "outro_html": markdown::render(&ch.outro_md, &resolver),
             "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &s.by_id, &shots))?,
-            "steps": steps, "url": format!("/c/{}/", ch.id), "shot_count": shots.len(),
+            "steps": steps, "url": format!("/c/{}/", ch.id), "shot_count": shots.len(), "rel_path": ch.rel_path,
             // the stories after this one, round the shelf: a reader who finishes has somewhere to go
             "next": cards.iter().cycle().skip(i + 1).take(cards.len() - 1).take(NEXT_STORIES).collect::<Vec<_>>(),
         });
@@ -1259,6 +1286,24 @@ mod tests {
         stories::tests::family,
         testkit::{load, write_repo},
     };
+
+    #[test]
+    fn an_entry_lists_its_stories_the_one_with_most_scenes_on_it_first() {
+        let story = |id: &str, shots: &str| crate::testkit::file(&format!("content/chapters/{id}.md"), &format!("---\nid: {id}\ntype: chapter\ntitle: {id}\n---\n\n```scene\n{shots}```\n"));
+        let (kb, _) = load(
+            "site-stories",
+            &[
+                crate::testkit::entity("person", "ann", "Ann", ""),
+                crate::testkit::entity("person", "bo", "Bo", ""),
+                story("once", "- shot: a\n  focus: ann\n"),
+                story("twice", "- shot: a\n  reveal: [ann]\n- shot: b\n  places: [ann, bo]\n"),
+            ],
+        );
+        let stories = super::stories_of(&kb);
+        assert_eq!(stories["ann"].iter().map(|r| r["title"].as_str().unwrap()).collect::<Vec<_>>(), ["twice", "once"]);
+        assert_eq!(stories["ann"][0]["counts"], "2 scenes");
+        assert_eq!(stories["bo"].len(), 1);
+    }
 
     #[test]
     fn family_roles_sit_beside_the_person_they_describe() {

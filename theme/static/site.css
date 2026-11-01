@@ -419,6 +419,7 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
 .h-hash { font-family: var(--font-mono); font-size: 0.82rem; }
 .file-path { font-size: 0.9rem; color: var(--muted); }
 .file-path code { font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-2); overflow-wrap: anywhere; }
+.page-fix { margin: 1.5rem 0 0; }
 
 /* the proof, folded away until asked for */
 /* folded sections (timeline, proof, page history): one grouped list, like Settings rows */
@@ -433,7 +434,6 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
 .fold[open] > summary::after { content: "Hide"; content: "Hide" / ""; }
 .fold > summary .count { font: 500 0.95rem var(--font-ui); color: var(--muted); }
 .fold > .timeline, .fold > .history { margin-top: 0; }
-.fold > .file-path { margin: 0 0 14px; }
 .source-list { max-width: var(--measure); margin: 0 0 1rem; padding-left: 1.3rem; font-size: 0.92rem; color: var(--ink-2); }
 .source-list li { padding: 6px 0; scroll-margin-top: 80px; }
 .source-list li:target { background: var(--accent-soft); border-radius: 6px; }

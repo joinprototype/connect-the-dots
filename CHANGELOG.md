@@ -2,6 +2,13 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.4.0 (2026-11-01)
+
+- A new story, "The Airfield and the Think Tank": one airfield in Santa Monica, from the first flight around the world to a satellite and a network on paper and the Pentagon Papers, with the ARPANET's builders and Paul Baran each in their own words.
+- About 30 new entries around it, from the DC-3 to the prisoner's dilemma.
+- Every entry now lists the written stories it appears in, so a reader who lands on a page can find the story around it.
+- Every entry and written story now ends with a way to correct it: tell us with a source, or edit the page.
+
 ## 0.3.0 (2026-11-01)
 
 - The Map's Earth shows the world of the era you pick: every polity of that year, from 3000 BCE to 1990, in place of today's borders.

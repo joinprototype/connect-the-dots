@@ -60,6 +60,8 @@ _Add ideas here with date and who suggested them._
 - 2026-10-31 (Sprint 19 research): the GameStop lawsuits sit on an event, because no relation carries a civil suit (ADR-0018 adds one when needed). The Eleventh Circuit opinions were read; the district court's November 2021 orders and Melvin's letter itself (only CNBC's quotation) were not. No primary record of Robinhood's reply to the 2022 House report was found.
 - 2026-10-31 (Sprint 19 research): the clay chapter's soft spots. Who wrote the Torah rests on one teaching lecture, which sums up the classic source account; add a survey of current views. Gutenberg's print run is a note, not a field, and survival counts differ (Cornell 48; the British Library and the Bavarian State Library were seen only in search results). Bi Sheng, the Ahiram epitaph's other dating, Luther's 1522 New Testament and how printing carried his Bible have no source read.
 - 2026-10-31 (Sprint 20): 13 entries still have no link. Five scholars and two institutions need the universities or places they belong to (Christine Hayes at Yale, David R. Olson, Dewey M. Beegle, Robert Lechêne, Ronald Hendel, the Digital History Reader, the Reagan Library). Bethlehem, Qumran and Wittenberg need a relation for where a work was written or found. Zurich needs a source that names it as the start of the sealed train. Ludendorff needs a sourced role in an event we have. The Seattle Times needs a source better than Wikipedia, which we do not cite; its own site refuses our fetch.
+- 2026-11-01 (Sprint 21 research): soft spots in "The Airfield and the Think Tank". Charles Herzfeld's statement on why the ARPANET was built was found only on secondary pages; Larry Roberts's own account of when he read Baran's reports was not found (his oral history does not name Baran); the first indictment of June 1971 was not seen, so that step rests on the Federal Judicial Center. Clover Field's 17 March 1924 departure rests on local press and Flying magazine; the 44,000 workers and the 1975 departure rest on the City alone. A reader comment under the National Archives' blog post argues the flight really began at Santa Monica: it is not a source, and is not used.
+- 2026-11-01 (Sprint 21): a story map after 1800 still shows today's country names, so 1924 has a Pakistan on it. The Map's world files (ADR-0021) could give stories the names of their year.
 - 2026-10-17 (Sprint 4 review): an account column with no words of its own shows no quote (a reporter's or scholar's summary is never shown as the account's words). Where an account is known only through a summary, consider showing it as "as reported by <publisher>".
 
 ## Epics
@@ -99,7 +101,7 @@ _Add ideas here with date and who suggested them._
 - ~~Showcase chapters: "Who owns BlackRock and Vanguard?" and one history or religion chapter~~ Done in Sprints 9 and 19 ("From Clay to Print").
 
 ### E5 Contribution and trust
-- "Edit this page" links
+- ~~"Edit this page" links~~ Done in Sprint 21: every entry and written story ends with a prefilled issue and a link to its file.
 - Issue Forms → bot PR
 - PR template asking for sources and conflict-of-interest disclosure
 - `ctd check` GitHub Action using a prebuilt binary

@@ -25,6 +25,8 @@ claims:
     title: "split from Douglas Aircraft as an independent nonprofit"
     src:
       - {s: rand-brief-history, at: "The Early Days", quote: "RAND split from Douglas in 1948 and became an independent nonprofit."}
+      - {s: nasa-sp-2005-4112-bilstein-douglas, at: "p. 100", quote: "Formal separation began in 1947 when RAND relocated to new offices in downtown Santa Monica and also added ranks of social scientists to its staff."}
+      - {s: rand-cp-537-ware-2008, at: "p. 8", quote: "Among others was the reluctance of other companies to share their corporate secrets and plans with Douglas—a potential competitor."}
   - id: c4
     rel: authored
     to: world-circling-spaceship-report

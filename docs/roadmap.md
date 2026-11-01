@@ -102,15 +102,19 @@ Startup sprints: the order below is a best guess and is re-decided at every spri
   - GameStop, each party in its own words, and From Clay to Print, a map from Uruk to Mainz with who wrote the Torah as each side tells it.
   - Big numbers shown with their proof, Thirteen Days on the map of 1962, ancient maps without modern borders or names, and covers drawn from each story's own map.
 
-- **Sprint 20: the Map is worth opening** ([ADR-0021](decisions/0021-the-world-of-an-era.md), [sprints/sprint-20.md](sprints/sprint-20.md)). Built; release, demo and review pending.
+- **Sprint 20: the Map is worth opening** ([ADR-0021](decisions/0021-the-world-of-an-era.md), [sprints/sprint-20.md](sprints/sprint-20.md)). Released in 0.3.0; demo and review pending.
   - The map of links fills the page, and the Earth's era slider draws every polity of that year, from 3000 BCE to 1990.
+
+- **Sprint 21: one airfield** ([sprints/sprint-21.md](sprints/sprint-21.md)). Released in 0.4.0; demo and review pending.
+  - Santa Monica, the last test case without a story, gets one: the 1924 flight, Project RAND, Baran's network and the Pentagon Papers, with the ARPANET's builders and Baran each in their own words.
+  - Entries and written stories end with a way to correct them.
 
 ## Next (candidates, chosen at review)
 
 - **Story v1.**
   - A "capture shot" tool.
 - **Contribution loop.**
-  - "Edit this page" links, and Issue Form → PR bot.
+  - Issue Form → PR bot.
   - `ctd check` on PRs, plus review rules.
   - A History tab with per-claim diffs.
 - **Content depth.**

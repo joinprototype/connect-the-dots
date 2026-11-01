@@ -16,7 +16,8 @@ connections:
   - [jeff-bezos, google]
   - [pope-john-xxiii, nikita-khrushchev]
   - [sputnik-1, blue-origin]
-  - [rand-corporation, arpanet]
+  - between: [rand-corporation, arpanet]
+    note: "This is a route of links, not a line of cause. The ARPANET's builders say RAND's work ran in parallel with theirs; Paul Baran says Larry Roberts had seen his reports."
   - between: [rise-of-cities-in-mesopotamia, bible]
     note: "Two steps rest on one historian's account each, and say so. Movable type came first in China and Korea; this route follows the alphabet."
 lives: [bill-gates, jeff-bezos, mark-zuckerberg, soviet-union, vladimir-lenin, mikhail-gorbachev, cuban-missile-crisis, elon-musk]
