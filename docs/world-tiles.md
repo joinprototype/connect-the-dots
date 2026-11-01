@@ -16,7 +16,7 @@ The "open world" is a 2D map of the whole graph, cut into a quadtree of tiles th
 - **World space** is the unit square: x grows right and y grows down, both in `[0, 1)`.
 - **Tile `(z, x, y)`** covers `[x/2^z, (x+1)/2^z) × [y/2^z, (y+1)/2^z)`, for `z = 0 … maxzoom`.
 - **Contents:** a tile holds every node whose `minzoom ≤ z` and whose position falls inside it. Refinement is "replace": each zoom level's tiles are complete for that zoom.
-- **Zoomed out** (`z < cluster_zoom`), tiles hold cluster super-nodes and meta-edges instead of individual nodes.
+- **Region names** are not in tiles: they come from `regions` in the manifest, and the viewer draws them above the dots.
 
 ## `manifest.json`
 
@@ -25,7 +25,7 @@ The "open world" is a 2D map of the whole graph, cut into a quadtree of tiles th
   "version": 0,
   "kind": "synthetic" | "content",
   "nodes": 100000, "edges": 399900, "clusters": 647,
-  "maxzoom": 4, "cluster_zoom": 2, "tile_quota": 1500,
+  "maxzoom": 4, "tile_quota": 1500,
   "palette": ["#2e5c9a", "#b0333f", "…"],   // color index → hex; content worlds use the layer colors (all one gray)
   "palette_labels": ["People", "Power", "…"],
   "built": "2026-10-17T06:49:18Z",
@@ -52,7 +52,7 @@ A content world draws the same entities and links as `data/graph-slim.json`, exc
 |---|---|---|
 | 0 | `u8[4]` | magic `CTDT` |
 | 4 | `u16` | version (0) |
-| 6 | `u16` | flags (bit 0: cluster tile, i.e. super-nodes and meta-edges) |
+| 6 | `u16` | flags (none yet, always 0) |
 | 8 | `u32` | `n`, the node count |
 | 12 | `u32` | `m`, the edge count |
 | 16 | `u32` | `label_bytes` |
@@ -62,7 +62,7 @@ A content world draws the same entities and links as `data/graph-slim.json`, exc
 |---|---|---|
 | `x` | `f32[n]` | world x |
 | `y` | `f32[n]` | world y |
-| `id` | `u32[n]` | node index (cluster index on cluster tiles) |
+| `id` | `u32[n]` | node index |
 | `size` | `f32[n]` | radius in world units at zoom 0. The viewer scales and clamps to pixels. |
 | `color` | `u8[n]` | palette index |
 | `minzoom` | `u8[n]` | zoom where this node first appears; the viewer uses it to fade in |
@@ -76,6 +76,6 @@ A content world draws the same entities and links as `data/graph-slim.json`, exc
 
 **Budgets (enforced by the writer):**
 - `maxzoom` is the first zoom (at least 3) where every tile holds at most 2,500 nodes;
-- below `maxzoom`, at most `tile_quota` nodes per tile: the best-connected nodes appear first, the rest at a deeper zoom;
-- at most 8,192 edges per tile: node tiles keep the links between the best-connected nodes, cluster tiles the heaviest meta-edges;
+- below `maxzoom`, at most `tile_quota` nodes per tile: the best-connected nodes appear first, the rest at a deeper zoom. On a map over 20,000 nodes each community's best known are taken by their share of it, so the zoomed-out map is equally dense everywhere and hubs do not paint it one colour;
+- at most 8,192 edges per tile, keeping the links between the best-connected nodes. On a map over 20,000 nodes a link appears only once it spans under a quarter of a zoom-0 tile at this zoom (`0.25 / 2^z`), so hubs do not wash the map with long lines;
 - target ≤ 150 KB gzip per tile.

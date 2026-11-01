@@ -5,7 +5,7 @@
 // left out. (deck.gl's CollisionFilterExtension samples only each label's anchor point, so it cannot
 // handle labels drawn beside their dot and lets partially overlapping labels through.)
 
-export const Spot = { Hidden: 0, Right: 1, Left: 2, Above: 3, Below: 4, Center: 5 } as const;
+export const Spot = { Hidden: 0, Right: 1, Left: 2, Above: 3, Below: 4 } as const;
 export type Spot = (typeof Spot)[keyof typeof Spot];
 
 export interface PlacedLabel {
@@ -15,7 +15,6 @@ export interface PlacedLabel {
   position: [number, number];
   /** Node size in the caller's units; PlaceOptions.radius turns it into a pixel radius. */
   size: number;
-  cluster: boolean;
   priority: number;
   /** Text box in pixels at the drawn font size. */
   w: number;
@@ -26,7 +25,6 @@ export interface PlacedLabel {
 }
 
 export const NODE_FONT_PX = 12.5;
-export const CLUSTER_FONT_PX = 14;
 const GAP = 4;
 
 let ctx: CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D | null | undefined;
@@ -110,7 +108,6 @@ export function placeLabels(labels: PlacedLabel[], o: PlaceOptions): number {
   const dots = new Grid(64);
   const screen: [number, number][] = labels.map((l) => o.project(l.position));
   labels.forEach((l, i) => {
-    if (l.cluster) return;
     const r = o.radius(l.size);
     const [x, y] = screen[i];
     dots.add({ x0: x - r, y0: y - r, x1: x + r, y1: y + r });
@@ -120,20 +117,17 @@ export function placeLabels(labels: PlacedLabel[], o: PlaceOptions): number {
   const margin = 40;
   labels.forEach((l, i) => {
     const [x, y] = screen[i];
-    l.r = l.cluster ? 0 : o.radius(l.size);
+    l.r = o.radius(l.size);
     let spot: Spot = Spot.Hidden;
     if (x > -margin && y > -margin && x < o.width + margin && y < o.height + margin) {
       const { w, h, r } = l;
-      const candidates: [Spot, Box][] = l.cluster
-        ? [[Spot.Center, { x0: x - w / 2, y0: y - h / 2, x1: x + w / 2, y1: y + h / 2 }]]
-        : [
-            [Spot.Right, { x0: x + r + GAP, y0: y - h / 2, x1: x + r + GAP + w, y1: y + h / 2 }],
-            [Spot.Left, { x0: x - r - GAP - w, y0: y - h / 2, x1: x - r - GAP, y1: y + h / 2 }],
-            [Spot.Above, { x0: x - w / 2, y0: y - r - GAP - h, x1: x + w / 2, y1: y - r - GAP }],
-            [Spot.Below, { x0: x - w / 2, y0: y + r + GAP, x1: x + w / 2, y1: y + r + GAP + h }],
-          ];
-      // Regions get more air than dot labels, like map lettering.
-      const pad = l.cluster ? 10 : 3;
+      const candidates: [Spot, Box][] = [
+        [Spot.Right, { x0: x + r + GAP, y0: y - h / 2, x1: x + r + GAP + w, y1: y + h / 2 }],
+        [Spot.Left, { x0: x - r - GAP - w, y0: y - h / 2, x1: x - r - GAP, y1: y + h / 2 }],
+        [Spot.Above, { x0: x - w / 2, y0: y - r - GAP - h, x1: x + w / 2, y1: y - r - GAP }],
+        [Spot.Below, { x0: x - w / 2, y0: y + r + GAP, x1: x + w / 2, y1: y + r + GAP + h }],
+      ];
+      const pad = 3;
       for (const [s, b] of candidates) {
         const padded = { x0: b.x0 - pad, y0: b.y0 - pad, x1: b.x1 + pad, y1: b.y1 + pad };
         if (o.inside && (b.x0 < 0 || b.y0 < 0 || b.x1 > o.width || b.y1 > o.height)) continue;

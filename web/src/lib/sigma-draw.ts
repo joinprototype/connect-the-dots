@@ -99,7 +99,6 @@ export function drawPlacedLabels<N extends Attributes, E extends Attributes>(
       text: label,
       position: [x, y],
       size: r,
-      cluster: false,
       priority: o.priority(node, d),
       w: w + 2,
       h: px + 3,

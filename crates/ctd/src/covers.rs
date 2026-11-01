@@ -18,7 +18,7 @@ pub struct Ink {
 }
 
 const INKS: [Ink; 8] = [
-    Ink { bg: "#e23d28", fg: "#ffffff", text: "#c9301c" },
+    Ink { bg: "#d93a24", fg: "#ffffff", text: "#c9301c" },
     Ink { bg: "#2346d6", fg: "#ffffff", text: "#2346d6" },
     Ink { bg: "#0b8457", fg: "#ffffff", text: "#0b7a50" },
     Ink { bg: "#ffc22e", fg: "#171a3a", text: "#171a3a" },

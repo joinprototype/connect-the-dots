@@ -98,9 +98,13 @@ def main() -> None:
             run(f"type-{kind}-{root}", f"SELECT DISTINCT ?i ?s WHERE {{ ?i {known} ?i {path} wd:{root} }}")
     # names apart from types: joined in one query they outrun the service's time limit. Many names now
     # sit under "mul", the label for every language, with no English copy.
-    for lang in ("en", "mul"):
-        run(f"label-{lang}", f'SELECT ?i ?v WHERE {{ ?i {known} ?i rdfs:label ?v . FILTER(LANG(?v) = "{lang}") }}')
-    run("description-en", f'SELECT ?i ?v WHERE {{ ?i {known} ?i schema:description ?v . FILTER(LANG(?v) = "en") }}')
+    # And cut by how well known a thing is: millions of rows in one go also outrun it.
+    bands = [(least, 6), (6, 7), (7, 8), (8, 10), (10, 13), (13, 18), (18, 30), (30, 100000)]
+    for low, high in bands:
+        band = f"wikibase:sitelinks ?s . FILTER(?s >= {low} && ?s < {high})"
+        for lang in ("en", "mul"):
+            run(f"label-{lang}-{low}", f'SELECT ?i ?v WHERE {{ ?i {band} ?i rdfs:label ?v . FILTER(LANG(?v) = "{lang}") }}')
+        run(f"description-en-{low}", f'SELECT ?i ?v WHERE {{ ?i {band} ?i schema:description ?v . FILTER(LANG(?v) = "en") }}')
     # a class of things ("priest", "airplane") is a concept, whatever else its parents make it
     run("classes", f"SELECT DISTINCT ?i WHERE {{ ?i {known} ?i wdt:P279 ?c }}")
     for root in EXCLUDED:

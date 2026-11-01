@@ -39,7 +39,6 @@ pub struct Stats {
     pub edges: usize,
     pub clusters: usize,
     pub maxzoom: u8,
-    pub cluster_zoom: u8,
     pub tiles: usize,
     pub max_tile_nodes: usize,
     pub max_tile_edges: usize,
@@ -558,8 +557,64 @@ fn layout_clusters(size: &[usize], meta: &[(u32, u32, f32)]) -> (Vec<[f64; 2]>, 
             pos[g] = [center[0] + local[li][0], center[1] + local[li][1]];
         }
     }
+    if c > SPREAD_ABOVE {
+        spread(&mut pos, &radius);
+    }
     separate(&mut pos, &radius);
     (pos, radius)
+}
+
+/// Past this many communities the layout clumps: a few hubs pull everything together.
+const SPREAD_ABOVE: usize = 2000;
+
+/// Evens out a clumped layout into one round world. A square is shared among the discs by their area,
+/// then bent into a circle: what was near stays near, and there is no dense knot and no empty quarter.
+fn spread(pos: &mut [[f64; 2]], radius: &[f64]) {
+    let area: Vec<f64> = radius.iter().map(|r| r * r).collect();
+    let mut list: Vec<u32> = (0..pos.len() as u32).collect();
+    let mut cell = vec![[0.0; 2]; pos.len()];
+    halve(&mut list, pos, &area, [-1.0, -1.0, 2.0, 2.0], &mut cell);
+    // a disc in a square cell leaves it this much room; the rest is the gaps between them
+    let world = (4.2 * area.iter().sum::<f64>() / std::f64::consts::PI).sqrt();
+    for (p, c) in pos.iter_mut().zip(&cell) {
+        *p = square_to_circle(*c).map(|v| v * world);
+    }
+}
+
+/// One step of sharing out: the half of the area nearest one end of the longer side takes that part of
+/// the rectangle `[x, y, width, height]`, the other half the rest, and so on down to each single disc.
+fn halve(list: &mut [u32], pos: &[[f64; 2]], area: &[f64], [x, y, w, h]: [f64; 4], cell: &mut [[f64; 2]]) {
+    if let [one] = list {
+        cell[*one as usize] = [x + w / 2.0, y + h / 2.0];
+        return;
+    }
+    let axis = usize::from(h > w);
+    list.sort_unstable_by(|&a, &b| pos[a as usize][axis].total_cmp(&pos[b as usize][axis]).then(a.cmp(&b)));
+    let total: f64 = list.iter().map(|&i| area[i as usize]).sum();
+    let (mut cut, mut seen) = (1, area[list[0] as usize]);
+    while cut + 1 < list.len() && seen + area[list[cut] as usize] / 2.0 < total / 2.0 {
+        seen += area[list[cut] as usize];
+        cut += 1;
+    }
+    let share = seen / total;
+    let (near, far) = list.split_at_mut(cut);
+    let (first, second) = if axis == 0 {
+        ([x, y, w * share, h], [x + w * share, y, w * (1.0 - share), h])
+    } else {
+        ([x, y, w, h * share], [x, y + h * share, w, h * (1.0 - share)])
+    };
+    halve(near, pos, area, first, cell);
+    halve(far, pos, area, second, cell);
+}
+
+/// The square from -1 to 1 onto the unit circle, keeping areas (Shirley and Chiu's concentric map).
+fn square_to_circle([a, b]: [f64; 2]) -> [f64; 2] {
+    use std::f64::consts::FRAC_PI_4;
+    if a == 0.0 && b == 0.0 {
+        return [0.0, 0.0];
+    }
+    let (r, angle) = if a.abs() > b.abs() { (a, FRAC_PI_4 * b / a) } else { (b, 2.0 * FRAC_PI_4 - FRAC_PI_4 * a / b) };
+    [r * angle.cos(), r * angle.sin()]
 }
 
 /// A uniform grid over discs, as a game's physics uses: a disc only meets those in the cells it
@@ -758,12 +813,12 @@ struct TileNode<'a> {
     label: &'a str,
 }
 
-fn encode(cluster_tile: bool, nodes: &[TileNode], edges: &[([f32; 4], u8, u8)]) -> Vec<u8> {
+fn encode(nodes: &[TileNode], edges: &[([f32; 4], u8, u8)]) -> Vec<u8> {
     let label_bytes: usize = nodes.iter().map(|n| n.label.len()).sum();
     let mut b = Vec::with_capacity(32 + nodes.len() * 22 + edges.len() * 18 + label_bytes);
     b.extend_from_slice(b"CTDT");
     b.extend_from_slice(&0u16.to_le_bytes());
-    b.extend_from_slice(&(cluster_tile as u16).to_le_bytes());
+    b.extend_from_slice(&0u16.to_le_bytes());
     b.extend_from_slice(&(nodes.len() as u32).to_le_bytes());
     b.extend_from_slice(&(edges.len() as u32).to_le_bytes());
     b.extend_from_slice(&(label_bytes as u32).to_le_bytes());
@@ -812,16 +867,52 @@ fn gzip_len(bytes: &[u8]) -> usize {
 }
 
 /// A big world has many entries with few links. Left apart they would each be a community, strung out
-/// around the map and stretching it thin; together, by ink, they make a few large discs.
+/// around the map and stretching it thin. Each joins the community of its rarest link, and the few with
+/// none to join make a disc per ink.
 const GATHER_ABOVE: usize = 20_000;
 const SMALL_COMMUNITY: usize = 8;
 
+/// Moves each entry of a small community to the larger one it is most tied to: a link counts for less
+/// the more links its far end has, since sharing a country says little and a teacher says much.
+fn join_linked(comm: &mut [u32], size: &mut [usize], edges: &[(u32, u32, f32)]) {
+    let mut links = vec![0f32; comm.len()];
+    for &(a, b, _) in edges {
+        links[a as usize] += 1.0;
+        links[b as usize] += 1.0;
+    }
+    // news travels one link a round: entries of a small community that touch a large one go first
+    for _ in 0..3 {
+        let mut pull: HashMap<(u32, u32), f32> = HashMap::new();
+        for &(a, b, w) in edges {
+            for (from, to) in [(a, b), (b, a)] {
+                let (small, large) = (comm[from as usize], comm[to as usize]);
+                if size[small as usize] < SMALL_COMMUNITY && size[large as usize] >= SMALL_COMMUNITY {
+                    *pull.entry((from, large)).or_default() += w / links[to as usize];
+                }
+            }
+        }
+        let mut best: HashMap<u32, (f32, u32)> = HashMap::new();
+        for ((i, c), p) in pull {
+            let e = best.entry(i).or_insert((p, c));
+            if (p, std::cmp::Reverse(c)) > (e.0, std::cmp::Reverse(e.1)) {
+                *e = (p, c);
+            }
+        }
+        for (i, (_, c)) in best {
+            size[comm[i as usize] as usize] -= 1;
+            comm[i as usize] = c;
+            size[c as usize] += 1;
+        }
+    }
+}
+
 /// Returns how many communities there now are; those holding gathered entries are the last ones.
-fn gather_small(comm: &mut [u32], nc: usize, color: &[u8]) -> (usize, Vec<Option<u8>>) {
+fn gather_small(comm: &mut [u32], nc: usize, edges: &[(u32, u32, f32)], color: &[u8]) -> (usize, Vec<Option<u8>>) {
     let mut size = vec![0usize; nc];
     for &c in comm.iter() {
         size[c as usize] += 1;
     }
+    join_linked(comm, &mut size, edges);
     let mut next: Vec<u32> = vec![u32::MAX; nc];
     let mut kept = 0u32;
     for (c, &s) in size.iter().enumerate() {
@@ -852,18 +943,22 @@ fn gather_small(comm: &mut [u32], nc: usize, color: &[u8]) -> (usize, Vec<Option
     (total, gathered)
 }
 
+/// Angle and share of the radius squared for the `j`th point of Roberts's R2 sequence: however many are
+/// taken, the first ones are spread evenly over the disc.
+fn sprinkle(j: usize) -> (f64, f64) {
+    let at = |step: f64| (0.5 + j as f64 * step).fract();
+    (at(0.754_877_666_246_693) * std::f64::consts::TAU, at(0.569_840_290_998_053))
+}
+
 /// Communities, ranks and places, before the map is fitted to the unit square.
 struct Placed {
     /// Number of communities; the next five have one row each.
     nc: usize,
-    csize: Vec<usize>,
     cpos: Vec<[f64; 2]>,
     crad: Vec<f64>,
     members: Vec<Vec<u32>>,
     /// The ink of a community of gathered entries; None for one found by its links.
     gathered: Vec<Option<u8>>,
-    /// Summed links between communities.
-    meta: Vec<(u32, u32, f32)>,
     pos: Vec<[f64; 2]>,
     degree: Vec<f64>,
     /// Nodes, most important first, and each node's place in that order.
@@ -877,7 +972,7 @@ fn place(g: &WorldGraph) -> Placed {
     let (mut comm, mut nc) = cluster(n, &g.edges);
     let mut gathered = vec![None; nc];
     if n > GATHER_ABOVE {
-        (nc, gathered) = gather_small(&mut comm, nc, &g.color);
+        (nc, gathered) = gather_small(&mut comm, nc, &g.edges, &g.color);
     }
     let mut csize = vec![0usize; nc];
     for &c in &comm {
@@ -916,13 +1011,32 @@ fn place(g: &WorldGraph) -> Placed {
     for (c, list) in members.iter().enumerate() {
         let r = crad[c];
         let offset = c as f64 * 0.77;
+        // a tile takes the best known first: in a disc too big for one, they must lie all over it, or
+        // zoomed out it would be a dense spot with nothing around
+        let even = list.len() > QUOTA;
         for (j, &i) in list.iter().enumerate() {
-            let a = j as f64 * GOLDEN + offset;
-            let d = r * ((j as f64 + 0.5) / list.len() as f64).sqrt() * 0.94;
+            let (a, share) = if even { sprinkle(j) } else { (j as f64 * GOLDEN, (j as f64 + 0.5) / list.len() as f64) };
+            let (a, d) = (a + offset, r * share.sqrt() * 0.94);
             pos[i as usize] = [cpos[c][0] + d * a.cos(), cpos[c][1] + d * a.sin()];
         }
     }
-    Placed { nc, csize, cpos, crad, members, gathered, meta: meta_edges(&comm, &g.edges), pos, degree, rank, rank_of }
+    if n > GATHER_ABOVE {
+        // the great hubs would fill the zoomed-out map with one colour and leave quiet discs empty.
+        // Taking each community's best known by their share of it keeps the map equally dense everywhere;
+        // the offset gives a small community its fair chance of a first dot
+        let mut share = vec![0f64; n];
+        for (c, list) in members.iter().enumerate() {
+            let offset = (c as f64 * GOLDEN).fract();
+            for (j, &i) in list.iter().enumerate() {
+                share[i as usize] = (j as f64 + offset) / list.len() as f64;
+            }
+        }
+        rank.sort_by(|&a, &b| share[a as usize].total_cmp(&share[b as usize]).then(a.cmp(&b)));
+        for (r, &i) in rank.iter().enumerate() {
+            rank_of[i as usize] = r as u32;
+        }
+    }
+    Placed { nc, cpos, crad, members, gathered, pos, degree, rank, rank_of }
 }
 
 /// The map in the unit square.
@@ -997,13 +1111,13 @@ fn deepest_zoom(nodes: &[[f32; 2]]) -> u8 {
 }
 
 /// Each node's first zoom: a greedy quota per tile, most important nodes first.
-fn min_zooms(rank: &[u32], nodes: &[[f32; 2]], cluster_zoom: u8, maxzoom: u8) -> Vec<u8> {
+fn min_zooms(rank: &[u32], nodes: &[[f32; 2]], maxzoom: u8) -> Vec<u8> {
     let mut minzoom = vec![maxzoom; nodes.len()];
     let mut counts: Vec<HashMap<(u32, u32), usize>> = vec![HashMap::new(); (maxzoom + 1) as usize];
     for &i in rank {
         let p = nodes[i as usize];
         let mut chosen = maxzoom;
-        'z: for z in cluster_zoom..=maxzoom {
+        'z: for z in 0..=maxzoom {
             for zz in z..maxzoom {
                 if counts[zz as usize].get(&tile_of(p[0], p[1], zz)).copied().unwrap_or(0) >= QUOTA {
                     continue 'z;
@@ -1018,6 +1132,12 @@ fn min_zooms(rank: &[u32], nodes: &[[f32; 2]], cluster_zoom: u8, maxzoom: u8) ->
         }
     }
     minzoom
+}
+
+/// Level of detail for links: on a big map a link appears once it is short on screen, so that hubs do
+/// not wash the zoomed-out map with long lines.
+fn longest_link(nodes: usize, z: u8) -> f32 {
+    if nodes > GATHER_ABOVE { 0.25 / 2f32.powi(z as i32) } else { f32::MAX }
 }
 
 fn write_tile(out: &Path, z: u8, x: u32, y: u32, bytes: &[u8]) {
@@ -1038,67 +1158,6 @@ struct Tiles<'a> {
 }
 
 impl Tiles<'_> {
-    /// A zoomed-out level: regions and the summed links between them.
-    fn clusters(&self, z: u8) -> Vec<Vec<u8>> {
-        let (p, centers) = (self.p, &self.square.centers);
-        let meta = &p.meta;
-        let cmax = meta.iter().map(|e| e.2).fold(1e-9f32, f32::max);
-        let name: Vec<String> = p
-            .members
-            .iter()
-            .enumerate()
-            .map(|(c, list)| match (&self.g.labels, list.first()) {
-                (Some(l), Some(&top)) => l[top as usize].clone(),
-                _ => format!("Region {c}"),
-            })
-            .collect();
-        let mut tiles: HashMap<(u32, u32), (Vec<usize>, Vec<usize>)> = HashMap::new();
-        for c in 0..p.nc {
-            tiles.entry(tile_of(centers[c][0], centers[c][1], z)).or_default().0.push(c);
-        }
-        for (ei, &(a, b, _)) in meta.iter().enumerate() {
-            let (ta, tb) = (tile_of(centers[a as usize][0], centers[a as usize][1], z), tile_of(centers[b as usize][0], centers[b as usize][1], z));
-            tiles.entry(ta).or_default().1.push(ei);
-            if tb != ta {
-                tiles.entry(tb).or_default().1.push(ei);
-            }
-        }
-        tiles
-            .into_par_iter()
-            .map(|((x, y), (mut cl, mut es))| {
-                cl.sort_by_key(|&c| std::cmp::Reverse(p.csize[c]));
-                cl.truncate(MAX_TILE_NODES);
-                let shown_labels = 40usize;
-                let nodes: Vec<TileNode> = cl
-                    .iter()
-                    .enumerate()
-                    .map(|(k, &c)| TileNode {
-                        x: centers[c][0],
-                        y: centers[c][1],
-                        id: c as u32,
-                        size: self.square.radii[c],
-                        color: (c % 7) as u8,
-                        minzoom: 0,
-                        label: if k < shown_labels { name[c].as_str() } else { "" },
-                    })
-                    .collect();
-                es.sort_by(|&p, &q| meta[q].2.total_cmp(&meta[p].2));
-                es.truncate(MAX_TILE_EDGES);
-                let edges: Vec<([f32; 4], u8, u8)> = es
-                    .iter()
-                    .map(|&ei| {
-                        let (a, b, w) = meta[ei];
-                        let (pa, pb) = (centers[a as usize], centers[b as usize]);
-                        ([pa[0], pa[1], pb[0], pb[1]], (a % 7) as u8, ((w / cmax).sqrt() * 255.0) as u8)
-                    })
-                    .collect();
-                let bytes = encode(true, &nodes, &edges);
-                write_tile(self.out, z, x, y, &bytes);
-                bytes
-            })
-            .collect()
-    }
-
     /// A level of nodes: every node visible at this zoom, plus links whose ends are both visible.
     /// Each tile comes back with its counts of nodes and links.
     fn nodes(&self, z: u8) -> Vec<(Vec<u8>, usize, usize)> {
@@ -1114,9 +1173,13 @@ impl Tiles<'_> {
                 tiles.entry(tile_of(q[0], q[1], z)).or_default().0.push(i);
             }
         }
+        let longest = longest_link(g.n, z);
         for (ei, &(a, b, _)) in g.edges.iter().enumerate() {
             let (a, b) = (a as usize, b as usize);
             if minzoom[a] > z || minzoom[b] > z {
+                continue;
+            }
+            if (npos[a][0] - npos[b][0]).hypot(npos[a][1] - npos[b][1]) > longest {
                 continue;
             }
             let ta = tile_of(npos[a][0], npos[a][1], z);
@@ -1164,7 +1227,7 @@ impl Tiles<'_> {
                         ([pa[0], pa[1], pb[0], pb[1]], g.color[a as usize], ((w / wmax) * 255.0) as u8)
                     })
                     .collect();
-                let bytes = encode(false, &nodes, &edges);
+                let bytes = encode(&nodes, &edges);
                 write_tile(self.out, z, x, y, &bytes);
                 (bytes, nodes.len(), edges.len())
             })
@@ -1192,7 +1255,7 @@ impl Tally {
 fn write_manifest(spec: &Spec, stats: &Stats, bounds: [f32; 4], regions: &[Region], out: &Path) -> Result<()> {
     let manifest = json!({
         "version": 0, "kind": spec.kind, "nodes": stats.nodes, "edges": stats.edges, "clusters": stats.clusters,
-        "maxzoom": stats.maxzoom, "cluster_zoom": stats.cluster_zoom, "tile_quota": QUOTA,
+        "maxzoom": stats.maxzoom, "tile_quota": QUOTA,
         "bounds": bounds, "regions": regions,
         "palette": spec.palette, "palette_labels": spec.palette_labels,
         "built": chrono::Utc::now().to_rfc3339_opts(chrono::SecondsFormat::Secs, true),
@@ -1231,6 +1294,8 @@ fn write_tile_index(out: &Path, maxzoom: u8) -> Result<()> {
 
 /// How many nodes the map's picture shows.
 const PICTURE_NODES: usize = 1600;
+/// A longer line would cross the picture and hide its shape.
+const PICTURE_LINK: f32 = 110.0;
 
 /// A picture of the map, for the home page: the best-connected nodes in their inks, and the links
 /// between them. A zero-length round stroke is a dot, so a thousand dots are one short path per ink.
@@ -1250,8 +1315,11 @@ fn write_picture(g: &WorldGraph, spec: &Spec, p: &Placed, square: &Square, out: 
     };
     let mut lines = String::new();
     for &(a, b, _) in &g.edges {
-        if shown.contains_key(&a) && shown.contains_key(&b) && lines.len() < 12_000 {
+        if shown.contains_key(&a) && shown.contains_key(&b) && lines.len() < 6_000 {
             let ((ax, ay), (bx, by)) = (at(a), at(b));
+            if (ax - bx).hypot(ay - by) > PICTURE_LINK {
+                continue;
+            }
             lines.push_str(&format!("M{ax:.0} {ay:.0}L{bx:.0} {by:.0}"));
         }
     }
@@ -1294,22 +1362,16 @@ pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> R
     }
 
     let maxzoom = deepest_zoom(&square.nodes);
-    let cluster_zoom: u8 = if p.nc >= 60 && g.n > 20_000 { 2 } else { 0 };
     let labels: Cow<[String]> = match &g.labels {
         Some(l) => l.into(),
         None => (0..g.n).map(|i| format!("{} {i}", g.label_prefix)).collect::<Vec<_>>().into(),
     };
-    let minzoom = min_zooms(&p.rank, &square.nodes, cluster_zoom, maxzoom);
+    let minzoom = min_zooms(&p.rank, &square.nodes, maxzoom);
     let tiles = Tiles { g, p: &p, square: &square, out, minzoom, maxzoom, labels };
 
-    let stats = Stats { nodes: g.n, edges: g.edges.len(), clusters: p.nc, maxzoom, cluster_zoom, ..Stats::default() };
+    let stats = Stats { nodes: g.n, edges: g.edges.len(), clusters: p.nc, maxzoom, ..Stats::default() };
     let mut tally = Tally { stats, largest: Vec::new() };
-    for z in 0..cluster_zoom {
-        for bytes in tiles.clusters(z) {
-            tally.add(bytes);
-        }
-    }
-    for z in cluster_zoom..=maxzoom {
+    for z in 0..=maxzoom {
         for (bytes, nodes, edges) in tiles.nodes(z) {
             tally.stats.max_tile_nodes = tally.stats.max_tile_nodes.max(nodes);
             tally.stats.max_tile_edges = tally.stats.max_tile_edges.max(edges);

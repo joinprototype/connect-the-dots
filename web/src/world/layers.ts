@@ -7,7 +7,7 @@
 import { LayerExtension, type Layer, type LayersList } from '@deck.gl/core';
 import { TileLayer, type _Tile2DHeader as Tile2DHeader } from '@deck.gl/geo-layers';
 import { LineLayer, ScatterplotLayer, TextLayer } from '@deck.gl/layers';
-import { anchorOf, baselineOf, CLUSTER_FONT_PX, measureText, NODE_FONT_PX, offsetOf, placeLabels, Spot, type Box, type PlacedLabel } from '../lib/labels';
+import { anchorOf, baselineOf, measureText, NODE_FONT_PX, offsetOf, placeLabels, Spot, type Box, type PlacedLabel } from '../lib/labels';
 import { hasLabel, labelAt, type WorldTile } from './tiles';
 
 export const WORLD_SIZE = 512;
@@ -42,7 +42,7 @@ interface BinaryAttr {
   type?: string;
 }
 
-/** A label of a tile, with the node (or region tile's cluster) it belongs to. */
+/** A label of a tile, with the node it belongs to. */
 export interface TileLabel extends PlacedLabel {
   id: number;
 }
@@ -99,13 +99,13 @@ export function buildTileRender(tile: WorldTile, style: WorldStyle): TileRender 
     // Long links (in tiles at this zoom) are drawn fainter, so local structure reads first.
     const span = Math.hypot(tile.ex1[j] - tile.ex0[j], tile.ey1[j] - tile.ey0[j]) * tiles;
     const reach = 1 / (1 + 0.9 * span);
-    const a = tile.cluster ? (0.2 + 0.45 * w) * (0.45 + 0.55 * reach) : (0.25 + 0.75 * Math.pow(w, 0.8)) * (0.3 + 0.7 * reach);
+    const a = (0.25 + 0.75 * Math.pow(w, 0.8)) * (0.3 + 0.7 * reach);
     const c = (tile.ecolor[j] % ec) * 3;
     ecol[4 * j] = Math.round(style.edgeRgb[c] * a);
     ecol[4 * j + 1] = Math.round(style.edgeRgb[c + 1] * a);
     ecol[4 * j + 2] = Math.round(style.edgeRgb[c + 2] * a);
     ecol[4 * j + 3] = Math.round(255 * a);
-    ewid[j] = tile.cluster ? 1 + 2.6 * w : 1 + 0.5 * w;
+    ewid[j] = 1 + 0.5 * w;
   }
 
   const labels = pickLabels(tile, style);
@@ -143,22 +143,20 @@ function pickLabels(tile: WorldTile, style: WorldStyle): TileLabel[] {
   const idx: number[] = [];
   for (let i = 0; i < tile.n; i++) if (hasLabel(tile, i)) idx.push(i);
   idx.sort((a, b) => tile.size[b] - tile.size[a] || tile.minzoom[a] - tile.minzoom[b] || tile.id[a] - tile.id[b]);
-  const px = tile.cluster ? CLUSTER_FONT_PX : NODE_FONT_PX;
   const out: TileLabel[] = [];
   for (const i of idx.slice(0, style.labelsPerTile)) {
     const text = labelAt(tile, i);
     if (!text) continue;
     out.push({
       id: tile.id[i],
-      key: (tile.cluster ? 'c' : 'n') + tile.id[i],
+      key: 'n' + tile.id[i],
       text,
       position: [tile.x[i] * WORLD_SIZE, tile.y[i] * WORLD_SIZE],
       size: tile.size[i],
-      cluster: tile.cluster,
-      // Regions first, then bigger dots, then the earliest to appear.
-      priority: (tile.cluster ? 1e3 : 0) + tile.size[i] * 1e4 - tile.minzoom[i] * 1e-3,
-      w: measureText(text, px, style.font) + 2,
-      h: px + 3,
+      // Bigger dots first, then the earliest to appear.
+      priority: tile.size[i] * 1e4 - tile.minzoom[i] * 1e-3,
+      w: measureText(text, NODE_FONT_PX, style.font) + 2,
+      h: NODE_FONT_PX + 3,
       spot: Spot.Hidden,
       r: 0,
     });
@@ -176,7 +174,7 @@ export interface TileEra {
 /**
  * Applies the era to a tile's colours: a dimmed node blends towards the ground colour (it never
  * vanishes) and a link fades with its fainter end. New arrays go into new data objects, so deck.gl
- * uploads them; no era brings back the plain arrays. Region (cluster) tiles are not dated.
+ * uploads them; no era brings back the plain arrays.
  */
 function applyEra(render: TileRender, era: TileEra | null, style: WorldStyle): void {
   const version = era?.version ?? 0;
@@ -184,7 +182,7 @@ function applyEra(render: TileRender, era: TileEra | null, style: WorldStyle): v
   render.eraVersion = version;
   const t = render.tile;
   let { fill, ecol } = render.base;
-  if (era && !t.cluster) {
+  if (era) {
     fill = fill.slice();
     ecol = ecol.slice();
     const g = style.night;
@@ -224,10 +222,6 @@ const NODE_UNIFORMS = /* glsl */ `\
 layout(std140) uniform ctdNodeUniforms {
   float fade;
   float fadeFrom;
-  float core;
-  float coreAlpha;
-  float halo;
-  float pickCore;
 } ctdNode;
 `;
 
@@ -238,10 +232,6 @@ const nodeModule = {
   uniformTypes: {
     fade: 'f32',
     fadeFrom: 'f32',
-    core: 'f32',
-    coreAlpha: 'f32',
-    halo: 'f32',
-    pickCore: 'f32',
   },
 } as const;
 
@@ -250,21 +240,16 @@ const easeOut = (p: number) => 1 - Math.pow(1 - clamp01(p), 3);
 export interface NodeStyleProps {
   bornAt?: number;
   fadeFrom?: number;
-  /** Core radius as a fraction of the drawn radius. */
-  core?: number;
-  coreAlpha?: number;
-  halo?: number;
 }
 
 /**
  * Dots that fade in. Adds a per-node `getMinZoom` attribute (zero-copy from the tile) and, per layer,
  * the time it was first drawn: nodes with minzoom >= fadeFrom fade in (and grow a little) over FADE_MS.
- * The fragment shader draws an antialiased core of `core` (fraction of the drawn radius) with an
- * optional soft fringe (`halo`, used for region discs); picking only uses the core.
+ * The fragment shader draws an antialiased disc.
  */
 export class NodeStyleExtension extends LayerExtension {
   static extensionName = 'CtdNodeStyleExtension';
-  static defaultProps = { bornAt: 0, fadeFrom: Infinity, core: 1, coreAlpha: 1, halo: 0 };
+  static defaultProps = { bornAt: 0, fadeFrom: Infinity };
 
   getShaders(this: Layer, _ext: NodeStyleExtension): unknown {
     return {
@@ -277,14 +262,10 @@ export class NodeStyleExtension extends LayerExtension {
         'fs:DECKGL_FILTER_COLOR': /* glsl */ `
   float ctd_d = length(geometry.uv);
   if (picking.isActive > 0.5) {
-    if (ctd_d > ctdNode.pickCore) discard;
+    if (ctd_d > 1.0) discard;
   } else {
-    float ctd_c = ctdNode.core;
     float ctd_aa = max(fwidth(ctd_d) * 1.2, 0.02);
-    float ctd_core = 1.0 - smoothstep(ctd_c - ctd_aa, ctd_c + ctd_aa, ctd_d);
-    float ctd_t = clamp((ctd_d - ctd_c) / max(1.0 - ctd_c, 0.001), 0.0, 1.0);
-    float ctd_halo = ctdNode.halo * pow(1.0 - ctd_t, 2.4);
-    color.a *= max(ctd_core * ctdNode.coreAlpha, ctd_halo);
+    color.a *= 1.0 - smoothstep(1.0 - ctd_aa, 1.0 + ctd_aa, ctd_d);
   }
 `,
       },
@@ -298,10 +279,10 @@ export class NodeStyleExtension extends LayerExtension {
   }
 
   draw(this: Layer<NodeStyleProps>, _params: unknown, _ext: NodeStyleExtension): void {
-    const { bornAt = 0, fadeFrom = Infinity, core = 1, coreAlpha = 1, halo = 0 } = this.props;
+    const { bornAt = 0, fadeFrom = Infinity } = this.props;
     const p = bornAt > 0 ? (performance.now() - bornAt) / FADE_MS : 1;
     this.setShaderModuleProps({
-      ctdNode: { fade: easeOut(p), fadeFrom: Number.isFinite(fadeFrom) ? fadeFrom : 1e6, core, coreAlpha, halo, pickCore: Math.min(1, core * 1.5) },
+      ctdNode: { fade: easeOut(p), fadeFrom: Number.isFinite(fadeFrom) ? fadeFrom : 1e6 },
     });
     if (p < 1) this.setNeedsRedraw();
   }
@@ -368,8 +349,6 @@ export interface WorldTileLayerProps {
   era?: TileEra | null;
   /** Dot labels fade in between these zooms (the viewer's region names fade out). Mutated in place. */
   labelFade?: { from: number; to: number } | null;
-  /** Labels of region tiles; off when the viewer names regions itself. */
-  clusterLabels?: boolean;
 }
 
 type SubLayerProps = Parameters<NonNullable<TileLayer<TileRender>['props']['renderSubLayers']>>[0];
@@ -387,7 +366,6 @@ export class WorldTileLayer extends TileLayer<TileRender, WorldTileLayerProps> {
     showLabels: true,
     era: { type: 'object', value: null, compare: false },
     labelFade: { type: 'object', value: null, compare: false },
-    clusterLabels: true,
   };
 
   declare state: TileLayer<TileRender, WorldTileLayerProps>['state'] & {
@@ -408,7 +386,6 @@ export class WorldTileLayer extends TileLayer<TileRender, WorldTileLayerProps> {
       render.fadeFrom = from;
       render.bornAt = Number.isFinite(from) ? performance.now() : 0;
     }
-    const cluster = render.tile.cluster;
     const layers: Layer[] = [];
     if (render.edges.length) {
       layers.push(
@@ -426,15 +403,14 @@ export class WorldTileLayer extends TileLayer<TileRender, WorldTileLayerProps> {
       );
     }
     if (render.nodes.length) {
-      const glow = cluster ? 1.15 : 1; // drawn radius / core radius: clusters get a halo
       layers.push(
         new ScatterplotLayer({
           id: `${props.id}-nodes`,
           data: render.nodes as never,
           radiusUnits: 'common',
-          radiusScale: (cluster ? WORLD_SIZE : style.radiusScale) * glow,
-          radiusMinPixels: (cluster ? 6 : style.minCorePx) * glow,
-          radiusMaxPixels: (cluster ? 520 : style.maxCorePx) * glow,
+          radiusScale: style.radiusScale,
+          radiusMinPixels: style.minCorePx,
+          radiusMaxPixels: style.maxCorePx,
           stroked: false,
           filled: true,
           antialiasing: false,
@@ -443,9 +419,6 @@ export class WorldTileLayer extends TileLayer<TileRender, WorldTileLayerProps> {
           extensions: [nodeStyle],
           bornAt: render.bornAt,
           fadeFrom: render.fadeFrom,
-          core: 1 / glow,
-          coreAlpha: cluster ? 0.16 : 1,
-          halo: cluster ? 0.1 : 0,
         } as never),
       );
     }
@@ -482,14 +455,14 @@ export class WorldTileLayer extends TileLayer<TileRender, WorldTileLayerProps> {
     const visible = (tileset.tiles as Tile2DHeader<TileRender>[]).filter((t) => t.isVisible && t.content && t.content.labels.length);
     const era = this.props.era ?? null;
     // In an era, names of dots inside it are placed first; the others are drawn fainter.
-    const eraOf = (d: TileLabel) => (era && !d.cluster ? (era.alpha[d.id] ?? 1) : 1);
+    const eraOf = (d: TileLabel) => (era ? (era.alpha[d.id] ?? 1) : 1);
     const key = `${this.props.labelVersion}|${era?.version ?? 0}|${visible.map((t) => t.id).join(',')}`;
     if (key !== this.state.labelKey) {
       const seen = new Set<string>();
       const data: TileLabel[] = [];
       for (const t of [...visible].sort((a, b) => b.index.z - a.index.z)) {
         for (const d of t.content!.labels) {
-          if (seen.has(d.key) || (d.cluster && this.props.clusterLabels === false)) continue;
+          if (seen.has(d.key)) continue;
           seen.add(d.key);
           data.push(d);
         }
@@ -527,7 +500,6 @@ export class WorldTileLayer extends TileLayer<TileRender, WorldTileLayerProps> {
     const v = this.state.labelVersion ?? 0;
     const strong: RGBA = [style.ink[0], style.ink[1], style.ink[2], 235];
     const soft: RGBA = [style.ink[0], style.ink[1], style.ink[2], 205];
-    const region: RGBA = [style.ink[0], style.ink[1], style.ink[2], 175];
     // Outlined text is drawn twice (outline and fill, then the fill again on top), so a translucent ink lands at
     // 1 - (1 - a)^2: faint 110 shows as about 0.68 of the ink, 5.7:1 on light paper and 7.7:1 on dark.
     const faint: RGBA = [style.ink[0], style.ink[1], style.ink[2], 110];
@@ -540,8 +512,8 @@ export class WorldTileLayer extends TileLayer<TileRender, WorldTileLayerProps> {
       getPosition: (d: TileLabel) => d.position,
       getText: (d: TileLabel) => d.text,
       // Hidden labels collapse to size 0 (an alpha of 0 would still draw the SDF outline).
-      getSize: (d: TileLabel) => (d.spot === Spot.Hidden ? 0 : d.cluster ? CLUSTER_FONT_PX : NODE_FONT_PX),
-      getColor: (d: TileLabel) => (d.cluster ? region : eraOf(d) < 1 ? faint : d.size > 0.002 ? strong : soft),
+      getSize: (d: TileLabel) => (d.spot === Spot.Hidden ? 0 : NODE_FONT_PX),
+      getColor: (d: TileLabel) => (eraOf(d) < 1 ? faint : d.size > 0.002 ? strong : soft),
       getTextAnchor: anchorOf,
       getAlignmentBaseline: baselineOf,
       getPixelOffset: offsetOf,

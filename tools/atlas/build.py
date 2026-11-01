@@ -87,9 +87,10 @@ def main() -> None:
     never = {qid(r[0]) for path in glob.glob(f"{RAW}/not-*.tsv.gz") for r in rows(path) if r}
     print(f"{len(never)} left out by class", flush=True)
     classes = {qid(r[0]) for r in rows(f"{RAW}/classes.tsv.gz") if r}
-    names = {qid(r[0]): text(r[1]) for r in rows(f"{RAW}/label-mul.tsv.gz") if len(r) > 1}
-    names.update({qid(r[0]): text(r[1]) for r in rows(f"{RAW}/label-en.tsv.gz") if len(r) > 1})
-    lines = {qid(r[0]): text(r[1]) for r in rows(f"{RAW}/description-en.tsv.gz") if len(r) > 1}
+    # an English name wins over the name for every language
+    names = {qid(r[0]): text(r[1]) for path in glob.glob(f"{RAW}/label-mul-*.tsv.gz") for r in rows(path) if len(r) > 1}
+    names.update({qid(r[0]): text(r[1]) for path in glob.glob(f"{RAW}/label-en-*.tsv.gz") for r in rows(path) if len(r) > 1})
+    lines = {qid(r[0]): text(r[1]) for path in glob.glob(f"{RAW}/description-en-*.tsv.gz") for r in rows(path) if len(r) > 1}
     print(f"{len(names)} names, {len(lines)} summaries", flush=True)
     best: dict[str, tuple] = {}
     for kind, roots in PASSES:
@@ -130,7 +131,7 @@ def main() -> None:
     coords: dict[str, tuple[str, str]] = {}
     for r in rows(f"{RAW}/coords.tsv.gz"):
         if len(r) > 1 and (q := qid(r[0])) in chosen and q not in coords:
-            if m := re.search(r"Point\((-?[\d.]+) (-?[\d.]+)\)", r[1]):
+            if m := re.search(r"Point\((-?[\d.]+) (-?[\d.]+)\)", r[1], re.I):
                 coords[q] = (f"{float(m[1]):.4f}", f"{float(m[2]):.4f}")
     images: dict[str, str] = {}
     for r in rows(f"{RAW}/image.tsv.gz"):

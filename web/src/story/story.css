@@ -52,7 +52,7 @@ ctd-story .story-map .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button { ba
 }
 .story-hud-pills { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 /* beside the player's controls, not under them */
-@media (min-width: 861px) { .story-hud { max-width: 44%; } }
+@media (min-width: 861px) { .story-hud { max-width: 31%; } }
 .story-hud-pills > span {
   display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 999px;
   font: 500 0.88rem var(--font-ui); color: var(--ink);
@@ -62,6 +62,10 @@ ctd-story .story-map .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button { ba
 .story-hud-persp { font-style: italic; }
 .story-hud-count { color: var(--muted) !important; font-variant-numeric: tabular-nums; }
 .story-hud-past { color: var(--muted) !important; font-style: italic; }
+
+/* behind a story's graph, faintly, the real map of everything: a few dots sit inside the world, not on blank paper */
+.story-stage::before { content: ""; position: absolute; inset: -6%; background: url("/world/picture.svg") center / cover no-repeat; opacity: 0.1; pointer-events: none; }
+.story-stage[data-view="map"]::before { opacity: 0; }
 
 /* a photograph over the whole stage; the card and the time stay on top of it */
 .story-photo { position: absolute; inset: 0; z-index: 2; margin: 0; opacity: 0; transition: opacity .6s ease-in-out; background: #171a3a; }

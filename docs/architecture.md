@@ -78,7 +78,8 @@ Stages:
 5. Derive reverse claims, backlinks and confirmation badges.
 6. Render pages.
 7. Write the data files (schema, slim structure, one detail file per entry, search by word range).
-8. *(planned)* History index, layout and tiles.
+8. Layout and tiles for the Map ([world-tiles.md](world-tiles.md)).
+9. The atlas, when `.cache/atlas` holds it: 4,096 shards, search and the Map's million dots ([ADR-0023](decisions/0023-the-atlas.md)). A dev server leaves it out.
 
 ```
 dist/
@@ -86,6 +87,7 @@ dist/
   x/                         explorer app            world/              the Map's tiles
   data/schema.json           vocabulary              data/graph-slim.json   every entry and link, structure only
   data/e/<id>.json           one entry's words and proof          data/search/   search entries by word range
+  data/a/<n>.json            atlas entries, packed by Wikidata number    a/   the one page that reads them
   build-manifest.json        engine version, content commit, methodology hash, counts
 ```
 
@@ -144,10 +146,7 @@ Builds are deterministic: a pinned toolchain, sorted output and fixed seeds. Any
 
 - React SPA at `/x`; the engine owns the world state and React owns the controls. React never holds per-node state.
 - **Close views** (ego graph, paths): sigma 4 over per-entity neighbourhood data, laid out live in a worker.
-- **World view** *(planned)*:
-  - deck.gl TileLayer over PMTiles built by Rust.
-  - Leiden super-nodes when zoomed out, people when zoomed in.
-  - Stable world versions; only changed clusters are re-laid-out.
+- **World view** (the Map, `/w/`): a deck.gl TileLayer over binary tiles built by Rust. Dots at every zoom, region names from the manifest. How a big map is shaped is in [ADR-0023](decisions/0023-the-atlas.md) point 10.
 - **Controls:**
   - Lens filters by layer mask.
   - Perspective filters by perspective set and drives the narrative diff.

@@ -67,7 +67,6 @@ export interface WorldHandle {
 
 interface Picked {
   id: number;
-  cluster: boolean;
   x: number;
   y: number;
   size: number;
@@ -719,19 +718,18 @@ class WorldViewer implements WorldHandle {
       showLabels: this.opts.labels !== false,
       era: this.tileEra,
       labelFade: this.labelFade,
-      clusterLabels: !this.regionLabels.length,
     } as never);
     return this.tileLayer;
   }
 
   /**
-   * Deepest tile zoom to request. A world whose nodes all fit one tile (no clusters, at most tile_quota
+   * Deepest tile zoom to request. A world whose nodes all fit one tile (at most tile_quota
    * nodes, as with today's content world) is drawn from tile 0/0/0 at every zoom: the deeper tiles
    * only split the same nodes, and asking for them costs requests (and 404s for empty ones).
    */
   private tileMaxZoom(): number {
     const m = this.manifest;
-    if (m.cluster_zoom === 0 && m.tile_quota > 0 && m.nodes > 0 && m.nodes <= m.tile_quota) return 0;
+    if (m.tile_quota > 0 && m.nodes > 0 && m.nodes <= m.tile_quota) return 0;
     return m.maxzoom;
   }
 
@@ -883,7 +881,7 @@ class WorldViewer implements WorldHandle {
   private render(): void {
     if (!this.deck) return;
     const rings = [this.selected, this.hover]
-      .filter((p): p is Picked => !!p && !p.cluster)
+      .filter((p): p is Picked => !!p)
       .map((p) => ({ position: [p.x * S, p.y * S] as [number, number], size: p.size, selected: p === this.selected }));
     const accent = tokenRgb('--accent', [180, 24, 94], this.root);
     const ink = this.style.ink;
@@ -931,15 +929,15 @@ class WorldViewer implements WorldHandle {
     if (!info.picked || !content || info.index < 0 || info.index >= content.tile.n) return null;
     const t = content.tile;
     const i = info.index;
-    return { id: t.id[i], cluster: t.cluster, x: t.x[i], y: t.y[i], size: t.size[i], color: t.color[i], label: labelAt(t, i), z: t.index.z };
+    return { id: t.id[i], x: t.x[i], y: t.y[i], size: t.size[i], color: t.color[i], label: labelAt(t, i), z: t.index.z };
   }
 
   private same(a: Picked | null, b: Picked | null): boolean {
-    return a === b || (!!a && !!b && a.id === b.id && a.cluster === b.cluster);
+    return a === b || (!!a && !!b && a.id === b.id);
   }
 
   private entityOf(p: Picked): WorldEntity | null {
-    if (p.cluster || !this.entities) return null;
+    if (!this.entities) return null;
     // an atlas entry has no row in entities.json: its id says where its page is
     if (p.id >= ATLAS_IDS) {
       const q = `Q${p.id - ATLAS_IDS}`;
@@ -950,7 +948,6 @@ class WorldViewer implements WorldHandle {
   }
 
   private titleOf(p: Picked): string {
-    if (p.cluster) return p.label || `Cluster ${p.id}`;
     return this.entityOf(p)?.name || p.label || `Node ${p.id}`;
   }
 
@@ -974,7 +971,7 @@ class WorldViewer implements WorldHandle {
     } else if (p) {
       tip.append(el('strong', '', this.titleOf(p)));
       const cat = this.manifest.palette_labels[p.color];
-      const sub = p.cluster ? `Region${cat ? ` · mostly ${cat}` : ''} · click to zoom in` : [cat, this.entityOf(p) ? 'click for options' : null].filter(Boolean).join(' · ');
+      const sub = [cat, this.entityOf(p) ? 'click for options' : null].filter(Boolean).join(' · ');
       if (sub) tip.append(el('span', '', sub));
     }
     tip.hidden = false;
@@ -1000,10 +997,6 @@ class WorldViewer implements WorldHandle {
     const p = this.pick(info);
     if (!p) {
       this.selectPicked(null);
-      return;
-    }
-    if (p.cluster) {
-      this.flyTo([p.x * S, p.y * S], Math.max(this.zoom + 1.25, this.manifest.cluster_zoom + 0.6), 650);
       return;
     }
     this.selectPicked(p);
@@ -1139,17 +1132,17 @@ class WorldViewer implements WorldHandle {
       let best: Picked | null = null;
       for (const h of tiles) {
         const t = h.content?.tile;
-        if (!t || t.cluster) continue;
+        if (!t) continue;
         const i = t.id.indexOf(index);
         if (i < 0) continue;
-        if (!best || t.index.z > best.z) best = { id: index, cluster: false, x: t.x[i], y: t.y[i], size: t.size[i], color: t.color[i], label: labelAt(t, i), z: t.index.z };
+        if (!best || t.index.z > best.z) best = { id: index, x: t.x[i], y: t.y[i], size: t.size[i], color: t.color[i], label: labelAt(t, i), z: t.index.z };
       }
       return best;
     };
     const live = this.liveTileset();
     const found = live ? scan(live.tiles) : null;
     if (found) return found;
-    for (let z = this.manifest.cluster_zoom; z <= Math.min(this.tileMaxZoom(), this.manifest.cluster_zoom + 1); z++) {
+    for (let z = 0; z <= Math.min(this.tileMaxZoom(), 1); z++) {
       // Without a position index only small worlds can be searched like this (one or four tiles).
       const n = 2 ** z;
       for (let x = 0; x < n; x++) {

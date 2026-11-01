@@ -6,7 +6,6 @@
 
 export const TILE_MAGIC = 'CTDT';
 export const TILE_VERSION = 0;
-export const FLAG_CLUSTER = 1;
 const HEADER_BYTES = 20;
 
 export interface TileIndex {
@@ -17,14 +16,12 @@ export interface TileIndex {
 
 export interface WorldTile {
   index: TileIndex;
-  /** Super-nodes and meta-edges (zoomed out) instead of individual nodes. */
-  cluster: boolean;
   n: number;
   m: number;
   /** World position in the unit square, y down. */
   x: Float32Array;
   y: Float32Array;
-  /** Node index (cluster index on cluster tiles). */
+  /** Node index. */
   id: Uint32Array;
   /** Radius in world units at zoom 0. */
   size: Float32Array;
@@ -68,7 +65,6 @@ export function emptyTile(index: TileIndex): WorldTile {
   const b = new Uint8Array(0);
   return {
     index,
-    cluster: false,
     n: 0,
     m: 0,
     x: f,
@@ -96,7 +92,6 @@ export function parseTile(buffer: ArrayBuffer, index: TileIndex): WorldTile {
   if (magic !== TILE_MAGIC) throw new TileFormatError(`tile ${key(index)}: bad magic "${magic}"`);
   const version = dv.getUint16(4, true);
   if (version !== TILE_VERSION) throw new TileFormatError(`tile ${key(index)}: unsupported version ${version}`);
-  const flags = dv.getUint16(6, true);
   const n = dv.getUint32(8, true);
   const m = dv.getUint32(12, true);
   const labelBytes = dv.getUint32(16, true);
@@ -124,7 +119,6 @@ export function parseTile(buffer: ArrayBuffer, index: TileIndex): WorldTile {
 
   const tile: WorldTile = {
     index,
-    cluster: (flags & FLAG_CLUSTER) !== 0,
     n,
     m,
     x: f32(n),
@@ -184,7 +178,6 @@ export interface WorldManifest {
   edges: number;
   clusters: number;
   maxzoom: number;
-  cluster_zoom: number;
   tile_quota: number;
   palette: string[];
   palette_labels: string[];
@@ -236,7 +229,6 @@ export function checkManifest(m: unknown): WorldManifest {
   );
   return {
     ...(o as WorldManifest),
-    cluster_zoom: Number.isInteger(o.cluster_zoom) ? (o.cluster_zoom as number) : 0,
     palette: Array.isArray(o.palette) ? o.palette : [],
     palette_labels: Array.isArray(o.palette_labels) ? o.palette_labels : [],
     nodes: o.nodes ?? 0,
