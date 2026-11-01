@@ -23,6 +23,7 @@ dist/
   data/graph-slim.json       every entry and link, structure only: what the explorer draws and routes price
   data/e/<id>.json           one entry's words and proof, loaded when it is opened
   data/borders/<id>.json     one polity's historical borders, loaded by a story that draws them (ADR-0020)
+  data/borders/world-<year>.json   every polity of a year (world-1960, world-3000-bce), loaded by the Map's era slider (ADR-0021)
   data/search/index.json     the search files' word ranges      data/search/<n>.json   search entries by word
   data/graph.json            only with `ctd build --graph`: everything in one file, for tools; no page reads it
   world/                     manifest.json, entities.json, {z}/{x}/{y}.bin (world-tiles.md)

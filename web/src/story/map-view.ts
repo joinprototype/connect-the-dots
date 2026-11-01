@@ -7,7 +7,7 @@ import { loadJson, type GraphIndex } from '../lib/data';
 import { el } from '../lib/dom';
 import type { Shot } from '../lib/types';
 import type { Placed } from './morph';
-import { calmBasemap, hideBasemapNames, loadMapCss, MAP_STYLE, rgb, showModern } from '../world/basemap';
+import { BORDER_CREDIT, calmBasemap, hideBasemapNames, loadMapCss, MAP_STYLE, rgb, showModern } from '../world/basemap';
 
 export interface MapView extends Placed {
   apply(shot: Shot, reduced: boolean): void;
@@ -23,7 +23,6 @@ interface BorderFile {
   features: { type: 'Feature'; properties: { from: number; to: number }; geometry: GeoJSON.Geometry }[];
 }
 
-const BORDER_CREDIT = '<a href="https://github.com/Seshat-Global-History-Databank/cliopatria">Cliopatria</a> (CC BY 4.0), simplified';
 const BORDER_FILL = 0.2;
 const BORDER_LINE = 0.75;
 /** A scene dated before this year shows no modern borders, roads or names. */

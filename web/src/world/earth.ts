@@ -1,13 +1,14 @@
 // Lazy chunk: the Map's Earth view (/w/?view=earth). MapLibre draws the story maps' calm OpenFreeMap
 // basemap (ADR-0014) as a globe, with one grey dot per spot where entries are: graph-slim.json `coords`, an
 // entry's own or its place's, so an entry and its place share a dot. The era and the selection are
-// feature state read by paint expressions: picking an era never rebuilds the data.
-import { AttributionControl, Map as MapLibre, setWorkerUrl, type ExpressionSpecification } from 'maplibre-gl';
+// feature state read by paint expressions: picking an era never rebuilds the data. An era before today
+// also draws the world of its year (ADR-0021), in place of the basemap's borders and names.
+import { AttributionControl, Map as MapLibre, setWorkerUrl, type ExpressionSpecification, type GeoJSONSource } from 'maplibre-gl';
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url';
 import { FADED_TEXT_ALPHA, tokenRgb } from '../lib/color';
-import { loadGraphIndex } from '../lib/data';
+import { loadGraphIndex, loadJson } from '../lib/data';
 import type { GNode, GraphData } from '../lib/types';
-import { calmBasemap, loadMapCss, MAP_STYLE, rgb } from './basemap';
+import { BORDER_CREDIT, calmBasemap, loadMapCss, MAP_STYLE, rgb, showModern } from './basemap';
 import { ERA_DIM, eraAlpha, type Era } from './era';
 import type { WorldEntity } from './tiles';
 
@@ -69,11 +70,22 @@ export interface Earth {
 const SOURCE = 'ctd-earth';
 const DOTS = 'ctd-earth-dots';
 const NAMES = 'ctd-earth-names';
+const WORLD = 'ctd-earth-world';
+const WORLD_NAMES = 'ctd-earth-world-names';
 /** How close show() comes: a country, its cities apart. */
 const SPOT_ZOOM = 4.5;
 /** At home the globe leans at most this far north or south, so the planet reads upright. */
 const HOME_MAX_LAT = 35;
 const RAD = Math.PI / 180;
+
+/** `data/borders/world-<year>.json`: the polities of a year, largest first. */
+interface WorldFile {
+  type: 'FeatureCollection';
+  features: { type: 'Feature'; properties: { name: string; tone: number; at: [number, number] }; geometry: GeoJSON.MultiPolygon }[];
+}
+const NO_WORLD: WorldFile = { type: 'FeatureCollection', features: [] };
+
+const worldFile = (year: number) => `/data/borders/world-${year <= 0 ? `${1 - year}-bce` : year}.json`;
 
 /** Padding that leaves at least 60 px of map: on small phones the bars and the card can outgrow it. */
 function fitPadding(p: Insets, height: number): Insets {
@@ -143,6 +155,7 @@ export async function createEarth(container: HTMLElement, opts: EarthOptions): P
   const accent = tokenRgb('--accent', [0, 102, 204], container);
   const paper = tokenRgb('--paper', [255, 255, 255], container);
   const ink = tokenRgb('--night-ink', [29, 29, 31], container);
+  const muted = tokenRgb('--night-muted', [110, 110, 115], container);
   const center = middle(spots);
 
   /** The whole planet, in the middle of the space the overlays leave. */
@@ -193,6 +206,28 @@ export async function createEarth(container: HTMLElement, opts: EarthOptions): P
     }
   };
 
+  /** The year on the map. An era picked meanwhile wins: a slow file never replaces a newer year. */
+  let drawnYear: number | null = null;
+  const drawWorld = async () => {
+    const year = era?.year ?? null;
+    if (!ready || year === drawnYear) return;
+    drawnYear = year;
+    const file =
+      year == null
+        ? NO_WORLD
+        : await loadJson<WorldFile>(worldFile(year)).catch((err: unknown) => {
+            console.warn('connect-the-dot earth: no borders for', year, err);
+            return NO_WORLD;
+          });
+    if (year !== drawnYear) return;
+    (map.getSource(WORLD) as GeoJSONSource | undefined)?.setData(file);
+    (map.getSource(WORLD_NAMES) as GeoJSONSource | undefined)?.setData({
+      type: 'FeatureCollection',
+      features: file.features.map((f, rank) => ({ type: 'Feature', geometry: { type: 'Point', coordinates: f.properties.at }, properties: { name: f.properties.name, rank } })),
+    });
+    showModern(map, !file.features.length);
+  };
+
   const select = (s: EarthSpot | null) => {
     if (s === selected) return;
     if (ready && selected) mark(selected, { selected: false });
@@ -207,6 +242,26 @@ export async function createEarth(container: HTMLElement, opts: EarthOptions): P
       /* no globe in this MapLibre: stay flat */
     }
     calmBasemap(map, container);
+    map.addSource(WORLD, { type: 'geojson', data: NO_WORLD, attribution: BORDER_CREDIT });
+    map.addSource(WORLD_NAMES, { type: 'geojson', data: NO_WORLD });
+    // three shades of one grey, so neighbours part without a colour each
+    map.addLayer({ id: `${WORLD}-fill`, type: 'fill', source: WORLD, paint: { 'fill-color': rgb(ink), 'fill-opacity': ['+', 0.05, ['*', 0.04, ['get', 'tone']]] } });
+    map.addLayer({ id: `${WORLD}-line`, type: 'line', source: WORLD, paint: { 'line-color': rgb(ink), 'line-width': 0.6, 'line-opacity': 0.4 } });
+    map.addLayer({
+      id: WORLD_NAMES,
+      type: 'symbol',
+      source: WORLD_NAMES,
+      layout: {
+        'text-field': ['get', 'name'],
+        'text-font': ['Noto Sans Italic'],
+        'text-size': 11,
+        'text-max-width': 8,
+        'text-padding': 4,
+        // where names collide, the larger polity keeps its name
+        'symbol-sort-key': ['get', 'rank'],
+      },
+      paint: { 'text-color': rgb(muted), 'text-halo-color': rgb(paper), 'text-halo-width': 1 },
+    });
     map.addSource(SOURCE, {
       type: 'geojson',
       data: {
@@ -256,6 +311,7 @@ export async function createEarth(container: HTMLElement, opts: EarthOptions): P
     });
     ready = true;
     paintEra();
+    void drawWorld();
     if (selected) mark(selected, { selected: true });
   });
 
@@ -308,6 +364,7 @@ export async function createEarth(container: HTMLElement, opts: EarthOptions): P
     setEra(next) {
       era = next;
       paintEra();
+      void drawWorld();
     },
     select,
     show(s) {

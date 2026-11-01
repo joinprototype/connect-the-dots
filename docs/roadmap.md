@@ -102,6 +102,9 @@ Startup sprints: the order below is a best guess and is re-decided at every spri
   - GameStop, each party in its own words, and From Clay to Print, a map from Uruk to Mainz with who wrote the Torah as each side tells it.
   - Big numbers shown with their proof, Thirteen Days on the map of 1962, ancient maps without modern borders or names, and covers drawn from each story's own map.
 
+- **Sprint 20: the Map is worth opening** ([ADR-0021](decisions/0021-the-world-of-an-era.md), [sprints/sprint-20.md](sprints/sprint-20.md)). Built; release, demo and review pending.
+  - The map of links fills the page, and the Earth's era slider draws every polity of that year, from 3000 BCE to 1990.
+
 ## Next (candidates, chosen at review)
 
 - **Story v1.**

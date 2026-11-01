@@ -6,5 +6,10 @@ name: "Alexander Kerensky"
 aliases: ["Alexander Fyodorovich Kerensky", "A. F. Kerensky", "Aleksandr Kerensky"]
 summary: "Russian politician; head of the Provisional Government from July 1917 until its overthrow in November 1917."
 when: "1881-05-04/1970-06-11"
-claims: []
+claims:
+  - id: c1
+    rel: head_of
+    to: russian-provisional-government
+    title: Premier
+    src: [{s: kerensky-1927-catastrophe-ch18, at: "ch. XVIII (Gatchina), narrative of 12 November", quote: "the rights and duties of premier of the Provisional Government"}]
 ---

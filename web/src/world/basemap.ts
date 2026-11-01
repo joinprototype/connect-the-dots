@@ -5,6 +5,8 @@ import { cssColorToRgb, mix, tokenRgb, type RGB } from '../lib/color';
 import { loadStylesheet } from '../lib/dom';
 
 export const MAP_STYLE = 'https://tiles.openfreemap.org/styles/positron';
+/** On every map that draws historical borders (ADR-0020). */
+export const BORDER_CREDIT = '<a href="https://github.com/Seshat-Global-History-Databank/cliopatria">Cliopatria</a> (CC BY 4.0), simplified';
 
 let mapCssLoaded: Promise<void> | undefined;
 

@@ -5,7 +5,12 @@ type: place
 name: "Alexandria"
 summary: "Port city on the Mediterranean coast of Egypt, founded by Alexander the Great and a centre of Greek-speaking Jewish life."
 coords: [29.9187, 31.2001]
-claims: []
+claims:
+  - id: c1
+    rel: appears_in
+    to: letter-of-aristeas
+    role: city where the king receives the envoys
+    src: [{s: charles-1913-letter-of-aristeas, at: "section 173", quote: "And when we reached Alexandria the king was at once informed of our arrival.", by: letter-of-aristeas}]
 ---
 
 Alexandria is where, according to the [[letter-of-aristeas]], the Torah was translated into Greek. See [[translation-of-the-septuagint]].

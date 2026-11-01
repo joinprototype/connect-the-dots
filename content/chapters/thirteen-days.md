@@ -33,7 +33,7 @@ Every line drawn below is a sourced link. Lines marked "according to" are one si
   reveal: [cuban-missile-crisis, operation-anadyr, john-f-kennedy]
   reveal_claims: [cuban-missile-crisis#c1]
   overlay: {kind: quote, source: jfk-address-1962-10-22, quote: "Within the past week, unmistakable evidence has established the fact that a series of offensive missile sites is now in preparation on that imprisoned island.", caption: "John F. Kennedy, television address, 22 October 1962"}
-  narration: "**The US story.** On 22 October Kennedy told the nation that offensive missile sites were being built in Cuba. According to the US government, the crisis was caused by this secret Soviet deployment, which Moscow had code-named Operation Anadyr."
+  narration: "**The U.S. story.** On 22 October Kennedy told the nation that offensive missile sites were being built in Cuba. According to the U.S. government, the crisis was caused by this secret Soviet deployment, which Moscow had code-named Operation Anadyr."
   duration: 10
 
 - shot: soviet-story
@@ -47,7 +47,7 @@ Every line drawn below is a sourced link. Lines marked "according to" are one si
   reveal: [jupiter-deployment-turkey, jupiter-missile, nikita-khrushchev]
   reveal_claims: [cuban-missile-crisis#c2]
   overlay: {kind: quote, source: frus-1961-63-v06-d66, quote: "Your missiles are located in Turkey. You are disturbed over Cuba. You say that this disturbs you because it is 90 miles by sea from the coast of the United States of America. But Turkey adjoins us; our sentries patrol back and forth and see each other.", caption: "Nikita Khrushchev to John F. Kennedy, 27 October 1962"}
-  narration: "**The Soviet story.** On 27 October Khrushchev answered with a different map: US Jupiter missiles already stood in Turkey, on the Soviet border. According to the Soviet government, that deployment was the real cause of the crisis."
+  narration: "**The Soviet story.** On 27 October Khrushchev answered with a different map: U.S. Jupiter missiles already stood in Turkey, on the Soviet border. According to the Soviet government, that deployment was the real cause of the crisis."
   duration: 10
 ```
 
@@ -84,7 +84,7 @@ The two accounts disagree about the cause. A third voice spoke to both sides at 
   routes: [[washington-dc, moscow]]
   reveal: [moscow-washington-hotline]
   reveal_claims: [cuban-missile-crisis#c4, moscow-washington-hotline#c1]
-  overlay: {kind: quote, source: state-hotline-mou-1963, quote: "The Cuban missile crisis of October 1962 compellingly underscored the importance of prompt, direct communication between heads of state.", caption: "US Department of State"}
+  overlay: {kind: quote, source: state-hotline-mou-1963, quote: "The Cuban missile crisis of October 1962 compellingly underscored the importance of prompt, direct communication between heads of state.", caption: "U.S. Department of State"}
   narration: "During the crisis the two leaders struggled to read each other's intentions. In June 1963 their governments agreed on a direct link between Washington and Moscow, the hotline, which began as a teletype circuit rather than a telephone."
   duration: 9
 
@@ -122,4 +122,4 @@ The crisis did not stay in 1962. The same weapons, people and institutions conne
   duration: 10
 ```
 
-Explore further: open any scene in the explorer, switch between the US and Soviet governments' accounts, and compare what each side says.
+Explore further: open any scene in the explorer, switch between the U.S. and Soviet governments' accounts, and compare what each side says.

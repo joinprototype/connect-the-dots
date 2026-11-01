@@ -531,9 +531,15 @@ fn layout_clusters(size: &[usize], meta: &[(u32, u32, f32)]) -> (Vec<[f64; 2]>, 
             pos[g] = [center[0] + local[li][0], center[1] + local[li][1]];
         }
     }
-    // overlap removal: discs of radius sqrt(size) plus a margin
+    separate(&mut pos, &radius);
+    (pos, radius)
+}
+
+/// Overlap removal: pushes discs apart until each pair clears the sum of their radii plus a margin.
+fn separate(pos: &mut [[f64; 2]], radius: &[f64]) {
+    let c = pos.len();
     for _ in 0..80 {
-        let snapshot = pos.clone();
+        let snapshot = pos.to_vec();
         let push: Vec<[f64; 2]> = (0..c)
             .into_par_iter()
             .map(|i| {
@@ -549,7 +555,10 @@ fn layout_clusters(size: &[usize], meta: &[(u32, u32, f32)]) -> (Vec<[f64; 2]>, 
                     }
                     let d = (ex * ex + ey * ey).sqrt();
                     if d < need {
-                        let (ux, uy) = if d > 1e-9 { (ex / d, ey / d) } else { (((i * 7919 + j) % 13) as f64 - 6.0, 1.0) };
+                        // two discs on one spot go opposite ways: the same way, they would travel together
+                        let a = (i.min(j) * 7919 + i.max(j)) as f64 * GOLDEN;
+                        let way = if i < j { 1.0 } else { -1.0 };
+                        let (ux, uy) = if d > 1e-9 { (ex / d, ey / d) } else { (way * a.cos(), way * a.sin()) };
                         let share = radius[j] / (radius[i] + radius[j]);
                         px += ux * (need - d) * share;
                         py += uy * (need - d) * share;
@@ -570,7 +579,6 @@ fn layout_clusters(size: &[usize], meta: &[(u32, u32, f32)]) -> (Vec<[f64; 2]>, 
             break;
         }
     }
-    (pos, radius)
 }
 
 /// The fitted turn is snapped to this step (radians), so rebuilding unchanged content reproduces the
@@ -1162,6 +1170,18 @@ mod tests {
         let r = regions(&members, &labels, Some(&may_name), &[[0.3, 0.3], [0.7, 0.7]], &[0.1, 0.1]);
         let names: Vec<&str> = r.iter().map(|r| r.label.as_str()).collect();
         assert_eq!(names, ["Acme"], "the best-connected non-person names it; a region of people only goes unnamed");
+    }
+
+    #[test]
+    fn discs_on_one_spot_part_instead_of_travelling_together() {
+        for c in 2..40 {
+            let mut pos = vec![[5.0, 5.0]; c];
+            let radius = vec![2.0; c];
+            separate(&mut pos, &radius);
+            let far = pos.iter().map(|p| ((p[0] - 5.0).powi(2) + (p[1] - 5.0).powi(2)).sqrt()).fold(0.0, f64::max);
+            assert!(far < 2.0 * (c as f64).sqrt() * 4.0, "{c} discs reached {far}");
+            assert!(pos.iter().enumerate().all(|(i, p)| pos[i + 1..].iter().all(|q| p != q)), "{c} discs still share a spot");
+        }
     }
 
     #[test]

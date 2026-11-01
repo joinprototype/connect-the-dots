@@ -35,5 +35,5 @@ Borders through time were in the founder's first brief (requirements, item 12). 
 
 ## Revisit when
 
-- A story needs a borders view on the Map or the explorer's time slider.
+- ~~A story needs a borders view on the Map or the explorer's time slider.~~ The Map's Earth view has one: [ADR-0021](0021-the-world-of-an-era.md).
 - A file passes about 100 KB compressed: keep only the periods stories use.

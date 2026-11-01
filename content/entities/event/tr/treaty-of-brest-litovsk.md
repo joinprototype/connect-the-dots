@@ -27,6 +27,11 @@ claims:
     rel: located_in
     to: brest-belarus
     src: [{s: fourth-congress-1918-03-15-brest-resolution, quote: "The Congress ratifies the treaty of peace concluded by our representatives at Brest-Litovsk on 3 March 1918."}]
+  - id: c4
+    rel: involved
+    to: grigori-sokolnikov
+    role: Soviet delegate, authorized to sign
+    src: [{s: sokolnikov-1918-03-03-brest-statement, quote: "We, the authorized representatives of our Government, are prepared to sign the peace treaty immediately."}]
 ---
 
 At Brest-Litovsk Soviet Russia gave up its western territories, including the Baltic lands and Ukraine, to make peace with Germany and its allies. The Soviet congress that ratified it called it "this incredibly oppressive, coercive, and humiliating peace" whose conditions "were imposed on us as an ultimatum and with undisguised violence".

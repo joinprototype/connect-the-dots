@@ -5,6 +5,7 @@ import type { _Tile2DHeader as Tile2DHeader, _TileLoadProps as TileLoadProps } f
 import { ScatterplotLayer } from '@deck.gl/layers';
 import { cssColorToRgb, tokenRgb, tokenString, type RGB } from '../lib/color';
 import { fetchJson } from '../lib/data';
+import { formatYearNumber } from '../lib/dates';
 import { el } from '../lib/dom';
 import { currentUrl, replaceUrl } from '../lib/history';
 import type { Box } from '../lib/labels';
@@ -430,6 +431,7 @@ class WorldViewer implements WorldHandle {
     this.viewButtons.earth.setAttribute('aria-pressed', String(earth));
     if (this.hintHow) this.hintHow.textContent = HOW[mode];
     if (this.hintRegions) this.hintRegions.hidden = earth;
+    this.noteEra();
     this.updateCount();
     if (writeUrl) {
       const url = currentUrl();
@@ -476,6 +478,7 @@ class WorldViewer implements WorldHandle {
         }
         this.earth = earth;
         earth.setEra(this.pendingEra);
+        this.noteEra();
         this.updateCount();
         return earth;
       })
@@ -549,10 +552,10 @@ class WorldViewer implements WorldHandle {
     if (this.eraUi) {
       this.eraUi.label.textContent = text;
       this.eraUi.input.setAttribute('aria-valuetext', text);
-      this.eraUi.note.textContent = era ? 'Others and undated entries faded' : 'Drag to pick an era';
       this.regionLayer?.classList.toggle('is-era', !!era);
     }
     this.pendingEra = era;
+    this.noteEra();
     if (!this.eraFrame) {
       this.eraFrame = requestAnimationFrame(() => {
         this.eraFrame = 0;
@@ -560,6 +563,16 @@ class WorldViewer implements WorldHandle {
         this.earth?.setEra(this.pendingEra);
       });
     }
+  }
+
+  /** What the era does to the view on show: the Earth says whose borders it draws. */
+  private noteEra(): void {
+    if (!this.eraUi) return;
+    const era = this.pendingEra;
+    const borders = this.mode === 'earth' && this.earth && era?.year != null;
+    this.eraUi.note.textContent = borders ? `Approximate borders of ${formatYearNumber(era.year!)}: Cliopatria` : era ? 'Others and undated entries faded' : 'Drag to pick an era';
+    // on a phone the note can take two lines, and the card sits above the bar
+    this.wrap.style.setProperty('--ctdw-era-h', `${this.eraUi.input.parentElement?.offsetHeight || 64}px`);
   }
 
   /** Dims the dots whose dates miss the era (undated ones too); they never vanish. */

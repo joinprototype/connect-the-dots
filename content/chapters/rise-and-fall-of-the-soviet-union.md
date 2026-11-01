@@ -55,7 +55,7 @@ Lines marked "according to" are one side's account. Where records from opposing 
   reveal: [antony-sutton, william-boyce-thompson, bolsheviks, russian-provisional-government]
   reveal_claims: [william-boyce-thompson#c1, william-boyce-thompson#c2]
   overlay: {kind: quote, source: sutton-1974-wall-street-bolshevik-revolution, quote: "that he (Thompson) contributed $1 million to the Bolshevik Revolution for propaganda purposes.", caption: "Antony C. Sutton, Wall Street and the Bolshevik Revolution (1974)"}
-  narration: "**A contested thesis.** According to Antony Sutton, Wall Street money helped the Bolsheviks too, for example $1 million from the Red Cross mission leader William Boyce Thompson. US embassy records from December 1917 point the other way, to American money for anti-Bolshevik newspapers. Both are shown with their sources; Sutton's claim is marked disputed, the embassy reading is still a draft."
+  narration: "**A contested thesis.** According to Antony Sutton, Wall Street money helped the Bolsheviks too, for example $1 million from the Red Cross mission leader William Boyce Thompson. U.S. embassy records from December 1917 point the other way, to American money for anti-Bolshevik newspapers. Both are shown with their sources; Sutton's claim is marked disputed, the embassy reading is still a draft."
   duration: 11
 
 - shot: october
@@ -114,7 +114,7 @@ Lines marked "according to" are one side's account. Where records from opposing 
   reveal: [august-coup-1991, boris-yeltsin, belovezha-accords, leonid-kravchuk, stanislav-shushkevich, dissolution-of-the-soviet-union]
   reveal_claims: [august-coup-1991#c1, belovezha-accords#c1, belovezha-accords#c2, belovezha-accords#c3, belovezha-accords#c4, dissolution-of-the-soviet-union#c1]
   overlay: {kind: quote, source: whc-gorbachev-resignation-1991, quote: "Dear compatriots, fellow citizens, as a result of the newly formed situation, creation of the Commonwealth of Independent States, I cease my activities in the post of the U.S.S.R. president.", caption: "Mikhail Gorbachev, 25 December 1991"}
-  narration: "**Who ended it.** Yeltsin beat back the hard-liners' coup in August 1991. On 8 December, in a Belarusian forest, Yeltsin, Kravchuk of Ukraine and Shushkevich of Belarus declared the USSR finished. US records and Gorbachev's own resignation speech both tie the accords to the end, so that link is confirmed by both sides."
+  narration: "**Who ended it.** Yeltsin beat back the hard-liners' coup in August 1991. On 8 December, in a Belarusian forest, Yeltsin, Kravchuk of Ukraine and Shushkevich of Belarus declared the USSR finished. U.S. records and Gorbachev's own resignation speech both tie the accords to the end, so that link is confirmed by both sides."
   duration: 11
 
 - shot: why-it-fell
@@ -129,4 +129,4 @@ Lines marked "according to" are one side's account. Where records from opposing 
   duration: 13
 ```
 
-Explore further: switch the perspective between the US, Soviet and Russian governments to compare which causes each one names, or open the explorer and trace a route from Lenin to Putin.
+Explore further: switch the perspective between the U.S., Soviet and Russian governments to compare which causes each one names, or open the explorer and trace a route from Lenin to Putin.

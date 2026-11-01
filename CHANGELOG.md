@@ -2,6 +2,12 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.3.0 (2026-11-01)
+
+- The Map's Earth shows the world of the era you pick: every polity of that year, from 3000 BCE to 1990, in place of today's borders.
+- The era slider has stops that fit history: closer together as it comes closer.
+- The map of links now fills the page. A small group of entries had drifted far away and pushed everything else into a corner.
+
 ## 0.2.2 (2026-10-31)
 
 - The site now goes by Connect the Dots everywhere, including link previews and the share image.

@@ -59,6 +59,7 @@ _Add ideas here with date and who suggested them._
 - 2026-10-30 (Sprint 12 research): "Hidden power of the Big Three?" (Fichtner, Heemskerk and Garcia-Bernardo, 2017) is cited in the chapter but has no entry; it would need its authors and a link to all three firms. Rock and Rubinfeld, Kennedy et al., and the Lewis and Chugh paper at the Justice Department are further voices in the debate.
 - 2026-10-31 (Sprint 19 research): the GameStop lawsuits sit on an event, because no relation carries a civil suit (ADR-0018 adds one when needed). The Eleventh Circuit opinions were read; the district court's November 2021 orders and Melvin's letter itself (only CNBC's quotation) were not. No primary record of Robinhood's reply to the 2022 House report was found.
 - 2026-10-31 (Sprint 19 research): the clay chapter's soft spots. Who wrote the Torah rests on one teaching lecture, which sums up the classic source account; add a survey of current views. Gutenberg's print run is a note, not a field, and survival counts differ (Cornell 48; the British Library and the Bavarian State Library were seen only in search results). Bi Sheng, the Ahiram epitaph's other dating, Luther's 1522 New Testament and how printing carried his Bible have no source read.
+- 2026-10-31 (Sprint 20): 13 entries still have no link. Five scholars and two institutions need the universities or places they belong to (Christine Hayes at Yale, David R. Olson, Dewey M. Beegle, Robert Lechêne, Ronald Hendel, the Digital History Reader, the Reagan Library). Bethlehem, Qumran and Wittenberg need a relation for where a work was written or found. Zurich needs a source that names it as the start of the sealed train. Ludendorff needs a sourced role in an event we have. The Seattle Times needs a source better than Wikipedia, which we do not cite; its own site refuses our fetch.
 - 2026-10-17 (Sprint 4 review): an account column with no words of its own shows no quote (a reporter's or scholar's summary is never shown as the account's words). Where an account is known only through a summary, consider showing it as "as reported by <publisher>".
 
 ## Epics
@@ -92,7 +93,7 @@ _Add ideas here with date and who suggested them._
 ### E4 Storytelling
 - ~~Watch mode with narration audio~~ Done in Sprint 8 ("Listen", the browser's own voice). Captions in other languages remain.
 - ~~Map → graph morph transition~~ Done in Sprint 15.
-- ~~Borders through time~~ Done in Sprints 17 and 19 for story maps ([ADR-0020](decisions/0020-historical-borders.md)). Next: the Map's era slider.
+- ~~Borders through time~~ Done in Sprints 17 and 19 for story maps ([ADR-0020](decisions/0020-historical-borders.md)), and in Sprint 20 for the Map's era slider ([ADR-0021](decisions/0021-the-world-of-an-era.md)). Next: today's contested borders, and outlines that fade from one era to the next.
 - Document overlay with a highlighted quote
 - Video export: step frames in a headless browser, encode to MP4
 - ~~Showcase chapters: "Who owns BlackRock and Vanguard?" and one history or religion chapter~~ Done in Sprints 9 and 19 ("From Clay to Print").
