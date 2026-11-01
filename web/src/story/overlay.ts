@@ -1,4 +1,4 @@
-// Overlay cards: proof cards with a highlighter over the quote, pull quotes, images.
+// Overlay cards: proof cards with a highlighter over the quote, pull quotes, big numbers, images.
 import { gsap } from 'gsap';
 import { edgesForRef, sourceView } from '../lib/claims';
 import { nameOf, type GraphIndex } from '../lib/data';
@@ -74,6 +74,25 @@ export class Overlay {
       return fig;
     }
     const quote = findQuote(idx, shot, o.source);
+    if (o.kind === 'stat' && o.source && quote) {
+      const s = sourceView(idx, o.source);
+      const fig = el('figure', 'story-card is-stat');
+      fig.append(el('p', 'story-stat-value', o.value ?? ''), el('p', 'story-stat-label', o.label ?? ''));
+      const bq = el('blockquote', 'story-card-quote');
+      const p = el('p');
+      p.append('“', el('mark', 'story-hl', quote), '”');
+      bq.append(p);
+      fig.append(bq, el('p', 'story-card-meta', [s.publisher, s.published].filter(Boolean).join(' · ')));
+      if (s.url) {
+        const a = el('a', 'story-card-link', 'Read the source');
+        a.href = s.url;
+        a.target = '_blank';
+        a.rel = 'external noopener noreferrer';
+        fig.append(a);
+      }
+      this.words = [`The source says: ${quote}`];
+      return fig;
+    }
     if (o.kind === 'source' && o.source) {
       const s = sourceView(idx, o.source);
       const fig = el('figure', 'story-card is-source');

@@ -24,6 +24,14 @@ claims:
     src:
       - {s: britannica-gutenberg, at: "Top Questions: What is Johannes Gutenberg known for?", quote: "Johannes Gutenberg is known for having designed and built the first known mechanized printing press in Europe."}
       - {s: britannica-printing-press, at: "article body, paragraph 2", quote: "The earliest mention of a mechanized printing press in Europe appears in a lawsuit in Strasbourg in 1439; it reveals construction of a press for Johannes Gutenberg and his associates."}
+  - id: c4
+    rel: produced
+    to: gutenberg-bible
+    when: "1455~"
+    note: "How many copies were printed is not known. Cornell says it is thought 165 on paper and 35 on parchment; the Library of Congress says at least 120 on paper and perhaps as many as 40 on vellum. Cornell counts 48 surviving copies."
+    src:
+      - {s: cornell-exhibit-gutenberg-bible, at: "exhibit text, last sentences", quote: "It is thought that Gutenberg printed 165 copies on paper and thirty-five copies on parchment. Of this total, only forty-eight Gutenberg Bibles are known to have survived."}
+      - {s: loc-guide-gutenberg-faq, at: "Q: How many copies of the Gutenberg Bible were initially printed?", quote: "The total number of bibles printed was likely at least 120 paper copies and perhaps as many as 40 vellum copies."}
 ---
 
 Johannes Gutenberg of [[mainz]] is credited with inventing printing from uniform, interchangeable metal type. His workshop completed the [[gutenberg-bible]], an edition of the Latin [[bible]], around 1455.

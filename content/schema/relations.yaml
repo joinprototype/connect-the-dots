@@ -111,6 +111,9 @@ produced:
   {label: produced, inverse: produced by, from: [person, org], to: [work, artifact], owner: from, layers: [tech, ideas], temporal: true}
 deployed:
   {label: deployed, inverse: deployed by, from: [org], to: [artifact], owner: from, layers: [power, tech], temporal: true}
+# The technique a thing was made with: two books printed from movable type share this link.
+made_with:
+  {label: made with, inverse: used to make, from: [work, artifact], to: [artifact, concept], owner: from, layers: [tech, ideas]}
 
 # --- history ----------------------------------------------------------------
 involved:
@@ -156,6 +159,9 @@ authored:
   {label: authored, inverse: author, from: [person, org], to: [work], owner: from, layers: [ideas], temporal: true}
 edition_of:
   {label: edition of, inverse: editions, from: [work], to: [work], owner: from, layers: [ideas, tech], noun: true, inverse_reads: list}
+# A find or collection of manuscripts that includes a copy of a text, not a published edition of it.
+holds_copies_of:
+  {label: holds copies of, inverse: copies in, from: [work], to: [work], owner: from, layers: [ideas, tech]}
 branch_of:
   {label: branch of, inverse: branches, from: [tradition, org], to: [tradition], owner: from, layers: [ideas], noun: true, inverse_reads: list}
 influenced:

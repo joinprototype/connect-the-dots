@@ -57,6 +57,8 @@ _Add ideas here with date and who suggested them._
 - ~~2026-10-30 (Sprint 12): BlackRock filed a Schedule 13G/A on Tesla on 27 October 2026.~~ Done in Sprint 13. Its Microsoft and Amazon links still rest on 2024 filings, the newest it has filed on them; re-check when it files again.
 - 2026-10-30 (Sprint 12 research, not verified at source): Texas et al. v. BlackRock, State Street and Vanguard, on coal output. The FTC and the Justice Department filed a statement of interest on 22 May 2025; Vanguard reportedly settled in February 2026 for $29.5 million. A candidate for legal records and a chapter scene, once read in the court's or agencies' own documents.
 - 2026-10-30 (Sprint 12 research): "Hidden power of the Big Three?" (Fichtner, Heemskerk and Garcia-Bernardo, 2017) is cited in the chapter but has no entry; it would need its authors and a link to all three firms. Rock and Rubinfeld, Kennedy et al., and the Lewis and Chugh paper at the Justice Department are further voices in the debate.
+- 2026-10-31 (Sprint 19 research): the GameStop lawsuits sit on an event, because no relation carries a civil suit (ADR-0018 adds one when needed). The Eleventh Circuit opinions were read; the district court's November 2021 orders and Melvin's letter itself (only CNBC's quotation) were not. No primary record of Robinhood's reply to the 2022 House report was found.
+- 2026-10-31 (Sprint 19 research): the clay chapter's soft spots. Who wrote the Torah rests on one teaching lecture, which sums up the classic source account; add a survey of current views. Gutenberg's print run is a note, not a field, and survival counts differ (Cornell 48; the British Library and the Bavarian State Library were seen only in search results). Bi Sheng, the Ahiram epitaph's other dating, Luther's 1522 New Testament and how printing carried his Bible have no source read.
 - 2026-10-17 (Sprint 4 review): an account column with no words of its own shows no quote (a reporter's or scholar's summary is never shown as the account's words). Where an account is known only through a summary, consider showing it as "as reported by <publisher>".
 
 ## Epics
@@ -90,10 +92,10 @@ _Add ideas here with date and who suggested them._
 ### E4 Storytelling
 - ~~Watch mode with narration audio~~ Done in Sprint 8 ("Listen", the browser's own voice). Captions in other languages remain.
 - ~~Map → graph morph transition~~ Done in Sprint 15.
-- ~~Borders through time~~ Done in Sprint 17 for story maps ([ADR-0020](decisions/0020-historical-borders.md)). Next: the other chapters (the Cold War in Thirteen Days), then the Map's era slider.
+- ~~Borders through time~~ Done in Sprints 17 and 19 for story maps ([ADR-0020](decisions/0020-historical-borders.md)). Next: the Map's era slider.
 - Document overlay with a highlighted quote
 - Video export: step frames in a headless browser, encode to MP4
-- Showcase chapters: "Who owns BlackRock and Vanguard?" and one history or religion chapter
+- ~~Showcase chapters: "Who owns BlackRock and Vanguard?" and one history or religion chapter~~ Done in Sprints 9 and 19 ("From Clay to Print").
 
 ### E5 Contribution and trust
 - "Edit this page" links

@@ -16,6 +16,7 @@ Every line drawn below is a sourced link. Lines marked "according to" are one si
   view: map
   camera: {globe: true, center: [-40, 35], zoom: 1.6, duration: 6}
   places: [cuba, washington-dc, moscow, turkey]
+  borders: [cuba, united-states, soviet-union, turkey]
   time: "1962-10-16"
   reveal: [cuban-missile-crisis]
   narration: "16 October 1962. In Washington, President Kennedy is briefed on Soviet missile sites under construction in Cuba. For the next thirteen days Washington, Moscow, Havana and, less visibly, Turkey are at the center of the world."
@@ -26,7 +27,9 @@ Every line drawn below is a sourced link. Lines marked "according to" are one si
   camera: {center: [-79, 26], zoom: 4.2, pitch: 30, duration: 4}
   perspective: us-government
   places: [cuba, washington-dc]
+  borders: [united-states, cuba]
   routes: [[moscow, cuba]]
+  time: "1962-10-22"
   reveal: [cuban-missile-crisis, operation-anadyr, john-f-kennedy]
   reveal_claims: [cuban-missile-crisis#c1]
   overlay: {kind: quote, source: jfk-address-1962-10-22, quote: "Within the past week, unmistakable evidence has established the fact that a series of offensive missile sites is now in preparation on that imprisoned island.", caption: "John F. Kennedy, television address, 22 October 1962"}
@@ -38,7 +41,9 @@ Every line drawn below is a sourced link. Lines marked "according to" are one si
   camera: {center: [36, 44], zoom: 3.6, pitch: 30, duration: 4}
   perspective: soviet-government
   places: [turkey, moscow]
+  borders: [soviet-union, turkey]
   routes: [[turkey, moscow]]
+  time: "1962-10-27"
   reveal: [jupiter-deployment-turkey, jupiter-missile, nikita-khrushchev]
   reveal_claims: [cuban-missile-crisis#c2]
   overlay: {kind: quote, source: frus-1961-63-v06-d66, quote: "Your missiles are located in Turkey. You are disturbed over Cuba. You say that this disturbs you because it is 90 miles by sea from the coast of the United States of America. But Turkey adjoins us; our sentries patrol back and forth and see each other.", caption: "Nikita Khrushchev to John F. Kennedy, 27 October 1962"}
@@ -75,6 +80,7 @@ The two accounts disagree about the cause. A third voice spoke to both sides at 
   camera: {center: [-20, 52], zoom: 1.8, duration: 5}
   time: "1963-06-20"
   places: [washington-dc, moscow]
+  borders: [united-states, soviet-union]
   routes: [[washington-dc, moscow]]
   reveal: [moscow-washington-hotline]
   reveal_claims: [cuban-missile-crisis#c4, moscow-washington-hotline#c1]
@@ -116,4 +122,4 @@ The crisis did not stay in 1962. The same weapons, people and institutions conne
   duration: 10
 ```
 
-Explore further: open any shot in the explorer, switch the perspective between the US and Soviet governments, and compare which claims each side makes.
+Explore further: open any scene in the explorer, switch between the US and Soviet governments' accounts, and compare what each side says.

@@ -21,6 +21,15 @@ POLITIES = {
     "russia": {"name": "Russia", "rows": ["Russian Empire", "Russian Republic"], "years": (1900, 1917)},
     "german-empire": {"name": "German Empire", "rows": ["German Empire"], "years": (1900, 1919)},
     "soviet-union": {"name": "Soviet Union", "rows": ["Union of Soviet Socialist Republics"], "years": (1922, 1991)},
+    "united-states": {"name": "United States", "rows": ["United States of America"], "years": (1950, 1970)},
+    "cuba": {"name": "Cuba", "rows": ["Communist Cuba"], "years": (1960, 1970)},
+    "turkey": {"name": "Turkey", "rows": ["Republic of Turkey"], "years": (1950, 1970)},
+    "sumer": {"name": "Sumerian city-states", "rows": ["Sumerian City-States"], "years": (-3400, -3001)},
+    "egypt-middle-kingdom": {"name": "Egypt, Middle Kingdom", "rows": ["Middle Kingdom of Egypt"], "years": (-1800, -1601)},
+    "phoenicia": {"name": "Phoenicia", "rows": ["Phoenicia"], "years": (-1000, -801)},
+    "ptolemaic-kingdom": {"name": "Ptolemaic Kingdom", "rows": ["Ptolemaic Kingdom"], "years": (-256, -248)},
+    "roman-empire": {"name": "Roman Empire", "rows": ["Roman Empire"], "years": (383, 386)},
+    "holy-roman-empire": {"name": "Holy Roman Empire", "rows": ["(Holy Roman Empire)"], "years": (1450, 1460)},
 }
 
 

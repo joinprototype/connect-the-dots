@@ -238,6 +238,8 @@ https://:version.:subdomain.workers.dev/*\n  X-Robots-Tag: noindex\n";
 const TYPE_PAGE_MAX: usize = 500;
 /// Featured question stories on the home shelf (the rest are in the Stories library).
 const HOME_QUESTIONS: usize = 4;
+/// Stories offered at the end of a written story.
+const NEXT_STORIES: usize = 2;
 /// Entries a place's page lists as set there.
 const HERE_MAX: usize = 12;
 /// How many answers per question the Ask form embeds, and a question's index lists.
@@ -924,10 +926,42 @@ fn question_pages(s: &Site, pages: &QuestionPages) -> Result<QuestionShelf> {
     })
 }
 
+/// A chapter's cover: its own map when it visits enough places, else a constellation.
+fn chapter_cover(kb: &Kb, ch: &crate::kb::Chapter) -> String {
+    let mut ids: Vec<&str> = Vec::new();
+    let mut routes: Vec<(&str, &str)> = Vec::new();
+    fn strings(v: &Value) -> Vec<&str> {
+        v.as_array().into_iter().flatten().filter_map(Value::as_str).collect()
+    }
+    for shot in &ch.shots {
+        ids.extend(strings(&shot["places"]));
+        for r in shot["routes"].as_array().into_iter().flatten() {
+            if let [a, b] = strings(r)[..] {
+                ids.extend([a, b]);
+                routes.push((a, b));
+            }
+        }
+    }
+    let mut seen = std::collections::HashSet::new();
+    ids.retain(|id| seen.insert(*id));
+    let placed: Vec<(&str, [f64; 2])> = ids.into_iter().filter_map(|id| Some((id, kb.coords(kb.entity(id)?)?))).collect();
+    let at = |id: &str| placed.iter().position(|(p, _)| *p == id);
+    let lines: Vec<(usize, usize)> = routes.into_iter().filter_map(|(a, b)| Some((at(a)?, at(b)?))).collect();
+    let stops: Vec<[f64; 2]> = placed.iter().map(|&(_, p)| p).collect();
+    crate::covers::journey(&ch.id, &ch.title, &stops, &lines).unwrap_or_else(|| crate::covers::entity(&ch.id, &ch.title, ch.shots.len()))
+}
+
 fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
     let (kb, cx) = (s.kb, &s.cx);
-    let mut chapter_cards = Vec::new();
-    for ch in &kb.chapters {
+    let cards: Vec<Value> = kb
+        .chapters
+        .iter()
+        .map(|ch| {
+            json!({ "id": ch.id, "title": ch.title, "subtitle": ch.subtitle, "summary": ch.summary, "url": format!("/c/{}/", ch.id), "shots": ch.shots.len(), "kind": plural(ch.shots.len(), "scene"),
+                    "cover": chapter_cover(kb, ch) })
+        })
+        .collect();
+    for (i, ch) in kb.chapters.iter().enumerate() {
         let resolver = cx.resolver();
         let (shots, steps) = story_parts(cx, &ch.shots);
         let chapter = json!({
@@ -935,13 +969,13 @@ fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
             "intro_html": markdown::render(&ch.intro_md, &resolver), "outro_html": markdown::render(&ch.outro_md, &resolver),
             "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &s.by_id, &shots))?,
             "steps": steps, "url": format!("/c/{}/", ch.id), "shot_count": shots.len(),
+            // the stories after this one, round the shelf: a reader who finishes has somewhere to go
+            "next": cards.iter().cycle().skip(i + 1).take(cards.len() - 1).take(NEXT_STORIES).collect::<Vec<_>>(),
         });
         let html = s.render("chapter.html", json!({ "site": &s.site, "chapter": &chapter, "history": s.history.of(&ch.rel_path) }))?;
         write(&s.out.join("c").join(&ch.id).join("index.html"), html)?;
-        chapter_cards.push(json!({ "id": ch.id, "title": ch.title, "subtitle": ch.subtitle, "summary": ch.summary, "url": format!("/c/{}/", ch.id), "shots": shots.len(), "kind": plural(shots.len(), "scene"),
-                                   "cover": crate::covers::entity(&ch.id, &ch.title, shots.len()) }));
     }
-    Ok(chapter_cards)
+    Ok(cards)
 }
 
 fn route_stories(s: &Site) -> Result<Routes> {

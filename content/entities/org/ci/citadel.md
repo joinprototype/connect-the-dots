@@ -17,4 +17,5 @@ claims:
     src:
       - {s: bloomberg-2021-01-25-citadel-point72-melvin, quote: "Citadel funds and firm partners will invest $2 billion, while Point72 Asset Management’s investment will be $750 million, the firms said Monday."}
       - {s: hfsc-hearing-117-3-transcript, at: "Kenneth C. Griffin, answering Ms. Adams", quote: "We first invested in Melvin Capital on Monday of the week in question. I want to say that it was the 24th of January. And prior to that, we had had no investment with Melvin Capital."}
+      - {s: hfsc-2021-02-18-plotkin-testimony, at: "Opening, p. 1", quote: "Citadel proactively reached out to become a new investor, similar to the investments others make in our fund. It was an opportunity for Citadel to “buy low” and earn returns for its investors if and when our fund’s value went up.", by: gabe-plotkin}
 ---

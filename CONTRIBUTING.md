@@ -483,17 +483,17 @@ Explore further: open [[blackrock]]'s page for its owners over time, or read "Wh
 |---|---|
 | `shot` | A short name; `#shot-<name>` at the end of the story's URL opens that scene. |
 | `view` | `map` or `graph`. (`timeline` is drawn as the graph for now.) |
-| `camera` | Map scenes: `{center: [longitude, latitude], zoom, pitch, bearing, globe, duration}`. The map is a globe unless `globe: false`; `duration` is the flight time in seconds. |
+| `camera` | Map scenes: `{center: [longitude, latitude], zoom, pitch, bearing, globe, fit, duration}`. The map is a globe unless `globe: false`; `fit: true` zooms out on a narrow screen until every marker shows; `duration` is the flight time in seconds. |
 | `lens` | `all`, `power`, `money`, `ideas` or `history`. |
 | `focus` | The entry the scene is about, drawn in the accent color. |
 | `perspective` | An entry whose account the scene follows; other sides' accounts are dimmed. |
-| `time` | The scene's date. The graph shows the world as of that date. |
+| `time` | The scene's date. The graph shows the world as of that date, and a map dated before 1800 hides today's borders, roads and names. |
 | `reveal` | Entries that appear. |
 | `reveal_claims` | Links that draw, as `<entry id>#<link id>`, such as `larry-fink#c4`. |
 | `places` | Entries to mark on the map: places, or entries whose place has coordinates. |
 | `borders` | Historical borders to draw, by file name in `content/borders/`, such as `[russia, german-empire]`. The shot's `time` picks the year, and the first is drawn in the accent color. Look at the result: a border can be wrong even when it is sourced. |
 | `routes` | Lines to draw on the map: `[[from-id, to-id], …]`. |
-| `overlay` | A card. `{kind: quote, source, quote, caption}` is a quote card; `kind: source` shows the source as proof, with the quote highlighted; `kind: image` takes `image` (an address) and `caption`. A card without `quote` borrows the quote of a revealed link from the same source, or shows nothing. |
+| `overlay` | A card. `{kind: quote, source, quote, caption}` is a quote card; `kind: source` shows the source as proof, with the quote highlighted; `kind: image` takes `image` (an address) and `caption`; `{kind: stat, value, label, source, quote}` is a big number with its proof beside it. A card without `quote` borrows the quote of a revealed link from the same source, or shows nothing. |
 | `narration` | The scene's text, in Markdown. Listen reads it aloud. |
 | `duration` | Seconds Watch stays on the scene (6 when left out). |
 | `explore` | `true` shows "Explore from here", which opens the explorer at this scene. The BlackRock chapter's last scene sets it. |

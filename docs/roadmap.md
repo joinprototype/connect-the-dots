@@ -95,22 +95,24 @@ Startup sprints: the order below is a best guess and is re-decided at every spri
 - **Sprint 17: borders through time** ([ADR-0020](decisions/0020-historical-borders.md), [sprints/sprint-17.md](sprints/sprint-17.md)). Built; demo and review pending.
   - Story maps show the world of their date, from a few polities cut from Cliopatria: first in the Soviet chapter.
 
+- **Sprint 18: public at dots.joinprototype.com** ([sprints/sprint-18.md](sprints/sprint-18.md)). Released; demo and review pending.
+  - The repo is public, and the site is live and listed, with versions, link previews and licenses.
+
+- **Sprint 19: two new stories** ([sprints/sprint-19.md](sprints/sprint-19.md)). Released; demo and review pending.
+  - GameStop, each party in its own words, and From Clay to Print, a map from Uruk to Mainz with who wrote the Torah as each side tells it.
+  - Big numbers shown with their proof, Thirteen Days on the map of 1962, ancient maps without modern borders or names, and covers drawn from each story's own map.
+
 ## Next (candidates, chosen at review)
 
 - **Story v1.**
-  - Borders in the other chapters.
   - A "capture shot" tool.
 - **Contribution loop.**
   - "Edit this page" links, and Issue Form → PR bot.
   - `ctd check` on PRs, plus review rules.
   - A History tab with per-claim diffs.
-- **Deploy** (on hold: the founder works locally for now, 2026-10-17).
-  - A Cloudflare preview, then production.
-  - `ctd publish`, with a build manifest and asset versioning.
 - **Content depth.**
   - About 300 entities, with Wikidata identities imported as proposed claims.
   - An SEC 13F holdings dataset.
-  - The first showcase chapter.
 
 ## Later
 

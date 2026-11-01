@@ -9,7 +9,7 @@ summary: The dropout-in-a-garage version leaves out the parents, boards and inve
 
 "He dropped out of Harvard." "He started in a garage." "He built it in his dorm room." These stories are true, and they leave things out. This chapter follows three founders through the documents that rarely make the headline: their families, their schools, where the first money came from, and who opened which door.
 
-Every line drawn below is a sourced claim. Lines marked "according to" are one source's interpretation, not established fact. A connection is not evidence of wrongdoing.
+Every line drawn below is a sourced link. Lines marked "according to" are one source's interpretation, not established fact. A connection is not evidence of wrongdoing.
 
 ```scene
 - shot: open

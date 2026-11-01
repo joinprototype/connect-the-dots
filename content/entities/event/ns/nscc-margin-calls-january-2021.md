@@ -20,4 +20,7 @@ claims:
     note: "Robinhood's figures: a deposit requirement of about $3.7 billion, with about $696 million already on deposit; NSCC later waived part of the charge for that day."
     src:
       - {s: hfsc-2021-02-18-tenev-testimony, at: "Section VIII, GameStop and Market Volatility, p. 9", quote: "At approximately 5:11 a.m. EST on January 28, the NSCC sent Robinhood Securities an automated notice stating that Robinhood Securities had a deposit deficit of approximately $3 billion."}
+      - {s: hfsc-2021-02-18-tenev-testimony, at: "Section VIII, GameStop and Market Volatility, p. 9", quote: "On January 25, Robinhood Securities’ collateral obligation from NSCC, its principal clearinghouse, totaled approximately $124 million.", by: vlad-tenev}
+      - {s: hfsc-2021-02-18-tenev-testimony, at: "Section VIII, GameStop and Market Volatility, p. 9", quote: "In total, the NSCC automated notice indicated that Robinhood Securities owed NSCC a total clearing fund deposit of approximately $3.7 billion.", by: vlad-tenev}
+      - {s: sec-staff-report-2021-10-14, at: "Section 3.5, p. 31", quote: "Absent this waiver, one retail broker-dealer would have had an additional ECP charge of more than double its margin requirement of $1.4 billion on January 28, 2021."}
 ---

@@ -228,10 +228,11 @@ export class CtdStory extends HTMLElement {
       overlay: layer('story-overlay'),
     };
     this.unfocusable.observe(this.stage, { childList: true, subtree: true });
-    const hud = layer('story-hud');
+    const pills = el('div', 'story-hud-pills');
+    layer('story-hud').append(pills);
     const time = el('span', 'story-hud-time'), past = el('span', 'story-hud-past'), persp = el('span', 'story-hud-persp'), count = el('span', 'story-hud-count');
     past.hidden = true;
-    hud.append(time, past, persp, count);
+    pills.append(time, past, persp, count);
     this.hud = { time, past, persp, count };
 
     // Controls live outside the aria-hidden stage.
@@ -293,7 +294,7 @@ export class CtdStory extends HTMLElement {
   private decorateSources(idx: GraphIndex): void {
     this.steps.forEach((step, i) => {
       const o = this.shots[i].overlay;
-      const s = o?.kind === 'source' && o.source ? sourceView(idx, o.source) : null;
+      const s = (o?.kind === 'source' || o?.kind === 'stat') && o.source ? sourceView(idx, o.source) : null;
       const card = step.querySelector('.step-card');
       if (!s?.url || !card || card.querySelector('.step-source')) return;
       const p = el('p', 'step-source');

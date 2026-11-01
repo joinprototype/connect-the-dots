@@ -39,4 +39,34 @@ claims:
     src:
       - {s: sec-staff-report-2021-10-14, at: "Section 1, Introduction, p. 2", quote: "Then, as the end of January approached, several retail broker-dealers temporarily prohibited certain activity in some of these stocks and options."}
       - {s: sec-staff-report-2021-10-14, at: "Section 3.6, footnote 88, p. 32", quote: "For example, Robinhood and Interactive Brokers stated that in some cases, investors would only be able to sell their position in certain securities and not open a new position."}
+  - id: c5
+    rel: involved
+    to: ken-griffin
+    role: "testified that Citadel Securities had no role in Robinhood's decision and that Citadel did not ask Robinhood to restrict buying"
+    note: "Griffin's own account. In the hearing he was asked whether anyone in his organization had talked to Robinhood about restricting buying of GameStop."
+    src:
+      - {s: hfsc-2021-02-18-griffin-testimony, at: "Introduction", quote: "I want to be perfectly clear: we had no role in Robinhood’s decision to limit trading in GameStop or any other of the “meme” stocks. I first learned of Robinhood’s trading restrictions only after they were publicly announced.", by: ken-griffin}
+      - {s: hfsc-hearing-117-3-transcript, at: "Kenneth C. Griffin, answering Mr. Vargas", quote: "Let me be perfectly clear: Absolutely not.", by: ken-griffin}
+  - id: c6
+    rel: involved
+    to: vlad-tenev
+    role: "testified that no one pressured Robinhood to restrict buying"
+    note: "Tenev's own account. Asked by Rep. McHenry whether the decision was based on pressure from anyone on the witness panel."
+    src:
+      - {s: hfsc-hearing-117-3-transcript, at: "Vladimir Tenev, answering Mr. McHenry", quote: "Not at all. Zero pressure from anyone. It was a collateral depository requirement decision made by our Robinhood Securities president, and we stand by it.", by: vlad-tenev}
+      - {s: hfsc-2021-02-18-tenev-testimony, at: "Section VIII, GameStop and Market Volatility, p. 9, footnote 20", quote: "Robinhood Securities did not impose these trading restrictions at the request of hedge funds or to try and move prices in GameStop one way or the other.", by: vlad-tenev}
+  - id: c7
+    rel: involved
+    to: nscc
+    role: "clearing agency; SEC staff say its rules do not let it tell firms to stop trading a stock"
+    note: "SEC staff add that some broker-dealers restricted trading in reaction to NSCC's margin calls and capital charges, and that this was their decision, not NSCC's."
+    src:
+      - {s: sec-staff-report-2021-10-14, at: "Section 3.5, Clearing Agency Margin and Capital Issues, p. 32", quote: "NSCC, like most similar central counterparties, does not instruct its member firms to stop trading or clearing individual symbols because its rules do not give it that ability."}
+  - id: c8
+    rel: involved
+    to: citadel-securities
+    role: "market maker that received Robinhood's customer orders; the subject of the narrative that hedge funds and their partners pressed brokers to restrict"
+    note: "SEC staff describe that narrative, and record that witnesses testified the restrictions did not result from such pressure."
+    src:
+      - {s: sec-staff-report-2021-10-14, at: "Section 3.6, Broker-Dealer Reactions and Trading Restrictions, pp. 32–33", quote: "This narrative was the subject of testimony at a Congressional hearing, where witnesses testified that the trading restrictions did not result from such pressure."}
 ---

@@ -50,6 +50,15 @@ claims:
     note: "Beegle reads the 480 years of 1 Kings 6:1 as twelve generations of about 25 years each, not 40."
     src:
       - {s: britannica-moses, at: "The date of Moses", quote: "Since an actual generation was nearer 25 years, the most probable date for the Exodus is about 1290 bce."}
+  - id: c9
+    rel: authored
+    to: torah
+    according_to: [judaism]
+    note: "Tradition ascribes the five books to Moses. The verses say Moses wrote down “this law”; tradition reads that as the Torah. Modern source criticism gives another account (see composition-of-the-torah)."
+    src:
+      - {s: jps-tanakh-1917, at: "Deuteronomy 31:9", quote: "And Moses wrote this law, and delivered it unto the priests the sons of Levi, that bore the ark of the covenant of the LORD, and unto all the elders of Israel."}
+      - {s: jps-tanakh-1917, at: "Exodus 24:4", quote: "And Moses wrote all the words of the LORD, and rose up early in the morning, and builded an altar under the mount, and twelve pillars, according to the twelve tribes of Israel."}
+      - {s: britannica-torah, at: "opening paragraph", quote: "These are the books traditionally ascribed to Moses, the recipient of the original revelation from God on Mount Sinai."}
 ---
 
 In the [[book-of-exodus]], Moses leads the Israelites out of Egypt in [[the-exodus]]. [[judaism]], [[christianity]] and [[islam]] all regard him as a prophet; in the [[quran]] he is named as both messenger and prophet.

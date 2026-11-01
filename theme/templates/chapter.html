@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import count %}
+{% from "macros.html" import book, count %}
 {% block title %}{{ chapter.title }}{{ " –" if chapter.title[-1:] == "?" else ":" }} connect the dot{% endblock %}
 {% block description %}{{ chapter.summary or chapter.subtitle or chapter.title }}{% endblock %}
 {% block body_class %}chapter-page{% endblock %}
@@ -31,5 +31,12 @@
   </ctd-story>
   {% if chapter.outro_html|trim %}<div class="prose chapter-outro">{{ chapter.outro_html|safe }}</div>{% endif %}
 </article>
+{% if chapter.next %}
+<section class="shelf-section" aria-labelledby="next-h">
+  <h2 id="next-h">More stories</h2>
+  <div class="shelf">{% for c in chapter.next %}{{ book(c) }}{% endfor %}</div>
+</section>
+<div class="shelf-end"></div>
+{% endif %}
 {% endblock %}
 {% block scripts %}{% if site.assets.story_js %}<script type="module" src="/assets/story.js"></script>{% endif %}{% endblock %}

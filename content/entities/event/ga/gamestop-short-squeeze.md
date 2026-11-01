@@ -21,6 +21,7 @@ claims:
     role: "company whose stock (GME) surged and then fell"
     src:
       - {s: sec-staff-report-2021-10-14, at: "§3.2 GME Equities Trading, p. 19", quote: "Overall, GME’s intraday share price increased approximately 2,700% from its intraday low on January 8 to its intraday high on January 28, followed by a decrease of over 86% from that day to the closing price at the end of the first week of February."}
+      - {s: sec-staff-report-2021-10-14, at: "§3.2 GME Equities Trading, p. 18", quote: "The following day, share prices jumped further to an intraday high of $483.00."}
   - id: c3
     rel: involved
     to: keith-gill
@@ -42,6 +43,7 @@ claims:
     note: "SEC staff count: accounts trading GME on a given day rose from under 10,000 in early January to nearly 900,000 by 27 January 2021."
     src:
       - {s: sec-staff-report-2021-10-14, at: "§3.2 GME Equities Trading, p. 20", quote: "The increases coincided with a sharp increase in the number of individual accounts actively trading GME."}
+      - {s: sec-staff-report-2021-10-14, at: "§3.2 GME Equities Trading, p. 20", quote: "by January 27, the number of unique accounts trading GME on a given day increased from less than 10,000 at the beginning of the month to nearly 900,000."}
   - id: c6
     rel: involved
     to: ryan-cohen
@@ -56,4 +58,24 @@ claims:
     note: "SEC staff figures, which shorten the name to Citadel: nearly $4.2 billion of GME internalized on 27 January 2021, against just under $37 million a day in December 2020."
     src:
       - {s: sec-staff-report-2021-10-14, at: "Section 3.7, Role of Off-Exchange Market Makers, p. 37", quote: "Citadel Securities accounted for nearly 50% of internalizer dollar volume during the month, rising to as high as 55% of daily internalized dollar volume twice."}
+  - id: c8
+    rel: involved
+    to: gamestop
+    role: "heavily shorted before January 2021: SEC staff put short interest around 100% of the public float through most of 2020"
+    note: "Short interest can exceed 100% when the same shares are lent more than once. SEC staff also give a January 2021 figure of 122.97% of float, a different measure."
+    src:
+      - {s: sec-staff-report-2021-10-14, at: "Section 3.4, Short Selling and Covering Short Positions, pp. 24–25", quote: "From then until early 2021, GME short interest hovered around 100%, hitting its high of 109.26% on December 31, 2020."}
+  - id: c9
+    rel: led_to
+    to: game-stopped-hearing-2021-02-18
+    src:
+      - {s: hfsc-2022-06-24-game-stopped-staff-report, at: "Executive Summary, Overview, p. 3", quote: "The House Financial Services Committee (Committee) held a full Committee hearing shortly after the Meme Stock Market Event with key industry players, including the CEOs of Robinhood and Citadel Securities"}
+  - id: c10
+    rel: led_to
+    to: shortening-the-securities-transaction-settlement-cycle
+    according_to: [sec]
+    note: "The SEC's final rule says it was informed in part by episodes of volatility in 2020 and 2021. The adopting text does not name GameStop; its economic analysis footnote ties the January 2021 clearing-fund demands on brokers to “meme” stocks, and the October 2021 staff report lists a shorter settlement cycle as one method to reduce clearinghouse risk."
+    src:
+      - {s: sec-2023-02-15-shortening-settlement-cycle-final-rule, at: "Part I, Introduction, p. 8", quote: "Now, in part informed by episodes in 2020 and 2021 of increased market volatility that highlighted potential vulnerabilities in the U.S. securities market, the Commission believes that shortening the settlement cycle from T+2 to T+1 can promote investor protection, reduce risk"}
+      - {s: sec-staff-report-2021-10-14, at: "Section 4, Conclusions, pp. 43–44", quote: "One method to mitigate the systemic risk posed by such entities to the clearinghouse and other participants is to shorten the settlement cycle."}
 ---

@@ -213,16 +213,21 @@ export interface ShotCamera {
   pitch?: number;
   bearing?: number;
   globe?: boolean;
+  /** Keep every marker on screen, however narrow the screen. */
+  fit?: boolean;
   /** seconds */
   duration?: number;
 }
 
 export interface ShotOverlay {
-  kind: 'source' | 'quote' | 'image';
+  kind: 'source' | 'quote' | 'image' | 'stat';
   source?: string;
   quote?: string;
   image?: string;
   caption?: string;
+  /** A stat card's big number, and what it counts. */
+  value?: string;
+  label?: string;
 }
 
 export interface Shot {

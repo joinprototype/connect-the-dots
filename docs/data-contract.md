@@ -273,7 +273,7 @@ Shot fields (from the chapter's `scene` blocks, or generated; the build adds `t`
 |---|---|
 | `shot` | Shot name |
 | `view` | `map`, `graph` or `timeline` |
-| `camera` | `{ center: [lon, lat], zoom, pitch?, bearing?, globe?: bool, duration?: seconds }` |
+| `camera` | `{ center: [lon, lat], zoom, pitch?, bearing?, globe?: bool, fit?: bool, duration?: seconds }`; `fit` zooms out once settled until every marker shows |
 | `focus` | Entity id |
 | `lens` | Lens id |
 | `perspective` | Entity id |
@@ -282,12 +282,14 @@ Shot fields (from the chapter's `scene` blocks, or generated; the build adds `t`
 | `reveal_claims` | `["<entity-id>#<claim-id>"]` |
 | `places` | `[place ids]` to mark on the map |
 | `routes` | `[[place-id, place-id], …]` lines to draw on the map |
-| `overlay` | `{ kind: "source"\|"quote"\|"image", source?, quote?, image?, caption? }` |
+| `overlay` | `{ kind: "source"\|"quote"\|"image"\|"stat", source?, quote?, image?, caption?, value?, label? }`; a `stat` is a big number (`value`, `label`) with its `source` and `quote` beside it |
 | `narration` | Markdown |
 | `duration` | Seconds in watch mode; with Listen on, the scene also waits for its narration to be read |
 | `explore` | Show the "Explore from here" button, which links to `/x/?focus=&lens=&p=&t=` |
 
 **The map view** flies to each shot's `camera` and marks its places. Once the camera settles, no marker (dot or name) is left under the quote card, the time pills or the controls: the map moves as little as it can, up or left, or, when no small move does it (on a phone the card spans the width), zooms out until every marker fits the room left. Where a marker names a place, the basemap does not name it again.
+
+A map scene dated before 1800 hides the basemap's modern borders, roads and names: land, sea and rivers stay.
 
 **The graph view** keeps what earlier shots revealed and draws the world as of the shot's `t`: what has not begun is hidden, and what is over is faded.
 - **A shot's own reveals are never faded.** What a shot itself reveals (`reveal`, `focus`, the ends of `reveal_claims`) is its subject, so its `t` never hides or fades it.

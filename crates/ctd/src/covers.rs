@@ -128,6 +128,45 @@ pub fn route(id: &str, label: &str, stops: usize) -> String {
     svg
 }
 
+/// A story's own map: the places its scenes mark, in their true positions, the places joined in the
+/// order the story visits them, and the routes it draws in the accent. `None` with too few places to
+/// make a shape.
+pub fn journey(id: &str, label: &str, stops: &[[f64; 2]], routes: &[(usize, usize)]) -> Option<String> {
+    if stops.len() < 3 {
+        return None;
+    }
+    let bounds = |i: usize| stops.iter().fold((f64::MAX, f64::MIN), |(lo, hi), p| (lo.min(p[i]), hi.max(p[i])));
+    let (west, east) = bounds(0);
+    let (south, north) = bounds(1);
+    // degrees of longitude shrink away from the equator
+    let squeeze = ((south + north) / 2.0).to_radians().cos().max(0.2);
+    let (width, height) = (((east - west) * squeeze).max(1.0), (north - south).max(1.0));
+    let (left, top, room_w, room_h) = (36.0, 196.0, W - 72.0, H - 232.0);
+    let scale = (room_w / width).min(room_h / height);
+    let at = |p: [f64; 2]| {
+        let x = left + room_w / 2.0 + ((p[0] - west) * squeeze - width / 2.0) * scale;
+        let y = top + room_h / 2.0 + ((north - p[1]) - height / 2.0) * scale;
+        (x, y)
+    };
+    let pts: Vec<(f64, f64)> = stops.iter().map(|&p| at(p)).collect();
+    let mut rng = Rng(seed(id));
+    let mut svg = open();
+    title(&mut svg, label);
+    stars(&mut svg, &mut rng, 7);
+    for pair in pts.windows(2) {
+        let _ = write!(svg, r#"<line x1="{:.1}" y1="{:.1}" x2="{:.1}" y2="{:.1}" stroke="{LINE}" stroke-width="1.2"/>"#, pair[0].0, pair[0].1, pair[1].0, pair[1].1);
+    }
+    for &(a, b) in routes {
+        let _ = write!(svg, r#"<line x1="{:.1}" y1="{:.1}" x2="{:.1}" y2="{:.1}" stroke="{ACCENT}" stroke-width="2.6" stroke-linecap="round"/>"#, pts[a].0, pts[a].1, pts[b].0, pts[b].1);
+    }
+    for &(x, y) in &pts {
+        let _ = write!(svg, r#"<circle cx="{x:.1}" cy="{y:.1}" r="4.6" fill="{INK}"/>"#);
+    }
+    let (x, y) = pts[0];
+    let _ = write!(svg, r#"<circle cx="{x:.1}" cy="{y:.1}" r="13" fill="{ACCENT}" fill-opacity="0.16"/><circle cx="{x:.1}" cy="{y:.1}" r="7" fill="{ACCENT}"/></svg>"#);
+    Some(svg)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -148,5 +187,17 @@ mod tests {
             assert!(route("p", "A to A", stops).ends_with("</svg>"));
         }
         assert!(entity("x", "", 0).ends_with("</svg>"));
+    }
+
+    #[test]
+    fn a_journey_draws_its_places_inside_the_cover() {
+        let places = [[-3.0, 40.0], [30.0, 31.0], [44.0, 33.0], [8.0, 50.0]];
+        let svg = journey("c", "A story", &places, &[(1, 2)]).unwrap();
+        assert_eq!(svg, journey("c", "A story", &places, &[(1, 2)]).unwrap());
+        assert!(svg.contains(&format!(r#"stroke="{ACCENT}""#)));
+        for cx in svg.split(r#"<circle cx=""#).skip(1).map(|s| s.split('"').next().unwrap().parse::<f64>().unwrap()) {
+            assert!((0.0..=W).contains(&cx), "{cx}");
+        }
+        assert!(journey("c", "Too few", &places[..2], &[]).is_none(), "two places make no shape");
     }
 }

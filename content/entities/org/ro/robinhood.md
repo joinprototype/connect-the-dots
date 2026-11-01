@@ -18,4 +18,9 @@ claims:
       - {s: hfsc-hearing-117-3-transcript, at: "Vladimir Tenev, answering Mr. Torres", quote: "Citadel is indeed an important counterparty. It's our largest counterparty in terms of where we route orders to", by: vlad-tenev}
       - {s: hfsc-hearing-117-3-transcript, at: "Vladimir Tenev, answering Mrs. Axne", quote: "The 606 reports do publicly detail the payment for order flow arrangements we have with Citadel Securities and our other market makers.", by: vlad-tenev}
       - {s: hfsc-hearing-117-3-transcript, at: "Kenneth C. Griffin, answering Mr. Gonzalez of Texas", quote: "Now, Citadel Securities owes a duty of best execution for every order that comes from Robinhood", by: ken-griffin}
+  - id: c2
+    rel: headquartered_in
+    to: menlo-park
+    src:
+      - {s: robinhood-s1-2021-07-01, at: "Cover page, address of principal executive offices", quote: "85 Willow Road, Menlo Park, California 94025"}
 ---

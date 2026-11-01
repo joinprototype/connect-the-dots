@@ -7,7 +7,7 @@ import { loadJson, type GraphIndex } from '../lib/data';
 import { el } from '../lib/dom';
 import type { Shot } from '../lib/types';
 import type { Placed } from './morph';
-import { calmBasemap, hideBasemapNames, loadMapCss, MAP_STYLE, rgb } from '../world/basemap';
+import { calmBasemap, hideBasemapNames, loadMapCss, MAP_STYLE, rgb, showModern } from '../world/basemap';
 
 export interface MapView extends Placed {
   apply(shot: Shot, reduced: boolean): void;
@@ -24,8 +24,10 @@ interface BorderFile {
 }
 
 const BORDER_CREDIT = '<a href="https://github.com/Seshat-Global-History-Databank/cliopatria">Cliopatria</a> (CC BY 4.0), simplified';
-const BORDER_FILL = 0.16;
+const BORDER_FILL = 0.2;
 const BORDER_LINE = 0.75;
+/** A scene dated before this year shows no modern borders, roads or names. */
+const MODERN_FROM = 1800;
 
 /** Great-circle arc between two points, unwrapped across the antimeridian. */
 function arc(a: LonLat, b: LonLat, n = 72): LonLat[] {
@@ -60,7 +62,8 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
   const gray = tokenRgb('--graph-node', [142, 142, 147], container);
   const borderKey = el('div', 'story-borders');
   borderKey.hidden = true;
-  container.append(borderKey);
+  // under the time pills, however many rows they take
+  container.closest('.story-stage')?.querySelector('.story-hud')?.append(borderKey);
   const first = shots.find((s) => s.camera)?.camera;
 
   const map = new MapLibre({
@@ -204,6 +207,19 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
     });
   }
 
+  /** Where names would overlap, the later ones give way: their dots stay. */
+  function declutter(): void {
+    const kept: DOMRect[] = [];
+    for (const m of markers.values()) {
+      const label = m.getElement().querySelector('.story-marker-label');
+      const r = label?.getBoundingClientRect();
+      if (!r) continue;
+      const clash = kept.some((k) => r.left < k.right && k.left < r.right && r.top < k.bottom && k.top < r.bottom);
+      label?.classList.toggle('is-quiet', clash);
+      if (!clash) kept.push(r);
+    }
+  }
+
   /** What sits over the map, in its pixels: the time pills, the quote card, the player's controls. */
   function covers(): { x0: number; y0: number; x1: number; y1: number }[] {
     const host = container.getBoundingClientRect();
@@ -223,7 +239,7 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
    * When no small move does it (on a phone the card spans the width), it zooms out until every marker
    * fits in the room left. Like the story graph, which keeps its names out from under them.
    */
-  function clearCovers(reduced: boolean): void {
+  function clearCovers(reduced: boolean, fit: boolean): void {
     const host = container.getBoundingClientRect();
     const W = host.width;
     const H = host.height;
@@ -237,7 +253,7 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
     const hits = (dx: number, dy: number) =>
       rects.some((r) => boxes.some((b) => r.x1 - dx + pad > b.x0 && r.x0 - dx - pad < b.x1 && r.y1 - dy + pad > b.y0 && r.y0 - dy - pad < b.y1));
     const inside = (dx: number, dy: number) => rects.every((r) => r.x0 - dx >= pad && r.x1 - dx <= W - pad && r.y0 - dy >= pad && r.y1 - dy <= H - pad);
-    if (!hits(0, 0)) return;
+    if (!hits(0, 0) && (!fit || inside(0, 0))) return;
     // how far content must move up, or left, to clear every card it is under
     let up = 0;
     let left = 0;
@@ -295,7 +311,13 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
       }
       // when it has settled (and the quote card has come in), keep the markers clear of what covers the map
       const shotId = shot.shot;
-      const settle = () => window.setTimeout(() => current === shotId && clearCovers(reduced), reduced ? 0 : 300);
+      const settle = () =>
+        window.setTimeout(() => {
+          if (current !== shotId) return;
+          clearCovers(reduced, !!c?.fit);
+          // after any move clearCovers made
+          window.setTimeout(() => current === shotId && declutter(), reduced ? 0 : 700);
+        }, reduced ? 0 : 300);
       if (c && !reduced) map.once('moveend', settle);
       else settle();
       current = shotId;
@@ -312,6 +334,7 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
         taken.add(k);
         ids.push(id);
       }
+      showModern(map, shot.t == null || shot.t >= MODERN_FROM);
       setMarkers(ids, shot.focus, reduced);
       // our markers name these places: the basemap does not say them again
       hideBasemapNames(

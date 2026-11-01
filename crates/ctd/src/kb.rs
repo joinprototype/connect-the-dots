@@ -1215,6 +1215,12 @@ fn chapter(kb: &Kb, doc: &ChapterDoc, withheld: &HashSet<&str>, diags: &mut Vec<
             {
                 diags.push(Diag::err(file, format!("shot `{name}`: overlay source `{src}` does not exist")));
             }
+            // a big number shows its proof beside it
+            if let Some(o) = obj.get("overlay").filter(|o| o.get("kind").and_then(Value::as_str) == Some("stat")) {
+                for field in ["value", "label", "source", "quote"].into_iter().filter(|f| o.get(*f).is_none()) {
+                    diags.push(Diag::err(file, format!("shot `{name}`: a stat card needs `{field}`")));
+                }
+            }
             if let Some(l) = obj.get("lens").and_then(Value::as_str)
                 && !lens_ids.contains(l)
             {
@@ -1537,5 +1543,14 @@ pub(crate) mod tests {
         assert!(!said(&check("kb-borders-date", vec![shape("rec"), chapter("rome", "0300")]), "has no borders for this shot's date").is_empty());
         assert!(!said(&check("kb-borders-file", vec![shape("rec"), chapter("carthage", "0150")]), "no borders file `carthage`").is_empty());
         assert!(!said(&check("kb-borders-source", vec![shape("nobody"), chapter("rome", "0150")]), "source `nobody` does not exist").is_empty());
+    }
+
+    #[test]
+    fn a_stat_card_shows_its_proof() {
+        let chapter = |overlay: &str| file("content/chapters/ch.md", &format!("---\nid: ch\ntype: chapter\ntitle: Ch\n---\n\n```scene\n- shot: one\n  overlay: {{{overlay}}}\n```\n"));
+        let full = r#"kind: stat, value: "2,700%", label: Rise, source: rec, quote: "It rose.""#;
+        let bare = r#"kind: stat, value: "2,700%", label: Rise, source: rec"#;
+        assert!(said(&load("kb-stat-ok", &[source("rec", "T1"), chapter(full)]).1, "stat card").is_empty());
+        assert!(!said(&load("kb-stat-bare", &[source("rec", "T1"), chapter(bare)]).1, "a stat card needs `quote`").is_empty());
     }
 }

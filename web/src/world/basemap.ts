@@ -36,6 +36,14 @@ export function hideBasemapNames(map: MapLibre, names: string[]): void {
   }
 }
 
+/** Shows or hides what only today's map has: borders, roads and names. Land, sea and rivers stay. */
+export function showModern(map: MapLibre, on: boolean): void {
+  for (const layer of map.getStyle().layers ?? []) {
+    const modern = layer.id in LABELS || (layer.type === 'line' && !/^ctd-|water/.test(layer.id));
+    if (modern) map.setLayoutProperty(layer.id, 'visibility', on ? 'visible' : 'none');
+  }
+}
+
 /**
  * A quiet basemap on the page surface (light or dark): land is the paper, water a faint tint, borders
  * and roads hairlines. Labels are thinned to countries (smaller ones from zoom 3) and capitals (from
