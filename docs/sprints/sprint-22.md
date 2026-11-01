@@ -23,7 +23,7 @@ The founder, after 0.4.0: stories "sometimes feel empty", get to a million dots 
 
 ### Should
 - [x] **S22-07 Entries list their stories.** Done in 0.4.0; carried on here.
-- [ ] **S22-08 Open data on hand-written pages:** an entry shows its wider links from the atlas.
+- [x] **S22-08 Open data on hand-written pages:** an entry shows its wider links from the atlas.
 - [ ] **S22-09 The explorer and the Earth stream by view.**
 
 ### Found on the way
@@ -55,14 +55,22 @@ The founder, after 0.4.0: stories "sometimes feel empty", get to a million dots 
 
 ## Self-check
 
-- [ ] Tests and lints pass
-- [ ] Phone sweep clean with the Content-Security-Policy on (`--a11y --touch`)
-- [ ] Scenes looked at on desktop and phone
-- [ ] Every new quote matched against its source text
-- [ ] Docs updated
-- [ ] Known issues listed
+- [x] Tests and lints pass
+- [x] Phone sweep clean with the Content-Security-Policy on (`--a11y --touch`): 1,078 pages, 0 problems, 0 low contrast
+- [x] Scenes looked at on desktop and phone
+- [x] Every new quote matched against its source text
+- [x] Docs updated
+- [x] Known issues listed
 
 ## Known issues
+
+- **218,805 living people are in the atlas.** Their facts come from Wikidata and nobody here has read them. They are limited to the list in ADR-0023 (years only, no labels), marked as open data, kept out of search engines, and each page has "Something wrong?". The founder should know this is the main risk of the atlas.
+- Atlas dots ignore the era slider, and routes do not reach them.
+- Wikidata misfiles some items (Facebook as an artifact, the Renaissance as an organization).
+- Scene dots on phones are 16 by 28 px, under the 24 px target, in every story. With 20 scenes they cannot be wider in one row.
+- A story's map shows today's country names.
+- Nothing here has been tried on a real phone, only an emulated one.
+- The legal list in `docs/deploy.md` is still open.
 
 ## Review
 
