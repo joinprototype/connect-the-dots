@@ -33,7 +33,6 @@ pub struct EntityType {
 pub struct Lens {
     pub id: String,
     pub label: String,
-    pub view: String,
     pub layers: Vec<String>,
 }
 
@@ -64,18 +63,12 @@ fn yes() -> bool {
     true
 }
 
-fn from_owner() -> String {
-    "from".into()
-}
-
 #[derive(Debug, Clone, Deserialize)]
 pub struct Relation {
     pub label: String,
     pub inverse: String,
     pub from: TypeSet,
     pub to: TypeSet,
-    #[serde(default = "from_owner")]
-    pub owner: String,
     #[serde(default)]
     pub layers: Vec<String>,
     #[serde(default)]

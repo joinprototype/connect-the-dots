@@ -37,7 +37,7 @@ pub fn check_removed(root: &Path, kb: &Kb, base: &str) -> Vec<Diag> {
 
 #[cfg(test)]
 mod tests {
-    use std::{fs, process::Command};
+    use std::fs;
 
     use super::check_removed;
     use crate::testkit::{file, write_repo};
@@ -49,15 +49,7 @@ mod tests {
     #[test]
     fn a_removed_or_renamed_id_must_stay_as_an_alias() {
         let root = write_repo("ids", &[person("ann", "01AAAAAAAAAAAAAAAAAAAAAAAA", ""), person("bob", "01BBBBBBBBBBBBBBBBBBBBBBBB", "")]).unwrap();
-        let git = |args: &[&str]| {
-            Command::new("git")
-                .arg("-C")
-                .arg(&root)
-                .args(["-c", "user.name=Ann", "-c", "user.email=ann@example.org", "-c", "commit.gpgsign=false"])
-                .args(args)
-                .output()
-                .is_ok_and(|o| o.status.success())
-        };
+        let git = crate::testkit::git(&root, "Ann");
         if !git(&["init", "-q"]) {
             eprintln!("git is not available: skipped");
             return;

@@ -59,6 +59,8 @@ Santa Monica, the last of our test cases without a story, plays as one: an airfi
 ### After the release
 - [x] **A refactor pass, with the site byte for byte the same.** The world's `build` went from 320 lines to 56, in named stages. A chapter's checks went from 149 lines to 49, and the shot fields that name entries are now listed once, where they were listed three times, so a new field cannot be missed. One CSS rule nothing used is gone. The proof: 1,430 files the same but for the build time, the CSS rule and the world's timer; a 60,000-node world's tiles the same; a chapter broken on purpose gives the same 32 lines of errors.
 
+- [x] **A second pass for dead code.** Compiler checks, unused dependencies, public functions, CSS variables, template macros and repeated blocks all came back clean, so little was left: `owner` on all 57 relations and `view` on lenses (nothing read either), a question field no template used, two orphaned QA scripts, and a git helper two tests each carried. `@deck.gl/extensions` looks unused but stays: `geo-layers` needs it. The only output change is `schema.json` losing the lenses' `view`.
+
 ## Known issues
 
 - Not tried on a real phone or GPU. The globe scenes need several seconds to settle in software rendering.

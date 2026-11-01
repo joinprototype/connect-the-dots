@@ -82,7 +82,7 @@ fn parse_history(log: &str) -> HashMap<String, Vec<Commit>> {
 
 #[cfg(test)]
 mod tests {
-    use std::{path::Path, process::Command};
+    use std::path::Path;
 
     use super::{Commit, History, parse_history};
 
@@ -122,15 +122,7 @@ mod tests {
         let root = std::env::temp_dir().join(format!("ctd-test-{}-site-history", std::process::id()));
         let _ = std::fs::remove_dir_all(&root);
         std::fs::create_dir_all(root.join("content/entities")).unwrap();
-        let git = |args: &[&str]| {
-            Command::new("git")
-                .arg("-C")
-                .arg(&root)
-                .args(["-c", "user.name=Ann Author", "-c", "user.email=ann@example.org", "-c", "commit.gpgsign=false"])
-                .args(args)
-                .output()
-                .is_ok_and(|o| o.status.success())
-        };
+        let git = crate::testkit::git(&root, "Ann Author");
         if !git(&["init", "-q"]) {
             eprintln!("git is not available: skipped");
             return;

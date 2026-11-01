@@ -12,7 +12,7 @@
 | Voice | Whose perspective a source speaks for (e.g. `us-government`). Used to compute cross-perspective confirmation. |
 | Attribution | `according_to` on a claim. The claim is shown as "according to X", not as established fact. |
 | Layer | A family of relations: people, power, money, tech, history, ideas, places. |
-| Lens | A named way of looking: which layers to show and the default view (graph, timeline or map). |
+| Lens | A named way of looking: which layers to show. |
 | Methodology | Public parameters for path ranking, hub handling and layout, changed by PR. |
 | Chapter | An interactive story: markdown prose plus `scene` blocks of shots. |
 
@@ -121,7 +121,7 @@ Neutral, sourced prose about the subject, with links such as [[spacex]] and [[te
 | `reason` | no | Why the claim is disputed or deprecated. Pages and stories show it with the status. |
 | `note` | no | A short neutral clarification, shown with the link and in stories. |
 
-**Which file owns a claim.** The relation's `owner` side in the schema decides, usually the subject: `founded` lives in the founder's file. The engine builds the reverse view, so `spacex.md` shows "Founded by Elon Musk" without repeating it. Facts with many participants live in an event entity.
+**Which file owns a claim.** The `from` side, always: `founded` lives in the founder's file. The engine builds the reverse view, so `spacex.md` shows "Founded by Elon Musk" without repeating it. Facts with many participants live in an event entity.
 
 **Family roles.** On a relation with `kinship: true` (today `relative_of`), `role` describes the claim's owner, the entity whose file holds it. `mary-maxwell-gates.md` holds `{rel: relative_of, to: bill-gates, role: mother}`: Mary is Bill's mother. Her page reads "Mother of Bill Gates", his reads "Mary Maxwell Gates · mother", and stories read "Mary Maxwell Gates, mother of Bill Gates". Written in Bill's file, the same tie would be `{rel: relative_of, to: mary-maxwell-gates, role: son}`.
 
@@ -176,7 +176,6 @@ founded:
   inverse: founded by
   from: [person, org, group]
   to: [org, tradition, artifact, work, concept, group]
-  owner: from                 # the claim lives in the "from" entity's file
   layers: [people, power]
   temporal: true
   qualifiers: [role]
@@ -191,15 +190,14 @@ founded:
   dispute: false              # true = one side saying a finding is not shown (ADR-0019): must be attributed; see below
   caveat: null                # a plain sentence shown with records of this relation
 relative_of:
-  {label: relative of, inverse: relative of, from: [person], to: [person], owner: from, layers: [people], qualifiers: [role], sensitive: true, kinship: true}
+  {label: relative of, inverse: relative of, from: [person], to: [person], layers: [people], qualifiers: [role], sensitive: true, kinship: true}
 benefited_from:
-  {label: benefited from, inverse: benefited, from: any, to: [event], owner: from, layers: [power, history], attributed: true, traversable: false}
+  {label: benefited from, inverse: benefited, from: any, to: [event], layers: [power, history], attributed: true, traversable: false}
 holds_for_clients:
   label: holds shares for clients in
   inverse: shares held for clients by
   from: [org]
   to: [org]
-  owner: from
   layers: [money]
   qualifiers: [percent, shares, as_of]
   traversable: true
@@ -231,11 +229,11 @@ place:  {label: Place,        plural: Places,        layer: places, map: true}
 `lenses.yaml`:
 
 ```yaml
-- {id: all,     label: Everything,     view: graph,    layers: [people, power, money, tech, history, ideas, places]}
-- {id: power,   label: People & power, view: graph,    layers: [people, power]}
-- {id: money,   label: Money,          view: graph,    layers: [money]}
-- {id: ideas,   label: Ideas & tech,   view: graph,    layers: [ideas, tech]}
-- {id: history, label: History,        view: timeline, layers: [history, power]}
+- {id: all,     label: Everything,     layers: [people, power, money, tech, history, ideas, places]}
+- {id: power,   label: People & power, layers: [people, power]}
+- {id: money,   label: Money,          layers: [money]}
+- {id: ideas,   label: Ideas & tech,   layers: [ideas, tech]}
+- {id: history, label: History,        layers: [history, power]}
 ```
 
 Keep the list short: five lenses is the design limit ([ux-vision.md](ux-vision.md)). Places are not a lens; the Map is its own place.

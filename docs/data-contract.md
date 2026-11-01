@@ -339,7 +339,7 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 `chapters.html` also gets `questions[]`, the Questions shelf (question stories, featured first, then the richest, at most 24): `{ title, subtitle, url, kind: "Question", cover }`, and `questions_more`.
 
 `question.html` (`/q/<q>/<id>/`); a node is `{ id, name, kind, type_label, color, url }`:
-- `question`: `{ id, ask, label, title, shows, not, url, index_url, story_url, explore_url }`. `title` is the asked sentence ("Why did the dissolution of the Soviet Union happen?"); `shows` and `not` are full sentences; `story_url` may be null; `explore_url` is `/x/?focus=<id>`.
+- `question`: `{ id, ask, label, title, shows, not, url, story_url, explore_url }`. `title` is the asked sentence ("Why did the dissolution of the Soviet Union happen?"); `shows` and `not` are full sentences; `story_url` may be null; `explore_url` is `/x/?focus=<id>`.
 - `x` (the subject): `{ id, name, sentence, kind, type_label, when, aliases, url, rel_path }`. `sentence` is the name as used mid-sentence (`in_sentence`, e.g. "the Bolsheviks"). `when` is a label or null.
 - `counts`: `{ links, accounts, names, label }`. `links`: published lines on the record or in an account, each link once; `accounts`: distinct accounts (columns, including any cut); `label`: "7 links, 6 accounts".
 - `records[]`: one per question group that has lines on the record, or that no line answers and has `empty` text: `{ label, lines[], more, empty }` (`empty`: the text, or null).

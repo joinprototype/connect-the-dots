@@ -1,6 +1,10 @@
 //! A tiny content repository for unit tests: a minimal schema plus the files each test adds.
 
-use std::{fs, path::PathBuf};
+use std::{
+    fs,
+    path::{Path, PathBuf},
+    process::Command,
+};
 
 use crate::{diag::Diag, kb::Kb};
 
@@ -15,12 +19,26 @@ const SCHEMA: &[(&str, &str)] = &[
         "relative_of: {label: relative of, inverse: relative of, from: [person], to: [person], layers: [people], qualifiers: [role], sensitive: true, kinship: true}\n\
          founded: {label: founded, inverse: founded by, from: [person, org], to: [org], layers: [power], temporal: true}\n",
     ),
-    ("content/schema/lenses.yaml", "- {id: all, label: Everything, view: graph, layers: [people, power]}\n"),
+    ("content/schema/lenses.yaml", "- {id: all, label: Everything, layers: [people, power]}\n"),
     ("content/schema/source-tiers.yaml", "T1: {label: Primary record, primary: true}\nT2: {label: Scholarship & press, strong: true}\nT3: {label: Self-published}\n"),
     ("content/methodology/paths.yaml", "version: test\n"),
 ];
 
 pub type File = (String, String);
+
+/// Runs git in `root` as `author`. False when it fails, so a test can skip where git is missing.
+pub fn git<'a>(root: &'a Path, author: &str) -> impl Fn(&[&str]) -> bool + 'a {
+    let name = format!("user.name={author}");
+    move |args| {
+        Command::new("git")
+            .arg("-C")
+            .arg(root)
+            .args(["-c", &name, "-c", "user.email=ann@example.org", "-c", "commit.gpgsign=false"])
+            .args(args)
+            .output()
+            .is_ok_and(|o| o.status.success())
+    }
+}
 
 /// Writes the schema, then `files` (a schema path among them replaces the default), into a fresh
 /// repository under the temp directory, and returns its root. The caller removes it.

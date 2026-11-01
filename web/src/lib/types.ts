@@ -40,7 +40,6 @@ export interface RelationDef {
 export interface LensDef {
   id: string;
   label: string;
-  view: string;
   layers: string[];
 }
 
