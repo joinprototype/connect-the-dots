@@ -36,6 +36,6 @@ claims:
     to: us-government
     role: "received the Association's memorial in 1905; Leopold's counsel replied to it"
     src:
-      - {s: kowalsky-brief-1905, at: "Title page", quote: "IN REPLY TO MEMORIAL PRESENTED TO THE PRESIDENT OF THE UNITED STATES CONCERNING AFFAIRS IN THE CONGO STATE BY THE CONGO REFORM ASSOCIATION"}
+      - {s: kowalsky-brief-1905, at: "Title page", quote: "IN REPLY TO MEMORIAL PRESENTED TO THE PRESIDENT OF THE UNITED STATES OF AMERICA CONCERNING AFFAIRS IN THE CONGO STATE BY THE CONGO REFORM ASSOCIATION"}
 ---
 

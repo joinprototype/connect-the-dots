@@ -11,12 +11,12 @@ claims:
     rel: involved
     to: roger-casement
     src:
-      - {s: casement-blue-book-1904, at: "No. 3", quote: "I left Matadi on the 5th June, and arriving at Leopoldville on the 6th, remained in the neighbourhood of Stanley Pool until the 2nd July, when I set out for the Upper Congo."}
+      - {s: casement-blue-book-1904, at: "No. 3", quote: "I left Matadi on the 5th June, and arriving at Léopoldville on the 6th, remained in the neighbourhood of Stanley Pool until the 2nd July, when I set out for the Upper Congo."}
   - id: c2
     rel: involved
     to: kinshasa
     src:
-      - {s: casement-blue-book-1904, at: "No. 3", quote: "I left Matadi on the 5th June, and arriving at Leopoldville on the 6th, remained in the neighbourhood of Stanley Pool until the 2nd July, when I set out for the Upper Congo."}
+      - {s: casement-blue-book-1904, at: "No. 3", quote: "I left Matadi on the 5th June, and arriving at Léopoldville on the 6th, remained in the neighbourhood of Stanley Pool until the 2nd July, when I set out for the Upper Congo."}
   - id: c3
     rel: involved
     to: lake-tumba
