@@ -771,7 +771,8 @@ fn write_slim(kb: &Kb, out: &Path) -> Result<()> {
             data::SLIM_BUDGET / 1024
         );
     }
-    write(&out.join("data").join("graph-slim.json"), slim)
+    write(&out.join("data").join("graph-slim.json"), slim)?;
+    write(&out.join("data").join("ways.json"), data::ways(kb))
 }
 
 /// The search files: entries best-connected first, so a name that matches several resolves to the
@@ -945,6 +946,7 @@ fn entity_page(
     write(&s.out.join("e").join(&ent.id).join("index.html"), html)?;
     let mut details = data::details(kb, ent, &kept, story_url.as_deref(), asked);
     details["open"] = json!(s.open_links.get(&ent.id));
+    details["w"] = json!(ent.same_as.get("wikidata"));
     lives.details.entry(data::pack_of(&ent.id)).or_default().insert(ent.id.clone(), details);
     Ok(())
 }
@@ -1540,7 +1542,7 @@ mod tests {
         assert!(page.contains("Raised Catholic") && page.contains(">Background<"), "{page}");
         // never a link, a node, a search entry or a story line (ADR-0016)
         let pack = format!("data/e/{}.json", super::data::pack_of("zoe"));
-        for file in ["data/graph.json", "data/graph-slim.json", "data/schema.json", "data/search/0.json", pack.as_str()] {
+        for file in ["data/graph.json", "data/graph-slim.json", "data/ways.json", "data/schema.json", "data/search/0.json", pack.as_str()] {
             let text = read(file);
             assert!(!text.is_empty() && !text.contains("Raised Catholic") && !text.contains("Leeds"), "{file}");
         }

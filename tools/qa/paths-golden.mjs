@@ -4,7 +4,7 @@
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { decodeSlim, indexGraph } from '../../web/src/lib/data.ts';
+import { decodeSlim, decodeWays, indexGraph } from '../../web/src/lib/data.ts';
 import { findPaths } from '../../web/src/lib/paths.ts';
 
 const dir = process.argv.slice(2).find((a) => !a.startsWith('--'));
@@ -16,6 +16,8 @@ const wanted = Number((process.argv.find((a) => a.startsWith('--pairs=')) || '--
 const read = (name) => JSON.parse(readFileSync(join(dir, 'data', name), 'utf8'));
 const schema = read('schema.json');
 const idx = indexGraph({ ...schema, ...decodeSlim(schema, read('graph-slim.json')), sources: {} });
+// a pair's answer searches the smaller file: the same routes, or it is wrong
+const ways = indexGraph({ ...schema, ...decodeWays(schema, read('ways.json')), sources: {} });
 const m = schema.methodology;
 const ids = [...idx.nodes.keys()].sort();
 
@@ -35,7 +37,11 @@ for (const [a, b] of pairs) {
   const rust = JSON.parse(execFileSync('cargo', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }));
   const ts = findPaths(idx, a, b).map((p) => ({ nodes: p.nodes, cost: p.cost }));
   routes += rust.length;
-  const same = rust.length === ts.length && rust.every((r, i) => r.nodes.join('>') === ts[i].nodes.join('>') && close(r.cost, ts[i].cost));
+  const small = findPaths(ways, a, b);
+  const same =
+    rust.length === ts.length &&
+    rust.length === small.length &&
+    rust.every((r, i) => r.nodes.join('>') === ts[i].nodes.join('>') && close(r.cost, ts[i].cost) && r.nodes.join('>') === small[i].nodes.join('>') && close(r.cost, small[i].cost));
   if (!same) bad.push({ a, b, rust, ts });
 }
 console.log(`${pairs.length} pairs, ${routes} routes, ${bad.length} pairs differ`);
