@@ -2,7 +2,7 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
-## Next
+## 0.4.5 (2026-11-02)
 
 - Entries' details and their generated stories now share files, which takes the site from 18,034 files to 12,482 and leaves room for far more. Addresses stay the same.
 
