@@ -173,6 +173,9 @@ tale_about:
 # Dealings on the record: a payment, a job, a meeting, a flight. Contact is not a finding, so routes stay off it (ADR-0027).
 dealt_with:
   {label: dealt with, inverse: dealt with, from: [person, org], to: [person, org], layers: [people, money], temporal: true, traversable: false, sensitive: true, qualifiers: [role, amount, currency], caveat: "Contact on the record. By itself it shows neither knowledge of a crime nor a part in one."}
+# Who a case, an agreement or an event names as a party, where a route through it would read as a tie (ADR-0027).
+party_to:
+  {label: party to, inverse: parties, from: [person, org], to: [event, work], layers: [history], temporal: true, traversable: false, noun: true, qualifiers: [role], inverse_reads: list}
 # Often one writer's reading, so routes stay off it, like every interpretation.
 influenced:
   {label: influenced, inverse: influenced by, from: [person, work, tradition, concept, event], to: [person, work, tradition, concept, org, event], layers: [ideas], traversable: false}

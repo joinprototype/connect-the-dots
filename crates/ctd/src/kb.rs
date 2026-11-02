@@ -47,6 +47,8 @@ pub struct Entity {
     pub same_as: BTreeMap<String, String>,
     /// Question ids (questions.yaml) that get no page for this entry.
     pub not_asked: Vec<String>,
+    /// Routes stay off it, and off the events and works about it (ADR-0027).
+    pub sealed: bool,
     pub image: Option<Value>,
     pub body: String,
     pub rel_path: String,
@@ -544,6 +546,7 @@ fn read_entities(schema: &Schema, docs: &[EntityDoc], diags: &mut Vec<Diag>) -> 
             coords: f.coords,
             same_as,
             not_asked: f.not_asked.clone(),
+            sealed: f.sealed,
             image,
             body: doc.body.clone(),
             rel_path: file.clone(),
@@ -958,12 +961,26 @@ fn read_claims(cx: &Names, entities: &[Entity], diags: &mut Vec<Diag>) -> (Vec<E
     }
     // A tale is shown, never walked: one route through it would read as a link on the record.
     let is_seal = |e: &Edge| cx.schema.relations.get(&e.rel).is_some_and(|r| r.seals);
-    let sealed: HashSet<&str> = edges.iter().filter(|e| is_seal(e)).map(|e| e.from.as_str()).collect();
+    let tales: HashSet<&str> = edges.iter().filter(|e| is_seal(e)).map(|e| e.from.as_str()).collect();
+    // So is an entry marked `sealed`, with the events and works about it: contact is not a finding (ADR-0027).
+    let hand: HashSet<&str> = entities.iter().filter(|e| e.sealed).map(|e| e.id.as_str()).collect();
+    let about = |id: &str, other: &str| hand.contains(other) && matches!(entities[cx.index[id]].kind.as_str(), "event" | "work");
+    let mut sealed = hand.clone();
+    for e in &edges {
+        if about(&e.from, &e.to) {
+            sealed.insert(&e.from);
+        }
+        if about(&e.to, &e.from) {
+            sealed.insert(&e.to);
+        }
+    }
     for e in edges.iter().filter(|e| e.traversable && !is_seal(e)) {
         for end in [&e.from, &e.to] {
-            if sealed.contains(end.as_str()) {
-                let file = &entities[cx.index[&e.from]].rel_path;
+            let file = &entities[cx.index[&e.from]].rel_path;
+            if tales.contains(end.as_str()) {
                 diags.push(Diag::err(file, format!("`{}` opens a route through `{end}`, which tells a tale", e.rel)));
+            } else if sealed.contains(end.as_str()) {
+                diags.push(Diag::err(file, format!("`{}` opens a route through `{end}`, which is sealed (ADR-0027)", e.rel)));
             }
         }
     }
@@ -1448,7 +1465,7 @@ pub(crate) mod tests {
     fn frontmatter_errors_give_the_files_line_numbers() {
         let (_, diags) = load(
             "kb-lines",
-            &[file("content/entities/person/zo/zoe.md", "---\nid: zoe\ntype: person\nname: Zoe\nclaims:\n  - id: c1\n   rel: founded\n---\n")],
+            &[file("content/entities/person/zo/zoe.md", &format!("---\nid: zoe\ntype: person\nname: Zoe\nsealed: true\nclaims:\n{party}---\n")),
         );
         let msg = said(&diags, "invalid frontmatter").join(" ");
         // the link whose `rel` is lost to a bad indent starts on line 6 of the file (line 5 of the YAML)
@@ -1542,6 +1559,32 @@ pub(crate) mod tests {
         let claims = format!("  - {{id: c1, rel: tale_about, to: ann, {cite}}}\n  - {{id: c2, rel: involved, to: ann, {cite}}}\n");
         let (_, diags) = load("kb-tale", &[relations, source("press", "T2"), entity("person", "ann", "Ann", ""), entity("org", "tale", "A tale", &claims)]);
         assert_eq!(said(&diags, "tells a tale").len(), 1, "{diags:?}");
+    }
+
+    #[test]
+    fn no_route_touches_a_sealed_entry_or_an_event_about_it() {
+        let relations = file(
+            "content/schema/relations.yaml",
+            "party_to: {label: party to, inverse: parties, from: [person], to: [event], layers: [power], traversable: false}\n\
+             involved: {label: involved, inverse: involved in, from: [event], to: [person], layers: [power]}\n",
+        );
+        let cite = "src: [{s: press, quote: \"it was said\"}]";
+        let party = format!("  - {{id: c1, rel: party_to, to: inquiry, {cite}}}\n");
+        let involved = format!("  - {{id: c1, rel: involved, to: ann, {cite}}}\n");
+        let (_, diags) = load(
+            "kb-sealed",
+            &[
+                relations,
+                source("press", "T2"),
+                entity("person", "ann", "Ann", ""),
+                file(
+                    "content/entities/person/zo/zoe.md",
+                    &format!("---\nuid: 01J0000000000000000000ZOE1\nid: zoe\ntype: person\nname: Zoe\nsealed: true\nclaims:\n{party}---\n"),
+                ),
+                entity("event", "inquiry", "An inquiry", &involved),
+            ],
+        );
+        assert_eq!(said(&diags, "is sealed").len(), 1, "{diags:?}");
     }
 
     #[test]

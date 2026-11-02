@@ -15,8 +15,12 @@ Routes would make that worse. Epstein would become one of the shortest ways betw
 2. It needs a documented dealing: a payment, a job, a meeting, a flight. A name in an address book, a mention by someone else and an unverified tip are not dealings, and make no link.
 3. A claim that someone worked for an intelligence service is told as a claim, with `according_to` and `tale_about`, until a government or court record shows it. It makes no link to the service.
 
+4. A relation `party_to`, for who a case, an agreement or an event names as a party, also off routes.
+5. `sealed: true` on an entry makes this a rule the build checks: `ctd check` refuses any traversable claim that touches the entry, or an event or work linked to it. The first four writers each opened routes without seeing it, through ordinary links on events ("involved"), so a brief was not enough. Jeffrey Epstein and Ghislaine Maxwell are sealed.
+
 ## Consequences
 
 - Readers can see every documented tie on a person's page, but Connect never passes through one.
+- Plain facts about a sealed person, such as a job, must use these relations too. That costs little, and leaves no way round the rule.
 - Any later hub of the same kind can use this relation.
 - The founder can reopen the routing choice. It is one word in `content/schema/relations.yaml`.

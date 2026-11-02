@@ -146,6 +146,9 @@ pub struct EntityFront {
     /// Questions never asked of this entry: an auto answer would misread it (a persecution, say).
     #[serde(default)]
     pub not_asked: Vec<String>,
+    /// No route may touch this entry, or an event or work about it (ADR-0027).
+    #[serde(default)]
+    pub sealed: bool,
     #[serde(default)]
     pub image: Option<serde_json::Value>,
     #[serde(default)]

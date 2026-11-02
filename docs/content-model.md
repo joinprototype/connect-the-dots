@@ -76,6 +76,7 @@ when: 1971-06-28/..                  # lifespan for people; extent for events an
 place: pretoria                      # optional primary place
 same_as: {wikidata: Q317521}
 # not_asked: [benefited]   # question ids that get no generated page: for an entry a template answer would misread
+# sealed: true             # no route may touch this entry, or an event or work linked to it (ADR-0027)
 image:                               # optional; url must be http(s); the ingest bot adds sha256
   url: https://upload.wikimedia.org/...
   license: CC BY-SA 4.0
@@ -446,4 +447,5 @@ Shot fields (v0; the full list is in [data-contract.md](data-contract.md)):
     A `legal` relation is `sensitive` and not `traversable` (load error), and every legal claim has `when` (error).
     A `dispute` relation is `attributed` (load error). Each claim names only its owner in `according_to`, quotes the owner's own words, and points to a work with a `finding`; a `finding` is quoted and sits only on a type a dispute can point to (errors).
 19. `in_sentence` may only add "the" and lower the first letter of the name (error otherwise).
+    A traversable claim that touches a `sealed` entry, or an event or work linked to one, is an error (ADR-0027).
 20. An attributed claim on a relation that answers a question needs a quote, or it is left off question pages (warning).
