@@ -6,14 +6,18 @@
 
 **Ask how anything connects. See the proof.**
 
-## Focus: four places only
+## Focus: one box ([ADR-0028](decisions/0028-one-box.md))
 
-| Place | What it is |
+The header on every page holds the mark and one box. Type a name, two names, a year or a question, and you get the answer with its proof. Home opens already asking, on a real question and its answer.
+
+| What an answer leads to | What it is |
 |---|---|
-| **Ask** (home) | One question field and a shelf of story covers. Questions: "How are A and B connected?", "Who is behind X?", "Why did X happen?", "Who benefited from X?" |
-| **Stories** | Every answer plays as a story: written chapters, generated entity stories, generated path stories. Scroll or Watch; pause anywhere; "Explore from here". |
-| **Map** | The eagle view: one continuous zoom from planet (eras, regions) to a single dot and its links. Click a dot and its web appears. |
-| **Connect** | Any two of the million, and the way between them, drawn stop by stop and on the Map. |
+| **Stories** | Every answer can play as a story. The Stories page draws them as islands of dots, with a plain list beside it. Any name in a story is a door to that entry. |
+| **The Map** | The eagle view: one continuous zoom from planet to a single dot and its links. |
+| **Explore** | The written record as a web, with routes. |
+| **A pair** (`/r/`) | Two things: a direct tie first, with its caveat, then the way between them, stop by stop. |
+
+None of these is a door in a nav. The footer lists them.
 
 Entity pages are the "book pages" these three lead to:
 - a cover;
