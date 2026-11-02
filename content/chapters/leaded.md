@@ -5,6 +5,7 @@ type: chapter
 title: Leaded
 subtitle: How lead came to be put in gasoline, what was said and known at the time, and what was found afterwards
 summary: In February 1923 gasoline with lead in it went on sale in Dayton, after federal doctors had already asked whether it was safe. Here is the road from a General Motors laboratory to the end of leaded petrol, from government reports, court records and the scientists' own words, with what each side said and what is still disputed.
+featured: true
 ---
 
 In 1921 General Motors' research men found that lead stopped engine knock. Gasoline with it went on sale in Dayton in 1923, and in 1924 General Motors and Standard Oil of New Jersey made the Ethyl company to sell the fluid. In 1925 the Surgeon General asked whether that was a public health question. In 2021 the U.N. said the last country had stopped using leaded petrol.

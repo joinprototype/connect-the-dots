@@ -1,18 +1,18 @@
 import type { GraphIndex } from '../lib/data';
 import { roundYear } from '../lib/dates';
-import { currentUrl, replaceUrl } from '../lib/history';
+import { currentUrl, pushUrl, replaceUrl } from '../lib/history';
 import { candidates } from '../lib/search';
 
-/** Explorer state in the query string: focus, lens, p, t, from, to, view. */
+/** Explorer state in the query string: focus, link, lens, p, t, from, to. */
 export interface UrlState {
   focus: string | null;
+  /** The link whose proof is open. */
+  link: string | null;
   lens: string;
   p: string;
   t: number | null;
   from: string | null;
   to: string | null;
-  /** "graph" (default) or "world": the whole-map tile viewer. */
-  view: 'graph' | 'world';
 }
 
 /** An entity id, or a name or alias typed by a person ("Bill Gates", "JFK"), resolved to an id. Aliases
@@ -34,38 +34,44 @@ export async function readUrl(idx: GraphIndex): Promise<UrlState> {
   const p = q.get('p');
   const t = q.get('t');
   const tn = t != null && t !== '' ? Number(t) : NaN;
+  const link = q.get('link');
   return {
     focus,
+    link: link && idx.edges.has(link) ? link : null,
     lens: lens && idx.lenses.has(lens) ? lens : 'all',
     p: p === 'facts' || (p && idx.perspectives.has(p)) ? p : 'all',
     t: Number.isFinite(tn) ? tn : null,
     from,
     to,
-    view: q.get('view') === 'world' ? 'world' : 'graph',
   };
 }
 
-export function writeUrl(s: UrlState): void {
+/** Where an address stands: a change here is a step Back can undo, a filter's is not. */
+const placeOf = (url: URL) => ['focus', 'link', 'from', 'to'].map((k) => url.searchParams.get(k)).join(' ');
+
+export function writeUrl(s: UrlState, tidy = false): void {
   const q = new URLSearchParams();
   if (s.focus) q.set('focus', s.focus);
+  if (s.link) q.set('link', s.link);
   if (s.lens && s.lens !== 'all') q.set('lens', s.lens);
   if (s.p && s.p !== 'all') q.set('p', s.p);
   if (s.t != null) q.set('t', String(roundYear(s.t)));
   if (s.from) q.set('from', s.from);
   if (s.to) q.set('to', s.to);
-  if (s.view === 'world') q.set('view', 'world');
   const qs = q.toString();
-  // Coalesced and guarded: Safari throws after 100 history writes in 10 s (the time slider used to hit it).
-  const url = currentUrl();
+  const before = currentUrl();
+  const url = new URL(before);
   url.search = qs;
-  replaceUrl(url);
+  if (url.href === before.href) return;
+  if (!tidy && placeOf(url) !== placeOf(before)) pushUrl(url);
+  // Coalesced and guarded: Safari throws after 100 history writes in 10 s (the time slider used to hit it).
+  else replaceUrl(url);
 }
 
 export function explorerHref(s: Partial<UrlState>): string {
   const q = new URLSearchParams();
-  for (const k of ['focus', 'lens', 'p', 't', 'from', 'to', 'view'] as const) {
+  for (const k of ['focus', 'link', 'lens', 'p', 't', 'from', 'to'] as const) {
     const v = s[k];
-    if (k === 'view' && v === 'graph') continue;
     if (v != null && v !== '') q.set(k, typeof v === 'number' ? String(roundYear(v)) : v);
   }
   const qs = q.toString();

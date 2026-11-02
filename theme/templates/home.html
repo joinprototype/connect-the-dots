@@ -1,77 +1,29 @@
 {% extends "base.html" %}
-{% from "macros.html" import count, book %}
+{% from "macros.html" import book %}
 {% block body_class %}home{% endblock %}
-{# the picker shows the checked question's sentence; browsers without :has() show every sentence #}
-{% block head %}{% if questions|length > 1 %}<style>.ask:has(.ask-pick :checked) .ask-panel { display: none; }{% for q in questions %} .ask:has(.ask-pick [value="{{ q.id }}"]:checked) .ask-panel[data-q="{{ q.id }}"]{% if not loop.last %},{% endif %}{% endfor %} { display: block; }</style>{% endif %}{% endblock %}
 {% block main %}
-{# The Ask form: one sentence per question in content/schema/questions.yaml (a plain route question
-   when there is none), chosen with a segmented control. The control is radios, and CSS :has() shows
-   the checked question's sentence, so switching needs no script. Each sentence is its own form:
-   without JavaScript a route question opens the explorer, any other question its index of answers. #}
-{% set asks = questions or [{"id": "route", "ask": "How are {a} and {b} connected?", "label": "How are", "route": true, "subjects": [], "url": "/x/", "names": [], "more": 0, "try": []}] %}
-<section class="ask">
-  <img class="ask-picture" src="/world/picture.svg" alt="" width="1000" height="1000">
-  <h1>Ask how anything connects.</h1>
-  {% if site.atlas %}<p class="ask-lede">A million things in the world, linked. What we wrote by hand shows its proof. What came from open data says so.</p>
-  {% else %}<p class="ask-lede">Every link shows its proof. Every interpretation says whose it is.</p>{% endif %}
-  {% if asks|length > 1 %}
-  <div class="ask-pick" role="radiogroup" aria-label="Question">
-    {% for q in asks %}<label class="ask-seg"><input type="radio" name="ask-q" id="ask-pick-{{ q.id }}" value="{{ q.id }}"{% if loop.first %} checked{% endif %}><span>{{ q.label }}</span></label>{% endfor %}
+{# One name and the written stories it runs through. Every thread is in the page and they share one
+   place, so the tallest holds the room and "Another name" moves nothing below it. Without JavaScript
+   the first one shows. The picks are in content/featured.yaml. #}
+<section class="threads">
+  <h1 class="sr-only">{{ site.title }}</h1>
+  <div class="thread-stack">
+    {% for t in threads %}
+    <article class="thread{% if loop.first %} on{% endif %}" style="--c: {{ t.node.color }}">
+      <h2><a class="thread-name" href="{{ t.node.url }}">{{ t.name }}</a> <span class="thread-says">runs through {{ t.count }} stories</span></h2>
+      <ol class="thread-line">
+        {% for c in t.stories %}
+        <li><a href="{{ c.url }}"><span class="thread-title">{{ c.title }}</span>{% if c.subtitle %}<span class="thread-sub">{{ c.subtitle }}</span>{% endif %}</a></li>
+        {% endfor %}
+      </ol>
+      {% if t.cut %}<p class="thread-more"><a href="/c/">and {{ t.more }} more</a></p>{% endif %}
+    </article>
+    {% endfor %}
   </div>
-  {% endif %}
-  {% for q in asks %}
-  <div class="ask-panel" id="ask-panel-{{ q.id }}" data-q="{{ q.id }}">
-    {% if q.route %}
-    {% set a = q.ask|split("{a}") %}{% set b = a[1]|split("{b}") %}
-    <form class="ask-form" action="/x/" method="get" autocomplete="off" data-q="{{ q.id }}">
-      <span class="ask-word">{{ a[0]|trim }}</span>
-      <input name="from" list="ask-names" placeholder="{{ paths[0].from.name if paths else 'a person' }}" aria-label="{{ a[0]|trim }} …" required>
-      <span class="ask-word">{{ b[0]|trim }}</span>
-      <span class="ask-field"><input name="to" list="ask-names" placeholder="{{ paths[0].to.name if paths else 'another' }}" aria-label="{{ b[0]|trim }} …{{ b[1] }}" required>{% if b[1]|trim %}<span class="ask-word">{{ b[1]|trim }}</span>{% endif %}</span>
-      <button class="button primary" type="submit">Ask</button>
-    </form>
-    {% if paths %}<p class="ask-try">Try {% for p in paths[:4] %}<a href="{{ p.story_url or p.url }}">{{ p.from.name }} and {{ p.to.name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
-    {% else %}
-    {% set w = q.ask|split("{x}") %}
-    <form class="ask-form" action="{{ q.url }}" method="get" autocomplete="off" data-q="{{ q.id }}">
-      <span class="ask-word">{{ w[0]|trim }}</span>
-      <span class="ask-field"><input name="x" list="ask-list-{{ q.id }}" placeholder="{{ q.try[0].name if q.try else '' }}" aria-label="{{ w[0]|trim }} …{{ w[1] }}" required>{% if w[1]|trim %}<span class="ask-word">{{ w[1]|trim }}</span>{% endif %}</span>
-      <button class="button primary" type="submit">Ask</button>
-      <datalist id="ask-list-{{ q.id }}">{% for n in q.names %}<option value="{{ n.name }}"></option>{% endfor %}</datalist>
-    </form>
-    <div class="ask-result" aria-live="polite"></div>
-    {% if q.try %}<p class="ask-try">Try {% for t in q.try[:4] %}<a href="{{ t.url }}">{{ t.name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
-    {% endif %}
-    {% if q.shows %}<p class="ask-scope">{{ q.shows }} {{ q.not }}</p>{% endif %}
-  </div>
-  {% endfor %}
-  {% if site.atlas %}<p class="ask-more"><a href="/r/">Or connect any two of a million things</a></p>{% endif %}
-  <datalist id="ask-names">{% for n in ask_names %}<option value="{{ n.name }}"></option>{% endfor %}</datalist>
-  <script type="application/json" id="ask-data">{{ {"questions": asks, "names": ask_names, "complete": ask_names|length >= stats.entities}|tojson }}</script>
-  <script type="application/json" id="ask-types">{ {% for g in groups %}{{ g.id|tojson }}: [{{ g.items[0].node.type_label|tojson }}, {{ g.label|lower|tojson }}]{% if not loop.last %}, {% endif %}{% endfor %} }</script>
+  {% if threads|length > 1 %}<button type="button" class="button thread-next">Another name</button>{% endif %}
+  <p class="thread-notice">A connection is not evidence of wrongdoing.</p>
+  <p class="sr-only" aria-live="polite" id="thread-said"></p>
 </section>
-
-{% if route %}
-<section class="example" aria-label="Example answer">
-  <figure class="example-card">
-    <ol class="route-stops" style="--n: {{ route.stops|length }}" aria-label="One route from {{ route.from.name }} to {{ route.to.name }}">
-      {% for s in route.stops %}
-      <li class="route-stop {{ 'up' if loop.index is odd else 'down' }}{% if s.attributed %} attributed{% endif %}" style="--i: {{ loop.index0 }}">
-        {% if s.via %}<span class="route-via">{{ s.via }}</span>{% endif %}
-        <a class="route-dot" href="{{ s.node.url }}"><span class="route-name">{{ s.node.name }}</span></a>
-      </li>
-      {% endfor %}
-    </ol>
-    <figcaption>
-      <span>{{ route.from.name }} to {{ route.to.name }}: {{ count(route.hops, "sourced link") }}. Dashed means one side's account.</span>
-      <span class="actions">
-        {% if route.story_url %}<a class="button primary" href="{{ route.story_url }}">Play</a>{% endif %}
-        <a class="button" href="{{ route.url }}">See the proof</a>
-      </span>
-    </figcaption>
-  </figure>
-</section>
-{% endif %}
 
 {% if shelf %}
 <section class="shelf-section" aria-labelledby="shelf-h">
@@ -81,22 +33,12 @@
     {{ book(b) }}
     {% endfor %}
   </div>
+  <p class="index-more"><a href="/c/">All {{ stories }} stories ›</a></p>
 </section>
 {% endif %}
 
-<section class="atlas-index" aria-labelledby="index-h">
-  <h2 id="index-h">On the map</h2>
-  <p class="index-intro">{{ count(stats.entities, "entry", "entries") }}, {{ count(stats.claims, "sourced link") }}, {{ count(stats.perspectives, "named perspective") }}.</p>
-  <div class="index-columns">
-    {% for g in groups %}
-    <section class="index-group">
-      <h3>{{ g.label }}</h3>
-      <ul class="index-list">
-        {% for i in g.items %}<li><a href="{{ i.node.url }}">{{ i.node.name }}</a>{% if i.when %} <span class="index-when">{{ i.when }}</span>{% endif %}</li>{% endfor %}
-      </ul>
-      {% if g.more %}<p class="index-more"><a href="/t/{{ g.id }}/">and {{ g.more }} more ›</a></p>{% endif %}
-    </section>
-    {% endfor %}
-  </div>
+<section class="home-can" id="index-h">
+  <p class="home-can-box">The box at the top of every page takes a name, two names, a year, or a question: who is behind something, why it happened, who benefited.</p>
+  <p class="index-more">Every entry, A to Z: {% for k in kinds %}<a href="/t/{{ k.id }}/">{{ k.label }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
 </section>
 {% endblock %}

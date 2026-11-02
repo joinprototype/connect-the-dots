@@ -45,6 +45,9 @@
       </ol>{% endmacro %}
 
 {# A story's cover on a shelf: cover art, kind, title and subtitle. #}
+{# Stories as a plain list: a name and its one line, between hairlines. Items: { title, subtitle?, url }. #}
+{% macro tales(items) %}<ul class="tales">{% for c in items %}<li><a href="{{ c.url }}"><span class="tale-name">{{ c.title }}</span>{% if c.subtitle %}<span class="tale-line">{{ c.subtitle }}</span>{% endif %}</a></li>{% endfor %}</ul>{% endmacro %}
+
 {% macro book(b) %}<a class="book" href="{{ b.url }}">
       <span class="book-cover">{{ b.cover|safe }}</span>
       <span class="book-kind">{{ b.kind }}</span>
@@ -54,3 +57,5 @@
 
 {# The way to correct a page: a public issue for readers, the file itself for those who can edit it. #}
 {% macro corrections(site, name, url, rel_path) %}{% set report = "Page: " ~ site.url ~ url ~ "\n\nWhat is wrong or missing:\n\nA source that shows it:\n" %}<p class="file-path page-fix">Something wrong or missing? <a href="{{ site.repo }}/issues/new?title={{ ("Correction: " ~ name)|urlencode }}&amp;body={{ report|urlencode }}">Tell us, with a source</a>, or <a href="{{ site.repo }}/edit/main/{{ rel_path }}">edit this page</a>.</p>{% endmacro %}
+{# each kind of thing's ink for the doors in a story's text (web/src/story/story.css) #}
+{% macro door_inks(site) %}<style>{% for l in site.layers %}.door-{{ l.id }}{--door:var(--layer-{{ l.id }})}{% endfor %}</style>{% endmacro %}

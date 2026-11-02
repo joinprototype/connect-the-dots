@@ -67,24 +67,14 @@ export interface PassiveModel {
   holders: string[];
   /** Holders whose every claim is passive: they fold into the meta-node when collapsed. */
   absorbed: Set<string>;
-  /** Held entity -> passive claims pointing at it. */
-  byTarget: Map<string, GEdge[]>;
 }
 
 export function passiveModel(idx: GraphIndex): PassiveModel {
   const edges = [...idx.edges.values()].filter((e) => e.passive);
   const holders = [...new Set(edges.map((e) => e.from))].sort();
   const absorbed = new Set(holders.filter((h) => (idx.incident.get(h) ?? []).every((e) => e.passive)));
-  const byTarget = new Map<string, GEdge[]>();
-  for (const e of edges) {
-    const list = byTarget.get(e.to) ?? [];
-    list.push(e);
-    byTarget.set(e.to, list);
-  }
-  return { edges, holders, absorbed, byTarget };
+  return { edges, holders, absorbed };
 }
-
-export const metaEdgeId = (target: string): string => `${META_ID}>${target}`;
 
 /** Best of several visibilities. */
 export function bestVis(list: Vis[]): Vis {

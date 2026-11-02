@@ -1,10 +1,13 @@
-# Editorial picks: which connections get a generated story on the home page and in Stories,
-# and which life stories sit on the home shelf. Ids are entity ids (aliases work too).
-# The first connection is drawn as the example route on the home page; the first four are the
-# "Try" links. Later ones appear in the Stories library only.
+# Editorial picks. Ids are entity ids (aliases work too).
+# `threads` open the home page, in order: one name and the written stories it runs through. A person
+# reviews every pick: people, organizations and places only, none sealed (ADR-0027), nothing that
+# groups anyone by heritage (ADR-0016), and no persecution story beside modern finance. A story
+# counts from two scenes on the name, and a thread needs two stories, or the home page leaves it out.
+# `connections` each get a generated route story in the Stories library.
 # A pair can carry a note the route story states up front: {between: [a, b], note: "…"}.
-# `questions` are question pages as <question>/<entity id> (content/schema/questions.yaml): the Ask
-# form's "Try" links and the first books of the Questions shelf, always kept when pages are capped.
+# `questions` are question pages as <question>/<entity id> (content/schema/questions.yaml): the
+# first books of the Questions shelf, always kept when pages are capped.
+threads: [standard-oil, john-d-rockefeller, harvard-university, blackrock, exxonmobil, bill-gates, zurich, boeing]
 connections:
   - [moses, elon-musk]
   - [bill-gates, ibm]
@@ -20,7 +23,6 @@ connections:
     note: "This is a route of links, not a line of cause. The ARPANET's builders say RAND's work ran in parallel with theirs; Paul Baran says Larry Roberts had seen his reports."
   - between: [rise-of-cities-in-mesopotamia, bible]
     note: "Two steps rest on one historian's account each, and say so. Movable type came first in China and Korea; this route follows the alphabet."
-lives: [bill-gates, jeff-bezos, mark-zuckerberg, soviet-union, vladimir-lenin, mikhail-gorbachev, cuban-missile-crisis, elon-musk]
 questions:
   - behind/meta-platforms
   - behind/blackrock

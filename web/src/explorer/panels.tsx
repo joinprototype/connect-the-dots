@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useMemo, type ReactNode } from 'react';
 import { detailOf, kinshipRole, sentence, sentenceText } from '../lib/claims';
-import { loadDetails, nameOf, type GraphIndex } from '../lib/data';
+import { nameOf, type GraphIndex } from '../lib/data';
 import { formatAsOf } from '../lib/dates';
 import { edgeTime, META_LABEL, nodeTime, passiveModel, type Vis } from '../lib/filters';
 import type { PathResult } from '../lib/paths';
 import { entityStoryUrl, NOTICE, routeStoryUrl, routeSummary } from '../lib/plain';
-import type { GEdge } from '../lib/types';
+import type { GEdge, GNode } from '../lib/types';
 import { Badges, ClaimCard, Sentence, typeDot } from './ui';
 import { useWords } from './words';
 
@@ -17,9 +17,12 @@ export function NodeDetails(props: {
   /** Time filter (decimal year) or null. */
   t?: number | null;
   edgeVis: (e: GEdge) => Vis;
+  /** The written stories it is in: `[title, url]`. */
+  stories: [string, string][];
   onEntity: (id: string) => void;
   onEdge: (id: string) => void;
-  onConnectFrom: (id: string) => void;
+  /** The pointer rests on a name. */
+  onNear: (id: string) => void;
 }): ReactNode {
   const { idx, id } = props;
   useWords(idx, [id]);
@@ -40,28 +43,25 @@ export function NodeDetails(props: {
   const asOf = t != null ? formatAsOf(t) : '';
   const own = nodeTime(idx, id, t);
   const story = entityStoryUrl(idx, id);
-  // the explorer draws the record; its page lists what open data holds besides
-  const [open, setOpen] = useState<number | null>(null);
-  useEffect(() => {
-    let live = true;
-    setOpen(null);
-    void loadDetails(idx, id).then((d) => {
-      if (live) setOpen(d?.open ?? null);
-    });
-    return () => {
-      live = false;
-    };
-  }, [idx, id]);
+  // the picture draws the record; its page lists what open data holds besides
+  const open = idx.details.get(id)?.open ?? null;
   return (
-    <div className="ctdx-details">
+    <div
+      className="ctdx-details"
+      onPointerOver={(e) => {
+        const near = (e.target as Element).closest<HTMLElement>('[data-walk]')?.dataset.walk;
+        if (near) props.onNear(near);
+      }}
+    >
       <p className="ctdx-kind" style={typeDot(idx, n)}>
         {type?.label ?? n.type}
         {n.when ? <span className="ctdx-when"> · {n.when.label}</span> : null}
         {own === 'past' ? <span className="ctdx-badge is-past">over by {asOf}</span> : null}
         {own === 'future' ? <span className="ctdx-badge is-future">not yet in {asOf}</span> : null}
       </p>
-      <h2>{n.name}</h2>
-      {n.summary ? <p className="ctdx-summary">{n.summary}</p> : null}
+      <h2 tabIndex={-1}>{n.name}</h2>
+      {/* its words come from a file: the space is kept, so the list under it does not jump */}
+      <p className="ctdx-summary">{n.summary}</p>
       {n.aliases?.length ? <p className="ctdx-aliases">Also known as {n.aliases.join(', ')}</p> : null}
       <div className="ctdx-actions">
         {story ? (
@@ -69,19 +69,27 @@ export function NodeDetails(props: {
             Play the story
           </a>
         ) : null}
-        <a className={`ctdx-btn${story ? '' : ' is-primary'}`} href={n.url}>
-          Open page
-        </a>
-        <button type="button" className="ctdx-btn is-ghost" onClick={() => props.onConnectFrom(id)}>
-          Find a route from here
-        </button>
+        <a href={n.url}>Open page</a>
+        <a href={`/w/?focus=${encodeURIComponent(id)}`}>On the Map</a>
       </div>
+      {props.stories.length ? (
+        <>
+          <h3 className="ctdx-section-h">Stories through here</h3>
+          <ul className="ctdx-plain ctdx-stories">
+            {props.stories.map(([title, url]) => (
+              <li key={url}>
+                <a href={url}>{title}</a>
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : null}
       <h3 className="ctdx-section-h">
         Links <span className="ctdx-count">{(idx.incident.get(id) ?? []).length}</span>
       </h3>
       {open ? (
         <p className="ctdx-note">
-          <a href={`${n.url}#open-data`}>{open.toLocaleString('en')} more in open data</a>
+          <a href={`${n.url}#open-data`}>{open.toLocaleString('en')} more in open data</a>, not yet read
         </p>
       ) : null}
       {hidden ? <p className="ctdx-note">{hidden} not shown in this view.</p> : null}
@@ -89,6 +97,7 @@ export function NodeDetails(props: {
       {groups.map(([rel, list]) => (
         <section key={rel} className="ctdx-group">
           <h4>{rel}</h4>
+          {list[0].e.caveat ? <p className="ctdx-note">{list[0].e.caveat}</p> : null}
           <ul>
             {list.map(({ e, vis }) => {
               const other = e.from === id ? e.to : e.from;
@@ -99,12 +108,18 @@ export function NodeDetails(props: {
               const detail = [ownRole ? null : role, detailOf(idx, e)].filter(Boolean).join(', ');
               return (
                 <li key={e.id} className={`is-${vis}`}>
-                  <button type="button" className="ctdx-row" onClick={() => props.onEdge(e.id)}>
-                    {ownRole ? <span className="ctdx-detail">{ownRole.charAt(0).toUpperCase() + ownRole.slice(1)} of </span> : null}
-                    <span className="ctdx-row-name">{nameOf(idx, other)}</span>
-                    {detail ? <span className="ctdx-detail"> · {detail}</span> : null}
+                  <span className="ctdx-type-dot" style={typeDot(idx, idx.nodes.get(other))} aria-hidden="true" />
+                  <div className="ctdx-row-body">
+                    <button type="button" className="ctdx-row" data-walk={other} onClick={() => props.onEntity(other)}>
+                      {ownRole ? <span className="ctdx-detail">{ownRole.charAt(0).toUpperCase() + ownRole.slice(1)} of </span> : null}
+                      <span className="ctdx-row-name">{nameOf(idx, other)}</span>
+                      {detail ? <span className="ctdx-detail"> · {detail}</span> : null}
+                    </button>
+                    <Badges idx={idx} e={e} compact />
+                  </div>
+                  <button type="button" className="ctdx-row-proof" aria-label={`Proof of the link with ${nameOf(idx, other)}`} onClick={() => props.onEdge(e.id)}>
+                    Proof
                   </button>
-                  <Badges idx={idx} e={e} compact />
                 </li>
               );
             })}
@@ -134,6 +149,9 @@ export function EdgeDetails(props: { idx: GraphIndex; id: string; t?: number | n
   return (
     <div className="ctdx-details">
       <p className="ctdx-kind">Link · {rel?.label ?? e.label}</p>
+      <h2 className="sr-only" tabIndex={-1}>
+        The proof of this link
+      </h2>
       <ClaimCard idx={idx} e={e} onEntity={props.onEntity} />
       {time === 'past' ? <p className="ctdx-note is-past">As of {asOf} this had ended, so it is drawn faded.</p> : null}
       {time === 'future' ? <p className="ctdx-note">As of {asOf} this had not begun, so the map hides it.</p> : null}
@@ -169,7 +187,7 @@ export function MetaDetails(props: { idx: GraphIndex; expanded: boolean; onExpan
   return (
     <div className="ctdx-details">
       <p className="ctdx-kind">Grouped</p>
-      <h2>{META_LABEL}</h2>
+      <h2 tabIndex={-1}>{META_LABEL}</h2>
       <p className="ctdx-summary">
         Shares an asset manager holds on behalf of its clients, usually through index funds. They are grouped because
         holding shares for clients is not the same as owning or controlling a company.
@@ -242,7 +260,7 @@ export function PathExplanation(props: {
       <p className="ctdx-kind">
         Route {props.index + 1} of {props.total}
       </p>
-      <h2 className="ctdx-path-title">
+      <h2 className="ctdx-path-title" tabIndex={-1}>
         {nameOf(idx, path.nodes[0])} <span aria-hidden="true">→</span>
         <span className="sr-only"> to </span> {nameOf(idx, path.nodes[path.nodes.length - 1])}
       </h2>
@@ -341,7 +359,7 @@ export function NarrativeDiff(props: {
   return (
     <div className="ctdx-details ctdx-diff">
       <p className="ctdx-kind">Compare accounts</p>
-      <h2>Two accounts, one record</h2>
+      <h2 tabIndex={-1}>Two accounts, one record</h2>
       <div className="ctdx-diff-pick">
         {select(a, props.setA, 'One side')}
         {select(b, props.setB, 'The other side')}
@@ -364,17 +382,28 @@ export function NarrativeDiff(props: {
 
 // ------------------------------------------------------------------ before anything is picked
 
-export function Intro({ idx }: { idx: GraphIndex }): ReactNode {
+export function Intro({ idx, names, onEntity }: { idx: GraphIndex; names: GNode[]; onEntity: (id: string) => void }): ReactNode {
   const d = idx.data;
   return (
     <div className="ctdx-details ctdx-intro">
-      <h2>See how things connect</h2>
+      <h2 tabIndex={-1}>See how things connect</h2>
       <p className="ctdx-summary">
-        Start from a person, place or event, then click a dot to open its links. Or put two names in “Find a route” to
-        see how they are connected, step by step, with the proof for each link.
+        Pick a name here or on the picture, and walk from one thing to the next. Every line opens its proof.
       </p>
+      <ul className="ctdx-plain">
+        {names.map((n) => (
+          <li key={n.id}>
+            <span className="ctdx-type-dot" style={typeDot(idx, n)} aria-hidden="true" />
+            <div className="ctdx-row-body">
+              <button type="button" className="ctdx-row" onClick={() => onEntity(n.id)}>
+                {n.name}
+              </button>
+            </div>
+          </li>
+        ))}
+      </ul>
       <p className="ctdx-note">
-        {d.nodes.length} entries and {d.edges.length} links so far.
+        {d.nodes.length.toLocaleString('en')} entries and {d.edges.length.toLocaleString('en')} links so far.
       </p>
     </div>
   );

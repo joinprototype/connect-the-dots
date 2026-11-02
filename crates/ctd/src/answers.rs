@@ -168,7 +168,7 @@ pub fn blank(q: &Question) -> String {
     q.ask.replace("{x}", "…").replace("{a}", "…").replace("{b}", "…")
 }
 
-/// The words before the first blank: "Who is behind", for the Ask picker.
+/// The words before the first blank: "Who is behind".
 pub fn label(q: &Question) -> &str {
     q.ask.split('{').next().unwrap_or_default().trim()
 }

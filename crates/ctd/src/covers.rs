@@ -26,7 +26,7 @@ fn dot(i: usize) -> String {
     format!("var({})", DOTS[i % DOTS.len()])
 }
 
-fn seed(id: &str) -> u64 {
+pub(crate) fn seed(id: &str) -> u64 {
     // FNV-1a
     let mut h: u64 = 0xcbf2_9ce4_8422_2325;
     for b in id.bytes() {

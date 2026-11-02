@@ -5,6 +5,7 @@ type: chapter
 title: Thirty-Seven Days
 subtitle: How two shots in Sarajevo became a war across Europe, in the telegrams of those who sent them
 summary: On 28 June 1914 two shots were fired in Sarajevo. Thirty-seven days later most of Europe was at war. Here is the road between, from the governments' own documents and the words of those in the room.
+featured: true
 ---
 
 On 28 June 1914 two shots were fired in Sarajevo. Thirty-seven days later most of Europe was at war.

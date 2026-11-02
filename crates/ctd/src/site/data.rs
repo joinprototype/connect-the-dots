@@ -1,6 +1,7 @@
 //! The data files the browser reads (docs/data-contract.md, ADR-0017). Pages load what they show:
 //! - `data/schema.json`: the vocabulary (types, relations, lenses, tiers, questions, methodology);
 //! - `data/graph-slim.json`: every entry and link, with only what the explorer draws and routes price;
+//! - `data/ways.json`: what a route needs and nothing else, for a pair's answer on `/r/`;
 //! - `data/e/<pack>.json`: entries' words and proof, loaded when one is opened;
 //! - `data/life/<pack>.json`: entries' generated stories, shown by the one page at `e/_life/`;
 //! - `data/search/`: the search entries, filed by word and cut into files by word range;
@@ -84,12 +85,32 @@ fn rows(out: &mut Vec<u8>, items: impl Iterator<Item = Value>) {
     out.push(b']');
 }
 
+/// A link's claim: its id is always `<from>#<claim>` (kb.rs).
+fn claim_of(e: &Edge) -> &str {
+    e.id.strip_prefix(e.from.as_str()).and_then(|c| c.strip_prefix('#')).unwrap_or(&e.id)
+}
+
+/// `{according_to, status, voices}`, each only when not the default, and none when all are
+/// (`voices` only on a link both sides' own records back).
+fn extras(e: &Edge) -> Option<Map<String, Value>> {
+    let mut more = Map::new();
+    if !e.according_to.is_empty() {
+        more.insert("according_to".into(), json!(e.according_to));
+    }
+    if e.status != "published" {
+        more.insert("status".into(), json!(e.status));
+    }
+    if e.cross_confirmed {
+        more.insert("voices".into(), json!(e.voices));
+    }
+    (!more.is_empty()).then_some(more)
+}
+
 /// Every entry and link as rows, structure only (docs/data-contract.md, "graph-slim.json"):
 /// - entry: `[id, name, type, degree, when, coords, place]`, with `coords` its own (0 when it has
 ///   none) and `place` the index of the entry it is set in (-1 when none);
 /// - link: `[from, to, relation, claim, when, tier]` with the ends as entry indexes and the link's id
-///   `<from id>#<claim>`, plus `{according_to, status, voices}` when any is not the default
-///   (`voices` only on a link both sides' own records back).
+///   `<from id>#<claim>`, plus its `extras` when it has any.
 pub fn slim(kb: &Kb) -> Vec<u8> {
     let at: HashMap<&str, usize> = kb.entities.iter().enumerate().map(|(i, e)| (e.id.as_str(), i)).collect();
     let mut out = br#"{"nodes":"#.to_vec();
@@ -104,22 +125,29 @@ pub fn slim(kb: &Kb) -> Vec<u8> {
     rows(
         &mut out,
         kb.edges.iter().map(|e| {
-            // a link's id is always `<from>#<claim>` (kb.rs)
-            let claim = e.id.strip_prefix(e.from.as_str()).and_then(|c| c.strip_prefix('#')).unwrap_or(&e.id);
-            let mut row = vec![json!(at[e.from.as_str()]), json!(at[e.to.as_str()]), json!(e.rel), json!(claim), span(e.when.as_ref()), json!(e.tier)];
-            let mut more = Map::new();
-            if !e.according_to.is_empty() {
-                more.insert("according_to".into(), json!(e.according_to));
-            }
-            if e.status != "published" {
-                more.insert("status".into(), json!(e.status));
-            }
-            if e.cross_confirmed {
-                more.insert("voices".into(), json!(e.voices));
-            }
-            if !more.is_empty() {
-                row.push(Value::Object(more));
-            }
+            let mut row = vec![json!(at[e.from.as_str()]), json!(at[e.to.as_str()]), json!(e.rel), json!(claim_of(e)), span(e.when.as_ref()), json!(e.tier)];
+            row.extend(extras(e).map(Value::Object));
+            Value::Array(row)
+        }),
+    );
+    out.push(b'}');
+    out
+}
+
+/// What a route needs and nothing else (docs/data-contract.md, "ways.json"): a pair's way costs this,
+/// not the slim file, and its words come from the detail files of its stops. Entries are
+/// `[id, type, degree]`, and links `[from, to, relation, claim, tier]`, plus their `extras`, only those
+/// a route may use.
+pub fn ways(kb: &Kb) -> Vec<u8> {
+    let at: HashMap<&str, usize> = kb.entities.iter().enumerate().map(|(i, e)| (e.id.as_str(), i)).collect();
+    let mut out = br#"{"nodes":"#.to_vec();
+    rows(&mut out, kb.entities.iter().map(|e| json!([e.id, e.kind, kb.degree(&e.id)])));
+    out.extend_from_slice(br#","edges":"#);
+    rows(
+        &mut out,
+        kb.edges.iter().filter(|e| e.traversable && !e.passive && e.status != "deprecated" && e.from != e.to).map(|e| {
+            let mut row = vec![json!(at[e.from.as_str()]), json!(at[e.to.as_str()]), json!(e.rel), json!(claim_of(e)), json!(e.tier)];
+            row.extend(extras(e).map(Value::Object));
             Value::Array(row)
         }),
     );
@@ -154,15 +182,19 @@ pub(crate) fn keep_per_kind<'a>(p: &Params, items: &[Link<'a>]) -> (Vec<Link<'a>
     (items.iter().zip(&cut).filter(|(_, c)| !**c).map(|(x, _)| *x).collect(), more)
 }
 
-/// One entry's words and proof (in `data/e/<pack>.json`): its summary and aliases, its life story, the
-/// question pages about it (`asked`), and for each link given its qualifiers, note and sources.
+/// One entry's words and proof (in `data/e/<pack>.json`): its name, summary and aliases, its life story,
+/// the question pages about it (`asked`), and each link in full, so that a pair's direct tie needs no
+/// other file.
 pub fn details(kb: &Kb, ent: &Entity, links: &[Link], story: Option<&str>, asked: Vec<Value>) -> Value {
     let mut cited = BTreeSet::new();
     let words: Vec<Value> = links
         .iter()
         .map(|(e, _)| {
             cited.extend(e.sources.iter().map(|s| s.id.as_str()));
-            let mut v = json!({ "id": e.id, "sources": e.sources });
+            let mut v = json!({ "id": e.id, "to": e.to, "rel": e.rel, "when": span(e.when.as_ref()), "tier": e.tier, "sources": e.sources });
+            for (key, value) in extras(e).into_iter().flatten() {
+                v[key] = value;
+            }
             for (key, text) in [("detail", &e.detail), ("note", &e.note), ("reason", &e.reason)] {
                 if let Some(t) = text {
                     v[key] = json!(t);
@@ -174,12 +206,23 @@ pub fn details(kb: &Kb, ent: &Entity, links: &[Link], story: Option<&str>, asked
             v
         })
         .collect();
-    json!({ "id": ent.id, "summary": ent.summary, "aliases": ent.aliases, "story": story, "asked": asked, "links": words,
-            "sources": sources(kb, cited) })
+    json!({ "id": ent.id, "name": ent.name, "type": ent.kind, "summary": ent.summary, "aliases": ent.aliases, "story": story, "asked": asked,
+            "links": words, "sources": sources(kb, cited) })
 }
 
 fn list(v: &Value) -> impl Iterator<Item = &str> {
     v.as_array().into_iter().flatten().filter_map(Value::as_str)
+}
+
+/// The links a shot reveals. "<entity>#<claim>" also names that claim's "/<n>" links, one per target.
+pub fn revealed<'a>(by_id: &BTreeMap<&'a str, &'a Edge>, shot: &Value) -> BTreeMap<&'a str, &'a Edge> {
+    let mut links = BTreeMap::new();
+    for r in list(&shot["reveal_claims"]) {
+        let sub = format!("{r}/");
+        let parts = by_id.range::<str, _>((Bound::Included(sub.as_str()), Bound::Unbounded)).take_while(|(id, _)| id.starts_with(&sub));
+        links.extend(by_id.get_key_value(r).into_iter().map(|(k, v)| (*k, *v)).chain(parts.map(|(k, v)| (*k, *v))));
+    }
+    links
 }
 
 /// What a story's scenes name, embedded in its page: the entries (focus, reveals, places, route ends,
@@ -192,12 +235,7 @@ pub fn story(kb: &Kb, by_id: &BTreeMap<&str, &Edge>, shots: &[Value]) -> Value {
     for shot in shots {
         names.extend(crate::kb::shot_entries(shot).map(|(_, id)| id));
         cited.extend(shot["overlay"]["source"].as_str());
-        for r in list(&shot["reveal_claims"]) {
-            // "<entity>#<claim>" also names that claim's "/<n>" links, one per target
-            let sub = format!("{r}/");
-            let parts = by_id.range::<str, _>((Bound::Included(sub.as_str()), Bound::Unbounded)).take_while(|(id, _)| id.starts_with(&sub));
-            links.extend(by_id.get_key_value(r).into_iter().map(|(k, v)| (*k, *v)).chain(parts.map(|(k, v)| (*k, *v))));
-        }
+        links.extend(revealed(by_id, shot));
     }
     for e in links.values() {
         names.extend([e.from.as_str(), e.to.as_str()]);
@@ -211,10 +249,15 @@ pub fn story(kb: &Kb, by_id: &BTreeMap<&str, &Edge>, shots: &[Value]) -> Value {
     json!({ "nodes": nodes, "edges": links.values().collect::<Vec<_>>(), "sources": sources(kb, cited) })
 }
 
-/// An entry as search lists it (`q`, its question pages, is added by the build).
+/// An entry as search lists it (`q`, its question pages, is added by the build). A sealed entry says
+/// so: the box finds it, and never offers a pair through it (ADR-0027).
 pub fn search_entry(e: &Entity) -> Value {
-    json!({ "id": e.id, "name": e.name, "aliases": e.aliases, "type": e.kind, "summary": e.summary, "when": e.when.as_ref().map(|w| &w.label),
-            "url": format!("/e/{}/", e.id) })
+    let mut row = json!({ "id": e.id, "name": e.name, "aliases": e.aliases, "type": e.kind, "summary": e.summary, "when": e.when.as_ref().map(|w| &w.label),
+                          "url": format!("/e/{}/", e.id) });
+    if e.sealed {
+        row["sealed"] = json!(true);
+    }
+    row
 }
 
 /// A name's words for search: lower case, accents dropped, apostrophes and full stops removed
@@ -345,7 +388,21 @@ mod tests {
         // a company's own file keeps its one link
         let org = kb.entity("org005").unwrap();
         let own: Vec<_> = kb.links_of("org005").collect();
-        assert_eq!(details(&kb, org, &own, None, Vec::new())["links"][0]["id"], "hub#c5");
+        let link = &details(&kb, org, &own, None, Vec::new())["links"][0];
+        assert_eq!((&link["id"], &link["to"], &link["rel"]), (&json!("hub#c5"), &json!("org005"), &json!("founded")));
+    }
+
+    #[test]
+    fn ways_hold_only_what_a_route_may_use() {
+        let relations = "founded: {label: founded, inverse: founded by, from: [person], to: [org]}\nmet: {label: met, inverse: met, from: [person], to: [org], traversable: false}\n";
+        let claims = "  - {id: c1, rel: founded, to: acme, src: [{s: rec}]}\n  - {id: c2, rel: met, to: acme, src: [{s: rec}]}\n";
+        let files =
+            [file("content/schema/relations.yaml", relations), source("rec", "T1"), entity("org", "acme", "Acme", ""), entity("person", "zoe", "Zoe", claims)];
+        let (kb, _) = load("data-ways", &files);
+        let ways: serde_json::Value = serde_json::from_slice(&super::ways(&kb)).unwrap();
+        assert_eq!(ways["nodes"].as_array().map(Vec::len), Some(2));
+        assert_eq!(ways["edges"].as_array().map(Vec::len), Some(1));
+        assert_eq!((&ways["edges"][0][2], &ways["edges"][0][3]), (&json!("founded"), &json!("c1")));
     }
 
     #[test]

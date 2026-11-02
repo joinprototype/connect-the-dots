@@ -9,18 +9,8 @@ import type { GEdge, SearchEntry } from '../lib/types';
 
 // ------------------------------------------------------------------ autocomplete
 
-export function EntityPicker(props: {
-  idx: GraphIndex;
-  label: string;
-  value: string | null;
-  placeholder?: string;
-  onPick: (id: string | null) => void;
-  compact?: boolean;
-  /** The big start-screen field. */
-  big?: boolean;
-  hideLabel?: boolean;
-}): ReactNode {
-  const { idx, value, onPick } = props;
+export function EntityPicker(props: { idx: GraphIndex; label: string; placeholder?: string; onPick: (id: string | null) => void }): ReactNode {
+  const { idx, onPick } = props;
   const id = useId();
   const [text, setText] = useState('');
   const [editing, setEditing] = useState(false);
@@ -41,7 +31,6 @@ export function EntityPicker(props: {
       live = false;
     };
   }, [idx, text, editing]);
-  const shown = editing ? text : value ? nameOf(idx, value) : '';
   const open = editing && text.trim().length > 0;
 
   const pick = (nodeId: string) => {
@@ -52,12 +41,9 @@ export function EntityPicker(props: {
   };
 
   return (
-    <div className={`ctdx-picker${props.compact ? ' is-compact' : ''}${props.big ? ' is-big' : ''}`}>
-      <label htmlFor={`${id}-in`} className={props.hideLabel ? 'sr-only' : undefined}>
-        {props.label}
-      </label>
+    <div className="ctdx-picker">
+      <label htmlFor={`${id}-in`}>{props.label}</label>
       <div className="ctdx-picker-field">
-        {value && !editing ? <span className="ctdx-type-dot" style={typeDot(idx, idx.nodes.get(value))} aria-hidden="true" /> : null}
         <input
           id={`${id}-in`}
           ref={inputRef}
@@ -70,7 +56,7 @@ export function EntityPicker(props: {
           autoComplete="off"
           spellCheck={false}
           placeholder={props.placeholder ?? 'Type a name…'}
-          value={shown}
+          value={editing ? text : ''}
           onFocus={() => {
             setEditing(true);
             setText('');
@@ -95,11 +81,6 @@ export function EntityPicker(props: {
             }
           }}
         />
-        {value && !editing ? (
-          <button type="button" className="ctdx-clear" aria-label={`Clear ${props.label}`} onClick={() => onPick(null)}>
-            ×
-          </button>
-        ) : null}
       </div>
       {open ? (
         <ul className="ctdx-options" id={`${id}-list`} role="listbox">
@@ -234,7 +215,7 @@ export function ClaimCard(props: {
 }): ReactNode {
   const { idx, e } = props;
   return (
-    <article className={`ctdx-claim${e.according_to.length ? ' is-attributed' : ''}${e.status === 'draft' ? ' is-draft' : ''}`}>
+    <article className="ctdx-claim">
       {props.index != null ? <span className="ctdx-hop-n">{props.index}</span> : null}
       <p>
         <Sentence idx={idx} e={e} readFrom={props.readFrom} onEntity={props.onEntity} />

@@ -14,6 +14,7 @@ use walkdir::WalkDir;
 
 use crate::{
     answers::{self, Answer},
+    doors::Names,
     kb::{Chapter, Edge, EdgeSrc, Entity, Kb},
     markdown,
     paths::Params,
@@ -24,6 +25,7 @@ use crate::{
 pub mod data;
 mod dossier;
 mod history;
+pub mod islands;
 mod question;
 
 use history::{History, git};
@@ -211,10 +213,10 @@ fn write(path: &Path, contents: impl AsRef<[u8]>) -> Result<()> {
     fs::write(path, contents).with_context(|| format!("writing {}", path.display()))
 }
 
-/// How many names the home page's Ask form embeds for autocomplete.
-const ASK_NAMES: usize = 400;
-/// How many entries per type the home page index lists.
-const INDEX_PER_TYPE: usize = 12;
+/// How many stories a thread on the home page lists.
+const THREAD_LISTS: usize = 4;
+/// How many covers the home page's shelf shows.
+const HOME_SHELF: usize = 6;
 /// How many covers one shelf of the Stories library shows (richest stories first).
 const SHELF_MAX: usize = 24;
 /// The site's address, for the few things that cannot be relative.
@@ -240,13 +242,11 @@ https://:version.:subdomain.workers.dev/*\n  X-Robots-Tag: noindex\n";
 
 /// A type's page lists every entry up to this many; past it, one page per first letter.
 const TYPE_PAGE_MAX: usize = 500;
-/// Featured question stories on the home shelf (the rest are in the Stories library).
-const HOME_QUESTIONS: usize = 4;
 /// Stories offered at the end of a written story.
 const NEXT_STORIES: usize = 2;
 /// Entries a place's page lists as set there.
 const HERE_MAX: usize = 12;
-/// How many answers per question the Ask form embeds, and a question's index lists.
+/// How many answers a question's index lists.
 const ASK_PER_QUESTION: usize = 100;
 /// "Going further": links to the same question about names in an answer, strongest first.
 const FURTHER: usize = 3;
@@ -369,7 +369,6 @@ fn same_as_links(e: &Entity) -> Vec<Value> {
         .collect()
 }
 
-/// Shots with rendered narration, plus the step cards for the chapter template.
 /// A scene's picture: what `picture:` names, or else its subject or the first thing it reveals that
 /// has one. Each picture shows once in a story; `picture: none` leaves a scene without.
 fn scene_picture(kb: &Kb, shot: &Value, used: &mut BTreeSet<String>) -> Option<Value> {
@@ -386,17 +385,16 @@ fn scene_picture(kb: &Kb, shot: &Value, used: &mut BTreeSet<String>) -> Option<V
     })
 }
 
-fn story_parts(cx: &Ctx, shots: &[Value]) -> (Vec<Value>, Vec<Value>) {
+/// The step cards for the chapter template: each shot's narration, rendered.
+fn story_steps(s: &Site, shots: &[Value]) -> Vec<Value> {
+    let cx = &s.cx;
     let resolver = cx.resolver();
-    let mut out = shots.to_vec();
+    let doors = s.names.story(shots);
     let mut steps = Vec::new();
     let mut pictured = BTreeSet::new();
-    for shot in &mut out {
-        let narration = shot.get("narration").and_then(Value::as_str).unwrap_or("").to_string();
-        let html = markdown::render(&narration, &resolver);
-        if let Some(obj) = shot.as_object_mut() {
-            obj.insert("narration_html".into(), Value::from(html.clone()));
-        }
+    for shot in shots {
+        let narration = shot.get("narration").and_then(Value::as_str).unwrap_or("");
+        let html = markdown::render_scene(narration, &resolver, &doors, shot);
         let mut q = Vec::new();
         for (k, key) in [("focus", "focus"), ("lens", "lens"), ("perspective", "p")] {
             if let Some(v) = shot.get(k).and_then(Value::as_str) {
@@ -416,7 +414,7 @@ fn story_parts(cx: &Ctx, shots: &[Value]) -> (Vec<Value>, Vec<Value>) {
             "picture": scene_picture(cx.kb, shot, &mut pictured),
         }));
     }
-    (out, steps)
+    steps
 }
 
 /// The question pages, computed once, before the pages and data that link to them.
@@ -489,6 +487,8 @@ fn stories_of(kb: &Kb) -> HashMap<String, Vec<Value>> {
 struct Site<'a> {
     kb: &'a Kb,
     cx: Ctx<'a>,
+    /// Every entry's names, for the doors in stories.
+    names: Names<'a>,
     out: &'a Path,
     history: History,
     site: Value,
@@ -527,12 +527,13 @@ impl Site<'_> {
 
     fn chapter_page(&self, draft: &crate::stories::Draft, back: Option<Value>) -> Result<String> {
         let (kb, cx) = (self.kb, &self.cx);
-        let (shots, steps) = story_parts(cx, &draft.shots);
+        let shots = &draft.shots;
+        let steps = story_steps(self, shots);
         let resolver = cx.resolver();
         let chapter = json!({
             "id": draft.id, "title": draft.title, "subtitle": draft.subtitle, "summary": draft.summary, "authors": [],
             "intro_html": markdown::render(&draft.intro_md, &resolver), "outro_html": markdown::render(&draft.outro_md, &resolver),
-            "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &self.by_id, &shots))?,
+            "shots_json": script_json(shots)?, "data_json": script_json(&data::story(kb, &self.by_id, shots))?,
             "steps": steps, "shot_count": shots.len(), "generated": true, "ink": crate::covers::INK,
             "back": back, "explore_url": draft.explore_url,
         });
@@ -560,9 +561,8 @@ fn write_packs(dir: &Path, packs: &Packs) -> Result<()> {
     Ok(())
 }
 
-/// The question stories, as shelves: the home page's, the library's, how many it leaves out, and their ids.
+/// The question stories, as a shelf of the library: its books, how many it leaves out, and their ids.
 struct QuestionShelf {
-    featured: Vec<Value>,
     books: Vec<Value>,
     more: usize,
     stories: BTreeSet<String>,
@@ -616,7 +616,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     });
     let by_id = kb.edges.iter().map(|e| (e.id.as_str(), e)).collect();
     let open_links = atlas.as_ref().map(|a| crate::atlas::open_links(a, kb)).unwrap_or_default();
-    let s = Site { kb, cx: Ctx { kb }, out, history: History::load(root), site, env, by_id, stories: stories_of(kb), open_links };
+    let s = Site { kb, cx: Ctx { kb }, names: Names::new(kb), out, history: History::load(root), site, env, by_id, stories: stories_of(kb), open_links };
 
     let lives = entity_pages(&s, &pages)?;
     alias_pages(&s)?;
@@ -624,7 +624,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     let chapters = chapter_pages(&s)?;
     let routes = route_stories(&s)?;
     library_page(&s, &chapters, &routes, &lives, &questions)?;
-    home_page(&s, &pages, &ranked, &chapters, &routes, &lives, &questions)?;
+    home_page(&s, &chapters)?;
     type_pages(&s)?;
     for (dir, template) in [("x", "explorer.html"), ("w", "world.html")] {
         write(&out.join(dir).join("index.html"), s.render(template, json!({ "site": &s.site }))?)?;
@@ -633,6 +633,9 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     if !kb.entities.is_empty() {
         let (g, spec) = crate::world::from_kb(kb, atlas.as_ref());
         let (_, nodes) = crate::world::build(&g, &spec, &out.join("world"), Some(&root.join(".cache").join("world-state.json")))?;
+        // the entries come first in the world's nodes, in the order of graph-slim.json
+        let places: Vec<u32> = nodes[..kb.entities.len()].iter().flatten().map(|v| (v * 65535.0).round() as u32).collect();
+        write(&out.join("data").join("spots.json"), serde_json::to_vec(&places)?)?;
         if let Some(ids) = &g.ids {
             spots = crate::atlas::spots(kb, ids, &nodes);
         }
@@ -664,6 +667,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     let stories: BTreeMap<&String, Vec<[&Value; 2]>> =
         s.stories.iter().map(|(id, rows)| (id, rows.iter().map(|r| [&r["title"], &r["url"]]).collect())).collect();
     write(&out.join("data").join("stories.json"), serde_json::to_vec(&stories)?)?;
+    write_islands(&s)?;
     if opts.graph {
         write_graph(kb, out, &schema, &pages, &lives, &questions.stories)?;
     }
@@ -671,6 +675,16 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     write(&out.join("build-manifest.json"), serde_json::to_vec_pretty(&manifest)?)?;
     write_addresses(out)?;
     Ok(manifest)
+}
+
+/// The picture on the Stories page, with its budget like the slim file's.
+fn write_islands(s: &Site) -> Result<()> {
+    let bytes = serde_json::to_vec(&islands::picture(s.kb, &s.by_id))?;
+    let gz = data::gzip_len(&bytes);
+    if gz > islands::BUDGET {
+        eprintln!("warning: data/islands.json is {} KB gzip, past its {} KB budget", gz / 1024, islands::BUDGET / 1024);
+    }
+    write(&s.out.join("data").join("islands.json"), bytes)
 }
 
 /// Gives every page its canonical address and lists it in the sitemap. Runs last, because a
@@ -760,7 +774,8 @@ fn write_slim(kb: &Kb, out: &Path) -> Result<()> {
             data::SLIM_BUDGET / 1024
         );
     }
-    write(&out.join("data").join("graph-slim.json"), slim)
+    write(&out.join("data").join("graph-slim.json"), slim)?;
+    write(&out.join("data").join("ways.json"), data::ways(kb))
 }
 
 /// The search files: entries best-connected first, so a name that matches several resolves to the
@@ -934,6 +949,7 @@ fn entity_page(
     write(&s.out.join("e").join(&ent.id).join("index.html"), html)?;
     let mut details = data::details(kb, ent, &kept, story_url.as_deref(), asked);
     details["open"] = json!(s.open_links.get(&ent.id));
+    details["w"] = json!(ent.same_as.get("wikidata"));
     lives.details.entry(data::pack_of(&ent.id)).or_default().insert(ent.id.clone(), details);
     Ok(())
 }
@@ -1066,7 +1082,6 @@ fn question_pages(s: &Site, pages: &QuestionPages) -> Result<QuestionShelf> {
         (None, None) => b.1.cmp(&a.1),
     });
     Ok(QuestionShelf {
-        featured: question_books.iter().filter(|q| q.0.is_some()).take(HOME_QUESTIONS).map(|q| q.2.clone()).collect(),
         more: question_books.len().saturating_sub(SHELF_MAX),
         books: question_books.into_iter().take(SHELF_MAX).map(|(_, _, v)| v).collect(),
         stories: question_stories,
@@ -1110,11 +1125,12 @@ fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
         .collect();
     for (i, ch) in kb.chapters.iter().enumerate() {
         let resolver = cx.resolver();
-        let (shots, steps) = story_parts(cx, &ch.shots);
+        let shots = &ch.shots;
+        let steps = story_steps(s, shots);
         let chapter = json!({
             "id": ch.id, "title": ch.title, "subtitle": ch.subtitle, "summary": ch.summary, "authors": ch.authors,
             "intro_html": markdown::render(&ch.intro_md, &resolver), "outro_html": markdown::render(&ch.outro_md, &resolver),
-            "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &s.by_id, &shots))?,
+            "shots_json": script_json(shots)?, "data_json": script_json(&data::story(kb, &s.by_id, shots))?,
             "steps": steps, "url": format!("/c/{}/", ch.id), "shot_count": shots.len(), "rel_path": ch.rel_path, "ink": crate::covers::INK,
             // the stories after this one, round the shelf: a reader who finishes has somewhere to go
             "next": cards.iter().cycle().skip(i + 1).take(cards.len() - 1).take(NEXT_STORIES).collect::<Vec<_>>(),
@@ -1170,103 +1186,49 @@ fn stats(kb: &Kb) -> Value {
             "perspectives": kb.perspectives.len(), "cross_confirmed": kb.edges.iter().filter(|e| e.cross_confirmed).count() })
 }
 
-fn home_page(s: &Site, pages: &QuestionPages, ranked: &[&Entity], chapters: &[Value], routes: &Routes, lives: &Lives, questions: &QuestionShelf) -> Result<()> {
+/// A count as a sentence says it: "three stories".
+fn in_words(n: usize) -> String {
+    const WORDS: [&str; 11] = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+    WORDS.get(n).map_or_else(|| n.to_string(), |w| w.to_string())
+}
+
+/// The home page: the threads picked in content/featured.yaml, a few stories, and every type's list.
+fn home_page(s: &Site, chapters: &[Value]) -> Result<()> {
     let (kb, cx) = (s.kb, &s.cx);
-    // editorial picks live in content/featured.yaml (validated by `ctd check`)
-    let featured_pairs: Vec<(&str, &str)> = kb.featured.connections.iter().map(|c| (c.ids()[0].as_str(), c.ids()[1].as_str())).collect();
-    let mut shelf: Vec<Value> =
-        chapters.iter().map(|c| json!({ "title": c["title"], "subtitle": c["subtitle"], "url": c["url"], "kind": "Story", "cover": c["cover"] })).collect();
-    // the founder's questions come right after the written stories
-    shelf.extend(questions.featured.iter().cloned());
-    shelf.extend(routes.connections.iter().cloned());
-    let paths: Vec<Value> = featured_pairs
+    let subtitles: HashMap<&str, &Value> = chapters.iter().filter_map(|c| Some((c["id"].as_str()?, &c["subtitle"]))).collect();
+    let threads: Vec<Value> = kb
+        .featured
+        .threads
         .iter()
-        .map(|(a, b)| {
-            json!({ "from": cx.node(a), "to": cx.node(b), "url": format!("/x/?from={a}&to={b}"),
-                              "story_url": routes.urls.get(&(a.to_string(), b.to_string())) })
+        .filter_map(|id| {
+            let stories = kb.thread_stories(id);
+            if stories.len() < crate::kb::MIN_THREAD {
+                return None;
+            }
+            // it opens a sentence, so "the Federal Reserve" takes a capital
+            let name = kb.sentence_name(id);
+            let name = name.chars().next().map_or(String::new(), |c| c.to_uppercase().chain(name.chars().skip(1)).collect());
+            let shown: Vec<Value> = stories
+                .iter()
+                .take(THREAD_LISTS)
+                .map(|ch| json!({ "title": ch.title, "subtitle": subtitles.get(ch.id.as_str()), "url": format!("/c/{}/", ch.id) }))
+                .collect();
+            Some(json!({ "node": cx.node(id), "name": name, "count": in_words(stories.len()), "stories": shown,
+                         "more": in_words(stories.len().saturating_sub(THREAD_LISTS)), "cut": stories.len() > THREAD_LISTS }))
         })
         .collect();
-    // The hero draws one real route, computed by the same ranking the explorer uses.
-    let route = featured_pairs.iter().find_map(|(a, b)| {
-        let p = crate::paths::find(kb, a, b, &crate::paths::Options::stories(kb, 1)).into_iter().next()?;
-        let stops: Vec<Value> = p
-            .nodes
-            .iter()
-            .enumerate()
-            .map(|(i, id)| {
-                let hop = i.checked_sub(1).map(|j| &p.hops[j]);
-                let via = hop.map(|h| {
-                    let rel = &kb.schema.relations[&h.edge.rel];
-                    if h.forward { rel.label.clone() } else { rel.inverse.clone() }
-                });
-                let attributed = hop.is_some_and(|h| !h.edge.according_to.is_empty());
-                json!({ "node": cx.node(id), "via": via, "attributed": attributed })
-            })
-            .collect();
-        Some(json!({ "stops": stops, "hops": p.hops.len(), "url": format!("/x/?from={a}&to={b}"),
-                         "story_url": routes.urls.get(&(a.to_string(), b.to_string())),
-                         "from": cx.node(a), "to": cx.node(b) }))
-    });
-    for fid in kb.featured.lives.iter().map(String::as_str) {
-        if let Some(e) = kb.entity(fid)
-            && lives.ids.iter().any(|s| s == fid)
-        {
-            let links = kb.links_of(fid).count();
-            shelf.push(json!({ "title": format!("The story of {}", e.name), "subtitle": e.summary, "url": format!("/e/{fid}/story/"),
-                               "kind": kb.schema.type_label(&e.kind), "cover": crate::covers::entity(fid, &e.name, links) }));
-        }
-    }
-    // The Ask form embeds the best-connected names for autocomplete; anything else resolves
-    // through /data/search.json on submit, so the home page stays small as the graph grows.
-    let ask_names: Vec<Value> = ranked.iter().take(ASK_NAMES).map(|e| json!({ "id": e.id, "name": e.name, "aliases": e.aliases })).collect();
-    // the index shows each type's best-connected entries (alphabetical), not every entry
-    let mut type_groups = Vec::new();
-    for (tid, t) in &kb.schema.types {
-        let of_type: Vec<&&Entity> = ranked.iter().filter(|e| &e.kind == tid).collect();
-        if of_type.is_empty() {
-            continue;
-        }
-        let mut items: Vec<Value> = of_type
-            .iter()
-            .take(INDEX_PER_TYPE)
-            .map(|e| json!({ "node": cx.node(&e.id), "summary": e.summary, "when": e.when.as_ref().map(|w| w.label.clone()) }))
-            .collect();
-        items.sort_by(|a, b| a["node"]["name"].as_str().cmp(&b["node"]["name"].as_str()));
-        let more = of_type.len().saturating_sub(INDEX_PER_TYPE);
-        type_groups.push(json!({ "id": tid, "label": t.plural, "color": kb.schema.type_color(tid), "items": items, "more": more }));
-    }
-    let ask_questions: Vec<Value> = kb
-        .schema
-        .questions
+    let unsealed: BTreeSet<&str> = kb.unsealed_chapters().iter().map(|c| c.id.as_str()).collect();
+    let shelf: Vec<Value> = chapters
         .iter()
-        .enumerate()
-        .map(|(qi, q)| {
-            let mine: Vec<&Answer> = pages.list.iter().filter(|a| a.q == qi).collect();
-            let prefix = format!("{}/", q.id);
-            let tries: Vec<Value> = kb
-                .featured
-                .questions
-                .iter()
-                .filter_map(|f| pages.get(qi, f.strip_prefix(&prefix)?))
-                .map(|a| json!({ "id": a.x.id, "name": kb.sentence_name(&a.x.id), "url": format!("/q/{}/", a.id(kb)) }))
-                .collect();
-            let names: Vec<Value> = mine
-                .iter()
-                .take(ASK_PER_QUESTION)
-                .map(|a| json!({ "id": a.x.id, "name": a.x.name, "aliases": a.x.aliases, "url": format!("/q/{}/", a.id(kb)) }))
-                .collect();
-            let [shows, not] = answers::scope(q);
-            json!({ "id": q.id, "ask": q.ask, "label": answers::label(q), "route": q.route, "subjects": q.subjects, "shows": shows, "not": not,
-                    "url": format!("/q/{}/", q.id), "names": names, "more": mine.len().saturating_sub(ASK_PER_QUESTION), "try": tries })
-        })
+        .filter(|c| c["id"].as_str().is_some_and(|id| unsealed.contains(id)))
+        .take(HOME_SHELF)
+        .map(|c| json!({ "title": c["title"], "subtitle": c["subtitle"], "url": c["url"], "kind": "Story", "cover": c["cover"] }))
         .collect();
+    let kinds: Vec<Value> =
+        kb.schema.types.iter().filter(|(tid, _)| kb.entities.iter().any(|e| &e.kind == *tid)).map(|(tid, t)| json!({ "id": tid, "label": t.plural })).collect();
     write(
         &s.out.join("index.html"),
-        s.render(
-            "home.html",
-            json!({ "site": &s.site, "chapters": chapters, "paths": paths, "route": route, "groups": type_groups, "stats": stats(kb),
-                                      "shelf": shelf, "ask_names": ask_names, "questions": ask_questions }),
-        )?,
+        s.render("home.html", json!({ "site": &s.site, "threads": threads, "shelf": shelf, "kinds": kinds, "stories": chapters.len() }))?,
     )
 }
 
@@ -1572,6 +1534,18 @@ mod tests {
     }
 
     #[test]
+    fn spots_follow_the_slim_file() {
+        let root = write_repo("site-spots", &crate::kb::tests::backgrounds()).unwrap();
+        super::copy_dir(&Path::new(env!("CARGO_MANIFEST_DIR")).join("../../theme"), &root.join("theme")).unwrap();
+        let (kb, _) = crate::load_kb(&root).unwrap();
+        let out = root.join("dist");
+        super::build(&root, &kb, &super::Opts { out: out.clone(), dev: false, graph: false }).unwrap();
+        let spots: Vec<u32> = serde_json::from_slice(&std::fs::read(out.join("data").join("spots.json")).unwrap()).unwrap();
+        assert_eq!(spots.len(), 2 * kb.entities.len());
+        assert!(spots.iter().all(|&v| v <= 65535));
+    }
+
+    #[test]
     fn background_stays_on_the_persons_own_page() {
         let root = write_repo("site-background", &crate::kb::tests::backgrounds()).unwrap();
         super::copy_dir(&Path::new(env!("CARGO_MANIFEST_DIR")).join("../../theme"), &root.join("theme")).unwrap();
@@ -1583,7 +1557,7 @@ mod tests {
         assert!(page.contains("Raised Catholic") && page.contains(">Background<"), "{page}");
         // never a link, a node, a search entry or a story line (ADR-0016)
         let pack = format!("data/e/{}.json", super::data::pack_of("zoe"));
-        for file in ["data/graph.json", "data/graph-slim.json", "data/schema.json", "data/search/0.json", pack.as_str()] {
+        for file in ["data/graph.json", "data/graph-slim.json", "data/ways.json", "data/schema.json", "data/search/0.json", pack.as_str()] {
             let text = read(file);
             assert!(!text.is_empty() && !text.contains("Raised Catholic") && !text.contains("Leeds"), "{file}");
         }
