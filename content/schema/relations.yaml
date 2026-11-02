@@ -163,8 +163,12 @@ holds_copies_of:
   {label: holds copies of, inverse: copies in, from: [work], to: [work], layers: [ideas, tech]}
 branch_of:
   {label: branch of, inverse: branches, from: [tradition, org], to: [tradition], layers: [ideas], noun: true, inverse_reads: list}
+# A tale told about someone or something that the record does not support. Routes stay off it.
+tale_about:
+  {label: a tale about, inverse: subject of a tale, from: [event, work, concept], to: any, layers: [history], noun: true, traversable: false, caveat: "A tale told, not a fact on the record."}
+# Often one writer's reading, so routes stay off it, like every interpretation.
 influenced:
-  {label: influenced, inverse: influenced by, from: [person, work, tradition, concept, event], to: [person, work, tradition, concept, org, event], layers: [ideas]}
+  {label: influenced, inverse: influenced by, from: [person, work, tradition, concept, event], to: [person, work, tradition, concept, org, event], layers: [ideas], traversable: false}
 identified_with:
   {label: identified with, inverse: identified with, from: [person, place, concept], to: [person, place, concept], layers: [ideas], noun: true}
 
