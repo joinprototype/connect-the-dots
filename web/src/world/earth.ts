@@ -160,7 +160,12 @@ function middle(spots: EarthSpot[]): [number, number] {
 
 /** Rejects when the slim file or WebGL is missing; a basemap that fails later goes to opts.onFail. */
 export async function createEarth(container: HTMLElement, opts: EarthOptions): Promise<Earth> {
-  const [{ data }] = await Promise.all([loadGraphIndex(), loadMapCss()]);
+  // All of it before the map exists: 'style.load' fires once, and no await may stand between the map and its handler.
+  const [{ data }, atlasIndex] = await Promise.all([
+    loadGraphIndex(),
+    loadJson<AtlasIndex>('/earth/index.json').catch(() => null),
+    loadMapCss(),
+  ]);
   const spots = spotsOf(data);
   const byId = new Map(spots.flatMap((s) => s.entries.map((e) => [e.id, s] as const)));
   const grey = tokenRgb('--graph-node', [142, 142, 147], container);
@@ -215,7 +220,6 @@ export async function createEarth(container: HTMLElement, opts: EarthOptions): P
   const inks = INKS.map((t) => rgb(tokenRgb(t, [90, 90, 90], container)));
   const atlasDots: GeoJSON.Feature[] = [];
   const asked = new Set<string>();
-  const atlasIndex = await loadJson<AtlasIndex>('/earth/index.json').catch(() => null);
   const have = new Map(Object.entries(atlasIndex?.tiles ?? {}).map(([z, list]) => [Number(z), new Set(list)]));
   const loadAtlas = async () => {
     if (!atlasIndex || !ready) return;

@@ -2,6 +2,10 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.4.3 (2026-11-01)
+
+- The Earth came up flat and empty, with no dots, for anyone who had visited before. It now draws the globe and every dot each time.
+
 ## 0.4.2 (2026-11-01)
 
 - Connect any two: pick any two of a million things and see the way between them, stop by stop and on the Map.
