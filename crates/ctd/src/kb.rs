@@ -834,6 +834,7 @@ fn read_claims(cx: &Names, entities: &[Entity], diags: &mut Vec<Diag>) -> (Vec<E
             if let (Some(w), Some(life)) = (&when, &from.when)
                 && from.kind == "person"
                 && rel.temporal
+                && !life.start_label.is_empty()
                 && w.start + 0.5 < life.start
             {
                 diags.push(Diag::warn(file, format!("dated {} but {} was born {}", w.label, from.name, life.start_label)).claim(&cid));
