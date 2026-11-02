@@ -5,6 +5,8 @@ What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versio
 ## Next
 
 - Long stories start scrolling sooner, and a finger on a story's graph now scrolls the page. Text no longer jumps when its font arrives.
+- Four stories on Jeffrey Epstein: Palm Beach, The Clients, The Address Book and Was He a Spy? Each tie shows exactly what the record holds, each person's reply, and that contact is not evidence of a crime.
+- A link that only shows contact, or concerns a case, never carries a route, and unread open data stays off those pages.
 
 ## 0.4.5 (2026-11-02)
 
