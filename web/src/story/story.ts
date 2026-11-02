@@ -29,6 +29,8 @@ const speech = 'speechSynthesis' in window && typeof SpeechSynthesisUtterance ==
 const LISTEN_KEY = 'ctd-listen';
 /** A breath before each scene's voice (ms), while the stage moves to it. */
 const VOICE_DELAY = 400;
+/** How long a map waits for a quiet moment on the page (ms) before it is made anyway. */
+const MAP_WAIT = 1000;
 
 /** Where a scene takes over, as a fraction of the screen height. Stacked on small screens: cards are read
  *  below the sticky stage, so the line sits lower. */
@@ -362,6 +364,14 @@ export class CtdStory extends HTMLElement {
       ScrollTrigger.refresh();
       this.activate(target);
     } else if (this.current < 0) this.activate(0);
+    // Made while the reader is still on the first scene: at its own first scene the map would stall the stage.
+    if (this.views.includes('map')) {
+      const makeMap = () => {
+        if (this.isConnected && !this.map) void this.ensureMap().catch((err) => this.fail('map', err));
+      };
+      if ('requestIdleCallback' in window) requestIdleCallback(makeMap, { timeout: MAP_WAIT });
+      else setTimeout(makeMap, MAP_WAIT);
+    }
   }
 
   private ensureMap(): Promise<MapView> {

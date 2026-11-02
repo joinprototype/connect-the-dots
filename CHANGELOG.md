@@ -2,6 +2,10 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## Next
+
+- Long stories start scrolling sooner, and a finger on a story's graph now scrolls the page. Text no longer jumps when its font arrives.
+
 ## 0.4.5 (2026-11-02)
 
 - Entries' details and their generated stories now share files, which takes the site from 18,034 files to 12,482 and leaves room for far more. Addresses stay the same.

@@ -3,6 +3,7 @@
 {% block description %}A story drawn from sourced links.{% endblock %}
 {% block html_attrs %} data-theme="light"{% endblock %}
 {% block body_class %}chapter-page{% endblock %}
-{% block head %}<meta name="robots" content="noindex">{% if site.assets.story_css %}<link rel="stylesheet" href="/assets/story.css">{% endif %}{% endblock %}
+{# the story comes from its pack after the first paint: until then the footer waits below the fold #}
+{% block head %}<meta name="robots" content="noindex"><style>main { min-height: 100vh; }</style>{% if site.assets.story_css %}<link rel="stylesheet" href="/assets/story.css">{% endif %}{% endblock %}
 {% block main %}<p class="chapter-subtitle">Opening the story…</p><noscript><p class="empty">This page needs JavaScript.</p></noscript>{% endblock %}
 {% block scripts %}{% if site.assets.story_js %}<script type="module" src="/assets/story.js"></script>{% endif %}{% if site.assets.life_js %}<script type="module" src="/assets/life.js"></script>{% endif %}{% endblock %}

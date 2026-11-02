@@ -19,6 +19,7 @@
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <link rel="preload" href="/static/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+{% block preload_reading %}<link rel="preload" href="/static/fonts/literata-latin.woff2" as="font" type="font/woff2" crossorigin>{% endblock %}
 <link rel="stylesheet" href="/static/site.css">
 <style>:root{ {% for l in site.layers %}--layer-{{ l.id }}: {{ l.color }};{% endfor %} }</style>
 {% if site.assets.islands_css %}<link rel="stylesheet" href="/assets/islands.css">{% endif %}

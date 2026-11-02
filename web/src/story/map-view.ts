@@ -77,6 +77,9 @@ export async function createMapView(container: HTMLElement, idx: GraphIndex, sho
     // 3x screens cost 2.25x the GPU memory of 2x for no visible gain.
     pixelRatio: Math.min(2, window.devicePixelRatio || 1),
   });
+  // The reader scrolls the page and this map takes no gestures, but its wheel and touch listeners stay on even
+  // with `interactive: false`, and not passive: a scroll that starts over the map would wait for the main thread.
+  map._handlers.destroy();
 
   let ready = false;
   let pending: (() => void) | null = null;

@@ -171,6 +171,13 @@ export function createGraphView(container: HTMLElement, idx: GraphIndex, shots: 
   });
 
   capPixelRatio(renderer);
+  // The reader scrolls the page. Sigma's touch listeners (on the whole document, and not passive) and its wheel
+  // listener make every scroll wait for the main thread first, and its `touch-action: none` stops a finger on the
+  // graph from scrolling at all. A tap still opens a dot's card: the browser sends a mouse click after it.
+  renderer.getTouchCaptor().kill();
+  const mouse = renderer.getMouseCaptor();
+  mouse.container.removeEventListener('wheel', mouse.handleWheel);
+  mouse.container.style.touchAction = 'auto';
   // The focus first, then what this shot reveals, then the rest (the reducer's zIndex), bigger dots first.
   /** What sits over the stage, in its pixels: the time pills, the quote card, the player's controls. */
   function covers(): { x0: number; y0: number; x1: number; y1: number }[] {
@@ -296,6 +303,17 @@ export function createGraphView(container: HTMLElement, idx: GraphIndex, shots: 
   });
   ro.observe(container);
 
+  /** Dots and lines appear together: one redraw for each frame of theirs, not one for each of them. */
+  let refreshing = false;
+  function refreshOnce(): void {
+    if (refreshing) return;
+    refreshing = true;
+    queueMicrotask(() => {
+      refreshing = false;
+      renderer.refresh();
+    });
+  }
+
   return {
     apply(i, reduced) {
       const prevNodes = visibleNodes();
@@ -319,7 +337,7 @@ export function createGraphView(container: HTMLElement, idx: GraphIndex, shots: 
               ease: 'power2.out',
               onUpdate: () => {
                 appear.set(id, st.p);
-                renderer.refresh();
+                refreshOnce();
               },
             }),
           );
