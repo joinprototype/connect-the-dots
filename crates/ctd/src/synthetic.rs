@@ -21,18 +21,27 @@ use crate::{
 };
 
 const FIRST: &[&str] = &[
-    "Anna", "Ben", "Carla", "David", "Elena", "Farid", "Grace", "Hugo", "Ines", "James", "Kenji", "Laura", "Mateo", "Nadia", "Omar", "Priya",
-    "Quentin", "Rosa", "Sergei", "Tara", "Umar", "Vera", "Wei", "Ximena", "Yusuf", "Zoe", "Aiden", "Bianca", "Chen", "Dina", "Emil", "Fatima",
+    "Anna", "Ben", "Carla", "David", "Elena", "Farid", "Grace", "Hugo", "Ines", "James", "Kenji", "Laura", "Mateo", "Nadia", "Omar", "Priya", "Quentin",
+    "Rosa", "Sergei", "Tara", "Umar", "Vera", "Wei", "Ximena", "Yusuf", "Zoe", "Aiden", "Bianca", "Chen", "Dina", "Emil", "Fatima",
 ];
 const SYLLABLES: &[&str] = &[
-    "ka", "lo", "mer", "son", "va", "rin", "tes", "bar", "do", "el", "fan", "gor", "hal", "is", "jun", "kov", "lan", "mo", "nor", "os", "pel",
-    "quin", "ros", "sa", "tor", "ul", "ven", "wil", "xan", "yar", "zel", "an",
+    "ka", "lo", "mer", "son", "va", "rin", "tes", "bar", "do", "el", "fan", "gor", "hal", "is", "jun", "kov", "lan", "mo", "nor", "os", "pel", "quin", "ros",
+    "sa", "tor", "ul", "ven", "wil", "xan", "yar", "zel", "an",
 ];
 const ORG: &[&str] = &["Holdings", "Group", "Bank", "Institute", "Foundation", "Partners", "Capital", "Labs", "Press", "Trust"];
 const EVENT: &[&str] = &["Crisis", "Summit", "Treaty", "Strike", "Election", "Merger", "Reform", "Uprising"];
 /// Entry types and how common each is.
-const KINDS: &[(&str, f64)] =
-    &[("person", 0.5), ("org", 0.2), ("place", 0.1), ("event", 0.1), ("work", 0.04), ("artifact", 0.02), ("concept", 0.02), ("tradition", 0.01), ("group", 0.01)];
+const KINDS: &[(&str, f64)] = &[
+    ("person", 0.5),
+    ("org", 0.2),
+    ("place", 0.1),
+    ("event", 0.1),
+    ("work", 0.04),
+    ("artifact", 0.02),
+    ("concept", 0.02),
+    ("tradition", 0.01),
+    ("group", 0.01),
+];
 
 fn pick<'a>(rng: &mut Rng, list: &[&'a str]) -> &'a str {
     list[(rng.f() * list.len() as f64) as usize % list.len()]
@@ -65,11 +74,14 @@ pub fn kb(schema: Schema, n: usize, seed: u64) -> (Kb, usize) {
     let kind: Vec<&str> = (0..n)
         .map(|_| {
             let mut x = rng.f() * total;
-            kinds.iter().zip(&weights).find(|(_, w)| {
-                x -= **w;
-                x < 0.0
-            })
-            .map_or(kinds[0], |(k, _)| *k)
+            kinds
+                .iter()
+                .zip(&weights)
+                .find(|(_, w)| {
+                    x -= **w;
+                    x < 0.0
+                })
+                .map_or(kinds[0], |(k, _)| *k)
         })
         .collect();
     let names: Vec<String> = kind.iter().map(|k| name(&mut rng, k)).collect();
@@ -141,7 +153,11 @@ pub fn kb(schema: Schema, n: usize, seed: u64) -> (Kb, usize) {
         .map(|k| {
             let id = format!("record-{k}");
             let src = json!({ "id": id, "title": format!("Record {k}"), "tier": "T1", "url": format!("https://example.org/records/{k}"), "published": "2001" });
-            SourceDoc { rel_path: format!("content/sources/{id}.yaml"), stem: id.clone(), src: serde_json::from_value(src).expect("a synthetic source is valid") }
+            SourceDoc {
+                rel_path: format!("content/sources/{id}.yaml"),
+                stem: id.clone(),
+                src: serde_json::from_value(src).expect("a synthetic source is valid"),
+            }
         })
         .collect();
     let (kb, diags) = kb::assemble(schema, Raw { entities, sources, ..Raw::default() });
@@ -162,8 +178,14 @@ fn kb_size(bytes: usize) -> String {
 pub fn report(root: &Path, n: usize, seed: u64, out: &Path) -> Result<()> {
     let started = Instant::now();
     let (kb, errors) = kb(Schema::load(&root.join("content"))?, n, seed);
-    println!("synthetic: {} entries, {} links, {} sources ({} errors) in {:.1} s", kb.entities.len(), kb.edges.len(), kb.sources.len(), errors,
-             started.elapsed().as_secs_f64());
+    println!(
+        "synthetic: {} entries, {} links, {} sources ({} errors) in {:.1} s",
+        kb.entities.len(),
+        kb.edges.len(),
+        kb.sources.len(),
+        errors,
+        started.elapsed().as_secs_f64()
+    );
     let dir = out.join("data");
     let _ = fs::remove_dir_all(&dir);
     fs::create_dir_all(dir.join("search"))?;

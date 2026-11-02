@@ -27,8 +27,21 @@ pub(super) struct History(HashMap<String, Vec<Commit>>);
 impl History {
     pub(super) fn load(root: &Path) -> Self {
         let args = [
-            "-c", "log.showSignature=false", "-c", "log.showRoot=true", "log", "-z", "--no-color", "--relative", "--date-order", "-M", "--name-status",
-            "--date=short", "--format=%x1e%h%x1f%ad%x1f%an%x1f%s", "--", "content",
+            "-c",
+            "log.showSignature=false",
+            "-c",
+            "log.showRoot=true",
+            "log",
+            "-z",
+            "--no-color",
+            "--relative",
+            "--date-order",
+            "-M",
+            "--name-status",
+            "--date=short",
+            "--format=%x1e%h%x1f%ad%x1f%an%x1f%s",
+            "--",
+            "content",
         ];
         History(git(root, &args).map(|log| parse_history(&log)).unwrap_or_default())
     }

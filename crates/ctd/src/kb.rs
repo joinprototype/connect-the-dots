@@ -509,7 +509,10 @@ fn read_entities(schema: &Schema, docs: &[EntityDoc], diags: &mut Vec<Diag>) -> 
         let in_sentence = f.in_sentence.clone().filter(|s| {
             let ok = same_but_first_letter(s, &f.name) || s.strip_prefix("the ").is_some_and(|rest| same_but_first_letter(rest, &f.name));
             if !ok {
-                diags.push(Diag::err(file, format!("in_sentence `{s}` must be the name `{}`, optionally after \"the\"", f.name)).hint("e.g. name: Dissolution of the Soviet Union, in_sentence: the dissolution of the Soviet Union"));
+                diags.push(
+                    Diag::err(file, format!("in_sentence `{s}` must be the name `{}`, optionally after \"the\"", f.name))
+                        .hint("e.g. name: Dissolution of the Soviet Union, in_sentence: the dissolution of the Soviet Union"),
+                );
             }
             ok
         });
@@ -547,7 +550,8 @@ fn read_entities(schema: &Schema, docs: &[EntityDoc], diags: &mut Vec<Diag>) -> 
         ok_docs.push(di);
     }
     if missing_uid > 0 {
-        diags.push(Diag::warn("content/", format!("{} without a uid", crate::plural(missing_uid, "entity file"))).hint("run `ctd fmt` to assign permanent ids"));
+        diags
+            .push(Diag::warn("content/", format!("{} without a uid", crate::plural(missing_uid, "entity file"))).hint("run `ctd fmt` to assign permanent ids"));
     }
     (entities, index, ok_docs)
 }
@@ -681,7 +685,10 @@ fn read_backgrounds(cx: &Names, entities: &mut [Entity], diags: &mut Vec<Diag>) 
                 continue;
             }
             if living && !own {
-                diags.push(Diag::err(file, format!("{at}: a living person's background is only what they have said themselves")).hint(format!("cite a source in their voice (`voice: {}`), or a quote of theirs with `by: {}`", f.id, f.id)));
+                diags.push(
+                    Diag::err(file, format!("{at}: a living person's background is only what they have said themselves"))
+                        .hint(format!("cite a source in their voice (`voice: {}`), or a quote of theirs with `by: {}`", f.id, f.id)),
+                );
             } else if !(living || well_sourced(cx.schema, cited)) {
                 diags.push(Diag::err(file, format!("{at}: needs one T1 source or two independent T1/T2 voices")));
             } else {
@@ -724,11 +731,11 @@ fn cite<'a>(cx: &Names<'a>, entities: &[Entity], file: &str, cid: &str, c: &Clai
     let mut cited = Cited { refs: Vec::new(), voices: BTreeSet::new(), sources: Vec::new(), best: None };
     for s in &c.src {
         let Some(src) = cx.sources.get(&s.s) else {
-            diags.push(
-                Diag::err(file, format!("source `{}` does not exist", s.s))
-                    .claim(cid)
-                    .hint(format!("create content/sources/{}/{}.yaml", s.s.chars().take(2).collect::<String>(), s.s)),
-            );
+            diags.push(Diag::err(file, format!("source `{}` does not exist", s.s)).claim(cid).hint(format!(
+                "create content/sources/{}/{}.yaml",
+                s.s.chars().take(2).collect::<String>(),
+                s.s
+            )));
             continue;
         };
         if let Some(q) = &s.quote
@@ -759,11 +766,20 @@ fn cite<'a>(cx: &Names<'a>, entities: &[Entity], file: &str, cid: &str, c: &Clai
 fn dispute_faults(cx: &Names, rel: &str, from: &Entity, according_to: &[String], refs: &[EdgeSrc]) -> Vec<(String, String)> {
     let mut faults = Vec::new();
     if according_to != [from.id.clone()] {
-        faults.push((format!("`{rel}` is one side's own account: write `according_to: [{}]`", from.id), "name the owner of this link and nobody else".to_string()));
+        faults.push((
+            format!("`{rel}` is one side's own account: write `according_to: [{}]`", from.id),
+            "name the owner of this link and nobody else".to_string(),
+        ));
     }
-    let own = refs.iter().any(|s| s.quote.is_some() && (s.by.as_ref() == Some(&from.id) || cx.sources.get(&s.id).is_some_and(|src| src.voice == from.id || src.author.as_ref() == Some(&from.id))));
+    let own = refs.iter().any(|s| {
+        s.quote.is_some()
+            && (s.by.as_ref() == Some(&from.id) || cx.sources.get(&s.id).is_some_and(|src| src.voice == from.id || src.author.as_ref() == Some(&from.id)))
+    });
     if !own {
-        faults.push((format!("`{rel}` needs {}'s own words", from.name), format!("quote a source in their voice (`voice: {}`), or mark the quote `by: {}`", from.id, from.id)));
+        faults.push((
+            format!("`{rel}` needs {}'s own words", from.name),
+            format!("quote a source in their voice (`voice: {}`), or mark the quote `by: {}`", from.id, from.id),
+        ));
     }
     faults
 }
@@ -792,11 +808,8 @@ fn read_claims(cx: &Names, entities: &[Entity], diags: &mut Vec<Diag>) -> (Vec<E
                 continue;
             };
             if !rel.from.allows(&from.kind) {
-                diags.push(
-                    Diag::err(file, format!("`{}` cannot start from a {}", c.rel, from.kind))
-                        .claim(&cid)
-                        .hint(format!("allowed: {}", rel.from.names())),
-                );
+                diags
+                    .push(Diag::err(file, format!("`{}` cannot start from a {}", c.rel, from.kind)).claim(&cid).hint(format!("allowed: {}", rel.from.names())));
             }
             let when = c.when.as_ref().and_then(|w| match edtf::parse(w) {
                 Ok(s) => Some(s),
@@ -849,7 +862,9 @@ fn read_claims(cx: &Names, entities: &[Entity], diags: &mut Vec<Diag>) -> (Vec<E
                 diags.push(Diag::err(file, format!("status `{status}` must be one of {}", STATUSES.join(", "))).claim(&cid));
             }
             if answering.contains(c.rel.as_str()) && !c.according_to.is_empty() && c.src.iter().all(|s| s.quote.is_none()) {
-                diags.push(Diag::warn(file, "an account with no quote is left off question pages").claim(&cid).hint("quote the source's own words: `quote: \"…\"`"));
+                diags.push(
+                    Diag::warn(file, "an account with no quote is left off question pages").claim(&cid).hint("quote the source's own words: `quote: \"…\"`"),
+                );
             }
             if rel.attributed && c.according_to.is_empty() {
                 diags.push(
@@ -902,7 +917,11 @@ fn read_claims(cx: &Names, entities: &[Entity], diags: &mut Vec<Diag>) -> (Vec<E
                     continue;
                 }
                 if rel.dispute && target.finding.is_none() {
-                    diags.push(Diag::err(file, format!("`{}` disputes a finding, and {} quotes none", c.rel, target.id)).claim(&cid).hint("add `finding: {s: <source-id>, quote: \"…\"}` to that entry"));
+                    diags.push(
+                        Diag::err(file, format!("`{}` disputes a finding, and {} quotes none", c.rel, target.id))
+                            .claim(&cid)
+                            .hint("add `finding: {s: <source-id>, quote: \"…\"}` to that entry"),
+                    );
                 }
                 if rel.identity && target.kind != from.kind {
                     diags.push(Diag::err(file, format!("`{}` joins two forms of one body, so both must be a {}", c.rel, from.kind)).claim(&cid));
@@ -1000,10 +1019,10 @@ fn read_featured(kb: &Kb, raw: &Featured, diags: &mut Vec<Diag>) -> Featured {
             continue;
         }
         if crate::paths::find(kb, &a, &b, &route).is_empty() {
-            diags.push(Diag::warn(FEATURED, format!("no route from `{a}` to `{b}`, so it gets no story")).hint(format!(
-                "routes run at most {} steps and skip index-fund holdings; add sourced links or pick another pair",
-                route.max_hops
-            )));
+            diags.push(
+                Diag::warn(FEATURED, format!("no route from `{a}` to `{b}`, so it gets no story"))
+                    .hint(format!("routes run at most {} steps and skip index-fund holdings; add sourced links or pick another pair", route.max_hops)),
+            );
         }
         featured.connections.push(match c.note() {
             Some(note) => Pick::Noted { between: [a, b], note: note.to_string() },
@@ -1251,11 +1270,7 @@ fn chapter(kb: &Kb, doc: &ChapterDoc, withheld: &HashSet<&str>, diags: &mut Vec<
         return None;
     }
     let (prose, scenes) = split_scenes(&doc.body);
-    let refs = ShotRefs {
-        edges: kb.edges.iter().map(|e| e.id.as_str()).collect(),
-        lenses: kb.schema.lenses.iter().map(|l| l.id.as_str()).collect(),
-        withheld,
-    };
+    let refs = ShotRefs { edges: kb.edges.iter().map(|e| e.id.as_str()).collect(), lenses: kb.schema.lenses.iter().map(|l| l.id.as_str()).collect(), withheld };
     let mut shots = Vec::new();
     for block in scenes {
         let list: Vec<Value> = match parse_yaml(&block) {
@@ -1317,7 +1332,10 @@ pub(crate) mod tests {
             &[
                 file("content/sources/ba/bad.yaml", "id: bad\ntitle: Bad\ntier: T1\nurl: javascript:alert(1)\narchive_url: \" data:text/html,x\"\n"),
                 source("good", "T1"),
-                file("content/entities/person/an/ann.md", "---\nid: ann\ntype: person\nname: Ann\nimage: {url: \"JavaScript:alert(1)\"}\nclaims:\n  - {id: c1, rel: founded, to: acme, src: [{s: bad}, {s: good}]}\n---\n"),
+                file(
+                    "content/entities/person/an/ann.md",
+                    "---\nid: ann\ntype: person\nname: Ann\nimage: {url: \"JavaScript:alert(1)\"}\nclaims:\n  - {id: c1, rel: founded, to: acme, src: [{s: bad}, {s: good}]}\n---\n",
+                ),
                 file("content/entities/org/ac/acme.md", "---\nid: acme\ntype: org\nname: Acme\nimage: {url: \"https://example.org/acme.png\"}\n---\n"),
             ],
         );
@@ -1335,7 +1353,10 @@ pub(crate) mod tests {
     /// Zoe is alive, Hal is historical, Acme is no person; each says where they come from.
     pub(crate) fn backgrounds() -> Vec<crate::testkit::File> {
         let person = |id: &str, when: &str, lines: &str| {
-            file(&format!("content/entities/person/{}/{id}.md", &id[..2]), &format!("---\nid: {id}\ntype: person\nname: {id}\nwhen: \"{when}\"\nbackground:\n{lines}claims: []\n---\n"))
+            file(
+                &format!("content/entities/person/{}/{id}.md", &id[..2]),
+                &format!("---\nid: {id}\ntype: person\nname: {id}\nwhen: \"{when}\"\nbackground:\n{lines}claims: []\n---\n"),
+            )
         };
         vec![
             person(
@@ -1352,7 +1373,10 @@ pub(crate) mod tests {
                 "  - {text: Born to a family of printers, src: [{s: rec, quote: \"a family of printers\"}]}\n\
                  \x20 - {text: Of Welsh descent, src: [{s: blog, quote: \"Welsh descent\"}]}\n",
             ),
-            file("content/entities/org/ac/acme.md", "---\nid: acme\ntype: org\nname: Acme\nbackground:\n  - {text: Old, src: [{s: rec, quote: \"old\"}]}\nclaims: []\n---\n"),
+            file(
+                "content/entities/org/ac/acme.md",
+                "---\nid: acme\ntype: org\nname: Acme\nbackground:\n  - {text: Old, src: [{s: rec, quote: \"old\"}]}\nclaims: []\n---\n",
+            ),
             file("content/sources/zo/zoe-memoir.yaml", "id: zoe-memoir\ntitle: My life\ntier: T1\nvoice: zoe\nurl: https://example.org/zoe\n"),
             source("rec", "T1"),
             source("paper", "T2"),
@@ -1398,13 +1422,19 @@ pub(crate) mod tests {
         assert_eq!(kb.entity("zoe").unwrap().background.len(), 2, "her own words, through the old id");
         assert_eq!(kb.edges[0].sources[0].by.as_deref(), Some("zoe"));
         let shot = &kb.chapters[0].shots[0];
-        assert_eq!((&shot["focus"], &shot["reveal"][0], &shot["reveal_claims"][0]), (&serde_json::json!("zoe"), &serde_json::json!("zoe"), &serde_json::json!("zoe#c1")));
+        assert_eq!(
+            (&shot["focus"], &shot["reveal"][0], &shot["reveal_claims"][0]),
+            (&serde_json::json!("zoe"), &serde_json::json!("zoe"), &serde_json::json!("zoe#c1"))
+        );
         assert_eq!(said(&diags, "unknown source field `qoute`").len(), 1, "a misspelled key is not silently dropped");
     }
 
     #[test]
     fn frontmatter_errors_give_the_files_line_numbers() {
-        let (_, diags) = load("kb-lines", &[file("content/entities/person/zo/zoe.md", "---\nid: zoe\ntype: person\nname: Zoe\nclaims:\n  - id: c1\n   rel: founded\n---\n")]);
+        let (_, diags) = load(
+            "kb-lines",
+            &[file("content/entities/person/zo/zoe.md", "---\nid: zoe\ntype: person\nname: Zoe\nclaims:\n  - id: c1\n   rel: founded\n---\n")],
+        );
         let msg = said(&diags, "invalid frontmatter").join(" ");
         // the link whose `rel` is lost to a bad indent starts on line 6 of the file (line 5 of the YAML)
         assert!(msg.contains("line 6 column"), "{msg}");
@@ -1437,7 +1467,12 @@ pub(crate) mod tests {
         let (kb, _) = load(
             "kb-links",
             &[
-                entity("person", "ann", "Ann", "  - {id: c1, rel: founded, to: acme, src: [{s: rec}]}\n  - {id: c2, rel: relative_of, to: bob, role: mother, src: [{s: rec}]}\n"),
+                entity(
+                    "person",
+                    "ann",
+                    "Ann",
+                    "  - {id: c1, rel: founded, to: acme, src: [{s: rec}]}\n  - {id: c2, rel: relative_of, to: bob, role: mother, src: [{s: rec}]}\n",
+                ),
                 entity("person", "bob", "Bob", "  - {id: c1, rel: founded, to: acme, src: [{s: rec}]}\n"),
                 entity("org", "acme", "Acme", ""),
                 source("rec", "T1"),
@@ -1457,7 +1492,12 @@ pub(crate) mod tests {
         let (kb, diags) = load(
             "kb-featured",
             &[
-                entity("person", "ann", "Ann", "  - {id: c1, rel: founded, to: acme, src: [{s: rec}]}\n  - {id: c2, rel: founded, to: beta, src: [{s: rec}]}\n"),
+                entity(
+                    "person",
+                    "ann",
+                    "Ann",
+                    "  - {id: c1, rel: founded, to: acme, src: [{s: rec}]}\n  - {id: c2, rel: founded, to: beta, src: [{s: rec}]}\n",
+                ),
                 entity("org", "acme", "Acme", ""),
                 entity("org", "beta", "Beta", ""),
                 entity("org", "zed", "Zed", ""),
@@ -1505,7 +1545,10 @@ pub(crate) mod tests {
         let changed = "Disputed: Two records give different dates (1917 and 1919).";
         assert_eq!(shown(reason, changed), keep(Some(changed)));
         // what a note adds after the repeat is kept, once
-        assert_eq!(shown(reason, "Disputed: Two records give different dates (1917 and 1918). The later one is a copy."), keep(Some("The later one is a copy.")));
+        assert_eq!(
+            shown(reason, "Disputed: Two records give different dates (1917 and 1918). The later one is a copy."),
+            keep(Some("The later one is a copy."))
+        );
         assert_eq!(shown(reason, "Two records give different dates (1917 and 1918).\" \"See the next claim.\""), keep(Some("\"See the next claim.\"")));
         // a note that goes on in the same sentence says more: it becomes the one line shown
         assert_eq!(
@@ -1552,7 +1595,9 @@ pub(crate) mod tests {
                 &format!("---\nid: ch\ntype: chapter\ntitle: Ch\n---\n\n```scene\n- shot: one\n  time: \"{time}\"\n  borders: [{borders}]\n```\n"),
             )
         };
-        let shape = |source: &str| file("content/borders/rome.json", &format!(r#"{{"name":"Rome","source":"{source}","features":[{{"properties":{{"from":100,"to":200}}}}]}}"#));
+        let shape = |source: &str| {
+            file("content/borders/rome.json", &format!(r#"{{"name":"Rome","source":"{source}","features":[{{"properties":{{"from":100,"to":200}}}}]}}"#))
+        };
         let check = |name: &str, extra: Vec<crate::testkit::File>| {
             let mut files = vec![source("rec", "T1")];
             files.extend(extra);
@@ -1566,7 +1611,9 @@ pub(crate) mod tests {
 
     #[test]
     fn a_stat_card_shows_its_proof() {
-        let chapter = |overlay: &str| file("content/chapters/ch.md", &format!("---\nid: ch\ntype: chapter\ntitle: Ch\n---\n\n```scene\n- shot: one\n  overlay: {{{overlay}}}\n```\n"));
+        let chapter = |overlay: &str| {
+            file("content/chapters/ch.md", &format!("---\nid: ch\ntype: chapter\ntitle: Ch\n---\n\n```scene\n- shot: one\n  overlay: {{{overlay}}}\n```\n"))
+        };
         let full = r#"kind: stat, value: "2,700%", label: Rise, source: rec, quote: "It rose.""#;
         let bare = r#"kind: stat, value: "2,700%", label: Rise, source: rec"#;
         assert!(said(&load("kb-stat-ok", &[source("rec", "T1"), chapter(full)]).1, "stat card").is_empty());

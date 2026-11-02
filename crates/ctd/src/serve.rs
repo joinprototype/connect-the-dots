@@ -1,12 +1,6 @@
 //! `ctd serve`: dev server with file watching, rebuilds and live reload (SSE).
 
-use std::{
-    convert::Infallible,
-    net::SocketAddr,
-    path::PathBuf,
-    sync::mpsc,
-    time::Duration,
-};
+use std::{convert::Infallible, net::SocketAddr, path::PathBuf, sync::mpsc, time::Duration};
 
 use anyhow::Result;
 use axum::{

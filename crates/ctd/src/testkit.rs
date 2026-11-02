@@ -20,7 +20,10 @@ const SCHEMA: &[(&str, &str)] = &[
          founded: {label: founded, inverse: founded by, from: [person, org], to: [org], layers: [power], temporal: true}\n",
     ),
     ("content/schema/lenses.yaml", "- {id: all, label: Everything, layers: [people, power]}\n"),
-    ("content/schema/source-tiers.yaml", "T1: {label: Primary record, primary: true}\nT2: {label: Scholarship & press, strong: true}\nT3: {label: Self-published}\n"),
+    (
+        "content/schema/source-tiers.yaml",
+        "T1: {label: Primary record, primary: true}\nT2: {label: Scholarship & press, strong: true}\nT3: {label: Self-published}\n",
+    ),
     ("content/methodology/paths.yaml", "version: test\n"),
 ];
 

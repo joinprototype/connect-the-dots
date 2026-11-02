@@ -154,7 +154,10 @@ pub fn curated(kb: &Kb) -> HashMap<u32, usize> {
 pub fn spots(kb: &Kb, ids: &[u32], nodes: &[[f32; 2]]) -> HashMap<u32, [u16; 2]> {
     let hand: HashMap<usize, u32> = curated(kb).into_iter().map(|(q, c)| (c, q)).collect();
     let spot = |v: f32| (v.clamp(0.0, 1.0) * 65535.0) as u16;
-    ids.iter().zip(nodes).filter_map(|(&id, p)| Some((if id >= ATLAS_IDS { id - ATLAS_IDS } else { *hand.get(&(id as usize))? }, [spot(p[0]), spot(p[1])]))).collect()
+    ids.iter()
+        .zip(nodes)
+        .filter_map(|(&id, p)| Some((if id >= ATLAS_IDS { id - ATLAS_IDS } else { *hand.get(&(id as usize))? }, [spot(p[0]), spot(p[1])])))
+        .collect()
 }
 
 /// Each entry's step towards its nearest landmark, and what a route needs from the landmarks' side.
@@ -265,7 +268,15 @@ fn routes(a: &Atlas, kb: &Kb, adjacent: &[Vec<(u32, u8, bool)>]) -> Routes {
 }
 
 /// One shard: `{"Q42": {...}}`, each entry with its links grouped by what they say.
-fn shard(a: &Atlas, kb: &Kb, hand: &HashMap<u32, usize>, adjacent: &[Vec<(u32, u8, bool)>], spots: &HashMap<u32, [u16; 2]>, routes: &Routes, members: &[u32]) -> Value {
+fn shard(
+    a: &Atlas,
+    kb: &Kb,
+    hand: &HashMap<u32, usize>,
+    adjacent: &[Vec<(u32, u8, bool)>],
+    spots: &HashMap<u32, [u16; 2]>,
+    routes: &Routes,
+    members: &[u32],
+) -> Value {
     let mut out = serde_json::Map::new();
     for &i in members {
         let e = &a.entries[i as usize];
@@ -412,7 +423,17 @@ mod tests {
         let relation = "member_of: {label: member of, inverse: members, from: [person], to: [org]}\n";
         let (kb, _) = load_kb("atlas-routes", &[file("content/schema/relations.yaml", relation)]);
         let entries: Vec<Entry> = (0..11u32)
-            .map(|i| Entry { qid: i + 1, kind: 0, fame: 100 - i as u16, name: format!("E{i}"), summary: String::new(), start: None, end: None, coords: None, image: String::new() })
+            .map(|i| Entry {
+                qid: i + 1,
+                kind: 0,
+                fame: 100 - i as u16,
+                name: format!("E{i}"),
+                summary: String::new(),
+                start: None,
+                end: None,
+                coords: None,
+                image: String::new(),
+            })
             .collect();
         // the best known has nine links, and one entry sits a step beyond them
         let mut links: Vec<(u32, u8, u32)> = (1..10).map(|i| (0, 0, i)).collect();
@@ -444,7 +465,10 @@ mod tests {
         let dir = root.join(".cache/atlas");
         fs::create_dir_all(&dir).unwrap();
         // one person, one place in the atlas, and a place written by hand
-        gz(&dir.join("entries.tsv.gz"), "Q1\tperson\t50\tAda\tA writer\t1900\t1950\t0\t\t\tAda.jpg\nQ2\tplace\t90\tBig Town\t\t\t\t0\t2.5\t3.5\t\nQ3\tplace\t10\tSmall Town\t\t\t\t0\t\t\t\n");
+        gz(
+            &dir.join("entries.tsv.gz"),
+            "Q1\tperson\t50\tAda\tA writer\t1900\t1950\t0\t\t\tAda.jpg\nQ2\tplace\t90\tBig Town\t\t\t\t0\t2.5\t3.5\t\nQ3\tplace\t10\tSmall Town\t\t\t\t0\t\t\t\n",
+        );
         gz(&dir.join("links.tsv.gz"), "Q1\tborn_in\tQ3\nQ1\tborn_in\tQ2\n");
         let mut hand = entity("org", "big-town", "Big Town", "");
         hand.1 = hand.1.replacen("name:", "same_as: {wikidata: Q2}\nname:", 1);

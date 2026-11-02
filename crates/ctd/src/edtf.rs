@@ -217,21 +217,10 @@ fn interval_label(a: Option<&Point>, b: Option<&Point>) -> String {
             if plain(a) && plain(b) && a.year == b.year {
                 match (a.precision(), b.precision()) {
                     (Precision::Day, Precision::Day) if a.month == b.month => {
-                        return format!(
-                            "{}–{} {} {}",
-                            a.day.unwrap(),
-                            b.day.unwrap(),
-                            MONTHS[(a.month.unwrap() - 1) as usize],
-                            year_label(a.year)
-                        );
+                        return format!("{}–{} {} {}", a.day.unwrap(), b.day.unwrap(), MONTHS[(a.month.unwrap() - 1) as usize], year_label(a.year));
                     }
                     (Precision::Month, Precision::Month) => {
-                        return format!(
-                            "{}–{} {}",
-                            MONTHS[(a.month.unwrap() - 1) as usize],
-                            MONTHS[(b.month.unwrap() - 1) as usize],
-                            year_label(a.year)
-                        );
+                        return format!("{}–{} {}", MONTHS[(a.month.unwrap() - 1) as usize], MONTHS[(b.month.unwrap() - 1) as usize], year_label(a.year));
                     }
                     _ => {}
                 }

@@ -174,16 +174,10 @@ pub fn load(root: &Path) -> Raw {
         }
         let Some(text) = read(&p, &file, &mut raw.diags) else { continue };
         let Some((fm, body)) = split_frontmatter(&text) else {
-            raw.diags.push(
-                Diag::err(&file, "missing YAML frontmatter").hint("start the file with a line `---`, the YAML, then another `---`"),
-            );
+            raw.diags.push(Diag::err(&file, "missing YAML frontmatter").hint("start the file with a line `---`, the YAML, then another `---`"));
             continue;
         };
-        let folder_type = p
-            .strip_prefix(&entities_dir)
-            .ok()
-            .and_then(|r| r.components().next())
-            .map(|c| c.as_os_str().to_string_lossy().into_owned());
+        let folder_type = p.strip_prefix(&entities_dir).ok().and_then(|r| r.components().next()).map(|c| c.as_os_str().to_string_lossy().into_owned());
         // a leading newline stands for the opening `---`, so errors give the file's line numbers
         match parse_yaml::<EntityFront>(&format!("\n{fm}")) {
             Ok(front) => raw.entities.push(EntityDoc { rel_path: file, stem: stem(&p), folder_type, front, body: body.to_string() }),

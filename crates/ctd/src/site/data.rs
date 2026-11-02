@@ -309,7 +309,8 @@ mod tests {
     #[test]
     fn a_hub_keeps_its_strongest_links_of_each_kind() {
         // 103 companies founded: three on a self-published page, the rest on a primary record
-        let mut files = vec![source("rec", "T1"), source("blog", "T3"), file("content/methodology/paths.yaml", "version: test\nevidence: {T1: 1.0, T3: 0.2}\n")];
+        let mut files =
+            vec![source("rec", "T1"), source("blog", "T3"), file("content/methodology/paths.yaml", "version: test\nevidence: {T1: 1.0, T3: 0.2}\n")];
         let mut claims = String::new();
         for i in 0..103 {
             let src = if [5, 50, 100].contains(&i) { "blog" } else { "rec" };

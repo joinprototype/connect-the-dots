@@ -64,11 +64,7 @@ fn title(svg: &mut String, label: &str, fg: &str) {
             l.push('…');
         }
     }
-    let _ = write!(
-        svg,
-        r#"<text x="26" y="{:.0}" style="fill:{fg};font:800 {size}px var(--font-display,sans-serif);letter-spacing:-0.3px">"#,
-        24.0 + size
-    );
+    let _ = write!(svg, r#"<text x="26" y="{:.0}" style="fill:{fg};font:800 {size}px var(--font-display,sans-serif);letter-spacing:-0.3px">"#, 24.0 + size);
     for (i, l) in lines.iter().enumerate() {
         let dy = if i == 0 { 0.0 } else { size * 1.12 };
         let _ = write!(svg, r#"<tspan x="26" dy="{dy:.1}">{}</tspan>"#, esc(l));
@@ -104,7 +100,11 @@ pub fn entity(id: &str, label: &str, links: usize) -> String {
     for i in 0..n {
         if rng.f() < 0.35 {
             let j = (i + 1 + (rng.f() * 3.0) as usize) % n;
-            let _ = write!(svg, r#"<line x1="{:.1}" y1="{:.1}" x2="{:.1}" y2="{:.1}" stroke="{fg}" stroke-opacity="0.45" stroke-width="1.4"/>"#, pts[i].0, pts[i].1, pts[j].0, pts[j].1);
+            let _ = write!(
+                svg,
+                r#"<line x1="{:.1}" y1="{:.1}" x2="{:.1}" y2="{:.1}" stroke="{fg}" stroke-opacity="0.45" stroke-width="1.4"/>"#,
+                pts[i].0, pts[i].1, pts[j].0, pts[j].1
+            );
         }
     }
     for &(x, y) in &pts {
@@ -172,10 +172,18 @@ pub fn journey(id: &str, label: &str, stops: &[[f64; 2]], routes: &[(usize, usiz
     title(&mut svg, label, fg);
     stars(&mut svg, &mut rng, 7, fg);
     for pair in pts.windows(2) {
-        let _ = write!(svg, r#"<line x1="{:.1}" y1="{:.1}" x2="{:.1}" y2="{:.1}" stroke="{fg}" stroke-opacity="0.45" stroke-width="1.6"/>"#, pair[0].0, pair[0].1, pair[1].0, pair[1].1);
+        let _ = write!(
+            svg,
+            r#"<line x1="{:.1}" y1="{:.1}" x2="{:.1}" y2="{:.1}" stroke="{fg}" stroke-opacity="0.45" stroke-width="1.6"/>"#,
+            pair[0].0, pair[0].1, pair[1].0, pair[1].1
+        );
     }
     for &(a, b) in routes {
-        let _ = write!(svg, r#"<line x1="{:.1}" y1="{:.1}" x2="{:.1}" y2="{:.1}" stroke="{fg}" stroke-width="4.5" stroke-linecap="round"/>"#, pts[a].0, pts[a].1, pts[b].0, pts[b].1);
+        let _ = write!(
+            svg,
+            r#"<line x1="{:.1}" y1="{:.1}" x2="{:.1}" y2="{:.1}" stroke="{fg}" stroke-width="4.5" stroke-linecap="round"/>"#,
+            pts[a].0, pts[a].1, pts[b].0, pts[b].1
+        );
     }
     for (i, &(x, y)) in pts.iter().enumerate() {
         let _ = write!(svg, r#"<circle cx="{x:.1}" cy="{y:.1}" r="5.4" fill="{}"/>"#, dot(i));

@@ -41,7 +41,8 @@ mod tests {
 
     #[test]
     fn a_windows_file_gets_its_uid_once() {
-        let root = write_repo("fmt-crlf", &[file("content/entities/person/zo/zoe.md", "---\r\nid: zoe\r\ntype: person\r\nname: Zoe\r\nclaims: []\r\n---\r\n")]).unwrap();
+        let root = write_repo("fmt-crlf", &[file("content/entities/person/zo/zoe.md", "---\r\nid: zoe\r\ntype: person\r\nname: Zoe\r\nclaims: []\r\n---\r\n")])
+            .unwrap();
         assert_eq!(super::fill_uids(&root).unwrap(), 1);
         assert_eq!(super::fill_uids(&root).unwrap(), 0, "the uid is written, so a second run has nothing to do");
         let text = std::fs::read_to_string(root.join("content/entities/person/zo/zoe.md")).unwrap();

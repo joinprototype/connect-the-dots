@@ -682,7 +682,10 @@ pub fn answer_story(kb: &Kb, a: &Answer, next: &[(String, String)]) -> Option<Dr
     let per = groups.len().div_ceil(MAX_SHOTS.saturating_sub(reserve).max(1)).max(1);
     for chunk in groups.chunks(per) {
         let lines: Vec<&Line> = chunk.iter().flat_map(|(_, p)| &p.lines).collect();
-        let said: Vec<String> = chunk.iter().map(|(gi, p)| format!("**{}.** {}", text(&q.groups[*gi].label), told_all(kb, x, &p.lines.iter().collect::<Vec<_>>(), false))).collect();
+        let said: Vec<String> = chunk
+            .iter()
+            .map(|(gi, p)| format!("**{}.** {}", text(&q.groups[*gi].label), told_all(kb, x, &p.lines.iter().collect::<Vec<_>>(), false)))
+            .collect();
         shots.push(lines_shot(kb, &format!("record-{}", chunk[0].0), x, &lines, None, said.join("\n\n"), 4 + 3 * lines.len() as u64));
     }
 
@@ -848,7 +851,13 @@ pub(crate) mod tests {
         claims.push_str("  - {id: c22, rel: settled_with, to: agency, when: 2018-09-29, case: A v. Ann, src: [{s: rec}]}\n");
         let (kb, _) = load(
             "stories-legal",
-            &[relations, entity("org", "corp", "Corp", ""), entity("org", "agency", "Agency", ""), entity("person", "ann", "Ann", &claims), source("rec", "T1")],
+            &[
+                relations,
+                entity("org", "corp", "Corp", ""),
+                entity("org", "agency", "Agency", ""),
+                entity("person", "ann", "Ann", &claims),
+                source("rec", "T1"),
+            ],
         );
         let d = entity_story(&kb, "ann").unwrap();
         let told: Vec<&str> = d.shots.iter().flat_map(|s| s["reveal_claims"].as_array().into_iter().flatten()).filter_map(|c| c.as_str()).collect();
@@ -872,9 +881,24 @@ pub(crate) mod tests {
             &[
                 relations,
                 entity("org", "corp", "Corp", ""),
-                entity("person", "alice", "Alice", "  - {id: c1, rel: founded, to: corp, when: 2001-09, src: [{s: rec}]}\n  - {id: c2, rel: board_member_of, to: corp, when: 2001-09, src: [{s: rec}]}\n  - {id: c3, rel: ceo_of, to: corp, when: 2001-09/2004-07, src: [{s: rec}]}\n"),
-                entity("person", "bob", "Bob", "  - {id: c1, rel: founded, to: corp, when: 2001-09, src: [{s: rec}]}\n  - {id: c2, rel: board_member_of, to: corp, when: 2001-09, src: [{s: rec}]}\n"),
-                entity("person", "erin", "Erin", "  - {id: c1, rel: invested_in, to: corp, when: 2001-08, src: [{s: rec}]}\n  - {id: c2, rel: board_member_of, to: corp, when: 2002-05, src: [{s: rec}]}\n"),
+                entity(
+                    "person",
+                    "alice",
+                    "Alice",
+                    "  - {id: c1, rel: founded, to: corp, when: 2001-09, src: [{s: rec}]}\n  - {id: c2, rel: board_member_of, to: corp, when: 2001-09, src: [{s: rec}]}\n  - {id: c3, rel: ceo_of, to: corp, when: 2001-09/2004-07, src: [{s: rec}]}\n",
+                ),
+                entity(
+                    "person",
+                    "bob",
+                    "Bob",
+                    "  - {id: c1, rel: founded, to: corp, when: 2001-09, src: [{s: rec}]}\n  - {id: c2, rel: board_member_of, to: corp, when: 2001-09, src: [{s: rec}]}\n",
+                ),
+                entity(
+                    "person",
+                    "erin",
+                    "Erin",
+                    "  - {id: c1, rel: invested_in, to: corp, when: 2001-08, src: [{s: rec}]}\n  - {id: c2, rel: board_member_of, to: corp, when: 2002-05, src: [{s: rec}]}\n",
+                ),
                 source("rec", "T1"),
             ],
         );
@@ -907,7 +931,12 @@ pub(crate) mod tests {
                      born_in: {label: born in, inverse: birthplace of, from: [person], to: [place], layers: [people], noun: true, background: true}\n\
                      citizen_of: {label: citizen of, inverse: citizens, from: [person], to: [place], layers: [people], temporal: true, traversable: false, noun: true, background: true}\n",
                 ),
-                entity("person", "zed", "Zed", "  - {id: c1, rel: founded, to: corp, when: 2001, src: [{s: rec}]}\n  - {id: c2, rel: born_in, to: town, src: [{s: rec}]}\n  - {id: c3, rel: citizen_of, to: land, src: [{s: rec}]}\n  - {id: c4, rel: citizen_of, to: isle, src: [{s: rec}]}\n  - {id: c5, rel: founded, to: firm, when: 2003, src: [{s: rec}]}\n"),
+                entity(
+                    "person",
+                    "zed",
+                    "Zed",
+                    "  - {id: c1, rel: founded, to: corp, when: 2001, src: [{s: rec}]}\n  - {id: c2, rel: born_in, to: town, src: [{s: rec}]}\n  - {id: c3, rel: citizen_of, to: land, src: [{s: rec}]}\n  - {id: c4, rel: citizen_of, to: isle, src: [{s: rec}]}\n  - {id: c5, rel: founded, to: firm, when: 2003, src: [{s: rec}]}\n",
+                ),
                 entity("org", "corp", "Corp", ""),
                 entity("org", "firm", "Firm", ""),
                 entity("place", "town", "Town", ""),

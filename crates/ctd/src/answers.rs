@@ -153,12 +153,7 @@ pub fn own_words<'e>(kb: &Kb, e: &'e Edge, account: Option<&str>) -> Option<&'e 
 /// not count, so one side never borrows another's proof.
 pub fn tier<'k>(kb: &'k Kb, e: &Edge, account: Option<&str>) -> Option<&'k str> {
     let borrowed = |s: &EdgeSrc| account.is_some_and(|who| e.according_to.iter().any(|o| o != who && speaks_for(kb, s, o)));
-    e.sources
-        .iter()
-        .filter(|s| !borrowed(s))
-        .filter_map(|s| kb.sources.get(&s.id))
-        .map(|s| s.tier.as_str())
-        .min_by_key(|t| kb.schema.tier_rank(t))
+    e.sources.iter().filter(|s| !borrowed(s)).filter_map(|s| kb.sources.get(&s.id)).map(|s| s.tier.as_str()).min_by_key(|t| kb.schema.tier_rank(t))
 }
 
 /// The scope line every answer prints: ["Shows documented founders, ….", "Not who made decisions, or why."].
@@ -317,9 +312,7 @@ fn keep(mut lines: Vec<Line>, cap: usize) -> Part {
     lines.sort_by(|a, b| a.cost.total_cmp(&b.cost).then_with(|| a.edge.id.cmp(&b.edge.id)));
     let more = lines.len().saturating_sub(cap);
     lines.truncate(cap);
-    lines.sort_by(|a, b| {
-        b.edge.cross_confirmed.cmp(&a.edge.cross_confirmed).then(a.start().total_cmp(&b.start())).then_with(|| a.other.cmp(b.other))
-    });
+    lines.sort_by(|a, b| b.edge.cross_confirmed.cmp(&a.edge.cross_confirmed).then(a.start().total_cmp(&b.start())).then_with(|| a.other.cmp(b.other)));
     Part { lines, more }
 }
 
@@ -365,7 +358,10 @@ pub(crate) mod tests {
 
     pub(crate) fn event(id: &str, name: &str, when: &str, claims: &str) -> File {
         let claims = if claims.is_empty() { " []\n".to_string() } else { format!("\n{claims}") };
-        file(&format!("content/entities/event/{}/{id}.md", &id[..2]), &format!("---\nid: {id}\ntype: event\nname: {name}\nwhen: \"{when}\"\nclaims:{claims}---\n"))
+        file(
+            &format!("content/entities/event/{}/{id}.md", &id[..2]),
+            &format!("---\nid: {id}\ntype: event\nname: {name}\nwhen: \"{when}\"\nclaims:{claims}---\n"),
+        )
     }
 
     /// A party renamed in 1918 (Reds → Party), its founders and funders, and an event with a
@@ -450,7 +446,10 @@ pub(crate) mod tests {
         let why = answer(&kb, 2, "fall").unwrap();
         let cols: Vec<(String, Vec<String>)> = why.accounts.iter().map(|(who, p)| (kb.name_of(who), names(&kb, p))).collect();
         // A–Z, none ranked first; the coup is one link in three columns
-        assert_eq!(cols, [("Lex".into(), vec!["Oil price collapse".into(), "Coup".into()]), ("Rex".into(), vec!["Coup".into()]), ("Vox".into(), vec!["Coup".into()])]);
+        assert_eq!(
+            cols,
+            [("Lex".into(), vec!["Oil price collapse".into(), "Coup".into()]), ("Rex".into(), vec!["Coup".into()]), ("Vox".into(), vec!["Coup".into()])]
+        );
         assert_eq!(why.shared, [(0, "coup", 3)]);
         assert_eq!(why.accounts_total(), 3);
         // the record, the coup and the oil: the unquoted account (war, per Vox) is left off
@@ -573,7 +572,10 @@ pub(crate) mod tests {
         assert!(bad("q-shows", "    shows: documented founders and funders\n", "").contains("missing field `shows`"));
         assert!(bad("q-not", "not: a single settled cause", "not: \"\"").contains("needs `shows` and `not`"));
         assert!(bad("q-word", "documented founders", "secretly documented founders").contains("banned word `secretly`"));
-        assert!(bad("q-type", "subjects: [event]\n    shows: causes", "subjects: [event, org]\n    shows: causes").contains("no relation in its groups reaches type `org`"));
+        assert!(
+            bad("q-type", "subjects: [event]\n    shows: causes", "subjects: [event, org]\n    shows: causes")
+                .contains("no relation in its groups reaches type `org`")
+        );
         assert!(bad("q-people", "subjects: [org, event]", "subjects: [org, event, person]").contains("never asked about people"));
         assert!(bad("q-slug", "id: why", "id: ../why").contains("lowercase letters"), "an id is a path in the built site");
         assert!(bad("q-field", "    min: 2\n", "    min: 2\n    further: 1\n").contains("unknown field `further`"));
@@ -606,7 +608,10 @@ pub(crate) mod tests {
         assert_eq!(kb.sentence_name("coup"), "August coup", "a different name is refused");
         assert_eq!(kb.sentence_name("pledge"), "the Pledge", "a name that starts with \"The\" may lower it");
         assert_eq!(crate::testkit::said(&diags, "in_sentence `the putsch` must be the name").len(), 1);
-        let attributed = file("content/schema/relations.yaml", "became: {label: became, inverse: formerly, from: [org], to: [org], identity: true, attributed: true, traversable: false}\n");
+        let attributed = file(
+            "content/schema/relations.yaml",
+            "became: {label: became, inverse: formerly, from: [org], to: [org], identity: true, attributed: true, traversable: false}\n",
+        );
         let err = try_load("answers-identity", &[attributed]).err().expect("an identity is on the record");
         assert!(err.to_string().contains("cannot be `attributed`"), "{err}");
     }
@@ -629,8 +634,18 @@ pub(crate) mod tests {
             source("rec", "T1"),
             file("content/entities/work/st/study.md", "---\nid: study\ntype: work\nname: Study\nfinding: {s: rec, quote: Fares rose.}\nclaims: []\n---\n"),
             event("fares", "Fares", "2014", "  - {id: c1, rel: appears_in, to: study, src: [{s: rec}]}\n"),
-            entity("org", "flyers", "Flyers", "  - {id: c1, rel: harmed_by, to: fares, according_to: [study], src: [{s: rec, quote: Flyers paid., by: study}]}\n"),
-            entity("org", "firm", "Firm", "  - {id: c1, rel: disputes_finding, to: study, when: 2019, according_to: [firm], src: [{s: rec, quote: Too fragile., by: firm}]}\n"),
+            entity(
+                "org",
+                "flyers",
+                "Flyers",
+                "  - {id: c1, rel: harmed_by, to: fares, according_to: [study], src: [{s: rec, quote: Flyers paid., by: study}]}\n",
+            ),
+            entity(
+                "org",
+                "firm",
+                "Firm",
+                "  - {id: c1, rel: disputes_finding, to: study, when: 2019, according_to: [firm], src: [{s: rec, quote: Too fragile., by: firm}]}\n",
+            ),
         ]);
         let (kb, diags) = load("answers-via", &files);
         assert!(diags.iter().all(|d| d.level != crate::diag::Level::Error), "{diags:?}");
@@ -638,12 +653,23 @@ pub(crate) mod tests {
         let who: Vec<&str> = a.accounts.iter().map(|(w, _)| *w).collect();
         assert_eq!(who, ["firm", "study"], "each side keeps a column, A to Z");
         let line = &a.accounts[0].1.lines[0];
-        assert_eq!((line.other, line.phrase(&kb), line.about.map(|(id, _)| id)), ("firm", "disputes a finding of", Some("study")), "the line names the study, not X");
+        assert_eq!(
+            (line.other, line.phrase(&kb), line.about.map(|(id, _)| id)),
+            ("firm", "disputes a finding of", Some("study")),
+            "the line names the study, not X"
+        );
         // the story draws the study and the link to it, and tells the study's name
         let story = crate::stories::answer_story(&kb, &a, &[]).unwrap();
-        let shot = story.shots.iter().find(|s| s["narration"].as_str().is_some_and(|n| n.contains("Too fragile") || n.contains("disputes a finding"))).expect("the dispute is told");
+        let shot = story
+            .shots
+            .iter()
+            .find(|s| s["narration"].as_str().is_some_and(|n| n.contains("Too fragile") || n.contains("disputes a finding")))
+            .expect("the dispute is told");
         assert!(shot["narration"].as_str().unwrap().contains("Study"), "{shot}");
-        assert!(shot["reveal"].as_array().unwrap().contains(&"study".into()) && shot["reveal_claims"].as_array().unwrap().contains(&"fares#c1".into()), "{shot}");
+        assert!(
+            shot["reveal"].as_array().unwrap().contains(&"study".into()) && shot["reveal_claims"].as_array().unwrap().contains(&"fares#c1".into()),
+            "{shot}"
+        );
         let err = try_load("answers-via-unknown", &refused).err().expect("refused");
         assert!(err.to_string().contains("unknown relation `nope`"), "{err}");
     }

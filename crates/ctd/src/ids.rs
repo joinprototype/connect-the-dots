@@ -43,7 +43,10 @@ mod tests {
     use crate::testkit::{file, write_repo};
 
     fn person(id: &str, uid: &str, aliases: &str) -> (String, String) {
-        file(&format!("content/entities/person/{}/{id}.md", &id[..2]), &format!("---\nuid: {uid}\nid: {id}\ntype: person\nname: {id}\naliases: [{aliases}]\nclaims: []\n---\n"))
+        file(
+            &format!("content/entities/person/{}/{id}.md", &id[..2]),
+            &format!("---\nuid: {uid}\nid: {id}\ntype: person\nname: {id}\naliases: [{aliases}]\nclaims: []\n---\n"),
+        )
     }
 
     #[test]

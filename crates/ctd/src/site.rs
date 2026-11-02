@@ -379,7 +379,8 @@ fn scene_picture(kb: &Kb, shot: &Value, used: &mut BTreeSet<String>) -> Option<V
     chosen.into_iter().chain(shot["focus"].as_str()).chain(revealed).filter_map(|id| kb.entity(id)).find_map(|e| {
         let image = e.image.as_ref()?;
         let url = image["url"].as_str()?;
-        used.insert(url.to_string()).then(|| json!({ "url": url, "name": e.name, "author": image["author"], "license": image["license"], "page": image["page"] }))
+        used.insert(url.to_string())
+            .then(|| json!({ "url": url, "name": e.name, "author": image["author"], "license": image["license"], "page": image["page"] }))
     })
 }
 
@@ -614,7 +615,8 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     path_ids.sort();
     schema["stories"] = json!({ "paths": path_ids });
     // a dot on the Map or the Earth can say which written stories it is in
-    let stories: BTreeMap<&String, Vec<[&Value; 2]>> = s.stories.iter().map(|(id, rows)| (id, rows.iter().map(|r| [&r["title"], &r["url"]]).collect())).collect();
+    let stories: BTreeMap<&String, Vec<[&Value; 2]>> =
+        s.stories.iter().map(|(id, rows)| (id, rows.iter().map(|r| [&r["title"], &r["url"]]).collect())).collect();
     write(&out.join("data").join("stories.json"), serde_json::to_vec(&stories)?)?;
     if opts.graph {
         write_graph(kb, out, &schema, &pages, &lives, &questions.stories)?;
@@ -742,7 +744,8 @@ fn write_search(kb: &Kb, pages: &QuestionPages, ranked: &[&Entity], atlas: Optio
         let id = a.id(kb);
         let q = &kb.schema.questions[a.q];
         // "Who is behind Facebook?" finds Meta's page
-        let aliases: Vec<String> = std::iter::once(&a.x.name).chain(&a.x.aliases).map(|n| q.ask.replace("{x}", n)).filter(|t| *t != answers::title(kb, q, &a.x.id)).collect();
+        let aliases: Vec<String> =
+            std::iter::once(&a.x.name).chain(&a.x.aliases).map(|n| q.ask.replace("{x}", n)).filter(|t| *t != answers::title(kb, q, &a.x.id)).collect();
         search.push(json!({ "id": id, "name": answers::title(kb, q, &a.x.id), "aliases": aliases, "type": "question", "summary": answer_counts(a), "url": format!("/q/{id}/") }));
     }
     search.extend(atlas.map(|a| crate::atlas::search(a, kb)).unwrap_or_default());
@@ -775,7 +778,15 @@ fn entity_pages(s: &Site, pages: &QuestionPages) -> Result<Lives> {
     Ok(lives)
 }
 
-fn entity_page(s: &Site, pages: &QuestionPages, ent: &Entity, here_of: &HashMap<&str, Vec<&Entity>>, params: &Params, now: f64, lives: &mut Lives) -> Result<()> {
+fn entity_page(
+    s: &Site,
+    pages: &QuestionPages,
+    ent: &Entity,
+    here_of: &HashMap<&str, Vec<&Entity>>,
+    params: &Params,
+    now: f64,
+    lives: &mut Lives,
+) -> Result<()> {
     let (kb, cx) = (s.kb, &s.cx);
     let mut items: Vec<(&Edge, bool)> = kb.links_of(&ent.id).collect();
     // one group per phrase: an owner's family links sit together by role ("mother of", "wife of")
@@ -837,9 +848,14 @@ fn entity_page(s: &Site, pages: &QuestionPages, ent: &Entity, here_of: &HashMap<
         lives.ids.push(ent.id.clone());
         // on a shelf, an entry with a picture shows it instead of its drawing
         let photo = ent.image.as_ref().and_then(|i| i["url"].as_str());
-        let cover = photo.map_or(entity["cover"].clone(), |u| json!(format!(r#"<img class="cover-art cover-photo" src="{}" alt="" loading="lazy">"#, markdown::escape(u))));
-        lives.all.push((ent.kind.clone(), items.len(), json!({ "title": ent.name, "subtitle": ent.summary, "url": url,
-                                                          "kind": plural(items.len(), "link"), "cover": cover })));
+        let cover = photo
+            .map_or(entity["cover"].clone(), |u| json!(format!(r#"<img class="cover-art cover-photo" src="{}" alt="" loading="lazy">"#, markdown::escape(u))));
+        lives.all.push((
+            ent.kind.clone(),
+            items.len(),
+            json!({ "title": ent.name, "subtitle": ent.summary, "url": url,
+                                                          "kind": plural(items.len(), "link"), "cover": cover }),
+        ));
     }
     // questions about this entry, only on its own page (never "behind" a person: no such page)
     let asked: Vec<Value> = (0..kb.schema.questions.len())
@@ -850,13 +866,14 @@ fn entity_page(s: &Site, pages: &QuestionPages, ent: &Entity, here_of: &HashMap<
         })
         .collect();
     let questions: Vec<Value> = asked.iter().take(ROWS).cloned().collect();
-    let split_url = (0..kb.schema.questions.len())
-        .filter_map(|qi| pages.get(qi, &ent.id))
-        .find(|a| a.accounts_total() >= 2)
-        .map(|a| format!("/q/{}/", a.id(kb)));
-    let connect = kb.schema.questions.iter().find(|q| q.route).map(|q| {
-        json!({ "title": q.ask.replace("{a}", &kb.sentence_name(&ent.id)).replace("{b}", "…"), "url": format!("/x/?from={}", ent.id) })
-    });
+    let split_url =
+        (0..kb.schema.questions.len()).filter_map(|qi| pages.get(qi, &ent.id)).find(|a| a.accounts_total() >= 2).map(|a| format!("/q/{}/", a.id(kb)));
+    let connect = kb
+        .schema
+        .questions
+        .iter()
+        .find(|q| q.route)
+        .map(|q| json!({ "title": q.ask.replace("{a}", &kb.sentence_name(&ent.id)).replace("{b}", "…"), "url": format!("/x/?from={}", ent.id) }));
     let html = s.render(
         "entity.html",
         json!({ "site": &s.site, "entity": entity, "groups": groups, "timeline": timeline, "sources": srcs, "history": s.history.of(&ent.rel_path),
@@ -1099,41 +1116,39 @@ fn home_page(s: &Site, pages: &QuestionPages, ranked: &[&Entity], chapters: &[Va
     let (kb, cx) = (s.kb, &s.cx);
     // editorial picks live in content/featured.yaml (validated by `ctd check`)
     let featured_pairs: Vec<(&str, &str)> = kb.featured.connections.iter().map(|c| (c.ids()[0].as_str(), c.ids()[1].as_str())).collect();
-    let mut shelf: Vec<Value> = chapters
-        .iter()
-        .map(|c| json!({ "title": c["title"], "subtitle": c["subtitle"], "url": c["url"], "kind": "Story", "cover": c["cover"] }))
-        .collect();
+    let mut shelf: Vec<Value> =
+        chapters.iter().map(|c| json!({ "title": c["title"], "subtitle": c["subtitle"], "url": c["url"], "kind": "Story", "cover": c["cover"] })).collect();
     // the founder's questions come right after the written stories
     shelf.extend(questions.featured.iter().cloned());
     shelf.extend(routes.connections.iter().cloned());
     let paths: Vec<Value> = featured_pairs
         .iter()
-        .map(|(a, b)| json!({ "from": cx.node(a), "to": cx.node(b), "url": format!("/x/?from={a}&to={b}"),
-                              "story_url": routes.urls.get(&(a.to_string(), b.to_string())) }))
+        .map(|(a, b)| {
+            json!({ "from": cx.node(a), "to": cx.node(b), "url": format!("/x/?from={a}&to={b}"),
+                              "story_url": routes.urls.get(&(a.to_string(), b.to_string())) })
+        })
         .collect();
     // The hero draws one real route, computed by the same ranking the explorer uses.
-    let route = featured_pairs
-        .iter()
-        .find_map(|(a, b)| {
-            let p = crate::paths::find(kb, a, b, &crate::paths::Options::stories(kb, 1)).into_iter().next()?;
-            let stops: Vec<Value> = p
-                .nodes
-                .iter()
-                .enumerate()
-                .map(|(i, id)| {
-                    let hop = i.checked_sub(1).map(|j| &p.hops[j]);
-                    let via = hop.map(|h| {
-                        let rel = &kb.schema.relations[&h.edge.rel];
-                        if h.forward { rel.label.clone() } else { rel.inverse.clone() }
-                    });
-                    let attributed = hop.is_some_and(|h| !h.edge.according_to.is_empty());
-                    json!({ "node": cx.node(id), "via": via, "attributed": attributed })
-                })
-                .collect();
-            Some(json!({ "stops": stops, "hops": p.hops.len(), "url": format!("/x/?from={a}&to={b}"),
+    let route = featured_pairs.iter().find_map(|(a, b)| {
+        let p = crate::paths::find(kb, a, b, &crate::paths::Options::stories(kb, 1)).into_iter().next()?;
+        let stops: Vec<Value> = p
+            .nodes
+            .iter()
+            .enumerate()
+            .map(|(i, id)| {
+                let hop = i.checked_sub(1).map(|j| &p.hops[j]);
+                let via = hop.map(|h| {
+                    let rel = &kb.schema.relations[&h.edge.rel];
+                    if h.forward { rel.label.clone() } else { rel.inverse.clone() }
+                });
+                let attributed = hop.is_some_and(|h| !h.edge.according_to.is_empty());
+                json!({ "node": cx.node(id), "via": via, "attributed": attributed })
+            })
+            .collect();
+        Some(json!({ "stops": stops, "hops": p.hops.len(), "url": format!("/x/?from={a}&to={b}"),
                          "story_url": routes.urls.get(&(a.to_string(), b.to_string())),
                          "from": cx.node(a), "to": cx.node(b) }))
-        });
+    });
     for fid in kb.featured.lives.iter().map(String::as_str) {
         if let Some(e) = kb.entity(fid)
             && lives.ids.iter().any(|s| s == fid)
@@ -1189,8 +1204,11 @@ fn home_page(s: &Site, pages: &QuestionPages, ranked: &[&Entity], chapters: &[Va
         .collect();
     write(
         &s.out.join("index.html"),
-        s.render("home.html", json!({ "site": &s.site, "chapters": chapters, "paths": paths, "route": route, "groups": type_groups, "stats": stats(kb),
-                                      "shelf": shelf, "ask_names": ask_names, "questions": ask_questions }))?,
+        s.render(
+            "home.html",
+            json!({ "site": &s.site, "chapters": chapters, "paths": paths, "route": route, "groups": type_groups, "stats": stats(kb),
+                                      "shelf": shelf, "ask_names": ask_names, "questions": ask_questions }),
+        )?,
     )
 }
 
@@ -1242,8 +1260,7 @@ fn type_pages(s: &Site) -> Result<()> {
 /// How the site works: the badges, the questions' scope lines, the methodology.
 fn about_page(s: &Site) -> Result<()> {
     let kb = s.kb;
-    let tiers: Vec<Value> =
-        kb.schema.tiers.values().filter(|t| !t.rejected).map(|t| json!({ "label": t.label, "description": t.description })).collect();
+    let tiers: Vec<Value> = kb.schema.tiers.values().filter(|t| !t.rejected).map(|t| json!({ "label": t.label, "description": t.description })).collect();
     let asks: Vec<Value> = kb
         .schema
         .questions
@@ -1288,7 +1305,7 @@ fn question_indexes(s: &Site, pages: &QuestionPages, routes: &Routes, stories: &
 /// Everything in one file, for tools and tests: the schema, every entry and link with its words and
 /// proof, every source, and which entries have question pages and stories.
 fn write_graph(kb: &Kb, out: &Path, schema: &Value, pages: &QuestionPages, lives: &Lives, stories: &BTreeSet<String>) -> Result<()> {
-        let mut graph = schema.clone();
+    let mut graph = schema.clone();
     for (qi, q) in graph["questions"].as_array_mut().into_iter().flatten().enumerate() {
         let qd = &kb.schema.questions[qi];
         q["pages"] = pages
@@ -1334,7 +1351,9 @@ mod tests {
 
     #[test]
     fn an_entry_lists_its_stories_the_one_with_most_scenes_on_it_first() {
-        let story = |id: &str, shots: &str| crate::testkit::file(&format!("content/chapters/{id}.md"), &format!("---\nid: {id}\ntype: chapter\ntitle: {id}\n---\n\n```scene\n{shots}```\n"));
+        let story = |id: &str, shots: &str| {
+            crate::testkit::file(&format!("content/chapters/{id}.md"), &format!("---\nid: {id}\ntype: chapter\ntitle: {id}\n---\n\n```scene\n{shots}```\n"))
+        };
         let (kb, _) = load(
             "site-stories",
             &[
@@ -1399,8 +1418,11 @@ mod tests {
         let undated = crate::testkit::entity("person", "bob", "Bob", "  - {id: c1, rel: charged_by, to: agency, src: [{s: rec, quote: Bob.}]}\n");
         let (_, diags) = crate::testkit::load("site-legal-undated", &[files[0].clone(), files[1].clone(), files[3].clone(), undated]);
         assert!(!crate::testkit::said(&diags, "needs the date of that step").is_empty());
-        let loose = relations.replace("settled_with: {label: settled with, inverse: settled with, from: [person, org], to: [org], layers: [power], temporal: true, \
-            qualifiers: [title, case, amount, currency], sensitive: true, traversable: false, legal: true}", "settled_with: {label: settled with, inverse: settled with, from: [person, org], to: [org], legal: true, sensitive: true}");
+        let loose = relations.replace(
+            "settled_with: {label: settled with, inverse: settled with, from: [person, org], to: [org], layers: [power], temporal: true, \
+            qualifiers: [title, case, amount, currency], sensitive: true, traversable: false, legal: true}",
+            "settled_with: {label: settled with, inverse: settled with, from: [person, org], to: [org], legal: true, sensitive: true}",
+        );
         let err = crate::testkit::try_load("site-legal-loose", &[crate::testkit::file("content/schema/relations.yaml", &loose)]).err().expect("refused");
         assert!(err.to_string().contains("must also be `sensitive: true` and `traversable: false`"), "{err}");
         let _ = std::fs::remove_dir_all(&root);
@@ -1414,15 +1436,27 @@ mod tests {
             disputes_finding: {label: disputes a finding of, inverse: finding disputed by, from: [person, org, work], to: [work], layers: [power], temporal: true, attributed: true, traversable: false, dispute: true, caveat: Not decided here.}\n";
         let study = |id: &str, quote: &str, claims: &str| {
             let list = if claims.is_empty() { " []\n".to_string() } else { format!("\n{claims}") };
-            file(&format!("content/entities/work/{}/{id}.md", &id[..2]), &format!("---\nid: {id}\ntype: work\nname: {id}\nfinding: {{s: paper, quote: \"{quote}\"}}\nclaims:{list}---\n"))
+            file(
+                &format!("content/entities/work/{}/{id}.md", &id[..2]),
+                &format!("---\nid: {id}\ntype: work\nname: {id}\nfinding: {{s: paper, quote: \"{quote}\"}}\nclaims:{list}---\n"),
+            )
         };
         let files = vec![
             file("content/schema/entity-types.yaml", types),
             file("content/schema/relations.yaml", relations),
             source("paper", "T2"),
             study("study", "Fares rose.", ""),
-            study("reply", "Fares held.", "  - {id: c1, rel: disputes_finding, to: study, when: 2022, according_to: [reply], src: [{s: paper, quote: Not shown., by: reply}]}\n"),
-            entity("org", "firm", "Firm", "  - {id: c1, rel: disputes_finding, to: study, when: 2019, according_to: [firm], src: [{s: paper, quote: Too fragile., by: firm}]}\n"),
+            study(
+                "reply",
+                "Fares held.",
+                "  - {id: c1, rel: disputes_finding, to: study, when: 2022, according_to: [reply], src: [{s: paper, quote: Not shown., by: reply}]}\n",
+            ),
+            entity(
+                "org",
+                "firm",
+                "Firm",
+                "  - {id: c1, rel: disputes_finding, to: study, when: 2019, according_to: [firm], src: [{s: paper, quote: Too fragile., by: firm}]}\n",
+            ),
             entity("org", "acme", "Acme", ""),
             entity("org", "alpha", "Alpha", "  - {id: c1, rel: holds_for_clients, to: acme, percent: 5.5, as_of: 2026-03-31, src: [{s: paper, quote: a}]}\n"),
             entity("org", "beta", "Beta", "  - {id: c1, rel: holds_for_clients, to: acme, shares: 1200, as_of: 2026-06-30, src: [{s: paper, quote: b}]}\n"),
@@ -1458,16 +1492,24 @@ mod tests {
             all.extend(extra);
             load(name, &all).1
         };
-        let borrowed = entity("org", "firm", "Firm", "  - {id: c1, rel: disputes_finding, to: study, according_to: [study], src: [{s: paper, quote: Not so.}]}\n");
+        let borrowed =
+            entity("org", "firm", "Firm", "  - {id: c1, rel: disputes_finding, to: study, according_to: [study], src: [{s: paper, quote: Not so.}]}\n");
         let diags = check("site-debate-borrowed", vec![borrowed]);
         assert!(!said(&diags, "one side's own account").is_empty() && !said(&diags, "needs Firm's own words").is_empty(), "{diags:?}");
         let unquoted = file("content/entities/work/pl/plain.md", "---\nid: plain\ntype: work\nname: Plain\nclaims: []\n---\n");
-        let at_nothing = entity("org", "firm", "Firm", "  - {id: c1, rel: disputes_finding, to: plain, according_to: [firm], src: [{s: paper, quote: Not so., by: firm}]}\n");
+        let at_nothing = entity(
+            "org",
+            "firm",
+            "Firm",
+            "  - {id: c1, rel: disputes_finding, to: plain, according_to: [firm], src: [{s: paper, quote: Not so., by: firm}]}\n",
+        );
         assert!(!said(&check("site-debate-nothing", vec![unquoted, at_nothing]), "quotes none").is_empty());
         let on_an_org = file("content/entities/org/ac/acme.md", "---\nid: acme\ntype: org\nname: Acme\nfinding: {s: paper, quote: Up.}\nclaims: []\n---\n");
         assert!(!said(&check("site-debate-org", vec![on_an_org]), "has no `finding`").is_empty());
         let open = relations.replace("attributed: true, traversable: false, dispute: true", "traversable: false, dispute: true");
-        let err = try_load("site-debate-open", &[file("content/schema/entity-types.yaml", types), file("content/schema/relations.yaml", &open)]).err().expect("refused");
+        let err = try_load("site-debate-open", &[file("content/schema/entity-types.yaml", types), file("content/schema/relations.yaml", &open)])
+            .err()
+            .expect("refused");
         assert!(err.to_string().contains("must also be `attributed: true`"), "{err}");
     }
 
@@ -1530,7 +1572,9 @@ mod tests {
         let orgs = read("t/org/index.html");
         let at = |name: &str| orgs.find(&format!(">{name}</a>")).unwrap_or(usize::MAX);
         assert!(at("Kaiser") < at("Lex") && at("Lex") < at("Party") && at("Party") < at("Vox"), "A to Z");
-        for (page, shows) in [("q/behind/party", "Shows documented founders and funders."), ("q/why/fall", "Shows causes on the record, then each account&#x27;s.")] {
+        for (page, shows) in
+            [("q/behind/party", "Shows documented founders and funders."), ("q/why/fall", "Shows causes on the record, then each account&#x27;s.")]
+        {
             let html = read(&format!("{page}/index.html"));
             assert!(html.contains(shows) && html.contains("A connection is not evidence of wrongdoing."), "{page}: scope and notice");
             assert!(html.len() <= 80 * 1024, "{page} is {} bytes", html.len());

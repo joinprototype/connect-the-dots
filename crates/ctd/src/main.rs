@@ -152,8 +152,18 @@ fn run(cli: Cli) -> Result<ExitCode> {
             let (s, _) = ctd::world::build(&graph, &spec, &out, if synthetic.is_none() { Some(state.as_path()) } else { None })?;
             println!(
                 "world: {} nodes, {} links, {} communities, zoom 0–{}, {} tiles, {:.1} MB, largest tile {} nodes / {} links / {} KB ({} KB gzip), built in {:.1} s → {}",
-                s.nodes, s.edges, s.clusters, s.maxzoom, s.tiles, s.bytes as f64 / 1e6, s.max_tile_nodes, s.max_tile_edges,
-                s.max_tile_bytes / 1024, s.max_tile_gzip / 1024, s.build_ms as f64 / 1000.0, out.display()
+                s.nodes,
+                s.edges,
+                s.clusters,
+                s.maxzoom,
+                s.tiles,
+                s.bytes as f64 / 1e6,
+                s.max_tile_nodes,
+                s.max_tile_edges,
+                s.max_tile_bytes / 1024,
+                s.max_tile_gzip / 1024,
+                s.build_ms as f64 / 1000.0,
+                out.display()
             );
             if let Some(d) = s.drift {
                 println!("stability: {} nodes compared with the previous build, mean drift {:.4} of the map's width", s.aligned_nodes, d);
@@ -176,7 +186,12 @@ fn run(cli: Cli) -> Result<ExitCode> {
                 return Ok(ExitCode::SUCCESS);
             }
             if paths.is_empty() {
-                println!("No connection found between {} and {} (passive holdings {}).", kb.name_of(&a), kb.name_of(&b), if include_passive { "included" } else { "excluded" });
+                println!(
+                    "No connection found between {} and {} (passive holdings {}).",
+                    kb.name_of(&a),
+                    kb.name_of(&b),
+                    if include_passive { "included" } else { "excluded" }
+                );
                 return Ok(ExitCode::FAILURE);
             }
             for (i, p) in paths.iter().enumerate() {

@@ -133,7 +133,13 @@ fn stakes(cx: &Ctx, items: &[(&Edge, bool)], now: f64, notes: &mut Footnotes) ->
             continue;
         }
         let as_of = e.qualifiers.get("as_of").and_then(Value::as_str).map(|d| crate::edtf::parse(d).map(|s| s.label).unwrap_or_else(|_| d.to_string()));
-        let row = |id: &str| (json!({ "node": cx.node(id), "percent": p, "shares": shares.map(fmt_num), "passive": e.passive, "as_of": as_of, "edge": e.id }), shares.unwrap_or(0.0), e.sources.as_slice());
+        let row = |id: &str| {
+            (
+                json!({ "node": cx.node(id), "percent": p, "shares": shares.map(fmt_num), "passive": e.passive, "as_of": as_of, "edge": e.id }),
+                shares.unwrap_or(0.0),
+                e.sources.as_slice(),
+            )
+        };
         if *outgoing { holdings.push(row(&e.to)) } else { holders.push(row(&e.from)) }
     }
     // owners, then what is held for clients, together; within each by percent, then shares alone
@@ -172,10 +178,12 @@ fn family(cx: &Ctx, items: &[(&Edge, bool)]) -> Value {
         let did: Vec<Value> = crate::stories::deeds(kb, other)
             .iter()
             .take(4)
-            .map(|x| json!({ "phrase": kb.schema.relations[&x.rel].label, "other": cx.node(&x.to), "detail": x.detail,
+            .map(|x| {
+                json!({ "phrase": kb.schema.relations[&x.rel].label, "other": cx.node(&x.to), "detail": x.detail,
                              "when": x.when.as_ref().map(|w| w.label.clone()), "draft": x.status == "draft",
                              "disputed": x.status == "disputed", "reason": x.reason,
-                             "according_to": x.according_to.iter().map(|a| cx.node(a)).collect::<Vec<_>>() }))
+                             "according_to": x.according_to.iter().map(|a| cx.node(a)).collect::<Vec<_>>() })
+            })
             .collect();
         family.push(json!({
             "node": cx.node(other),
@@ -272,7 +280,8 @@ pub(super) fn debate(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], notes: &mu
 /// with the caveats of the relations it holds. Null when there is none.
 pub(super) fn legal(cx: &Ctx, items: &[(&Edge, bool)], notes: &mut Footnotes) -> Value {
     let kb = cx.kb;
-    let mut steps: Vec<&Edge> = items.iter().filter(|(e, out)| *out && e.status != "deprecated" && kb.schema.relations[&e.rel].legal).map(|(e, _)| *e).collect();
+    let mut steps: Vec<&Edge> =
+        items.iter().filter(|(e, out)| *out && e.status != "deprecated" && kb.schema.relations[&e.rel].legal).map(|(e, _)| *e).collect();
     steps.sort_by(|a, b| a.start().total_cmp(&b.start()).then(a.id.cmp(&b.id)));
     let mut grouped: Vec<(Option<&str>, Vec<&Edge>)> = Vec::new();
     let mut caveats: Vec<&str> = Vec::new();
@@ -293,7 +302,8 @@ pub(super) fn legal(cx: &Ctx, items: &[(&Edge, bool)], notes: &mut Footnotes) ->
         json!({ "when": e.when.as_ref().map(|w| &w.label), "phrase": kb.schema.relations[&e.rel].label, "node": cx.node(&e.to), "detail": link_detail(kb, e, true),
                 "refs": notes.refs(&e.sources), "draft": e.status == "draft", "disputed": e.status == "disputed", "reason": e.reason, "note": e.note })
     };
-    let cases: Vec<Value> = grouped.into_iter().map(|(case, list)| json!({ "case": case, "steps": list.into_iter().map(&mut step).collect::<Vec<_>>() })).collect();
+    let cases: Vec<Value> =
+        grouped.into_iter().map(|(case, list)| json!({ "case": case, "steps": list.into_iter().map(&mut step).collect::<Vec<_>>() })).collect();
     if cases.is_empty() { Value::Null } else { json!({ "cases": cases, "caveats": caveats }) }
 }
 
@@ -379,7 +389,13 @@ mod tests {
         let mut said = Vec::new();
         for side in ann["split"]["sides"].as_array().unwrap() {
             for c in side["claims"].as_array().unwrap() {
-                let status = if c["draft"] == true { "draft" } else if c["disputed"] == true { "disputed" } else { "" };
+                let status = if c["draft"] == true {
+                    "draft"
+                } else if c["disputed"] == true {
+                    "disputed"
+                } else {
+                    ""
+                };
                 said.push(format!("{}: {} {status} {}", side["who"]["id"], c["other"]["id"], c["reason"]));
             }
         }

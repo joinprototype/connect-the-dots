@@ -61,10 +61,7 @@ fn num(v: &Value, key: &str, default: f64) -> f64 {
 impl Params {
     pub(crate) fn from(m: &Value) -> Params {
         let map = |key: &str| -> HashMap<String, f64> {
-            m.get(key)
-                .and_then(Value::as_object)
-                .map(|o| o.iter().filter_map(|(k, v)| v.as_f64().map(|f| (k.clone(), f))).collect())
-                .unwrap_or_default()
+            m.get(key).and_then(Value::as_object).map(|o| o.iter().filter_map(|(k, v)| v.as_f64().map(|f| (k.clone(), f))).collect()).unwrap_or_default()
         };
         let evidence_v = m.get("evidence").cloned().unwrap_or(Value::Null);
         Params {
@@ -196,11 +193,7 @@ pub fn find<'a>(kb: &'a Kb, from: &str, to: &str, opts: &Options) -> Vec<Path<'a
     }
 
     // by id, as the explorer reads them: ties then fall the same way
-    let mut usable: Vec<&Edge> = kb
-        .edges
-        .iter()
-        .filter(|e| e.traversable && e.status != "deprecated" && (opts.include_passive || !e.passive))
-        .collect();
+    let mut usable: Vec<&Edge> = kb.edges.iter().filter(|e| e.traversable && e.status != "deprecated" && (opts.include_passive || !e.passive)).collect();
     usable.sort_by(|a, b| a.id.cmp(&b.id));
     let mut deg: HashMap<(usize, &str), usize> = HashMap::new();
     for e in &usable {
@@ -211,8 +204,7 @@ pub fn find<'a>(kb: &'a Kb, from: &str, to: &str, opts: &Options) -> Vec<Path<'a
     let mut adj: Vec<Vec<Arc>> = vec![Vec::new(); kb.entities.len()];
     for (ei, e) in usable.iter().enumerate() {
         let (u, v) = (kb.index[e.from.as_str()], kb.index[e.to.as_str()]);
-        let hub = 0.5
-            * (((1 + deg[&(u, e.rel.as_str())]) as f64).ln() + ((1 + deg[&(v, e.rel.as_str())]) as f64).ln());
+        let hub = 0.5 * (((1 + deg[&(u, e.rel.as_str())]) as f64).ln() + ((1 + deg[&(v, e.rel.as_str())]) as f64).ln());
         let cost = p.link_cost(e) + p.lambda * hub;
         adj[u].push(Arc { to: v, edge: ei, forward: true, cost });
         adj[v].push(Arc { to: u, edge: ei, forward: false, cost });
@@ -324,10 +316,18 @@ mod tests {
         let (kb, _) = load(
             "paths-hops",
             &[
-                file("content/schema/relations.yaml", "founded: {label: founded, inverse: founded by, from: [org], to: [org], layers: [power]}\nfunded: {label: funded, inverse: funded by, from: [org], to: [org], layers: [power]}\n"),
+                file(
+                    "content/schema/relations.yaml",
+                    "founded: {label: founded, inverse: founded by, from: [org], to: [org], layers: [power]}\nfunded: {label: funded, inverse: funded by, from: [org], to: [org], layers: [power]}\n",
+                ),
                 file("content/methodology/paths.yaml", "version: test\nweights: {founded: 1, funded: 20}\n"),
                 source("rec", "T1"),
-                entity("org", "start", "Start", "  - {id: c1, rel: funded, to: mid, src: [{s: rec}]}\n  - {id: c2, rel: founded, to: cheap, src: [{s: rec}]}\n"),
+                entity(
+                    "org",
+                    "start",
+                    "Start",
+                    "  - {id: c1, rel: funded, to: mid, src: [{s: rec}]}\n  - {id: c2, rel: founded, to: cheap, src: [{s: rec}]}\n",
+                ),
                 entity("org", "cheap", "Cheap", "  - {id: c1, rel: founded, to: mid, src: [{s: rec}]}\n"),
                 entity("org", "mid", "Mid", "  - {id: c1, rel: founded, to: goal, src: [{s: rec}]}\n"),
                 entity("org", "goal", "Goal", ""),

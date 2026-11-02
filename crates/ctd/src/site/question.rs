@@ -157,7 +157,8 @@ mod tests {
         assert_eq!(rows[0]["phrase"], "Money in");
         // a cause that is an event spanning days or years is drawn on the why page's axis too
         let why = answer(&kb, 2, "fall").unwrap();
-        let causes: Vec<String> = over_time(&cx, &kb.schema.questions[2], &why)["rows"].as_array().unwrap().iter().map(|r| r["name"].as_str().unwrap().to_string()).collect();
+        let causes: Vec<String> =
+            over_time(&cx, &kb.schema.questions[2], &why)["rows"].as_array().unwrap().iter().map(|r| r["name"].as_str().unwrap().to_string()).collect();
         assert!(causes.contains(&"Coup".to_string()), "{causes:?}");
         // an answer with no dated range shows no card
         let none = answer(&kb, 3, "fall").unwrap();

@@ -279,7 +279,9 @@ fn check_questions(qs: &[Question], banned: &[String], relations: &IndexMap<Stri
                     return fail(format!("relation `{r}` is listed twice"));
                 }
                 if rel.sensitive || rel.kinship || rel.passive {
-                    return fail(format!("`{r}` is a family, sensitive or index-fund relation, so it never answers a question (family ties live on entity pages)"));
+                    return fail(format!(
+                        "`{r}` is a family, sensitive or index-fund relation, so it never answers a question (family ties live on entity pages)"
+                    ));
                 }
             }
             for r in &g.via {
@@ -292,7 +294,9 @@ fn check_questions(qs: &[Question], banned: &[String], relations: &IndexMap<Stri
         for t in &q.subjects {
             let Some(ty) = types.get(t) else { return fail(format!("unknown entity type `{t}`")) };
             if ty.family {
-                return fail(format!("`{t}` can have family ties, and questions are never asked about people or families (their pages show family ties and every link)"));
+                return fail(format!(
+                    "`{t}` can have family ties, and questions are never asked about people or families (their pages show family ties and every link)"
+                ));
             }
             let reached = q.groups.iter().any(|g| g.into.iter().any(|r| relations[r].to.allows(t)) || g.out.iter().any(|r| relations[r].from.allows(t)));
             if !reached {
@@ -394,11 +398,7 @@ impl Schema {
     }
 
     pub fn type_color(&self, t: &str) -> String {
-        self.types
-            .get(t)
-            .and_then(|ty| self.layers.get(&ty.layer))
-            .map(|l| l.color.clone())
-            .unwrap_or_else(|| NEUTRAL.into())
+        self.types.get(t).and_then(|ty| self.layers.get(&ty.layer)).map(|l| l.color.clone()).unwrap_or_else(|| NEUTRAL.into())
     }
 
     pub fn type_label(&self, t: &str) -> String {
