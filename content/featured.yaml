@@ -7,7 +7,7 @@
 # A pair can carry a note the route story states up front: {between: [a, b], note: "…"}.
 # `questions` are question pages as <question>/<entity id> (content/schema/questions.yaml): the
 # first books of the Questions shelf, always kept when pages are capped.
-threads: [standard-oil, john-d-rockefeller, nasa, harvard-university, blackrock, exxonmobil, bill-gates, zurich, boeing]
+threads: [standard-oil, john-d-rockefeller, harvard-university, blackrock, exxonmobil, bill-gates, zurich, boeing]
 connections:
   - [moses, elon-musk]
   - [bill-gates, ibm]

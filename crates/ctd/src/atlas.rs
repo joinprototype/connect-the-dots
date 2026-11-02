@@ -3,7 +3,7 @@
 //! Entries in content/ hold the proof. The atlas holds the wide picture, always marked as open data.
 
 use std::{
-    collections::{BTreeMap, HashMap, VecDeque},
+    collections::{BTreeMap, HashMap, HashSet, VecDeque},
     fs::{self, File},
     io::{BufRead, BufReader},
     path::Path,
@@ -115,9 +115,15 @@ pub fn load(root: &Path) -> Result<Option<Atlas>> {
     if !dir.join("entries.tsv.gz").exists() || !dir.join("links.tsv.gz").exists() {
         return Ok(None);
     }
+    // a people as a group is never an entry (ADR-0016)
+    let left_out = fs::read_to_string(root.join("content").join("methodology").join("atlas-left-out.tsv")).unwrap_or_default();
+    let left_out: HashSet<u32> = left_out.lines().filter_map(|l| number(l.split('\t').next()?)).collect();
     let mut entries: Vec<Entry> = Vec::new();
     for line in lines(&dir.join("entries.tsv.gz"))? {
         let f: Vec<&str> = line.split('\t').collect();
+        if number(f[0]).is_some_and(|q| left_out.contains(&q)) {
+            continue;
+        }
         let (Some(qid), Some(kind), true) = (number(f[0]), KINDS.iter().position(|k| *k == f[1]), f.len() >= 11) else { continue };
         let coords = f[8].parse().ok().zip(f[9].parse().ok()).map(|(a, b)| [a, b]);
         entries.push(Entry {
