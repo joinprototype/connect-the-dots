@@ -112,4 +112,9 @@ claims:
     src:
       - {s: moment-2007-story-of-sergey-brin, at: "interview with the author", quote: "My rebelliousness, I think, came out of being born in Moscow", by: sergey-brin}
       - {s: achievement-sergey-brin, at: "profile", quote: "Sergey Brin was born in Moscow, Russia in 1973."}
+  - id: c15
+    rel: educated_at
+    to: stanford-university
+    src:
+      - {s: stanford-engineering-heroes-sergey-brin, at: "Biography", quote: "Brin earned his master’s degree in computer science at Stanford"}
 ---

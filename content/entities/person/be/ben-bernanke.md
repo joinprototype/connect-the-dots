@@ -15,4 +15,18 @@ claims:
     title: "Chairman"
     src:
       - {s: bernanke-2008-09-23-us-financial-markets, at: "testimony, 23 Sept 2008", quote: "In the case of Lehman Brothers, a major investment bank, the Federal Reserve and the Treasury declined to commit public funds to support the institution."}
+  - id: c2
+    rel: educated_at
+    to: massachusetts-institute-of-technology
+    when: "1979"
+    title: "Ph.D."
+    src:
+      - {s: nobel-2022-bernanke-biographical, at: "Stanford", quote: "After graduation from MIT in 1979, I accepted an assistant professor position at Stanford’s Graduate School of Business."}
+  - id: c3
+    rel: worked_at
+    to: stanford-university
+    when: "1979/1985"
+    role: "assistant professor"
+    src:
+      - {s: nobel-2022-bernanke-biographical, at: "Stanford", quote: "After graduation from MIT in 1979, I accepted an assistant professor position at Stanford’s Graduate School of Business."}
 ---

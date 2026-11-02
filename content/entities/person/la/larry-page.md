@@ -55,4 +55,9 @@ claims:
     note: "Before the 2004 IPO; percent of Class B common stock."
     src:
       - {s: google-424b4-2004-08-19, at: "Principal and Selling Stockholders, as of June 30, 2004", quote: "Applicable percentage ownership is based on 12,359,204 shares of Class A common stock and 241,956,117 shares of Class B common stock outstanding at June 30, 2004"}
+  - id: c8
+    rel: educated_at
+    to: stanford-university
+    src:
+      - {s: stanford-engineering-heroes-larry-page, at: "Biography", quote: "While pursuing his PhD at Stanford, Page and fellow student Sergey Brin developed the “PageRank” algorithm"}
 ---
