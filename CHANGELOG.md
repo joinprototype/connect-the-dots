@@ -2,6 +2,11 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.4.2 (2026-11-01)
+
+- Two new stories: "The Trust" on the rise and breakup of Standard Oil, and "Thirty-Seven Days" on how two shots in Sarajevo became a war across Europe.
+- On a phone, slide a finger along a story's scene dots to pick a scene.
+
 ## 0.4.1 (2026-11-01)
 
 - A million dots. The best-known people, places, works and events in the world are now on the Map, each with its own page, drawn from open data and marked as such. What we wrote by hand stays apart and keeps its proof.

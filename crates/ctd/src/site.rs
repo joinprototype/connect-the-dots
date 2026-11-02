@@ -618,7 +618,8 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
 }
 
 /// Gives every page its canonical address and lists it in the sitemap. Runs last, because a
-/// page's address is where it landed. Redirect pages name their target already and stay out.
+/// page's address is where it landed. Redirect pages name their target already and stay out, and a
+/// page that asks not to be indexed has an address but no place in the sitemap.
 fn write_addresses(out: &Path) -> Result<()> {
     let mut urls = Vec::new();
     for entry in WalkDir::new(out) {
@@ -634,7 +635,9 @@ fn write_addresses(out: &Path) -> Result<()> {
         let url = if dir.is_empty() { format!("{SITE_URL}/") } else { format!("{SITE_URL}/{dir}/") };
         let address = format!("<link rel=\"canonical\" href=\"{url}\">\n<meta property=\"og:url\" content=\"{url}\">\n</head>");
         write(entry.path(), html.replacen("</head>", &address, 1))?;
-        urls.push(url);
+        if !html.contains("name=\"robots\" content=\"noindex\"") {
+            urls.push(url);
+        }
     }
     urls.sort();
     let list: String = urls.iter().map(|url| format!("  <url><loc>{url}</loc></url>\n")).collect();
