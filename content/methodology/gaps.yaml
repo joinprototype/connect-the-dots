@@ -1,0 +1,8 @@
+# How `ctd gaps` ranks its leads (ADR-0025). A lead is something to check against a source, never proof.
+hub: 2000                     # an entry with more links is a crossroads: sharing it says little
+group: 200                    # a relation group larger than this is not walked: a country's citizens, a fund's holdings
+dot: 200                      # an imported entry with more links joins too much to mean much
+skip: [citizen_of]            # true and worthless: sharing a passport is no connection
+places: [located_in, born_in, headquartered_in]   # listed last
+minor: [educated_at, worked_at]                   # listed after links that change the shape of the record
+people_only: [member_of]      # a person's membership joins things; a bank in a standards body does not

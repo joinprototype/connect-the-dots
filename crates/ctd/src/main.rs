@@ -58,6 +58,15 @@ enum Cmd {
         #[arg(long)]
         out: Option<PathBuf>,
     },
+    /// List what the record may be missing, read against the atlas: leads to check, never proof
+    Gaps {
+        /// How many of each kind to write (default: all)
+        #[arg(long)]
+        top: Option<usize>,
+        /// Output file (default: .cache/gaps.tsv)
+        #[arg(long)]
+        out: Option<PathBuf>,
+    },
     /// Show the best-ranked connections between two entities
     Path {
         from: String,
@@ -168,6 +177,16 @@ fn run(cli: Cli) -> Result<ExitCode> {
             if let Some(d) = s.drift {
                 println!("stability: {} nodes compared with the previous build, mean drift {:.4} of the map's width", s.aligned_nodes, d);
             }
+            Ok(ExitCode::SUCCESS)
+        }
+        Cmd::Gaps { top, out } => {
+            let (kb, _) = ctd::load_kb(&root)?;
+            let Some(atlas) = ctd::atlas::load(&root)? else {
+                eprintln!("no atlas in .cache/atlas: tools/atlas/ fills it");
+                return Ok(ExitCode::FAILURE);
+            };
+            let out = out.unwrap_or_else(|| root.join(".cache").join("gaps.tsv"));
+            ctd::gaps::run(&root, &kb, &atlas, top, &out)?;
             Ok(ExitCode::SUCCESS)
         }
         Cmd::Path { from, to, k, include_passive, max_hops, json } => {

@@ -28,6 +28,7 @@ An open, interactive "connect the dots" knowledge graph. A Rust engine (`ctd`) c
 cargo run -q -- check                 # validate content (exit 1 on errors)
 cargo run -q -- check --base origin/main   # also: every entry id at that ref still exists or is an alias (URLs never break)
 cargo run -q -- fmt                   # assign permanent uids
+cargo run -q -- gaps                  # what the record may be missing: leads in .cache/gaps.tsv, to check against a source (ADR-0025)
 cargo run -q -- build                 # content/ + theme/ + web/dist → dist/ (--graph also writes data/graph.json for tools)
 cargo run -q -- build --synthetic 100000   # made-up entries on the real schema: every data file's size against its budget
 cargo run -q -- serve                 # dev server on http://127.0.0.1:4321 with live reload (builds into .cache/serve/; dist/ is production only)

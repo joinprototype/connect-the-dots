@@ -6,6 +6,7 @@ pub mod covers;
 pub mod diag;
 pub mod edtf;
 pub mod fmt;
+pub mod gaps;
 pub mod ids;
 pub mod kb;
 pub mod load;
