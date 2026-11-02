@@ -25,7 +25,7 @@ export function lensLayers(idx: GraphIndex, lensId: string | null | undefined): 
   return lens ? new Set(lens.layers) : null;
 }
 
-export const isAttributed = (e: GEdge): boolean => e.according_to.length > 0;
+const isAttributed = (e: GEdge): boolean => e.according_to.length > 0;
 
 /** Attributed and draft claims are drawn fainter than documented facts. */
 export const isFaint = (e: GEdge): boolean => isAttributed(e) || e.status === 'draft';

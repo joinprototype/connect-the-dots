@@ -4,8 +4,8 @@
 // Layout: 20-byte header, then x, y, id, size, color, minzoom, ex0, ey0, ex1, ey1, ecolor, eweight,
 // label_offsets and the UTF-8 labels, each array padded to a multiple of 4 bytes (little-endian).
 
-export const TILE_MAGIC = 'CTDT';
-export const TILE_VERSION = 0;
+const TILE_MAGIC = 'CTDT';
+const TILE_VERSION = 0;
 const HEADER_BYTES = 20;
 
 export interface TileIndex {
@@ -56,7 +56,7 @@ const LITTLE_ENDIAN = new Uint8Array(new Uint16Array([1]).buffer)[0] === 1;
 const pad4 = (bytes: number): number => (bytes + 3) & ~3;
 
 /** Bytes a tile with n nodes, m edges and l label bytes needs (labels unpadded). */
-export function tileByteLength(n: number, m: number, labelBytes: number): number {
+function tileByteLength(n: number, m: number, labelBytes: number): number {
   return HEADER_BYTES + 16 * n + 2 * pad4(n) + 16 * m + 2 * pad4(m) + 4 * (n + 1) + labelBytes;
 }
 

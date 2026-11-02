@@ -53,10 +53,10 @@ export function showModern(map: MapLibre, on: boolean): void {
  * Colours come from the site tokens as seen from `el`. Call it once the style has loaded.
  */
 export function calmBasemap(map: MapLibre, el: Element): void {
-  const paper = tokenRgb('--paper', [237, 241, 239], el);
+  const paper = tokenRgb('--paper', el);
   const places = cssColorToRgb(getComputedStyle(el).getPropertyValue('--layer-places').trim() || '#1d7a78');
-  const muted = tokenRgb('--night-muted', [110, 110, 115], el);
-  const rule = tokenRgb('--night-rule', [210, 210, 215], el);
+  const muted = tokenRgb('--muted', el);
+  const rule = tokenRgb('--rule', el);
   for (const layer of map.getStyle().layers ?? []) {
     try {
       if (layer.type === 'background') map.setPaintProperty(layer.id, 'background-color', rgb(paper));

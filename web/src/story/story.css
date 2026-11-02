@@ -153,11 +153,11 @@ ctd-story .story-map .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button { ba
 .story-watch {
   display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
   padding: 6px 14px 6px 11px; border-radius: 999px; border: 0;
-  background: var(--accent-fill); color: var(--on-fill); font: 600 0.9rem var(--font-ui);
+  background: var(--accent); color: var(--on-fill); font: 600 0.9rem var(--font-ui);
 }
 .story-watch::before { content: ""; width: 0; height: 0; border-style: solid; border-width: 5px 0 5px 8px; border-color: transparent transparent transparent currentColor; }
 .story-watch.is-playing::before { width: 9px; height: 10px; border: 0; background: linear-gradient(90deg, currentColor 0 35%, transparent 35% 65%, currentColor 65%); }
-.story-watch:hover { background: var(--accent-fill-hover); }
+.story-watch:hover { background: var(--accent-hover); }
 /* Listen (reads each scene aloud while watching): a quiet button. Pressed, it takes the accent and its
    speaker's cross turns into sound waves, so the state is never carried by hue alone. */
 .story-listen {
@@ -173,7 +173,7 @@ ctd-story .story-map .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button { ba
 .story-listen:hover { color: var(--ink); }
 .story-listen[aria-pressed="true"] {
   --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath fill='%23000' stroke='none' d='M1.5 5.5h3L9 2v12l-4.5-3.5h-3z'/%3E%3Cpath d='M11.2 5.6a3.4 3.4 0 0 1 0 4.8m2.1-6.9a6.4 6.4 0 0 1 0 9'/%3E%3C/svg%3E");
-  background: var(--accent-soft); color: var(--accent-ink);
+  background: var(--fill); color: var(--accent);
 }
 .story-dots { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .story-dots li { display: flex; } /* no line box: wrapped rows of dots stay as tight as one */

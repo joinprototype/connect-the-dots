@@ -24,7 +24,7 @@ export function replaceUrl(url: string | URL): void {
 }
 
 /** Write a pending URL now (e.g. before navigating away). */
-export function flushUrl(): void {
+function flushUrl(): void {
   if (timer) clearTimeout(timer);
   timer = 0;
   const url = pending;

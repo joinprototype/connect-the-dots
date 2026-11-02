@@ -9,7 +9,7 @@ import { canvasAnchor, measureText, placeLabels, Spot, type Box, type PlacedLabe
 
 type DrawData = PartialButFor<NodeDisplayData, 'x' | 'y' | 'size' | 'label' | 'color'>;
 
-export interface LabelTheme {
+interface LabelTheme {
   ink: RGB;
   /** Halo / background behind text (paper or night). */
   ground: RGB;

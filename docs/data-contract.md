@@ -207,11 +207,10 @@ Everything in one file, for tools and tests: `schema.json`'s fields, plus every 
 Every page's `<head>` carries link-preview tags made from its own title and description blocks: `og:title`, `og:description`, `og:type` ("website"), `og:site_name` and `twitter:card` ("summary"). A question page's description ends with the notice.
 
 All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/islands.js` (`type="module"`). The CSS variables in `site.css` are the design tokens. Every color has a light and a dark value (`prefers-color-scheme`):
-- surfaces: `--paper` (the page), `--paper-2` (a grouped area on it), `--sheet` (a card), `--raised` (a field or quote on `--paper-2`), `--selected` (the chosen segment of a control), `--fill` (tracks, badges and quiet buttons on a sheet), `--cover`;
+- surfaces: `--paper` (the page), `--paper-2` (a grouped area on it), `--sheet` (a card), `--raised` (a field or quote on `--paper-2`), `--selected` (the chosen segment of a control), `--fill` (tracks, badges and quiet buttons on a sheet);
 - text and lines: `--ink`, `--ink-2`, `--muted`, `--rule`, `--contour`;
-- accent: `--accent` (links, selection, focus, the active path), `--accent-ink`, `--accent-soft`, `--accent-fill` and `--accent-fill-hover` (filled buttons with white text);
-- `--highlight`: quoted proof (yellow on light, blue-gray in dark mode);
-- canvases (explorer, world, story): `--night`, `--night-2`, `--night-ink`, `--night-muted`, `--night-rule`;
+- accent: `--accent` (links, selection, focus, the active path, filled buttons), `--accent-hover`, `--on-fill` (text on a filled button);
+- `--highlight`: quoted proof;
 - layers: `--layer-<layer-id>` (set by `base.html` from `layers.yaml`, one value for both modes);
 - fonts: `--font-display`, `--font-body`, `--font-ui`, `--font-mono`;
 - misc: `--radius`, `--shadow`, `--shadow-lift`, `--measure`, `--gutter`.

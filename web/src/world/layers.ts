@@ -43,7 +43,7 @@ interface BinaryAttr {
 }
 
 /** A label of a tile, with the node it belongs to. */
-export interface TileLabel extends PlacedLabel {
+interface TileLabel extends PlacedLabel {
   id: number;
 }
 
@@ -208,7 +208,7 @@ function applyEra(render: TileRender, era: TileEra | null, style: WorldStyle): v
  * - a loaded ancestor at zoom a was standing in for it: nodes with minzoom > a are new;
  * - nothing was drawn here before: every node is new.
  */
-export function fadeFromFor(header: Tile2DHeader<TileRender>): number {
+function fadeFromFor(header: Tile2DHeader<TileRender>): number {
   if (header.children?.some((c) => c.isLoaded && c.content)) return Infinity;
   for (let p = header.parent; p; p = p.parent) if (p.isLoaded && p.content) return p.index.z + 1;
   return 0;
@@ -237,7 +237,7 @@ const nodeModule = {
 
 const easeOut = (p: number) => 1 - Math.pow(1 - clamp01(p), 3);
 
-export interface NodeStyleProps {
+interface NodeStyleProps {
   bornAt?: number;
   fadeFrom?: number;
 }
@@ -247,7 +247,7 @@ export interface NodeStyleProps {
  * the time it was first drawn: nodes with minzoom >= fadeFrom fade in (and grow a little) over FADE_MS.
  * The fragment shader draws an antialiased disc.
  */
-export class NodeStyleExtension extends LayerExtension {
+class NodeStyleExtension extends LayerExtension {
   static extensionName = 'CtdNodeStyleExtension';
   static defaultProps = { bornAt: 0, fadeFrom: Infinity };
 
@@ -295,7 +295,7 @@ const edgeModule = {
 } as const;
 
 /** Fades a whole edge layer in (premultiplied: rgb and alpha together), used for tiles drawn over empty space. */
-export class EdgeFadeExtension extends LayerExtension {
+class EdgeFadeExtension extends LayerExtension {
   static extensionName = 'CtdEdgeFadeExtension';
   static defaultProps = { bornAt: 0, fadeEdges: false };
 
@@ -338,7 +338,7 @@ const edgeFade = new EdgeFadeExtension();
 
 // ---------------------------------------------------------------------------------- tile layer
 
-export interface WorldTileLayerProps {
+interface WorldTileLayerProps {
   style: WorldStyle;
   /** Screen boxes (px, canvas coordinates) labels must keep clear of: HUD, legend, card. Mutated in place. */
   labelAvoid?: { boxes: Box[] };

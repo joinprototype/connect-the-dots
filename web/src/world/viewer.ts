@@ -324,9 +324,9 @@ class WorldViewer implements WorldHandle {
   private makeStyle(): WorldStyle {
     const m = this.manifest;
     // Dots in the ink of what they are, quiet gray lines on the page surface; the legend names the inks.
-    const ground = tokenRgb('--paper', [255, 255, 255], this.root);
-    const ink = tokenRgb('--night-ink', [29, 29, 31], this.root);
-    const edgeGray = tokenRgb('--graph-edge', [199, 199, 204], this.wrap);
+    const ground = tokenRgb('--paper', this.root);
+    const ink = tokenRgb('--ink', this.root);
+    const edgeGray = tokenRgb('--graph-edge', this.wrap);
     const content = m.kind === 'content';
     const rgba = (c: RGB): [number, number, number, number] => [Math.round(c[0]), Math.round(c[1]), Math.round(c[2]), 255];
     return {
@@ -385,7 +385,7 @@ class WorldViewer implements WorldHandle {
         legend.setAttribute('aria-label', 'Colours');
         m.palette_labels.forEach((label, i) => {
           const li = el('li', '', label);
-          li.style.setProperty('--c', m.palette[i] ?? 'var(--night-muted)');
+          li.style.setProperty('--c', m.palette[i] ?? 'var(--muted)');
           legend.append(li);
         });
         this.wrap.append(legend);
@@ -900,7 +900,7 @@ class WorldViewer implements WorldHandle {
     const rings = [this.selected, this.hover]
       .filter((p): p is Picked => !!p)
       .map((p) => ({ position: [p.x * S, p.y * S] as [number, number], size: p.size, selected: p === this.selected }));
-    const accent = tokenRgb('--accent', [180, 24, 94], this.root);
+    const accent = tokenRgb('--accent', this.root);
     const ink = this.style.ink;
     type Ring = (typeof rings)[number];
     const a: [number, number, number, number] = [accent[0], accent[1], accent[2], 255];

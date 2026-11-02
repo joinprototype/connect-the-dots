@@ -2,7 +2,7 @@
 // across the world. Every 5 s it logs one "[soak] {...}" line; at the end window.__soakResult holds
 // min/max/avg of each metric and the heap growth from the first to the last minute.
 
-export interface SoakMetrics {
+interface SoakMetrics {
   heap: number | null;
   tiles: number;
   tilesVisible: number;
@@ -11,12 +11,12 @@ export interface SoakMetrics {
   edgesDrawn: number;
 }
 
-export interface SoakSample extends SoakMetrics {
+interface SoakSample extends SoakMetrics {
   t: number;
   fps: number;
 }
 
-export interface SoakOptions {
+interface SoakOptions {
   seconds: number;
   /** Zoom that fits the world, and the deepest zoom to visit. */
   fitZoom: number;
@@ -35,7 +35,7 @@ interface Summary {
   avg: number;
 }
 
-export interface SoakResult {
+interface SoakResult {
   seconds: number;
   samples: SoakSample[];
   fps: Summary;

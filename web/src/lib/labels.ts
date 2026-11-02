@@ -81,7 +81,7 @@ class Grid {
   }
 }
 
-export interface PlaceOptions {
+interface PlaceOptions {
   /** Screen position of a common-space point. */
   project: (p: [number, number]) => [number, number];
   width: number;

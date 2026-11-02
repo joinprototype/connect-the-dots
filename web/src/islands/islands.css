@@ -27,10 +27,10 @@ ctd-search, .ctd-search { position: relative; display: block; }
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .ctd-search-empty { padding: 10px; color: var(--muted); }
-.explorer-page .ctd-search-results { background: var(--night-2); }
-.explorer-page .ctd-search-name { color: var(--night-ink); }
-.explorer-page .ctd-search-summary { color: var(--night-muted); }
-.explorer-page .ctd-search-results [role="option"][aria-selected="true"] { background: color-mix(in srgb, var(--accent) 14%, var(--night-2)); }
+.explorer-page .ctd-search-results { background: var(--sheet); }
+.explorer-page .ctd-search-name { color: var(--ink); }
+.explorer-page .ctd-search-summary { color: var(--muted); }
+.explorer-page .ctd-search-results [role="option"][aria-selected="true"] { background: color-mix(in srgb, var(--accent) 14%, var(--sheet)); }
 
 /* ---------------------------------------------------------------- lens chips (the look comes from site.css) */
 ctd-lens-chips { display: block; }

@@ -1,6 +1,6 @@
 // Small fuzzy matcher for names and aliases. No dependencies; used by the search island and the explorer.
 
-export interface Searchable {
+interface Searchable {
   id: string;
   name: string;
   aliases?: string[];
@@ -32,7 +32,7 @@ function fold(s: string): { folded: string; map: number[] } {
   return { folded, map };
 }
 
-export function foldQuery(q: string): string {
+function foldQuery(q: string): string {
   return q.normalize('NFD').replace(MARKS, '').toLowerCase().replace(/\s+/g, ' ').trim();
 }
 
@@ -41,7 +41,7 @@ function mapRanges(ranges: [number, number][], map: number[]): [number, number][
 }
 
 /** Score one candidate string. Higher is better; null = no match. */
-export function scoreText(query: string, text: string): { score: number; ranges: [number, number][] } | null {
+function scoreText(query: string, text: string): { score: number; ranges: [number, number][] } | null {
   if (!query) return null;
   const { folded, map } = fold(text);
   if (folded === query) return { score: 1000, ranges: [[0, text.length]] };

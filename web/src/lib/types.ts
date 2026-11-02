@@ -10,19 +10,19 @@ export interface CtdDate {
   open_start?: boolean;
 }
 
-export interface LayerDef {
+interface LayerDef {
   label: string;
   color: string;
 }
 
-export interface TypeDef {
+interface TypeDef {
   label: string;
   plural: string;
   layer: string;
   color: string;
 }
 
-export interface RelationDef {
+interface RelationDef {
   label: string;
   inverse: string;
   layers: string[];
@@ -80,7 +80,7 @@ export interface SourceRef {
   by?: string;
 }
 
-export type ClaimStatus = 'published' | 'draft' | 'disputed' | 'deprecated';
+type ClaimStatus = 'published' | 'draft' | 'disputed' | 'deprecated';
 
 export interface GEdge {
   id: string;
@@ -134,7 +134,7 @@ export interface SourceDef {
   archive_url?: string | null;
 }
 
-export interface TierDef {
+interface TierDef {
   label: string;
   description: string | null;
   /** Sources of this tier are refused by `ctd check`. */
@@ -143,12 +143,12 @@ export interface TierDef {
 
 /** The route stories the build generated, at /p/<a>--<b>/ ("a--b", directional). An entry's life story
  *  is in its detail file (`story`). */
-export interface StoryIndex {
+interface StoryIndex {
   paths: string[];
 }
 
 /** One group of a question: links pointing at the subject (`in`) or owned by it (`out`). */
-export interface QuestionGroup {
+interface QuestionGroup {
   label: string;
   in: string[];
   out: string[];
@@ -157,7 +157,7 @@ export interface QuestionGroup {
 }
 
 /** A question from content/schema/questions.yaml, in Ask-picker order. */
-export interface QuestionDef {
+interface QuestionDef {
   id: string;
   /** The sentence: {x} is the subject; a route question has {a} and {b}. */
   ask: string;
@@ -208,7 +208,7 @@ export interface SearchEntry {
   rank: number;
 }
 
-export interface ShotCamera {
+interface ShotCamera {
   center: [number, number];
   zoom: number;
   pitch?: number;
@@ -220,7 +220,7 @@ export interface ShotCamera {
   duration?: number;
 }
 
-export interface ShotOverlay {
+interface ShotOverlay {
   kind: 'source' | 'quote' | 'image' | 'stat';
   source?: string;
   quote?: string;

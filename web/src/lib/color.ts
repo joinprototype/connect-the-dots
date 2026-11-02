@@ -2,7 +2,7 @@
 
 export type RGB = [number, number, number];
 
-export function parseHex(hex: string): RGB | null {
+function parseHex(hex: string): RGB | null {
   const m = /^#?([0-9a-f]{3}|[0-9a-f]{6})([0-9a-f]{2})?$/i.exec(hex.trim());
   if (!m) return null;
   let h = m[1];
@@ -10,7 +10,7 @@ export function parseHex(hex: string): RGB | null {
   return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
 }
 
-export function toHex([r, g, b]: RGB): string {
+function toHex([r, g, b]: RGB): string {
   const c = (v: number) => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, '0');
   return `#${c(r)}${c(g)}${c(b)}`;
 }
@@ -36,9 +36,8 @@ export function cssColorToRgb(value: string, fallback: RGB = [128, 128, 128]): R
 }
 
 /** Read a CSS custom property (e.g. "--ink") as a concrete color. */
-export function tokenRgb(name: string, fallback: RGB, el: Element = document.documentElement): RGB {
-  const v = getComputedStyle(el).getPropertyValue(name).trim();
-  return v ? cssColorToRgb(v, fallback) : fallback;
+export function tokenRgb(name: string, el: Element = document.documentElement): RGB {
+  return cssColorToRgb(getComputedStyle(el).getPropertyValue(name).trim());
 }
 
 export function tokenString(name: string, fallback: string, el: Element = document.documentElement): string {

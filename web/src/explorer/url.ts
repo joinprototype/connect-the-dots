@@ -17,7 +17,7 @@ export interface UrlState {
 
 /** An entity id, or a name or alias typed by a person ("Bill Gates", "JFK"), resolved to an id. Aliases
  *  are looked up through search (the slim file has names only). */
-export async function resolveEntity(idx: GraphIndex, value: string | null | undefined): Promise<string | null> {
+async function resolveEntity(idx: GraphIndex, value: string | null | undefined): Promise<string | null> {
   const v = (value ?? '').trim();
   if (!v) return null;
   if (idx.nodes.has(v)) return v;

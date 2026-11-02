@@ -57,8 +57,8 @@ function arc(a: LonLat, b: LonLat, n = 72): LonLat[] {
 export async function createMapView(container: HTMLElement, idx: GraphIndex, shots: Shot[]): Promise<MapView> {
   await loadMapCss();
   setWorkerUrl(workerUrl);
-  const accent = tokenRgb('--accent', [180, 24, 94], container);
-  const gray = tokenRgb('--graph-node', [142, 142, 147], container);
+  const accent = tokenRgb('--accent', container);
+  const gray = tokenRgb('--graph-node', container);
   const borderKey = el('div', 'story-borders');
   borderKey.hidden = true;
   // under the time pills, however many rows they take

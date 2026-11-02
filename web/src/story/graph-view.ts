@@ -28,13 +28,13 @@ interface Step {
 }
 
 export function createGraphView(container: HTMLElement, idx: GraphIndex, shots: Shot[]): GraphView {
-  const paper = tokenRgb('--paper', [237, 241, 239], container);
-  const ink = tokenRgb('--ink', [29, 29, 31], container);
-  const accent = tokenRgb('--accent', [0, 102, 204], container);
+  const paper = tokenRgb('--paper', container);
+  const ink = tokenRgb('--ink', container);
+  const accent = tokenRgb('--accent', container);
   // Calm graph: gray dots and lines; the accent marks the focus and what this shot adds.
-  const nodeGray = tokenRgb('--graph-node', [142, 142, 147], container);
-  const edgeGray = tokenRgb('--graph-edge', [199, 199, 204], container);
-  const theme = { ink, ground: paper, muted: tokenRgb('--muted', [104, 120, 134], container), font: tokenString('--font-ui', 'system-ui, sans-serif', container) };
+  const nodeGray = tokenRgb('--graph-node', container);
+  const edgeGray = tokenRgb('--graph-edge', container);
+  const theme = { ink, ground: paper, muted: tokenRgb('--muted', container), font: tokenString('--font-ui', 'system-ui, sans-serif', container) };
 
   // What each shot adds; the union is laid out once so positions stay put while the story grows.
   const own: Step[] = shots.map((s) => {

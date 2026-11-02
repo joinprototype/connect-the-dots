@@ -15,7 +15,7 @@
 import type { GraphIndex } from './data';
 import type { GEdge, Methodology } from './types';
 
-export interface PathOptions {
+interface PathOptions {
   /** Traverse passive holdings ("index funds"). Default false. */
   includePassive?: boolean;
   /** Current view filters; return false for claims the view hides. */
@@ -24,7 +24,7 @@ export interface PathOptions {
   timeFilterActive?: boolean;
 }
 
-export interface PathHop {
+interface PathHop {
   edge: GEdge;
   /** Traversal order (not necessarily the claim's direction). */
   from: string;
@@ -42,13 +42,13 @@ export interface PathResult {
 
 const EPS = 1e-9;
 
-export function evidenceStrength(m: Methodology, e: GEdge): number {
+function evidenceStrength(m: Methodology, e: GEdge): number {
   const base = (e.tier && m.evidence[e.tier]) || 0;
   return e.status === 'draft' ? base * (m.evidence.draft_factor ?? 0.5) : base;
 }
 
 /** node -> relation -> number of claims of that relation touching the node. */
-export function relationDegrees(idx: GraphIndex): Map<string, Map<string, number>> {
+function relationDegrees(idx: GraphIndex): Map<string, Map<string, number>> {
   const deg = new Map<string, Map<string, number>>();
   const bump = (n: string, rel: string) => {
     let m = deg.get(n);
@@ -62,7 +62,7 @@ export function relationDegrees(idx: GraphIndex): Map<string, Map<string, number
   return deg;
 }
 
-export function hopCost(
+function hopCost(
   m: Methodology,
   e: GEdge,
   degU: number,
@@ -138,7 +138,7 @@ class Heap {
 }
 
 /** Undirected adjacency of the claims the path finder may use, with per-hop costs. */
-export function buildArcs(idx: GraphIndex, opts: PathOptions = {}): Map<string, Arc[]> {
+function buildArcs(idx: GraphIndex, opts: PathOptions = {}): Map<string, Arc[]> {
   const m = idx.data.methodology;
   const deg = relationDegrees(idx);
   const arcs = new Map<string, Arc[]>();

@@ -3,11 +3,11 @@
 // proof when it is opened (e/<id>.json), and a story's own data from its page.
 import type { CtdDate, GEdge, GNode, GraphData, LensDef, Perspective, SourceDef, SourceRef } from './types';
 
-export const SCHEMA_URL = '/data/schema.json';
-export const SLIM_URL = '/data/graph-slim.json';
+const SCHEMA_URL = '/data/schema.json';
+const SLIM_URL = '/data/graph-slim.json';
 
 /** The vocabulary: everything a graph needs but its entries, links and sources. */
-export type Schema = Omit<GraphData, 'nodes' | 'edges' | 'sources'>;
+type Schema = Omit<GraphData, 'nodes' | 'edges' | 'sources'>;
 
 // One cache per page, shared by every bundle (islands, explorer, story) that runs on it.
 const g = globalThis as typeof globalThis & { __ctdData?: Map<string, Promise<unknown>> };
@@ -68,7 +68,7 @@ export interface GraphIndex {
   details: Map<string, Details>;
 }
 
-export function indexGraph(data: GraphData): GraphIndex {
+function indexGraph(data: GraphData): GraphIndex {
   const nodes = new Map(data.nodes.map((n) => [n.id, n]));
   const edges = new Map<string, GEdge>();
   const incident = new Map<string, GEdge[]>();
@@ -103,7 +103,7 @@ interface Slim {
 const date = (w: SlimDate): CtdDate | null => (w ? { start: w[0], end: w[1], label: w[2], ...(w[3] ? { open_start: true } : {}) } : null);
 
 /** The slim file's rows as entries and links: structure only, until an entry's details are loaded. */
-export function decodeSlim(schema: Schema, slim: Slim): Pick<GraphData, 'nodes' | 'edges'> {
+function decodeSlim(schema: Schema, slim: Slim): Pick<GraphData, 'nodes' | 'edges'> {
   const nodes: GNode[] = slim.nodes.map(([id, name, type, degree, when, coords, place]) => ({
     id,
     name,

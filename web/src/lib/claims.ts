@@ -61,7 +61,7 @@ export function sentenceText(s: Sentence): string {
 }
 
 /** A reveal_claims entry "<entity>#<claim>" matches that edge and any "<entity>#<claim>/<n>" edges. */
-export function claimRefMatches(edgeId: string, ref: string): boolean {
+function claimRefMatches(edgeId: string, ref: string): boolean {
   return edgeId === ref || edgeId.startsWith(ref + '/');
 }
 
@@ -74,7 +74,7 @@ export function edgesForRef(idx: GraphIndex, ref: string): GEdge[] {
 }
 
 /** "1962-10-22" -> "22 Oct 1962"; "2026-08" -> "Aug 2026"; anything else unchanged. */
-export function prettyDate(s: string | null | undefined): string {
+function prettyDate(s: string | null | undefined): string {
   if (!s) return '';
   const m = /^(-?\d{4})(?:-(\d{2}))?(?:-(\d{2}))?$/.exec(s);
   if (!m) return s;
@@ -85,7 +85,7 @@ export function prettyDate(s: string | null | undefined): string {
   return m[3] ? `${Number(m[3])} ${mon} ${year}` : `${mon} ${year}`;
 }
 
-export interface SourceView {
+interface SourceView {
   id: string;
   title: string;
   url: string | null;

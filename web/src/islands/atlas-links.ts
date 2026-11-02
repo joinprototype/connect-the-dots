@@ -29,7 +29,7 @@ export class CtdAtlasLinks extends HTMLElement {
       for (const n of names) {
         const a = el('a', '', n[1]);
         a.href = hrefOf(n);
-        a.style.setProperty('--c', `var(${INKS[n[2]] ?? '--accent-fill'})`);
+        a.style.setProperty('--c', `var(${INKS[n[2]] ?? '--accent'})`);
         const li = el('li');
         li.append(a);
         ul.append(li);

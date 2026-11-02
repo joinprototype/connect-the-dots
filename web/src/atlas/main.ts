@@ -27,7 +27,7 @@ function constellation(e: Entry, go: (n: Neighbour) => void): SVGSVGElement {
     for (const [k, v] of Object.entries(attrs)) node.setAttribute(k, String(v));
     return node;
   };
-  const inkOf = (kind: number) => `var(${INKS[kind] ?? '--accent-fill'})`;
+  const inkOf = (kind: number) => `var(${INKS[kind] ?? '--accent'})`;
   shown.forEach((n, i) => {
     const a = (i / shown.length) * Math.PI * 2 + 0.4;
     const r = 118 + ((i * 37) % 3) * 42;
@@ -49,7 +49,7 @@ function constellation(e: Entry, go: (n: Neighbour) => void): SVGSVGElement {
 
 function render(root: HTMLElement, q: string, e: Entry, go: (n: Neighbour) => void): void {
   document.title = `${e.n}: Connect the Dots`;
-  root.style.setProperty('--c', `var(${INKS[e.k] ?? '--accent-fill'})`);
+  root.style.setProperty('--c', `var(${INKS[e.k] ?? '--accent'})`);
   const head = el('header', 'atlas-head');
   const words = el('div', 'atlas-words');
   words.append(el('p', 'entity-kind', KINDS[e.k] ?? ''), el('h1', '', e.n));
@@ -87,7 +87,7 @@ function render(root: HTMLElement, q: string, e: Entry, go: (n: Neighbour) => vo
     for (const n of names) {
       const a = el('a', '', n[1]) as HTMLAnchorElement;
       a.href = hrefOf(n);
-      a.style.setProperty('--c', `var(${INKS[n[2]] ?? '--accent-fill'})`);
+      a.style.setProperty('--c', `var(${INKS[n[2]] ?? '--accent'})`);
       if (!n[4]) {
         a.addEventListener('click', (ev) => {
           ev.preventDefault();

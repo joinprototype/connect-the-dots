@@ -1,6 +1,6 @@
 // CustomEvents between scripts, dispatched on document (docs/data-contract.md).
 
-export interface CtdEvents {
+interface CtdEvents {
   'ctd:lens': { lens: string };
   'ctd:time': { t: number | null };
   'ctd:focus': { id: string | null };

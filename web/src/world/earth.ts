@@ -2,7 +2,8 @@
 // basemap (ADR-0014) as a globe, with one grey dot per spot where entries are: graph-slim.json `coords`, an
 // entry's own or its place's, so an entry and its place share a dot. The era and the selection are
 // feature state read by paint expressions: picking an era never rebuilds the data. An era before today
-// also draws the world of its year (ADR-0021), in place of the basemap's borders and names.
+// also draws the world of its year (ADR-0021), in place of the basemap's borders and names. The atlas's
+// places come in tiles by view, in the ink of their kind (ADR-0023).
 import { AttributionControl, Map as MapLibre, setWorkerUrl, type ExpressionSpecification, type GeoJSONSource } from 'maplibre-gl';
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url';
 import { FADED_TEXT_ALPHA, tokenRgb } from '../lib/color';
@@ -48,7 +49,7 @@ export interface Insets {
   right: number;
 }
 
-export interface EarthOptions {
+interface EarthOptions {
   reducedMotion: boolean;
   /** Touch screens: a bigger target around each dot. */
   coarse: boolean;
@@ -168,11 +169,11 @@ export async function createEarth(container: HTMLElement, opts: EarthOptions): P
   ]);
   const spots = spotsOf(data);
   const byId = new Map(spots.flatMap((s) => s.entries.map((e) => [e.id, s] as const)));
-  const grey = tokenRgb('--graph-node', [142, 142, 147], container);
-  const accent = tokenRgb('--accent', [0, 102, 204], container);
-  const paper = tokenRgb('--paper', [255, 255, 255], container);
-  const ink = tokenRgb('--night-ink', [29, 29, 31], container);
-  const muted = tokenRgb('--night-muted', [110, 110, 115], container);
+  const grey = tokenRgb('--graph-node', container);
+  const accent = tokenRgb('--accent', container);
+  const paper = tokenRgb('--paper', container);
+  const ink = tokenRgb('--ink', container);
+  const muted = tokenRgb('--muted', container);
   const center = middle(spots);
 
   /** The whole planet, in the middle of the space the overlays leave. */
@@ -217,7 +218,7 @@ export async function createEarth(container: HTMLElement, opts: EarthOptions): P
    * The atlas's places, by view: each tile holds the best known of what is left for it, so a country
    * fills in as it is approached, and only what is in view is ever loaded (docs/data-contract.md).
    */
-  const inks = INKS.map((t) => rgb(tokenRgb(t, [90, 90, 90], container)));
+  const inks = INKS.map((t) => rgb(tokenRgb(t, container)));
   const atlasDots: GeoJSON.Feature[] = [];
   const asked = new Set<string>();
   const have = new Map(Object.entries(atlasIndex?.tiles ?? {}).map(([z, list]) => [Number(z), new Set(list)]));

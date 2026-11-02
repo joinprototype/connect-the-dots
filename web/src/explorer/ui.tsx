@@ -131,7 +131,7 @@ export function EntityPicker(props: {
 
 export function typeDot(idx: GraphIndex, n: { type: string } | undefined): React.CSSProperties {
   const layer = n ? idx.data.types[n.type]?.layer : undefined;
-  return { ['--dot' as string]: layer ? `var(--layer-${layer})` : 'var(--night-muted)' };
+  return { ['--dot' as string]: layer ? `var(--layer-${layer})` : 'var(--muted)' };
 }
 
 // ------------------------------------------------------------------ claims

@@ -30,7 +30,7 @@ const PHONE_WIDTH = 600;
 
 export type Selection = { kind: 'node'; id: string } | { kind: 'edge'; id: string } | null;
 
-export interface EngineView {
+interface EngineView {
   filters: Filters;
   /**
    * Entities that may be drawn (the explored neighbourhood and any routes); null draws everything.
@@ -98,18 +98,18 @@ export class ExplorerEngine {
     this.pm = passiveModel(idx);
     // Neutral graph: gray dots and lines, one accent for selection and paths (tokens, light or dark).
     const theme = {
-      ink: tokenRgb('--night-ink', [29, 29, 31], container),
+      ink: tokenRgb('--ink', container),
       // The canvas sits on the page surface (white, or #111113 in dark mode): fades and label halos use it.
-      ground: tokenRgb('--paper', [255, 255, 255], container),
-      muted: tokenRgb('--night-muted', [110, 110, 115], container),
+      ground: tokenRgb('--paper', container),
+      muted: tokenRgb('--muted', container),
       font: tokenString('--font-ui', 'system-ui, sans-serif', container),
     };
     this.night = theme.ground;
     this.ink = theme.ink;
-    this.accent = tokenRgb('--accent', [0, 102, 204], container);
-    this.nodeGray = tokenRgb('--graph-node', [142, 142, 147], container);
-    this.edgeGray = tokenRgb('--graph-edge', [199, 199, 204], container);
-    const hoverTheme = { ...theme, ground: tokenRgb('--night-2', [255, 255, 255], container) };
+    this.accent = tokenRgb('--accent', container);
+    this.nodeGray = tokenRgb('--graph-node', container);
+    this.edgeGray = tokenRgb('--graph-edge', container);
+    const hoverTheme = { ...theme, ground: tokenRgb('--sheet', container) };
 
     this.graph = new Graph<NodeAttrs, EdgeAttrs>({ multi: true, type: 'directed', allowSelfLoops: false });
     this.buildGraph();
