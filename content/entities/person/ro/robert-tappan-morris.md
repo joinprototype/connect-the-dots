@@ -16,4 +16,10 @@ claims:
     src:
       - {s: paulgraham-2012-03-how-y-combinator-started, quote: "I agreed to put $100k into the new fund and Jessica agreed to quit her job to work for it. Over the next couple days I recruited Robert and Trevor, who put in another $50k each. So YC started with $200k."}
       - {s: yc-people-page, at: "Founders", quote: "Robert Morris Founder, Retired"}
+  - id: c2
+    rel: worked_at
+    to: massachusetts-institute-of-technology
+    role: "professor"
+    src:
+      - {s: csail-robert-morris, at: "Profile", quote: "Robert Morris is a professor in MIT's EECS department"}
 ---

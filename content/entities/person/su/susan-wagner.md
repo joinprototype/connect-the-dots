@@ -21,4 +21,10 @@ claims:
     src:
       - {s: apple-leadership-sue-wagner, at: "biography", quote: "Ms. Wagner has been a director since 2014; she serves on the audit and finance committee, and is the chair of the nominating and corporate governance committee."}
       - {s: blackrock-proxy-2026, at: "Item 1, Election of Directors: Susan L. Wagner", quote: "Other Public Company Directorships (within the past 5 years) • Apple Inc. (2014 – present) • Samsara Inc. (2020 – present)"}
+  - id: c3
+    rel: educated_at
+    to: university-of-chicago
+    title: "MBA in finance"
+    src:
+      - {s: chicago-booth-susan-wagner, at: "Honoree biography", quote: "earned an MBA in finance from the University of Chicago"}
 ---

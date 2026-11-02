@@ -85,4 +85,10 @@ claims:
     to: robinhood
     src:
       - {s: hfsc-2021-02-18-tenev-testimony, at: "Written statement, opening", quote: "the trading limits we put in place on GameStop and other stocks were necessary to allow us to continue to meet the clearinghouse deposit requirements that we pay to support customer trading on our platform."}
+  - id: c12
+    rel: involved
+    to: elon-musk
+    role: "posted the one-word tweet \"Gamestonk!!\" after the market closed on 26 January"
+    src:
+      - {s: cnn-2021-01-26-musk-gamestop-tweet, at: "Report", quote: "CEO Elon Musk appeared to join the pile-on with a tweet that sent GameStop shares briefly above $200."}
 ---

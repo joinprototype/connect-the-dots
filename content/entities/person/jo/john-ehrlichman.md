@@ -32,4 +32,11 @@ claims:
     src:
       - {s: us-v-haldeman-559-f2d-31, at: "Opening statement of the case", quote: "The jury acquitted Parkinson, found Mardian guilty of conspiracy, the only offense with which he was charged, and convicted Mitchell, Haldeman, and Ehrlichman of both conspiracy and obstruction of justice as well as all the individual perjury counts submitted."}
       - {s: us-v-haldeman-559-f2d-31, at: "Opening statement of the case", quote: "We deal in the instant appeals only with the convictions of Haldeman, Ehrlichman, and Mitchell."}
+  - id: c4
+    rel: educated_at
+    to: ucla
+    when: "1948"
+    title: "B.A."
+    src:
+      - {s: nixonlibrary-finding-aid-ehrlichman, at: "Biographical note", quote: "Ehrlichman earned a B.A. at the University of California, Los Angeles in 1948"}
 ---
