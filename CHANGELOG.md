@@ -2,6 +2,10 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## Next
+
+- Entries' details and their generated stories now share files, which takes the site from 18,034 files to 12,482 and leaves room for far more. Addresses stay the same.
+
 ## 0.4.4 (2026-11-02)
 
 - On the Map, near now means linked. Every dot sits beside what it links to, parts of each region are named ("Born in Paris"), and lines show how they hang together as you zoom in.

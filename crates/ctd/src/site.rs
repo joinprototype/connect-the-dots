@@ -509,6 +509,21 @@ impl Site<'_> {
 
     /// A generated story, at `dest`: a life, a route or an answer.
     fn story_page(&self, dest: PathBuf, draft: &crate::stories::Draft, back: Option<Value>) -> Result<()> {
+        write(&dest.join("index.html"), self.chapter_page(draft, back)?)
+    }
+
+    /// An entry's generated story as its pack keeps it: what goes inside `e/_life/`, the one page
+    /// that shows them all (ADR-0026).
+    fn story_fragment(&self, draft: &crate::stories::Draft, back: Option<Value>) -> Result<Value> {
+        let page = self.chapter_page(draft, back)?;
+        let (open, close) = ("<main id=\"main\">", "</main>");
+        let start = page.find(open).context("a story page has a main")? + open.len();
+        let end = page.rfind(close).context("a story page closes its main")?;
+        let sep = if draft.title.ends_with('?') { " –" } else { ":" };
+        Ok(json!({ "title": format!("{}{sep} Connect the Dots", draft.title), "main": page[start..end].trim() }))
+    }
+
+    fn chapter_page(&self, draft: &crate::stories::Draft, back: Option<Value>) -> Result<String> {
         let (kb, cx) = (self.kb, &self.cx);
         let (shots, steps) = story_parts(cx, &draft.shots);
         let resolver = cx.resolver();
@@ -519,15 +534,28 @@ impl Site<'_> {
             "steps": steps, "shot_count": shots.len(), "generated": true, "ink": crate::covers::INK,
             "back": back, "explore_url": draft.explore_url,
         });
-        write(&dest.join("index.html"), self.render("chapter.html", json!({ "site": &self.site, "chapter": chapter, "history": [] }))?)
+        self.render("chapter.html", json!({ "site": &self.site, "chapter": chapter, "history": [] }))
     }
 }
+
+/// Files entries share, by pack number: `{ id: value }`.
+type Packs = BTreeMap<u32, serde_json::Map<String, Value>>;
 
 /// Generated life stories: (type, links, card), and the ids that have one.
 #[derive(Default)]
 struct Lives {
     all: Vec<(String, usize, Value)>,
     ids: Vec<String>,
+    /// Every entry's detail file, then the stories themselves.
+    details: Packs,
+    stories: Packs,
+}
+
+fn write_packs(dir: &Path, packs: &Packs) -> Result<()> {
+    for (n, pack) in packs {
+        write(&dir.join(format!("{n}.json")), serde_json::to_vec(pack)?)?;
+    }
+    Ok(())
 }
 
 /// The question stories, as shelves: the home page's, the library's, how many it leaves out, and their ids.
@@ -689,7 +717,7 @@ fn copy_assets(root: &Path, out: &Path) -> Result<Value> {
         "explorer_js": has_asset("explorer.js"), "explorer_css": has_asset("explorer.css"),
         "world_js": has_asset("world.js"), "world_css": has_asset("world.css"),
         "atlas_js": has_asset("atlas.js"), "atlas_css": has_asset("atlas.css"), "route_js": has_asset("route.js"),
-        "story_js": has_asset("story.js"), "story_css": has_asset("story.css"),
+        "story_js": has_asset("story.js"), "story_css": has_asset("story.css"), "life_js": has_asset("life.js"),
     }))
 }
 
@@ -791,6 +819,9 @@ fn entity_pages(s: &Site, pages: &QuestionPages) -> Result<Lives> {
     for ent in &kb.entities {
         entity_page(s, pages, ent, &here_of, &params, now, &mut lives)?;
     }
+    write_packs(&s.out.join("data").join("e"), &lives.details)?;
+    write_packs(&s.out.join("data").join("life"), &lives.stories)?;
+    write(&s.out.join("e").join("_life").join("index.html"), s.render("life.html", json!({ "site": &s.site }))?)?;
     Ok(lives)
 }
 
@@ -834,7 +865,8 @@ fn entity_page(
     });
     let story_url = match crate::stories::entity_story(kb, &ent.id) {
         Some(draft) => {
-            s.story_page(s.out.join("e").join(&ent.id).join("story"), &draft, Some(json!({ "url": format!("/e/{}/", ent.id), "label": ent.name })))?;
+            let page = s.story_fragment(&draft, Some(json!({ "url": format!("/e/{}/", ent.id), "label": ent.name })))?;
+            lives.stories.entry(data::pack_of(&ent.id)).or_default().insert(ent.id.clone(), page);
             Some(format!("/e/{}/story/", ent.id))
         }
         None => None,
@@ -900,7 +932,7 @@ fn entity_page(
     write(&s.out.join("e").join(&ent.id).join("index.html"), html)?;
     let mut details = data::details(kb, ent, &kept, story_url.as_deref(), asked);
     details["open"] = json!(s.open_links.get(&ent.id));
-    write(&s.out.join("data").join("e").join(format!("{}.json", ent.id)), serde_json::to_vec(&details)?)?;
+    lives.details.entry(data::pack_of(&ent.id)).or_default().insert(ent.id.clone(), details);
     Ok(())
 }
 
@@ -987,6 +1019,8 @@ fn alias_pages(s: &Site) -> Result<()> {
         let html = s.render("redirect.html", json!({ "site": &s.site, "url": url, "name": target.name }))?;
         write(&s.out.join("e").join(alias).join("index.html"), html)?;
     }
+    // every entry's generated story is one page (ADR-0026)
+    redirects.push_str("/e/:id/story/ /e/_life/ 200\n/e/:id/story /e/_life/ 200\n");
     write(&s.out.join("_redirects"), redirects)?;
     let headers = if LISTED { HEADERS.to_string() } else { HEADERS.replacen("/*\n", "/*\n  X-Robots-Tag: noindex\n", 1) };
     write(&s.out.join("_headers"), headers)
@@ -1542,7 +1576,8 @@ mod tests {
         let page = read("e/zoe/index.html");
         assert!(page.contains("Raised Catholic") && page.contains(">Background<"), "{page}");
         // never a link, a node, a search entry or a story line (ADR-0016)
-        for file in ["data/graph.json", "data/graph-slim.json", "data/schema.json", "data/search/0.json", "data/e/zoe.json"] {
+        let pack = format!("data/e/{}.json", super::data::pack_of("zoe"));
+        for file in ["data/graph.json", "data/graph-slim.json", "data/schema.json", "data/search/0.json", pack.as_str()] {
             let text = read(file);
             assert!(!text.is_empty() && !text.contains("Raised Catholic") && !text.contains("Leeds"), "{file}");
         }
@@ -1619,8 +1654,8 @@ mod tests {
         assert_eq!(asked, ["Who is behind Party?", "Who is behind the Reds?", "Why did Fall happen?", "Who benefited from Fall?"]);
         let party = search.iter().find(|e| e["id"] == "party").unwrap();
         assert_eq!(party["q"], json!(["behind"]));
-        let details: Value = serde_json::from_str(&read("data/e/party.json")).unwrap();
-        assert_eq!(details["asked"][0]["url"], "/q/behind/party/");
+        let pack: Value = serde_json::from_str(&read(&format!("data/e/{}.json", super::data::pack_of("party")))).unwrap();
+        assert_eq!(pack["party"]["asked"][0]["url"], "/q/behind/party/");
         assert!(!read("data/schema.json").contains("\"pages\""), "which entries have pages is in their own files");
         let graph: Value = serde_json::from_str(&read("data/graph.json")).unwrap();
         assert_eq!(graph["stories"]["questions"], json!(["behind/party", "behind/reds", "why/fall"]));

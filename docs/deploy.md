@@ -59,9 +59,10 @@ To undo a deploy: `npx wrangler@4 rollback` makes the version before it live at 
 ## Limits to watch
 
 - **File count:** up to 20,000 files per version on the free plan, 100,000 on Workers Paid.
-  - Today the site has about 1,250 files (270 entries, their stories and question pages, world tiles).
-  - World tiles grow fastest: the 1M-node synthetic world is 2,693 tiles.
-  - Past roughly 50k files, move tiles and long-tail pages to R2 (ADR-0006).
+  - Today the site has 12,482 files: 3,295 entry pages, 2,323 search files, 2,162 Earth tiles, 2,048 atlas files, 1,044 world tiles, 1,024 packs, 312 question pages, and the rest.
+  - A new entry adds one file, its page, plus any question pages it earns ([ADR-0026](decisions/0026-entries-share-files.md)).
+  - World tiles and Earth tiles grow with the Map: the 1M-node synthetic world is 2,693 tiles.
+  - Past 20,000 files, the next step is Workers Paid. Past roughly 50k, move tiles and long-tail pages to R2 (ADR-0006).
 - **File size:** at most 25 MiB per asset. The largest files today are the lazily loaded map and deck.gl chunks (about 1 MB each, uncompressed). The data files are small: `graph-slim.json` is about 65 KB (17 KB gzip), a detail file a few KB.
 - **Third-party requests:** story maps and the Map's Earth view load OpenFreeMap tiles and glyphs (ADR-0014). Everything else is same-origin.
 

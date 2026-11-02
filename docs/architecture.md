@@ -77,16 +77,17 @@ Stages:
 4. Intern ids and build the graph.
 5. Derive reverse claims, backlinks and confirmation badges.
 6. Render pages.
-7. Write the data files (schema, slim structure, one detail file per entry, search by word range).
+7. Write the data files (schema, slim structure, entries' details and life stories in shared packs, search by word range).
 8. Layout and tiles for the Map ([world-tiles.md](world-tiles.md)).
-9. The atlas, when `.cache/atlas` holds it: 4,096 shards, search, the Map's million dots, the Earth's tiles and the landmark table for routes ([ADR-0023](decisions/0023-the-atlas.md)). A dev server leaves it out.
+9. The atlas, when `.cache/atlas` holds it: 2,048 shards, search, the Map's million dots, the Earth's tiles and the landmark table for routes ([ADR-0023](decisions/0023-the-atlas.md)). A dev server leaves it out.
 
 ```
 dist/
   e/<id>/index.html          entity pages            c/<id>/index.html   chapters
   x/                         explorer app            world/              the Map's tiles
   data/schema.json           vocabulary              data/graph-slim.json   every entry and link, structure only
-  data/e/<id>.json           one entry's words and proof          data/search/   search entries by word range
+  data/e/<n>.json            entries' words and proof, in packs   data/search/   search entries by word range
+  data/life/<n>.json         life stories, in packs               e/_life/   the one page that opens them
   data/a/<n>.json            atlas entries, packed by Wikidata number    a/   the one page that reads them
   data/routes.json           landmark table for routes                   r/   connect any two
   earth/                     the Earth's places, by view
@@ -127,7 +128,7 @@ Builds are deterministic: a pinned toolchain, sorted output and fixed seeds. Any
 
 - **URLs:**
   - `/e/<id>`: the canonical entity page;
-  - `/e/<id>/story/`: generated life story; `/p/<a>--<b>/`: route story;
+  - `/e/<id>/story/`: generated life story, one shared page ([ADR-0026](decisions/0026-entries-share-files.md)); `/p/<a>--<b>/`: route story;
   - `/q/<question>/<id>/` (and `/story/`): question pages, "Who is behind X?", "Why did X happen?", "Who benefited from X?". Defined as data in `content/schema/questions.yaml` ([ADR-0015](decisions/0015-ask-anything.md));
   - `/t/<type>/`: every entry of one type, A to Z (the home index shows each type's best-connected entries and links here);
   - `/c/<id>`: chapter;

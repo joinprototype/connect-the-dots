@@ -11,6 +11,7 @@ const ENTRIES = {
   islands: 'src/islands/main.ts',
   explorer: 'src/explorer/main.tsx',
   story: 'src/story/main.ts',
+  life: 'src/story/life.ts',
   world: 'src/world/main.ts',
   atlas: 'src/atlas/main.ts',
   route: 'src/atlas/route.ts',
@@ -62,7 +63,7 @@ function devSite(): Plugin {
       server.middlewares.use(async (req, res, next) => {
         try {
           const url = new URL(req.url ?? '/', 'http://localhost');
-          const path = decodeURIComponent(url.pathname);
+          const path = decodeURIComponent(url.pathname).replace(/^\/e\/[^/]+\/story\/?$/, '/e/_life/');
           const entry = ENTRY_RE.exec(path);
           if (entry) {
             const name = entry[1] as keyof typeof ENTRIES;

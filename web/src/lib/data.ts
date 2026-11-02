@@ -41,7 +41,26 @@ export function loadSchema(): Promise<Schema> {
   return loadJson<Schema>(SCHEMA_URL);
 }
 
-/** One entry's words and proof (data/e/<id>.json). */
+/** Files that entries share (ADR-0026). */
+const ENTRY_PACKS = 256;
+
+/** The pack an entry's files live in: 32-bit FNV-1a of its id, as `site/data.rs` computes it. */
+export function packOf(id: string): number {
+  let h = 0x811c9dc5;
+  for (const byte of new TextEncoder().encode(id)) h = Math.imul(h ^ byte, 0x01000193);
+  return (h >>> 0) % ENTRY_PACKS;
+}
+
+/** One entry's detail file, from the pack it shares. */
+export function loadEntryFile(id: string): Promise<Details> {
+  return loadJson<Record<string, Details>>(`/data/e/${packOf(id)}.json`).then((pack) => {
+    const details = pack[id];
+    if (!details) throw new Error(`no details for ${id}`);
+    return details;
+  });
+}
+
+/** One entry's words and proof (in data/e/<pack>.json). */
 export interface Details {
   id: string;
   summary: string | null;
@@ -160,7 +179,7 @@ export async function storyIndex(own: Pick<GraphData, 'nodes' | 'edges' | 'sourc
  * notes and sources (the links then have `full`). Resolves null when it cannot be loaded.
  */
 export function loadDetails(idx: GraphIndex, id: string): Promise<Details | null> {
-  return loadJson<Details>(`/data/e/${encodeURIComponent(id)}.json`).then(
+  return loadEntryFile(id).then(
     (d) => {
       if (!idx.details.has(id)) {
         idx.details.set(id, d);

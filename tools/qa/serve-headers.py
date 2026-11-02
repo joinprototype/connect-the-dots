@@ -2,6 +2,7 @@
 block matches ("/*" every one, "/data/*" those under /data/), so a sweep sees what Cloudflare would
 enforce, such as the Content-Security-Policy.
 Usage: python3 tools/qa/serve-headers.py <dir> [port]"""
+import re
 import http.server, os, sys
 
 root = sys.argv[1]
@@ -18,6 +19,9 @@ with open(os.path.join(root, '_headers')) as f:
 class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *a, **kw):
         super().__init__(*a, directory=root, **kw)
+    def translate_path(self, path):
+        # the host's rewrite in _redirects: every entry's generated story is one page
+        return super().translate_path(re.sub(r'^/e/[^/]+/story/?$', '/e/_life/', path.split('?')[0]))
     def end_headers(self):
         for prefix, headers in rules:
             if self.path.startswith(prefix):

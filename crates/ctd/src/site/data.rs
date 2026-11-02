@@ -1,7 +1,8 @@
 //! The data files the browser reads (docs/data-contract.md, ADR-0017). Pages load what they show:
 //! - `data/schema.json`: the vocabulary (types, relations, lenses, tiers, questions, methodology);
 //! - `data/graph-slim.json`: every entry and link, with only what the explorer draws and routes price;
-//! - `data/e/<id>.json`: one entry's words and proof, loaded when it is opened;
+//! - `data/e/<pack>.json`: entries' words and proof, loaded when one is opened;
+//! - `data/life/<pack>.json`: entries' generated stories, shown by the one page at `e/_life/`;
 //! - `data/search/`: the search entries, filed by word and cut into files by word range;
 //! - a story page's own entries, links and sources, embedded beside its shots.
 
@@ -20,6 +21,14 @@ use crate::{
     kb::{Edge, Entity, Kb, Source},
     paths::Params,
 };
+
+/// Files that entries share: the host caps files per version (ADR-0026).
+pub const ENTRY_PACKS: u32 = 256;
+
+/// The pack an entry's files live in: 32-bit FNV-1a of its id, as `web/src/lib/data.ts` computes it.
+pub fn pack_of(id: &str) -> u32 {
+    id.bytes().fold(0x811c_9dc5_u32, |h, b| (h ^ u32::from(b)).wrapping_mul(0x0100_0193)) % ENTRY_PACKS
+}
 
 /// Links an entry's detail file and page keep per kind (relation and direction): the strongest, as
 /// answers rank them. A hub's other links keep their structure in the slim file.
@@ -145,7 +154,7 @@ pub(crate) fn keep_per_kind<'a>(p: &Params, items: &[Link<'a>]) -> (Vec<Link<'a>
     (items.iter().zip(&cut).filter(|(_, c)| !**c).map(|(x, _)| *x).collect(), more)
 }
 
-/// One entry's words and proof (`data/e/<id>.json`): its summary and aliases, its life story, the
+/// One entry's words and proof (in `data/e/<pack>.json`): its summary and aliases, its life story, the
 /// question pages about it (`asked`), and for each link given its qualifiers, note and sources.
 pub fn details(kb: &Kb, ent: &Entity, links: &[Link], story: Option<&str>, asked: Vec<Value>) -> Value {
     let mut cited = BTreeSet::new();
@@ -298,6 +307,11 @@ pub fn search(entries: &[Value], mut emit: impl FnMut(usize, Vec<u8>) -> Result<
 
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn a_pack_is_the_same_number_the_browser_computes() {
+        assert_eq!(super::pack_of("karl-marx"), 90);
+    }
+
     use serde_json::json;
 
     use super::{details, keep_per_kind, search, words};

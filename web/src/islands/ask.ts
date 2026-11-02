@@ -6,7 +6,7 @@
 //   or it has no sourced answer yet.
 // The page embeds the names it needs first (#ask-data); search (lib/search.ts) has the rest, with types and
 // question pages (`q`), and an entry's detail file names the pages about it.
-import { loadJson, type Details } from '../lib/data';
+import { loadEntryFile, loadJson } from '../lib/data';
 import { el } from '../lib/dom';
 import { candidates } from '../lib/search';
 import type { SearchEntry } from '../lib/types';
@@ -244,7 +244,7 @@ export function startAsk(): void {
     const asked = !e.type || q.subjects.includes(e.type);
     const rows = [row(`/e/${e.id}/`, `Open ${e.name}: every link ›`, '', true)];
     // the other questions with a page about it, from its detail file
-    const details = e.q?.length ? await loadJson<Details>(`/data/e/${encodeURIComponent(e.id)}.json`).catch(() => null) : null;
+    const details = e.q?.length ? await loadEntryFile(e.id).catch(() => null) : null;
     for (const page of details?.asked ?? []) if (page.q !== q.id) rows.push(row(page.url, `${page.title} ›`, page.counts, true));
     // routes are asked about everything: "How are Bill Gates and … connected?"
     for (const o of data.questions.filter((x) => x.route)) {

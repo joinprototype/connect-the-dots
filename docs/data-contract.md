@@ -7,7 +7,8 @@
 ```
 dist/
   index.html                 home (Ask, story shelf, index)
-  e/<id>/index.html          entity page             e/<id>/story/index.html     its life story
+  e/<id>/index.html          entity page
+  e/_life/index.html         the one page every life story opens in (`/e/<id>/story/`, ADR-0026)
   e/<alias>/index.html       redirect page for a slug alias (also in _redirects)
   p/<a>--<b>/index.html      route story for a featured pair (content/featured.yaml)
   q/<q>/index.html           a question's index: its richest answers (a route question lists the route stories)
@@ -16,12 +17,13 @@ dist/
   x/index.html               explorer                w/index.html                world map
   404.html
   about/index.html           how the site works: the proof marks, the questions and their scope, the methodology
-  _redirects                 "/e/<alias>/ /e/<id>/ 301", one line per slug alias
+  _redirects                 "/e/<alias>/ /e/<id>/ 301", one line per slug alias, then "/e/:id/story/ /e/_life/ 200"
   _headers                   security headers and the Content-Security-Policy for every file (Cloudflare format)
   t/<type>/index.html        every entry of one type, A to Z (past 500, its letters; t/<type>/<letter>/ lists one)
   data/schema.json           the vocabulary: types, relations, lenses, tiers, questions, methodology, route stories
   data/graph-slim.json       every entry and link, structure only: what the explorer draws and routes price
-  data/e/<id>.json           one entry's words and proof, loaded when it is opened
+  data/e/<n>.json            the words and proof of the entries in pack <n>, loaded when one is opened
+  data/life/<n>.json         the life stories in pack <n>, loaded by the page at `/e/<id>/story/`
   data/more/<n>.json         long lists past their first 40 names, fetched when a reader opens one
   data/stories.json          the written stories each entry is in, read by the Map, the Earth and atlas pages
   data/borders/<id>.json     one polity's historical borders, loaded by a story that draws them (ADR-0020)
@@ -152,9 +154,9 @@ Every entry and link, with only what the explorer draws and routes price, as row
 - **Left out:** summaries, aliases, qualifiers, notes and sources. They are in the entries' detail files.
 - **Size:** 17 KB gzip today (338 entries, 642 links). Its budget is 1 MB gzip, which holds about 40,000 links of today's kind. Past it the build warns, and the explorer and routes need the route service ([ADR-0017](decisions/0017-pages-load-what-they-show.md)).
 
-## `data/e/<id>.json`
+## `data/e/<n>.json`
 
-One entry's words and proof, loaded when the explorer opens the entry or shows one of its links:
+Entries share 256 packs ([ADR-0026](decisions/0026-entries-share-files.md)). `<n>` is the 32-bit FNV-1a hash of the id, modulo 256, and the file is an object keyed by id. `loadEntryFile(id)` in `web/src/lib/data.ts` reads the one entry out. An entry's words and proof load when the explorer opens the entry or shows one of its links:
 
 ```jsonc
 {
@@ -170,6 +172,10 @@ One entry's words and proof, loaded when the explorer opens the entry or shows o
 ```
 - **Its links:** every link touching the entry, both directions. A hub keeps the 100 strongest of each kind (relation and direction), ranked as answers rank them (`methodology` cost); the rest are in the slim file, and a link past the cap of one end is in the other end's file. Its entry page lists the same links, with "and N more" opening the explorer.
 - **Never in it:** an entry's `background` lines (ADR-0016).
+
+## `data/life/<n>.json`
+
+The same packs, for life stories: `{ "<id>": { "title": "The story of Alphabet: Connect the Dots", "main": "…" } }`. `main` is what a chapter page holds inside `<main>`. An id with no story is absent.
 
 ## A story's own data
 
@@ -254,7 +260,7 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 - An era slider (one range input, "All time" at its right end) appears when entities have `start` dates, and serves both views. Its eras are two steps wide and one step apart: decades (twenty-year eras) when they fit, wider steps for very long spans, plus "Before …" for the earliest few and "Since …" at the present. Dots whose dates miss the era, and undated ones, fade but stay (an Earth spot fades when none of its entries meets the era). The era is not kept in the URL.
 - Clicking a dot opens its card: "Open page ›" (the entry's `url`) and "Explore" (`/x/?focus=<id>`). On the Earth the card is the spot's named entry (or the `focus` entry), followed by "Also here": the spot's other entries, each a link to its page.
 
-**Stories:** written chapters (`/c/<id>/`) and generated stories (`/e/<id>/story/`, `/p/<a>--<b>/`) share one template:
+**Stories:** written chapters (`/c/<id>/`) and generated stories (`/e/<id>/story/`, `/p/<a>--<b>/`) share one template (a life story's is in `data/life/`):
 ```html
 <ctd-story chapter="<id>">
   <script type="application/json" class="ctd-shots">[ …shots… ]</script>

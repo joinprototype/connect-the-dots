@@ -13,7 +13,7 @@
 // the right edge of the screen, which the sideways-scroll check misses when an ancestor clips it. Run with --size.
 // Prints one line per page with a problem, one indented line per low-contrast text (ratio, selector, text, text
 // colour on background colour), then a summary; exits non-zero if any page had one.
-import { readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { launch } from './chrome.mjs';
 
@@ -40,6 +40,12 @@ const walk = (dir) => {
   }
 };
 walk(dist);
+// an entry's generated story is one page under many addresses: sweep each address, not the page itself
+const packs = join(dist, 'data', 'life');
+if (existsSync(packs)) {
+  pages.splice(pages.indexOf('/e/_life/'), 1);
+  for (const f of readdirSync(packs)) for (const id of Object.keys(JSON.parse(readFileSync(join(packs, f), 'utf8')))) pages.push(`/e/${id}/story/`);
+}
 pages.sort();
 const todo = pages.filter((p) => p.startsWith(only));
 
