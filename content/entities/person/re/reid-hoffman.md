@@ -27,4 +27,10 @@ claims:
     role: "donor"
     src:
       - {s: openai-2018-02-20-openai-supporters, quote: "Reid Hoffman is significantly increasing his contribution."}
+  - id: c4
+    rel: educated_at
+    to: stanford-university
+    title: "B.S. in symbolic systems"
+    src:
+      - {s: greylock-bio-reid-hoffman, at: "Biography", quote: "He earned a B.S. with distinction in symbolic systems from Stanford University"}
 ---

@@ -21,4 +21,11 @@ claims:
     to: blackstone
     src:
       - {s: blackstone-bio-schwarzman, at: "Biography", quote: "Stephen A. Schwarzman is Chairman, CEO and Co-Founder of Blackstone"}
+  - id: c3
+    rel: chair_of
+    to: presidents-strategic-and-policy-forum
+    when: "2016-12-02/2017-08-16"
+    title: "Forum Chairman"
+    src:
+      - {s: blackstone-2016-12-02-strategic-policy-forum, at: "Announcement", quote: "The Forum will be chaired by Stephen A. Schwarzman"}
 ---

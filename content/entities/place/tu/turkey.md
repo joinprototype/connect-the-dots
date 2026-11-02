@@ -16,6 +16,12 @@ claims:
     note: "Said for the Soviet delegation at the final session on 3 March 1918, before signing. Turkey here is the Ottoman Empire, one of the four Central Powers that signed. Article IV of the treaty had Russian troops leave Ardahan, Kars and Batum."
     src:
       - {s: sokolnikov-1918-03-03-brest-statement, at: "4th paragraph", quote: "ignoring the real wishes of the population of the districts of Ardahan, Kars, and Batum, Germany detaches these areas for the benefit of Turkey, whose armies had never conquered them."}
+  - id: c2
+    rel: member_of
+    to: international-energy-agency
+    when: "1974"
+    src:
+      - {s: iea-history, at: "History", quote: "The IEA’s founding members were Austria, Belgium, Canada, Denmark, Germany, Ireland, Italy, Japan, Luxembourg, The Netherlands, Norway, Spain, Sweden, Switzerland, Türkiye, United Kingdom, and the United States."}
 ---
 
 Turkey borders the Black Sea, across from the Soviet Union's southern coast. US [[jupiter-missile]] missiles were stationed there until April 1963.
