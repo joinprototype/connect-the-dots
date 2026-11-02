@@ -7,6 +7,8 @@ What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versio
 - The Earth came up flat and empty, with no dots, for anyone who had visited before. It now draws the globe and every dot each time.
 - The timeline now works on every dot: pick an era and the million fade to what was around then, on the Map and on the Earth.
 - Click a dot and see the stories it is in, or the ones it reaches through a link. Clicking a hand-written dot now shows its links, as an imported dot does.
+- Three new stories: "The Sealed Train" on how Lenin crossed wartime Germany, "Ninety-Five Theses" on Luther and the printing press, and "The Oil Weapon" on the 1973 embargo. Each joins stories that stood apart.
+- 29 entries pointed at the wrong thing in Wikidata, so NASA's page linked to a song. Fixed.
 
 ## 0.4.2 (2026-11-01)
 
