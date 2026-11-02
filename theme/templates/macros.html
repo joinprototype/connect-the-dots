@@ -57,3 +57,5 @@
 
 {# The way to correct a page: a public issue for readers, the file itself for those who can edit it. #}
 {% macro corrections(site, name, url, rel_path) %}{% set report = "Page: " ~ site.url ~ url ~ "\n\nWhat is wrong or missing:\n\nA source that shows it:\n" %}<p class="file-path page-fix">Something wrong or missing? <a href="{{ site.repo }}/issues/new?title={{ ("Correction: " ~ name)|urlencode }}&amp;body={{ report|urlencode }}">Tell us, with a source</a>, or <a href="{{ site.repo }}/edit/main/{{ rel_path }}">edit this page</a>.</p>{% endmacro %}
+{# each kind of thing's ink for the doors in a story's text (web/src/story/story.css) #}
+{% macro door_inks(site) %}<style>{% for l in site.layers %}.door-{{ l.id }}{--door:var(--layer-{{ l.id }})}{% endfor %}</style>{% endmacro %}

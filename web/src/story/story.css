@@ -209,6 +209,8 @@ ctd-story .step-card p > strong:first-child { display: block; margin-bottom: 0.1
 ctd-story .step-card > :last-child { margin-bottom: 0; }
 ctd-story .step-card .step-explore { margin-top: 1rem; }
 ctd-story .step-card a.story-explore::after { content: "→"; }
+/* every name is a door: black text over a line of dots in the ink of what it is, dark enough to read at 3:1 */
+ctd-story .step-card a[class^="door-"] { color: inherit; text-decoration: underline dotted 2px color-mix(in srgb, var(--door) 85%, #000); text-underline-offset: 0.2em; }
 /* The proof card's source link for keyboard and screen-reader users (the stage is aria-hidden): shown on focus. */
 ctd-story .step-card .step-source { margin: 0.75rem 0 0; font: 600 0.88rem var(--font-ui); }
 ctd-story .step-card .step-source a { color: var(--accent); text-decoration: none; }

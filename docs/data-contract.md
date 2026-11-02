@@ -297,9 +297,17 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 ```
 A step card may hold `p.step-time` and `p.step-explore`. The page loads `/assets/story.js` and `/assets/story.css`; MapLibre and `/assets/maplibre-gl.css` load only when the story first shows a map scene.
 
+**Doors** ([ADR-0028](decisions/0028-one-box.md)): in a step card's narration, the first mention of an entry in a scene is a plain link, `<a class="door-<layer>" href="/e/<id>/">`, and so is any link the narration already made to an entry. `door-<layer>` gives the dotted underline in that kind's ink; the page's own `<style>` maps it to `--layer-<layer>`. No script touches them. The engine (`crates/ctd/src/doors.rs`) adds links and changes no word:
+- It looks only for the story's own entries (`focus`, `perspective`, `reveal`, `places`, `routes`). A one-word name needs the scene itself to list the entry; a longer name may be listed by any scene.
+- It uses the entry's name, `in_sentence` and aliases, by whole words, case-sensitive, longest first.
+- It leaves plain a name two entries share, a form with no capital, a very short name ("X", "Ur"), a one-word name that is the surname of another person in the story ("Krupp" beside Gustav Krupp), and a piece of a longer name ("New York Times", "Great Britain", "Bank of England").
+- It leaves alone anything in quotation marks, a bold scene title, a link, a blockquote or code, and it never reads overlays.
+
 **Listen** (in watch mode, off unless the viewer turns it on) reads each child of a step's `.step-card` aloud as plain text, one utterance per paragraph, with the browser's own speech (Web Speech API), leaving out `p.step-time` and `p.step-explore`. The narration HTML is what is heard. Then it reads the scene's quote card: "In their words:" and the quote, then its caption (who said it), or "The source says:" and a proof card's quote. The viewer's choice is kept in `localStorage` under `ctd-listen` (`1` or `0`).
 
-Shot fields (from the chapter's `scene` blocks, or generated; the build adds `t`, `time_label` and `narration_html`). A `reveal_claims` entry `<entity>#<claim>` matches that edge and any `<entity>#<claim>/<n>` edges:
+**Back:** on leaving, a story keeps its scene in `sessionStorage` under `ctd-scene:<path>`. Arriving by Back, it goes to that scene only if the browser has not restored the scroll there (a life story arrives too late for it).
+
+Shot fields (from the chapter's `scene` blocks, or generated; the build adds `t` and `time_label`). The narration's HTML is in the step cards only. A `reveal_claims` entry `<entity>#<claim>` matches that edge and any `<entity>#<claim>/<n>` edges:
 
 | Field | Meaning |
 |---|---|

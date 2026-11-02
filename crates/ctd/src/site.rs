@@ -14,6 +14,7 @@ use walkdir::WalkDir;
 
 use crate::{
     answers::{self, Answer},
+    doors::Names,
     kb::{Chapter, Edge, EdgeSrc, Entity, Kb},
     markdown,
     paths::Params,
@@ -370,7 +371,6 @@ fn same_as_links(e: &Entity) -> Vec<Value> {
         .collect()
 }
 
-/// Shots with rendered narration, plus the step cards for the chapter template.
 /// A scene's picture: what `picture:` names, or else its subject or the first thing it reveals that
 /// has one. Each picture shows once in a story; `picture: none` leaves a scene without.
 fn scene_picture(kb: &Kb, shot: &Value, used: &mut BTreeSet<String>) -> Option<Value> {
@@ -387,17 +387,16 @@ fn scene_picture(kb: &Kb, shot: &Value, used: &mut BTreeSet<String>) -> Option<V
     })
 }
 
-fn story_parts(cx: &Ctx, shots: &[Value]) -> (Vec<Value>, Vec<Value>) {
+/// The step cards for the chapter template: each shot's narration, rendered.
+fn story_steps(s: &Site, shots: &[Value]) -> Vec<Value> {
+    let cx = &s.cx;
     let resolver = cx.resolver();
-    let mut out = shots.to_vec();
+    let doors = s.names.story(shots);
     let mut steps = Vec::new();
     let mut pictured = BTreeSet::new();
-    for shot in &mut out {
-        let narration = shot.get("narration").and_then(Value::as_str).unwrap_or("").to_string();
-        let html = markdown::render(&narration, &resolver);
-        if let Some(obj) = shot.as_object_mut() {
-            obj.insert("narration_html".into(), Value::from(html.clone()));
-        }
+    for shot in shots {
+        let narration = shot.get("narration").and_then(Value::as_str).unwrap_or("");
+        let html = markdown::render_scene(narration, &resolver, &doors, shot);
         let mut q = Vec::new();
         for (k, key) in [("focus", "focus"), ("lens", "lens"), ("perspective", "p")] {
             if let Some(v) = shot.get(k).and_then(Value::as_str) {
@@ -417,7 +416,7 @@ fn story_parts(cx: &Ctx, shots: &[Value]) -> (Vec<Value>, Vec<Value>) {
             "picture": scene_picture(cx.kb, shot, &mut pictured),
         }));
     }
-    (out, steps)
+    steps
 }
 
 /// The question pages, computed once, before the pages and data that link to them.
@@ -490,6 +489,8 @@ fn stories_of(kb: &Kb) -> HashMap<String, Vec<Value>> {
 struct Site<'a> {
     kb: &'a Kb,
     cx: Ctx<'a>,
+    /// Every entry's names, for the doors in stories.
+    names: Names<'a>,
     out: &'a Path,
     history: History,
     site: Value,
@@ -528,12 +529,13 @@ impl Site<'_> {
 
     fn chapter_page(&self, draft: &crate::stories::Draft, back: Option<Value>) -> Result<String> {
         let (kb, cx) = (self.kb, &self.cx);
-        let (shots, steps) = story_parts(cx, &draft.shots);
+        let shots = &draft.shots;
+        let steps = story_steps(self, shots);
         let resolver = cx.resolver();
         let chapter = json!({
             "id": draft.id, "title": draft.title, "subtitle": draft.subtitle, "summary": draft.summary, "authors": [],
             "intro_html": markdown::render(&draft.intro_md, &resolver), "outro_html": markdown::render(&draft.outro_md, &resolver),
-            "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &self.by_id, &shots))?,
+            "shots_json": script_json(shots)?, "data_json": script_json(&data::story(kb, &self.by_id, shots))?,
             "steps": steps, "shot_count": shots.len(), "generated": true, "ink": crate::covers::INK,
             "back": back, "explore_url": draft.explore_url,
         });
@@ -617,7 +619,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     });
     let by_id = kb.edges.iter().map(|e| (e.id.as_str(), e)).collect();
     let open_links = atlas.as_ref().map(|a| crate::atlas::open_links(a, kb)).unwrap_or_default();
-    let s = Site { kb, cx: Ctx { kb }, out, history: History::load(root), site, env, by_id, stories: stories_of(kb), open_links };
+    let s = Site { kb, cx: Ctx { kb }, names: Names::new(kb), out, history: History::load(root), site, env, by_id, stories: stories_of(kb), open_links };
 
     let lives = entity_pages(&s, &pages)?;
     alias_pages(&s)?;
@@ -1122,11 +1124,12 @@ fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
         .collect();
     for (i, ch) in kb.chapters.iter().enumerate() {
         let resolver = cx.resolver();
-        let (shots, steps) = story_parts(cx, &ch.shots);
+        let shots = &ch.shots;
+        let steps = story_steps(s, shots);
         let chapter = json!({
             "id": ch.id, "title": ch.title, "subtitle": ch.subtitle, "summary": ch.summary, "authors": ch.authors,
             "intro_html": markdown::render(&ch.intro_md, &resolver), "outro_html": markdown::render(&ch.outro_md, &resolver),
-            "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &s.by_id, &shots))?,
+            "shots_json": script_json(shots)?, "data_json": script_json(&data::story(kb, &s.by_id, shots))?,
             "steps": steps, "url": format!("/c/{}/", ch.id), "shot_count": shots.len(), "rel_path": ch.rel_path, "ink": crate::covers::INK,
             // the stories after this one, round the shelf: a reader who finishes has somewhere to go
             "next": cards.iter().cycle().skip(i + 1).take(cards.len() - 1).take(NEXT_STORIES).collect::<Vec<_>>(),
