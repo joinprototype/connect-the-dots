@@ -68,7 +68,7 @@ export interface GraphIndex {
   details: Map<string, Details>;
 }
 
-function indexGraph(data: GraphData): GraphIndex {
+export function indexGraph(data: GraphData): GraphIndex {
   const nodes = new Map(data.nodes.map((n) => [n.id, n]));
   const edges = new Map<string, GEdge>();
   const incident = new Map<string, GEdge[]>();
@@ -103,7 +103,7 @@ interface Slim {
 const date = (w: SlimDate): CtdDate | null => (w ? { start: w[0], end: w[1], label: w[2], ...(w[3] ? { open_start: true } : {}) } : null);
 
 /** The slim file's rows as entries and links: structure only, until an entry's details are loaded. */
-function decodeSlim(schema: Schema, slim: Slim): Pick<GraphData, 'nodes' | 'edges'> {
+export function decodeSlim(schema: Schema, slim: Slim): Pick<GraphData, 'nodes' | 'edges'> {
   const nodes: GNode[] = slim.nodes.map(([id, name, type, degree, when, coords, place]) => ({
     id,
     name,
