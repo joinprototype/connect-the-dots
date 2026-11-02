@@ -10,7 +10,7 @@ The founder, 2026-11-02: "the explore and stories and map and connect - too much
 ## Decision
 
 1. **The product is one box.** Type a name, two names, a year or a question, and you get the answer with its proof. The header on every page holds the mark and the box. The nav goes.
-2. **The first screen already asks.** Home opens on a real question and its answer, with the proof of the first step open: "How is the Gutenberg Bible connected to SpaceX?" "Another question" asks the next one. Featured pairs come from `content/featured.yaml`.
+2. **The first screen is a name and the stories it runs through.** "Standard Oil runs through three stories", each story a dot on one line, as real links. "Another name" shows the next. The picks are editorial, in `threads` of `content/featured.yaml`, and a person reviews each. The first plan, a question with its route, read as trivia ("Gutenberg Bible, edition of the Bible"), and the good material is the written stories (founder, 2026-11-02).
 3. **Nothing is taken away.** `/c/`, `/w/`, `/x/` and `/r/` keep working and keep their addresses. They stop being doors in a nav and become what an answer leads to ("See it on the Map"), and the footer lists them for anyone who wants to wander.
 4. **Two names are one answer.** `/r/` answers any pair. A direct tie comes first, in its own relation with its caveat, even one no route may use (ADR-0027). Then the way between them. A pair with neither says so plainly.
 5. **Empty box, the stories.** The Stories page draws each story as an island of its own dots. It is the answer for someone with nothing to type. A plain list stays beside it, for phones and screen readers.
@@ -25,7 +25,7 @@ The founder, 2026-11-02: "the explore and stories and map and connect - too much
 
 ## Consequences
 
-- A reader learns one thing. A person with nothing to type gets a question already answered, and the stories.
-- Wandering is one step further away, and the shelf leaves the first screen. Watch whether people still find the stories.
+- A reader learns one thing. A person with nothing to type gets a name and its stories.
+- Wandering is one step further away, and the shelf leaves the first screen, though stories now fill it. Watch whether people still find the rest.
 - The box promises more than it knows. It must say plainly what it can do when it cannot help.
-- Typing on a phone is work, so "Another question" and the suggestions do a lot of it.
+- Typing on a phone is work, so "Another name" and the suggestions do a lot of it.

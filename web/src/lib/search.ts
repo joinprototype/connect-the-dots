@@ -26,13 +26,13 @@ const file = (n: number) => loadJson<SearchFile>(`/data/search/${n}.json`);
 /**
  * The entries that may match `text`, best-connected first (`rank`): every entry while there is one file;
  * else those filed under a word, or a pair of neighbouring words, that starts like one of the text's
- * words or pairs. Matching and ranking them is the caller's (fuzzySearch, Ask).
+ * words or pairs, those `keep` lets through. Matching and ranking them is the caller's (fuzzySearch, the box).
  */
-export async function candidates(text: string): Promise<SearchEntry[]> {
+export async function candidates(text: string, keep: (key: string) => boolean = () => true): Promise<SearchEntry[]> {
   const { files } = await loadJson<{ files: string[] }>('/data/search/index.json');
   if (files.length === 1) return (await file(0)).entries;
   const w = words(text);
-  const keys = [...new Set([...w, ...w.slice(1).map((x, i) => `${w[i]} ${x}`)])];
+  const keys = [...new Set([...w, ...w.slice(1).map((x, i) => `${w[i]} ${x}`)])].filter(keep);
   const found = new Map<number, SearchEntry>();
   await Promise.all(
     keys.map(async (key) => {

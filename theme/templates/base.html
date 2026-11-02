@@ -46,22 +46,24 @@
     <svg class="brand-mark" viewBox="0 0 30 20" aria-hidden="true"><path d="M4 15 L13 5 L25 12"/><circle cx="4" cy="15" r="2.7"/><circle cx="13" cy="5" r="2.7"/><circle cx="25" cy="12" r="2.7"/></svg>
     <span>Connect the Dots</span>
   </a>
-  <nav class="site-nav" aria-label="Main">
-    <a href="/c/">Stories</a>
-    <a href="/w/">Map</a>
-    <a href="/x/">Explore</a>
-    <a href="/r/">Connect</a>
-  </nav>
-  <ctd-search class="site-search">
-    <form action="/x/" role="search">
-      <input type="search" name="focus" placeholder="Search people, places, events" aria-label="Search" autocomplete="off">
+  <ctd-box class="site-box">
+    <form action="/c/" role="search">
+      <input type="search" placeholder="Ask how anything connects" aria-label="Ask how anything connects: a name, two names, a year or a question" autocomplete="off" spellcheck="false">
     </form>
-  </ctd-search>
+  </ctd-box>
+  <noscript><a class="site-stories" href="/c/">Stories</a></noscript>
 </div></header>
 <main id="main">
 {% block main %}{% endblock %}
 </main>
 <footer class="site-footer">
+  <nav class="footer-nav" aria-label="Wander">
+    <a href="/c/">Stories</a>
+    <a href="/w/">Map</a>
+    <a href="/x/">Explore</a>
+    <a href="/r/">Connect</a>
+    <a href="/about/">About</a>
+  </nav>
   <p class="footer-principle">A connection is not evidence of wrongdoing. Every line cites its sources, and every interpretation says whose it is. <a href="/about/">How this site works</a></p>
   <p class="footer-maker">Made by <a href="https://joinprototype.com/">Prototype</a> in Santa Monica.</p>
   <p class="footer-build">Version {{ site.manifest.engine }}, built {{ site.manifest.built }} from {% if site.manifest.commit %}commit {{ site.manifest.commit }}{% else %}uncommitted content{% endif %}, methodology {{ site.manifest.methodology[:8] }}. <a href="{{ site.repo }}">Source</a> · <a href="{{ site.repo }}/blob/main/LICENSING.md">License</a></p>

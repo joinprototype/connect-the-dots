@@ -6,7 +6,7 @@
 
 ```
 dist/
-  index.html                 home (Ask, story shelf, index)
+  index.html                 home (a name and the stories it runs through, a few stories, what the box takes)
   e/<id>/index.html          entity page
   e/_life/index.html         the one page every life story opens in (`/e/<id>/story/`, ADR-0026)
   e/<alias>/index.html       redirect page for a slug alias (also in _redirects)
@@ -39,7 +39,7 @@ dist/
 
 An entry gets a life story when it has at least two links that are not withdrawn. A featured pair gets a route story when a route joins them. A question gets a page about an entry when its answer names at least the question's `min` entries or gives two accounts (at most 5,000 pages per question, featured first, then the richest), and that page gets a story when it has two published lines or two accounts. `schema.json` lists the route stories; an entry's detail file names its life story and its question pages.
 
-**Pages load what they show** ([ADR-0017](decisions/0017-pages-load-what-they-show.md)). Entry, question and type pages need no data file. The explorer and the Map's Earth read `schema.json` and `graph-slim.json`, and the explorer loads an entry's `e/<id>.json` when a panel shows it or its links. A story reads its own data from its page and `schema.json`. Search and Ask read `search/`. No page reads `graph.json`; the QA sweep fails one that does. All of `data/` is served with `Cache-Control: public, max-age=300, stale-while-revalidate=86400`.
+**Pages load what they show** ([ADR-0017](decisions/0017-pages-load-what-they-show.md)). Entry, question and type pages need no data file. The explorer and the Map's Earth read `schema.json` and `graph-slim.json`, and the explorer loads an entry's `e/<id>.json` when a panel shows it or its links. A story reads its own data from its page and `schema.json`. The box reads `search/` and `schema.json`, from the moment a person focuses it. No page reads `graph.json`; the QA sweep fails one that does. All of `data/` is served with `Cache-Control: public, max-age=300, stale-while-revalidate=86400`.
 
 ## Dates
 
@@ -65,9 +65,9 @@ The vocabulary, with the route stories:
   "lenses":   [ { "id": "money", "label": "Money", "view": "graph", "layers": ["money"] } ],
   "tiers":    { "T1": { "label": "Primary record", "description": "…", "rejected": false } },  // description may be null; users see labels, never codes
   "stories":  { "paths": ["moses--elon-musk", "…"] },     // "<from>--<to>", directional: a route story at /p/<from>--<to>/
-  "questions": [ {                                        // content/schema/questions.yaml, in Ask-picker order
+  "questions": [ {                                        // content/schema/questions.yaml, in its order
     "id": "behind", "ask": "Who is behind {x}?",          // {x} = the subject; a route question has {a} and {b}
-    "label": "Who is behind",                             // the words before the first blank: the picker's segment label
+    "label": "Who is behind",                             // the words before the first blank
     "route": false,                                       // true: answered by routes (/x/?from=&to=, /p/…), no pages
     "subjects": ["org", "place", "…"],                    // entity types it is asked about ([] for a route question); never a family type
     "shows": "documented founders, …", "not": "who made decisions, or why",   // raw; pages print "Shows ….", "Not …."
@@ -201,8 +201,9 @@ The search entries, filed by word:
 - **Words:** each entry is filed under every word, and every pair of neighbouring words, of its name and aliases. A word is folded: lower case, accents dropped, apostrophes and full stops removed, split at everything else that is not a letter or digit ("O'Brien" is `obrien`). A word lists its 100 best entries; a longer query finds the rest.
 - **Files:** the words are sorted and cut into files between words, at about 50 KB gzip. While everything fits in one file, which is today, that file holds every entry and no `words`: search reads all of it.
 - **Looking up a query:** fold its words, take each word and each pair of neighbouring words, find the file whose range holds it (and the next file when its first word starts with it), and gather the entries under the words that start with it.
-- `q` (entity entries only, present when non-empty): the ids of the questions with a page about this entry, in `questions.yaml` order. The Ask form uses it for names it does not embed.
-- `when` (entity entries only): the entry's dates as a label, or null. "Which one?" lists show it.
+- `q` (entity entries only, present when non-empty): the ids of the questions with a page about this entry, in `questions.yaml` order. The box reads a question through it.
+- `sealed` (present only then): `true` on an entry marked `sealed` (ADR-0027). The box finds it by name and answers a person who types it, and never offers a pair through it.
+- `when` (entity entries only): the entry's dates as a label, or null.
 - A question page's `aliases` are its question asked with the subject's other names, so "Who is behind Facebook?" finds Meta's page.
 - A question entry's `name` is the asked sentence, its `summary` its counts ("7 links, 6 accounts"). Code that wants only entities filters out `chapter` and `question` entries.
 
@@ -229,7 +230,7 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 
 | Element | Behaviour |
 |---|---|
-| `<ctd-search>` | Enhances the server's `<form role="search"><input>` (without JavaScript it submits to `/x/?focus=<text>`). Reads `search/` (the entries for the typed words); Enter or click goes to the result's `url`. On the explorer and world pages (`html[data-ctd-explorer]`) it first dispatches a cancelable `ctd:focus` `{id}`; a page that can show the entry calls `preventDefault()` and the search stays put. |
+| `<ctd-box>` | Enhances the server's `<form role="search"><input>`, in every header ([ADR-0028](decisions/0028-one-box.md)). Until a person focuses it, it loads nothing: no search file, and only a focus listener of script. Then `web/src/islands/box-field.ts` reads `search/` (the entries for the typed words) and `schema.json` (the inks), and `web/src/lib/box.ts` reads the text as one name, two names, a year or a question. Each name gets a dot in its type's ink, and arrow keys, Enter and Escape work the suggestions. Enter goes to `/e/<id>/` or `/a/?q=Q<n>`, `/r/?a=<id or Qn>&b=<id or Qn>`, `/q/<q>/<id>/`, `/w/?t=<year>`, or with an empty box `/c/`. Otherwise it answers in its own panel, in fixed words, and never repeats the text. For a single name on the explorer and world pages (`html[data-ctd-explorer]`) it first dispatches a cancelable `ctd:focus` `{id}`; a page that can show the entry calls `preventDefault()` and the box stays put. Without JavaScript the field is hidden (`@media (scripting: none)`) and a link to `/c/` stands in. |
 | `<ctd-lens-chips focus="<id>">` | Holds server-rendered chips, `button[data-lens][data-layers]` (`data-layers`: the lens's layer ids, space-separated), so it needs no data file; without chips it builds them from `schema.json`. Clicking dispatches `ctd:lens` `{lens}` on `document`, hides `li.claim` items whose `data-layers` miss the lens layers (and any `.claim-group` left empty), and keeps `?lens=` in the URL. Lens `all` shows everything. |
 
 **Entity page:** a person's page may open with a "Background" card: the links whose relation has `background: true` (born in, citizen of, educated at), and the entry's `background` lines, each with footnotes. Background lines are on that page only. They are in no data file (`graph-slim.json`, `e/<id>.json`, `search/`, a story's data and shots, nor `graph.json`), by rule ([ADR-0016](decisions/0016-who-a-person-is.md)), and a test checks it.
@@ -248,7 +249,7 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 - `from`, `to`: route ends (id, name or alias);
 - `view`: `graph` (default) or `world`.
 
-**World map:** `/w/index.html` contains `<div id="world-root" data-src="/world/"></div>` and loads `/assets/world.js` and `/assets/world.css`. Query: `view` (`earth`; Links when absent), `src` (another same-origin world), `focus` (entity id), `stats=0|1`, `labels=0`, `rs` (dot size factor), `soak=1&soakSec=<n>` (soak test).
+**World map:** `/w/index.html` contains `<div id="world-root" data-src="/world/"></div>` and loads `/assets/world.js` and `/assets/world.css`. Query: `view` (`earth`; Links when absent), `t` (a year: it opens on the era around it, `-449` for 450 BCE), `src` (another same-origin world), `focus` (entity id), `stats=0|1`, `labels=0`, `rs` (dot size factor), `soak=1&soakSec=<n>` (soak test).
 - A switch where the title would be, "Links | Earth", picks the view and keeps it in the URL (`?view=earth`; Links has no `view`). Synthetic worlds and the explorer's world mode show Links only.
 - **Links** draws the world tiles ([world-tiles.md](world-tiles.md), which has the field details):
   - It opens on the manifest's `bounds`, and ⌂ returns there.
@@ -256,8 +257,8 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 - **Earth** (`?view=earth`) draws the entries in `graph-slim.json` that have `coords` (their own or their place's) on a MapLibre globe, with the story maps' calm OpenFreeMap basemap, so like them it fetches from `tiles.openfreemap.org` (ADR-0014). MapLibre and `/assets/maplibre-gl.css` load only when Earth is opened.
   - One dot per spot: entries with the same `coords` (to about 100 m, such as an entry and its `place`) share it. It is named after the entry with coords of its own, else the best-connected one, and is a little bigger where more entries are. Gray; the accent marks the selected one.
   - It opens on the whole planet, turned to where the spots are, and ⌂ returns there. With `focus`, it centres the entry's spot and opens the entry's card.
-  - Site search shows an entry there when it has a place; for the others it opens their page.
-- An era slider (one range input, "All time" at its right end) appears when entities have `start` dates, and serves both views. Its eras are two steps wide and one step apart: decades (twenty-year eras) when they fit, wider steps for very long spans, plus "Before …" for the earliest few and "Since …" at the present. Dots whose dates miss the era, and undated ones, fade but stay (an Earth spot fades when none of its entries meets the era). The era is not kept in the URL.
+  - The box shows an entry there when it has a place; for the others it opens their page.
+- An era slider (one range input, "All time" at its right end) appears when entities have `start` dates, and serves both views. Its eras are two steps wide and one step apart: decades (twenty-year eras) when they fit, wider steps for very long spans, plus "Before …" for the earliest few and "Since …" at the present. Dots whose dates miss the era, and undated ones, fade but stay (an Earth spot fades when none of its entries meets the era). `t` opens on an era; moving the slider does not change the URL.
 - Clicking a dot opens its card: "Open page ›" (the entry's `url`) and "Explore" (`/x/?focus=<id>`). On the Earth the card is the spot's named entry (or the `focus` entry), followed by "Also here": the spot's other entries, each a link to its page.
 
 **Stories:** written chapters (`/c/<id>/`) and generated stories (`/e/<id>/story/`, `/p/<a>--<b>/`) share one template (a life story's is in `data/life/`):
@@ -309,7 +310,7 @@ A map scene dated before 1800 hides the basemap's modern borders, roads and name
 **Events between scripts** (CustomEvents on `document`):
 - `ctd:lens` `{lens}`
 - `ctd:time` `{t}` (decimal year or null)
-- `ctd:focus` `{id}`: the explorer sends it when its focus changes; the explorer and the world viewer listen. Site search sends it cancelable (see `<ctd-search>`); the other events are not cancelable.
+- `ctd:focus` `{id}`: the explorer sends it when its focus changes; the explorer and the world viewer listen. The box sends it cancelable (see `<ctd-box>`); the other events are not cancelable.
 
 ## Template context (engine → `theme/templates/`)
 
@@ -324,7 +325,7 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 - `earth/index.json`: `{ maxzoom, entries, tiles: { "<z>": [x * 2^z + y, …] } }`, and `earth/<z>/<x>/<y>.json`: rows of `[lon, lat, Wikidata number, name, kind]`, then its years `start, end` if dated (`end` exclusive, 32767: still going), on the web map's tile grid. Read by `web/src/world/earth.ts`, for what is in view.
 - `data/stories.json`: `{ "<entry id>": [[title, url], …] }`, an entry's written stories, most scenes first, at most three. A dot's card lists them, then those of what it links to.
 - `/r/` (`route.html`): connect any two, `?a=Q937&b=Q76`. `/w/` also takes `?focus=Q42` and `?route=Q1,Q2,…`.
-- `chapter.ink` (chapter.html): `{ bg, fg, text }`, the band a story opens on. `world/picture.svg`: the map's best-connected dots, for the home page.
+- `chapter.ink` (chapter.html): `{ bg, fg, text }`, the band a story opens on. `world/picture.svg`: the map's best-connected dots, a picture no page draws today.
 - `stories[]`: up to three written stories that name the entry, the one with the most scenes on it first: `{ title, url, counts }`.
 - `dossier`: `family`, `lifeline`, `holders`, `holdings` and `split`, each null when empty, plus `share_scale` (the largest percent shown, at least 10).
 - `background` (people, else null; ADR-0016): `{ rows[{ phrase, node, when, detail, refs, draft, disputed, reason }], lines[{ text, refs }] }`. `rows` are the person's own links whose relation has `background: true` (born in, citizen of, educated at); `lines` are the entry's sourced `background` lines. The lines appear on this page only.
@@ -344,11 +345,13 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 
 `chapter.html`: `chapter` (`id`, `title`, `subtitle`, `summary`, `authors`, `intro_html`, `outro_html`, `shots_json`, `data_json` (the story's own data), `steps[]`, `shot_count`; written stories add `rel_path`, generated ones `generated`, `back` and `explore_url`) and `history`. A question story's `subtitle` is its scope line, its `intro_html` the notice and its `back` the question page.
 
-`home.html` also gets `questions[]`, one per question in Ask-picker order: `{ id, ask, label, route, subjects, shows, not, url, names[], more, try[] }`.
-- `shows` and `not` are full sentences ("Shows ….", "Not ….").
-- `names[]` (up to 100, featured first, then the richest; `[]` for a route question): `{ id, name, aliases, url }`, where `url` is the answer page. `more`: pages not embedded (find them through the search entries' `q`).
-- `try[]`: the featured pages for this question, `{ id, name, url }`, `name` as it reads in a sentence ("the Bolsheviks").
-- A name whose type is not in `subjects` is not asked about ("Not asked about people"); a subject with no page has no sourced answer yet.
+`home.html`:
+- `threads[]`: the picks in `threads` of `content/featured.yaml`, in order, each with at least two stories: `{ node, name, count, stories[], more, cut }`. `name` is the entry's name as it opens a sentence ("The Federal Reserve"). `count` is how many stories it runs through, in words. `stories[]` (the first four): `{ title, subtitle, url }`. `cut`: there are more, `more` in words.
+  - A pick is a person, an organization or a place (`thread: true` in `entity-types.yaml`), never sealed. `ctd check` refuses anything else, and warns of a pick left with too few stories.
+  - A story counts from two scenes that name the entry, most scenes first, and only if it is free of sealed entries (ADR-0027): no scene shows one or reveals a link to one, and no sentence names one.
+  - Every thread is in the page, in one grid cell, so the tallest holds the room. `.thread.on` is the one shown, and `web/src/islands/threads.ts` moves it.
+- `shelf[]`: the first six written stories free of sealed entries, in the library's order (`featured: true` first), as `book` takes them. `stories`: how many written stories there are.
+- `kinds[]`: `{ id, label }`, each type with entries, for the last line. Its `#index-h` is where a type page's back link lands.
 
 `chapters.html` also gets `questions[]`, the Questions shelf (question stories, featured first, then the richest, at most 24): `{ title, subtitle, url, kind: "Question", cover }`, and `questions_more`.
 

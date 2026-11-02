@@ -25,7 +25,7 @@ content/
   entities/<type>/<xx>/<id>.md      # <xx> = first two characters of <id>
   sources/<xx>/<id>.yaml
   chapters/<id>.md
-  featured.yaml                     # editorial picks: featured connections, home-shelf lives, question pages (see below)
+  featured.yaml                     # editorial picks: connections, home threads, question pages (see below)
   datasets/manifest.yaml            # (planned) bulk data lives in R2; only hashes here
 ```
 
@@ -241,7 +241,7 @@ place:  {label: Place,        plural: Places,        layer: places, map: true}
 
 Keep the list short: five lenses is the design limit ([ux-vision.md](ux-vision.md)). Places are not a lens; the Map is its own place.
 
-`questions.yaml` ([ADR-0015](decisions/0015-ask-anything.md)): the questions readers can ask, in Ask-picker order.
+`questions.yaml` ([ADR-0015](decisions/0015-ask-anything.md)): the questions readers can ask.
 
 ```yaml
 banned_words: [mastermind, puppet, orchestrated, controlled, secretly, cabal, plot]
@@ -288,14 +288,14 @@ connections:
   - [bill-gates, ibm]
   - between: [mark-zuckerberg, cia]
     note: "Each step below is a documented business link. No source here says the CIA or In-Q-Tel had any role in Facebook."
-lives: [bill-gates, jeff-bezos, soviet-union]
+threads: [standard-oil, zurich]
 questions: [behind/meta-platforms, why/dissolution-of-the-soviet-union]
 ```
 
-- Each connection gets a route story at `/p/<a>--<b>/`, one scene per step, along the best route of at most 10 steps that does not run through index-fund holdings. The first four pairs are the home page's "Try" links; all of them are in the Stories library.
+- Each connection gets a route story at `/p/<a>--<b>/`, one scene per step, along the best route of at most 10 steps that does not run through index-fund holdings. All of them are in the Stories library.
 - A `note` is said up front in the story's first scene. Use it for what the sources do not show.
-- `lives` are the life stories on the home shelf.
-- `questions` are question pages, `<question>/<entity id>`: the Ask form's "Try" links and the first books of the Questions shelf. They are always kept when pages are capped.
+- `threads` open the home page, in order: one name and the written stories it runs through. A pick is a person, an organization or a place, never sealed, and `ctd check` refuses anything else. A story counts from two scenes on the name, most scenes first, and never one that shows or names a sealed entry. A thread needs two stories, or the home page leaves it out and `ctd check` warns. These are editorial: a person reviews each one, and nothing may group anyone by heritage (ADR-0016) or set a persecution story beside modern finance.
+- `questions` are question pages, `<question>/<entity id>`: the first books of the Questions shelf. They are always kept when pages are capped.
 - Ids or aliases both work.
 
 ## More examples
@@ -441,7 +441,7 @@ Shot fields (v0; the full list is in [data-contract.md](data-contract.md)):
 13. No directory holds more than 2,500 entries (warning).
 14. Scene blocks reference existing entities and claims, one of the five lenses and a known view. A scene that reveals a withheld claim gives a warning.
 15. Source `url` and `archive_url`, and an entity's `image.url`, are http(s) addresses. Anything else is an error, and the value never reaches a page.
-16. `featured.yaml` names existing entities. A pair that names one entity twice is an error. A repeated pair or life, a pair with no route, and a life with fewer than two links give warnings. A featured question must be `<question>/<entity id>` for a question with pages (error); one with no page, or listed twice, gives a warning.
+16. `featured.yaml` names existing entities. A pair that names one entity twice is an error. A repeated pair or thread, a pair with no route, and a thread with too few stories give warnings. A thread that is sealed or of a type without `thread: true` is an error. A featured question must be `<question>/<entity id>` for a question with pages (error); one with no page, or listed twice, gives a warning.
 17. `questions.yaml` (`ctd` refuses to load a file that breaks these): ids are unique; `ask` holds its placeholders and ends with "?"; `shows` and `not` are present and not empty; non-route questions have `subjects`, `groups` and a `min` of at least 1; every relation exists, appears once, and is not `kinship`, `sensitive` or `passive` (family lives on entity pages); a `via` relation exists and is a plain link on the record; every subject type is reachable by a group relation; no text uses a banned word; unknown fields are errors.
 18. An `identity` relation is never `attributed` (load error), and each identity claim joins two entries of the same type (error).
     A `legal` relation is `sensitive` and not `traversable` (load error), and every legal claim has `when` (error).

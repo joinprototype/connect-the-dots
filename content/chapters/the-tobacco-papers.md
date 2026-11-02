@@ -5,6 +5,7 @@ type: chapter
 title: Doubt
 subtitle: "How the cigarette makers answered the studies of the early 1950s linking smoking to lung cancer, what a federal court found, and what a 1998 settlement does and does not say"
 summary: "In December 1953 the cigarette makers met at the Plaza Hotel and hired a public relations firm. A federal judge ruled in 2006 on the half century that followed. Here are the companies’ own words, the court’s findings, the settlement’s text, and what researchers found about sugar and oil."
+featured: true
 ---
 In December 1953 the heads of the American cigarette makers met in New York and hired a public relations firm. Fifty-three years later a federal judge ruled on what followed.
 

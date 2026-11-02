@@ -88,7 +88,7 @@ body { isolation: isolate; margin: 0; min-height: 100vh; display: flex; flex-dir
 main { flex: 1; width: 100%; }
 a { color: var(--accent); text-decoration: none; }
 /* with no colour to tell it apart, a link inside text is underlined */
-main p a:not(.button), main dd a, .prose a, .ask-try a, .index-more a, .glance-more a, .ll-more a, .atlas-more a, .entity-map { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.16em; }
+main p a:not(.button), main dd a, .prose a, .index-more a, .glance-more a, .ll-more a, .atlas-more a, .entity-map { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.16em; }
 a:hover { text-decoration: underline; text-underline-offset: 0.15em; }
 /* a solid accent ring: at least 3:1 against every surface in both modes */
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
@@ -113,12 +113,16 @@ p { margin: 0 0 1em; }
 .brand-mark circle { fill: var(--tomato); stroke: var(--paper); stroke-width: 1; }
 .brand-mark circle:nth-of-type(2) { fill: var(--sun); }
 .brand-mark circle:nth-of-type(3) { fill: var(--cobalt); }
-.site-nav { display: flex; gap: 20px; font-size: 1rem; font-weight: 600; }
-.site-nav a { color: var(--ink); }
-.site-nav a:hover, .site-nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 0.3em; }
-.site-search { margin-left: auto; position: relative; flex: 0 1 300px; min-width: 0; }
-.site-search input { width: 100%; font: 400 0.95rem var(--font-ui); color: var(--ink); padding: 8px 14px; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); }
-.site-search input::placeholder { color: var(--muted); }
+/* the box: one field that takes the room the mark leaves. word-spacing leaves a gap for the dot before a name
+   (islands.css), and the mirror over the field shares these metrics. Without JavaScript it cannot answer, so
+   it goes, and a link to the stories stands in. */
+ctd-box { display: block; }
+.site-box { position: relative; flex: 1 1 auto; min-width: 0; max-width: 620px; }
+.site-box input, .box-mirror { font: 400 1rem/1.5 var(--font-ui); word-spacing: 0.3em; padding: 7px 14px; }
+.site-box input { display: block; width: 100%; appearance: none; color: var(--ink); border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); }
+.site-box input::placeholder { color: var(--muted); word-spacing: normal; opacity: 1; }
+.site-stories { margin-left: auto; font-weight: 600; color: var(--ink); text-decoration: underline; text-underline-offset: 0.16em; }
+@media (scripting: none) { .site-box { display: none; } }
 
 /* ---------------------------------------------------------------- controls */
 .button {
@@ -138,95 +142,32 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
 /* not yet verified: a dashed outline, no color */
 .badge.draft, .badge.disputed { background: transparent; color: var(--ink-2); border: 1px dashed var(--muted); padding: 1px 7px; }
 
-/* ---------------------------------------------------------------- home: ask */
-.ask {
-  display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); grid-template-rows: auto auto auto auto auto 1fr; column-gap: clamp(24px, 4vw, 64px);
-  max-width: var(--page); margin: 0 auto; padding: clamp(36px, 6vw, 72px) var(--gutter) 32px;
-}
-.ask > * { grid-column: 1; min-width: 0; }
-/* the real map beside the question, every dot an entry */
-.ask > .ask-picture { grid-column: 2; grid-row: 1 / span 6; justify-self: end; width: 100%; max-width: 540px; height: auto; pointer-events: none; }
-@media (max-width: 900px) { .ask { display: block; } .ask-picture { display: none; } }
-.ask h1 { font-size: clamp(3rem, 6.4vw, 5.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 0.98; }
-.ask-lede { font: 400 clamp(1.15rem, 1.7vw, 1.35rem)/1.45 var(--font-body); color: var(--ink-2); margin: 1.2rem 0 1.8rem; max-width: 40ch; }
-.ask-form {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px;
-  margin: 0; font: 600 1.05rem var(--font-ui); color: var(--ink);
-}
-.ask-form input {
-  flex: 1 1 150px; min-width: 0; font: 500 1.05rem var(--font-ui); color: var(--ink); padding: 11px 14px;
-  border: 1px solid var(--ink); border-radius: 8px; background: var(--paper);
-}
-.ask-form input::placeholder { color: var(--muted); }
-.ask-form input:focus-visible { outline-offset: 1px; }
-.ask-word { white-space: nowrap; }
-/* an input and the words after it ("?", "happen?") stay on one line */
-.ask-field { display: flex; align-items: center; gap: 10px; flex: 1 1 240px; min-width: 0; }
-/* suggestions, anchored to their field */
-.ask-box { position: relative; display: flex; flex: 1 1 150px; min-width: 0; }
-.ask-suggest {
-  position: absolute; z-index: 20; top: calc(100% + 6px); left: 0; right: 0; margin: 0; padding: 6px; list-style: none;
-  border-radius: 14px; background: var(--sheet); box-shadow: var(--shadow), 0 0 0 1px var(--contour); text-align: left;
-}
-.ask-suggest li {
-  padding: 8px 10px; border-radius: 9px; font: 500 1rem/1.3 var(--font-ui); color: var(--ink); cursor: pointer;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.ask-suggest li:hover, .ask-suggest li[aria-selected="true"] { background: var(--fill); }
-.ask-try { margin: 1.1rem 0 0; color: var(--muted); font-size: 0.98rem; }
-.ask-try a { white-space: nowrap; }
-.ask-more { margin: 1rem 0 0; font-weight: 650; }
-.ask-more a { display: inline-block; padding-block: 3px; }
-.ask-scope { margin: 0.5rem 0 0; max-width: 60ch; font-size: 0.9rem; color: var(--muted); }
-/* the question picker: radios drawn as a segmented control. The page's own style block shows the
-   sentence of the checked question (CSS :has()), so switching needs no script. */
-.ask-pick { display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 0; justify-self: start; max-width: 100%; margin: 0 0 14px; border-bottom: 1px solid var(--rule); }
-.ask-seg { position: relative; display: block; min-width: 0; }
-.ask-seg input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
-.ask-seg span { display: block; padding: 8px 14px 9px; font: 500 0.95rem/1.25 var(--font-ui); color: var(--muted); white-space: nowrap; }
-.ask-seg:hover span { color: var(--ink); }
-.ask-seg input:checked + span { color: var(--ink); font-weight: 650; box-shadow: inset 0 -2px 0 var(--ink); }
-/* the radio itself is invisible: its focus ring is drawn on the segment, inside it */
-.ask-seg input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: -3px; }
-/* what Ask found when no page opened at once: "Which one?", "No sourced answer yet", "Not asked about …" */
-.ask-result { max-width: 600px; margin: 18px 0 0; text-align: left; }
-.ask-result:empty { display: none; }
-.ask-answer { padding: 14px 8px 8px; border-radius: var(--radius); background: var(--paper); box-shadow: var(--shadow); }
-.ask-answer-h { margin: 0 12px 6px; font: 600 1.05rem var(--font-ui); color: var(--ink); }
-.ask-choices { list-style: none; margin: 0; padding: 0; }
-.ask-choices a { display: grid; gap: 1px; padding: 9px 12px; border-radius: 12px; color: var(--ink); }
-.ask-choices a:hover { text-decoration: none; background: var(--fill); }
-.ask-choices a:focus-visible { outline-offset: -3px; }
-.ask-choice-name { font: 600 1rem/1.3 var(--font-ui); min-width: 0; overflow-wrap: anywhere; }
-.ask-choices .ask-go .ask-choice-name { color: var(--accent); font-weight: 500; }
-.ask-choice-meta { font-size: 0.86rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-/* the home page's one big moment: a real route, drawn as a line on a full band of ink */
-.example { margin: 2.4rem 0 0; padding: 26px max(var(--gutter), calc(50vw - 590px + var(--gutter))) 30px; background: var(--band); --line: #fff; --stop-ink: #fff; }
-.example-card { margin: 0; }
-.example-card figcaption { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; font-size: 1rem; color: #fff; margin-top: 4px; }
-.example-card .button { background: transparent; color: #fff; box-shadow: inset 0 0 0 1px #fff; }
-.example-card .button:hover { background: #333; }
-.example-card .button.primary { background: #fff; color: #000; }
-.example-card .button.primary:hover { background: #d4d4d4; }
-.example-card figcaption .actions { display: flex; gap: 10px; }
-
-/* a route drawn as a transit line: stop names above, the link between two stops below */
-.route-stops { list-style: none; margin: 0; padding: 62px 0 52px; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
-.route-stop { position: relative; display: flex; justify-content: center; align-items: center; height: 22px; container-type: inline-size; }
-.route-stop + .route-stop::before {
-  content: ""; position: absolute; right: 50%; width: 100%; top: 50%; height: 6px; margin-top: -3px; background: var(--line, var(--accent));
-  transform-origin: left center; animation: route-grow 0.45s calc(0.3s + var(--i) * 0.26s) ease-out both;
-}
-.route-stop.attributed::before { background: repeating-linear-gradient(90deg, var(--line, var(--accent)) 0 10px, transparent 10px 17px); }
-.route-dot { position: relative; z-index: 1; display: block; width: 22px; height: 22px; border-radius: 50%; background: var(--band); border: 5px solid var(--line, var(--accent)); animation: route-pop 0.3s calc(0.2s + var(--i) * 0.26s) ease-out both; }
-.route-stop:first-child .route-dot, .route-stop:last-child .route-dot { width: 30px; height: 30px; background: var(--line, var(--accent)); }
-.route-dot:hover { text-decoration: none; }
-.route-dot:hover .route-name { text-decoration: underline; }
-.route-name { position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%); width: max-content; max-width: 132px; max-width: calc(100cqw - 10px); text-align: center; font: 700 1rem/1.15 var(--font-ui); color: var(--stop-ink, var(--ink)); text-wrap: balance; }
-.route-via { position: absolute; right: 50%; top: 18px; width: 100%; text-align: center; padding: 0 8px; font: italic 400 0.86rem/1.2 var(--font-body); color: var(--stop-ink, var(--muted)); text-wrap: balance; }
-@keyframes route-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-@keyframes route-pop { from { transform: scale(0.3); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+/* ---------------------------------------------------------------- home: one name and its stories */
+.threads { max-width: var(--page); margin: 0 auto; padding: clamp(28px, 4vw, 44px) var(--gutter) 0; }
+/* every thread is in the page, in one cell: the tallest holds the room, so "Another name" moves nothing */
+.thread-stack { display: grid; }
+.thread { grid-area: 1 / 1; min-width: 0; visibility: hidden; }
+.thread.on { visibility: visible; }
+.thread h2 { margin: 0; font-size: 1.3rem; font-weight: 500; letter-spacing: -0.01em; line-height: 1.2; }
+.thread-name { display: block; margin-bottom: 0.14em; font-size: clamp(2.8rem, 6.4vw, 5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 0.98; color: var(--ink); text-wrap: balance; }
+.thread-says { color: var(--ink-2); }
+/* one line down the left edge, a dot on it for each story, in the ink of the name */
+.thread-line { --dot: 13px; --at: 14px; list-style: none; margin: 1.1rem 0 0; padding: 0; max-width: 44rem; }
+.thread-line li { position: relative; }
+.thread-line li::before { content: ""; position: absolute; z-index: 1; left: 0; top: var(--at); width: var(--dot); height: var(--dot); border-radius: 50%; background: var(--c); }
+.thread-line li:not(:last-child)::after { content: ""; position: absolute; left: calc(var(--dot) / 2 - 1px); top: var(--at); bottom: calc(-1 * var(--at)); width: 2px; background: var(--ink); }
+.thread .thread-line a { display: block; min-height: 44px; padding: 8px 0 8px 30px; color: var(--ink); }
+.thread-line a:hover { text-decoration: none; }
+.thread-line a:hover .thread-title { text-decoration: underline; text-underline-offset: 0.14em; }
+.thread-line a:focus-visible { outline-offset: -3px; }
+.thread-title { display: block; font: 700 1.3rem/1.2 var(--font-display); letter-spacing: -0.015em; }
+.thread-sub { display: block; margin-top: 3px; font: 400 1rem/1.4 var(--font-body); color: var(--ink-2); text-wrap: pretty; }
+/* on a phone two lines each, so that the longest thread still fits one screen */
+@media (max-width: 760px) { .thread-sub { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; } }
+.thread-more { margin: 2px 0 0 30px; font-size: 0.95rem; color: var(--muted); }
+.thread-next { margin-top: 0.8rem; min-height: 44px; }
+@media (scripting: none) { .thread-next { display: none; } }
+.thread-notice { margin: 0.8rem 0 0; font: italic 400 1rem/1.45 var(--font-body); color: var(--ink-2); }
 
 /* shelf of covers */
 .shelf-section { max-width: var(--page); margin: 0 auto; padding: 0 var(--gutter); }
@@ -241,24 +182,17 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
 .shelf::-webkit-scrollbar { display: none; }
 .book { display: flex; flex-direction: column; gap: 3px; color: var(--ink); scroll-snap-align: start; min-width: 0; }
 .book:hover { text-decoration: none; }
-.book-cover { display: block; aspect-ratio: 3 / 4; border-radius: 3px 8px 8px 3px; overflow: hidden; transition: transform 0.2s ease; background: var(--paper-2); }
-.book:hover .book-cover { transform: translateY(-4px); }
+.book:hover .book-title { text-decoration: underline; text-underline-offset: 0.14em; }
+.book-cover { display: block; aspect-ratio: 3 / 4; border-radius: 3px 8px 8px 3px; overflow: hidden; background: var(--paper-2); }
 .cover-art { display: block; width: 100%; height: 100%; }
 .book-kind { margin-top: 9px; font: 500 0.8rem var(--font-ui); color: var(--muted); }
 .book-title { font: 650 1rem/1.25 var(--font-ui); }
 .book-sub { font: 400 0.86rem/1.3 var(--font-ui); color: var(--muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-.atlas-index { max-width: var(--page); margin: 0 auto; padding: 0 var(--gutter) 3rem; }
-.index-intro { color: var(--muted); max-width: var(--measure); }
-.index-columns { columns: 4 220px; column-gap: 32px; }
-.index-group { break-inside: avoid; margin-bottom: 1.4rem; }
-.index-group h3 { font: 600 0.95rem var(--font-ui); color: var(--muted); margin-bottom: 0.4rem; }
-.index-group ul { list-style: none; margin: 0; padding: 0; }
-.index-group li { padding: 3px 0; }
-.index-group a { color: var(--ink); }
-.index-group a:hover { color: var(--accent); }
 .index-more { margin: 4px 0 0; font-size: 0.9rem; color: var(--muted); }
-.index-when { font-size: 0.85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.index-intro { color: var(--muted); max-width: var(--measure); }
+.home-can { max-width: var(--page); margin: 2.4rem auto 0; padding: 0 var(--gutter) 1rem; }
+.home-can-box { max-width: 52ch; font: 400 1.14rem/1.5 var(--font-body); color: var(--ink-2); }
 /* how this site works */
 .about-head h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); letter-spacing: -0.025em; }
 .about-part { margin-top: 2.4rem; max-width: var(--measure); }
@@ -418,7 +352,7 @@ ctd-atlas-links { display: block; }
 .connections-h .count, h2 .count { font: 500 0.95rem var(--font-ui); color: var(--muted); margin-left: 6px; vertical-align: middle; }
 .claim-group { margin: 1.4rem 0 1.6rem; }
 .claim-group > h3 { font: 600 0.9rem var(--font-ui); color: var(--muted); margin: 0 0 6px; }
-.claim-group > h3::first-letter, .index-group h3::first-letter { text-transform: uppercase; }
+.claim-group > h3::first-letter { text-transform: uppercase; }
 .claims { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
 .claim { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding: 11px 0; border-bottom: 1px solid var(--contour); }
 .claim:last-child { border-bottom: 0; }
@@ -552,6 +486,9 @@ ctd-atlas-links { display: block; }
 #explorer-root, #world-root { flex: 1; min-height: calc(100vh - 54px); }
 
 /* ---------------------------------------------------------------- footer */
+.footer-nav { display: flex; flex-wrap: wrap; gap: 0 22px; margin: -10px 0 1rem; font-size: 1rem; font-weight: 600; }
+.footer-nav a { display: inline-block; padding-block: 10px; text-decoration: none; }
+.footer-nav a:hover { text-decoration: underline; }
 .site-footer { margin-top: 3rem; padding: 40px max(var(--gutter), calc(50vw - 590px + var(--gutter))) 44px; color: #cfcfcf; background: var(--band); font-size: 0.92rem; }
 .site-footer a { color: #fff; text-decoration: underline; text-underline-offset: 0.15em; }
 .footer-principle { font: 400 clamp(1.15rem, 2vw, 1.4rem)/1.4 var(--font-body); color: #fff; max-width: 52ch; }
@@ -561,15 +498,6 @@ ctd-atlas-links { display: block; }
 /* ---------------------------------------------------------------- responsive, motion */
 @media (max-width: 760px) {
   .entity-head { grid-template-columns: 112px minmax(0, 1fr); }
-  .ask-form input, .ask-field { flex-basis: 100%; }
-  .ask-form .button { width: 100%; }
-  .ask-try a { white-space: normal; }
-  .route-stops { grid-template-columns: 1fr; padding: 8px 0 8px 10px; }
-  .route-stop { justify-content: flex-start; height: 56px; }
-  .route-stop + .route-stop::before { right: auto; left: 8px; top: -50%; width: 3px; height: 100%; margin: 0; transform-origin: top center; }
-  .route-stop.attributed::before { background: repeating-linear-gradient(180deg, var(--accent) 0 7px, transparent 7px 12px); }
-  .route-name { top: 50%; bottom: auto; left: 34px; transform: translateY(-50%); text-align: left; max-width: none; }
-  .route-via { right: auto; left: 24px; width: auto; top: -22px; text-align: left; }
   /* the life line: the name over its bar; the axis gives the years, and Connections the dates */
   .ll-rows { grid-template-columns: minmax(0, 1fr); row-gap: 12px; }
   .ll-when { display: none; }
@@ -588,18 +516,11 @@ ctd-atlas-links { display: block; }
   .h-author, .h-hash { display: none; }
 }
 @media (max-width: 560px) {
-  /* two rows: the mark and the links, then search */
-  .site-header-in { flex-wrap: wrap; row-gap: 8px; }
-  .site-nav { margin-left: auto; }
-  .site-search { flex-basis: 100%; order: 3; }
   .entity-head { grid-template-columns: 1fr; }
   .entity-cover { width: 132px; }
-  /* four questions as a 2×2 grid */
-  .ask-pick { display: grid; grid-template-columns: 1fr 1fr; grid-auto-flow: row; width: 100%; }
-  .ask-seg span { padding: 9px 6px; text-align: center; }
 }
-@media (max-width: 420px) {
-  /* the link keeps its name (aria-label); the wordmark would push the links to a row of their own */
+@media (max-width: 640px) {
+  /* the link keeps its name (aria-label); the box needs the room */
   .brand span { display: none; }
 }
 /* a phone on its side: the header scrolls away, so the page keeps its little height */
@@ -609,15 +530,13 @@ ctd-atlas-links { display: block; }
 /* phones and tablets: what a finger taps is at least 24px (WCAG 2.5.8), and bigger where it costs no room;
    fields are 16px, under which iOS zooms the page on focus */
 @media (max-width: 760px), (pointer: coarse) {
-  .site-search input { font-size: 16px; }
+  .site-box input, .box-mirror { padding-block: 9px; }
   .brand { padding-block: 13px; margin-block: -13px; }
-  .site-nav a { display: inline-block; padding-block: 10px; margin-block: -10px; }
   .refs { gap: 4px; flex-wrap: wrap; }
   .refs a { display: inline-flex; align-items: center; justify-content: center; min-width: 26px; min-height: 26px; padding: 0 6px; }
   .badge { min-height: 24px; }
   li a { padding-block: 2px; }
-  .route-dot::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; }
-  .facts a, li > a:only-child, .index-list a, .type-list a, .here-list a, .chapter-back a, .index-more a, .glance-more a, .ll-more a, .src-title a { display: inline-block; padding-block: 3px; }
+  .facts a, li > a:only-child, .type-list a, .here-list a, .chapter-back a, .index-more a, .glance-more a, .ll-more a, .src-title a { display: inline-block; padding-block: 3px; }
   /* a name wraps here: there is no room to cut it short and no hover to read the rest */
   .ll-name { white-space: normal; overflow: visible; }
 }

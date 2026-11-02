@@ -160,7 +160,7 @@ interface QuestionGroup {
   empty: string | null;
 }
 
-/** A question from content/schema/questions.yaml, in Ask-picker order. */
+/** A question from content/schema/questions.yaml, in its order. */
 interface QuestionDef {
   id: string;
   /** The sentence: {x} is the subject; a route question has {a} and {b}. */
@@ -208,6 +208,8 @@ export interface SearchEntry {
   q?: string[];
   /** Entries written by hand: their Wikidata id. */
   w?: string;
+  /** ADR-0027: found by name, and never offered as one end of a pair. */
+  sealed?: boolean;
   /** Best-connected first, across all search files. */
   rank: number;
 }

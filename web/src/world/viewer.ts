@@ -11,7 +11,7 @@ import { currentUrl, replaceUrl } from '../lib/history';
 import type { Box } from '../lib/labels';
 import { entityActions, isAtlasId, linksBody, safeHref, storyList } from './card';
 import type { Earth, EarthEntry, EarthSpot, Insets } from './earth';
-import { erasOf, type Era } from './era';
+import { eraAt, erasOf, type Era } from './era';
 import { buildTileRender, clamp01, releaseTile, WORLD_SIZE, WorldTileLayer, type TileEra, type TileRender, type WorldStyle } from './layers';
 import { overlayLayers, type Reached, type Spoke } from './overlays';
 import { runSoak } from './soak';
@@ -46,6 +46,8 @@ export interface WorldOptions {
   route?: string | null;
   /** /w/ (content worlds): open on the map of links (the default) or on the Earth (?view=earth). */
   view?: View;
+  /** Open on the era around this year (?t=1914). */
+  year?: number | null;
   /** Inside another app (the explorer): no legend, notice or shortcuts of its own. */
   embedded?: boolean;
   /** Embedded: how far (px) the host's own controls reach down over the top of the map. */
@@ -579,6 +581,11 @@ class WorldViewer implements WorldHandle {
     this.wrap.classList.add('has-era');
     this.wrap.style.setProperty('--ctdw-era-h', `${bar.offsetHeight || 64}px`);
     this.eraUi = { input, label, note };
+    const start = this.opts.year == null ? -1 : eraAt(eras, this.opts.year);
+    if (start >= 0) {
+      input.value = String(start);
+      this.pickEra(start);
+    }
   }
 
   private pickEra(index: number): void {

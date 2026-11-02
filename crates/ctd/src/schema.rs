@@ -27,6 +27,9 @@ pub struct EntityType {
     /// Entries of this type are points on the map: they need coords, and stories show them there.
     #[serde(default, skip_serializing)]
     pub map: bool,
+    /// Entries of this type may open the home page as a thread (`threads` in featured.yaml).
+    #[serde(default, skip_serializing)]
+    pub thread: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -244,7 +247,7 @@ pub struct Schema {
     pub tiers: IndexMap<String, Tier>,
     pub methodology: serde_json::Value,
     pub methodology_hash: String,
-    /// In Ask-picker order. Empty without `content/schema/questions.yaml`.
+    /// In file order. Empty without `content/schema/questions.yaml`.
     pub questions: Vec<Question>,
     /// Words no question may use ("mastermind", "puppet"): they insinuate.
     pub banned_words: Vec<String>,

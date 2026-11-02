@@ -23,11 +23,11 @@ pub struct Featured {
     /// Pairs of entity ids; each gets a generated connection story.
     #[serde(default)]
     pub connections: Vec<Pick>,
-    /// Entity ids whose life stories go on the home shelf.
+    /// Entity ids, in order: each opens the home page with the written stories it runs through.
     #[serde(default)]
-    pub lives: Vec<String>,
-    /// Question pages as `<question>/<entity id>` ("behind/meta-platforms"): the Ask form's "Try"
-    /// links and the first books of the Questions shelf. They are always kept when pages are capped.
+    pub threads: Vec<String>,
+    /// Question pages as `<question>/<entity id>` ("behind/meta-platforms"): the first books of the
+    /// Questions shelf. They are always kept when pages are capped.
     #[serde(default)]
     pub questions: Vec<String>,
 }

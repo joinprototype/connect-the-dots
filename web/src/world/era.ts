@@ -48,6 +48,16 @@ export function erasOf(entities: readonly WorldEntity[], now = new Date().getFul
   return eras;
 }
 
+/** The era whose middle is nearest a year (eras overlap, so most years are in two), or -1. */
+export function eraAt(eras: readonly Era[], year: number): number {
+  const off = (e: Era) => Math.abs((Math.max(e.from, year - 1000) + Math.min(e.to, year + 1000)) / 2 - year);
+  let best = -1;
+  eras.forEach((e, i) => {
+    if (year >= e.from && year < e.to && (best < 0 || off(e) < off(eras[best]))) best = i;
+  });
+  return best;
+}
+
 /** 1 when the entry's own dates overlap the era, else ERA_DIM. Undated entries are always faint. */
 export function eraAlpha(e: WorldEntity | undefined, era: Era): number {
   if (!e || e.start == null) return ERA_DIM;
