@@ -26,7 +26,7 @@ claims:
       - {s: leppin-wengert-2015-posting-of-the-theses, at: "Luther's preface to his Latin works, 1545", quote: "I begged them to stop the impudence and blasphemy of the quaestors, but the poor little brother was despised.", by: martin-luther}
       - {s: leppin-wengert-2015-posting-of-the-theses, at: "Luther, 1541", quote: "I can still lay my hands on [a copy of] that letter; but I never received an answer.", by: martin-luther}
       - {s: leppin-wengert-2015-posting-of-the-theses, quote: "Neither report mentions that the Theses were posted on the Castle Church door in Wittenberg."}
-      - {s: bpb-gotthard-2017-thesenanschlag, at: "the church historian Erwin Iserloh's argument of the 1960s, and the later find of Georg Roerer's note"}
+      - {s: bpb-gotthard-2017-thesenanschlag, at: "the church historian Erwin Iserloh's argument of the 1960s, and the later find of Georg Rörer's note"}
   - id: c3
     rel: involved
     to: albert-of-brandenburg
