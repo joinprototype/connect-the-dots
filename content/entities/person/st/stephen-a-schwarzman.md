@@ -16,4 +16,9 @@ claims:
     role: "co-founder"
     src:
       - {s: blackstone-424b4-2007, at: "Management, director biographies", quote: "Mr. Schwarzman is a founder of The Blackstone Group and has been involved in all phases of the firm's development since its founding in 1985."}
+  - id: c2
+    rel: ceo_of
+    to: blackstone
+    src:
+      - {s: blackstone-bio-schwarzman, at: "Biography", quote: "Stephen A. Schwarzman is Chairman, CEO and Co-Founder of Blackstone"}
 ---

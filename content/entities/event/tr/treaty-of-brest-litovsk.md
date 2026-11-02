@@ -40,6 +40,12 @@ claims:
     role: "was to send a representative to the peace commission, by Ludendorff’s account"
     src:
       - {s: ludendorff-1919-war-memories-v2, quote: "The latter agreed to include a representative of G.H.Q. in the commission to be appointed for the peace negotiations"}
+  - id: c6
+    rel: part_of
+    to: world-war-i
+    when: "1918-03-03"
+    src:
+      - {s: sokolnikov-1918-03-03-brest-statement, at: "Statement of 3 March 1918", quote: "compelled to accept the German ultimatum because, although Russia had announced the cessation of war and the demobilization of its army, the German troops reopened the attack"}
 ---
 
 At Brest-Litovsk Soviet Russia gave up its western territories, including the Baltic lands and Ukraine, to make peace with Germany and its allies. The Soviet congress that ratified it called it "this incredibly oppressive, coercive, and humiliating peace" whose conditions "were imposed on us as an ultimatum and with undisguised violence".
