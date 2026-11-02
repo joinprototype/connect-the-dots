@@ -1,4 +1,4 @@
-# World tiles (v0)
+# World tiles
 
 The "open world" is a 2D map of the whole graph, cut into a quadtree of tiles that the browser streams by viewport. Rust writes the tiles (`ctd world`, `ctd build`). The world viewer's Links view (`/w/`) reads only what this file describes; its Earth view (`/w/?view=earth`) reads `graph.json` coords instead ([data-contract.md](data-contract.md), "World map"). Change this contract and the viewer together.
 
@@ -41,7 +41,7 @@ The "open world" is a 2D map of the whole graph, cut into a quadtree of tiles th
 ```
 
 - **`regions`:** the communities with at least 3 nodes, biggest first (ties: the lower community index), at most 24. Each is named after its best-connected member that is not a person or a family (a type with `family: true`), so a region never reads as someone's territory; a region of people only goes unnamed. Best-connected: the most links, where a link that is one side's account, a draft or disputed counts 0.6 and a passive holding 0.3. `x`, `y` and `r` are the community's disc; `size` counts its nodes. Zoomed out, the viewer shows the names instead of the dots' own names, and says what they are: "Regions are groups of entries with many links between them, named after their best-connected one." A region name marks a place on the map; it is not a claim about who runs what.
-- **`entities.json` dates:** `start` and `end` are the entry's own dates as decimal years ([data-contract.md](data-contract.md) "Dates": `end` exclusive, `null` = ongoing), rounded to 0.001. Both are absent when the entry is undated. The map's era slider dims the dots whose dates miss the era, and the undated ones.
+- **`entities.json` dates:** `start` and `end` are the entry's own dates as decimal years ([data-contract.md](data-contract.md) "Dates": `end` exclusive, `null` = ongoing), rounded to 0.001. Both are absent when the entry is undated. The viewer reads them to lay out the era slider. It dims dots by the years in their tile: a hand entry's own dates, and an atlas entry's from Wikidata. An atlas entry with no end counts as 80 years for a person, its one year for an event, work or artifact, and still going for the rest.
 - **Orientation:** a content build turns its map to the previous build's orientation (rotation or mirror, 2D Procrustes over shared entity ids; state in `.cache/world-state.json`), then normalises it into the square. The angle is snapped to 1e-4 rad, so an unchanged graph rebuilds byte for byte. Scale and shift are not carried over, so the map cannot shrink over many builds. Builds before this rule had shrunk the content world to about 13% of the square.
 
 A content world draws the same entities and links as `data/graph-slim.json`, except withdrawn links and links on no layer ("not the same as"), so a withheld claim (see [data-contract.md](data-contract.md)) is not in the tiles either.
@@ -51,7 +51,7 @@ A content world draws the same entities and links as `data/graph-slim.json`, exc
 | Offset | Type | Field |
 |---|---|---|
 | 0 | `u8[4]` | magic `CTDT` |
-| 4 | `u16` | version (0) |
+| 4 | `u16` | version (1) |
 | 6 | `u16` | flags (none yet, always 0) |
 | 8 | `u32` | `n`, the node count |
 | 12 | `u32` | `m`, the edge count |
@@ -66,6 +66,8 @@ A content world draws the same entities and links as `data/graph-slim.json`, exc
 | `size` | `f32[n]` | radius in world units at zoom 0. The viewer scales and clamps to pixels. |
 | `color` | `u8[n]` | palette index |
 | `minzoom` | `u8[n]` | zoom where this node first appears; the viewer uses it to fade in |
+| `start` | `i16[n]` | its first year for the era slider; -32768: no date |
+| `end` | `i16[n]` | the year after its last; 32767: still going |
 | `ex0, ey0, ex1, ey1` | `f32[m]` each | edge endpoints, stored inline so no cross-tile lookup is needed |
 | `ecolor` | `u8[m]` | palette index |
 | `eweight` | `u8[m]` | 0–255 relative weight, for opacity and width |

@@ -38,7 +38,7 @@ The founder wants a million dots: a better picture of the world, and the test of
 
 - A route through the landmarks is a way, not the shortest way. A route service could do better.
 - The explorer stays on the record, because it needs the whole graph in the browser.
-- The atlas has no link dates yet, so atlas dots ignore the Map's era slider.
+- The atlas has no link dates yet, so the Map's era slider goes by each entry's own years, not its links'.
 - A hosted copy of the data: it lives in `.cache/atlas` and is rebuilt with `tools/atlas/`. Releases could carry it if contributors want it.
 
 ## Consequences

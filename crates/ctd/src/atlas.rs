@@ -14,7 +14,10 @@ use flate2::read::GzDecoder;
 use rayon::prelude::*;
 use serde_json::{Value, json};
 
-use crate::kb::Kb;
+use crate::{
+    kb::Kb,
+    world::{NO_YEAR, ONGOING},
+};
 
 /// Files the entries are packed into: what keeps a million entries under a host's limit on files.
 pub const SHARDS: u32 = 4096;
@@ -32,6 +35,8 @@ const CROSSROADS: usize = 2000;
 const EARTH_ZOOM: u8 = 9;
 const EARTH_QUOTA: usize = 200;
 const KINDS: [&str; 8] = ["person", "event", "work", "place", "org", "artifact", "tradition", "concept"];
+/// How long someone with no death on record is taken to have lived, for the era slider.
+const LONG_LIFE: i32 = 80;
 
 pub struct Entry {
     pub qid: u32,
@@ -49,6 +54,22 @@ pub struct Entry {
 impl Entry {
     pub fn kind(&self) -> &'static str {
         KINDS[self.kind as usize]
+    }
+
+    /// Its years on the era slider, the second one past its end. With no end given, a person is taken
+    /// to live a long life, a dated event, work or thing to be of its year, and the rest to go on.
+    pub fn span(&self) -> [i16; 2] {
+        let year = |y: i32| y.clamp(-32767, 32766) as i16;
+        match (self.start, self.end) {
+            (None, None) => [NO_YEAR; 2],
+            (Some(a), Some(b)) => [year(a), year(b + 1)],
+            (None, Some(b)) => [year(b), year(b + 1)],
+            (Some(a), None) => match self.kind() {
+                "person" => [year(a), year(a + LONG_LIFE)],
+                "event" | "work" | "artifact" => [year(a), year(a + 1)],
+                _ => [year(a), ONGOING],
+            },
+        }
     }
 
     fn years(&self) -> Option<String> {
@@ -343,7 +364,12 @@ fn earth(a: &Atlas, hand: &HashMap<u32, usize>, out: &Path) -> Result<()> {
             let (x, y) = tile(at, z);
             let list = tiles.entry((z, x, y)).or_default();
             if z == EARTH_ZOOM || list.len() < EARTH_QUOTA {
-                list.push(json!([close(at[0]), close(at[1]), e.qid, e.name, e.kind]));
+                let mut row = json!([close(at[0]), close(at[1]), e.qid, e.name, e.kind]);
+                let [start, end] = e.span();
+                if start != NO_YEAR {
+                    row.as_array_mut().unwrap().extend([json!(start), json!(end)]);
+                }
+                list.push(row);
                 break;
             }
         }

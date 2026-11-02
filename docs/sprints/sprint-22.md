@@ -67,7 +67,6 @@ The founder, after 0.4.0: stories "sometimes feel empty", get to a million dots 
 ## Known issues
 
 - **218,805 living people are in the atlas.** Their facts come from Wikidata and nobody here has read them. They are limited to the list in ADR-0023 (years only, no labels), marked as open data, kept out of search engines, and each page has "Something wrong?". The founder should know this is the main risk of the atlas.
-- Atlas dots ignore the era slider.
 - A route through the landmarks is a way, not the shortest way, and can read strangely. Its links come from open data and nobody here has read them.
 - Wikidata misfiles some items (Facebook as an artifact, the Renaissance as an organization).
 - Scene dots on phones are as narrow as 8 by 28 px in a 20-scene story, under the 24 px target. They cannot be wider in one row, so a finger can now slide along the row to pick a scene.

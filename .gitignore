@@ -6,3 +6,4 @@
 .DS_Store
 erl_crash.dump
 /.wrangler/
+/.claude/worktrees/

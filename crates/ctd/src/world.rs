@@ -24,7 +24,14 @@ pub struct WorldGraph {
     pub may_name: Option<Vec<bool>>,
     /// What each node is called in its tile; None: its place here.
     pub ids: Option<Vec<u32>>,
+    /// Each node's years, for the era slider; None: nothing here is dated.
+    pub years: Option<Vec<[i16; 2]>>,
 }
+
+/// A node with no date, in a tile's years.
+pub const NO_YEAR: i16 = i16::MIN;
+/// The last year of something still going.
+pub const ONGOING: i16 = i16::MAX;
 
 pub struct Spec {
     pub kind: &'static str,
@@ -150,7 +157,7 @@ pub fn synthetic(n: usize, seed: u64) -> WorldGraph {
             }
         }
     }
-    WorldGraph { n, edges, color, labels: None, label_prefix: "Node", keys: None, may_name: None, ids: None }
+    WorldGraph { n, edges, color, labels: None, label_prefix: "Node", keys: None, may_name: None, ids: None, years: None }
 }
 
 /// The real content graph as a world: colors by entity type, labels = names. With an atlas, its
@@ -177,6 +184,8 @@ pub fn from_kb(kb: &Kb, atlas: Option<&crate::atlas::Atlas>) -> (WorldGraph, Spe
     // people and families (types with family ties) never name a region: it would read as theirs
     let mut may_name: Vec<bool> = kb.entities.iter().map(|e| !kb.schema.types.get(&e.kind).is_some_and(|t| t.family)).collect();
     let mut ids = None;
+    let span = |w: &crate::edtf::Span| [w.start.floor().max(-32767.0) as i16, w.end.map_or(ONGOING, |y| y.ceil() as i16)];
+    let mut years: Vec<[i16; 2]> = kb.entities.iter().map(|e| e.when.as_ref().map_or([NO_YEAR; 2], span)).collect();
     if let Some(a) = atlas {
         // at this scale a region is named after a place, never after a team or a study
         may_name.iter_mut().zip(&kb.entities).for_each(|(m, e)| *m = e.kind == "place");
@@ -194,6 +203,7 @@ pub fn from_kb(kb: &Kb, atlas: Option<&crate::atlas::Atlas>) -> (WorldGraph, Spe
                     keys.push(format!("Q{}", e.qid));
                     may_name.push(e.kind() == "place");
                     tile_ids.push(crate::atlas::ATLAS_IDS + e.qid);
+                    years.push(e.span());
                     new
                 }
             })
@@ -231,6 +241,7 @@ pub fn from_kb(kb: &Kb, atlas: Option<&crate::atlas::Atlas>) -> (WorldGraph, Spe
             keys: Some(keys),
             may_name: Some(may_name),
             ids,
+            years: Some(years),
         },
         Spec { kind: "content", palette, palette_labels, entities: Some(entities) },
     )
@@ -816,14 +827,15 @@ struct TileNode<'a> {
     size: f32,
     color: u8,
     minzoom: u8,
+    years: [i16; 2],
     label: &'a str,
 }
 
 fn encode(nodes: &[TileNode], edges: &[([f32; 4], u8, u8)]) -> Vec<u8> {
     let label_bytes: usize = nodes.iter().map(|n| n.label.len()).sum();
-    let mut b = Vec::with_capacity(32 + nodes.len() * 22 + edges.len() * 18 + label_bytes);
+    let mut b = Vec::with_capacity(32 + nodes.len() * 26 + edges.len() * 18 + label_bytes);
     b.extend_from_slice(b"CTDT");
-    b.extend_from_slice(&0u16.to_le_bytes());
+    b.extend_from_slice(&1u16.to_le_bytes());
     b.extend_from_slice(&0u16.to_le_bytes());
     b.extend_from_slice(&(nodes.len() as u32).to_le_bytes());
     b.extend_from_slice(&(edges.len() as u32).to_le_bytes());
@@ -844,6 +856,12 @@ fn encode(nodes: &[TileNode], edges: &[([f32; 4], u8, u8)]) -> Vec<u8> {
     pad4(&mut b);
     b.extend(nodes.iter().map(|n| n.minzoom));
     pad4(&mut b);
+    for k in 0..2 {
+        for n in nodes {
+            b.extend_from_slice(&n.years[k].to_le_bytes());
+        }
+        pad4(&mut b);
+    }
     for k in 0..4 {
         for e in edges {
             b.extend_from_slice(&e.0[k].to_le_bytes());
@@ -1238,6 +1256,7 @@ impl Tiles<'_> {
                             size: (0.0006 * (1.0 + p.degree[i].sqrt().min(40.0) * 0.35)) as f32,
                             color: g.color[i],
                             minzoom: minzoom[i],
+                            years: g.years.as_ref().map_or([NO_YEAR; 2], |y| y[i]),
                             label: if label_zoom(i) <= z { self.labels[i].as_str() } else { "" },
                         }
                     })
@@ -1486,7 +1505,7 @@ mod tests {
         labels.extend(["Gamma".to_string(), "Delta".to_string()]);
         edges.push((labels.len() as u32 - 2, labels.len() as u32 - 1, 1.0));
         let n = labels.len();
-        let g = WorldGraph { n, edges, color: vec![0; n], labels: Some(labels), label_prefix: "", keys: None, may_name: None, ids: None };
+        let g = WorldGraph { n, edges, color: vec![0; n], labels: Some(labels), label_prefix: "", keys: None, may_name: None, ids: None, years: None };
         let spec = Spec { kind: "content", palette: vec!["#6e6e73".into()], palette_labels: vec!["All".into()], entities: None };
         let manifest = |run: u32| -> Value {
             let dir = std::env::temp_dir().join(format!("ctd-world-regions-{}-{run}", std::process::id()));

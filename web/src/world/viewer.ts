@@ -2,17 +2,18 @@
 // (docs/world-tiles.md). Used by /w/ (world.js) and, lazily, by the explorer's world mode.
 import { Deck, OrthographicView, type DeckProps, type PickingInfo } from '@deck.gl/core';
 import type { _Tile2DHeader as Tile2DHeader, _TileLoadProps as TileLoadProps } from '@deck.gl/geo-layers';
-import { LineLayer, ScatterplotLayer, TextLayer } from '@deck.gl/layers';
-import { atlasEntry, KINDS, type Entry, type Spot } from '../lib/atlas';
+import { atlasEntry, KINDS, storiesOf, type Entry, type Spot, type Story } from '../lib/atlas';
 import { cssColorToRgb, tokenRgb, tokenString, type RGB } from '../lib/color';
 import { fetchJson } from '../lib/data';
 import { formatYearNumber } from '../lib/dates';
 import { el } from '../lib/dom';
 import { currentUrl, replaceUrl } from '../lib/history';
 import type { Box } from '../lib/labels';
+import { entityActions, isAtlasId, linksBody, safeHref, storyList } from './card';
 import type { Earth, EarthEntry, EarthSpot, Insets } from './earth';
-import { eraAlpha, erasOf, type Era } from './era';
-import { buildTileRender, clamp01, NO_DEPTH, releaseTile, WORLD_SIZE, WorldTileLayer, type TileEra, type TileRender, type WorldStyle } from './layers';
+import { erasOf, type Era } from './era';
+import { buildTileRender, clamp01, releaseTile, WORLD_SIZE, WorldTileLayer, type TileEra, type TileRender, type WorldStyle } from './layers';
+import { overlayLayers, type Reached, type Spoke } from './overlays';
 import { runSoak } from './soak';
 import { FpsMeter, fmtInt, fmtMB, heapBytes, MB, Meter, type TileCounts } from './stats';
 import {
@@ -84,11 +85,6 @@ export type View = 'links' | 'earth';
 const S = WORLD_SIZE;
 /** A tile's node id from here up is an atlas entry (ADR-0023): the rest is its Wikidata number. */
 const ATLAS_IDS = 2 ** 31;
-/** How many of a dot's links are named on the map, and what its card lists. */
-const SPOKE_NAMES = 10;
-const CARD_GROUPS = 6;
-const CARD_NAMES = 5;
-const isAtlasId = (id: string) => /^Q\d+$/.test(id);
 const spotAt = ([x, y]: Spot): [number, number] => [(x / 65535) * WORLD_SIZE, (y / 65535) * WORLD_SIZE];
 const TILE_LAYER_ID = 'world-tiles';
 const HOW: Record<View, string> = {
@@ -123,9 +119,6 @@ export function resolveWorldSrc(value: string | null | undefined, fallback = '/w
     return fallback;
   }
 }
-
-/** Only same-site paths may become links (entities.json comes from the same origin, but be strict). */
-const safeHref = (url: unknown): string | null => (typeof url === 'string' && /^\/(?!\/)/.test(url) ? url : null);
 
 /** Rejects when the world cannot load. On /w/ the viewer's own message stays up; embedded, it is removed. */
 export async function mountWorld(root: HTMLElement, opts: WorldOptions): Promise<WorldHandle> {
@@ -166,8 +159,8 @@ class WorldViewer implements WorldHandle {
   private tileIndex: Map<number, Set<number>> | null = null;
   private entityIndex = new Map<string, number>();
   /** What the picked dot links to, or a route: what makes the dots a web. */
-  private spokes: { from: [number, number]; to: [number, number] }[] = [];
-  private reached: { at: [number, number]; name: string }[] = [];
+  private spokes: Spoke[] = [];
+  private reached: Reached[] = [];
   private spokeToken = 0;
   /** A route is on show: the map steps back for it. */
   private routing = false;
@@ -602,8 +595,7 @@ class WorldViewer implements WorldHandle {
   private applyEra(era: Era | null): void {
     if (era === this.era || !this.deck) return;
     this.era = era;
-    const list = this.entities ?? [];
-    this.tileEra = era ? { version: (this.tileEra?.version ?? 0) + 1, alpha: Float32Array.from(list, (e) => eraAlpha(e, era)) } : null;
+    this.tileEra = era ? { version: (this.tileEra?.version ?? 0) + 1, from: era.from, to: era.to } : null;
     this.tileLayer = null; // a new layer with the new era: deck redraws every tile's dots and links
     this.render();
   }
@@ -900,88 +892,8 @@ class WorldViewer implements WorldHandle {
     const rings = [this.selected, this.hover]
       .filter((p): p is Picked => !!p)
       .map((p) => ({ position: [p.x * S, p.y * S] as [number, number], size: p.size, selected: p === this.selected }));
-    const accent = tokenRgb('--accent', this.root);
-    const ink = this.style.ink;
-    type Ring = (typeof rings)[number];
-    const a: [number, number, number, number] = [accent[0], accent[1], accent[2], 255];
-    // The selected dot is drawn in the accent; hover and selection get a ring.
-    const dotLayer = new ScatterplotLayer<Ring>({
-      id: 'world-selected',
-      data: rings.filter((d) => d.selected),
-      getPosition: (d: Ring) => d.position,
-      getRadius: (d: Ring) => d.size,
-      radiusUnits: 'common',
-      radiusScale: this.style.radiusScale,
-      radiusMinPixels: this.style.minCorePx + 1,
-      radiusMaxPixels: this.style.maxCorePx + 1,
-      getFillColor: a,
-      pickable: false,
-      parameters: NO_DEPTH,
-    });
-    const ringLayer = new ScatterplotLayer<Ring>({
-      id: 'world-rings',
-      data: rings,
-      getPosition: (d: Ring) => d.position,
-      getRadius: (d: Ring) => d.size,
-      radiusUnits: 'common',
-      radiusScale: this.style.radiusScale * 1.7,
-      radiusMinPixels: this.style.minCorePx + 4,
-      radiusMaxPixels: this.style.maxCorePx * 1.7 + 4,
-      stroked: true,
-      filled: false,
-      lineWidthUnits: 'pixels',
-      getLineWidth: (d: Ring) => (d.selected ? 2 : 1.5),
-      getLineColor: (d: Ring) => (d.selected ? a : [ink[0], ink[1], ink[2], 170]),
-      pickable: false,
-      parameters: NO_DEPTH,
-    });
-    const paper = this.style.night;
-    const spokes = new LineLayer<(typeof this.spokes)[number]>({
-      id: 'world-spokes',
-      data: this.spokes,
-      getSourcePosition: (d) => d.from,
-      getTargetPosition: (d) => d.to,
-      getColor: [ink[0], ink[1], ink[2], this.routing ? 255 : 150],
-      getWidth: this.routing ? 3 : 1.2,
-      widthUnits: 'pixels',
-      pickable: false,
-      parameters: NO_DEPTH,
-    });
-    const ends = new ScatterplotLayer<(typeof this.reached)[number]>({
-      id: 'world-reached',
-      data: this.reached,
-      getPosition: (d) => d.at,
-      getRadius: 4,
-      radiusUnits: 'pixels',
-      getFillColor: [ink[0], ink[1], ink[2], 255],
-      stroked: true,
-      getLineColor: [paper[0], paper[1], paper[2], 255],
-      lineWidthUnits: 'pixels',
-      getLineWidth: 1.5,
-      pickable: false,
-      parameters: NO_DEPTH,
-    });
-    const names = new TextLayer<(typeof this.reached)[number]>({
-      id: 'world-reached-names',
-      data: this.reached.slice(0, SPOKE_NAMES),
-      getPosition: (d) => d.at,
-      getText: (d) => d.name,
-      getSize: 12,
-      sizeUnits: 'pixels',
-      getColor: [ink[0], ink[1], ink[2], 255],
-      getTextAnchor: 'start',
-      getAlignmentBaseline: 'center',
-      getPixelOffset: [8, 0],
-      fontFamily: this.style.font,
-      fontWeight: 600,
-      characterSet: 'auto',
-      fontSettings: { sdf: true },
-      outlineWidth: 3,
-      outlineColor: [paper[0], paper[1], paper[2], 255],
-      pickable: false,
-      parameters: NO_DEPTH,
-    });
-    this.deck.setProps({ layers: [this.getTileLayer(), spokes, ends, dotLayer, ringLayer, names] } as never);
+    const overlays = overlayLayers(this.style, tokenRgb('--accent', this.root), rings, this.spokes, this.reached, this.routing);
+    this.deck.setProps({ layers: [this.getTileLayer(), ...overlays] } as never);
   }
 
   // ------------------------------------------------------------------ interaction
@@ -1093,6 +1005,8 @@ class WorldViewer implements WorldHandle {
     this.reached = [];
     const q = p && this.atlasIdOf(p);
     const e = q ? await atlasEntry(q) : undefined;
+    const entity = p && this.entityOf(p);
+    const stories = p ? await storiesOf(entity && !isAtlasId(entity.id) ? entity.id : null, e) : [];
     if (mine !== this.spokeToken || this.destroyed) return;
     if (p && e) {
       const from: [number, number] = [p.x * S, p.y * S];
@@ -1104,45 +1018,15 @@ class WorldViewer implements WorldHandle {
         this.spokes.push({ from, to });
         this.reached.push({ at: to, name: n[1] });
       }
-      if (!this.opts.onPick) this.showLinks(q!, e);
-    }
+      if (!this.opts.onPick) this.showLinks(q!, e, stories);
+    } else if (p && entity && !this.opts.onPick) this.card.append(...storyList(stories));
     this.render();
   }
 
-  /** The card of an entry with links: what it is, a way on, and what it links to. */
-  private showLinks(q: string, e: Entry): void {
-    this.openCard(KINDS[e.k] ?? '', e.n, ...this.linksBody(q, e));
+  /** The card of an entry with links. */
+  private showLinks(q: string, e: Entry, stories: Story[], ...more: Node[]): void {
+    this.openCard(KINDS[e.k] ?? '', e.n, ...linksBody(q, e, stories, (id) => void this.focusEntity(id, true)), ...more);
     this.updateAvoid();
-  }
-
-  private linksBody(q: string, e: Entry): Node[] {
-    const body: Node[] = [];
-    if (e.d) body.push(el('p', 'ctdw-summary', e.d));
-    const actions = el('div', 'ctdw-actions');
-    const open = el('a', 'ctdw-btn is-primary', 'Open page ›') as HTMLAnchorElement;
-    open.href = e.u ?? `/a/?q=${q}`;
-    const connect = el('a', 'ctdw-btn', 'Connect to…') as HTMLAnchorElement;
-    connect.href = `/r/?a=${q}`;
-    actions.append(open, connect);
-    body.push(actions);
-    const links = el('div', 'ctdw-links');
-    for (const [phrase, names, more] of e.g.slice(0, CARD_GROUPS)) {
-      links.append(el('p', 'ctdw-list-head', phrase.charAt(0).toUpperCase() + phrase.slice(1)));
-      const ul = el('ul', 'ctdw-list');
-      for (const n of names.slice(0, CARD_NAMES)) {
-        const b = el('button', 'ctdw-link', n[1]) as HTMLButtonElement;
-        b.type = 'button';
-        b.addEventListener('click', () => void this.focusEntity(`Q${n[0]}`, true));
-        const li = el('li');
-        li.append(b);
-        ul.append(li);
-      }
-      const left = more + Math.max(0, names.length - CARD_NAMES);
-      if (left) ul.append(el('li', 'ctdw-list-meta', `and ${fmtInt(left)} more`));
-      links.append(ul);
-    }
-    if (e.g.length) body.push(links);
-    return body;
   }
 
   /** Keep labels out from under the overlays (HUD, legend, zoom buttons, era bar, stats, card). */
@@ -1164,7 +1048,7 @@ class WorldViewer implements WorldHandle {
   private showCard(p: Picked, entity: WorldEntity | null): void {
     const kind = this.manifest.palette_labels[p.color] ?? '';
     if (entity) {
-      this.openCard(kind, this.titleOf(p), this.entityActions(entity));
+      this.openCard(kind, this.titleOf(p), entityActions(entity));
       return;
     }
     const actions = el('div', 'ctdw-actions');
@@ -1175,53 +1059,41 @@ class WorldViewer implements WorldHandle {
     this.openCard(kind, this.titleOf(p), actions, el('p', 'ctdw-meta', `x ${p.x.toFixed(4)} · y ${p.y.toFixed(4)} · appears at zoom ${p.z}`));
   }
 
-  /** "Open page ›" and "Explore": an entry's card, on Links and on the Earth. */
-  private entityActions(entity: WorldEntity): HTMLElement {
-    const actions = el('div', 'ctdw-actions');
-    const href = safeHref(entity.url);
-    if (href) {
-      const open = el('a', 'ctdw-btn is-primary', 'Open page ›');
-      open.href = href;
-      actions.append(open);
-    }
-    const explore = el('a', 'ctdw-btn', isAtlasId(entity.id) ? 'Connect to…' : 'Explore');
-    explore.href = isAtlasId(entity.id) ? `/r/?a=${entity.id}` : `/x/?focus=${encodeURIComponent(entity.id)}`;
-    actions.append(explore);
-    return actions;
-  }
-
   /**
    * Earth: the entry's card, as on Links (by default the entry the spot is named after), and when
    * other entries share its spot, a short list of their pages.
    */
-  private showSpot(spot: EarthSpot | null, entry: EarthEntry | undefined = spot?.entries[0]): void {
+  private async showSpot(spot: EarthSpot | null, entry: EarthEntry | undefined = spot?.entries[0]): Promise<void> {
+    const mine = ++this.spokeToken;
     this.hideTooltip();
     if (!spot || !entry) {
       this.card.hidden = true;
       return;
     }
-    if (isAtlasId(entry.id)) {
-      void atlasEntry(entry.id).then((e) => e && this.showLinks(entry.id, e));
-      return;
-    }
-    const others = spot.entries.filter((e) => e !== entry);
-    const body: Node[] = [this.entityActions(entry)];
+    const atlas = isAtlasId(entry.id);
+    const q = atlas ? entry.id : this.entities?.[this.entityIndex.get(entry.id) ?? -1]?.q;
+    const e = q ? await atlasEntry(q) : undefined;
+    const stories = await storiesOf(atlas ? null : entry.id, e);
+    if (mine !== this.spokeToken || this.destroyed) return;
+    const others = spot.entries.filter((o) => o !== entry);
+    const also: Node[] = [];
     // an entry drawn at its place says so, so the dot never reads as its exact location
     const where = entry.placeName ? `Also at ${entry.placeName}` : 'Also here';
     if (others.length) {
       const list = el('ul', 'ctdw-list');
       list.setAttribute('aria-label', where);
-      for (const e of others) {
-        const name = el('a', 'ctdw-list-name', e.name);
-        const href = safeHref(e.url);
+      for (const o of others) {
+        const name = el('a', 'ctdw-list-name', o.name);
+        const href = safeHref(o.url);
         if (href) name.href = href;
         const li = el('li');
-        li.append(name, el('span', 'ctdw-list-meta', e.when ? `${e.kind} · ${e.when}` : e.kind));
+        li.append(name, el('span', 'ctdw-list-meta', o.when ? `${o.kind} · ${o.when}` : o.kind));
         list.append(li);
       }
-      body.push(el('p', 'ctdw-list-head', where), list);
+      also.push(el('p', 'ctdw-list-head', where), list);
     }
-    this.openCard(entry.placeName ? `${entry.kind} · shown at ${entry.placeName}, its place` : entry.kind, entry.name, ...body);
+    if (q && e) this.showLinks(q, e, stories, ...also);
+    else this.openCard(entry.placeName ? `${entry.kind} · shown at ${entry.placeName}, its place` : entry.kind, entry.name, entityActions(entry), ...storyList(stories), ...also);
   }
 
   /** The card: a close button, a kind line and a title, then its body. */
@@ -1301,6 +1173,10 @@ class WorldViewer implements WorldHandle {
     if (index === undefined || !this.deck) return false;
     const p = await this.locate(index);
     if (!p || this.destroyed) return false;
+    return this.flyToPicked(p, select);
+  }
+
+  private flyToPicked(p: Picked, select: boolean): boolean {
     const zoom = Math.max(this.zoom, Math.min(this.maxZoom - 1, this.fitZoom + 2.2));
     this.flyTo(this.centerOn([p.x * S, p.y * S], zoom), zoom, 800);
     if (select) this.selectPicked(p);
@@ -1312,11 +1188,7 @@ class WorldViewer implements WorldHandle {
     const e = await atlasEntry(id);
     if (!e?.p || !this.deck || this.destroyed) return false;
     const [x, y] = spotAt(e.p);
-    const p: Picked = { id: ATLAS_IDS + Number(id.slice(1)), x: x / S, y: y / S, size: 0.001, color: 0, label: e.n, z: this.manifest.maxzoom };
-    const zoom = Math.max(this.zoom, Math.min(this.maxZoom - 1, this.fitZoom + 2.2));
-    this.flyTo(this.centerOn([x, y], zoom), zoom, 800);
-    if (select) this.selectPicked(p);
-    return true;
+    return this.flyToPicked({ id: ATLAS_IDS + Number(id.slice(1)), x: x / S, y: y / S, size: 0.001, color: 0, label: e.n, z: this.manifest.maxzoom }, select);
   }
 
   /** A route: its stops joined by a line, named, and all in view. */

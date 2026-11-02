@@ -5,6 +5,8 @@ What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versio
 ## 0.4.3 (2026-11-01)
 
 - The Earth came up flat and empty, with no dots, for anyone who had visited before. It now draws the globe and every dot each time.
+- The timeline now works on every dot: pick an era and the million fade to what was around then, on the Map and on the Earth.
+- Click a dot and see the stories it is in, or the ones it reaches through a link. Clicking a hand-written dot now shows its links, as an imported dot does.
 
 ## 0.4.2 (2026-11-01)
 

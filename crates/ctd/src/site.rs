@@ -613,6 +613,9 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     let mut path_ids: Vec<String> = routes.urls.keys().map(|(a, b)| format!("{a}--{b}")).collect();
     path_ids.sort();
     schema["stories"] = json!({ "paths": path_ids });
+    // a dot on the Map or the Earth can say which written stories it is in
+    let stories: BTreeMap<&String, Vec<[&Value; 2]>> = s.stories.iter().map(|(id, rows)| (id, rows.iter().map(|r| [&r["title"], &r["url"]]).collect())).collect();
+    write(&out.join("data").join("stories.json"), serde_json::to_vec(&stories)?)?;
     if opts.graph {
         write_graph(kb, out, &schema, &pages, &lives, &questions.stories)?;
     }

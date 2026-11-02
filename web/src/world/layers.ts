@@ -8,7 +8,8 @@ import { LayerExtension, type Layer, type LayersList } from '@deck.gl/core';
 import { TileLayer, type _Tile2DHeader as Tile2DHeader } from '@deck.gl/geo-layers';
 import { LineLayer, ScatterplotLayer, TextLayer } from '@deck.gl/layers';
 import { anchorOf, baselineOf, measureText, NODE_FONT_PX, offsetOf, placeLabels, Spot, type Box, type PlacedLabel } from '../lib/labels';
-import { hasLabel, labelAt, type WorldTile } from './tiles';
+import { ERA_DIM } from './era';
+import { hasLabel, labelAt, withinYears, type WorldTile } from './tiles';
 
 export const WORLD_SIZE = 512;
 
@@ -45,6 +46,9 @@ interface BinaryAttr {
 /** A label of a tile, with the node it belongs to. */
 interface TileLabel extends PlacedLabel {
   id: number;
+  tile: WorldTile;
+  /** Its node's place in the tile. */
+  i: number;
 }
 
 /** A parsed tile plus the GPU-ready arrays deck.gl uploads. This is the TileLayer's tile content. */
@@ -149,6 +153,8 @@ function pickLabels(tile: WorldTile, style: WorldStyle): TileLabel[] {
     if (!text) continue;
     out.push({
       id: tile.id[i],
+      tile,
+      i,
       key: 'n' + tile.id[i],
       text,
       position: [tile.x[i] * WORLD_SIZE, tile.y[i] * WORLD_SIZE],
@@ -164,12 +170,15 @@ function pickLabels(tile: WorldTile, style: WorldStyle): TileLabel[] {
   return out;
 }
 
-/** Era dimming, by node index: 1 draws a node as usual, less fades it towards the ground. */
+/** Era dimming: a node whose years miss the window fades towards the ground. */
 export interface TileEra {
   /** Changes with every era, so tiles know when to redo their colours. */
   version: number;
-  alpha: Float32Array;
+  from: number;
+  to: number;
 }
+
+const nodeAlpha = (era: TileEra, tile: WorldTile, i: number) => (withinYears(tile, i, era.from, era.to) ? 1 : ERA_DIM);
 
 /**
  * Applies the era to a tile's colours: a dimmed node blends towards the ground colour (it never
@@ -189,7 +198,7 @@ function applyEra(render: TileRender, era: TileEra | null, style: WorldStyle): v
     // Links store their endpoints inline (docs/world-tiles.md): find each end's node by position.
     const at = new Map<string, number>();
     for (let i = 0; i < t.n; i++) {
-      const k = era.alpha[t.id[i]] ?? 1;
+      const k = nodeAlpha(era, t, i);
       at.set(`${t.x[i]},${t.y[i]}`, k);
       if (k < 1) for (let c = 0; c < 3; c++) fill[4 * i + c] = Math.round(g[c] + (fill[4 * i + c] - g[c]) * k);
     }
@@ -455,7 +464,7 @@ export class WorldTileLayer extends TileLayer<TileRender, WorldTileLayerProps> {
     const visible = (tileset.tiles as Tile2DHeader<TileRender>[]).filter((t) => t.isVisible && t.content && t.content.labels.length);
     const era = this.props.era ?? null;
     // In an era, names of dots inside it are placed first; the others are drawn fainter.
-    const eraOf = (d: TileLabel) => (era ? (era.alpha[d.id] ?? 1) : 1);
+    const eraOf = (d: TileLabel) => (era ? nodeAlpha(era, d.tile, d.i) : 1);
     const key = `${this.props.labelVersion}|${era?.version ?? 0}|${visible.map((t) => t.id).join(',')}`;
     if (key !== this.state.labelKey) {
       const seen = new Set<string>();

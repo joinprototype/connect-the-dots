@@ -34,8 +34,8 @@ export interface EarthSpot {
   entries: EarthEntry[];
 }
 
-/** One tile's row: [lon, lat, Wikidata number, name, kind]. */
-type AtlasRow = [number, number, number, string, number];
+/** One tile's row: [lon, lat, Wikidata number, name, kind, and when dated, its years, the second exclusive]. */
+type AtlasRow = [number, number, number, string, number, number?, number?];
 interface AtlasIndex {
   maxzoom: number;
   entries: number;
@@ -87,6 +87,8 @@ const WORLD = 'ctd-earth-world';
 const WORLD_NAMES = 'ctd-earth-world-names';
 /** How close show() comes: a country, its cities apart. */
 const SPOT_ZOOM = 4.5;
+/** Past any year a dot can have: an era's open end, which an expression cannot hold as infinity. */
+const YEARS = 1e6;
 /** At home the globe leans at most this far north or south, so the planet reads upright. */
 const HOME_MAX_LAT = 35;
 const RAD = Math.PI / 180;
@@ -250,8 +252,9 @@ export async function createEarth(container: HTMLElement, opts: EarthOptions): P
       }),
     );
     for (const row of lists.flat()) {
-      const [lon, lat, q, name, kind] = row.place;
-      atlasDots.push({ type: 'Feature', geometry: { type: 'Point', coordinates: [lon, lat] }, properties: { q, name, kind, ink: inks[kind] ?? rgb(grey), rank: atlasDots.length, tier: row.tier } });
+      const [lon, lat, q, name, kind, from, to] = row.place;
+      const years = from === undefined ? {} : { from, to };
+      atlasDots.push({ type: 'Feature', geometry: { type: 'Point', coordinates: [lon, lat] }, properties: { q, name, kind, ink: inks[kind] ?? rgb(grey), rank: atlasDots.length, tier: row.tier, ...years } });
     }
     (map.getSource(ATLAS) as GeoJSONSource | undefined)?.setData({ type: 'FeatureCollection', features: atlasDots });
   };
@@ -266,6 +269,13 @@ export async function createEarth(container: HTMLElement, opts: EarthOptions): P
       faded[s.i] = f;
       mark(s, { faded: f });
     }
+    // the atlas's dots carry their years: an expression fades them all at once, and those still to load
+    const open = (year: number) => Math.max(-YEARS, Math.min(YEARS, year));
+    const within: ExpressionSpecification | null = era && ['all', ['has', 'from'], ['<', ['get', 'from'], open(era.to)], ['>', ['get', 'to'], open(era.from)]];
+    const alpha = within ? (['case', within, 1, ERA_DIM] as ExpressionSpecification) : 1;
+    map.setPaintProperty(ATLAS_DOTS, 'circle-opacity', alpha);
+    map.setPaintProperty(ATLAS_DOTS, 'circle-stroke-opacity', alpha);
+    map.setPaintProperty(ATLAS_NAMES, 'text-opacity', within ? ['case', within, 1, FADED_TEXT_ALPHA] : 1);
   };
 
   /** The year on the map. An era picked meanwhile wins: a slow file never replaces a newer year. */

@@ -1,12 +1,14 @@
-// World tile v0 reader (docs/world-tiles.md). DOM-free and dependency-free, so it also runs in Node.
+// World tile reader (docs/world-tiles.md). DOM-free and dependency-free, so it also runs in Node.
 //
 // parseTile() returns typed-array views straight over the response buffer: nothing is copied.
-// Layout: 20-byte header, then x, y, id, size, color, minzoom, ex0, ey0, ex1, ey1, ecolor, eweight,
+// Layout: 20-byte header, then x, y, id, size, color, minzoom, start, end, ex0, ey0, ex1, ey1, ecolor, eweight,
 // label_offsets and the UTF-8 labels, each array padded to a multiple of 4 bytes (little-endian).
 
 const TILE_MAGIC = 'CTDT';
-const TILE_VERSION = 0;
+const TILE_VERSION = 1;
 const HEADER_BYTES = 20;
+/** A node's `start` when it has no date. */
+const NO_YEAR = -32768;
 
 export interface TileIndex {
   x: number;
@@ -29,6 +31,9 @@ export interface WorldTile {
   color: Uint8Array;
   /** Zoom where the node first appears. */
   minzoom: Uint8Array;
+  /** Its years for the era slider, `end` exclusive; see NO_YEAR. */
+  start: Int16Array;
+  end: Int16Array;
   ex0: Float32Array;
   ey0: Float32Array;
   ex1: Float32Array;
@@ -57,7 +62,7 @@ const pad4 = (bytes: number): number => (bytes + 3) & ~3;
 
 /** Bytes a tile with n nodes, m edges and l label bytes needs (labels unpadded). */
 function tileByteLength(n: number, m: number, labelBytes: number): number {
-  return HEADER_BYTES + 16 * n + 2 * pad4(n) + 16 * m + 2 * pad4(m) + 4 * (n + 1) + labelBytes;
+  return HEADER_BYTES + 16 * n + 2 * pad4(n) + 2 * pad4(2 * n) + 16 * m + 2 * pad4(m) + 4 * (n + 1) + labelBytes;
 }
 
 export function emptyTile(index: TileIndex): WorldTile {
@@ -73,6 +78,8 @@ export function emptyTile(index: TileIndex): WorldTile {
     size: f,
     color: b,
     minzoom: b,
+    start: new Int16Array(0),
+    end: new Int16Array(0),
     ex0: f,
     ey0: f,
     ex1: f,
@@ -111,6 +118,11 @@ export function parseTile(buffer: ArrayBuffer, index: TileIndex): WorldTile {
     off += 4 * count;
     return a;
   };
+  const i16 = (count: number): Int16Array => {
+    const a = LITTLE_ENDIAN ? new Int16Array(buffer, off, count) : swapped(off, count, Int16Array, (o) => dv.getInt16(o, true), 2);
+    off += pad4(2 * count);
+    return a;
+  };
   const u8 = (count: number): Uint8Array => {
     const a = new Uint8Array(buffer, off, count);
     off += pad4(count);
@@ -127,6 +139,8 @@ export function parseTile(buffer: ArrayBuffer, index: TileIndex): WorldTile {
     size: f32(n),
     color: u8(n),
     minzoom: u8(n),
+    start: i16(n),
+    end: i16(n),
     ex0: f32(m),
     ey0: f32(m),
     ex1: f32(m),
@@ -141,15 +155,21 @@ export function parseTile(buffer: ArrayBuffer, index: TileIndex): WorldTile {
   return tile;
 }
 
-function swapped<T extends Float32Array | Uint32Array>(
+function swapped<T extends Float32Array | Uint32Array | Int16Array>(
   off: number,
   count: number,
   Ctor: { new (n: number): T },
   read: (byteOffset: number) => number,
+  step = 4,
 ): T {
   const out = new Ctor(count);
-  for (let i = 0; i < count; i++) out[i] = read(off + 4 * i);
+  for (let i = 0; i < count; i++) out[i] = read(off + step * i);
   return out;
+}
+
+/** True when node i's years meet the window. An undated node never does. */
+export function withinYears(tile: WorldTile, i: number, from: number, to: number): boolean {
+  return tile.start[i] !== NO_YEAR && tile.start[i] < to && tile.end[i] > from;
 }
 
 const decoder = typeof TextDecoder !== 'undefined' ? new TextDecoder('utf-8', { fatal: false }) : null;
@@ -246,5 +266,6 @@ export function checkManifest(m: unknown): WorldManifest {
 export function toEntity(e: unknown, safeUrl: (url: unknown) => string | null): WorldEntity {
   const o = (e ?? {}) as Partial<Record<keyof WorldEntity, unknown>>;
   const start = finite(o.start) ? o.start : null;
-  return { id: String(o.id ?? ''), name: String(o.name ?? ''), url: safeUrl(o.url) ?? '', start, end: start != null && finite(o.end) ? o.end : null };
+  const q = typeof o.q === 'string' ? o.q : undefined;
+  return { id: String(o.id ?? ''), name: String(o.name ?? ''), url: safeUrl(o.url) ?? '', start, end: start != null && finite(o.end) ? o.end : null, q };
 }

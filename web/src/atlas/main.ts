@@ -2,7 +2,7 @@
 // holds that entry, so an entry costs the same at a thousand dots or a million. Moving to a
 // neighbour swaps the page in place; nothing outside the current entry is ever loaded or drawn.
 import './atlas.css';
-import { atlasEntry, hrefOf, INKS, KINDS, type Entry, type Neighbour } from '../lib/atlas';
+import { atlasEntry, hrefOf, INKS, KINDS, storiesOf, type Entry, type Neighbour, type Story } from '../lib/atlas';
 import { el } from '../lib/dom';
 
 /** How many neighbours the constellation draws. */
@@ -47,7 +47,22 @@ function constellation(e: Entry, go: (n: Neighbour) => void): SVGSVGElement {
   return svg;
 }
 
-function render(root: HTMLElement, q: string, e: Entry, go: (n: Neighbour) => void): void {
+/** The written stories this entry leads to, through what it links to. */
+function told(stories: Story[]): HTMLElement {
+  const part = el('section', 'atlas-group');
+  const ul = el('ul');
+  for (const s of stories) {
+    const a = el('a', '', s.title) as HTMLAnchorElement;
+    a.href = s.url;
+    const li = el('li');
+    li.append(a, s.via ? ` through ${s.via}` : '');
+    ul.append(li);
+  }
+  part.append(el('h2', '', 'Stories'), ul);
+  return part;
+}
+
+function render(root: HTMLElement, q: string, e: Entry, stories: Story[], go: (n: Neighbour) => void): void {
   document.title = `${e.n}: Connect the Dots`;
   root.style.setProperty('--c', `var(${INKS[e.k] ?? '--accent'})`);
   const head = el('header', 'atlas-head');
@@ -80,6 +95,7 @@ function render(root: HTMLElement, q: string, e: Entry, go: (n: Neighbour) => vo
   const parts: Node[] = [head];
   if (e.g.length) parts.push(constellation(e, go));
   const lists = el('div', 'atlas-groups');
+  if (stories.length) lists.append(told(stories));
   for (const [phrase, names, more] of e.g) {
     const part = el('section', 'atlas-group');
     part.append(el('h2', '', phrase.charAt(0).toUpperCase() + phrase.slice(1)));
@@ -129,7 +145,7 @@ function start(root: HTMLElement): void {
       location.replace(e.u);
       return;
     }
-    render(root, q, e, go);
+    render(root, q, e, await storiesOf(null, e), go);
   };
   const go = (n: Neighbour) => {
     if (n[4]) {
