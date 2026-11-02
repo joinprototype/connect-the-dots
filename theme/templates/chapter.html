@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-{% from "macros.html" import book, corrections, count %}
+{% from "macros.html" import book, corrections, count, door_inks %}
 {% block title %}{{ chapter.title }}{{ " –" if chapter.title[-1:] == "?" else ":" }} Connect the Dots{% endblock %}
 {% block description %}{{ chapter.summary or chapter.subtitle or chapter.title }}{% endblock %}
 {% block html_attrs %} data-theme="light"{% endblock %}
 {% block body_class %}chapter-page{% endblock %}
-{% block head %}{% if site.assets.story_css %}<link rel="stylesheet" href="/assets/story.css">{% endif %}{% endblock %}
+{% block head %}{{ door_inks(site) }}{% if site.assets.story_css %}<link rel="stylesheet" href="/assets/story.css">{% endif %}{% endblock %}
 {% block main %}
 <article class="chapter" style="--story: {{ chapter.ink.bg }}; --story-ink: {{ chapter.ink.fg }}; --story-text: {{ chapter.ink.text }}">
   <header class="chapter-head">

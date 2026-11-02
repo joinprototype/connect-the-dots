@@ -1,10 +1,13 @@
 //! Markdown rendering with `[[wikilinks]]`. Content comes from public PRs, so raw HTML is escaped
 //! and only safe link targets are written as links.
 
-use std::sync::LazyLock;
+use std::{borrow::Cow, sync::LazyLock};
 
 use pulldown_cmark::{CowStr, Event, Options, Parser, Tag, TagEnd, html};
 use regex::Regex;
+use serde_json::Value;
+
+use crate::doors::Story;
 
 static WIKILINK: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"\[\[([^\]\|]+)(?:\|([^\]]+))?\]\]").unwrap());
 
@@ -63,19 +66,23 @@ enum Open {
     Dropped,
 }
 
-/// Renders markdown to HTML. `resolve` maps a wikilink target to (url, display name).
-pub fn render(md: &str, resolve: &dyn Fn(&str) -> Option<(String, String)>) -> String {
-    let replaced = WIKILINK.replace_all(md, |caps: &regex::Captures| {
+/// Wikilinks as markdown links. `resolve` maps a target to (url, display name).
+fn with_links<'a>(md: &'a str, resolve: &dyn Fn(&str) -> Option<(String, String)>) -> Cow<'a, str> {
+    WIKILINK.replace_all(md, |caps: &regex::Captures| {
         let target = caps[1].trim();
         let label = caps.get(2).map(|m| m.as_str().trim().to_string());
         match resolve(target) {
             Some((url, name)) => format!("[{}]({url})", escape_label(&label.unwrap_or(name))),
             None => format!("[{}]({WANTED}{target})", escape_label(&label.unwrap_or_else(|| target.to_string()))),
         }
-    });
+    })
+}
+
+/// The events of markdown, with raw HTML as text and unsafe targets gone.
+fn safe_events(md: &str) -> impl Iterator<Item = Event<'_>> {
     let opts = Options::ENABLE_TABLES | Options::ENABLE_FOOTNOTES | Options::ENABLE_STRIKETHROUGH | Options::ENABLE_SMART_PUNCTUATION;
     let mut open: Vec<Open> = Vec::new();
-    let parser = Parser::new_ext(&replaced, opts).filter_map(|ev| match ev {
+    Parser::new_ext(md, opts).filter_map(move |ev| match ev {
         Event::Html(h) | Event::InlineHtml(h) => Some(Event::Text(CowStr::from(h.to_string()))),
         Event::Start(Tag::Link { ref dest_url, .. }) if dest_url.starts_with(WANTED) => {
             open.push(Open::Wanted);
@@ -96,9 +103,22 @@ pub fn render(md: &str, resolve: &dyn Fn(&str) -> Option<(String, String)>) -> S
             _ => Some(ev),
         },
         other => Some(other),
-    });
+    })
+}
+
+/// Renders markdown to HTML. `resolve` maps a wikilink target to (url, display name).
+pub fn render(md: &str, resolve: &dyn Fn(&str) -> Option<(String, String)>) -> String {
+    let linked = with_links(md, resolve);
     let mut out = String::new();
-    html::push_html(&mut out, parser);
+    html::push_html(&mut out, safe_events(&linked));
+    out
+}
+
+/// A scene's narration: as `render`, with the doors of `shot` open in its names.
+pub fn render_scene(md: &str, resolve: &dyn Fn(&str) -> Option<(String, String)>, story: &Story, shot: &Value) -> String {
+    let linked = with_links(md, resolve);
+    let mut out = String::new();
+    html::push_html(&mut out, story.open(shot, safe_events(&linked)).into_iter());
     out
 }
 

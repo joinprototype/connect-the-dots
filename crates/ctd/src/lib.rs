@@ -4,6 +4,7 @@ pub mod answers;
 pub mod atlas;
 pub mod covers;
 pub mod diag;
+pub mod doors;
 pub mod edtf;
 pub mod fmt;
 pub mod gaps;

@@ -18,7 +18,7 @@ The founder found the four places "too much and complicated", and picked One Box
 - [ ] S23-02 Home opens on a real question and its answer, with "Another question".
 - [ ] S23-03 `/r/` answers any pair: a direct tie first, with its caveat, then the way, with proof at each step.
 - [ ] S23-04 The Stories page draws stories as islands, with a plain list beside it.
-- [ ] S23-05 Names in stories link to their entries.
+- [x] S23-05 Names in stories link to their entries.
 - [ ] S23-06 Every old address still works. The footer lists Stories, Map, Explore and Connect.
 
 ### Should
@@ -50,6 +50,8 @@ The demo runs on 1280x800 and 390x844, light and dark, with no console errors, a
 - [ ] Known issues listed
 
 ## Known issues
+
+- Back to a life story (`/e/<id>/story/`) lands on its first scene when the browser has dropped the page from memory: the story arrives from its pack after the browser stops restoring the scroll. This is not new. With the page in memory, and on written and route stories, Back returns to the same scene.
 
 ## Review
 
