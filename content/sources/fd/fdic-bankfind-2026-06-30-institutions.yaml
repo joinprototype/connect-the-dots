@@ -1,0 +1,9 @@
+uid: 01M6F93KEK4DQ7REZJTEPE5P14
+id: fdic-bankfind-2026-06-30-institutions
+title: "FDIC BankFind API: active institutions, assets and deposits at 30 June 2026 (index of 30 October 2026)"
+publisher: "fdic"
+published: 2026-10-30
+url: https://api.fdic.gov/banks/institutions?fields=NAME,ASSET,DEP,REPDTE,CERT&sort_by=ASSET&sort_order=DESC&limit=5000&filters=ACTIVE%3A1
+note: "Amounts are in thousands of dollars. Shares in this story are our sums of this list."
+retrieved: 2026-11-02
+tier: T1
