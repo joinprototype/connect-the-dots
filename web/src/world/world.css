@@ -91,6 +91,12 @@
   /* a ring of the page keeps the name legible over the dots and links beneath it */
   text-shadow: 0 0 2px var(--paper), 0 0 2px var(--paper), 0 0 4px var(--paper), 0 0 6px var(--paper);
 }
+.ctdw-part {
+  position: absolute; left: 0; top: 0; visibility: hidden; white-space: nowrap;
+  font: 700 0.86rem/1.2 var(--font-ui);
+  color: var(--ink);
+  text-shadow: 0 0 2px var(--paper), 0 0 2px var(--paper), 0 0 4px var(--paper), 0 0 6px var(--paper);
+}
 /* a route on show has the map to itself */
 .ctdw-regions.is-route { display: none; }
 /* while an era is picked the lit dots matter; the region names step back to the quiet text (still 4.5:1) */

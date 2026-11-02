@@ -192,6 +192,8 @@ export const key = (t: TileIndex): string => `${t.z}/${t.x}/${t.y}`;
 // ---------------------------------------------------------------------------------- manifest
 
 export interface WorldManifest {
+  /** The names of the parts of a big map's discs: `[name, x, y, reach]` rows, biggest first. */
+  parts?: string | null;
   version: number;
   kind: 'synthetic' | 'content' | string;
   nodes: number;

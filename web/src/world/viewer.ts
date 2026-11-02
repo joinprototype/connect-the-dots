@@ -94,6 +94,12 @@ const HOW: Record<View, string> = {
 /** Zooms above the content fit over which region names fade out and the dots' own names fade in. */
 const REGION_FADE: [number, number] = [0.7, 1.5];
 
+/** One part of a disc: its name, where its middle is in the unit square, and its radius there. */
+type WorldPart = [string, number, number, number];
+/** How many part names show at once, and how wide a part must be on screen to be named (px). */
+const PART_NAMES = 14;
+const PART_REACH = 48;
+
 /** A region name on the map: an HTML label the viewer places over the canvas (clicks go through to the map). */
 interface RegionLabel {
   region: WorldRegion;
@@ -181,6 +187,11 @@ class WorldViewer implements WorldHandle {
   private regionLayer: HTMLDivElement | null = null;
   private regionAlpha = 0;
   private hoverRegion: WorldRegion | null = null;
+  /** Names inside a disc: a small pool of labels, and the rows they show, fetched on first need. */
+  private partLayer: HTMLDivElement | null = null;
+  private partLabels: HTMLElement[] = [];
+  private parts: WorldPart[] | null = null;
+  private partsAsked = false;
   /** Dot labels fade in as region names fade out (null: always shown). Mutated in place. */
   private labelFade: { from: number; to: number } | null = null;
   private eras: Era[] = [];
@@ -330,7 +341,7 @@ class WorldViewer implements WorldHandle {
       radiusScale: S * 2 ** (3 - m.maxzoom) * (content ? 2.4 : 3) * (this.opts.radiusFactor ?? 1),
       // a big map keeps its dots small, so that they stay dots and do not pile on one another
       minCorePx: !content ? 1.35 : m.nodes > 20000 ? 2.3 : 4,
-      maxCorePx: !content ? 11 : m.nodes > 20000 ? 7 : 13,
+      maxCorePx: !content ? 11 : m.nodes > 20000 ? 5 : 13,
       ink: rgba(ink),
       night: rgba(ground),
       font: tokenString('--font-ui', 'system-ui, sans-serif', this.root),
@@ -388,7 +399,7 @@ class WorldViewer implements WorldHandle {
       hint.append(this.hintHow);
       // A region name is a place on the map, never a claim about who runs what: say so where it shows.
       if (regions.length) {
-        this.hintRegions = el('span', '', 'Regions are groups of entries with many links between them, named after their best-connected one.');
+        this.hintRegions = el('span', '', 'Regions are groups of entries with many links between them, named after their best-connected one. Inside one, each dot sits beside what it links to.');
         hint.append(' ', this.hintRegions);
       }
       this.wrap.append(hint);
@@ -410,6 +421,14 @@ class WorldViewer implements WorldHandle {
       }
       this.regionLayer = layer;
       this.labelFade = { from: 0, to: 0 };
+    }
+    if (m.parts) {
+      const layer = el('div', 'ctdw-regions');
+      layer.setAttribute('aria-hidden', 'true');
+      this.partLabels = Array.from({ length: PART_NAMES }, () => el('span', 'ctdw-part'));
+      layer.append(...this.partLabels);
+      (this.regionLayer ?? this.stage).after(layer);
+      this.partLayer = layer;
     }
   }
 
@@ -776,6 +795,7 @@ class WorldViewer implements WorldHandle {
     this.target = [Math.max(0, Math.min(S, target[0])), Math.max(0, Math.min(S, target[1]))];
     this.zoom = z;
     this.placeRegions();
+    this.placeParts();
     this.deck?.setProps({ viewState: this.viewState() } as never);
     if (this.hover || this.hoverRegion) this.hideTooltip();
   }
@@ -817,6 +837,40 @@ class WorldViewer implements WorldHandle {
     }
     // While region names show, the dots' names keep clear of them.
     this.labelAvoid.boxes = placed.length ? [...this.overlays, ...placed] : this.overlays;
+  }
+
+  /** Names inside the discs in view, biggest first, once a part is wide enough on screen to name. */
+  private placeParts(): void {
+    if (!this.partLayer || this.mode === 'earth') return;
+    const k = 2 ** this.zoom;
+    if (!this.partsAsked && PART_REACH / (k * S) < 0.03) {
+      this.partsAsked = true;
+      void fetchJson<WorldPart[]>(`${this.opts.src}${this.manifest.parts}`).then((rows) => {
+        this.parts = rows;
+        this.placeParts();
+      }, () => undefined);
+    }
+    const { w, h } = this.view;
+    const taken = [...this.labelAvoid.boxes];
+    let shown = 0;
+    for (const [name, px, py, reach] of this.parts ?? []) {
+      if (shown === PART_NAMES) break;
+      if (reach * S * k < PART_REACH) continue;
+      const x = (px * S - this.target[0]) * k + w / 2;
+      const y = (py * S - this.target[1]) * k + h / 2;
+      if (x < 0 || y < 0 || x > w || y > h) continue;
+      const label = this.partLabels[shown];
+      label.textContent = name;
+      const [lw, lh] = [label.offsetWidth, label.offsetHeight];
+      const box = { x0: x - lw / 2 - 6, y0: y - lh / 2 - 3, x1: x + lw / 2 + 6, y1: y + lh / 2 + 3 };
+      if (box.x0 < 0 || box.y0 < 0 || box.x1 > w || box.y1 > h || taken.some((b) => box.x0 < b.x1 && box.x1 > b.x0 && box.y0 < b.y1 && box.y1 > b.y0)) continue;
+      taken.push(box);
+      label.style.transform = `translate(${(x - lw / 2).toFixed(1)}px, ${(y - lh / 2).toFixed(1)}px)`;
+      label.style.visibility = 'visible';
+      shown++;
+    }
+    for (const label of this.partLabels.slice(shown)) label.style.visibility = 'hidden';
+    if (shown) this.labelAvoid.boxes = taken;
   }
 
   /** The region whose name is under this stage point, while the names are clearly visible. */
@@ -1042,6 +1096,7 @@ class WorldViewer implements WorldHandle {
     this.overlays = boxes;
     this.labelAvoid.boxes = boxes;
     this.placeRegions();
+    this.placeParts();
     this.tileLayer?.setNeedsUpdate();
   }
 
@@ -1198,6 +1253,7 @@ class WorldViewer implements WorldHandle {
     if (stops.length < 2 || this.destroyed) return;
     this.routing = true;
     this.regionLayer?.classList.add('is-route');
+    this.partLayer?.classList.add('is-route');
     this.reached = stops;
     this.spokes = stops.slice(1).map((s, i) => ({ from: stops[i].at, to: s.at }));
     const xs = stops.map((s) => s.at[0]);

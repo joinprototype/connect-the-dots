@@ -480,3 +480,186 @@ pub(super) fn sprinkle(j: usize) -> [f64; 2] {
     let at = |step: f64| (0.5 + j as f64 * step).fract() * 2.0 - 1.0;
     square_to_circle([at(0.754_877_666_246_693), at(0.569_840_290_998_053)])
 }
+
+/// A disc smaller than this keeps the plain spiral: it can be read at a glance.
+const MIN_DISC: usize = 40;
+/// A branch smaller than this lies among its siblings: a cell of its own would be too thin to see.
+const NEST: u32 = 8;
+const MAX_DEPTH: u8 = 12;
+/// This many children linked the same way make a part, with a name and one line to their parent.
+const MIN_PART: usize = 12;
+/// A link with no phrase in the vocabulary.
+const UNNAMED: u32 = u32::MAX;
+
+/// Parts with fewer members go unnamed on the map.
+const NAMED_PART: usize = 24;
+
+/// Children of one parent, linked to it the same way: "Born in Paris".
+pub(super) struct Part {
+    pub parent: u32,
+    /// Index into `How::phrases`, and which way the phrase reads; UNNAMED: no name.
+    pub how: u32,
+    pub members: Vec<u32>,
+}
+
+/// Each disc as a tree, so that a dot sits beside what it links to.
+pub(super) struct Tree {
+    /// Its most specific link to something better known in its disc.
+    pub parent: Vec<Option<u32>>,
+    pub part_of: Vec<Option<u32>>,
+    pub parts: Vec<Part>,
+    /// Places on the unit disc, for discs laid out this way.
+    unit: Vec<[f64; 2]>,
+    pub laid_out: Vec<bool>,
+    how: Vec<u32>,
+    children: Vec<Vec<u32>>,
+    size: Vec<u32>,
+    rank_of: Vec<u32>,
+}
+
+/// Splits a rectangle in proportion to `sizes`, always across its longer side.
+fn cut(sizes: &[f64], [x, y, w, h]: [f64; 4], out: &mut [[f64; 4]]) {
+    if sizes.len() <= 1 {
+        out.iter_mut().for_each(|r| *r = [x, y, w, h]);
+        return;
+    }
+    let total: f64 = sizes.iter().sum();
+    let (mut m, mut sum) = (1, sizes[0]);
+    while m < sizes.len() - 1 && sum * 2.0 < total {
+        sum += sizes[m];
+        m += 1;
+    }
+    let f = sum / total;
+    let (first, rest) = out.split_at_mut(m);
+    if w >= h {
+        cut(&sizes[..m], [x, y, w * f, h], first);
+        cut(&sizes[m..], [x + w * f, y, w * (1.0 - f), h], rest);
+    } else {
+        cut(&sizes[..m], [x, y, w, h * f], first);
+        cut(&sizes[m..], [x, y + h * f, w, h * (1.0 - f)], rest);
+    }
+}
+
+impl Tree {
+    /// Lays out every disc big enough. Each dot's parent is the least connected of the better-known
+    /// entries it links to in its disc: the most specific thing that can be said of it, so a person
+    /// goes to their school and the school to its city.
+    pub(super) fn new(g: &WorldGraph, comm: &[u32], members: &[Vec<u32>], gathered: &[Option<u8>], rank: &[u32], rank_of: &[u32], count: &[u32]) -> Tree {
+        let n = g.n;
+        let laid_out: Vec<bool> = members.iter().zip(gathered).map(|(list, ink)| ink.is_none() && list.len() >= MIN_DISC).collect();
+        let mut best: Vec<Option<(u32, u32, u32, u32)>> = vec![None; n];
+        for (e, &(a, b, _)) in g.edges.iter().enumerate() {
+            if comm[a as usize] != comm[b as usize] || !laid_out[comm[a as usize] as usize] || a == b {
+                continue;
+            }
+            let (low, high) = if rank_of[a as usize] < rank_of[b as usize] { (b, a) } else { (a, b) };
+            let named = g.how.as_ref().map(|h| h.relation[e]).filter(|&r| r != u16::MAX);
+            let how = named.map_or(UNNAMED, |r| r as u32 * 2 + (low == b) as u32);
+            let candidate = (count[high as usize], rank_of[high as usize], high, how);
+            if best[low as usize].is_none_or(|x| (candidate.0, candidate.1) < (x.0, x.1)) {
+                best[low as usize] = Some(candidate);
+            }
+        }
+        let parent: Vec<Option<u32>> = best.iter().map(|b| b.map(|x| x.2)).collect();
+        let how: Vec<u32> = best.iter().map(|b| b.map_or(UNNAMED, |x| x.3)).collect();
+        let mut children = vec![Vec::new(); n];
+        let mut size = vec![1u32; n];
+        for &i in rank {
+            if let Some(p) = parent[i as usize] {
+                children[p as usize].push(i);
+            }
+        }
+        for &i in rank.iter().rev() {
+            if let Some(p) = parent[i as usize] {
+                size[p as usize] += size[i as usize];
+            }
+        }
+        let mut tree =
+            Tree { parent, part_of: vec![None; n], parts: Vec::new(), unit: vec![[0.0; 2]; n], laid_out, how, children, size, rank_of: rank_of.to_vec() };
+        for c in (0..members.len()).filter(|&c| members[c].len() >= MIN_DISC && gathered[c].is_none()) {
+            let tops: Vec<u32> = members[c].iter().copied().filter(|&i| tree.parent[i as usize].is_none()).collect();
+            tree.fill(&tops, [-1.0, -1.0, 2.0, 2.0], 0);
+        }
+        tree
+    }
+
+    /// What each part is called, for the viewer, once the map is in the unit square.
+    pub(super) fn names(&self, g: &WorldGraph, anchors: &[[f32; 2]], p: &Placed, radii: &[f32]) -> Vec<Value> {
+        let (Some(how), Some(labels)) = (&g.how, &g.labels) else { return Vec::new() };
+        let mut rows: Vec<(usize, Value)> = Vec::new();
+        for (part, &[x, y]) in self.parts.iter().zip(anchors).filter(|(part, _)| part.how != UNNAMED && part.members.len() >= NAMED_PART) {
+            let phrase = &how.phrases[(part.how / 2) as usize][(part.how % 2) as usize];
+            let mut word = phrase.chars();
+            let Some(first) = word.next() else { continue };
+            let text = format!("{}{} {}", first.to_uppercase(), word.as_str(), labels[part.parent as usize]);
+            let disc = p.comm[part.parent as usize] as usize;
+            let reach = radii[disc] * (part.members.len() as f32 / p.members[disc].len() as f32).sqrt();
+            let round = |v: f32| (v as f64 * 1e5).round() / 1e5;
+            rows.push((part.members.len(), json!([text, round(x), round(y), round(reach)])));
+        }
+        rows.sort_by_key(|r| std::cmp::Reverse(r.0));
+        rows.into_iter().map(|r| r.1).collect()
+    }
+
+    /// Where a node of a laid-out disc goes on the unit disc.
+    pub(super) fn at(&self, i: u32) -> [f64; 2] {
+        self.unit[i as usize]
+    }
+
+    /// Siblings in a rectangle: each big branch gets a cell by its size, and the rest share one.
+    fn fill(&mut self, list: &[u32], rect: [f64; 4], depth: u8) {
+        let (mut big, small): (Vec<u32>, Vec<u32>) = list.iter().partition(|&&i| self.size[i as usize] >= NEST && depth < MAX_DEPTH);
+        big.sort_by_key(|&i| (std::cmp::Reverse(self.size[i as usize]), self.rank_of[i as usize]));
+        let mut rest = Vec::new();
+        small.iter().for_each(|&i| self.gather(i, &mut rest));
+        rest.sort_by_key(|&i| self.rank_of[i as usize]);
+        let mut sizes: Vec<f64> = big.iter().map(|&i| self.size[i as usize] as f64).collect();
+        if !rest.is_empty() {
+            sizes.push(rest.len() as f64);
+        }
+        let mut cells = vec![[0.0; 4]; sizes.len()];
+        cut(&sizes, rect, &mut cells);
+        for (&i, &cell) in big.iter().zip(&cells) {
+            self.branch(i, cell, depth);
+        }
+        if let (false, Some(&[x, y, w, h])) = (rest.is_empty(), cells.last()) {
+            for (j, &i) in rest.iter().enumerate() {
+                let [u, v] = sprinkle(j).map(|c| (c + 1.0) / 2.0);
+                self.unit[i as usize] = square_to_circle([x + u * w, y + v * h]);
+            }
+        }
+    }
+
+    /// A node in the middle of its cell, with its children around it, each way of linking in a cell.
+    fn branch(&mut self, i: u32, [x, y, w, h]: [f64; 4], depth: u8) {
+        self.unit[i as usize] = square_to_circle([x + w / 2.0, y + h / 2.0]);
+        let mut ways: Vec<(u32, Vec<u32>)> = Vec::new();
+        for k in 0..self.children[i as usize].len() {
+            let child = self.children[i as usize][k];
+            let how = self.how[child as usize];
+            match ways.iter_mut().find(|w| w.0 == how) {
+                Some(way) => way.1.push(child),
+                None => ways.push((how, vec![child])),
+            }
+        }
+        let weight = |list: &[u32], size: &[u32]| list.iter().map(|&c| size[c as usize] as u64).sum::<u64>();
+        ways.sort_by_key(|(how, list)| (std::cmp::Reverse(weight(list, &self.size)), *how));
+        let sizes: Vec<f64> = ways.iter().map(|(_, list)| weight(list, &self.size) as f64).collect();
+        let mut cells = vec![[0.0; 4]; sizes.len()];
+        cut(&sizes, [x, y, w, h], &mut cells);
+        for ((how, list), cell) in ways.into_iter().zip(cells) {
+            if how != UNNAMED && list.len() >= MIN_PART {
+                let at = self.parts.len() as u32;
+                list.iter().for_each(|&c| self.part_of[c as usize] = Some(at));
+                self.parts.push(Part { parent: i, how, members: list.clone() });
+            }
+            self.fill(&list, cell, depth + 1);
+        }
+    }
+
+    /// A node and all below it.
+    fn gather(&self, i: u32, out: &mut Vec<u32>) {
+        out.push(i);
+        self.children[i as usize].iter().for_each(|&c| self.gather(c, out));
+    }
+}

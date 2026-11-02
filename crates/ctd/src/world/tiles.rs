@@ -149,7 +149,12 @@ pub(super) struct Tiles<'a> {
     pub(super) minzoom: Vec<u8>,
     pub(super) maxzoom: u8,
     pub(super) labels: Cow<'a, [String]>,
+    /// The middle of each part of a disc.
+    pub(super) anchors: Vec<[f32; 2]>,
 }
+
+/// How strong a dot's line to its part is drawn: thousands of them, so faint.
+const TWIG: u8 = 36;
 
 impl Tiles<'_> {
     /// A level of nodes: every node visible at this zoom, plus links whose ends are both visible.
@@ -181,6 +186,22 @@ impl Tiles<'_> {
                 webs.entry(ta).or_default().push(ei as u32);
                 if tb != ta {
                     webs.entry(tb).or_default().push(ei as u32);
+                }
+            }
+        }
+        // a disc that fills the screen shows what holds it together: each dot's line to its part, and
+        // one line from the part to its parent. Bundled so, thousands of links cost little ink
+        let close = |c: u32| self.square.radii[c as usize] * 2f32.powi(z as i32 + 1) >= 1.0;
+        let tree = p.tree.as_ref();
+        let mut stems: HashMap<(u32, u32), Vec<u32>> = HashMap::new();
+        for (at, part) in tree.iter().flat_map(|t| t.parts.iter().enumerate()) {
+            let parent = part.parent as usize;
+            if close(p.comm[parent]) {
+                let (a, b) = (self.anchors[at], npos[parent]);
+                let (ta, tb) = (tile_of(a[0], a[1], z), tile_of(b[0], b[1], z));
+                stems.entry(ta).or_default().push(at as u32);
+                if tb != ta {
+                    stems.entry(tb).or_default().push(at as u32);
                 }
             }
         }
@@ -249,6 +270,22 @@ impl Tiles<'_> {
                         ([pa[0], pa[1], pb[0], pb[1]], 0, ((w / wide).sqrt() * 255.0) as u8)
                     }));
                 }
+                if let Some(t) = tree {
+                    for &i in &ns {
+                        let i = i as usize;
+                        let Some(parent) = t.parent[i].filter(|_| close(p.comm[i])) else { continue };
+                        let to = match t.part_of[i] {
+                            Some(part) => self.anchors[part as usize],
+                            None if minzoom[parent as usize] <= z => npos[parent as usize],
+                            None => continue,
+                        };
+                        edges.push(([npos[i][0], npos[i][1], to[0], to[1]], 0, TWIG));
+                    }
+                    for &at in stems.get(&(x, y)).into_iter().flatten() {
+                        let (a, b) = (self.anchors[at as usize], npos[t.parts[at as usize].parent as usize]);
+                        edges.push(([a[0], a[1], b[0], b[1]], 0, 255));
+                    }
+                }
                 let bytes = encode(&nodes, &edges);
                 write_tile(self.out, z, x, y, &bytes);
                 (bytes, nodes.len(), edges.len())
@@ -274,7 +311,12 @@ impl Tally {
     }
 }
 
-pub(super) fn write_manifest(spec: &Spec, stats: &Stats, bounds: [f32; 4], regions: &[Region], out: &Path) -> Result<()> {
+pub(super) fn write_parts(parts: &[Value], out: &Path) -> Result<()> {
+    fs::write(out.join("parts.json"), serde_json::to_vec(parts)?)?;
+    Ok(())
+}
+
+pub(super) fn write_manifest(spec: &Spec, stats: &Stats, bounds: [f32; 4], regions: &[Region], parts: bool, out: &Path) -> Result<()> {
     let manifest = json!({
         "version": 0, "kind": spec.kind, "nodes": stats.nodes, "edges": stats.edges, "clusters": stats.clusters,
         "maxzoom": stats.maxzoom, "tile_quota": QUOTA,
@@ -286,6 +328,7 @@ pub(super) fn write_manifest(spec: &Spec, stats: &Stats, bounds: [f32; 4], regio
                    "max_tile_bytes": stats.max_tile_bytes, "max_tile_gzip": stats.max_tile_gzip, "bytes": stats.bytes },
         "entities": spec.entities.as_ref().map(|_| "entities.json"),
         "tile_index": "index.json",
+        "parts": parts.then_some("parts.json"),
         "stability": { "aligned_nodes": stats.aligned_nodes, "mean_drift": stats.drift },
     });
     fs::write(out.join("manifest.json"), serde_json::to_vec_pretty(&manifest)?)?;

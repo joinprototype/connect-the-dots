@@ -34,6 +34,16 @@ pub struct WorldGraph {
     pub ids: Option<Vec<u32>>,
     /// Each node's years, for the era slider; None: nothing here is dated.
     pub years: Option<Vec<[i16; 2]>>,
+    /// What kind of link each edge is; None: unnamed.
+    pub how: Option<How>,
+}
+
+/// How an edge links its two ends, in the vocabulary's words.
+pub struct How {
+    /// By edge: an index into `phrases`, or u16::MAX for a relation with no phrase.
+    pub relation: Vec<u16>,
+    /// The phrase read from each end: `[from a, from b]`.
+    pub phrases: Vec<[String; 2]>,
 }
 
 /// A node with no date, in a tile's years.
@@ -67,7 +77,7 @@ pub struct Stats {
 }
 
 const QUOTA: usize = 1500;
-const MAX_TILE_NODES: usize = 2500;
+const MAX_TILE_NODES: usize = 3000;
 const MAX_TILE_EDGES: usize = 8192;
 /// Zoomed out to here, a big map draws the links between its communities, this many a tile at most.
 const WEB_ZOOM: u8 = 2;
@@ -165,7 +175,7 @@ pub fn synthetic(n: usize, seed: u64) -> WorldGraph {
             }
         }
     }
-    WorldGraph { n, edges, color, labels: None, label_prefix: "Node", keys: None, may_name: None, ids: None, years: None }
+    WorldGraph { n, edges, color, labels: None, label_prefix: "Node", keys: None, may_name: None, ids: None, years: None, how: None }
 }
 
 /// The real content graph as a world: colors by entity type, labels = names. With an atlas, its
@@ -176,6 +186,10 @@ pub fn from_kb(kb: &Kb, atlas: Option<&crate::atlas::Atlas>) -> (WorldGraph, Spe
     let ink = |kind: &str| kb.schema.types.get(kind).and_then(|t| kb.schema.layers.get_index_of(&t.layer)).unwrap_or(0) as u8;
     let mut color: Vec<u8> = kb.entities.iter().map(|e| ink(&e.kind)).collect();
     let mut edges = Vec::new();
+    // family and other sensitive links are real, but a map never makes a named group of them
+    let phrases: Vec<[String; 2]> = kb.schema.relations.values().map(|r| [r.label.clone(), r.inverse.clone()]).collect();
+    let relation_of = |name: &str| kb.schema.relations.get_full(name).filter(|(_, _, r)| !r.sensitive).map_or(u16::MAX, |(i, _, _)| i as u16);
+    let mut relation = Vec::new();
     for e in &kb.edges {
         // withdrawn links and links on no layer ("not the same as") never pull entries together
         let unlayered = kb.schema.relations.get(&e.rel).is_none_or(|r| r.layers.is_empty());
@@ -191,6 +205,7 @@ pub fn from_kb(kb: &Kb, atlas: Option<&crate::atlas::Atlas>) -> (WorldGraph, Spe
                 0.6
             };
             edges.push((a as u32, b as u32, w));
+            relation.push(relation_of(&e.rel));
         }
     }
     let mut labels: Vec<String> = kb.entities.iter().map(|e| e.name.clone()).collect();
@@ -226,6 +241,7 @@ pub fn from_kb(kb: &Kb, atlas: Option<&crate::atlas::Atlas>) -> (WorldGraph, Spe
             let shapes_map = kb.schema.relations.get(&a.relations[r as usize]).is_some_and(|rel| rel.traversable);
             (node[x as usize], node[y as usize], if shapes_map { 0.6 } else { 0.15 })
         }));
+        relation.extend(a.links.iter().map(|&(_, r, _)| relation_of(&a.relations[r as usize])));
         ids = Some(tile_ids);
     }
     // The entry's own dates (decimal years, data-contract.md "Dates"), for the map's era slider.
@@ -256,6 +272,7 @@ pub fn from_kb(kb: &Kb, atlas: Option<&crate::atlas::Atlas>) -> (WorldGraph, Spe
             may_name: Some(may_name),
             ids,
             years: Some(years),
+            how: Some(How { relation, phrases }),
         },
         Spec { kind: "content", palette, palette_labels, entities: Some(entities) },
     )
@@ -308,6 +325,10 @@ struct Placed {
     gathered: Vec<Option<u8>>,
     /// Summed links between communities.
     meta: Vec<(u32, u32, f32)>,
+    /// Which community each node is in.
+    comm: Vec<u32>,
+    /// A big world's discs, arranged by what links to what.
+    tree: Option<Tree>,
     pos: Vec<[f64; 2]>,
     degree: Vec<f64>,
     /// Nodes, most important first, and each node's place in that order.
@@ -356,15 +377,19 @@ fn place(g: &WorldGraph) -> Placed {
     for &i in &rank {
         members[comm[i as usize] as usize].push(i);
     }
+    let tree = (n > GATHER_ABOVE).then(|| Tree::new(g, &comm, &members, &gathered, &rank, &rank_of, &count));
     let mut pos = vec![[0f64; 2]; n];
     for (c, list) in members.iter().enumerate() {
         let r = crad[c];
         let offset = c as f64 * 0.77;
+        let nested = tree.as_ref().filter(|t| t.laid_out[c]);
         // a tile takes the best known first: in a disc too big for one, they must lie all over it, or
         // zoomed out it would be a dense spot with nothing around
         let even = list.len() > QUOTA;
         for (j, &i) in list.iter().enumerate() {
-            let [x, y] = if even {
+            let [x, y] = if let Some(t) = nested {
+                t.at(i)
+            } else if even {
                 sprinkle(j)
             } else {
                 let (a, d) = (j as f64 * GOLDEN + offset, ((j as f64 + 0.5) / list.len() as f64).sqrt());
@@ -389,7 +414,8 @@ fn place(g: &WorldGraph) -> Placed {
             rank_of[i as usize] = r as u32;
         }
     }
-    Placed { nc, cpos, crad, members, gathered, meta: meta_edges(&comm, &g.edges), pos, degree, rank, rank_of }
+    let meta = meta_edges(&comm, &g.edges);
+    Placed { nc, cpos, crad, members, gathered, meta, comm, tree, pos, degree, rank, rank_of }
 }
 
 /// The map in the unit square.
@@ -476,7 +502,19 @@ pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> R
         None => (0..g.n).map(|i| format!("{} {i}", g.label_prefix)).collect::<Vec<_>>().into(),
     };
     let minzoom = min_zooms(&p.rank, &square.nodes, maxzoom);
-    let tiles = Tiles { g, p: &p, square: &square, out, minzoom, maxzoom, labels };
+    let anchors: Vec<[f32; 2]> = p
+        .tree
+        .iter()
+        .flat_map(|t| &t.parts)
+        .map(|part| {
+            let sum = part.members.iter().fold([0f32; 2], |s, &i| [s[0] + square.nodes[i as usize][0], s[1] + square.nodes[i as usize][1]]);
+            sum.map(|v| v / part.members.len() as f32)
+        })
+        .collect();
+    if let Some(t) = &p.tree {
+        write_parts(&t.names(g, &anchors, &p, &square.radii), out)?;
+    }
+    let tiles = Tiles { g, p: &p, square: &square, out, minzoom, maxzoom, labels, anchors };
 
     let stats = Stats { nodes: g.n, edges: g.edges.len(), clusters: p.nc, maxzoom, ..Stats::default() };
     let mut tally = Tally { stats, largest: Vec::new() };
@@ -498,7 +536,7 @@ pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> R
     }
     let named = g.labels.as_ref().map(|l| regions(&p.members, l, g.may_name.as_deref(), &square.centers, &square.radii, &p.gathered)).unwrap_or_default();
     write_tile_index(out, maxzoom)?;
-    write_manifest(spec, &stats, square.bounds(), &named, out)?;
+    write_manifest(spec, &stats, square.bounds(), &named, p.tree.is_some(), out)?;
     write_picture(g, spec, &p, &square, out)?;
     Ok((stats, square.nodes))
 }
@@ -553,7 +591,8 @@ mod tests {
         labels.extend(["Gamma".to_string(), "Delta".to_string()]);
         edges.push((labels.len() as u32 - 2, labels.len() as u32 - 1, 1.0));
         let n = labels.len();
-        let g = WorldGraph { n, edges, color: vec![0; n], labels: Some(labels), label_prefix: "", keys: None, may_name: None, ids: None, years: None };
+        let g =
+            WorldGraph { n, edges, color: vec![0; n], labels: Some(labels), label_prefix: "", keys: None, may_name: None, ids: None, years: None, how: None };
         let spec = Spec { kind: "content", palette: vec!["#6e6e73".into()], palette_labels: vec!["All".into()], entities: None };
         let manifest = |run: u32| -> Value {
             let dir = std::env::temp_dir().join(format!("ctd-world-regions-{}-{run}", std::process::id()));
