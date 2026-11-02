@@ -28,5 +28,6 @@ One short file per decision: context, decision, consequences, and when to revisi
 | [0024](0024-black-on-white.md) | Black on white, and colour only on the dots; one left edge for every page | accepted |
 | [0025](0025-leads-not-links.md) | A scan finds leads, a source makes a link: `ctd gaps` | accepted |
 | [0026](0026-entries-share-files.md) | Entries share files, and generated stories are one page: the host's file limit | accepted |
+| [0027](0027-contact-is-not-a-route.md) | Contact on the record is shown, with its caveat, and is never a route | accepted |
 | [0022](0022-dots-and-lines.md) | Dots and lines: print inks with a job, each story its own ink, Bricolage Grotesque and Literata, stories on white | accepted |
 | [0021](0021-the-world-of-an-era.md) | The Map's era slider draws the world of that year: 30 years from 3000 BCE to 1990, in one grey; the basemap after that | accepted |

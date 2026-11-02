@@ -170,6 +170,9 @@ answered_by:
 # A tale told about someone or something that the record does not support. Routes stay off it.
 tale_about:
   {label: a tale about, inverse: subject of a tale, from: [event, work, concept], to: any, layers: [history], noun: true, traversable: false, seals: true, qualifiers: [role], caveat: "A tale told, not a fact on the record."}
+# Dealings on the record: a payment, a job, a meeting, a flight. Contact is not a finding, so routes stay off it (ADR-0027).
+dealt_with:
+  {label: dealt with, inverse: dealt with, from: [person, org], to: [person, org], layers: [people, money], temporal: true, traversable: false, sensitive: true, qualifiers: [role, amount, currency], caveat: "Contact on the record. By itself it shows neither knowledge of a crime nor a part in one."}
 # Often one writer's reading, so routes stay off it, like every interpretation.
 influenced:
   {label: influenced, inverse: influenced by, from: [person, work, tradition, concept, event], to: [person, work, tradition, concept, org, event], layers: [ideas], traversable: false}
