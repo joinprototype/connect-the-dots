@@ -18,7 +18,7 @@ Routes would make that worse. Epstein would become one of the shortest ways betw
 4. A relation `party_to`, for who a case, an agreement or an event names as a party, also off routes.
 5. `sealed: true` on an entry makes this a rule the build checks: `ctd check` refuses any traversable claim that touches the entry, or an event or work linked to it. The first four writers each opened routes without seeing it, through ordinary links on events ("involved"), so a brief was not enough. Jeffrey Epstein and Ghislaine Maxwell are sealed.
 
-6. The Connect page runs on open data, so the atlas honours the same mark: a sealed entry, and the events and works linked to it there, can end a route but never carry one.
+6. Open data honours the same mark. It goes unread, and for these entries it said things the record refutes, such as an authored "client list". So a sealed entry keeps its dot and loses every open-data link and word, and what is about it leaves the atlas altogether: the events, works and things joined to it, and every entry whose own name or description names it. No page, route, search result or Map dot shows them.
 
 ## Consequences
 

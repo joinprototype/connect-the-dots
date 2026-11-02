@@ -238,7 +238,7 @@
     </details>
     {% endif %}
 
-    {% if entity.wikidata %}<ctd-atlas-links id="open-data" q="{{ entity.wikidata }}"></ctd-atlas-links>{% endif %}
+    {% if entity.wikidata and entity.open_links %}<ctd-atlas-links id="open-data" q="{{ entity.wikidata }}"></ctd-atlas-links>{% endif %}
 
     {{ proof_fold(sources) }}
 

@@ -596,7 +596,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     let pages = QuestionPages::new(kb);
     let ranked = kb.ranked();
     // the dev server leaves the atlas out: it is for the built site, and takes a minute
-    let atlas = if opts.dev { None } else { crate::atlas::load(root)? };
+    let atlas = if opts.dev { None } else { crate::atlas::load(root)?.map(|a| a.without_sealed(kb)) };
     write_search(kb, &pages, &ranked, atlas.as_ref(), out)?;
     for (id, b) in &kb.borders {
         write(&out.join("data").join("borders").join(format!("{id}.json")), fs::read(root.join(&b.rel_path))?)?;

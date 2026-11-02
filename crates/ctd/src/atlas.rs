@@ -149,6 +149,46 @@ pub fn load(root: &Path) -> Result<Option<Atlas>> {
     Ok(Some(Atlas { entries, links, relations }))
 }
 
+impl Atlas {
+    /// Takes out what the record has sealed (ADR-0027). Nobody has read open data, so a sealed entry
+    /// keeps its dot and loses its links and words, and what is about it goes: the events, works and
+    /// things joined to it, and every entry whose own words name it. Nothing downstream, on any page,
+    /// in a route or on the Map, can show them.
+    pub fn without_sealed(mut self, kb: &Kb) -> Atlas {
+        let hand = curated(kb);
+        let sealed: Vec<bool> = self.entries.iter().map(|e| hand.get(&e.qid).is_some_and(|&c| kb.entities[c].sealed)).collect();
+        let names: Vec<String> = self.entries.iter().zip(&sealed).filter(|(_, s)| **s).map(|(e, _)| e.name.clone()).collect();
+        let about = |e: &Entry| names.iter().any(|n| e.name.contains(n.as_str()) || e.summary.contains(n.as_str()));
+        let mut gone: Vec<bool> = self.entries.iter().zip(&sealed).map(|(e, s)| !s && about(e)).collect();
+        for &(x, _, y) in &self.links {
+            for (end, other) in [(x as usize, y as usize), (y as usize, x as usize)] {
+                gone[other] |= sealed[end] && !sealed[other] && matches!(self.entries[other].kind(), "event" | "work" | "artifact");
+            }
+        }
+        let mut next = 0;
+        let place: Vec<u32> = gone
+            .iter()
+            .map(|&g| {
+                next += u32::from(!g);
+                next - 1
+            })
+            .collect();
+        self.links.retain(|&(x, _, y)| [x, y].iter().all(|&e| !sealed[e as usize] && !gone[e as usize]));
+        for link in &mut self.links {
+            (link.0, link.2) = (place[link.0 as usize], place[link.2 as usize]);
+        }
+        let mut i = 0;
+        self.entries.retain_mut(|e| {
+            if sealed[i] {
+                (e.summary, e.image) = (String::new(), String::new());
+            }
+            i += 1;
+            !gone[i - 1]
+        });
+        self
+    }
+}
+
 /// Entries written by hand, by Wikidata number: the atlas points to them instead of standing in.
 pub fn curated(kb: &Kb) -> HashMap<u32, usize> {
     let wikidata = |e: &crate::kb::Entity| e.same_as.get("wikidata").map(|v| v.to_string().trim_matches('"').to_string());
@@ -172,22 +212,6 @@ struct Routes {
     file: Value,
 }
 
-/// Entries no route passes through, though one may end there: those sealed by hand, and the events
-/// and works about them (ADR-0027).
-fn closed(a: &Atlas, kb: &Kb, adjacent: &[Vec<(u32, u8, bool)>]) -> Vec<bool> {
-    let hand = curated(kb);
-    let by_hand = |e: &Entry| hand.get(&e.qid).is_some_and(|&c| kb.entities[c].sealed);
-    let mut closed: Vec<bool> = a.entries.iter().map(by_hand).collect();
-    for (i, e) in a.entries.iter().enumerate() {
-        if by_hand(e) {
-            for &(y, ..) in &adjacent[i] {
-                closed[y as usize] |= matches!(a.entries[y as usize].kind(), "event" | "work");
-            }
-        }
-    }
-    closed
-}
-
 /// Finds the landmarks and every entry's way to the nearest one. Real links first, around the
 /// crossroads; what they do not reach then joins by any link at all.
 fn routes(a: &Atlas, kb: &Kb, adjacent: &[Vec<(u32, u8, bool)>]) -> Routes {
@@ -195,7 +219,6 @@ fn routes(a: &Atlas, kb: &Kb, adjacent: &[Vec<(u32, u8, bool)>]) -> Routes {
     let relation = |r: u8| kb.schema.relations.get(&a.relations[r as usize]);
     let real = |r: u8| relation(r).is_some_and(|x| x.traversable);
     let crossroads = |i: usize| adjacent[i].len() > CROSSROADS;
-    let closed = closed(a, kb, adjacent);
     // best known first, and no two side by side, so that they lie all over the graph
     let mut taken = vec![false; n];
     let mut landmarks: Vec<u32> = Vec::new();
@@ -203,7 +226,7 @@ fn routes(a: &Atlas, kb: &Kb, adjacent: &[Vec<(u32, u8, bool)>]) -> Routes {
         if landmarks.len() == LANDMARKS {
             break;
         }
-        if !taken[i] && !closed[i] && !crossroads(i) && adjacent[i].iter().filter(|l| real(l.1)).count() >= 8 {
+        if !taken[i] && !crossroads(i) && adjacent[i].iter().filter(|l| real(l.1)).count() >= 8 {
             landmarks.push(i as u32);
             adjacent[i].iter().filter(|l| real(l.1)).for_each(|l| taken[l.0 as usize] = true);
         }
@@ -229,7 +252,7 @@ fn routes(a: &Atlas, kb: &Kb, adjacent: &[Vec<(u32, u8, bool)>]) -> Routes {
         let mut queue: VecDeque<u32> = (0..n as u32).filter(|&i| root[i as usize] != NONE).collect();
         while let Some(x) = queue.pop_front() {
             let x = x as usize;
-            if closed[x] || (!any && crossroads(x)) {
+            if !any && crossroads(x) {
                 continue;
             }
             for &(y, r, outgoing) in &adjacent[x] {
@@ -248,7 +271,7 @@ fn routes(a: &Atlas, kb: &Kb, adjacent: &[Vec<(u32, u8, bool)>]) -> Routes {
     let mut crossings: HashMap<(u16, u16), (u32, u32, u32, u16)> = HashMap::new();
     for &(x, r, y) in &a.links {
         let (i, j) = (x as usize, y as usize);
-        if root[i] == NONE || root[j] == NONE || root[i] == root[j] || closed[i] || closed[j] {
+        if root[i] == NONE || root[j] == NONE || root[i] == root[j] {
             continue;
         }
         let Some(said) = phrase(r, true) else { continue };
@@ -523,27 +546,30 @@ mod tests {
     }
 
     #[test]
-    fn a_route_ends_at_a_sealed_entry_and_never_passes_through_it() {
-        let relation = "member_of: {label: member of, inverse: members, from: [person], to: [org]}\n";
+    fn a_sealed_entry_keeps_its_dot_and_loses_its_open_data() {
         let sealed = "---\nid: zoe\ntype: person\nname: Zoe\nsame_as: {wikidata: Q2}\nsealed: true\nclaims: []\n---\n";
-        let (kb, _) = load_kb("atlas-sealed", &[file("content/schema/relations.yaml", relation), file("content/entities/person/zo/zoe.md", sealed)]);
-        let entries: Vec<Entry> = (0..3u32)
-            .map(|i| Entry {
-                qid: i + 1,
-                kind: 0,
-                fame: 100 - i as u16,
-                name: format!("E{i}"),
-                summary: String::new(),
+        let (kb, _) = load_kb("atlas-sealed", &[file("content/entities/person/zo/zoe.md", sealed)]);
+        // Q1, the sealed Q2, an event about Q2, Q4 who has nothing to do with it, and Q5 whose words name Q2
+        let mut entries: Vec<Entry> = [(1, 0), (2, 0), (3, 1), (4, 0), (5, 0)]
+            .map(|(qid, kind)| Entry {
+                qid,
+                kind,
+                fame: 0,
+                name: format!("Q{qid}"),
+                summary: "words nobody read".to_string(),
                 start: None,
                 end: None,
                 coords: None,
-                image: String::new(),
+                image: "a.jpg".to_string(),
             })
-            .collect();
-        // Q1, then the sealed Q2, then Q3, which has no other way out
-        let a = Atlas { entries, links: Vec::new(), relations: vec!["member_of".to_string()] };
-        let adjacent = vec![vec![(1, 0, true)], vec![(0, 0, false), (2, 0, true)], vec![(1, 0, false)]];
-        assert_eq!(closed(&a, &kb, &adjacent), [false, true, false]);
+            .into();
+        entries[4].summary = "a friend of Q2".to_string();
+        let links = vec![(0, 0, 1), (2, 0, 1), (0, 0, 2), (0, 0, 3), (0, 0, 4)];
+        let a = Atlas { entries, links, relations: vec!["member_of".to_string()] }.without_sealed(&kb);
+        assert_eq!(a.entries.iter().map(|e| e.qid).collect::<Vec<u32>>(), [1, 2, 4], "what is about it goes");
+        assert_eq!(a.links, [(0, 0, 2)], "only the link that never touched it stays");
+        assert!(a.entries[1].summary.is_empty() && a.entries[1].image.is_empty());
+        assert_eq!(a.entries[0].image, "a.jpg");
     }
 
     fn gz(path: &Path, text: &str) {

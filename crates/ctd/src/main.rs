@@ -188,6 +188,7 @@ fn run(cli: Cli) -> Result<ExitCode> {
                 eprintln!("no atlas in .cache/atlas: tools/atlas/ fills it");
                 return Ok(ExitCode::FAILURE);
             };
+            let atlas = atlas.without_sealed(&kb);
             let out = out.unwrap_or_else(|| root.join(".cache").join("gaps.tsv"));
             ctd::gaps::run(&root, &kb, &atlas, top, &out)?;
             Ok(ExitCode::SUCCESS)
