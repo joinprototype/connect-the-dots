@@ -92,6 +92,8 @@ struct Group {
     phrase: String,
     color: String,
     layers: String,
+    /// The plain sentence its relation asks to show with it (ADR-0027).
+    caveat: Option<String>,
     items: Vec<ClaimView>,
     /// Links of this kind past the page's cap (a hub's), which the explorer shows.
     more: usize,
@@ -736,7 +738,7 @@ fn schema_json(kb: &Kb, manifest: &Manifest) -> Value {
             (
                 id.clone(),
                 json!({ "label": r.label, "inverse": r.inverse, "layers": r.layers, "traversable": r.traversable, "passive": r.passive,
-                        "sensitive": r.sensitive, "kinship": r.kinship, "attributed": r.attributed, "identity": r.identity }),
+                        "sensitive": r.sensitive, "kinship": r.kinship, "attributed": r.attributed, "identity": r.identity, "caveat": r.caveat }),
             )
         })
         .collect();
@@ -996,7 +998,11 @@ fn connections(cx: &Ctx, ent: &Entity, kept: &[(&Edge, bool)], more: &HashMap<(&
         }
         match groups.last_mut() {
             Some(g) if g.phrase == phrase => g.items.push(view),
-            _ => groups.push(Group { phrase, color: cx.color(e), layers: e.layers.join(" "), items: vec![view], more: 0 }),
+            _ => {
+                let relation = &kb.schema.relations[&e.rel];
+                let caveat = relation.caveat.clone().filter(|_| !relation.legal);
+                groups.push(Group { phrase, color: cx.color(e), layers: e.layers.join(" "), caveat, items: vec![view], more: 0 });
+            }
         }
         last_of_kind.insert((e.rel.as_str(), *outgoing), groups.len() - 1);
     }

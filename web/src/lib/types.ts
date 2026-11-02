@@ -27,6 +27,8 @@ interface RelationDef {
   inverse: string;
   layers: string[];
   traversable: boolean;
+  /** A plain sentence to show with links of this relation. */
+  caveat?: string | null;
   passive: boolean;
   sensitive: boolean;
   /** Family ties. A `role` qualifier ("mother") describes the claim's owner (`from`), not its target. */
@@ -103,6 +105,8 @@ export interface GEdge {
   status: ClaimStatus | string;
   passive: boolean;
   traversable: boolean;
+  /** The plain sentence its relation asks to show with it. */
+  caveat?: string | null;
   /** The claim's qualifiers as written (`role`, `title`, `percent`, `as_of`, ...); `detail` is their text. */
   qualifiers: Record<string, unknown>;
   /** The author's note on the claim. */

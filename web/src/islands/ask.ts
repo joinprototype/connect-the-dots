@@ -6,7 +6,7 @@
 //   or it has no sourced answer yet.
 // The page embeds the names it needs first (#ask-data); search (lib/search.ts) has the rest, with types and
 // question pages (`q`), and an entry's detail file names the pages about it.
-import { loadEntryFile, loadJson } from '../lib/data';
+import { loadEntryFile } from '../lib/data';
 import { el } from '../lib/dom';
 import { candidates } from '../lib/search';
 import type { SearchEntry } from '../lib/types';

@@ -77,7 +77,7 @@ export function statusWords(e: GEdge): string[] {
  * then the author's note when it says something the reason does not. A note that only repeats the reason
  * is left out; one that repeats it and says more replaces it.
  */
-export function claimNotes(e: GEdge): string[] {
+function ownNotes(e: GEdge): string[] {
   const word = STATUS_WORD.get(e.status);
   const unprefixed = (s: string) => (word ? s.replace(new RegExp(`^${word}\\s*:\\s*`, 'i'), '') : s);
   const reason = unprefixed(e.reason?.trim() ?? '');
@@ -89,4 +89,9 @@ export function claimNotes(e: GEdge): string[] {
   if (plain(reason).includes(plain(note))) return [why(reason)];
   if (plain(note).includes(plain(reason))) return [why(note)];
   return [why(reason), note];
+}
+
+/** What a link's card says besides its proof, closing on the sentence its relation asks for (ADR-0027). */
+export function claimNotes(e: GEdge): string[] {
+  return e.caveat ? [...ownNotes(e), e.caveat] : ownNotes(e);
 }

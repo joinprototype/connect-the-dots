@@ -82,6 +82,7 @@
       <figcaption>Over time</figcaption>
       {{ lifeline(d.lifeline) }}
       {% if d.lifeline.more %}<p class="ll-more"><a href="#timeline">{{ d.lifeline.more }} more in the Timeline ›</a></p>{% endif %}
+      {% for c in d.lifeline.caveats %}<p class="legal-caveat">{{ c }}</p>{% endfor %}
     </figure>
     {% endif %}
     {% for block in [("holders", "Who holds " ~ entity.name), ("holdings", entity.name ~ " holds")] %}
@@ -212,6 +213,7 @@
         </li>
         {% endfor %}
       </ul>
+      {% if g.caveat %}<p class="legal-caveat">{{ g.caveat }}</p>{% endif %}
       {% if g.more %}<p class="index-more"><a href="/x/?focus={{ entity.id }}">and {{ g.more }} more ›</a></p>{% endif %}
     </section>
     {% endfor %}

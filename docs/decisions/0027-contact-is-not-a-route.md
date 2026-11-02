@@ -11,7 +11,7 @@ Routes would make that worse. Epstein would become one of the shortest ways betw
 
 ## Decision
 
-1. A relation `dealt_with`, from a person or organization to a person or organization, `sensitive` and `traversable: false`, with `role`, `amount` and `currency`. It shows on both pages, in Explore and in stories, always with its caveat.
+1. A relation `dealt_with`, from a person or organization to a person or organization, `sensitive` and `traversable: false`, with `role`, `amount` and `currency`. It shows on both pages, in Explore and in stories, always with its caveat: on an entry page under its group, the life line and the timeline, in Explore on the link's card.
 2. It needs a documented dealing: a payment, a job, a meeting, a flight. A name in an address book, a mention by someone else and an unverified tip are not dealings, and make no link.
 3. A claim that someone worked for an intelligence service is told as a claim, with `according_to` and `tale_about`, until a government or court record shows it. It makes no link to the service.
 

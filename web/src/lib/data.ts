@@ -155,6 +155,7 @@ export function decodeSlim(schema: Schema, slim: Slim): Pick<GraphData, 'nodes' 
       status: more?.status ?? 'published',
       passive: !!r?.passive,
       traversable: r?.traversable ?? true,
+      caveat: r?.caveat ?? null,
       qualifiers: {},
     };
   });

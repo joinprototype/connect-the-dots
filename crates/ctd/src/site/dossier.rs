@@ -105,7 +105,10 @@ fn lifeline(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], now: f64) -> Value 
                     "according_to": e.according_to.iter().map(|p| kb.name_of(p)).collect::<Vec<_>>(), "status": e.status, "reason": e.reason,
                 }));
             }
-            lifeline = json!({ "rows": rows, "ticks": axis.ticks(), "more": more });
+            let mut caveats: Vec<&str> = tenures.iter().filter_map(|(e, ..)| kb.schema.relations[&e.rel].caveat.as_deref()).collect();
+            caveats.sort_unstable();
+            caveats.dedup();
+            lifeline = json!({ "rows": rows, "ticks": axis.ticks(), "more": more, "caveats": caveats });
         }
     }
     lifeline
