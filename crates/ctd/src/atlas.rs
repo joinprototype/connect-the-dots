@@ -261,7 +261,7 @@ fn routes(a: &Atlas, kb: &Kb, adjacent: &[Vec<(u32, u8, bool)>]) -> Routes {
         }
     }
     let number = |i: u32| a.entries[i as usize].qid;
-    let bridges: serde_json::Map<String, Value> =
+    let bridges: BTreeMap<String, Value> =
         crossings.iter().map(|(&(i, j), &(_, x, y, said))| (format!("{i}:{j}"), json!([number(x), number(y), said]))).collect();
     let file = json!({ "l": landmarks.iter().map(|&i| number(i)).collect::<Vec<u32>>(), "p": phrases, "n": next, "b": bridges });
     Routes { towards, file }
