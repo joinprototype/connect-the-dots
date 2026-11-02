@@ -1465,7 +1465,7 @@ pub(crate) mod tests {
     fn frontmatter_errors_give_the_files_line_numbers() {
         let (_, diags) = load(
             "kb-lines",
-            &[file("content/entities/person/zo/zoe.md", &format!("---\nid: zoe\ntype: person\nname: Zoe\nsealed: true\nclaims:\n{party}---\n")),
+            &[file("content/entities/person/zo/zoe.md", "---\nid: zoe\ntype: person\nname: Zoe\nclaims:\n  - id: c1\n   rel: founded\n---\n")],
         );
         let msg = said(&diags, "invalid frontmatter").join(" ");
         // the link whose `rel` is lost to a bad indent starts on line 6 of the file (line 5 of the YAML)
@@ -1563,6 +1563,10 @@ pub(crate) mod tests {
 
     #[test]
     fn no_route_touches_a_sealed_entry_or_an_event_about_it() {
+        let types = file(
+            "content/schema/entity-types.yaml",
+            "person: {label: Person, plural: People, layer: people, family: true, span: Life}\nevent: {label: Event, plural: Events, layer: power, span: Dates}\n",
+        );
         let relations = file(
             "content/schema/relations.yaml",
             "party_to: {label: party to, inverse: parties, from: [person], to: [event], layers: [power], traversable: false}\n\
@@ -1574,13 +1578,11 @@ pub(crate) mod tests {
         let (_, diags) = load(
             "kb-sealed",
             &[
+                types,
                 relations,
                 source("press", "T2"),
                 entity("person", "ann", "Ann", ""),
-                file(
-                    "content/entities/person/zo/zoe.md",
-                    &format!("---\nuid: 01J0000000000000000000ZOE1\nid: zoe\ntype: person\nname: Zoe\nsealed: true\nclaims:\n{party}---\n"),
-                ),
+                file("content/entities/person/zo/zoe.md", &format!("---\nid: zoe\ntype: person\nname: Zoe\nsealed: true\nclaims:\n{party}---\n")),
                 entity("event", "inquiry", "An inquiry", &involved),
             ],
         );
