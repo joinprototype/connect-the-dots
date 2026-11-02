@@ -3,7 +3,7 @@ uid: 01M6EXZTADTE9ARAHGHYSZPWDS
 id: thomas-massie
 type: person
 name: "Thomas Massie"
-summary: "Republican U.S. Representative from Kentucky; co-author of the Epstein Files Transparency Act."
+summary: "Republican U.S. Representative from Kentucky."
 claims:
   - {id: "c1", rel: "party_to", to: "epstein-files-transparency-act", when: "2025-07", role: "co-author; introduced the bill", src: [{s: "cbs-2025-11-17-trump-reverses-on-epstein-files", quote: "The bill, titled the Epstein Files Transparency Act, was first introduced in July by Democratic Rep. Ro Khanna of California and Republican Rep. Thomas Massie of Kentucky"}]}
   - {id: "c2", rel: "party_to", to: "epstein-survivors-at-the-capitol-2025-09-03", role: "spoke at the press conference", src: [{s: "abc-2025-09-03-epstein-survivors-capitol", quote: "I hope my colleagues are watching this press conference. I want them to think, what if this was your sister? What if this was your daughter?", by: "thomas-massie"}]}

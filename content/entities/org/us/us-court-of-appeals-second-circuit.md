@@ -15,4 +15,10 @@ claims:
     role: "affirmed the dismissal as modified"
     src:
       - {s: ca2-1987-in-re-bhopal-809f2d195, quote: "In short, the plant has been constructed and managed by Indians in India."}
+  - id: c2
+    rel: party_to
+    to: united-states-v-maxwell
+    role: "appeals court that affirmed the conviction on 17 September 2024"
+    src:
+      - {s: ca2-2024-united-states-v-maxwell, quote: "we AFFIRM the District Court's June 29, 2022, judgment of conviction."}
 ---

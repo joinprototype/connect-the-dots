@@ -48,4 +48,10 @@ claims:
     note: "The words of a JPMorgan spokeswoman, as American Banker quotes them. She said the bank “strongly disagrees with the report’s conclusions”."
     src:
       - {s: americanbanker-2026-08-04-wyden-report, quote: "Every one of these reports went to the government — and at no point did any law enforcement agency contact the bank, request further records or provide information that would have supported additional action by the bank,", by: jpmorgan-chase}
+  - id: c54
+    rel: party_to
+    to: class-actions-by-epstein-survivors-against-banks
+    role: "agreed in 2023 to pay $290 million; Bloomberg’s source says without admitting liability"
+    src:
+      - {s: reuters-2026-08-28-bank-of-america-settlement, quote: "Doe’s lawyers reached settlements of $290 million with JPMorgan Chase and $75 million with Deutsche Bank in 2023 on behalf of Epstein’s accusers."}
 ---

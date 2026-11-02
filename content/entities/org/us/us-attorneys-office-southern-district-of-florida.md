@@ -4,7 +4,7 @@ id: us-attorneys-office-southern-district-of-florida
 type: org
 name: "U.S. Attorney's Office, Southern District of Florida"
 aliases: ["USAO-SDFL"]
-summary: "Federal prosecutors for southern Florida, who signed the 2007 non-prosecution agreement with Epstein."
+summary: "Federal prosecutors for southern Florida."
 claims:
   - id: c1
     rel: party_to

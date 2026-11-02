@@ -3,7 +3,7 @@ uid: 01M6EW17SN2YHSCRPC2Y12AVSA
 id: deutsche-bank
 type: org
 name: "Deutsche Bank"
-summary: "German bank. Epstein’s main bank from August 2013 to December 2018, by the New York regulator’s order."
+summary: "German bank."
 same_as: {wikidata: Q66048}
 claims:
   - id: c1
@@ -23,6 +23,16 @@ claims:
     case: "DFS consent order of July 2020"
     src:
       - {s: nysdfs-2020-07-07-deutsche-bank-penalty, quote: "have agreed to pay $150 million in penalties as part of a Consent Order entered into with the New York State Department of Financial Services"}
+  - id: c3
+    rel: party_to
+    to: deutsche-bank-consent-order-2020
+    role: "agreed to the penalty"
+    src:
+      - {s: nysdfs-2020-07-07-deutsche-bank-penalty, quote: "have agreed to pay $150 million in penalties as part of a Consent Order entered into with the New York State Department of Financial Services"}
+  - id: c4
+    rel: party_to
+    to: class-actions-by-epstein-survivors-against-banks
+    role: "agreed in 2023 to pay $75 million"
+    src:
+      - {s: reuters-2026-08-28-bank-of-america-settlement, quote: "Doe’s lawyers reached settlements of $290 million with JPMorgan Chase and $75 million with Deutsche Bank in 2023 on behalf of Epstein’s accusers."}
 ---
-
-German bank. Epstein’s main bank from August 2013 to December 2018, by the New York regulator’s order.

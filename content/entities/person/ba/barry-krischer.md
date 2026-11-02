@@ -3,7 +3,7 @@ uid: 01M6EWXVTCXSQ63TH8QMKBWAC5
 id: barry-krischer
 type: person
 name: "Barry Krischer"
-summary: "Palm Beach County State Attorney during the 2005 to 2008 handling of the Epstein case."
+summary: "Former State Attorney for Palm Beach County, Florida."
 claims:
   - id: c1
     rel: head_of

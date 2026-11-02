@@ -31,7 +31,7 @@ Every sum is the one a court, regulator, university or person gave, and the stor
   reveal: [claim-of-an-epstein-client-list, jeffrey-epstein, us-department-of-justice, fbi]
   reveal_claims: [claim-of-an-epstein-client-list#c1, claim-of-an-epstein-client-list#c2, claim-of-an-epstein-client-list#c3]
   overlay: {kind: quote, source: doj-fbi-memo-2025-07-07, quote: "This systematic review revealed no incriminating “client list.”", caption: "Justice Department and FBI memo, 7 July 2025"}
-  narration: "**No incriminating list.** NPR reported that in February 2025 the Attorney General told Fox News that Epstein's client list was “sitting on my desk right now to review.” The White House said she meant “the entirety of all the paperwork” on his crimes. The July memo found no incriminating list, no credible evidence that he blackmailed prominent people, and no evidence to open a case against uncharged third parties. That is the government's account of its own review; it does not speak to money, and the money is on the record."
+  narration: "**No incriminating list.** NPR reported that in February 2025 the Attorney General told Fox News that Epstein's client list was “sitting on my desk right now to review.” The White House said she meant “the entirety of all the paperwork” on his crimes, and she later said she meant the files. The July memo found no incriminating list, no credible evidence that he blackmailed prominent people, and no evidence to open a case against uncharged third parties. That is the government's account of its own review; it does not speak to money, and the money is on the record."
   duration: 13
 
 - shot: wexner-hired-him
@@ -45,7 +45,7 @@ Every sum is the one a court, regulator, university or person gave, and the stor
   narration: "**Wexner hired him.** Les Wexner, founder of the retailer L Brands, says he met Epstein in the mid-1980s and later hired him to manage his wealth, and at one point gave him power of attorney. In a 2019 letter, unsigned and undated in the copy CNN saw, he said Epstein had “misappropriated vast sums of money from me and my family”; no court ruling on that was found. Some Democrats on the committee pushed back on his account. CBS reported in February 2026 that he had not been charged; no later report of a charge was found."
   duration: 13
 
-- shot: after-the-plea
+- shot: after-the-deal
   view: graph
   picture: none
   focus: les-wexner
@@ -53,7 +53,7 @@ Every sum is the one a court, regulator, university or person gave, and the stor
   reveal: [les-wexner, jeffrey-epstein, house-oversight-epstein-inquiry, house-oversight-committee]
   reveal_claims: [les-wexner#c1, house-oversight-epstein-inquiry#c2]
   overlay: {kind: quote, source: aljazeera-2026-02-19-wexner, quote: "While others visited Epstein in jail and associated with him after his release, I did not. Nor did I witness, condone, or enable his crimes in any way,", caption: "Les Wexner, statement to the House Oversight Committee, February 2026"}
-  narration: "**After the plea.** Wexner says he cut ties in 2007 and never spoke to Epstein again. Justice Department records show a June 2008 email from Wexner to Epstein, after the plea deal was announced: “All I can say is I feel sorry.” His spokesperson says the 2007 date was when he fired Epstein as financial adviser, revoked the power of attorney and removed his name from the bank accounts. No reply from Wexner about that email was found."
+  narration: "**After the deal.** Wexner says he cut ties in 2007 and never spoke to Epstein again. Justice Department records show a June 2008 email from Wexner to Epstein, after the plea deal was announced: “All I can say is I feel sorry.” His spokesperson says the 2007 date was when he fired Epstein as financial adviser, revoked the power of attorney and removed his name from the bank accounts. No reply from Wexner about that email was found."
   duration: 13
 
 - shot: leon-black
@@ -62,7 +62,7 @@ Every sum is the one a court, regulator, university or person gave, and the stor
   focus: leon-black
   time: "2021-01-25"
   reveal: [leon-black, apollo-global-management, dechert-review-for-apollo-2021, jeffrey-epstein]
-  reveal_claims: [leon-black#c1, leon-black#c2, leon-black#c3, dechert-review-for-apollo-2021#c1, dechert-review-for-apollo-2021#c2]
+  reveal_claims: [leon-black#c1, leon-black#c2, leon-black#c3, apollo-global-management#c1, leon-black#c6]
   overlay: {kind: stat, value: "$158 million", label: "Paid by Leon Black to Epstein, 2012 to 2017, after Epstein's 2008 guilty plea, by the review for Apollo", source: reuters-2021-01-26-black-steps-down, quote: "Black paid Epstein $158 million for advice on tax and estate planning and related services between 2012 and 2017, according to the review."}
   narration: "**Leon Black.** A review by the law firm Dechert for Apollo, the firm he co-founded, reported the payments and found Black was not involved in Epstein's criminal activities. Reuters also reported two loans from Black to Epstein of $30.5 million in 2017, of which $20 million went unpaid. Black says he knew Epstein had pleaded guilty in 2008 and was told it was an isolated incident, and that he learned of the wider crimes in 2019. He said he “deeply” regretted his involvement, and stepped down as CEO."
   duration: 13
@@ -73,7 +73,7 @@ Every sum is the one a court, regulator, university or person gave, and the stor
   focus: leon-black
   time: "2026-09-16"
   reveal: [leon-black, house-oversight-committee, house-oversight-epstein-inquiry]
-  reveal_claims: [house-oversight-epstein-inquiry#c3, house-oversight-epstein-inquiry#c1]
+  reveal_claims: [house-oversight-epstein-inquiry#c3, house-oversight-committee#c5]
   overlay: {kind: quote, source: ap-2026-06-26-black-defends-payments, quote: "I gave Epstein a second chance, as did many others. I wish I had not,", caption: "Leon Black, House Oversight Committee, 26 June 2026"}
   narration: "**Black's answer.** On 26 June 2026 Black told the House Oversight Committee that Epstein deceived him: “I knew Jekyll. I didn't know Hyde.” He said he paid for legitimate purposes, in part because of his “unrivaled network of relationships.” On 3 September he refused a sworn deposition and sued the committee over its subpoenas. On 16 September the House held him in contempt for defying them and referred the matter to the Justice Department, which decides whether to prosecute. That is not a finding about Epstein. His lawyers: he “had no knowledge of any of Epstein's heinous conduct.” The sources read hold no ruling on his suit and no charge to 2 November."
   duration: 13
@@ -84,9 +84,9 @@ Every sum is the one a court, regulator, university or person gave, and the stor
   focus: leon-black
   time: "2023-01"
   reveal: [leon-black, us-virgin-islands]
-  reveal_claims: [leon-black#c5]
+  reveal_claims: [leon-black#c5, leon-black#c7]
   overlay: {kind: stat, value: "$62.5 million", label: "What Leon Black agreed to pay the U.S. Virgin Islands in January 2023, to be released from Epstein-related claims. His spokesman says the deal suggests no knowledge of misconduct", source: cnn-2023-08-04-black-virgin-islands, quote: "According to a settlement document obtained by CNN, Black agreed in January to pay the Virgin Islands government $62.5 million in cash. In exchange, the Virgin Islands released Black from any current and future legal claims related to Jeffrey Epstein."}
-  narration: "**Black and the Virgin Islands.** In exchange, CNN reported, the territory released Black from any current and future legal claims related to Epstein; $15 million of the sum goes to a trust fund for counseling and mental health services. His spokesman said Black paid Epstein “for legitimate financial advisory services, which based on everything now known, he very much regrets,” and: “There is no suggestion in the USVI settlement that Mr. Black was aware of or participated in any misconduct.” The sources read do not say whether the settlement holds an admission."
+  narration: "**Black and the Virgin Islands.** In exchange, CNN reported, the territory released Black from any current and future legal claims related to Epstein; $15 million goes to a trust fund for counseling and mental health services. His spokesman: “There is no suggestion in the USVI settlement that Mr. Black was aware of or participated in any misconduct.” The sources read do not say whether the settlement holds an admission. Separately, two women sued him in New York, each saying he abused her. He denied it; his lawyer called one complaint a “work of fiction.” One ended her suit in 2024. A judge sanctioned the other and her former lawyer in April 2026, then in October dismissed the suit at her request; she wrote that this was “not a concession concerning the truth of my allegations.” Neither reached a verdict."
   duration: 13
 
 - shot: the-senators-count
@@ -166,7 +166,7 @@ Every sum is the one a court, regulator, university or person gave, and the stor
   reveal: [us-virgin-islands, estate-of-jeffrey-epstein, jpmorgan-chase, leon-black]
   reveal_claims: [estate-of-jeffrey-epstein#c1, jpmorgan-chase#c52, leon-black#c5]
   overlay: {kind: stat, value: "$105 million", label: "Cash the estate agreed to pay the U.S. Virgin Islands, plus half the proceeds of the sale of Little St. James", source: npr-2022-12-01-virgin-islands-estate-settlement, quote: "Epstein's estate agreed to pay the territorial government $105 million in cash and half of the proceeds from the sale of Little St. James island where Epstein owned a home and authorities allege many of his crimes took place."}
-  narration: "**The Virgin Islands.** Epstein owned two islands in the territory. Its sex trafficking suit against his estate ended with $105 million and half the sale of Little St. James; in the same case the estate agreed to return more than $80 million in tax benefits that officials say Epstein and his co-defendants obtained fraudulently. The co-executors “deny any allegations of wrongdoing.” JPMorgan paid $75 million; its filings accused the territory of a “quid pro quo” relationship with Epstein, and the territory's reply was not found. Black was not sued in any source read: his $62.5 million ended potential claims, and his spokesman says it suggests no knowledge of misconduct."
+  narration: "**The Virgin Islands.** Epstein owned two islands in the territory. Its sex trafficking suit against his estate ended with $105 million and half the sale of Little St. James; in the same case the estate agreed to return more than $80 million in tax benefits that officials say Epstein and his co-defendants obtained fraudulently. The co-executors “deny any allegations of wrongdoing.” JPMorgan paid $75 million; its filings accused the territory of a “quid pro quo” relationship with Epstein, and the territory's reply was not found. Black's $62.5 million ended potential claims, “to avoid a possible lawsuit,” Reuters wrote; his spokesman says it suggests no knowledge of misconduct."
   duration: 13
 
 - shot: the-estate
@@ -175,7 +175,7 @@ Every sum is the one a court, regulator, university or person gave, and the stor
   focus: estate-of-jeffrey-epstein
   time: "2021-08-09"
   reveal: [estate-of-jeffrey-epstein, epstein-victims-compensation-program, new-mexico-suit-against-epstein-co-executors-2026]
-  reveal_claims: [epstein-victims-compensation-program#c1, new-mexico-suit-against-epstein-co-executors-2026#c1]
+  reveal_claims: [estate-of-jeffrey-epstein#c2, new-mexico-suit-against-epstein-co-executors-2026#c1]
   overlay: {kind: stat, value: "More than $577 million", label: "What Epstein's will, filed in the U.S. Virgin Islands, put his holdings at, two days before he died. His art was listed but not appraised", source: cbs-2019-08-19-epstein-will, quote: "The will, filed in the U.S. Virgin Islands and obtained by CBS News, showed that Epstein was worth more than $577 million."}
   narration: "**The estate.** A fund was set up to compensate survivors. Its administrator, Jordana Feldman, said it paid about $121 million to about 150 people. The estate's lawyer later said 136. On 21 October 2026 New Mexico's attorney general sued the estate's two co-executors, Epstein's former lawyer and accountant, seeking to stop them profiting “from the illegal activity that they enabled and furthered.” Survivor Anouska De Georgiou: “My abuse did not happen in isolation.” Their lawyer: they “emphatically reject” the allegations."
   duration: 13
@@ -211,7 +211,7 @@ Every sum is the one a court, regulator, university or person gave, and the stor
   reveal: [bill-gates, gates-foundation, jeffrey-epstein, house-oversight-epstein-inquiry]
   reveal_claims: [bill-gates#c80, house-oversight-epstein-inquiry#c4]
   overlay: {kind: quote, source: aljazeera-2026-06-10-gates-testifies, quote: "Epstein claimed he could raise billions of dollars for global health from people for whom he provided tax and estate services,", caption: "Bill Gates, opening statement to the House Oversight Committee, 10 June 2026"}
-  narration: "**A pitch that came to nothing.** Gates says he met Epstein three times in 2011 and twice in 2012, after the plea, knowing the conviction was “of a sexual nature” but not that Epstein was a registered sex offender. He talked of giving structures in 2013 and 2014 and cut contact in December 2014: “No vehicle for charitable giving was ever created and no funds were raised.” He says Epstein tried to use personal information to pressure him back; it failed. The Gates Foundation says it never transferred funds to Epstein. Gates calls meeting him “a grave error in judgment.” PBS reported that no survivor had publicly accused him of wrongdoing."
+  narration: "**A pitch that came to nothing.** Gates says he met Epstein three times in 2011 and twice in 2012, after the plea, knowing the conviction was “of a sexual nature” but not that Epstein was a registered sex offender. He talked of giving structures in 2013 and 2014 and cut contact in December 2014: “No vehicle for charitable giving was ever created and no funds were raised.” He says Epstein tried to use personal information to pressure him back; it failed. He told the committee he was not blackmailed, but that emails raise “a serious probability that he contemplated blackmailing me.” The Gates Foundation says it never transferred funds to Epstein. Gates calls meeting him “a grave error in judgment.” PBS reported that no survivor had publicly accused him of wrongdoing."
   duration: 13
 
 - shot: where-the-money-came-from

@@ -3,7 +3,7 @@ uid: 01M6EWXVYJMEHSJ4AQF6SMSEX3
 id: julie-k-brown
 type: person
 name: "Julie K. Brown"
-summary: "Miami Herald reporter whose 2018 series \"Perversion of Justice\" revisited the Epstein case."
+summary: "Investigative reporter at the Miami Herald; author of the 2018 series \"Perversion of Justice\"."
 same_as: {wikidata: Q49740121}
 claims:
   - id: c1

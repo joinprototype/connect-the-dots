@@ -7,18 +7,6 @@ summary: "Suits brought for survivors, under the pseudonym Jane Doe, against JPM
 when: "2022/2026-08-27"
 sealed: true
 claims:
-  - id: c1
-    rel: answered_by
-    to: jpmorgan-chase
-    role: "agreed in 2023 to pay $290 million; Bloomberg’s source says without admitting liability"
-    src:
-      - {s: reuters-2026-08-28-bank-of-america-settlement, quote: "Doe’s lawyers reached settlements of $290 million with JPMorgan Chase and $75 million with Deutsche Bank in 2023 on behalf of Epstein’s accusers."}
-  - id: c2
-    rel: answered_by
-    to: deutsche-bank
-    role: "agreed in 2023 to pay $75 million"
-    src:
-      - {s: reuters-2026-08-28-bank-of-america-settlement, quote: "Doe’s lawyers reached settlements of $290 million with JPMorgan Chase and $75 million with Deutsche Bank in 2023 on behalf of Epstein’s accusers."}
   - id: c3
     rel: answered_by
     to: bank-of-america

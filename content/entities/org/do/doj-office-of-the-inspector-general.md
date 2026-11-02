@@ -11,4 +11,10 @@ claims:
     to: us-department-of-justice
     src:
       - {s: doj-oig-2023-epstein-mcc-report, quote: "the Department of Justice (DOJ) Office of the Inspector General (OIG)"}
+  - id: c2
+    rel: party_to
+    to: death-of-jeffrey-epstein
+    role: "investigated the Bureau of Prisons' conduct"
+    src:
+      - {s: doj-oig-2023-epstein-mcc-report, quote: "The OIG conducted this investigation jointly with the Federal Bureau of Investigation (FBI), with the OIG's investigative focus being the conduct of BOP personnel."}
 ---

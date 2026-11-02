@@ -3,7 +3,7 @@ uid: 01M6EWXVQV3YABB93MJ92B750N
 id: palm-beach-county-state-court
 type: org
 name: "Palm Beach County state court"
-summary: "Florida state court in which Epstein pleaded guilty on 30 June 2008."
+summary: "Florida state court for Palm Beach County."
 claims:
   - id: c1
     rel: party_to

@@ -14,10 +14,4 @@ claims:
     to: new-york-city
     src:
       - {s: nbc-2019-08-27-epstein-accusers-speak, quote: "shared their stories Tuesday in a Manhattan courtroom."}
-  - id: c2
-    rel: answered_by
-    to: us-district-court-southern-district-of-new-york
-    role: "court that held the hearing"
-    src:
-      - {s: nbc-2019-08-27-epstein-accusers-speak, quote: "More than 20 women either spoke in court or read statements."}
 ---
