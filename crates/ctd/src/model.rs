@@ -143,6 +143,9 @@ pub struct EntityFront {
     pub coords: Option<[f64; 2]>,
     #[serde(default)]
     pub same_as: BTreeMap<String, Scalar>,
+    /// Questions never asked of this entry: an auto answer would misread it (a persecution, say).
+    #[serde(default)]
+    pub not_asked: Vec<String>,
     #[serde(default)]
     pub image: Option<serde_json::Value>,
     #[serde(default)]

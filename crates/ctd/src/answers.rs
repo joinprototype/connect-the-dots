@@ -188,7 +188,7 @@ pub fn pages(kb: &Kb) -> Vec<Answer<'_>> {
         let mut found: Vec<(bool, Answer)> = kb
             .entities
             .iter()
-            .filter(|e| q.subjects.contains(&e.kind))
+            .filter(|e| q.subjects.contains(&e.kind) && !e.not_asked.contains(&q.id))
             .map(|e| build(kb, &p, qi, e))
             .filter(|a| a.earns_page(q))
             .map(|a| (kb.featured.questions.contains(&a.id(kb)), a))

@@ -45,6 +45,8 @@ pub struct Entity {
     pub place: Option<String>,
     pub coords: Option<[f64; 2]>,
     pub same_as: BTreeMap<String, String>,
+    /// Question ids (questions.yaml) that get no page for this entry.
+    pub not_asked: Vec<String>,
     pub image: Option<Value>,
     pub body: String,
     pub rel_path: String,
@@ -541,6 +543,7 @@ fn read_entities(schema: &Schema, docs: &[EntityDoc], diags: &mut Vec<Diag>) -> 
             place: f.place.clone(),
             coords: f.coords,
             same_as,
+            not_asked: f.not_asked.clone(),
             image,
             body: doc.body.clone(),
             rel_path: file.clone(),

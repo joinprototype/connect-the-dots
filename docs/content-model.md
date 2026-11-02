@@ -75,6 +75,7 @@ summary: Entrepreneur; CEO of Tesla and SpaceX.   # one neutral line
 when: 1971-06-28/..                  # lifespan for people; extent for events and orgs
 place: pretoria                      # optional primary place
 same_as: {wikidata: Q317521}
+# not_asked: [benefited]   # question ids that get no generated page: for an entry a template answer would misread
 image:                               # optional; url must be http(s); the ingest bot adds sha256
   url: https://upload.wikimedia.org/...
   license: CC BY-SA 4.0
