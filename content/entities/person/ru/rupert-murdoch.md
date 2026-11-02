@@ -25,4 +25,5 @@ claims:
     note: "NPR called it the Murdochs' Wall Street Journal."
     src:
       - {s: npr-2023-lachlan-murdoch-investors, quote: "Fox host Neil Cavuto, bemused, cited the Murdochs' Wall Street Journal in announcing the figure"}
+  - {id: "c4", rel: "party_to", to: "trump-suit-over-wsj-epstein-story", role: "defendant, with the Journal", src: [{s: "npr-2026-trump-wsj-suit-dismissed", quote: "U.S. District Judge Darrin Gayles in Miami dismissed the suit with prejudice, ruling that the president did not prove the defendants made defamatory statements with actual malice as required by law."}]}
 ---

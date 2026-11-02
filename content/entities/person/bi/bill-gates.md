@@ -81,6 +81,16 @@ claims:
     src:
       - {s: the-nation-2020-03-17-gates, at: "Article", quote: "pushing privately run charter schools into states where courts and voters have rejected them, using earmarked funds to direct the World Health Organization to work on the foundation’s global health agenda"}
       - {s: the-nation-2020-03-17-gates, at: "Article", quote: "Gates, who routinely appears on the Forbes list of the world’s most powerful people, has proved that philanthropy can buy political influence."}
+  - id: c80
+    rel: dealt_with
+    to: jeffrey-epstein
+    when: "2011/2014-12"
+    role: "met and corresponded with him about raising money for global health, after his 2008 plea"
+    note: "Gates says he knew of Epstein’s earlier legal trouble and that the conviction was “of a sexual nature”, but not the extent of his crimes, and calls meeting him “a grave error in judgment”. The Gates Foundation says it never transferred funds to Epstein. PBS reported in June 2026 that no Epstein survivor had publicly accused Gates of wrongdoing."
+    src:
+      - {s: abc7-2026-06-10-gates-oversight, quote: "My interactions with Epstein began with a limited number of preliminary meetings -- three in 2011 and two in 2012 -- during which I talked about the goals of my work,", by: bill-gates}
+      - {s: pbs-2026-06-10-gates-takeaways, quote: "Gates later clarified that he knew Epstein’s conviction was “of a sexual nature,” but he was unaware that Epstein was a registered sex offender."}
+      - {s: aljazeera-2026-06-10-gates-testifies, quote: "At that point, I concluded Epstein would never deliver on his promises. I told him we would go no further and stopped communicating or meeting with him,", by: bill-gates}
 ---
 
 Bill Gates co-founded [[microsoft]] with [[paul-allen]] in 1975, in [[albuquerque]]. He later turned to philanthropy.

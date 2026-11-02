@@ -16,4 +16,6 @@ claims:
     note: "The Supreme Court of India dates Judge Keenan’s order 10 June 1986; the Press Trust of India dates it 12 May 1986."
     src:
       - {s: sc-india-2023-curative-order, quote: "Judge Keenan allowed this plea vide order dated 10.06.1986 and dismissed the consolidated action on the basis of several factors, including the presence of witnesses and evidence in India."}
+  - {id: "c2", rel: "party_to", to: "epstein-grand-jury-unsealing-refused-2025", role: "judges there refused the requests in August 2025", src: [{s: "npr-2025-08-22-trump-bondi-epstein-timeline", quote: "Federal judge Richard M. Berman denies Bondi's request to unseal records related to the Epstein case in New York"}]}
+  - {id: "c3", rel: "party_to", to: "giuffre-v-prince-andrew-settlement-2022", role: "court where the suit was filed", src: [{s: "giuffre-v-prince-andrew-2022-02-15-settlement", quote: "Giuffre v. Prince Andrew, Case No. 21-cv-06702-LAK"}]}
 ---
