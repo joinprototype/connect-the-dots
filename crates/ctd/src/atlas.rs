@@ -172,6 +172,22 @@ struct Routes {
     file: Value,
 }
 
+/// Entries no route passes through, though one may end there: those sealed by hand, and the events
+/// and works about them (ADR-0027).
+fn closed(a: &Atlas, kb: &Kb, adjacent: &[Vec<(u32, u8, bool)>]) -> Vec<bool> {
+    let hand = curated(kb);
+    let by_hand = |e: &Entry| hand.get(&e.qid).is_some_and(|&c| kb.entities[c].sealed);
+    let mut closed: Vec<bool> = a.entries.iter().map(by_hand).collect();
+    for (i, e) in a.entries.iter().enumerate() {
+        if by_hand(e) {
+            for &(y, ..) in &adjacent[i] {
+                closed[y as usize] |= matches!(a.entries[y as usize].kind(), "event" | "work");
+            }
+        }
+    }
+    closed
+}
+
 /// Finds the landmarks and every entry's way to the nearest one. Real links first, around the
 /// crossroads; what they do not reach then joins by any link at all.
 fn routes(a: &Atlas, kb: &Kb, adjacent: &[Vec<(u32, u8, bool)>]) -> Routes {
@@ -179,6 +195,7 @@ fn routes(a: &Atlas, kb: &Kb, adjacent: &[Vec<(u32, u8, bool)>]) -> Routes {
     let relation = |r: u8| kb.schema.relations.get(&a.relations[r as usize]);
     let real = |r: u8| relation(r).is_some_and(|x| x.traversable);
     let crossroads = |i: usize| adjacent[i].len() > CROSSROADS;
+    let closed = closed(a, kb, adjacent);
     // best known first, and no two side by side, so that they lie all over the graph
     let mut taken = vec![false; n];
     let mut landmarks: Vec<u32> = Vec::new();
@@ -186,7 +203,7 @@ fn routes(a: &Atlas, kb: &Kb, adjacent: &[Vec<(u32, u8, bool)>]) -> Routes {
         if landmarks.len() == LANDMARKS {
             break;
         }
-        if !taken[i] && !crossroads(i) && adjacent[i].iter().filter(|l| real(l.1)).count() >= 8 {
+        if !taken[i] && !closed[i] && !crossroads(i) && adjacent[i].iter().filter(|l| real(l.1)).count() >= 8 {
             landmarks.push(i as u32);
             adjacent[i].iter().filter(|l| real(l.1)).for_each(|l| taken[l.0 as usize] = true);
         }
@@ -212,7 +229,7 @@ fn routes(a: &Atlas, kb: &Kb, adjacent: &[Vec<(u32, u8, bool)>]) -> Routes {
         let mut queue: VecDeque<u32> = (0..n as u32).filter(|&i| root[i as usize] != NONE).collect();
         while let Some(x) = queue.pop_front() {
             let x = x as usize;
-            if !any && crossroads(x) {
+            if closed[x] || (!any && crossroads(x)) {
                 continue;
             }
             for &(y, r, outgoing) in &adjacent[x] {
@@ -231,7 +248,7 @@ fn routes(a: &Atlas, kb: &Kb, adjacent: &[Vec<(u32, u8, bool)>]) -> Routes {
     let mut crossings: HashMap<(u16, u16), (u32, u32, u32, u16)> = HashMap::new();
     for &(x, r, y) in &a.links {
         let (i, j) = (x as usize, y as usize);
-        if root[i] == NONE || root[j] == NONE || root[i] == root[j] {
+        if root[i] == NONE || root[j] == NONE || root[i] == root[j] || closed[i] || closed[j] {
             continue;
         }
         let Some(said) = phrase(r, true) else { continue };
@@ -503,6 +520,30 @@ mod tests {
         assert_eq!(step, 9);
         assert_eq!(r.towards[9].unwrap().0, 0);
         assert_eq!(r.file["p"][said as usize], json!(["members", "member of"]), "read from the entry towards its step, then back");
+    }
+
+    #[test]
+    fn a_route_ends_at_a_sealed_entry_and_never_passes_through_it() {
+        let relation = "member_of: {label: member of, inverse: members, from: [person], to: [org]}\n";
+        let sealed = "---\nid: zoe\ntype: person\nname: Zoe\nsame_as: {wikidata: Q2}\nsealed: true\nclaims: []\n---\n";
+        let (kb, _) = load_kb("atlas-sealed", &[file("content/schema/relations.yaml", relation), file("content/entities/person/zo/zoe.md", sealed)]);
+        let entries: Vec<Entry> = (0..3u32)
+            .map(|i| Entry {
+                qid: i + 1,
+                kind: 0,
+                fame: 100 - i as u16,
+                name: format!("E{i}"),
+                summary: String::new(),
+                start: None,
+                end: None,
+                coords: None,
+                image: String::new(),
+            })
+            .collect();
+        // Q1, then the sealed Q2, then Q3, which has no other way out
+        let a = Atlas { entries, links: Vec::new(), relations: vec!["member_of".to_string()] };
+        let adjacent = vec![vec![(1, 0, true)], vec![(0, 0, false), (2, 0, true)], vec![(1, 0, false)]];
+        assert_eq!(closed(&a, &kb, &adjacent), [false, true, false]);
     }
 
     fn gz(path: &Path, text: &str) {
