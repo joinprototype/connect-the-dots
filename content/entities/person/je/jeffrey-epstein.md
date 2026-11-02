@@ -47,6 +47,7 @@ claims:
     role: "signatory"
     src:
       - {s: marra-2019-doe-v-united-states, quote: "On September 24, 2007, Epstein and the Office formally reached an agreement whereby the United States would defer federal prosecution in favor of prosecution by the State of Florida."}
+      - {s: marra-2019-doe-v-united-states, quote: "the United States also agrees that it will not institute any criminal charges against any potential co-conspirators of Epstein"}
   - id: c6
     rel: party_to
     to: epstein-guilty-plea-and-sentence-2008
@@ -66,3 +67,5 @@ claims:
     src:
       - {s: doj-oig-2023-epstein-mcc-report, quote: "from approximately 10:40 p.m. on August 9 until he was discovered hanged in his locked cell the following day."}
 ---
+
+His record is told in four stories: [Palm Beach](/c/the-palm-beach-case/), [The Clients](/c/the-clients/), [The Address Book](/c/the-address-book/) and [Was He a Spy?](/c/was-he-a-spy/).

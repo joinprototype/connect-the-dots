@@ -10,3 +10,5 @@ claims: []
 ---
 
 The Director of National Intelligence said in August 2025 that nothing on her desk reflected it; a Republican congressman said in September 2025 there are probably ties to the CIA; the Vice President said in July 2026 that Epstein had connections to the highest levels of American and Israeli intelligence, and that no document connects him directly.
+
+Told in the story [Was He a Spy?](/c/was-he-a-spy/).

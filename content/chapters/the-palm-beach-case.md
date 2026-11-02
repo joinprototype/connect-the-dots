@@ -44,7 +44,7 @@ The women who were girls at the time come first, in their own words. Nothing her
   focus: federal-investigation-of-epstein
   time: "2007-05"
   reveal: [federal-investigation-of-epstein, fbi, us-attorneys-office-southern-district-of-florida, alexander-acosta]
-  reveal_claims: [federal-investigation-of-epstein#c1, us-attorneys-office-southern-district-of-florida#c1, alexander-acosta#c2]
+  reveal_claims: [fbi#c4, us-attorneys-office-southern-district-of-florida#c1, alexander-acosta#c2]
   overlay: {kind: stat, value: "34", label: "Girls the federal prosecutor listed as confirmed minors in an email of 24 September 2007, the day the agreement was signed", source: marra-2019-doe-v-united-states, quote: "I have compiled a list of 34 confirmed minors."}
   narration: "**To the FBI.** The FBI brought the case to a federal prosecutor in southern Florida. With two agents she found more girls. By May 2007 the office, under U.S. Attorney Alexander Acosta, had an 82-page prosecution memo and a draft indictment of 60 counts. On 24 September a prosecutor emailed Epstein’s lawyer that she had a list of 34 minors. His lawyers had argued in writing that he broke no federal law."
   duration: 13
@@ -157,7 +157,7 @@ The women who were girls at the time come first, in their own words. Nothing her
   places: [new-york-city]
   time: "2019-08-27"
   reveal: [hearing-of-27-august-2019, courtney-wild, virginia-giuffre, giuffre-v-maxwell-defamation-suit, us-district-court-southern-district-of-new-york]
-  reveal_claims: [courtney-wild#c3, virginia-giuffre#c1, hearing-of-27-august-2019#c2, jeffrey-epstein#c3, virginia-giuffre#c2]
+  reveal_claims: [courtney-wild#c3, virginia-giuffre#c1, us-district-court-southern-district-of-new-york#c6, jeffrey-epstein#c3, virginia-giuffre#c2]
   overlay: {kind: quote, source: nbc-2019-08-27-epstein-accusers-speak, quote: "We all know he did not act alone", caption: "Sarah Ransome, to the court, 27 August 2019"}
   narration: "**Their day in court.** Epstein died on 10 August. On 27 August Judge Richard Berman, no relation to the U.S. Attorney, let his accusers speak, then dismissed the indictment on 29 August. Wild said his death “robbed” them of the chance to confront him. Virginia Giuffre said she became “a victim of Jeffrey Epstein and Ghislaine Maxwell and the horrible acts they committed against me.” Her 2015 defamation suit against Maxwell survived Maxwell’s motion to end it in March 2017 and settled that May; a settlement is not a finding. Giuffre died in April 2025. Her family called her “a fierce warrior in the fight against sexual abuse and sex trafficking.”"
   duration: 13
@@ -180,7 +180,7 @@ The women who were girls at the time come first, in their own words. Nothing her
   places: [metropolitan-correctional-center-new-york]
   time: "2023-06"
   reveal: [death-of-jeffrey-epstein, metropolitan-correctional-center-new-york, doj-office-of-the-inspector-general, fbi]
-  reveal_claims: [death-of-jeffrey-epstein#c1, death-of-jeffrey-epstein#c4, death-of-jeffrey-epstein#c5]
+  reveal_claims: [death-of-jeffrey-epstein#c1, doj-office-of-the-inspector-general#c2, fbi#c5]
   overlay: {kind: quote, source: doj-oig-2023-epstein-mcc-report, quote: "While the OIG determined MCC New York staff engaged in significant misconduct, we did not uncover evidence contradicting the FBI's determination regarding the absence of criminality in connection with how Epstein died.", caption: "Justice Department Inspector General, June 2023"}
   narration: "**The cell.** On 23 July 2019 Epstein was found with marks on his neck. His cellmate told officers he had tried to hang himself; Epstein first said the cellmate tried to kill him, then that he did not know what happened. He left suicide watch on 24 July and observation on 30 July, with a written order that he have a cellmate at all times. On 8 August staff were told the cellmate was leaving; “no action was taken.” No counts were done after 4 p.m. on 9 August and no rounds after about 10:40 p.m. Two officers were charged, admitted falsely certifying the checks, and had the charges dismissed. The medical examiner ruled suicide."
   duration: 13
@@ -191,7 +191,7 @@ The women who were girls at the time come first, in their own words. Nothing her
   focus: michael-baden
   time: "2026-10"
   reveal: [death-of-jeffrey-epstein, michael-baden, michael-freeman, barbara-sampson, office-of-chief-medical-examiner-new-york-city]
-  reveal_claims: [death-of-jeffrey-epstein#c6, death-of-jeffrey-epstein#c3, death-of-jeffrey-epstein#c2, michael-baden#c1, barbara-sampson#c1, michael-freeman#c1]
+  reveal_claims: [michael-baden#c2, barbara-sampson#c2, office-of-chief-medical-examiner-new-york-city#c1, michael-baden#c1, barbara-sampson#c1, michael-freeman#c1]
   overlay: {kind: quote, source: doj-oig-2023-epstein-mcc-report, quote: "Additionally, none of the 15 inmates who agreed to be interviewed in connection with this investigation, 10 of whom were housed in the SHU on August 9 and 10, had any credible information suggesting that Epstein's cause of death was something other than suicide.", caption: "Justice Department Inspector General, June 2023. Freeman has stated no conclusion."}
   narration: "**The doubt.** The medical examiner ruled the cause hanging and the manner suicide. In October 2019 Michael Baden, a pathologist hired by Epstein’s brother, said neck fractures were more indicative of homicide; the examiner stood by her finding, and NPR noted such fractures are linked to both hanging and strangulation. The examiner told the Inspector General there were no defensive wounds of the kind a homicide would leave. The Inspector General found no evidence contradicting the FBI’s finding of no criminality. Michael Freeman, a professor of forensic medicine, was given the autopsy files by the brother, who says it was not done on his behalf. Freeman will present in London on 16 November and has not stated his conclusions."
   duration: 13
@@ -199,12 +199,12 @@ The women who were girls at the time come first, in their own words. Nothing her
 - shot: the-july-2025-memo
   view: graph
   picture: none
-  focus: doj-and-fbi-review-of-july-2025
+  focus: doj-fbi-memo-on-epstein-2025-07-07
   time: "2025-07-07"
-  reveal: [doj-and-fbi-review-of-july-2025, us-department-of-justice, fbi, death-of-jeffrey-epstein]
-  reveal_claims: [doj-and-fbi-review-of-july-2025#c1, doj-and-fbi-review-of-july-2025#c2, death-of-jeffrey-epstein#c8]
+  reveal: [doj-fbi-memo-on-epstein-2025-07-07, us-department-of-justice, fbi, death-of-jeffrey-epstein]
+  reveal_claims: [us-department-of-justice#c1, fbi#c2, us-department-of-justice#c11]
   overlay: {kind: stat, value: "One minute", label: "Missing from the released video, 11:59 p.m. to midnight. Attorney General Bondi said the same minute is missing every night; that explanation is hers.", source: npr-2025-07-08-doj-memo-epstein, quote: "a full minute is missing from basically 11:59 p.m. to 12 a.m."}
-  narration: "**The July 2025 memo.** As CBS and NPR reported it, the Justice Department and FBI said in a two-page memo that Epstein died by suicide and that video showed no one entered his tier. The Inspector General found the recorded video covered only the unit’s common area and showed no one approaching the tiers; no recording shows the tier itself. The released video lacks one minute, 11:59 p.m. to midnight. Then Attorney General Pam Bondi said “every night should have the same minute missing”; that is her explanation. In May 2026 a judge ordered the release of an apparent suicide note from the July incident; CBS has not verified it. The memo itself was not read."
+  narration: "**The July 2025 memo.** In a two-page memo the Justice Department and FBI said that Epstein died by suicide and that video showed “nobody entered any of the tiers” that night. The Inspector General found the recorded video covered only the unit’s common area and showed no one approaching the tiers; no recording shows the tier itself. The released video lacks one minute, 11:59 p.m. to midnight. Then Attorney General Pam Bondi said “every night should have the same minute missing”; that is her explanation. In May 2026 a judge ordered the release of an apparent suicide note from the July incident; CBS has not verified it."
   duration: 13
 
 - shot: ghislaine-maxwell
@@ -213,9 +213,9 @@ The women who were girls at the time come first, in their own words. Nothing her
   focus: united-states-v-maxwell
   time: "2025-10-06"
   reveal: [united-states-v-maxwell, ghislaine-maxwell, us-district-court-southern-district-of-new-york]
-  reveal_claims: [ghislaine-maxwell#c1, ghislaine-maxwell#c3, united-states-v-maxwell#c2]
+  reveal_claims: [ghislaine-maxwell#c1, ghislaine-maxwell#c3, us-district-court-southern-district-of-new-york#c5]
   overlay: {kind: quote, source: sdny-2021-12-29-maxwell-verdict-statement, quote: "Their courage and willingness to face their abuser made this case, and today’s result, possible.", caption: "U.S. Attorney Damian Williams, 29 December 2021"}
-  narration: "**Ghislaine Maxwell.** A jury found her guilty on 29 December 2021, after a one-month trial, on five of six counts, among them sex trafficking of a minor; she was acquitted on one. Women testified at the trial. On 28 June 2022 Judge Alison Nathan sentenced her to 240 months. After the Supreme Court declined her appeal, her lawyer said: “this fight isn’t over.” Counts of his victims differ by who counted and when: 34 minors on the 2007 list, “more than 30” in the courts, 80 found by Brown, and more than 1,000 in the 2025 memo, as CBS reported."
+  narration: "**Ghislaine Maxwell.** A jury found her guilty on 29 December 2021, after a one-month trial, on five of six counts, among them sex trafficking of a minor; she was acquitted on one. Women testified at the trial. On 28 June 2022 Judge Alison Nathan sentenced her to 240 months. After the Supreme Court declined her appeal, her lawyer said: “this fight isn’t over.” Counts of his victims differ by who counted and when: 34 minors on the 2007 list, “more than 30” in the courts, 80 found by Brown, 136 to 150 paid by the compensation fund, and over one thousand in the 2025 memo."
   duration: 13
 
 - shot: the-district-line
@@ -224,7 +224,7 @@ The women who were girls at the time come first, in their own words. Nothing her
   focus: united-states-v-maxwell
   time: "2025-10-06"
   reveal: [united-states-v-maxwell, us-court-of-appeals-second-circuit, ghislaine-maxwell, us-supreme-court, epstein-non-prosecution-agreement]
-  reveal_claims: [united-states-v-maxwell#c3, united-states-v-maxwell#c4]
+  reveal_claims: [us-court-of-appeals-second-circuit#c2, us-supreme-court#c4]
   overlay: {kind: quote, source: ca2-2024-united-states-v-maxwell, quote: "There is nothing in the NPA that affirmatively shows that the NPA was intended to bind multiple districts.", caption: "Second Circuit, United States v. Maxwell, 17 September 2024"}
   narration: "**The district line.** Maxwell argued the 2007 agreement, which shielded “any potential co-conspirators,” barred her New York case. On 17 September 2024 the Second Circuit disagreed: where the agreement is not silent, its scope is “expressly limited to the Southern District of Florida.” The Supreme Court declined to hear her on 6 October 2025. The ruling concerned Maxwell. Epstein died before trial, and the sources read here show no ruling on whether the agreement barred his own case."
   duration: 13
@@ -237,6 +237,6 @@ The women who were girls at the time come first, in their own words. Nothing her
   reveal: [united-states-v-maxwell, ghislaine-maxwell]
   reveal_claims: [ghislaine-maxwell#c1]
   overlay: {kind: quote, source: ap-2026-08-25-maxwell-habeas-denied, quote: "Nearly all its claims are procedurally barred; the overwhelming testimonial and documentary evidence adduced at trial conclusively established her guilt; and her petition's claims are demonstrably meritless", caption: "Judge Paul Engelmayer, 25 August 2026, as reported by the Associated Press"}
-  narration: "**Where it stands.** Read on 2 November 2026. On 25 August a federal judge denied Maxwell’s petition, which called her case a “complete miscarriage of justice” and herself a scapegoat. He wrote that among the released documents “she does not cite any” that reveals an uncharged confederate. That speaks to what she cited, not to what the files hold. As of that date, AP said, the Epstein Files Transparency Act had produced 18 categories of records. AP said it sent a request for comment to her past lawyers. Not read: the Herald series, the July 2025 memo, and the full Justice Department report except in an unofficial copy."
+  narration: "**Where it stands.** Read on 2 November 2026. On 25 August a federal judge denied Maxwell’s petition, which called her case a “complete miscarriage of justice” and herself a scapegoat. He wrote that among the released documents “she does not cite any” that reveals an uncharged confederate. That speaks to what she cited, not to what the files hold. As of that date, AP said, the Epstein Files Transparency Act had produced 18 categories of records; [The Address Book](/c/the-address-book/) counts them in pages. AP said it sent a request for comment to her past lawyers. Not read: the Herald series, and the full Justice Department report except in an unofficial copy."
   duration: 13
 ```

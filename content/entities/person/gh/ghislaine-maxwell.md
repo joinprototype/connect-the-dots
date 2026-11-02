@@ -32,4 +32,5 @@ claims:
     role: "defendant"
     src:
       - {s: sdny-2022-06-28-maxwell-sentenced, quote: "MAXWELL was previously found guilty on December 29, 2021, following a one-month jury trial"}
+  - {"id": "c4", "rel": "party_to", "to": "maxwell-post-conviction-ruling-of-2026-08-25", "role": "petitioner; her petition was denied", "src": [{"s": "sdny-us-v-maxwell-2255-opinion-2026-08-25", "quote": "The Court accordingly denies Maxwell’s petition."}]}
 ---

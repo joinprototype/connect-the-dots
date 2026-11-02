@@ -14,10 +14,4 @@ claims:
     to: new-york-city
     src:
       - {s: sdny-2019-07-08-epstein-charged, quote: "Jeffrey Epstein Charged In Manhattan Federal Court With Sex Trafficking Of Minors"}
-  - id: c2
-    rel: answered_by
-    to: us-district-court-southern-district-of-new-york
-    role: "court that held the case and dismissed it on 29 August 2019"
-    src:
-      - {s: doj-opr-2020-epstein-report, quote: "The court dismissed the Epstein indictment on August 29, 2019."}
 ---

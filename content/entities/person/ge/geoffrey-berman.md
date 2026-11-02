@@ -4,7 +4,7 @@ id: geoffrey-berman
 type: person
 name: "Geoffrey Berman"
 aliases: ["Geoffrey S. Berman"]
-summary: "U.S. Attorney for the Southern District of New York who announced the 2019 charges against Epstein. Not the same person as Judge Richard Berman."
+summary: "U.S. Attorney for the Southern District of New York in 2019. Not the same person as Judge Richard Berman."
 same_as: {wikidata: Q47037424}
 claims:
   - id: c1

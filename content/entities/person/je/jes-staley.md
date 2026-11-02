@@ -3,7 +3,7 @@ uid: 01M6EW17TCA0F5MCX6BWX8A506
 id: jes-staley
 type: person
 name: "Jes Staley"
-summary: "American banker; ran JPMorgan’s private bank, where Epstein was a client, and later led Barclays until 2021."
+summary: "American banker; ran JPMorgan’s private bank and led Barclays from 2015 to 2021."
 same_as: {wikidata: Q6185687}
 claims:
   - id: c1
@@ -25,6 +25,7 @@ claims:
     when: "2025-06-26"
     title: "banned from senior management roles in financial services and fined £1.1 million for approving a misleading letter to the regulator about his relationship with Epstein"
     case: "Staley v FCA, Upper Tribunal"
+    note: "The finding is about what Staley told the regulator, not about any crime."
     src:
       - {s: fca-2025-06-26-staley-ban-upheld, quote: "The FCA alleged that Mr Staley acted recklessly when he signed off the letter and the Tribunal agreed."}
       - {s: irishtimes-2025-06-26-staley, quote: "Jes Staley has failed to overturn a decision by the UK’s Financial Conduct Authority (FCA) that he “recklessly” misled the regulator about his ties to convicted sex offender Jeffrey Epstein"}
@@ -37,6 +38,12 @@ claims:
     src:
       - {s: fca-2025-06-26-staley-ban-upheld, quote: "Hundreds of emails were key to the FCA’s investigation and showed that the two had a close relationship over many years."}
       - {s: reuters-2026-08-26-staley-transcript, quote: "Staley said he divulged to Epstein the bank’s communications with the Federal Reserve during the 2008 financial crisis, a figure of US$44 billion in private bank inflows over two weeks, his own compensation, and details of pending deals."}
+  - id: c5
+    rel: party_to
+    to: upper-tribunal-ruling-on-jes-staley-2025
+    role: "challenged the ban and fine and lost"
+    src:
+      - {s: irishtimes-2025-06-26-staley, quote: "Mr Staley said in a statement on Thursday that he was “disappointed by the outcome and the time it took for this process to play out”.", by: jes-staley}
 ---
 
-American banker; ran JPMorgan’s private bank, where Epstein was a client, and later led Barclays until 2021.
+American banker; ran JPMorgan’s private bank and led Barclays from 2015 to 2021.

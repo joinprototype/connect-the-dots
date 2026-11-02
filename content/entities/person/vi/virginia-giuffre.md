@@ -4,7 +4,7 @@ id: virginia-giuffre
 type: person
 name: "Virginia Giuffre"
 aliases: ["Virginia Roberts Giuffre"]
-summary: "Woman who said she became \"a victim of Jeffrey Epstein and Ghislaine Maxwell\" and spoke at the August 2019 hearing for Epstein's accusers. She sued Maxwell for defamation in 2015, a case settled in 2017. She died in April 2025."
+summary: "Woman who said she became \"a victim of Jeffrey Epstein and Ghislaine Maxwell\" and spoke at the August 2019 hearing for Epstein's accusers. She sued Maxwell for defamation in 2015, a case settled in 2017, and Andrew Mountbatten-Windsor in 2021, a case settled in 2022. She died in April 2025."
 same_as: {wikidata: Q78473599}
 when: "../2025-04"
 claims:

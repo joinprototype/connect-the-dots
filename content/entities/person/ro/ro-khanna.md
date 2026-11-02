@@ -3,7 +3,7 @@ uid: 01M6EXZTABJVKRT8DJWMRCGMEP
 id: ro-khanna
 type: person
 name: "Ro Khanna"
-summary: "Democratic U.S. Representative from California; co-author of the Epstein Files Transparency Act."
+summary: "Democratic U.S. Representative from California."
 claims:
   - {id: "c1", rel: "party_to", to: "epstein-files-transparency-act", when: "2025-07", role: "co-author; introduced the bill", src: [{s: "cbs-2025-11-17-trump-reverses-on-epstein-files", quote: "The bill, titled the Epstein Files Transparency Act, was first introduced in July by Democratic Rep. Ro Khanna of California and Republican Rep. Thomas Massie of Kentucky"}]}
   - {id: "c2", rel: "party_to", to: "epstein-survivors-at-the-capitol-2025-09-03", role: "spoke at the press conference", src: [{s: "abc-2025-09-03-epstein-survivors-capitol", quote: "Today we stand with survivors, we stand against big money, we stand to protect America's children. That is really what this is about", by: "ro-khanna"}]}

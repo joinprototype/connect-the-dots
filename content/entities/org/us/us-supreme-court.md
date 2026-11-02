@@ -28,4 +28,10 @@ claims:
     when: "2022-06-29"
     src:
       - {s: scotus-2022-oklahoma-v-castro-huerta, quote: "Held: The Federal Government and the State have concurrent jurisdiction to prosecute crimes committed by non-Indians against Indians in Indian country."}
+  - id: c4
+    rel: party_to
+    to: united-states-v-maxwell
+    role: "declined to hear her appeal on 6 October 2025"
+    src:
+      - {s: scripps-2025-10-06-supreme-court-maxwell, quote: "The U.S. Supreme Court on Monday rejected Ghislaine Maxwell's appeal of her sex trafficking conviction"}
 ---

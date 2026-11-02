@@ -37,7 +37,7 @@ claims:
     role: "accepted gifts and visits"
     amount: 850000
     currency: "USD"
-    note: "Nine of the ten gifts came after his 2008 conviction."
+    note: "Nine of the ten gifts came after his 2008 conviction. The report for MIT called the decision “collective and significant errors in judgment”; President Reif apologised to survivors."
     src:
       - {s: mit-2020-01-10-epstein-fact-finding, quote: "The review, conducted by the law firm Goodwin Procter, sheds light on the Institute’s actions pertaining to 10 Epstein donations, totaling $850,000, that MIT received between 2002 and 2017, as well as multiple visits that Epstein made to campus."}
 ---
