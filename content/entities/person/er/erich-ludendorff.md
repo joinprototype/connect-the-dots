@@ -9,4 +9,4 @@ image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Erich_Lud
 when: "1865-04-09/1937-12-20"
 ---
 
-Erich Ludendorff ran the German war effort with Paul von Hindenburg from 1916 to 1918. His 1919 memoirs are cited here as one side's account of why Germany sent Lenin to Russia and what it gained from the [[treaty-of-brest-litovsk]].
+Erich Ludendorff ran the German war effort with Paul von Hindenburg from 1916 to 1918. In April 1917 the army's High Command raised no objection to letting [[vladimir-lenin]] cross Germany on the [[lenin-sealed-train|sealed train]]; in his memoirs Ludendorff later called the journey militarily justified. His 1919 memoirs are cited here as one side's account of why Germany sent Lenin to Russia and what it gained from the [[treaty-of-brest-litovsk]].

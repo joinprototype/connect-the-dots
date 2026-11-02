@@ -50,6 +50,14 @@ claims:
     note: "From the 1920 memoirs of the Chief of the German General Staff. He goes on: 'a broad forward zone was created against Russia on the far side of our frontiers.'"
     src:
       - {s: hindenburg-1920-out-of-my-life, at: "p. 335", quote: "The separation of the border states from the old Empire as a result of the peace conditions was in my view mainly a military advantage."}
+  - id: c7
+    rel: benefited_from
+    to: lenin-sealed-train
+    note: "Berlin's own words in 1917 on why it let the exiles through."
+    according_to: [german-imperial-government]
+    src:
+      - {s: zeman-1958-germany-revolution-russia, at: "doc. 27: Minister in Bern to the Foreign Ministry, telegram no. 603, 4 April 1917", quote: "Since their immediate departure would be greatly in our interests, I urgently recommend that permission should be granted at once, accepting the conditions laid down."}
+      - {s: zeman-1958-germany-revolution-russia, at: "doc. 15: State Secretary to the Foreign Ministry Liaison Officer at General Headquarters, 23 March 1917", quote: "Since it is in our interests that the influence of the radical wing of the Russian revolutionaries should prevail, it would seem to me advisable to allow transit to the revolutionaries there."}
 ---
 
 In the First World War the German government tried to knock Russia out of the war. Its Foreign Ministry paid [[alexander-parvus]] to promote revolution, let [[vladimir-lenin]] cross Germany in April 1917 on the [[lenin-sealed-train|sealed train]], and, by its own State Secretary's account, kept "a steady flow of funds" going to the [[bolsheviks]]. In March 1918 it imposed the [[treaty-of-brest-litovsk]] on Soviet Russia.

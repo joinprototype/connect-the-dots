@@ -10,3 +10,5 @@ image: {url: "https://upload.wikimedia.org/wikipedia/commons/2/2d/Sokolnikov_gry
 when: "1888/1939"
 claims: []
 ---
+
+Sokolnikov travelled with [[vladimir-lenin]] on the [[lenin-sealed-train|sealed train]] in April 1917, and in March 1918 was the Soviet delegate at [[treaty-of-brest-litovsk|Brest-Litovsk]].

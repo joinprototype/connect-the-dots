@@ -35,6 +35,13 @@ claims:
     src:
       - {s: loc-country-study-soviet-union-1991, at: "Government, Chairman of the Council of Ministers, p. 342", quote: "Lenin chaired the Sovnarkom when he was the de facto head of the party."}
       - {s: loc-country-study-soviet-union-1991, at: "Chapter 2, p. 65", quote: "when Lenin died in January 1924"}
+  - id: c5
+    rel: authored
+    to: april-theses
+    when: "1917-04-17"
+    src:
+      - {s: lenin-1917-april-theses, quote: "I read them twice very slowly: first at a meeting of Bolsheviks and then at a meeting of both Bolsheviks and Mensheviks."}
+      - {s: krupskaya-reminiscences-of-lenin-petrograd, quote: "Lenin expounded his views as to what had to be done in a number of theses"}
 ---
 
 Vladimir Lenin led the [[bolsheviks]]. In April 1917 he returned from Swiss exile across Germany on the [[lenin-sealed-train|"sealed train"]], a transit arranged with the [[german-imperial-government]]. In November 1917 his party took power in the [[october-revolution]], and he headed the Soviet government until his death in January 1924.

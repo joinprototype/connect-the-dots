@@ -34,6 +34,12 @@ claims:
     to: grigori-sokolnikov
     role: Soviet delegate, authorized to sign
     src: [{s: sokolnikov-1918-03-03-brest-statement, quote: "We, the authorized representatives of our Government, are prepared to sign the peace treaty immediately."}]
+  - id: c5
+    rel: involved
+    to: german-army-high-command
+    role: "was to send a representative to the peace commission, by Ludendorff’s account"
+    src:
+      - {s: ludendorff-1919-war-memories-v2, quote: "The latter agreed to include a representative of G.H.Q. in the commission to be appointed for the peace negotiations"}
 ---
 
 At Brest-Litovsk Soviet Russia gave up its western territories, including the Baltic lands and Ukraine, to make peace with Germany and its allies. The Soviet congress that ratified it called it "this incredibly oppressive, coercive, and humiliating peace" whose conditions "were imposed on us as an ultimatum and with undisguised violence".
