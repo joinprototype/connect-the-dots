@@ -14,4 +14,10 @@ claims:
     when: "1921"
     src:
       - {s: boeing-2026-04-22-california-companies, at: "Douglas Aircraft Co. (founded in Santa Monica, CA)", quote: "In 1921, Donald Douglas Sr. founded Douglas Aircraft Co."}
+  - id: c2
+    rel: educated_at
+    to: massachusetts-institute-of-technology
+    when: "1914"
+    src:
+      - {s: nasa-sp-2005-4112-bilstein-douglas, at: "Ch. 1", quote: "Douglas’s degree and research in advanced aeronautics at MIT made him one of the few academically trained professionals in the young aviation manufacturing industry."}
 ---

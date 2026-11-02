@@ -13,4 +13,10 @@ claims:
     to: chicago
     src:
       - {s: osti-cp1, at: "CP-1 Goes Critical", quote: "In an abandoned squash court under the west grandstand of the University of Chicago's Stagg Field"}
+  - id: c2
+    rel: part_of
+    to: manhattan-project
+    when: "1942-12-02"
+    src:
+      - {s: osti-cp1, at: "CP-1 Goes Critical", quote: "Leslie Groves, commander of the Manhattan Project, described the first time CP-1 went critical as the single most important scientific event in the development of atomic power."}
 ---

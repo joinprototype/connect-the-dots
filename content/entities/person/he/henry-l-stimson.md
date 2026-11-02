@@ -15,4 +15,11 @@ claims:
     role: "Secretary of War"
     src:
       - {s: docsteach-diary, at: "Diary entry text", quote: "I have told the Sec. of War Mr. Stimson to use it so that military objectives and soldiers and sailors are the target and not women and children."}
+  - id: c2
+    rel: chair_of
+    to: interim-committee
+    when: "1945-05"
+    title: "head of the committee"
+    src:
+      - {s: osti-debate, at: "Debate Over How to Use the Bomb", quote: "Stimson headed the advisory group composed of Vannevar Bush, James Conant, Karl T. Compton, Under Secretary of the Navy Ralph A. Bard, Assistant Secretary of State William L. Clayton, and future Secretary of State James F. Byrnes."}
 ---

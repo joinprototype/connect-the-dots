@@ -21,4 +21,10 @@ claims:
     when: "1945-07-17"
     src:
       - {s: ahf-szilard-petition, at: "Introduction", quote: "Leo Szilard drafted the petition below to the President in the summer of 1945"}
+  - id: c3
+    rel: worked_at
+    to: university-of-chicago
+    when: "1945"
+    src:
+      - {s: nsa-ebb162-atomic-bomb-primary-sources, at: "Document 16 note", quote: "Physicists Leo Szilard and James Franck, a Nobel Prize winner, were on the staff of the Metallurgical Laboratory at the University of Chicago"}
 ---

@@ -35,4 +35,9 @@ claims:
     to: world-war-ii
     src:
       - {s: osti-nagasaki, at: "The Atomic Bombing of Nagasaki", quote: "The best estimate is 40,000 people died initially, with 60,000 more injured."}
+  - id: c5
+    rel: involved
+    to: united-states
+    src:
+      - {s: osti-nagasaki, at: "The Atomic Bombing of Nagasaki", quote: "Truman's order of July 25th had authorized the dropping of additional bombs as soon as they were ready."}
 ---

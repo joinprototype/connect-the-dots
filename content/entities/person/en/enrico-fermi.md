@@ -20,4 +20,10 @@ claims:
     role: "scientific adviser"
     src:
       - {s: osti-debate, at: "Debate Over How to Use the Bomb", quote: "Robert Oppenheimer , Enrico Fermi , Arthur Compton , and Ernest Lawrence served as scientific advisors"}
+  - id: c3
+    rel: worked_at
+    to: university-of-chicago
+    when: "1942"
+    src:
+      - {s: osti-cp1, at: "CP-1 Goes Critical", quote: "The Italian physicist Enrico Fermi hoped to answer some of these questions with CP-1, his experimental \"Chicago Pile #1\" at the University of Chicago."}
 ---

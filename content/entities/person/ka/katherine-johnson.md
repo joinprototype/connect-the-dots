@@ -15,4 +15,10 @@ claims:
     src:
       - {s: nasa-kj-hidden-no-more, at: "A Human Computer Hidden No More", quote: "In 1953 she was hired at Langley’s all-black West Area Computing Section, headed by fellow West Virginian Dorothy Vaughan."}
       - {s: nasa-kj-science, at: "Katherine Johnson", quote: "She was a “computer” at Langley Research Center “when the computer wore a skirt,” Katherine once said."}
+  - id: c2
+    rel: worked_at
+    to: nasa
+    when: "1953/1986"
+    src:
+      - {s: nasa-kj-hidden-no-more, at: "Biography", quote: "After 33 years at Langley, Johnson retired in 1986."}
 ---

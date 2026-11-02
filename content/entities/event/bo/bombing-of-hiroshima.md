@@ -36,4 +36,9 @@ claims:
     to: world-war-ii
     src:
       - {s: truman-aug6, at: "Statement text", quote: "The force from which the sun draws its power has been loosed against those who brought war to the Far East."}
+  - id: c5
+    rel: involved
+    to: united-states
+    src:
+      - {s: osti-hiroshima, at: "The Atomic Bombing of Hiroshima", quote: "informing the American public that the United States had dropped an entirely new type of bomb on the Japanese city of Hiroshima"}
 ---

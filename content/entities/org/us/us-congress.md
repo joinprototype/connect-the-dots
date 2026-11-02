@@ -14,4 +14,10 @@ claims:
     to: us-government
     src:
       - {s: fcic-2011-final-report, at: "p. 372", quote: "the House rejected TARP by a vote of 228 to 205. The markets’ response was immediate: the Dow Jones Industrial Average quickly plunged 778 points, or almost 7%."}
+  - id: c2
+    rel: founded
+    to: nasa
+    when: "1958-07-29"
+    src:
+      - {s: nasa-space-act-1958, at: "Title II, Sec. 202(a)", quote: "There is hereby established the National Aeronautics and Space Administration"}
 ---
