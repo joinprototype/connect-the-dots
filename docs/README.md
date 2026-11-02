@@ -15,6 +15,7 @@ These docs are the project's shared memory: what we are building, why, what we d
 | [world-tiles.md](world-tiles.md) | The world map's manifest and binary tiles | The tile format changes (with the viewer) |
 | [ux-vision.md](ux-vision.md) | The design brief: three places, one accent, plain words | Founder feedback on look and feel |
 | [deploy.md](deploy.md) | Preview and production hosting | Hosting changes |
+| [leads.md](leads.md) | How a lead from `ctd gaps` becomes a sourced link | The checking steps change |
 | [decisions/](decisions/) | One short ADR per decision | A decision is made |
 | [design/](design/) | Designs for proposed work, before they become ADRs (Sprint 4: Ask anything) | A proposal is drafted |
 | [roadmap.md](roadmap.md) | Now / Next / Later | Every sprint review |

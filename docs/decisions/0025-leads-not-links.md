@@ -18,6 +18,8 @@ Every claim needs a source, and Wikidata is a lead, never proof (ADR-0023). So a
 5. Pair scores are not a lead. Adamic-Adar finds that two things are related, not how: tested on the real graph, its top 30 held no useful pair. Its one useful part, the entry in the middle, is what `dots` ranks.
 6. Thresholds live in `content/methodology/gaps.yaml`. A lead someone checked and rejected goes in `gaps-ignore.tsv`, so it does not come back.
 
+7. Checking runs on a schedule, by the steps in [leads.md](../leads.md), on one rolling branch. A run never pushes, merges or deploys.
+
 ## Consequences
 
 - A full scan takes about 2 seconds and 380 MB on the laptop.

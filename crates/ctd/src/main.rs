@@ -66,6 +66,9 @@ enum Cmd {
         /// Output file (default: .cache/gaps.tsv)
         #[arg(long)]
         out: Option<PathBuf>,
+        /// A checkout that holds .cache/atlas, when this one does not (a worktree)
+        #[arg(long)]
+        atlas: Option<PathBuf>,
     },
     /// Show the best-ranked connections between two entities
     Path {
@@ -179,9 +182,9 @@ fn run(cli: Cli) -> Result<ExitCode> {
             }
             Ok(ExitCode::SUCCESS)
         }
-        Cmd::Gaps { top, out } => {
+        Cmd::Gaps { top, out, atlas } => {
             let (kb, _) = ctd::load_kb(&root)?;
-            let Some(atlas) = ctd::atlas::load(&root)? else {
+            let Some(atlas) = ctd::atlas::load(atlas.as_deref().unwrap_or(&root))? else {
                 eprintln!("no atlas in .cache/atlas: tools/atlas/ fills it");
                 return Ok(ExitCode::FAILURE);
             };

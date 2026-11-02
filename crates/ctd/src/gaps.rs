@@ -316,7 +316,10 @@ pub fn find(kb: &Kb, a: &Atlas, rules: &str, ignore: &str) -> Result<Vec<Lead>> 
 /// Writes the leads as one TSV, `top` of each kind (or all), and says how many there are.
 pub fn run(root: &Path, kb: &Kb, a: &Atlas, top: Option<usize>, out: &Path) -> Result<()> {
     let methodology = root.join("content").join("methodology");
-    let leads = find(kb, a, &fs::read_to_string(methodology.join("gaps.yaml"))?, &fs::read_to_string(methodology.join("gaps-ignore.tsv")).unwrap_or_default())?;
+    // rejected for good, or tried without finding a source (.cache: it may still be true)
+    let read = |p: &Path| fs::read_to_string(p).unwrap_or_default();
+    let ignored = read(&methodology.join("gaps-ignore.tsv")) + &read(&root.join(".cache").join("gaps-tried.tsv"));
+    let leads = find(kb, a, &read(&methodology.join("gaps.yaml")), &ignored)?;
     let mut tsv = String::from("kind\tscore\tfrom\trelation\tto\twhy\n");
     for kind in KINDS {
         let of = leads.iter().filter(|l| l.kind == kind);
@@ -324,6 +327,9 @@ pub fn run(root: &Path, kb: &Kb, a: &Atlas, top: Option<usize>, out: &Path) -> R
         for l in of.take(top.unwrap_or(usize::MAX)) {
             writeln!(tsv, "{}\t{:.3}\t{}\t{}\t{}\t{}", l.kind, l.score, l.from, l.relation, l.to, l.why.replace(['\t', '\n'], " "))?;
         }
+    }
+    if let Some(dir) = out.parent() {
+        fs::create_dir_all(dir)?;
     }
     fs::write(out, tsv)?;
     println!("wrote {}: leads to check against a source, none of them proof", out.display());
