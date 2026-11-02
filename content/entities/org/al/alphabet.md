@@ -5,6 +5,6 @@ type: org
 name: "Alphabet"
 aliases: ["Alphabet Inc."]
 summary: "Holding company formed in 2015 as the parent of Google."
-same_as: {wikidata: Q2839530}
+same_as: {wikidata: Q20800404}
 when: "2015/.."
 ---

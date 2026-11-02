@@ -5,6 +5,7 @@ type: person
 name: William H. Gates Sr.
 aliases: [Bill Gates Sr., William Henry Gates II]
 summary: Seattle lawyer and civic leader; father of Bill Gates.
+same_as: {wikidata: Q684014}
 when: "1925-11-30/2020-09-14"
 place: seattle
 claims:

@@ -5,7 +5,7 @@ type: person
 name: Abraham
 aliases: [Avraham, Ibrahim, Abram]
 summary: "Patriarch revered in Judaism, Christianity and Islam."
-same_as: {wikidata: Q108584749}
+same_as: {wikidata: Q9181}
 claims:
   - id: c1
     rel: patriarch_of

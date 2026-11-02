@@ -6,7 +6,7 @@ name: Atomic Energy Commission
 in_sentence: "the Atomic Energy Commission"
 aliases: [AEC, US Atomic Energy Commission]
 summary: US federal agency that controlled atomic energy from 1947 to 1975.
-same_as: {wikidata: Q123740180}
+same_as: {wikidata: Q939090}
 when: "1947-01-01/1975-01-19"
 claims:
   - id: c1

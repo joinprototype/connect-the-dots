@@ -5,7 +5,7 @@ type: org
 name: NASA
 aliases: [National Aeronautics and Space Administration]
 summary: "US civilian space agency, created in 1958."
-same_as: {wikidata: Q60978476}
+same_as: {wikidata: Q23548}
 when: "1958-10-01/.."
 claims:
   - id: c1

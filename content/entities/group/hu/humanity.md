@@ -6,7 +6,7 @@ name: "Humanity"
 in_sentence: "humanity"
 aliases: ["mankind", "humankind"]
 summary: "All the world's people, taken together."
-same_as: {wikidata: Q118399270}
+same_as: {wikidata: Q1156970}
 claims:
   - id: c1
     rel: benefited_from

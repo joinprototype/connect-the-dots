@@ -5,6 +5,7 @@ type: person
 name: "John Dean"
 aliases: ["John W. Dean"]
 summary: "White House counsel to President Nixon, who pleaded guilty and testified to the Senate committee."
+same_as: {wikidata: Q1630448}
 when: "1938/.."
 claims:
   - id: c1

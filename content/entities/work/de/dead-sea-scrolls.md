@@ -5,7 +5,7 @@ type: work
 name: "Dead Sea Scrolls"
 in_sentence: "the Dead Sea Scrolls"
 summary: "Manuscripts of the 3rd century BCE to the 1st century CE found in caves near Qumran and elsewhere in the Judean Desert; they include the oldest known copies of biblical books."
-same_as: {wikidata: Q119835622}
+same_as: {wikidata: Q145780}
 when: "-0299~/0099~"
 place: qumran
 claims:

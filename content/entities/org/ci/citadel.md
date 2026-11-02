@@ -5,7 +5,7 @@ type: org
 name: "Citadel"
 aliases: ["Citadel LLC"]
 summary: "Alternative investment manager founded by Ken Griffin in 1990."
-same_as: {wikidata: Q2709240}
+same_as: {wikidata: Q2974366}
 when: "1990/.."
 claims:
   - id: c1

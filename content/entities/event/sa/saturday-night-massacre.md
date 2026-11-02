@@ -4,6 +4,7 @@ id: saturday-night-massacre
 type: event
 name: "Saturday Night Massacre"
 summary: "The dismissal of Special Prosecutor Archibald Cox on 20 October 1973, and the departures of the two officials who would not do it."
+same_as: {wikidata: Q444159}
 when: "1973-10-20"
 place: washington-dc
 claims:

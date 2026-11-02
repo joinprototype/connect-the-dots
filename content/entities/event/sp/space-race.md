@@ -5,7 +5,7 @@ type: event
 name: Space Race
 in_sentence: "the Space Race"
 summary: Cold War competition in spaceflight between the United States and the Soviet Union.
-same_as: {wikidata: Q2006880}
+same_as: {wikidata: Q1932}
 when: "1957/1975"
 claims:
   - id: c1
