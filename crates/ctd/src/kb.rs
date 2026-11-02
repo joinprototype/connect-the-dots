@@ -176,6 +176,11 @@ impl Kb {
         self.index.get(id).map(|&i| &self.entities[i])
     }
 
+    /// What no route may touch (ADR-0027).
+    pub fn sealed(&self) -> HashSet<&str> {
+        sealed_ids(&self.entities, &self.index, &self.edges)
+    }
+
     /// Resolves an id or a slug alias.
     pub fn resolve(&self, id: &str) -> Option<&Entity> {
         self.index.get(id).or_else(|| self.aliases.get(id)).map(|&i| &self.entities[i])
@@ -963,17 +968,7 @@ fn read_claims(cx: &Names, entities: &[Entity], diags: &mut Vec<Diag>) -> (Vec<E
     let is_seal = |e: &Edge| cx.schema.relations.get(&e.rel).is_some_and(|r| r.seals);
     let tales: HashSet<&str> = edges.iter().filter(|e| is_seal(e)).map(|e| e.from.as_str()).collect();
     // So is an entry marked `sealed`, with the events and works about it: contact is not a finding (ADR-0027).
-    let hand: HashSet<&str> = entities.iter().filter(|e| e.sealed).map(|e| e.id.as_str()).collect();
-    let about = |id: &str, other: &str| hand.contains(other) && matches!(entities[cx.index[id]].kind.as_str(), "event" | "work");
-    let mut sealed = hand.clone();
-    for e in &edges {
-        if about(&e.from, &e.to) {
-            sealed.insert(&e.from);
-        }
-        if about(&e.to, &e.from) {
-            sealed.insert(&e.to);
-        }
-    }
+    let sealed = sealed_ids(entities, cx.index, &edges);
     for e in edges.iter().filter(|e| e.traversable && !is_seal(e)) {
         for end in [&e.from, &e.to] {
             let file = &entities[cx.index[&e.from]].rel_path;
@@ -985,6 +980,22 @@ fn read_claims(cx: &Names, entities: &[Entity], diags: &mut Vec<Diag>) -> (Vec<E
         }
     }
     (edges, held)
+}
+
+/// What no route may touch: the entries marked `sealed`, with the events and works about them (ADR-0027).
+fn sealed_ids<'a>(entities: &'a [Entity], index: &HashMap<String, usize>, edges: &'a [Edge]) -> HashSet<&'a str> {
+    let hand: HashSet<&str> = entities.iter().filter(|e| e.sealed).map(|e| e.id.as_str()).collect();
+    let about = |id: &str, other: &str| hand.contains(other) && matches!(entities[index[id]].kind.as_str(), "event" | "work");
+    let mut sealed = hand.clone();
+    for e in edges {
+        if about(&e.from, &e.to) {
+            sealed.insert(&e.from);
+        }
+        if about(&e.to, &e.from) {
+            sealed.insert(&e.to);
+        }
+    }
+    sealed
 }
 
 /// Links, then the prose rules: wikilinks that resolve, and no personal contact data.

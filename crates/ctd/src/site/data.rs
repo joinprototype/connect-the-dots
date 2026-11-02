@@ -182,6 +182,17 @@ fn list(v: &Value) -> impl Iterator<Item = &str> {
     v.as_array().into_iter().flatten().filter_map(Value::as_str)
 }
 
+/// The links a shot reveals. "<entity>#<claim>" also names that claim's "/<n>" links, one per target.
+pub fn revealed<'a>(by_id: &BTreeMap<&'a str, &'a Edge>, shot: &Value) -> BTreeMap<&'a str, &'a Edge> {
+    let mut links = BTreeMap::new();
+    for r in list(&shot["reveal_claims"]) {
+        let sub = format!("{r}/");
+        let parts = by_id.range::<str, _>((Bound::Included(sub.as_str()), Bound::Unbounded)).take_while(|(id, _)| id.starts_with(&sub));
+        links.extend(by_id.get_key_value(r).into_iter().map(|(k, v)| (*k, *v)).chain(parts.map(|(k, v)| (*k, *v))));
+    }
+    links
+}
+
 /// What a story's scenes name, embedded in its page: the entries (focus, reveals, places, route ends,
 /// the ends of revealed links, accounts and speakers), the links its scenes reveal, and the sources
 /// those cite or an overlay shows. The player reads this and schema.json, nothing else.
@@ -192,12 +203,7 @@ pub fn story(kb: &Kb, by_id: &BTreeMap<&str, &Edge>, shots: &[Value]) -> Value {
     for shot in shots {
         names.extend(crate::kb::shot_entries(shot).map(|(_, id)| id));
         cited.extend(shot["overlay"]["source"].as_str());
-        for r in list(&shot["reveal_claims"]) {
-            // "<entity>#<claim>" also names that claim's "/<n>" links, one per target
-            let sub = format!("{r}/");
-            let parts = by_id.range::<str, _>((Bound::Included(sub.as_str()), Bound::Unbounded)).take_while(|(id, _)| id.starts_with(&sub));
-            links.extend(by_id.get_key_value(r).into_iter().map(|(k, v)| (*k, *v)).chain(parts.map(|(k, v)| (*k, *v))));
-        }
+        links.extend(revealed(by_id, shot));
     }
     for e in links.values() {
         names.extend([e.from.as_str(), e.to.as_str()]);

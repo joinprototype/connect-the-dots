@@ -13,3 +13,4 @@ define('ctd-search', CtdSearch);
 define('ctd-lens-chips', CtdLensChips);
 define('ctd-atlas-links', CtdAtlasLinks);
 startAsk();
+if (document.querySelector('ctd-isles')) void import('./isles');

@@ -24,6 +24,7 @@ use crate::{
 pub mod data;
 mod dossier;
 mod history;
+pub mod islands;
 mod question;
 
 use history::{History, git};
@@ -664,6 +665,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     let stories: BTreeMap<&String, Vec<[&Value; 2]>> =
         s.stories.iter().map(|(id, rows)| (id, rows.iter().map(|r| [&r["title"], &r["url"]]).collect())).collect();
     write(&out.join("data").join("stories.json"), serde_json::to_vec(&stories)?)?;
+    write_islands(&s)?;
     if opts.graph {
         write_graph(kb, out, &schema, &pages, &lives, &questions.stories)?;
     }
@@ -671,6 +673,16 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     write(&out.join("build-manifest.json"), serde_json::to_vec_pretty(&manifest)?)?;
     write_addresses(out)?;
     Ok(manifest)
+}
+
+/// The picture on the Stories page, with its budget like the slim file's.
+fn write_islands(s: &Site) -> Result<()> {
+    let bytes = serde_json::to_vec(&islands::picture(s.kb, &s.by_id))?;
+    let gz = data::gzip_len(&bytes);
+    if gz > islands::BUDGET {
+        eprintln!("warning: data/islands.json is {} KB gzip, past its {} KB budget", gz / 1024, islands::BUDGET / 1024);
+    }
+    write(&s.out.join("data").join("islands.json"), bytes)
 }
 
 /// Gives every page its canonical address and lists it in the sitemap. Runs last, because a

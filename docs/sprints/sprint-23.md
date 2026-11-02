@@ -17,7 +17,7 @@ The founder found the four places "too much and complicated", and picked One Box
 - [ ] S23-01 The box in every header, parsing a name, two names, a year or a question. The nav goes.
 - [ ] S23-02 Home opens on one name and the written stories it runs through, with "Another name".
 - [ ] S23-03 `/r/` answers any pair: a direct tie first, with its caveat, then the way, with proof at each step.
-- [ ] S23-04 The Stories page draws stories as islands, with a plain list beside it.
+- [x] S23-04 The Stories page draws stories as islands, with a plain list beside it.
 - [ ] S23-05 Names in stories link to their entries.
 - [ ] S23-06 Every old address still works. The footer lists Stories, Map, Explore and Connect.
 

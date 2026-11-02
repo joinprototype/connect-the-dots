@@ -1,34 +1,38 @@
 {% extends "base.html" %}
-{% from "macros.html" import book %}
+{% from "macros.html" import tales %}
 {% block title %}Stories: Connect the Dots{% endblock %}
+{% block head %}<noscript><style>.isles, .isles-key { display: none; }</style></noscript>{% endblock %}
 {% block main %}
-<section class="page-head">
+<section class="page-head isles-head">
   <h1>Stories</h1>
-  <p class="page-lede">Every story is drawn from sourced links. Pause on any scene and explore from there.</p>
+  {% if chapters %}<p class="isles-line isles-key" aria-hidden="true">Every island is a story. Its dots are the people, places and things in it.</p>{% endif %}
+  <p class="page-lede">Every story is drawn from sourced links.{% if chapters %}<span class="isles-key"> <span aria-hidden="true">A line joins two stories that share one. Open any island to read it.</span> <a href="#all">See them all as a list</a></span>{% endif %}</p>
 </section>
 {% if chapters %}
-<section class="shelf-section" aria-labelledby="written-h">
-  <h2 id="written-h">Written</h2>
-  <div class="shelf">{% for c in chapters %}{{ book(c) }}{% endfor %}</div>
+{# The picture is the list below, drawn: the list is its alternative, and all there is without JavaScript. #}
+<ctd-isles class="isles" aria-hidden="true"><div class="isles-sheet"></div></ctd-isles>
+<section class="shelf-section" id="all" aria-labelledby="written-h">
+  <h2 id="written-h">All stories <span class="count">{{ chapters|length }}</span></h2>
+  {{ tales(chapters) }}
 </section>
 {% endif %}
 {% if connections %}
 <section class="shelf-section" aria-labelledby="connections-h">
   <h2 id="connections-h">Connections</h2>
-  <div class="shelf">{% for c in connections %}{{ book(c) }}{% endfor %}</div>
+  {{ tales(connections) }}
 </section>
 {% endif %}
 {% if questions %}
 <section class="shelf-section" aria-labelledby="questions-h">
   <h2 id="questions-h">Questions{% if questions_more %} <span class="count">{{ questions|length + questions_more }}</span>{% endif %}</h2>
-  <div class="shelf">{% for c in questions %}{{ book(c) }}{% endfor %}</div>
+  {{ tales(questions) }}
   {% if questions_more %}<p class="index-more">Showing the {{ questions|length }} with the most links. {% if questions_more == 1 %}The other one is in search.{% else %}The other {{ questions_more }} are in search.{% endif %}</p>{% endif %}
 </section>
 {% endif %}
 {% for shelf in lives %}
 <section class="shelf-section" aria-labelledby="lives-{{ loop.index }}">
   <h2 id="lives-{{ loop.index }}">{{ shelf.label }}{% if shelf.more %} <span class="count">{{ shelf.items|length + shelf.more }}</span>{% endif %}</h2>
-  <div class="shelf">{% for c in shelf.items %}{{ book(c) }}{% endfor %}</div>
+  {{ tales(shelf.items) }}
   {% if shelf.more %}<p class="index-more">Showing the {{ shelf.items|length }} with the most links. {% if shelf.more == 1 %}The other one is in search.{% else %}The other {{ shelf.more }} are in search.{% endif %}</p>{% endif %}
 </section>
 {% endfor %}
