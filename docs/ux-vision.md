@@ -8,7 +8,7 @@
 
 ## Focus: one box ([ADR-0028](decisions/0028-one-box.md))
 
-The header on every page holds the mark and one box. Type a name, two names, a year or a question, and you get the answer with its proof. Home opens already asking, on a real question and its answer.
+The header on every page holds the mark and one box. Type a name, two names, a year or a question, and you get the answer with its proof. Home opens on one name and the written stories it runs through.
 
 | What an answer leads to | What it is |
 |---|---|
