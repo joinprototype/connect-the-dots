@@ -9,6 +9,7 @@ What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versio
 - Click a dot and see the stories it is in, or the ones it reaches through a link. Clicking a hand-written dot now shows its links, as an imported dot does.
 - Three new stories: "The Sealed Train" on how Lenin crossed wartime Germany, "Ninety-Five Theses" on Luther and the printing press, and "The Oil Weapon" on the 1973 embargo. Each joins stories that stood apart.
 - 29 entries pointed at the wrong thing in Wikidata, so NASA's page linked to a song. Fixed.
+- 44 more sourced links, found by a new scan of what the record is missing and checked by hand against a source.
 
 ## 0.4.2 (2026-11-01)
 

@@ -38,6 +38,11 @@ The founder, after 0.4.0: stories "sometimes feel empty", get to a million dots 
 - [x] **The million showed no connections.** Thinning dots had dropped nearly every line, the Earth showed only hand-written entries, and routes stopped at them. Now a web of links shows at every zoom, a click draws a dot's links, the Earth streams 216,000 places, and any two entries connect through landmarks, reading about ten small files ([ADR-0023](../decisions/0023-the-atlas.md) point 11).
 - [x] **Pale region discs muddied the zoomed-out map.** Dots at every zoom look better and cost less, so region tiles came out of the engine and the viewer, and frames stopped dropping below 59 fps.
 
+- [x] The era slider reads every dot: tiles (version 1) and the Earth's rows carry years, for 5 MB more.
+- [x] A dot's card lists its stories, then those one link away (`data/stories.json`). Hand-written dots show their links.
+- [x] `ctd gaps` ([ADR-0025](../decisions/0025-leads-not-links.md)): what the record may be missing, in about 2 seconds. First run: 29 wrong or missing Wikidata ids fixed, 44 links checked and written, 14 leads rejected.
+- [x] Three stories by agents, each reviewed: The Sealed Train, Ninety-Five Theses, The Oil Weapon. 721 entries, 1,304 claims, 16 stories.
+
 ### Not in this sprint
 - Routes through the atlas.
 - A hosted copy of the data.
