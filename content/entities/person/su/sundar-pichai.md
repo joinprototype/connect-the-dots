@@ -19,4 +19,10 @@ claims:
     when: "2015-10/.."
     src:
       - {s: alphabet-proxy-2026, at: "Election of Directors, nominee biographies", quote: "Sundar Pichai, 53, joined Google in 2004 and was named the Chief Executive Officer of Google in October 2015 and of Alphabet in December 2019."}
+  - id: c3
+    rel: educated_at
+    to: stanford-university
+    title: "master’s degree"
+    src:
+      - {s: stanford-directors-college-2022-pichai, at: "Speaker biography", quote: "He holds a master’s degree from Stanford University and an MBA from the Wharton School"}
 ---

@@ -8,5 +8,11 @@ summary: "Country in Central Europe."
 same_as: {wikidata: Q183}
 image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Aerial_view_of_Berlin_%2832881394137%29.jpg/960px-Aerial_view_of_Berlin_%2832881394137%29.jpg", license: "CC BY 2.0", author: "dronepicr", page: "https://commons.wikimedia.org/wiki/File:Aerial_view_of_Berlin_(32881394137).jpg"}
 coords: [10.45, 51.17]
-claims: []
+claims:
+  - id: c1
+    rel: member_of
+    to: international-energy-agency
+    when: "1974"
+    src:
+      - {s: iea-history, at: "History", quote: "The IEA’s founding members were Austria, Belgium, Canada, Denmark, Germany, Ireland, Italy, Japan, Luxembourg, The Netherlands, Norway, Spain, Sweden, Switzerland, Türkiye, United Kingdom, and the United States."}
 ---

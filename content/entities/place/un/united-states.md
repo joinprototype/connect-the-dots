@@ -29,6 +29,12 @@ claims:
     note: "Interview recorded for CNN's Cold War series in March 1998, translated from Spanish."
     src:
       - {s: cnn-1999-cold-war-castro-interview, at: "'On the end of the Cold War', 2nd paragraph", quote: "At the end of the Cold War, one superpower ceased to exist, and only one superpower remained, which had absolute hegemony. The bipolar world was transformed into a unipolar world, leaving the United States with enormous power.", by: fidel-castro}
+  - id: c4
+    rel: member_of
+    to: international-energy-agency
+    when: "1974"
+    src:
+      - {s: iea-history, at: "History", quote: "The IEA’s founding members were Austria, Belgium, Canada, Denmark, Germany, Ireland, Italy, Japan, Luxembourg, The Netherlands, Norway, Spain, Sweden, Switzerland, Türkiye, United Kingdom, and the United States."}
 ---
 
 The United States of America. Its federal government, the [[us-government]], sits in [[washington-dc]].
