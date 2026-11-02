@@ -26,7 +26,8 @@ dist/
   data/e/<n>.json            the words and proof of the entries in pack <n>, loaded when one is opened
   data/life/<n>.json         the life stories in pack <n>, loaded by the page at `/e/<id>/story/`
   data/more/<n>.json         long lists past their first 40 names, fetched when a reader opens one
-  data/stories.json          the written stories each entry is in, read by the Map, the Earth and atlas pages
+  data/spots.json            where each entry sits on the Map, read by the explorer
+  data/stories.json          the written stories each entry is in, read by the explorer, the Map, the Earth and atlas pages
   data/islands.json          the Stories page's picture: every written story as an island of dots
   data/borders/<id>.json     one polity's historical borders, loaded by a story that draws them (ADR-0020)
   data/borders/world-<year>.json   every polity of a year (world-1960, world-3000-bce), loaded by the Map's era slider (ADR-0021)
@@ -41,7 +42,7 @@ dist/
 
 An entry gets a life story when it has at least two links that are not withdrawn. A featured pair gets a route story when a route joins them. A question gets a page about an entry when its answer names at least the question's `min` entries or gives two accounts (at most 5,000 pages per question, featured first, then the richest), and that page gets a story when it has two published lines or two accounts. `schema.json` lists the route stories; an entry's detail file names its life story and its question pages.
 
-**Pages load what they show** ([ADR-0017](decisions/0017-pages-load-what-they-show.md)). Entry, question and type pages need no data file. The explorer and the Map's Earth read `schema.json` and `graph-slim.json`, and the explorer loads an entry's `e/<id>.json` when a panel shows it or its links. A story reads its own data from its page and `schema.json`. The box reads `search/` and `schema.json`, from the moment a person focuses it. No page reads `graph.json`; the QA sweep fails one that does. All of `data/` is served with `Cache-Control: public, max-age=300, stale-while-revalidate=86400`.
+**Pages load what they show** ([ADR-0017](decisions/0017-pages-load-what-they-show.md)). Entry, question and type pages need no data file. The explorer and the Map's Earth read `schema.json` and `graph-slim.json`. The explorer also reads `spots.json` and `stories.json`, and loads an entry's `e/<id>.json` when a panel shows it or its links, or a pointer rests on its name. A story reads its own data from its page and `schema.json`. The box reads `search/` and `schema.json`, from the moment a person focuses it. No page reads `graph.json`; the QA sweep fails one that does. All of `data/` is served with `Cache-Control: public, max-age=300, stale-while-revalidate=86400`.
 
 ## Dates
 
@@ -286,13 +287,16 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 
 **Entity page:** no tabs. Timeline, Proof and Page history are `details.fold` sections (`#timeline`, `#proof` with `li#src-<n>`, `#history`). A small inline script opens the fold that holds the URL's hash target, so footnote links (`#src-<n>`) work. No island is involved.
 
-**Explorer:** `/x/index.html` contains `<div id="explorer-root"></div>` (optional `data-world`: the world URL, default `/world/`) and loads `/assets/explorer.js` and `/assets/explorer.css`. Its state lives in the query string:
+**Explorer:** `/x/index.html` contains `<div id="explorer-root"></div>` and loads `/assets/explorer.js` and `/assets/explorer.css`. Its state lives in the query string, and a change of `focus`, `link`, `from` or `to` is a step in the browser's history ([ADR-0029](decisions/0029-the-walk.md)):
 - `focus`: entity id, name or alias;
+- `link`: the id of the link whose proof is open;
 - `lens`: lens id;
 - `p`: perspective entity id, `facts` or `all`;
 - `t`: decimal year;
-- `from`, `to`: route ends (id, name or alias);
-- `view`: `graph` (default) or `world`.
+- `from`, `to`: route ends (id, name or alias). `from` alone asks for the other end;
+- `view=world`: an old address, which opens `/w/?focus=<id>`.
+
+The picture is made of `.ctdx-scene` elements, one for each stop: `a.ctdx-dot[data-walk="<id>"]` for a dot and `line.ctdx-hit[data-link="<link id>"]` for a line. A move animates the `.ctdx-world` transform and the scenes' opacity, and the page holds no running animation at rest.
 
 **World map:** `/w/index.html` contains `<div id="world-root" data-src="/world/"></div>` and loads `/assets/world.js` and `/assets/world.css`. Query: `view` (`earth`; Links when absent), `t` (a year: it opens on the era around it, `-449` for 450 BCE), `src` (another same-origin world), `focus` (entity id), `stats=0|1`, `labels=0`, `rs` (dot size factor), `soak=1&soakSec=<n>` (soak test).
 - A switch where the title would be, "Links | Earth", picks the view and keeps it in the URL (`?view=earth`; Links has no `view`). Synthetic worlds and the explorer's world mode show Links only.
@@ -377,6 +381,7 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 - `data/routes.json` (ADR-0023): the landmark table, read by `web/src/lib/atlas-route.ts`. `l`: landmarks by Wikidata number. `p`: phrases, each `[one way, the other way]`. `n[i][j]`: the landmark after `i` on the way to `j` (65535: none). `b["i:j"]`, `i < j`: `[x, y, phrase * 2 + flip]`, the crossing between two landmarks' territories, `x` in `i`'s.
 - `earth/index.json`: `{ maxzoom, entries, tiles: { "<z>": [x * 2^z + y, …] } }`, and `earth/<z>/<x>/<y>.json`: rows of `[lon, lat, Wikidata number, name, kind]`, then its years `start, end` if dated (`end` exclusive, 32767: still going), on the web map's tile grid. Read by `web/src/world/earth.ts`, for what is in view.
 - `data/stories.json`: `{ "<entry id>": [[title, url], …] }`, an entry's written stories, most scenes first, at most three. A dot's card lists them, then those of what it links to.
+- `data/spots.json`: `[x0, y0, x1, y1, …]`, each entry's place on the Map in 65,535ths, in the order of the `nodes` of `graph-slim.json`. The explorer reads only the direction from one entry to another, to choose which side of the picture a neighbour goes on. About 19 KB gzip for 3,397 entries.
 - `/r/` (`route.html`, ADR-0028): the one answer for any two, `?a=<id or Qn>&b=<id or Qn>`, with `&way=<n>` for an alternative. The page is written by `route.js`, its heading from the entries the data holds. It loads what the pair needs: `schema.json` and the two ends' detail files, which hold their ties; `ways.json` and the stops' detail files when both ends have a link a route may use; the atlas and `routes.json` only when no written way exists and both ends have open data. `/r/?a=Q937` alone keeps one name and asks for the other. `/w/` also takes `?focus=Q42` and `?route=Q1,Q2,…`.
 - `chapter.ink` (chapter.html): `{ bg, fg, text }`, the band a story opens on. `world/picture.svg`: the map's best-connected dots, a picture no page draws today.
 - `stories[]`: up to three written stories that name the entry, the one with the most scenes on it first: `{ title, url, counts }`.

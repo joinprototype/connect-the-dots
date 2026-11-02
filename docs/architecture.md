@@ -33,7 +33,7 @@ No database and no server in production for the MVP. Rust compiles the content; 
 | Graph core | Rust: interned ids, CSR, typed and time-bounded links | ~40 B per link, including the reverse index |
 | World map | Rust `ctd world`: Louvain communities, pivot MDS layout, quota LOD, binary tiles (docs/world-tiles.md), alignment between builds (ADR-0013) | 1M nodes in ~1.4 s; PMTiles packaging later |
 | Path finder | Rust `ctd path` (native, also draws the home-page route) + TypeScript in the explorer, same formula; one Rust kernel as WASM *(planned)* | One implementation for build and browser |
-| Close graph views | sigma 3.0.3 + graphology (Sprint 1; move to sigma 4 later) | WebGL2, fast to build; v4's API is newer than our tooling knows |
+| Close graph views | sigma 3.0.3 + graphology in stories; plain elements moved by the compositor in Explore ([ADR-0029](decisions/0029-the-walk.md)) | Stories animate a growing graph; Explore's stops are fixed, so a move needs no script |
 | World view *(planned)* | deck.gl 9.4 TileLayer + OrthographicView | Streams tiles, ~1M items at 60 fps |
 | Maps and stories | MapLibre GL JS 6 (globe, terrain) + GSAP | Explainer-style animation |
 | Explorer and editor apps | React 19 + Vite 8 (no SSR) | Reading pages are already HTML from Rust |
@@ -147,8 +147,8 @@ Builds are deterministic: a pinned toolchain, sorted output and fixed seeds. Any
 
 ## 8. Explorer (game-like)
 
-- React SPA at `/x`; the engine owns the world state and React owns the controls. React never holds per-node state.
-- **Close views** (ego graph, paths): sigma 4 over per-entity neighbourhood data, laid out live in a worker.
+- React SPA at `/x`; `walk.ts` owns the picture and React owns the panel. React never holds per-node state.
+- **The walk** ([ADR-0029](decisions/0029-the-walk.md)): an entry and its neighbours on fixed slots, directions taken from the Map's layout (`data/spots.json`), no layout in the browser. One move is one compositor transform, and nothing runs at rest.
 - **World view** (the Map, `/w/`): a deck.gl TileLayer over binary tiles built by Rust. Dots at every zoom, region names from the manifest. How a big map is shaped is in [ADR-0023](decisions/0023-the-atlas.md) point 10.
 - **Controls:**
   - Lens filters by layer mask.
@@ -156,7 +156,7 @@ Builds are deterministic: a pinned toolchain, sorted output and fixed seeds. Any
   - Time filters by validity, with play.
   - Filters run on the GPU where possible.
 - **Hubs:**
-  - Above 500 links, a hub becomes a fan glyph with counts per relation, the top 32 links inline, and paged links loaded on demand.
+  - A stop names its strongest neighbours, up to 32 on a laptop and 10 on a phone, and the rest are in the list.
   - Passive index holders collapse into one "index funds" node by default.
 
 | Budget | Desktop | Phone |

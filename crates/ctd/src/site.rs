@@ -633,6 +633,9 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     if !kb.entities.is_empty() {
         let (g, spec) = crate::world::from_kb(kb, atlas.as_ref());
         let (_, nodes) = crate::world::build(&g, &spec, &out.join("world"), Some(&root.join(".cache").join("world-state.json")))?;
+        // the entries come first in the world's nodes, in the order of graph-slim.json
+        let places: Vec<u32> = nodes[..kb.entities.len()].iter().flatten().map(|v| (v * 65535.0).round() as u32).collect();
+        write(&out.join("data").join("spots.json"), serde_json::to_vec(&places)?)?;
         if let Some(ids) = &g.ids {
             spots = crate::atlas::spots(kb, ids, &nodes);
         }
@@ -1528,6 +1531,18 @@ mod tests {
             .err()
             .expect("refused");
         assert!(err.to_string().contains("must also be `attributed: true`"), "{err}");
+    }
+
+    #[test]
+    fn spots_follow_the_slim_file() {
+        let root = write_repo("site-spots", &crate::kb::tests::backgrounds()).unwrap();
+        super::copy_dir(&Path::new(env!("CARGO_MANIFEST_DIR")).join("../../theme"), &root.join("theme")).unwrap();
+        let (kb, _) = crate::load_kb(&root).unwrap();
+        let out = root.join("dist");
+        super::build(&root, &kb, &super::Opts { out: out.clone(), dev: false, graph: false }).unwrap();
+        let spots: Vec<u32> = serde_json::from_slice(&std::fs::read(out.join("data").join("spots.json")).unwrap()).unwrap();
+        assert_eq!(spots.len(), 2 * kb.entities.len());
+        assert!(spots.iter().all(|&v| v <= 65535));
     }
 
     #[test]
