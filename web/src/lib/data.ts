@@ -5,6 +5,7 @@ import type { CtdDate, GEdge, GNode, GraphData, LensDef, Perspective, SourceDef,
 
 const SCHEMA_URL = '/data/schema.json';
 const SLIM_URL = '/data/graph-slim.json';
+const WAYS_URL = '/data/ways.json';
 
 /** The vocabulary: everything a graph needs but its entries, links and sources. */
 type Schema = Omit<GraphData, 'nodes' | 'edges' | 'sources'>;
@@ -63,6 +64,8 @@ export function loadEntryFile(id: string): Promise<Details> {
 /** One entry's words and proof (in data/e/<pack>.json). */
 export interface Details {
   id: string;
+  name: string;
+  type: string;
   summary: string | null;
   aliases: string[];
   /** Its life story, if the build made one. */
@@ -71,9 +74,25 @@ export interface Details {
   asked: { q: string; title: string; url: string; links: number; accounts: number; counts: string }[];
   /** How many more links open data holds for it; the explorer stays on the record (ADR-0023). */
   open: number | null;
+  /** Its Wikidata id, the way from here into open data (`/r/`); null without one. */
+  w: string | null;
   /** Its links' words and proof; a hub's file holds the strongest 100 of each kind. */
-  links: { id: string; sources: SourceRef[]; detail?: string; qualifiers?: Record<string, unknown>; note?: string; reason?: string }[];
+  links: DetailLink[];
   sources: Record<string, SourceDef>;
+}
+
+/** A link in a detail file, in full. */
+interface DetailLink extends LinkExtras {
+  id: string;
+  to: string;
+  rel: string;
+  when: SlimDate;
+  tier: string | null;
+  sources: SourceRef[];
+  detail?: string;
+  qualifiers?: Record<string, unknown>;
+  note?: string;
+  reason?: string;
 }
 
 /** Lookup tables over a graph. */
@@ -114,14 +133,50 @@ export function indexGraph(data: GraphData): GraphIndex {
 
 /** `[start, end, label]`, plus 1 when only the end is known; 0 when undated. */
 type SlimDate = [number, number | null, string, 1?] | 0;
+/** What a link says besides its ends, relation, date and tier, when not the default. */
+interface LinkExtras {
+  according_to?: string[];
+  status?: string;
+  voices?: string[];
+}
 /** graph-slim.json: entries `[id, name, type, degree, when, coords, place]`, links `[from, to, relation,
  *  claim, when, tier, extra?]` with entry indexes for ends and places (docs/data-contract.md). */
 interface Slim {
   nodes: [string, string, string, number, SlimDate, [number, number] | 0, number][];
-  edges: [number, number, string, string, SlimDate, string | null, { according_to?: string[]; status?: string; voices?: string[] }?][];
+  edges: [number, number, string, string, SlimDate, string | null, LinkExtras?][];
+}
+/** ways.json: entries `[id, type, degree]`, and the links routes may use, `[from, to, relation, claim,
+ *  tier, extra?]`. */
+interface Ways {
+  nodes: [string, string, number][];
+  edges: [number, number, string, string, string | null, LinkExtras?][];
 }
 
 const date = (w: SlimDate): CtdDate | null => (w ? { start: w[0], end: w[1], label: w[2], ...(w[3] ? { open_start: true } : {}) } : null);
+
+/** A link from what the data files give, its vocabulary from the schema. */
+function linkOf(schema: Schema, id: string, from: string, to: string, rel: string, when: SlimDate, tier: string | null, more?: LinkExtras): GEdge {
+  const r = schema.relations[rel];
+  return {
+    id,
+    from,
+    to,
+    rel,
+    label: r?.label ?? rel,
+    layers: r?.layers ?? [],
+    when: date(when),
+    according_to: more?.according_to ?? [],
+    sources: [],
+    tier,
+    voices: more?.voices ?? [],
+    cross_confirmed: !!more?.voices,
+    status: more?.status ?? 'published',
+    passive: !!r?.passive,
+    traversable: r?.traversable ?? true,
+    caveat: r?.caveat ?? null,
+    qualifiers: {},
+  };
+}
 
 /** The slim file's rows as entries and links: structure only, until an entry's details are loaded. */
 export function decodeSlim(schema: Schema, slim: Slim): Pick<GraphData, 'nodes' | 'edges'> {
@@ -136,30 +191,37 @@ export function decodeSlim(schema: Schema, slim: Slim): Pick<GraphData, 'nodes' 
     place: place >= 0 ? slim.nodes[place][0] : null,
     url: `/e/${id}/`,
   }));
-  const edges: GEdge[] = slim.edges.map(([f, t, rel, claim, when, tier, more]) => {
-    const r = schema.relations[rel];
-    const from = nodes[f].id;
-    return {
-      id: `${from}#${claim}`,
-      from,
-      to: nodes[t].id,
-      rel,
-      label: r?.label ?? rel,
-      layers: r?.layers ?? [],
-      when: date(when),
-      according_to: more?.according_to ?? [],
-      sources: [],
-      tier,
-      voices: more?.voices ?? [],
-      cross_confirmed: !!more?.voices,
-      status: more?.status ?? 'published',
-      passive: !!r?.passive,
-      traversable: r?.traversable ?? true,
-      caveat: r?.caveat ?? null,
-      qualifiers: {},
-    };
-  });
+  const edges = slim.edges.map(([f, t, rel, claim, when, tier, more]) => linkOf(schema, `${nodes[f].id}#${claim}`, nodes[f].id, nodes[t].id, rel, when, tier, more));
   return { nodes, edges };
+}
+
+/** ways.json's rows as a slim file with holes: no names, no dates, only the links a route may use. */
+export function decodeWays(schema: Schema, ways: Ways): Pick<GraphData, 'nodes' | 'edges'> {
+  return decodeSlim(schema, {
+    nodes: ways.nodes.map(([id, type, degree]) => [id, id, type, degree, 0, 0, -1]),
+    edges: ways.edges.map(([f, t, rel, claim, tier, more]) => [f, t, rel, claim, 0, tier, more]),
+  });
+}
+
+/** What routes need, for one answer: a way is found here, and its words come from its stops' details. */
+export function loadWaysIndex(): Promise<GraphIndex> {
+  return once('ways', async () => {
+    const [schema, ways] = await Promise.all([loadSchema(), loadJson<Ways>(WAYS_URL)]);
+    return indexGraph({ ...schema, ...decodeWays(schema, ways), sources: {} });
+  });
+}
+
+/** A small graph read from detail files alone: these entries, the links between them, and their proof. */
+export function detailsIndex(schema: Schema, files: Details[]): GraphIndex {
+  const nodes: GNode[] = files.map((d) => ({ id: d.id, name: d.name, type: d.type, degree: 0, when: null, coords: null, place: null, url: `/e/${d.id}/`, summary: d.summary, aliases: d.aliases }));
+  const links = new Map<string, GEdge>();
+  for (const w of files.flatMap((d) => d.links)) {
+    const e = linkOf(schema, w.id, w.id.split('#')[0], w.to, w.rel, w.when, w.tier, w);
+    links.set(w.id, { ...e, sources: w.sources, qualifiers: w.qualifiers ?? {}, detail: w.detail, note: w.note, reason: w.reason, full: true });
+  }
+  const idx = indexGraph({ ...schema, nodes, edges: [...links.values()], sources: Object.assign({}, ...files.map((d) => d.sources)) });
+  for (const d of files) idx.details.set(d.id, d);
+  return idx;
 }
 
 /** Every entry and link (the slim file) with the vocabulary: the explorer's and the Map's graph. */

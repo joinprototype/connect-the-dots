@@ -38,3 +38,91 @@
 .connect-stop:last-child .connect-via { display: none; }
 .connect-note { max-width: 62ch; margin: 1.6rem 0 0; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.95rem; color: var(--muted); }
 @media (max-width: 640px) { .connect-form { grid-template-columns: minmax(0, 1fr); } .connect-field input { font-size: 16px; } }
+
+/* a pair (ADR-0028): the words hang from the left edge, the picture of the way sits above them or beside */
+.pair { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: 1.2rem; }
+.pair-head { min-width: 0; }
+.pair-head h1 { font-size: clamp(2.4rem, 5.4vw, 4.2rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.02; overflow-wrap: anywhere; }
+.pair-head h1.is-long { font-size: clamp(1.7rem, 3.4vw, 2.6rem); line-height: 1.08; }
+.pair-head h1 a { color: var(--ink); }
+.pair-head h1 span { color: var(--muted); }
+.pair-lead { margin: 0.9rem 0 0; max-width: 46ch; font: 400 1.25rem/1.45 var(--font-body); color: var(--ink-2); }
+.pair-body { min-width: 0; max-width: 680px; }
+.pair-part h2 { margin: 2.2rem 0 0.8rem; }
+.pair-picture { min-width: 0; min-height: 116px; }
+@media (min-width: 1000px) {
+  .pair { grid-template-columns: minmax(0, 1fr) 380px; grid-template-rows: auto 1fr; column-gap: 64px; }
+  .pair-picture { grid-column: 2; grid-row: 1 / span 2; position: sticky; top: 24px; align-self: start; }
+}
+
+/* a direct tie, and a step of the way: the words, then what opens under them */
+.pair-ties { list-style: none; margin: 0; padding: 0; }
+.pair-ties > li { padding: 0.9rem 0; border-top: 1px solid var(--rule); }
+.pair-ties > li:last-child { padding-bottom: 0.4rem; }
+.pair-said { font: 400 1.08rem/1.45 var(--font-body); color: var(--ink); margin: 0; }
+.pair-marks { display: block; margin: 2px 0 0; font: 500 0.86rem/1.4 var(--font-ui); color: var(--muted); }
+.pair-caveat { margin: 0.5rem 0 0; padding-left: 14px; border-left: 2px solid var(--ink); font: italic 400 1rem/1.45 var(--font-body); color: var(--ink-2); }
+.pair-none { max-width: 58ch; margin: 1rem 0 0; font: 400 1.08rem/1.5 var(--font-body); color: var(--ink-2); }
+.pair-step summary { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; min-height: 44px; padding: 2px 0 10px; list-style: none; cursor: pointer; }
+.pair-step summary::-webkit-details-marker { display: none; }
+.pair-step .pair-said { min-width: 0; }
+.pair-opener { flex: none; font: 500 0.92rem/1.7 var(--font-ui); color: var(--ink); text-decoration: underline; text-underline-offset: 0.16em; }
+.pair-opened, .pair-step[open] .pair-shut { display: none; }
+.pair-step[open] .pair-opened { display: inline; }
+.pair-ties .pair-step summary { justify-content: flex-start; padding: 8px 0; }
+.pair-proof { padding: 0 0 12px; }
+.pair-proof ul { list-style: none; margin: 0; padding: 0; }
+.pair-proof li + li { margin-top: 0.8rem; }
+.pair-note { margin: 0 0 0.6rem; font-size: 0.95rem; color: var(--ink-2); }
+.pair-quote { margin: 0 0 0.3rem; font: 400 1.02rem/1.6 var(--font-body); color: var(--ink); }
+.pair-quote mark { background: var(--highlight); color: inherit; padding: 1px 3px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.pair-source { margin: 0; font-size: 0.92rem; color: var(--muted); overflow-wrap: anywhere; }
+.pair-source a { color: var(--ink); }
+
+/* a step in one side's words is dashed, and open data grey and dashed, here as in the picture */
+.connect-route.is-open .connect-stop::before, .connect-stop.is-account::before { background: none; width: 0; left: 6px; border-left: 2px dashed var(--ink); }
+.connect-route.is-open .connect-stop::before { border-left-color: var(--muted); }
+.pair .connect-route { margin-top: 0.9rem; }
+.pair .connect-name { width: fit-content; max-width: 100%; padding: 9.5px 0; overflow-wrap: anywhere; }
+.pair .connect-kind { margin-top: -8px; }
+.pair .connect-stop { padding-bottom: 2px; }
+.pair .connect-stop:last-child { padding-bottom: 0; }
+.pair .connect-stop::before { top: 22px; bottom: -22px; }
+.pair .connect-stop::after { top: 15px; }
+.pair .connect-via { padding-bottom: 0.4rem; }
+
+.pair-others { margin-top: 2.2rem; border-top: 1px solid var(--rule); }
+.pair-others summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; padding: 10px 0; list-style: none; cursor: pointer; }
+.pair-others summary::-webkit-details-marker { display: none; }
+.pair-others h2 { margin: 0; font-size: 1.15rem; }
+.pair-others .pair-shut, .pair-others[open] .pair-opened { display: inline; }
+.pair-others[open] .pair-shut { display: none; }
+.pair-others ul { list-style: none; margin: 0; padding: 0; }
+.pair-others li { border-top: 1px solid var(--rule); }
+.pair-others a { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 16px; min-height: 44px; padding: 11px 0; color: var(--ink); }
+.pair-through { min-width: 0; flex: 1 1 18ch; font-weight: 550; overflow-wrap: anywhere; }
+.pair-length { flex: none; font-size: 0.9rem; color: var(--muted); }
+
+.pair-body .atlas-actions { margin-top: 2rem; }
+.connect-form .button, .connect-field input, .atlas-actions .button { min-height: 44px; }
+.connect-change { margin: 2.6rem 0 0.2rem; font-size: 1.06rem; color: var(--ink-2); }
+.pair-body .connect-form { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; margin-top: 0.7rem; }
+@media (max-width: 640px) { .pair-body .connect-form { grid-template-columns: minmax(0, 1fr); } }
+
+/* the picture: drawn once, in order, and then still. Dots fade in where they stay; nothing moves. */
+.thread { display: block; max-width: 100%; }
+.thread-draw { fill: none; stroke-dasharray: 1; animation: thread-draw var(--t) linear var(--d) backwards; }
+.thread-read { stroke: var(--ink); stroke-width: 2; }
+.thread-reveal { stroke: #fff; stroke-width: 8; }
+.thread-account { fill: none; stroke: var(--ink); stroke-width: 2; stroke-dasharray: 6 5; }
+.thread-unread { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 5 5; }
+.thread-dot { stroke: var(--paper); stroke-width: 3; }
+.thread-dot, .thread-name, .thread-also { animation: thread-show 220ms ease-out var(--d) backwards; }
+.thread-also { opacity: 0.8; pointer-events: none; }
+.thread-also line { stroke: var(--rule); stroke-width: 1; }
+.thread-name { font: 500 12.5px var(--font-ui); fill: var(--ink); stroke: var(--paper); stroke-width: 4px; stroke-linejoin: round; paint-order: stroke; pointer-events: none; }
+.thread-name.is-end { font: 700 15px var(--font-display); }
+.thread-door { fill: transparent; }
+.thread.is-still * { animation: none; }
+@keyframes thread-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes thread-show { from { opacity: 0; } }

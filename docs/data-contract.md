@@ -22,6 +22,7 @@ dist/
   t/<type>/index.html        every entry of one type, A to Z (past 500, its letters; t/<type>/<letter>/ lists one)
   data/schema.json           the vocabulary: types, relations, lenses, tiers, questions, methodology, route stories
   data/graph-slim.json       every entry and link, structure only: what the explorer draws and routes price
+  data/ways.json             what a route needs and nothing else, read by a pair's answer on `/r/`
   data/e/<n>.json            the words and proof of the entries in pack <n>, loaded when one is opened
   data/life/<n>.json         the life stories in pack <n>, loaded by the page at `/e/<id>/story/`
   data/more/<n>.json         long lists past their first 40 names, fetched when a reader opens one
@@ -154,19 +155,39 @@ Every entry and link, with only what the explorer draws and routes price, as row
 - **Left out:** summaries, aliases, qualifiers, notes and sources. They are in the entries' detail files.
 - **Size:** 17 KB gzip today (338 entries, 642 links). Its budget is 1 MB gzip, which holds about 40,000 links of today's kind. Past it the build warns, and the explorer and routes need the route service ([ADR-0017](decisions/0017-pages-load-what-they-show.md)).
 
+## `data/ways.json`
+
+What a route needs and nothing else: 70 KB gzip where `graph-slim.json` is 170. A pair's answer finds its way here with `findPaths`, and reads the words of what it found from the detail files of its stops:
+
+```jsonc
+{
+  "nodes": [ ["elon-musk", "person", 12] ],          // id, type, degree
+  "edges": [ [17, 52, "founded", "c1", "T1"],        // from, to, rel, claim, tier
+             [17, 9, "regarded_as", "c7", "T2", { "according_to": ["christianity"], "status": "draft" }] ]
+}
+```
+- **Links:** only those a route may use (`traversable`, not `passive`, not withdrawn), with ends as entry indexes, and the object a link in `graph-slim.json` has. `tools/qa/paths-golden.mjs` checks that it finds the routes the slim file does.
+- **Left out:** names, dates, places, and every link that stays off routes. A sealed entry keeps its row and has no link here.
+
 ## `data/e/<n>.json`
 
 Entries share 256 packs ([ADR-0026](decisions/0026-entries-share-files.md)). `<n>` is the 32-bit FNV-1a hash of the id, modulo 256, and the file is an object keyed by id. `loadEntryFile(id)` in `web/src/lib/data.ts` reads the one entry out. An entry's words and proof load when the explorer opens the entry or shows one of its links:
 
 ```jsonc
 {
-  "id": "blackrock", "summary": "American asset manager founded in 1988.", "aliases": ["BlackRock, Inc."],
+  "id": "blackrock", "name": "BlackRock", "type": "org",
+  "summary": "American asset manager founded in 1988.", "aliases": ["BlackRock, Inc."],
   "story": "/e/blackrock/story/",        // its life story, or null
   "asked": [ { "q": "behind", "title": "Who is behind BlackRock?", "url": "/q/behind/blackrock/",
                "links": 9, "accounts": 0, "counts": "9 links" } ],   // the question pages about it
-  "links": [ { "id": "blackrock#c3", "sources": [ { "id": "…", "at": null, "quote": "…" } ],
+  "open": 120,                           // how many more links open data holds for it, or null
+  "w": "Q219635",                        // its Wikidata id, or null: `/r/` steps from here into open data
+  "links": [ { "id": "blackrock#c3", "to": "spacex", "rel": "invested_in", "when": [2019, 2020, "2019"], "tier": "T1",
+               "sources": [ { "id": "…", "at": null, "quote": "…" } ],
+               "according_to": ["…"], "status": "draft", "voices": ["…"],
                "detail": "$240M", "qualifiers": { "amount": 240000000, "currency": "USD" }, "note": "…", "reason": "…" } ],
-               // detail, qualifiers, note and reason only when set
+               // the link in full, so that a pair's tie needs no other file: its owner is the id's first part, `when` is
+               // as in graph-slim.json, and according_to, status, voices, detail, qualifiers, note and reason come only when set
   "sources": { "…": { /* as in "Entries, links and sources" */ } }   // the sources its links cite
 }
 ```
@@ -323,7 +344,7 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 - `data/routes.json` (ADR-0023): the landmark table, read by `web/src/lib/atlas-route.ts`. `l`: landmarks by Wikidata number. `p`: phrases, each `[one way, the other way]`. `n[i][j]`: the landmark after `i` on the way to `j` (65535: none). `b["i:j"]`, `i < j`: `[x, y, phrase * 2 + flip]`, the crossing between two landmarks' territories, `x` in `i`'s.
 - `earth/index.json`: `{ maxzoom, entries, tiles: { "<z>": [x * 2^z + y, …] } }`, and `earth/<z>/<x>/<y>.json`: rows of `[lon, lat, Wikidata number, name, kind]`, then its years `start, end` if dated (`end` exclusive, 32767: still going), on the web map's tile grid. Read by `web/src/world/earth.ts`, for what is in view.
 - `data/stories.json`: `{ "<entry id>": [[title, url], …] }`, an entry's written stories, most scenes first, at most three. A dot's card lists them, then those of what it links to.
-- `/r/` (`route.html`): connect any two, `?a=Q937&b=Q76`. `/w/` also takes `?focus=Q42` and `?route=Q1,Q2,…`.
+- `/r/` (`route.html`, ADR-0028): the one answer for any two, `?a=<id or Qn>&b=<id or Qn>`, with `&way=<n>` for an alternative. The page is written by `route.js`, its heading from the entries the data holds. It loads what the pair needs: `schema.json` and the two ends' detail files, which hold their ties; `ways.json` and the stops' detail files when both ends have a link a route may use; the atlas and `routes.json` only when no written way exists and both ends have open data. `/r/?a=Q937` alone keeps one name and asks for the other. `/w/` also takes `?focus=Q42` and `?route=Q1,Q2,…`.
 - `chapter.ink` (chapter.html): `{ bg, fg, text }`, the band a story opens on. `world/picture.svg`: the map's best-connected dots, for the home page.
 - `stories[]`: up to three written stories that name the entry, the one with the most scenes on it first: `{ title, url, counts }`.
 - `dossier`: `family`, `lifeline`, `holders`, `holdings` and `split`, each null when empty, plus `share_scale` (the largest percent shown, at least 10).

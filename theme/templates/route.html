@@ -3,12 +3,9 @@
 {% block description %}Pick any two of {{ entries }} things in the world and see how they connect.{% endblock %}
 {% block head %}<meta name="robots" content="noindex">{% if site.assets.atlas_css %}<link rel="stylesheet" href="/assets/atlas.css">{% endif %}{% endblock %}
 {% block main %}
+{# route.js writes the page: its heading comes from the entries the address names, never from the address. #}
 <article class="atlas" id="connect-root">
-  <header class="atlas-words">
-    <h1>Connect any two.</h1>
-    <p class="atlas-summary">Pick any two of a million things, and see the way between them.</p>
-  </header>
-  <noscript><p class="empty">This page needs JavaScript.</p></noscript>
+  <noscript><h1>Connect any two.</h1><p class="empty">This page needs JavaScript.</p></noscript>
 </article>
 {% endblock %}
 {% block scripts %}{% if site.assets.route_js %}<script type="module" src="/assets/route.js"></script>{% endif %}{% endblock %}
