@@ -14,4 +14,9 @@ claims:
     when: "1942-09"
     src:
       - {s: osti-groves, at: "Leslie Groves", quote: "Instead, in September 1942 he was ordered to take command of the Manhattan Engineer District."}
+  - id: c2
+    rel: educated_at
+    to: massachusetts-institute-of-technology
+    src:
+      - {s: osti-groves, at: "Leslie Groves", quote: "After studying engineering at the University of Washington and at the Massachusetts Institute of Technology, in 1916 Groves enrolled at West Point."}
 ---

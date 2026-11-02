@@ -14,4 +14,10 @@ claims:
     title: "Secretary"
     src:
       - {s: treasury-2008-09-07-paulson-statement-gses, at: "statement, 7 September 2008", quote: "I support the Director’s decision as necessary and appropriate and had advised him that conservatorship was the only form in which I would commit taxpayer money to the GSEs."}
+  - id: c2
+    rel: ceo_of
+    to: goldman-sachs
+    when: "1999/2006"
+    src:
+      - {s: fcic-2011-final-report, at: "Goldman Sachs: \"multiplied the effects of the collapse in subprime\"", quote: "Henry Paulson, the CEO of Goldman Sachs from 1999 until he became secretary of the Treasury in 2006"}
 ---

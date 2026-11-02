@@ -20,4 +20,10 @@ claims:
     src:
       - {s: fed-history-dodd-frank-act, at: "epigraph", quote: "It was a crisis born of a failure of responsibility from certain corners of Wall Street to the halls of power in Washington."}
       - {s: public-law-111-203-dodd-frank, at: "long title, 124 Stat. 1376", quote: "To promote the financial stability of the United States by improving accountability and transparency in the financial system, to end ``too big to fail'', to protect the American taxpayer by ending bailouts, to protect consumers from abusive financial services practices, and for other purposes."}
+  - id: c3
+    rel: worked_at
+    to: university-of-chicago
+    role: "taught constitutional law"
+    src:
+      - {s: obama-whitehouse-biography, at: "Biography", quote: "he returned to Chicago to help lead a voter registration drive, teach constitutional law at the University of Chicago, and remain active in his community."}
 ---

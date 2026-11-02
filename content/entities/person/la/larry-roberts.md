@@ -18,4 +18,9 @@ claims:
       - {s: cbi-oh-182-baran-1990, at: "p. 39", quote: "In speaking to Larry, I think it fair to say that Larry had seen the reports, but probably Bob Kahn did not."}
       - {s: cbi-oh-182-baran-1990, at: "p. 37", quote: "On Tuesday, 28 February 1967 I find a notation on my calendar for 12:00 noon Dr. L. Roberts."}
       - {s: rand-2018-03-22-paul-baran, at: "ARPANET paragraph", quote: "it was intended for scientists and researchers who wanted to share computers remotely."}
+  - id: c2
+    rel: worked_at
+    to: massachusetts-institute-of-technology
+    src:
+      - {s: isoc-1997-brief-history-of-the-internet, at: "Origins of the Internet", quote: "he convinced his successors at DARPA, Ivan Sutherland, Bob Taylor, and MIT researcher Lawrence G. Roberts, of the importance of this networking concept."}
 ---

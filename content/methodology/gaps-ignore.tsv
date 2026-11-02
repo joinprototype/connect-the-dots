@@ -1,3 +1,15 @@
 # Leads from `ctd gaps` that someone checked and rejected: from, relation, to, why. They stay out of later runs.
 dwight-d-eisenhower	founded	cia	Truman signed the act that created it
 jesus	founded	catholic-church	an interpretation, not a record
+donald-douglas	founded	rand-corporation	Douglas Aircraft hosted Project RAND; the man did not found it
+theodore-roosevelt	founded	fbi	Attorney General Bonaparte created the Bureau in 1908; a president's term is not founding
+franklin-d-roosevelt	founded	sec	signed the Securities Exchange Act; Congress created the agency
+john-d-rockefeller	founded	standard-oil-of-indiana	a trust affiliate set up in 1889; the record does not name him as its founder
+cuban-missile-crisis	involved	united-states	already joined through the U.S. government entry
+cuban-missile-crisis	involved	soviet-union	already joined through the Soviet government entry
+potsdam-conference	involved	united-states	already joined through Truman
+potsdam-conference	involved	soviet-union	already joined through Stalin
+dead-sea-scrolls	part_of	judaism	an interpretation, not a record
+torah	part_of	bible	depends on which canon; an interpretation
+vladimir-lenin	founded	communist-party-of-the-soviet-union	the party grew from the Bolshevik faction; the record already carries it as became
+stanford-university	founded	stanford-research-institute	founded by trustees together with business leaders in 1946; sources differ on who founded it

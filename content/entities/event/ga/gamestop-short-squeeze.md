@@ -80,4 +80,9 @@ claims:
     src:
       - {s: sec-2023-02-15-shortening-settlement-cycle-final-rule, at: "Part I, Introduction, p. 8", quote: "Now, in part informed by episodes in 2020 and 2021 of increased market volatility that highlighted potential vulnerabilities in the U.S. securities market, the Commission believes that shortening the settlement cycle from T+2 to T+1 can promote investor protection, reduce risk"}
       - {s: sec-staff-report-2021-10-14, at: "Section 4, Conclusions, pp. 43–44", quote: "One method to mitigate the systemic risk posed by such entities to the clearinghouse and other participants is to shorten the settlement cycle."}
+  - id: c11
+    rel: involved
+    to: robinhood
+    src:
+      - {s: hfsc-2021-02-18-tenev-testimony, at: "Written statement, opening", quote: "the trading limits we put in place on GameStop and other stocks were necessary to allow us to continue to meet the clearinghouse deposit requirements that we pay to support customer trading on our platform."}
 ---

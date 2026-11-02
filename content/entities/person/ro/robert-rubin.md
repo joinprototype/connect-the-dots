@@ -15,4 +15,10 @@ claims:
     title: "Secretary"
     src:
       - {s: treasury-1998-06-05-rubin-greenspan-levitt-letter, at: "signature", quote: "Robert E. Rubin, Secretary"}
+  - id: c2
+    rel: worked_at
+    to: goldman-sachs
+    role: "co-CEO"
+    src:
+      - {s: fcic-2011-final-report, at: "Citigroup chapter", quote: "Robert Rubin, a former treasury secretary and former Goldman Sachs co-CEO"}
 ---

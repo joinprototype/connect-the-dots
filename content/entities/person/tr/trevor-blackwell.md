@@ -15,4 +15,10 @@ claims:
     src:
       - {s: paulgraham-2012-03-how-y-combinator-started, quote: "I agreed to put $100k into the new fund and Jessica agreed to quit her job to work for it. Over the next couple days I recruited Robert and Trevor, who put in another $50k each. So YC started with $200k."}
       - {s: yc-people-page, at: "Founders", quote: "Trevor Blackwell Founder, Retired"}
+  - id: c2
+    rel: founded
+    to: openai
+    when: "2015-12"
+    src:
+      - {s: openai-2015-12-11-introducing-openai, at: "Introducing OpenAI", quote: "The group’s other founding members are world-class research engineers and scientists: Trevor Blackwell"}
 ---

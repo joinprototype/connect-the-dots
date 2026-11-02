@@ -19,6 +19,13 @@ claims:
     when: "1529-10-03"
     src:
       - {s: ghdi-marburg-articles-1529, quote: "Martin Luther Justus Jonas Philipp Melanchthon Andreas Osiander"}
+  - id: c3
+    rel: worked_at
+    to: university-of-wittenberg
+    when: "1518"
+    role: "professor of Greek"
+    src:
+      - {s: smith-1911-life-and-letters-of-martin-luther, at: "Luther and his friends", quote: "When called in this year to teach Greek at the University of Wittenberg, Melanchthon was not yet twenty-one."}
 ---
 
 Philip Melanchthon came to [[wittenberg]] in August 1518. His preface of 1546 is the earliest report that Luther posted the theses on a church door.
