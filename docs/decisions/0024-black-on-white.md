@@ -5,15 +5,15 @@
 
 ## Context
 
-The same day ADR-0022 shipped to the branch, the founder looked at it and said the UI "looks really weird", that there was overlapping on the map, that alignment looked weird, and "I thought white and black is best".
+The same day, the founder reviewed the look of ADR-0022 and raised overlaps on the Map, odd alignment, and asked for black and white.
 
-Looking again, each was true:
+Looking again, each point held:
 - the header and every kind of page started at a different left edge;
 - Home's picture ran under its headline and form, and the Map's era card covered its key;
 - lavender panels, blue links, tomato buttons, gold bands and eight story inks competed, so no colour meant anything;
 - rounded tinted cards made every page look like a template.
 
-The founder's earlier "no minimalist bullshit" still holds, so this is not a return to ADR-0014's calm grey. Life comes from large type and from the dots.
+The earlier wish for a site with life in it still holds, so this is not a return to ADR-0014's calm grey. Life comes from large type and from the dots.
 
 ## Decision
 

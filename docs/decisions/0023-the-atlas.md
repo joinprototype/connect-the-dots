@@ -28,7 +28,7 @@ The founder wants a million dots: a better picture of the world, and the test of
     - each zoom takes every community's best known by their share of it, so the map stays equally dense and every colour shows;
     - a link appears only once it is short on screen.
     Pale region discs and their tiles are gone: dots at every zoom are clearer and cheaper. Measured on a real GPU, the opening view loaded 4 tiles and 375 KB, and a 30 s flight held 59.8 fps.
-11. **A million dots must show how they connect.** The founder, looking at the map: "there are millions of dots, however I don't see how they are connected". Three answers:
+11. **A million dots must show how they connect.** At review the dots looked good but showed no links, and the Earth was bare. Three answers:
     - A thin sample of dots is rarely linked, so zoomed out the map draws the links between communities: the web that holds it together. Clicking a dot draws lines to everything it links to, and each shard carries its neighbours' places on the Map so that this costs one file.
     - The Earth draws the atlas's 216,000 places by view, from tiles (`earth/`) that hold the best known of what is left for them.
     - **Any two entries connect, with no server.** As a game finds its way across a huge map, every entry knows its next step to the nearest of 256 landmarks, and a table worked out at build time runs from landmark to landmark. A route costs about ten small files. Routes follow relations marked `traversable` and go around crossroads of over 2,000 links, since sharing a country or a big city says little. What those do not reach joins by any link.

@@ -34,8 +34,8 @@ The founder, after 0.4.0: stories "sometimes feel empty", get to a million dots 
 - [x] **Wikidata ids typed from memory were wrong** in 15 cases of 20. Ids are now only ever taken from a search.
 - [x] **Over a third of the dots (362,000) had no community** and sat in one disc per colour. Each now joins the community of its rarest link.
 - [x] **Hubs knotted the map** and painted it with long grey lines. It is now shared out by area into one round world ([ADR-0023](../decisions/0023-the-atlas.md) point 10), and a link appears once it is short on screen.
-- [x] **The founder on the first look: "the ui somehow looks really weird".** Overlaps, three left edges and a dozen tints. Now black on white, colour only on the dots ([ADR-0024](../decisions/0024-black-on-white.md)).
-- [x] **The founder on the million: "I don't see how they are connected".** Thinning dots had dropped nearly every line, the Earth showed only hand-written entries, and routes stopped at them. Now a web of links shows at every zoom, a click draws a dot's links, the Earth streams 216,000 places, and any two entries connect through landmarks, reading about ten small files ([ADR-0023](../decisions/0023-the-atlas.md) point 11).
+- [x] **The first new look did not hold up at review.** Overlaps, three left edges and a dozen tints. Now black on white, colour only on the dots ([ADR-0024](../decisions/0024-black-on-white.md)).
+- [x] **The million showed no connections.** Thinning dots had dropped nearly every line, the Earth showed only hand-written entries, and routes stopped at them. Now a web of links shows at every zoom, a click draws a dot's links, the Earth streams 216,000 places, and any two entries connect through landmarks, reading about ten small files ([ADR-0023](../decisions/0023-the-atlas.md) point 11).
 - [x] **Pale region discs muddied the zoomed-out map.** Dots at every zoom look better and cost less, so region tiles came out of the engine and the viewer, and frames stopped dropping below 59 fps.
 
 ### Not in this sprint
