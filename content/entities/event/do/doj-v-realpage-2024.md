@@ -1,5 +1,5 @@
 ---
-uid: 01M6F9B9PE7200N8RRAMZ1H295
+uid: 01M6FB43FXAM4YRRRTJH0HR2NS
 id: doj-v-realpage-2024
 type: event
 name: "United States v. RealPage (rent-pricing software)"

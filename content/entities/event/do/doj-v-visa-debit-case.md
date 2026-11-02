@@ -1,9 +1,9 @@
 ---
-uid: 01M6F9B9PECVKZZC54T18Z7W6N
+uid: 01M6FB43FXA8T507WK8XVQQ650
 id: doj-v-visa-debit-case
 type: event
 name: "United States v. Visa (debit)"
-summary: "Filed in September 2024: the Justice Department alleges Visa unlawfully keeps a monopoly in U.S. debit networks. Visa denies it. The court refused to dismiss in 2025; no trial date was set as of August 2026."
+summary: "Filed in September 2024: the Justice Department alleges Visa unlawfully keeps a monopoly in U.S. debit networks. Visa denies it. The court refused to dismiss in 2025; fact discovery was moved to 29 January 2027 and no trial date was set at the last report we read."
 when: "2024-09-24/.."
 claims:
   - id: c1
@@ -25,6 +25,7 @@ claims:
     role: "the court; judge John Koeltl"
     src:
       - {s: paymentsdive-2026-08-20-visa-doj-lawyers-clash, at: "status", quote: "No trial date has been set, although it is likely to be in 2028 based on the current case schedule."}
+      - {s: paymentsdive-2026-09-visa-delivers-6m-documents, at: "discovery", quote: "Magistrate Judge Sarah Cave moved an October deadline to Jan. 29, 2027"}
 ---
 
-Filed in September 2024: the Justice Department alleges Visa unlawfully keeps a monopoly in U.S. debit networks. Visa denies it. The court refused to dismiss in 2025; no trial date was set as of August 2026.
+Filed in September 2024: the Justice Department alleges Visa unlawfully keeps a monopoly in U.S. debit networks. Visa denies it. The court refused to dismiss in 2025; fact discovery was moved to 29 January 2027 and no trial date was set at the last report we read.

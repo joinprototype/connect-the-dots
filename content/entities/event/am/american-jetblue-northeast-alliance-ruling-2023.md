@@ -1,5 +1,5 @@
 ---
-uid: 01M6F9B9PA3NZ8DFSMGTSTE0QK
+uid: 01M6FB43F4SK5EWN603K7F3TR2
 id: american-jetblue-northeast-alliance-ruling-2023
 type: event
 name: "Ruling on the American–JetBlue Northeast Alliance, 2023"

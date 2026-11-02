@@ -1,5 +1,5 @@
 ---
-uid: 01M6F9B9Q1AXN6VXHSCDVN7WTW
+uid: 01M6FB43KJMHVFANSHNA00F836
 id: fdic
 type: org
 name: "Federal Deposit Insurance Corporation"

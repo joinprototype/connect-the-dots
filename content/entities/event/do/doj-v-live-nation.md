@@ -1,5 +1,5 @@
 ---
-uid: 01M6F9B9PEAF8FE07A3HD1GYNC
+uid: 01M6FB43FXD24T0H7967TNBXJ6
 id: doj-v-live-nation
 type: event
 name: "United States v. Live Nation (Justice Department suit and settlement)"

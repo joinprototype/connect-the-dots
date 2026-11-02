@@ -1,5 +1,5 @@
 ---
-uid: 01M6F9B9PB4S4VV216NRYY6X89
+uid: 01M6FB43F803QC9BM0W62RVXT0
 id: bank-concentration-2026
 type: event
 name: "Bank assets at 30 June 2026"

@@ -1,5 +1,5 @@
 ---
-uid: 01M6F9B9PHA6H3B39W275Y2041
+uid: 01M6FB43G3CQR5APRBN2GRBS4C
 id: ftc-petroleum-cartel-report-1952
 type: event
 name: "FTC staff report on the international petroleum cartel, 1952"

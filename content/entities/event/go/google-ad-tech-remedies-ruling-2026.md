@@ -1,5 +1,5 @@
 ---
-uid: 01M6F9B9PH053GEA3JZRECCFD6
+uid: 01M6FB43G4S8B7V0EGQBWGR6BZ
 id: google-ad-tech-remedies-ruling-2026
 type: event
 name: "Ruling on remedies in the Google ad tech case, 2 September 2026"
@@ -9,9 +9,10 @@ claims:
   - id: c1
     rel: involved
     to: google
-    role: "defendant; found liable in April 2025, kept AdX in September 2026"
+    role: "defendant; found liable in April 2025, kept AdX in September 2026 but ordered to change its practices under a monitor for six years; final judgment not yet entered at the last report"
     src:
       - {s: adexchanger-2026-09-02-brinkema-ad-tech-remedy, at: "opening", quote: "Google will not be required to break up its ad tech business, despite a federal court ruling last April that found the company operated a monopoly."}
+      - {s: adexchanger-2026-09-ad-tech-remedies-tldr, at: "monitor", quote: "Lastly, the technical monitor will serve for six years"}
   - id: c2
     rel: involved
     to: us-department-of-justice

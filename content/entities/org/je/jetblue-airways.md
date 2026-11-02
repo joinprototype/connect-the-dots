@@ -1,5 +1,5 @@
 ---
-uid: 01M6F9B9Q42M3H4Z0BS9XEFKF8
+uid: 01M6FB43M8ZDCD61S2PJYGX9SQ
 id: jetblue-airways
 type: org
 name: "JetBlue Airways"

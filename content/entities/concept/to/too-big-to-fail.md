@@ -1,5 +1,5 @@
 ---
-uid: 01M6F9B9P9W0BAKYXW9SEYZBMM
+uid: 01M6FB43F187D3G46GRSFB0N1G
 id: too-big-to-fail
 type: concept
 name: "Too big to fail"
@@ -14,4 +14,4 @@ claims:
       - {s: public-law-111-203-dodd-frank, at: "long title", quote: "to end “too big to fail”, to protect the American taxpayer by ending bailouts"}
 ---
 
-In 1984 a House hearing gave it its public name; in 2010 Congress wrote the aim of ending it into the title of Dodd-Frank.
+The phrase was used about Lockheed in the mid-1970s and about Continental Illinois in print in July 1984, before the House hearings of September and October 1984 where Representative McKinney used it. The FDIC’s own history calls it inaccurate. In 2010 Congress wrote the aim of ending it into the title of Dodd-Frank.

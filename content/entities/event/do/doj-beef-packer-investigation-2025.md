@@ -1,9 +1,9 @@
 ---
-uid: 01M6F9B9PEW6S4TJHVR8TKVFMX
+uid: 01M6FB43FWM7QJDP5XXQ52SVWC
 id: doj-beef-packer-investigation-2025
 type: event
 name: "Justice Department inquiry into beef packers, from November 2025"
-summary: "In November 2025 President Trump said he had asked the Justice Department to investigate meatpackers; the department said an inquiry was under way. We found no charge."
+summary: "In November 2025 President Trump said he had asked the Justice Department to investigate meatpackers; the department said an inquiry was under way. Reports of a wider 2026 inquiry were not read. We found no charge."
 when: "2025-11/.."
 claims:
   - id: c1

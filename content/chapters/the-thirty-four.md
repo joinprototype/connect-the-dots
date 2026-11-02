@@ -49,7 +49,7 @@ This story follows the pieces from the decree to the board seats the FTC fought 
   time: "1937-05-31"
   reveal: [john-d-rockefeller, standard-oil, rockefeller-foundation]
   overlay: {kind: quote, source: time-1937-last-titan, quote: "When the \"splinters\" of old Standard Oil filtered into the stockmarket after the Trust's dissolution, they were whooped skyward on the sudden realization that the value of the operating properties had been understated by hundreds of millions.", caption: "Time, 31 May 1937, on the death of John D. Rockefeller"}
-  narration: "**The fortune.** Time wrote after Rockefeller’s death that, once the pieces reached the stock market, they were “whooped skyward.” It says he gave away no less than $530,000,000, and that the rest of his wealth went to his heirs, principally his son, leaving him “probably worth only a few million.” The Supreme Court Historical Society says he was worth $1.5 billion at death. The only figure we found for his stake before and after 1911 is on a class wiki, not a source we rely on, so this story gives none."
+  narration: "**The fortune.** Time wrote after Rockefeller’s death that, once the pieces reached the stock market, they were “whooped skyward.” It says he gave away no less than $530,000,000, and that the rest of his wealth went to his heirs, principally his son, leaving him “probably worth only a few million.” The Supreme Court Historical Society says he was worth $1.5 billion at death; Bloomberg, citing his obituary, gives $1.5 billion as what he made in his career, which is not the same thing. A 1907 stock list, as a newspaper printed it, puts his share of the parent at about a quarter (247,692 of 983,383 shares); Too Big to Fail tells it."
   duration: 13
 
 - shot: section-eight

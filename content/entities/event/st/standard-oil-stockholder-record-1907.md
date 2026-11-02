@@ -1,5 +1,5 @@
 ---
-uid: 01M6F9B9PS7TRH2KF5HXZK6BP6
+uid: 01M6FB43HXK53Z68QJ1T1CAZND
 id: standard-oil-stockholder-record-1907
 type: event
 name: "Standard Oil of New Jersey stockholder record of 17 August 1907"

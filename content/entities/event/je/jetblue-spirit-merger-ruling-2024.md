@@ -1,9 +1,9 @@
 ---
-uid: 01M6F9B9PKW4YTTHRM5K50MGVM
+uid: 01M6FB43GHRWTCHF0HMGGXSFJB
 id: jetblue-spirit-merger-ruling-2024
 type: event
 name: "Ruling blocking JetBlue’s purchase of Spirit, 2024"
-summary: "On 16 January 2024 a federal judge ruled that JetBlue’s agreed purchase of Spirit would violate Section 7 of the Clayton Act and enjoined it."
+summary: "On 16 January 2024 a federal judge ruled that JetBlue’s agreed purchase of Spirit would violate Section 7 of the Clayton Act and enjoined it. Spirit stopped flying on 2 May 2026; we found no source tying that to the ruling."
 when: "2024-01-16"
 claims:
   - id: c1
@@ -27,4 +27,4 @@ claims:
       - {s: us-v-jetblue-opinion-2024-01-16, at: "findings of fact", quote: "A post-merger, combined firm of JetBlue and Spirit would likely place stronger competitive pressure on the larger airlines in the country."}
 ---
 
-On 16 January 2024 a federal judge ruled that JetBlue’s agreed purchase of Spirit would violate Section 7 of the Clayton Act and enjoined it.
+On 16 January 2024 a federal judge ruled that JetBlue’s agreed purchase of Spirit would violate Section 7 of the Clayton Act and enjoined it. Spirit stopped flying on 2 May 2026; we found no source tying that to the ruling.
