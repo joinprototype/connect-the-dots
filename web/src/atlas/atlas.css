@@ -1,5 +1,5 @@
 /* atlas.css: one page for every entry of the atlas. Plainer than a page written by hand, and says so. */
-.atlas { max-width: 1080px; margin: 0 auto; padding: clamp(28px, 5vw, 56px) var(--gutter) 3rem; --amber: #e08a00; }
+.atlas { max-width: var(--page); margin: 0 auto; padding: clamp(28px, 5vw, 56px) var(--gutter) 3rem; --amber: #e08a00; }
 .atlas-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px clamp(22px, 4vw, 44px); }
 .atlas-words { flex: 1 1 340px; min-width: 0; }
 .atlas-words h1 { font-size: clamp(2.6rem, 6.4vw, 4.8rem); font-weight: 800; letter-spacing: -0.035em; line-height: 0.98; overflow-wrap: anywhere; }

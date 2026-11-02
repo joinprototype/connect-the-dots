@@ -1,5 +1,6 @@
-//! Generated covers: every entry and story gets a book-like cover in a print ink, its title set
-//! large above a drawing of its own links in white. Deterministic: same id, same cover and ink.
+//! Generated covers: every entry and story gets a book-like cover in black, its title set large
+//! above a drawing of its own links in white, with the dots in their inks. Deterministic: same id,
+//! same cover.
 
 use std::fmt::Write;
 
@@ -8,8 +9,7 @@ use crate::{markdown::escape as esc, world::Rng};
 const W: f64 = 300.0;
 const H: f64 = 400.0;
 
-/// A print ink: the colour of a cover or a story's header, what reads on it, and its text colour on
-/// white paper (the lighter inks darkened to 4.5:1).
+/// A cover's colours, and a story's header: the ground, what reads on it, and its text on white paper.
 #[derive(Clone, Copy, serde::Serialize)]
 pub struct Ink {
     pub bg: &'static str,
@@ -17,20 +17,13 @@ pub struct Ink {
     pub text: &'static str,
 }
 
-const INKS: [Ink; 8] = [
-    Ink { bg: "#d93a24", fg: "#ffffff", text: "#c9301c" },
-    Ink { bg: "#2346d6", fg: "#ffffff", text: "#2346d6" },
-    Ink { bg: "#0b8457", fg: "#ffffff", text: "#0b7a50" },
-    Ink { bg: "#ffc22e", fg: "#171a3a", text: "#171a3a" },
-    Ink { bg: "#7b36b8", fg: "#ffffff", text: "#7b36b8" },
-    Ink { bg: "#0a79b5", fg: "#ffffff", text: "#0a6ea5" },
-    Ink { bg: "#d42a6a", fg: "#ffffff", text: "#c4235f" },
-    Ink { bg: "#171a3a", fg: "#ffffff", text: "#171a3a" },
-];
+pub const INK: Ink = Ink { bg: "#000000", fg: "#ffffff", text: "#000000" };
 
-/// The ink of a story or an entry, by its id.
-pub fn ink(id: &str) -> Ink {
-    INKS[(seed(id) % INKS.len() as u64) as usize]
+/// The dots keep the inks of the map, drawn from the page's own tokens.
+const DOTS: [&str; 7] = ["--tomato", "--cobalt", "--leaf", "--sky", "--sun", "--plum", "--rose"];
+
+fn dot(i: usize) -> String {
+    format!("var({})", DOTS[i % DOTS.len()])
 }
 
 fn seed(id: &str) -> u64 {
@@ -44,8 +37,8 @@ fn seed(id: &str) -> u64 {
 }
 
 /// Covers are decorative: the title always appears as text next to them, so screen readers skip them.
-fn open(id: &str) -> String {
-    let bg = ink(id).bg;
+fn open() -> String {
+    let bg = INK.bg;
     format!(
         r##"<svg class="cover-art" viewBox="0 0 {W} {H}" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice"><rect width="{W}" height="{H}" fill="{bg}"/>"##
     )
@@ -94,8 +87,8 @@ fn stars(svg: &mut String, rng: &mut Rng, n: usize, fg: &str) {
 /// A constellation: the entry at the centre, its links around it (count = `links`).
 pub fn entity(id: &str, label: &str, links: usize) -> String {
     let mut rng = Rng(seed(id));
-    let fg = ink(id).fg;
-    let mut svg = open(id);
+    let fg = INK.fg;
+    let mut svg = open();
     title(&mut svg, label, fg);
     stars(&mut svg, &mut rng, 7, fg);
     let n = links.clamp(3, 16);
@@ -117,9 +110,9 @@ pub fn entity(id: &str, label: &str, links: usize) -> String {
     for &(x, y) in &pts {
         let _ = write!(svg, r#"<line x1="{cx:.1}" y1="{cy:.1}" x2="{x:.1}" y2="{y:.1}" stroke="{fg}" stroke-opacity="0.8" stroke-width="2.4"/>"#);
     }
-    for &(x, y) in &pts {
+    for (i, &(x, y)) in pts.iter().enumerate() {
         let r = 3.6 + rng.f() * 3.0;
-        let _ = write!(svg, r#"<circle cx="{x:.1}" cy="{y:.1}" r="{r:.1}" fill="{fg}"/>"#);
+        let _ = write!(svg, r#"<circle cx="{x:.1}" cy="{y:.1}" r="{r:.1}" fill="{}"/>"#, dot(i));
     }
     let _ = write!(svg, r#"<circle cx="{cx:.1}" cy="{cy:.1}" r="19" fill="{fg}" fill-opacity="0.25"/><circle cx="{cx:.1}" cy="{cy:.1}" r="11" fill="{fg}"/>"#);
     svg.push_str("</svg>");
@@ -129,8 +122,8 @@ pub fn entity(id: &str, label: &str, links: usize) -> String {
 /// A route: `stops` dots joined left to right, first and last emphasised.
 pub fn route(id: &str, label: &str, stops: usize) -> String {
     let mut rng = Rng(seed(id));
-    let fg = ink(id).fg;
-    let mut svg = open(id);
+    let fg = INK.fg;
+    let mut svg = open();
     title(&mut svg, label, fg);
     stars(&mut svg, &mut rng, 9, fg);
     let n = stops.clamp(2, 12);
@@ -145,7 +138,7 @@ pub fn route(id: &str, label: &str, stops: usize) -> String {
     for (i, &(x, y)) in pts.iter().enumerate() {
         let end = i == 0 || i == n - 1;
         let r = if end { 10.0 } else { 6.0 };
-        let fill = if end { fg } else { ink(id).bg };
+        let fill = if end { fg } else { INK.bg };
         let _ = write!(svg, r#"<circle cx="{x:.1}" cy="{y:.1}" r="{r}" fill="{fill}" stroke="{fg}" stroke-width="3.5"/>"#);
     }
     svg.push_str("</svg>");
@@ -174,8 +167,8 @@ pub fn journey(id: &str, label: &str, stops: &[[f64; 2]], routes: &[(usize, usiz
     };
     let pts: Vec<(f64, f64)> = stops.iter().map(|&p| at(p)).collect();
     let mut rng = Rng(seed(id));
-    let fg = ink(id).fg;
-    let mut svg = open(id);
+    let fg = INK.fg;
+    let mut svg = open();
     title(&mut svg, label, fg);
     stars(&mut svg, &mut rng, 7, fg);
     for pair in pts.windows(2) {
@@ -184,8 +177,8 @@ pub fn journey(id: &str, label: &str, stops: &[[f64; 2]], routes: &[(usize, usiz
     for &(a, b) in routes {
         let _ = write!(svg, r#"<line x1="{:.1}" y1="{:.1}" x2="{:.1}" y2="{:.1}" stroke="{fg}" stroke-width="4.5" stroke-linecap="round"/>"#, pts[a].0, pts[a].1, pts[b].0, pts[b].1);
     }
-    for &(x, y) in &pts {
-        let _ = write!(svg, r#"<circle cx="{x:.1}" cy="{y:.1}" r="5.4" fill="{fg}"/>"#);
+    for (i, &(x, y)) in pts.iter().enumerate() {
+        let _ = write!(svg, r#"<circle cx="{x:.1}" cy="{y:.1}" r="5.4" fill="{}"/>"#, dot(i));
     }
     let (x, y) = pts[0];
     let _ = write!(svg, r#"<circle cx="{x:.1}" cy="{y:.1}" r="15" fill="{fg}" fill-opacity="0.25"/><circle cx="{x:.1}" cy="{y:.1}" r="8" fill="{fg}"/></svg>"#);

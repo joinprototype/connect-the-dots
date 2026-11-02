@@ -319,8 +319,9 @@ class WorldViewer implements WorldHandle {
       // size is in world units: radius_px = size * S * 2^zoom * factor, clamped. Deeper worlds get a
       // smaller factor so the densest zoom still shows dots rather than discs.
       radiusScale: S * 2 ** (3 - m.maxzoom) * (content ? 2.4 : 3) * (this.opts.radiusFactor ?? 1),
-      minCorePx: content ? 4 : 1.35,
-      maxCorePx: content ? 13 : 11,
+      // a big map keeps its dots small, so that they stay dots and do not pile on one another
+      minCorePx: !content ? 1.35 : m.nodes > 20000 ? 2.3 : 4,
+      maxCorePx: !content ? 11 : m.nodes > 20000 ? 7 : 13,
       ink: rgba(ink),
       night: rgba(ground),
       font: tokenString('--font-ui', 'system-ui, sans-serif', this.root),

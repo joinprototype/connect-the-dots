@@ -500,7 +500,7 @@ impl Site<'_> {
             "id": draft.id, "title": draft.title, "subtitle": draft.subtitle, "summary": draft.summary, "authors": [],
             "intro_html": markdown::render(&draft.intro_md, &resolver), "outro_html": markdown::render(&draft.outro_md, &resolver),
             "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &self.by_id, &shots))?,
-            "steps": steps, "shot_count": shots.len(), "generated": true, "ink": crate::covers::ink(&draft.id),
+            "steps": steps, "shot_count": shots.len(), "generated": true, "ink": crate::covers::INK,
             "back": back, "explore_url": draft.explore_url,
         });
         write(&dest.join("index.html"), self.render("chapter.html", json!({ "site": &self.site, "chapter": chapter, "history": [] }))?)
@@ -1029,7 +1029,7 @@ fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
             "id": ch.id, "title": ch.title, "subtitle": ch.subtitle, "summary": ch.summary, "authors": ch.authors,
             "intro_html": markdown::render(&ch.intro_md, &resolver), "outro_html": markdown::render(&ch.outro_md, &resolver),
             "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &s.by_id, &shots))?,
-            "steps": steps, "url": format!("/c/{}/", ch.id), "shot_count": shots.len(), "rel_path": ch.rel_path, "ink": crate::covers::ink(&ch.id),
+            "steps": steps, "url": format!("/c/{}/", ch.id), "shot_count": shots.len(), "rel_path": ch.rel_path, "ink": crate::covers::INK,
             // the stories after this one, round the shelf: a reader who finishes has somewhere to go
             "next": cards.iter().cycle().skip(i + 1).take(cards.len() - 1).take(NEXT_STORIES).collect::<Vec<_>>(),
         });

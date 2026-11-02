@@ -78,19 +78,19 @@
   color: var(--night-muted); font-size: 0.82rem; font-weight: 500; line-height: 1.35;
 }
 .ctdw-views button:hover { color: var(--night-ink); }
-.ctdw-views button[aria-pressed="true"] { background: var(--selected); color: var(--night-ink); font-weight: 600; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14); }
+.ctdw-views button[aria-pressed="true"] { background: var(--ink); color: var(--paper); font-weight: 600; }
 .ctdw-hint { position: absolute; z-index: 3; top: 50px; left: 18px; right: 18px; margin: 0; font-size: 0.8rem; color: var(--night-muted); pointer-events: none; }
 
 /* Region names: quiet map lettering at each region's centre. Clicks go through to the map, which
    hit-tests the names itself, so panning and zooming work everywhere. */
 .ctdw-regions { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
 .ctdw-region {
-  position: absolute; left: 0; top: 0; max-width: 11em; padding: 1px 6px; border-radius: 6px;
+  position: absolute; left: 0; top: 0; max-width: 11em;
   text-align: center; overflow-wrap: break-word;
-  font: 600 0.69rem/1.25 var(--font-ui); letter-spacing: 0.06em; text-transform: uppercase;
-  color: color-mix(in srgb, var(--night-ink) 74%, var(--paper));
-  /* a soft wash of the page keeps the name legible over the dots and links beneath it */
-  background: color-mix(in srgb, var(--paper) 80%, transparent);
+  font: 700 0.8rem/1.2 var(--font-ui);
+  color: var(--night-ink);
+  /* a ring of the page keeps the name legible over the dots and links beneath it */
+  text-shadow: 0 0 2px var(--paper), 0 0 2px var(--paper), 0 0 4px var(--paper), 0 0 6px var(--paper);
 }
 /* while an era is picked the lit dots matter; the region names step back to the quiet text (still 4.5:1) */
 .ctdw-regions.is-era .ctdw-region { color: var(--night-muted); }
@@ -108,11 +108,12 @@
 .ctdw-zoom button:focus-visible { outline-offset: -3px; }
 
 .ctdw-legend {
-  position: absolute; z-index: 3; left: 12px; bottom: 32px; margin: 0; padding: 5px 12px; list-style: none; border-radius: 12px;
-  display: flex; flex-wrap: wrap; gap: 4px 12px; max-width: min(620px, 70%); font-size: 0.8rem; color: var(--night-muted); pointer-events: none;
-  background: var(--night-2); box-shadow: var(--ctdw-shadow-sm);
+  position: absolute; z-index: 3; left: 16px; bottom: 36px; margin: 0; padding: 0; list-style: none;
+  display: flex; flex-wrap: wrap; gap: 3px 12px; width: min(380px, calc(100% - 96px)); font-size: 0.8rem; color: var(--night-ink); pointer-events: none;
 }
 .ctdw-legend li { display: inline-flex; align-items: center; gap: 6px; }
+/* the key sits on top of the era card, never under it */
+.ctdw.has-era .ctdw-legend { bottom: calc(36px + var(--ctdw-era-h, 74px) + 10px); }
 .ctdw-legend li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
 .ctdw-notice {
   position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; margin: 0; padding: 8px 16px; text-align: center; pointer-events: none;
@@ -122,7 +123,7 @@
 /* ---------------------------------------------------------------- era: one native range input */
 .ctdw-era {
   position: absolute; z-index: 3; left: 16px; bottom: 36px; width: min(380px, calc(100% - 96px));
-  padding: 9px 14px 5px; border-radius: 14px; background: var(--night-2); box-shadow: var(--ctdw-shadow), 0 0 0 1px var(--ctdw-hair);
+  padding: 9px 14px 5px; border-radius: 8px; background: var(--night-2); box-shadow: 0 0 0 1px var(--night-rule);
 }
 .ctdw-era-head { display: flex; align-items: baseline; gap: 10px; }
 .ctdw-era-label { font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -169,9 +170,8 @@
   padding: 8px 16px; border-radius: 999px; border: 0; background: var(--ctdw-fill); color: var(--night-ink); font-weight: 600; font-size: 0.9rem;
 }
 .ctdw-btn:hover { background: color-mix(in srgb, var(--night-ink) 14%, var(--night-2)); color: var(--night-ink); }
-/* white on --accent-fill: at least 4.5:1 in both modes */
-.ctdw-btn.is-primary { background: var(--accent-fill); color: #fff; }
-.ctdw-btn.is-primary:hover { background: var(--accent-fill-hover); color: #fff; }
+.ctdw-btn.is-primary { background: var(--accent-fill); color: var(--on-fill); }
+.ctdw-btn.is-primary:hover { background: var(--accent-fill-hover); color: var(--on-fill); }
 .ctdw-meta { margin: 10px 0 0; font-size: 0.78rem; color: var(--night-muted); font-variant-numeric: tabular-nums; }
 /* the Earth: the other entries at the card's spot, each a link to its page. The list scrolls, with
    room around each link for its focus ring. */
@@ -212,7 +212,8 @@
 @media (max-width: 760px) {
   /* phones keep only the sentence about regions */
   .ctdw-hint-how { display: none; }
-  .ctdw-legend { max-width: calc(100% - 72px); bottom: 34px; }
+  .ctdw-legend { left: 8px; bottom: 34px; width: calc(100% - 72px); font-size: 0.74rem; }
+  .ctdw.has-era .ctdw-legend { bottom: calc(34px + var(--ctdw-era-h, 74px) + 8px); }
   .ctdw-card { left: 8px; right: 8px; width: auto; bottom: 58px; }
   .ctdw-era { left: 8px; right: 56px; width: auto; bottom: 34px; }
   .ctdw.has-era .ctdw-card { bottom: calc(34px + var(--ctdw-era-h, 64px) + 8px); }
@@ -220,5 +221,5 @@
 }
 @media (max-width: 760px), (pointer: coarse) {
   .ctdw-views button { min-height: 32px; }
-  .ctdw-region { font-size: 12px; }
+  .ctdw-region { font-size: 0.8rem; }
 }

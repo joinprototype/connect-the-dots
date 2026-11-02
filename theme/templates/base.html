@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ffffff'/%3E%3Cpath d='M7 21 L15 10 L25 17' fill='none' stroke='%231d1d1f' stroke-width='2'/%3E%3Ccircle cx='7' cy='21' r='3.2' fill='%230066cc'/%3E%3Ccircle cx='15' cy='10' r='3.2' fill='%230066cc'/%3E%3Ccircle cx='25' cy='17' r='3.2' fill='%230066cc'/%3E%3C/svg%3E">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#14162f" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <link rel="preload" href="/static/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/static/site.css">
 <style>:root{ {% for l in site.layers %}--layer-{{ l.id }}: {{ l.color }};{% endfor %} }</style>
@@ -40,7 +40,7 @@
 </head>
 <body class="{% block body_class %}page{% endblock %}">
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header">
+<header class="site-header"><div class="site-header-in">
   <a class="brand" href="/" aria-label="Connect the Dots, home">
     <svg class="brand-mark" viewBox="0 0 30 20" aria-hidden="true"><path d="M4 15 L13 5 L25 12"/><circle cx="4" cy="15" r="2.7"/><circle cx="13" cy="5" r="2.7"/><circle cx="25" cy="12" r="2.7"/></svg>
     <span>Connect the Dots</span>
@@ -55,7 +55,7 @@
       <input type="search" name="focus" placeholder="Search people, places, events" aria-label="Search" autocomplete="off">
     </form>
   </ctd-search>
-</header>
+</div></header>
 <main id="main">
 {% block main %}{% endblock %}
 </main>

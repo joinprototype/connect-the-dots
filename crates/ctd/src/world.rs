@@ -943,11 +943,11 @@ fn gather_small(comm: &mut [u32], nc: usize, edges: &[(u32, u32, f32)], color: &
     (total, gathered)
 }
 
-/// Angle and share of the radius squared for the `j`th point of Roberts's R2 sequence: however many are
-/// taken, the first ones are spread evenly over the disc.
-fn sprinkle(j: usize) -> (f64, f64) {
-    let at = |step: f64| (0.5 + j as f64 * step).fract();
-    (at(0.754_877_666_246_693) * std::f64::consts::TAU, at(0.569_840_290_998_053))
+/// The `j`th point of Roberts's R2 sequence, on the unit circle: however many are taken, the first ones
+/// are spread evenly over it. It runs over the square first: in polar terms it would draw pinwheels.
+fn sprinkle(j: usize) -> [f64; 2] {
+    let at = |step: f64| (0.5 + j as f64 * step).fract() * 2.0 - 1.0;
+    square_to_circle([at(0.754_877_666_246_693), at(0.569_840_290_998_053)])
 }
 
 /// Communities, ranks and places, before the map is fitted to the unit square.
@@ -1015,9 +1015,13 @@ fn place(g: &WorldGraph) -> Placed {
         // zoomed out it would be a dense spot with nothing around
         let even = list.len() > QUOTA;
         for (j, &i) in list.iter().enumerate() {
-            let (a, share) = if even { sprinkle(j) } else { (j as f64 * GOLDEN, (j as f64 + 0.5) / list.len() as f64) };
-            let (a, d) = (a + offset, r * share.sqrt() * 0.94);
-            pos[i as usize] = [cpos[c][0] + d * a.cos(), cpos[c][1] + d * a.sin()];
+            let [x, y] = if even {
+                sprinkle(j)
+            } else {
+                let (a, d) = (j as f64 * GOLDEN + offset, ((j as f64 + 0.5) / list.len() as f64).sqrt());
+                [d * a.cos(), d * a.sin()]
+            };
+            pos[i as usize] = [cpos[c][0] + r * 0.94 * x, cpos[c][1] + r * 0.94 * y];
         }
     }
     if n > GATHER_ABOVE {
@@ -1387,13 +1391,7 @@ pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> R
     if let Some(ents) = &spec.entities {
         fs::write(out.join("entities.json"), serde_json::to_vec(ents)?)?;
     }
-    let mut named = g.labels.as_ref().map(|l| regions(&p.members, l, g.may_name.as_deref(), &square.centers, &square.radii, &p.gathered)).unwrap_or_default();
-    // the discs of entries with few links say what they hold
-    for (c, ink) in p.gathered.iter().enumerate() {
-        if let Some(label) = ink.and_then(|i| spec.palette_labels.get(i as usize)) {
-            named.push(Region { label: format!("More: {}", label.to_lowercase()), x: square.centers[c][0], y: square.centers[c][1], r: square.radii[c], size: p.members[c].len() });
-        }
-    }
+    let named = g.labels.as_ref().map(|l| regions(&p.members, l, g.may_name.as_deref(), &square.centers, &square.radii, &p.gathered)).unwrap_or_default();
     write_tile_index(out, maxzoom)?;
     write_manifest(spec, &stats, square.bounds(), &named, out)?;
     write_picture(g, spec, &p, &square, out)?;

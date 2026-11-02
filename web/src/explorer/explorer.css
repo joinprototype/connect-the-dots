@@ -123,8 +123,8 @@
 .ctdx-btn.is-ghost { background: transparent; color: var(--accent); }
 .ctdx-btn.is-ghost:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
 /* white on --accent-fill: at least 4.5:1 in both modes (--accent itself is too light in dark mode) */
-.ctdx-btn.is-primary { background: var(--accent-fill); color: #fff; }
-.ctdx-btn.is-primary:hover { background: var(--accent-fill-hover); color: #fff; }
+.ctdx-btn.is-primary { background: var(--accent-fill); color: var(--on-fill); }
+.ctdx-btn.is-primary:hover { background: var(--accent-fill-hover); color: var(--on-fill); }
 .ctdx-connect .ctdx-btn.is-primary { width: 100%; margin-top: 12px; }
 .ctdx-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 .ctdx-link { border: 0; background: none; color: var(--accent); cursor: pointer; padding: 0; font-size: 0.84rem; margin-left: auto; }
