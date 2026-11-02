@@ -165,7 +165,7 @@ branch_of:
   {label: branch of, inverse: branches, from: [tradition, org], to: [tradition], layers: [ideas], noun: true, inverse_reads: list}
 # Who answered an event, by war, law or a demand: not a part in the event itself, so routes stay off it.
 answered_by:
-  {label: answered by, inverse: answered, from: [event], to: [person, org], layers: [history], traversable: false, noun: true}
+  {label: answered by, inverse: answered, from: [event], to: [person, org], layers: [history], traversable: false, noun: true, qualifiers: [role]}
 # A tale told about someone or something that the record does not support. Routes stay off it.
 tale_about:
   {label: a tale about, inverse: subject of a tale, from: [event, work, concept], to: any, layers: [history], noun: true, traversable: false, caveat: "A tale told, not a fact on the record."}
