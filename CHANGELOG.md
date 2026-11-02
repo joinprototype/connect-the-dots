@@ -2,6 +2,12 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## Next
+
+- On the Map, near now means linked. Every dot sits beside what it links to, parts of each region are named ("Born in Paris"), and lines show how they hang together as you zoom in.
+- "And 834 more" opens: every long list shows up to 5,040 names, on pages, on atlas pages and on the Map.
+- Every entry says at the top how many more links open data holds, and takes you to them.
+
 ## 0.4.3 (2026-11-01)
 
 - The Earth came up flat and empty, with no dots, for anyone who had visited before. It now draws the globe and every dot each time.

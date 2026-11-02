@@ -25,6 +25,11 @@ pub const SHARDS: u32 = 4096;
 pub const ATLAS_IDS: u32 = 1 << 31;
 /// How many links of one kind an entry lists, best known first.
 const PER_PHRASE: usize = 40;
+/// Long lists go on past that in this many files, whatever the number of entries: a reader who asks
+/// for the rest of a list costs one file, and the site's count of files does not grow with the atlas.
+const PACKS: u32 = 1024;
+/// How far a list goes: a person can read no more, and the rest are the least known.
+const TAIL: usize = 5000;
 /// Routes between any two entries run through this many landmarks, as a game finds its way across a
 /// huge map: from each entry to the nearest landmark, from landmark to landmark, and down again. A
 /// route then costs a few small files, on a site with no server.
@@ -268,6 +273,60 @@ fn routes(a: &Atlas, kb: &Kb, adjacent: &[Vec<(u32, u8, bool)>]) -> Routes {
 }
 
 /// One shard: `{"Q42": {...}}`, each entry with its links grouped by what they say.
+/// An entry's links by phrase, best known first (`entries` is in that order, so a smaller place is a
+/// better-known thing). The order of the groups is how the tails find their lists.
+fn grouped(a: &Atlas, kb: &Kb, adjacent: &[Vec<(u32, u8, bool)>], i: usize) -> BTreeMap<String, Vec<u32>> {
+    let mut groups: BTreeMap<String, Vec<u32>> = BTreeMap::new();
+    for &(other, rel, outgoing) in &adjacent[i] {
+        let Some(r) = kb.schema.relations.get(&a.relations[rel as usize]) else { continue };
+        groups.entry(if outgoing { r.label.clone() } else { r.inverse.clone() }).or_default().push(other);
+    }
+    for list in groups.values_mut() {
+        list.sort_unstable();
+        list.dedup();
+    }
+    groups
+}
+
+/// How many links the atlas holds for each hand entry, for its page.
+pub fn open_links(a: &Atlas, kb: &Kb) -> HashMap<String, usize> {
+    let hand = curated(kb);
+    let mut count: HashMap<String, usize> = HashMap::new();
+    let id = |place: u32| hand.get(&a.entries[place as usize].qid).map(|&c| &kb.entities[c].id);
+    for &(x, _, y) in a.links.iter().filter(|l| kb.schema.relations.contains_key(&a.relations[l.1 as usize])) {
+        for end in [x, y] {
+            if let Some(id) = id(end) {
+                *count.entry(id.clone()).or_default() += 1;
+            }
+        }
+    }
+    count
+}
+
+/// `data/more/<n>.json`: the lists that run past PER_PHRASE, from there on, by entry and group.
+fn write_tails(a: &Atlas, kb: &Kb, hand: &HashMap<u32, usize>, adjacent: &[Vec<(u32, u8, bool)>], out: &Path) -> Result<()> {
+    let dir = out.join("data").join("more");
+    fs::create_dir_all(&dir)?;
+    let mut packs: Vec<BTreeMap<String, BTreeMap<usize, Vec<Value>>>> = vec![BTreeMap::new(); PACKS as usize];
+    for (i, e) in a.entries.iter().enumerate().filter(|&(i, _)| adjacent[i].len() > PER_PHRASE) {
+        for (g, (_, list)) in grouped(a, kb, adjacent, i).iter().enumerate().filter(|(_, (_, list))| list.len() > PER_PHRASE) {
+            let row = |&j: &u32| {
+                let n = &a.entries[j as usize];
+                match hand.get(&n.qid) {
+                    Some(&c) => json!([n.qid, kb.entities[c].name, n.kind, kb.entities[c].id]),
+                    None => json!([n.qid, n.name, n.kind]),
+                }
+            };
+            let rows = list[PER_PHRASE..].iter().take(TAIL).map(row).collect();
+            packs[(e.qid % PACKS) as usize].entry(format!("Q{}", e.qid)).or_default().insert(g, rows);
+        }
+    }
+    packs.par_iter().enumerate().try_for_each(|(n, pack)| -> Result<()> {
+        fs::write(dir.join(format!("{n}.json")), serde_json::to_vec(pack)?)?;
+        Ok(())
+    })
+}
+
 fn shard(
     a: &Atlas,
     kb: &Kb,
@@ -280,17 +339,9 @@ fn shard(
     let mut out = serde_json::Map::new();
     for &i in members {
         let e = &a.entries[i as usize];
-        let mut groups: BTreeMap<String, Vec<u32>> = BTreeMap::new();
-        for &(other, rel, outgoing) in &adjacent[i as usize] {
-            let Some(r) = kb.schema.relations.get(&a.relations[rel as usize]) else { continue };
-            groups.entry(if outgoing { r.label.clone() } else { r.inverse.clone() }).or_default().push(other);
-        }
-        let groups: Vec<Value> = groups
+        let groups: Vec<Value> = grouped(a, kb, adjacent, i as usize)
             .into_iter()
-            .map(|(phrase, mut list)| {
-                // `entries` is best known first, so a smaller place is a better-known thing
-                list.sort_unstable();
-                list.dedup();
+            .map(|(phrase, list)| {
                 let more = list.len().saturating_sub(PER_PHRASE);
                 let shown: Vec<Value> = list
                     .iter()
@@ -354,6 +405,7 @@ pub fn write(a: &Atlas, kb: &Kb, spots: &HashMap<u32, [u16; 2]>, out: &Path) -> 
         fs::write(dir.join(format!("{n}.json")), serde_json::to_vec(&shard(a, kb, &hand, &adjacent, spots, &routes, members))?)?;
         Ok(())
     })?;
+    write_tails(a, kb, &hand, &adjacent, out)?;
     earth(a, &hand, out)
 }
 

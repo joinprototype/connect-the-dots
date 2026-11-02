@@ -287,6 +287,9 @@ ctd-atlas-links { display: block; }
 .atlas-group a::before { content: ""; flex: none; width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--accent)); transform: translateY(-1px); }
 .atlas-group a:hover { color: var(--accent); }
 .atlas-more { margin: 4px 0 0; font-size: 0.9rem; color: var(--muted); }
+.atlas-open { display: block; margin: 6px 0 0; padding: 4px 0; border: 0; background: none; font: inherit; font-size: 0.9rem; font-weight: 600; color: var(--ink); text-decoration: underline; text-underline-offset: 0.16em; cursor: pointer; }
+.atlas-open:disabled { color: var(--muted); cursor: default; }
+.atlas-group h3 .count, .atlas-group h2 .count { margin-left: 4px; font-weight: 400; color: var(--muted); }
 .atlas-note { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.95rem; color: var(--muted); max-width: 66ch; }
 
 /* ---------------------------------------------------------------- entity */

@@ -1,6 +1,6 @@
 // <ctd-atlas-links q="Q42">: a page written by hand, then the wider links open data knows of. Marked as
 // such, and fetched only when a reader scrolls near it: nothing off screen is loaded.
-import { atlasEntry, hrefOf, INKS } from '../lib/atlas';
+import { atlasEntry, hrefOf, INKS, openRest, type Neighbour } from '../lib/atlas';
 import { el } from '../lib/dom';
 
 export class CtdAtlasLinks extends HTMLElement {
@@ -22,20 +22,23 @@ export class CtdAtlasLinks extends HTMLElement {
     const entry = q ? await atlasEntry(q) : undefined;
     if (!entry?.g.length) return;
     const list = el('div', 'atlas-groups');
-    for (const [phrase, names, more] of entry.g) {
+    for (const [i, [phrase, names, more]] of entry.g.entries()) {
       const part = el('section', 'atlas-group');
-      part.append(el('h3', '', phrase.charAt(0).toUpperCase() + phrase.slice(1)));
+      const head = el('h3', '', phrase.charAt(0).toUpperCase() + phrase.slice(1));
+      if (more) head.append(el('span', 'count', (names.length + more).toLocaleString('en')));
+      part.append(head);
       const ul = el('ul');
-      for (const n of names) {
+      const add = (n: Neighbour) => {
         const a = el('a', '', n[1]);
         a.href = hrefOf(n);
         a.style.setProperty('--c', `var(${INKS[n[2]] ?? '--accent'})`);
         const li = el('li');
         li.append(a);
         ul.append(li);
-      }
+      };
+      names.forEach(add);
       part.append(ul);
-      if (more) part.append(el('p', 'atlas-more', `and ${more.toLocaleString('en')} more`));
+      if (more) part.append(openRest(q!, i, more, [], 'atlas-open', add));
       list.append(part);
     }
     const note = el('p', 'atlas-note', 'From Wikidata, an open database anyone can edit. We have not checked these links by hand.');

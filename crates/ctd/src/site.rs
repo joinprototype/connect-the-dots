@@ -446,6 +446,19 @@ impl<'a> QuestionPages<'a> {
 }
 
 /// What every page writer shares: the base, the output folder, the templates and the `site` context.
+/// A number as a reader sees it: 12,345.
+fn commas(n: usize) -> String {
+    let digits = n.to_string();
+    let mut out = String::new();
+    for (i, c) in digits.chars().enumerate() {
+        if i > 0 && (digits.len() - i) % 3 == 0 {
+            out.push(',');
+        }
+        out.push(c);
+    }
+    out
+}
+
 /// The written stories that name each entry, the one with the most scenes on it first. An entry's page
 /// shows the first few: it is where a reader arrives from a search, and a story is the way in.
 fn stories_of(kb: &Kb) -> HashMap<String, Vec<Value>> {
@@ -481,6 +494,8 @@ struct Site<'a> {
     by_id: BTreeMap<&'a str, &'a Edge>,
     /// Each entry's written stories, as rows for its page.
     stories: HashMap<String, Vec<Value>>,
+    /// How many links open data holds for each entry.
+    open_links: HashMap<String, usize>,
 }
 
 impl Site<'_> {
@@ -570,7 +585,8 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
         "atlas": atlas.as_ref().map(|a| a.entries.len()),
     });
     let by_id = kb.edges.iter().map(|e| (e.id.as_str(), e)).collect();
-    let s = Site { kb, cx: Ctx { kb }, out, history: History::load(root), site, env, by_id, stories: stories_of(kb) };
+    let open_links = atlas.as_ref().map(|a| crate::atlas::open_links(a, kb)).unwrap_or_default();
+    let s = Site { kb, cx: Ctx { kb }, out, history: History::load(root), site, env, by_id, stories: stories_of(kb), open_links };
 
     let lives = entity_pages(&s, &pages)?;
     alias_pages(&s)?;
@@ -841,6 +857,7 @@ fn entity_page(
         "aliases": display_aliases(ent), "same_as": same_as_links(ent), "place": place, "image": ent.image,
         "body_html": markdown::render(&ent.body, &cx.resolver()), "rel_path": ent.rel_path, "url": format!("/e/{}/", ent.id),
         "coords": kb.coords(ent), "story_url": story_url, "wikidata": ent.same_as.get("wikidata"),
+        "open_links": s.open_links.get(&ent.id).map(|&n| commas(n)),
         "cover": crate::covers::entity(&ent.id, &ent.name, items.len()),
         "evidence_line": evidence_line,
     });
@@ -881,7 +898,8 @@ fn entity_page(
                 "connect": connect, "split_url": split_url, "stories": s.stories.get(&ent.id).cloned().unwrap_or_default() }),
     )?;
     write(&s.out.join("e").join(&ent.id).join("index.html"), html)?;
-    let details = data::details(kb, ent, &kept, story_url.as_deref(), asked);
+    let mut details = data::details(kb, ent, &kept, story_url.as_deref(), asked);
+    details["open"] = json!(s.open_links.get(&ent.id));
     write(&s.out.join("data").join("e").join(format!("{}.json", ent.id)), serde_json::to_vec(&details)?)?;
     Ok(())
 }

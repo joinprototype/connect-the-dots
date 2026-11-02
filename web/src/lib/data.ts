@@ -50,6 +50,8 @@ export interface Details {
   story: string | null;
   /** The question pages about it. */
   asked: { q: string; title: string; url: string; links: number; accounts: number; counts: string }[];
+  /** How many more links open data holds for it; the explorer stays on the record (ADR-0023). */
+  open: number | null;
   /** Its links' words and proof; a hub's file holds the strongest 100 of each kind. */
   links: { id: string; sources: SourceRef[]; detail?: string; qualifiers?: Record<string, unknown>; note?: string; reason?: string }[];
   sources: Record<string, SourceDef>;

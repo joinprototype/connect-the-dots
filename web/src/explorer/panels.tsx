@@ -1,6 +1,6 @@
-import { useMemo, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { detailOf, kinshipRole, sentence, sentenceText } from '../lib/claims';
-import { nameOf, type GraphIndex } from '../lib/data';
+import { loadDetails, nameOf, type GraphIndex } from '../lib/data';
 import { formatAsOf } from '../lib/dates';
 import { edgeTime, META_LABEL, nodeTime, passiveModel, type Vis } from '../lib/filters';
 import type { PathResult } from '../lib/paths';
@@ -40,6 +40,18 @@ export function NodeDetails(props: {
   const asOf = t != null ? formatAsOf(t) : '';
   const own = nodeTime(idx, id, t);
   const story = entityStoryUrl(idx, id);
+  // the explorer draws the record; its page lists what open data holds besides
+  const [open, setOpen] = useState<number | null>(null);
+  useEffect(() => {
+    let live = true;
+    setOpen(null);
+    void loadDetails(idx, id).then((d) => {
+      if (live) setOpen(d?.open ?? null);
+    });
+    return () => {
+      live = false;
+    };
+  }, [idx, id]);
   return (
     <div className="ctdx-details">
       <p className="ctdx-kind" style={typeDot(idx, n)}>
@@ -67,6 +79,11 @@ export function NodeDetails(props: {
       <h3 className="ctdx-section-h">
         Links <span className="ctdx-count">{(idx.incident.get(id) ?? []).length}</span>
       </h3>
+      {open ? (
+        <p className="ctdx-note">
+          <a href={`${n.url}#open-data`}>{open.toLocaleString('en')} more in open data</a>
+        </p>
+      ) : null}
       {hidden ? <p className="ctdx-note">{hidden} not shown in this view.</p> : null}
       {past ? <p className="ctdx-note">{past} had ended by {asOf}, so they are faded.</p> : null}
       {groups.map(([rel, list]) => (

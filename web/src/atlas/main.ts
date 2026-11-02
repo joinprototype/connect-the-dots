@@ -2,7 +2,7 @@
 // holds that entry, so an entry costs the same at a thousand dots or a million. Moving to a
 // neighbour swaps the page in place; nothing outside the current entry is ever loaded or drawn.
 import './atlas.css';
-import { atlasEntry, hrefOf, INKS, KINDS, storiesOf, type Entry, type Neighbour, type Story } from '../lib/atlas';
+import { atlasEntry, hrefOf, INKS, KINDS, openRest, storiesOf, type Entry, type Neighbour, type Story } from '../lib/atlas';
 import { el } from '../lib/dom';
 
 /** How many neighbours the constellation draws. */
@@ -96,11 +96,13 @@ function render(root: HTMLElement, q: string, e: Entry, stories: Story[], go: (n
   if (e.g.length) parts.push(constellation(e, go));
   const lists = el('div', 'atlas-groups');
   if (stories.length) lists.append(told(stories));
-  for (const [phrase, names, more] of e.g) {
+  for (const [i, [phrase, names, more]] of e.g.entries()) {
     const part = el('section', 'atlas-group');
-    part.append(el('h2', '', phrase.charAt(0).toUpperCase() + phrase.slice(1)));
+    const head = el('h2', '', phrase.charAt(0).toUpperCase() + phrase.slice(1));
+    if (more) head.append(el('span', 'count', (names.length + more).toLocaleString('en')));
+    part.append(head);
     const ul = el('ul');
-    for (const n of names) {
+    const add = (n: Neighbour) => {
       const a = el('a', '', n[1]) as HTMLAnchorElement;
       a.href = hrefOf(n);
       a.style.setProperty('--c', `var(${INKS[n[2]] ?? '--accent'})`);
@@ -113,9 +115,10 @@ function render(root: HTMLElement, q: string, e: Entry, stories: Story[], go: (n
       const li = el('li');
       li.append(a);
       ul.append(li);
-    }
+    };
+    names.forEach(add);
     part.append(ul);
-    if (more) part.append(el('p', 'atlas-more', `and ${more.toLocaleString('en')} more`));
+    if (more) part.append(openRest(q, i, more, [], 'atlas-open', add));
     lists.append(part);
   }
   parts.push(lists);

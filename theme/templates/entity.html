@@ -16,7 +16,7 @@
       <p class="entity-kind">{{ entity.type_label }}</p>
       <h1>{{ entity.name }}</h1>
       {% if entity.summary %}<p class="entity-summary">{{ entity.summary }}</p>{% endif %}
-      <p class="entity-meta">{{ entity.evidence_line }}</p>
+      <p class="entity-meta">{{ entity.evidence_line }}{% if entity.open_links %}. <a href="#open-data">{{ entity.open_links }} more in open data</a>{% endif %}</p>
       <p class="entity-actions">
         {% if entity.story_url %}<a class="button primary" href="{{ entity.story_url }}">Play the story</a>{% endif %}
         <a class="button" href="/x/?focus={{ entity.id }}">Explore connections</a>
@@ -236,7 +236,7 @@
     </details>
     {% endif %}
 
-    {% if entity.wikidata %}<ctd-atlas-links q="{{ entity.wikidata }}"></ctd-atlas-links>{% endif %}
+    {% if entity.wikidata %}<ctd-atlas-links id="open-data" q="{{ entity.wikidata }}"></ctd-atlas-links>{% endif %}
 
     {{ proof_fold(sources) }}
 

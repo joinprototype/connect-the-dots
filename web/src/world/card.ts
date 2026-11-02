@@ -1,7 +1,6 @@
 // What goes in the Map's card, on Links and on the Earth: an entry's way on, its stories and its links.
-import type { Entry, Story } from '../lib/atlas';
+import { openRest, type Entry, type Neighbour, type Story } from '../lib/atlas';
 import { el } from '../lib/dom';
-import { fmtInt } from './stats';
 import type { WorldEntity } from './tiles';
 
 const CARD_GROUPS = 6;
@@ -54,19 +53,22 @@ export function linksBody(q: string, e: Entry, stories: Story[], focus: (id: str
   actions.append(open, connect);
   body.push(actions, ...storyList(stories));
   const links = el('div', 'ctdw-links');
-  for (const [phrase, names, more] of e.g.slice(0, CARD_GROUPS)) {
+  for (const [i, [phrase, names, more]] of e.g.slice(0, CARD_GROUPS).entries()) {
     links.append(el('p', 'ctdw-list-head', phrase.charAt(0).toUpperCase() + phrase.slice(1)));
     const ul = el('ul', 'ctdw-list');
-    for (const n of names.slice(0, CARD_NAMES)) {
+    const last = el('li');
+    const add = (n: Neighbour) => {
       const b = el('button', 'ctdw-link', n[1]);
       b.type = 'button';
       b.addEventListener('click', () => focus(`Q${n[0]}`));
       const li = el('li');
       li.append(b);
-      ul.append(li);
-    }
-    const left = more + Math.max(0, names.length - CARD_NAMES);
-    if (left) ul.append(el('li', 'ctdw-list-meta', `and ${fmtInt(left)} more`));
+      ul.insertBefore(li, last);
+    };
+    ul.append(last);
+    names.slice(0, CARD_NAMES).forEach(add);
+    if (more || names.length > CARD_NAMES) last.append(openRest(q, i, more, names.slice(CARD_NAMES), 'ctdw-link is-more', add));
+    else last.remove();
     links.append(ul);
   }
   if (e.g.length) body.push(links);

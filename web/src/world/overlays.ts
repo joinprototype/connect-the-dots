@@ -91,9 +91,10 @@ export function overlayLayers(style: WorldStyle, accent: RGB, rings: Ring[], spo
       getSize: 12,
       sizeUnits: 'pixels',
       getColor: [ink[0], ink[1], ink[2], 255],
-      getTextAnchor: 'start',
+      // every other name on the left: stops of a route can sit side by side, as near means linked
+      getTextAnchor: (_, { index }) => (index % 2 ? 'end' : 'start'),
       getAlignmentBaseline: 'center',
-      getPixelOffset: [8, 0],
+      getPixelOffset: (_, { index }) => (index % 2 ? [-8, 0] : [8, 0]),
       fontFamily: style.font,
       fontWeight: 600,
       characterSet: 'auto',

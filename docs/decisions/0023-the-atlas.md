@@ -33,6 +33,8 @@ The founder wants a million dots: a better picture of the world, and the test of
     - The Earth draws the atlas's 216,000 places by view, from tiles (`earth/`) that hold the best known of what is left for them.
     - **Any two entries connect, with no server.** As a game finds its way across a huge map, every entry knows its next step to the nearest of 256 landmarks, and a table worked out at build time runs from landmark to landmark. A route costs about ten small files. Routes follow relations marked `traversable` and go around crossroads of over 2,000 links, since sharing a country or a big city says little. What those do not reach joins by any link.
     A route is marked as open data, and is not a proof. Hand-written routes in Ask and Explore keep their proof.
+12. **Near means linked.** The founder zoomed in on Paris and took it that dots beside each other were connected. They were not: inside a disc, places were evenly spread and meant nothing, and lines vanished as one zoomed in. So each dot now sits beside its most specific link, a disc is a nested treemap of those, and lines run bundled through named parts ("Born in Paris"). Details in [world-tiles.md](../world-tiles.md). It cost 8 MB over the map, and a flight held 59.4 fps.
+13. **Every list opens.** "And 834 more" with no way to see them read as a dead end. A list goes on past its first 40 in one of 1,024 files, up to 5,040 names, so the file count does not grow with the atlas. An entry written by hand says at its top how much more open data holds.
 
 ## What this does not settle
 
