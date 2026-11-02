@@ -54,6 +54,27 @@ function remember(on: boolean): void {
   }
 }
 
+/** Where a story keeps the scene its reader left, by address, for this tab. */
+const SCENE_KEY = 'ctd-scene:';
+
+function keepScene(i: number): void {
+  try {
+    sessionStorage.setItem(SCENE_KEY + location.pathname, String(i));
+  } catch {
+    /* storage blocked: Back goes where the browser puts it */
+  }
+}
+
+/** The scene this reader left, when they arrived by Back; otherwise 0. */
+function sceneLeft(): number {
+  const [arrival] = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
+  try {
+    return arrival?.type === 'back_forward' ? Number(sessionStorage.getItem(SCENE_KEY + location.pathname)) : 0;
+  } catch {
+    return 0;
+  }
+}
+
 /** The parts of a scene's card that are not its narration: the date line, "Explore from here" and the source link. */
 const NOT_NARRATION = '.step-time, .step-explore, .step-source';
 
@@ -148,6 +169,7 @@ export class CtdStory extends HTMLElement {
   };
   /** Leaving the page (another tab, another page) pauses Watch, which stops the voice. */
   private onLeave = (e: Event) => {
+    if (e.type === 'pagehide') keepScene(this.current);
     if (e.type === 'pagehide' || document.visibilityState === 'hidden') this.stopWatch();
   };
   /** The stage is aria-hidden, so nothing in it may take keyboard focus (proof links, map attribution). */
@@ -357,8 +379,12 @@ export class CtdStory extends HTMLElement {
         }),
       );
     });
-    // Deep link to a shot (#shot-<name>), else start on the first shot so the stage is never empty.
-    const target = this.steps.findIndex((st) => location.hash && st.id === decodeURIComponent(location.hash.slice(1)));
+    // Deep link to a shot (#shot-<name>), else start on the first shot so the stage is never empty. A story that
+    // arrives late (a life story) comes after the browser stops restoring the scroll: Back goes to the scene left.
+    const linked = this.steps.findIndex((st) => location.hash && st.id === decodeURIComponent(location.hash.slice(1)));
+    const left = sceneLeft();
+    const box = this.steps[left]?.getBoundingClientRect();
+    const target = linked > 0 || !box || (box.bottom > 0 && box.top < innerHeight) ? linked : left;
     if (target > 0) {
       window.scrollTo({ top: this.stepTop(target), behavior: 'auto' });
       ScrollTrigger.refresh();

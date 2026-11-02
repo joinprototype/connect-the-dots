@@ -370,7 +370,6 @@ fn same_as_links(e: &Entity) -> Vec<Value> {
         .collect()
 }
 
-/// Shots with rendered narration, plus the step cards for the chapter template.
 /// A scene's picture: what `picture:` names, or else its subject or the first thing it reveals that
 /// has one. Each picture shows once in a story; `picture: none` leaves a scene without.
 fn scene_picture(kb: &Kb, shot: &Value, used: &mut BTreeSet<String>) -> Option<Value> {
@@ -387,19 +386,16 @@ fn scene_picture(kb: &Kb, shot: &Value, used: &mut BTreeSet<String>) -> Option<V
     })
 }
 
-fn story_parts(s: &Site, shots: &[Value]) -> (Vec<Value>, Vec<Value>) {
+/// The step cards for the chapter template: each shot's narration, rendered.
+fn story_steps(s: &Site, shots: &[Value]) -> Vec<Value> {
     let cx = &s.cx;
     let resolver = cx.resolver();
     let doors = s.names.story(shots);
-    let mut out = shots.to_vec();
     let mut steps = Vec::new();
     let mut pictured = BTreeSet::new();
-    for shot in &mut out {
-        let narration = shot.get("narration").and_then(Value::as_str).unwrap_or("").to_string();
-        let html = markdown::render_scene(&narration, &resolver, &doors, shot);
-        if let Some(obj) = shot.as_object_mut() {
-            obj.insert("narration_html".into(), Value::from(html.clone()));
-        }
+    for shot in shots {
+        let narration = shot.get("narration").and_then(Value::as_str).unwrap_or("");
+        let html = markdown::render_scene(narration, &resolver, &doors, shot);
         let mut q = Vec::new();
         for (k, key) in [("focus", "focus"), ("lens", "lens"), ("perspective", "p")] {
             if let Some(v) = shot.get(k).and_then(Value::as_str) {
@@ -419,7 +415,7 @@ fn story_parts(s: &Site, shots: &[Value]) -> (Vec<Value>, Vec<Value>) {
             "picture": scene_picture(cx.kb, shot, &mut pictured),
         }));
     }
-    (out, steps)
+    steps
 }
 
 /// The question pages, computed once, before the pages and data that link to them.
@@ -532,12 +528,13 @@ impl Site<'_> {
 
     fn chapter_page(&self, draft: &crate::stories::Draft, back: Option<Value>) -> Result<String> {
         let (kb, cx) = (self.kb, &self.cx);
-        let (shots, steps) = story_parts(self, &draft.shots);
+        let shots = &draft.shots;
+        let steps = story_steps(self, shots);
         let resolver = cx.resolver();
         let chapter = json!({
             "id": draft.id, "title": draft.title, "subtitle": draft.subtitle, "summary": draft.summary, "authors": [],
             "intro_html": markdown::render(&draft.intro_md, &resolver), "outro_html": markdown::render(&draft.outro_md, &resolver),
-            "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &self.by_id, &shots))?,
+            "shots_json": script_json(shots)?, "data_json": script_json(&data::story(kb, &self.by_id, shots))?,
             "steps": steps, "shot_count": shots.len(), "generated": true, "ink": crate::covers::INK,
             "back": back, "explore_url": draft.explore_url,
         });
@@ -1115,11 +1112,12 @@ fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
         .collect();
     for (i, ch) in kb.chapters.iter().enumerate() {
         let resolver = cx.resolver();
-        let (shots, steps) = story_parts(s, &ch.shots);
+        let shots = &ch.shots;
+        let steps = story_steps(s, shots);
         let chapter = json!({
             "id": ch.id, "title": ch.title, "subtitle": ch.subtitle, "summary": ch.summary, "authors": ch.authors,
             "intro_html": markdown::render(&ch.intro_md, &resolver), "outro_html": markdown::render(&ch.outro_md, &resolver),
-            "shots_json": script_json(&shots)?, "data_json": script_json(&data::story(kb, &s.by_id, &shots))?,
+            "shots_json": script_json(shots)?, "data_json": script_json(&data::story(kb, &s.by_id, shots))?,
             "steps": steps, "url": format!("/c/{}/", ch.id), "shot_count": shots.len(), "rel_path": ch.rel_path, "ink": crate::covers::INK,
             // the stories after this one, round the shelf: a reader who finishes has somewhere to go
             "next": cards.iter().cycle().skip(i + 1).take(cards.len() - 1).take(NEXT_STORIES).collect::<Vec<_>>(),

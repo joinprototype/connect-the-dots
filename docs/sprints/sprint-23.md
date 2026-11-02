@@ -51,8 +51,6 @@ The demo runs on 1280x800 and 390x844, light and dark, with no console errors, a
 
 ## Known issues
 
-- Back to a life story (`/e/<id>/story/`) lands on its first scene when the browser has dropped the page from memory: the story arrives from its pack after the browser stops restoring the scroll. This is not new. With the page in memory, and on written and route stories, Back returns to the same scene.
-
 ## Review
 
 - What worked:

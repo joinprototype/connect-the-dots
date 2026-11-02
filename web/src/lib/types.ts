@@ -256,7 +256,6 @@ export interface Shot {
   /** A photograph over the whole stage. */
   photo?: { url: string; alt?: string; credit?: string } | null;
   narration?: string;
-  narration_html?: string;
   duration?: number;
   explore?: boolean;
 }
