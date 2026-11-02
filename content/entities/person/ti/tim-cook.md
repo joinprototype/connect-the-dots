@@ -31,4 +31,10 @@ claims:
     src:
       - {s: apple-8k-2026-04-20, at: "Item 5.02", quote: "On April 20, 2026, Apple Inc. (“Apple”) announced that Tim Cook will transition from his role as Chief Executive Officer to Executive Chair of Apple’s Board of Directors (the “Board”), effective September 1, 2026 (the “Transition Date”)."}
       - {s: apple-leadership-tim-cook, quote: "Tim Cook has been a director since 2011 and serves as the executive chair of the board. He joined Apple in 1998 and served as the company’s CEO from 2011 to 2026."}
+  - id: c4
+    rel: worked_at
+    to: apple
+    when: "1998/.."
+    src:
+      - {s: apple-leadership-tim-cook, at: "Biography", quote: "He joined Apple in 1998 and served as the company’s CEO from 2011 to 2026."}
 ---

@@ -14,4 +14,9 @@ claims:
     when: "1944"
     src:
       - {s: osti-fuchs, at: "Klaus Fuchs", quote: "Arriving at Los Alamos August 14, 1944, Fuchs worked on problems relating to design of the implosion bomb."}
+  - id: c2
+    rel: member_of
+    to: manhattan-project
+    src:
+      - {s: osti-fuchs, at: "Klaus Fuchs", quote: "Klaus Fuchs, a German-born physicist and part of the British Mission at Los Alamos, was a spy for the Soviet Union, passing on critical information on the atomic bomb."}
 ---

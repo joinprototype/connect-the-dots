@@ -21,4 +21,11 @@ claims:
     role: "research director"
     src:
       - {s: openai-2015-12-11-introducing-openai, quote: "OpenAI's research director is Ilya Sutskever, one of the world experts in machine learning. Our CTO is Greg Brockman, formerly the CTO of Stripe. The group's other founding members are world-class research engineers and scientists:"}
+  - id: c3
+    rel: worked_at
+    to: openai
+    when: "2015-12"
+    role: "research director"
+    src:
+      - {s: openai-2015-12-11-introducing-openai, at: "Introducing OpenAI", quote: "OpenAI’s research director is Ilya Sutskever"}
 ---

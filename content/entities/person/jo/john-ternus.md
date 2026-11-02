@@ -21,4 +21,10 @@ claims:
     src:
       - {s: apple-8k-2026-04-20, at: "Item 5.02", quote: "On April 17, 2026, the Board appointed John Ternus, Apple’s Senior Vice President of Hardware Engineering, as Chief Executive Officer and a member of the Board, in each case effective on the Transition Date."}
       - {s: apple-leadership-john-ternus, quote: "John Ternus is the CEO of Apple and serves on its board of directors."}
+  - id: c3
+    rel: worked_at
+    to: apple
+    when: "2001/.."
+    src:
+      - {s: apple-leadership-john-ternus, at: "Biography", quote: "John joined Apple’s product design team in 2001 and became a vice president of Hardware Engineering in 2013."}
 ---

@@ -14,11 +14,11 @@ claims:
     to: nasa
     when: "1963"
     src:
-      - {s: nasa-sp-4407-vol7, at: "Ch. on astronaut selection", quote: "Buzz Aldrin, selected in the third group of NASA astronauts in 1963, had a unique impact in this area, given his Ph.D. in astronautics from the Massachusetts Institute of Technology."}
+      - {s: nasa-sp-4407-vol7, at: "Astronaut selection and training", quote: "Buzz Aldrin, selected in the third group of NASA astronauts in 1963, had a unique impact in this area, given his Ph.D. in astronautics from the Massachusetts Institute of Technology."}
   - id: c2
     rel: educated_at
     to: massachusetts-institute-of-technology
     title: "Ph.D. in astronautics"
     src:
-      - {s: nasa-sp-4407-vol7, at: "Ch. on astronaut selection", quote: "Buzz Aldrin, selected in the third group of NASA astronauts in 1963, had a unique impact in this area, given his Ph.D. in astronautics from the Massachusetts Institute of Technology."}
+      - {s: nasa-sp-4407-vol7, at: "Astronaut selection and training", quote: "Buzz Aldrin, selected in the third group of NASA astronauts in 1963, had a unique impact in this area, given his Ph.D. in astronautics from the Massachusetts Institute of Technology."}
 ---

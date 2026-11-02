@@ -14,4 +14,9 @@ claims:
     role: "scientific adviser"
     src:
       - {s: osti-debate, at: "Debate Over How to Use the Bomb", quote: "At the May 31 meeting, Lawrence suggested that a demonstration of the atomic bomb might possibly convince the Japanese to surrender."}
+  - id: c2
+    rel: member_of
+    to: manhattan-project
+    src:
+      - {s: nara-calutron, at: "Oak Ridge and the calutrons", quote: "Ernest Lawrence, a leader of the Manhattan Project and the inventor of the calutron, employed Ph.D. students to operate the calutrons at the University of California, Berkeley."}
 ---
