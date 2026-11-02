@@ -81,6 +81,10 @@ pub struct Relation {
     pub passive: bool,
     #[serde(default)]
     pub sensitive: bool,
+    /// A claim of this relation marks its entry as a tale the record does not support: no route may
+    /// enter or leave that entry.
+    #[serde(default)]
+    pub seals: bool,
     /// Family relations: entity pages gather them into a "Family ties" card.
     #[serde(default)]
     pub kinship: bool,

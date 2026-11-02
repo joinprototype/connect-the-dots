@@ -956,6 +956,17 @@ fn read_claims(cx: &Names, entities: &[Entity], diags: &mut Vec<Diag>) -> (Vec<E
             }
         }
     }
+    // A tale is shown, never walked: one route through it would read as a link on the record.
+    let is_seal = |e: &Edge| cx.schema.relations.get(&e.rel).is_some_and(|r| r.seals);
+    let sealed: HashSet<&str> = edges.iter().filter(|e| is_seal(e)).map(|e| e.from.as_str()).collect();
+    for e in edges.iter().filter(|e| e.traversable && !is_seal(e)) {
+        for end in [&e.from, &e.to] {
+            if sealed.contains(end.as_str()) {
+                let file = &entities[cx.index[&e.from]].rel_path;
+                diags.push(Diag::err(file, format!("`{}` opens a route through `{end}`, which tells a tale", e.rel)));
+            }
+        }
+    }
     (edges, held)
 }
 
@@ -1518,6 +1529,19 @@ pub(crate) mod tests {
         let pairs: Vec<[String; 2]> = kb.featured.connections.iter().map(|c| c.ids().clone()).collect();
         assert_eq!(pairs, [["ann".to_string(), "acme".to_string()], ["ann".to_string(), "zed".to_string()]]);
         assert_eq!(kb.featured.lives, ["ann", "zed"]);
+    }
+
+    #[test]
+    fn no_route_runs_through_a_tale() {
+        let relations = file(
+            "content/schema/relations.yaml",
+            "tale_about: {label: a tale about, inverse: subject of a tale, from: [event], to: any, layers: [history], traversable: false, seals: true}\n\
+             involved: {label: involved, inverse: involved in, from: [event], to: [person], layers: [history]}\n",
+        );
+        let cite = "src: [{s: press, quote: \"it was said\"}]";
+        let claims = format!("  - {{id: c1, rel: tale_about, to: ann, {cite}}}\n  - {{id: c2, rel: involved, to: ann, {cite}}}\n");
+        let (_, diags) = load("kb-tale", &[relations, source("press", "T2"), entity("person", "ann", "Ann", ""), entity("event", "tale", "A tale", &claims)]);
+        assert_eq!(said(&diags, "tells a tale").len(), 1, "{diags:?}");
     }
 
     #[test]

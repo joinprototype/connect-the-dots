@@ -7,7 +7,7 @@ summary: "First known broadcast of a false claim, that 4,000 Israelis who worked
 when: "2001-09-17"
 claims:
   - id: c1
-    rel: involved
+    rel: tale_about
     to: al-manar
     role: "broadcast the claim"
     src:
