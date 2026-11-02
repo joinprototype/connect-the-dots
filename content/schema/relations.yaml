@@ -175,6 +175,10 @@ located_in:
   {label: located in, inverse: location of, from: [place, event, org, artifact], to: [place], layers: [places], traversable: false, noun: true}
 headquartered_in:
   {label: headquartered in, inverse: headquarters of, from: [org], to: [place], layers: [places], traversable: false, noun: true}
+# Where a work was written or put together, as a source says: a place can finally list the works that came
+# from it. Not a route step: two works from one town are not thereby connected.
+written_at:
+  {label: written at, inverse: works written here, from: [work], to: [place], layers: [places, ideas], temporal: true, traversable: false, noun: true, inverse_reads: list}
 
 # --- meta -------------------------------------------------------------------
 distinct_from:
