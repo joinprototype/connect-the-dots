@@ -26,6 +26,7 @@ dist/
   data/life/<n>.json         the life stories in pack <n>, loaded by the page at `/e/<id>/story/`
   data/more/<n>.json         long lists past their first 40 names, fetched when a reader opens one
   data/stories.json          the written stories each entry is in, read by the Map, the Earth and atlas pages
+  data/islands.json          the Stories page's picture: every written story as an island of dots
   data/borders/<id>.json     one polity's historical borders, loaded by a story that draws them (ADR-0020)
   data/borders/world-<year>.json   every polity of a year (world-1960, world-3000-bce), loaded by the Map's era slider (ADR-0021)
   data/search/index.json     the search files' word ranges      data/search/<n>.json   search entries by word
@@ -181,6 +182,27 @@ The same packs, for life stories: `{ "<id>": { "title": "The story of Alphabet: 
 
 A story page embeds the entries, links and sources its scenes name, beside its shots (`script.ctd-story-data`, see "Chapter" below): `{ "nodes": [...], "edges": [...], "sources": {...} }` in the shapes above, with links in full. Its entries are the scenes' `focus`, `perspective`, `reveal`, `places` and `routes`, and the ends, accounts and quoted speakers of the links its scenes reveal (`reveal_claims`). Its sources are those links' and the overlays'. The player reads this and `schema.json`, and nothing else.
 
+## `data/islands.json`
+
+The picture on the Stories page ([ADR-0028](decisions/0028-one-box.md)), read by `<ctd-isles>`. The build settles every position, deterministically, so nothing moves on screen and the same content gives the same picture.
+
+```jsonc
+{
+  "inks": ["#e23d28", "#2346d6"],                                   // the kinds' inks; a dot names one by index
+  "sheets": [ { "w": 4000, "h": 2000, "at": [[812, 340]] } ],       // one layout per shape: each story's centre
+  "stories": [ { "id": "the-trust", "title": "The Trust", "subtitle": "…", "r": 120,
+                 "dots": [[-40, 12, 1, 2]],                         // [x, y, ink, size], from the island's centre
+                 "links": [[0, 3]] } ],                             // dots joined by a link the story reveals
+  "lines": [[4, 17, 2, 1]]                                          // [a, b, strength, shown at rest]: stories by index
+}
+```
+- **A dot** is an entry the story reveals: a scene's `focus`, `perspective`, `reveal`, `places` or `routes`, or an end of a link in its `reveal_claims`. An entry in two stories is a dot on each. `size` is 0 to 3, for 1, 2 or 3, 4 to 7, and 8 or more scenes.
+- **The file names no dot.** It holds no entry's id or name, because an island's name hangs over its dots and nobody may read a person as belonging to it. People are named on the story's own page.
+- **`sheets`:** 2:1 for a window, 1:1 for a tablet, 1:4 for a phone, all in the same units and with the same area. The page takes the one nearest the shape of `.isles-sheet`, which the CSS sets.
+- **`subtitle`** is null when it would name a sealed person, by name, alias or family name (ADR-0027). The list under the picture still prints it. A story whose title names one stays off the picture.
+- **`lines`** join stories that share an entry. An entry in few stories counts for more than one in many. A sealed entry, and what is about it, joins nobody (ADR-0027), and neither does a `group` or a `tradition`: no line says two stories belong together because of who someone is (ADR-0016). Each island keeps its five strongest. The strongest of each shows at rest, and the rest when the island is picked. `strength` is 1 to 3.
+- **Size:** 36 KB gzip today (75 stories, 4,019 dots). Its budget is 100 KB gzip; past it the build warns.
+
 ## `data/borders/<id>.json`
 
 A GeoJSON FeatureCollection, copied from `content/borders/`: `name` (what the key says), `source` (a source id), and one feature per period, with `properties.from` and `properties.to` (years, inclusive) and a MultiPolygon. A shot's `borders` lists ids; the story takes the feature whose years hold the floor of the shot's `t`, and draws nothing for an id with none.
@@ -231,6 +253,8 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 |---|---|
 | `<ctd-search>` | Enhances the server's `<form role="search"><input>` (without JavaScript it submits to `/x/?focus=<text>`). Reads `search/` (the entries for the typed words); Enter or click goes to the result's `url`. On the explorer and world pages (`html[data-ctd-explorer]`) it first dispatches a cancelable `ctd:focus` `{id}`; a page that can show the entry calls `preventDefault()` and the search stays put. |
 | `<ctd-lens-chips focus="<id>">` | Holds server-rendered chips, `button[data-lens][data-layers]` (`data-layers`: the lens's layer ids, space-separated), so it needs no data file; without chips it builds them from `schema.json`. Clicking dispatches `ctd:lens` `{lens}` on `document`, hides `li.claim` items whose `data-layers` miss the lens layers (and any `.claim-group` left empty), and keeps `?lens=` in the URL. Lens `all` shows everything. |
+
+`<ctd-isles class="isles" aria-hidden="true">` holds `.isles-sheet`, whose shape picks the layout. It draws `data/islands.json` when in view, once the page has loaded, and nothing runs at rest. Hovering, or tapping the dots, brings an island and those it shares with forward and shows its name and `subtitle` in a card; a click, a tap on the name or a second tap on the dots opens `/c/<id>/`. Nothing moves. The list under it (`#all`) is its alternative for screen readers, and all that shows without JavaScript.
 
 **Entity page:** a person's page may open with a "Background" card: the links whose relation has `background: true` (born in, citizen of, educated at), and the entry's `background` lines, each with footnotes. Background lines are on that page only. They are in no data file (`graph-slim.json`, `e/<id>.json`, `search/`, a story's data and shots, nor `graph.json`), by rule ([ADR-0016](decisions/0016-who-a-person-is.md)), and a test checks it.
 
@@ -350,7 +374,7 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 - `try[]`: the featured pages for this question, `{ id, name, url }`, `name` as it reads in a sentence ("the Bolsheviks").
 - A name whose type is not in `subjects` is not asked about ("Not asked about people"); a subject with no page has no sourced answer yet.
 
-`chapters.html` also gets `questions[]`, the Questions shelf (question stories, featured first, then the richest, at most 24): `{ title, subtitle, url, kind: "Question", cover }`, and `questions_more`.
+`chapters.html` also gets `questions[]`, the Questions list (question stories, featured first, then the richest, at most 24): `{ title, subtitle, url, kind: "Question", cover }`, and `questions_more`. It lists every story as plain rows, with no covers (the page's budget is 150 KB).
 
 `question.html` (`/q/<q>/<id>/`); a node is `{ id, name, kind, type_label, color, url }`:
 - `question`: `{ id, ask, label, title, shows, not, url, story_url, explore_url }`. `title` is the asked sentence ("Why did the dissolution of the Soviet Union happen?"); `shows` and `not` are full sentences; `story_url` may be null; `explore_url` is `/x/?focus=<id>`.
