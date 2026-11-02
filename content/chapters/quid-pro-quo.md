@@ -160,7 +160,17 @@ Only a court's conviction makes something bribery, and the courts have narrowed 
   reveal: [robert-mcdonnell, virginia, mcdonnell-v-united-states, snyder-v-united-states, us-supreme-court, john-roberts]
   reveal_claims: [robert-mcdonnell#c1, robert-mcdonnell#c2, mcdonnell-v-united-states#c1, mcdonnell-v-united-states#c3, mcdonnell-v-united-states#c4, snyder-v-united-states#c1]
   overlay: {kind: quote, source: mcdonnell-v-us-no-15-474, quote: "setting up a meeting, calling another public official, or hosting an event does not, standing alone, qualify as an “official act.”", caption: "Chief Justice John Roberts for a unanimous Court, McDonnell v. United States, 27 June 2016"}
-  narration: "**Narrowing the word.** Governor Bob McDonnell, a Virginia Republican, and his wife Maureen were charged over $175,000 in loans and gifts from a businessman whose company wanted state universities to study its supplement; he apologized for “poor judgment” but said he did nothing illegal. The Court wrote that the case “is distasteful; it may be worse than that,” but held that arranging meetings and events is not by itself an “official act,” because “conscientious public officials arrange meetings for constituents” all the time. It vacated the convictions, and prosecutors dropped the case that September. In Snyder, on 26 June 2024, the Court held that a federal law covers bribes to local officials but not gratuities, which states regulate, calling the alternative “a vague and unfair trap for 19 million state and local officials.” Justice Jackson, dissenting for three, wrote that officials who use their positions for private gain “threaten the integrity of our most important institutions.”"
+  narration: "**Narrowing the word.** Governor Bob McDonnell, a Virginia Republican, and his wife Maureen were charged over $175,000 in loans and gifts from a businessman whose company wanted state universities to study its supplement; he apologized for “poor judgment” but said he did nothing illegal. The Court wrote that the case “is distasteful; it may be worse than that,” but held that arranging meetings and events is not by itself an “official act,” because “conscientious public officials arrange meetings for constituents” all the time. It vacated the convictions, and prosecutors dropped the case that September."
+  duration: 13
+
+- shot: snyder-2024
+  view: map
+  camera: {center: [-78.65, 37.43], zoom: 6.4, pitch: 20, duration: 6}
+  places: [virginia]
+  time: "2016-06-27"
+  reveal: [robert-mcdonnell, virginia, mcdonnell-v-united-states, snyder-v-united-states, us-supreme-court, john-roberts]
+  reveal_claims: [robert-mcdonnell#c1, robert-mcdonnell#c2, mcdonnell-v-united-states#c1, mcdonnell-v-united-states#c3, mcdonnell-v-united-states#c4, snyder-v-united-states#c1]
+  narration: "**Snyder, 2024.** In Snyder, on 26 June 2024, the Court held that a federal law covers bribes to local officials but not gratuities, which states regulate, calling the alternative “a vague and unfair trap for 19 million state and local officials.” Justice Jackson, dissenting for three, wrote that officials who use their positions for private gain “threaten the integrity of our most important institutions.”"
   duration: 13
 
 - shot: gold-bars

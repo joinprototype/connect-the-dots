@@ -162,7 +162,16 @@ Most lines here come from the 9/11 Commission, State Department records, Human R
   reveal: [saudi-government, taliban, turki-al-faisal, foreign-backing-of-the-taliban, saudi-arabia]
   reveal_claims: [foreign-backing-of-the-taliban#c4, foreign-backing-of-the-taliban#c5, foreign-backing-of-the-taliban#c9, foreign-backing-of-the-taliban#c10, foreign-backing-of-the-taliban#c11]
   overlay: {kind: quote, source: hrw-2001-crisis-of-impunity, quote: "Prince Turki al-Faisal Saud, head of the Saudi General Intelligence Agency, traveled to Pakistan in July 1996; shortly thereafter Saudi Arabia became the Taliban's main financial supporter.", caption: "Human Rights Watch, Crisis of Impunity, 2001"}
-  narration: "**Saudi money.** Human Rights Watch finds that Saudi Arabia became the Taliban’s main financial supporter from about July 1996 and was a major one until the 1998 embassy bombings; official aid then reportedly ended under U.S. pressure, and private Saudi money went on. It calls the extent of Saudi help uncertain, and says Western journalists saw what they took to be Saudi aircraft delivering ammunition at Kandahar in 1996. In 1998, the Commission says, CIA director Tenet asked the Saudis for help against bin Laden, and Prince Turki followed up with Mullah Omar that summer, apparently using “a mixture of possible incentives and threats.” Turki says he asked Omar in June to hand bin Laden over and that Omar agreed; HRW, citing a British newspaper, alleges he also pledged money to buy off commanders. In September, the Commission says, Omar refused; Riyadh withdrew its ambassador and suspended relations, though the Taliban’s embassy in Riyadh stayed open until 2001."
+  narration: "**Saudi money.** Human Rights Watch finds that Saudi Arabia became the Taliban’s main financial supporter from about July 1996 and was a major one until the 1998 embassy bombings; official aid then reportedly ended under U.S. pressure, and private Saudi money went on. It calls the extent of Saudi help uncertain, and says Western journalists saw what they took to be Saudi aircraft delivering ammunition at Kandahar in 1996."
+  duration: 13
+
+- shot: the-1998-request
+  view: graph
+  focus: saudi-government
+  time: "1998-06"
+  reveal: [saudi-government, taliban, turki-al-faisal, foreign-backing-of-the-taliban, saudi-arabia]
+  reveal_claims: [foreign-backing-of-the-taliban#c4, foreign-backing-of-the-taliban#c5, foreign-backing-of-the-taliban#c9, foreign-backing-of-the-taliban#c10, foreign-backing-of-the-taliban#c11]
+  narration: "**The 1998 request.** In 1998, the Commission says, CIA director Tenet asked the Saudis for help against bin Laden, and Prince Turki followed up with Mullah Omar that summer, apparently using “a mixture of possible incentives and threats.” Turki says he asked Omar in June to hand bin Laden over and that Omar agreed; HRW, citing a British newspaper, alleges he also pledged money to buy off commanders. In September, the Commission says, Omar refused; Riyadh withdrew its ambassador and suspended relations, though the Taliban’s embassy in Riyadh stayed open until 2001."
   duration: 13
 
 - shot: embassy-bombings-1998
@@ -182,7 +191,16 @@ Most lines here come from the 9/11 Commission, State Department records, Human R
   reveal: [claim-of-us-support-for-the-taliban-1999, dana-rohrabacher, karl-inderfurth, us-department-of-state, ahmed-rashid]
   reveal_claims: [claim-of-us-support-for-the-taliban-1999#c1, claim-of-us-support-for-the-taliban-1999#c2, claim-of-us-support-for-the-taliban-1999#c3, claim-of-us-support-for-the-taliban-1999#c5]
   overlay: {kind: quote, source: rferl-1999-04-15-us-denies-it-supports-taliban, quote: "Nothing could be further from the truth -- no arms, no training, nor any other form of assistance, nor any quiet encouragement.", caption: "Karl Inderfurth, Assistant Secretary of State, to the Senate Foreign Relations Committee, April 1999"}
-  narration: "**The charge.** This is where the claim that the U.S. backed the Taliban was made on the record. In April 1999 Representative Dana Rohrabacher told the same Senate hearing he believed the administration kept a covert policy of supporting the Taliban, tied, he said, to pipeline hopes; Assistant Secretary Inderfurth denied any U.S. support, “no arms, no training.” Ahmed Rashid said in 2000 that he did not think the Americans gave the Taliban material aid, but that they encouraged Pakistan and Saudi Arabia to back it; the mood in Washington turned, he said, after Kabul fell in 1996 (the transcript runs question and answer together). The Commission adds that two senior State officials suggested asking the Saudis to offer the Taliban $250 million for bin Laden; Clarke objected, and the idea “quietly died.” In July 1999 President Clinton issued an order the Commission describes as “effectively declaring the Taliban regime a state sponsor of terrorism.”"
+  narration: "**The charge.** This is where the claim that the U.S. backed the Taliban was made on the record. In April 1999 Representative Dana Rohrabacher told the same Senate hearing he believed the administration kept a covert policy of supporting the Taliban, tied, he said, to pipeline hopes; Assistant Secretary Inderfurth denied any U.S. support, “no arms, no training.”"
+  duration: 13
+
+- shot: rashid-and-1999
+  view: graph
+  focus: claim-of-us-support-for-the-taliban-1999
+  time: "1999-04-14"
+  reveal: [claim-of-us-support-for-the-taliban-1999, dana-rohrabacher, karl-inderfurth, us-department-of-state, ahmed-rashid]
+  reveal_claims: [claim-of-us-support-for-the-taliban-1999#c1, claim-of-us-support-for-the-taliban-1999#c2, claim-of-us-support-for-the-taliban-1999#c3, claim-of-us-support-for-the-taliban-1999#c5]
+  narration: "**Rashid and 1999.** Ahmed Rashid said in 2000 that he did not think the Americans gave the Taliban material aid, but that they encouraged Pakistan and Saudi Arabia to back it; the mood in Washington turned, he said, after Kabul fell in 1996 (the transcript runs question and answer together). The Commission adds that two senior State officials suggested asking the Saudis to offer the Taliban $250 million for bin Laden; Clarke objected, and the idea “quietly died.” In July 1999 President Clinton issued an order the Commission describes as “effectively declaring the Taliban regime a state sponsor of terrorism.”"
   duration: 13
 
 - shot: september-2001

@@ -135,7 +135,16 @@ These sources run to 26 October 2026. The events do not stop there. The Ottoman 
   reveal: [flight-and-expulsion-1948, israeli-military-orders-and-pressure-1948, arab-leadership-decisions-1948, transfer-in-zionist-thought, benny-morris, avi-shlaim, nur-masalha, rashid-khalidi, walid-khalidi, efraim-karsh]
   reveal_claims: [flight-and-expulsion-1948#c11, flight-and-expulsion-1948#c4, flight-and-expulsion-1948#c14, flight-and-expulsion-1948#c15, flight-and-expulsion-1948#c6, flight-and-expulsion-1948#c7, flight-and-expulsion-1948#c8, flight-and-expulsion-1948#c16, walid-khalidi#c1, walid-khalidi#c2, rashid-khalidi#c3, efraim-karsh#c4, efraim-karsh#c3]
   overlay: {kind: quote, source: walid-khalidi-plan-dalet-1988, quote: "Zionism's responsibility for the Palestinian exodus and diaspora is an integral part of the genesis of the State of Israel.", caption: "Walid Khalidi, Journal of Palestine Studies, 1988"}
-  narration: "**Why they became refugees: historians differ.** The older Israeli account said Arab leaders ordered the Palestinians out; Shlaim says Morris found no such calls, and Walid Khalidi calls the claim a lie. Morris finds no written Ben-Gurion order and no orderly policy, \"but there is an atmosphere of [population] transfer\", and also finds Arab Higher Committee orders to move women, children and the elderly from villages. Walid Khalidi reads the April 1948 operations of Plan D as one expulsion plan, and says Morris sees no link; Shlaim names Israeli pressure the single most important reason, and Nur Masalha points to \"transfer\" thinking. Efraim Karsh holds that the Israeli narrative sees a tragedy mainly self-inflicted, by rejecting the UN plan and by the Arab states' attack; the Palestinian narrative, he writes, sees dispossession by a Zionist strategy. The record of expulsions is in the scene before; the dispute is about plan and about blame."
+  narration: "**Why they became refugees: historians differ.** The older Israeli account said Arab leaders ordered the Palestinians out; Shlaim says Morris found no such calls, and Walid Khalidi calls the claim a lie. Morris finds no written Ben-Gurion order and no orderly policy, \"but there is an atmosphere of [population] transfer\", and also finds Arab Higher Committee orders to move women, children and the elderly from villages."
+  duration: 13
+
+- shot: plan-d
+  view: graph
+  focus: flight-and-expulsion-1948
+  time: "1948"
+  reveal: [flight-and-expulsion-1948, israeli-military-orders-and-pressure-1948, arab-leadership-decisions-1948, transfer-in-zionist-thought, benny-morris, avi-shlaim, nur-masalha, rashid-khalidi, walid-khalidi, efraim-karsh]
+  reveal_claims: [flight-and-expulsion-1948#c11, flight-and-expulsion-1948#c4, flight-and-expulsion-1948#c14, flight-and-expulsion-1948#c15, flight-and-expulsion-1948#c6, flight-and-expulsion-1948#c7, flight-and-expulsion-1948#c8, flight-and-expulsion-1948#c16, walid-khalidi#c1, walid-khalidi#c2, rashid-khalidi#c3, efraim-karsh#c4, efraim-karsh#c3]
+  narration: "**Plan D.** Walid Khalidi reads the April 1948 operations of Plan D as one expulsion plan, and says Morris sees no link; Shlaim names Israeli pressure the single most important reason, and Nur Masalha points to \"transfer\" thinking. Efraim Karsh holds that the Israeli narrative sees a tragedy mainly self-inflicted, by rejecting the UN plan and by the Arab states' attack; the Palestinian narrative, he writes, sees dispossession by a Zionist strategy. The record of expulsions is in the scene before; the dispute is about plan and about blame."
   duration: 13
 
 - shot: lines-on-a-map
@@ -167,7 +176,17 @@ These sources run to 26 October 2026. The events do not stop there. The Ottoman 
   reveal: [six-day-war-1967, khartoum-resolutions, un-resolution-242, arab-league, un-security-council, soviet-union, egypt, israel, gaza-strip, west-bank, jerusalem]
   reveal_claims: [six-day-war-1967#c10, six-day-war-1967#c11, six-day-war-1967#c12, six-day-war-1967#c13, six-day-war-1967#c14, six-day-war-1967#c15, six-day-war-1967#c7, six-day-war-1967#c6, arab-league#c1, un-security-council#c1]
   overlay: {kind: quote, source: avalon-khartoum-resolutions-1967, quote: "namely, no peace with Israel, no recognition of Israel, no negotiations with it, and insistence on the rights of the Palestinian people in their own country.", caption: "The Khartoum Resolutions, 1 September 1967"}
-  narration: "**June 1967.** The State Department's history says Soviet officials told Syria and Egypt on 13 May that Israel was massing troops on Syria's border, a report it calls false; Egypt sent soldiers into the Sinai, demanded the UN force's withdrawal and, on 22 May, announced closure of the Straits of Tiran; Jordan joined the Arab coalition, \"heightening the pressure for an Israeli strike\". Between 5 and 10 June Israel defeated Egypt, Jordan and Syria and occupied the Sinai, Gaza, the West Bank, East Jerusalem and the Golan Heights, the State Department's word. In September the Khartoum summit said \"no peace with Israel, no recognition of Israel, no negotiations with it, and insistence on the rights of the Palestinian people in their own country\", and chose to use oil pumping \"as a positive weapon\" rather than suspend it. In November, Resolution 242 emphasized \"the inadmissibility of the acquisition of territory by war\" and asked for Israeli withdrawal, an end to claims of belligerency and a just settlement of the refugee problem."
+  narration: "**June 1967.** The State Department's history says Soviet officials told Syria and Egypt on 13 May that Israel was massing troops on Syria's border, a report it calls false; Egypt sent soldiers into the Sinai, demanded the UN force's withdrawal and, on 22 May, announced closure of the Straits of Tiran; Jordan joined the Arab coalition, \"heightening the pressure for an Israeli strike\". Between 5 and 10 June Israel defeated Egypt, Jordan and Syria and occupied the Sinai, Gaza, the West Bank, East Jerusalem and the Golan Heights, the State Department's word."
+  duration: 13
+
+- shot: khartoum-and-242
+  view: map
+  camera: {center: [34.9, 31.0], zoom: 5.9, pitch: 0, duration: 6}
+  places: [gaza-strip, west-bank, jerusalem]
+  time: "1967-11-22"
+  reveal: [six-day-war-1967, khartoum-resolutions, un-resolution-242, arab-league, un-security-council, soviet-union, egypt, israel, gaza-strip, west-bank, jerusalem]
+  reveal_claims: [six-day-war-1967#c10, six-day-war-1967#c11, six-day-war-1967#c12, six-day-war-1967#c13, six-day-war-1967#c14, six-day-war-1967#c15, six-day-war-1967#c7, six-day-war-1967#c6, arab-league#c1, un-security-council#c1]
+  narration: "**Khartoum and 242.** In September the Khartoum summit said \"no peace with Israel, no recognition of Israel, no negotiations with it, and insistence on the rights of the Palestinian people in their own country\", and chose to use oil pumping \"as a positive weapon\" rather than suspend it. In November, Resolution 242 emphasized \"the inadmissibility of the acquisition of territory by war\" and asked for Israeli withdrawal, an end to claims of belligerency and a just settlement of the refugee problem."
   duration: 13
 
 - shot: october-1973-and-camp-david
@@ -228,7 +247,16 @@ These sources run to 26 October 2026. The events do not stop there. The Ottoman 
   reveal: [sharon-temple-mount-visit-2000, second-intifada, west-bank-barrier, icj-wall-opinion-2004, international-court-of-justice, west-bank, israel]
   reveal_claims: [sharon-temple-mount-visit-2000#c1, second-intifada#c3, west-bank-barrier#c1, west-bank-barrier#c2, west-bank-barrier#c4, international-court-of-justice#c3, international-court-of-justice#c4, international-court-of-justice#c5]
   overlay: {kind: quote, source: icj-press-release-wall-2004, quote: "By fourteen votes to one, The construction of the wall being built by Israel, the occupying Power, in the Occupied Palestinian Territory, including in and around East Jerusalem, and its associated régime, are contrary to international law", caption: "International Court of Justice, advisory opinion, 9 July 2004"}
-  narration: "**The second uprising, and the wall.** Riots followed a visit by Ariel Sharon to the Temple Mount on 28 September 2000. From 29 September 2000 to 26 September 2010, B'Tselem counts 6,371 Palestinians killed by Israeli security forces, 2,996 of them known not to have taken part in hostilities, and 1,083 Israelis killed by Palestinians, 741 of them civilians; the decade includes the Gaza war of 2008 to 2009. Benny Morris says \"the bombing of the buses and restaurants\" shook him. On 9 July 2004 the ICJ gave an advisory opinion: by 14 votes to 1 it found that the wall Israel was building in the Occupied Palestinian Territory, with its associated régime, is contrary to international law, and that Israel must stop, dismantle it and make reparation; it also wrote that Israel \"has the right, and indeed the duty, to respond\" to violence against its civilians, \"bound nonetheless\" to act within international law. Israel's ambassador had called the fence \"wholly consistent\" with self-defence."
+  narration: "**The second uprising, and the wall.** Riots followed a visit by Ariel Sharon to the Temple Mount on 28 September 2000. From 29 September 2000 to 26 September 2010, B'Tselem counts 6,371 Palestinians killed by Israeli security forces, 2,996 of them known not to have taken part in hostilities, and 1,083 Israelis killed by Palestinians, 741 of them civilians; the decade includes the Gaza war of 2008 to 2009. Benny Morris says \"the bombing of the buses and restaurants\" shook him."
+  duration: 13
+
+- shot: the-icj-opinion
+  view: graph
+  focus: second-intifada
+  time: "2004-07-09"
+  reveal: [sharon-temple-mount-visit-2000, second-intifada, west-bank-barrier, icj-wall-opinion-2004, international-court-of-justice, west-bank, israel]
+  reveal_claims: [sharon-temple-mount-visit-2000#c1, second-intifada#c3, west-bank-barrier#c1, west-bank-barrier#c2, west-bank-barrier#c4, international-court-of-justice#c3, international-court-of-justice#c4, international-court-of-justice#c5]
+  narration: "**The ICJ opinion.** On 9 July 2004 the ICJ gave an advisory opinion: by 14 votes to 1 it found that the wall Israel was building in the Occupied Palestinian Territory, with its associated régime, is contrary to international law, and that Israel must stop, dismantle it and make reparation; it also wrote that Israel \"has the right, and indeed the duty, to respond\" to violence against its civilians, \"bound nonetheless\" to act within international law. Israel's ambassador had called the fence \"wholly consistent\" with self-defence."
   duration: 13
 
 - shot: gaza-2005-to-2023

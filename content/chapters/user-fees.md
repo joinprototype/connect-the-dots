@@ -134,7 +134,16 @@ Most lines come from agency and Justice Department records of court cases, lobby
   reveal: [modernization-of-cosmetics-regulation-act, consolidated-appropriations-act-2023, personal-care-products-council, pcpc-lobbying-reports-2022, lezlee-westine, dianne-feinstein, personal-care-products-safety-act, us-congress]
   reveal_claims: [modernization-of-cosmetics-regulation-act#c4, personal-care-products-council#c1, lezlee-westine#c1, dianne-feinstein#c2, dianne-feinstein#c2, dianne-feinstein#c2, dianne-feinstein#c2, us-congress#c24]
   overlay: {kind: quote, source: fda-mocra-page, quote: "Neither the law nor FDA regulations require specific tests to demonstrate the safety of individual products or ingredients.", caption: "FDA’s page on the Modernization of Cosmetics Regulation Act"}
-  narration: "**The cosmetics law.** The Modernization of Cosmetics Regulation Act became law on 29 December 2022 inside a spending bill; the FDA calls it “the most significant expansion” of its cosmetics powers since 1938, and it adds a mandatory recall power. It is paid for by authorized appropriations, $14.2 million for 2023, with no industry fee, though the 2015 and 2021 versions of Senator Dianne Feinstein’s Personal Care Products Safety Act would have charged one; the 2015 bill got a hearing, none of the four passed on its own, and the council backed the final law, its chief calling it “a truly historic moment.” The Personal Care Products Council’s 2022 reports, $1.55 million across all issues, name the act, and also list bills such as the No PFAS in Cosmetics Act, so a listing does not show support. No critic of the law could be read for this story; the FDA itself says no test of individual products or ingredients is required."
+  narration: "**The cosmetics law.** The Modernization of Cosmetics Regulation Act became law on 29 December 2022 inside a spending bill; the FDA calls it “the most significant expansion” of its cosmetics powers since 1938, and it adds a mandatory recall power. It is paid for by authorized appropriations, $14.2 million for 2023, with no industry fee, though the 2015 and 2021 versions of Senator Dianne Feinstein’s Personal Care Products Safety Act would have charged one; the 2015 bill got a hearing, none of the four passed on its own, and the council backed the final law, its chief calling it “a truly historic moment.”"
+  duration: 13
+
+- shot: council-reports
+  view: graph
+  focus: modernization-of-cosmetics-regulation-act
+  time: "2022-12-29"
+  reveal: [modernization-of-cosmetics-regulation-act, consolidated-appropriations-act-2023, personal-care-products-council, pcpc-lobbying-reports-2022, lezlee-westine, dianne-feinstein, personal-care-products-safety-act, us-congress]
+  reveal_claims: [modernization-of-cosmetics-regulation-act#c4, personal-care-products-council#c1, lezlee-westine#c1, dianne-feinstein#c2, dianne-feinstein#c2, dianne-feinstein#c2, dianne-feinstein#c2, us-congress#c24]
+  narration: "**Council reports.** The Personal Care Products Council’s 2022 reports, $1.55 million across all issues, name the act, and also list bills such as the No PFAS in Cosmetics Act, so a listing does not show support. No critic of the law could be read for this story; the FDA itself says no test of individual products or ingredients is required."
   duration: 13
 
 - shot: jobs-after-the-agency

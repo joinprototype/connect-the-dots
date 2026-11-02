@@ -195,7 +195,17 @@ Nearly every line here comes from Parliament's own records, the Company's letter
   reveal: [seizure-of-opium-at-canton-1839, lin-zexu, guangzhou, qing-government]
   reveal_claims: [lin-zexu#c1, seizure-of-opium-at-canton-1839#c1, seizure-of-opium-at-canton-1839#c2, lin-zexu#c2]
   overlay: {"kind": "quote", "source": "lin-zexu-1839-letter-to-queen-victoria", "quote": "we should like to ask what has become of that conscience which heaven has implanted in the breasts of all men?", "caption": "Commissioner Lin to Queen Victoria, 1839 (the English translation of 1840)"}
-  narration: "**Two accounts.** Lin wrote to Queen Victoria that in 1839 the foreign merchants repented, took 20,283 chests of opium from their store-ships and “petitioned that they might be delivered up to us,” after which the opium was destroyed. He named Bengal, Patna, Malwa and Benares among the places “where the very hills are covered with the opium plant.” The British account is in the treaty of 1842: the Queen's Superintendent and subjects “had been imprisoned and threatened with death by the Chinese High Officers,” and a member of the Commons spoke of men held “under the threat of their being suffered to die by starvation.” The government's own despatch, read to the Commons, said it “cannot interfere for the purpose of enabling British subjects to violate the laws of the country to which they trade.” Its next sentence said any loss “must be borne by the parties who have brought that loss on themselves by their own acts.”"
+  narration: "**Two accounts.** Lin wrote to Queen Victoria that in 1839 the foreign merchants repented, took 20,283 chests of opium from their store-ships and “petitioned that they might be delivered up to us,” after which the opium was destroyed. He named Bengal, Patna, Malwa and Benares among the places “where the very hills are covered with the opium plant.”"
+  duration: 13
+
+- shot: the-british-account
+  view: map
+  camera: {"center": [113.2644, 23.1291], "zoom": 8.2, "pitch": 30, "duration": 6}
+  places: [guangzhou]
+  time: "1839"
+  reveal: [seizure-of-opium-at-canton-1839, lin-zexu, guangzhou, qing-government]
+  reveal_claims: [lin-zexu#c1, seizure-of-opium-at-canton-1839#c1, seizure-of-opium-at-canton-1839#c2, lin-zexu#c2]
+  narration: "**The British account.** The British account is in the treaty of 1842: the Queen's Superintendent and subjects “had been imprisoned and threatened with death by the Chinese High Officers,” and a member of the Commons spoke of men held “under the threat of their being suffered to die by starvation.” The government's own despatch, read to the Commons, said it “cannot interfere for the purpose of enabling British subjects to violate the laws of the country to which they trade.” Its next sentence said any loss “must be borne by the parties who have brought that loss on themselves by their own acts.”"
   duration: 13
 
 - shot: gladstone

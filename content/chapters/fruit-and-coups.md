@@ -70,7 +70,16 @@ Nearly every line here comes from the records of the governments that acted: the
   reveal: [iranian-oil-participants, bp, exxonmobil, mobil, chevron, texaco, anglo-iranian-oil-company, standard-oil, nsc-meetings-on-iran-march-1953, dwight-d-eisenhower]
   reveal_claims: [bp#c5, exxonmobil#c8, mobil#c4, chevron#c8, texaco#c4, anglo-iranian-oil-company#c1, iran-oil-nationalization-1951#c2, nsc-meetings-on-iran-march-1953#c3]
   overlay: {kind: stat, value: "40 · 14 · 6 · 40", label: "Percent of the oil consortium held by BP, Shell, a French company and U.S. companies, in the CIA’s history", source: cia-battle-for-iran-1981, quote: "British Petroleum, the new name of the AIOC, owned 40%, Royal Dutch-Shell 14%, Compagnie Francaise des Petroles 6%, and U.S. oil companies 40%"}
-  narration: "**The consortium.** After the coup, the CIA’s history says, the oil dispute “was settled along the lines that had been proposed to Mosadeq”: the industry stayed nationalized, but a group of foreign companies ran it, and Herbert Hoover Jr., the State Department’s oil adviser, helped persuade Iran. In the CIA’s list BP, the renamed Anglo-Iranian, held 40 percent, Shell 14, a French company 6 and U.S. companies 40: 7 each to Jersey Standard (later Exxon), Standard of California (Chevron), Socony Mobil, Texaco and Gulf, and 5 to Iricon, nine small firms, three of the big five being pieces of the Standard Oil told in The Trust. In March 1953 the National Security Council had itself talked oil: a deal with Mossadegh, Eisenhower feared, might have “very grave effects on United States oil concessions in other parts of the world.” The CIA history gives the Cold War risk as its reason for the coup, and whether oil weighed more is argued, with no source here settling it."
+  narration: "**The consortium.** After the coup, the CIA’s history says, the oil dispute “was settled along the lines that had been proposed to Mosadeq”: the industry stayed nationalized, but a group of foreign companies ran it, and Herbert Hoover Jr., the State Department’s oil adviser, helped persuade Iran. In the CIA’s list BP, the renamed Anglo-Iranian, held 40 percent, Shell 14, a French company 6 and U.S. companies 40: 7 each to Jersey Standard (later Exxon), Standard of California (Chevron), Socony Mobil, Texaco and Gulf, and 5 to Iricon, nine small firms, three of the big five being pieces of the Standard Oil told in The Trust."
+  duration: 13
+
+- shot: oil-and-the-nsc
+  view: graph
+  focus: iranian-oil-participants
+  time: "1954-08"
+  reveal: [iranian-oil-participants, bp, exxonmobil, mobil, chevron, texaco, anglo-iranian-oil-company, standard-oil, nsc-meetings-on-iran-march-1953, dwight-d-eisenhower]
+  reveal_claims: [bp#c5, exxonmobil#c8, mobil#c4, chevron#c8, texaco#c4, anglo-iranian-oil-company#c1, iran-oil-nationalization-1951#c2, nsc-meetings-on-iran-march-1953#c3]
+  narration: "**Oil and the NSC.** In March 1953 the National Security Council had itself talked oil: a deal with Mossadegh, Eisenhower feared, might have “very grave effects on United States oil concessions in other parts of the world.” The CIA history gives the Cold War risk as its reason for the coup, and whether oil weighed more is argued, with no source here settling it."
   duration: 13
 
 - shot: admitted
@@ -152,7 +161,16 @@ Nearly every line here comes from the records of the governments that acted: the
   reveal: [united-fruit-antitrust-case, united-fruit-company, us-department-of-justice, john-foster-dulles, allen-dulles, dwight-d-eisenhower]
   reveal_claims: [united-fruit-antitrust-case#c3, united-fruit-antitrust-case#c4, united-fruit-antitrust-case#c5, john-foster-dulles#c4, allen-dulles#c6, united-fruit-antitrust-case#c2, united-fruit-company#c1]
   overlay: {kind: quote, source: frus-guatemala-1952-54-d196, quote: "Many of the Central American countries were convinced that the sole objective of United States foreign policy was to protect the fruit company.", caption: "Secretary of State John Foster Dulles to the National Security Council, 17 June 1954, as minuted"}
-  narration: "**The suit.** On 17 June 1954, the day before Castillo Armas crossed the border, the National Security Council discussed reviving the antitrust suit shelved in 1951: the Justice Department had proposed a settlement, and the company would not settle unless the government first revealed its evidence. Dulles said suing might show Central Americans that U.S. policy was not meant to protect the fruit company, though it might interfere “with certain activities of the Central Intelligence Agency”; his brother Allen said “given a little more time, the Central American states would do Justice’s job for it,” and asked for a month’s delay. The CIA history says that once the company’s “usefulness to PBSUCCESS was at an end” the administration proceeded with its suspended action, and in 1958 the company signed a consent decree giving up its railroad and marketing holdings. “The United Fruit Company did not profit from victory,” it adds. “Castillo Armas restored many of the company’s privileges, but they were worth less than before.”"
+  narration: "**The suit.** On 17 June 1954, the day before Castillo Armas crossed the border, the National Security Council discussed reviving the antitrust suit shelved in 1951: the Justice Department had proposed a settlement, and the company would not settle unless the government first revealed its evidence. Dulles said suing might show Central Americans that U.S. policy was not meant to protect the fruit company, though it might interfere “with certain activities of the Central Intelligence Agency”; his brother Allen said “given a little more time, the Central American states would do Justice’s job for it,” and asked for a month’s delay."
+  duration: 13
+
+- shot: after-the-coup
+  view: graph
+  focus: united-fruit-antitrust-case
+  time: "1954-06-17"
+  reveal: [united-fruit-antitrust-case, united-fruit-company, us-department-of-justice, john-foster-dulles, allen-dulles, dwight-d-eisenhower]
+  reveal_claims: [united-fruit-antitrust-case#c3, united-fruit-antitrust-case#c4, united-fruit-antitrust-case#c5, john-foster-dulles#c4, allen-dulles#c6, united-fruit-antitrust-case#c2, united-fruit-company#c1]
+  narration: "**After the coup.** The CIA history says that once the company’s “usefulness to PBSUCCESS was at an end” the administration proceeded with its suspended action, and in 1958 the company signed a consent decree giving up its railroad and marketing holdings. “The United Fruit Company did not profit from victory,” it adds. “Castillo Armas restored many of the company’s privileges, but they were worth less than before.”"
   duration: 13
 
 - shot: after
@@ -254,6 +272,17 @@ Nearly every line here comes from the records of the governments that acted: the
   reveal: [church-committee, frank-church, covert-action-in-chile, cia, us-government, allen-dulles, cold-war, covert-funding-of-chilean-opposition-1970-73, senate-itt-hearings-1973]
   reveal_claims: [frank-church#c1, church-committee#c4, covert-funding-of-chilean-opposition-1970-73#c2, senate-itt-hearings-1973#c1]
   overlay: {kind: quote, source: senate-church-covert-action-in-chile-1975, quote: "The pattern of United States covert action in Chile is striking but not unique.", caption: "Church Committee staff report on Chile, 1975"}
-  narration: "**Three cases.** Cullather opens his history of Guatemala by noting that it followed “successful operations that installed the Shah as ruler of Iran”; the Church staff wrote of Chile that “the pattern of United States covert action in Chile is striking but not unique”; and in 1973 Kissinger told Nixon that “in the Eisenhower period we would be heros.” In 1973 the Assistant Secretary of State, Charles Meyer, had told a Senate subcommittee that policy was no intervention in Chile’s political affairs: “we financed no candidates, no political parties”; the staff report records over seven million dollars in covert support to opposition groups after Allende took office. The companies stood differently each time: an oil company whose property was nationalized, then a partner in the consortium that followed; a fruit company whose claim the State Department backed, whose antitrust case it had shelved and later revived; a telephone company whose $1 million the CIA refused and whose later $1 million, to stop Allende, drew no response. These are the governments’ own records and their critics’ readings of them, and no company’s own account was reached, only United Fruit’s insistence, in 1954, that it had done nothing wrong."
+  narration: "**Three cases.** Cullather opens his history of Guatemala by noting that it followed “successful operations that installed the Shah as ruler of Iran”; the Church staff wrote of Chile that “the pattern of United States covert action in Chile is striking but not unique”; and in 1973 Kissinger told Nixon that “in the Eisenhower period we would be heros.” In 1973 the Assistant Secretary of State, Charles Meyer, had told a Senate subcommittee that policy was no intervention in Chile’s political affairs: “we financed no candidates, no political parties”; the staff report records over seven million dollars in covert support to opposition groups after Allende took office."
+  duration: 13
+```
+
+
+- shot: company-roles
+  view: graph
+  focus: church-committee
+  time: "1975"
+  reveal: [church-committee, frank-church, covert-action-in-chile, cia, us-government, allen-dulles, cold-war, covert-funding-of-chilean-opposition-1970-73, senate-itt-hearings-1973]
+  reveal_claims: [frank-church#c1, church-committee#c4, covert-funding-of-chilean-opposition-1970-73#c2, senate-itt-hearings-1973#c1]
+  narration: "**Company roles.** The companies stood differently each time: an oil company whose property was nationalized, then a partner in the consortium that followed; a fruit company whose claim the State Department backed, whose antitrust case it had shelved and later revived; a telephone company whose $1 million the CIA refused and whose later $1 million, to stop Allende, drew no response. These are the governments’ own records and their critics’ readings of them, and no company’s own account was reached, only United Fruit’s insistence, in 1954, that it had done nothing wrong."
   duration: 13
 ```

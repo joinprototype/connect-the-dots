@@ -82,7 +82,17 @@ It checks the money and the public claims against records: the 9/11 Commission, 
   reveal: [invasion-of-iraq-2003, iraq, george-w-bush, iraq-resolution-2002, iraq-survey-group, charles-duelfer]
   reveal_claims: [invasion-of-iraq-2003#c1, invasion-of-iraq-2003#c2, invasion-of-iraq-2003#c6, us-congress#c40, george-w-bush#c3, iraq-survey-group#c1, charles-duelfer#c1, charles-duelfer#c2]
   overlay: {kind: quote, source: duelfer-2004-iraq-survey-group-report, quote: "ISG has not found evidence that Saddam Husayn possessed WMD stocks in 2003, but the available evidence from its investigation—including detainee interviews and document exploitation—leaves open the possibility that some weapons existed in Iraq although not of a militarily significant capability.", caption: "Iraq Survey Group report, 2004"}
-  narration: "**What was said, and what was found.** In October 2002 President Bush told Cincinnati that Iraq “possesses and produces chemical and biological weapons,” “is seeking nuclear weapons,” and “has trained al Qaeda members in bomb-making and poisons and deadly gases.” Congress authorized force against “the continuing threat posed by Iraq” (the House voted 296 to 133), and on 19 March 2003 Bush said operations began “to disarm Iraq, to free its people and to defend the world from grave danger.” The U.S.-led Iraq Survey Group then searched Iraq; its 2004 report, by Charles Duelfer, found no evidence of weapons stocks in 2003, left open that some weapons existed “not of a militarily significant capability,” and said Saddam wanted to recreate Iraq’s weapons capability after sanctions were removed. The 9/11 Commission found reported “friendly contacts” between Iraqi officials and Bin Ladin, “no evidence” they became “a collaborative operational relationship,” and none that Iraq cooperated in attacks on the United States."
+  narration: "**What was said, and what was found.** In October 2002 President Bush told Cincinnati that Iraq “possesses and produces chemical and biological weapons,” “is seeking nuclear weapons,” and “has trained al Qaeda members in bomb-making and poisons and deadly gases.” Congress authorized force against “the continuing threat posed by Iraq” (the House voted 296 to 133), and on 19 March 2003 Bush said operations began “to disarm Iraq, to free its people and to defend the world from grave danger.”"
+  duration: 13
+
+- shot: what-was-found
+  view: map
+  camera: {center: [43.6793, 33.2232], zoom: 5.3, pitch: 0, duration: 6}
+  places: [iraq]
+  time: "2004"
+  reveal: [invasion-of-iraq-2003, iraq, george-w-bush, iraq-resolution-2002, iraq-survey-group, charles-duelfer]
+  reveal_claims: [invasion-of-iraq-2003#c1, invasion-of-iraq-2003#c2, invasion-of-iraq-2003#c6, us-congress#c40, george-w-bush#c3, iraq-survey-group#c1, charles-duelfer#c1, charles-duelfer#c2]
+  narration: "**What was found.** The U.S.-led Iraq Survey Group then searched Iraq; its 2004 report, by Charles Duelfer, found no evidence of weapons stocks in 2003, left open that some weapons existed “not of a militarily significant capability,” and said Saddam wanted to recreate Iraq’s weapons capability after sanctions were removed. The 9/11 Commission found reported “friendly contacts” between Iraqi officials and Bin Ladin, “no evidence” they became “a collaborative operational relationship,” and none that Iraq cooperated in attacks on the United States."
   duration: 13
 
 - shot: what-the-senate-found
@@ -171,7 +181,16 @@ It checks the money and the public claims against records: the 9/11 Commission, 
   reveal: [dick-cheney, halliburton, kellogg-brown-and-root, us-government]
   reveal_claims: [dick-cheney#c1, dick-cheney#c3]
   overlay: {kind: quote, source: factcheck-2004-09-30-kerry-ad-cheney-halliburton, quote: "I’ve severed all my ties with the company, gotten rid of all my financial interests. I have no financial interest in Halliburton of any kind and haven’t had now for over three years.", caption: "Dick Cheney on NBC’s Meet the Press, 14 September 2003, as printed by FactCheck.org"}
-  narration: "**His answer.** In September 2003 Cheney said he had “no financial interest in Halliburton of any kind” and, as vice president, “absolutely no influence of, involvement of, knowledge of” contracts led by the Corps of Engineers. Senator Frank Lautenberg said his disclosure forms showed deferred salary from the company, $398,548 while in office by FactCheck.org’s count; his office said he had bought insurance in 2001 against the company failing, and he and his wife had assigned profits from his Halliburton stock options to charity. FactCheck.org, in 2004, found the deferred pay fixed whatever the company earned and “no credible allegation” that he took part in Halliburton matters, and a Congressional Research Service memo reached “no firm conclusion” on whether such pay is a conflict. But FactCheck also noted that his chief of staff, Lewis Libby, was told in advance of a fall 2002 Halliburton contract (the White House said Libby did not pass it on), and a Time report of an email that a March 2003 contract “has been coordinated w VP’s [Vice President’s] office,” which was unclear; this story read no source showing him deciding any award."
+  narration: "**His answer.** In September 2003 Cheney said he had “no financial interest in Halliburton of any kind” and, as vice president, “absolutely no influence of, involvement of, knowledge of” contracts led by the Corps of Engineers. Senator Frank Lautenberg said his disclosure forms showed deferred salary from the company, $398,548 while in office by FactCheck.org’s count; his office said he had bought insurance in 2001 against the company failing, and he and his wife had assigned profits from his Halliburton stock options to charity. FactCheck.org, in 2004, found the deferred pay fixed whatever the company earned and “no credible allegation” that he took part in Halliburton matters, and a Congressional Research Service memo reached “no firm conclusion” on whether such pay is a conflict."
+  duration: 13
+
+- shot: the-chief-of-staff
+  view: graph
+  focus: dick-cheney
+  time: "2003-09-14"
+  reveal: [dick-cheney, halliburton, kellogg-brown-and-root, us-government]
+  reveal_claims: [dick-cheney#c1, dick-cheney#c3]
+  narration: "**The chief of staff.** But FactCheck also noted that his chief of staff, Lewis Libby, was told in advance of a fall 2002 Halliburton contract (the White House said Libby did not pass it on), and a Time report of an email that a March 2003 contract “has been coordinated w VP’s [Vice President’s] office,” which was unclear; this story read no source showing him deciding any award."
   duration: 13
 
 - shot: the-waste

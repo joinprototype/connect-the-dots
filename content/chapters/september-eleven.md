@@ -219,7 +219,17 @@ Nearly every line here comes from that report and the staff study on terrorist f
   reveal: [release-of-the-28-pages-2016, us-congress, saudi-government, barack-obama]
   reveal_claims: [release-of-the-28-pages-2016#c1, release-of-the-28-pages-2016#c2, release-of-the-28-pages-2016#c3]
   overlay: {kind: quote, source: odni-2016-statement-declassification-part-four-joint-inquiry, quote: "The decision to authorize the release of this information is not an endorsement of, or concurrence in, its accuracy or reliability.", caption: "The Office of the Director of National Intelligence, 15 July 2016"}
-  narration: "**The twenty-eight pages.** After an executive branch classification review, Part Four of Congress’s 2002 Joint Inquiry report was withheld in full until 15 July 2016. Its released pages concern the finding that some hijackers received support from individuals who “may be connected to the Saudi Government”: they say this could suggest, as a redacted item of 2 July 2002 put it, “incontrovertible evidence that there is support for these terrorists with the Saudi Government,” and that further investigation “could reveal legitimate, and innocent, explanations.” The inquiry made no final determination on the reliability of the information; Kean and Hamilton said the pages rested almost entirely on raw, unvetted material, and CBS reported that later investigations found no evidence that the Saudi government or senior officials knowingly supported the attackers, while some critics say the Commission failed to run down every Saudi lead. The Saudi embassy said neither the government, nor senior officials, nor “any person acting on behalf of the Saudi government” gave any support."
+  narration: "**The twenty-eight pages.** After an executive branch classification review, Part Four of Congress’s 2002 Joint Inquiry report was withheld in full until 15 July 2016."
+  duration: 13
+
+- shot: the-released-pages
+  view: graph
+  picture: none
+  focus: release-of-the-28-pages-2016
+  time: "2016-07-15"
+  reveal: [release-of-the-28-pages-2016, us-congress, saudi-government, barack-obama]
+  reveal_claims: [release-of-the-28-pages-2016#c1, release-of-the-28-pages-2016#c2, release-of-the-28-pages-2016#c3]
+  narration: "**The released pages.** Its released pages concern the finding that some hijackers received support from individuals who “may be connected to the Saudi Government”: they say this could suggest, as a redacted item of 2 July 2002 put it, “incontrovertible evidence that there is support for these terrorists with the Saudi Government,” and that further investigation “could reveal legitimate, and innocent, explanations.” The inquiry made no final determination on the reliability of the information; Kean and Hamilton said the pages rested almost entirely on raw, unvetted material, and CBS reported that later investigations found no evidence that the Saudi government or senior officials knowingly supported the attackers, while some critics say the Commission failed to run down every Saudi lead. The Saudi embassy said neither the government, nor senior officials, nor “any person acting on behalf of the Saudi government” gave any support."
   duration: 13
 
 - shot: the-law

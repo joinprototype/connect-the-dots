@@ -122,7 +122,16 @@ Most lines come from a Senate report, a British public inquiry, academic studies
   reveal: [dominion-v-fox-news, dominion-voting-systems, fox-news, fox-corporation, lachlan-murdoch, rupert-murdoch]
   reveal_claims: [fox-corporation#c1, fox-news#c1, lachlan-murdoch#c1, dominion-v-fox-news#c1, dominion-v-fox-news#c2, dominion-v-fox-news#c3, rupert-murdoch#c2, lachlan-murdoch#c3]
   overlay: {"kind": "stat", "value": "$787.5 million", "label": "Fox's settlement with Dominion Voting Systems, 18 April 2023", "source": "npr-2023-fox-settles-dominion", "quote": "The parties settled for $787,500,000 — about half of Dominion's original $1.6 billion ask."}
-  narration: "**Wilmington, 2023.** Dominion sued Fox News and Fox Corp. over broadcasts of claims that Dominion rigged the 2020 vote. Before trial the judge, Eric Davis, emphasized it was “CRYSTAL clear” that none of the allegations about Dominion aired on Fox were true. AP reported that records in the case showed Fox hosts and executives did not believe the claims but aired them partly to win back viewers angered by Fox's correct Arizona call; Rupert Murdoch wrote “We don't want to antagonize Trump further” and testified he believed the election was fair. Fox's defense was that it “never reported those to be true” but reported allegations by a sitting president. On 18 April 2023 the Murdochs' company settled for $787.5 million, saying “We acknowledge the Court's rulings,” with no admission of error; Lachlan Murdoch called it a business decision. Smartmatic's separate $2.7 billion suit was still open in May 2026, when an appeals court granted Fox more discovery; our sources end there."
+  narration: "**Wilmington, 2023.** Dominion sued Fox News and Fox Corp. over broadcasts of claims that Dominion rigged the 2020 vote. Before trial the judge, Eric Davis, emphasized it was “CRYSTAL clear” that none of the allegations about Dominion aired on Fox were true."
+  duration: 13
+
+- shot: hosts-and-executives
+  view: graph
+  focus: dominion-v-fox-news
+  time: "2023-04-18"
+  reveal: [dominion-v-fox-news, dominion-voting-systems, fox-news, fox-corporation, lachlan-murdoch, rupert-murdoch]
+  reveal_claims: [fox-corporation#c1, fox-news#c1, lachlan-murdoch#c1, dominion-v-fox-news#c1, dominion-v-fox-news#c2, dominion-v-fox-news#c3, rupert-murdoch#c2, lachlan-murdoch#c3]
+  narration: "**Hosts and executives.** AP reported that records in the case showed Fox hosts and executives did not believe the claims but aired them partly to win back viewers angered by Fox's correct Arizona call; Rupert Murdoch wrote “We don't want to antagonize Trump further” and testified he believed the election was fair. Fox's defense was that it “never reported those to be true” but reported allegations by a sitting president. On 18 April 2023 the Murdochs' company settled for $787.5 million, saying “We acknowledge the Court's rulings,” with no admission of error; Lachlan Murdoch called it a business decision. Smartmatic's separate $2.7 billion suit was still open in May 2026, when an appeals court granted Fox more discovery; our sources end there."
   duration: 13
 
 - shot: london-2012

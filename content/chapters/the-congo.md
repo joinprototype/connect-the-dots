@@ -235,7 +235,17 @@ This story keeps four things apart: what the record shows, what a named body fou
   reveal: [commission-report-1905, experts-findings-2024, casement-report-1904]
   reveal_claims: [experts-findings-2024#c2]
   overlay: {kind: stat, value: "Up to 10 million", label: "Deaths some experts say the early rule left, as Africanews reports it (the Belgian experts name Adam Hochschild; other readings are lower)", source: africanews-king-philippe-letter-2020, quote: "His early rule, starting in 1885, was famous for its brutality, which some experts say left as many as 10 million people dead."}
-  narration: "**How many.** No one has an exact count. The highest figure is ten million deaths, which the Belgian experts trace to Adam Hochschild (1998); another reading, from authors the experts do not name, is no net fall given migration. The experts find it impossible to deny that deaths rose, from violence, fewer births and disease among people driven from their land. The demographer Jean-Paul Sanderson works back from 10 million people in 1935, using surveys and administrative counts. He calls 20 million in 1885 highly improbable, 15 million far likelier, 11.5 million conceivable. By subtraction that is a fall of 1.5 to 5 million people over fifty years, 27 of them under Belgium: a fall, not a death toll. The 1905 Commission wrote of “the absence of a census” and said that, if Stanley is accepted, “a large part of the population has disappeared.” The experts say the lack of exact figures casts no doubt on the decline nor on the massive scale of the violence. On genocide they find intent cannot be shown, since the rulers needed labour, and warn that the word must not hide the regime's inherently violent nature."
+  narration: "**How many.** No one has an exact count. The highest figure is ten million deaths, which the Belgian experts trace to Adam Hochschild (1998); another reading, from authors the experts do not name, is no net fall given migration. The experts find it impossible to deny that deaths rose, from violence, fewer births and disease among people driven from their land."
+  duration: 13
+
+- shot: sanderson-s-estimate
+  view: graph
+  picture: none
+  focus: experts-findings-2024
+  time: "2024-03-07"
+  reveal: [commission-report-1905, experts-findings-2024, casement-report-1904]
+  reveal_claims: [experts-findings-2024#c2]
+  narration: "**Sanderson's estimate.** The demographer Jean-Paul Sanderson works back from 10 million people in 1935, using surveys and administrative counts. He calls 20 million in 1885 highly improbable, 15 million far likelier, 11.5 million conceivable. By subtraction that is a fall of 1.5 to 5 million people over fifty years, 27 of them under Belgium: a fall, not a death toll. The 1905 Commission wrote of “the absence of a census” and said that, if Stanley is accepted, “a large part of the population has disappeared.” The experts say the lack of exact figures casts no doubt on the decline nor on the massive scale of the violence. On genocide they find intent cannot be shown, since the rulers needed labour, and warn that the word must not hide the regime's inherently violent nature."
   duration: 13
 
 - shot: regrets

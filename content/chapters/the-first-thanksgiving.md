@@ -102,7 +102,17 @@ Native nations' own words are used where we have them: the Mashpee Wampanoag Tri
   reveal: [king-philips-war, great-swamp-fight, metacom, plymouth-certificate-of-1676, plymouth-colony, wampanoag-tribe-of-gay-head, mashpee-wampanoag-tribe]
   reveal_claims: [king-philips-war#c1, great-swamp-fight#c1, great-swamp-fight#c2, metacom#c2, metacom#c1, plymouth-certificate-of-1676#c1, plymouth-colony#c1, mashpee-wampanoag-tribe#c3, wampanoag-tribe-of-gay-head#c2]
   overlay: {kind: stat, value: "110", label: "men, women and children condemned to “perpetual servitude and slavery” by Plymouth’s governor, 9 August 1676", source: mhs-winslow-certificate-1676, quote: "It condemns 110 Indigenous men, women, and children captured during King Philip’s War to \"perpetual servitude and slavery.\""}
-  narration: "**King Philip’s War.** The National Park Service writes that English land purchases and a series of hostile incidents led to the war of 1675. In December about 1,000 colonists invaded Rhode Island and attacked the Narragansett winter village in the Great Swamp, after a neutrality treaty and after Boston demanded the Wampanoag refugees there as hostages; the Park Service calls it “the Great Swamp Fight, or Massacre” and says almost seven hundred men, women and children died. Native armies forced the abandonment of most English settlements in central Massachusetts, and the Narragansett burned Providence. On 9 August 1676 Plymouth’s governor condemned 110 Indigenous men, women and children to “perpetual servitude and slavery,” saying they had helped Metacom and done “Many inhumaine Crueltyes and injuryes,” and authorized Captain Thomas Smith of the ship Seaflower to transport and sell them. The Mashpee Wampanoag Tribe’s timeline says over forty percent of the Wampanoag population was killed and many healthy males sold as slaves."
+  narration: "**King Philip’s War.** The National Park Service writes that English land purchases and a series of hostile incidents led to the war of 1675. In December about 1,000 colonists invaded Rhode Island and attacked the Narragansett winter village in the Great Swamp, after a neutrality treaty and after Boston demanded the Wampanoag refugees there as hostages; the Park Service calls it “the Great Swamp Fight, or Massacre” and says almost seven hundred men, women and children died."
+  duration: 13
+
+- shot: the-war-s-course
+  view: map
+  camera: {center: [-71.1, 41.75], zoom: 8.4, pitch: 20, duration: 6}
+  places: [plymouth-massachusetts]
+  time: "1675/1676"
+  reveal: [king-philips-war, great-swamp-fight, metacom, plymouth-certificate-of-1676, plymouth-colony, wampanoag-tribe-of-gay-head, mashpee-wampanoag-tribe]
+  reveal_claims: [king-philips-war#c1, great-swamp-fight#c1, great-swamp-fight#c2, metacom#c2, metacom#c1, plymouth-certificate-of-1676#c1, plymouth-colony#c1, mashpee-wampanoag-tribe#c3, wampanoag-tribe-of-gay-head#c2]
+  narration: "**The war's course.** Native armies forced the abandonment of most English settlements in central Massachusetts, and the Narragansett burned Providence. On 9 August 1676 Plymouth’s governor condemned 110 Indigenous men, women and children to “perpetual servitude and slavery,” saying they had helped Metacom and done “Many inhumaine Crueltyes and injuryes,” and authorized Captain Thomas Smith of the ship Seaflower to transport and sell them. The Mashpee Wampanoag Tribe’s timeline says over forty percent of the Wampanoag population was killed and many healthy males sold as slaves."
   duration: 13
 
 - shot: a-day-set-by-the-nation
@@ -184,7 +194,17 @@ Native nations' own words are used where we have them: the Mashpee Wampanoag Tri
   reveal: [sand-creek-massacre, black-kettle, john-chivington, silas-soule, sand-creek-colorado]
   reveal_claims: [sand-creek-massacre#c1, sand-creek-massacre#c2, sand-creek-massacre#c4, john-chivington#c2]
   overlay: {kind: stat, value: "over 230", label: "Cheyenne and Arapaho killed at Sand Creek, about 150 of them women, children and elderly, by the National Park Service", source: nps-sand-creek-timeline, quote: "The soldiers murder/massacre over 230 Cheyenne and Arapaho, including about 150 women, children, and elderly. They mutilate many of the bodies."}
-  narration: "**Sand Creek.** In May 1864, the Park Service says, Colorado soldiers shot the Cheyenne chief Lean Bear, who wore a peace medal given to him by Lincoln; in June the murdered Hungate family was displayed in Denver, and settlers panicked. On 29 November about 675 U.S. Volunteers under Colonel John Chivington attacked a camp of an estimated 700 to 750 people who had been told “they would be under the protection of the military”; Black Kettle raised an American flag and, “as instructed,” a white flag. The Park Service says the soldiers killed over 230 Cheyenne and Arapaho, about 150 of them women, children and elderly, and that at least 16 soldiers died. Chivington reported hundreds of warriors killed and wrote, “No white flag is raised”; his staff counted 300 to 800 dead and other soldiers 100 to 150. Captain Silas Soule kept his men clear and later testified; he was shot dead in Denver."
+  narration: "**Sand Creek.** In May 1864, the Park Service says, Colorado soldiers shot the Cheyenne chief Lean Bear, who wore a peace medal given to him by Lincoln; in June the murdered Hungate family was displayed in Denver, and settlers panicked. On 29 November about 675 U.S. Volunteers under Colonel John Chivington attacked a camp of an estimated 700 to 750 people who had been told “they would be under the protection of the military”; Black Kettle raised an American flag and, “as instructed,” a white flag."
+  duration: 13
+
+- shot: the-death-toll
+  view: map
+  camera: {center: [-102.5114, 38.5494], zoom: 9.8, pitch: 30, duration: 6}
+  places: [sand-creek-colorado]
+  time: "1864-11-29"
+  reveal: [sand-creek-massacre, black-kettle, john-chivington, silas-soule, sand-creek-colorado]
+  reveal_claims: [sand-creek-massacre#c1, sand-creek-massacre#c2, sand-creek-massacre#c4, john-chivington#c2]
+  narration: "**The death toll.** The Park Service says the soldiers killed over 230 Cheyenne and Arapaho, about 150 of them women, children and elderly, and that at least 16 soldiers died. Chivington reported hundreds of warriors killed and wrote, “No white flag is raised”; his staff counted 300 to 800 dead and other soldiers 100 to 150. Captain Silas Soule kept his men clear and later testified; he was shot dead in Denver."
   duration: 13
 
 - shot: congress-looks
@@ -215,7 +235,17 @@ Native nations' own words are used where we have them: the Mashpee Wampanoag Tri
   reveal: [wounded-knee-massacre, seventh-cavalry-regiment, wounded-knee-south-dakota]
   reveal_claims: [wounded-knee-massacre#c1, wounded-knee-massacre#c2, wounded-knee-south-dakota#c1]
   overlay: {kind: stat, value: "150 to 300", label: "killed at Wounded Knee, 29 December 1890, by the National Park Service; Congress counts 350 to 375 dead and injured", source: nps-bigfoot-pass-overlook, quote: "the 7th Calvary massacred an estimated 150-300 men, women, and children at Wounded Knee"}
-  narration: "**Wounded Knee.** After Sitting Bull was killed on 15 December 1890, about 200 Hunkpapa Lakota fled to join Big Foot’s Miniconjou band, which set out for Pine Ridge and was stopped by the 7th Cavalry; on 29 December, as soldiers disarmed the camp, a shot was fired. The ethnologist James Mooney, who read the War Department files and spoke to survivors, concluded that “the first shot was fired by an Indian,” that the soldiers’ answering volley and the Hotchkiss guns trained on the camp fell on women and children, and that “the wholesale slaughter of women and children was unnecessary and inexcusable.” The dead were never counted exactly: the Adjutant-General said 128, the Park Service 150 to 300, the AP about 250, Mooney “very nearly 300,” and Congress, which in 1990 called it the Wounded Knee Massacre, “350-375” dead and injured; the Adjutant-General put soldiers killed at 31. The resolution places it in a policy of “forcibly removing the Indian tribes” from the path of settlement."
+  narration: "**Wounded Knee.** After Sitting Bull was killed on 15 December 1890, about 200 Hunkpapa Lakota fled to join Big Foot’s Miniconjou band, which set out for Pine Ridge and was stopped by the 7th Cavalry; on 29 December, as soldiers disarmed the camp, a shot was fired. The ethnologist James Mooney, who read the War Department files and spoke to survivors, concluded that “the first shot was fired by an Indian,” that the soldiers’ answering volley and the Hotchkiss guns trained on the camp fell on women and children, and that “the wholesale slaughter of women and children was unnecessary and inexcusable.”"
+  duration: 13
+
+- shot: the-count
+  view: map
+  camera: {center: [-102.3678, 43.1439], zoom: 10.2, pitch: 30, duration: 6}
+  places: [wounded-knee-south-dakota]
+  time: "1890-12-29"
+  reveal: [wounded-knee-massacre, seventh-cavalry-regiment, wounded-knee-south-dakota]
+  reveal_claims: [wounded-knee-massacre#c1, wounded-knee-massacre#c2, wounded-knee-south-dakota#c1]
+  narration: "**The count.** The dead were never counted exactly: the Adjutant-General said 128, the Park Service 150 to 300, the AP about 250, Mooney “very nearly 300,” and Congress, which in 1990 called it the Wounded Knee Massacre, “350-375” dead and injured; the Adjutant-General put soldiers killed at 31. The resolution places it in a policy of “forcibly removing the Indian tribes” from the path of settlement."
   duration: 13
 
 - shot: day-of-mourning-1970
@@ -226,7 +256,17 @@ Native nations' own words are used where we have them: the Mashpee Wampanoag Tri
   reveal: [national-day-of-mourning, frank-b-james, united-american-indians-of-new-england, suppressed-speech-of-wamsutta-james, plymouth-massachusetts]
   reveal_claims: [national-day-of-mourning#c1, national-day-of-mourning#c2, national-day-of-mourning#c3, frank-b-james#c1, frank-b-james#c2, united-american-indians-of-new-england#c1]
   overlay: {kind: quote, source: uaine-suppressed-speech-1970, quote: "The Pilgrims had hardly explored the shores of Cape Cod for four days before they had robbed the graves of my ancestors and stolen their corn and beans.", caption: "Wamsutta (Frank B.) James, speech prepared for Plymouth, 1970"}
-  narration: "**A day of mourning.** UAINE says Wamsutta (Frank B.) James was asked to speak at a Massachusetts banquet for the 350th anniversary of the Pilgrims’ landing in 1970, and that the organizers, after seeing his speech, told him he would not be allowed to give it because “anything inflammatory would have been out of place”; they would let him speak only from a text they supplied, and “Wamsutta refused to have words put into his mouth.” His speech, UAINE says, was delivered at the first National Day of Mourning on Cole’s Hill, where he said the Pilgrims had robbed the graves of his ancestors and that “before 50 years were to pass, the Wampanoag would no longer be a free people.” UAINE’s reason for mourning, in its words: “Thanksgiving Day is a reminder of the genocide of millions of Native people, the theft of Native lands and the erasure of Native cultures”; the Plimoth Patuxet museum says “For many Wampanoag people, Thanksgiving is a day of mourning.” UAINE is the only account of the 1970 events among our sources."
+  narration: "**A day of mourning.** UAINE says Wamsutta (Frank B.) James was asked to speak at a Massachusetts banquet for the 350th anniversary of the Pilgrims’ landing in 1970, and that the organizers, after seeing his speech, told him he would not be allowed to give it because “anything inflammatory would have been out of place”; they would let him speak only from a text they supplied, and “Wamsutta refused to have words put into his mouth.”"
+  duration: 13
+
+- shot: the-speech
+  view: map
+  camera: {center: [-70.6678, 41.9586], zoom: 11.4, pitch: 20, duration: 6}
+  places: [plymouth-massachusetts]
+  time: "1970"
+  reveal: [national-day-of-mourning, frank-b-james, united-american-indians-of-new-england, suppressed-speech-of-wamsutta-james, plymouth-massachusetts]
+  reveal_claims: [national-day-of-mourning#c1, national-day-of-mourning#c2, national-day-of-mourning#c3, frank-b-james#c1, frank-b-james#c2, united-american-indians-of-new-england#c1]
+  narration: "**The speech.** His speech, UAINE says, was delivered at the first National Day of Mourning on Cole’s Hill, where he said the Pilgrims had robbed the graves of his ancestors and that “before 50 years were to pass, the Wampanoag would no longer be a free people.” UAINE’s reason for mourning, in its words: “Thanksgiving Day is a reminder of the genocide of millions of Native people, the theft of Native lands and the erasure of Native cultures”; the Plimoth Patuxet museum says “For many Wampanoag people, Thanksgiving is a day of mourning.” UAINE is the only account of the 1970 events among our sources."
   duration: 13
 
 - shot: the-nations-today
@@ -247,7 +287,16 @@ Native nations' own words are used where we have them: the Mashpee Wampanoag Tri
   reveal: [wounded-knee-medals-review, senate-concurrent-resolution-153, pete-hegseth, lloyd-austin, seventh-cavalry-regiment, cheyenne-river-sioux-tribe, standing-rock-sioux-tribe, national-congress-of-american-indians]
   reveal_claims: [lloyd-austin#c1, pete-hegseth#c1, wounded-knee-medals-review#c1, senate-concurrent-resolution-153#c1, cheyenne-river-sioux-tribe#c1, standing-rock-sioux-tribe#c1, national-congress-of-american-indians#c1, us-congress#c33]
   overlay: {kind: quote, source: ncai-wounded-knee-medals-2025, quote: "Secretary Pete Hegseth made this decision on his own concurrence with no contact or request for consultation to the Tribes.", caption: "Chairman Ryman LeBeau, Cheyenne River Sioux Tribe, 27 September 2025"}
-  narration: "**The medals.** In 1990 Congress adopted Senate Concurrent Resolution 153, expressing “deep regret on behalf of the United States,” but did not revoke the 20 Medals of Honor given to 7th Cavalry soldiers, whose awards, the AP says, “cite a range of actions including bravery, efforts to rescue fellow troops and actions to ‘dislodge Sioux Indians’ who were concealed in a ravine.” Defense Secretary Lloyd Austin ordered a review in 2024 after a recommendation in the 2022 defense bill, and in September 2025 Pete Hegseth announced the soldiers keep their medals, saying the review panel “concluded that these brave soldiers should, in fact, rightfully keep their medals”; the AP says the report may not be made public. Cheyenne River Sioux Chairman Ryman LeBeau said the decision came with “no contact or request for consultation to the Tribes,” Standing Rock Sioux Chairwoman Janet Alkire called Wounded Knee “an unprovoked attack,” and the National Congress of American Indians asked Congress to pass the Remove the Stain Act. The regiment’s coat of arms, the AP notes, still shows a Native chief’s head to “commemorate Indian campaigns.”"
+  narration: "**The medals.** In 1990 Congress adopted Senate Concurrent Resolution 153, expressing “deep regret on behalf of the United States,” but did not revoke the 20 Medals of Honor given to 7th Cavalry soldiers, whose awards, the AP says, “cite a range of actions including bravery, efforts to rescue fellow troops and actions to ‘dislodge Sioux Indians’ who were concealed in a ravine.”"
+  duration: 13
+
+- shot: the-2024-review
+  view: graph
+  focus: wounded-knee-medals-review
+  time: "1990/2025"
+  reveal: [wounded-knee-medals-review, senate-concurrent-resolution-153, pete-hegseth, lloyd-austin, seventh-cavalry-regiment, cheyenne-river-sioux-tribe, standing-rock-sioux-tribe, national-congress-of-american-indians]
+  reveal_claims: [lloyd-austin#c1, pete-hegseth#c1, wounded-knee-medals-review#c1, senate-concurrent-resolution-153#c1, cheyenne-river-sioux-tribe#c1, standing-rock-sioux-tribe#c1, national-congress-of-american-indians#c1, us-congress#c33]
+  narration: "**The 2024 review.** Defense Secretary Lloyd Austin ordered a review in 2024 after a recommendation in the 2022 defense bill, and in September 2025 Pete Hegseth announced the soldiers keep their medals, saying the review panel “concluded that these brave soldiers should, in fact, rightfully keep their medals”; the AP says the report may not be made public. Cheyenne River Sioux Chairman Ryman LeBeau said the decision came with “no contact or request for consultation to the Tribes,” Standing Rock Sioux Chairwoman Janet Alkire called Wounded Knee “an unprovoked attack,” and the National Congress of American Indians asked Congress to pass the Remove the Stain Act. The regiment’s coat of arms, the AP notes, still shows a Native chief’s head to “commemorate Indian campaigns.”"
   duration: 13
 
 - shot: boarding-schools-and-an-apology
@@ -257,6 +306,17 @@ Native nations' own words are used where we have them: the Mashpee Wampanoag Tri
   reveal: [federal-indian-boarding-school-initiative, deb-haaland, bryan-newland, boarding-school-report-2022, boarding-school-report-vol-2-2024, us-department-of-the-interior, biden-remarks-at-gila-river-2024, joe-biden]
   reveal_claims: [deb-haaland#c1, deb-haaland#c3, federal-indian-boarding-school-initiative#c1, bryan-newland#c1, bryan-newland#c2, joe-biden#c3, national-day-of-mourning#c1]
   overlay: {kind: stat, value: "973", label: "children confirmed dead at federal Indian boarding schools, 1819 to 1969, at least, by the Interior Department in 2024", source: doi-boarding-school-report-vol2-2024, quote: "Confirming that at least 973 American Indian, Alaska Native, and Native Hawaiian children died while attending Federal Indian boarding schools;"}
-  narration: "**The boarding schools.** In June 2021 Interior Secretary Deb Haaland ordered an investigation. The Department’s 2024 volume lists 417 schools in 37 states or then-territories, confirms at least 973 children dead and at least 74 burial sites, and finds that the assimilation of Indian children “was intentional and part of that broader goal of Indian territorial dispossession.” Assistant Secretary Bryan Newland said the reports prove what Indigenous peoples have long known: “federal policies were set out to break us, obtain our territories, and destroy our cultures and our lifeways.” On 25 October 2024 President Biden told a crowd at the Gila River Indian Community, “the Federal Government has never—never—formally apologized for what happened until today,” meaning the schools; the AP notes that Congress apologized for Wounded Knee in 1990, and an audience member called out “empty promise for our people.” UAINE still gathers on Cole’s Hill each Thanksgiving, and announces the next for Thursday, 26 November 2026."
+  narration: "**The boarding schools.** In June 2021 Interior Secretary Deb Haaland ordered an investigation. The Department’s 2024 volume lists 417 schools in 37 states or then-territories, confirms at least 973 children dead and at least 74 burial sites, and finds that the assimilation of Indian children “was intentional and part of that broader goal of Indian territorial dispossession.” Assistant Secretary Bryan Newland said the reports prove what Indigenous peoples have long known: “federal policies were set out to break us, obtain our territories, and destroy our cultures and our lifeways.”"
+  duration: 13
+```
+
+
+- shot: october-2024
+  view: graph
+  focus: federal-indian-boarding-school-initiative
+  time: "2021/2024"
+  reveal: [federal-indian-boarding-school-initiative, deb-haaland, bryan-newland, boarding-school-report-2022, boarding-school-report-vol-2-2024, us-department-of-the-interior, biden-remarks-at-gila-river-2024, joe-biden]
+  reveal_claims: [deb-haaland#c1, deb-haaland#c3, federal-indian-boarding-school-initiative#c1, bryan-newland#c1, bryan-newland#c2, joe-biden#c3, national-day-of-mourning#c1]
+  narration: "**October 2024.** On 25 October 2024 President Biden told a crowd at the Gila River Indian Community, “the Federal Government has never—never—formally apologized for what happened until today,” meaning the schools; the AP notes that Congress apologized for Wounded Knee in 1990, and an audience member called out “empty promise for our people.” UAINE still gathers on Cole’s Hill each Thanksgiving, and announces the next for Thursday, 26 November 2026."
   duration: 13
 ```

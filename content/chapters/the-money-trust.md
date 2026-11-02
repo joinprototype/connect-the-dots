@@ -175,7 +175,16 @@ Nearly every line comes from official records, sworn testimony, and the words th
   reveal: [ludlow-massacre, colorado-national-guard, colorado-coalfield-strike-1913]
   reveal_claims: [ludlow-massacre#c5, colorado-coalfield-strike-1913#c3]
   overlay: {kind: quote, source: house-colorado-report-1915, quote: "It seemed the militia was on the side of the operators in this controversy, and the evidence seems conclusively to prove such to have been the case.", caption: "House Committee on Mines and Mining, 1915"}
-  narration: "**What each side says.** Two women and eleven children were found dead in a pit under a tent. The Guard’s board believed “they died of suffocation hours before the tents caught fire”; Mary Petrucci told the Commission “It was not more than 10 minutes after I was in there that the tent started on fire, and we soon became unconscious”, and an affidavit by Alcarita Pedregon, read by Judge Lindsey, says “I seen a militiaman come over there and look inside the tent and strike a match and set fire to the tent”. Strikers did violence too: the board found Private Albert Martin “horribly mutilated by the strikers”, and the House called a strikers’ attack at Berwind “inexcusable” and the guards’ attack on the Forbes colony “equally unjustifiable”. Fighting ran across the coalfield, with “a number of people were killed and wounded on both sides”; these sources give no agreed total, and the board’s findings use contemptuous language about the immigrant miners that this story does not repeat."
+  narration: "**What each side says.** Two women and eleven children were found dead in a pit under a tent. The Guard’s board believed “they died of suffocation hours before the tents caught fire”; Mary Petrucci told the Commission “It was not more than 10 minutes after I was in there that the tent started on fire, and we soon became unconscious”, and an affidavit by Alcarita Pedregon, read by Judge Lindsey, says “I seen a militiaman come over there and look inside the tent and strike a match and set fire to the tent”."
+  duration: 13
+
+- shot: the-strikers
+  view: graph
+  focus: ludlow-massacre
+  time: "1914-04-20"
+  reveal: [ludlow-massacre, colorado-national-guard, colorado-coalfield-strike-1913]
+  reveal_claims: [ludlow-massacre#c5, colorado-coalfield-strike-1913#c3]
+  narration: "**The strikers.** Strikers did violence too: the board found Private Albert Martin “horribly mutilated by the strikers”, and the House called a strikers’ attack at Berwind “inexcusable” and the guards’ attack on the Forbes colony “equally unjustifiable”. Fighting ran across the coalfield, with “a number of people were killed and wounded on both sides”; these sources give no agreed total, and the board’s findings use contemptuous language about the immigrant miners that this story does not repeat."
   duration: 13
 
 - shot: stand-by-you

@@ -132,7 +132,17 @@ It keeps apart what a court or an official body found, what a person said under 
   reveal: [newark-new-jersey, purdue-guilty-plea-2020, purdue-pharma, us-district-court-new-jersey, us-department-of-justice, us-bankruptcy-court-southern-district-of-new-york]
   reveal_claims: [purdue-pharma#c2, purdue-pharma#c3, purdue-guilty-plea-2020#c1]
   overlay: {kind: quote, source: industryweek-2020-10-21-purdue-pleads-guilty, quote: "Purdue deeply regrets and accepts responsibility for the misconduct detailed by the Department of Justice in the agreed statement of facts.", caption: "Steve Miller, chairman of Purdue’s board, 21 October 2020"}
-  narration: "**Newark, 2020.** Purdue Pharma LP, the affiliate that kept selling OxyContin after the Purdue Frederick plea, pleaded guilty to three felonies. It admitted that from May 2007 through at least March 2017, a conspiracy that began the month of the Abingdon pleas, it told the Drug Enforcement Administration it kept an effective anti-diversion program while marketing to more than 100 health care providers it had good reason to think were diverting opioids, and reported misleading data to boost its manufacturing quotas. It also admitted paying two doctors through its speaker program from June 2009 and paying the records company Practice Fusion in 2016 for referrals. The Justice Department called the $3.544 billion fine and $2 billion forfeiture the largest penalties ever levied against a drug maker; IndustryWeek noted that because the fine sits inside the bankruptcy, “it’s unlikely that all of that money will be collected,” and Connecticut’s attorney general called the deal “a mere mirage of justice.” It added a $2.8 billion civil claim, and the department said no individual, Sacklers included, was released from criminal liability."
+  narration: "**Newark, 2020.** Purdue Pharma LP, the affiliate that kept selling OxyContin after the Purdue Frederick plea, pleaded guilty to three felonies. It admitted that from May 2007 through at least March 2017, a conspiracy that began the month of the Abingdon pleas, it told the Drug Enforcement Administration it kept an effective anti-diversion program while marketing to more than 100 health care providers it had good reason to think were diverting opioids, and reported misleading data to boost its manufacturing quotas."
+  duration: 13
+
+- shot: doctors-and-penalties
+  view: map
+  camera: {center: [-74.1722, 40.7356], zoom: 10.5, pitch: 30, duration: 6}
+  places: [newark-new-jersey]
+  time: "2020-11-24"
+  reveal: [newark-new-jersey, purdue-guilty-plea-2020, purdue-pharma, us-district-court-new-jersey, us-department-of-justice, us-bankruptcy-court-southern-district-of-new-york]
+  reveal_claims: [purdue-pharma#c2, purdue-pharma#c3, purdue-guilty-plea-2020#c1]
+  narration: "**Doctors and penalties.** It also admitted paying two doctors through its speaker program from June 2009 and paying the records company Practice Fusion in 2016 for referrals. The Justice Department called the $3.544 billion fine and $2 billion forfeiture the largest penalties ever levied against a drug maker; IndustryWeek noted that because the fine sits inside the bankruptcy, “it’s unlikely that all of that money will be collected,” and Connecticut’s attorney general called the deal “a mere mirage of justice.” It added a $2.8 billion civil claim, and the department said no individual, Sacklers included, was released from criminal liability."
   duration: 13
 
 - shot: under-oath
@@ -194,7 +204,16 @@ It keeps apart what a court or an official body found, what a person said under 
   reveal: [mckinsey-resolution-2024, mckinsey-settlement-2021, mckinsey-and-company, martin-elling, north-carolina-department-of-justice, us-department-of-justice, us-district-court-western-district-of-virginia]
   reveal_claims: [mckinsey-and-company#c1, mckinsey-and-company#c2, mckinsey-and-company#c3, martin-elling#c3]
   overlay: {kind: quote, source: doj-wdva-2024-12-13-mckinsey-purdue-resolution, quote: "Today’s resolution marks the first time a management consulting firm has been held criminally responsible for advice resulting in the commission of a crime by a client", caption: "U.S. Attorney’s Office, Western District of Virginia, 13 December 2024"}
-  narration: "**McKinsey pays.** In February 2021 McKinsey agreed to pay $573 million to state attorneys general (NPR counts nearly 50 states plus D.C. and territories; North Carolina counts 53 attorneys general), admitting no wrongdoing; its global managing partner said, “We deeply regret that we did not adequately acknowledge the tragic consequences of the epidemic unfolding in our communities.” The states alleged it advised Purdue on “targeting high-volume opioid prescribers.” On 13 December 2024 it agreed to pay $650 million: a five-year deferred prosecution agreement on a felony count of destroying records and a misdemeanor count of conspiring to aid and abet misbranding, against its U.S. subsidiary, with a 71-page agreed statement of facts, plus a civil settlement of over $323 million. Martin Elling, a former senior partner whose July 2018 email asked about “eliminating all our documents and emails,” pleaded guilty in January 2025 and was sentenced to six months in prison. The department calls the civil resolution allegations; this story did not read McKinsey’s own statement on the 2024 deal."
+  narration: "**McKinsey pays.** In February 2021 McKinsey agreed to pay $573 million to state attorneys general (NPR counts nearly 50 states plus D.C. and territories; North Carolina counts 53 attorneys general), admitting no wrongdoing; its global managing partner said, “We deeply regret that we did not adequately acknowledge the tragic consequences of the epidemic unfolding in our communities.” The states alleged it advised Purdue on “targeting high-volume opioid prescribers.”"
+  duration: 13
+
+- shot: december-2024
+  view: graph
+  focus: mckinsey-resolution-2024
+  time: "2024-12-13"
+  reveal: [mckinsey-resolution-2024, mckinsey-settlement-2021, mckinsey-and-company, martin-elling, north-carolina-department-of-justice, us-department-of-justice, us-district-court-western-district-of-virginia]
+  reveal_claims: [mckinsey-and-company#c1, mckinsey-and-company#c2, mckinsey-and-company#c3, martin-elling#c3]
+  narration: "**December 2024.** On 13 December 2024 it agreed to pay $650 million: a five-year deferred prosecution agreement on a felony count of destroying records and a misdemeanor count of conspiring to aid and abet misbranding, against its U.S. subsidiary, with a 71-page agreed statement of facts, plus a civil settlement of over $323 million. Martin Elling, a former senior partner whose July 2018 email asked about “eliminating all our documents and emails,” pleaded guilty in January 2025 and was sentenced to six months in prison. The department calls the civil resolution allegations; this story did not read McKinsey’s own statement on the 2024 deal."
   duration: 13
 
 - shot: after-the-ruling

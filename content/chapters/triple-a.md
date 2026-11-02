@@ -67,7 +67,16 @@ Triple-A is the safest grade a rating firm gives. Before 2008, Moody’s and Sta
   reveal: [standard-and-poors, deven-sharma, house-oversight-committee]
   reveal_claims: [deven-sharma#c1]
   overlay: {kind: quote, source: house-oversight-2008-10-22-hearing, quote: "it could be structured by cows, and we would rate it.", caption: "An S&P employee’s message, April 2007, as read out by Chairman Waxman at the House hearing, 22 October 2008"}
-  narration: "**Structured by cows.** The Senate staff report quotes an S&P analyst’s instant message of April 2007: “we rate every deal,” and it “could be structured by cows and we would rate it.” The House read the whole exchange, in which one official said the “model definitely does not capture half the risk” and “We should not be rating it,” and the SEC told the committee that S&P did rate the deal. S&P’s president replied that the full context would show the analysts were discussing the bankers’ models, and that S&P asks “that more risks be considered than the models that were originally proposed by the bankers.” He added that SEC staff “did not find any misconduct”; Waxman answered that “it’s hard to find any misconduct if there is no standard for misconduct,” and the Senate report says the same SEC examination “raised a number of conflict of interest issues that influenced the ratings process.”"
+  narration: "**Structured by cows.** The Senate staff report quotes an S&P analyst’s instant message of April 2007: “we rate every deal,” and it “could be structured by cows and we would rate it.”"
+  duration: 13
+
+- shot: the-house-exchange
+  view: graph
+  focus: standard-and-poors
+  time: "2007-04"
+  reveal: [standard-and-poors, deven-sharma, house-oversight-committee]
+  reveal_claims: [deven-sharma#c1]
+  narration: "**The House exchange.** The House read the whole exchange, in which one official said the “model definitely does not capture half the risk” and “We should not be rating it,” and the SEC told the committee that S&P did rate the deal. S&P’s president replied that the full context would show the analysts were discussing the bankers’ models, and that S&P asks “that more risks be considered than the models that were originally proposed by the bankers.” He added that SEC staff “did not find any misconduct”; Waxman answered that “it’s hard to find any misconduct if there is no standard for misconduct,” and the Senate report says the same SEC examination “raised a number of conflict of interest issues that influenced the ratings process.”"
   duration: 13
 
 - shot: two-answers
@@ -207,6 +216,17 @@ Triple-A is the safest grade a rating firm gives. Before 2008, Moody’s and Sta
   reveal: [moodys-settlement-2017, moodys, us-department-of-justice]
   reveal_claims: [moodys#c3]
   overlay: {kind: stat, value: "$863,791,823", label: "Moody’s payment to the Justice Department and 21 states and D.C., 13 January 2017", source: doj-2017-01-13-moodys-settlement-agreement, quote: "Moody’s shall pay a total amount of $863,791,823.00 to resolve pending and potential legal claims as set forth herein"}
-  narration: "**Moody’s settles.** The January 2017 agreement, with 21 states and the District of Columbia, resolved three pending state suits and “potential claims” of the Justice Department, with $437.5 million of the total a federal civil penalty. In a statement of facts Moody’s acknowledged that from April 2004 it rated many Aaa CDO tranches to “the more lenient geomean target” instead of its published standard, while its own minutes called the Aaa target “extraordinarily conservative” and “a serious business issue for synthetics.” “Many arrangers and issuers were aware,” the statement says, but Moody’s did not tell the market; in 2010 it made its model “approximately half a notch more conservative at the Aaa level.” Moody’s said it “stands behind the integrity of its ratings, methodologies and processes, and the settlement contains no finding of any violation of law, nor any admission of liability”; the agreement was made “without any trial or final adjudication on the merits.”"
+  narration: "**Moody’s settles.** The January 2017 agreement, with 21 states and the District of Columbia, resolved three pending state suits and “potential claims” of the Justice Department, with $437.5 million of the total a federal civil penalty."
+  duration: 13
+```
+
+
+- shot: the-statement-of-facts
+  view: graph
+  focus: moodys-settlement-2017
+  time: "2017-01-13"
+  reveal: [moodys-settlement-2017, moodys, us-department-of-justice]
+  reveal_claims: [moodys#c3]
+  narration: "**The statement of facts.** In a statement of facts Moody’s acknowledged that from April 2004 it rated many Aaa CDO tranches to “the more lenient geomean target” instead of its published standard, while its own minutes called the Aaa target “extraordinarily conservative” and “a serious business issue for synthetics.” “Many arrangers and issuers were aware,” the statement says, but Moody’s did not tell the market; in 2010 it made its model “approximately half a notch more conservative at the Aaa level.” Moody’s said it “stands behind the integrity of its ratings, methodologies and processes, and the settlement contains no finding of any violation of law, nor any admission of liability”; the agreement was made “without any trial or final adjudication on the merits.”"
   duration: 13
 ```
