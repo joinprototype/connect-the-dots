@@ -1535,12 +1535,12 @@ pub(crate) mod tests {
     fn no_route_runs_through_a_tale() {
         let relations = file(
             "content/schema/relations.yaml",
-            "tale_about: {label: a tale about, inverse: subject of a tale, from: [event], to: any, layers: [history], traversable: false, seals: true}\n\
-             involved: {label: involved, inverse: involved in, from: [event], to: [person], layers: [history]}\n",
+            "tale_about: {label: a tale about, inverse: subject of a tale, from: [org], to: any, layers: [power], traversable: false, seals: true}\n\
+             involved: {label: involved, inverse: involved in, from: [org], to: [person], layers: [power]}\n",
         );
         let cite = "src: [{s: press, quote: \"it was said\"}]";
         let claims = format!("  - {{id: c1, rel: tale_about, to: ann, {cite}}}\n  - {{id: c2, rel: involved, to: ann, {cite}}}\n");
-        let (_, diags) = load("kb-tale", &[relations, source("press", "T2"), entity("person", "ann", "Ann", ""), entity("event", "tale", "A tale", &claims)]);
+        let (_, diags) = load("kb-tale", &[relations, source("press", "T2"), entity("person", "ann", "Ann", ""), entity("org", "tale", "A tale", &claims)]);
         assert_eq!(said(&diags, "tells a tale").len(), 1, "{diags:?}");
     }
 
