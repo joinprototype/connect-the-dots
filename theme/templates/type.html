@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% from "macros.html" import count %}
-{# Every entry of one type (/t/<type>/), A to Z: where the home index's "and N more" leads. A type with
+{# Every entry of one type (/t/<type>/), A to Z: where the home page's last line leads. A type with
    many entries (`split`) lists its letters here, and each letter has a page (/t/<type>/<letter>/). #}
 {% block title %}{{ type.plural }}{% if letter %}: {{ letter.letter }}{% endif %} – Connect the Dots{% endblock %}
 {% block description %}Every {{ type.label|lower }} on the map, A to Z.{% endblock %}

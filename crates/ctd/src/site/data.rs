@@ -217,10 +217,15 @@ pub fn story(kb: &Kb, by_id: &BTreeMap<&str, &Edge>, shots: &[Value]) -> Value {
     json!({ "nodes": nodes, "edges": links.values().collect::<Vec<_>>(), "sources": sources(kb, cited) })
 }
 
-/// An entry as search lists it (`q`, its question pages, is added by the build).
+/// An entry as search lists it (`q`, its question pages, is added by the build). A sealed entry says
+/// so: the box finds it, and never offers a pair through it (ADR-0027).
 pub fn search_entry(e: &Entity) -> Value {
-    json!({ "id": e.id, "name": e.name, "aliases": e.aliases, "type": e.kind, "summary": e.summary, "when": e.when.as_ref().map(|w| &w.label),
-            "url": format!("/e/{}/", e.id) })
+    let mut row = json!({ "id": e.id, "name": e.name, "aliases": e.aliases, "type": e.kind, "summary": e.summary, "when": e.when.as_ref().map(|w| &w.label),
+                          "url": format!("/e/{}/", e.id) });
+    if e.sealed {
+        row["sealed"] = json!(true);
+    }
+    row
 }
 
 /// A name's words for search: lower case, accents dropped, apostrophes and full stops removed

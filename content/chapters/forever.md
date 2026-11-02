@@ -5,6 +5,7 @@ type: chapter
 title: Forever
 subtitle: Who made the diamond trade, why, and who holds it now
 summary: In 1871 a hill on a South African farm turned out to be diamond ground. Within two decades one company wrote of regulating its output to the market demand, and by the 1940s an advertising agency was selling Americans on the diamond ring. Here is the road from Kimberley to the jewelry counter, from court records, regulators, the companies' own words, and the writers who disputed them.
+featured: true
 ---
 
 In 1871 a hill on a South African farm turned out to be diamond ground. In 1947 an advertising copywriter wrote four words that went into De Beers advertisements for decades.

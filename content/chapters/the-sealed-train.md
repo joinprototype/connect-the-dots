@@ -5,6 +5,7 @@ type: chapter
 title: The Sealed Train
 subtitle: How Lenin crossed wartime Germany with Berlin's leave, through Stockholm to the Finland Station, in the records of both sides
 summary: On 9 April 1917 Lenin and about thirty exiles left Switzerland by train through wartime Germany. Here are the terms, the telegrams, the people aboard, the arrival in Petrograd and what came of it.
+featured: true
 ---
 
 In April 1917 Russia was in revolution, Europe was at war, and Vladimir Lenin was stuck in Switzerland. He went home on a train that crossed Germany with Berlin's leave.

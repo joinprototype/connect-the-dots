@@ -28,6 +28,10 @@ static WEB_URL: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"(?i)^https?://[^
 pub const STATUSES: [&str; 4] = ["published", "draft", "disputed", "deprecated"];
 const MAX_DIR: usize = 2500;
 const MAX_QUOTE: usize = 300;
+/// A story counts towards a thread from this many scenes on the entry.
+const THREAD_SCENES: usize = 2;
+/// The fewest stories a thread runs through.
+pub const MIN_THREAD: usize = 2;
 /// The longest background line: a short neutral phrase, the quote says the rest.
 const MAX_BACKGROUND: usize = 120;
 
@@ -198,6 +202,40 @@ impl Kb {
     /// The name as it reads inside a sentence: "Who is behind the Bolsheviks?".
     pub fn sentence_name(&self, id: &str) -> String {
         self.entity(id).and_then(|e| e.in_sentence.clone()).unwrap_or_else(|| self.name_of(id))
+    }
+
+    /// The written stories free of sealed entries (ADR-0027), the only ones the first screen may show: no
+    /// scene shows such an entry or reveals a link to one, and no sentence names one.
+    pub fn unsealed_chapters(&self) -> Vec<&Chapter> {
+        let sealed = sealed_ids(&self.entities, &self.index, &self.edges);
+        let names: Vec<&str> = self.entities.iter().filter(|e| e.sealed).map(|e| e.name.as_str()).collect();
+        let named = |text: &str| names.iter().any(|n| text.contains(n));
+        // a claim with several targets has one id per target: "<entity>#<claim>/1"
+        let links: HashSet<&str> =
+            self.edges.iter().filter(|e| sealed.contains(e.from.as_str()) || sealed.contains(e.to.as_str())).filter_map(|e| e.id.split('/').next()).collect();
+        let shows = |shot: &Value| {
+            shot_entries(shot).any(|(_, id)| sealed.contains(id))
+                || shot["reveal_claims"].as_array().into_iter().flatten().filter_map(Value::as_str).any(|c| links.contains(c))
+                || shot["narration"].as_str().is_some_and(named)
+        };
+        let free = |ch: &&Chapter| {
+            let words = [Some(&ch.title), ch.subtitle.as_ref(), ch.summary.as_ref(), Some(&ch.intro_md), Some(&ch.outro_md)];
+            !words.into_iter().flatten().any(|t| named(t)) && !ch.shots.iter().any(shows)
+        };
+        self.chapters.iter().filter(free).collect()
+    }
+
+    /// The written stories `id` runs through, most scenes on it first: a story counts from `THREAD_SCENES`
+    /// scenes, since one passing mention is no thread.
+    pub fn thread_stories(&self, id: &str) -> Vec<&Chapter> {
+        let mut found: Vec<(usize, &Chapter)> = self
+            .unsealed_chapters()
+            .into_iter()
+            .map(|ch| (ch.shots.iter().filter(|shot| shot_entries(shot).any(|(_, e)| e == id)).count(), ch))
+            .filter(|&(scenes, _)| scenes >= THREAD_SCENES)
+            .collect();
+        found.sort_by_key(|&(scenes, _)| std::cmp::Reverse(scenes));
+        found.into_iter().map(|(_, ch)| ch).collect()
     }
 
     /// Every link touching `id`, with `true` when `id` owns the claim (its `from`).
@@ -443,6 +481,9 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
     let mut kb = Kb { schema, entities, index, aliases, sources, edges, chapters: Vec::new(), perspectives, featured: Default::default(), borders, links };
     kb.featured = read_featured(&kb, &raw.featured, &mut diags);
     read_chapters(&mut kb, &raw.chapters, &held, &mut diags);
+    for id in kb.featured.threads.iter().filter(|id| kb.thread_stories(id).len() < MIN_THREAD) {
+        diags.push(Diag::warn("content/featured.yaml", format!("`{id}` runs through too few stories, so the home page leaves it out")));
+    }
     warn_uncited_sources(&kb, &held, &mut diags);
     (kb, diags)
 }
@@ -1072,16 +1113,21 @@ fn read_featured(kb: &Kb, raw: &Featured, diags: &mut Vec<Diag>) -> Featured {
             None => Pick::Pair([a, b]),
         });
     }
-    for id in &raw.lives {
+    for id in &raw.threads {
         let Some(id) = pick(id, diags) else { continue };
-        if featured.lives.contains(&id) {
-            diags.push(Diag::warn(FEATURED, format!("life `{id}` is listed twice")));
-            continue;
+        let Some(e) = kb.entity(&id) else { continue };
+        if featured.threads.contains(&id) {
+            diags.push(Diag::warn(FEATURED, format!("thread `{id}` is listed twice")));
+        } else if e.sealed {
+            diags.push(Diag::err(FEATURED, format!("`{id}` is sealed, so it cannot open the home page")).hint("see ADR-0027"));
+        } else if !kb.schema.types.get(&e.kind).is_some_and(|t| t.thread) {
+            diags.push(
+                Diag::err(FEATURED, format!("`{id}` is of type `{}`, which cannot open the home page", e.kind))
+                    .hint("a thread names a type marked `thread: true`"),
+            );
+        } else {
+            featured.threads.push(id);
         }
-        if crate::stories::entity_story(kb, &id).is_none() {
-            diags.push(Diag::warn(FEATURED, format!("`{id}` has fewer than two links, so it has no life story for the shelf")));
-        }
-        featured.lives.push(id);
     }
     for page in &raw.questions {
         let Some((qid, x)) = page.split_once('/') else {
@@ -1545,18 +1591,55 @@ pub(crate) mod tests {
                 entity("org", "beta", "Beta", ""),
                 entity("org", "zed", "Zed", ""),
                 source("rec", "T1"),
-                file("content/featured.yaml", "connections:\n  - [ann, ann]\n  - [ann, acme]\n  - [ann, acme]\n  - [ann, zed]\nlives: [ann, ann, zed]\n"),
+                file("content/featured.yaml", "connections:\n  - [ann, ann]\n  - [ann, acme]\n  - [ann, acme]\n  - [ann, zed]\n"),
             ],
         );
         let to_itself = said(&diags, "to itself");
         assert_eq!(to_itself.len(), 1);
         assert!(diags.iter().any(|d| d.msg.contains("to itself") && d.level == Level::Error));
-        assert_eq!(said(&diags, "listed twice").len(), 2);
+        assert_eq!(said(&diags, "listed twice").len(), 1);
         assert_eq!(said(&diags, "no route from `ann` to `zed`").len(), 1);
-        assert_eq!(said(&diags, "`zed` has fewer than two links").len(), 1);
         let pairs: Vec<[String; 2]> = kb.featured.connections.iter().map(|c| c.ids().clone()).collect();
         assert_eq!(pairs, [["ann".to_string(), "acme".to_string()], ["ann".to_string(), "zed".to_string()]]);
-        assert_eq!(kb.featured.lives, ["ann", "zed"]);
+    }
+
+    /// A story with `scenes` scenes on `who`, in its own chapter file.
+    fn chapter_on(id: &str, who: &str, scenes: usize, words: &str) -> crate::testkit::File {
+        let shots: String = (0..scenes).map(|i| format!("- shot: s{i}\n  view: graph\n  focus: {who}\n  duration: 5\n  narration: \"{words}\"\n")).collect();
+        file(&format!("content/chapters/{id}.md"), &format!("---\nid: {id}\ntype: chapter\ntitle: {id}\n---\n\n```scene\n{shots}```\n"))
+    }
+
+    #[test]
+    fn a_thread_keeps_to_its_own_rules() {
+        let sealed = "---\nid: hid\ntype: person\nname: Hid Den\nsealed: true\nclaims: []\n---\n";
+        let (kb, diags) = load(
+            "kb-threads",
+            &[
+                file(
+                    "content/schema/entity-types.yaml",
+                    "person: {label: Person, plural: People, layer: people, family: true, thread: true}\norg: {label: Organization, plural: Organizations, layer: power, thread: true}\nevent: {label: Event, plural: Events, layer: power}\n",
+                ),
+                entity("org", "acme", "Acme", ""),
+                entity("org", "thin", "Thin", ""),
+                entity("event", "fall", "The fall", ""),
+                file("content/entities/person/hi/hid.md", sealed),
+                chapter_on("deep", "acme", 3, "Acme grew."),
+                chapter_on("wide", "acme", 2, "Acme spread."),
+                chapter_on("once", "acme", 1, "Acme passed by."),
+                chapter_on("shut", "acme", 4, "Acme paid Hid Den."),
+                chapter_on("lone", "thin", 2, "Thin alone."),
+                file("content/featured.yaml", "threads: [acme, acme, thin, fall, hid, nobody]\n"),
+            ],
+        );
+        // deep, then wide: one passing mention is no thread, and a story that names a sealed entry is left out
+        let titles = |id: &str| kb.thread_stories(id).iter().map(|c| c.id.clone()).collect::<Vec<_>>();
+        assert_eq!(titles("acme"), ["deep", "wide"]);
+        assert_eq!(kb.featured.threads, ["acme", "thin"]);
+        assert_eq!(said(&diags, "thread `acme` is listed twice").len(), 1);
+        assert_eq!(said(&diags, "`thin` runs through too few stories").len(), 1);
+        for refused in ["`fall` is of type `event`", "`hid` is sealed", "unknown entity `nobody`"] {
+            assert!(diags.iter().any(|d| d.msg.contains(refused) && d.level == Level::Error), "{refused}");
+        }
     }
 
     #[test]

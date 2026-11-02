@@ -1,6 +1,6 @@
 # Questions readers can ask (docs/decisions/0015-ask-anything.md). The engine knows none of these
 # words: each question names the relations that answer it, in groups whose labels readers see.
-# The order is the order of the Ask picker.
+# The order is the order pages and lists show them in.
 #   ask       the sentence: {x} is the subject ({a} and {b} the two ends of a route); ends with "?"
 #   route     true: answered by ranked routes (the explorer and the featured route stories)
 #   subjects  entity types the question is asked about. Never people or families (`family: true`
