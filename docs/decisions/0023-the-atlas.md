@@ -19,7 +19,7 @@ The founder wants a million dots: a better picture of the world, and the test of
 4. **A whitelist of facts.** Only structural properties come in: born in, citizen of, educated at, worked at, member of a team or body, founded, chief executive, chair, head of state or government, part of, located in, headquartered in, took part in, author, maker. See `tools/atlas/fetch.py`.
 5. **What never comes in:** ethnicity, religion, family, political party, health, sexuality, crime, and every interpretive property ("influenced by", "has cause"). Heritage stays under ADR-0016. Legal records stay in `content/` under ADR-0018. Ethnic groups are not dots. A person's summary line is dropped if it carries a label (`LABELS` in `tools/atlas/build.py`). Dates are years only, so no birthday of a living person is published.
 6. **Hand-written entries win.** An entry with `same_as: {wikidata: Q…}` is one dot: the atlas points to its page, and never overrides it.
-7. **No page per entry.** Entries are packed by Wikidata number into 4,096 files, `data/a/<n>.json`. One page, `/a/?q=Q42`, reads the one file it needs and swaps in place as a reader moves. With the map's tiles and search, the whole site is about 9,000 files (8,928 on 2026-11-01). No server, no paid plan, no R2.
+7. **No page per entry.** Entries are packed by Wikidata number into 4,096 files, `data/a/<n>.json`. One page, `/a/?q=Q42`, reads the one file it needs and swaps in place as a reader moves. With the map's tiles, the Earth's and search, the whole site is about 11,500 files (11,499 on 2026-11-01). No server, no paid plan, no R2.
 8. **Not for search engines.** Atlas pages are `noindex` and left out of the sitemap: a million thin generated pages would be bad for readers arriving from Google, and bad for the site.
 9. **Draw only what is on screen.** Every view loads by what is in view and simplifies with distance, as a game engine does. The map streams tiles by zoom; an atlas page loads one shard; images load as they near the screen. The browser never holds the whole graph.
 10. **One round world, dots at every zoom.** Real links are nothing like synthetic ones: a few hubs pull everything into one knot. So on a map over 20,000 entries:
@@ -27,12 +27,17 @@ The founder wants a million dots: a better picture of the world, and the test of
     - the map is shared out by area, keeping what was near near, and bent into a circle, so there is no knot and no empty quarter;
     - each zoom takes every community's best known by their share of it, so the map stays equally dense and every colour shows;
     - a link appears only once it is short on screen.
-    Pale region discs and their tiles are gone: dots at every zoom are clearer and cheaper. Measured on a real GPU, the opening view loads 4 tiles and 375 KB, and a 30 s flight holds 59.8 fps.
+    Pale region discs and their tiles are gone: dots at every zoom are clearer and cheaper. Measured on a real GPU, the opening view loaded 4 tiles and 375 KB, and a 30 s flight held 59.8 fps.
+11. **A million dots must show how they connect.** The founder, looking at the map: "there are millions of dots, however I don't see how they are connected". Three answers:
+    - A thin sample of dots is rarely linked, so zoomed out the map draws the links between communities: the web that holds it together. Clicking a dot draws lines to everything it links to, and each shard carries its neighbours' places on the Map so that this costs one file.
+    - The Earth draws the atlas's 216,000 places by view, from tiles (`earth/`) that hold the best known of what is left for them.
+    - **Any two entries connect, with no server.** As a game finds its way across a huge map, every entry knows its next step to the nearest of 256 landmarks, and a table worked out at build time runs from landmark to landmark. A route costs about ten small files. Routes follow relations marked `traversable` and go around crossroads of over 2,000 links, since sharing a country or a big city says little. What those do not reach joins by any link.
+    A route is marked as open data, and is not a proof. Hand-written routes in Ask and Explore keep their proof.
 
 ## What this does not settle
 
-- Routes. "How are A and B connected?" still runs in the browser over the record alone. Through the atlas, it needs a compact graph file or a route service.
-- The explorer stays on the record, for the same reason.
+- A route through the landmarks is a way, not the shortest way. A route service could do better.
+- The explorer stays on the record, because it needs the whole graph in the browser.
 - The atlas has no link dates yet, so atlas dots ignore the Map's era slider.
 - A hosted copy of the data: it lives in `.cache/atlas` and is rebuilt with `tools/atlas/`. Releases could carry it if contributors want it.
 

@@ -79,7 +79,7 @@ Stages:
 6. Render pages.
 7. Write the data files (schema, slim structure, one detail file per entry, search by word range).
 8. Layout and tiles for the Map ([world-tiles.md](world-tiles.md)).
-9. The atlas, when `.cache/atlas` holds it: 4,096 shards, search and the Map's million dots ([ADR-0023](decisions/0023-the-atlas.md)). A dev server leaves it out.
+9. The atlas, when `.cache/atlas` holds it: 4,096 shards, search, the Map's million dots, the Earth's tiles and the landmark table for routes ([ADR-0023](decisions/0023-the-atlas.md)). A dev server leaves it out.
 
 ```
 dist/
@@ -88,6 +88,8 @@ dist/
   data/schema.json           vocabulary              data/graph-slim.json   every entry and link, structure only
   data/e/<id>.json           one entry's words and proof          data/search/   search entries by word range
   data/a/<n>.json            atlas entries, packed by Wikidata number    a/   the one page that reads them
+  data/routes.json           landmark table for routes                   r/   connect any two
+  earth/                     the Earth's places, by view
   build-manifest.json        engine version, content commit, methodology hash, counts
 ```
 

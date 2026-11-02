@@ -20,7 +20,7 @@ An open, interactive "connect the dots" knowledge graph. A Rust engine (`ctd`) c
 - Builds run locally; only `ctd check` belongs in GitHub Actions.
 - English only for now.
 - Prefer fast, direct work over long multi-agent runs.
-- UI follows `docs/ux-vision.md` (dots and lines, [ADR-0022](docs/decisions/0022-dots-and-lines.md)): warm and lively, print inks that mean something, Bricolage Grotesque and Literata, stories on white, plain words. Users never see T1/claim/edge/tier jargon.
+- UI follows `docs/ux-vision.md` ([ADR-0024](docs/decisions/0024-black-on-white.md)): black on white, colour only on the dots, one left edge, Bricolage Grotesque for titles and Literata for reading, stories on white, plain words. Users never see T1/claim/edge/tier jargon.
 
 ## Commands
 

@@ -46,6 +46,7 @@
   --sky: #0a79b5;
   --rose: #d42a6a;
   --cobalt: #2346d6;
+  --amber: #e08a00;
   /* "night" tokens are the explorer/world/story canvas */
   --night: #ffffff;
   --night-2: #ffffff;
@@ -162,12 +163,12 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
 
 /* ---------------------------------------------------------------- home: ask */
 .ask {
-  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); grid-template-rows: auto auto auto auto 1fr; column-gap: clamp(24px, 4vw, 64px);
+  display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); grid-template-rows: auto auto auto auto auto 1fr; column-gap: clamp(24px, 4vw, 64px);
   max-width: var(--page); margin: 0 auto; padding: clamp(36px, 6vw, 72px) var(--gutter) 32px;
 }
 .ask > * { grid-column: 1; min-width: 0; }
 /* the real map beside the question, every dot an entry */
-.ask > .ask-picture { grid-column: 2; grid-row: 1 / span 5; justify-self: end; width: 100%; max-width: 540px; height: auto; pointer-events: none; }
+.ask > .ask-picture { grid-column: 2; grid-row: 1 / span 6; justify-self: end; width: 100%; max-width: 540px; height: auto; pointer-events: none; }
 @media (max-width: 900px) { .ask { display: block; } .ask-picture { display: none; } }
 .ask h1 { font-size: clamp(3rem, 6.4vw, 5.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 0.98; }
 .ask-lede { font: 400 clamp(1.15rem, 1.7vw, 1.35rem)/1.45 var(--font-body); color: var(--ink-2); margin: 1.2rem 0 1.8rem; max-width: 40ch; }
@@ -176,16 +177,16 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
   margin: 0; font: 600 1.05rem var(--font-ui); color: var(--ink);
 }
 .ask-form input {
-  flex: 1 1 120px; min-width: 0; font: 500 1.05rem var(--font-ui); color: var(--ink); padding: 11px 14px;
+  flex: 1 1 150px; min-width: 0; font: 500 1.05rem var(--font-ui); color: var(--ink); padding: 11px 14px;
   border: 1px solid var(--ink); border-radius: 8px; background: var(--paper);
 }
 .ask-form input::placeholder { color: var(--muted); }
 .ask-form input:focus-visible { outline-offset: 1px; }
 .ask-word { white-space: nowrap; }
 /* an input and the words after it ("?", "happen?") stay on one line */
-.ask-field { display: flex; align-items: center; gap: 10px; flex: 1 1 200px; min-width: 0; }
+.ask-field { display: flex; align-items: center; gap: 10px; flex: 1 1 240px; min-width: 0; }
 /* suggestions, anchored to their field */
-.ask-box { position: relative; display: flex; flex: 1 1 120px; min-width: 0; }
+.ask-box { position: relative; display: flex; flex: 1 1 150px; min-width: 0; }
 .ask-suggest {
   position: absolute; z-index: 20; top: calc(100% + 6px); left: 0; right: 0; margin: 0; padding: 6px; list-style: none;
   border-radius: 14px; background: var(--sheet); box-shadow: var(--shadow), 0 0 0 1px var(--contour); text-align: left;
@@ -197,6 +198,8 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
 .ask-suggest li:hover, .ask-suggest li[aria-selected="true"] { background: var(--fill); }
 .ask-try { margin: 1.1rem 0 0; color: var(--muted); font-size: 0.98rem; }
 .ask-try a { white-space: nowrap; }
+.ask-more { margin: 1rem 0 0; font-weight: 650; }
+.ask-more a { display: inline-block; padding-block: 3px; }
 .ask-scope { margin: 0.5rem 0 0; max-width: 60ch; font-size: 0.9rem; color: var(--muted); }
 /* the question picker: radios drawn as a segmented control. The page's own style block shows the
    sentence of the checked question (CSS :has()), so switching needs no script. */

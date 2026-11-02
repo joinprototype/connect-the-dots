@@ -55,6 +55,15 @@ function render(root: HTMLElement, q: string, e: Entry, go: (n: Neighbour) => vo
   words.append(el('p', 'entity-kind', KINDS[e.k] ?? ''), el('h1', '', e.n));
   if (e.d) words.append(el('p', 'atlas-summary', e.d));
   if (e.y) words.append(el('p', 'atlas-years', e.y));
+  const actions = el('p', 'atlas-actions');
+  const links: [string, string, string][] = [['Connect to…', `/r/?a=${q}`, 'button primary'], ['On the map', `/w/?focus=${q}`, 'button']];
+  if (e.c) links.push(['On the Earth', `/w/?view=earth&focus=${q}`, 'button']);
+  for (const [text, href, cls] of links) {
+    const a = el('a', cls, text) as HTMLAnchorElement;
+    a.href = href;
+    actions.append(a);
+  }
+  words.append(actions);
   head.append(words);
   if (e.i) {
     const img = document.createElement('img');
@@ -79,7 +88,7 @@ function render(root: HTMLElement, q: string, e: Entry, go: (n: Neighbour) => vo
       const a = el('a', '', n[1]) as HTMLAnchorElement;
       a.href = hrefOf(n);
       a.style.setProperty('--c', `var(${INKS[n[2]] ?? '--accent-fill'})`);
-      if (!n[3]) {
+      if (!n[4]) {
         a.addEventListener('click', (ev) => {
           ev.preventDefault();
           go(n);
@@ -123,7 +132,7 @@ function start(root: HTMLElement): void {
     render(root, q, e, go);
   };
   const go = (n: Neighbour) => {
-    if (n[3]) {
+    if (n[4]) {
       location.href = hrefOf(n);
       return;
     }

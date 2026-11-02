@@ -4,6 +4,11 @@ What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versio
 
 ## 0.4.2 (2026-11-01)
 
+- Connect any two: pick any two of a million things and see the way between them, stop by stop and on the Map.
+- The Map shows how things connect: a web of links at every zoom, and click a dot to draw lines to everything it links to.
+- Search jumps to any dot on the Map.
+- The Earth now shows 216,000 places, and fills in as you zoom. Zoom in on Switzerland and it is full.
+- A new look: black on white, with colour only on the dots, and every page lined up with the header. Nothing overlaps on Home or the Map.
 - Two new stories: "The Trust" on the rise and breakup of Standard Oil, and "Thirty-Seven Days" on how two shots in Sarajevo became a war across Europe.
 - On a phone, slide a finger along a story's scene dots to pick a scene.
 

@@ -6,6 +6,7 @@
 import { AttributionControl, Map as MapLibre, setWorkerUrl, type ExpressionSpecification, type GeoJSONSource } from 'maplibre-gl';
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url';
 import { FADED_TEXT_ALPHA, tokenRgb } from '../lib/color';
+import { INKS, KINDS } from '../lib/atlas';
 import { loadGraphIndex, loadJson } from '../lib/data';
 import type { GNode, GraphData } from '../lib/types';
 import { BORDER_CREDIT, calmBasemap, loadMapCss, MAP_STYLE, rgb, showModern } from './basemap';
@@ -30,6 +31,14 @@ export interface EarthSpot {
   name: string;
   /** That entry first, then the others by date, then by name. */
   entries: EarthEntry[];
+}
+
+/** One tile's row: [lon, lat, Wikidata number, name, kind]. */
+type AtlasRow = [number, number, number, string, number];
+interface AtlasIndex {
+  maxzoom: number;
+  entries: number;
+  tiles: Record<string, number[]>;
 }
 
 export interface Insets {
@@ -69,6 +78,9 @@ export interface Earth {
 
 const SOURCE = 'ctd-earth';
 const DOTS = 'ctd-earth-dots';
+const ATLAS = 'ctd-atlas';
+const ATLAS_DOTS = 'ctd-atlas-dots';
+const ATLAS_NAMES = 'ctd-atlas-names';
 const NAMES = 'ctd-earth-names';
 const WORLD = 'ctd-earth-world';
 const WORLD_NAMES = 'ctd-earth-world-names';
@@ -193,7 +205,52 @@ export async function createEarth(container: HTMLElement, opts: EarthOptions): P
   let era: Era | null = null;
   let selected: EarthSpot | null = null;
   const faded = spots.map(() => false);
-  const mark = (s: EarthSpot, state: Record<string, boolean>) => map.setFeatureState({ source: SOURCE, id: s.i }, state);
+  // a spot from the atlas has no feature of its own to mark
+  const mark = (s: EarthSpot, state: Record<string, boolean>) => s.i >= 0 && map.setFeatureState({ source: SOURCE, id: s.i }, state);
+
+  /**
+   * The atlas's places, by view: each tile holds the best known of what is left for it, so a country
+   * fills in as it is approached, and only what is in view is ever loaded (docs/data-contract.md).
+   */
+  const inks = INKS.map((t) => rgb(tokenRgb(t, [90, 90, 90], container)));
+  const atlasDots: GeoJSON.Feature[] = [];
+  const asked = new Set<string>();
+  const atlasIndex = await loadJson<AtlasIndex>('/earth/index.json').catch(() => null);
+  const have = new Map(Object.entries(atlasIndex?.tiles ?? {}).map(([z, list]) => [Number(z), new Set(list)]));
+  const loadAtlas = async () => {
+    if (!atlasIndex || !ready) return;
+    const deepest = Math.min(atlasIndex.maxzoom, Math.floor(map.getZoom()) + 2);
+    const b = map.getBounds();
+    const want: string[] = [];
+    for (let z = 0; z <= deepest; z++) {
+      const size = 2 ** z;
+      const col = (lon: number) => Math.max(0, Math.min(size - 1, Math.floor(((lon + 180) / 360) * size)));
+      const row = (lat: number) => {
+        const r = (Math.max(-85, Math.min(85, lat)) * Math.PI) / 180;
+        return Math.max(0, Math.min(size - 1, Math.floor(((1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2) * size)));
+      };
+      for (let x = col(b.getWest()); x <= col(b.getEast()); x++) {
+        for (let y = row(b.getNorth()); y <= row(b.getSouth()); y++) {
+          const key = `${z}/${x}/${y}`;
+          if (!asked.has(key) && have.get(z)?.has(x * size + y)) want.push(key);
+        }
+      }
+    }
+    if (!want.length) return;
+    want.forEach((key) => asked.add(key));
+    const lists = await Promise.all(
+      want.map(async (key) => {
+        const places = await loadJson<AtlasRow[]>(`/earth/${key}.json`).catch(() => [] as AtlasRow[]);
+        return places.map((place) => ({ place, tier: Number(key.split('/')[0]) }));
+      }),
+    );
+    for (const row of lists.flat()) {
+      const [lon, lat, q, name, kind] = row.place;
+      atlasDots.push({ type: 'Feature', geometry: { type: 'Point', coordinates: [lon, lat] }, properties: { q, name, kind, ink: inks[kind] ?? rgb(grey), rank: atlasDots.length, tier: row.tier } });
+    }
+    (map.getSource(ATLAS) as GeoJSONSource | undefined)?.setData({ type: 'FeatureCollection', features: atlasDots });
+  };
+  map.on('moveend', () => void loadAtlas());
 
   /** A spot fades when none of its entries' dates meet the era (undated ones never do). */
   const paintEra = () => {
@@ -269,6 +326,38 @@ export async function createEarth(container: HTMLElement, opts: EarthOptions): P
         features: spots.map((s) => ({ type: 'Feature', id: s.i, geometry: { type: 'Point', coordinates: s.at }, properties: { name: s.name, n: s.entries.length } })),
       },
     });
+    map.addSource(ATLAS, { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+    map.addLayer({
+      id: ATLAS_DOTS,
+      type: 'circle',
+      source: ATLAS,
+      paint: {
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 1.6, 5, 3, 10, 5],
+        'circle-color': ['get', 'ink'],
+        'circle-stroke-width': 0.8,
+        'circle-stroke-color': rgb(paper),
+      },
+    });
+    map.addLayer({
+      id: ATLAS_NAMES,
+      type: 'symbol',
+      source: ATLAS,
+      minzoom: 3,
+      // only the best known of what is in view is named: a tile's tier comes in two zooms after its dots
+      filter: ['<=', ['+', ['get', 'tier'], 2], ['zoom']],
+      layout: {
+        'text-field': ['get', 'name'],
+        'text-font': ['Noto Sans Regular'],
+        'text-size': 11.5,
+        'text-variable-anchor': ['left', 'right', 'top', 'bottom'],
+        'text-radial-offset': 0.6,
+        'text-max-width': 9,
+        'text-padding': 6,
+        // where names collide, the best known keeps its name
+        'symbol-sort-key': ['get', 'rank'],
+      },
+      paint: { 'text-color': rgb(ink), 'text-halo-color': rgb(paper), 'text-halo-width': 1.25 },
+    });
     const isSelected: ExpressionSpecification = ['boolean', ['feature-state', 'selected'], false];
     const isFaded: ExpressionSpecification = ['boolean', ['feature-state', 'faded'], false];
     const alpha: ExpressionSpecification = ['case', isSelected, 1, isFaded, ERA_DIM, 1];
@@ -312,6 +401,7 @@ export async function createEarth(container: HTMLElement, opts: EarthOptions): P
     ready = true;
     paintEra();
     void drawWorld();
+    void loadAtlas();
     if (selected) mark(selected, { selected: true });
   });
 
@@ -328,6 +418,17 @@ export async function createEarth(container: HTMLElement, opts: EarthOptions): P
     const r = opts.coarse ? 16 : 6;
     let best: EarthSpot | null = null;
     let bestD = Infinity;
+    for (const f of map.queryRenderedFeatures([[p.x - r, p.y - r], [p.x + r, p.y + r]], { layers: [ATLAS_DOTS] })) {
+      const at = (f.geometry as GeoJSON.Point).coordinates as [number, number];
+      const q = map.project(at);
+      const d = (q.x - p.x) ** 2 + (q.y - p.y) ** 2;
+      if (d < bestD) {
+        const id = `Q${f.properties.q}`;
+        const entry: EarthEntry = { id, name: f.properties.name, url: `/a/?q=${id}`, start: null, end: null, kind: KINDS[f.properties.kind] ?? '', when: null, placeName: null };
+        best = { i: -1, at, name: entry.name, entries: [entry] };
+        bestD = d;
+      }
+    }
     for (const f of map.queryRenderedFeatures([[p.x - r, p.y - r], [p.x + r, p.y + r]], { layers: [DOTS] })) {
       const s = spots[Number(f.id)];
       if (!s) continue;
@@ -359,7 +460,7 @@ export async function createEarth(container: HTMLElement, opts: EarthOptions): P
   });
 
   return {
-    entries: byId.size,
+    entries: byId.size + (atlasIndex?.entries ?? 0),
     spotOf: (id) => byId.get(id),
     setEra(next) {
       era = next;

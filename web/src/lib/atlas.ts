@@ -2,10 +2,12 @@
 // reading one costs one small file, whatever the total.
 const SHARDS = 4096;
 export const KINDS = ['Person', 'Event', 'Work', 'Place', 'Organization', 'Artifact', 'Tradition', 'Concept'];
-export const INKS = ['--tomato', '--amber', '--plum', '--leaf', '--accent-fill', '--sky', '--plum', '--plum'];
+export const INKS = ['--tomato', '--amber', '--plum', '--leaf', '--cobalt', '--sky', '--plum', '--plum'];
 
-/** [Wikidata number, name, kind, id of the entry written by hand] */
-export type Neighbour = [number, string, number, string?];
+/** Where an entry sits on the Map, in 65,535ths of the square. */
+export type Spot = [number, number];
+/** [Wikidata number, name, kind, place on the Map, id of the entry written by hand] */
+export type Neighbour = [number, string, number, Spot, string?];
 export type Group = [string, Neighbour[], number];
 export interface Entry {
   n: string;
@@ -16,6 +18,9 @@ export interface Entry {
   c?: [number, number];
   i?: string;
   u?: string;
+  p?: Spot;
+  /** The next step towards the nearest landmark: [Wikidata number, phrase] (docs/data-contract.md). */
+  r?: [number, number];
 }
 
 const shards = new Map<number, Promise<Record<string, Entry>>>();
@@ -30,4 +35,4 @@ export function atlasEntry(q: string): Promise<Entry | undefined> {
   return got.then((s) => s[q]);
 }
 
-export const hrefOf = (n: Neighbour) => (n[3] ? `/e/${n[3]}/` : `/a/?q=Q${n[0]}`);
+export const hrefOf = (n: Neighbour) => (n[4] ? `/e/${n[4]}/` : `/a/?q=Q${n[0]}`);

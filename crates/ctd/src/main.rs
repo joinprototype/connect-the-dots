@@ -149,7 +149,7 @@ fn run(cli: Cli) -> Result<ExitCode> {
                 }
             };
             let out = out.unwrap_or_else(|| root.join(default_dir));
-            let s = ctd::world::build(&graph, &spec, &out, if synthetic.is_none() { Some(state.as_path()) } else { None })?;
+            let (s, _) = ctd::world::build(&graph, &spec, &out, if synthetic.is_none() { Some(state.as_path()) } else { None })?;
             println!(
                 "world: {} nodes, {} links, {} communities, zoom 0–{}, {} tiles, {:.1} MB, largest tile {} nodes / {} links / {} KB ({} KB gzip), built in {:.1} s → {}",
                 s.nodes, s.edges, s.clusters, s.maxzoom, s.tiles, s.bytes as f64 / 1e6, s.max_tile_nodes, s.max_tile_edges,

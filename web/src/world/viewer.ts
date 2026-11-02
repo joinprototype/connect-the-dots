@@ -2,7 +2,8 @@
 // (docs/world-tiles.md). Used by /w/ (world.js) and, lazily, by the explorer's world mode.
 import { Deck, OrthographicView, type DeckProps, type PickingInfo } from '@deck.gl/core';
 import type { _Tile2DHeader as Tile2DHeader, _TileLoadProps as TileLoadProps } from '@deck.gl/geo-layers';
-import { ScatterplotLayer } from '@deck.gl/layers';
+import { LineLayer, ScatterplotLayer, TextLayer } from '@deck.gl/layers';
+import { atlasEntry, KINDS, type Entry, type Spot } from '../lib/atlas';
 import { cssColorToRgb, tokenRgb, tokenString, type RGB } from '../lib/color';
 import { fetchJson } from '../lib/data';
 import { formatYearNumber } from '../lib/dates';
@@ -40,6 +41,8 @@ export interface WorldOptions {
   radiusFactor?: number;
   /** Entity id to fly to once loaded (content worlds). */
   focus?: string | null;
+  /** Wikidata ids of a route to draw, comma-separated. */
+  route?: string | null;
   /** /w/ (content worlds): open on the map of links (the default) or on the Earth (?view=earth). */
   view?: View;
   /** Inside another app (the explorer): no legend, notice or shortcuts of its own. */
@@ -81,6 +84,12 @@ export type View = 'links' | 'earth';
 const S = WORLD_SIZE;
 /** A tile's node id from here up is an atlas entry (ADR-0023): the rest is its Wikidata number. */
 const ATLAS_IDS = 2 ** 31;
+/** How many of a dot's links are named on the map, and what its card lists. */
+const SPOKE_NAMES = 10;
+const CARD_GROUPS = 6;
+const CARD_NAMES = 5;
+const isAtlasId = (id: string) => /^Q\d+$/.test(id);
+const spotAt = ([x, y]: Spot): [number, number] => [(x / 65535) * WORLD_SIZE, (y / 65535) * WORLD_SIZE];
 const TILE_LAYER_ID = 'world-tiles';
 const HOW: Record<View, string> = {
   links: 'Scroll to zoom, drag to pan, click a dot.',
@@ -156,6 +165,12 @@ class WorldViewer implements WorldHandle {
   /** By zoom, the tiles that exist. */
   private tileIndex: Map<number, Set<number>> | null = null;
   private entityIndex = new Map<string, number>();
+  /** What the picked dot links to, or a route: what makes the dots a web. */
+  private spokes: { from: [number, number]; to: [number, number] }[] = [];
+  private reached: { at: [number, number]; name: string }[] = [];
+  private spokeToken = 0;
+  /** A route is on show: the map steps back for it. */
+  private routing = false;
   private target: [number, number] = [S / 2, S / 2];
   private zoom = 0;
   /** Zoom and camera target that show every node (the content bounds), clear of the overlays. */
@@ -206,9 +221,9 @@ class WorldViewer implements WorldHandle {
   private onKey = (e: KeyboardEvent) => this.handleKey(e);
   private onFocusEvent = (e: Event) => {
     const id = (e as CustomEvent<{ id: string | null }>).detail?.id;
-    if (!id || !this.entityIndex.has(id)) return;
+    if (!id || (!this.entityIndex.has(id) && !isAtlasId(id))) return;
     // The Earth shows only entries with a place: for the others, site search opens their page.
-    if (this.mode === 'earth' && this.earth && !this.earth.spotOf(id)) return;
+    if (this.mode === 'earth' && this.earth && !this.earth.spotOf(id) && !isAtlasId(id)) return;
     e.preventDefault(); // shown here: site search stays on this page
     void this.focusEntity(id, true).then((shown) => {
       // the Earth was still loading, and the entry turned out to have no place on it: open its page
@@ -302,6 +317,7 @@ class WorldViewer implements WorldHandle {
     else {
       if (this.opts.view === 'earth') this.setMode('earth', false); // ?view=earth is already in the URL
       if (this.opts.focus) void this.focusEntity(this.opts.focus, true);
+      if (this.opts.route) void this.showRoute(this.opts.route.split(',').filter(isAtlasId));
     }
   }
 
@@ -455,7 +471,7 @@ class WorldViewer implements WorldHandle {
     if (!this.hudCount) return;
     const earth = this.mode === 'earth';
     this.hudCount.hidden = earth && !this.earth;
-    this.hudCount.textContent = !earth ? this.linksCount() : this.earth ? `${fmtInt(this.earth.entries)} entries with a place` : '';
+    this.hudCount.textContent = !earth ? this.linksCount() : this.earth ? `${fmtInt(this.earth.entries)} places` : '';
   }
 
   /** Load MapLibre and draw the Earth, once. */
@@ -919,7 +935,53 @@ class WorldViewer implements WorldHandle {
       pickable: false,
       parameters: NO_DEPTH,
     });
-    this.deck.setProps({ layers: [this.getTileLayer(), dotLayer, ringLayer] } as never);
+    const paper = this.style.night;
+    const spokes = new LineLayer<(typeof this.spokes)[number]>({
+      id: 'world-spokes',
+      data: this.spokes,
+      getSourcePosition: (d) => d.from,
+      getTargetPosition: (d) => d.to,
+      getColor: [ink[0], ink[1], ink[2], this.routing ? 255 : 150],
+      getWidth: this.routing ? 3 : 1.2,
+      widthUnits: 'pixels',
+      pickable: false,
+      parameters: NO_DEPTH,
+    });
+    const ends = new ScatterplotLayer<(typeof this.reached)[number]>({
+      id: 'world-reached',
+      data: this.reached,
+      getPosition: (d) => d.at,
+      getRadius: 4,
+      radiusUnits: 'pixels',
+      getFillColor: [ink[0], ink[1], ink[2], 255],
+      stroked: true,
+      getLineColor: [paper[0], paper[1], paper[2], 255],
+      lineWidthUnits: 'pixels',
+      getLineWidth: 1.5,
+      pickable: false,
+      parameters: NO_DEPTH,
+    });
+    const names = new TextLayer<(typeof this.reached)[number]>({
+      id: 'world-reached-names',
+      data: this.reached.slice(0, SPOKE_NAMES),
+      getPosition: (d) => d.at,
+      getText: (d) => d.name,
+      getSize: 12,
+      sizeUnits: 'pixels',
+      getColor: [ink[0], ink[1], ink[2], 255],
+      getTextAnchor: 'start',
+      getAlignmentBaseline: 'center',
+      getPixelOffset: [8, 0],
+      fontFamily: this.style.font,
+      fontWeight: 600,
+      characterSet: 'auto',
+      fontSettings: { sdf: true },
+      outlineWidth: 3,
+      outlineColor: [paper[0], paper[1], paper[2], 255],
+      pickable: false,
+      parameters: NO_DEPTH,
+    });
+    this.deck.setProps({ layers: [this.getTileLayer(), spokes, ends, dotLayer, ringLayer, names] } as never);
   }
 
   // ------------------------------------------------------------------ interaction
@@ -1015,6 +1077,72 @@ class WorldViewer implements WorldHandle {
     } else if (!p) this.card.hidden = true;
     else this.showCard(p, entity);
     this.updateAvoid();
+    void this.drawSpokes(p);
+  }
+
+  /** A dot's Wikidata id: its way into the atlas, and so to its links. */
+  private atlasIdOf(p: Picked): string | null {
+    if (p.id >= ATLAS_IDS) return `Q${p.id - ATLAS_IDS}`;
+    return this.entities?.[p.id]?.q ?? null;
+  }
+
+  /** Lines from the picked dot to everything it links to, wherever on the map that is. */
+  private async drawSpokes(p: Picked | null): Promise<void> {
+    const mine = ++this.spokeToken;
+    this.spokes = [];
+    this.reached = [];
+    const q = p && this.atlasIdOf(p);
+    const e = q ? await atlasEntry(q) : undefined;
+    if (mine !== this.spokeToken || this.destroyed) return;
+    if (p && e) {
+      const from: [number, number] = [p.x * S, p.y * S];
+      const seen = new Set<number>();
+      for (const n of e.g.flatMap((g) => g[1])) {
+        if (seen.has(n[0]) || !n[3][0]) continue;
+        seen.add(n[0]);
+        const to = spotAt(n[3]);
+        this.spokes.push({ from, to });
+        this.reached.push({ at: to, name: n[1] });
+      }
+      if (!this.opts.onPick) this.showLinks(q!, e);
+    }
+    this.render();
+  }
+
+  /** The card of an entry with links: what it is, a way on, and what it links to. */
+  private showLinks(q: string, e: Entry): void {
+    this.openCard(KINDS[e.k] ?? '', e.n, ...this.linksBody(q, e));
+    this.updateAvoid();
+  }
+
+  private linksBody(q: string, e: Entry): Node[] {
+    const body: Node[] = [];
+    if (e.d) body.push(el('p', 'ctdw-summary', e.d));
+    const actions = el('div', 'ctdw-actions');
+    const open = el('a', 'ctdw-btn is-primary', 'Open page ›') as HTMLAnchorElement;
+    open.href = e.u ?? `/a/?q=${q}`;
+    const connect = el('a', 'ctdw-btn', 'Connect to…') as HTMLAnchorElement;
+    connect.href = `/r/?a=${q}`;
+    actions.append(open, connect);
+    body.push(actions);
+    const links = el('div', 'ctdw-links');
+    for (const [phrase, names, more] of e.g.slice(0, CARD_GROUPS)) {
+      links.append(el('p', 'ctdw-list-head', phrase.charAt(0).toUpperCase() + phrase.slice(1)));
+      const ul = el('ul', 'ctdw-list');
+      for (const n of names.slice(0, CARD_NAMES)) {
+        const b = el('button', 'ctdw-link', n[1]) as HTMLButtonElement;
+        b.type = 'button';
+        b.addEventListener('click', () => void this.focusEntity(`Q${n[0]}`, true));
+        const li = el('li');
+        li.append(b);
+        ul.append(li);
+      }
+      const left = more + Math.max(0, names.length - CARD_NAMES);
+      if (left) ul.append(el('li', 'ctdw-list-meta', `and ${fmtInt(left)} more`));
+      links.append(ul);
+    }
+    if (e.g.length) body.push(links);
+    return body;
   }
 
   /** Keep labels out from under the overlays (HUD, legend, zoom buttons, era bar, stats, card). */
@@ -1056,8 +1184,8 @@ class WorldViewer implements WorldHandle {
       open.href = href;
       actions.append(open);
     }
-    const explore = el('a', 'ctdw-btn', 'Explore');
-    explore.href = `/x/?focus=${encodeURIComponent(entity.id)}`;
+    const explore = el('a', 'ctdw-btn', isAtlasId(entity.id) ? 'Connect to…' : 'Explore');
+    explore.href = isAtlasId(entity.id) ? `/r/?a=${entity.id}` : `/x/?focus=${encodeURIComponent(entity.id)}`;
     actions.append(explore);
     return actions;
   }
@@ -1070,6 +1198,10 @@ class WorldViewer implements WorldHandle {
     this.hideTooltip();
     if (!spot || !entry) {
       this.card.hidden = true;
+      return;
+    }
+    if (isAtlasId(entry.id)) {
+      void atlasEntry(entry.id).then((e) => e && this.showLinks(entry.id, e));
       return;
     }
     const others = spot.entries.filter((e) => e !== entry);
@@ -1164,6 +1296,7 @@ class WorldViewer implements WorldHandle {
   async focusEntity(id: string, select = true): Promise<boolean> {
     await this.ready;
     if (this.mode === 'earth') return this.focusOnEarth(id);
+    if (isAtlasId(id)) return this.focusAtlas(id, select);
     const index = this.entityIndex.get(id);
     if (index === undefined || !this.deck) return false;
     const p = await this.locate(index);
@@ -1174,12 +1307,51 @@ class WorldViewer implements WorldHandle {
     return true;
   }
 
+  /** An entry anywhere on the map, tile loaded or not: the atlas knows where each one sits. */
+  private async focusAtlas(id: string, select: boolean): Promise<boolean> {
+    const e = await atlasEntry(id);
+    if (!e?.p || !this.deck || this.destroyed) return false;
+    const [x, y] = spotAt(e.p);
+    const p: Picked = { id: ATLAS_IDS + Number(id.slice(1)), x: x / S, y: y / S, size: 0.001, color: 0, label: e.n, z: this.manifest.maxzoom };
+    const zoom = Math.max(this.zoom, Math.min(this.maxZoom - 1, this.fitZoom + 2.2));
+    this.flyTo(this.centerOn([x, y], zoom), zoom, 800);
+    if (select) this.selectPicked(p);
+    return true;
+  }
+
+  /** A route: its stops joined by a line, named, and all in view. */
+  private async showRoute(list: string[]): Promise<void> {
+    const entries = await Promise.all(list.map((q) => atlasEntry(q)));
+    const stops = entries.filter((e): e is Entry & { p: Spot } => !!e?.p).map((e) => ({ at: spotAt(e.p), name: e.n }));
+    if (stops.length < 2 || this.destroyed) return;
+    this.routing = true;
+    this.regionLayer?.classList.add('is-route');
+    this.reached = stops;
+    this.spokes = stops.slice(1).map((s, i) => ({ from: stops[i].at, to: s.at }));
+    const xs = stops.map((s) => s.at[0]);
+    const ys = stops.map((s) => s.at[1]);
+    const span = Math.max(Math.max(...xs) - Math.min(...xs), Math.max(...ys) - Math.min(...ys), S / 16);
+    const zoom = Math.min(this.maxZoom - 1, Math.log2(Math.min(this.view.w, this.view.h) / span) - 0.6);
+    this.flyTo(this.centerOn([(Math.max(...xs) + Math.min(...xs)) / 2, (Math.max(...ys) + Math.min(...ys)) / 2], zoom), zoom, 800);
+    this.render();
+  }
+
   /** Earth: fly to the entry's spot and open its own card. False when it has no place on the Earth. */
   private async focusOnEarth(id: string): Promise<boolean> {
+    if (isAtlasId(id)) return this.focusAtlasOnEarth(id);
     const earth = await this.loadEarth();
     const spot = earth?.spotOf(id);
     if (!earth || !spot || this.mode !== 'earth') return false;
     this.showSpot(spot, spot.entries.find((e) => e.id === id));
+    earth.show(spot);
+    return true;
+  }
+
+  private async focusAtlasOnEarth(id: string): Promise<boolean> {
+    const [earth, e] = await Promise.all([this.loadEarth(), atlasEntry(id)]);
+    if (!earth || !e?.c || this.mode !== 'earth') return false;
+    const spot: EarthSpot = { i: -1, at: e.c, name: e.n, entries: [{ id, name: e.n, url: e.u ?? `/a/?q=${id}`, start: null, end: null, kind: KINDS[e.k] ?? '', when: e.y ?? null, placeName: null }] };
+    this.showSpot(spot);
     earth.show(spot);
     return true;
   }

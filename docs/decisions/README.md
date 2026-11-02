@@ -25,5 +25,6 @@ One short file per decision: context, decision, consequences, and when to revisi
 | [0019](0019-disputing-a-finding.md) | Disputing a finding: a study's words, then each disputer's own, nothing decided, never a route | accepted |
 | [0020](0020-historical-borders.md) | Historical borders: a few polities cut from Cliopatria, drawn by a story's date; no shape rather than a wrong one | accepted |
 | [0023](0023-the-atlas.md) | The atlas: a million dots from open data, marked as what they are, packed into shards, never mixed with the record | accepted |
+| [0024](0024-black-on-white.md) | Black on white, and colour only on the dots; one left edge for every page | accepted |
 | [0022](0022-dots-and-lines.md) | Dots and lines: print inks with a job, each story its own ink, Bricolage Grotesque and Literata, stories on white | accepted |
 | [0021](0021-the-world-of-an-era.md) | The Map's era slider draws the world of that year: 30 years from 3000 BCE to 1990, in one grey; the basemap after that | accepted |

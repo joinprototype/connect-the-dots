@@ -3,7 +3,7 @@
 //! Entries in content/ hold the proof. The atlas holds the wide picture, always marked as open data.
 
 use std::{
-    collections::{BTreeMap, HashMap},
+    collections::{BTreeMap, HashMap, VecDeque},
     fs::{self, File},
     io::{BufRead, BufReader},
     path::Path,
@@ -22,6 +22,15 @@ pub const SHARDS: u32 = 4096;
 pub const ATLAS_IDS: u32 = 1 << 31;
 /// How many links of one kind an entry lists, best known first.
 const PER_PHRASE: usize = 40;
+/// Routes between any two entries run through this many landmarks, as a game finds its way across a
+/// huge map: from each entry to the nearest landmark, from landmark to landmark, and down again. A
+/// route then costs a few small files, on a site with no server.
+const LANDMARKS: usize = 256;
+/// An entry with more links than this is a crossroads: sharing it says little, so routes go around it.
+const CROSSROADS: usize = 2000;
+/// The Earth's tiles: how deep they go and how many entries one holds, best known first.
+const EARTH_ZOOM: u8 = 9;
+const EARTH_QUOTA: usize = 200;
 const KINDS: [&str; 8] = ["person", "event", "work", "place", "org", "artifact", "tradition", "concept"];
 
 pub struct Entry {
@@ -120,8 +129,122 @@ pub fn curated(kb: &Kb) -> HashMap<u32, usize> {
     kb.entities.iter().enumerate().filter_map(|(i, e)| wikidata(e).and_then(|q| number(&q)).map(|q| (q, i))).collect()
 }
 
+/// Where each entry sits on the Map, by Wikidata number, in 65,535ths of the square.
+pub fn spots(kb: &Kb, ids: &[u32], nodes: &[[f32; 2]]) -> HashMap<u32, [u16; 2]> {
+    let hand: HashMap<usize, u32> = curated(kb).into_iter().map(|(q, c)| (c, q)).collect();
+    let spot = |v: f32| (v.clamp(0.0, 1.0) * 65535.0) as u16;
+    ids.iter().zip(nodes).filter_map(|(&id, p)| Some((if id >= ATLAS_IDS { id - ATLAS_IDS } else { *hand.get(&(id as usize))? }, [spot(p[0]), spot(p[1])]))).collect()
+}
+
+/// Each entry's step towards its nearest landmark, and what a route needs from the landmarks' side.
+struct Routes {
+    /// (place in `entries`, phrase): the next entry towards the landmark.
+    towards: Vec<Option<(u32, u16)>>,
+    file: Value,
+}
+
+/// Finds the landmarks and every entry's way to the nearest one. Real links first, around the
+/// crossroads; what they do not reach then joins by any link at all.
+fn routes(a: &Atlas, kb: &Kb, adjacent: &[Vec<(u32, u8, bool)>]) -> Routes {
+    let n = a.entries.len();
+    let relation = |r: u8| kb.schema.relations.get(&a.relations[r as usize]);
+    let real = |r: u8| relation(r).is_some_and(|x| x.traversable);
+    let crossroads = |i: usize| adjacent[i].len() > CROSSROADS;
+    // best known first, and no two side by side, so that they lie all over the graph
+    let mut taken = vec![false; n];
+    let mut landmarks: Vec<u32> = Vec::new();
+    for i in 0..n {
+        if landmarks.len() == LANDMARKS {
+            break;
+        }
+        if !taken[i] && !crossroads(i) && adjacent[i].iter().filter(|l| real(l.1)).count() >= 8 {
+            landmarks.push(i as u32);
+            adjacent[i].iter().filter(|l| real(l.1)).for_each(|l| taken[l.0 as usize] = true);
+        }
+    }
+    let mut phrases: Vec<[String; 2]> = Vec::new();
+    let mut phrase = |r: u8, forward: bool| -> Option<u16> {
+        let x = relation(r)?;
+        let pair = if forward { [x.label.clone(), x.inverse.clone()] } else { [x.inverse.clone(), x.label.clone()] };
+        let at = phrases.iter().position(|p| *p == pair).unwrap_or_else(|| {
+            phrases.push(pair);
+            phrases.len() - 1
+        });
+        Some(at as u16)
+    };
+    const NONE: u16 = u16::MAX;
+    let mut root = vec![NONE; n];
+    let mut depth = vec![0u16; n];
+    let mut towards: Vec<Option<(u32, u16)>> = vec![None; n];
+    for (l, &i) in landmarks.iter().enumerate() {
+        root[i as usize] = l as u16;
+    }
+    for any in [false, true] {
+        let mut queue: VecDeque<u32> = (0..n as u32).filter(|&i| root[i as usize] != NONE).collect();
+        while let Some(x) = queue.pop_front() {
+            let x = x as usize;
+            if !any && crossroads(x) {
+                continue;
+            }
+            for &(y, r, outgoing) in &adjacent[x] {
+                let u = y as usize;
+                if root[u] != NONE || (!any && !real(r)) {
+                    continue;
+                }
+                // the phrase reads from y towards x, the other way along the link
+                let Some(said) = phrase(r, !outgoing) else { continue };
+                (root[u], depth[u], towards[u]) = (root[x], depth[x] + 1, Some((x as u32, said)));
+                queue.push_back(y);
+            }
+        }
+    }
+    // where two landmarks' territories touch: the shortest crossing between each pair
+    let mut crossings: HashMap<(u16, u16), (u32, u32, u32, u16)> = HashMap::new();
+    for &(x, r, y) in &a.links {
+        let (i, j) = (x as usize, y as usize);
+        if root[i] == NONE || root[j] == NONE || root[i] == root[j] {
+            continue;
+        }
+        let Some(said) = phrase(r, true) else { continue };
+        let weak = if real(r) && !crossroads(i) && !crossroads(j) { 0 } else { 4 };
+        let cost = (depth[i] + depth[j]) as u32 + 1 + weak;
+        let (key, ends) = if root[i] < root[j] { ((root[i], root[j]), (x, y, said * 2)) } else { ((root[j], root[i]), (y, x, said * 2 + 1)) };
+        let best = crossings.entry(key).or_insert((u32::MAX, 0, 0, 0));
+        if (cost, ends.0, ends.1) < (best.0, best.1, best.2) {
+            *best = (cost, ends.0, ends.1, ends.2);
+        }
+    }
+    // the shortest way from each landmark to each other: the next landmark along it
+    let l = landmarks.len();
+    let mut dist = vec![vec![u32::MAX / 2; l]; l];
+    let mut next = vec![vec![NONE; l]; l];
+    for i in 0..l {
+        (dist[i][i], next[i][i]) = (0, i as u16);
+    }
+    for (&(i, j), &(cost, ..)) in &crossings {
+        let (i, j) = (i as usize, j as usize);
+        (dist[i][j], dist[j][i]) = (cost, cost);
+        (next[i][j], next[j][i]) = (j as u16, i as u16);
+    }
+    for k in 0..l {
+        for i in 0..l {
+            for j in 0..l {
+                if dist[i][k] + dist[k][j] < dist[i][j] {
+                    dist[i][j] = dist[i][k] + dist[k][j];
+                    next[i][j] = next[i][k];
+                }
+            }
+        }
+    }
+    let number = |i: u32| a.entries[i as usize].qid;
+    let bridges: serde_json::Map<String, Value> =
+        crossings.iter().map(|(&(i, j), &(_, x, y, said))| (format!("{i}:{j}"), json!([number(x), number(y), said]))).collect();
+    let file = json!({ "l": landmarks.iter().map(|&i| number(i)).collect::<Vec<u32>>(), "p": phrases, "n": next, "b": bridges });
+    Routes { towards, file }
+}
+
 /// One shard: `{"Q42": {...}}`, each entry with its links grouped by what they say.
-fn shard(a: &Atlas, kb: &Kb, hand: &HashMap<u32, usize>, adjacent: &[Vec<(u32, u8, bool)>], members: &[u32]) -> Value {
+fn shard(a: &Atlas, kb: &Kb, hand: &HashMap<u32, usize>, adjacent: &[Vec<(u32, u8, bool)>], spots: &HashMap<u32, [u16; 2]>, routes: &Routes, members: &[u32]) -> Value {
     let mut out = serde_json::Map::new();
     for &i in members {
         let e = &a.entries[i as usize];
@@ -142,9 +265,10 @@ fn shard(a: &Atlas, kb: &Kb, hand: &HashMap<u32, usize>, adjacent: &[Vec<(u32, u
                     .take(PER_PHRASE)
                     .map(|&j| {
                         let n = &a.entries[j as usize];
+                        let spot = spots.get(&n.qid).copied().unwrap_or_default();
                         match hand.get(&n.qid) {
-                            Some(&c) => json!([n.qid, kb.entities[c].name, n.kind, kb.entities[c].id]),
-                            None => json!([n.qid, n.name, n.kind]),
+                            Some(&c) => json!([n.qid, kb.entities[c].name, n.kind, spot, kb.entities[c].id]),
+                            None => json!([n.qid, n.name, n.kind, spot]),
                         }
                     })
                     .collect();
@@ -154,6 +278,12 @@ fn shard(a: &Atlas, kb: &Kb, hand: &HashMap<u32, usize>, adjacent: &[Vec<(u32, u
         let mut v = json!({ "n": e.name, "k": e.kind, "g": groups });
         if !e.summary.is_empty() {
             v["d"] = json!(e.summary);
+        }
+        if let Some(spot) = spots.get(&e.qid) {
+            v["p"] = json!(spot);
+        }
+        if let Some((step, said)) = routes.towards[i as usize] {
+            v["r"] = json!([a.entries[step as usize].qid, said]);
         }
         if let Some(y) = e.years() {
             v["y"] = json!(y);
@@ -173,7 +303,7 @@ fn shard(a: &Atlas, kb: &Kb, hand: &HashMap<u32, usize>, adjacent: &[Vec<(u32, u
 }
 
 /// Packs the atlas into `data/a/<n>.json`. Reading an entry costs one small file, whatever the total.
-pub fn write(a: &Atlas, kb: &Kb, out: &Path) -> Result<()> {
+pub fn write(a: &Atlas, kb: &Kb, spots: &HashMap<u32, [u16; 2]>, out: &Path) -> Result<()> {
     let dir = out.join("data").join("a");
     fs::create_dir_all(&dir)?;
     let hand = curated(kb);
@@ -186,10 +316,50 @@ pub fn write(a: &Atlas, kb: &Kb, out: &Path) -> Result<()> {
     for (i, e) in a.entries.iter().enumerate() {
         shards[(e.qid % SHARDS) as usize].push(i as u32);
     }
+    let routes = routes(a, kb, &adjacent);
+    fs::write(out.join("data").join("routes.json"), serde_json::to_vec(&routes.file)?)?;
     shards.par_iter().enumerate().try_for_each(|(n, members)| -> Result<()> {
-        fs::write(dir.join(format!("{n}.json")), serde_json::to_vec(&shard(a, kb, &hand, &adjacent, members))?)?;
+        fs::write(dir.join(format!("{n}.json")), serde_json::to_vec(&shard(a, kb, &hand, &adjacent, spots, &routes, members))?)?;
         Ok(())
-    })
+    })?;
+    earth(a, &hand, out)
+}
+
+/// The Earth's entries as tiles, so that it draws what is in view. Each tile holds the best known of
+/// what is left for it: the rest wait a zoom deeper. A person's coordinates are a grave, not a life,
+/// and an entry written by hand has its own dot.
+fn earth(a: &Atlas, hand: &HashMap<u32, usize>, out: &Path) -> Result<()> {
+    let tile = |[lon, lat]: [f32; 2], z: u8| {
+        let (lon, lat, size) = (lon as f64, (lat as f64).clamp(-85.0, 85.0).to_radians(), (1u32 << z) as f64);
+        let x = (lon + 180.0) / 360.0 * size;
+        let y = (1.0 - (lat.tan() + 1.0 / lat.cos()).ln() / std::f64::consts::PI) / 2.0 * size;
+        (x.clamp(0.0, size - 1.0) as u32, y.clamp(0.0, size - 1.0) as u32)
+    };
+    let mut tiles: HashMap<(u8, u32, u32), Vec<Value>> = HashMap::new();
+    let close = |v: f32| (v as f64 * 1e4).round() / 1e4;
+    for e in a.entries.iter().filter(|e| e.kind != 0 && !hand.contains_key(&e.qid)) {
+        let Some(at) = e.coords else { continue };
+        for z in 0..=EARTH_ZOOM {
+            let (x, y) = tile(at, z);
+            let list = tiles.entry((z, x, y)).or_default();
+            if z == EARTH_ZOOM || list.len() < EARTH_QUOTA {
+                list.push(json!([close(at[0]), close(at[1]), e.qid, e.name, e.kind]));
+                break;
+            }
+        }
+    }
+    let dir = out.join("earth");
+    fs::create_dir_all(&dir)?;
+    let mut index: BTreeMap<String, Vec<u64>> = BTreeMap::new();
+    for (&(z, x, y), list) in &tiles {
+        index.entry(z.to_string()).or_default().push(((x as u64) << z) + y as u64);
+        fs::create_dir_all(dir.join(z.to_string()).join(x.to_string()))?;
+        fs::write(dir.join(z.to_string()).join(x.to_string()).join(format!("{y}.json")), serde_json::to_vec(list)?)?;
+    }
+    index.values_mut().for_each(|v| v.sort_unstable());
+    let entries: usize = tiles.values().map(Vec::len).sum();
+    fs::write(dir.join("index.json"), serde_json::to_vec(&json!({ "maxzoom": EARTH_ZOOM, "entries": entries, "tiles": index }))?)?;
+    Ok(())
 }
 
 /// Search rows for the atlas, best known first. Entries written by hand are already in search.
@@ -210,6 +380,31 @@ mod tests {
 
     use super::*;
     use crate::testkit::{entity, file, load as load_kb, write_repo};
+
+    #[test]
+    fn every_entry_finds_its_way_to_a_landmark() {
+        let relation = "member_of: {label: member of, inverse: members, from: [person], to: [org]}\n";
+        let (kb, _) = load_kb("atlas-routes", &[file("content/schema/relations.yaml", relation)]);
+        let entries: Vec<Entry> = (0..11u32)
+            .map(|i| Entry { qid: i + 1, kind: 0, fame: 100 - i as u16, name: format!("E{i}"), summary: String::new(), start: None, end: None, coords: None, image: String::new() })
+            .collect();
+        // the best known has nine links, and one entry sits a step beyond them
+        let mut links: Vec<(u32, u8, u32)> = (1..10).map(|i| (0, 0, i)).collect();
+        links.push((9, 0, 10));
+        let mut adjacent = vec![Vec::new(); entries.len()];
+        for &(x, r, y) in &links {
+            adjacent[x as usize].push((y, r, true));
+            adjacent[y as usize].push((x, r, false));
+        }
+        let a = Atlas { entries, links, relations: vec!["member_of".to_string()] };
+        let r = routes(&a, &kb, &adjacent);
+        assert_eq!(r.file["l"], json!([1]), "the best known is the landmark");
+        assert!(r.towards[0].is_none(), "a landmark goes nowhere");
+        let (step, said) = r.towards[10].expect("a step towards the landmark");
+        assert_eq!(step, 9);
+        assert_eq!(r.towards[9].unwrap().0, 0);
+        assert_eq!(r.file["p"][said as usize], json!(["members", "member of"]), "read from the entry towards its step, then back");
+    }
 
     fn gz(path: &Path, text: &str) {
         let mut out = GzEncoder::new(File::create(path).unwrap(), Compression::fast());
@@ -233,14 +428,14 @@ mod tests {
         let a = load(&root).unwrap().expect("an atlas");
         assert_eq!(a.entries[0].qid, 2, "best known first");
         assert!(search(&a, &kb).iter().all(|row| row["id"] != "Q2"), "a written entry is already in search");
-        write(&a, &kb, &root).unwrap();
+        write(&a, &kb, &HashMap::new(), &root).unwrap();
         let read = |q: u32| -> Value { serde_json::from_slice(&fs::read(root.join(format!("data/a/{}.json", q % SHARDS))).unwrap()).unwrap() };
         assert_eq!(read(2)["Q2"]["u"], "/e/big-town/");
         let ada = &read(1)["Q1"];
         assert_eq!(ada["y"], "1900–1950");
         let links = &ada["g"][0];
         assert_eq!(links[1][0][1], "Big Town", "the better known place first, under its written name");
-        assert_eq!(links[1][0][3], "big-town");
+        assert_eq!(links[1][0][4], "big-town");
         assert_eq!(links[1][1][1], "Small Town");
     }
 }

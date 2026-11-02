@@ -54,6 +54,9 @@ pub struct Stats {
 const QUOTA: usize = 1500;
 const MAX_TILE_NODES: usize = 2500;
 const MAX_TILE_EDGES: usize = 8192;
+/// Zoomed out to here, a big map draws the links between its communities, this many a tile at most.
+const WEB_ZOOM: u8 = 2;
+const WEB_EDGES: usize = 2500;
 const GOLDEN: f64 = 2.399_963_229_728_653;
 
 // ---------------------------------------------------------------- random numbers (splitmix64)
@@ -208,6 +211,9 @@ pub fn from_kb(kb: &Kb, atlas: Option<&crate::atlas::Atlas>) -> (WorldGraph, Spe
         .iter()
         .map(|e| {
             let mut v = json!({ "id": e.id, "name": e.name, "url": format!("/e/{}/", e.id) });
+            if let Some(q) = e.same_as.get("wikidata") {
+                v["q"] = json!(q);
+            }
             if let Some(w) = &e.when {
                 v["start"] = json!(year(w.start));
                 v["end"] = json!(w.end.map(year));
@@ -959,6 +965,8 @@ struct Placed {
     members: Vec<Vec<u32>>,
     /// The ink of a community of gathered entries; None for one found by its links.
     gathered: Vec<Option<u8>>,
+    /// Summed links between communities.
+    meta: Vec<(u32, u32, f32)>,
     pos: Vec<[f64; 2]>,
     degree: Vec<f64>,
     /// Nodes, most important first, and each node's place in that order.
@@ -1040,7 +1048,7 @@ fn place(g: &WorldGraph) -> Placed {
             rank_of[i as usize] = r as u32;
         }
     }
-    Placed { nc, cpos, crad, members, gathered, pos, degree, rank, rank_of }
+    Placed { nc, cpos, crad, members, gathered, meta: meta_edges(&comm, &g.edges), pos, degree, rank, rank_of }
 }
 
 /// The map in the unit square.
@@ -1178,6 +1186,25 @@ impl Tiles<'_> {
             }
         }
         let longest = longest_link(g.n, z);
+        // two dots of a thin sample are rarely linked, so zoomed out a big map draws what its
+        // communities share: the web that holds the world together
+        let centers = &self.square.centers;
+        let web = |a: u32, b: u32| (centers[a as usize], centers[b as usize]);
+        let mut webs: HashMap<(u32, u32), Vec<u32>> = HashMap::new();
+        if g.n > GATHER_ABOVE && z <= WEB_ZOOM {
+            for (ei, &(a, b, _)) in p.meta.iter().enumerate() {
+                let (pa, pb) = web(a, b);
+                if (pa[0] - pb[0]).hypot(pa[1] - pb[1]) > longest {
+                    continue;
+                }
+                let (ta, tb) = (tile_of(pa[0], pa[1], z), tile_of(pb[0], pb[1], z));
+                webs.entry(ta).or_default().push(ei as u32);
+                if tb != ta {
+                    webs.entry(tb).or_default().push(ei as u32);
+                }
+            }
+        }
+        let wide = p.meta.iter().map(|e| e.2).fold(1e-9f32, f32::max);
         for (ei, &(a, b, _)) in g.edges.iter().enumerate() {
             let (a, b) = (a as usize, b as usize);
             if minzoom[a] > z || minzoom[b] > z {
@@ -1223,7 +1250,7 @@ impl Tiles<'_> {
                     score(a).cmp(&score(b)).then(a.cmp(&b))
                 });
                 es.truncate(MAX_TILE_EDGES);
-                let edges: Vec<([f32; 4], u8, u8)> = es
+                let mut edges: Vec<([f32; 4], u8, u8)> = es
                     .iter()
                     .map(|&e| {
                         let (a, b, w) = g.edges[e as usize];
@@ -1231,6 +1258,16 @@ impl Tiles<'_> {
                         ([pa[0], pa[1], pb[0], pb[1]], g.color[a as usize], ((w / wmax) * 255.0) as u8)
                     })
                     .collect();
+                if let Some(list) = webs.get(&(x, y)) {
+                    let mut list = list.clone();
+                    list.sort_by(|&a, &b| p.meta[b as usize].2.total_cmp(&p.meta[a as usize].2).then(a.cmp(&b)));
+                    list.truncate(WEB_EDGES);
+                    edges.extend(list.iter().map(|&e| {
+                        let (a, b, w) = p.meta[e as usize];
+                        let (pa, pb) = web(a, b);
+                        ([pa[0], pa[1], pb[0], pb[1]], 0, ((w / wide).sqrt() * 255.0) as u8)
+                    }));
+                }
                 let bytes = encode(&nodes, &edges);
                 write_tile(self.out, z, x, y, &bytes);
                 (bytes, nodes.len(), edges.len())
@@ -1344,8 +1381,9 @@ fn write_picture(g: &WorldGraph, spec: &Spec, p: &Placed, square: &Square, out: 
     Ok(())
 }
 
-/// Builds the world: clusters, layout, level of detail, tiles and manifest under `out`.
-pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> Result<Stats> {
+/// Builds the world: clusters, layout, level of detail, tiles and manifest under `out`. Returns its
+/// numbers, and where each node landed in the unit square.
+pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> Result<(Stats, Vec<[f32; 2]>)> {
     let t0 = Instant::now();
     if out.exists() {
         fs::remove_dir_all(out)?;
@@ -1395,7 +1433,7 @@ pub fn build(g: &WorldGraph, spec: &Spec, out: &Path, state: Option<&Path>) -> R
     write_tile_index(out, maxzoom)?;
     write_manifest(spec, &stats, square.bounds(), &named, out)?;
     write_picture(g, spec, &p, &square, out)?;
-    Ok(stats)
+    Ok((stats, square.nodes))
 }
 
 /// The layer palette used by synthetic worlds (same colours as the schema defaults).
@@ -1414,7 +1452,7 @@ mod tests {
         let g = synthetic(30_000, 7);
         let (palette, palette_labels) = default_palette();
         let dir = std::env::temp_dir().join(format!("ctd-world-test-{}", std::process::id()));
-        let stats = build(&g, &Spec { kind: "synthetic", palette, palette_labels, entities: None }, &dir, None).unwrap();
+        let stats = build(&g, &Spec { kind: "synthetic", palette, palette_labels, entities: None }, &dir, None).unwrap().0;
         assert!(stats.tiles > 0);
         assert!(stats.max_tile_nodes <= MAX_TILE_NODES);
         assert!(stats.max_tile_edges <= MAX_TILE_EDGES);
@@ -1487,7 +1525,7 @@ mod tests {
         let prev: HashMap<String, [f32; 2]> = serde_json::from_slice(&fs::read(&state).unwrap()).unwrap();
         let squeezed: HashMap<&String, [f32; 2]> = prev.iter().map(|(k, p)| (k, [0.5 - (p[1] - 0.5) * 0.1, 0.5 + (p[0] - 0.5) * 0.1])).collect();
         fs::write(&state, serde_json::to_vec(&squeezed).unwrap()).unwrap();
-        let stats = build(&g, &spec, &dir.join("b"), Some(&state)).unwrap();
+        let stats = build(&g, &spec, &dir.join("b"), Some(&state)).unwrap().0;
         assert_eq!(stats.aligned_nodes, g.n);
         let m: Value = serde_json::from_slice(&fs::read(dir.join("b").join("manifest.json")).unwrap()).unwrap();
         let b: Vec<f64> = m["bounds"].as_array().unwrap().iter().map(|v| v.as_f64().unwrap()).collect();

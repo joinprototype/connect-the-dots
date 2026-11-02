@@ -210,6 +210,8 @@ export interface WorldEntity {
   id: string;
   name: string;
   url: string;
+  /** Its Wikidata id, when it has one: the way into its links in the atlas. */
+  q?: string;
   /** The entry's own dates in decimal years (end exclusive, null = ongoing); start null = undated. */
   start: number | null;
   end: number | null;

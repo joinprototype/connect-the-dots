@@ -202,6 +202,8 @@ export interface SearchEntry {
   url: string;
   /** Entity entries: the questions with a page about this entry. */
   q?: string[];
+  /** Entries written by hand: their Wikidata id. */
+  w?: string;
   /** Best-connected first, across all search files. */
   rank: number;
 }

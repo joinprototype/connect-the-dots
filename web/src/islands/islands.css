@@ -36,6 +36,5 @@ ctd-search, .ctd-search { position: relative; display: block; }
 ctd-lens-chips { display: block; }
 /* a lens with no links on this page: in quiet text, still readable (never faded below 4.5:1) */
 ctd-lens-chips button[data-empty] { color: var(--muted); }
-.ctd-chip-count { font-size: 0.85em; font-variant-numeric: tabular-nums; opacity: 0.8; margin-left: 4px; }
-ctd-lens-chips button[data-empty] .ctd-chip-count { opacity: 1; }
+.ctd-chip-count { font-size: 0.85em; font-variant-numeric: tabular-nums; margin-left: 4px; }
 .ctd-chips-fallback { display: flex; flex-wrap: wrap; gap: 8px; }

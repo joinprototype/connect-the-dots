@@ -34,6 +34,8 @@ The founder, after 0.4.0: stories "sometimes feel empty", get to a million dots 
 - [x] **Wikidata ids typed from memory were wrong** in 15 cases of 20. Ids are now only ever taken from a search.
 - [x] **Over a third of the dots (362,000) had no community** and sat in one disc per colour. Each now joins the community of its rarest link.
 - [x] **Hubs knotted the map** and painted it with long grey lines. It is now shared out by area into one round world ([ADR-0023](../decisions/0023-the-atlas.md) point 10), and a link appears once it is short on screen.
+- [x] **The founder on the first look: "the ui somehow looks really weird".** Overlaps, three left edges and a dozen tints. Now black on white, colour only on the dots ([ADR-0024](../decisions/0024-black-on-white.md)).
+- [x] **The founder on the million: "I don't see how they are connected".** Thinning dots had dropped nearly every line, the Earth showed only hand-written entries, and routes stopped at them. Now a web of links shows at every zoom, a click draws a dot's links, the Earth streams 216,000 places, and any two entries connect through landmarks, reading about ten small files ([ADR-0023](../decisions/0023-the-atlas.md) point 11).
 - [x] **Pale region discs muddied the zoomed-out map.** Dots at every zoom look better and cost less, so region tiles came out of the engine and the viewer, and frames stopped dropping below 59 fps.
 
 ### Not in this sprint
@@ -65,7 +67,8 @@ The founder, after 0.4.0: stories "sometimes feel empty", get to a million dots 
 ## Known issues
 
 - **218,805 living people are in the atlas.** Their facts come from Wikidata and nobody here has read them. They are limited to the list in ADR-0023 (years only, no labels), marked as open data, kept out of search engines, and each page has "Something wrong?". The founder should know this is the main risk of the atlas.
-- Atlas dots ignore the era slider, and routes do not reach them.
+- Atlas dots ignore the era slider.
+- A route through the landmarks is a way, not the shortest way, and can read strangely. Its links come from open data and nobody here has read them.
 - Wikidata misfiles some items (Facebook as an artifact, the Renaissance as an organization).
 - Scene dots on phones are as narrow as 8 by 28 px in a 20-scene story, under the 24 px target. They cannot be wider in one row, so a finger can now slide along the row to pick a scene.
 - A story's map shows today's country names.

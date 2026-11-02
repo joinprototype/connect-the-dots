@@ -582,13 +582,18 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     for (dir, template) in [("x", "explorer.html"), ("w", "world.html")] {
         write(&out.join(dir).join("index.html"), s.render(template, json!({ "site": &s.site }))?)?;
     }
-    if let Some(a) = &atlas {
-        crate::atlas::write(a, kb, out)?;
-        write(&out.join("a").join("index.html"), s.render("atlas.html", json!({ "site": &s.site, "entries": a.entries.len() }))?)?;
-    }
+    let mut spots = HashMap::new();
     if !kb.entities.is_empty() {
         let (g, spec) = crate::world::from_kb(kb, atlas.as_ref());
-        crate::world::build(&g, &spec, &out.join("world"), Some(&root.join(".cache").join("world-state.json")))?;
+        let (_, nodes) = crate::world::build(&g, &spec, &out.join("world"), Some(&root.join(".cache").join("world-state.json")))?;
+        if let Some(ids) = &g.ids {
+            spots = crate::atlas::spots(kb, ids, &nodes);
+        }
+    }
+    if let Some(a) = &atlas {
+        crate::atlas::write(a, kb, &spots, out)?;
+        write(&out.join("a").join("index.html"), s.render("atlas.html", json!({ "site": &s.site, "entries": a.entries.len() }))?)?;
+        write(&out.join("r").join("index.html"), s.render("route.html", json!({ "site": &s.site, "entries": a.entries.len() }))?)?;
     }
     write(&out.join("404.html"), s.render("404.html", json!({ "site": &s.site }))?)?;
     about_page(&s)?;
@@ -662,7 +667,7 @@ fn copy_assets(root: &Path, out: &Path) -> Result<Value> {
         "islands_js": has_asset("islands.js"), "islands_css": has_asset("islands.css"),
         "explorer_js": has_asset("explorer.js"), "explorer_css": has_asset("explorer.css"),
         "world_js": has_asset("world.js"), "world_css": has_asset("world.css"),
-        "atlas_js": has_asset("atlas.js"), "atlas_css": has_asset("atlas.css"),
+        "atlas_js": has_asset("atlas.js"), "atlas_css": has_asset("atlas.css"), "route_js": has_asset("route.js"),
         "story_js": has_asset("story.js"), "story_css": has_asset("story.css"),
     }))
 }
@@ -720,6 +725,9 @@ fn write_search(kb: &Kb, pages: &QuestionPages, ranked: &[&Entity], atlas: Optio
             let mut entry = data::search_entry(e);
             if let Some(qs) = asked.get(e.id.as_str()) {
                 entry["q"] = json!(qs);
+            }
+            if let Some(w) = e.same_as.get("wikidata") {
+                entry["w"] = json!(w);
             }
             entry
         })

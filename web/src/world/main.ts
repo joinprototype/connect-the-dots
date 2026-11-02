@@ -1,5 +1,5 @@
 // world.js: the open-world map on /w/ (<div id="world-root" data-src="/world/">).
-// Query: ?view=earth (the Earth instead of the map of links), ?focus=<entity id>, ?src=/world-synth/
+// Query: ?view=earth (the Earth instead of the map of links), ?focus=<entity id or Q id>, ?route=<Q ids>, ?src=/world-synth/
 // (same-origin world), ?soak=1&soakSec=300, ?stats=0|1, ?labels=0.
 import './world.css';
 import { mountWorld, resolveWorldSrc } from './viewer';
@@ -15,6 +15,7 @@ if (root) {
     labels: q.get('labels') !== '0',
     radiusFactor: Number(q.get('rs')) > 0 ? Number(q.get('rs')) : 1,
     focus: q.get('focus'),
+    route: q.get('route'),
     view: q.get('view') === 'earth' ? 'earth' : 'links',
   });
   // For tests and soak runs (headless Chrome reads it over CDP). A failed world shows its own message.

@@ -1,18 +1,19 @@
 # UX vision: ask how anything connects, see the proof
 
-> This page is the design brief; it beats any earlier styling decision. Rewritten 2026-11-01: the Apple Books look (ADR-0014) gave way to dots and lines ([ADR-0022](decisions/0022-dots-and-lines.md)): warm, lively, made with love.
+> This page is the design brief; it beats any earlier styling decision. Rewritten 2026-11-01, twice: the Apple Books look (ADR-0014) gave way to dots and lines ([ADR-0022](decisions/0022-dots-and-lines.md)), and then to black on white with colour only on the dots ([ADR-0024](decisions/0024-black-on-white.md)).
 
 ## The product in one line
 
 **Ask how anything connects. See the proof.**
 
-## Focus: three places only
+## Focus: four places only
 
 | Place | What it is |
 |---|---|
 | **Ask** (home) | One question field and a shelf of story covers. Questions: "How are A and B connected?", "Who is behind X?", "Why did X happen?", "Who benefited from X?" |
 | **Stories** | Every answer plays as a story: written chapters, generated entity stories, generated path stories. Scroll or Watch; pause anywhere; "Explore from here". |
-| **Map** | The eagle view: one continuous zoom from planet (eras, regions) to a single dot and its proof. Starts from a topic or question, never from the full hairball. |
+| **Map** | The eagle view: one continuous zoom from planet (eras, regions) to a single dot and its links. Click a dot and its web appears. |
+| **Connect** | Any two of the million, and the way between them, drawn stop by stop and on the Map. |
 
 Entity pages are the "book pages" these three lead to:
 - a cover;
@@ -28,19 +29,17 @@ No social features, no editor, and no seven-lens control panels in the MVP UI. N
 
 ## Materials and type
 
-- **The idea:** dots and lines. A thick line runs through routes and story progress, and every dot has a colour.
-- **Palette:** white paper, deep indigo ink `#171a3a`, secondary `#565a80`, separators `#cfd2e8`.
-- **Print inks,** each with a job:
-  - tomato for people, cobalt for power, teal for money, sky for science and tech, amber for history, plum for ideas and faith, leaf for places (`content/schema/layers.yaml`);
-  - each story takes one ink by its id, for its cover, header and scene titles;
-  - cobalt `#2346d6` for links, tomato `#d4351f` for the one thing to press.
-- **Contrast:** every text keeps 4.5:1 on what is behind it in both modes (3:1 from 24 px, or 18.66 px bold). Text that steps back (an ended link, an empty lens, an entry outside the picked era) turns to the secondary or a light fade that still keeps 4.5:1, never fainter. `node tools/qa/sweep.mjs --a11y` checks every page.
-- **Highlighter** only for quoted proof: sun yellow `#ffe27a` on paper, a soft blue `#2d3f7d` in dark mode. Never yellow on black. Founder, 2026-10-17: "yellow on black is hard to see, hurts my eyes".
-- **Type:** Bricolage Grotesque for titles and controls, set large and tight; Literata for reading. Both hosted here. The basemap's country and capital names are drawn with its own glyphs until we host it ourselves.
-- **Shapes:** books have a spine (6 px on the left, 14 on the right), buttons are pills, cards are 16 px.
-- **Stories read on white,** in every mode: long reading needs paper (founder, 2026-11-01).
-- **Dark mode** follows the system setting everywhere else, in deep indigo.
-  - No yellow or other warm accent text on dark backgrounds.
+- **The idea:** dots and lines, black on white ([ADR-0024](decisions/0024-black-on-white.md)).
+- **Colour only on the dots.** Each kind of thing has its ink (`content/schema/layers.yaml`). Text, links, buttons, bands and rules are black, white and grey, so a colour always means something.
+- **One left edge.** The header and every page hang from one column (`--page`). The Map and the explorer take the whole window, and the header goes with them.
+- **Rules, not cards.** Grouped things sit between hairlines. A card is only for something floating over a map or picture.
+- **Links inside text are underlined,** since colour no longer marks them.
+- **Contrast:** every text keeps 4.5:1 on what is behind it in both modes (3:1 from 24 px, or 18.66 px bold). Text that steps back turns to the secondary, never fainter. `node tools/qa/sweep.mjs --a11y` checks every page.
+- **Highlight** for quoted proof only: a grey behind the words.
+- **Type:** Bricolage Grotesque for titles, set large and tight; Literata for reading; the system's own face for controls. The first two are hosted here. The basemap's country and capital names are drawn with its own glyphs until we host it ourselves.
+- **Shapes:** books have a spine (3 px on the left, 8 on the right). Buttons and fields are 8 px.
+- **Stories read on white,** in every mode, and open on a black band: long reading needs paper (founder, 2026-11-01).
+- **Dark mode** follows the system everywhere else, on black.
   - "Being verified" is a dashed neutral outline in both modes.
 
 ## Covers

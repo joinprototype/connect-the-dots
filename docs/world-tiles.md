@@ -78,4 +78,5 @@ A content world draws the same entities and links as `data/graph-slim.json`, exc
 - `maxzoom` is the first zoom (at least 3) where every tile holds at most 2,500 nodes;
 - below `maxzoom`, at most `tile_quota` nodes per tile: the best-connected nodes appear first, the rest at a deeper zoom. On a map over 20,000 nodes each community's best known are taken by their share of it, so the zoomed-out map is equally dense everywhere and hubs do not paint it one colour;
 - at most 8,192 edges per tile, keeping the links between the best-connected nodes. On a map over 20,000 nodes a link appears only once it spans under a quarter of a zoom-0 tile at this zoom (`0.25 / 2^z`), so hubs do not wash the map with long lines;
+- down to zoom 2, a map over 20,000 nodes also holds up to 2,500 lines between the centres of its communities, heaviest first: a thin sample of dots has few links of its own to draw;
 - target ≤ 150 KB gzip per tile.
