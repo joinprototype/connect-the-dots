@@ -23,6 +23,16 @@ export function replaceUrl(url: string | URL): void {
   timer = window.setTimeout(flushUrl, Math.max(0, last + MIN_INTERVAL_MS - Date.now()));
 }
 
+/** A new step in the session's history, after any pending write. Never throws. */
+export function pushUrl(url: string | URL): void {
+  flushUrl();
+  try {
+    history.pushState(history.state, '', url);
+  } catch (err) {
+    console.warn('connect-the-dot: could not update the URL', err);
+  }
+}
+
 /** Write a pending URL now (e.g. before navigating away). */
 function flushUrl(): void {
   if (timer) clearTimeout(timer);

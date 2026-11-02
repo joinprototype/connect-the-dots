@@ -20,6 +20,7 @@ The founder found the four places "too much and complicated", and picked One Box
 - [ ] S23-04 The Stories page draws stories as islands, with a plain list beside it.
 - [ ] S23-05 Names in stories link to their entries.
 - [ ] S23-06 Every old address still works. The footer lists Stories, Map, Explore and Connect.
+- [x] S23-08 Explore is a walk: an entry beside its neighbours, each named, one straight move from one to the next (ADR-0029).
 
 ### Should
 - [ ] S23-07 Home's HTML under 100 KB (352 KB today).
