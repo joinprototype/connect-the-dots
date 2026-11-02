@@ -2,7 +2,7 @@
 // reading one costs one small file, whatever the total.
 import { loadJson } from './data';
 
-const SHARDS = 4096;
+const SHARDS = 2048;
 export const KINDS = ['Person', 'Event', 'Work', 'Place', 'Organization', 'Artifact', 'Tradition', 'Concept'];
 export const INKS = ['--tomato', '--amber', '--plum', '--leaf', '--cobalt', '--sky', '--plum', '--plum'];
 
@@ -63,7 +63,7 @@ export async function storiesOf(id: string | null, e?: Entry): Promise<Story[]> 
 }
 
 /** Reads a file of long lists: the rest of each past the first 40, up to 5,000 (docs/data-contract.md). */
-const PACKS = 1024;
+const PACKS = 512;
 export const LONGEST = 5000;
 
 export async function restOf(q: string, group: number): Promise<Neighbour[]> {

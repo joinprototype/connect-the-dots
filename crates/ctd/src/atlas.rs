@@ -20,14 +20,14 @@ use crate::{
 };
 
 /// Files the entries are packed into: what keeps a million entries under a host's limit on files.
-pub const SHARDS: u32 = 4096;
+pub const SHARDS: u32 = 2048;
 /// A map node id from here up is an atlas entry: the rest is its Wikidata number.
 pub const ATLAS_IDS: u32 = 1 << 31;
 /// How many links of one kind an entry lists, best known first.
 const PER_PHRASE: usize = 40;
 /// Long lists go on past that in this many files, whatever the number of entries: a reader who asks
 /// for the rest of a list costs one file, and the site's count of files does not grow with the atlas.
-const PACKS: u32 = 1024;
+const PACKS: u32 = 512;
 /// How far a list goes: a person can read no more, and the rest are the least known.
 const TAIL: usize = 5000;
 /// Routes between any two entries run through this many landmarks, as a game finds its way across a
