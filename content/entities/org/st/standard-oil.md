@@ -31,4 +31,13 @@ claims:
     src:
       - {s: ech-bp-america, at: "article text", quote: "In 1911 the U.S. Supreme Court declared the holding company a monopoly in violation of the Sherman Antitrust Act and ordered it disbanded."}
       - {s: scotus-221us1, at: "Opinion of the Court", quote: "the delay of thirty days allowed for executing the decree was too short and should be extended so as to embrace a period of at least six months."}
+  - id: c4
+    rel: acquired
+    to: ohio-oil-company
+    when: "1889"
+    note: "Marathon Petroleum’s own history says Ohio Oil became independent again after the 1911 Supreme Court decision."
+    according_to: [marathon-petroleum]
+    src:
+      - {s: marathon-petroleum-history, quote: "John D. Rockefeller’s Standard Oil purchased Ohio Oil."}
+      - {s: marathon-petroleum-history, quote: "The Supreme Court broke up the Standard Oil trust. Ohio Oil was again an independent company."}
 ---

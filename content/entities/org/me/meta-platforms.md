@@ -59,6 +59,24 @@ claims:
       - {s: meta-platforms-2025-07-31-meta-platforms-inc-form-10, at: "Note 5. Non-Marketable Equity Investments", quote: "In June 2025, we completed an investment in Scale AI by acquiring a non-voting minority of its outstanding equity."}
       - {s: meta-platforms-2026-01-29-meta-platforms-inc-form-10, at: "Note 5. Non-Marketable Equity Investments, Non-Marketable Equity Investments Under Measurement Alternative", quote: "mostly consist of our minority investments in Scale AI for $13.80 billion, which was closed during 2025"}
       - {s: cnbc-2025-11-04-scale-ai-s-life-after, quote: "With its investment, Meta has a 49% stake in a company valued on paper at $29 billion. But Meta has no voting power, a Scale spokesperson told CNBC in June"}
+  - id: c5
+    rel: owns_stake
+    to: essilorluxottica
+    when: "2025/.."
+    percent: 3
+    as_of: "2025-12-09"
+    note: "Reported by Bloomberg in July 2025 as just under 3%, and confirmed in December as at least 3% by a member of EssilorLuxottica’s board. Neither company had commented publicly then. Not a filing."
+    src:
+      - {s: fashionunited-2025-07-09-meta-stake, quote: "Bloomberg reported on Tuesday that the US company has acquired a stake of just under three percent for approximately three billion euros."}
+      - {s: luxurytribune-2025-12-10-meta-stake, quote: "A member of the Franco-Italian group's board of directors confirmed yesterday, December 9, that Meta—the parent company of Facebook, Instagram, and WhatsApp—holds at least 3% of the capital of the high-end eyewear and frames specialist."}
+  - id: c6
+    rel: developed
+    to: ray-ban-meta-glasses
+    role: "with EssilorLuxottica"
+    note: "In EssilorLuxottica’s account the glasses are the product of a long-term partnership."
+    according_to: [essilorluxottica]
+    src:
+      - {s: essilorluxottica-2025-interim-report, quote: "On April 23, 2025, EssilorLuxottica and Meta Platforms, Inc. announced accelerating its global momentum with Meta AI advancements", by: essilorluxottica}
 ---
 
 Facebook was started by [[mark-zuckerberg]] at [[harvard-university]] in 2004 and incorporated that July. Its early backers were [[peter-thiel]] (2004), [[accel]] with [[jim-breyer]] (2005) and [[microsoft]] (2007). The company took the name Meta Platforms in 2021.

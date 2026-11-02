@@ -14,6 +14,12 @@ claims:
     to: stanford-university
     role: research fellow, Hoover Institution on War, Revolution and Peace
     src: [{s: sutton-1974-statement-international-trade-hearings, at: "title line", quote: "Former Research Fellow, Hoover Institution On War, Revolution And Peace, Stanford University"}]
+  - id: c2
+    rel: authored
+    to: wall-street-and-the-rise-of-hitler
+    when: "1976"
+    src:
+      - {s: sutton-1976-wall-street-and-the-rise-of-hitler, at: "title page", quote: "WALL STREET AND THE RISE OF HITLER ANTONY C. SUTTON Seal Beach, California Copyright © 1976", by: antony-sutton}
 ---
 
 Antony Sutton was a research fellow at Stanford's Hoover Institution. His 1974 book *Wall Street and the Bolshevik Revolution* argues that New York financiers helped the Bolsheviks; in this graph his claims are shown only as his own account.

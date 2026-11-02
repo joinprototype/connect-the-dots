@@ -17,6 +17,13 @@ claims:
     note: "Written into the 1977 Constitution as Article 6."
     src:
       - {s: ussr-constitution-1977, at: "Article 6", quote: "The leading and guiding force of the Soviet society and the nucleus of its political system, of all state organisations and public organisations, is the Communist Party of the Soviet Union."}
+  - id: c2
+    rel: authored
+    to: directive-of-22-january-1933
+    when: "1933-01-22"
+    note: "Its Central Committee, with the Council of People's Commissars; the party was then the All-Union Communist Party (Bolsheviks)."
+    src:
+      - {s: loc-2008-legal-acts-1932-33-starvation, quote: "Directive of the Central Committee of the Communist Party and the Council of People’s Commissars of January 22, 1933, on Preventing the Mass Exit of Peasants from the Regions of North Caucasus and Ukraine."}
 ---
 
 The [[bolsheviks]] renamed themselves the Russian Communist Party (Bolsheviks) at their Seventh Congress in March 1918. Under that name and its successors the party ruled the [[soviet-union]]. [[joseph-stalin]] and [[mikhail-gorbachev]] led it as General Secretary.

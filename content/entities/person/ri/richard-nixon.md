@@ -41,4 +41,11 @@ claims:
     note: "He asked Congress on 7 November for authority to reduce speed limits nationwide."
     src:
       - {s: nixon-address-energy-shortages-1973-11-07, quote: "Fifth, it would provide the Federal Government with authority to reduce highway speed limits throughout the Nation."}
+  - id: c6
+    rel: intervened_in
+    to: track-ii-1970
+    when: "1970-09-15"
+    role: "instructed the CIA on 15 September 1970 to play a direct role in organizing a military coup"
+    src:
+      - {s: senate-church-covert-action-in-chile-1975, quote: "President Nixon informed CIA Director Richard Helms that an Allende regime in Chile would not be acceptable to the United States"}
 ---

@@ -85,6 +85,12 @@ claims:
     status: draft
     note: "The Holy See places the encyclical in the setting of the 1962 crisis; a source that states the influence directly is still needed."
     src: [{s: vatican-francis-2013-pacem-in-terris, quote: "The most elderly among us can remember well the era of the Encyclical Pacem in Terris at the peak of the “Cold War”."}]
+  - id: c15
+    rel: involved
+    to: cia
+    role: "Played “a prominent part” in the crisis, in the CIA’s own history"
+    src:
+      - {s: cia-csi-first-line-of-defense-kennedy, at: "Kennedy chapter", quote: "His tragically short administration faced two major crises in which CIA played a prominent part: the Bay of Pigs invasion of Cuba in 1961 and the Cuban Missile Crisis of October 1962."}
 ---
 
 For thirteen days in October 1962 the [[united-states]] and the [[soviet-union]] came closer to nuclear war than at any other time in the [[cold-war]]. The two governments told different stories about its cause.

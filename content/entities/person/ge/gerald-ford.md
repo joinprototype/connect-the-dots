@@ -22,4 +22,18 @@ claims:
     when: "1975-12-22"
     src:
       - {s: frus-1969-76-v37-d89, at: "note 4", quote: "President Ford signed the Energy Policy and Conservation Act (EPCA) which he had first proposed on January 30 (see footnote 3, Document 33), on December 22."}
+  - id: c3
+    rel: member_of
+    to: warren-commission
+    when: "1963-11-29/1964-09"
+    role: "Commission member"
+    src:
+      - {s: nara-warren-report-foreword, at: "The Commission’s Function", quote: "Gerald R. Ford, Republican, U.S. Representative from Michigan and chairman of the House Republican Conference."}
+  - id: c4
+    rel: enacted
+    to: federal-election-campaign-act-amendments-of-1974
+    when: "1974-10-15"
+    src:
+      - {s: ford-statement-1974-10-15, at: "Statement", quote: "TODAY I am signing into law the Federal [Election] Campaign Act Amendments of 1974."}
+      - {s: ford-statement-1974-10-15, at: "Statement", quote: "And although I do have reservations about the first amendment implications inherent in the limits on individual contributions and candidate expenditures, I am sure that such issues can be resolved in the courts."}
 ---

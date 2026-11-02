@@ -89,6 +89,53 @@ claims:
       - {s: sec-33-11359-vanguard, at: "Section II", quote: "without admitting or denying the findings herein"}
       - {s: sec-34-105804-vanguard-fair-fund, quote: "Because the court in the class action rejected the settlement, Vanguard was required to pay the additional $40 million to the Fair Fund."}
       - {s: sec-34-105804-vanguard-fair-fund, quote: "The Fair Fund includes the $146,410,000.00 collected from the Respondent."}
+  - id: c10
+    rel: holds_for_clients
+    to: procter-and-gamble
+    percent: 9.6
+    shares: 224920035
+    as_of: "2023-12-29"
+    note: "Percentage and share count from the table in P&G's 2025 proxy statement, which relies on Vanguard's Schedule 13G/A of February 2024."
+    src:
+      - {s: pg-proxy-2025, quote: "Based on information as of December 29, 2023, contained in a Schedule 13G/A filed with the SEC on February 13, 2024, by The Vanguard Group."}
+  - id: fh1
+    rel: holds_for_clients
+    to: estee-lauder-companies
+    when: "2022-02-10"
+    percent: 7.7
+    shares: 17887435
+    as_of: "2022-02-10"
+    note: "7.7 per cent of Class A shares, which carry one vote each; 1.2 per cent of the total voting power. The proxy relies on Vanguard’s Schedule 13G amendment of 10 February 2022."
+    src:
+      - {s: elc-proxy-2022, quote: "The Vanguard Group(31) 17,887,435 7.7% — — 1.2%"}
+  - id: fh2
+    rel: holds_for_clients
+    to: unilever
+    when: "2025-12-31"
+    percent: 5.4
+    as_of: "2025-12-31"
+    src:
+      - {s: unilever-annual-report-2025, quote: "The Vanguard Group, Inc. with a shareholding of 5.4%"}
+  - id: fh3
+    rel: holds_for_clients
+    to: exxonmobil
+    when: "2021-05"
+    percent: 8.2
+    as_of: "2021-05"
+    note: "As stated in a law firm’s account of the 2021 proxy fight."
+    src:
+      - {s: mondaq-2021-07-07-engine-no-1-exxon, quote: "namely Vanguard (8.2%), Blackrock (6.7%) and State Street Corporation (5.7%)"}
+  - id: c11
+    rel: holds_for_clients
+    to: chevron
+    when: "../2026-01-12"
+    percent: 8.56
+    shares: 161516631
+    as_of: "2023-12-29"
+    note: "From Vanguard’s Schedule 13G/A of February 2024, as Chevron’s 2026 proxy lists it; the proxy adds that Vanguard later reported an internal realignment, after which its subsidiaries report separately."
+    src:
+      - {s: chevron-proxy-2026, at: "Security ownership table", quote: "The Vanguard Group(3) 161,516,631 — 161,516,631 8.56%"}
+      - {s: chevron-proxy-2026, at: "Security ownership table, note 3", quote: "due to an internal realignment, it no longer has, or is deemed to have, beneficial ownership over Chevron common stock beneficially owned by various subsidiaries"}
 ---
 
 The Vanguard Group was founded by [[john-c-bogle]]: incorporated in September 1974, it began operations in May 1975 and is owned by its funds, which are owned by their investors. Its index funds hold large stakes in [[tesla]], [[microsoft]] and [[amazon]] on behalf of clients.

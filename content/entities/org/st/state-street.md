@@ -112,6 +112,26 @@ claims:
     src:
       - {s: courtlistener-1-21-cr-10153, at: "Docket entry 28, 29 February 2024", quote: "Dismissal by Government"}
       - {s: courtlistener-1-21-cr-10153, at: "Docket header", quote: "Date Terminated: March 4, 2024"}
+  - id: c12
+    rel: holds_for_clients
+    to: exxonmobil
+    percent: 5.1
+    shares: 214815389
+    as_of: "2025-03-31"
+    note: "From State Street’s Schedule 13G of May 2025, as ExxonMobil’s 2026 proxy lists it."
+    src:
+      - {s: exxon-proxy-2026, at: "Certain Beneficial Owners", quote: "State Street Corporation(4) 214,815,389 5.1%"}
+      - {s: exxon-proxy-2026, at: "Certain Beneficial Owners", quote: "the firms listed below are the only beneficial owners of more than 5% of ExxonMobil’s outstanding common stock as of the date specified."}
+  - id: c13
+    rel: holds_for_clients
+    to: chevron
+    percent: 7.5
+    shares: 152617711
+    as_of: "2025-09-30"
+    note: "From State Street’s Schedule 13G of November 2025, as Chevron’s 2026 proxy lists it."
+    src:
+      - {s: chevron-proxy-2026, at: "Security ownership table", quote: "State Street Corporation(4) 152,617,711 — 152,617,711 7.50%"}
+      - {s: chevron-proxy-2026, at: "Security ownership table", quote: "The following table shows, to our knowledge, the ownership interest in Chevron common stock as of March 16, 2026 (unless otherwise noted), for (i) holders of more than 5% of our outstanding common stock;"}
 ---
 
 State Street Corporation is the parent of [[state-street-bank-and-trust]] and of the asset manager [[state-street-investment-management]]. With [[blackrock]] and [[the-vanguard-group]] it is one of the "Big Three" index-fund managers. Through its funds it holds shares in [[tesla]], [[microsoft]] and [[amazon]] for its clients; it does not own those shares for itself.

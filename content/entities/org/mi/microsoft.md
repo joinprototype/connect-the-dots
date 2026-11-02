@@ -60,6 +60,7 @@ claims:
     src:
       - {s: microsoft-10q-2025-12-31, at: "Note 1 — Accounting Policies (Investments)", quote: "We have an investment of approximately 27 percent of OpenAI on an as-converted basis accounted for under the equity method of accounting."}
       - {s: microsoft-2025-10-28-openai, quote: "Following the recapitalization, Microsoft holds an investment in OpenAI Group PBC valued at approximately $135 billion, representing roughly 27 percent on an as-converted diluted basis, inclusive of all owners – employees, investors, and the OpenAI Foundation."}
+  - {id: c8, rel: "member_of", to: ai-infrastructure-partnership, when: "2024-09/..", role: "announcing partner", src: [{s: blackrock-2025-03-19-aip, at: "opening paragraph", quote: "BlackRock, Global Infrastructure Partners (GIP), a part of BlackRock, Microsoft, and MGX today announced that NVIDIA and xAI will join the Global AI Infrastructure Investment Partnership"}, {s: blackrock-2025-03-19-aip, at: body, quote: "AIP has attracted significant capital and partner interest since its inception in September 2024"}]}
 ---
 
 Microsoft was founded in 1975 by [[bill-gates]] and [[paul-allen]] in [[albuquerque]], New Mexico, and moved to the Seattle area in 1979.

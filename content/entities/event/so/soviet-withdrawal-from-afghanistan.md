@@ -22,6 +22,24 @@ claims:
     rel: located_in
     to: afghanistan
     src: [{s: state-milestone-soviet-invasion-afghanistan, quote: "At the end of December 1979, the Soviet Union sent thousands of troops into Afghanistan and immediately assumed complete military and political control of Kabul and large portions of the country."}]
+  - id: c3
+    rel: involved
+    to: osama-bin-laden
+    role: "helped fund the anti-Soviet jihad, by the 9/11 Commission’s account"
+    src:
+      - {s: 911-commission-report-2004, quote: "he became known chiefly as a person who generously helped fund the anti-Soviet jihad."}
+  - id: c4
+    rel: involved
+    to: us-government
+    role: "with Saudi Arabia, gave secret assistance to Afghan rebel groups during the war"
+    src:
+      - {s: 911-commission-report-2004, quote: "Saudi Arabia and the United States supplied billions of dollars worth of secret assistance to rebel groups in Afghanistan fighting the Soviet occupation."}
+  - id: c5
+    rel: involved
+    to: saudi-arabia
+    role: "with the United States, gave secret assistance to Afghan rebel groups during the war"
+    src:
+      - {s: 911-commission-report-2004, quote: "Saudi Arabia and the United States supplied billions of dollars worth of secret assistance to rebel groups in Afghanistan fighting the Soviet occupation."}
 ---
 
 The Soviet Union sent troops into [[afghanistan]] in December 1979. After nearly ten years of war, more than 14,000 Soviet soldiers dead and far greater Afghan losses, the last forces left on 15 February 1989.

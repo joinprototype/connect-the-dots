@@ -58,4 +58,17 @@ claims:
     src:
       - {s: britannica-standard-oil, at: "same", quote: "Standard Oil of California acquired Standard Oil of Kentucky in 1961 and was renamed Chevron Corporation in 1984. Standard Oil Company (New Jersey) changed its name to Exxon Corporation in 1972."}
       - {s: chevron-history, at: "1980-2001", quote: "1984 Socal became Chevron Corporation to align our company identity globally."}
+  - id: c10
+    rel: involved
+    to: william-howard-taft
+    role: "President; told Congress in December 1911 what the decree directed"
+    src:
+      - {s: taft-1911-12-05-antitrust-message, at: "Message, paragraph on the Standard Oil case", quote: "directed the transfer and pro rata distribution by the New Jersey company of the stock held by it in the thirty-seven corporations to and among its stockholders"}
+  - id: c12
+    rel: led_to
+    to: clayton-antitrust-act
+    note: "Taft wrote in December 1911 that the decisions suggested the need for supplemental legislation; he did not name this act."
+    according_to: [william-howard-taft]
+    src:
+      - {s: taft-1911-12-05-antitrust-message, at: "Message, opening paragraphs", quote: "These decisions suggest the need and wisdom of additional or supplemental legislation"}
 ---

@@ -14,4 +14,11 @@ claims:
     when: "1974"
     src:
       - {s: iea-history, at: "History", quote: "The IEA’s founding members were Austria, Belgium, Canada, Denmark, Germany, Ireland, Italy, Japan, Luxembourg, The Netherlands, Norway, Spain, Sweden, Switzerland, Türkiye, United Kingdom, and the United States."}
+  - id: c2
+    rel: adopted
+    to: ban-on-corporate-and-union-contributions
+    src:
+      - {s: elections-canada-handbook-candidates-2026, at: "Contributions to candidates", quote: "Corporations, trade unions, associations and groups cannot make contributions."}
+      - {s: elections-canada-compendium, at: "Expenses", quote: "Jurisdictions that register third parties (Canada, Nova Scotia, New Brunswick, Quebec, Ontario, Alberta and British Columbia) also establish a limit on election advertising expenses incurred by them."}
+      - {s: elections-canada-handbook-candidates-2026, at: "Third parties", quote: "if the third party acts independently of the campaign, there is no contribution"}
 ---

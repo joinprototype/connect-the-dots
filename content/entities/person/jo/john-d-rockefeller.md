@@ -38,4 +38,16 @@ claims:
     src:
       - {s: rockefeller-random-reminiscences-1909, at: "ch. 6", quote: "My interest in the University of Chicago has been enhanced by the fact that while it has comprehensively considered the other features of a collegiate course, it has given so much attention to research."}
       - {s: rockefeller-random-reminiscences-1909, at: "ch. 6", quote: "he never once either wrote me a letter or asked me personally for a dollar of money for the University of Chicago."}
+  - id: c6
+    rel: owns_stake
+    to: national-city-bank-of-new-york
+    as_of: "1913"
+    src:
+      - {s: pujo-report-1913-text, at: "Section 7, National City Bank of New York", quote: "Among the principal stockholders are James Stillman, with 47,498 shares out of a total of 250,000; his son, James A. Stillman, with 2,500; J. P. Morgan &Co., with 15,000; Kidder, Peabody & Co., with 1,000; William Rockefeller, with 10,000; John D. Rockefeller, with 1,750;"}
+  - id: c7
+    rel: intervened_in
+    to: panic-of-1907
+    role: "deposited money"
+    src:
+      - {s: bruner-carr-panic-of-1907-npr, at: "excerpt", quote: "John D. Rockefeller Sr. also called on Morgan to assure him of his willingness to help. Rockefeller deposited $10 million with the Union Trust Company, and promised additional deposits of $40 million, if needed."}
 ---

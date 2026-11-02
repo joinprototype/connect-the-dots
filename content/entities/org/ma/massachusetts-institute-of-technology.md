@@ -14,4 +14,20 @@ claims:
     to: cambridge-massachusetts
     src:
       - {s: massachusetts-institute-of-technology-undated-visit-mit-massachusetts-institute, quote: "MIT is located in Cambridge, Massachusetts, across the Charles River from Boston."}
+  - id: c2
+    rel: founded
+    to: the-engine
+    when: "2016"
+    src:
+      - {s: mit-news-2020-10-27-engine-fund-ii, at: "Announcement", quote: "The Engine , the venture firm founded by MIT in 2016 to support “tough tech” companies"}
+  - id: c3
+    rel: invested_in
+    to: the-engine
+    when: "2016-10"
+    amount: 25000000
+    currency: "USD"
+    role: "anchor funding, Fund I"
+    src:
+      - {s: mit-news-2020-10-27-engine-fund-ii, at: "Announcement", quote: "MIT provided $25 million in anchor funding for The Engine’s Fund I"}
+      - {s: boston-globe-2016-10-26-mit-engine, at: "Report of the launch", quote: "But the $25 million in the new Engine investment fund will come directly from the school, not its endowment, Ruiz said."}
 ---

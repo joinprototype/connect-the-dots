@@ -14,4 +14,27 @@ claims:
     to: us-government
     src:
       - {s: treasury-2008-09-20-legislative-proposal, at: "Treasury press release hp-1150, Scale and Timing of Asset Purchases", quote: "Treasury will have authority to issue up to $700 billion of Treasury securities to finance the purchase of troubled assets."}
+  - id: c2
+    rel: contracted
+    to: jp-morgan-and-co
+    when: "1895-02-08"
+    title: "3,500,000 ounces of gold coin for 4 per cent bonds"
+    src:
+      - {s: cleveland-presidential-problems-1904, at: "ch. The Bond Issues", quote: "an agreement was made by which J. P. Morgan & Co. of New York, for themselves and for J. S. Morgan & Co. of London"}
+  - id: c3
+    rel: contracted
+    to: august-belmont-and-co
+    when: "1895-02-08"
+    title: "3,500,000 ounces of gold coin for 4 per cent bonds"
+    src:
+      - {s: cleveland-presidential-problems-1904, at: "ch. The Bond Issues", quote: "and August Belmont & Co. of New York, for themselves and for N. M. Rothschild & Son of London"}
+  - id: c61
+    rel: authored
+    to: treasury-tax-expenditures-report
+    when: "2024"
+    src:
+      - {s: treasury-tax-expenditures-fy2026, at: "Table 1", quote: "109 Deductibility of charitable contributions to educational institutions 9,090 9,310"}
+      - {s: treasury-tax-expenditures-fy2026, at: "Table 1", quote: "122 Deductibility of charitable contributions, other than education and health 46,240 47,460"}
+      - {s: treasury-tax-expenditures-fy2026, at: "Table 1", quote: "134 Deductibility of charitable contributions to health institutions 10,490 10,660"}
+      - {s: treasury-tax-expenditures-fy2026, at: "Introduction", quote: "For that reason, this document does not present a grand total for the estimated tax expenditures."}
 ---

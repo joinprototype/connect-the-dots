@@ -48,4 +48,21 @@ claims:
     src:
       - {s: akorda-2019-03-19-nazarbayev-address, at: "23rd paragraph", quote: "I remain the Chairman of the Nur Otan party, a member of the Constitutional Council."}
       - {s: aljazeera-2022-01-28-tokayev-party-chair, at: "1st paragraph", quote: "Kazakhstan’s President Kassym-Jomart Tokayev has been voted chairman of the governing party, replacing his mentor and former head of state Nursultan Nazarbayev"}
+  - id: c5
+    rel: intervened_in
+    to: kazakh-famine-genocide-question
+    when: "1992"
+    role: "a commission set up in 1992 under his auspices called the famine a genocide (Cameron) or an \"ethnocide\" (RFE/RL); in 2012 he warned against politicising it"
+    src:
+      - {s: cameron-2016-kazakh-famine, quote: "In 1992 a government commission under the auspices of Kazakhstan’s president Nursultan Nazarbayev ruled that the Kazakh famine should be considered a genocide"}
+      - {s: rferl-2025-10-23-kazakhstan-famine-plaque, quote: "The commission labeled the 1930s famine an “ethnocide,” a deliberate crime aimed at eradicating an ethnic group."}
+      - {s: cameron-2016-kazakh-famine, quote: "In May 2012, in a speech at the dedication of a memorial to the famine’s victims in Astana, Kazakhstan’s capital, Nazarbayev signaled that public discussion of the famine might resume, but in a more limited fashion"}
+      - {s: cameron-2016-kazakh-famine, quote: "But we should be wise in interpreting history and not allow the politicization of this theme"}
+  - id: c6
+    rel: founded
+    to: alzhir-museum
+    when: "2007-05-31"
+    role: "initiator"
+    src:
+      - {s: ehistory-alzhir-largest-womens-camp, quote: "The museum-memorial complex of victims of political repressions and totalitarianism ALZHIR was opened on the initiative of the President of the Republic of Kazakhstan Nursultan Nazarbayev on May 31, 2007."}
 ---

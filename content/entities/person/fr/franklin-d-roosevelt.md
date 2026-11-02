@@ -15,4 +15,10 @@ claims:
     title: "President"
     src:
       - {s: osti-einstein-letter, at: "Einstein's Letter, 1939", quote: "Initially the President was noncommittal and expressed concern over locating the necessary funds"}
+  - id: c2
+    rel: enacted
+    to: securities-exchange-act-of-1934
+    when: "1934-06-06"
+    src:
+      - {s: loc-guide-signing-securities-exchange-act-1934, quote: "Prior to the signing of the Securities Exchange Act by President Roosevelt on June 6, 1934, there was not much oversight of the United States securities market."}
 ---

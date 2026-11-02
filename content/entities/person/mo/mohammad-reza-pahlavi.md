@@ -22,4 +22,11 @@ claims:
     role: "gave assurances to U.S. Under Secretary Irwin"
     src:
       - {s: frus-1969-76-v36-d81, quote: "the assurances Irwin had received from the Shah of Iran, King Faisal of Saudi Arabia, and the Emir of Kuwait constituted a new factor"}
+  - id: c3
+    rel: intervened_in
+    to: iran-coup-1953
+    when: "1953-08"
+    role: "his order naming Zahedi prime minister was copied and circulated in Tehran"
+    src:
+      - {s: nsa-ebb-435-cia-confirms-role-1953-iran-coup, quote: "Coup operatives made copies of the document and circulated it around Tehran to help regenerate momentum following the collapse of the original plan."}
 ---

@@ -54,6 +54,33 @@ claims:
     to: seattle
     src:
       - {s: achievement-william-h-gates, at: "profile", quote: "William H. Gates III was born in Seattle, Washington"}
+  - id: c8
+    rel: funded
+    to: future-forward-usa-action
+    role: "reportedly gave"
+    amount: 50000000
+    currency: "USD"
+    note: "Reported by the Brennan Center as “reportedly”; not confirmed here by a filing."
+    src:
+      - {s: brennan-megadonors-2024, at: "article", quote: "reportedly, $50 million of Future Forward’s money has come from Microsoft founder Bill Gates"}
+  - id: c61
+    rel: funded
+    to: gates-foundation
+    when: "../2025"
+    amount: 63900000000
+    currency: "USD"
+    role: "with Melinda French Gates"
+    src:
+      - {s: gates-foundation-fact-sheet, at: "Totals", quote: "Bill Gates and Melinda French Gates total giving to the foundation from inception through 2025: $63.9 billion"}
+      - {s: gates-foundation-fact-sheet, at: "Totals", quote: "Total 2025 Charitable Support: $8.47 billion"}
+      - {s: gates-foundation-fact-sheet, at: "Totals", quote: "Foundation Trust Endowment as of December 31, 2025 : $89 billion"}
+  - id: c62
+    rel: appears_in
+    to: bill-gates-gives-to-the-rich
+    role: "subject of The Nation’s critique"
+    src:
+      - {s: the-nation-2020-03-17-gates, at: "Article", quote: "pushing privately run charter schools into states where courts and voters have rejected them, using earmarked funds to direct the World Health Organization to work on the foundation’s global health agenda"}
+      - {s: the-nation-2020-03-17-gates, at: "Article", quote: "Gates, who routinely appears on the Forbes list of the world’s most powerful people, has proved that philanthropy can buy political influence."}
 ---
 
 Bill Gates co-founded [[microsoft]] with [[paul-allen]] in 1975, in [[albuquerque]]. He later turned to philanthropy.

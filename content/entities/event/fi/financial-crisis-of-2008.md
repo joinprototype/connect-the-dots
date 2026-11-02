@@ -3,6 +3,7 @@ uid: 01M6CEXJQXHG4AJKZQNWN7SX1V
 id: financial-crisis-of-2008
 type: event
 name: "Financial crisis of 2008"
+in_sentence: the financial crisis of 2008
 aliases: ["2007–2008 financial crisis", "Great Financial Crisis"]
 summary: "The collapse of U.S. housing finance and the banking panic that followed."
 same_as: {wikidata: Q896666}
@@ -54,4 +55,9 @@ claims:
     to: goldman-sachs
     src:
       - {s: sec-2010-07-15-press-2010-123-goldman, at: "press release 2010-123, 15 July 2010", quote: "Goldman agreed to settle the SEC's charges without admitting or denying the allegations by consenting to the entry of a final judgment that provides for a permanent injunction from violations of the antifraud provisions of the Securities Act of 1933."}
+  - id: c10
+    rel: involved
+    to: standard-and-poors
+    src:
+      - {s: psi-2011-04-13-levin-coburn-report, quote: "Inaccurate AAA credit ratings introduced risk into the U.S. financial system and constituted a key cause of the financial crisis."}
 ---

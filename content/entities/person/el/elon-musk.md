@@ -141,6 +141,26 @@ claims:
       - {s: sec-2018-09-29-musk-tesla-settle, quote: "Musk and Tesla will each pay a separate $20 million penalty."}
       - {s: sec-2018-09-29-musk-tesla-settle, quote: "Musk will step down as Tesla’s Chairman and be replaced by an independent Chairman."}
       - {s: sec-2018-09-29-musk-tesla-settle, quote: "Musk and Tesla have agreed to settle the charges against them without admitting or denying the SEC’s allegations."}
+  - {id: c18, rel: "member_of", to: presidents-strategic-and-policy-forum, when: "2016-12-14/2017-06-01", role: member, note: "Named a member on 14 December 2016. On 1 June 2017 he wrote that he was departing presidential councils; TechCrunch says he had served on Trump’s economic advisory board and a manufacturing jobs council.", src: [{s: ucsb-2016-12-14-forum-additions, at: "announcement of 14 December 2016", quote: "three additional members will join the President's Strategic and Policy Forum: Travis Kalanick, CEO and Co-founder of Uber Technologies; Elon Musk, Chairman and CEO of SpaceX and Tesla; and Indra Nooyi, Chairman and CEO of PepsiCo."}, {s: techcrunch-2017-06-01-musk-leaves-councils, at: "report of 1 June 2017", quote: "Am departing presidential councils. Climate change is real. Leaving Paris is not good for America or the world.", by: elon-musk}, {s: techcrunch-2017-06-01-musk-leaves-councils, at: "report of 1 June 2017", quote: "Prior to this decision, Musk served on Trump’s economic advisory board, as well as his manufacturing jobs initiative council."}]}
+  - {id: c19, rel: "owns_stake", to: xai, when: "2026-02-02", note: "The Irish Times calls xAI “his AI startup”. The size of any stake is not given here.", src: [{s: irishtimes-2026-02-02-spacex-xai, at: "report on the X–xAI merger", quote: "merged the site with his AI startup xAI in a $33 billion deal."}]}
+  - {id: c20, rel: acquired, to: twitter, when: "2022", src: [{s: irishtimes-2026-02-02-spacex-xai, at: "report on the X–xAI merger", quote: "The billionaire acquired social media platform Twitter in late 2022"}]}
+  - id: c21
+    rel: funded
+    to: us-2024-election-fundraising
+    when: "2023/2024"
+    role: "groups backing Trump, including America PAC (more than $290 million, per year-end FEC filings)"
+    amount: 290000000
+    currency: "USD"
+    note: "A gift under the law."
+    src:
+      - {s: cnn-musk-290-million-2025, at: "article", quote: "Elon Musk spent a total of more than $290 million on the 2024 election, new federal filings show"}
+  - id: c22
+    rel: funded
+    to: building-americas-future
+    role: "reportedly gave"
+    note: "Reported by the Brennan Center as “reportedly”; not confirmed here by a filing."
+    src:
+      - {s: brennan-megadonors-2024, at: "article", quote: "Dark money groups are also working to elect Trump. The largest appears to be Building America’s Future, which has reportedly raised $100 million over four years, including donations from Musk."}
 ---
 
 Elon Musk is a South African-born entrepreneur based in the United States. He has led [[spacex]] since founding it in 2002 and has been chief executive of [[tesla]] since October 2008, after joining the company as an early investor and board chair in 2004.

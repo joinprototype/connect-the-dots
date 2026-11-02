@@ -47,4 +47,11 @@ claims:
     to: financial-crisis-of-2008
     src:
       - {s: fed-history-support-for-specific-institutions, at: "section on Lehman Brothers", quote: "They were unsuccessful, and early Monday, September 15, Lehman formally filed for bankruptcy."}
+  - id: c8
+    rel: involved
+    to: new-york-attorney-general
+    role: "sued Ernst & Young over its Lehman audits in 2010; settled in 2015"
+    src:
+      - {s: nyag-2015-04-15-ey-lehman-settlement, at: "press release", quote: "concerned Ernst & Young’s role, as Lehman’s auditor, in an alleged fraud involving Lehman’s use of “Repo 105” transactions"}
+      - {s: accountingtoday-2015-04-15-ey-pay-10-million-lehman-suit, quote: "Ernst & Young LLP agreed to pay $10 million to settle New York’s lawsuit accusing it of helping Lehman Brothers Holdings Inc. hide financial problems in the years leading to its 2008 collapse."}
 ---

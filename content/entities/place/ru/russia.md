@@ -45,6 +45,32 @@ claims:
     note: "Written on 11 March 1918, between the signing and the ratification. 'He' is the 'imperialist plunderer' of the sentence before (Germany); 'us' is Soviet Russia."
     src:
       - {s: lenin-1918-03-12-chief-task-of-our-day, at: "3rd paragraph", quote: "He compelled us to sign an incredibly burdensome and humiliating peace—as tribute for having dared to tear ourselves, even for the shortest space of time, from the iron clutches of an imperialist war."}
+  - id: c6
+    rel: adopted
+    to: rsfsr-law-1991-rehabilitation-of-repressed-peoples
+    when: "1991-04-26"
+    src:
+      - {s: caucasian-knot-2011-law-on-repressed-peoples, quote: "The Law of the RSFSR (Russian Soviet Federative Socialist Republic) \"On Rehabilitation of Repressed Nations\" was adopted on April 26, 1991."}
+      - {s: caucasian-knot-2011-law-on-repressed-peoples, quote: "The text of the law was designed by Beksultan Seinaroev and Beslan Kostoev, members of the Committee for Restoration of Ingush Autonomy."}
+      - {s: caucasian-knot-2011-law-on-repressed-peoples, quote: "Although 20 years elapsed after the adoption of the law, its Article 6 on territorial rehabilitation of the repressed nations is still unfulfilled"}
+      - {s: schmaltz-2008-our-memory-is-the-future, quote: "On April 26, 1991, Soviet Russia (the RSFSR, the largest and most dominant of the Soviet republics) went so far as to acknowledge that under Stalin it had waged a policy of “genocide” (genotsid) and “slander” (kleveta) against the various “repressed and deported peoples,”"}
+      - {s: caucasian-knot-2011-law-on-repressed-peoples, quote: "According to Doctor of Law Beksultan Seinaroev, the Law \"On Rehabilitation of Repressed Nations\" was treated by many as the \"law of hope\" for the twelve nations repressed by Stalin."}
+  - id: c7
+    rel: adopted
+    to: russian-decree-rehabilitation-2014
+    when: "2014-04-21"
+    src:
+      - {s: ria-novosti-2014-04-21-putin-decree, quote: "I would like to inform you that I have signed a decree on the rehabilitation of the Crimean Tatar population of Crimea, the Armenian population, the Germans, the Greeks and all those who suffered during the Stalin repression"}
+      - {s: ria-novosti-2014-04-21-putin-decree, quote: "Although many of them returned in the early 1990s, they were unable to reclaim the land they had possessed before their deportation."}
+      - {s: ria-novosti-2014-04-21-putin-decree, quote: "Crimea, formerly a part of Ukraine, held a referendum on reunification with Russia on March 16"}
+      - {s: ria-novosti-2014-04-21-putin-decree, quote: "Crimea, formerly a part of Ukraine, held a referendum on reunification with Russia on March 16 in reaction to dangerous nationalist rhetoric from the coup-imposed authorities in Kiev."}
+  - id: c8
+    rel: appears_in
+    to: european-parliament-recommendation-2004-eu-russia
+    role: "the recommendation ties EU partnership with Russia to the settlement of Chechnya"
+    src:
+      - {s: ep-2004-recommendation-eu-russia, quote: "Believes that the deportation of the entire Chechen people to Central Asia on 23 February 1944 on the orders of Stalin constitutes an act of genocide within the meaning of the Fourth Hague Convention of 1907 and the Convention for the Prevention and Repression of the Crime of Genocide"}
+      - {s: caucasian-knot-2004-european-parliament, quote: "The development of partnership between Russia and the European Union depends on the settlement of the situation in Chechnya, where massive human rights violations take place, the European Parliament believes."}
 ---
 
 Soviet Russia, governed from 1917 by the [[bolsheviks]], signed the [[treaty-of-brest-litovsk]] in 1918 and co-founded the [[soviet-union]] in 1922. Since December 1991 it has been the independent Russian Federation, governed by the [[russian-government]].

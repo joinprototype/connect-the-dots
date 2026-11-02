@@ -20,4 +20,19 @@ claims:
     note: "Signed by its chairman, Maurice Granville."
     src:
       - {s: frus-1969-76-v36-d212, quote: "Memorandum by the Chairmen of Exxon Corporation (Jamieson), Mobil Oil Corporation (Warner), Texaco, Inc. (Granville), and Standard Oil Company of California (Miller)"}
+  - id: c3
+    rel: member_of
+    to: iranian-oil-consortium
+    note: "The State Department’s glossary lists it, under its 1970s name, among the holders of the Consortium’s shares. How much each could lift each year followed its share."
+    src:
+      - {s: frus-1969-76-v36-terms, at: "Abbreviations and Terms: Consortium", quote: "The shares of the Consortium were held by BP, Shell, CFP, Exxon (Esso), Mobil, Socal, Texaco, Gulf, and Iricon"}
+      - {s: frus-1969-76-v36-terms, at: "Abbreviations and Terms: APQ", quote: "This is a means of determining the amount of oil that could be lifted from Iran in any one year, based on proportion of shares the companies held in the Consortium."}
+  - id: c4
+    rel: owns_stake
+    to: iranian-oil-participants
+    when: "1954"
+    percent: 7
+    note: "Listed in the CIA history as The Texas Company."
+    src:
+      - {s: cia-battle-for-iran-1981, quote: "7% each to Standard Oil Company of New Jersey, Standard Oil Company of California, Socony Mobil Oil Company, The Texas Company, and Gulf Oil Corporation"}
 ---

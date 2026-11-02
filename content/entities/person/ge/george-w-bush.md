@@ -19,4 +19,22 @@ claims:
     when: "2008-10-03"
     src:
       - {s: fcic-2011-final-report, at: "p. 372", quote: "On Friday, October 3, the House agreed, 263 to 171, and President George W. Bush signed the law,"}
+  - id: c3
+    rel: enacted
+    to: authorization-for-use-of-military-force-2001
+    when: "2001-09-18"
+    src:
+      - {s: public-law-107-40-aumf-2001, quote: "Approved September 18, 2001."}
+  - id: c4
+    rel: enacted
+    to: iraq-resolution-2002
+    when: "2002-10-16"
+    src:
+      - {s: public-law-107-243-iraq-resolution-2002, quote: "Approved October 16, 2002."}
+  - id: c5
+    rel: appears_in
+    to: senate-iraq-statements-report-2008
+    role: "three of the five speeches reviewed were his, among them Cincinnati, 7 October 2002"
+    src:
+      - {s: senate-intelligence-2008-iraq-statements-report, at: "p. 1 (scanned page, read from the image)", quote: "President George W. Bush, Speech in Cincinnati, October 7, 2002."}
 ---

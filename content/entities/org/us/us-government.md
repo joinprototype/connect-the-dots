@@ -63,6 +63,25 @@ claims:
     src:
       - {s: nara-pentagon-papers, at: "Pentagon Papers (intro)", quote: "The Pentagon Papers, officially titled \"Report of the Office of the Secretary of Defense Vietnam Task Force\", was commissioned by Secretary of Defense Robert McNamara in 1967."}
       - {s: fjc-pentagon-papers-federal-courts-2019, at: "Introduction, p. 1", quote: "commissioned by Secretary of Defense Robert McNamara and prepared by a Pentagon task force between 1967 and 1969."}
+  - id: c9
+    rel: signatory_of
+    to: treaty-of-the-little-arkansas
+    when: "1865-10"
+    src:
+      - {s: nps-sand-creek-legacies, quote: "the United States condemns and repudiates \"the gross and wanton outrages perpetrated against certain bands of Cheyenne and Arapahoe Indians\" at Sand Creek."}
+  - id: c10
+    rel: enacted
+    to: dakota-expulsion-act
+    when: "1863"
+    src:
+      - {s: mnhs-us-dakota-war-timeline, quote: "A federal law, the Dakota Expulsion Act, abrogates all Dakota treaties and makes it illegal for Dakota to live in the state of Minnesota. The act applies to all Dakota, regardless of whether they joined the war in 1862. This law has never been repealed."}
+  - id: c11
+    rel: adopted
+    to: federal-assimilation-policy
+    src:
+      - {s: doi-boarding-school-report-vol2-2024, quote: "The assimilation of Indian children through the Federal Indian boarding school system was intentional and part of that broader goal of Indian territorial dispossession for the expansion of the United States."}
+      - {s: doi-boarding-school-report-vol2-2024, quote: "From the earliest days of the Republic, the United States’ official objective—based on Federal and other records—was to sever the cultural and economic connection between Indian Tribes, Alaska Native Villages, the Native Hawaiian Kingdom, and their territories."}
+      - {s: nps-sand-creek-legacies, quote: "Government policies in the 1950s and 1960s force tribal members off the reservations and into urban areas in a continuation of assimilation policies."}
 ---
 
 The federal government of the [[united-states]], seated in [[washington-dc]]. In this graph it is also a perspective: claims marked "according to the United States government" follow official US accounts, such as [[john-f-kennedy]]'s address of 22 October 1962.

@@ -31,4 +31,13 @@ claims:
     src:
       - {s: loopt-2008-company-overview, at: "company overview", quote: "Loopt, based in Silicon Valley and backed by leading venture capital firms Sequoia Capital and New Enterprise Associates"}
       - {s: venturebeat-2007-07-23-loopt-second-round, quote: "Return backers include New Enterprise Associates and Sequoia Capital."}
+  - id: c4
+    rel: invested_in
+    to: ftx
+    when: "2021"
+    amount: 214000000
+    currency: "USD"
+    note: "As reported by Bloomberg, from people familiar with a call with Sequoia’s investors; Sequoia declined to comment."
+    src:
+      - {s: news24-2022-11-23-sequoia-apologises-for-ftx, quote: "investments totaling $214 million (R3.6 billion) in FTX.com and FTX.us across two funds"}
 ---

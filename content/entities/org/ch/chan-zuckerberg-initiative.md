@@ -18,4 +18,11 @@ claims:
     note: "445,946 Class A and 414,123,745 Class B shares (414,569,691 in all), held by Chan Zuckerberg Initiative, LLC. Facebook's filings say Mark Zuckerberg controls the voting of these shares."
     src:
       - {s: facebook-proxy-2016, at: "Security Ownership of Certain Beneficial Owners and Management, as of March 31, 2016, note 2", quote: "445,946 shares of Class A common stock and 414,123,745 shares of Class B common stock held of record by Chan Zuckerberg Initiative, LLC (CZI). The 2006 Trust is the sole member of CZI."}
+  - id: c61
+    rel: adopted
+    to: philanthropic-llc
+    when: "2015"
+    src:
+      - {s: inside-philanthropy-2026-04-23-llcs, at: "Entry 3", quote: "Founded in 2015 by Meta cofounder Mark Zuckerberg and his spouse Priscilla Chan, CZI helped popularize the LLC format for mega-givers."}
+      - {s: inside-philanthropy-2026-04-23-llcs, at: "Entry 3", quote: "Chan Zuckerberg Initiative Advocacy, a 501c4."}
 ---

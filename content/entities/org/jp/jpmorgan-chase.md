@@ -14,4 +14,10 @@ claims:
     when: "2008-03-16"
     src:
       - {s: fed-history-support-for-specific-institutions, at: "section on Bear Stearns", quote: "On Sunday, March 16, Bear Stearns accepted an offer to merge with JPMC in a transaction facilitated by the FRBNY."}
+  - id: c2
+    rel: acquired
+    to: bank-one
+    when: "2004"
+    src:
+      - {s: bbc-2005-jpmorgan-slavery, quote: "They are now closed, but were linked to Bank One, which JP Morgan bought last year."}
 ---

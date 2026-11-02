@@ -71,4 +71,10 @@ claims:
     to: apple
     when: "2006-08/2009-08-03"
     src: [{s: apple-2009-08-03-schmidt-resigns, quote: "Dr. Eric Schmidt, chief executive officer of Google, is resigning from Apple’s Board of Directors, a position he has held since August 2006."}]
+  - id: c10
+    rel: funded
+    to: new-america
+    note: "Teachout reports the New York Times's figure of more than $21 million from Google and from Eric Schmidt and his family foundation together; this story has not read the Times article."
+    src:
+      - {s: intercept-teachout-2017-08-31, at: "Essay", quote: "According to the Times, more than $21 million came to New America from Google and from Eric Schmidt and his family foundation (Schmidt is the executive chairman of Google’s parent company, Alphabet)."}
 ---

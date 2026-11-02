@@ -21,4 +21,13 @@ claims:
     title: "pleaded guilty to the charges in the break-in indictment"
     src:
       - {s: wspf-report-1975, at: "Appendix K, Chronology, p. 253", quote: "Hunt pleads guilty to charges in break-in indictment."}
+  - id: c3
+    rel: appears_in
+    to: hsca-final-report
+    role: "Named by critics; investigated by the committee"
+    note: "The claim that Hunt was one of three men arrested near Dealey Plaza was published by Weberman and Canfield, according to a 1978 Spotlight article that Hunt sued over; the committee compared photographs of the three men with Hunt and others and matched only one man, whom it could not link to the assassination."
+    src:
+      - {s: us-11th-circuit-1983-hunt-v-liberty-lobby, at: "Part I, quoting the 14 August 1978 Spotlight", quote: "published pictures of three apparent bums who were arrested at Dealy Plaza just after President Kennedy's murder, but who were strangely released without any record of the arrest having been made by the Dallas police. One of the tramps the authors identified as Hunt."}
+      - {s: nara-hsca-report-part1b, at: "Section on photographic analysis, note 23", quote: "a rumor was circulating that the committee had uncovered a memorandum in CIA files indicating Hunt was in Dallas on November 22, 1963. The rumor was not founded on fact."}
+      - {s: nara-hsca-report-part1b, at: "Photographic analysis", quote: "Of all the subjects compared, only Fred Lee Chrisman, a conservative active in New Orleans at the time of the assassination, was found to have facial measurements consistent with any of the tramps."}
 ---

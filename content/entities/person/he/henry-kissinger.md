@@ -32,4 +32,11 @@ claims:
     to: international-energy-agency
     src:
       - {s: state-milestone-oil-embargo, quote: "It also prompted the creation of the International Energy Agency proposed by Kissinger."}
+  - id: c5
+    rel: intervened_in
+    to: track-ii-1970
+    when: "1970-09-12"
+    role: "on 12 September 1970 told Helms by telephone, “We will not let Chile go down the drain,” the National Security Archive reports"
+    src:
+      - {s: nsa-ebb-437-kissinger-and-chile-1973, quote: "We will not let Chile go down the drain,", by: henry-kissinger}
 ---

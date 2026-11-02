@@ -32,6 +32,15 @@ claims:
     src:
       - {s: loc-country-study-soviet-union-1991, at: "Chapter 2, p. 82", quote: "Malenkov found a formidable rival in Nikita S. Khrushchev, whom the Presidium elected first secretary"}
       - {s: frus-1969-76-v14-persons, at: "List of persons", quote: "Khrushchev, Nikita S., former First Secretary of the Central Committee of the Soviet Communist Party and Chairman of the Soviet Council of Ministers (1953–1964)"}
+  - id: c4
+    rel: authored
+    to: khrushchev-secret-speech
+    when: "1956-02-25"
+    src:
+      - {s: khrushchev-1956-secret-speech, quote: "At the Twentieth Congress of the CPSU February 24-25 1956, Khrushchev delivered a report in which he denounced Stalin’s crimes and the ‘cult of personality’ surrounding Stalin."}
+      - {s: khrushchev-1956-secret-speech, quote: "Ukrainians avoided meeting this fate only because there were too many of them and there was no place to which to deport them. Otherwise, [Stalin] would have deported them also."}
+      - {s: khrushchev-1956-secret-speech, quote: "how it is possible to make whole nations responsible for inimical activity, including women, children, old people, Communists and Komsomols, to use mass repression against them, and to expose them to misery and suffering for the hostile acts of individual persons or groups of persons."}
+      - {s: schmaltz-2008-our-memory-is-the-future, quote: "he made no mention of Stalin’s policy toward Volga and other ethnic Germans."}
 ---
 
 Nikita Khrushchev led the Soviet Union during the [[cuban-missile-crisis]]. As Chairman of the Council of Ministers he headed the [[soviet-government]]; in July 1962 he agreed with [[fidel-castro]] to place Soviet missiles in [[cuba]].

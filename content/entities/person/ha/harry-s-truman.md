@@ -17,4 +17,11 @@ claims:
       - {s: osti-surrender, at: "Japan Surrenders", quote: "on July 25, 1945, President Harry S. Truman gave the order to commence atomic attacks on Japan as soon as possible."}
       - {s: osti-war1945, at: "The War Enters Its Final Phase", quote: "Truman had not been privy to many of Roosevelt's internal policy deliberations and had to be briefed extensively in his first weeks in office."}
       - {s: truman-1949-ussr, at: "Statement text", quote: "We have evidence that within recent weeks an atomic explosion occurred in the U.S.S.R."}
+  - id: c2
+    rel: chair_of
+    to: truman-committee
+    when: "1942"
+    title: "chairman"
+    src:
+      - {s: truman-committee-hearings-part-11-rubber-1942, at: "title page", quote: "SPECIAL COMMITTEE INVESTIGATING THE NATIONAL DEFENSE PROGRAM HARRY S. TRUMAN, Missouri, Chairman"}
 ---

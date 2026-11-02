@@ -65,6 +65,16 @@ claims:
     to: united-states
     src:
       - {s: sec-amzn-13ga-2008-02-14-bezos, at: "Item 2(c)", quote: "Mr. Bezos is a United States citizen."}
+  - id: c10
+    rel: acquired
+    to: the-washington-post
+    when: "2013-08"
+    amount: 250000000
+    currency: "USD"
+    note: "Bought for his personal portfolio; NPR said the deal did not involve Amazon."
+    src:
+      - {s: npr-2013-washington-post-sold-to-bezos, quote: "Bezos will pay $250 million in cash for the venerable journalism institution."}
+      - {s: npr-2013-bezos-tells-post-employees, quote: "The Washington Post goes into his personal portfolio. The deal does not involve Amazon."}
 ---
 
 Jeff Bezos was born in [[albuquerque]]. He founded [[amazon]] in 1994 and was its chief executive from 1996 to 2021, and he founded the spaceflight company [[blue-origin]] in 2000.

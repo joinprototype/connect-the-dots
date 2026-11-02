@@ -24,4 +24,5 @@ claims:
     src:
       - {s: sec-2017-01-13-citadel-securities, quote: "Without admitting or denying the findings, Citadel Securities agreed to be censured and pay $5.2 million in disgorgement of ill-gotten gains plus interest of more than $1.4 million and a penalty of $16 million."}
       - {s: sec-2017-01-13-citadel-securities, quote: "The SEC’s order finds that Citadel Securities, which has since discontinued the two algorithms at issue, violated Section 17(a)(2) of the Securities Act from late 2007 through January 2010."}
+  - {id: c3, rel: "invested_in", to: texas-stock-exchange, when: "2024-05", note: "The TRADE says Citadel Securities had not responded to a request for comment; the exchange’s chief executive named it among investors.", src: [{s: thetrade-2024-06-txse, at: opening, quote: "Texas Stock Exchange (TXSE) has raised $120 million from around a dozen investors including BlackRock and Citadel Securities in a funding round closed in May."}]}
 ---

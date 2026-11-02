@@ -23,6 +23,12 @@ claims:
     title: President of Russia
     when: "2012/.."
     src: [{s: kremlin-putin-biography, quote: "Vladimir Putin was elected President of Russia on March 4, 2012."}]
+  - id: c3
+    rel: signatory_of
+    to: russian-decree-rehabilitation-2014
+    when: "2014-04-21"
+    src:
+      - {s: ria-novosti-2014-04-21-putin-decree, quote: "I would like to inform you that I have signed a decree on the rehabilitation of the Crimean Tatar population of Crimea, the Armenian population, the Germans, the Greeks and all those who suffered during the Stalin repression"}
 ---
 
 Vladimir Putin succeeded [[boris-yeltsin]] as President of Russia on 31 December 1999. His statements on the Soviet collapse are recorded here as the [[russian-government]]'s account: in 2005 he called it "a major geopolitical disaster of the century", and in 2022 he blamed the republics' [[soviet-right-of-secession|right to secede]].

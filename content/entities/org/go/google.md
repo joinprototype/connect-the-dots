@@ -71,6 +71,22 @@ claims:
     currency: "USD"
     src:
       - {s: google-8k-2012-12-21, at: "Item 8.01", quote: "In December 2012, Google Ventures invested approximately $1.5 million in the Series D preferred stock financing of 23andMe, Inc."}
+  - id: c8
+    rel: funded
+    to: new-america
+    note: "Google says it funds many policy groups and would keep funding New America. It says it played no role in Barry Lynn's dismissal; New America says the same."
+    src:
+      - {s: intercept-teachout-2017-08-31, at: "Essay", quote: "For years, Google has provided funding to New America as part of its philanthropic giving."}
+      - {s: fortune-2017-08-30-new-america-google, at: "Article", quote: "noting that Google would continue to fund New America"}
+  - id: c9
+    rel: funded
+    to: global-antitrust-institute
+    when: "2017/2018"
+    note: "The Times reported $200,000 in 2017 and $300,000 in 2018. Invoices in a House hearing record show $100,000 (December 2017) and $200,000 (August 2018)."
+    src:
+      - {s: nyt-sltrib-2020-gai, at: "Article", quote: "In 2017, Google, for example, donated $200,000 to the group and contributed an additional $300,000 in 2018."}
+      - {s: gai-invoice-2017-12-14, at: "Invoice", quote: "FROM: Global Antitrust Institute DATE: December 14, 2017 AMOUNT: $100,000.00 RE: P.O. # 429829; General Support"}
+      - {s: gai-invoice-2018-08-27, at: "Invoice", quote: "FROM: Global Antitrust Institute DATE: August 27, 2018 AMOUNT: $200,000.00 RE: General Support; Support for Economics Seminars"}
 ---
 
 Google raised $25 million in 1999 in a round co-led by [[kleiner-perkins]], whose partner [[john-doerr]] joined its board. In 2004 it bought [[keyhole-inc|Keyhole]], an [[in-q-tel]] portfolio company, and turned its software into [[google-earth]].

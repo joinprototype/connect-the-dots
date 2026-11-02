@@ -20,4 +20,10 @@ claims:
     role: "received Kissinger at Aswan"
     src:
       - {s: state-milestone-shuttle-diplomacy, quote: "On January 11, Kissinger arrived in Aswan, Egypt where President Anwar Sadat worked during the winter."}
+  - id: c3
+    rel: signatory_of
+    to: camp-david-accords
+    when: "1978-09-17"
+    src:
+      - {s: avalon-camp-david-accords-1978, quote: "Muhammad Anwar al-Sadat, President of the Arab Republic of Egypt, and Menachem Begin, Prime Minister of Israel, met with Jimmy Carter, President of the United States of America, at Camp David"}
 ---

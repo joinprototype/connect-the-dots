@@ -26,4 +26,18 @@ claims:
     role: "taught constitutional law"
     src:
       - {s: obama-whitehouse-biography, at: "Biography", quote: "he returned to Chicago to help lead a voter registration drive, teach constitutional law at the University of Chicago, and remain active in his community."}
+  - id: c4
+    rel: enacted
+    to: stock-act-2012
+    when: "2012-04-04"
+    src:
+      - {s: obama-2012-04-04-stock-act-signing, at: "Remarks", quote: "So I'm very proud to sign this bill into law.", by: barack-obama}
+      - {s: public-law-112-105-stock-act, at: "End of the Act", quote: "Approved April 4, 2012."}
+  - id: c5
+    rel: enacted
+    to: public-law-113-7
+    when: "2013-04-15"
+    src:
+      - {s: whitehouse-2013-04-15-s716-statement, at: "Statement", quote: "On Monday, April 15, 2013, the President signed into law: S. 716"}
+      - {s: public-law-113-7-s716, at: "Heading", quote: "Apr. 15, 2013 - [S. 716]"}
 ---

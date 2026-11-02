@@ -29,4 +29,10 @@ claims:
     title: "judgment reversed; new trial ordered"
     src:
       - {s: standard-oil-indiana-v-us-164f376, at: "end of opinion", quote: "The judgment of the District Court is reversed and the case remanded with instructions to grant a new trial, and proceed further in accordance with this opinion."}
+  - id: c4
+    rel: became
+    to: amoco
+    when: "1985"
+    src:
+      - {s: britannica-standard-oil, at: "section on the aftermath", quote: "Standard Oil (Indiana) absorbed Standard Oil of Nebraska in 1939 and Standard Oil of Kansas in 1948 and was renamed Amoco Corporation in 1985."}
 ---

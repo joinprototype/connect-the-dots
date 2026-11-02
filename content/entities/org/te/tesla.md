@@ -28,6 +28,7 @@ claims:
     src:
       - {s: sec-2018-09-29-musk-tesla-settle, quote: "Musk and Tesla will each pay a separate $20 million penalty."}
       - {s: sec-2018-09-29-musk-tesla-settle, quote: "Musk and Tesla have agreed to settle the charges against them without admitting or denying the SEC’s allegations."}
+  - {id: c3, rel: "headquartered_in", to: austin-texas, src: [{s: tesla-proxy-2025, at: "Ownership of Securities", quote: "Unless otherwise indicated, all persons named below can be reached at Tesla, Inc., 1 Tesla Road, Austin, Texas 78725."}]}
 ---
 
 Tesla, Inc. (originally Tesla Motors) makes electric vehicles and energy products. [[elon-musk]] invested in the company in 2004 and has been its chief executive since October 2008.

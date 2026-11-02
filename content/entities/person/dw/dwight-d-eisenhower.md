@@ -31,6 +31,13 @@ claims:
     src:
       - {s: statute-70-732, at: "70 Stat. 732, ch. 795", quote: "That the national motto of the United States is hereby declared to be \"In God we trust.\""}
       - {s: frus-1958-60-v01-persons, quote: "Eisenhower, Dwight D., President of the United States"}
+  - id: c4
+    rel: intervened_in
+    to: guatemala-coup-1954
+    when: "1953-08"
+    role: "authorized the operation in August 1953, according to the National Security Archive"
+    src:
+      - {s: nsa-ebb-4-cia-and-assassinations-guatemala-1954, quote: "PBSUCCESS, authorized by President Eisenhower in August 1953, carried a $2.7 million budget"}
 ---
 
 Dwight D. Eisenhower was President of the United States from 1953 to 1961. After [[sputnik-1]] he signed the law that created [[nasa]] in 1958.

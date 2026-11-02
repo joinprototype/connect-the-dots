@@ -24,6 +24,12 @@ claims:
     src:
       - {s: ibm-history-personal-computer, quote: "On August 12, 1981, Estridge unveiled the IBM PC at New York’s Waldorf Hotel."}
       - {s: microsoft-facts, at: "Important Dates, Aug. 12, 1981", quote: "IBM introduces its personal computer with Microsoft’s 16-bit operating system, MS-DOS 1.0"}
+  - id: c3
+    rel: acquired
+    to: dehomag
+    note: "In the account of the 2001 review in American Heritage; the date is given only as after the First World War."
+    src:
+      - {s: allen-2001-american-heritage-hitler-and-ibm, at: "article text", quote: "After World War I, Dehomag was going bankrupt, so Watson, now in charge of what was becoming IBM, bought it out, leaving Heidinger with just 10 percent ownership."}
 ---
 
 IBM launched its first personal computer, the [[ibm-pc]], in August 1981. It chose an operating system from a small Seattle company, [[microsoft]], which in turn had bought it from [[seattle-computer-products]].
