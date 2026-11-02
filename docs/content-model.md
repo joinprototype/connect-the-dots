@@ -184,6 +184,7 @@ founded:
   sensitive: false            # true = stricter sourcing; a claim short of it is withheld
   kinship: false              # true = a family relation, gathered into "Family ties"
   attributed: false           # true = an interpretation: `according_to` is required
+  seals: false                # true = a tale the record does not support: the entry making the claim may carry no route
   identity: false             # true = the same body under a new name (`became`): answers include earlier forms
   noun: false                 # true = the label is not a verb ("CEO of"): sentences put it after a comma
   inverse_reads: comma        # how the inverse joins a sentence: comma ("founded by"), verb ("includes") or list ("board members")

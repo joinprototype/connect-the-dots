@@ -42,6 +42,11 @@ The founder, after 0.4.0: stories "sometimes feel empty", get to a million dots 
 - [x] A dot's card lists its stories, then those one link away (`data/stories.json`). Hand-written dots show their links.
 - [x] `ctd gaps` ([ADR-0025](../decisions/0025-leads-not-links.md)): what the record may be missing, in about 2 seconds. First run: 29 wrong or missing Wikidata ids fixed, 44 links checked and written, 14 leads rejected.
 - [x] Three stories by agents, each reviewed: The Sealed Train, Ninety-Five Theses, The Oil Weapon. 721 entries, 1,304 claims, 16 stories.
+- [x] 55 more stories: one writer each, a separate skeptic, fixes, then a read by the lead. Every first draft failed its check, softening and leaving out what the sources say more often than overreaching. 3,286 entries, 6,218 claims, 2,666 sources, 71 stories.
+- [x] Routes stay off a reading and off a tale: `influenced` is closed to routes, an event's answer has its own relation (`answered_by`), and a relation marked `seals` (`tale_about`) makes `ctd check` refuse any route through a false story.
+- [x] A generated question earns its page only if it can be answered: "who benefited" needs someone who gained (`needs`), and a country has no "who is behind".
+- [x] The quote check reads saved source text only, so a generator script can no longer vouch for its own quote.
+- [x] Atlas shards halved (2,048 and 512 files) to keep the site under Cloudflare's 20,000 files: 18,073 now.
 
 ### Not in this sprint
 - Routes through the atlas.

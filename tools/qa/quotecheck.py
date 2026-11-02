@@ -11,7 +11,7 @@ def squeeze(s):
 saved, base = pathlib.Path(sys.argv[1]), sys.argv[2] if len(sys.argv) > 2 else 'main'
 added = subprocess.run(['git', 'diff', base, '--', 'content'], capture_output=True, text=True, check=True).stdout
 quotes = [json.loads(q) for line in added.splitlines() if line.startswith('+') for q in re.findall(r'quote: ("(?:[^"\\]|\\.)*")', line)]
-texts = [squeeze(p.read_text(errors='ignore')) for p in saved.rglob('*') if p.is_file() and 'src' in p.parts]
+texts = [squeeze(p.read_text(errors='ignore')) for p in saved.rglob('*') if p.is_file() and 'src' in p.parts and p.suffix not in ('.pdf', '.raw', '.png', '.jpg')]
 joined = '\0'.join(texts)
 missing = [q for q in quotes if squeeze(q) not in joined]
 for q in missing:
