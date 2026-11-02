@@ -16,4 +16,10 @@ claims:
     title: "President"
     src:
       - {s: ford-library-key-speeches, at: "Remarks Upon Taking the Oath of Office as President, August 9, 1974", quote: "My fellow Americans, our long national nightmare is over."}
+  - id: c2
+    rel: enacted
+    to: energy-policy-and-conservation-act
+    when: "1975-12-22"
+    src:
+      - {s: frus-1969-76-v37-d89, at: "note 4", quote: "President Ford signed the Energy Policy and Conservation Act (EPCA) which he had first proposed on January 30 (see footnote 3, Document 33), on December 22."}
 ---
