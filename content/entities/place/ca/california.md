@@ -3,6 +3,7 @@ uid: 01M6DMVXXST0VPYT6KQQ87YT6Z
 id: california
 type: place
 name: "California"
+not_asked: [behind]
 summary: "State of the United States."
 same_as: {wikidata: Q99}
 coords: [-120, 37]

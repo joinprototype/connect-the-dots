@@ -3,6 +3,7 @@ uid: 01M53TK2R8WBKG7KWGC9A563RV
 id: united-states
 type: place
 name: United States
+not_asked: [behind]
 in_sentence: "the United States"
 aliases: [United States of America, USA, US]
 summary: Country in North America.

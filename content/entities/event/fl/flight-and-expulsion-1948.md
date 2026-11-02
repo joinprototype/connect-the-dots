@@ -3,6 +3,7 @@ uid: 01M6DJGJ5TMB4C5QR32BY5BN6X
 id: flight-and-expulsion-1948
 type: event
 name: "Flight and expulsion of Palestinians, 1948"
+in_sentence: "the flight and expulsion of Palestinians, 1948"
 aliases: ["Nakba", "Palestinian exodus of 1948", "Flight and expulsion of Arab residents, 1948"]
 summary: "Flight or expulsion of 700,000 to 750,000 Palestinians in 1948, by Avi Shlaim's count. Palestinians call the events of 1948 the Nakba; historians differ on the causes."
 when: "1947/1949"

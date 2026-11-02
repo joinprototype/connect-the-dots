@@ -3,6 +3,7 @@ uid: 01M6DV5QDJSM84C33ZEKBG841X
 id: vietnam-war
 type: event
 name: "Vietnam War"
+in_sentence: "the Vietnam War"
 summary: "The war in Vietnam in which the U.S. fought on the side of South Vietnam; the U.S. military casualty file begins in 1956."
 claims:
   - id: c1

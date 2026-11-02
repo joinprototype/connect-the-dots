@@ -181,6 +181,10 @@ pub struct Question {
     /// Entity types the question may be asked about.
     #[serde(default)]
     pub subjects: Vec<String>,
+    /// A group that must have a line for the question to earn a page: "who benefited" with only
+    /// losers to name would ask the wrong question.
+    #[serde(default)]
+    pub needs: Option<String>,
     /// What every answer page shows, and what it does not: both are printed on every page.
     pub shows: String,
     pub not: String,

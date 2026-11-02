@@ -3,6 +3,7 @@ uid: 01M6DP9BM9RYNEE5ZQSNVFVJR8
 id: congo-free-state
 type: org
 name: "Congo Free State"
+not_asked: [behind]
 aliases: ["Independent State of the Congo", "Congo State"]
 summary: "State in Central Africa from 1885 to 1908, ruled by Leopold II as its sovereign, apart from Belgium; Belgium took it over on 15 November 1908."
 same_as: {wikidata: Q76048}

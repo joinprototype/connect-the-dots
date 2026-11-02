@@ -3,6 +3,7 @@ uid: 01M6DQG20X67PM3TQSP85V0SE9
 id: price-revolution
 type: event
 name: "The Price Revolution"
+in_sentence: "the Price Revolution"
 summary: "The long rise in European prices from about 1520 to 1650."
 when: "1520/1650"
 claims:

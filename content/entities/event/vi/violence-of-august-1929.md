@@ -3,6 +3,7 @@ uid: 01M6DJGJ63R1FA9322MW412BY4
 id: violence-of-august-1929
 type: event
 name: "Violence in Palestine, August 1929"
+in_sentence: "the violence in Palestine, August 1929"
 summary: "Riots in which, by the Peel Commission's count, 133 Jews and 116 Arabs were killed."
 when: "1929-08"
 claims:

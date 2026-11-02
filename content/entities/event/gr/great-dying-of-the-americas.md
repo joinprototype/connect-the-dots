@@ -3,6 +3,7 @@ uid: 01M6DQA2YG19ST4ZTG8WNDJX1N
 id: great-dying-of-the-americas
 type: event
 name: "The Great Dying of the Americas"
+in_sentence: "the Great Dying of the Americas"
 aliases: ["Great Dying"]
 summary: "The collapse of the Native population of the Americas after 1492. Estimates of the loss run from 40 to 95 percent."
 when: "1492/1650"

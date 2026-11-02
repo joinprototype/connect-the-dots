@@ -3,6 +3,7 @@ uid: 01M54T521PBTWVKDK0HFQ41ZPH
 id: kazakhstan
 type: place
 name: Kazakhstan
+not_asked: [behind]
 aliases: [Republic of Kazakhstan, Kazakh SSR]
 summary: "Country in Central Asia; a Soviet republic until December 1991."
 same_as: {wikidata: Q232}

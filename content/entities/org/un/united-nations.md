@@ -3,6 +3,7 @@ uid: 01M6DJGJ6RZ6JEDK2NHAYBZ7E9
 id: united-nations
 type: org
 name: "United Nations"
+not_asked: [behind]
 summary: "International organization founded in 1945."
 when: "1945/.."
 claims:

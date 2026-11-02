@@ -3,6 +3,7 @@ uid: 01M6DPB4GKPGFYVQ315RE6WJ1R
 id: bengal
 type: place
 name: "Bengal"
+not_asked: [behind]
 summary: "Historical region of eastern South Asia; its revenue was collected by the East India Company from 1765."
 same_as: {wikidata: Q80338}
 coords: [88.3, 24.0]

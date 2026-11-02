@@ -12,6 +12,7 @@
 #             reach, and each line names that entry (a dispute of a study about {x}: ADR-0019).
 #             `empty` is said when no link answers the group; without it an empty group is left out.
 #   min       names an answer needs for its own page (two or more accounts always earn one)
+#   needs     a group label that must have a line, or the question earns no page
 # `ctd check` refuses family, sensitive and index-fund relations here, family types as subjects,
 # and the banned words below.
 banned_words: [mastermind, puppet, orchestrated, controlled, secretly, cabal, plot]
@@ -51,3 +52,4 @@ questions:
       - {label: Lost, in: [harmed_by], empty: "No account in our sources says who lost."}
       - {label: Disputes the finding, via: [appears_in], in: [disputes_finding]}
     min: 1
+    needs: Gained

@@ -3,6 +3,7 @@ uid: 01M6DSNNGJ6QWQ3KGM3T96E8R9
 id: guatemala-coup-1954
 type: event
 name: "The 1954 coup in Guatemala"
+in_sentence: "the 1954 coup in Guatemala"
 aliases: ["Operation PBSUCCESS"]
 summary: "Overthrow of President Árbenz in June 1954, in a CIA operation called PBSUCCESS."
 same_as: {wikidata: Q976887}

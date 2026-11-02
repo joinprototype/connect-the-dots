@@ -3,6 +3,7 @@ uid: 01M6DPC3SJJ410KEYZZAMMJRA8
 id: great-chinese-famine
 type: event
 name: "Great Chinese Famine"
+in_sentence: "the Great Chinese Famine"
 aliases: ["Great Leap famine", "three years of natural disaster"]
 summary: "Famine in China in the years of the Great Leap Forward, dated 1958 to 1962 in the titles of Yang Jisheng's and Dikötter's books; the death toll is disputed."
 when: "1958/1962"

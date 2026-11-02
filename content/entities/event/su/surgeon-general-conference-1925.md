@@ -3,6 +3,7 @@ uid: 01M6DRF7HT6KB7ZZ4BKSDY6WKP
 id: surgeon-general-conference-1925
 type: event
 name: "Surgeon General’s conference on tetraethyl lead, 1925"
+in_sentence: "the Surgeon General’s conference on tetraethyl lead, 1925"
 summary: "Conference called by the Surgeon General in Washington to ask whether tetraethyl lead gasoline was a public health question."
 when: "1925-05-20"
 claims:

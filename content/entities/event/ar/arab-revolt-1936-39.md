@@ -3,6 +3,7 @@ uid: 01M6DJGJ5PYN3GDWKE7KRTY549
 id: arab-revolt-1936-39
 type: event
 name: "Arab strike and revolt, 1936–1939"
+in_sentence: "the Arab strike and revolt, 1936–1939"
 summary: "General strike and armed revolt that began in April 1936 and led Britain to send the Peel Commission."
 when: "1936/1939"
 claims:

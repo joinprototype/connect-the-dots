@@ -106,7 +106,8 @@ impl<'a> Answer<'a> {
 
     /// `min` names, or two accounts, earn a page.
     pub fn earns_page(&self, q: &Question) -> bool {
-        self.names >= q.min || self.accounts_total() >= 2
+        let answered = |label: &String| q.groups.iter().position(|g| g.label == *label).is_some_and(|i| !self.unanswered.contains(&i));
+        q.needs.as_ref().is_none_or(answered) && (self.names >= q.min || self.accounts_total() >= 2)
     }
 
     /// `<question>/<entity id>`: the page's id in graph.json, featured.yaml and its URL.
