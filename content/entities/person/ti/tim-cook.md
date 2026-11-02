@@ -37,4 +37,10 @@ claims:
     when: "1998/.."
     src:
       - {s: apple-leadership-tim-cook, at: "Biography", quote: "He joined Apple in 1998 and served as the company’s CEO from 2011 to 2026."}
+  - id: c5
+    rel: worked_at
+    to: ibm
+    role: "director of North American Fulfillment"
+    src:
+      - {s: auburn-2005-10-engineering-alumnus-cook, at: "News item", quote: "spent 12 years with IBM as director of North American Fulfillment"}
 ---

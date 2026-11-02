@@ -13,4 +13,11 @@ claims:
     role: "professor"
     src:
       - {s: isoc-1997-brief-history-of-the-internet, at: "Section 2 (ARPANET)", quote: "his Network Measurement Center at UCLA was selected to be the first node on the ARPANET. All this came together in September 1969 when BBN installed the first IMP at UCLA and the first host computer was connected."}
+  - id: c2
+    rel: educated_at
+    to: massachusetts-institute-of-technology
+    when: "1963"
+    title: "Ph.D."
+    src:
+      - {s: kleinrock-ucla-home-page, at: "Biography", quote: "Dr. Kleinrock received his Ph.D. from MIT in 1963."}
 ---

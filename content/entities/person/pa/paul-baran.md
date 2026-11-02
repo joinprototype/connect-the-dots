@@ -37,4 +37,10 @@ claims:
       - {s: wired-2001-03-baran-brand, at: "Answer on the Air Force and AT&T", quote: "It's not going to work. And furthermore, we're not going into competition with ourselves."}
       - {s: cbi-oh-182-baran-1990, at: "p. 33", quote: "At this time the General Counsel of the Department of Defense determined that as a long distance communications system, the task of building the new network would be assigned to the Defense Communications Agency."}
       - {s: wired-2001-03-baran-brand, at: "Answer on the 1966 decision", quote: "I pulled the plug on the whole baby."}
+  - id: c4
+    rel: educated_at
+    to: ucla
+    title: "master's degree in engineering"
+    src:
+      - {s: rand-2011-03-28-baran-obituary, at: "Biography", quote: "Taking night classes at UCLA, he earned a master's degree in engineering"}
 ---

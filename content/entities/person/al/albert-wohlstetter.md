@@ -24,4 +24,10 @@ claims:
       - {s: rand-p-1472-wohlstetter-1958, at: "The Presumed Automatic Balance", quote: "Deterrence, however, is not automatic. While feasible, it will be much harder to achieve in the 1960's than is generally believed."}
       - {s: rand-p-1472-wohlstetter-1958, at: "The Presumed Automatic Balance", quote: "One outmoded A-bomb dropped from an obsolete bomber might destroy a great many supersonic jets and ballistic missiles."}
       - {s: rand-p-1472-wohlstetter-1958, at: "The Delicacy of the Balance of Terror", quote: "I hope these illustrations will suggest that assuring ourselves the power to strike back after a massive thermonuclear surprise attack is by no means as automatic as is widely believed."}
+  - id: c3
+    rel: worked_at
+    to: university-of-chicago
+    role: "professor"
+    src:
+      - {s: issforum-roundtable-10-17-wohlstetter, at: "Introduction", quote: "he was an influential nuclear strategist at RAND, and later a professor at the University of Chicago"}
 ---

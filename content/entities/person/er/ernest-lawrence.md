@@ -19,4 +19,11 @@ claims:
     to: manhattan-project
     src:
       - {s: nara-calutron, at: "Oak Ridge and the calutrons", quote: "Ernest Lawrence, a leader of the Manhattan Project and the inventor of the calutron, employed Ph.D. students to operate the calutrons at the University of California, Berkeley."}
+  - id: c3
+    rel: educated_at
+    to: university-of-chicago
+    role: "attended"
+    note: "A year of physics there, between his M.A. at Minnesota and his Ph.D. at Yale."
+    src:
+      - {s: nobel-1939-lawrence-biographical, at: "Biographical", quote: "He spent a year at University of Chicago doing physics"}
 ---

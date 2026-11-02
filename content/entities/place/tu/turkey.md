@@ -26,6 +26,12 @@ claims:
       - {s: pohl-2000-paper-crimean-tatars, quote: "The Stalin regime deported the Karachays, Chechens, Ingush, Balkars, Crimean Tatars, and Meskhetian Turks in preparation for this anti-Turkish campaign."}
       - {s: pohl-2000-paper-crimean-tatars, quote: "In March 1945, Molotov informed the Turkish ambassador to Moscow that the Soviet Union was not going to renew the 1925 Soviet-Turkish Treaty of Neutrality."}
       - {s: pohl-2000-paper-crimean-tatars, quote: "On 7 July 1945, Molotov formally requested that Turkey allow Soviet naval bases in the Straits and cede Kars and Ardahan."}
+  - id: c3
+    rel: member_of
+    to: international-energy-agency
+    when: "1974"
+    src:
+      - {s: iea-history, at: "History", quote: "The IEA’s founding members were Austria, Belgium, Canada, Denmark, Germany, Ireland, Italy, Japan, Luxembourg, The Netherlands, Norway, Spain, Sweden, Switzerland, Türkiye, United Kingdom, and the United States."}
 ---
 
 Turkey borders the Black Sea, across from the Soviet Union's southern coast. US [[jupiter-missile]] missiles were stationed there until April 1963.

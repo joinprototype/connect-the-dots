@@ -15,4 +15,11 @@ claims:
     src:
       - {s: openai-2023-11-29-altman-returns, quote: "I am returning to OpenAI as CEO. Mira will return to her role as CTO. The new initial board will consist of Bret Taylor (Chair), Larry Summers, and Adam D’Angelo."}
       - {s: openai-2024-03-08-review-completed, quote: "They will work closely with current board members Adam D’Angelo, Larry Summers and Bret Taylor as well as Greg, Sam, and OpenAI’s senior management."}
+  - id: c2
+    rel: educated_at
+    to: massachusetts-institute-of-technology
+    when: "1975"
+    title: "SB degree"
+    src:
+      - {s: summers-site-biography, at: "Biography", quote: "Summers received an SB degree from MIT in 1975"}
 ---
