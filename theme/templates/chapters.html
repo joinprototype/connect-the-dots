@@ -1,19 +1,29 @@
 {% extends "base.html" %}
 {% from "macros.html" import tales %}
 {% block title %}Stories: Connect the Dots{% endblock %}
-{% block head %}<noscript><style>.isles, .isles-key { display: none; }</style></noscript>{% endblock %}
+{% block description %}Every story is an island of the people, places and things it tells of. Zoom in to see their names, and follow any of them to how it connects.{% endblock %}
+{% block body_class %}page place-page{% endblock %}
+{% block head %}{% if site.assets.place_css %}<link rel="stylesheet" href="/assets/place.css">{% endif %}{% endblock %}
 {% block main %}
-<section class="page-head isles-head">
-  <h1>Stories</h1>
-  {% if chapters %}<p class="isles-line isles-key" aria-hidden="true">Every island is a story. Its dots are the people, places and things in it.</p>{% endif %}
-  <p class="page-lede">Every story is drawn from sourced links.{% if chapters %}<span class="isles-key"> <span aria-hidden="true">A line joins two stories that share one. Open any island to read it.</span> <a href="#all">See them all as a list</a></span>{% endif %}</p>
-</section>
 {% if chapters %}
-{# The picture is the list below, drawn: the list is its alternative, and all there is without JavaScript. #}
-<ctd-isles class="isles" aria-hidden="true"><div class="isles-sheet"></div></ctd-isles>
+{# The surface takes the first screen. Its words are fixed and say what the picture is with no click; the list
+   below is its alternative for screen readers, and all there is without JavaScript. #}
+<ctd-place class="place">
+  <div class="place-hello">
+    <h1>Stories</h1>
+    <p class="place-line">Every island is a story, and its dots are what it tells of. Zoom in to see their names, and click one to see how it connects.</p>
+    <p class="place-sea" aria-hidden="true">On an island lies what that story is about. Whoever it shares with another, or only mentions, floats in the water near it.</p>
+    <p class="place-key" aria-hidden="true">{% for ink in inks %}<span style="--c: {{ ink.color }}">{{ ink.label }}</span>{% endfor %}</p>
+    <p class="place-list"><a href="#all">All {{ chapters|length }} stories, as a list</a></p>
+  </div>
+</ctd-place>
 <section class="shelf-section" id="all" aria-labelledby="written-h">
   <h2 id="written-h">All stories <span class="count">{{ chapters|length }}</span></h2>
   {{ tales(chapters) }}
+</section>
+{% else %}
+<section class="page-head">
+  <h1>Stories</h1>
 </section>
 {% endif %}
 {% if connections %}
@@ -41,3 +51,4 @@
 {% endif %}
 <div class="shelf-end"></div>
 {% endblock %}
+{% block scripts %}{% if site.assets.place_js and chapters %}<script type="module" src="/assets/place.js"></script>{% endif %}{% endblock %}

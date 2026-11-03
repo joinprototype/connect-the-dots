@@ -19,6 +19,8 @@ const ENTRIES = {
   ask: 'src/ask/main.ts',
   // Read: a story over its field of dots
   read: 'src/read/main.ts',
+  // the Stories page's surface
+  place: 'src/place/main.ts',
 } as const;
 const ENTRY_RE = new RegExp(`^/assets/(${Object.keys(ENTRIES).join('|')})\\.(js|css)$`);
 

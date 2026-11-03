@@ -1,0 +1,96 @@
+/* The Stories surface (web/src/place): the canvas, the words that lie on it, and its one control. The stage and
+   its first words are in site.css, so that they hold their room before this loads. */
+.place {
+  /* land, the links on it, and a story's trail: greys, since colour belongs to the dots */
+  --place-land: #efefef;
+  --place-line: #c4c4c4;
+  --place-road: #c9c9c9;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .place { --place-land: #1c1c1c; --place-line: #4d4d4d; --place-road: #474747; }
+}
+.place:focus-visible { outline-offset: -3px; }
+.place-canvas { position: absolute; inset: 0; z-index: 0; display: block; width: 100%; height: 100%; }
+.place-can { cursor: pointer; }
+.place-grab { cursor: grabbing; }
+.place-hello { transition: opacity 0.2s, visibility 0.2s; }
+.place-hello.off { opacity: 0; visibility: hidden; }
+
+/* the one control: back towards the whole map */
+.place-out {
+  position: absolute; z-index: 4; top: 12px; right: 12px; width: 44px; height: 44px; padding: 0;
+  font: 400 26px/1 var(--font-ui); color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; cursor: pointer;
+}
+
+/* words lie on the surface: they move and scale with it, on paper so that the dots under them step aside */
+.place-layer { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.place-words {
+  position: absolute; left: 0; top: 0; width: 400px; margin-left: -14px; padding: 2px 14px 16px;
+  transform-origin: 0 0; visibility: hidden; color: var(--ink); background: var(--paper);
+  font: 400 1rem/1.5 var(--font-body); user-select: text; -webkit-user-select: text; cursor: auto;
+}
+.place-words h2 { margin: 0 0 0.2em; font-size: clamp(2.1rem, 3.6vw, 2.9rem); font-weight: 800; letter-spacing: -0.022em; line-height: 1.02; text-wrap: balance; overflow-wrap: anywhere; }
+.place-words p { margin: 0 0 0.6em; }
+.place-words a { color: var(--ink); }
+.place-words hr { margin: 14px 0 0; border: 0; border-top: 1px solid var(--rule); }
+.place-what { font: 400 0.875rem/1.4 var(--font-ui); color: var(--muted); }
+.place-lede p, .place-lede { font-size: 1.12rem; line-height: 1.55; }
+.place-head { margin: 0 !important; padding: 14px 0 4px; font: 600 0.8125rem/1.3 var(--font-ui); color: var(--muted); }
+.place-note { font: 400 0.875rem/1.45 var(--font-ui); color: var(--muted); }
+.place-note a, .place-status a, .place-notice a { text-decoration: underline; text-underline-offset: 0.16em; }
+.place-row { display: grid; grid-template-columns: 14px 1fr auto; gap: 8px; align-items: baseline; min-height: 32px; padding: 5px 0; color: var(--ink); line-height: 1.32; text-decoration: none; }
+.place-row:hover { text-decoration: none; }
+.place-row:hover .place-name, .place-row:focus-visible .place-name { text-decoration: underline; text-underline-offset: 3px; }
+.place-row small { font: 400 0.8125rem/1.3 var(--font-ui); color: var(--muted); white-space: nowrap; }
+.place-pip { align-self: start; width: 9px; height: 9px; margin-top: 6px; border-radius: 50%; background: var(--c); }
+.place-tale .place-name { font-style: italic; }
+.place-start .place-name { font-weight: 600; }
+.place-go { display: flex; flex-wrap: wrap; gap: 0 18px; font: 600 0.95rem/1.4 var(--font-ui); }
+.place-go a { padding: 6px 0; text-decoration: underline; text-underline-offset: 0.16em; }
+.place-notice { margin-top: 14px !important; font: 600 0.875rem/1.4 var(--font-ui); }
+
+/* a story opens on a black band, as its own page does */
+.place-band { margin: 4px 0 14px; padding: 16px 18px 18px; color: #fff; background: var(--band); border-radius: 3px 8px 8px 3px; }
+.place-band h2 { margin: 0 0 6px; color: #fff; }
+.place-band p { margin: 0; font: 400 0.875rem/1.4 var(--font-ui); color: #d4d4d4; }
+.place-band .place-sub { margin-top: 4px; font: 400 1rem/1.45 var(--font-body); color: #fff; }
+.place-words .place-read { display: inline-block; padding: 12px 18px; font: 600 0.95rem/1 var(--font-ui); color: var(--on-fill) !important; background: var(--accent); border-radius: 8px; text-decoration: none; }
+.place-words .place-read:hover { background: var(--accent-hover); text-decoration: none; }
+
+/* a link read as a sentence, and its proof */
+.place-say { margin: 4px 0 0.35em !important; font: 800 clamp(1.7rem, 3vw, 2.4rem)/1.1 var(--font-display); letter-spacing: -0.02em; text-wrap: balance; overflow-wrap: anywhere; }
+.place-say a { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.place-say i { font: italic 400 0.86em/1 var(--font-body); letter-spacing: 0; }
+.place-status { font: 400 0.875rem/1.45 var(--font-ui); color: var(--ink-2); }
+.place-unread, .place-agree { display: inline-block; margin-right: 6px; padding: 0 6px; font: 600 0.8125rem/1.6 var(--font-ui); border-radius: 4px; }
+.place-unread { color: var(--ink-2); border: 1px dashed var(--muted); }
+.place-agree { background: var(--fill); }
+.place-open { font: 400 0.875rem/1.45 var(--font-ui); color: var(--muted); margin-top: 12px !important; }
+.place-open a { text-decoration: underline; }
+.place-quote { margin: 16px 0 0; }
+.place-quote blockquote { margin: 0; font: 400 clamp(1.05rem, 1.6vw, 1.25rem)/1.5 var(--font-body); }
+.place-quote mark { padding: 0.1em 0.15em; color: inherit; background: var(--highlight); -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.place-quote figcaption { margin-top: 8px; font: 400 0.875rem/1.45 var(--font-ui); color: var(--muted); }
+.place-quote figcaption b { color: var(--ink); font-weight: 600; }
+.place-quote .place-go { margin-top: 2px; }
+
+/* from an entry, the way to another */
+.place-way { position: relative; margin: 6px 0 4px; }
+.place-way label { display: block; margin-bottom: 4px; font: 400 0.8125rem/1.3 var(--font-ui); color: var(--muted); }
+.place-way input { display: block; width: 100%; height: 44px; padding: 0 12px; font: 400 1rem var(--font-ui); color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; appearance: none; }
+.place-hits { position: absolute; z-index: 1; left: 0; right: 0; top: 100%; max-height: 280px; margin: 4px 0 0; padding: 4px 12px; overflow: auto; list-style: none; background: var(--paper); border: 1px solid var(--ink); border-radius: 8px; overscroll-behavior: contain; touch-action: pan-y; }
+.place-hit { display: grid; grid-template-columns: 14px 1fr auto; gap: 8px; align-items: baseline; min-height: 40px; padding: 8px 0; font: 400 1rem/1.25 var(--font-ui); cursor: pointer; }
+.place-hit small { font-size: 0.8125rem; color: var(--muted); }
+.place-hit[aria-selected="true"] .place-name { text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 759px) {
+  .place-words { width: calc(100% - 4px); }
+  .place-out { top: 8px; right: 8px; }
+}
+@media (pointer: coarse) {
+  .place-row { min-height: 44px; align-items: center; }
+  .place-pip { align-self: center; margin-top: 0; }
+}

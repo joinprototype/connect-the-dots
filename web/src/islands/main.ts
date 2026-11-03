@@ -13,4 +13,3 @@ define('ctd-box', CtdBox);
 define('ctd-lens-chips', CtdLensChips);
 define('ctd-atlas-links', CtdAtlasLinks);
 startThreads();
-if (document.querySelector('ctd-isles')) void import('./isles');

@@ -748,6 +748,8 @@ fn copy_assets(root: &Path, out: &Path) -> Result<Value> {
         "ask_js": has_asset("ask.js"), "ask_css": has_asset("ask.css"),
         // Read
         "read_js": has_asset("read.js"), "read_css": has_asset("read.css"),
+        // the Stories page's surface
+        "place_js": has_asset("place.js"), "place_css": has_asset("place.css"),
     }))
 }
 
@@ -1253,9 +1255,33 @@ fn library_page(s: &Site, chapters: &[Value], routes: &Routes, lives: &Lives, qu
         s.render(
             "chapters.html",
             json!({ "site": &s.site, "chapters": chapters, "connections": routes.connections, "lives": life_shelves,
-                    "questions": questions.books, "questions_more": questions.more }),
+                    "questions": questions.books, "questions_more": questions.more, "inks": inks(kb) }),
         )?,
     )
+}
+
+/// The key under the Stories page's surface: each ink once, with the kinds drawn in it ("Works, concepts and
+/// traditions"), for the kinds that have entries.
+fn inks(kb: &Kb) -> Vec<Value> {
+    let mut inks: Vec<(String, Vec<&str>)> = Vec::new();
+    for (tid, t) in kb.schema.types.iter().filter(|(tid, _)| kb.entities.iter().any(|e| &e.kind == *tid)) {
+        let color = kb.schema.type_color(tid);
+        match inks.iter_mut().find(|(c, _)| *c == color) {
+            Some((_, kinds)) => kinds.push(&t.plural),
+            None => inks.push((color, vec![&t.plural])),
+        }
+    }
+    inks.into_iter()
+        .map(|(color, kinds)| {
+            let rest: Vec<String> = kinds[1..].iter().map(|k| k.to_lowercase()).collect();
+            let label = match rest.split_last() {
+                None => kinds[0].to_string(),
+                Some((last, [])) => format!("{} and {last}", kinds[0]),
+                Some((last, more)) => format!("{}, {} and {last}", kinds[0], more.join(", ")),
+            };
+            json!({ "color": color, "label": label })
+        })
+        .collect()
 }
 
 fn stats(kb: &Kb) -> Value {
