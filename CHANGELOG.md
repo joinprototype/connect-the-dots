@@ -2,6 +2,10 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## Next
+
+- Stories is the shelf: every story's cover, to pick one and read it. The islands they make are on the Map.
+
 ## 0.5.3 (2026-11-03)
 
 - The old map's code is gone: about 5,800 lines and five packages (deck.gl, MapLibre), and about 3,200 files the site no longer needs. The home page's map picture is drawn from the islands, and pages may no longer fetch anything from another site.

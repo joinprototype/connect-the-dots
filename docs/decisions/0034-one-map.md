@@ -1,6 +1,6 @@
 # ADR-0034: One map
 
-- Status: accepted
+- Status: accepted; amended by [ADR-0035](0035-stories-is-the-shelf.md): the Stories page is the shelf, and the surface is the Map's alone
 - Date: 2026-11-03
 
 ## Context

@@ -12,7 +12,7 @@ The header on every page holds the mark and one box. Type a name, two names, a y
 
 | What an answer leads to | What it is |
 |---|---|
-| **Stories** | Every answer can be read as a story, a column of words over the dots where it happens. The Stories page draws them as islands of dots, with a plain list beside it. Any name in a story is a door to that entry. |
+| **Stories** | Every answer can be read as a story, a column of words over the dots where it happens. The Stories page is their shelf of covers; the Map draws them as islands of dots. Any name in a story is a door to that entry. |
 | **The Map** | The whole record as one surface: every story an island, every entry a dot. Pick one and its links draw in ink while the rest steps back; "On Earth" moves whatever has a place to it ([ADR-0034](decisions/0034-one-map.md)). |
 | **Ask** (`/ask/`) | Any name, two names, a year or a question. For two names: a direct tie first, with its caveat, then the way between them, stop by stop, with the proof for every link. |
 

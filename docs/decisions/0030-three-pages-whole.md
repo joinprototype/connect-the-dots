@@ -1,6 +1,6 @@
 # ADR-0030: Ask, Stories and Read, each whole
 
-- Status: accepted; amended by [ADR-0031](0031-fewer-views.md) (Read is now each story's page, at `/c/<id>/`)
+- Status: accepted; amended by [ADR-0031](0031-fewer-views.md) (Read is now each story's page, at `/c/<id>/`); amended by [ADR-0035](0035-stories-is-the-shelf.md) (One Place now lives on the Map)
 - Date: 2026-11-03
 
 ## Context

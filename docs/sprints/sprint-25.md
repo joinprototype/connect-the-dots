@@ -20,6 +20,8 @@ The founder found the Map's Links view a mess at every zoom, picking a dot gave 
 - [x] S25-04 A relation flag, `locates`, stands an organization, event or work at the place it is headquartered, located or written in.
 - [x] S25-05 The old Map's addresses work: `?focus=`, `?view=earth`; a typed year goes to Ask.
 
+- [x] S25-07 Stories is the shelf of covers; the islands are the Map's alone (ADR-0035).
+
 ### Should
 - [x] S25-06 Remove the old viewer (`web/src/world/`), deck.gl, MapLibre and the world tiles, once the founder has tried this; draw the home page's picture from the islands instead.
 

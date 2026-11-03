@@ -1,29 +1,18 @@
 {% extends "base.html" %}
-{% from "macros.html" import tales %}
+{% from "macros.html" import book, tales %}
 {% block title %}Stories: Connect the Dots{% endblock %}
-{% block description %}Every story is an island of the people, places and things it tells of. Zoom in to see their names, and follow any of them to how it connects.{% endblock %}
-{% block body_class %}page place-page{% endblock %}
-{% block head %}{% if site.assets.place_css %}<link rel="stylesheet" href="/assets/place.css">{% endif %}{% endblock %}
+{% block description %}Every story we have written, each told from its sources with the proof under every line.{% endblock %}
+{% block body_class %}page stories-page{% endblock %}
 {% block main %}
-{% if chapters %}
-{# The surface takes the first screen. Its words are fixed and say what the picture is with no click; the list
-   below is its alternative for screen readers, and all there is without JavaScript. #}
-<ctd-place class="place">
-  <div class="place-hello">
-    <h1>Stories</h1>
-    <p class="place-line">Every island is a story, and its dots are what it tells of. Click an island to go in, and a dot to see how it connects. To zoom, pinch, or hold Ctrl and scroll.</p>
-    <p class="place-sea" aria-hidden="true">On an island lies what that story is about. Whoever it shares with another, or only mentions, floats in the water near it.</p>
-    <p class="place-key" aria-hidden="true">{% for ink in inks %}<span style="--c: {{ ink.color }}">{{ ink.label }}</span>{% endfor %}</p>
-    <p class="place-list"><a href="#all">All {{ chapters|length }} stories, as a list</a></p>
-  </div>
-</ctd-place>
-<section class="shelf-section" id="all" aria-labelledby="written-h">
-  <h2 id="written-h">All stories <span class="count">{{ chapters|length }}</span></h2>
-  {{ tales(chapters) }}
-</section>
-{% else %}
+{# The shelf: every written story, to pick one and read it. The islands they make are the Map's (ADR-0035). #}
 <section class="page-head">
   <h1>Stories</h1>
+  <p class="page-lede">{% if chapters %}{{ chapters|length }} stories, each told from its sources, with the proof under every line. {% endif %}<a href="/w/">See them as islands on the Map ›</a></p>
+</section>
+{% if chapters %}
+<section class="shelf-section" id="all" aria-labelledby="written-h">
+  <h2 id="written-h" class="sr-only">All stories</h2>
+  <div class="books">{% for c in chapters %}{{ book(c) }}{% endfor %}</div>
 </section>
 {% endif %}
 {% if connections %}
@@ -51,4 +40,4 @@
 {% endif %}
 <div class="shelf-end"></div>
 {% endblock %}
-{% block scripts %}{% if site.assets.place_js and chapters %}<script type="module" src="/assets/place.js"></script>{% endif %}{% endblock %}
+

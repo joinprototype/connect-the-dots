@@ -31,7 +31,7 @@ No database and no server in production for the MVP. Rust compiles the content; 
 | Parsing | serde-saphyr (YAML), pulldown-cmark 0.13 (wikilinks) | `serde_yaml` is deprecated |
 | Page templates | MiniJinja 3 (runtime templates in `theme/`) | Theme edits need no Rust or recompile |
 | Graph core | Rust: interned ids, CSR, typed and time-bounded links | ~40 B per link, including the reverse index |
-| Path finder | Rust `ctd path` (native) + TypeScript in Ask and Stories (`web/src/lib/paths.ts`), same formula, checked equal by `tools/qa/paths-golden.mjs`; one Rust kernel as WASM *(planned)* | One implementation for build and browser |
+| Path finder | Rust `ctd path` (native) + TypeScript in Ask and the Map (`web/src/lib/paths.ts`), same formula, checked equal by `tools/qa/paths-golden.mjs`; one Rust kernel as WASM *(planned)* | One implementation for build and browser |
 | Maps | MapLibre GL JS 6 (globe, terrain), on the Map's Earth | Globe and terrain without our own tiles |
 | Browser code | TypeScript bundled by Vite 8, no framework | Reading pages are already HTML from Rust. React, GSAP, sigma and graphology were dropped with the explorer and story player ([ADR-0031](decisions/0031-fewer-views.md)) |
 | Reading-page widgets | Vanilla TS custom elements (islands) | ≤15 KB JS on load |
@@ -43,7 +43,7 @@ No database and no server in production for the MVP. Rust compiles the content; 
 
 ```
 crates/ctd/        Rust: model, check, build, serve (split into crates when a part needs its own consumers)
-web/               Vite workspace: islands/, world/, atlas/, ask/, read/ (every story's page), place/ (Stories), forward.ts, worker/ (planned). Bundles: islands, world, atlas, ask, read, life, place, forward
+web/               Vite workspace: islands/, atlas/, ask/, read/ (every story's page), place/ (the Map), forward.ts, worker/ (planned). Bundles: islands, atlas, ask, read, life, place, forward
 theme/             MiniJinja templates, CSS tokens, fonts
 content/           schema/, methodology/, entities/, sources/, chapters/  (see content-model.md)
 docs/              you are here
@@ -74,7 +74,7 @@ Stages:
 5. Derive reverse claims, backlinks and confirmation badges.
 6. Render pages.
 7. Write the data files (schema, slim structure, entries' details and life stories in shared packs, search by word range).
-8. The islands (`data/islands.json`), which the Stories page and the Map draw, and the home page's picture of them (`w/picture.svg`).
+8. The islands (`data/islands.json`), which the Map draws, and the home page's picture of them (`w/picture.svg`).
 9. The atlas, when `.cache/atlas` holds it: 2,048 shards, search, the Earth's tiles, the field of dots behind Read and Ask, and the landmark table for routes; the Map draws only the record ([ADR-0033](decisions/0033-the-map-draws-the-record.md)) ([ADR-0023](decisions/0023-the-atlas.md)). A dev server leaves it out.
 
 ```

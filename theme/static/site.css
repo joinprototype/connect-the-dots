@@ -174,6 +174,8 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
   scroll-snap-type: x proximity; scrollbar-width: none;
 }
 .shelf::-webkit-scrollbar { display: none; }
+/* the Stories page: every story's cover, row after row */
+.books { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(150px, 42%), 1fr)); gap: 30px 22px; padding: 6px 0 22px; }
 .book { display: flex; flex-direction: column; gap: 3px; color: var(--ink); scroll-snap-align: start; min-width: 0; }
 .book:hover { text-decoration: none; }
 .book:hover .book-title { text-decoration: underline; text-underline-offset: 0.14em; }
