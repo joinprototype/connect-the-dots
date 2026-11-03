@@ -6,6 +6,7 @@ What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versio
 
 - One look on every page: black on white, whatever the system's dark mode says. Stories open on their title on white, covers and the footer are white, and nothing large is black any more.
 - The header stays where it is on the Map, as on every other page.
+- The Map draws only what has been read: 3,453 entries and their links, each with its proof. Open data, which nobody here has read, leaves it; it stays in search and on its own pages.
 
 ## 0.5.0 (2026-11-03)
 

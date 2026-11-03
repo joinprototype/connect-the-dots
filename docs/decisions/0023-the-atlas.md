@@ -1,6 +1,6 @@
 # ADR-0023: The atlas: a million dots from open data, marked as what they are
 
-- Status: accepted (Sprint 22)
+- Status: accepted (Sprint 22); amended by [ADR-0033](0033-the-map-draws-the-record.md): the atlas is no longer drawn on the Map
 - Date: 2026-11-01
 
 ## Context

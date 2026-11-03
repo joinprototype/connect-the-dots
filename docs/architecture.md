@@ -78,7 +78,7 @@ Stages:
 6. Render pages.
 7. Write the data files (schema, slim structure, entries' details and life stories in shared packs, search by word range).
 8. Layout and tiles for the Map ([world-tiles.md](world-tiles.md)).
-9. The atlas, when `.cache/atlas` holds it: 2,048 shards, search, the Map's million dots, the Earth's tiles and the landmark table for routes ([ADR-0023](decisions/0023-the-atlas.md)). A dev server leaves it out.
+9. The atlas, when `.cache/atlas` holds it: 2,048 shards, search, the Earth's tiles, the field of dots behind Read and Ask, and the landmark table for routes; the Map draws only the record ([ADR-0033](decisions/0033-the-map-draws-the-record.md)) ([ADR-0023](decisions/0023-the-atlas.md)). A dev server leaves it out.
 
 ```
 dist/

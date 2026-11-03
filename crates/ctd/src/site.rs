@@ -621,16 +621,15 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     for (dir, to) in [("x", "Stories"), ("r", "Ask")] {
         write(&out.join(dir).join("index.html"), s.render("forward.html", json!({ "site": &s.site, "to": to }))?)?;
     }
-    let mut spots = HashMap::new();
+    // The Map draws the record that has been read, every link with its proof. Open data stays out of it:
+    // nobody has read its links, and a million of them drew spirals of loose words and hubs of hundreds of
+    // weak ties (ADR-0033). It stays in search, on its own pages and as the land behind Read and Ask.
     if !kb.entities.is_empty() {
-        let (g, spec) = crate::world::from_kb(kb, atlas.as_ref());
-        let (_, nodes) = crate::world::build(&g, &spec, &out.join("world"), Some(&root.join(".cache").join("world-state.json")))?;
-        if let Some(ids) = &g.ids {
-            spots = crate::atlas::spots(kb, ids, &nodes);
-        }
+        let (g, spec) = crate::world::from_kb(kb);
+        crate::world::build(&g, &spec, &out.join("world"), Some(&root.join(".cache").join("world-state.json")))?;
     }
     if let Some(a) = &atlas {
-        crate::atlas::write(a, kb, &spots, out)?;
+        crate::atlas::write(a, kb, &HashMap::new(), out)?;
         write(&out.join("a").join("index.html"), s.render("atlas.html", json!({ "site": &s.site, "entries": a.entries.len() }))?)?;
     }
     write(&out.join("404.html"), s.render("404.html", json!({ "site": &s.site }))?)?;

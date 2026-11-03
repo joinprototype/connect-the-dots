@@ -201,16 +201,6 @@ pub fn curated(kb: &Kb) -> HashMap<u32, usize> {
     kb.entities.iter().enumerate().filter_map(|(i, e)| wikidata(e).and_then(|q| number(&q)).map(|q| (q, i))).collect()
 }
 
-/// Where each entry sits on the Map, by Wikidata number, in 65,535ths of the square.
-pub fn spots(kb: &Kb, ids: &[u32], nodes: &[[f32; 2]]) -> HashMap<u32, [u16; 2]> {
-    let hand: HashMap<usize, u32> = curated(kb).into_iter().map(|(q, c)| (c, q)).collect();
-    let spot = |v: f32| (v.clamp(0.0, 1.0) * 65535.0) as u16;
-    ids.iter()
-        .zip(nodes)
-        .filter_map(|(&id, p)| Some((if id >= ATLAS_IDS { id - ATLAS_IDS } else { *hand.get(&(id as usize))? }, [spot(p[0]), spot(p[1])])))
-        .collect()
-}
-
 /// Each entry's step towards its nearest landmark, and what a route needs from the landmarks' side.
 struct Routes {
     /// (place in `entries`, phrase): the next entry towards the landmark.

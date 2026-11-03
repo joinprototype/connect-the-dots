@@ -180,11 +180,11 @@ pub fn synthetic(n: usize, seed: u64) -> WorldGraph {
 
 /// The real content graph as a world: colors by entity type, labels = names. With an atlas, its
 /// entries join the graph: one written by hand stays a single dot, and takes the atlas's links too.
-pub fn from_kb(kb: &Kb, atlas: Option<&crate::atlas::Atlas>) -> (WorldGraph, Spec) {
+pub fn from_kb(kb: &Kb) -> (WorldGraph, Spec) {
     let palette = kb.schema.layers.values().map(|l| l.color.clone()).collect();
     let palette_labels = kb.schema.layers.values().map(|l| l.label.clone()).collect();
     let ink = |kind: &str| kb.schema.types.get(kind).and_then(|t| kb.schema.layers.get_index_of(&t.layer)).unwrap_or(0) as u8;
-    let mut color: Vec<u8> = kb.entities.iter().map(|e| ink(&e.kind)).collect();
+    let color: Vec<u8> = kb.entities.iter().map(|e| ink(&e.kind)).collect();
     let mut edges = Vec::new();
     // family and other sensitive links are real, but a map never makes a named group of them
     let phrases: Vec<[String; 2]> = kb.schema.relations.values().map(|r| [r.label.clone(), r.inverse.clone()]).collect();
@@ -208,42 +208,12 @@ pub fn from_kb(kb: &Kb, atlas: Option<&crate::atlas::Atlas>) -> (WorldGraph, Spe
             relation.push(relation_of(&e.rel));
         }
     }
-    let mut labels: Vec<String> = kb.entities.iter().map(|e| e.name.clone()).collect();
-    let mut keys: Vec<String> = kb.entities.iter().map(|e| e.id.clone()).collect();
+    let labels: Vec<String> = kb.entities.iter().map(|e| e.name.clone()).collect();
+    let keys: Vec<String> = kb.entities.iter().map(|e| e.id.clone()).collect();
     // people and families (types with family ties) never name a region: it would read as theirs
-    let mut may_name: Vec<bool> = kb.entities.iter().map(|e| !kb.schema.types.get(&e.kind).is_some_and(|t| t.family)).collect();
-    let mut ids = None;
+    let may_name: Vec<bool> = kb.entities.iter().map(|e| !kb.schema.types.get(&e.kind).is_some_and(|t| t.family)).collect();
     let span = |w: &crate::edtf::Span| [w.start.floor().max(-32767.0) as i16, w.end.map_or(ONGOING, |y| y.ceil() as i16)];
-    let mut years: Vec<[i16; 2]> = kb.entities.iter().map(|e| e.when.as_ref().map_or([NO_YEAR; 2], span)).collect();
-    if let Some(a) = atlas {
-        // at this scale a region is named after a place, never after a team or a study
-        may_name.iter_mut().zip(&kb.entities).for_each(|(m, e)| *m = e.kind == "place");
-        let hand = crate::atlas::curated(kb);
-        let mut tile_ids: Vec<u32> = (0..kb.entities.len() as u32).collect();
-        let node: Vec<u32> = a
-            .entries
-            .iter()
-            .map(|e| match hand.get(&e.qid) {
-                Some(&c) => c as u32,
-                None => {
-                    let new = labels.len() as u32;
-                    color.push(ink(e.kind()));
-                    labels.push(e.name.clone());
-                    keys.push(format!("Q{}", e.qid));
-                    may_name.push(e.kind() == "place");
-                    tile_ids.push(crate::atlas::ATLAS_IDS + e.qid);
-                    years.push(e.span());
-                    new
-                }
-            })
-            .collect();
-        edges.extend(a.links.iter().map(|&(x, r, y)| {
-            let shapes_map = kb.schema.relations.get(&a.relations[r as usize]).is_some_and(|rel| rel.traversable);
-            (node[x as usize], node[y as usize], if shapes_map { 0.6 } else { 0.15 })
-        }));
-        relation.extend(a.links.iter().map(|&(_, r, _)| relation_of(&a.relations[r as usize])));
-        ids = Some(tile_ids);
-    }
+    let years: Vec<[i16; 2]> = kb.entities.iter().map(|e| e.when.as_ref().map_or([NO_YEAR; 2], span)).collect();
     // The entry's own dates (decimal years, data-contract.md "Dates"), for the map's era slider.
     let year = |y: f64| (y * 1000.0).round() / 1000.0;
     let entities = kb
@@ -270,7 +240,7 @@ pub fn from_kb(kb: &Kb, atlas: Option<&crate::atlas::Atlas>) -> (WorldGraph, Spe
             label_prefix: "",
             keys: Some(keys),
             may_name: Some(may_name),
-            ids,
+            ids: None,
             years: Some(years),
             how: Some(How { relation, phrases }),
         },

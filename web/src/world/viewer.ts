@@ -1033,8 +1033,8 @@ class WorldViewer implements WorldHandle {
 
   /** A dot's Wikidata id: its way into the atlas, and so to its links. */
   private atlasIdOf(p: Picked): string | null {
-    if (p.id >= ATLAS_IDS) return `Q${p.id - ATLAS_IDS}`;
-    return this.entities?.[p.id]?.q ?? null;
+    // only a dot of open data is read from the atlas: an entry written here shows its own links
+    return p.id >= ATLAS_IDS ? `Q${p.id - ATLAS_IDS}` : null;
   }
 
   /** Lines from the picked dot to everything it links to, wherever on the map that is. */
