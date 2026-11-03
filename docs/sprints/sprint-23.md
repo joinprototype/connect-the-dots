@@ -1,7 +1,7 @@
 # Sprint 23: One box
 
 - Starts: 2026-11-02 · Length: 1 week
-- Status: active
+- Status: done
 
 ## Goal
 

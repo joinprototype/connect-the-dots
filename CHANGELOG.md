@@ -2,7 +2,7 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
-## Next
+## 0.4.7 (2026-11-02)
 
 - One box replaces the menu on every page. Type a name, two names, a year or a question. The footer keeps Stories, Map, Explore and Connect.
 - The first page follows one name through the stories it runs through.
