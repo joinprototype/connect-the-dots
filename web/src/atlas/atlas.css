@@ -110,19 +110,19 @@
 @media (max-width: 640px) { .pair-body .connect-form { grid-template-columns: minmax(0, 1fr); } }
 
 /* the picture: drawn once, in order, and then still. Dots fade in where they stay; nothing moves. */
-.thread { display: block; max-width: 100%; }
-.thread-draw { fill: none; stroke-dasharray: 1; animation: thread-draw var(--t) linear var(--d) backwards; }
-.thread-read { stroke: var(--ink); stroke-width: 2; }
-.thread-reveal { stroke: #fff; stroke-width: 8; }
-.thread-account { fill: none; stroke: var(--ink); stroke-width: 2; stroke-dasharray: 6 5; }
-.thread-unread { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 5 5; }
-.thread-dot { stroke: var(--paper); stroke-width: 3; }
-.thread-dot, .thread-name, .thread-also { animation: thread-show 220ms ease-out var(--d) backwards; }
-.thread-also { opacity: 0.8; pointer-events: none; }
-.thread-also line { stroke: var(--rule); stroke-width: 1; }
-.thread-name { font: 500 12.5px var(--font-ui); fill: var(--ink); stroke: var(--paper); stroke-width: 4px; stroke-linejoin: round; paint-order: stroke; pointer-events: none; }
-.thread-name.is-end { font: 700 15px var(--font-display); }
-.thread-door { fill: transparent; }
-.thread.is-still * { animation: none; }
-@keyframes thread-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-@keyframes thread-show { from { opacity: 0; } }
+.way { display: block; max-width: 100%; }
+.way-draw { fill: none; stroke-dasharray: 1; animation: way-draw var(--t) linear var(--d) backwards; }
+.way-read { stroke: var(--ink); stroke-width: 2; }
+.way-reveal { stroke: #fff; stroke-width: 8; }
+.way-account { fill: none; stroke: var(--ink); stroke-width: 2; stroke-dasharray: 6 5; }
+.way-unread { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 5 5; }
+.way-dot { stroke: var(--paper); stroke-width: 3; }
+.way-dot, .way-name, .way-also { animation: way-show 220ms ease-out var(--d) backwards; }
+.way-also { opacity: 0.8; pointer-events: none; }
+.way-also line { stroke: var(--rule); stroke-width: 1; }
+.way-name { font: 500 12.5px var(--font-ui); fill: var(--ink); stroke: var(--paper); stroke-width: 4px; stroke-linejoin: round; paint-order: stroke; pointer-events: none; }
+.way-name.is-end { font: 700 15px var(--font-display); }
+.way-door { fill: transparent; }
+.way.is-still * { animation: none; }
+@keyframes way-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes way-show { from { opacity: 0; } }

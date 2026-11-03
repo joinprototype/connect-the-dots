@@ -69,13 +69,13 @@ function along([x0, y0]: [number, number], [x1, y1]: [number, number]): Box[] {
 function picture({ stops, lines }: Thread, w: number, tall: boolean, still: boolean): SVGElement {
   const n = stops.length;
   const { h, at } = layout(n, w, tall);
-  const svg = make('svg', { width: w, height: h, viewBox: `0 0 ${w} ${h}`, class: `thread${still ? ' is-still' : ''}` });
+  const svg = make('svg', { width: w, height: h, viewBox: `0 0 ${w} ${h}`, class: `way${still ? ' is-still' : ''}` });
   const radius = (i: number) => (i === 0 || i === n - 1 ? 11 : 7.5);
   const step = Math.min(STEP_MS, WAY_MS / Math.max(1, n - 1));
   const reached = (i: number) => (i === 0 ? 0 : START_MS + i * step - 60);
   const finished = START_MS + (n - 1) * step;
 
-  const faint = make('g', { class: 'thread-also' }, svg);
+  const faint = make('g', { class: 'way-also' }, svg);
   faint.style.setProperty('--d', `${finished + 80}ms`);
 
   lines.forEach((kind, i) => {
@@ -83,23 +83,23 @@ function picture({ stops, lines }: Thread, w: number, tall: boolean, still: bool
     const d = `M ${at[i][0]} ${at[i][1]} L ${at[i + 1][0]} ${at[i + 1][1]}`;
     const timing = `--d:${START_MS + i * step}ms;--t:${step}ms`;
     if (kind === 'read') {
-      make('path', { d, pathLength: 1, class: 'thread-draw thread-read', style: timing }, svg);
+      make('path', { d, pathLength: 1, class: 'way-draw way-read', style: timing }, svg);
       return;
     }
     // dashes cannot also draw the line, so a mask draws it
-    const mask = make('mask', { id: `thread-${i}`, maskUnits: 'userSpaceOnUse', x: 0, y: 0, width: w, height: h }, svg);
-    make('path', { d, pathLength: 1, class: 'thread-draw thread-reveal', style: timing }, mask);
-    make('path', { d, class: `thread-${kind}`, mask: `url(#thread-${i})` }, svg);
+    const mask = make('mask', { id: `way-${i}`, maskUnits: 'userSpaceOnUse', x: 0, y: 0, width: w, height: h }, svg);
+    make('path', { d, pathLength: 1, class: 'way-draw way-reveal', style: timing }, mask);
+    make('path', { d, class: `way-${kind}`, mask: `url(#way-${i})` }, svg);
   });
 
   stops.forEach((s, i) => {
-    const dot = make('circle', { cx: at[i][0], cy: at[i][1], r: radius(i), class: 'thread-dot' }, svg);
+    const dot = make('circle', { cx: at[i][0], cy: at[i][1], r: radius(i), class: 'way-dot' }, svg);
     dot.style.fill = s.ink;
     dot.style.setProperty('--d', `${reached(i)}ms`);
   });
 
   const name = (text: string, x: number, y: number, anchor: string, base: string, i: number, end: boolean) => {
-    const label = make('text', { x, y, 'text-anchor': anchor, 'dominant-baseline': base, class: `thread-name${end ? ' is-end' : ''}` }, svg);
+    const label = make('text', { x, y, 'text-anchor': anchor, 'dominant-baseline': base, class: `way-name${end ? ' is-end' : ''}` }, svg);
     label.textContent = text;
     label.style.setProperty('--d', `${reached(i)}ms`);
   };
@@ -164,14 +164,14 @@ function picture({ stops, lines }: Thread, w: number, tall: boolean, still: bool
   // a dot is a door to its page, with room for a finger
   stops.forEach((s, i) => {
     const door = make('a', { href: s.url, tabindex: -1 }, svg);
-    make('circle', { cx: at[i][0], cy: at[i][1], r: 22, class: 'thread-door' }, door);
+    make('circle', { cx: at[i][0], cy: at[i][1], r: 22, class: 'way-door' }, door);
   });
   return svg;
 }
 
 let watching: ResizeObserver | null = null;
 
-/** Draws the thread in `box`. A window of a new width gets the finished picture at once. */
+/** Draws the way in `box`. A window of a new width gets the finished picture at once. */
 export function drawThread(box: HTMLElement, thread: Thread): void {
   watching?.disconnect();
   let width = box.clientWidth;
