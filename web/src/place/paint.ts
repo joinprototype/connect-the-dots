@@ -416,7 +416,8 @@ export class Painter {
     return s;
   }
 
-  /** Every island's name, far out: the biggest first, each where it is clear of those before it. */
+  /** Every island's name, far out: the biggest first, each on its island where it is clear of those before
+   *  it, in the middle or a line above or below. */
   private islandNames(cam: Cam, L: number, rest: number, look: Look): void {
     this.titles.length = 0;
     const a = (1 - smooth(1.5, 2.2, L)) * rest;
@@ -428,13 +429,19 @@ export class Painter {
     for (const i of order) {
       if (i === look.scene?.isle) continue; // its own stop names it in words
       const isle = w.isles[i];
-      const [x, y] = [W / 2 + (isle.x - cam.x) * cam.k, H / 2 + (isle.y - cam.y) * cam.k];
+      const [cx, cy] = [W / 2 + (isle.x - cam.x) * cam.k, H / 2 + (isle.y - cam.y) * cam.k];
       const px = clamp(isle.r * cam.k * 0.3, 13, TITLE);
       const s = this.sprite(i);
       const f = px / TITLE;
       const [sw, sh, pad] = [s.w * f, s.h * f, s.pad * f];
-      const box: Box = [x - sw / 2 - 3, y - sh / 2, x + sw / 2 + 3, y + sh / 2];
-      if (box[2] < 0 || box[0] > W || box[3] < 0 || box[1] > H || !clear(placed, box) || (look.avoid && !clear([look.avoid], box))) continue;
+      const free = (y: number): Box | null => {
+        const box: Box = [cx - sw / 2 - 3, y - sh / 2, cx + sw / 2 + 3, y + sh / 2];
+        const off = box[2] < 0 || box[0] > W || box[3] < 0 || box[1] > H;
+        return off || !clear(placed, box) || (look.avoid && !clear([look.avoid], box)) ? null : box;
+      };
+      const y = [cy, cy - sh * 0.8, cy + sh * 0.8].find((at) => free(at));
+      if (y === undefined) continue;
+      const [x, box] = [cx, free(y)!];
       placed.push(box);
       c.drawImage(s.c, x - sw / 2 - pad, y - sh / 2 - pad, sw + pad * 2, sh + pad * 2);
       if (i === look.isle) {
