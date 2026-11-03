@@ -65,6 +65,8 @@
   height: calc(100vh - var(--ask-head)); height: calc(100svh - var(--ask-head)); background: var(--paper);
 }
 .ask-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+/* the dot-field world (lib/dotfield.ts) in the stage, under its ink */
+.ask-stage .dotfield-marks { position: absolute; inset: 0; width: 100%; height: 100%; }
 .ask-map { opacity: 0; transition: opacity 0.4s; }
 .ask-stage[data-world] .ask-map { opacity: 1; }
 .ask-ink { touch-action: pan-y; }
