@@ -21,6 +21,7 @@ The founder found the four places "too much and complicated", and picked One Box
 - [x] S23-05 Names in stories link to their entries.
 - [x] S23-06 Every old address still works. The footer lists Stories, Map, Explore and Connect.
 - [x] S23-08 Explore is a walk: an entry beside its neighbours, each named, one straight move from one to the next (ADR-0029).
+- [x] Read (`/read/`, `/read/<id>/`): One Thread whole, a story over its field of dots, names as doors with their proof, the next story offered at the end with its reason. The field of dots is one shared piece, `web/src/lib/dotfield.ts`, on `data/field.bin` (docs/data-contract.md).
 
 ### Should
 - [x] S23-07 Home's HTML under 100 KB (352 KB before).

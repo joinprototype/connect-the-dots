@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% from "macros.html" import door_inks %}
+{# Read: one story over the field of dots where it happens (crates/ctd/src/site/read.rs). Every word is here;
+   web/src/read/ draws the picture, opens a name in place and joins the next story when the reader picks it. #}
+{% block title %}{{ story.title }}{{ " –" if story.title[-1:] == "?" else ":" }} Read on Connect the Dots{% endblock %}
+{% block description %}{{ story.summary or story.subtitle or story.title }}{% endblock %}
+{% block html_attrs %} data-theme="light"{% endblock %}
+{% block body_class %}read-page{% endblock %}
+{% block head %}{{ door_inks(site) }}{% if first %}<link rel="canonical" href="{{ site.url|safe }}{{ story.url }}">{% endif %}{% if site.assets.read_css %}<link rel="stylesheet" href="/assets/read.css">{% endif %}{% endblock %}
+{% block main %}
+<div class="read-picture" aria-hidden="true"><div class="read-mask"></div><p class="read-stamp"></p></div>
+<div class="read-thread">
+<section class="read-story" data-story="{{ story.id }}" aria-labelledby="read-{{ story.id }}">
+  <header class="read-band">
+    <h1 class="read-title" id="read-{{ story.id }}"><i class="read-mark"></i>{{ story.title }}</h1>
+    {% if story.hero %}<p class="read-hero{% if story.hero_size %} {{ story.hero_size }}{% endif %}">{{ story.hero|safe }}</p>{% endif %}
+  </header>
+  {% if story.intro|trim %}<div class="read-intro">{{ story.intro|safe }}</div>{% endif %}
+  {% for sc in story.scenes %}
+  <article class="read-scene" data-scene="{{ loop.index0 }}">
+    <i class="read-mark small"></i>
+    {% if sc.when %}<p class="read-when">{{ sc.when }}</p>{% endif %}
+    {% if sc.heading %}<h2>{{ sc.heading|safe }}</h2>{% endif %}
+    {{ sc.body|safe }}
+    {% set p = sc.proof %}
+    {% if p %}
+    {% if p.kind == "stat" %}<p class="read-stat"><b>{{ p.value }}</b><span>{{ p.label }}</span></p>{% endif %}
+    <figure class="read-quote">
+      {% if p.quote %}<blockquote><mark>{{ p.quote }}</mark></blockquote>{% endif %}
+      <figcaption>{% if p.caption %}{{ p.caption }}. {% endif %}{% if p.source %}{% if not p.caption or p.kind != "quote" %}{{ p.source.title }}{% if p.source.publisher and p.source.publisher != p.source.title %}, {{ p.source.publisher }}{% endif %}{% if p.source.published %}, {{ p.source.published }}{% endif %}. {% endif %}{% if p.source.tier %}{{ p.source.tier }}. {% endif %}{% if p.source.url %}<a href="{{ p.source.url }}" target="_blank" rel="noopener">Open the source</a>{% endif %}{% if p.source.archive %} <a href="{{ p.source.archive }}" target="_blank" rel="noopener">Archived copy</a>{% endif %}{% endif %}</figcaption>
+    </figure>
+    {% endif %}
+  </article>
+  {% endfor %}
+  <footer class="read-end">
+    <p class="read-ended"><i class="read-mark small"></i>That is the end of {{ story.title }}.</p>
+    {% if story.next %}
+    <h2 class="read-next-h">Keep reading</h2>
+    <ul class="read-next">
+      {% for n in story.next %}<li><a class="read-book" href="{{ n.url }}" data-next="{{ n.id }}"><b>{{ n.title }}</b>{% if n.subtitle %}<span>{{ n.subtitle }}</span>{% endif %}</a><p class="read-why">{% if n.shares %}Shares {{ n.shares }}.{% else %}The next story in the library.{% endif %}</p></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <p class="read-also">A connection is not evidence of wrongdoing. <a href="{{ story.story_url }}">{{ story.title }}, with its maps and pictures</a></p>
+  </footer>
+  <script type="application/json" class="read-data">{{ story.data_json|safe }}</script>
+</section>
+</div>
+<script type="application/json" id="read-site">{{ read_json|safe }}</script>
+{% endblock %}
+{% block scripts %}{% if site.assets.read_js %}<script type="module" src="/assets/read.js"></script>{% endif %}{% endblock %}

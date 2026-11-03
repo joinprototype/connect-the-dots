@@ -15,6 +15,8 @@ const ENTRIES = {
   world: 'src/world/main.ts',
   atlas: 'src/atlas/main.ts',
   route: 'src/atlas/route.ts',
+  // Read: a story over its field of dots
+  read: 'src/read/main.ts',
 } as const;
 const ENTRY_RE = new RegExp(`^/assets/(${Object.keys(ENTRIES).join('|')})\\.(js|css)$`);
 
