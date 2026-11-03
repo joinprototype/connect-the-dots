@@ -1,6 +1,6 @@
 # ADR-0024: Black on white, and colour only on the dots
 
-- Status: accepted (Sprint 22). Supersedes the palette of [ADR-0022](0022-dots-and-lines.md), its story inks and its controls' typeface. Its dots, lines and typefaces for titles and reading stand, and so do stories on white and the home page's real map.
+- Status: accepted (Sprint 22); amended by [ADR-0032](0032-one-look.md): no dark mode, no black bands or covers, and the header keeps its place. Supersedes the palette of [ADR-0022](0022-dots-and-lines.md), its story inks and its controls' typeface. Its dots, lines and typefaces for titles and reading stand, and so do stories on white and the home page's real map.
 - Date: 2026-11-01
 
 ## Context

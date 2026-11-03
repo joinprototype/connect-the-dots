@@ -1,5 +1,5 @@
 /* Ask (/ask/): the box is the page's heading, the answer hangs from its left edge, and the picture stands
-   beside it. Black on white, or white on black; colour only on the dots. */
+   beside it. Black on white; colour only on the dots. */
 @import '../lib/dotfield.css';
 
 .ask-page {
@@ -9,9 +9,6 @@
   --ask-line: #8c8c8c;
   /* the header's height, which ask.js measures */
   --ask-head: 57px;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .ask-page { --ask-word: #a3a3a3; }
 }
 /* the page is the box, so the header's box goes */
 .ask-page .site-box { display: none; }

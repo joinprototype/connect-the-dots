@@ -2,7 +2,6 @@
 {% from "macros.html" import door_inks %}
 {% block title %}A story: Connect the Dots{% endblock %}
 {% block description %}A story drawn from sourced links.{% endblock %}
-{% block html_attrs %} data-theme="light"{% endblock %}
 {% block body_class %}read-page{% endblock %}
 {# the story comes from its pack after the first paint, as read.html's main: until then the footer waits below the fold #}
 {% block head %}<meta name="robots" content="noindex"><style>main { min-height: 100vh; }</style>{{ door_inks(site) }}{% if site.assets.read_css %}<link rel="stylesheet" href="/assets/read.css">{% endif %}{% endblock %}

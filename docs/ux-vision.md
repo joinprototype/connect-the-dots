@@ -34,16 +34,15 @@ No social features, no editor, and no seven-lens control panels in the MVP UI. N
 
 - **The idea:** dots and lines, black on white ([ADR-0024](decisions/0024-black-on-white.md)).
 - **Colour only on the dots.** Each kind of thing has its ink (`content/schema/layers.yaml`). Text, links, buttons, bands and rules are black, white and grey, so a colour always means something.
-- **One left edge.** The header and every page hang from one column (`--page`). The Map takes the whole window, and the header goes with them.
+- **One left edge.** The header and every page hang from one column. The Map takes the whole window; the header keeps its place ([ADR-0032](decisions/0032-one-look.md)).
 - **Rules, not cards.** Grouped things sit between hairlines. A card is only for something floating over a map or picture.
 - **Links inside text are underlined,** since colour no longer marks them.
-- **Contrast:** every text keeps 4.5:1 on what is behind it in both modes (3:1 from 24 px, or 18.66 px bold). Text that steps back turns to the secondary, never fainter. `node tools/qa/sweep.mjs --a11y` checks every page.
+- **Contrast:** every text keeps 4.5:1 on what is behind it (3:1 from 24 px, or 18.66 px bold). Text that steps back turns to the secondary, never fainter. `node tools/qa/sweep.mjs --a11y` checks every page.
 - **Highlight** for quoted proof only: a grey behind the words.
 - **Type:** Bricolage Grotesque for titles, set large and tight; Literata for reading; the system's own face for controls. The first two are hosted here. The basemap's country and capital names are drawn with its own glyphs until we host it ourselves.
 - **Shapes:** books have a spine (3 px on the left, 8 on the right). Buttons and fields are 8 px.
-- **Stories read on white,** in every mode, and open on a black band: long reading needs paper (founder, 2026-11-01).
-- **Dark mode** follows the system everywhere else, on black.
-  - "Being verified" is a dashed neutral outline in both modes.
+- **One look on every page, in every mode: black on white** ([ADR-0032](decisions/0032-one-look.md)). Black is ink, never a large fill: a story opens on its title set large on white, covers are white with a hairline, and the footer is white under a rule.
+  - "Being verified" is a dashed neutral outline.
 
 ## Covers
 

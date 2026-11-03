@@ -17,7 +17,7 @@ pub struct Ink {
     pub text: &'static str,
 }
 
-pub const INK: Ink = Ink { bg: "#000000", fg: "#ffffff", text: "#000000" };
+pub const INK: Ink = Ink { bg: "#ffffff", fg: "#000000", text: "#000000" };
 
 /// The dots keep the inks of the map, drawn from the page's own tokens.
 const DOTS: [&str; 7] = ["--tomato", "--cobalt", "--leaf", "--sky", "--sun", "--plum", "--rose"];

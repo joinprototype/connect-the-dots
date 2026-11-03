@@ -30,7 +30,6 @@
   --accent-hover: #333333;
   --on-fill: #ffffff;
   /* a full-width band of black; it stays black in dark mode */
-  --band: #000000;
   --highlight: #e6e6e6;
   /* the inks of the dots */
   --tomato: #e23d28;
@@ -51,36 +50,15 @@
   --measure: 66ch;
   --gutter: clamp(18px, 4vw, 44px);
   /* the page column: the header and every page hang from its left edge */
-  --page: 1180px;
-  color-scheme: light dark;
+  --column: 1180px;
+  --page: var(--column);
+  /* one look on every page, in every mode: black on white (ADR-0032) */
+  color-scheme: light;
 }
 
-/* the Map and the explorer use the whole window, and the header goes with them */
+/* the Map uses the whole window; the header keeps its place */
 .explorer-page { --page: 100%; }
 
-/* stories read on white in every mode: the page sets data-theme="light" */
-:root[data-theme="light"] { color-scheme: light; }
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #000000;
-    --paper-2: #141414;
-    --sheet: #141414;
-    --raised: #1f1f1f;
-    --fill: #262626;
-    --ink: #ffffff;
-    --ink-2: #e0e0e0;
-    --muted: #a3a3a3;
-    --rule: #3d3d3d;
-    --contour: #292929;
-    --accent: #ffffff;
-    --accent-hover: #d4d4d4;
-    --on-fill: #000000;
-    --band: #141414;
-    --highlight: #3d3d3d;
-    --shadow-lift: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 20px 40px rgba(0, 0, 0, 0.6);
-  }
-}
 
 *, *::before, *::after { box-sizing: border-box; }
 html { font-family: var(--font-ui); font-size: 100%; line-height: 1.5; color: var(--ink); background: var(--paper); -webkit-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; }
@@ -105,7 +83,7 @@ p { margin: 0 0 1em; }
 
 /* ---------------------------------------------------------------- header */
 .site-header { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: 1px solid var(--rule); }
-.site-header-in { display: flex; align-items: center; gap: clamp(14px, 3vw, 30px); max-width: var(--page); margin: 0 auto; padding: 10px var(--gutter); }
+.site-header-in { display: flex; align-items: center; gap: clamp(14px, 3vw, 30px); max-width: var(--column); margin: 0 auto; padding: 10px var(--gutter); }
 .brand { display: inline-flex; align-items: center; gap: 9px; color: var(--ink); font: 800 1.14rem var(--font-display); letter-spacing: -0.01em; }
 .brand:hover { text-decoration: none; }
 .brand-mark { width: 32px; height: 21px; overflow: visible; }
@@ -202,7 +180,7 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
 .book { display: flex; flex-direction: column; gap: 3px; color: var(--ink); scroll-snap-align: start; min-width: 0; }
 .book:hover { text-decoration: none; }
 .book:hover .book-title { text-decoration: underline; text-underline-offset: 0.14em; }
-.book-cover { display: block; aspect-ratio: 3 / 4; border-radius: 3px 8px 8px 3px; overflow: hidden; background: var(--paper-2); }
+.book-cover { display: block; aspect-ratio: 3 / 4; border-radius: 3px 8px 8px 3px; overflow: hidden; background: var(--paper); outline: 1px solid var(--rule); outline-offset: -1px; }
 .cover-art { display: block; width: 100%; height: 100%; }
 .book-kind { margin-top: 9px; font: 500 0.8rem var(--font-ui); color: var(--muted); }
 .book-title { font: 650 1rem/1.25 var(--font-ui); }
@@ -535,9 +513,9 @@ ctd-atlas-links { display: block; }
 .footer-nav { display: flex; flex-wrap: wrap; gap: 0 22px; margin: -10px 0 1rem; font-size: 1rem; font-weight: 600; }
 .footer-nav a { display: inline-block; padding-block: 10px; text-decoration: none; }
 .footer-nav a:hover { text-decoration: underline; }
-.site-footer { margin-top: 3rem; padding: 40px max(var(--gutter), calc(50vw - 590px + var(--gutter))) 44px; color: #cfcfcf; background: var(--band); font-size: 0.92rem; }
-.site-footer a { color: #fff; text-decoration: underline; text-underline-offset: 0.15em; }
-.footer-principle { font: 400 clamp(1.15rem, 2vw, 1.4rem)/1.4 var(--font-body); color: #fff; max-width: 52ch; }
+.site-footer { margin-top: 3rem; padding: 40px max(var(--gutter), calc(50vw - 590px + var(--gutter))) 44px; color: var(--muted); background: var(--paper); border-top: 1px solid var(--rule); font-size: 0.92rem; }
+.site-footer a { color: var(--ink); text-decoration: underline; text-underline-offset: 0.15em; }
+.footer-principle { font: 400 clamp(1.15rem, 2vw, 1.4rem)/1.4 var(--font-body); color: var(--ink); max-width: 52ch; }
 .footer-maker { margin: 0 0 6px; }
 .footer-build { margin: 0; }
 

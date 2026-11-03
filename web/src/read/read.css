@@ -1,5 +1,5 @@
 /* Read (/read/): one line down the left of the reading, the field of dots beside it (under it on a phone).
-   Black on white, colour only on the dots; stories read on white in every mode (the page is data-theme="light"). */
+   Black on white, colour only on the dots (ADR-0032). */
 @import '../lib/dotfield.css';
 
 .read-page {
@@ -47,24 +47,23 @@
 .read-page a[class^="door-"], .read-door { color: inherit; text-decoration: underline dotted 2px var(--door, var(--ink)); text-decoration-skip-ink: none; text-underline-offset: 0.22em; }
 .read-page a[class^="door-"]:hover, .read-door:hover, .read-page a.on { text-decoration-style: solid; }
 
-/* the black band: a story begins */
-.read-band { position: relative; z-index: 30; display: flex; flex-direction: column; justify-content: flex-end; gap: 18px; min-height: 62vh; padding: 22px var(--line) 56px var(--text); background: var(--band); color: #fff; }
+/* a story begins: its title and opening lines, set large on white */
+.read-band { position: relative; z-index: 30; display: flex; flex-direction: column; justify-content: flex-end; gap: 18px; min-height: 62vh; padding: 22px var(--line) 56px var(--text); background: var(--paper); color: var(--ink); }
 .read-story:first-child .read-band { min-height: 84vh; }
-.read-band::before { content: ""; position: absolute; top: 0; bottom: 0; left: var(--line); width: 2px; margin-left: -1px; background: #fff; }
-.read-band :focus-visible { outline-color: #fff; }
-.read-title { position: relative; max-width: var(--col); margin: 0; color: #fff; font: 700 21px/1.15 var(--font-display); letter-spacing: -0.012em; }
-.read-title .read-mark { top: 2px; left: calc(var(--off) * -1 - 9px); --r: 9px; background: #fff; box-shadow: 0 0 0 3px #000; }
+.read-band::before { content: ""; position: absolute; top: 0; bottom: 0; left: var(--line); width: 2px; margin-left: -1px; background: var(--ink); }
+.read-title { position: relative; max-width: var(--col); margin: 0; color: var(--ink); font: 700 21px/1.15 var(--font-display); letter-spacing: -0.012em; }
+.read-title .read-mark { top: 2px; left: calc(var(--off) * -1 - 9px); --r: 9px; }
 .read-hero { max-width: var(--col); margin: 0; font: 800 66px/1.03 var(--font-display); letter-spacing: -0.028em; text-wrap: pretty; }
 .read-hero.mid { font-size: 54px; }
 .read-hero.long { font-size: 42px; }
 .read-hero a[class^="door-"] { text-decoration-thickness: 4px; text-underline-offset: 0.12em; }
-.read-tell { order: -1; max-width: var(--col); margin: 0 0 auto; font: 400 15px/1.45 var(--font-ui); color: #d4d4d4; }
+.read-tell { order: -1; max-width: var(--col); margin: 0 0 auto; font: 400 15px/1.45 var(--font-ui); color: var(--muted); }
 /* a story drawn for a page: the way back to it, and what it is drawn from */
 /* an entry's story, until its pack is in (life.html) */
 .read-opening { margin: 0; padding: 40px var(--line) 0 var(--text); font: 400 15px/1.5 var(--font-ui); color: var(--muted); }
-.read-from, .read-by { max-width: var(--col); margin: 0; font: 400 15px/1.45 var(--font-ui); color: #d4d4d4; }
+.read-from, .read-by { max-width: var(--col); margin: 0; font: 400 15px/1.45 var(--font-ui); color: var(--muted); }
 .read-from { margin-bottom: auto; }
-.read-from a { display: inline-block; padding: 12px 0; margin: -12px 0; color: #fff; text-underline-offset: 0.16em; }
+.read-from a { display: inline-block; padding: 12px 0; margin: -12px 0; color: var(--ink); text-underline-offset: 0.16em; }
 
 /* reading */
 .read-intro, .read-outro, .read-scene, .read-end, .read-stop > *, .read-return { padding-left: var(--text); padding-right: var(--line); }
@@ -94,12 +93,12 @@
 .read-ended .read-mark { top: 6px; left: calc(var(--off) * -1 - 4.5px); }
 .read-next-h { margin: 34px 0 4px; font: 700 21px/1.2 var(--font-display); }
 .read-next { margin: 0; padding: 0; list-style: none; }
-.read-book { position: relative; display: block; margin: 10px 0 0; padding: 14px 18px 15px; border-radius: 3px 8px 8px 3px; background: var(--band); color: #fff; text-decoration: none; }
+.read-book { position: relative; display: block; margin: 10px 0 0; padding: 14px 18px 15px; border: 2px solid var(--ink); border-radius: 3px 8px 8px 3px; background: var(--paper); color: var(--ink); text-decoration: none; }
 .read-book::before { content: ""; position: absolute; top: 50%; left: calc(var(--off) * -1); width: var(--off); height: 2px; background: var(--ink); }
-.read-book:hover { background: #2a2a2a; }
+.read-book:hover { background: var(--paper-2); }
 .read-book.on { outline: 2px solid var(--ink); outline-offset: 2px; }
 .read-book b { display: block; font: 700 24px/1.12 var(--font-display); letter-spacing: -0.016em; }
-.read-book span { display: block; margin-top: 4px; font: 400 15px/1.35 var(--font-ui); color: #d4d4d4; }
+.read-book span { display: block; margin-top: 4px; font: 400 15px/1.35 var(--font-ui); color: var(--muted); }
 .read-why { margin: 8px 0 0 !important; font: 400 15px/1.45 var(--font-ui); color: var(--ink-2); }
 .read-also { margin: 26px 0 0 !important; font: 400 15px/1.5 var(--font-ui); color: var(--ink-2); }
 .read-fine { margin-top: 26px; font: 400 15px/1.5 var(--font-ui); color: var(--ink-2); }

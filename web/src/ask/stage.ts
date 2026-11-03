@@ -95,10 +95,6 @@ export class Stage {
       this.seen = e.isIntersecting;
       if (this.seen) this.kick();
     }).observe(wrap);
-    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-      this.colours();
-      this.kick();
-    });
     canvas.addEventListener('pointermove', (e) => {
       if (e.pointerType === 'touch') return;
       const id = this.nearest(e, 15)?.id ?? null;

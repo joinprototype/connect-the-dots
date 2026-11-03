@@ -2,6 +2,11 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## Next
+
+- One look on every page: black on white, whatever the system's dark mode says. Stories open on their title on white, covers and the footer are white, and nothing large is black any more.
+- The header stays where it is on the Map, as on every other page.
+
 ## 0.5.0 (2026-11-03)
 
 - One view for each thing you do. Every story reads on Read, at its own address, over the world in dots; so do the stories drawn for a name or a question. Ask answers any two names. Explore and Connect are gone, and their old addresses take you to the same names on Stories, Ask or their pages.

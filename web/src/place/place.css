@@ -9,9 +9,6 @@
   user-select: none;
   -webkit-user-select: none;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .place { --place-land: #1c1c1c; --place-line: #4d4d4d; --place-road: #474747; }
-}
 .place:focus-visible { outline-offset: -3px; }
 .place-canvas { position: absolute; inset: 0; z-index: 0; display: block; width: 100%; height: 100%; }
 .place-can { cursor: pointer; }
@@ -52,11 +49,11 @@
 .place-go a { padding: 6px 0; text-decoration: underline; text-underline-offset: 0.16em; }
 .place-notice { margin-top: 14px !important; font: 600 0.875rem/1.4 var(--font-ui); }
 
-/* a story opens on a black band, as its own page does */
-.place-band { margin: 4px 0 14px; padding: 16px 18px 18px; color: #fff; background: var(--band); border-radius: 3px 8px 8px 3px; }
-.place-band h2 { margin: 0 0 6px; color: #fff; }
-.place-band p { margin: 0; font: 400 0.875rem/1.4 var(--font-ui); color: #d4d4d4; }
-.place-band .place-sub { margin-top: 4px; font: 400 1rem/1.45 var(--font-body); color: #fff; }
+/* a story opens on its title, set large, as its own page does */
+.place-band { margin: 4px 0 14px; padding: 0 0 12px; color: var(--ink); border-bottom: 2px solid var(--ink); }
+.place-band h2 { margin: 0 0 6px; color: var(--ink); }
+.place-band p { margin: 0; font: 400 0.875rem/1.4 var(--font-ui); color: var(--muted); }
+.place-band .place-sub { margin-top: 4px; font: 400 1rem/1.45 var(--font-body); color: var(--ink); }
 .place-words .place-read { display: inline-block; padding: 12px 18px; font: 600 0.95rem/1 var(--font-ui); color: var(--on-fill) !important; background: var(--accent); border-radius: 8px; text-decoration: none; }
 .place-words .place-read:hover { background: var(--accent-hover); text-decoration: none; }
 

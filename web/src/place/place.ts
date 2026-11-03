@@ -141,10 +141,6 @@ class CtdPlace extends HTMLElement {
       this.visible = seen.some((s) => s.isIntersecting);
       if (this.visible) this.kick();
     }).observe(this);
-    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-      this.painter.theme(this);
-      this.kick();
-    });
     // what only a zoom or a move needs, made when the page has a moment: every dot's name planned for every
     // nearness, and the picture a move far out draws
     const later = 'requestIdleCallback' in window ? (run: () => void) => requestIdleCallback(run, { timeout: 2000 }) : (run: () => void) => setTimeout(run, 300);
