@@ -38,8 +38,8 @@
 </article>
 {% if chapter.next %}
 <section class="shelf-section" aria-labelledby="next-h">
-  <h2 id="next-h">More stories</h2>
-  <div class="shelf">{% for c in chapter.next %}{{ book(c) }}{% endfor %}</div>
+  <h2 id="next-h">Keep reading</h2>
+  <div class="shelf">{% for c in chapter.next %}<div class="next-book">{{ book(c) }}{% if c.shares %}<p class="next-why">Shares {{ c.shares }}</p>{% endif %}</div>{% endfor %}</div>
 </section>
 <div class="shelf-end"></div>
 {% endif %}

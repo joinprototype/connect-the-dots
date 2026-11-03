@@ -2,6 +2,10 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## Next
+
+- The Map, Stories and Explore are back in the header on every page, beside the box. Home shows the Map, and lists every way in.
+
 ## 0.4.7 (2026-11-02)
 
 - One box replaces the menu on every page. Type a name, two names, a year or a question. The footer keeps Stories, Map, Explore and Connect.

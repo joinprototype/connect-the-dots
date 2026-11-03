@@ -7,6 +7,7 @@
    the first one shows. The picks are in content/featured.yaml. #}
 <section class="threads">
   <h1 class="sr-only">{{ site.title }}</h1>
+  <div class="threads-in">
   <div class="thread-stack">
     {% for t in threads %}
     <article class="thread{% if loop.first %} on{% endif %}" style="--c: {{ t.node.color }}">
@@ -23,6 +24,11 @@
   {% if threads|length > 1 %}<button type="button" class="button thread-next">Another name</button>{% endif %}
   <p class="thread-notice">A connection is not evidence of wrongdoing.</p>
   <p class="sr-only" aria-live="polite" id="thread-said"></p>
+  </div>
+  <a class="home-map" href="/w/">
+    <img src="/world/picture.svg" width="1000" height="1000" alt="" loading="lazy" decoding="async">
+    <span>{% if site.atlas %}A million things on the Map{% else %}Everything on the Map{% endif %} ›</span>
+  </a>
 </section>
 
 {% if shelf %}
@@ -36,6 +42,16 @@
   <p class="index-more"><a href="/c/">All {{ stories }} stories ›</a></p>
 </section>
 {% endif %}
+
+<section class="home-ways" aria-labelledby="ways-h">
+  <h2 id="ways-h">More ways in</h2>
+  <ul class="ways">
+    <li><a href="/w/">The Map</a><span>Every dot placed beside what it links to. Zoom from the whole world to one thing, or pick an era.</span></li>
+    <li><a href="/x/?focus={{ threads[0].node.id if threads else '' }}">Explore</a><span>Start from anything and walk from one thing to the next, with the proof for every link.</span></li>
+    <li><a href="/r/">Connect</a><span>Any two things, and the way between them, step by step.</span></li>
+    <li><a href="/c/">Stories</a><span>All {{ stories }} stories, drawn as islands of the people, places and things in them.</span></li>
+  </ul>
+</section>
 
 <section class="home-can" id="index-h">
   <p class="home-can-box">The box at the top of every page takes a name, two names, a year, or a question: who is behind something, why it happened, who benefited.</p>

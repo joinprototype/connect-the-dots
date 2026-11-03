@@ -17,7 +17,7 @@ The header on every page holds the mark and one box. Type a name, two names, a y
 | **Explore** | The written record as a web, with routes. |
 | **A pair** (`/r/`) | Two things: a direct tie first, with its caveat, then the way between them, stop by stop. |
 
-None of these is a door in a nav. The footer lists them.
+The header holds the box and three plain links: Stories, Map, Explore. Connect is what the box does with two names. Home shows the Map beside the thread, and lists every way in.
 
 Entity pages are the "book pages" these three lead to:
 - a cover;

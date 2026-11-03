@@ -122,6 +122,9 @@ ctd-box { display: block; }
 .site-box input { display: block; width: 100%; appearance: none; color: var(--ink); border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); }
 .site-box input::placeholder { color: var(--muted); word-spacing: normal; opacity: 1; }
 .site-stories { margin-left: auto; font-weight: 600; color: var(--ink); text-decoration: underline; text-underline-offset: 0.16em; }
+/* the places an answer leads to, in plain words beside the box */
+.site-nav { display: flex; gap: 0 clamp(14px, 2vw, 24px); margin-left: auto; font-weight: 600; white-space: nowrap; }
+.site-nav a { color: var(--ink); padding-block: 8px; }
 @media (scripting: none) { .site-box { display: none; } }
 
 /* ---------------------------------------------------------------- controls */
@@ -144,6 +147,21 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
 
 /* ---------------------------------------------------------------- home: one name and its stories */
 .threads { max-width: var(--page); margin: 0 auto; padding: clamp(28px, 4vw, 44px) var(--gutter) 0; }
+/* beside the thread, the Map: its best-connected dots, one still picture that loads after the words */
+.threads { display: grid; gap: 2rem; }
+.threads-in { min-width: 0; }
+.home-map { display: block; color: var(--ink); font-weight: 600; }
+.home-map img { display: block; width: 100%; max-width: 420px; height: auto; aspect-ratio: 1; }
+@media (min-width: 1000px) { .threads { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); align-items: start; } .home-map { margin-top: 1rem; } }
+.home-ways { max-width: var(--page); margin: 0 auto; padding: 0 var(--gutter); }
+/* what a story at the end of another shares with it, so the reader knows why it is offered */
+.next-book { min-width: 0; }
+.next-why { margin: 0.4rem 0 0; font: 400 0.92rem/1.4 var(--font-ui); color: var(--ink-2); }
+.home-ways h2 { margin-top: 3.2rem; }
+.ways { list-style: none; margin: 0; padding: 0; max-width: 44rem; }
+.ways li { display: grid; gap: 2px; padding: 0.9rem 0; border-top: 1px solid var(--rule); }
+.ways a { font: 600 1.15rem var(--font-display); color: var(--ink); }
+.ways span { font: 400 1rem/1.5 var(--font-body); color: var(--ink-2); }
 /* every thread is in the page, in one cell: the tallest holds the room, so "Another name" moves nothing */
 .thread-stack { display: grid; }
 .thread { grid-area: 1 / 1; min-width: 0; visibility: hidden; }
@@ -551,9 +569,12 @@ ctd-atlas-links { display: block; }
   .entity-cover { width: 132px; }
 }
 @media (max-width: 640px) {
-  /* the link keeps its name (aria-label); the box needs the room */
+  /* the link keeps its name (aria-label); the box needs the room, and the links take a row of their own */
   .brand span { display: none; }
+  .site-header-in { flex-wrap: wrap; row-gap: 2px; }
+  .site-nav { order: 3; width: 100%; margin-left: 0; gap: 0 22px; }
 }
+@media (min-width: 641px) and (max-width: 900px) { .brand span { display: none; } }
 /* a phone on its side: the header scrolls away, so the page keeps its little height */
 @media (max-height: 500px) {
   .site-header { position: static; }

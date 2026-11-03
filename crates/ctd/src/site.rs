@@ -243,7 +243,9 @@ https://:version.:subdomain.workers.dev/*\n  X-Robots-Tag: noindex\n";
 /// A type's page lists every entry up to this many; past it, one page per first letter.
 const TYPE_PAGE_MAX: usize = 500;
 /// Stories offered at the end of a written story.
-const NEXT_STORIES: usize = 2;
+const NEXT_STORIES: usize = 3;
+/// A name shared by more stories than this does not join two of them.
+const RARE: usize = 6;
 /// Entries a place's page lists as set there.
 const HERE_MAX: usize = 12;
 /// How many answers a question's index lists.
@@ -1123,22 +1125,67 @@ fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
                     "cover": ch.cover.as_ref().map_or_else(|| chapter_cover(kb, ch), |u| format!(r#"<img class="cover-art cover-photo" src="{}" alt="" loading="lazy">"#, markdown::escape(u))) })
         })
         .collect();
+    let shared = shared_names(kb);
     for (i, ch) in kb.chapters.iter().enumerate() {
         let resolver = cx.resolver();
         let shots = &ch.shots;
+        // the stories that share the most with this one, each saying what; else the next on the shelf
+        let mut next: Vec<Value> = shared[i]
+            .iter()
+            .map(|(j, names)| {
+                let mut card = cards[*j].clone();
+                card["shares"] = json!(names.iter().map(|id| kb.name_of(id)).collect::<Vec<_>>().join(", "));
+                card
+            })
+            .collect();
+        if next.is_empty() {
+            next = cards.iter().cycle().skip(i + 1).take(cards.len() - 1).take(NEXT_STORIES).cloned().collect();
+        }
         let steps = story_steps(s, shots);
         let chapter = json!({
             "id": ch.id, "title": ch.title, "subtitle": ch.subtitle, "summary": ch.summary, "authors": ch.authors,
             "intro_html": markdown::render(&ch.intro_md, &resolver), "outro_html": markdown::render(&ch.outro_md, &resolver),
             "shots_json": script_json(shots)?, "data_json": script_json(&data::story(kb, &s.by_id, shots))?,
             "steps": steps, "url": format!("/c/{}/", ch.id), "shot_count": shots.len(), "rel_path": ch.rel_path, "ink": crate::covers::INK,
-            // the stories after this one, round the shelf: a reader who finishes has somewhere to go
-            "next": cards.iter().cycle().skip(i + 1).take(cards.len() - 1).take(NEXT_STORIES).collect::<Vec<_>>(),
+            "next": next,
         });
         let html = s.render("chapter.html", json!({ "site": &s.site, "chapter": &chapter, "history": s.history.of(&ch.rel_path) }))?;
         write(&s.out.join("c").join(&ch.id).join("index.html"), html)?;
     }
     Ok(cards)
+}
+
+/// For each story, the others that share the most with it, by the entries their scenes name, with the
+/// rarest shared names first. A name in few stories joins two of them, and "the United States" barely
+/// does. A sealed entry joins no stories (ADR-0027), nor does a group (ADR-0016): the reader chooses
+/// the next story, and no chain of them may lead along either.
+fn shared_names(kb: &Kb) -> Vec<Vec<(usize, Vec<&str>)>> {
+    let sealed = kb.sealed();
+    let counts = |e: &str| kb.entity(e).is_some_and(|x| !sealed.contains(e) && !matches!(x.kind.as_str(), "group" | "tradition"));
+    let named: Vec<BTreeSet<&str>> =
+        kb.chapters.iter().map(|ch| ch.shots.iter().flat_map(|shot| crate::kb::shot_entries(shot).map(|(_, id)| id)).filter(|e| counts(e)).collect()).collect();
+    let mut stories_of: HashMap<&str, usize> = HashMap::new();
+    for e in named.iter().flatten() {
+        *stories_of.entry(e).or_default() += 1;
+    }
+    let weight = |e: &str| 1.0 / stories_of[e] as f64;
+    (0..named.len())
+        .map(|i| {
+            let mut near: Vec<(f64, usize, Vec<&str>)> = (0..named.len())
+                .filter(|&j| j != i)
+                .filter_map(|j| {
+                    let mut both: Vec<&str> = named[i].intersection(&named[j]).copied().collect();
+                    both.sort_by(|a, b| weight(b).total_cmp(&weight(a)).then(a.cmp(b)));
+                    // a name in many stories (a capital, a country) says nothing on its own
+                    both.retain(|e| stories_of[e] <= RARE);
+                    let score: f64 = both.iter().map(|e| weight(e)).sum();
+                    (score > 0.0).then(|| (score, j, both.into_iter().take(3).collect()))
+                })
+                .collect();
+            near.sort_by(|a, b| b.0.total_cmp(&a.0).then(a.1.cmp(&b.1)));
+            near.into_iter().take(NEXT_STORIES).map(|(_, j, names)| (j, names)).collect()
+        })
+        .collect()
 }
 
 fn route_stories(s: &Site) -> Result<Routes> {
