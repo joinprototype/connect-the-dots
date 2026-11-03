@@ -17,6 +17,8 @@ const ENTRIES = {
   route: 'src/atlas/route.ts',
   // Ask (/ask/): the box as the page's heading
   ask: 'src/ask/main.ts',
+  // Read: a story over its field of dots
+  read: 'src/read/main.ts',
 } as const;
 const ENTRY_RE = new RegExp(`^/assets/(${Object.keys(ENTRIES).join('|')})\\.(js|css)$`);
 

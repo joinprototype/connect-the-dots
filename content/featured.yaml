@@ -7,6 +7,9 @@
 # A pair can carry a note the route story states up front: {between: [a, b], note: "…"}.
 # `questions` are question pages as <question>/<entity id> (content/schema/questions.yaml): the
 # first books of the Questions shelf, always kept when pages are capped.
+# `read` is the written story Read (/read/) opens on, its first lines over the place it happens: a
+# story id, free of sealed entries (ADR-0027).
+read: thirty-seven-days
 threads: [standard-oil, john-d-rockefeller, harvard-university, blackrock, exxonmobil, bill-gates, zurich, boeing]
 connections:
   - [moses, elon-musk]

@@ -28,6 +28,9 @@ mod dossier;
 mod history;
 pub mod islands;
 mod question;
+// Read (/read/): a story over its field of dots, and the field itself
+mod field;
+mod read;
 
 use history::{History, git};
 use question::{answer_counts, answer_view};
@@ -604,6 +607,8 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     for (id, b) in &kb.borders {
         write(&out.join("data").join("borders").join(format!("{id}.json")), fs::read(root.join(&b.rel_path))?)?;
     }
+    // the field of dots behind Read (and whoever reuses dotfield.ts)
+    field::write_field(kb, atlas.as_ref(), out)?;
 
     // ---- pages -------------------------------------------------------------------
     let mut env = Environment::new();
@@ -741,6 +746,8 @@ fn copy_assets(root: &Path, out: &Path) -> Result<Value> {
         "story_js": has_asset("story.js"), "story_css": has_asset("story.css"), "life_js": has_asset("life.js"),
         // Ask (/ask/)
         "ask_js": has_asset("ask.js"), "ask_css": has_asset("ask.css"),
+        // Read
+        "read_js": has_asset("read.js"), "read_css": has_asset("read.css"),
     }))
 }
 
@@ -1131,6 +1138,10 @@ fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
         })
         .collect();
     let shared = shared_names(kb);
+    // Read: every story again at /read/<id>/, and /read/ opens on the first the first screen may show
+    let read_site = read::site_json(s)?;
+    let first_read = read::first(kb);
+    write(&s.out.join("data").join("read.json"), serde_json::to_vec(&read::data(s, &cards))?)?;
     for (i, ch) in kb.chapters.iter().enumerate() {
         let resolver = cx.resolver();
         let shots = &ch.shots;
@@ -1156,6 +1167,12 @@ fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
         });
         let html = s.render("chapter.html", json!({ "site": &s.site, "chapter": &chapter, "history": s.history.of(&ch.rel_path) }))?;
         write(&s.out.join("c").join(&ch.id).join("index.html"), html)?;
+        let story = read::story(s, ch, chapter["steps"].as_array().map_or(&[], Vec::as_slice), chapter["next"].as_array().map_or(&[], Vec::as_slice))?;
+        let page = |first: bool| s.render("read.html", json!({ "site": &s.site, "story": &story, "read_json": &read_site, "first": first }));
+        write(&s.out.join("read").join(&ch.id).join("index.html"), page(false)?)?;
+        if first_read.as_deref() == Some(ch.id.as_str()) {
+            write(&s.out.join("read").join("index.html"), page(true)?)?;
+        }
     }
     Ok(cards)
 }

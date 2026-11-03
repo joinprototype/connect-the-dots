@@ -484,6 +484,12 @@ pub fn assemble(schema: Schema, raw: Raw) -> (Kb, Vec<Diag>) {
     for id in kb.featured.threads.iter().filter(|id| kb.thread_stories(id).len() < MIN_THREAD) {
         diags.push(Diag::warn("content/featured.yaml", format!("`{id}` runs through too few stories, so the home page leaves it out")));
     }
+    if let Some(id) = kb.featured.read.as_ref().filter(|id| !kb.unsealed_chapters().iter().any(|c| &c.id == *id)) {
+        diags.push(
+            Diag::err("content/featured.yaml", format!("`{id}` is not a written story free of sealed entries, so Read cannot open on it"))
+                .hint("`read` names a story in content/chapters/ that no sealed entry is in (ADR-0027)"),
+        );
+    }
     warn_uncited_sources(&kb, &held, &mut diags);
     (kb, diags)
 }
@@ -1090,7 +1096,8 @@ fn read_featured(kb: &Kb, raw: &Featured, diags: &mut Vec<Diag>) -> Featured {
         }
     };
     let route = crate::paths::Options::stories(kb, 1);
-    let mut featured = Featured::default();
+    // a story id: checked once the stories are read
+    let mut featured = Featured { read: raw.read.clone(), ..Featured::default() };
     for c in &raw.connections {
         let [a, b] = c.ids();
         let (Some(a), Some(b)) = (pick(a, diags), pick(b, diags)) else { continue };
@@ -1639,6 +1646,30 @@ pub(crate) mod tests {
         assert_eq!(said(&diags, "`thin` runs through too few stories").len(), 1);
         for refused in ["`fall` is of type `event`", "`hid` is sealed", "unknown entity `nobody`"] {
             assert!(diags.iter().any(|d| d.msg.contains(refused) && d.level == Level::Error), "{refused}");
+        }
+    }
+
+    #[test]
+    fn read_opens_only_on_a_story_free_of_sealed_entries() {
+        let sealed = "---\nid: hid\ntype: person\nname: Hid Den\nsealed: true\nclaims: []\n---\n";
+        let with = |pick: &str| {
+            load(
+                &format!("kb-read-{pick}"),
+                &[
+                    entity("org", "acme", "Acme", ""),
+                    file("content/entities/person/hi/hid.md", sealed),
+                    chapter_on("open", "acme", 2, "Acme grew."),
+                    chapter_on("shut", "acme", 2, "Acme paid Hid Den."),
+                    file("content/featured.yaml", &format!("read: {pick}\n")),
+                ],
+            )
+        };
+        let (kb, diags) = with("open");
+        assert_eq!(kb.featured.read.as_deref(), Some("open"));
+        assert!(said(&diags, "Read cannot open").is_empty());
+        for refused in ["shut", "nowhere"] {
+            let (_, diags) = with(refused);
+            assert!(diags.iter().any(|d| d.msg.contains(&format!("`{refused}` is not a written story")) && d.level == Level::Error), "{refused}");
         }
     }
 

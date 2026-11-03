@@ -1,0 +1,12 @@
+/* The dot field (dotfield.ts). The page places .dotfield-dots and .dotfield-marks, one over the other.
+   Dots, lines and names draw in the canvas's `color`; marks in their own ink, ringed in the page's. */
+.dotfield-dots { display: block; color: var(--ink); transition: opacity 0.16s; }
+.dotfield-marks { display: block; overflow: hidden; pointer-events: none; transition: opacity 0.16s; }
+.dotfield-cut { opacity: 0; }
+.dotfield-marks .hit { fill: transparent; pointer-events: all; cursor: pointer; }
+.dotfield-marks circle.dot { stroke: var(--paper); stroke-width: 2; }
+.dotfield-marks circle.dim { stroke-width: 0; fill-opacity: 0.55; }
+/* open data, unread: grey and dashed */
+.dotfield-marks circle.ring { fill: var(--paper); stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 2 2; }
+.dotfield-marks g:hover circle.dot, .dotfield-marks g.lit circle.dot { stroke: var(--ink); }
+.dotfield-marks g.lit circle.ring { stroke: var(--ink); stroke-width: 2.5; }

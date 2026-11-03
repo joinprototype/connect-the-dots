@@ -30,6 +30,9 @@ pub struct Featured {
     /// Questions shelf. They are always kept when pages are capped.
     #[serde(default)]
     pub questions: Vec<String>,
+    /// The written story Read (`/read/`) opens on: its first lines over the place it happens.
+    #[serde(default)]
+    pub read: Option<String>,
 }
 
 /// A featured pair: `[a, b]`, or `{between: [a, b], note: "…"}` when the route story must say
