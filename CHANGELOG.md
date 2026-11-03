@@ -2,9 +2,10 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
-## Next
+## 0.4.8 (2026-11-03)
 
 - The Map, Stories and Explore are back in the header on every page, beside the box. Home shows the Map, and lists every way in.
+- A story now ends on the stories that share the rarest names with it, each saying what it shares.
 
 ## 0.4.7 (2026-11-02)
 
