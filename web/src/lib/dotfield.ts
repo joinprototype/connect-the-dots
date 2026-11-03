@@ -80,6 +80,8 @@ export interface Scene {
   marks: Mark[];
   lines?: Line[];
   places?: number;
+  /** Only these written places may be named quietly (a story's own); else any. */
+  placesFrom?: { has(id: string): boolean };
 }
 
 /** `[id, name, lon, lat, rank]`: a written place, best connected first. */
@@ -116,7 +118,11 @@ export function project(lon: number, lat: number): [number, number] {
 }
 
 /** CSS pixels across the whole square at a web map zoom, as MapLibre counts them. */
+/** The nearest the Earth is drawn, in web map zoom (a country's view). */
+export const NEAREST = 5;
+
 export const zoomScale = (zoom: number): number => 512 * 2 ** zoom;
+const NEAREST_SCALE = zoomScale(NEAREST);
 
 /** The view that holds these points, with `pad` of the room around them; a box smaller than `least`
  *  units each way is taken as that, and the view never comes closer than `most` px per unit. */
@@ -333,7 +339,10 @@ export class DotField {
   }
 
   private viewOf(scene: Scene): View {
-    return typeof scene.view === 'function' ? scene.view([this.w || 1, this.h || 1]) : scene.view;
+    const v = typeof scene.view === 'function' ? scene.view([this.w || 1, this.h || 1]) : scene.view;
+    // the Earth is never drawn nearer than a country: past that its dots are few and far apart, with no
+    // coast or land shape to read them by
+    return scene.world === 'earth' && v.scale > NEAREST_SCALE ? { ...v, scale: NEAREST_SCALE } : v;
   }
 
   private moveTo(to: View, ms: number): void {
@@ -512,7 +521,7 @@ export class DotField {
     const out: Mark[] = [];
     for (const [id, name, lon, lat, rank] of this.field!.places) {
       if (out.length >= most) break;
-      if (taken.has(id)) continue;
+      if (taken.has(id) || (scene.placesFrom && !scene.placesFrom.has(id))) continue;
       const [x, y] = project(lon, lat);
       if (Math.abs(x - view.x) * view.scale > this.w * 0.46 || Math.abs(y - view.y) * view.scale > this.h * 0.46) continue;
       out.push({ id, name, x, y, ink: this.field!.ink, r: 3.5, label: 'quiet', rank: 1 + rank / 1000 });

@@ -1,6 +1,6 @@
 // The box once a person has focused it (box.ts loads this then): suggestions as they type, a dot on each name
 // they have typed, and what Enter does. Enter or a click goes to a real page, or shows a single name in place
-// on the explorer and world pages. Arrow keys move, Escape closes.
+// on the pages that can (the Map, Stories). Arrow keys move, Escape closes.
 import { findNames, lookupOf, suggest, understand, worthReading, type Found, type Row } from '../lib/box';
 import { loadSchema, prettifyId } from '../lib/data';
 import { el } from '../lib/dom';
@@ -99,9 +99,9 @@ export class BoxField {
 
   private follow(row: Pick<Row, 'url' | 'focus'>): void {
     this.close();
-    // On the explorer and world pages, show the entry in place when the page can (stories and
+    // On the Map and Stories, show the entry in place when the page can (stories and
     // entries it cannot show still go to their own page).
-    if (row.focus && document.documentElement.dataset.ctdExplorer !== undefined && requestFocus(row.focus)) {
+    if (row.focus && document.documentElement.dataset.ctdInPlace !== undefined && requestFocus(row.focus)) {
       this.input.value = '';
       this.paint([]);
       this.input.blur();

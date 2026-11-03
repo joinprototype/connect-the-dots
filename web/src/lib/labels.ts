@@ -1,4 +1,4 @@
-// Label placement: greedy, by priority, on the CPU. Used by the world viewer, the explorer and story graphs.
+// Label placement: greedy, by priority, on the CPU. Used by the world viewer.
 //
 // A few hundred labels are cheap to place exactly: project, then try right / left / above / below the
 // dot against a grid of already placed boxes (and the dots themselves). Labels that fit nowhere are
@@ -168,10 +168,3 @@ export function offsetOf(l: PlacedLabel): [number, number] {
   }
 }
 
-/** Canvas 2D text position for a placed label whose dot is at (x, y) in pixels. */
-export function canvasAnchor(l: PlacedLabel, x: number, y: number): { x: number; y: number; align: CanvasTextAlign; baseline: CanvasTextBaseline } {
-  const [dx, dy] = offsetOf(l);
-  const align: CanvasTextAlign = l.spot === Spot.Right ? 'left' : l.spot === Spot.Left ? 'right' : 'center';
-  const baseline: CanvasTextBaseline = l.spot === Spot.Above ? 'bottom' : l.spot === Spot.Below ? 'top' : 'middle';
-  return { x: x + dx, y: y + dy, align, baseline };
-}

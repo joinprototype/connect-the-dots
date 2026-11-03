@@ -101,7 +101,7 @@ struct Group {
     /// The plain sentence its relation asks to show with it (ADR-0027).
     caveat: Option<String>,
     items: Vec<ClaimView>,
-    /// Links of this kind past the page's cap (a hub's), which the explorer shows.
+    /// Links of this kind past the page's cap (a hub's), which Ask lists.
     more: usize,
 }
 
@@ -401,21 +401,8 @@ fn story_steps(s: &Site, shots: &[Value]) -> Vec<Value> {
     for shot in shots {
         let narration = shot.get("narration").and_then(Value::as_str).unwrap_or("");
         let html = markdown::render_scene(narration, &resolver, &doors, shot);
-        let mut q = Vec::new();
-        for (k, key) in [("focus", "focus"), ("lens", "lens"), ("perspective", "p")] {
-            if let Some(v) = shot.get(k).and_then(Value::as_str) {
-                q.push(format!("{key}={v}"));
-            }
-        }
-        if let Some(t) = shot.get("t").and_then(Value::as_f64) {
-            q.push(format!("t={t:.2}"));
-        }
         steps.push(json!({
-            "shot": shot.get("shot").and_then(Value::as_str).unwrap_or(""),
-            "view": shot.get("view").and_then(Value::as_str).unwrap_or("graph"),
             "narration_html": html,
-            "explore": shot.get("explore").and_then(Value::as_bool).unwrap_or(false),
-            "explore_url": format!("/x/?{}", q.join("&")),
             "time_label": shot.get("time_label"),
             "picture": scene_picture(cx.kb, shot, &mut pictured),
         }));
@@ -515,15 +502,15 @@ impl Site<'_> {
             .with_context(|| format!("rendering {name}"))
     }
 
-    /// A generated story, at `dest`: a life, a route or an answer.
+    /// A question's answer told as a story, at `dest`.
     fn story_page(&self, dest: PathBuf, draft: &crate::stories::Draft, back: Option<Value>) -> Result<()> {
-        write(&dest.join("index.html"), self.chapter_page(draft, back)?)
+        write(&dest.join("index.html"), self.drawn_page(draft, back)?)
     }
 
     /// An entry's generated story as its pack keeps it: what goes inside `e/_life/`, the one page
     /// that shows them all (ADR-0026).
     fn story_fragment(&self, draft: &crate::stories::Draft, back: Option<Value>) -> Result<Value> {
-        let page = self.chapter_page(draft, back)?;
+        let page = self.drawn_page(draft, back)?;
         let (open, close) = ("<main id=\"main\">", "</main>");
         let start = page.find(open).context("a story page has a main")? + open.len();
         let end = page.rfind(close).context("a story page closes its main")?;
@@ -531,19 +518,11 @@ impl Site<'_> {
         Ok(json!({ "title": format!("{}{sep} Connect the Dots", draft.title), "main": page[start..end].trim() }))
     }
 
-    fn chapter_page(&self, draft: &crate::stories::Draft, back: Option<Value>) -> Result<String> {
-        let (kb, cx) = (self.kb, &self.cx);
-        let shots = &draft.shots;
-        let steps = story_steps(self, shots);
-        let resolver = cx.resolver();
-        let chapter = json!({
-            "id": draft.id, "title": draft.title, "subtitle": draft.subtitle, "summary": draft.summary, "authors": [],
-            "intro_html": markdown::render(&draft.intro_md, &resolver), "outro_html": markdown::render(&draft.outro_md, &resolver),
-            "shots_json": script_json(shots)?, "data_json": script_json(&data::story(kb, &self.by_id, shots))?,
-            "steps": steps, "shot_count": shots.len(), "generated": true, "ink": crate::covers::INK,
-            "back": back, "explore_url": draft.explore_url,
-        });
-        self.render("chapter.html", json!({ "site": &self.site, "chapter": chapter, "history": [] }))
+    /// A story drawn from sourced links, as Read's page (ADR-0031).
+    fn drawn_page(&self, draft: &crate::stories::Draft, back: Option<Value>) -> Result<String> {
+        let steps = story_steps(self, &draft.shots);
+        let story = read::story(self, &read::Told::drawn(draft, back), &steps, &[])?;
+        self.render("read.html", json!({ "site": &self.site, "story": story, "read_json": read::site_json(self)? }))
     }
 }
 
@@ -577,7 +556,6 @@ struct QuestionShelf {
 /// The featured route stories: their cards, and each pair's URL.
 struct Routes {
     connections: Vec<Value>,
-    urls: HashMap<(String, String), String>,
 }
 
 pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
@@ -634,18 +612,19 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     library_page(&s, &chapters, &routes, &lives, &questions)?;
     home_page(&s, &chapters)?;
     // Ask: the box as the page's heading, arriving on a featured pair, and data/ask.json
-    ask::write_ask(&s)?;
+    let asked: Vec<(&str, &str)> = pages.list.iter().map(|a| (kb.schema.questions[a.q].id.as_str(), a.x.id.as_str())).collect();
+    ask::write_ask(&s, &asked)?;
     type_pages(&s)?;
-    for (dir, template) in [("x", "explorer.html"), ("w", "world.html")] {
-        write(&out.join(dir).join("index.html"), s.render(template, json!({ "site": &s.site }))?)?;
+    write(&out.join("w").join("index.html"), s.render("world.html", json!({ "site": &s.site }))?)?;
+    // Explore and Connect are folded into Stories, entry pages and Ask (ADR-0031): their addresses,
+    // with the entries they name, go on there
+    for (dir, to) in [("x", "Stories"), ("r", "Ask")] {
+        write(&out.join(dir).join("index.html"), s.render("forward.html", json!({ "site": &s.site, "to": to }))?)?;
     }
     let mut spots = HashMap::new();
     if !kb.entities.is_empty() {
         let (g, spec) = crate::world::from_kb(kb, atlas.as_ref());
         let (_, nodes) = crate::world::build(&g, &spec, &out.join("world"), Some(&root.join(".cache").join("world-state.json")))?;
-        // the entries come first in the world's nodes, in the order of graph-slim.json
-        let places: Vec<u32> = nodes[..kb.entities.len()].iter().flatten().map(|v| (v * 65535.0).round() as u32).collect();
-        write(&out.join("data").join("spots.json"), serde_json::to_vec(&places)?)?;
         if let Some(ids) = &g.ids {
             spots = crate::atlas::spots(kb, ids, &nodes);
         }
@@ -653,7 +632,6 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     if let Some(a) = &atlas {
         crate::atlas::write(a, kb, &spots, out)?;
         write(&out.join("a").join("index.html"), s.render("atlas.html", json!({ "site": &s.site, "entries": a.entries.len() }))?)?;
-        write(&out.join("r").join("index.html"), s.render("route.html", json!({ "site": &s.site, "entries": a.entries.len() }))?)?;
     }
     write(&out.join("404.html"), s.render("404.html", json!({ "site": &s.site }))?)?;
     about_page(&s)?;
@@ -669,10 +647,6 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
             v
         })
         .collect();
-    // which stories exist, so the explorer can offer "Play the story" / "Play this route"
-    let mut path_ids: Vec<String> = routes.urls.keys().map(|(a, b)| format!("{a}--{b}")).collect();
-    path_ids.sort();
-    schema["stories"] = json!({ "paths": path_ids });
     // a dot on the Map or the Earth can say which written stories it is in
     let stories: BTreeMap<&String, Vec<[&Value; 2]>> =
         s.stories.iter().map(|(id, rows)| (id, rows.iter().map(|r| [&r["title"], &r["url"]]).collect())).collect();
@@ -740,10 +714,9 @@ fn copy_assets(root: &Path, out: &Path) -> Result<Value> {
     let has_asset = |name: &str| out.join("assets").join(name).exists();
     Ok(json!({
         "islands_js": has_asset("islands.js"), "islands_css": has_asset("islands.css"),
-        "explorer_js": has_asset("explorer.js"), "explorer_css": has_asset("explorer.css"),
         "world_js": has_asset("world.js"), "world_css": has_asset("world.css"),
-        "atlas_js": has_asset("atlas.js"), "atlas_css": has_asset("atlas.css"), "route_js": has_asset("route.js"),
-        "story_js": has_asset("story.js"), "story_css": has_asset("story.css"), "life_js": has_asset("life.js"),
+        "atlas_js": has_asset("atlas.js"), "atlas_css": has_asset("atlas.css"),
+        "life_js": has_asset("life.js"), "forward_js": has_asset("forward.js"),
         // Ask (/ask/)
         "ask_js": has_asset("ask.js"), "ask_css": has_asset("ask.css"),
         // Read
@@ -785,7 +758,7 @@ fn write_slim(kb: &Kb, out: &Path) -> Result<()> {
     let slim_gz = data::gzip_len(&slim);
     if slim_gz > data::SLIM_BUDGET {
         eprintln!(
-            "warning: data/graph-slim.json is {} KB gzip, past its {} KB budget: the explorer and routes need the route service (ADR-0017)",
+            "warning: data/graph-slim.json is {} KB gzip, past its {} KB budget: Ask and Stories need the route service (ADR-0017)",
             slim_gz / 1024,
             data::SLIM_BUDGET / 1024
         );
@@ -877,7 +850,7 @@ fn entity_page(
             .then(a.start().total_cmp(&b.start()))
             .then(a.id.cmp(&b.id))
     });
-    // a hub's page and detail file keep the strongest links of each kind; the explorer has the rest
+    // a hub's page and detail file keep the strongest links of each kind; Ask lists the rest
     let (kept, more) = data::keep_per_kind(params, &items);
     let mut notes = Footnotes::default();
     // footnotes number in reading order: the cards at the top of the page, then its connections
@@ -955,7 +928,7 @@ fn entity_page(
         .questions
         .iter()
         .find(|q| q.route)
-        .map(|q| json!({ "title": q.ask.replace("{a}", &kb.sentence_name(&ent.id)).replace("{b}", "…"), "url": format!("/x/?from={}", ent.id) }));
+        .map(|q| json!({ "title": q.ask.replace("{a}", &kb.sentence_name(&ent.id)).replace("{b}", "…"), "url": format!("/ask/?a={}", ent.id) }));
     let html = s.render(
         "entity.html",
         json!({ "site": &s.site, "entity": entity, "groups": groups, "timeline": timeline, "sources": srcs, "history": s.history.of(&ent.rel_path),
@@ -1059,6 +1032,16 @@ fn alias_pages(s: &Site) -> Result<()> {
     }
     // every entry's generated story is one page (ADR-0026)
     redirects.push_str("/e/:id/story/ /e/_life/ 200\n/e/:id/story /e/_life/ 200\n");
+    // Read is each story's page, and Ask answers a featured pair (ADR-0031)
+    if let Some(first) = read::first(kb) {
+        redirects.push_str(&format!("/read/ /c/{first}/ 302\n"));
+    }
+    redirects.push_str("/read/:id/ /c/:id/ 301\n/read/:id /c/:id/ 301\n");
+    for c in &kb.featured.connections {
+        let [a, b] = c.ids();
+        let to = ask_url(a, b);
+        redirects.push_str(&format!("/p/{a}--{b}/ {to} 301\n/p/{a}--{b} {to} 301\n"));
+    }
     write(&s.out.join("_redirects"), redirects)?;
     let headers = if LISTED { HEADERS.to_string() } else { HEADERS.replacen("/*\n", "/*\n  X-Robots-Tag: noindex\n", 1) };
     write(&s.out.join("_headers"), headers)
@@ -1130,7 +1113,7 @@ fn chapter_cover(kb: &Kb, ch: &crate::kb::Chapter) -> String {
 }
 
 fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
-    let (kb, cx) = (s.kb, &s.cx);
+    let kb = s.kb;
     let cards: Vec<Value> = kb
         .chapters
         .iter()
@@ -1140,13 +1123,9 @@ fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
         })
         .collect();
     let shared = shared_names(kb);
-    // Read: every story again at /read/<id>/, and /read/ opens on the first the first screen may show
     let read_site = read::site_json(s)?;
-    let first_read = read::first(kb);
     write(&s.out.join("data").join("read.json"), serde_json::to_vec(&read::data(s, &cards))?)?;
     for (i, ch) in kb.chapters.iter().enumerate() {
-        let resolver = cx.resolver();
-        let shots = &ch.shots;
         // the stories that share the most with this one, each saying what; else the next on the shelf
         let mut next: Vec<Value> = shared[i]
             .iter()
@@ -1159,22 +1138,10 @@ fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
         if next.is_empty() {
             next = cards.iter().cycle().skip(i + 1).take(cards.len() - 1).take(NEXT_STORIES).cloned().collect();
         }
-        let steps = story_steps(s, shots);
-        let chapter = json!({
-            "id": ch.id, "title": ch.title, "subtitle": ch.subtitle, "summary": ch.summary, "authors": ch.authors,
-            "intro_html": markdown::render(&ch.intro_md, &resolver), "outro_html": markdown::render(&ch.outro_md, &resolver),
-            "shots_json": script_json(shots)?, "data_json": script_json(&data::story(kb, &s.by_id, shots))?,
-            "steps": steps, "url": format!("/c/{}/", ch.id), "shot_count": shots.len(), "rel_path": ch.rel_path, "ink": crate::covers::INK,
-            "next": next,
-        });
-        let html = s.render("chapter.html", json!({ "site": &s.site, "chapter": &chapter, "history": s.history.of(&ch.rel_path) }))?;
+        let steps = story_steps(s, &ch.shots);
+        let story = read::story(s, &read::Told::written(ch), &steps, &next)?;
+        let html = s.render("read.html", json!({ "site": &s.site, "story": &story, "read_json": &read_site }))?;
         write(&s.out.join("c").join(&ch.id).join("index.html"), html)?;
-        let story = read::story(s, ch, chapter["steps"].as_array().map_or(&[], Vec::as_slice), chapter["next"].as_array().map_or(&[], Vec::as_slice))?;
-        let page = |first: bool| s.render("read.html", json!({ "site": &s.site, "story": &story, "read_json": &read_site, "first": first }));
-        write(&s.out.join("read").join(&ch.id).join("index.html"), page(false)?)?;
-        if first_read.as_deref() == Some(ch.id.as_str()) {
-            write(&s.out.join("read").join("index.html"), page(true)?)?;
-        }
     }
     Ok(cards)
 }
@@ -1220,21 +1187,24 @@ fn shared_names(kb: &Kb) -> Vec<Vec<(usize, Vec<&str>)>> {
         .collect()
 }
 
+/// The featured pairs, each answered on Ask (ADR-0031): its way there is the story.
 fn route_stories(s: &Site) -> Result<Routes> {
     let kb = s.kb;
-    let mut urls: HashMap<(String, String), String> = HashMap::new();
     let mut connections: Vec<Value> = Vec::new();
     for c in &kb.featured.connections {
         let [a, b] = c.ids();
         if let Some(draft) = crate::stories::path_story(kb, a, b, c.note()) {
             let stops = draft.shots.len().saturating_sub(1);
-            s.story_page(s.out.join("p").join(format!("{a}--{b}")), &draft, None)?;
-            urls.insert((a.clone(), b.clone()), format!("/p/{a}--{b}/"));
-            connections.push(json!({ "title": draft.title, "subtitle": draft.subtitle, "url": format!("/p/{a}--{b}/"), "kind": "Connection",
+            connections.push(json!({ "title": draft.title, "subtitle": draft.subtitle, "url": ask_url(a, b), "kind": "Connection",
                                      "cover": crate::covers::route(&draft.id, &draft.title, stops) }));
         }
     }
-    Ok(Routes { connections, urls })
+    Ok(Routes { connections })
+}
+
+/// Ask's answer for a pair.
+fn ask_url(a: &str, b: &str) -> String {
+    format!("/ask/?a={a}&b={b}")
 }
 
 /// The library: written stories, connections, then every generated life story by type, richest first.
@@ -1444,7 +1414,7 @@ fn write_graph(kb: &Kb, out: &Path, schema: &Value, pages: &QuestionPages, lives
             .collect::<serde_json::Map<String, Value>>()
             .into();
     }
-    graph["stories"] = json!({ "entities": lives.ids, "paths": schema["stories"]["paths"], "questions": stories });
+    graph["stories"] = json!({ "entities": lives.ids, "questions": stories });
     graph["nodes"] = kb
         .entities
         .iter()
@@ -1634,18 +1604,6 @@ mod tests {
             .err()
             .expect("refused");
         assert!(err.to_string().contains("must also be `attributed: true`"), "{err}");
-    }
-
-    #[test]
-    fn spots_follow_the_slim_file() {
-        let root = write_repo("site-spots", &crate::kb::tests::backgrounds()).unwrap();
-        super::copy_dir(&Path::new(env!("CARGO_MANIFEST_DIR")).join("../../theme"), &root.join("theme")).unwrap();
-        let (kb, _) = crate::load_kb(&root).unwrap();
-        let out = root.join("dist");
-        super::build(&root, &kb, &super::Opts { out: out.clone(), dev: false, graph: false }).unwrap();
-        let spots: Vec<u32> = serde_json::from_slice(&std::fs::read(out.join("data").join("spots.json")).unwrap()).unwrap();
-        assert_eq!(spots.len(), 2 * kb.entities.len());
-        assert!(spots.iter().all(|&v| v <= 65535));
     }
 
     #[test]

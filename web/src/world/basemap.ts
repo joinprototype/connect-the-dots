@@ -26,18 +26,6 @@ const LABELS: Record<string, number> = { label_country_1: 0, label_country_2: 0,
 /** A place's English name, the local name where none exists. */
 const NAME: ExpressionSpecification = ['coalesce', ['get', 'name:en'], ['get', 'name_en'], ['get', 'name']];
 
-/** Hides the basemap's own labels for these names, where our markers already say them. */
-export function hideBasemapNames(map: MapLibre, names: string[]): void {
-  for (const id of Object.keys(LABELS)) {
-    try {
-      const hidden: ExpressionSpecification = ['case', ['in', NAME, ['literal', names]], 0, 1];
-      map.setPaintProperty(id, 'text-opacity', names.length ? hidden : 1);
-    } catch {
-      /* a style without that layer */
-    }
-  }
-}
-
 /** Shows or hides what only today's map has: borders, roads and names. Land, sea and rivers stay. */
 export function showModern(map: MapLibre, on: boolean): void {
   for (const layer of map.getStyle().layers ?? []) {

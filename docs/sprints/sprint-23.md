@@ -9,7 +9,7 @@ A first-time reader types two names and gets how they connect, with proof, from 
 
 ## Why now
 
-The founder found the four places "too much and complicated", and picked One Box from three working prototypes (ADR-0028).
+The founder found the four places too many and too complicated, and picked One Box from three working prototypes (ADR-0028).
 
 ## Scope
 

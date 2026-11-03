@@ -36,7 +36,7 @@ pub struct Options {
 
 impl Options {
     /// The routes generated stories and the home page draw: the best `k`, without index-fund holdings,
-    /// at most `max_hops` steps (content/methodology/paths.yaml, as in the explorer).
+    /// at most `max_hops` steps (content/methodology/paths.yaml, as in web/src/lib/paths.ts).
     pub fn stories(kb: &Kb, k: usize) -> Options {
         let max_hops = kb.schema.methodology.get("max_hops").and_then(Value::as_u64).map_or(10, |n| n as usize).max(1);
         Options { k, include_passive: false, max_hops }
@@ -91,7 +91,7 @@ impl Params {
 const EPS: f64 = 1e-9;
 
 /// A place in the search: a node, reached in so many hops at such a cost. The search keeps one per
-/// (node, hops), as the explorer's does, because a cheap way to a node can use up the hops that a
+/// (node, hops), as web/src/lib/paths.ts does, because a cheap way to a node can use up the hops that a
 /// dearer way would leave for the rest of the route.
 struct Label<'a> {
     rank: i64,
@@ -192,7 +192,7 @@ pub fn find<'a>(kb: &'a Kb, from: &str, to: &str, opts: &Options) -> Vec<Path<'a
         return Vec::new(); // a route needs two ends
     }
 
-    // by id, as the explorer reads them: ties then fall the same way
+    // by id, as web/src/lib/paths.ts reads them: ties then fall the same way
     let mut usable: Vec<&Edge> = kb.edges.iter().filter(|e| e.traversable && e.status != "deprecated" && (opts.include_passive || !e.passive)).collect();
     usable.sort_by(|a, b| a.id.cmp(&b.id));
     let mut deg: HashMap<(usize, &str), usize> = HashMap::new();
@@ -212,7 +212,7 @@ pub fn find<'a>(kb: &'a Kb, from: &str, to: &str, opts: &Options) -> Vec<Path<'a
     let ids: Vec<&str> = kb.entities.iter().map(|e| e.id.as_str()).collect();
     let edge_ids: Vec<&str> = usable.iter().map(|e| e.id.as_str()).collect();
 
-    // Same rounds as the explorer (web/src/lib/paths.ts): up to 3k searches for k distinct routes.
+    // Same rounds as web/src/lib/paths.ts: up to 3k searches for k distinct routes.
     // A route found again (e.g. a direct deal with one intermediate) makes its links costlier too,
     // so costlier but different threads still surface instead of the search stopping early.
     // tools/qa/paths-golden.mjs checks that the two agree.

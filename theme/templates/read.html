@@ -1,19 +1,22 @@
 {% extends "base.html" %}
-{% from "macros.html" import door_inks %}
-{# Read: one story over the field of dots where it happens (crates/ctd/src/site/read.rs). Every word is here;
-   web/src/read/ draws the picture, opens a name in place and joins the next story when the reader picks it. #}
-{% block title %}{{ story.title }}{{ " –" if story.title[-1:] == "?" else ":" }} Read on Connect the Dots{% endblock %}
+{% from "macros.html" import corrections, door_inks %}
+{# Read: every story's page, over the field of dots where it happens (crates/ctd/src/site/read.rs, ADR-0031).
+   Every word is here; web/src/read/ draws the picture, opens a name in place and joins the next story when
+   the reader picks it. An entry's life story is this page's main, kept in its pack (ADR-0026). #}
+{% block title %}{{ story.title }}{{ " –" if story.title[-1:] == "?" else ":" }} Connect the Dots{% endblock %}
 {% block description %}{{ story.summary or story.subtitle or story.title }}{% endblock %}
 {% block html_attrs %} data-theme="light"{% endblock %}
 {% block body_class %}read-page{% endblock %}
-{% block head %}{{ door_inks(site) }}{% if first %}<link rel="canonical" href="{{ site.url|safe }}{{ story.url }}">{% endif %}{% if site.assets.read_css %}<link rel="stylesheet" href="/assets/read.css">{% endif %}{% endblock %}
+{% block head %}{{ door_inks(site) }}{% if site.assets.read_css %}<link rel="stylesheet" href="/assets/read.css">{% endif %}{% endblock %}
 {% block main %}
 <div class="read-picture" aria-hidden="true"><div class="read-mask"></div><p class="read-stamp"></p></div>
 <div class="read-thread">
 <section class="read-story" data-story="{{ story.id }}" aria-labelledby="read-{{ story.id }}">
   <header class="read-band">
+    {% if story.back %}<p class="read-from"><a href="{{ story.back.url }}">Back to {{ story.back.label }}</a></p>{% endif %}
     <h1 class="read-title" id="read-{{ story.id }}"><i class="read-mark"></i>{{ story.title }}</h1>
     {% if story.hero %}<p class="read-hero{% if story.hero_size %} {{ story.hero_size }}{% endif %}">{{ story.hero|safe }}</p>{% endif %}
+    {% if not story.rel_path %}<p class="read-by">Drawn from sourced links.</p>{% endif %}
   </header>
   {% if story.intro|trim %}<div class="read-intro">{{ story.intro|safe }}</div>{% endif %}
   {% for sc in story.scenes %}
@@ -21,6 +24,7 @@
     <i class="read-mark small"></i>
     {% if sc.when %}<p class="read-when">{{ sc.when }}</p>{% endif %}
     {% if sc.heading %}<h2>{{ sc.heading|safe }}</h2>{% endif %}
+    {% if sc.picture %}<img class="read-photo" src="{{ sc.picture.url }}" alt="{{ sc.picture.name }}" loading="lazy" decoding="async">{% endif %}
     {{ sc.body|safe }}
     {% set p = sc.proof %}
     {% if p %}
@@ -32,6 +36,7 @@
     {% endif %}
   </article>
   {% endfor %}
+  {% if story.outro|trim %}<div class="read-outro">{{ story.outro|safe }}</div>{% endif %}
   <footer class="read-end">
     <p class="read-ended"><i class="read-mark small"></i>That is the end of {{ story.title }}.</p>
     {% if story.next %}
@@ -41,7 +46,11 @@
       {% endfor %}
     </ul>
     {% endif %}
-    <p class="read-also">A connection is not evidence of wrongdoing. <a href="{{ story.story_url }}">{{ story.title }}, with its maps and pictures</a></p>
+    <div class="read-fine">
+      <p>A connection is not evidence of wrongdoing.{% if story.authors %} Written by {{ story.authors|join(", ")|replace("github:", "@") }}.{% endif %}</p>
+      {% if story.credits %}<p>Pictures, from Wikimedia Commons: {% for c in story.credits %}<a href="{{ c.page }}">{{ c.name }}</a>, {{ c.author }}, {{ c.license }}{% if not loop.last %}; {% else %}.{% endif %}{% endfor %}</p>{% endif %}
+      {% if story.rel_path %}{{ corrections(site, story.title, "/c/" ~ story.id ~ "/", story.rel_path) }}{% endif %}
+    </div>
   </footer>
   <script type="application/json" class="read-data">{{ story.data_json|safe }}</script>
 </section>

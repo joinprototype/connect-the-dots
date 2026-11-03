@@ -1,4 +1,4 @@
-// Path finder for the explorer. `crates/ctd/src/paths.rs` is its twin for stories and the home page:
+// Path finder for Ask and Stories. `crates/ctd/src/paths.rs` is its twin for the build:
 // `tools/qa/paths-golden.mjs` checks that they agree.
 //
 // cost(hop) = w_rel * (1 + beta * (1 - p))

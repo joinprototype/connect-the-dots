@@ -32,11 +32,10 @@ No database and no server in production for the MVP. Rust compiles the content; 
 | Page templates | MiniJinja 3 (runtime templates in `theme/`) | Theme edits need no Rust or recompile |
 | Graph core | Rust: interned ids, CSR, typed and time-bounded links | ~40 B per link, including the reverse index |
 | World map | Rust `ctd world`: Louvain communities, pivot MDS layout, quota LOD, binary tiles (docs/world-tiles.md), alignment between builds (ADR-0013) | 1M nodes in ~1.4 s; PMTiles packaging later |
-| Path finder | Rust `ctd path` (native, also draws the home-page route) + TypeScript in the explorer, same formula; one Rust kernel as WASM *(planned)* | One implementation for build and browser |
-| Close graph views | sigma 3.0.3 + graphology in stories; plain elements moved by the compositor in Explore ([ADR-0029](decisions/0029-the-walk.md)) | Stories animate a growing graph; Explore's stops are fixed, so a move needs no script |
+| Path finder | Rust `ctd path` (native) + TypeScript in Ask and Stories (`web/src/lib/paths.ts`), same formula, checked equal by `tools/qa/paths-golden.mjs`; one Rust kernel as WASM *(planned)* | One implementation for build and browser |
 | World view *(planned)* | deck.gl 9.4 TileLayer + OrthographicView | Streams tiles, ~1M items at 60 fps |
-| Maps and stories | MapLibre GL JS 6 (globe, terrain) + GSAP | Explainer-style animation |
-| Explorer and editor apps | React 19 + Vite 8 (no SSR) | Reading pages are already HTML from Rust |
+| Maps | MapLibre GL JS 6 (globe, terrain), on the Map's Earth | Globe and terrain without our own tiles |
+| Browser code | TypeScript bundled by Vite 8, no framework | Reading pages are already HTML from Rust. React, GSAP, sigma and graphology were dropped with the explorer and story player ([ADR-0031](decisions/0031-fewer-views.md)) |
 | Reading-page widgets | Vanilla TS custom elements (islands) | ≤15 KB JS on load |
 | Dev server | Axum 0.8 (`ctd serve`, live reload) | The same framework serves later APIs |
 | Hosting | Cloudflare Workers static assets + R2 | About $5 a month; free egress |
@@ -46,7 +45,7 @@ No database and no server in production for the MVP. Rust compiles the content; 
 
 ```
 crates/ctd/        Rust: model, check, build, serve (split into crates when a part needs its own consumers)
-web/               Vite workspace: islands/, explorer/ (React), story/ (scene player), worker/ (planned)
+web/               Vite workspace: islands/, world/, atlas/, ask/, read/ (every story's page), place/ (Stories), forward.ts, worker/ (planned). Bundles: islands, world, atlas, ask, read, life, place, forward
 theme/             MiniJinja templates, CSS tokens, fonts
 content/           schema/, methodology/, entities/, sources/, chapters/  (see content-model.md)
 docs/              you are here
@@ -83,18 +82,18 @@ Stages:
 
 ```
 dist/
-  e/<id>/index.html          entity pages            c/<id>/index.html   chapters
-  x/                         explorer app            world/              the Map's tiles
+  e/<id>/index.html          entity pages            c/<id>/index.html   stories
+  ask/                       Ask                     world/              the Map's tiles
   data/schema.json           vocabulary              data/graph-slim.json   every entry and link, structure only
   data/e/<n>.json            entries' words and proof, in packs   data/search/   search entries by word range
-  data/life/<n>.json         life stories, in packs               e/_life/   the one page that opens them
+  data/life/<n>.json         life stories, in packs               e/_life/   the one page that opens them (read.html)
   data/a/<n>.json            atlas entries, packed by Wikidata number    a/   the one page that reads them
-  data/routes.json           landmark table for routes                   r/   connect any two
+  data/routes.json           landmark table for routes                   x/ r/   forward old addresses to /c/ and /ask/
   earth/                     the Earth's places, by view
   build-manifest.json        engine version, content commit, methodology hash, counts
 ```
 
-Pages load what they show ([ADR-0017](decisions/0017-pages-load-what-they-show.md)): entry, question and story pages stay the same size at any scale (a story embeds its own data); the explorer reads the slim file, about 27 bytes gzip per link of today's content (its entries included), until it passes its 1 MB budget at about 40,000 links, when the explorer and routes move to the route service.
+Pages load what they show ([ADR-0017](decisions/0017-pages-load-what-they-show.md)): entry, question and story pages stay the same size at any scale (a story embeds its own data); Ask and Stories read the slim file, about 27 bytes gzip per link of today's content (its entries included), until it passes its 1 MB budget at about 40,000 links, when they and routes move to the route service.
 
 What a build writes today, file by file, is in [data-contract.md](data-contract.md).
 
@@ -128,14 +127,14 @@ Builds are deterministic: a pinned toolchain, sorted output and fixed seeds. Any
 
 - **URLs:**
   - `/e/<id>`: the canonical entity page;
-  - `/e/<id>/story/`: generated life story, one shared page ([ADR-0026](decisions/0026-entries-share-files.md)); `/p/<a>--<b>/`: route story;
+  - `/e/<id>/story/`: generated life story, one shared page ([ADR-0026](decisions/0026-entries-share-files.md)). Every story, written or generated, is drawn by one template, `read.html` ([ADR-0031](decisions/0031-fewer-views.md));
   - `/q/<question>/<id>/` (and `/story/`): question pages, "Who is behind X?", "Why did X happen?", "Who benefited from X?". Defined as data in `content/schema/questions.yaml` ([ADR-0015](decisions/0015-ask-anything.md));
   - `/t/<type>/`: every entry of one type, A to Z (the home index shows each type's best-connected entries and links here);
-  - `/c/<id>`: chapter;
-  - `/x?focus=&lens=&p=&t=`: explorer;
+  - `/c/<id>`: written story (`/read/<id>/` redirects here);
+  - `/ask/?a=&b=`: any two names, and a name, a year or a question ([ADR-0028](decisions/0028-one-box.md)); the old `/p/<a>--<b>/` and `/r/` addresses forward to it, and `/x/` to Ask, an entry's page or Stories;
   - aliases redirect to the canonical id.
 - **Entity page** (calm layout, [ADR-0014](decisions/0014-calm-design.md)):
-  - a cover, name, type, one-line summary and "Play the story";
+  - a cover, name, type, one-line summary and "Read the story";
   - at-a-glance cards when they apply: family ties, life line (tenures only, one row each: who led or sat on the board, and when), holders, how each side tells it;
   - links grouped by relation, with the lens chips on their heading; each has its strongest-source badge, its footnoted sources, "According to X" where attributed, and a status badge with its reason;
   - Timeline, Proof (with archive links) and Page history as folded sections; no tabs.
@@ -145,19 +144,10 @@ Builds are deterministic: a pinned toolchain, sorted output and fixed seeds. Any
   - No React on reading pages; ≤15 KB JS before islands.
 - **SEO and accessibility:** all content is real HTML. Every graph and timeline has a list or table equivalent, and reduced motion is respected.
 
-## 8. Explorer (game-like)
+## 8. The Map
 
-- React SPA at `/x`; `walk.ts` owns the picture and React owns the panel. React never holds per-node state.
-- **The walk** ([ADR-0029](decisions/0029-the-walk.md)): an entry and its neighbours on fixed slots, directions taken from the Map's layout (`data/spots.json`), no layout in the browser. One move is one compositor transform, and nothing runs at rest.
 - **World view** (the Map, `/w/`): a deck.gl TileLayer over binary tiles built by Rust. Dots at every zoom, region names from the manifest. How a big map is shaped is in [ADR-0023](decisions/0023-the-atlas.md) point 10.
-- **Controls:**
-  - Lens filters by layer mask.
-  - Perspective filters by perspective set and drives the narrative diff.
-  - Time filters by validity, with play.
-  - Filters run on the GPU where possible.
-- **Hubs:**
-  - A stop names its strongest neighbours, up to 32 on a laptop and 10 on a phone, and the rest are in the list.
-  - Passive index holders collapse into one "index funds" node by default.
+- Each job has one view ([ADR-0031](decisions/0031-fewer-views.md)): Stories to read, Ask to find how two things connect, the Map to look around. The React explorer and its walk ([ADR-0029](decisions/0029-the-walk.md)) are gone.
 
 | Budget | Desktop | Phone |
 |---|---|---|
@@ -175,19 +165,13 @@ Builds are deterministic: a pinned toolchain, sorted output and fixed seeds. Any
 ## 9. Storytelling chapters
 
 - **Format:** markdown plus ```` ```scene ```` blocks, each a YAML list of shots. See [content-model.md](content-model.md#chapter-with-scenes).
-- **Player:** a small TS runner that drives the same engines (MapLibre for map shots, sigma/deck.gl for graph shots, the timeline). Overlays (source cards, document highlights, photos) are animated with GSAP.
-- **Modes:**
-  - **Scroll:** ScrollTrigger drives the shots.
-  - **Watch:** autoplay with narration and captions.
-  - **Explore from here:** opens `/x` at the shot's lens, focus and time.
+- **The page:** a story is one HTML page of words over the field of dots where it happens (`read.html`, `web/src/read/`); the words read with no script. A scene's `focus`, `reveal`, `places` and `camera` place it on the field; `overlay` shows as a quote, number or source card beside the words. The scene player, graph view, map view, Watch and "Explore from here" were cut ([ADR-0031](decisions/0031-fewer-views.md)). Details are in [data-contract.md](data-contract.md#story-cidc).
 - **Assets:**
-  - MapLibre globe and terrain;
+  - MapLibre globe and terrain (the Map's Earth);
   - open imagery (NASA Blue Marble, Natural Earth);
-  - historical borders from OpenHistoricalMap or Cliopatria, driven by the time cursor;
-  - poster frames rendered by Rust for no-JS and reduced-motion readers.
+  - historical borders from OpenHistoricalMap or Cliopatria, on the Map's era slider;
 - **Authoring:**
   - YAML by hand, with live reload;
-  - a "capture shot" button in the explorer *(planned)*;
   - video export by stepping frames in a headless browser *(planned)*.
 
 ## 10. Contribution and verification

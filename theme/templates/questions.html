@@ -15,7 +15,7 @@
   {% if pages %}
   <ul class="ask-rows">
     {% for p in pages %}
-    <li><a href="{{ p.url }}"><span class="ask-row-q">{{ p.title }}</span>{% if p.counts %}<span class="ask-row-n">{{ p.counts }}</span>{% endif %}</a>{% if p.story_url and p.story_url != p.url %}<a class="button" href="{{ p.story_url }}" aria-label="Play: {{ p.title }}">Play</a>{% endif %}</li>
+    <li><a href="{{ p.url }}"><span class="ask-row-q">{{ p.title }}</span>{% if p.counts %}<span class="ask-row-n">{{ p.counts }}</span>{% endif %}</a>{% if p.story_url and p.story_url != p.url %}<a class="button" href="{{ p.story_url }}" aria-label="Read the story: {{ p.title }}">Read</a>{% endif %}</li>
     {% endfor %}
   </ul>
   {% if more %}<p class="index-more">Showing the {{ pages|length }} with the most links. The other {{ more }} are in search.</p>{% endif %}

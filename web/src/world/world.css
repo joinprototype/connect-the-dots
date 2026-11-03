@@ -1,7 +1,7 @@
 /* world.css: the open-world map. Only site tokens for colours and fonts. No CSS filters or backdrop-filter over the WebGL canvas: Safari re-rasterizes them
    on every frame. */
 
-/* The viewer fills its root, which must be positioned: #world-root here, .ctdx-world in the explorer. */
+/* The viewer fills its root, which must be positioned. */
 #world-root { position: relative; }
 .world-page #world-root { flex: 1; height: calc(100dvh - var(--ctdw-top, 58px)); min-height: 420px; }
 
@@ -217,9 +217,6 @@
   animation: ctdw-pulse 1.1s ease-in-out infinite;
 }
 @keyframes ctdw-pulse { 50% { opacity: 0.35; } }
-
-/* Inside the explorer the app shows its own HUD, zoom buttons, key and notice. */
-.ctdw.is-embedded .ctdw-hud, .ctdw.is-embedded .ctdw-zoom { display: none; }
 
 @media (max-width: 760px) {
   /* phones keep only the sentence about regions */

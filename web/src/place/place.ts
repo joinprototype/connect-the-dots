@@ -118,7 +118,7 @@ class CtdPlace extends HTMLElement {
     this.setAttribute('aria-label', 'The stories as islands. Arrow keys move, plus and minus zoom.');
     this.classList.add('place-on');
     // the header's box shows a single name here instead of leaving the page (docs/data-contract.md, ctd-box)
-    document.documentElement.dataset.ctdExplorer = '';
+    document.documentElement.dataset.ctdInPlace = '';
     document.addEventListener('ctd:focus', (e) => {
       const i = this.w.byId.get((e as CustomEvent<{ id: string | null }>).detail?.id ?? '');
       if (i === undefined) return;
@@ -417,7 +417,7 @@ class CtdPlace extends HTMLElement {
     block.el.innerHTML = step ? stepWords(w, step.a, step.b, step.way.steps, step.j, side) : lineWords(w, l, side);
   }
 
-  /** The way between two entries, found as `/r/` finds it (ways.json), drawn as one line once the camera rests. */
+  /** The way between two entries, found as Ask finds it (ways.json), drawn as one line once the camera rests. */
   private async openWay(a: number, b: number, step: number, cut: boolean): Promise<void> {
     const { w } = this;
     const key = `${a}>${b}`;

@@ -2,7 +2,7 @@
 {% from "macros.html" import book %}
 {% block body_class %}home{% endblock %}
 {% block main %}
-<nav class="home-doors" aria-label="Ways in"><a href="/ask/">Ask</a><a href="/c/">Stories</a><a href="/read/">Read</a></nav>
+<nav class="home-doors" aria-label="Ways in"><a href="/ask/">Ask</a><a href="/c/">Stories</a></nav>
 {# One name and the written stories it runs through. Every thread is in the page and they share one
    place, so the tallest holds the room and "Another name" moves nothing below it. Without JavaScript
    the first one shows. The picks are in content/featured.yaml. #}
@@ -48,8 +48,7 @@
   <h2 id="ways-h">More ways in</h2>
   <ul class="ways">
     <li><a href="/w/">The Map</a><span>Every dot placed beside what it links to. Zoom from the whole world to one thing, or pick an era.</span></li>
-    <li><a href="/x/?focus={{ threads[0].node.id if threads else '' }}">Explore</a><span>Start from anything and walk from one thing to the next, with the proof for every link.</span></li>
-    <li><a href="/r/">Connect</a><span>Any two things, and the way between them, step by step.</span></li>
+    <li><a href="/ask/">Ask</a><span>A name, two names, a year or a question, and the way between with the proof for every link.</span></li>
     <li><a href="/c/">Stories</a><span>All {{ stories }} stories, drawn as islands of the people, places and things in them.</span></li>
   </ul>
 </section>

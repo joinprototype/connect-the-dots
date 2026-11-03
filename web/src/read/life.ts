@@ -1,5 +1,5 @@
 // life.js: one page for every entry's generated story (ADR-0026). The host rewrites /e/<id>/story/ here,
-// and this puts the story from its pack into the page. story.js, loaded beside it, plays it.
+// and this puts the story from its pack into the page, then starts Read's reader on it (ADR-0031).
 import { loadJson, packOf } from '../lib/data';
 
 interface Life {
@@ -26,6 +26,7 @@ if (main) {
       if (!life) return missing(main);
       document.title = life.title;
       main.innerHTML = life.main;
+      void import('../read/reader');
     },
     () => missing(main),
   );

@@ -1,7 +1,7 @@
 // What the picture beside the words shows (lib/dotfield.ts): a story's opening and each of its scenes, a
 // name the reader opened, and the way between two names. Scenes on the Earth stand where the story's
 // camera stood; the others draw the story's names as a small web of their own, laid out once per story.
-import { fit, project, zoomScale, type Line, type Mark, type Scene, type View } from '../lib/dotfield';
+import { fit, NEAREST, project, zoomScale, type Line, type Mark, type Scene, type View } from '../lib/dotfield';
 import type { GraphIndex } from '../lib/data';
 import type { GEdge, GNode, SourceDef } from '../lib/types';
 
@@ -28,8 +28,6 @@ export interface StoryData {
   data: { nodes: GNode[]; edges: GEdge[]; sources: Record<string, SourceDef> };
 }
 
-/** The closest a story's map comes: past it the dots would be few and far apart. */
-const NEAREST = 7.6;
 /** How far a phone draws out from the camera the story's maps chose, in web map zoom. */
 const PHONE_OUT = 0.45;
 /** Entries a story's web lays out, first seen first. */
@@ -103,6 +101,7 @@ export class StoryPictures {
     const key = `s:${this.d.id}:${i}`;
     const hot = new Set([...(sc.r ?? []), ...(sc.p ?? []), ...(sc.f ? [sc.f] : [])]);
     if (sc.v === 'map' && sc.c) {
+      // a story's camera was set for maps with roads: the dots come no nearer than a country
       const z = Math.min(sc.c[2], NEAREST);
       const view = earthView(sc.c[0], sc.c[1], z);
       const target = view(size);
@@ -134,7 +133,8 @@ export class StoryPictures {
           if (seen.has(a) && seen.has(b)) lines.push({ a, b, strong: true });
         }
       }
-      return { key, world: 'earth', view, marks, lines, places: phone() ? 6 : 12 };
+      // the places named quietly around it are the story's own: a town from another story only puzzles
+      return { key, world: 'earth', view, marks, lines, places: phone() ? 6 : 12, placesFrom: this.nodes };
     }
     // the web: everything named so far, this scene's own names bright and named
     const web = this.layout();
@@ -269,14 +269,14 @@ export function entryScene(idx: GraphIndex, id: string, others: GNode[], before:
       near.push({ x, y, d: Math.hypot(x - hx, y - hy) });
     }
     if (before && marks.some((m) => m.id === before)) lines.push({ a: before, b: id, strong: true });
-    // as close as the six nearest of what it links to allow, between a country's view and a town's
+    // as close as the six nearest of what it links to allow, between a continent's view and a country's
     near.sort((a, b) => a.d - b.d);
     const six = near.slice(0, 6);
     const view = ([w, h]: [number, number]): View => {
       const dx = Math.max(1e-9, ...six.map((p) => Math.abs(p.x - hx)));
       const dy = Math.max(1e-9, ...six.map((p) => Math.abs(p.y - hy)));
-      const scale = six.length ? Math.min((w * 0.4) / dx, (h * 0.4) / dy) : zoomScale(6);
-      return { x: hx, y: hy, scale: Math.max(zoomScale(3), Math.min(scale, zoomScale(8.2 - (phone() ? PHONE_OUT : 0)))) };
+      const scale = six.length ? Math.min((w * 0.4) / dx, (h * 0.4) / dy) : zoomScale(NEAREST);
+      return { x: hx, y: hy, scale: Math.max(zoomScale(3), Math.min(scale, zoomScale(NEAREST - (phone() ? PHONE_OUT : 0)))) };
     };
     return { key, world: 'earth', view, marks, lines, places: phone() ? 5 : 10 };
   }

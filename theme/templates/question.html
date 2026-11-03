@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% from "macros.html" import count, status_badge, question_rows, refs, proof_fold, lifeline %}
 {# The answer to one question about one entry (docs/design/ask-anything.md §4), in reading order:
-   the question, its scope line and counts, Play; the fixed notice; lines on the record; each account
+   the question, its scope line and counts, Read the story; the fixed notice; lines on the record; each account
    in its own equal column, A to Z; Disputed; Being verified (never counted); further questions; the
    folded proof. Every line carries its badges and footnotes. #}
 {% macro line(l, in_column=false) %}
@@ -26,7 +26,7 @@
   {% if l.note %}<p class="claim-note">{{ l.note }}</p>{% endif %}
 </li>
 {% endmacro %}
-{% macro more(n) %}{% if n %}<p class="index-more"><a href="{{ question.explore_url }}">and {{ n }} more ›</a></p>{% endif %}{% endmacro %}
+{% macro more(n) %}{% if n %}<p class="index-more"><a href="{{ question.ask_url }}">and {{ n }} more ›</a></p>{% endif %}{% endmacro %}
 {% block title %}{{ question.title }} – Connect the Dots{% endblock %}
 {% block description %}{{ question.shows }} {{ question.not }} A connection is not evidence of wrongdoing.{% endblock %}
 {% block body_class %}question-page{% endblock %}
@@ -44,8 +44,8 @@
     <div class="answer-scope"><p>{{ question.shows }}</p><p>{{ question.not }}</p></div>
     <p class="answer-meta">{{ count(counts.links, "link") }}{% if counts.accounts %} · {{ count(counts.accounts, "account") }}{% endif %}{% if x.when %} · {{ x.when }}{% endif %}</p>
     <p class="entity-actions">
-      {% if question.story_url %}<a class="button primary" href="{{ question.story_url }}">Play</a>{% endif %}
-      <a class="button" href="{{ question.explore_url }}">Explore</a>
+      {% if question.story_url %}<a class="button primary" href="{{ question.story_url }}">Read the story</a>{% endif %}
+      <a class="button" href="{{ question.ask_url }}">Ask</a>
     </p>
     <p class="answer-notice">A connection is not evidence of wrongdoing.</p>
   </header>
@@ -85,7 +85,7 @@
       </div>
       {% endfor %}
     </div>
-    {% if more_accounts %}<p class="index-more"><a href="{{ question.explore_url }}">and {{ count(more_accounts, "more account") }} ›</a></p>{% endif %}
+    {% if more_accounts %}<p class="index-more"><a href="{{ question.ask_url }}">and {{ count(more_accounts, "more account") }} ›</a></p>{% endif %}
     {# a group nobody answers says so in one muted line, so Gained never stands without Lost #}
     {% for g in unanswered %}<p class="answer-empty"><b>{{ g.label }}.</b> {{ g.empty }}</p>{% endfor %}
   </section>
@@ -135,7 +135,7 @@
         <p>Lines on the record come first: sourced links that no one presents as their own account, each with its strongest source. Then every account recorded here gets its own column, A to Z, none ranked above another. A column quotes only that account's own words and shows the strength of its own sources. Disputed lines are listed apart, with the reason, and lines still being verified come last. Neither is counted. Withdrawn lines are never shown.</p>
         {% if ns.form %}<p>What was recorded about an earlier form of {{ x.sentence }}, the same body under an older name, answers too, and each such line says so.</p>{% endif %}
         {% if ns.about %}<p>A dispute of a study about {{ x.sentence }} answers too, and each such line names the study.</p>{% endif %}
-        <p>When a list is longer than the page shows, the links the public methodology ranks strongest stay{% if methodology %} (methodology {{ methodology }}){% endif %}, and the rest open in the explorer.</p>
+        <p>When a list is longer than the page shows, the links the public methodology ranks strongest stay{% if methodology %} (methodology {{ methodology }}){% endif %}, and Ask lists the rest.</p>
       </div>
     </details>
   </div>

@@ -39,10 +39,9 @@ Directories hold at most ~2,500 entries, against GitHub's 3,000 guideline. `ctd 
 - **Claim reference:** `<entity-id>#<claim-id>`, e.g. `elon-musk#c2`.
 - **URLs:**
   - `/e/<id>/`: entity page; `/e/<id>/story/`: its generated life story;
-  - `/c/<id>/`: chapter; `/c/`: the Stories library;
-  - `/p/<a>--<b>/`: the generated story of a featured connection;
+  - `/c/<id>/`: a written story (`/read/<id>/` redirects here); `/c/`: the Stories library;
   - `/q/<question>/<id>/`: the answer to a question about an entry ("Who is behind Meta Platforms?"), `/q/<question>/<id>/story/` its story, `/q/<question>/` the question's index;
-  - `/x/?focus=<id>&lens=<lens>&p=<perspective>&t=<date>&from=<id>&to=<id>&view=world`: explorer;
+  - `/ask/?a=<id>&b=<id>`: how two entries connect (also `?a=` alone, `?q=<question>&a=<id>`, `?y=<year>`). The old `/p/<a>--<b>/`, `/r/` and `/x/` addresses forward here or to `/c/` ([ADR-0031](decisions/0031-fewer-views.md));
   - `/w/`: the world map.
 - **Wikilinks in prose:** `[[spacex]]` or `[[spacex|SpaceX]]`, resolved by id or alias. An unknown target becomes a "wanted" page (a red link).
 - **Other links in prose:** a link may point to a relative path, a `#` anchor, an http(s) address or `mailto:`. Any other target (`javascript:`, `data:` and the like) is shown as plain text, and raw HTML is shown as text. Content arrives as public pull requests.
@@ -284,17 +283,17 @@ Changing it is a reviewed PR, and every result shows the methodology version.
 
 ```yaml
 connections:
-  - [moses, elon-musk]              # the first pair is drawn as the example route on the home page
-  - [bill-gates, ibm]
+  - [moses, elon-musk]
+  - [bill-gates, ibm]                # the second pair is Ask's example of two names (else the first)
   - between: [mark-zuckerberg, cia]
     note: "Each step below is a documented business link. No source here says the CIA or In-Q-Tel had any role in Facebook."
 threads: [standard-oil, zurich]
 questions: [behind/meta-platforms, why/dissolution-of-the-soviet-union]
 ```
 
-- Each connection gets a route story at `/p/<a>--<b>/`, one scene per step, along the best route of at most 10 steps that does not run through index-fund holdings. All of them are in the Stories library.
+- Each connection is a pair Ask answers at `/ask/?a=<a>&b=<b>`, along the best route that does not run through index-fund holdings. Ask offers them as its "another question" picks, and the library's "connections" cards link there. There is no route story page any more ([ADR-0031](decisions/0031-fewer-views.md)).
 - A `note` is said up front in the story's first scene. Use it for what the sources do not show.
-- `threads` open the home page, in order: one name and the written stories it runs through. A pick is a person, an organization or a place, never sealed, and `ctd check` refuses anything else. A story counts from two scenes on the name, most scenes first, and never one that shows or names a sealed entry. A thread needs two stories, or the home page leaves it out and `ctd check` warns. These are editorial: a person reviews each one, and nothing may group anyone by heritage (ADR-0016) or set a persecution story beside modern finance.
+- `threads` open the home page, in order: one name and the written stories it runs through. A pick is a person, an organization or a place, never sealed, and `ctd check` refuses anything else. A story counts from two scenes on the name, most scenes first, and never one that shows or names a sealed entry. A thread needs two stories, or the home page leaves it out and `ctd check` warns. The first thread is also Ask's example of a name. These are editorial: a person reviews each one, and nothing may group anyone by heritage (ADR-0016) or set a persecution story beside modern finance.
 - `questions` are question pages, `<question>/<entity id>`: the first books of the Questions shelf. They are always kept when pages are capped.
 - Ids or aliases both work.
 
@@ -417,12 +416,12 @@ Shot fields (v0; the full list is in [data-contract.md](data-contract.md)):
 | `places`, `routes` | Places to mark and lines to draw on the map |
 | `borders` | Historical borders to draw, by file name in `content/borders/`; the shot's date picks the period ([ADR-0020](decisions/0020-historical-borders.md)) |
 | `overlay` | Source card, image, quote, or big number with its proof (`kind: stat`) |
-| `duration` | Seconds in watch mode |
+| `duration` | Ignored since ADR-0031 (there is no watch mode) |
 | `narration` | Voice-over text |
 | `cover` (front matter) | A photograph for the story's cover, public domain or free license. Otherwise one is drawn from its map |
 | `photo` | A photograph over the whole stage: `{url, alt, credit}`. Public domain or free license only |
 | `picture` | Which entry's picture the scene shows, or `none`. By default its focus, or the first thing it reveals with a picture; each picture shows once |
-| `explore` | Show the "Explore from here" button |
+| `explore` | Ignored since ADR-0031 (the "Explore from here" button is gone); content may still carry it |
 
 ## `ctd check` rules (v0)
 

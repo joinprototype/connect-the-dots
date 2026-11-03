@@ -20,9 +20,9 @@ export function entityActions(entity: WorldEntity): HTMLElement {
     open.href = href;
     actions.append(open);
   }
-  const explore = el('a', 'ctdw-btn', isAtlasId(entity.id) ? 'Connect to…' : 'Explore');
-  explore.href = isAtlasId(entity.id) ? `/r/?a=${entity.id}` : `/x/?focus=${encodeURIComponent(entity.id)}`;
-  actions.append(explore);
+  const ask = el('a', 'ctdw-btn', 'Connect to…');
+  ask.href = `/ask/?a=${encodeURIComponent(entity.id)}`;
+  actions.append(ask);
   return actions;
 }
 
@@ -49,7 +49,7 @@ export function linksBody(q: string, e: Entry, stories: Story[], focus: (id: str
   const open = el('a', 'ctdw-btn is-primary', 'Open page ›');
   open.href = e.u ?? `/a/?q=${q}`;
   const connect = el('a', 'ctdw-btn', 'Connect to…');
-  connect.href = `/r/?a=${q}`;
+  connect.href = `/ask/?a=${q}`;
   actions.append(open, connect);
   body.push(actions, ...storyList(stories));
   const links = el('div', 'ctdw-links');

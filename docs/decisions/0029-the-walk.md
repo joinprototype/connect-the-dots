@@ -1,11 +1,11 @@
 # ADR-0029: Explore is a walk
 
-- Status: accepted
+- Status: superseded by [ADR-0031](0031-fewer-views.md): Explore is gone, and Stories moves from dot to dot
 - Date: 2026-11-02
 
 ## Context
 
-About the One Place prototype, the founder said "dang it's so cool to move from one to another", and then "kinda wiggles a lot from place to place" and "I had to click the dots to understand also on the first view". `/x/` was a control panel: search, lenses, a route form, tabs, and a graph that ran ForceAtlas2 in the browser for over a second on every load, drew names only where they fitted, and refitted its camera after each click.
+The founder liked how the One Place prototype moved from one thing to the next, found that it wobbled from place to place, and had to click the dots before the first view made sense. `/x/` was a control panel: search, lenses, a route form, tabs, and a graph that ran ForceAtlas2 in the browser for over a second on every load, drew names only where they fitted, and refitted its camera after each click.
 
 ## Decision
 

@@ -2,7 +2,7 @@
 # words: each question names the relations that answer it, in groups whose labels readers see.
 # The order is the order pages and lists show them in.
 #   ask       the sentence: {x} is the subject ({a} and {b} the two ends of a route); ends with "?"
-#   route     true: answered by ranked routes (the explorer and the featured route stories)
+#   route     true: answered by ranked routes (Ask's pair answer)
 #   subjects  entity types the question is asked about. Never people or families (`family: true`
 #             types): their pages show family ties and every link. "Who is behind" is asked only
 #             about bodies that have founders, leaders and owners, never about events or ideas.

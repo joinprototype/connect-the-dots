@@ -1,6 +1,6 @@
 //! The data files the browser reads (docs/data-contract.md, ADR-0017). Pages load what they show:
 //! - `data/schema.json`: the vocabulary (types, relations, lenses, tiers, questions, methodology);
-//! - `data/graph-slim.json`: every entry and link, with only what the explorer draws and routes price;
+//! - `data/graph-slim.json`: every entry and link, with only what Ask and Stories draw and routes price;
 //! - `data/ways.json`: what a route needs and nothing else, for a pair's answer on `/r/`;
 //! - `data/e/<pack>.json`: entries' words and proof, loaded when one is opened;
 //! - `data/life/<pack>.json`: entries' generated stories, shown by the one page at `e/_life/`;
@@ -34,7 +34,7 @@ pub fn pack_of(id: &str) -> u32 {
 /// Links an entry's detail file and page keep per kind (relation and direction): the strongest, as
 /// answers rank them. A hub's other links keep their structure in the slim file.
 pub const PER_KIND: usize = 100;
-/// The slim file's budget in gzip bytes: past it, the explorer and routes need a route service.
+/// The slim file's budget in gzip bytes: past it, Ask's and Stories' routes need a route service.
 pub const SLIM_BUDGET: usize = 1024 * 1024;
 /// Entries filed under one search word, best-connected first; a longer query finds the rest.
 const PER_WORD: usize = 100;

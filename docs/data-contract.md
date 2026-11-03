@@ -1,6 +1,6 @@
 # Build output contract (v0)
 
-`ctd build` writes `dist/`. The web code (islands, explorer, story player, world viewer) reads only what is described here, plus the world tiles in [world-tiles.md](world-tiles.md). Change this contract and the web code (`web/src/lib/types.ts`) in the same change.
+`ctd build` writes `dist/`. The web code (islands, Read, Ask, the Stories page, world viewer) reads only what is described here, plus the world tiles in [world-tiles.md](world-tiles.md). Change this contract and the web code (`web/src/lib/types.ts`) in the same change.
 
 ## Files
 
@@ -10,44 +10,42 @@ dist/
   e/<id>/index.html          entity page
   e/_life/index.html         the one page every life story opens in (`/e/<id>/story/`, ADR-0026)
   e/<alias>/index.html       redirect page for a slug alias (also in _redirects)
-  p/<a>--<b>/index.html      route story for a featured pair (content/featured.yaml)
-  q/<q>/index.html           a question's index: its richest answers (a route question lists the route stories)
+  q/<q>/index.html           a question's index: its richest answers (a route question links Ask for each featured pair)
   q/<q>/<id>/index.html      the answer to question <q> about entity <id>   q/<q>/<id>/story/index.html   its story
-  c/index.html               Stories library         c/<id>/index.html           written chapter
-  x/index.html               explorer                w/index.html                world map
+  c/index.html               Stories library         c/<id>/index.html           written story, read over its field of dots
+  x/index.html  r/index.html forwarding pages: they send an old address on to /c/, /e/, /a/ or /ask/ (ADR-0031)
+  w/index.html               world map
   404.html
   about/index.html           how the site works: the proof marks, the questions and their scope, the methodology
   _redirects                 "/e/<alias>/ /e/<id>/ 301", one line per slug alias, then "/e/:id/story/ /e/_life/ 200"
   _headers                   security headers and the Content-Security-Policy for every file (Cloudflare format)
   t/<type>/index.html        every entry of one type, A to Z (past 500, its letters; t/<type>/<letter>/ lists one)
-  data/schema.json           the vocabulary: types, relations, lenses, tiers, questions, methodology, route stories
-  data/graph-slim.json       every entry and link, structure only: what the explorer draws and routes price
-  data/ways.json             what a route needs and nothing else, read by a pair's answer on `/r/`
+  data/schema.json           the vocabulary: types, relations, lenses, tiers, questions, methodology
+  data/graph-slim.json       every entry and link, structure only: what Ask and Stories draw and routes price
+  data/ways.json             what a route needs and nothing else, read by a pair's answer on Ask and Stories
   data/e/<n>.json            the words and proof of the entries in pack <n>, loaded when one is opened
   data/life/<n>.json         the life stories in pack <n>, loaded by the page at `/e/<id>/story/`
   data/more/<n>.json         long lists past their first 40 names, fetched when a reader opens one
-  data/spots.json            where each entry sits on the Map, read by the explorer
-  data/stories.json          the written stories each entry is in, read by the explorer, the Map, the Earth and atlas pages
+  data/stories.json          the written stories each entry is in, read by the Map, the Earth and atlas pages
   data/islands.json          the Stories page's surface: where every entry lies, on a story's island or in the water
   ask/index.html             Ask: the box as the page's heading, arriving on a featured pair   data/ask.json   what it reads besides
-  data/borders/<id>.json     one polity's historical borders, loaded by a story that draws them (ADR-0020)
+  data/borders/<id>.json     one polity's historical borders, no page draws these since ADR-0031 (the Map draws world-<year>.json); kept for tools (ADR-0020)
   data/borders/world-<year>.json   every polity of a year (world-1960, world-3000-bce), loaded by the Map's era slider (ADR-0021)
   data/search/index.json     the search files' word ranges      data/search/<n>.json   search entries by word
-  read/index.html            Read: the story content/featured.yaml's `read` names      read/<id>/index.html   a written story, read over its field of dots
   data/field.bin             the field of dots: every thing open data places on the Earth (web/src/lib/dotfield.ts)
   data/field.json            the field's count of dots and its named places
-  data/read.json             Read's lists: every story, what no step goes on from, the relations a place does not list
+  data/read.json             the story page's lists: every story, what no step goes on from, the relations a place does not list
   data/graph.json            only with `ctd build --graph`: everything in one file, for tools; no page reads it
   world/                     manifest.json, entities.json, {z}/{x}/{y}.bin (world-tiles.md)
   static/site.css            theme CSS and tokens (from theme/static/)
-  assets/                    built by web/ (Vite): islands.js|css, explorer.js|css, story.js|css, world.js|css, place.js|css (the Stories page), maplibre-gl.css (loaded by the story maps and the Map's Earth when they first draw a map), chunks/
+  assets/                    built by web/ (Vite): islands.js|css, world.js|css, atlas.js|css, ask.js|css, read.js|css, life.js, place.js|css (the Stories page), forward.js, maplibre-gl.css (loaded by the Map's Earth when it first draws a map), chunks/ (code two pages share, never inside world.js; the build fails on a CSS file no page links, [ADR-0031](decisions/0031-fewer-views.md))
   build-manifest.json        engine, built, commit, methodology hash, counts
   .ctd-build                 marks the folder as a build, so the next build may empty it
 ```
 
-An entry gets a life story when it has at least two links that are not withdrawn. A featured pair gets a route story when a route joins them. A question gets a page about an entry when its answer names at least the question's `min` entries or gives two accounts (at most 5,000 pages per question, featured first, then the richest), and that page gets a story when it has two published lines or two accounts. `schema.json` lists the route stories; an entry's detail file names its life story and its question pages.
+An entry gets a life story when it has at least two links that are not withdrawn. A question gets a page about an entry when its answer names at least the question's `min` entries or gives two accounts (at most 5,000 pages per question, featured first, then the richest), and that page gets a story when it has two published lines or two accounts. An entry's detail file names its life story and its question pages.
 
-**Pages load what they show** ([ADR-0017](decisions/0017-pages-load-what-they-show.md)). Entry, question and type pages need no data file. The explorer and the Map's Earth read `schema.json` and `graph-slim.json`. The explorer also reads `spots.json` and `stories.json`, and loads an entry's `e/<id>.json` when a panel shows it or its links, or a pointer rests on its name. A story reads its own data from its page and `schema.json`. The box reads `search/` and `schema.json`, from the moment a person focuses it. No page reads `graph.json`; the QA sweep fails one that does. All of `data/` is served with `Cache-Control: public, max-age=300, stale-while-revalidate=86400`.
+**Pages load what they show** ([ADR-0017](decisions/0017-pages-load-what-they-show.md)). Entry, question and type pages need no data file. Ask and the Map's Earth read `schema.json` and `graph-slim.json`. The Map also reads `stories.json`; Ask loads an entry's `e/<id>.json` when an answer shows it. A story page carries its own data and loads the rest only when a name is opened (see "Story" below). The box reads `search/` and `schema.json`, from the moment a person focuses it. No page reads `graph.json`; the QA sweep fails one that does. All of `data/` is served with `Cache-Control: public, max-age=300, stale-while-revalidate=86400`.
 
 ## Dates
 
@@ -60,7 +58,7 @@ A date is `{ "start": <decimal year>, "end": <decimal year|null>, "label": "<hum
 
 ## `data/schema.json`
 
-The vocabulary, with the route stories:
+The vocabulary:
 
 ```jsonc
 {
@@ -72,11 +70,10 @@ The vocabulary, with the route stories:
                              "identity": false } },
   "lenses":   [ { "id": "money", "label": "Money", "view": "graph", "layers": ["money"] } ],
   "tiers":    { "T1": { "label": "Primary record", "description": "…", "rejected": false } },  // description may be null; users see labels, never codes
-  "stories":  { "paths": ["moses--elon-musk", "…"] },     // "<from>--<to>", directional: a route story at /p/<from>--<to>/
   "questions": [ {                                        // content/schema/questions.yaml, in its order
     "id": "behind", "ask": "Who is behind {x}?",          // {x} = the subject; a route question has {a} and {b}
     "label": "Who is behind",                             // the words before the first blank
-    "route": false,                                       // true: answered by routes (/x/?from=&to=, /p/…), no pages
+    "route": false,                                       // true: answered by routes (Ask, /ask/?a=&b=), no pages
     "subjects": ["org", "place", "…"],                    // entity types it is asked about ([] for a route question); never a family type
     "shows": "documented founders, …", "not": "who made decisions, or why",   // raw; pages print "Shows ….", "Not …."
     "groups": [ { "label": "Founded by", "in": ["founded"], "out": [], "empty": null } ],
@@ -146,7 +143,7 @@ The data files hold entries (`nodes`), links (`edges`) and sources in these shap
 
 ## `data/graph-slim.json`
 
-Every entry and link, with only what the explorer draws and routes price, as rows:
+Every entry and link, with only what Ask and Stories draw and routes price, as rows:
 
 ```jsonc
 {
@@ -160,11 +157,11 @@ Every entry and link, with only what the explorer draws and routes price, as row
 - **An entry** is `[id, name, type, degree, when, coords, place]`. `coords` is its own `[lon, lat]` or 0. `place` is the index of the entry it is set in, or -1. An entry without coords of its own is drawn at its place's (the node's `coords` above), and its `url` is `/e/<id>/`.
 - **A link** is `[from, to, rel, claim, when, tier]`, with its ends as entry indexes. Its id is `<from id>#<claim>`. `label`, `layers`, `passive` and `traversable` are its relation's. An object follows when any of these is not the default: `according_to` (default `[]`), `status` (default `published`) and `voices`, which is there only on a link both sides agree on (`cross_confirmed`).
 - **Left out:** summaries, aliases, qualifiers, notes and sources. They are in the entries' detail files.
-- **Size:** 17 KB gzip today (338 entries, 642 links). Its budget is 1 MB gzip, which holds about 40,000 links of today's kind. Past it the build warns, and the explorer and routes need the route service ([ADR-0017](decisions/0017-pages-load-what-they-show.md)).
+- **Size:** 17 KB gzip today (338 entries, 642 links). Its budget is 1 MB gzip, which holds about 40,000 links of today's kind. Past it the build warns, and Ask and routes need the route service ([ADR-0017](decisions/0017-pages-load-what-they-show.md)).
 
 ## `data/ways.json`
 
-What a route needs and nothing else: 70 KB gzip where `graph-slim.json` is 170. A pair's answer finds its way here with `findPaths`, and reads the words of what it found from the detail files of its stops:
+What a route needs and nothing else: 70 KB gzip where `graph-slim.json` is 170. A pair's answer on Ask and Stories finds its way here with `findPaths`, and reads the words of what it found from the detail files of its stops:
 
 ```jsonc
 {
@@ -178,7 +175,7 @@ What a route needs and nothing else: 70 KB gzip where `graph-slim.json` is 170. 
 
 ## `data/e/<n>.json`
 
-Entries share 256 packs ([ADR-0026](decisions/0026-entries-share-files.md)). `<n>` is the 32-bit FNV-1a hash of the id, modulo 256, and the file is an object keyed by id. `loadEntryFile(id)` in `web/src/lib/data.ts` reads the one entry out. An entry's words and proof load when the explorer opens the entry or shows one of its links:
+Entries share 256 packs ([ADR-0026](decisions/0026-entries-share-files.md)). `<n>` is the 32-bit FNV-1a hash of the id, modulo 256, and the file is an object keyed by id. `loadEntryFile(id)` in `web/src/lib/data.ts` reads the one entry out. An entry's words and proof load when Ask or the Map shows the entry or one of its links:
 
 ```jsonc
 {
@@ -188,7 +185,7 @@ Entries share 256 packs ([ADR-0026](decisions/0026-entries-share-files.md)). `<n
   "asked": [ { "q": "behind", "title": "Who is behind BlackRock?", "url": "/q/behind/blackrock/",
                "links": 9, "accounts": 0, "counts": "9 links" } ],   // the question pages about it
   "open": 120,                           // how many more links open data holds for it, or null
-  "w": "Q219635",                        // its Wikidata id, or null: `/r/` steps from here into open data
+  "w": "Q219635",                        // its Wikidata id, or null: Ask steps from here into open data
   "links": [ { "id": "blackrock#c3", "to": "spacex", "rel": "invested_in", "when": [2019, 2020, "2019"], "tier": "T1",
                "sources": [ { "id": "…", "at": null, "quote": "…" } ],
                "according_to": ["…"], "status": "draft", "voices": ["…"],
@@ -198,16 +195,16 @@ Entries share 256 packs ([ADR-0026](decisions/0026-entries-share-files.md)). `<n
   "sources": { "…": { /* as in "Entries, links and sources" */ } }   // the sources its links cite
 }
 ```
-- **Its links:** every link touching the entry, both directions. A hub keeps the 100 strongest of each kind (relation and direction), ranked as answers rank them (`methodology` cost); the rest are in the slim file, and a link past the cap of one end is in the other end's file. Its entry page lists the same links, with "and N more" opening the explorer.
+- **Its links:** every link touching the entry, both directions. A hub keeps the 100 strongest of each kind (relation and direction), ranked as answers rank them (`methodology` cost); the rest are in the slim file, and a link past the cap of one end is in the other end's file. Its entry page lists the same links, with "and N more" opening Ask (`/ask/?a=<id>`, whose name answer lists all its links).
 - **Never in it:** an entry's `background` lines (ADR-0016).
 
 ## `data/life/<n>.json`
 
-The same packs, for life stories: `{ "<id>": { "title": "The story of Alphabet: Connect the Dots", "main": "…" } }`. `main` is what a chapter page holds inside `<main>`. An id with no story is absent.
+The same packs, for life stories: `{ "<id>": { "title": "The story of Alphabet: Connect the Dots", "main": "…" } }`. `main` is what the story page (`read.html`) holds inside `<main>`: `/assets/life.js` injects it into `/e/_life/`, then imports `web/src/read/reader.ts`. `/e/_life/` links `/assets/read.css` and `/assets/life.js` only. An id with no story is absent.
 
 ## A story's own data
 
-A story page embeds the entries, links and sources its scenes name, beside its shots (`script.ctd-story-data`, see "Chapter" below): `{ "nodes": [...], "edges": [...], "sources": {...} }` in the shapes above, with links in full. Its entries are the scenes' `focus`, `perspective`, `reveal`, `places` and `routes`, and the ends, accounts and quoted speakers of the links its scenes reveal (`reveal_claims`). Its sources are those links' and the overlays'. The player reads this and `schema.json`, and nothing else.
+A story page embeds the entries, links and sources its scenes name (`script.read-data`'s `data`, see "Story" below): `{ "nodes": [...], "edges": [...], "sources": {...} }` in the shapes above, with links in full. Its entries are the scenes' `focus`, `perspective`, `reveal`, `places` and `routes`, and the ends, accounts and quoted speakers of the links its scenes reveal (`reveal_claims`). Its sources are those links' and the overlays'.
 
 ## `data/islands.json`
 
@@ -236,10 +233,13 @@ The Stories page's one surface ([ADR-0028](decisions/0028-one-box.md), after the
 
 ## Ask: `ask/index.html` and `data/ask.json`
 
-The One Box page ([ADR-0028](decisions/0028-one-box.md)), written by `crates/ctd/src/site/ask.rs` and read by `web/src/ask/`. Its heading is the box (`#ask-box`, a textarea, under `.ask-mirror`, which paints the same text with each name inked). The page arrives asking the first featured pair, painted in the HTML, and its address names entries alone, so the words are rebuilt from the data and no address can print text: `/ask/?a=<id>&b=<id or Qn>[&way=<n>]` two names, `?a=<id>` one, `?q=<question>&a=<id>` a question with its own page, `?y=<year>` a year. What a reader types and nothing answers stays on their screen and gets no address.
+The One Box page ([ADR-0028](decisions/0028-one-box.md)), which answers every pair since [ADR-0031](decisions/0031-fewer-views.md) (Connect, `/r/`, and the route story pages `/p/<a>--<b>/` are gone), written by `crates/ctd/src/site/ask.rs` and read by `web/src/ask/`. Its heading is the box (`#ask-box`, a textarea, under `.ask-mirror`, which paints the same text with each name inked). The page arrives asking the first featured pair, painted in the HTML, and its address names entries alone, so the words are rebuilt from the data and no address can print text: `/ask/?a=<id>&b=<id or Qn>[&way=<n>]` two names, `?a=<id>` one, `?a=Q<n>` an open-data entry alone (the box holds its name and " and ", ready for a second name, with a link to `/a/?q=Q<n>`), `?q=<question>&a=<id>` a question with its own page, `?y=<year>` a year. What a reader types and nothing answers stays on their screen and gets no address. The box sends two names to `/ask/?a=&b=`, and Ask handles a suggestion that is an `/ask/` address in place.
+
+`/p/<a>--<b>/` and `/p/<a>--<b>` redirect (301) to `/ask/?a=<a>&b=<b>`, one pair of rules in `_redirects` per featured connection. `/x/` and `/r/` are forwarding pages (below).
 
 - `script#ask-picks`: the featured pairs of `connections` in `content/featured.yaml` it may arrive on, `[{ a, b, text, parts, note }]`. `parts` is the route question in `questions.yaml` asked about the two, as `[words]` and `[name, id, ink]` (only the name is inked: "the" in "the Gutenberg Bible" is a word). A pair is left out when an end, or any stop of its way, is sealed, about a sealed entry, or named after one (ADR-0027). "Another question" walks these.
 - `data/ask.json`: `{ "stories": [[id, title, subtitle, [years with a scene], [entry ids named]]], "sealed": [ids] }`. The stories are those free of sealed entries, in the library's order, and an entry is named when a scene shows it or reveals a link to it. A `group` or `tradition` is named by none here, so no two names share a story for who someone is (ADR-0016). `sealed` lists what no answer may run through: the sealed entries, what is about them, and everything but a person whose name holds a sealed person's family name. Ask offers no pair, way, story or question through these, draws none around another dot, and lists none under a year. Searched for by name, a sealed entry gets its direct ties with their caveat. About 38 KB gzip (71 stories, 3,871 names); its budget is 100 KB, and past it the build warns.
+- `p.ask-try`, under the box: one example of each kind Ask understands, each a link to its `/ask/` address. "Ask a name, like Standard Oil; two names, like Bill Gates and IBM; a year, like 1914; or a question, like Who is behind Harvard University?" Built by `examples()` in `crates/ctd/src/site/ask.rs` as `{ kind: name|pair|year|question, text, url }`: the name is the first featured thread, the pair the second featured connection (else the first), the year where the first dated scene of the `read` story begins, the question a question page about a featured thread (else the first question page). Nothing sealed or kept out (ADR-0027). Its `<noscript>` says the box needs JavaScript and links `/c/`, where every story reads without it.
 - Beside these it reads `schema.json`, `graph-slim.json` (names, links, ways and pictures), an entry's detail file when an answer shows it, `search/` as a person types, and the atlas and `routes.json` only for two names with no written way. The world under an empty box, a year or a place is drawn by `web/src/lib/dotfield.ts`.
 
 ## The field of dots: `data/field.bin` and `data/field.json`
@@ -259,19 +259,20 @@ The world as hundreds of thousands of grey dots, darker where things are dense, 
 - `field.light(id)` marks one dot as the one a pointer is on elsewhere; `field.size`; `field.destroy()`.
 - Nothing runs at rest: a frame is drawn when the scene, the size, the fonts or the data change, and on each frame of a move, and none while the canvas is out of view.
 
-## Read: `/read/` and `/read/<id>/`
+## Story: `/c/<id>/`
 
-One written story as a column of words over the field of dots where it happens (`theme/templates/read.html`, `crates/ctd/src/site/read.rs`, `web/src/read/`). `/read/` is the story `read` names in `content/featured.yaml` (`ctd check` refuses one that is not written or not free of sealed entries), else the first in the library free of them that opens on the Earth; its canonical address is `/read/<id>/`. The page holds every word as HTML, so it reads with no script:
-- `section.read-story[data-story]`: `header.read-band` with the title (`h1`) and the opening lines (`p.read-hero`: the intro's first paragraph when it is 240 letters or fewer, else its first sentences up to 200, cut only where no tag is open; `mid` and `long` set longer ones smaller), `div.read-intro` with the rest of the intro, one `article.read-scene[data-scene]` per scene (`p.read-when`, the bold title as `h2`, the narration with its doors as on `/c/`, and the scene's quote, number or source card as `figure.read-quote` with where it comes from), and `footer.read-end`: the stories `chapter.next` picks, as `a.read-book[data-next]` to `/read/<id>/`, each with its reason (`p.read-why`: "Shares …", or "The next story in the library"), the notice, and the story's `/c/` page.
-- `script.read-data` (in the section): `{ id, title, scenes, at, data }`. `scenes[i]` is what the picture needs of a shot, in short names: `v` (`map` or `graph`), `c` (`[lon, lat, zoom]` of its camera), `p` (places), `w` (routes), `f` (focus), `r` (reveal), `x` (reveal_claims), `t` (time label). `at` is `{ id: [lon, lat] }` for the entries whose coordinates are their own. `data` is the story's own data, as a story page embeds it.
+Every story is one page: a column of words over the field of dots where it happens (`theme/templates/read.html`, `crates/ctd/src/site/read.rs`, `web/src/read/`: `main.ts` imports `read.css` and `reader.ts`; `life.ts` loads a life story). Written stories are at `/c/<id>/`. Generated stories use the same template: answer stories at `/q/<question>/<id>/story/` (full pages) and life stories at `/e/<id>/story/` (one shared page, `/e/_life/`, see `data/life/<n>.json`). The old story page, its scene player and its `story.js`/`story.css` are gone ([ADR-0031](decisions/0031-fewer-views.md)). `/read/` is a 302 to `/c/<id>/` of the story `read` names in `content/featured.yaml` (`ctd check` refuses one that is not written or not free of sealed entries), else the first in the library free of them that opens on the Earth. `/read/:id/` and `/read/:id` are 301s to `/c/:id/` (in `_redirects`); no file is written under `/read/`. The page holds every word as HTML, so it reads with no script:
+- `section.read-story[data-story]`: `header.read-band` with, for a drawn story, `p.read-from` ("Back to <page>") first; the title (`h1`); the opening lines (`p.read-hero`: the intro's first paragraph when it is 240 letters or fewer, else its first sentences up to 200, cut only where no tag is open; `mid` and `long` set longer ones smaller); and, for a drawn story, `p.read-by` ("Drawn from sourced links."). Then `div.read-intro` with the rest of the intro; one `article.read-scene[data-scene]` per scene (`p.read-when`, the bold title as `h2`, `img.read-photo` when the scene has a Wikimedia picture, the narration with its doors, and the scene's quote, number or source card as `figure.read-quote` with where it comes from); `div.read-outro`, the story's outro, after the scenes; and `footer.read-end`: the stories `next` picks, as `a.read-book[data-next]` to `/c/<id>/`, each with its reason (`p.read-why`: "Shares …", or "The next story in the library"), then `div.read-fine`: the notice "A connection is not evidence of wrongdoing.", "Written by …" for a written story, the picture credits, and the corrections line for a written story. The page has no canonical tag.
+- `script.read-data` (in the section): `{ id, title, scenes, at, data }`. `scenes[i]` is what the picture needs of a shot, in short names: `v` (`map` or `graph`), `c` (`[lon, lat, zoom]` of its camera), `p` (places), `w` (routes), `f` (focus), `r` (reveal), `x` (reveal_claims), `t` (time label). `at` is `{ id: [lon, lat] }` for the entries whose coordinates are their own. `data` is the story's own data.
 - `script#read-site`: `{ inks: { <type>: <colour> } }`.
+- **In `read.rs`**, `story()` takes a `read::Told`: a written `kb::Chapter` (`Told::written`) or a `stories::Draft` (`Told::drawn(draft, back)`). Its JSON gives `outro`, `credits` (the pictures used), `rel_path`, `authors` and `back`; each scene has `picture`; `next[].url` is `/c/<id>/`.
 - **`data/read.json`**, loaded the first time a reader opens a name or "Find a name": `{ stories: [[id, title, subtitle, scenes]], sealed: [ids], background: [relation ids] }`. `sealed` is every sealed entry and what is about one (ADR-0027): a stop on one lists its links with their proof and caveat, and no name there is a door. `background` are the relations shown in a person's Background card (born in, citizen of, educated at): a place's or a school's side does not list them as its links (ADR-0016).
 
-The script reads the page, `field.bin` and `field.json` after the words have painted, and nothing else until a door is near a pointer or opened: then `schema.json`, `graph-slim.json`, `stories.json`, `read.json` and the detail files of the names opened. "Find a name" reads `search/`. A next story is its own `/read/<id>/` page, fetched and added below the one that offered it. A name opened in a story is shown in place: the story folds after the scene, the stop shows the link that joins it with its proof open, the name, the way back, a story it is in (with "and that is all this says"), its links on the record, and how many more open data holds. Groups and traditions join nothing (ADR-0016): a stop on one has no doors, and no way runs through one.
+The script reads the page, `field.bin` and `field.json` after the words have painted, and nothing else until a door is near a pointer or opened: then `schema.json`, `graph-slim.json`, `stories.json`, `read.json` and the detail files of the names opened. "Find a name" reads `search/`. A next story is its own `/c/<id>/` page, fetched (its `.read-story` is taken) and added below the one that offered it, with pushState and popstate keeping the address. A name opened in a story is shown in place: the story folds after the scene, the stop shows the link that joins it with its proof open, the name, the way back, a story it is in (with "and that is all this says"), its links on the record, and how many more open data holds. Groups and traditions join nothing (ADR-0016): a stop on one has no doors, and no way runs through one.
 
 ## `data/borders/<id>.json`
 
-A GeoJSON FeatureCollection, copied from `content/borders/`: `name` (what the key says), `source` (a source id), and one feature per period, with `properties.from` and `properties.to` (years, inclusive) and a MultiPolygon. A shot's `borders` lists ids; the story takes the feature whose years hold the floor of the shot's `t`, and draws nothing for an id with none.
+A GeoJSON FeatureCollection, copied from `content/borders/`: `name` (what the key says), `source` (a source id), and one feature per period, with `properties.from` and `properties.to` (years, inclusive) and a MultiPolygon. A shot's `borders` lists ids. The old story player drew them; Read does not, so since [ADR-0031](decisions/0031-fewer-views.md) no page reads these files.
 
 ## `data/search/`
 
@@ -285,7 +286,7 @@ The search entries, filed by word:
                  "when": "2004 –", "url": "/e/meta-platforms/", "q": ["behind"], "rank": 41 } ],
   "words": [ ["facebook", [0]], ["meta", [0]], ["meta platforms", [0]] ] }   // a word and its entries' places in `entries`
 ```
-- **Entries:** entities (best-connected first, then by name), then written chapters (`type: "chapter"`), then question pages (`type: "question"`, question by question in `questions.yaml` order, featured first, then the richest). `rank` is an entry's place in that order, across files. Go to `url`; only entity entries can be shown in place by the explorer or the map.
+- **Entries:** entities (best-connected first, then by name), then written chapters (`type: "chapter"`), then question pages (`type: "question"`, question by question in `questions.yaml` order, featured first, then the richest). `rank` is an entry's place in that order, across files. Go to `url`; only entity entries can be shown in place by the Map.
 - **Words:** each entry is filed under every word, and every pair of neighbouring words, of its name and aliases. A word is folded: lower case, accents dropped, apostrophes and full stops removed, split at everything else that is not a letter or digit ("O'Brien" is `obrien`). A word lists its 100 best entries; a longer query finds the rest.
 - **Files:** the words are sorted and cut into files between words, at about 50 KB gzip. While everything fits in one file, which is today, that file holds every entry and no `words`: search reads all of it.
 - **Looking up a query:** fold its words, take each word and each pair of neighbouring words, find the file whose range holds it (and the next file when its first word starts with it), and gather the entries under the words that start with it.
@@ -318,10 +319,10 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 
 | Element | Behaviour |
 |---|---|
-| `<ctd-box>` | Enhances the server's `<form role="search"><input>`, in every header ([ADR-0028](decisions/0028-one-box.md)). Until a person focuses it, it loads nothing: no search file, and only a focus listener of script. Then `web/src/islands/box-field.ts` reads `search/` (the entries for the typed words) and `schema.json` (the inks), and `web/src/lib/box.ts` reads the text as one name, two names, a year or a question. Each name gets a dot in its type's ink, and arrow keys, Enter and Escape work the suggestions. Enter goes to `/e/<id>/` or `/a/?q=Q<n>`, `/r/?a=<id or Qn>&b=<id or Qn>`, `/q/<q>/<id>/`, `/w/?t=<year>`, or with an empty box `/c/`. Otherwise it answers in its own panel, in fixed words, and never repeats the text. For a single name on the explorer and world pages (`html[data-ctd-explorer]`) it first dispatches a cancelable `ctd:focus` `{id}`; a page that can show the entry calls `preventDefault()` and the box stays put. Without JavaScript the field is hidden (`@media (scripting: none)`) and a link to `/c/` stands in. |
+| `<ctd-box>` | Enhances the server's `<form role="search"><input>`, in every header ([ADR-0028](decisions/0028-one-box.md)). Until a person focuses it, it loads nothing: no search file, and only a focus listener of script. Then `web/src/islands/box-field.ts` reads `search/` (the entries for the typed words) and `schema.json` (the inks), and `web/src/lib/box.ts` reads the text as one name, two names, a year or a question. Each name gets a dot in its type's ink, and arrow keys, Enter and Escape work the suggestions. Enter goes to `/e/<id>/` or `/a/?q=Q<n>`, `/ask/?a=<id or Qn>&b=<id or Qn>` (two names), `/q/<q>/<id>/`, `/w/?t=<year>`, or with an empty box `/c/`. Otherwise it answers in its own panel, in fixed words, and never repeats the text. For a single name on the Map and Stories pages (`html[data-ctd-in-place]`) it first dispatches a cancelable `ctd:focus` `{id}`; a page that can show the entry calls `preventDefault()` and the box stays put. Without JavaScript the field is hidden (`@media (scripting: none)`) and a link to `/c/` stands in. |
 | `<ctd-lens-chips focus="<id>">` | Holds server-rendered chips, `button[data-lens][data-layers]` (`data-layers`: the lens's layer ids, space-separated), so it needs no data file; without chips it builds them from `schema.json`. Clicking dispatches `ctd:lens` `{lens}` on `document`, hides `li.claim` items whose `data-layers` miss the lens layers (and any `.claim-group` left empty), and keeps `?lens=` in the URL. Lens `all` shows everything. |
 
-**Stories** (`/c/`, `chapters.html`): `<ctd-place class="place">` takes the first screen, and `/assets/place.js` and `/assets/place.css` load on this page alone. It holds `.place-hello`, the page's `h1` and the fixed words that say what the picture is, which the script leaves in place and fades when the camera leaves the whole map. The script adds one canvas (`aria-hidden`), a layer of words, and one button that zooms out. It reads `graph-slim.json`, `islands.json` and `schema.json`; an entry's detail file when it is opened or a link's proof is read; `ways.json` when a way is asked for; and `search/` when someone types in the way field. The address is the stop, so Back walks back: `#/e/<id>` an entry, `#/i/<story id>` an island, `#/l/<link id>/<from id>` a link and its proof, `#/w/<a id>/<b id>` the way between two entries and `#/w/<a id>/<b id>/<n>` its step `n`. Any other hash, such as `#all`, leaves the surface as it is. The page sets `html[data-ctd-explorer]`, so the header's box shows a single name here. Every move is one straight eased move, and nothing runs at rest. A way is the first `findPaths` finds over `ways.json`, as `/r/` finds it; a sealed entry is never offered as one end. The list under it (`#all`) is its alternative for screen readers, and all that shows without JavaScript.
+**Stories** (`/c/`, `chapters.html`): `<ctd-place class="place">` takes the first screen, and `/assets/place.js` and `/assets/place.css` load on this page alone. It holds `.place-hello`, the page's `h1` and the fixed words that say what the picture is, which the script leaves in place and fades when the camera leaves the whole map. The script adds one canvas (`aria-hidden`), a layer of words, and one button that zooms out. It reads `graph-slim.json`, `islands.json` and `schema.json`; an entry's detail file when it is opened or a link's proof is read; `ways.json` when a way is asked for; and `search/` when someone types in the way field. The address is the stop, so Back walks back: `#/e/<id>` an entry, `#/i/<story id>` an island, `#/l/<link id>/<from id>` a link and its proof, `#/w/<a id>/<b id>` the way between two entries and `#/w/<a id>/<b id>/<n>` its step `n`. Any other hash, such as `#all`, leaves the surface as it is. The page sets `html[data-ctd-in-place]`, so the header's box shows a single name here. Every move is one straight eased move, and nothing runs at rest. A way is the first `findPaths` finds over `ways.json`, as Ask finds it; a sealed entry is never offered as one end. The list under it (`#all`) is its alternative for screen readers, and all that shows without JavaScript.
 
 **Entity page:** a person's page may open with a "Background" card: the links whose relation has `background: true` (born in, citizen of, educated at), and the entry's `background` lines, each with footnotes. Background lines are on that page only. They are in no data file (`graph-slim.json`, `e/<id>.json`, `search/`, a story's data and shots, nor `graph.json`), by rule ([ADR-0016](decisions/0016-who-a-person-is.md)), and a test checks it.
 
@@ -331,19 +332,12 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 
 **Entity page:** no tabs. Timeline, Proof and Page history are `details.fold` sections (`#timeline`, `#proof` with `li#src-<n>`, `#history`). A small inline script opens the fold that holds the URL's hash target, so footnote links (`#src-<n>`) work. No island is involved.
 
-**Explorer:** `/x/index.html` contains `<div id="explorer-root"></div>` and loads `/assets/explorer.js` and `/assets/explorer.css`. Its state lives in the query string, and a change of `focus`, `link`, `from` or `to` is a step in the browser's history ([ADR-0029](decisions/0029-the-walk.md)):
-- `focus`: entity id, name or alias;
-- `link`: the id of the link whose proof is open;
-- `lens`: lens id;
-- `p`: perspective entity id, `facts` or `all`;
-- `t`: decimal year;
-- `from`, `to`: route ends (id, name or alias). `from` alone asks for the other end;
-- `view=world`: an old address, which opens `/w/?focus=<id>`.
-
-The picture is made of `.ctdx-scene` elements, one for each stop: `a.ctdx-dot[data-walk="<id>"]` for a dot and `line.ctdx-hit[data-link="<link id>"]` for a line. A move animates the `.ctdx-world` transform and the scenes' opacity, and the page holds no running animation at rest.
+**Forwarding pages** ([ADR-0031](decisions/0031-fewer-views.md)): the explorer (`/x/`) and Connect (`/r/`) are gone. Their addresses are `theme/templates/forward.html` pages (noindex; a `<noscript>` meta refresh to `/c/` or `/ask/`) that load `/assets/forward.js` (`web/src/forward.ts`), which does `location.replace`. Only ids are carried, never words.
+- `/r/`: `a` and `b` go to `/ask/?a=&b=`; `a` alone goes to `/a/?q=` for a Q id, else `/ask/?a=`; nothing goes to `/ask/`.
+- `/x/`: `from` and `to` go to `/ask/?a=&b=`; `focus` (or `from` alone) goes to `/e/<id>/` (or `/a/?q=` for a Q id); nothing goes to `/c/`.
 
 **World map:** `/w/index.html` contains `<div id="world-root" data-src="/world/"></div>` and loads `/assets/world.js` and `/assets/world.css`. Query: `view` (`earth`; Links when absent), `t` (a year: it opens on the era around it, `-449` for 450 BCE), `src` (another same-origin world), `focus` (entity id), `stats=0|1`, `labels=0`, `rs` (dot size factor), `soak=1&soakSec=<n>` (soak test).
-- A switch where the title would be, "Links | Earth", picks the view and keeps it in the URL (`?view=earth`; Links has no `view`). Synthetic worlds and the explorer's world mode show Links only.
+- A switch where the title would be, "Links | Earth", picks the view and keeps it in the URL (`?view=earth`; Links has no `view`). Synthetic worlds show Links only.
 - **Links** draws the world tiles ([world-tiles.md](world-tiles.md), which has the field details):
   - It opens on the manifest's `bounds`, and ⌂ returns there.
   - Zoomed out it names the manifest's `regions`; clicking a name flies to it. Zooming in fades the names out and the dots' own names in.
@@ -352,38 +346,21 @@ The picture is made of `.ctdx-scene` elements, one for each stop: `a.ctdx-dot[da
   - It opens on the whole planet, turned to where the spots are, and ⌂ returns there. With `focus`, it centres the entry's spot and opens the entry's card.
   - The box shows an entry there when it has a place; for the others it opens their page.
 - An era slider (one range input, "All time" at its right end) appears when entities have `start` dates, and serves both views. Its eras are two steps wide and one step apart: decades (twenty-year eras) when they fit, wider steps for very long spans, plus "Before …" for the earliest few and "Since …" at the present. Dots whose dates miss the era, and undated ones, fade but stay (an Earth spot fades when none of its entries meets the era). `t` opens on an era; moving the slider does not change the URL.
-- Clicking a dot opens its card: "Open page ›" (the entry's `url`) and "Explore" (`/x/?focus=<id>`). On the Earth the card is the spot's named entry (or the `focus` entry), followed by "Also here": the spot's other entries, each a link to its page.
+- Clicking a dot opens its card: "Open page ›" (the entry's `url`) and "Connect to…" (`/ask/?a=<id>`, or `/ask/?a=Q<n>` on an open-data card). On the Earth the card is the spot's named entry (or the `focus` entry), followed by "Also here": the spot's other entries, each a link to its page.
 
-**Stories:** written chapters (`/c/<id>/`) and generated stories (`/e/<id>/story/`, `/p/<a>--<b>/`) share one template (a life story's is in `data/life/`):
-```html
-<ctd-story chapter="<id>">
-  <script type="application/json" class="ctd-shots">[ …shots… ]</script>
-  <script type="application/json" class="ctd-story-data">{ "nodes": […], "edges": […], "sources": {…} }</script>
-  <div class="story-stage" aria-hidden="true"></div>
-  <div class="story-steps">
-    <section class="step" data-shot="<shot name>"><div class="step-card">…narration HTML…</div></section>
-  </div>
-</ctd-story>
-```
-A step card may hold `p.step-time` and `p.step-explore`. The page loads `/assets/story.js` and `/assets/story.css`; MapLibre and `/assets/maplibre-gl.css` load only when the story first shows a map scene.
-
-**Doors** ([ADR-0028](decisions/0028-one-box.md)): in a step card's narration, the first mention of an entry in a scene is a plain link, `<a class="door-<layer>" href="/e/<id>/">`, and so is any link the narration already made to an entry. `door-<layer>` gives the dotted underline in that kind's ink; the page's own `<style>` maps it to `--layer-<layer>`. No script touches them. The engine (`crates/ctd/src/doors.rs`) adds links and changes no word:
+**Doors** ([ADR-0028](decisions/0028-one-box.md)): in a story's narration, the first mention of an entry in a scene is a plain link, `<a class="door-<layer>" href="/e/<id>/">`, and so is any link the narration already made to an entry. `door-<layer>` gives the dotted underline in that kind's ink; the page's own `<style>` maps it to `--layer-<layer>`. No script touches them. The engine (`crates/ctd/src/doors.rs`) adds links and changes no word:
 - It looks only for the story's own entries (`focus`, `perspective`, `reveal`, `places`, `routes`). A one-word name needs the scene itself to list the entry; a longer name may be listed by any scene.
 - It uses the entry's name, `in_sentence` and aliases, by whole words, case-sensitive, longest first.
 - It leaves plain a name two entries share, a form with no capital, a very short name ("X", "Ur"), a one-word name that is the surname of another person in the story ("Krupp" beside Gustav Krupp), and a piece of a longer name ("New York Times", "Great Britain", "Bank of England").
 - It leaves alone anything in quotation marks, a bold scene title, a link, a blockquote or code, and it never reads overlays.
 
-**Listen** (in watch mode, off unless the viewer turns it on) reads each child of a step's `.step-card` aloud as plain text, one utterance per paragraph, with the browser's own speech (Web Speech API), leaving out `p.step-time` and `p.step-explore`. The narration HTML is what is heard. Then it reads the scene's quote card: "In their words:" and the quote, then its caption (who said it), or "The source says:" and a proof card's quote. The viewer's choice is kept in `localStorage` under `ctd-listen` (`1` or `0`).
-
-**Back:** on leaving, a story keeps its scene in `sessionStorage` under `ctd-scene:<path>`. Arriving by Back, it goes to that scene only if the browser has not restored the scroll there (a life story arrives too late for it).
-
-Shot fields (from the chapter's `scene` blocks, or generated; the build adds `t` and `time_label`). The narration's HTML is in the step cards only. A `reveal_claims` entry `<entity>#<claim>` matches that edge and any `<entity>#<claim>/<n>` edges:
+Shot fields (from the chapter's `scene` blocks, or generated; the build adds `t` and `time_label`). Since [ADR-0031](decisions/0031-fewer-views.md) the story page does not play shots: it reads a scene's `focus`, `reveal`, `places`, `routes`, `camera`, `time` and `overlay` into `script.read-data`, to place the scene on the field of dots and to choose which names are doors. A `reveal_claims` entry `<entity>#<claim>` matches that edge and any `<entity>#<claim>/<n>` edges:
 
 | Field | Meaning |
 |---|---|
 | `shot` | Shot name |
 | `view` | `map`, `graph` or `timeline` |
-| `camera` | `{ center: [lon, lat], zoom, pitch?, bearing?, globe?: bool, fit?: bool, duration?: seconds }`; `fit` zooms out once settled until every marker shows |
+| `camera` | `{ center: [lon, lat], zoom, pitch?, bearing?, globe?: bool, fit?: bool, duration?: seconds }` |
 | `focus` | Entity id |
 | `lens` | Lens id |
 | `perspective` | Entity id |
@@ -394,24 +371,13 @@ Shot fields (from the chapter's `scene` blocks, or generated; the build adds `t`
 | `routes` | `[[place-id, place-id], …]` lines to draw on the map |
 | `overlay` | `{ kind: "source"\|"quote"\|"image"\|"stat", source?, quote?, image?, caption?, value?, label? }`; a `stat` is a big number (`value`, `label`) with its `source` and `quote` beside it |
 | `narration` | Markdown |
-| `duration` | Seconds in watch mode; with Listen on, the scene also waits for its narration to be read |
-| `explore` | Show the "Explore from here" button, which links to `/x/?focus=&lens=&p=&t=` |
-
-**The map view** flies to each shot's `camera` and marks its places. Once the camera settles, no marker (dot or name) is left under the quote card, the time pills or the controls: the map moves as little as it can, up or left, or, when no small move does it (on a phone the card spans the width), zooms out until every marker fits the room left. Where a marker names a place, the basemap does not name it again.
-
-A map scene dated before 1800 hides the basemap's modern borders, roads and names: land, sea and rivers stay.
-
-**The graph view** keeps what earlier shots revealed and draws the world as of the shot's `t`: what has not begun is hidden, and what is over is faded.
-- **A shot's own reveals are never faded.** What a shot itself reveals (`reveal`, `focus`, the ends of `reveal_claims`) is its subject, so its `t` never hides or fades it.
-- **The camera frames that subject.** The camera frames those entries, not everything shown so far.
-- **The camera avoids what covers the stage.** The time pills and the quote card sit over the stage, and so do the controls on phones. The camera keeps the subject clear of them, and names are never placed under them.
-- **Names never overlap.** They go right of the dot, else left, above or below; a name that fits nowhere whole is left out.
-- **Link labels are few and short.** Only the shot's own links carry a label, and only when it adds three or fewer. The label is the bare phrase.
+| `duration` | Ignored since ADR-0031 (there is no watch mode) |
+| `explore` | Ignored since ADR-0031 (the "Explore from here" button is gone); content may still carry it |
 
 **Events between scripts** (CustomEvents on `document`):
 - `ctd:lens` `{lens}`
 - `ctd:time` `{t}` (decimal year or null)
-- `ctd:focus` `{id}`: the explorer sends it when its focus changes; the explorer and the world viewer listen. The box sends it cancelable (see `<ctd-box>`); the other events are not cancelable.
+- `ctd:focus` `{id}`: the world viewer and the Stories page listen. The box sends it cancelable (see `<ctd-box>`); the other events are not cancelable.
 
 ## Template context (engine → `theme/templates/`)
 
@@ -419,15 +385,13 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 
 `entity.html`:
 - `entity`: `id`, `name`, `kind`, `type_label`, `summary`, `when` (label), `aliases`, `same_as` (`key`, `value`, `url`), `place`, `image`, `body_html`, `rel_path`, `url`, `story_url`, `coords`, `cover` (SVG), `evidence_line`. `coords` is `[lon, lat]` as in `graph.json` (its own, or its place's) or null; when set, the page links "On the map ›" to `/w/?view=earth&focus=<id>`.
-- `groups[]`: `{ phrase, layers, items[], more }`, one group per phrase; `more` counts a hub's links of that kind past its 100 strongest (on the kind's last group), which the explorer shows. An item is one link: `edge_id`, `phrase`, `outgoing`, `other` (`id`, `name`, `kind`, `type_label`, `url`), `when`, `detail`, `according_to[]` (`id`, `name`, `url`), `tier_label`, `status`, `cross_confirmed`, `passive`, `layers`, `refs` (source numbers), `note`, `reason`. On a family link the owner's page gets the phrase `"<role> of"` (lowercase, e.g. "mother of") and a `detail` without the role; the other person's page gets the inverse and a `detail` that starts with the role.
+- `groups[]`: `{ phrase, layers, items[], more }`, one group per phrase; `more` counts a hub's links of that kind past its 100 strongest (on the kind's last group), which Ask lists (`/ask/?a=<id>`). An item is one link: `edge_id`, `phrase`, `outgoing`, `other` (`id`, `name`, `kind`, `type_label`, `url`), `when`, `detail`, `according_to[]` (`id`, `name`, `url`), `tier_label`, `status`, `cross_confirmed`, `passive`, `layers`, `refs` (source numbers), `note`, `reason`. On a family link the owner's page gets the phrase `"<role> of"` (lowercase, e.g. "mother of") and a `detail` without the role; the other person's page gets the inverse and a `detail` that starts with the role.
 - `/a/` and `data/a/<n>.json` (ADR-0023): the atlas, read by `web/src/atlas`. An entry lives in shard `<Wikidata number> % 2048`; `p` is its place on the Map in 65,535ths, `r` its next step towards a landmark as `[number, phrase]`, and a neighbour is `[number, name, kind, place, hand id?]`. As `"Q42": { n: name, k: kind (index), g: [[phrase, [[number, name, kind, id written by hand?], ...], how many more]], d: summary, y: years, c: [lon, lat], i: Commons file, u: page written by hand }`. Search rows for the atlas have `url: /a/?q=Q42`.
 - `data/more/<n>.json`: lists that run past 40 names, from name 41 to at most 5,040, as `{ "Q42": { "<group index in g>": [[number, name, kind, hand id?], ...] } }`, in file `<Wikidata number> % 512`. A reader's "Show 834 more" costs one file, and the number of files never grows.
 - `data/routes.json` (ADR-0023): the landmark table, read by `web/src/lib/atlas-route.ts`. `l`: landmarks by Wikidata number. `p`: phrases, each `[one way, the other way]`. `n[i][j]`: the landmark after `i` on the way to `j` (65535: none). `b["i:j"]`, `i < j`: `[x, y, phrase * 2 + flip]`, the crossing between two landmarks' territories, `x` in `i`'s.
 - `earth/index.json`: `{ maxzoom, entries, tiles: { "<z>": [x * 2^z + y, …] } }`, and `earth/<z>/<x>/<y>.json`: rows of `[lon, lat, Wikidata number, name, kind]`, then its years `start, end` if dated (`end` exclusive, 32767: still going), on the web map's tile grid. Read by `web/src/world/earth.ts`, for what is in view.
 - `data/stories.json`: `{ "<entry id>": [[title, url], …] }`, an entry's written stories, most scenes first, at most three. A dot's card lists them, then those of what it links to.
-- `data/spots.json`: `[x0, y0, x1, y1, …]`, each entry's place on the Map in 65,535ths, in the order of the `nodes` of `graph-slim.json`. The explorer reads only the direction from one entry to another, to choose which side of the picture a neighbour goes on. About 19 KB gzip for 3,397 entries.
-- `/r/` (`route.html`, ADR-0028): the one answer for any two, `?a=<id or Qn>&b=<id or Qn>`, with `&way=<n>` for an alternative. The page is written by `route.js`, its heading from the entries the data holds. It loads what the pair needs: `schema.json` and the two ends' detail files, which hold their ties; `ways.json` and the stops' detail files when both ends have a link a route may use; the atlas and `routes.json` only when no written way exists and both ends have open data. `/r/?a=Q937` alone keeps one name and asks for the other. `/w/` also takes `?focus=Q42` and `?route=Q1,Q2,…`.
-- `chapter.ink` (chapter.html): `{ bg, fg, text }`, the band a story opens on. `world/picture.svg`: the map's best-connected dots, a picture no page draws today.
+- `world/picture.svg`: the map's best-connected dots, a picture no page draws today. `/w/` also takes `?focus=Q42` and `?route=Q1,Q2,…`. The one answer for any two entries is Ask (`/ask/?a=<id or Qn>&b=<id or Qn>`, with `&way=<n>` for an alternative); `/r/` forwards there.
 - `stories[]`: up to three written stories that name the entry, the one with the most scenes on it first: `{ title, url, counts }`.
 - `dossier`: `family`, `lifeline`, `holders`, `holdings` and `split`, each null when empty, plus `share_scale` (the largest percent shown, at least 10).
 - `background` (people, else null; ADR-0016): `{ rows[{ phrase, node, when, detail, refs, draft, disputed, reason }], lines[{ text, refs }] }`. `rows` are the person's own links whose relation has `background: true` (born in, citizen of, educated at); `lines` are the entry's sourced `background` lines. The lines appear on this page only.
@@ -442,13 +406,13 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 - `sources[]`: `{ n, id, title, publisher, publisher_url, published, url, archive_url, tier_label, quotes[] }`.
 - `history[]`: `{ hash, date, author, subject }`. `claims_count`: the number of links.
 - `questions[]` (up to 3, in `questions.yaml` order): the question pages about this entry, `{ title, url, links, accounts, counts }` (`counts`: "8 links", "7 links, 6 accounts"). Never about a person under "behind": no such page exists.
-- `connect`: `{ title: "How is Bill Gates connected to …?", url: "/x/?from=bill-gates" }` from the route question, or null.
+- `connect`: `{ title: "How is Bill Gates connected to …?", url: "/ask/?a=bill-gates" }` from the route question, or null.
 - `split_url`: the first question page about this entry with two or more accounts (for "How each side tells it"), or null.
 
-`chapter.html`: `chapter` (`id`, `title`, `subtitle`, `summary`, `authors`, `intro_html`, `outro_html`, `shots_json`, `data_json` (the story's own data), `steps[]`, `shot_count`; written stories add `rel_path`, generated ones `generated`, `back` and `explore_url`) and `history`. A question story's `subtitle` is its scope line, its `intro_html` the notice and its `back` the question page.
+`read.html` (a story, every kind): `story` (`id`, `title`, `subtitle`, `summary`, `hero`, `hero_size`, `intro`, `scenes[]` (each with `when`, `heading`, `body`, `picture`, `proof`), `outro`, `credits[]`, `next[]` (`id`, `title`, `subtitle`, `shares`, `url`), `rel_path`, `authors`, `back` (`{ url, label }`, drawn stories), `data_json`) and `read_json` (the `#read-site` script). A question story's `subtitle` is its scope line, its `intro` the notice and its `back` the question page. A life story's pack holds `{ title, main }` ([ADR-0031](decisions/0031-fewer-views.md)).
 
 `home.html`:
-- It opens on three plain links, `.home-doors`: Ask (`/ask/`), Stories (`/c/`) and Read (`/read/`).
+- It opens on two plain links, `.home-doors`: Ask (`/ask/`) and Stories (`/c/`).
 - `threads[]`: the picks in `threads` of `content/featured.yaml`, in order, each with at least two stories: `{ node, name, count, stories[], more, cut }`. `name` is the entry's name as it opens a sentence ("The Federal Reserve"). `count` is how many stories it runs through, in words. `stories[]` (the first four): `{ title, subtitle, url }`. `cut`: there are more, `more` in words.
   - A pick is a person, an organization or a place (`thread: true` in `entity-types.yaml`), never sealed. `ctd check` refuses anything else, and warns of a pick left with too few stories.
   - A story counts from two scenes that name the entry, most scenes first, and only if it is free of sealed entries (ADR-0027): no scene shows one or reveals a link to one, and no sentence names one.
@@ -459,7 +423,7 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 `chapters.html` also gets `questions[]`, the Questions list (question stories, featured first, then the richest, at most 24): `{ title, subtitle, url, kind: "Question", cover }`, and `questions_more`. It lists every story as plain rows, with no covers (the page's budget is 150 KB). `inks[]`: `{ color, label }`, the key under its surface, one row per ink with the kinds drawn in it ("Works, concepts and traditions"), for kinds with entries.
 
 `question.html` (`/q/<q>/<id>/`); a node is `{ id, name, kind, type_label, color, url }`:
-- `question`: `{ id, ask, label, title, shows, not, url, story_url, explore_url }`. `title` is the asked sentence ("Why did the dissolution of the Soviet Union happen?"); `shows` and `not` are full sentences; `story_url` may be null; `explore_url` is `/x/?focus=<id>`.
+- `question`: `{ id, ask, label, title, shows, not, url, story_url, ask_url }`. `title` is the asked sentence ("Why did the dissolution of the Soviet Union happen?"); `shows` and `not` are full sentences; `story_url` may be null; `ask_url` is `/ask/?q=<q>&a=<x>`.
 - `x` (the subject): `{ id, name, sentence, kind, type_label, when, aliases, url, rel_path }`. `sentence` is the name as used mid-sentence (`in_sentence`, e.g. "the Bolsheviks"). `when` is a label or null.
 - `counts`: `{ links, accounts, names, label }`. `links`: published lines on the record or in an account, each link once; `accounts`: distinct accounts (columns, including any cut); `label`: "7 links, 6 accounts".
 - `records[]`: one per question group that has lines on the record, or that no line answers and has `empty` text: `{ label, lines[], more, empty }` (`empty`: the text, or null).
@@ -476,7 +440,7 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
   - `tier_label`: the strongest source's tier. In an account column, another account's own sources do not count.
   - `form`: null, or `{ node, label: "as the Bolsheviks (until 8 Mar 1918)" }` when the line was recorded about an earlier form of the subject.
   - `about`: null, or the node a line is about when a group's `via` reached it: "BlackRock disputes a finding of <study>" on a page about an event.
-- Every page prints its scope line and the fixed notice "A connection is not evidence of wrongdoing."; "and N more" links go to `question.explore_url`.
+- Every page prints its scope line and the fixed notice "A connection is not evidence of wrongdoing."; "and N more" links go to `question.ask_url`.
 
 `questions.html` (`/q/<q>/`): `question` (`{ id, ask, label, title, shows, not, url, route, subjects }`, `title` with "…" in its blanks), `pages[]` (up to 100: `{ title, url, counts, story_url }`) and `more`.
 

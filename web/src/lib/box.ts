@@ -34,7 +34,7 @@ export type Reading =
   /** Nothing the box can answer: the names it did find, if any. */
   | { kind: 'unknown'; found: SearchEntry[] };
 
-/** One suggestion. `focus`: the entry the explorer and the Map may show in place. */
+/** One suggestion. `focus`: the entry the Map and Stories may show in place. */
 export interface Row {
   label: string;
   url: string;
@@ -128,9 +128,15 @@ export function findNames(text: string, lookup: Lookup): Found[] {
         len = n;
         break;
       }
-      // an everyday word is an open-data title somewhere: it counts alone, or with a capital
+      // One word that is a surname, or an everyday word that is an open-data title somewhere, counts only
+      // standing alone: the text ends, or a join or a stop word follows. So "black people" is no Leon Black
+      // and "White people" no Swedish firm, and no word for a people starts a pair (ADR-0016). An open-data
+      // title also needs a capital, or to be all there is.
       const capital = text[part[0].at] !== text[part[0].at].toLowerCase();
-      const hit = e && (k === whole || capital || n > 1 || !isOpenData(e)) ? e : n === 1 ? lookup.surnames.get(k) : undefined;
+      const after = ts[i + n];
+      const alone = !after || STOP.has(after.word) || /[,&+/?!;:]/.test(text.slice(part[n - 1].end, after.at));
+      const word = n === 1 && k !== whole;
+      const hit = e && (!word || !isOpenData(e) || (capital && alone)) ? e : n === 1 && alone ? lookup.surnames.get(k) : undefined;
       if (hit) {
         len = n;
         out.push({ entry: hit, at: part[0].at, end: part[n - 1].end });
@@ -155,7 +161,7 @@ function asked(lookup: Lookup, stem: (typeof STEMS)[number], entry: SearchEntry)
   return { ask: lookup.all.find((e) => e.url === url)?.name ?? stem.ask(entry.name), url };
 }
 
-const pairUrl = (a: SearchEntry, b: SearchEntry) => `/r/?a=${encodeURIComponent(a.id)}&b=${encodeURIComponent(b.id)}`;
+const pairUrl = (a: SearchEntry, b: SearchEntry) => `/ask/?a=${encodeURIComponent(a.id)}&b=${encodeURIComponent(b.id)}`;
 const distinct = (found: Found[]) => [...new Map(found.map((f) => [f.entry.id, f.entry])).values()];
 
 /** What a text asks. */

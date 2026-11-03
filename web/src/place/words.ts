@@ -78,7 +78,7 @@ export function entryWords(w: World, i: number, uid: number): string {
   const stories = w.told[i];
   return `<h2>${esc(w.names[i])}</h2><p class="place-what">${esc(kind + (w.when[i] ? `, ${w.when[i]}` : ''))}</p>
     <div class="place-lede" data-sum></div>
-    <p class="place-go"><a href="/e/${part(id)}/">Its page</a><a href="/x/?focus=${part(id)}">Walk from here</a></p>
+    <p class="place-go"><a href="/e/${part(id)}/">Its page</a><a href="/ask/?a=${part(id)}">Ask about it</a></p>
     <form class="place-way" role="search" autocomplete="off"><label for="place-to-${uid}">The way from ${esc(w.names[i])} to</label>
       <input id="place-to-${uid}" type="search" placeholder="Another name" enterkeyhint="go" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="place-hits-${uid}" aria-autocomplete="list">
       <ul id="place-hits-${uid}" class="place-hits" role="listbox" hidden></ul></form>
@@ -157,6 +157,6 @@ export function wayWords(w: World, a: number, b: number, nodes: number[] | null,
     h += `<p class="place-lede">No written way joins them yet.</p><p class="place-note">A way leaves out places, legal cases and one side's accounts, so that a birthplace or a shared lawyer never reads as a tie.</p>`;
   }
   h += `<p class="place-notice">${NOTICE}</p>`;
-  h += `<p class="place-go"><a href="/r/?a=${part(w.ids[a])}&amp;b=${part(w.ids[b])}">The full answer</a><a href="${entryHref(w, b)}">Go to ${esc(w.names[b])}</a></p>`;
+  h += `<p class="place-go"><a href="/ask/?a=${part(w.ids[a])}&amp;b=${part(w.ids[b])}">The full answer</a><a href="${entryHref(w, b)}">Go to ${esc(w.names[b])}</a></p>`;
   return h;
 }

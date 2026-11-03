@@ -11,7 +11,7 @@ export function emit<K extends keyof CtdEvents>(type: K, detail: CtdEvents[K]): 
 }
 
 /**
- * Ask the page to show an entry in place (the box on the explorer and world pages). The event is
+ * Ask the page to show an entry in place (the box on the Map and Stories). The event is
  * cancelable: a listener that shows the id calls preventDefault(). False means nobody did (a chapter,
  * or an entry this page cannot show), so the caller should go to the entry's page instead.
  */

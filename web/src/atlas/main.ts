@@ -71,7 +71,7 @@ function render(root: HTMLElement, q: string, e: Entry, stories: Story[], go: (n
   if (e.d) words.append(el('p', 'atlas-summary', e.d));
   if (e.y) words.append(el('p', 'atlas-years', e.y));
   const actions = el('p', 'atlas-actions');
-  const links: [string, string, string][] = [['Connect to…', `/r/?a=${q}`, 'button primary'], ['On the map', `/w/?focus=${q}`, 'button']];
+  const links: [string, string, string][] = [['Connect to…', `/ask/?a=${q}`, 'button primary'], ['On the map', `/w/?focus=${q}`, 'button']];
   if (e.c) links.push(['On the Earth', `/w/?view=earth&focus=${q}`, 'button']);
   for (const [text, href, cls] of links) {
     const a = el('a', cls, text) as HTMLAnchorElement;

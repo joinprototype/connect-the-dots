@@ -1,0 +1,18 @@
+{# An address of a page folded into others (ADR-0031): Explore (/x/) and Connect (/r/). forward.js reads the
+   entries it names and goes on to where they are now; without JavaScript, the page it became. #}
+{% set url = "/c/" if to == "Stories" else "/ask/" %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Moved to {{ to }}</title>
+<link rel="canonical" href="{{ url }}">
+<noscript><meta http-equiv="refresh" content="0; url={{ url }}"></noscript>
+{% if site.assets.forward_js %}<script type="module" src="/assets/forward.js"></script>{% endif %}
+</head>
+<body>
+<p>This page is now <a href="{{ url }}">{{ to }}</a>.</p>
+</body>
+</html>

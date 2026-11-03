@@ -59,6 +59,9 @@
 .ask-form:focus-within .ask-under { border-top-width: 5px; padding-top: 7px; }
 .ask-another { font: inherit; color: var(--ink); background: none; border: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 0.18em; text-decoration-thickness: 1px; white-space: nowrap; padding: 12px 0; margin: -12px 0; }
 @media (scripting: none) { .ask-another { display: none; } }
+/* what it can be asked, one of each kind */
+.ask-try { max-width: 46rem; margin: 14px 0 0; font: 400 0.9375rem/1.5 var(--font-ui); color: var(--muted); }
+.ask-try a { color: var(--ink); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
 
 /* ---------------------------------------------------------------- the picture */
 .ask-stage {

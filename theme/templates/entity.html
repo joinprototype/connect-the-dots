@@ -18,8 +18,8 @@
       {% if entity.summary %}<p class="entity-summary">{{ entity.summary }}</p>{% endif %}
       <p class="entity-meta">{{ entity.evidence_line }}{% if entity.open_links %}. <a href="#open-data">{{ entity.open_links }} more in open data</a>{% endif %}</p>
       <p class="entity-actions">
-        {% if entity.story_url %}<a class="button primary" href="{{ entity.story_url }}">Play the story</a>{% endif %}
-        <a class="button" href="/x/?focus={{ entity.id }}">Explore connections</a>
+        {% if entity.story_url %}<a class="button primary" href="{{ entity.story_url }}">Read the story</a>{% endif %}
+        <a class="button" href="/ask/?a={{ entity.id }}">Ask how it connects</a>
         {% if entity.coords %}<a class="entity-map" href="/w/?view=earth&amp;focus={{ entity.id }}">On the map ›</a>{% endif %}
       </p>
     </div>
@@ -56,7 +56,7 @@
       <ul class="here-list">
         {% for i in here.items %}<li><a href="{{ i.node.url }}">{{ i.node.name }}</a> <span class="here-meta">{{ i.type_label }}{% if i.when %} · {{ i.when }}{% endif %}</span></li>{% endfor %}
       </ul>
-      {% if here.more %}<p class="index-more"><a href="/x/?focus={{ entity.id }}">and {{ here.more }} more ›</a></p>{% endif %}
+      {% if here.more %}<p class="index-more"><a href="/ask/?a={{ entity.id }}">and {{ here.more }} more ›</a></p>{% endif %}
     </figure>
     {% endif %}
     {% if d.family %}
@@ -214,7 +214,7 @@
         {% endfor %}
       </ul>
       {% if g.caveat %}<p class="legal-caveat">{{ g.caveat }}</p>{% endif %}
-      {% if g.more %}<p class="index-more"><a href="/x/?focus={{ entity.id }}">and {{ g.more }} more ›</a></p>{% endif %}
+      {% if g.more %}<p class="index-more"><a href="/ask/?a={{ entity.id }}">and {{ g.more }} more ›</a></p>{% endif %}
     </section>
     {% endfor %}
   </section>

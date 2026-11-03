@@ -178,7 +178,7 @@ pub struct Question {
     pub id: String,
     /// The sentence: `{x}` is the subject, `{a}` and `{b}` the two ends of a route.
     pub ask: String,
-    /// Answered by ranked routes (the explorer and route stories), not by a page per subject.
+    /// Answered by ranked routes (Ask's pair answer), not by a page per subject.
     #[serde(default)]
     pub route: bool,
     /// Entity types the question may be asked about.

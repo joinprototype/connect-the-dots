@@ -18,10 +18,12 @@
       <span id="ask-line">{% if first %}Ask how anything connects.{% endif %}</span>
       {% if first %}<button type="button" class="ask-another" id="ask-another">Another question</button>{% endif %}
     </div>
+    {# what it can be asked, one of each kind (ask.rs examples): a link asks it here #}
+    {% if examples %}<p class="ask-try">{% for x in examples %}{% if loop.first %}Ask {% elif loop.last %}; or {% else %}; {% endif %}{{ {"name": "a name", "pair": "two names", "year": "a year", "question": "a question"}[x.kind] }}, like <a href="{{ x.url }}">{{ x.text }}</a>{% endfor %}{% if examples[-1].text[-1:] != "?" %}.{% endif %}</p>{% endif %}
   </div>
   <div class="ask-stage" aria-hidden="true"><canvas class="ask-map"></canvas><canvas class="ask-ink"></canvas><p class="ask-clock"></p></div>
   <div class="ask-answer" id="ask-answer">
-    {% if first %}<noscript><p class="ask-lead">The box answers with JavaScript. This way is also told as a story: <a href="/p/{{ first.a }}--{{ first.b }}/">read it</a>, or see <a href="/c/">every story</a>.</p></noscript>{% endif %}
+    <noscript><p class="ask-lead">The box answers with JavaScript. Every story reads without it: <a href="/c/">see them all</a>.</p></noscript>
   </div>
   <p class="sr-only" role="status" id="ask-said"></p>
   <button type="button" class="ask-mini" id="ask-mini" hidden><span class="ask-mini-t">{% if first %}{{ first.text }}{% endif %}</span><span class="ask-mini-ask">Ask</span></button>

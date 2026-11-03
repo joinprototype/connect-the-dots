@@ -1,4 +1,4 @@
-// Small fuzzy matcher for names and aliases. No dependencies; used by the search island and the explorer.
+// Small fuzzy matcher for names and aliases. No dependencies; used by the box and Read's Find.
 
 interface Searchable {
   id: string;
@@ -99,15 +99,3 @@ export function fuzzySearch<T extends Searchable>(items: readonly T[], rawQuery:
   return (strong.length ? strong : hits).slice(0, limit);
 }
 
-/** Split text into plain and highlighted parts. */
-export function splitRanges(text: string, ranges: [number, number][]): { text: string; hit: boolean }[] {
-  const parts: { text: string; hit: boolean }[] = [];
-  let pos = 0;
-  for (const [a, b] of ranges) {
-    if (a > pos) parts.push({ text: text.slice(pos, a), hit: false });
-    parts.push({ text: text.slice(a, b), hit: true });
-    pos = b;
-  }
-  if (pos < text.length) parts.push({ text: text.slice(pos), hit: false });
-  return parts;
-}

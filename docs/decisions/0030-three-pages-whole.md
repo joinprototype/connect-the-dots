@@ -1,11 +1,11 @@
 # ADR-0030: Ask, Stories and Read, each whole
 
-- Status: accepted
+- Status: accepted; amended by [ADR-0031](0031-fewer-views.md) (Read is now each story's page, at `/c/<id>/`)
 - Date: 2026-11-03
 
 ## Context
 
-ADR-0028 took pieces of three prototypes: the box in the header, names as doors in stories, islands on the Stories page and the walk in Explore. It rejected One Place and One Thread as the whole site. The founder then used all three prototypes and wanted each whole: "the one thread and one place that you showed me as an example was wow", "but now we don't have it?", "These are awesome!". And of the dot-field world: "even this geography is chik!"
+ADR-0028 took pieces of three prototypes: the box in the header, names as doors in stories, islands on the Stories page and the walk in Explore. It rejected One Place and One Thread as the whole site. The founder then used all three prototypes, liked each of them whole more than the pieces, and liked the world drawn in dots most of all.
 
 ## Decision
 

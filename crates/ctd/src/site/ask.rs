@@ -100,17 +100,49 @@ fn file(s: &Site, out: &BTreeSet<&str>) -> Value {
     json!({ "stories": stories, "sealed": out })
 }
 
-/// The page and its file.
-pub(super) fn write_ask(s: &Site) -> Result<()> {
+/// What the box can be asked, one of each kind, under it: a name, two names, a year and a question,
+/// each `{ kind, text, url }`. The name is the home page's first thread, the pair the second featured
+/// one, the year where the story Read once opened on begins, and the question one asked of a thread's
+/// name. `asked` are the question pages, as `(question id, entry id)`. Nothing kept out is offered.
+fn examples(s: &Site, out: &BTreeSet<&str>, picks: &[Value], asked: &[(&str, &str)]) -> Vec<Value> {
+    let kb = s.kb;
+    let free = |id: &str| !out.contains(id) && kb.entity(id).is_some();
+    let mut found = Vec::new();
+    if let Some(id) = kb.featured.threads.iter().find(|id| free(id)) {
+        found.push(json!({ "kind": "name", "text": kb.name_of(id), "url": format!("/ask/?a={id}") }));
+    }
+    if let Some(p) = picks.get(1).or(picks.first()) {
+        let (a, b) = (p["a"].as_str().unwrap_or_default(), p["b"].as_str().unwrap_or_default());
+        found.push(json!({ "kind": "pair", "text": format!("{} and {}", kb.name_of(a), kb.name_of(b)), "url": format!("/ask/?a={a}&b={b}") }));
+    }
+    let year = super::read::first(kb)
+        .and_then(|id| kb.chapters.iter().find(|ch| ch.id == id))
+        .and_then(|ch| ch.shots.iter().find_map(|shot| shot["t"].as_f64()))
+        .map(|t| t.floor() as i64);
+    if let Some(y) = year.filter(|y| *y > 0) {
+        found.push(json!({ "kind": "year", "text": y.to_string(), "url": format!("/ask/?y={y}") }));
+    }
+    let question = kb.featured.threads.iter().find_map(|id| asked.iter().find(|(_, x)| x == id && free(x))).or_else(|| asked.iter().find(|(_, x)| free(x)));
+    if let Some((q, x)) = question
+        && let Some(def) = kb.schema.questions.iter().find(|d| d.id == *q)
+    {
+        found.push(json!({ "kind": "question", "text": crate::answers::title(kb, def, x), "url": format!("/ask/?q={q}&a={x}") }));
+    }
+    found
+}
+
+/// The page and its file. `asked` are the question pages, as `(question id, entry id)`.
+pub(super) fn write_ask(s: &Site, asked: &[(&str, &str)]) -> Result<()> {
     let out = kept_out(s);
     let picks = picks(s, &out);
+    let examples = examples(s, &out, &picks, asked);
     let bytes = serde_json::to_vec(&file(s, &out))?;
     let gz = data::gzip_len(&bytes);
     if gz > BUDGET {
         eprintln!("warning: data/ask.json is {} KB gzip, past its {} KB budget", gz / 1024, BUDGET / 1024);
     }
     write(&s.out.join("data").join("ask.json"), bytes)?;
-    let html = s.render("ask.html", json!({ "site": &s.site, "first": picks.first(), "picks_json": script_json(&picks)? }))?;
+    let html = s.render("ask.html", json!({ "site": &s.site, "first": picks.first(), "examples": examples, "picks_json": script_json(&picks)? }))?;
     write(&s.out.join("ask").join("index.html"), html)
 }
 

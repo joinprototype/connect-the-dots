@@ -59,11 +59,18 @@
 .read-hero.long { font-size: 42px; }
 .read-hero a[class^="door-"] { text-decoration-thickness: 4px; text-underline-offset: 0.12em; }
 .read-tell { order: -1; max-width: var(--col); margin: 0 0 auto; font: 400 15px/1.45 var(--font-ui); color: #d4d4d4; }
+/* a story drawn for a page: the way back to it, and what it is drawn from */
+/* an entry's story, until its pack is in (life.html) */
+.read-opening { margin: 0; padding: 40px var(--line) 0 var(--text); font: 400 15px/1.5 var(--font-ui); color: var(--muted); }
+.read-from, .read-by { max-width: var(--col); margin: 0; font: 400 15px/1.45 var(--font-ui); color: #d4d4d4; }
+.read-from { margin-bottom: auto; }
+.read-from a { display: inline-block; padding: 12px 0; margin: -12px 0; color: #fff; text-underline-offset: 0.16em; }
 
 /* reading */
-.read-intro, .read-scene, .read-end, .read-stop > *, .read-return { padding-left: var(--text); padding-right: var(--line); }
-.read-intro { max-width: calc(var(--text) + var(--col)); padding-top: 26px; padding-bottom: 8px; }
-.read-intro p, .read-scene p { margin: 0 0 0.9em; }
+.read-intro, .read-outro, .read-scene, .read-end, .read-stop > *, .read-return { padding-left: var(--text); padding-right: var(--line); }
+.read-intro, .read-outro { max-width: calc(var(--text) + var(--col)); padding-top: 26px; padding-bottom: 8px; }
+.read-intro p, .read-outro p, .read-scene p { margin: 0 0 0.9em; }
+.read-photo { display: block; width: 100%; aspect-ratio: 16 / 10; margin: 0.3em 0 1em; object-fit: cover; object-position: 50% 22%; border-radius: 3px; background: var(--paper-2); }
 .read-scene { min-height: 66vh; max-width: calc(var(--text) + var(--col) + var(--line)); padding-top: 44px; padding-bottom: 44px; }
 .read-scene > .read-mark { top: 57px; }
 .read-scene h2 { margin: 0 0 0.32em; font: 700 34px/1.08 var(--font-display); letter-spacing: -0.02em; text-wrap: balance; }
@@ -95,6 +102,9 @@
 .read-book span { display: block; margin-top: 4px; font: 400 15px/1.35 var(--font-ui); color: #d4d4d4; }
 .read-why { margin: 8px 0 0 !important; font: 400 15px/1.45 var(--font-ui); color: var(--ink-2); }
 .read-also { margin: 26px 0 0 !important; font: 400 15px/1.5 var(--font-ui); color: var(--ink-2); }
+.read-fine { margin-top: 26px; font: 400 15px/1.5 var(--font-ui); color: var(--ink-2); }
+.read-fine p { margin: 0 0 8px; font: inherit; color: inherit; }
+.read-fine a { color: var(--ink); }
 .read-also a { color: var(--ink); }
 
 /* a detour: what the reader opened, after the scene they left */
@@ -210,7 +220,7 @@
   .read-hero.mid { font-size: min(36px, 10vw); }
   .read-hero.long { font-size: min(29px, 8.4vw); }
   .read-title { font-size: 18px; }
-  .read-intro, .read-scene, .read-end, .read-stop > *, .read-return { padding-right: 16px; }
+  .read-intro, .read-outro, .read-scene, .read-end, .read-stop > *, .read-return { padding-right: 16px; }
   .read-scene { min-height: 0; padding-top: 34px; padding-bottom: 30px; }
   .read-scene > .read-mark { top: 46px; }
   .read-scene h2 { font-size: 28px; }

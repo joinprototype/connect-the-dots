@@ -2,6 +2,13 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## Next
+
+- One view for each thing you do. Every story reads on Read, at its own address, over the world in dots; so do the stories drawn for a name or a question. Ask answers any two names. Explore and Connect are gone, and their old addresses take you to the same names on Stories, Ask or their pages.
+- Ask shows what you can type: a name, two names, a year or a question, each with an example to tap.
+- The maps beside a story come no nearer than a country, so the land still reads, and they name only the story's own places.
+- The box no longer reads a word for a people as a name: "black people" is not Leon Black.
+
 ## 0.4.10 (2026-11-03)
 
 - Read's pictures, and Ask's world, show their names again: since 0.4.9 each name sat under a black bar, because the look of the dots was written to a file no page loaded. The build now stops if that happens again.

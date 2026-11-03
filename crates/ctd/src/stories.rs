@@ -21,16 +21,14 @@ pub struct Draft {
     pub intro_md: String,
     pub outro_md: String,
     pub shots: Vec<Value>,
-    pub explore_url: String,
 }
 
 const MAX_DATED: usize = 12;
 /// The most sentences one year scene of a life story says; a busier year continues in the next scene.
 const YEAR_LINES: usize = 6;
 const MAX_GROUPS: usize = 4;
-/// Shots in an answer story, and seconds each account gets in watch mode (the same for all).
+/// Shots in an answer story.
 const MAX_SHOTS: usize = 14;
-const ACCOUNT_SECONDS: u64 = 8;
 /// What every answer and route says.
 pub const NOTICE: &str = "A connection is not evidence of wrongdoing.";
 
@@ -162,7 +160,7 @@ fn link_shot(kb: &Kb, id: &str, e: &Edge, revealed: &mut Vec<String>) -> Value {
         Some((p, c)) => {
             shot.insert("view".into(), json!("map"));
             shot.insert("places".into(), json!([p]));
-            shot.insert("camera".into(), json!({ "center": c, "zoom": 4.2, "duration": 3 }));
+            shot.insert("camera".into(), json!({ "center": c, "zoom": 4.2 }));
         }
         None => {
             shot.insert("view".into(), json!("graph"));
@@ -176,7 +174,6 @@ fn link_shot(kb: &Kb, id: &str, e: &Edge, revealed: &mut Vec<String>) -> Value {
         shot.insert("overlay".into(), o);
     }
     shot.insert("narration".into(), json!(format!("{}{}", caption(kb, e, true, true), caveats(kb, &[e]))));
-    shot.insert("duration".into(), json!(7));
     Value::Object(shot)
 }
 
@@ -287,7 +284,7 @@ fn year_shots(kb: &Kb, id: &str, links: &[&Edge], revealed: &mut Vec<String>) ->
             "shot": name, "view": "graph", "focus": id, "reveal": reveal,
             "reveal_claims": edges.iter().map(|e| e.id.clone()).collect::<Vec<_>>(),
             "t": edges[0].when.as_ref().map(|w| w.start), "time_label": label,
-            "narration": format!("{}{}", paragraphs(part, &label), caveats(kb, &edges)), "duration": (5 + 2 * part.len()).min(16),
+            "narration": format!("{}{}", paragraphs(part, &label), caveats(kb, &edges)),
         });
         if let Some(o) = edges.iter().find_map(|e| quote_overlay(kb, e)) {
             shot["overlay"] = o;
@@ -350,7 +347,7 @@ fn family_shot(kb: &Kb, id: &str, mine: &[(&Edge, bool)], revealed: &mut Vec<Str
     }
     Some(json!({
         "shot": "family", "view": "graph", "focus": id, "reveal": reveal, "reveal_claims": claims,
-        "narration": format!("**Family.** {}", lines.join(" ")), "duration": 8,
+        "narration": format!("**Family.** {}", lines.join(" ")),
     }))
 }
 
@@ -416,7 +413,7 @@ pub fn entity_story(kb: &Kb, id: &str) -> Option<Draft> {
     }
     if let Some(c) = kb.coords(ent) {
         intro.insert("view".into(), json!("map"));
-        intro.insert("camera".into(), json!({ "center": c, "zoom": 3.2, "globe": true, "duration": 4 }));
+        intro.insert("camera".into(), json!({ "center": c, "zoom": 3.2, "globe": true }));
         let place = if kb.schema.on_map(&ent.kind) { Some(id.to_string()) } else { ent.place.clone() };
         if let Some(p) = place {
             intro.insert("places".into(), json!([p]));
@@ -425,7 +422,6 @@ pub fn entity_story(kb: &Kb, id: &str) -> Option<Draft> {
         intro.insert("view".into(), json!("graph"));
     }
     intro.insert("narration".into(), json!(narration));
-    intro.insert("duration".into(), json!(6));
     shots.push(Value::Object(intro));
 
     // where they come from: kinship links, each with what that relative did
@@ -484,16 +480,15 @@ pub fn entity_story(kb: &Kb, id: &str) -> Option<Draft> {
             "shot": format!("{rel_id}-{}", if outgoing { "out" } else { "in" }),
             "view": "graph", "focus": id, "reveal": reveal,
             "reveal_claims": list.iter().map(|e| e.id.clone()).collect::<Vec<_>>(),
-            "narration": narration, "duration": 7,
+            "narration": narration,
         }));
     }
 
     // closing
     let total = mine.len();
     shots.push(json!({
-        "shot": "explore", "view": "graph", "focus": id, "reveal": revealed, "explore": true,
-        "narration": format!("{}, each with its evidence. Open the explorer to follow any of them further, filter by lens, or move through time.", plural(total, "sourced connection")),
-        "duration": 6,
+        "shot": "explore", "view": "graph", "focus": id, "reveal": revealed,
+        "narration": format!("{}, each with its evidence. Open any name to follow it further, with its proof.", plural(total, "sourced connection")),
     }));
 
     Some(Draft {
@@ -504,7 +499,6 @@ pub fn entity_story(kb: &Kb, id: &str) -> Option<Draft> {
         intro_md: String::new(),
         outro_md: format!("Drawn from the sourced links on {}. Change a link and this story changes with it.", link(kb, id)),
         shots,
-        explore_url: format!("/x/?focus={id}"),
     })
 }
 
@@ -528,7 +522,6 @@ pub fn path_story(kb: &Kb, from: &str, to: &str, note: Option<&str>) -> Option<D
     let mut shots: Vec<Value> = vec![json!({
         "shot": "question", "view": "graph", "focus": from, "reveal": [from, to],
         "narration": opening,
-        "duration": 5,
     })];
     let mut revealed: Vec<String> = vec![from.to_string(), to.to_string()];
     for (i, h) in p.hops.iter().enumerate() {
@@ -552,7 +545,6 @@ pub fn path_story(kb: &Kb, from: &str, to: &str, note: Option<&str>) -> Option<D
         // carries the route, so inverse labels ("board members") never have to work as verbs
         narration.push_str(&caption(kb, h.edge, true, true));
         shot.insert("narration".into(), json!(narration));
-        shot.insert("duration".into(), json!(7));
         shots.push(Value::Object(shot));
     }
     let mut closing = format!("That is one route from {} to {}.", link(kb, from), link(kb, to));
@@ -565,11 +557,10 @@ pub fn path_story(kb: &Kb, from: &str, to: &str, note: Option<&str>) -> Option<D
         let partly = if whose.is_empty() { String::new() } else { format!(", in part according to {}", and_list(&whose)) };
         closing.push_str(&format!(" Another runs through {}{partly}.", and_list(&via)));
     }
-    closing.push_str(&format!(" The explorer shows every route and lets you filter by lens, time and perspective.\n\n*{NOTICE}*"));
+    closing.push_str(&format!(" Ask shows every way between them, with the proof for each link.\n\n*{NOTICE}*"));
     shots.push(json!({
-        "shot": "explore", "view": "graph", "focus": to, "reveal": revealed, "explore": true,
+        "shot": "explore", "view": "graph", "focus": to, "reveal": revealed,
         "narration": closing,
-        "duration": 6,
     }));
     Some(Draft {
         id: format!("{from}--{to}"),
@@ -579,7 +570,6 @@ pub fn path_story(kb: &Kb, from: &str, to: &str, note: Option<&str>) -> Option<D
         intro_md: route_q.map(|q| text(&answers::scope(q).join(" "))).unwrap_or_default(),
         outro_md: "Every step cites its sources. Routes are ranked by the public methodology in `content/methodology/paths.yaml`.".into(),
         shots,
-        explore_url: format!("/x/?from={from}&to={to}"),
     })
 }
 
@@ -613,7 +603,7 @@ fn told_all(kb: &Kb, x: &str, lines: &[&Line], in_account: bool) -> String {
 
 /// A graph shot that draws `lines` around `x`, dated by its first line, quoting the first line
 /// that has words of its own (`account`: whose account the shot tells).
-fn lines_shot(kb: &Kb, name: &str, x: &str, lines: &[&Line], account: Option<&str>, narration: String, seconds: u64) -> Value {
+fn lines_shot(kb: &Kb, name: &str, x: &str, lines: &[&Line], account: Option<&str>, narration: String) -> Value {
     let mut reveal: Vec<String> = vec![x.to_string()];
     let mut claims: Vec<&str> = Vec::new();
     for l in lines {
@@ -622,7 +612,7 @@ fn lines_shot(kb: &Kb, name: &str, x: &str, lines: &[&Line], account: Option<&st
         }
         claims.extend(l.form.into_iter().chain(l.about.map(|(_, step)| step)).map(|e| e.id.as_str()).chain([l.edge.id.as_str()]));
     }
-    let mut shot = json!({ "shot": name, "view": "graph", "focus": x, "reveal": reveal, "reveal_claims": claims, "narration": narration, "duration": seconds });
+    let mut shot = json!({ "shot": name, "view": "graph", "focus": x, "reveal": reveal, "reveal_claims": claims, "narration": narration });
     if let Some(w) = lines.first().and_then(|l| l.date()) {
         shot["t"] = json!(w.start);
         shot["time_label"] = json!(w.label);
@@ -645,10 +635,10 @@ pub fn answer_story(kb: &Kb, a: &Answer, next: &[(String, String)]) -> Option<Dr
     let title = answers::title(kb, q, x);
     let [shows, not] = answers::scope(q);
     let mut open = json!({ "shot": "question", "view": "graph", "focus": x, "reveal": [x],
-                           "narration": format!("**{}**\n\n{} {}", text(&title), text(&shows), text(&not)), "duration": 6 });
+                           "narration": format!("**{}**\n\n{} {}", text(&title), text(&shows), text(&not)) });
     if let Some(c) = kb.coords(a.x) {
         open["view"] = json!("map");
-        open["camera"] = json!({ "center": c, "zoom": 3.2, "globe": true, "duration": 4 });
+        open["camera"] = json!({ "center": c, "zoom": 3.2, "globe": true });
         if let Some(p) = if kb.schema.on_map(&a.x.kind) { Some(x) } else { a.x.place.as_deref() } {
             open["places"] = json!([p]);
         }
@@ -663,11 +653,11 @@ pub fn answer_story(kb: &Kb, a: &Answer, next: &[(String, String)]) -> Option<Dr
     if let Some(&(g, name, n)) = a.shared.first() {
         let group = if q.groups.len() > 1 { format!(" ({})", text(&q.groups[g].label)) } else { String::new() };
         let narration = format!("Named in {n} of the {} accounts recorded here{group}: {}.", a.accounts_total(), link(kb, name));
-        tail.push(json!({ "shot": "shared", "view": "graph", "focus": x, "reveal": [x, name], "narration": narration, "duration": 6 }));
+        tail.push(json!({ "shot": "shared", "view": "graph", "focus": x, "reveal": [x, name], "narration": narration }));
     }
     if !a.disputed.lines.is_empty() {
         let lines: Vec<&Line> = a.disputed.lines.iter().collect();
-        let mut shot = lines_shot(kb, "disputed", x, &lines, None, format!("**Disputed.** {}", told_all(kb, x, &lines, false)), 4 + 3 * lines.len() as u64);
+        let mut shot = lines_shot(kb, "disputed", x, &lines, None, format!("**Disputed.** {}", told_all(kb, x, &lines, false)));
         // disputed words are never shown as a quote card
         if let Some(m) = shot.as_object_mut() {
             m.remove("overlay");
@@ -686,7 +676,7 @@ pub fn answer_story(kb: &Kb, a: &Answer, next: &[(String, String)]) -> Option<Dr
             .iter()
             .map(|(gi, p)| format!("**{}.** {}", text(&q.groups[*gi].label), told_all(kb, x, &p.lines.iter().collect::<Vec<_>>(), false)))
             .collect();
-        shots.push(lines_shot(kb, &format!("record-{}", chunk[0].0), x, &lines, None, said.join("\n\n"), 4 + 3 * lines.len() as u64));
+        shots.push(lines_shot(kb, &format!("record-{}", chunk[0].0), x, &lines, None, said.join("\n\n")));
     }
 
     // every account gets the same time: with more accounts than shots left, a shot tells several
@@ -699,7 +689,7 @@ pub fn answer_story(kb: &Kb, a: &Answer, next: &[(String, String)]) -> Option<Dr
             .map(|(who, p)| format!("**According to {}.** {}", link(kb, who), told_all(kb, x, &p.lines.iter().collect::<Vec<_>>(), true)))
             .collect();
         let one = if let [(who, _)] = chunk { Some(*who) } else { None };
-        let mut shot = lines_shot(kb, &format!("account-{}", i + 1), x, &lines, one, said.join("\n\n"), ACCOUNT_SECONDS * chunk.len() as u64);
+        let mut shot = lines_shot(kb, &format!("account-{}", i + 1), x, &lines, one, said.join("\n\n"));
         if let Some(who) = one {
             shot["perspective"] = json!(who);
         } else if let Some(o) = chunk.iter().find_map(|(who, p)| p.lines.iter().find_map(|l| answers::own_words(kb, l.edge, Some(who)))) {
@@ -723,7 +713,7 @@ pub fn answer_story(kb: &Kb, a: &Answer, next: &[(String, String)]) -> Option<Dr
             add(&mut seen, n);
         }
     }
-    shots.push(json!({ "shot": "close", "view": "graph", "focus": x, "reveal": seen, "explore": true, "narration": close, "duration": 6 }));
+    shots.push(json!({ "shot": "close", "view": "graph", "focus": x, "reveal": seen, "narration": close }));
 
     let id = a.id(kb);
     Some(Draft {
@@ -734,7 +724,6 @@ pub fn answer_story(kb: &Kb, a: &Answer, next: &[(String, String)]) -> Option<Dr
         intro_md: format!("*{NOTICE}*"),
         outro_md: format!("Drawn from the sourced links on [its answer page](/q/{id}/). Change a link and this story changes with it."),
         shots,
-        explore_url: format!("/x/?focus={x}"),
     })
 }
 
@@ -797,7 +786,6 @@ pub(crate) mod tests {
         let names: Vec<&str> = d.shots.iter().map(|s| s["shot"].as_str().unwrap()).collect();
         assert_eq!(names, ["question", "record-0", "account-1", "account-2", "account-3", "shared", "disputed", "close"]);
         let accounts: Vec<&Value> = d.shots.iter().filter(|s| s["shot"].as_str().unwrap().starts_with("account-")).collect();
-        assert!(accounts.iter().all(|s| s["duration"] == ACCOUNT_SECONDS), "every account gets the same time");
         assert_eq!(accounts[0]["perspective"], "lex");
         // each account in its own words: Lex said "Oil did it."; nobody's quote stands in for Vox
         assert_eq!(accounts[0]["overlay"]["quote"], "Oil did it.");

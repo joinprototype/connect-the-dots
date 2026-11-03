@@ -54,12 +54,12 @@ assert.equal(url('The Crash of 2008'), '/c/the-crash/', 'a story');
 
 // two names
 for (const text of ['Bill Gates and IBM', 'from Bill Gates to IBM', 'how are Bill Gates and IBM connected?', 'How is Bill Gates connected to IBM?', 'Bill Gates, IBM', 'between Bill Gates and IBM', 'Bill Gates vs IBM', 'Gates & IBM']) {
-  assert.equal(url(text), '/r/?a=bill-gates&b=ibm', text);
+  assert.equal(url(text), '/ask/?a=bill-gates&b=ibm', text);
 }
-assert.equal(url('Bill Gates and Douglas Adams'), '/r/?a=bill-gates&b=Q2');
-assert.equal(url('Bill Gates and Jeffrey Epstein'), '/r/?a=bill-gates&b=jeffrey-epstein', 'a person can ask about a sealed entry');
+assert.equal(url('Bill Gates and Douglas Adams'), '/ask/?a=bill-gates&b=Q2');
+assert.equal(url('Bill Gates and Jeffrey Epstein'), '/ask/?a=bill-gates&b=jeffrey-epstein', 'a person can ask about a sealed entry');
 assert.equal(kind('IBM and IBM'), 'name', 'one name twice is one name');
-assert.equal(url('How is the Gutenberg Bible connected to SpaceX?'), '/r/?a=gutenberg-bible&b=spacex');
+assert.equal(url('How is the Gutenberg Bible connected to SpaceX?'), '/ask/?a=gutenberg-bible&b=spacex');
 
 // a year
 assert.equal(url('1914'), '/w/?t=1914');
@@ -105,12 +105,12 @@ assert.deepEqual(findNames('the Criminal', lookup).map((f) => f.entry.id), ['Q1'
 // suggestions
 assert.deepEqual(rows('Bill Gates and IBM').rows.map((r) => r.label), ['Bill Gates and IBM']);
 assert.ok(rows('Bill Gates and IB').firm);
-assert.equal(rows('Bill Gates and IB').rows[0].url, '/r/?a=bill-gates&b=ibm');
+assert.equal(rows('Bill Gates and IB').rows[0].url, '/ask/?a=bill-gates&b=ibm');
 assert.equal(rows('how is the Gutenberg Bible connected to Spa').rows[0].label, 'Gutenberg Bible and SpaceX');
 assert.equal(rows('Who is behind Met').rows[0].url, '/q/behind/meta-platforms/');
 assert.equal(rows('1914').rows[0].label, '1914 on the Map');
 assert.deepEqual(rows('1915').rows.map((r) => r.url), ['/w/?t=1915', '/c/1915/'], 'and the story, second');
-assert.deepEqual(rows('Bill Gates and Spa').rows.map((r) => r.url), ['/r/?a=bill-gates&b=spacex', '/r/?a=bill-gates&b=Q5'], 'a name written by hand before an open-data title that the text happens to match');
+assert.deepEqual(rows('Bill Gates and Spa').rows.map((r) => r.url), ['/ask/?a=bill-gates&b=spacex', '/ask/?a=bill-gates&b=Q5'], 'a name written by hand before an open-data title that the text happens to match');
 assert.equal(rows('450 BCE').rows[0].label, '450 BCE on the Map');
 assert.equal(rows('Bill Ga').rows[0].url, '/e/bill-gates/');
 assert.ok(!rows('Is Bill Gates a criminal').firm, 'Enter does not guess at a sentence it cannot read');
@@ -118,7 +118,7 @@ assert.ok(!rows('Is Bill Gates a criminal').firm, 'Enter does not guess at a sen
 assert.deepEqual(rows('Jeffrey Epstein').rows[0].url, '/e/jeffrey-epstein/');
 assert.deepEqual(rows('Bill Gates and Jeffrey Epstein').rows, []);
 assert.ok(!rows('Bill Gates and Jeff').rows.some((r) => r.url.includes('epstein')));
-assert.deepEqual(rows('Jeffrey Epstein and IB').rows.filter((r) => r.url.startsWith('/r/')), []);
+assert.deepEqual(rows('Jeffrey Epstein and IB').rows.filter((r) => r.url.startsWith('/ask/')), []);
 
 // search reads no file for a word that cannot be a name
 assert.ok(!worthReading('the') && !worthReading('how is') && !worthReading('to spacex'));
@@ -151,9 +151,9 @@ if (dist) {
     return [...found.values()].sort((a, b) => a.rank - b.rank);
   };
   const real = (text) => understand(text, lookupOf(candidates(text)), 2026);
-  assert.equal(real('Bill Gates and IBM').url, '/r/?a=bill-gates&b=ibm');
-  assert.equal(real('How is the Gutenberg Bible connected to SpaceX?').url, '/r/?a=gutenberg-bible&b=spacex');
-  assert.equal(real('Bill Gates and Jeffrey Epstein').url, '/r/?a=bill-gates&b=jeffrey-epstein');
+  assert.equal(real('Bill Gates and IBM').url, '/ask/?a=bill-gates&b=ibm');
+  assert.equal(real('How is the Gutenberg Bible connected to SpaceX?').url, '/ask/?a=gutenberg-bible&b=spacex');
+  assert.equal(real('Bill Gates and Jeffrey Epstein').url, '/ask/?a=bill-gates&b=jeffrey-epstein');
   assert.equal(real('Who is behind Meta Platforms?').url, '/q/behind/meta-platforms/');
   assert.equal(real('Who is behind Facebook?').url, '/q/behind/meta-platforms/');
   assert.equal(real('Why did the dissolution of the Soviet Union happen?').url, '/q/why/dissolution-of-the-soviet-union/');

@@ -1,8 +1,8 @@
 // URL updates that can never break the page.
 //
 // WebKit (Safari) throws a SecurityError after 100 history.pushState/replaceState calls within 10
-// seconds; Chrome only throttles silently. Scrubbing the explorer's time slider wrote the URL on every
-// input event, so Safari threw inside a React effect and the whole explorer unmounted. All URL syncing
+// seconds; Chrome only throttles silently. A slider that wrote the URL on every input event made
+// Safari throw, and the page with it. All URL syncing
 // goes through replaceUrl(): coalesced to at most one write per 300 ms (trailing), and guarded.
 
 const MIN_INTERVAL_MS = 300;
@@ -21,16 +21,6 @@ export function replaceUrl(url: string | URL): void {
   pending = new URL(String(url), pending ?? location.href).href;
   if (timer) return;
   timer = window.setTimeout(flushUrl, Math.max(0, last + MIN_INTERVAL_MS - Date.now()));
-}
-
-/** A new step in the session's history, after any pending write. Never throws. */
-export function pushUrl(url: string | URL): void {
-  flushUrl();
-  try {
-    history.pushState(history.state, '', url);
-  } catch (err) {
-    console.warn('connect-the-dot: could not update the URL', err);
-  }
 }
 
 /** Write a pending URL now (e.g. before navigating away). */

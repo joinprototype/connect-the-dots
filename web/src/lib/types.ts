@@ -113,7 +113,7 @@ export interface GEdge {
   note?: string;
   /** Why a claim is disputed or deprecated. */
   reason?: string;
-  /** The explorer has loaded this link's words and proof (qualifiers, note, sources): see loadDetails.
+  /** A page has loaded this link's words and proof (qualifiers, note, sources): see loadDetails.
    *  A story's own links always carry them. */
   full?: boolean;
 }
@@ -145,12 +145,6 @@ interface TierDef {
   rejected: boolean;
 }
 
-/** The route stories the build generated, at /p/<a>--<b>/ ("a--b", directional). An entry's life story
- *  is in its detail file (`story`). */
-interface StoryIndex {
-  paths: string[];
-}
-
 /** One group of a question: links pointing at the subject (`in`) or owned by it (`out`). */
 interface QuestionGroup {
   label: string;
@@ -167,7 +161,7 @@ interface QuestionDef {
   ask: string;
   /** The words before the first blank: the picker's label. */
   label: string;
-  /** Answered by routes (/x/?from=&to=), with no pages of its own. */
+  /** Answered by routes (Ask's pair answer, /ask/?a=&b=), with no pages of its own. */
   route: boolean;
   subjects: string[];
   shows: string;
@@ -180,7 +174,6 @@ export interface GraphData {
   meta: { engine: string; built: string; commit: string | null; methodology: string };
   /** Source tiers (content/schema/source-tiers.yaml): readers see labels, never codes. */
   tiers: Record<string, TierDef>;
-  stories: StoryIndex;
   questions: QuestionDef[];
   layers: Record<string, LayerDef>;
   types: Record<string, TypeDef>;
@@ -214,50 +207,3 @@ export interface SearchEntry {
   rank: number;
 }
 
-interface ShotCamera {
-  center: [number, number];
-  zoom: number;
-  pitch?: number;
-  bearing?: number;
-  globe?: boolean;
-  /** Keep every marker on screen, however narrow the screen. */
-  fit?: boolean;
-  /** seconds */
-  duration?: number;
-}
-
-interface ShotOverlay {
-  kind: 'source' | 'quote' | 'image' | 'stat';
-  source?: string;
-  quote?: string;
-  image?: string;
-  caption?: string;
-  /** A stat card's big number, and what it counts. */
-  value?: string;
-  label?: string;
-}
-
-export interface Shot {
-  shot: string;
-  view?: 'map' | 'graph' | 'timeline';
-  camera?: ShotCamera;
-  focus?: string;
-  lens?: string;
-  perspective?: string;
-  time?: string;
-  t?: number | null;
-  /** Display text for `t`, e.g. "Oct 1962". */
-  time_label?: string | null;
-  reveal?: string[];
-  reveal_claims?: string[];
-  places?: string[];
-  routes?: [string, string][];
-  /** Historical borders to draw, by file in `data/borders/`; the shot's date picks the period. */
-  borders?: string[];
-  overlay?: ShotOverlay | null;
-  /** A photograph over the whole stage. */
-  photo?: { url: string; alt?: string; credit?: string } | null;
-  narration?: string;
-  duration?: number;
-  explore?: boolean;
-}

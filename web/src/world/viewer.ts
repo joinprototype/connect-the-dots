@@ -1,5 +1,5 @@
 // The world viewer: deck.gl OrthographicView + a TileLayer over the binary world tiles
-// (docs/world-tiles.md). Used by /w/ (world.js) and, lazily, by the explorer's world mode.
+// (docs/world-tiles.md). Used by /w/ (world.js).
 import { Deck, OrthographicView, type DeckProps, type PickingInfo } from '@deck.gl/core';
 import type { _Tile2DHeader as Tile2DHeader, _TileLoadProps as TileLoadProps } from '@deck.gl/geo-layers';
 import { atlasEntry, KINDS, storiesOf, type Entry, type Spot, type Story } from '../lib/atlas';
@@ -48,17 +48,6 @@ export interface WorldOptions {
   view?: View;
   /** Open on the era around this year (?t=1914). */
   year?: number | null;
-  /** Inside another app (the explorer): no legend, notice or shortcuts of its own. */
-  embedded?: boolean;
-  /** Embedded: how far (px) the host's own controls reach down over the top of the map. */
-  insetTop?: () => number;
-  /** Content worlds: called with the picked entity (or null) instead of showing the card. */
-  onPick?: (entity: WorldEntity | null) => void;
-  /**
-   * Embedded: the world failed (mountWorld also rejects when that happens while loading). The viewer
-   * then shows nothing of its own, so the host can say so in its own words.
-   */
-  onFail?: () => void;
 }
 
 export interface WorldHandle {
@@ -128,14 +117,11 @@ export function resolveWorldSrc(value: string | null | undefined, fallback = '/w
   }
 }
 
-/** Rejects when the world cannot load. On /w/ the viewer's own message stays up; embedded, it is removed. */
+/** Rejects when the world cannot load; the viewer's own message stays up. */
 export async function mountWorld(root: HTMLElement, opts: WorldOptions): Promise<WorldHandle> {
   const viewer = new WorldViewer(root, opts);
   await viewer.ready;
-  if (viewer.failure) {
-    if (opts.embedded) viewer.destroy();
-    throw viewer.failure;
-  }
+  if (viewer.failure) throw viewer.failure;
   return viewer;
 }
 
@@ -248,7 +234,6 @@ class WorldViewer implements WorldHandle {
     this.root = root;
     this.opts = opts;
     this.wrap = el('div', 'ctdw');
-    if (opts.embedded) this.wrap.classList.add('is-embedded');
     this.wrap.setAttribute('role', 'region');
     this.wrap.setAttribute('aria-label', 'World map');
     this.stage = el('div', 'ctdw-stage');
@@ -313,11 +298,11 @@ class WorldViewer implements WorldHandle {
     this.updateAvoid();
     this.fps.start();
     this.statsTimer = window.setInterval(() => this.renderStats(), 250);
-    if (!this.opts.embedded) document.addEventListener('keydown', this.onKey);
-    if (m.kind === 'content' && !this.opts.embedded) {
+    document.addEventListener('keydown', this.onKey);
+    if (m.kind === 'content') {
       document.addEventListener('ctd:focus', this.onFocusEvent);
       // Keep site search in place: it dispatches ctd:focus instead of leaving the page.
-      document.documentElement.dataset.ctdExplorer = '';
+      document.documentElement.dataset.ctdInPlace = '';
     }
     if (this.opts.soak) this.startSoak(this.opts.soak.seconds);
     else {
@@ -367,7 +352,7 @@ class WorldViewer implements WorldHandle {
     const hud = el('div', 'ctdw-hud');
     this.hudCount = el('span', 'ctdw-hud-count', this.linksCount());
     // On /w/ the Links | Earth switch stands where the title would.
-    if (m.kind === 'content' && !this.opts.embedded) hud.append(this.buildViews(), this.hudCount);
+    if (m.kind === 'content') hud.append(this.buildViews(), this.hudCount);
     else hud.append(el('span', 'ctdw-hud-title', m.kind === 'content' ? 'The whole map' : 'Synthetic world'), this.hudCount);
 
     const zoom = el('div', 'ctdw-zoom');
@@ -382,32 +367,30 @@ class WorldViewer implements WorldHandle {
     };
     zoom.append(btn('Zoom in', '+', () => this.zoomBy(1)), btn('Zoom out', '−', () => this.zoomBy(-1)), btn('Show the whole map', '⌂', () => this.resetView()));
     this.wrap.append(hud, zoom);
-    const regions = this.opts.embedded ? [] : (m.regions ?? []);
+    const regions = m.regions ?? [];
 
-    if (!this.opts.embedded) {
-      // A colour legend only makes sense when the palette has hues; the site palette is neutral.
-      if (m.palette_labels.length && hasHues(m.palette)) {
-        const legend = el('ul', 'ctdw-legend');
-        legend.setAttribute('aria-label', 'Colours');
-        m.palette_labels.forEach((label, i) => {
-          const li = el('li', '', label);
-          li.style.setProperty('--c', m.palette[i] ?? 'var(--muted)');
-          legend.append(li);
-        });
-        this.wrap.append(legend);
-      }
-      const hint = el('p', 'ctdw-hint');
-      this.hintHow = el('span', 'ctdw-hint-how', m.kind === 'content' ? HOW.links : 'Scroll to zoom, drag to pan. Press s for stats.');
-      hint.append(this.hintHow);
-      // A region name is a place on the map, never a claim about who runs what: say so where it shows.
-      if (regions.length) {
-        this.hintRegions = el('span', '', 'Regions are groups of entries with many links between them, named after their best-connected one. Inside one, each dot sits beside what it links to.');
-        hint.append(' ', this.hintRegions);
-      }
-      this.wrap.append(hint);
-      if (m.kind === 'content') this.wrap.append(el('p', 'ctdw-notice', 'A connection is not evidence of wrongdoing.'));
-      this.buildEra();
+    // A colour legend only makes sense when the palette has hues; the site palette is neutral.
+    if (m.palette_labels.length && hasHues(m.palette)) {
+      const legend = el('ul', 'ctdw-legend');
+      legend.setAttribute('aria-label', 'Colours');
+      m.palette_labels.forEach((label, i) => {
+        const li = el('li', '', label);
+        li.style.setProperty('--c', m.palette[i] ?? 'var(--muted)');
+        legend.append(li);
+      });
+      this.wrap.append(legend);
     }
+    const hint = el('p', 'ctdw-hint');
+    this.hintHow = el('span', 'ctdw-hint-how', m.kind === 'content' ? HOW.links : 'Scroll to zoom, drag to pan. Press s for stats.');
+    hint.append(this.hintHow);
+    // A region name is a place on the map, never a claim about who runs what: say so where it shows.
+    if (regions.length) {
+      this.hintRegions = el('span', '', 'Regions are groups of entries with many links between them, named after their best-connected one. Inside one, each dot sits beside what it links to.');
+      hint.append(' ', this.hintRegions);
+    }
+    this.wrap.append(hint);
+    if (m.kind === 'content') this.wrap.append(el('p', 'ctdw-notice', 'A connection is not evidence of wrongdoing.'));
+    this.buildEra();
     if (regions.length) {
       const layer = el('div', 'ctdw-regions');
       layer.setAttribute('aria-hidden', 'true');
@@ -640,7 +623,6 @@ class WorldViewer implements WorldHandle {
       if (r.top - base.top < h / 2) top = Math.max(top, r.bottom - base.top + 10);
       else bottom = Math.max(bottom, base.bottom - r.top + 10);
     }
-    top = Math.max(top, this.opts.insetTop?.() ?? 0);
     this.view = { w, h, top: Math.min(top, h * 0.3), bottom: Math.min(bottom, h * 0.3), left: 16, right: 16 };
     const [x0, y0, x1, y1] = this.manifest.bounds ?? [0, 0, 1, 1];
     const aw = Math.max(1, w - this.view.left - this.view.right);
@@ -674,7 +656,7 @@ class WorldViewer implements WorldHandle {
       viewState: this.viewState(),
       controller: soak
         ? false
-        : { scrollZoom: { speed: 0.012, smooth: false }, dragPan: true, dragRotate: false, touchZoom: true, touchRotate: false, doubleClickZoom: true, keyboard: !this.opts.embedded, inertia: 260 },
+        : { scrollZoom: { speed: 0.012, smooth: false }, dragPan: true, dragRotate: false, touchZoom: true, touchRotate: false, doubleClickZoom: true, keyboard: true, inertia: 260 },
       onViewStateChange: ({ viewState, interactionState }) => {
         if (soak) return;
         const vs = viewState as unknown as { target: number[]; zoom: number };
@@ -895,7 +877,6 @@ class WorldViewer implements WorldHandle {
   }
 
   private fitHeight(): void {
-    if (this.opts.embedded) return;
     const top = Math.max(0, this.root.getBoundingClientRect().top + window.scrollY);
     this.root.style.setProperty('--ctdw-top', `${top}px`);
   }
@@ -1044,10 +1025,7 @@ class WorldViewer implements WorldHandle {
     this.hideTooltip();
     this.render();
     const entity = p ? this.entityOf(p) : null;
-    if (this.opts.onPick) {
-      this.opts.onPick(entity);
-      this.card.hidden = true;
-    } else if (!p) this.card.hidden = true;
+    if (!p) this.card.hidden = true;
     else this.showCard(p, entity);
     this.updateAvoid();
     void this.drawSpokes(p);
@@ -1079,8 +1057,8 @@ class WorldViewer implements WorldHandle {
         this.spokes.push({ from, to });
         this.reached.push({ at: to, name: n[1] });
       }
-      if (!this.opts.onPick) this.showLinks(q!, e, stories);
-    } else if (p && entity && !this.opts.onPick) this.card.append(...storyList(stories));
+      this.showLinks(q!, e, stories);
+    } else if (p && entity) this.card.append(...storyList(stories));
     this.render();
   }
 
@@ -1354,11 +1332,6 @@ class WorldViewer implements WorldHandle {
     const build = 'build it with "ctd world --synthetic 100000" or "ctd build"';
     console.error(`connect-the-dot world: ${webgl ? 'no WebGL 2' : `${this.opts.src} could not be loaded; ${build}`}`, err);
     this.failure ??= err instanceof Error ? err : new Error(msg);
-    if (this.opts.embedded) {
-      this.stateEl.remove();
-      this.opts.onFail?.();
-      return;
-    }
     // Readers get plain words; the build commands are for developers (the console, and the dev server).
     this.stateEl.replaceChildren();
     this.stateEl.classList.add('is-error');
@@ -1391,7 +1364,7 @@ class WorldViewer implements WorldHandle {
   /**
    * deck.gl 9 keeps its GPU device, and so its WebGL context, alive after finalize(): devices are shared,
    * so device.destroy() does nothing. Browsers keep about 16 contexts and then drop the oldest, which
-   * after a dozen World map/Links switches in the explorer was the explorer's own graph. So stop the
+   * after a dozen Links/Earth switches can be another canvas on the page. So stop the
    * device's canvas observers and lose the context here.
    */
   private releaseDeck(): void {

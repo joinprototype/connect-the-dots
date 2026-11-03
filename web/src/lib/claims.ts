@@ -1,4 +1,4 @@
-// Reading claims as sentences, shared by the explorer and the story player.
+// Reading claims as sentences, shared by Ask, Read and Stories.
 import { nameOf, type GraphIndex } from './data';
 import { MONTHS } from './dates';
 import type { GEdge, SourceDef } from './types';
@@ -58,19 +58,6 @@ export function sentence(idx: GraphIndex, e: GEdge, readFrom?: string): Sentence
 
 export function sentenceText(s: Sentence): string {
   return `${s.subject}${s.apposition ? ',' : ''} ${s.phrase} ${s.object}${s.detail ? ` (${s.detail})` : ''}`;
-}
-
-/** A reveal_claims entry "<entity>#<claim>" matches that edge and any "<entity>#<claim>/<n>" edges. */
-function claimRefMatches(edgeId: string, ref: string): boolean {
-  return edgeId === ref || edgeId.startsWith(ref + '/');
-}
-
-export function edgesForRef(idx: GraphIndex, ref: string): GEdge[] {
-  const exact = idx.edges.get(ref);
-  if (exact) return [exact];
-  const out: GEdge[] = [];
-  for (const [id, e] of idx.edges) if (claimRefMatches(id, ref)) out.push(e);
-  return out;
 }
 
 /** "1962-10-22" -> "22 Oct 1962"; "2026-08" -> "Aug 2026"; anything else unchanged. */

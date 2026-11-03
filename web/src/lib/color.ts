@@ -10,11 +10,6 @@ function parseHex(hex: string): RGB | null {
   return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
 }
 
-function toHex([r, g, b]: RGB): string {
-  const c = (v: number) => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, '0');
-  return `#${c(r)}${c(g)}${c(b)}`;
-}
-
 let probe: CanvasRenderingContext2D | null | undefined;
 
 /** Any CSS color (hex, rgb(), oklch(), named…) -> RGB, by painting one pixel. */
@@ -49,21 +44,7 @@ export function mix(a: RGB, b: RGB, t: number): RGB {
 }
 
 /**
- * Sigma blends with premultiplied alpha (gl.ONE, gl.ONE_MINUS_SRC_ALPHA), so translucent colors
- * must be premultiplied to fade properly on any background.
- */
-export function glColor(rgb: RGB, alpha = 1): string {
-  const a = Math.max(0, Math.min(1, alpha));
-  if (a >= 1) return toHex(rgb);
-  return `rgba(${Math.round(rgb[0] * a)},${Math.round(rgb[1] * a)},${Math.round(rgb[2] * a)},${a.toFixed(3)})`;
-}
-
-export function cssRgba(rgb: RGB, alpha = 1): string {
-  return `rgba(${Math.round(rgb[0])},${Math.round(rgb[1])},${Math.round(rgb[2])},${alpha})`;
-}
-
-/**
- * Alpha of a faded name drawn once on a canvas (sigma's labels, the Earth's names): an entry that had ended, or
+ * Alpha of a faded name drawn once on a canvas (the Earth's names): an entry that had ended, or
  * is outside the picked era. The ink at this alpha still reads at 4.5:1 or more on the page surface, about 5.2:1
  * in light mode and 7:1 in dark.
  */

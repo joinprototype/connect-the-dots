@@ -187,9 +187,9 @@ function start(root: HTMLElement): void {
   function targetOf(url: string): State | string {
     const u = new URL(url, location.origin);
     const p = u.searchParams;
-    if (u.pathname === '/r/' && p.get('a') && p.get('b')) return { kind: 'pair', a: p.get('a')!, b: p.get('b')!, way: 0 };
     if (u.pathname === '/w/' && p.get('t')) return { kind: 'year', year: Number(p.get('t')) };
-    const e = /^\/e\/([^/]+)\/$/.exec(u.pathname);
+    if (u.pathname === '/ask/') return stateOf(u.search) ?? url;
+    const e =/^\/e\/([^/]+)\/$/.exec(u.pathname);
     if (e) return { kind: 'name', id: decodeURIComponent(e[1]) };
     const q = /^\/q\/([^/]+)\/([^/]+)\/$/.exec(u.pathname);
     if (q) return { kind: 'question', q: q[1], id: decodeURIComponent(q[2]) };

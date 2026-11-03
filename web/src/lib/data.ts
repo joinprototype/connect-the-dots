@@ -1,5 +1,5 @@
 // Loading the data files (docs/data-contract.md, ADR-0017). Pages load what they show: the vocabulary
-// (schema.json), the slim structure for the explorer and the Map (graph-slim.json), one entry's words and
+// (schema.json), the slim structure for Ask, Stories and the Map (graph-slim.json), one entry's words and
 // proof when it is opened (e/<id>.json), and a story's own data from its page.
 import type { CtdDate, GEdge, GNode, GraphData, LensDef, Perspective, SourceDef, SourceRef } from './types';
 
@@ -10,7 +10,7 @@ const WAYS_URL = '/data/ways.json';
 /** The vocabulary: everything a graph needs but its entries, links and sources. */
 type Schema = Omit<GraphData, 'nodes' | 'edges' | 'sources'>;
 
-// One cache per page, shared by every bundle (islands, explorer, story) that runs on it.
+// One cache per page, shared by every bundle (islands, ask, read, place, world) that runs on it.
 const g = globalThis as typeof globalThis & { __ctdData?: Map<string, Promise<unknown>> };
 const cache: Map<string, Promise<unknown>> = (g.__ctdData ??= new Map());
 
@@ -72,9 +72,9 @@ export interface Details {
   story: string | null;
   /** The question pages about it. */
   asked: { q: string; title: string; url: string; links: number; accounts: number; counts: string }[];
-  /** How many more links open data holds for it; the explorer stays on the record (ADR-0023). */
+  /** How many more links open data holds for it; answers stay on the record (ADR-0023). */
   open: number | null;
-  /** Its Wikidata id, the way from here into open data (`/r/`); null without one. */
+  /** Its Wikidata id, the way from here into open data (`/a/`); null without one. */
   w: string | null;
   /** Its links' words and proof; a hub's file holds the strongest 100 of each kind. */
   links: DetailLink[];
@@ -211,30 +211,12 @@ export function loadWaysIndex(): Promise<GraphIndex> {
   });
 }
 
-/** A small graph read from detail files alone: these entries, the links between them, and their proof. */
-export function detailsIndex(schema: Schema, files: Details[]): GraphIndex {
-  const nodes: GNode[] = files.map((d) => ({ id: d.id, name: d.name, type: d.type, degree: 0, when: null, coords: null, place: null, url: `/e/${d.id}/`, summary: d.summary, aliases: d.aliases }));
-  const links = new Map<string, GEdge>();
-  for (const w of files.flatMap((d) => d.links)) {
-    const e = linkOf(schema, w.id, w.id.split('#')[0], w.to, w.rel, w.when, w.tier, w);
-    links.set(w.id, { ...e, sources: w.sources, qualifiers: w.qualifiers ?? {}, detail: w.detail, note: w.note, reason: w.reason, full: true });
-  }
-  const idx = indexGraph({ ...schema, nodes, edges: [...links.values()], sources: Object.assign({}, ...files.map((d) => d.sources)) });
-  for (const d of files) idx.details.set(d.id, d);
-  return idx;
-}
-
-/** Every entry and link (the slim file) with the vocabulary: the explorer's and the Map's graph. */
+/** Every entry and link (the slim file) with the vocabulary: the graph Ask, Stories and the Map draw. */
 export function loadGraphIndex(): Promise<GraphIndex> {
   return once('index', async () => {
     const [schema, slim] = await Promise.all([loadSchema(), loadJson<Slim>(SLIM_URL)]);
     return indexGraph({ ...schema, ...decodeSlim(schema, slim), sources: {} });
   });
-}
-
-/** A story's own entries, links and sources (embedded in its page) with the vocabulary. */
-export async function storyIndex(own: Pick<GraphData, 'nodes' | 'edges' | 'sources'>): Promise<GraphIndex> {
-  return indexGraph({ ...(await loadSchema()), ...own });
 }
 
 /**

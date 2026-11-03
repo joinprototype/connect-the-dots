@@ -1,7 +1,6 @@
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { extname, join, normalize, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import react from '@vitejs/plugin-react';
 import { defineConfig, type Plugin } from 'vite';
 
 const here = fileURLToPath(new URL('.', import.meta.url));
@@ -9,18 +8,17 @@ const here = fileURLToPath(new URL('.', import.meta.url));
 /** Entry name -> source module. The names become dist/<name>.js and dist/<name>.css. */
 const ENTRIES = {
   islands: 'src/islands/main.ts',
-  explorer: 'src/explorer/main.tsx',
-  story: 'src/story/main.ts',
-  life: 'src/story/life.ts',
   world: 'src/world/main.ts',
   atlas: 'src/atlas/main.ts',
-  route: 'src/atlas/route.ts',
   // Ask (/ask/): the box as the page's heading
   ask: 'src/ask/main.ts',
-  // Read: a story over its field of dots
+  // Read: every story's page, over its field of dots; life: an entry's story, from its pack
   read: 'src/read/main.ts',
+  life: 'src/read/life.ts',
   // the Stories page's surface
   place: 'src/place/main.ts',
+  // the addresses of Explore and Connect, going on to where their entries are now (ADR-0031)
+  forward: 'src/forward.ts',
 } as const;
 const ENTRY_RE = new RegExp(`^/assets/(${Object.keys(ENTRIES).join('|')})\\.(js|css)$`);
 
@@ -167,7 +165,7 @@ export default defineConfig(({ command }) => ({
   base: command === 'build' ? '/assets/' : '/',
   appType: 'custom',
   publicDir: false,
-  plugins: [react(), devSite(), onlyEntryCss()],
+  plugins: [devSite(), onlyEntryCss()],
   server: { port: 5173 },
   build: {
     outDir: 'dist',
@@ -179,18 +177,18 @@ export default defineConfig(({ command }) => ({
     chunkSizeWarningLimit: 1600,
     rolldownOptions: {
       input: Object.fromEntries(Object.entries(ENTRIES).map(([name, src]) => [name, resolve(here, src)])),
+      // An entry exports nothing: code two pages share goes in a chunk of its own, never inside one page's
+      // bundle, or Read would run the Map's world.js (and deck.gl) for one helper they share.
+      preserveEntrySignatures: 'strict',
       output: {
         entryFileNames: '[name].js',
         chunkFileNames: 'chunks/[name]-[hash].js',
         codeSplitting: {
           groups: [
-            // One shared renderer chunk for the ego graph, the explorer and the story graph.
-            { name: 'sigma', test: /[\\/]node_modules[\\/](sigma|graphology|graphology-utils|graphology-layout-forceatlas2|events)[\\/]/ },
-            { name: 'gsap', test: /[\\/]node_modules[\\/]gsap[\\/]/ },
             // Vite's dynamic-import helper, shared by every bundle: keep it out of the big chunks below,
-            // or islands.js would end up importing deck.gl just to lazy-load the ego graph.
+            // or islands.js would end up importing deck.gl.
             { name: 'preload-helper', test: /preload-helper/, priority: 20 },
-            // deck.gl and its WebGL stack: only the world viewer (world.js, the explorer's world mode) loads it.
+            // deck.gl and its WebGL stack: only the world viewer (world.js) loads it.
             {
               name: 'deck',
               test: /[\\/]node_modules[\\/](@deck\.gl|@luma\.gl|@loaders\.gl|@math\.gl|@probe\.gl|mjolnir\.js|@mapbox[\\/]tiny-sdf)[\\/]/,

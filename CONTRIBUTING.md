@@ -477,7 +477,7 @@ Explore further: open [[blackrock]]'s page for its owners over time, or read "Wh
 
 - **Front matter:** `title` and `subtitle` show on the story's cover and at its top, and `summary` is its description in link previews. `featured: true` puts the story first on the Stories shelf. `authors: [github:your-name]` adds "written by @your-name".
 - **Prose** before the scene block is the introduction, and prose after it closes the story. Wikilinks work in both.
-- **The scene block** is a YAML list of scenes ("shots"), in order. Readers scroll through them, or press Watch.
+- **The scene block** is a YAML list of scenes ("shots"), in order. Readers scroll through them.
 
 | Scene field | Meaning |
 |---|---|
@@ -494,28 +494,28 @@ Explore further: open [[blackrock]]'s page for its owners over time, or read "Wh
 | `borders` | Historical borders to draw, by file name in `content/borders/`, such as `[russia, german-empire]`. The shot's `time` picks the year, and the first is drawn in the accent color. Look at the result: a border can be wrong even when it is sourced. |
 | `routes` | Lines to draw on the map: `[[from-id, to-id], …]`. |
 | `overlay` | A card. `{kind: quote, source, quote, caption}` is a quote card; `kind: source` shows the source as proof, with the quote highlighted; `kind: image` takes `image` (an address) and `caption`; `{kind: stat, value, label, source, quote}` is a big number with its proof beside it. A card without `quote` borrows the quote of a revealed link from the same source, or shows nothing. |
-| `narration` | The scene's text, in Markdown. Listen reads it aloud. |
-| `duration` | Seconds Watch stays on the scene (6 when left out). |
-| `explore` | `true` shows "Explore from here", which opens the explorer at this scene. The BlackRock chapter's last scene sets it. |
+| `narration` | The scene's text, in Markdown. |
+| `duration` | Ignored since [ADR-0031](docs/decisions/0031-fewer-views.md): readers scroll at their own pace. |
+| `explore` | Ignored since [ADR-0031](docs/decisions/0031-fewer-views.md): stories read on Read, which has no "Explore from here". |
 
 `ctd check` makes sure that every entry, link and quote-card source a scene names exists, and that its lens, view and date are valid. A scene that reveals a link still withheld for lack of sources gets a warning.
 
 ## Writing a story that plays well
 
-These lessons come from reviewing "Who owns BlackRock and Vanguard?" scene by scene, with Watch and Listen.
+These lessons come from reviewing "Who owns BlackRock and Vanguard?" scene by scene.
 
-- **About 45 words or fewer per scene.** Set `duration` to the reading time: that chapter gives 45 words 16 seconds, and 34 words 12. With Listen on, Watch also waits for the voice to finish.
-- **Open with a short bold title**, such as `**1974: Vanguard.**`. A scene's first sentence is its name on the scene dots, so end the title on a word, not on an abbreviation such as "U.S.".
+- **About 45 words or fewer per scene.** A scene fills about one screen of reading beside its picture.
+- **Open with a short bold title**, such as `**1974: Vanguard.**`. A scene's bold title is its heading on Read, so end the title on a word, not on an abbreviation such as "U.S.".
 - **Set a scene's `time` on or just after its events.** The scene shows that date, and the graph draws the world as of it: links that begin later are hidden, and ended ones fade. A bare year means 1 January, so `"1988"` is 1 January 1988. PNC sold its BlackRock shares in May 2020, and that scene uses `time: "2020-06"`.
 - **One voice per scene, in its own words.** Each voice in a debate gets its own scene and its own quote card. The `caption` says who, where and when, with the source's date: `"BlackRock, letter to the U.S. Federal Trade Commission, 15 January 2019"`. When a news report carries the words, the caption says so: `"Stephen A. Schwarzman on Bloomberg Radio, reported by Bloomberg News, 30 September 2013"`.
 - **A quote card shows the speaker's exact words only.** Copy them from the source. Never put a paraphrase, or a reporter's or scholar's summary, on a card as the speaker's words.
 - **Name the subject instead of "it".** A scene is often heard on its own, or opened from its dot or a `#shot-` link. "In 2017 BlackRock called the evidence fragile" works; "It called the evidence fragile" does not.
-- **Write "U.S.", not "US".** Listen reads the narration in the browser's voice, which can say "US" as the word "us".
-- **The narration carries the point.** Listen reads the narration, not the quote card.
+- **Write "U.S.", not "US".**
+- **The narration carries the point.** The quote under it is the proof.
 - **Give each side of a debate equal room:** a scene each, of about the same length, in date order. The BlackRock chapter gives seven voices a scene each, then closes on a study for the European Parliament that calls the question "still an open debate".
 - **Every sentence rests on a source:** a link the scene reveals, or its quote card. When only one source carries a fact, say whose it is: "according to the book King of Capital".
 - **Plain words.** Write "link", "proof" and "primary record", never claim, edge, tier or T1.
-- **Play it before you open the pull request.** Run `cargo run -q -- serve`, open `http://127.0.0.1:4321/c/<id>/`, press **Watch** and turn on **Listen**. Try a phone-width window and dark mode too.
+- **Read it before you open the pull request.** Run `cargo run -q -- serve`, open `http://127.0.0.1:4321/c/<id>/` and read it through, opening its names. Try a phone-width window and dark mode too.
 
 ## Check your work
 
@@ -589,5 +589,5 @@ What `ctd check` does not catch, and reviewers do:
 - [ ] Family links have one T1 or two independent T1/T2 sources, and name only public figures' kin: no minors, no private relatives.
 - [ ] Background lines are on people only, in a living person's own words, and inferred from nothing.
 - [ ] A renamed entry keeps its old id in `aliases`.
-- [ ] Stories: about 45 words a scene, times on the events, quote cards in the speaker's exact words, played through with Watch and Listen.
+- [ ] Stories: about 45 words a scene, times on the events, quote cards in the speaker's exact words, read through on its page.
 - [ ] The pull request says whether I have any tie to the people or organizations in it, and its title and commit messages carry no sensitive allegation.

@@ -88,7 +88,7 @@ body { isolation: isolate; margin: 0; min-height: 100vh; display: flex; flex-dir
 main { flex: 1; width: 100%; }
 a { color: var(--accent); text-decoration: none; }
 /* with no colour to tell it apart, a link inside text is underlined */
-main p a:not(.button), main dd a, .prose a, .index-more a, .glance-more a, .ll-more a, .atlas-more a, .entity-map { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.16em; }
+main p a:not(.button), main dd a, .prose a, .index-more a, .glance-more a, .ll-more a, .entity-map { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.16em; }
 a:hover { text-decoration: underline; text-underline-offset: 0.15em; }
 /* a solid accent ring: at least 3:1 against every surface in both modes */
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
@@ -158,9 +158,6 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
 .home-map img { display: block; width: 100%; max-width: 420px; height: auto; aspect-ratio: 1; }
 @media (min-width: 1000px) { .threads { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); align-items: start; } .home-map { margin-top: 1rem; } }
 .home-ways { max-width: var(--page); margin: 0 auto; padding: 0 var(--gutter); }
-/* what a story at the end of another shares with it, so the reader knows why it is offered */
-.next-book { min-width: 0; }
-.next-why { margin: 0.4rem 0 0; font: 400 0.92rem/1.4 var(--font-ui); color: var(--ink-2); }
 .home-ways h2 { margin-top: 3.2rem; }
 .ways { list-style: none; margin: 0; padding: 0; max-width: 44rem; }
 .ways li { display: grid; gap: 2px; padding: 0.9rem 0; border-top: 1px solid var(--rule); }
@@ -242,7 +239,6 @@ ctd-atlas-links { display: block; }
 .atlas-group a { display: inline-flex; align-items: baseline; gap: 8px; color: var(--ink); font-weight: 500; }
 .atlas-group a::before { content: ""; flex: none; width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--accent)); transform: translateY(-1px); }
 .atlas-group a:hover { color: var(--accent); }
-.atlas-more { margin: 4px 0 0; font-size: 0.9rem; color: var(--muted); }
 .atlas-open { display: block; margin: 6px 0 0; padding: 4px 0; border: 0; background: none; font: inherit; font-size: 0.9rem; font-weight: 600; color: var(--ink); text-decoration: underline; text-underline-offset: 0.16em; cursor: pointer; }
 .atlas-open:disabled { color: var(--muted); cursor: default; }
 .atlas-group h3 .count, .atlas-group h2 .count { margin-left: 4px; font-weight: 400; color: var(--muted); }
@@ -487,20 +483,12 @@ ctd-atlas-links { display: block; }
 /* not yet verified: a dashed neutral outline, last on the page */
 .answer-drafts .claims { border: 1.5px dashed var(--muted); padding: 0 14px; }
 
-/* ---------------------------------------------------------------- pages, chapters */
+/* ---------------------------------------------------------------- pages */
 .page-head { max-width: var(--page); margin: 0 auto; padding: clamp(40px, 8vw, 88px) var(--gutter) 1rem; }
 .page-head h1 { font-size: clamp(2.4rem, 5.4vw, 4.2rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1; }
 .page-lede { font-size: 1.15rem; color: var(--muted); max-width: 52ch; margin-top: 0.8rem; }
-/* a story opens on a band of black, like its cover */
-.chapter-head { padding: clamp(40px, 7vw, 88px) max(var(--gutter), calc(50vw - 590px + var(--gutter))) 1.6rem; background: var(--story, var(--band)); color: var(--story-ink, #fff); }
-.chapter-head h1 { font-size: clamp(2.6rem, 6.4vw, 5.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 0.98; max-width: 15ch; text-wrap: balance; color: inherit; }
-.chapter-subtitle { font: 400 clamp(1.15rem, 2vw, 1.45rem)/1.4 var(--font-body); color: inherit; margin-top: 1.1rem; max-width: 46ch; }
-.chapter-byline { font-size: 1rem; font-weight: 600; color: inherit; margin-top: 1.2rem; }
 .chapter-back { font-size: 1rem; margin: 0 0 1rem; }
 .chapter-back a { color: inherit; text-decoration: underline; }
-.chapter-intro, .chapter-outro { max-width: var(--page); margin: 1.5rem auto; padding: 0 var(--gutter); font: 400 1.14rem/1.65 var(--font-body); }
-.chapter-intro > *, .chapter-outro > * { max-width: var(--measure); }
-.step-time { font: 700 1rem var(--font-ui); color: var(--story-text, var(--accent)); margin-bottom: 0.3rem; }
 
 /* ---------------------------------------------------------------- the Stories page: one surface of islands
    The surface takes the first screen under the header, and the list's heading shows under it, so the page

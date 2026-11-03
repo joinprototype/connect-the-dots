@@ -11,7 +11,7 @@ import { formatYearNumber } from '../lib/dates';
 import { el } from '../lib/dom';
 import { hash01 } from '../lib/hash';
 import { findPaths, type PathResult } from '../lib/paths';
-import { claimNotes, NOTICE, routeStoryUrl, statusWords, tierLabel } from '../lib/plain';
+import { claimNotes, NOTICE, statusWords, tierLabel } from '../lib/plain';
 import type { GEdge, GNode, SearchEntry } from '../lib/types';
 import type { Mark, View } from './field';
 import { GREY, inkOf, loadRecord, storiesWith, type Part, type Pick, type Record, type Story } from './record';
@@ -523,12 +523,6 @@ async function pairAnswer(rec: Record, s: Extract<State, { kind: 'pair' }>, pick
   }
   const shared = both && !kept ? storiesWith(rec, a.key, b.key) : [];
   if (shared.length) body.push(...section('Stories that hold both', shared.map((st) => storyRow(st)), 6, 'ask-list is-t'));
-  const story = both ? (routeStoryUrl(idx.data, a.key, b.key) ?? routeStoryUrl(idx.data, b.key, a.key)) : null;
-  if (story && !kept) {
-    const p = el('p', 'ask-actions');
-    p.append(link('Play the way as a story', story, 'button'));
-    body.push(p);
-  }
   // next: what the stops are asked about, a story the way ends in, then another question
   const asks: [string, string][] = [];
   for (const id of [...(way?.nodes ?? [])].reverse()) for (const q of await askedOf(rec, id)) if (asks.length < 2) asks.push(q);
@@ -680,6 +674,19 @@ function yearAnswer(rec: Record, y: number, picks: [string, string][]): Answer {
 
 // ---------------------------------------------------------------- nothing yet, nothing found
 
+/** An open-data entry on its own, as the atlas's "Connect to…" asks it: the box holds its name, ready for
+ *  a second one. One the record has its own entry for is that entry. */
+async function openAnswer(rec: Record, raw: string, picks: [string, string][]): Promise<Answer> {
+  const end = await endOf(rec, raw);
+  if (!end) return noneAnswer(rec, [], picks, 'We could not find that.');
+  if (end.hand) return nameAnswer(rec, end.key, picks);
+  const body: Node[] = [el('p', 'ask-lead', `Type a second name to find the way from ${end.name} to it.`)];
+  const page = el('p', 'ask-fine');
+  page.append(link(`${end.name}, in open data`, `/a/?q=${raw}`), '.');
+  body.push(page, ...next(picks.slice(0, 2)));
+  return { parts: [[end.name, raw, end.ink], [' and ']], body, scene: worldOf(rec, null, [], inked(rec)) };
+}
+
 function emptyAnswer(rec: Record): Answer {
   const body: Node[] = [el('p', 'ask-lead', 'Type a name, two names, a year or a question. Or start from a story.')];
   body.push(...section('Stories', rec.list.map((st) => storyRow(st)), rec.list.length, 'ask-list is-t'));
@@ -708,7 +715,7 @@ export async function answer(s: State, pick: Pick | undefined, picks: [string, s
     case 'pair':
       return pairAnswer(rec, s, pick, picks);
     case 'name':
-      return /^Q\d+$/.test(s.id) ? noneAnswer(rec, [], picks, 'We could not find that.') : nameAnswer(rec, s.id, picks);
+      return /^Q\d+$/.test(s.id) ? openAnswer(rec, s.id, picks) : nameAnswer(rec, s.id, picks);
     case 'question':
       return questionAnswer(rec, s.q, s.id, picks);
     case 'year':

@@ -1,4 +1,4 @@
-// The route finder exists twice: Rust for stories and the home page, TypeScript in the explorer.
+// The route finder exists twice: Rust for stories and the home page, TypeScript in Ask and Stories (web/src/lib/paths.ts).
 // This checks they agree on the real graph: same routes, same costs, for a spread of pairs.
 // Usage: ctd build --out <dir>, then node tools/qa/paths-golden.mjs <dir> [--pairs=60]
 import { execFileSync } from 'node:child_process';

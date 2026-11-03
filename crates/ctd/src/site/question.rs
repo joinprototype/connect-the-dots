@@ -118,7 +118,7 @@ pub(super) fn answer_view(cx: &Ctx, site: &Value, a: &Answer, story_url: Option<
         "site": site,
         "question": { "id": q.id, "ask": q.ask, "label": answers::label(q), "title": answers::title(kb, q, &x.id), "shows": shows, "not": not,
                       "url": format!("/q/{}/", a.id(kb)), "story_url": story_url,
-                      "explore_url": format!("/x/?focus={}", x.id) },
+                      "ask_url": format!("/ask/?q={}&a={}", q.id, x.id) },
         "x": { "id": x.id, "name": x.name, "sentence": kb.sentence_name(&x.id), "kind": x.kind, "type_label": kb.schema.type_label(&x.kind), "when": x.when.as_ref().map(|w| &w.label),
                "aliases": display_aliases(x), "url": format!("/e/{}/", x.id), "rel_path": x.rel_path },
         "counts": { "links": a.links, "accounts": a.accounts_total(), "names": a.names, "label": answer_counts(a) },
