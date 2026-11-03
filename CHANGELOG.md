@@ -2,7 +2,7 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
-## Next
+## 0.5.4 (2026-11-03)
 
 - Stories is the shelf: every story's cover, to pick one and read it. The islands they make are on the Map.
 
