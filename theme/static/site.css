@@ -472,6 +472,9 @@ ctd-atlas-links { display: block; }
    The surface takes the first screen under the header, and the list's heading shows under it, so the page
    reads on. Its words say what the picture is before anything loads; place.css styles what the script adds. */
 .place { position: relative; display: block; height: calc(100svh - var(--place-top, 63px) - 52px); min-height: 400px; overflow: hidden; border-bottom: 1px solid var(--rule); }
+/* the Map is the surface alone: the whole window under the header */
+.map-page .place { height: calc(100svh - var(--place-top, 63px)); border-bottom: 0; }
+.map-page .site-footer { display: none; }
 .place-hello { position: absolute; z-index: 3; left: max(16px, calc((100% - var(--page)) / 2 + var(--gutter))); bottom: 18px; width: min(340px, calc(100% - 32px)); padding: 10px 14px 8px; margin-left: -14px; background: var(--paper); border-radius: 8px; }
 .place-hello h1 { margin: 0 0 0.3rem; font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1; }
 .place-hello p { margin: 0 0 0.5rem; }

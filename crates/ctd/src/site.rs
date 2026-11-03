@@ -615,7 +615,8 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     let asked: Vec<(&str, &str)> = pages.list.iter().map(|a| (kb.schema.questions[a.q].id.as_str(), a.x.id.as_str())).collect();
     ask::write_ask(&s, &asked)?;
     type_pages(&s)?;
-    write(&out.join("w").join("index.html"), s.render("world.html", json!({ "site": &s.site }))?)?;
+    // the Map: the Stories surface over the whole window, by story or on Earth (ADR-0034)
+    write(&out.join("w").join("index.html"), s.render("map.html", json!({ "site": &s.site, "inks": inks(kb) }))?)?;
     // Explore and Connect are folded into Stories, entry pages and Ask (ADR-0031): their addresses,
     // with the entries they name, go on there
     for (dir, to) in [("x", "Stories"), ("r", "Ask")] {
@@ -730,7 +731,7 @@ fn schema_json(kb: &Kb, manifest: &Manifest) -> Value {
         .schema
         .types
         .iter()
-        .map(|(id, t)| (id.clone(), json!({ "label": t.label, "plural": t.plural, "layer": t.layer, "color": kb.schema.type_color(id) })))
+        .map(|(id, t)| (id.clone(), json!({ "label": t.label, "plural": t.plural, "layer": t.layer, "color": kb.schema.type_color(id), "family": t.family })))
         .collect();
     let relations: serde_json::Map<String, Value> = kb
         .schema
@@ -739,7 +740,7 @@ fn schema_json(kb: &Kb, manifest: &Manifest) -> Value {
         .map(|(id, r)| {
             (
                 id.clone(),
-                json!({ "label": r.label, "inverse": r.inverse, "layers": r.layers, "traversable": r.traversable, "passive": r.passive,
+                json!({ "label": r.label, "inverse": r.inverse, "layers": r.layers, "traversable": r.traversable, "passive": r.passive, "locates": r.locates,
                         "sensitive": r.sensitive, "kinship": r.kinship, "attributed": r.attributed, "identity": r.identity, "caveat": r.caveat }),
             )
         })

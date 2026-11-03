@@ -1,6 +1,6 @@
 # ADR-0033: The Map draws the record
 
-- Status: accepted
+- Status: accepted; amended by [ADR-0034](0034-one-map.md): the Map is now the Stories surface, by story or on Earth
 - Date: 2026-11-03
 
 ## Context

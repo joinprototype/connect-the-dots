@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{# The Map (ADR-0034): the record that has been read, as the Stories surface (web/src/place) takes the whole
+   window. Every story an island, every entry a dot; a dot's links draw when it is picked; the switch moves the
+   dots that have a place of their own onto the Earth. #}
+{% block preload_reading %}{% endblock %}
+{% block title %}Map: Connect the Dots{% endblock %}
+{% block description %}Everything we have read, on one map: every story an island and every entry a dot. Click a dot to see what it links to, or put the dots on the Earth.{% endblock %}
+{% block body_class %}page place-page map-page{% endblock %}
+{% block head %}{% if site.assets.place_css %}<link rel="stylesheet" href="/assets/place.css">{% endif %}{% endblock %}
+{% block main %}
+<ctd-place class="place" data-wheel="zoom">
+  <p class="place-switch" role="group" aria-label="Arrange the dots"><button type="button" data-on="story" aria-pressed="true">By story</button><button type="button" data-on="earth" aria-pressed="false">On Earth</button></p>
+  <div class="place-hello">
+    <h1>Map</h1>
+    <p class="place-line">Everything we have read: every story an island, every entry a dot. Click a dot to see what it links to, with the proof. On Earth, whatever has a place of its own stands there.</p>
+    <p class="place-key" aria-hidden="true">{% for ink in inks %}<span style="--c: {{ ink.color }}">{{ ink.label }}</span>{% endfor %}</p>
+    <p class="place-list"><a href="/c/">Every story, as a list</a></p>
+  </div>
+</ctd-place>
+{% endblock %}
+{% block scripts %}{% if site.assets.place_js %}<script type="module" src="/assets/place.js"></script>{% endif %}{% endblock %}

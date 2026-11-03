@@ -1,7 +1,20 @@
 // What the Stories surface draws: every entry and link of graph-slim.json (through the shared graph index),
 // placed by data/islands.json (docs/data-contract.md), as flat arrays a frame can run through quickly.
 import { loadGraphIndex, loadJson, type GraphIndex } from '../lib/data';
+import { project } from '../lib/dotfield';
 import type { GEdge } from '../lib/types';
+
+/** One arrangement of the dots: by story, as data/islands.json settles them, or on Earth. */
+export interface Layout {
+  x: Float32Array;
+  y: Float32Array;
+  /** The level from which each dot's name shows here (see planNames). */
+  nameFrom: Float32Array;
+  grid: Map<number, number[]>;
+  /** The dots drawn here; null: all of them. */
+  vis: Uint8Array | null;
+  planned: boolean;
+}
 
 /** One story's island: its centre and land radius in the map's units, the dots on its land, and its trail, the
  *  subject of each scene in order. Dots by index. */
@@ -80,9 +93,81 @@ export interface World {
   /** The level (log2 of the nearness over K0) from which each dot's name shows; Infinity: only when opened. */
   nameFrom: Float32Array;
   grid: Map<number, number[]>;
+  /** The dots drawn now; null: all of them. x, y, nameFrom, grid and vis are the arrangement in view. */
+  vis: Uint8Array | null;
+  /** The arrangement by story, and the one on Earth once it is first asked for. */
+  story: Layout;
+  earth: Layout | null;
 }
 
 const cellOf = (x: number, y: number): number => Math.floor(x / CELL) * 65536 + Math.floor(y / CELL);
+
+/** The hit grid of an arrangement: every dot it draws, by cell. */
+function gridOf(x: Float32Array, y: Float32Array, vis: Uint8Array | null): Map<number, number[]> {
+  const grid = new Map<number, number[]>();
+  for (let i = 0; i < x.length; i++) {
+    if (vis && !vis[i]) continue;
+    const key = cellOf(x[i], y[i]);
+    const list = grid.get(key);
+    if (list) list.push(i);
+    else grid.set(key, [i]);
+  }
+  return grid;
+}
+
+/** The Earth, in the map's units: Web Mercator from 75° N down to the map's foot (about 58° S), as wide as the
+ *  map, near its top. */
+const [NORTH, TOP] = [75, 120];
+const MY0 = project(0, NORTH)[1];
+/** Where a point of the Web Mercator square (0 to 1 each way) lies on the map, or null off the Earth's band. */
+export function earthAt(w: Pick<World, 'w' | 'h'>, mx: number, my: number): [number, number] | null {
+  const y = TOP + (my - MY0) * w.w;
+  return y < 0 || y > w.h ? null : [mx * w.w, y];
+}
+/** The other way: where a point of the map lies in the Web Mercator square. */
+export const squareAt = (w: Pick<World, 'w'>, x: number, y: number): [number, number] => [x / w.w, (y - TOP) / w.w + MY0];
+
+/**
+ * The arrangement on Earth: an entry with a place of its own stands there, a few apart from others at the same
+ * spot; one without stands at the place a link that `locates` it names (headquartered in, located in, written
+ * at), the most particular if there are several. A person is drawn at no place (their coordinates are a grave,
+ * not a life), nor is a people or a family: no dot on the Earth may read as where someone comes from (ADR-0016).
+ * What has no place stays where it was, and is not drawn.
+ */
+export function earthLayout(w: World): Layout {
+  const { idx } = w;
+  const x = w.story.x.slice();
+  const y = w.story.y.slice();
+  const vis = new Uint8Array(w.n);
+  const family = new Set(Object.entries(idx.data.types).filter(([, t]) => t.family).map(([id]) => id));
+  const crowd = new Map<string, number>();
+  const nodes = idx.data.nodes;
+  // the place a locating link names: the least connected, a city before its country
+  const locatedAt = (i: number): [number, number] | null => {
+    let best = -1;
+    for (const l of w.adj[i]) {
+      const b = w.lb[l];
+      if (w.la[l] !== i || !idx.data.relations[w.links[l].rel]?.locates || !nodes[b].coords) continue;
+      if (best < 0 || w.degree[b] < w.degree[best]) best = b;
+    }
+    return best < 0 ? null : nodes[best].coords;
+  };
+  nodes.forEach((v, i) => {
+    if (family.has(v.type) || w.sealed[i]) return;
+    const c = v.coords ?? (v.place ? idx.nodes.get(v.place)?.coords : null) ?? locatedAt(i);
+    if (!c) return;
+    const at = earthAt(w, ...project(c[0], c[1]));
+    if (!at) return;
+    // things at one spot (a city and what is set there) open around it like a seed head
+    const spot = `${c[0].toFixed(2)},${c[1].toFixed(2)}`;
+    const j = crowd.get(spot) ?? 0;
+    crowd.set(spot, j + 1);
+    const r = j ? 7 * Math.sqrt(j) : 0;
+    [x[i], y[i]] = [at[0] + r * Math.cos(j * 2.39996), at[1] + r * Math.sin(j * 2.39996)];
+    vis[i] = 1;
+  });
+  return { x, y, vis, nameFrom: new Float32Array(w.n).fill(Infinity), grid: gridOf(x, y, vis), planned: false };
+}
 
 export async function loadWorld(): Promise<World> {
   const [idx, pic] = await Promise.all([loadGraphIndex(), loadJson<Picture>('/data/islands.json')]);
@@ -105,6 +190,9 @@ export async function loadWorld(): Promise<World> {
     when: nodes.map((v) => v.when?.label ?? ''),
     x: Float32Array.from({ length: n }, (_, i) => pic.at[2 * i] ?? 0),
     y: Float32Array.from({ length: n }, (_, i) => pic.at[2 * i + 1] ?? 0),
+    vis: null,
+    story: null!,
+    earth: null,
     home: new Int16Array(n).fill(-1),
     sealed: new Uint8Array(n),
     links: idx.data.edges,
@@ -133,12 +221,8 @@ export async function loadWorld(): Promise<World> {
     w.adj[a].push(l);
     w.adj[b].push(l);
   });
-  for (let i = 0; i < n; i++) {
-    const key = cellOf(w.x[i], w.y[i]);
-    const list = w.grid.get(key);
-    if (list) list.push(i);
-    else w.grid.set(key, [i]);
-  }
+  w.grid = gridOf(w.x, w.y, null);
+  w.story = { x: w.x.slice(), y: w.y.slice(), nameFrom: w.nameFrom, grid: w.grid, vis: null, planned: false };
   return w;
 }
 
@@ -167,9 +251,12 @@ export const across = (w: World, l: number, i: number): number => (w.la[l] === i
  * the best-connected down, a name shows from the first level at which its box is clear of the names before
  * it. `wide` is a name's width in pixels. A sealed entry is named only when it is opened.
  */
-export function planNames(w: World, wide: (i: number) => number): void {
+export function planNames(w: World, wide: (i: number) => number, at: Layout = w.story): void {
+  if (at.planned) return;
+  at.planned = true;
+  const { x: X, y: Y, nameFrom, vis } = at;
   const order = Array.from({ length: w.n }, (_, i) => i)
-    .filter((i) => !w.sealed[i])
+    .filter((i) => !w.sealed[i] && (!vis || vis[i]))
     .sort((a, b) => w.degree[b] - w.degree[a] || w.names[a].length - w.names[b].length || a - b);
   const width = Float32Array.from({ length: w.n }, (_, i) => (w.sealed[i] ? 0 : wide(i)));
   const placed: number[] = [];
@@ -178,7 +265,7 @@ export function planNames(w: World, wide: (i: number) => number): void {
     const cell = 140 / k;
     const pad = level < 3 ? 12 : 3;
     const taken = new Map<number, number[][]>();
-    const box = (i: number): number[] => [w.x[i] - pad / k, w.y[i] - (8 + pad) / k, w.x[i] + (width[i] + 10 + pad) / k, w.y[i] + (8 + pad) / k];
+    const box = (i: number): number[] => [X[i] - pad / k, Y[i] - (8 + pad) / k, X[i] + (width[i] + 10 + pad) / k, Y[i] + (8 + pad) / k];
     const cells = function* (b: number[]): Generator<number> {
       for (let cx = Math.floor(b[0] / cell); cx <= Math.floor(b[2] / cell); cx++) for (let cy = Math.floor(b[1] / cell); cy <= Math.floor(b[3] / cell); cy++) yield cx * 65536 + cy;
     };
@@ -197,11 +284,11 @@ export function planNames(w: World, wide: (i: number) => number): void {
     // far out, a few names say where things are; nearer, every name that fits
     let budget = level < 1.9 ? 40 : Infinity;
     for (const i of order) {
-      if (w.nameFrom[i] < Infinity || budget <= 0) continue;
+      if (nameFrom[i] < Infinity || budget <= 0) continue;
       const b = box(i);
       if (hit(b)) continue;
       put(b);
-      w.nameFrom[i] = level;
+      nameFrom[i] = level;
       placed.push(i);
       budget--;
     }

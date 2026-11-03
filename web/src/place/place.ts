@@ -5,15 +5,19 @@
 // nothing runs. The address is the stop (#/e/<id>, #/i/<story>, #/l/<link>/<from>, #/w/<a>/<b>/<step>), so
 // Back walks back. The words lie on the surface beside what they speak of, and travel and scale with it.
 // The list under the surface is its alternative for screen readers, so the canvas is aria-hidden.
+//
+// On the Map (/w/) a switch moves the same dots between their islands and the Earth, where each that has a place
+// of its own stands at it, over the land drawn as dots (ADR-0034). The arrangement is the query (?on=earth).
 import { sentence } from '../lib/claims';
 import { loadDetails, loadWaysIndex } from '../lib/data';
 import { el } from '../lib/dom';
 import { fuzzySearch } from '../lib/fuzzy';
 import { findPaths } from '../lib/paths';
+import { loadField, NEAREST } from '../lib/dotfield';
 import { candidates } from '../lib/search';
 import type { SearchEntry } from '../lib/types';
 import { around, clamp, ease, fit, moveTime, smooth, straight, type Cam, type Rect } from './camera';
-import { across, dotNear, K0, loadWorld, planNames, type World } from './model';
+import { across, dotNear, earthAt, earthLayout, K0, loadWorld, planNames, squareAt, type Layout, type World } from './model';
 import { Painter, type Box, type Look, type Scene } from './paint';
 import { entryHref, entryWords, fillEntry, isleWords, lineHref, lineWords, stepWords, wayHref, wayWords } from './words';
 
@@ -24,6 +28,8 @@ const COLUMN = 400;
 const PHONE = 760;
 /** How long words take to fade when the camera leaves them, in milliseconds. */
 const FADE = 260;
+/** How long the dots take to move between their islands and the Earth, in milliseconds. */
+const MORPH = 1100;
 
 /** Words pinned to the surface: where their top left lies on the map, and the nearness they read at. */
 interface Block {
@@ -67,7 +73,14 @@ class CtdPlace extends HTMLElement {
   private cam: Cam = { x: 0, y: 0, k: K0 };
   private far: Cam = { x: 0, y: 0, k: K0 };
   private kMin = K0 / 2;
-  private look: Look = { scene: null, dim: 0, hover: -1, hot: -1, isle: -1, drawn: 1, moving: false, avoid: null };
+  private look: Look = { scene: null, dim: 0, hover: -1, hot: -1, isle: -1, drawn: 1, moving: false, avoid: null, earth: 0, morph: false };
+  /** The dots stand on the Earth, not on their islands. */
+  private onEarth = false;
+  private morph: { from: [Float32Array, Float32Array]; to: Layout; t0: number } | null = null;
+  private switches: HTMLButtonElement[] = [];
+  private landing: Promise<void> | null = null;
+  /** A name's width in pixels, as the names are planned. */
+  private wide: (i: number) => number = () => 0;
   private flight: Flight | null = null;
   private blocks: Block[] = [];
   private W = 0;
@@ -91,6 +104,7 @@ class CtdPlace extends HTMLElement {
 
   connectedCallback(): void {
     this.hello = this.querySelector<HTMLElement>('.place-hello')!;
+    this.switches = [...this.querySelectorAll<HTMLButtonElement>('.place-switch button')];
     this.canvas.setAttribute('aria-hidden', 'true');
     this.out.type = 'button';
     this.out.setAttribute('aria-label', 'Zoom out');
@@ -127,6 +141,15 @@ class CtdPlace extends HTMLElement {
       location.hash = entryHref(this.w, i);
     });
     addEventListener('hashchange', () => this.apply(false));
+    const measure = document.createElement('canvas').getContext('2d')!;
+    measure.font = '600 12px "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif';
+    this.wide = (i) => measure.measureText(w.names[i].length > 30 ? w.names[i].slice(0, 29) + '…' : w.names[i]).width;
+    // the old Map's addresses: ?focus=<id> is the entry, ?view=earth the Earth
+    const q = new URLSearchParams(location.search);
+    const focus = q.get('focus');
+    if (focus && !location.hash && w.byId.has(focus)) history.replaceState(null, '', `${location.pathname}${location.search}#/e/${encodeURIComponent(focus)}`);
+    for (const b of this.switches) b.addEventListener('click', () => this.arrange(b.dataset.on === 'earth'));
+    if (this.switches.length && (q.get('on') === 'earth' || q.get('view') === 'earth')) this.arrange(true, true);
     this.apply(true);
     let resized = 0;
     new ResizeObserver(() => {
@@ -145,9 +168,7 @@ class CtdPlace extends HTMLElement {
     // nearness, and the picture a move far out draws
     const later = 'requestIdleCallback' in window ? (run: () => void) => requestIdleCallback(run, { timeout: 2000 }) : (run: () => void) => setTimeout(run, 300);
     later(() => {
-      const measure = document.createElement('canvas').getContext('2d')!;
-      measure.font = '600 12px "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif';
-      planNames(w, (i) => measure.measureText(w.names[i].length > 30 ? w.names[i].slice(0, 29) + '…' : w.names[i]).width);
+      planNames(w, this.wide, this.onEarth ? w.earth! : w.story);
       this.kick();
       later(() => this.painter.prepare());
     });
@@ -174,6 +195,66 @@ class CtdPlace extends HTMLElement {
     return { x: w.w / 2 - spare / k, y: w.h / 2, k };
   }
 
+  // ---- the two arrangements -------------------------------------------------------------------------------
+
+  /** Moves the dots to the Earth, or back to their islands; once they land, the stop in the address is opened
+   *  again where they now stand. */
+  private arrange(earth: boolean, cut = false): void {
+    if (earth === this.onEarth || this.morph) return;
+    const { w } = this;
+    const to = earth ? (w.earth ??= earthLayout(w)) : w.story;
+    planNames(w, this.wide, to);
+    if (earth) this.landing ??= loadField().then((f) => (this.painter.setLand(f, (mx, my) => earthAt(w, mx, my), (x, y) => squareAt(w, x, y)), this.kick()), () => undefined);
+    this.onEarth = earth;
+    // while they move, what the Earth draws is all that stays bright
+    this.painter.going = earth ? to.vis : w.vis;
+    w.vis = null;
+    for (const b of this.switches) b.setAttribute('aria-pressed', String((b.dataset.on === 'earth') === earth));
+    const url = new URL(location.href);
+    if (earth) url.searchParams.set('on', 'earth');
+    else url.searchParams.delete('on');
+    url.searchParams.delete('view');
+    url.searchParams.delete('focus');
+    history.replaceState(history.state, '', url);
+    if (cut || REDUCE.matches) return this.settle(to, cut);
+    this.retire();
+    this.morph = { from: [w.x.slice(), w.y.slice()], to, t0: performance.now() };
+    this.look.morph = true;
+    this.kick();
+  }
+
+  private settle(to: Layout, first = false): void {
+    const { w } = this;
+    w.x.set(to.x);
+    w.y.set(to.y);
+    w.nameFrom = to.nameFrom;
+    w.grid = to.grid;
+    w.vis = to.vis;
+    this.painter.going = null;
+    this.painter.moved();
+    this.morph = null;
+    this.look.morph = false;
+    this.look.earth = this.onEarth ? 1 : 0;
+    if (!first) this.apply(false);
+    this.kick();
+  }
+
+  /** The nearest the camera comes: on the Earth, a country's view, past which the land's dots are few and
+   *  far apart (as on Read and Ask); on the islands, a single dot's neighbourhood. */
+  private kMax(): number {
+    return this.onEarth ? (512 * 2 ** NEAREST) / this.w.w : K0 * 2 ** 7;
+  }
+
+  /** A stop's nearest view, as near as this arrangement lets the camera come. */
+  private near(k: number): number {
+    return Math.min(k, this.kMax());
+  }
+
+  /** Not drawn in this arrangement (on the Earth: what has no place of its own). */
+  private offEarth(i: number | undefined): boolean {
+    return i !== undefined && !!this.w.vis && !this.w.vis[i];
+  }
+
   // ---- the frame ------------------------------------------------------------------------------------------
 
   private kick(): void {
@@ -183,6 +264,19 @@ class CtdPlace extends HTMLElement {
   private tick(now: number): void {
     this.raf = 0;
     let more = false;
+    const m = this.morph;
+    if (m) {
+      const t = clamp((now - m.t0) / MORPH, 0, 1);
+      const e = ease(t);
+      const { w } = this;
+      for (let i = 0; i < w.n; i++) {
+        w.x[i] = m.from[0][i] + (m.to.x[i] - m.from[0][i]) * e;
+        w.y[i] = m.from[1][i] + (m.to.y[i] - m.from[1][i]) * e;
+      }
+      this.look.earth = this.onEarth ? e : 1 - e;
+      if (t >= 1) this.settle(m.to);
+      more = true;
+    }
     const f = this.flight;
     if (f) {
       const t = clamp((now - f.t0) / f.ms, 0, 1);
@@ -227,7 +321,8 @@ class CtdPlace extends HTMLElement {
     this.out.hidden = !zoomed;
   }
 
-  private fly(to: Cam, dim: number, cut: boolean, done?: () => void): void {
+  private fly(target: Cam, dim: number, cut: boolean, done?: () => void): void {
+    const to = { ...target, k: Math.min(target.k, this.kMax()) };
     if (cut || REDUCE.matches) {
       Object.assign(this.cam, to);
       this.look.dim = dim;
@@ -328,6 +423,9 @@ class CtdPlace extends HTMLElement {
     const [kind, a = '', b = '', c = ''] = hash.slice(2).split('/').map(part);
     const { w } = this;
     const [i, j] = [w.byId.get(a), w.byId.get(b)];
+    // on the Earth, what has no place there, and a way, which passes through people, go back to the islands
+    const line = kind === 'l' ? w.linkById.get(a) : undefined;
+    if (this.onEarth && ((kind === 'e' && this.offEarth(i)) || (line !== undefined && (this.offEarth(w.la[line]) || this.offEarth(w.lb[line]))) || kind === 'w')) return this.arrange(false);
     if (kind === 'e' && i !== undefined) return this.openEntry(i, cut);
     if (kind === 'i' && w.isleById.has(a)) return this.openIsle(w.isleById.get(a)!, cut);
     if (kind === 'l' && w.linkById.has(a)) return void this.openLine(w.linkById.get(a)!, j ?? -1, cut);
@@ -356,11 +454,14 @@ class CtdPlace extends HTMLElement {
     const pos = this.wordsAt(b.el.offsetHeight);
     const free = this.freeBeside(pos.y);
     const r = isle.r * 1.3;
-    const cam = fit([[isle.x - r, isle.y - r], [isle.x + r, isle.y + r]], free, this.W, this.H, this.kMin, K0 * 12, 8);
+    // on the Earth an island is where its places are
+    const there = w.vis ? isle.named.filter((i) => w.vis![i]).map((i): [number, number] => [w.x[i], w.y[i]]) : [];
+    if (w.vis && !there.length) return this.arrange(false);
+    const cam = w.vis ? fit(there, free, this.W, this.H, this.kMin, this.near(K0 * 12), 40) : fit([[isle.x - r, isle.y - r], [isle.x + r, isle.y + r]], free, this.W, this.H, this.kMin, K0 * 12, 8);
     this.pin(b, pos.x, pos.y, cam);
-    const focus = new Map<number, number>(isle.named.map((i) => [i, w.degree[i]]));
+    const focus = new Map<number, number>(isle.named.filter((i) => !this.offEarth(i)).map((i) => [i, w.degree[i]]));
     this.look.drawn = 1;
-    this.show({ kind: 'island', isle: s, cam, free, dot: -1, focus, lines: [], hot: -1, word: '', path: null, trail: isle.road, pins: false, dim: 0.35, parent: '#/' }, cut);
+    this.show({ kind: 'island', isle: s, cam, free, dot: -1, focus, lines: [], hot: -1, word: '', path: null, trail: w.vis ? null : isle.road, pins: false, dim: 0.35, parent: '#/' }, cut);
   }
 
   private openEntry(i: number, cut: boolean): void {
@@ -373,16 +474,18 @@ class CtdPlace extends HTMLElement {
     const free = this.freeBeside(pos.y);
     // the entry in the middle of the picture, near enough that its nearest neighbours are in it too; the
     // others are named where their line leaves it
-    const ends = [...new Set(w.adj[i].map((l) => across(w, l, i)))];
+    // on the Earth, its links to what has a place there
+    const lines = w.adj[i].filter((l) => !this.offEarth(across(w, l, i)));
+    const ends = [...new Set(lines.map((l) => across(w, l, i)))];
     const dist = ends.map((o) => Math.hypot(w.x[o] - w.x[i], w.y[o] - w.y[i])).sort((p, q) => p - q);
-    const cam = around(w.x[i], w.y[i], dist[Math.min(dist.length, 10) - 1] ?? 0, free, this.W, this.H, K0 * 4, K0 * 22, 40);
+    const cam = around(w.x[i], w.y[i], dist[Math.min(dist.length, 10) - 1] ?? 0, free, this.W, this.H, K0 * 4, this.near(K0 * 22), 40);
     this.pin(b, pos.x, pos.y, cam);
     // a sealed neighbour is named last, if there is room: its tie is in the words, with its caveat
     const focus = new Map<number, number>(ends.map((o) => [o, w.sealed[o] ? -1 : w.degree[o]]));
     focus.set(i, Infinity);
-    const parent = w.home[i] >= 0 ? `#/i/${encodeURIComponent(w.isles[w.home[i]].id)}` : '#/';
+    const parent = w.home[i] >= 0 && !w.vis ? `#/i/${encodeURIComponent(w.isles[w.home[i]].id)}` : '#/';
     this.look.drawn = 1;
-    this.show({ kind: 'entry', cam, free, dot: i, focus, lines: w.adj[i], hot: -1, word: '', path: null, trail: null, pins: true, dim: 1, parent }, cut);
+    this.show({ kind: 'entry', cam, free, dot: i, focus, lines, hot: -1, word: '', path: null, trail: null, pins: true, dim: 1, parent }, cut);
     const turn = this.turn;
     void loadDetails(w.idx, w.ids[i]).then((d) => turn === this.turn && fillEntry(b.el, d));
     this.wayField(b.el, i);
@@ -399,7 +502,7 @@ class CtdPlace extends HTMLElement {
     const block = this.addBlock('<p class="place-say">&nbsp;</p>', 'place-line');
     const pos = this.wordsAt(this.phone ? this.H * 0.55 : 0);
     const free = this.freeBeside(pos.y);
-    const cam = fit([this.spot(a), this.spot(b)], free, this.W, this.H, K0 * 3, K0 * 40, this.phone ? 44 : 96);
+    const cam = fit([this.spot(a), this.spot(b)], free, this.W, this.H, K0 * 3, this.near(K0 * 40), this.phone ? 44 : 96);
     this.pin(block, pos.x, pos.y, cam);
     const parent = step ? wayHref(w, step.a, step.b) : entryHref(w, side);
     this.look.drawn = 1;
@@ -433,7 +536,7 @@ class CtdPlace extends HTMLElement {
     const pos = this.wordsAt(block.el.offsetHeight);
     const free = this.freeBeside(pos.y);
     const ends = way.nodes ?? [a, b];
-    const cam = fit(ends.map((i) => this.spot(i)), free, this.W, this.H, this.kMin, K0 * 9, 50);
+    const cam = fit(ends.map((i) => this.spot(i)), free, this.W, this.H, this.kMin, this.near(K0 * 9), 50);
     this.pin(block, pos.x, pos.y, cam);
     const focus = new Map<number, number>(ends.map((i) => [i, w.degree[i] + 1e5]));
     for (const i of [a, b]) focus.set(i, Infinity);
@@ -542,7 +645,7 @@ class CtdPlace extends HTMLElement {
     this.hand = performance.now();
     this.flight = null;
     const a = this.toMap(x, y);
-    this.cam.k = clamp(this.cam.k * f, this.kMin, K0 * 2 ** 7);
+    this.cam.k = clamp(this.cam.k * f, this.kMin, this.kMax());
     const b = this.toMap(x, y);
     this.cam.x += a.x - b.x;
     this.cam.y += a.y - b.y;
@@ -590,7 +693,7 @@ class CtdPlace extends HTMLElement {
     if (line >= 0) return void (location.hash = lineHref(w, line, scene!.dot >= 0 ? scene!.dot : w.la[line]));
     if (twice) {
       const m = this.toMap(x, y);
-      const k = clamp(this.cam.k * 2, this.kMin, K0 * 2 ** 7);
+      const k = clamp(this.cam.k * 2, this.kMin, this.kMax());
       return this.fly({ x: m.x + (this.W / 2 - x) / k, y: m.y + (this.H / 2 - y) / k, k }, this.look.dim, false);
     }
     if (scene) return void (location.hash = scene.parent);
@@ -713,7 +816,9 @@ class CtdPlace extends HTMLElement {
     // a drag that ends on a link is not a click on it
     this.addEventListener('click', (e) => swallow && (e.preventDefault(), e.stopPropagation()), true);
     // a pinch (or Ctrl and the wheel) zooms and a sideways swipe pans; an ordinary wheel scrolls the
-    // page past the picture, so that nobody is caught in it on the way to the list below
+    // page past the picture, so that nobody is caught in it on the way to the list below. On the Map, which
+    // is all there is on its page, the wheel zooms as on any map.
+    const map = this.dataset.wheel === 'zoom';
     this.addEventListener(
       'wheel',
       (e) => {
@@ -722,7 +827,7 @@ class CtdPlace extends HTMLElement {
         const [x, y] = local(e);
         const step = e.deltaMode === 1 ? 18 : 1;
         const [dx, dy] = [e.deltaX * step, e.deltaY * step];
-        if (e.ctrlKey) {
+        if (e.ctrlKey || (map && !(e.target as Element).closest?.('.place-words') && Math.abs(dy) >= Math.abs(dx))) {
           e.preventDefault();
           return this.zoomAt(x, y, Math.exp(-dy * 0.011));
         }
@@ -742,8 +847,8 @@ class CtdPlace extends HTMLElement {
       const keys: Record<string, () => void> = {
         Escape: () => this.zoomOut(),
         '-': () => this.zoomOut(),
-        '+': () => this.fly({ ...this.cam, k: Math.min(this.cam.k * 2, K0 * 2 ** 7) }, this.look.dim, false),
-        '=': () => this.fly({ ...this.cam, k: Math.min(this.cam.k * 2, K0 * 2 ** 7) }, this.look.dim, false),
+        '+': () => this.fly({ ...this.cam, k: this.cam.k * 2 }, this.look.dim, false),
+        '=': () => this.fly({ ...this.cam, k: this.cam.k * 2 }, this.look.dim, false),
         ArrowLeft: () => this.panBy(90, 0),
         ArrowRight: () => this.panBy(-90, 0),
         ArrowUp: () => this.panBy(0, 90),

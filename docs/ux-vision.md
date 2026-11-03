@@ -13,7 +13,7 @@ The header on every page holds the mark and one box. Type a name, two names, a y
 | What an answer leads to | What it is |
 |---|---|
 | **Stories** | Every answer can be read as a story, a column of words over the dots where it happens. The Stories page draws them as islands of dots, with a plain list beside it. Any name in a story is a door to that entry. |
-| **The Map** | The eagle view: one continuous zoom from planet to a single dot and its links. |
+| **The Map** | The whole record as one surface: every story an island, every entry a dot. Pick one and its links draw in ink while the rest steps back; "On Earth" moves whatever has a place to it ([ADR-0034](decisions/0034-one-map.md)). |
 | **Ask** (`/ask/`) | Any name, two names, a year or a question. For two names: a direct tie first, with its caveat, then the way between them, stop by stop, with the proof for every link. |
 
 Each job has one view ([ADR-0031](decisions/0031-fewer-views.md)): Explore, Connect and the route stories are gone, and their old addresses forward to Ask or Stories. The header holds the box and two plain links: Stories and Map. The footer adds Ask and About. Home opens on Ask and Stories, shows the Map beside the thread, and lists every way in.

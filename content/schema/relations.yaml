@@ -16,6 +16,8 @@
 #   noun        the label is not a verb (a title, a noun or a participle: "CEO of", "born in"), so a
 #               sentence puts it after a comma: "Mike Markkula, CEO of Apple"
 #   background  shown in a person's "Background" card: born in, citizen of, educated at (ADR-0016)
+#   locates     says where its subject is (headquartered in, located in): on the Map's Earth, a subject with
+#               no coordinates of its own stands at that place. Never on a relation into a person (ADR-0034)
 #   inverse_reads how the inverse joins a sentence: after a comma by default ("Apple, founded by Steve
 #               Jobs"); `verb` ("includes", "caused"); or `list`, a plural that names the others ("Apple,
 #               board members: Mike Markkula and Arthur Rock")
@@ -186,13 +188,13 @@ identified_with:
 born_in:
   {label: born in, inverse: birthplace of, from: [person], to: [place], layers: [places], traversable: false, noun: true, background: true}
 located_in:
-  {label: located in, inverse: location of, from: [place, event, org, artifact], to: [place], layers: [places], traversable: false, noun: true}
+  {label: located in, inverse: location of, from: [place, event, org, artifact], to: [place], layers: [places], traversable: false, noun: true, locates: true}
 headquartered_in:
-  {label: headquartered in, inverse: headquarters of, from: [org], to: [place], layers: [places], traversable: false, noun: true}
+  {label: headquartered in, inverse: headquarters of, from: [org], to: [place], layers: [places], traversable: false, noun: true, locates: true}
 # Where a work was written or put together, as a source says: a place can finally list the works that came
 # from it. Not a route step: two works from one town are not thereby connected.
 written_at:
-  {label: written at, inverse: works written here, from: [work], to: [place], layers: [places, ideas], temporal: true, traversable: false, noun: true, inverse_reads: list}
+  {label: written at, inverse: works written here, from: [work], to: [place], layers: [places, ideas], temporal: true, traversable: false, noun: true, inverse_reads: list, locates: true}
 
 # --- meta -------------------------------------------------------------------
 distinct_from:

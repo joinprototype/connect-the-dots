@@ -82,6 +82,10 @@ pub struct Relation {
     pub traversable: bool,
     #[serde(default)]
     pub passive: bool,
+    /// The link says where its subject is (headquartered in, located in): the Map's Earth stands the subject
+    /// at that place when it has no coordinates of its own (ADR-0034).
+    #[serde(default)]
+    pub locates: bool,
     #[serde(default)]
     pub sensitive: bool,
     /// A claim of this relation marks its entry as a tale the record does not support: no route may

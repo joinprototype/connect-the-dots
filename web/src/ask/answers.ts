@@ -665,9 +665,7 @@ function yearAnswer(rec: Record, y: number, picks: [string, string][]): Answer {
     return li;
   });
   body.push(...section(`Links dated ${label}`, rows, 20));
-  const map = el('p', 'ask-actions');
-  map.append(link(`${label} on the Map`, `/w/?t=${y}`, 'button'));
-  body.push(map, ...next([[formatYearNumber(y + 1), addressOf({ kind: 'year', year: y + 1 })] as [string, string], ...picks].slice(0, 3)));
+  body.push(...next([[formatYearNumber(y + 1), addressOf({ kind: 'year', year: y + 1 })] as [string, string], ...picks].slice(0, 3)));
   const ends = links.flatMap((e) => [idx.nodes.get(e.from)!, idx.nodes.get(e.to)!]);
   return { parts: [[label, '', '']], body, scene: worldOf(rec, null, [...hit, ...ends], inked(rec), label) };
 }

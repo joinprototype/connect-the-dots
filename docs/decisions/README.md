@@ -34,6 +34,7 @@ One short file per decision: context, decision, consequences, and when to revisi
 | [0030](0030-three-pages-whole.md) | Ask, Stories and Read, each whole: the three prototypes as three ways in | accepted, amended by 0031 |
 | [0031](0031-fewer-views.md) | Fewer views: one for each job; Read is every story's page, Ask answers every pair, Explore and Connect are gone | accepted |
 | [0032](0032-one-look.md) | One look, everywhere: black on white in every mode, black only as ink, the header keeps its place | accepted |
-| [0033](0033-the-map-draws-the-record.md) | The Map draws the record: open data leaves the Map, and stays in search, on its pages and as the land behind Read and Ask | accepted |
+| [0033](0033-the-map-draws-the-record.md) | The Map draws the record: open data leaves the Map, and stays in search, on its pages and as the land behind Read and Ask | accepted, amended by 0034 |
+| [0034](0034-one-map.md) | One map: the Stories surface over the whole window, and "On Earth" as a second arrangement of the same dots | accepted |
 | [0022](0022-dots-and-lines.md) | Dots and lines: print inks with a job, each story its own ink, Bricolage Grotesque and Literata, stories on white | accepted |
 | [0021](0021-the-world-of-an-era.md) | The Map's era slider draws the world of that year: 30 years from 3000 BCE to 1990, in one grey; the basemap after that | accepted |

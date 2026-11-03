@@ -2,6 +2,7 @@
 // what the reader came to see in ink, then the names. Nothing here keeps time; place.ts asks for a frame only
 // while the camera moves, so at rest nothing runs.
 import { clamp, smooth, type Cam, type Rect } from './camera';
+import { cellsIn, type Field } from '../lib/dotfield';
 import { K0, type World } from './model';
 
 /** What the camera came to see: one stop on the surface. */
@@ -49,6 +50,10 @@ export interface Look {
   moving: boolean;
   /** A card over the picture, in its pixels: no island is named under it. */
   avoid: Box | null;
+  /** How far the dots stand on the Earth instead of on their islands, 0 to 1. */
+  earth: number;
+  /** The dots are moving between arrangements: no names until they land. */
+  morph: boolean;
 }
 
 interface Tokens {
@@ -75,6 +80,8 @@ const HERE = '700 14px "Bricolage Grotesque", ui-sans-serif, system-ui, sans-ser
 const WORD = 'italic 400 16px Literata, Georgia, serif';
 /** The largest an island's name is set, in pixels. */
 const TITLE = 20;
+/** The land's pixels per map unit: about one pixel a point at the whole map's nearness. */
+const LAND = 0.3;
 
 const inside = (b: Box, x: number, y: number): boolean => x >= b[0] && x <= b[2] && y >= b[1] && y <= b[3];
 const clear = (placed: Box[], b: Box): boolean => !placed.some((o) => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]);
@@ -87,7 +94,15 @@ export class Painter {
   private radius: Float32Array;
   private tok: Tokens = { paper: '#fff', ink: '#000', land: '#efefef', line: '#c4c4c4', road: '#cfcfcf' };
   private sprites = new Map<number, Sprite>();
+  /** While the dots leave for the Earth: which of them it will draw. */
+  going: Uint8Array | null = null;
   private picture: HTMLCanvasElement | null = null;
+  /** The Earth's land as dots (data/field.bin), drawn once at LAND pixels per map unit; nearer, the dots
+   *  themselves, from `field`. `at` and `square` turn the field's square into the map and back. */
+  private land: HTMLCanvasElement | null = null;
+  private field: Field | null = null;
+  private at: ((mx: number, my: number) => [number, number] | null) | null = null;
+  private square: ((x: number, y: number) => [number, number]) | null = null;
   private scale = 1;
   private far = K0;
   private W = 0;
@@ -131,6 +146,39 @@ export class Painter {
    *  when the page has a moment, or the first move paints it. */
   prepare(): void {
     this.picture ??= this.paintPicture();
+  }
+
+  /** The dots moved to another arrangement: the moving picture is painted again when it is next needed. */
+  moved(): void {
+    this.picture = null;
+  }
+
+  /** The Earth's land: every dot of the field (the Web Mercator square), at its place on the map. */
+  setLand(field: Field, at: (mx: number, my: number) => [number, number] | null, square: (x: number, y: number) => [number, number]): void {
+    const { w } = this;
+    const { xs, ys } = field;
+    [this.field, this.at, this.square] = [field, at, square];
+    const pic = document.createElement('canvas');
+    [pic.width, pic.height] = [Math.ceil(w.w * LAND), Math.ceil(w.h * LAND)];
+    const c = pic.getContext('2d')!;
+    const img = c.createImageData(pic.width, pic.height);
+    const px = new Uint32Array(img.data.buffer);
+    // the more things a pixel holds, the darker its grey, so that the land shows itself where things are dense
+    const count = new Uint16Array(pic.width * pic.height);
+    for (let j = 0; j < xs.length; j++) {
+      const p = at(xs[j], ys[j]);
+      if (!p) continue;
+      const [x, y] = [Math.floor(p[0] * LAND), Math.floor(p[1] * LAND)];
+      if (x >= 0 && y >= 0 && x < pic.width && y < pic.height) count[y * pic.width + x]++;
+    }
+    for (let q = 0; q < count.length; q++) {
+      if (!count[q]) continue;
+      const v = Math.max(150, 222 - 12 * count[q]);
+      // little-endian: alpha, blue, green, red
+      px[q] = 0xff000000 | (v << 16) | (v << 8) | v;
+    }
+    c.putImageData(img, 0, 0);
+    this.land = pic;
   }
 
   private paintPicture(): HTMLCanvasElement {
@@ -195,9 +243,23 @@ export class Painter {
     const rest = 1 - dim * (scene?.kind === 'line' ? 0.92 : 0.84);
     const grow = 1 + clamp(L, 0, 6) * 0.42;
     const seen = (x: number, y: number, m: number): boolean => x > -m && x < W + m && y > -m && y < H + m;
+    // on the Earth the islands step away, and so do the dots that have no place there
+    const e = look.earth;
+    const isles = 1 - e;
+    const vis = w.vis ?? this.going;
+    const shown = (i: number): boolean => !vis || vis[i] === 1;
+
+    if (e > 0.01 && this.land) {
+      if (k > LAND * 1.6) this.landDots(cam, e);
+      else {
+        c.globalAlpha = e;
+        c.imageSmoothingEnabled = true;
+        c.drawImage(this.land, W / 2 - cam.x * k, H / 2 - cam.y * k, w.w * k, w.h * k);
+      }
+    }
 
     // the lines between islands, far out: each island's strongest, across the water and under the land
-    const seaA = (1 - smooth(1.2, 2.3, L)) * rest;
+    const seaA = (1 - smooth(1.2, 2.3, L)) * rest * isles;
     if (seaA > 0.01) {
       c.strokeStyle = this.tok.line;
       for (const [a, b, strength, atRest] of w.bridges) {
@@ -213,7 +275,7 @@ export class Painter {
       }
     }
 
-    if (look.moving && L < 1) {
+    if (look.moving && L < 1 && e === 0) {
       const [s, pic] = [this.scale, (this.picture ??= this.paintPicture())];
       c.globalAlpha = rest;
       c.imageSmoothingEnabled = true;
@@ -222,7 +284,7 @@ export class Painter {
     } else {
       // land: a disc around every dot on an island, filled as one
       const coast = w.coast * k;
-      c.globalAlpha = Math.max(0.4, rest);
+      c.globalAlpha = Math.max(0.4, rest) * isles;
       c.fillStyle = this.tok.land;
       c.beginPath();
       for (const isle of w.isles) {
@@ -233,11 +295,11 @@ export class Painter {
         }
       }
       c.fill();
-      this.trail(look, k, rest);
+      if (isles > 0.01) this.trail(look, k, rest * isles);
       // links on one island always; the rest as one comes nearer
       c.strokeStyle = this.tok.line;
       c.lineWidth = L > 3 ? 0.9 : 0.6;
-      c.globalAlpha = (0.55 + 0.45 * smooth(1, 3, L)) * rest;
+      c.globalAlpha = (0.55 + 0.45 * smooth(1, 3, L)) * rest * isles;
       c.beginPath();
       const far = smooth(1.8, 3, L) * 0.18;
       const across: number[] = [];
@@ -260,18 +322,22 @@ export class Painter {
         }
         c.stroke();
       }
-      c.globalAlpha = rest;
-      w.kinds.forEach((kind, t) => {
-        c.fillStyle = kind.ink;
-        c.beginPath();
-        for (let i = 0; i < w.n; i++) {
-          if (w.kind[i] !== t || !seen(sx[i], sy[i], 12)) continue;
-          const r = this.radius[i] * grow;
-          c.moveTo(sx[i] + r, sy[i]);
-          c.arc(sx[i], sy[i], r, 0, TAU);
-        }
-        c.fill();
-      });
+      // the dots: those the arrangement draws, then those leaving it, fading
+      for (const [alpha, here] of [[rest, true], [rest * isles, false]] as const) {
+        if (alpha < 0.01 || (!here && !vis)) continue;
+        c.globalAlpha = alpha;
+        w.kinds.forEach((kind, t) => {
+          c.fillStyle = kind.ink;
+          c.beginPath();
+          for (let i = 0; i < w.n; i++) {
+            if (w.kind[i] !== t || shown(i) !== here || !seen(sx[i], sy[i], 12)) continue;
+            const r = this.radius[i] * grow;
+            c.moveTo(sx[i] + r, sy[i]);
+            c.arc(sx[i], sy[i], r, 0, TAU);
+          }
+          c.fill();
+        });
+      }
     }
 
     // what the camera came to see, in ink
@@ -290,13 +356,45 @@ export class Painter {
     c.textBaseline = 'alphabetic';
     c.lineJoin = 'round';
     // an island stays named over its own stop; elsewhere the names step back with the rest
-    this.islandNames(cam, L, !scene ? 1 : scene.kind === 'island' ? Math.max(rest, 0.25) : rest * 0.6, look);
-    this.dotNames(L, dim, look, grow);
+    if (isles > 0.01) this.islandNames(cam, L, (!scene ? 1 : scene.kind === 'island' ? Math.max(rest, 0.25) : rest * 0.6) * isles, look);
+    else this.titles.length = 0;
+    if (!look.morph) this.dotNames(L, dim, look, grow);
     this.pins.length = 0;
     if (scene) this.focusNames(scene, look, near, grow);
     else if (look.hover >= 0) this.focusNames(null, look, 1, grow);
     if (scene?.kind === 'line' && scene.hot >= 0) this.word(scene, near);
     c.globalAlpha = 1;
+  }
+
+  /** Near in, the land as its own dots, those in view only: a dense place reads by its many dots. */
+  private landDots(cam: Cam, alpha: number): void {
+    const { c, W, H } = this;
+    const [field, at, square] = [this.field!, this.at!, this.square!];
+    const k = cam.k;
+    const [x0, y0] = square(cam.x - W / 2 / k, cam.y - H / 2 / k);
+    const [x1, y1] = square(cam.x + W / 2 / k, cam.y + H / 2 / k);
+    const ranges: [number, number][] = [];
+    let total = 0;
+    cellsIn(field, x0, x1, y0, y1, (start, end) => {
+      ranges.push([start, end]);
+      total += end - start;
+    });
+    // a frame draws about as many as a frame can: in a dense place, every second or third looks the same
+    const stride = Math.max(1, Math.ceil(total / 40000));
+    const size = Math.min(2.2, 0.9 + k * 0.4);
+    c.globalAlpha = alpha * 0.85;
+    c.fillStyle = this.tok.line;
+    c.beginPath();
+    for (const [start, end] of ranges) {
+      for (let i = start; i < end; i += stride) {
+        const p = at(field.xs[i], field.ys[i]);
+        if (!p) continue;
+        const [px, py] = [W / 2 + (p[0] - cam.x) * k, H / 2 + (p[1] - cam.y) * k];
+        if (px < -2 || py < -2 || px > W || py > H) continue;
+        c.rect(px, py, size, size);
+      }
+    }
+    c.fill();
   }
 
   /** A link whose ends are both off the stage may still cross it. */
@@ -466,7 +564,7 @@ export class Painter {
       c.globalAlpha = smooth(0, 0.3, d) * base;
       const [x, y, name] = [sx[i] + this.radius[i] * grow + 4, sy[i] + 4, short(w.names[i])];
       if (!look.moving) {
-        c.strokeStyle = w.home[i] >= 0 ? this.tok.land : this.tok.paper;
+        c.strokeStyle = w.home[i] >= 0 && !w.vis ? this.tok.land : this.tok.paper;
         c.strokeText(name, x, y);
       }
       c.fillStyle = this.tok.ink;
@@ -516,7 +614,7 @@ export class Painter {
         placed.push(b);
         named++;
         if (!here) this.pins.push({ box: b, dot: i });
-        c.strokeStyle = w.home[i] >= 0 ? this.tok.land : this.tok.paper;
+        c.strokeStyle = w.home[i] >= 0 && !w.vis ? this.tok.land : this.tok.paper;
         c.strokeText(name, tx, ty);
         c.fillStyle = this.tok.ink;
         c.fillText(name, tx, ty);

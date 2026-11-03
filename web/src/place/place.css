@@ -16,6 +16,12 @@
 .place-hello { transition: opacity 0.2s, visibility 0.2s; }
 .place-hello.off { opacity: 0; visibility: hidden; }
 
+/* the Map's switch: the dots by story or on the Earth */
+.place-switch { position: absolute; z-index: 4; top: 12px; right: 66px; display: flex; margin: 0; padding: 3px; background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; }
+.place-switch button { min-height: 38px; padding: 0 14px; font: 500 0.95rem var(--font-ui); color: var(--ink); background: none; border: 0; border-radius: 7px; cursor: pointer; }
+.place-switch button[aria-pressed="true"] { background: var(--ink); color: var(--paper); font-weight: 600; }
+.place-switch button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
 /* the one control: back towards the whole map */
 .place-out {
   position: absolute; z-index: 4; top: 12px; right: 12px; width: 44px; height: 44px; padding: 0;

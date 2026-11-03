@@ -146,7 +146,7 @@ Builds are deterministic: a pinned toolchain, sorted output and fixed seeds. Any
 
 ## 8. The Map
 
-- **World view** (the Map, `/w/`): a deck.gl TileLayer over binary tiles built by Rust. Dots at every zoom, region names from the manifest. How a big map is shaped is in [ADR-0023](decisions/0023-the-atlas.md) point 10.
+- **The Map** (`/w/`): the Stories surface (`web/src/place/`) over the whole window, by story or on the Earth ([ADR-0034](decisions/0034-one-map.md)). Positions come settled from `data/islands.json`; the Earth's are computed in the browser from coordinates and locating links, over `data/field.bin`. The old deck.gl viewer (`web/src/world/`) and its tiles are still built, for the home page's picture, and no page loads the viewer.
 - Each job has one view ([ADR-0031](decisions/0031-fewer-views.md)): Stories to read, Ask to find how two things connect, the Map to look around. The React explorer and its walk ([ADR-0029](decisions/0029-the-walk.md)) are gone.
 
 | Budget | Desktop | Phone |

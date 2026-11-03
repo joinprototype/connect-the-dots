@@ -62,11 +62,11 @@ assert.equal(kind('IBM and IBM'), 'name', 'one name twice is one name');
 assert.equal(url('How is the Gutenberg Bible connected to SpaceX?'), '/ask/?a=gutenberg-bible&b=spacex');
 
 // a year
-assert.equal(url('1914'), '/w/?t=1914');
-assert.equal(url('What happened in 1962?'), '/w/?t=1962');
-assert.equal(url('in 476'), '/w/?t=476');
-assert.equal(url('450 BCE'), '/w/?t=-449');
-assert.equal(url('1915'), '/w/?t=1915', 'a year, though a story has that title');
+assert.equal(url('1914'), '/ask/?y=1914');
+assert.equal(url('What happened in 1962?'), '/ask/?y=1962');
+assert.equal(url('in 476'), '/ask/?y=476');
+assert.equal(url('450 BCE'), '/ask/?y=-449');
+assert.equal(url('1915'), '/ask/?y=1915', 'a year, though a story has that title');
 assert.equal(kind('2999'), 'unknown', 'not yet');
 assert.equal(kind('12'), 'unknown');
 
@@ -109,7 +109,7 @@ assert.equal(rows('Bill Gates and IB').rows[0].url, '/ask/?a=bill-gates&b=ibm');
 assert.equal(rows('how is the Gutenberg Bible connected to Spa').rows[0].label, 'Gutenberg Bible and SpaceX');
 assert.equal(rows('Who is behind Met').rows[0].url, '/q/behind/meta-platforms/');
 assert.equal(rows('1914').rows[0].label, '1914 on the Map');
-assert.deepEqual(rows('1915').rows.map((r) => r.url), ['/w/?t=1915', '/c/1915/'], 'and the story, second');
+assert.deepEqual(rows('1915').rows.map((r) => r.url), ['/ask/?y=1915', '/c/1915/'], 'and the story, second');
 assert.deepEqual(rows('Bill Gates and Spa').rows.map((r) => r.url), ['/ask/?a=bill-gates&b=spacex', '/ask/?a=bill-gates&b=Q5'], 'a name written by hand before an open-data title that the text happens to match');
 assert.equal(rows('450 BCE').rows[0].label, '450 BCE on the Map');
 assert.equal(rows('Bill Ga').rows[0].url, '/e/bill-gates/');
@@ -157,7 +157,7 @@ if (dist) {
   assert.equal(real('Who is behind Meta Platforms?').url, '/q/behind/meta-platforms/');
   assert.equal(real('Who is behind Facebook?').url, '/q/behind/meta-platforms/');
   assert.equal(real('Why did the dissolution of the Soviet Union happen?').url, '/q/why/dissolution-of-the-soviet-union/');
-  assert.equal(real('1914').url, '/w/?t=1914');
+  assert.equal(real('1914').url, '/ask/?y=1914');
   assert.equal(real('Douglas Adams').url, '/a/?q=Q42');
   assert.equal(real('Bank of America').kind, 'name');
   assert.equal(real('asdfgh qwerty').kind, 'unknown');

@@ -169,7 +169,7 @@ export function understand(text: string, lookup: Lookup, now = new Date().getFul
   const t = key(text);
   if (!t) return { kind: 'empty', url: '/c/' };
   const year = yearOf(t, now);
-  if (year !== null) return { kind: 'year', year, url: `/w/?t=${year}` };
+  if (year !== null) return { kind: 'year', year, url: `/ask/?y=${year}` };
   const page = lookup.pages.get(t);
   if (page) return { kind: 'name', entry: page, url: page.url };
   const found = findNames(text, lookup);

@@ -71,10 +71,8 @@ function render(root: HTMLElement, q: string, e: Entry, stories: Story[], go: (n
   if (e.d) words.append(el('p', 'atlas-summary', e.d));
   if (e.y) words.append(el('p', 'atlas-years', e.y));
   const actions = el('p', 'atlas-actions');
-  // the Map draws the record that has been read: open data is on the Earth only, where it has a place
+  // the Map draws only the record that has been read (ADR-0033)
   const links: [string, string, string][] = [['Connect to…', `/ask/?a=${q}`, 'button primary']];
-  if (e.p) links.push(['On the map', `/w/?focus=${q}`, 'button']);
-  if (e.c) links.push(['On the Earth', `/w/?view=earth&focus=${q}`, 'button']);
   for (const [text, href, cls] of links) {
     const a = el('a', cls, text) as HTMLAnchorElement;
     a.href = href;

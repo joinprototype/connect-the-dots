@@ -2,6 +2,12 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## Next
+
+- The Map is one picture of everything read: every story an island, every entry a dot. Pick a dot and its links draw while the rest steps back, with each link in words beside it.
+- "On Earth" moves whatever has a place onto the world: places, events, and companies where they are headquartered. People are never placed.
+- A year typed in the box opens Ask's answer for that year.
+
 ## 0.5.1 (2026-11-03)
 
 - One look on every page: black on white, whatever the system's dark mode says. Stories open on their title on white, covers and the footer are white, and nothing large is black any more.

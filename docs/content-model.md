@@ -191,6 +191,7 @@ founded:
   legal: false                # true = a step of a legal case (ADR-0018): must be sensitive and not traversable; claims need `when`
   dispute: false              # true = one side saying a finding is not shown (ADR-0019): must be attributed; see below
   caveat: null                # a plain sentence shown with records of this relation
+  locates: false              # true = it says where its subject is (located in, headquartered in): on the Map's Earth a subject with no coordinates stands at that place (ADR-0034)
 relative_of:
   {label: relative of, inverse: relative of, from: [person], to: [person], layers: [people], qualifiers: [role], sensitive: true, kinship: true}
 benefited_from:

@@ -20,6 +20,8 @@ interface TypeDef {
   plural: string;
   layer: string;
   color: string;
+  /** People and families: drawn at no place on the Earth (ADR-0016). */
+  family?: boolean;
 }
 
 interface RelationDef {
@@ -29,6 +31,8 @@ interface RelationDef {
   traversable: boolean;
   /** A plain sentence to show with links of this relation. */
   caveat?: string | null;
+  /** It says where its subject is: the Map's Earth stands the subject at its place. */
+  locates?: boolean;
   passive: boolean;
   sensitive: boolean;
   /** Family ties. A `role` qualifier ("mother") describes the claim's owner (`from`), not its target. */

@@ -146,6 +146,18 @@ function gather(code: number): number {
 /** A cell's place in `cells`: its column's and row's bits interleaved, as the top of a dot's code. */
 const CELL = Array.from({ length: GRID }, (_, i) => [0, 1, 2, 3, 4, 5].reduce((v, b) => v | (((i >> b) & 1) << (2 * b)), 0));
 
+/** Calls `each` with the start and end, in `xs` and `ys`, of every cell of the field that a box of the square
+ *  (0 to 1 each way) touches. */
+export function cellsIn(field: Pick<Field, 'cells'>, x0: number, x1: number, y0: number, y1: number, each: (start: number, end: number) => void): void {
+  const cell = (v: number) => Math.max(0, Math.min(GRID - 1, Math.floor(v * GRID)));
+  for (let row = cell(y0); row <= cell(y1); row++) {
+    for (let col = cell(x0); col <= cell(x1); col++) {
+      const m = CELL[col] | (CELL[row] << 1);
+      each(field.cells[m], field.cells[m + 1]);
+    }
+  }
+}
+
 /** A small hash of a dot's number, for where it sits inside its 65,536th. */
 function scatter(i: number): number {
   let h = Math.imul(i ^ (i >>> 15), 0x2c1b3c6d);
