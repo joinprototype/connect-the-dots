@@ -1,5 +1,5 @@
 ---
-uid: 01M6FB43H9GPY19YNHPWMFQY12
+uid: 01M6FCJQ8B3HN0JG3957VK8AC3
 id: pbm-market-shares-2025
 type: event
 name: "Pharmacy benefit manager market shares, 2025"

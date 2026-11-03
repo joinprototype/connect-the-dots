@@ -1,5 +1,5 @@
 ---
-uid: 01M6FB43G3XAXAKG6RW5RV6D2P
+uid: 01M6FCJQ86MM872J05TZ4C7NG1
 id: ftc-v-meta
 type: event
 name: "FTC v. Meta Platforms"

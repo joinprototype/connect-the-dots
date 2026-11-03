@@ -1,5 +1,5 @@
 ---
-uid: 01M6FB43HJC73MRSGZ33Q3HJKA
+uid: 01M6FCJQ8CT37M08A72REEJ0HF
 id: reiter-v-sonotone-1979
 type: event
 name: "Reiter v. Sonotone, 1979"

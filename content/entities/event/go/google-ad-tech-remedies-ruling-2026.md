@@ -1,5 +1,5 @@
 ---
-uid: 01M6FB43G4S8B7V0EGQBWGR6BZ
+uid: 01M6FCJQ86YDAGAE3CDTAVWE66
 id: google-ad-tech-remedies-ruling-2026
 type: event
 name: "Ruling on remedies in the Google ad tech case, 2 September 2026"

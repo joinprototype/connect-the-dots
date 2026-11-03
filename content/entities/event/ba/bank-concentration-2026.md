@@ -1,9 +1,9 @@
 ---
-uid: 01M6FB43F803QC9BM0W62RVXT0
+uid: 01M6FCJQ7Z00HZQ95E1SVHJ9MD
 id: bank-concentration-2026
 type: event
 name: "Bank assets at 30 June 2026"
-summary: "On 30 June 2026 the four largest of 4,213 FDIC-insured banks held about 40 percent of all their assets, by our sum of the FDIC’s list."
+summary: "On 30 June 2026 the four largest of 4,213 FDIC-insured banks held about 40 percent of all their assets, by our sum of the FDIC’s list. Another measure, five banks’ share, was 44.9 percent in 2008, 56.3 in 2015 and 49.7 in 2021."
 when: "2026-06-30"
 claims:
   - id: c1
@@ -24,6 +24,13 @@ claims:
     role: "source of the list: 4,213 active institutions"
     src:
       - {s: fdic-bankfind-2026-06-30-institutions, at: "meta", quote: "\"total\":4213"}
+  - id: c4
+    rel: involved
+    to: federal-reserve
+    role: "its St. Louis bank hosts a World Bank series: the five largest banks held 44.9% of assets in 2008, 56.3% in 2015 and 49.7% in 2021; a different measure from the FDIC sum"
+    src:
+      - {s: fred-world-bank-five-largest-banks-asset-share, at: "series", quote: "2015-01-01,56.345500000000001"}
+      - {s: fred-world-bank-five-largest-banks-asset-share, at: "series", quote: "2008-01-01,44.893709999999999"}
 ---
 
-Our sums, from the FDIC’s BankFind list of 30 October 2026 (data at 30 June 2026): all 4,213 institutions held $26.45 trillion in assets and $20.69 trillion in deposits. The four largest by assets (JPMorgan Chase Bank, Bank of America, Citibank, Wells Fargo Bank) held 40.2 percent of the assets and 38.9 percent of the deposits; the ten largest, 54.2 and 52.5 percent. These are banks, not holding companies.
+Our sums, from the FDIC’s BankFind list of 30 October 2026 (data at 30 June 2026): all 4,213 institutions held $26.45 trillion in assets and $20.69 trillion in deposits. The four largest by assets (JPMorgan Chase Bank, Bank of America, Citibank, Wells Fargo Bank) held 40.2 percent of the assets and 38.9 percent of the deposits; the ten largest, 54.2 and 52.5 percent. These are banks, not holding companies. The five-bank series is a different measure and not directly comparable.

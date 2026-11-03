@@ -1,5 +1,5 @@
 ---
-uid: 01M6FB43G0VHV8QTW0EKWXACP3
+uid: 01M6FCJQ84XC6KHVEDQEE3DB8S
 id: fcc-section-706-reports-2024-2026
 type: event
 name: "FCC Section 706 reports, 2024 and 2026"

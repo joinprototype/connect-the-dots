@@ -1,5 +1,5 @@
 ---
-uid: 01M6FB43F187D3G46GRSFB0N1G
+uid: 01M6FCJQ7YNF68EAAY7ND5RNG6
 id: too-big-to-fail
 type: concept
 name: "Too big to fail"

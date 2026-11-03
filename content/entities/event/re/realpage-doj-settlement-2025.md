@@ -1,5 +1,5 @@
 ---
-uid: 01M6FB43HHAPBCD86FWXVCMY09
+uid: 01M6FCJQ8CV4AY9QFJCZGCHW1M
 id: realpage-doj-settlement-2025
 type: event
 name: "RealPage’s settlement with the Justice Department, 24 November 2025"

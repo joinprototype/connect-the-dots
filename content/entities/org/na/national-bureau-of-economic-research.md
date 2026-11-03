@@ -1,5 +1,5 @@
 ---
-uid: 01M6FB43MN20FF7Q1D6JRH8GJR
+uid: 01M6FCJQ8XQ43PGCRC33CC9SR8
 id: national-bureau-of-economic-research
 type: org
 name: "National Bureau of Economic Research"

@@ -1,5 +1,5 @@
 ---
-uid: 01M6FB43HX8RJJ6DHY526HD8XD
+uid: 01M6FCJQ8EDVNR0ST3KAW2J4RK
 id: standard-oil-market-position-before-and-after-1911
 type: event
 name: "Standard Oil’s market position, 1901 to 1923: accounts"

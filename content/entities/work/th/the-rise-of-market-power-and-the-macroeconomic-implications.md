@@ -1,5 +1,5 @@
 ---
-uid: 01M6FB43TDPSGH3Q3AVWCHDXBK
+uid: 01M6FCJQA7BS84BRXHMRW7GS70
 id: the-rise-of-market-power-and-the-macroeconomic-implications
 type: work
 name: "The Rise of Market Power and the Macroeconomic Implications"

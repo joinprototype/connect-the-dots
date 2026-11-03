@@ -1,5 +1,5 @@
 ---
-uid: 01M6FB43G1Z30QNMFTC1DM2KDA
+uid: 01M6FCJQ85CY3ED4673F18A6S2
 id: fight-for-standard-oil-of-indiana-1929
 type: event
 name: "Fight for Standard Oil of Indiana, 1929"

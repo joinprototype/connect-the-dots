@@ -1,5 +1,5 @@
 ---
-uid: 01M6FB43TD5FVDV9MF8W68VA2W
+uid: 01M6FCJQA76844S2G0W5ABZ0JW
 id: the-rise-of-market-power-comment
 type: work
 name: "The Rise of Market Power and the Macroeconomic Implications: Comment"

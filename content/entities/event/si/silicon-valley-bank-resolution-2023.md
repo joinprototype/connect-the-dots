@@ -1,5 +1,5 @@
 ---
-uid: 01M6FB43HSGXTRJYB02BMNHJ3M
+uid: 01M6FCJQ8E4BA0XP41RWWECS9K
 id: silicon-valley-bank-resolution-2023
 type: event
 name: "Resolution of Silicon Valley Bank and Signature Bank, 2023"

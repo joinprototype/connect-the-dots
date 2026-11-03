@@ -1,5 +1,5 @@
 ---
-uid: 01M6FB43SWN4HJAYQSBZ79JM4H
+uid: 01M6FCJQ9QSF8SPS59FD6DSR52
 id: stewart-b-mckinney
 type: person
 name: "Stewart B. McKinney"

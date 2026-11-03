@@ -1,5 +1,5 @@
 ---
-uid: 01M6FB43G5DSMGK7V2PTSF2KJP
+uid: 01M6FCJQ867PQNJYV600H0R34E
 id: google-search-appeal-2026
 type: event
 name: "Google’s appeal of the search ruling, from January 2026"
