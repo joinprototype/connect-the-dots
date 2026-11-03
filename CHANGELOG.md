@@ -2,7 +2,7 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
-## Next
+## 0.5.1 (2026-11-03)
 
 - One look on every page: black on white, whatever the system's dark mode says. Stories open on their title on white, covers and the footer are white, and nothing large is black any more.
 - The header stays where it is on the Map, as on every other page.
