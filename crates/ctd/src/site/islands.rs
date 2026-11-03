@@ -517,6 +517,41 @@ pub fn picture<'a>(kb: &Kb, by_id: &BTreeMap<&'a str, &'a Edge>) -> Value {
             "told": tellers, "stories": stories, "lines": lines(&pull, told.len()) })
 }
 
+/// The Map far out, as one picture for the home page (`w/picture.svg`): the islands' land in grey and every dot
+/// in its kind's ink, where `picture` placed it. Sealed entries are left out, as the Map leaves them unnamed.
+pub fn svg(kb: &Kb, picture: &Value) -> String {
+    let num = |v: &Value| v.as_f64().unwrap_or(0.0);
+    let (w, h, coast) = (num(&picture["w"]), num(&picture["h"]), num(&picture["coast"]));
+    let at: Vec<f64> = picture["at"].as_array().map(|a| a.iter().map(num).collect()).unwrap_or_default();
+    let sealed: BTreeSet<usize> = picture["sealed"].as_array().into_iter().flatten().filter_map(|v| v.as_u64()).map(|i| i as usize).collect();
+    let spot = |i: usize| (at.get(2 * i).copied().unwrap_or(0.0), at.get(2 * i + 1).copied().unwrap_or(0.0));
+    let mut out = format!(r##"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}"><g fill="#efefef">"##);
+    for story in picture["stories"].as_array().into_iter().flatten() {
+        for i in story["land"].as_array().into_iter().flatten().filter_map(|v| v.as_u64()) {
+            let (x, y) = spot(i as usize);
+            out.push_str(&format!(r#"<circle cx="{x:.0}" cy="{y:.0}" r="{coast:.0}"/>"#));
+        }
+    }
+    out.push_str("</g>");
+    // one group a kind, so that each ink is written once
+    let mut by_ink: BTreeMap<String, Vec<usize>> = BTreeMap::new();
+    for (i, e) in kb.entities.iter().enumerate() {
+        if !sealed.contains(&i) && 2 * i + 1 < at.len() {
+            by_ink.entry(kb.schema.type_color(&e.kind)).or_default().push(i);
+        }
+    }
+    for (ink, dots) in by_ink {
+        out.push_str(&format!(r#"<g fill="{ink}">"#));
+        for i in dots {
+            let (x, y) = spot(i);
+            out.push_str(&format!(r#"<circle cx="{x:.0}" cy="{y:.0}" r="20"/>"#));
+        }
+        out.push_str("</g>");
+    }
+    out.push_str("</svg>\n");
+    out
+}
+
 #[cfg(test)]
 mod tests {
     use std::collections::BTreeMap;

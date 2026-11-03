@@ -31,9 +31,7 @@ No database and no server in production for the MVP. Rust compiles the content; 
 | Parsing | serde-saphyr (YAML), pulldown-cmark 0.13 (wikilinks) | `serde_yaml` is deprecated |
 | Page templates | MiniJinja 3 (runtime templates in `theme/`) | Theme edits need no Rust or recompile |
 | Graph core | Rust: interned ids, CSR, typed and time-bounded links | ~40 B per link, including the reverse index |
-| World map | Rust `ctd world`: Louvain communities, pivot MDS layout, quota LOD, binary tiles (docs/world-tiles.md), alignment between builds (ADR-0013) | 1M nodes in ~1.4 s; PMTiles packaging later |
 | Path finder | Rust `ctd path` (native) + TypeScript in Ask and Stories (`web/src/lib/paths.ts`), same formula, checked equal by `tools/qa/paths-golden.mjs`; one Rust kernel as WASM *(planned)* | One implementation for build and browser |
-| World view *(planned)* | deck.gl 9.4 TileLayer + OrthographicView | Streams tiles, ~1M items at 60 fps |
 | Maps | MapLibre GL JS 6 (globe, terrain), on the Map's Earth | Globe and terrain without our own tiles |
 | Browser code | TypeScript bundled by Vite 8, no framework | Reading pages are already HTML from Rust. React, GSAP, sigma and graphology were dropped with the explorer and story player ([ADR-0031](decisions/0031-fewer-views.md)) |
 | Reading-page widgets | Vanilla TS custom elements (islands) | ≤15 KB JS on load |
@@ -62,7 +60,6 @@ The repo stays one piece when it goes public. It can split into `engine` and `co
 | `ctd build` | Compiles `content/` to `dist/` (pages, stories, JSON, search index, world tiles) | Sprint 1 |
 | `ctd serve` | Axum dev server: watches files, rebuilds what changed, live reload. Builds into `.cache/serve/`, so `dist/` holds only production builds | Sprint 1 |
 | `ctd path <a> <b>` | Path query from the terminal, for debugging ranking | Sprint 1 |
-| `ctd world` | World tiles for the content graph, or a synthetic test world (`--synthetic N`) | Sprint 2 |
 | `ctd publish` | pull → check → build → upload changed files → manifest | *(planned)* |
 | `ctd watch` | Polls GitHub for merges on `main`, then publishes | *(planned)* |
 | `ctd assets` | Ingests images and source snapshots into R2 | *(planned)* |
@@ -77,7 +74,7 @@ Stages:
 5. Derive reverse claims, backlinks and confirmation badges.
 6. Render pages.
 7. Write the data files (schema, slim structure, entries' details and life stories in shared packs, search by word range).
-8. Layout and tiles for the Map ([world-tiles.md](world-tiles.md)).
+8. The islands (`data/islands.json`), which the Stories page and the Map draw, and the home page's picture of them (`w/picture.svg`).
 9. The atlas, when `.cache/atlas` holds it: 2,048 shards, search, the Earth's tiles, the field of dots behind Read and Ask, and the landmark table for routes; the Map draws only the record ([ADR-0033](decisions/0033-the-map-draws-the-record.md)) ([ADR-0023](decisions/0023-the-atlas.md)). A dev server leaves it out.
 
 ```
@@ -146,21 +143,10 @@ Builds are deterministic: a pinned toolchain, sorted output and fixed seeds. Any
 
 ## 8. The Map
 
-- **The Map** (`/w/`): the Stories surface (`web/src/place/`) over the whole window, by story or on the Earth ([ADR-0034](decisions/0034-one-map.md)). Positions come settled from `data/islands.json`; the Earth's are computed in the browser from coordinates and locating links, over `data/field.bin`. The old deck.gl viewer (`web/src/world/`) and its tiles are still built, for the home page's picture, and no page loads the viewer.
+- **The Map** (`/w/`): the Stories surface (`web/src/place/`) over the whole window, by story or on the Earth ([ADR-0034](decisions/0034-one-map.md)). Positions come settled from `data/islands.json`; the Earth's are computed in the browser from coordinates and locating links, over `data/field.bin`. The old deck.gl viewer, its tiles and `ctd world` were removed in 0.5.3; the home page's picture is drawn from the islands.
 - Each job has one view ([ADR-0031](decisions/0031-fewer-views.md)): Stories to read, Ask to find how two things connect, the Map to look around. The React explorer and its walk ([ADR-0029](decisions/0029-the-walk.md)) are gone.
 
-| Budget | Desktop | Phone |
-|---|---|---|
-| Visible nodes / links | 200k / 400k | 50k / 100k |
-| Labels | 1,500 | 400 |
-| GPU buffers | ≤ 96 MB | ≤ 48 MB |
-| Tile cache | ≤ 128 MB | ≤ 48 MB |
-| Main-thread JS per frame | ≤ 4 ms | ≤ 4 ms |
-
-- **Leak control:**
-  - one owner per GPU resource, destroyed when its tile unloads;
-  - one AbortController per tile and view;
-  - a 10-minute automated pan/zoom soak test where heap and GPU buffers must plateau.
+- **Budget:** one 2D canvas, every dot of the record drawn each frame of a move and nothing at rest; names planned once per arrangement, so they never jitter; the Earth's land as one picture far out and only the dots in view nearer in, at most about 40,000 a frame.
 
 ## 9. Storytelling chapters
 

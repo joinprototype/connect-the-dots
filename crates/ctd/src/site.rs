@@ -232,13 +232,12 @@ const STORIES_ON_PAGE: usize = 3;
 const LISTED: bool = true;
 /// Response headers for every file (Cloudflare `_headers`): no sniffing, no framing, no
 /// referrer beyond the origin, no device APIs, and a Content-Security-Policy. Scripts come only
-/// from the site itself (theme/static, web/dist); the story maps' tiles, glyphs and sprites come
-/// from OpenFreeMap (ADR-0014), and MapLibre runs its workers from blob URLs. Chunks have their
-/// hash in the name, so they never change.
+/// from the site itself (theme/static, web/dist), and so does everything a page fetches. Chunks have
+/// their hash in the name, so they never change.
 const HEADERS: &str = "/*\n  X-Content-Type-Options: nosniff\n  X-Frame-Options: DENY\n  Referrer-Policy: strict-origin-when-cross-origin\n  \
 Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()\n  Cross-Origin-Opener-Policy: same-origin\n  \
 Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; \
-connect-src 'self' https://tiles.openfreemap.org; worker-src 'self' blob:; child-src 'self' blob:; font-src 'self'; object-src 'none'; \
+connect-src 'self'; worker-src 'self'; child-src 'self'; font-src 'self'; object-src 'none'; \
 base-uri 'self'; form-action 'self'; frame-ancestors 'none'\n\
 /data/*\n  Cache-Control: public, max-age=300, stale-while-revalidate=86400\n\
 /assets/chunks/*\n  Cache-Control: public, max-age=31536000, immutable\n\
@@ -582,9 +581,6 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     // the dev server leaves the atlas out: it is for the built site, and takes a minute
     let atlas = if opts.dev { None } else { crate::atlas::load(root)?.map(|a| a.without_sealed(kb)) };
     write_search(kb, &pages, &ranked, atlas.as_ref(), out)?;
-    for (id, b) in &kb.borders {
-        write(&out.join("data").join("borders").join(format!("{id}.json")), fs::read(root.join(&b.rel_path))?)?;
-    }
     // the field of dots behind Read (and whoever reuses dotfield.ts)
     field::write_field(kb, atlas.as_ref(), out)?;
 
@@ -622,15 +618,10 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     for (dir, to) in [("x", "Stories"), ("r", "Ask")] {
         write(&out.join(dir).join("index.html"), s.render("forward.html", json!({ "site": &s.site, "to": to }))?)?;
     }
-    // The Map draws the record that has been read, every link with its proof. Open data stays out of it:
-    // nobody has read its links, and a million of them drew spirals of loose words and hubs of hundreds of
-    // weak ties (ADR-0033). It stays in search, on its own pages and as the land behind Read and Ask.
-    if !kb.entities.is_empty() {
-        let (g, spec) = crate::world::from_kb(kb);
-        crate::world::build(&g, &spec, &out.join("world"), Some(&root.join(".cache").join("world-state.json")))?;
-    }
+    // open data stays out of the Map (ADR-0033): in search, on its own pages and as the land behind Read,
+    // Ask and the Map's Earth
     if let Some(a) = &atlas {
-        crate::atlas::write(a, kb, &HashMap::new(), out)?;
+        crate::atlas::write(a, kb, out)?;
         write(&out.join("a").join("index.html"), s.render("atlas.html", json!({ "site": &s.site, "entries": a.entries.len() }))?)?;
     }
     write(&out.join("404.html"), s.render("404.html", json!({ "site": &s.site }))?)?;
@@ -663,7 +654,10 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
 
 /// The picture on the Stories page, with its budget like the slim file's.
 fn write_islands(s: &Site) -> Result<()> {
-    let bytes = serde_json::to_vec(&islands::picture(s.kb, &s.by_id))?;
+    let picture = islands::picture(s.kb, &s.by_id);
+    // the home page's picture of the Map
+    write(&s.out.join("w").join("picture.svg"), islands::svg(s.kb, &picture))?;
+    let bytes = serde_json::to_vec(&picture)?;
     let gz = data::gzip_len(&bytes);
     if gz > islands::BUDGET {
         eprintln!("warning: data/islands.json is {} KB gzip, past its {} KB budget", gz / 1024, islands::BUDGET / 1024);
@@ -714,7 +708,6 @@ fn copy_assets(root: &Path, out: &Path) -> Result<Value> {
     let has_asset = |name: &str| out.join("assets").join(name).exists();
     Ok(json!({
         "islands_js": has_asset("islands.js"), "islands_css": has_asset("islands.css"),
-        "world_js": has_asset("world.js"), "world_css": has_asset("world.css"),
         "atlas_js": has_asset("atlas.js"), "atlas_css": has_asset("atlas.css"),
         "life_js": has_asset("life.js"), "forward_js": has_asset("forward.js"),
         // Ask (/ask/)

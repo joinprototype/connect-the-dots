@@ -1,6 +1,6 @@
 # Build output contract (v0)
 
-`ctd build` writes `dist/`. The web code (islands, Read, Ask, the Stories page and the Map) reads only what is described here, plus the world tiles in [world-tiles.md](world-tiles.md). Change this contract and the web code (`web/src/lib/types.ts`) in the same change.
+`ctd build` writes `dist/`. The web code (islands, Read, Ask, the Stories page and the Map) reads only what is described here. Change this contract and the web code (`web/src/lib/types.ts`) in the same change.
 
 ## Files
 
@@ -29,16 +29,14 @@ dist/
   data/stories.json          the written stories each entry is in, read by the Map, the Earth and atlas pages
   data/islands.json          the Stories page's surface: where every entry lies, on a story's island or in the water
   ask/index.html             Ask: the box as the page's heading, arriving on a featured pair   data/ask.json   what it reads besides
-  data/borders/<id>.json     one polity's historical borders, no page draws these since ADR-0031 (the Map draws world-<year>.json); kept for tools (ADR-0020)
-  data/borders/world-<year>.json   every polity of a year (world-1960, world-3000-bce), loaded by the Map's era slider (ADR-0021)
   data/search/index.json     the search files' word ranges      data/search/<n>.json   search entries by word
   data/field.bin             the field of dots: every thing open data places on the Earth (web/src/lib/dotfield.ts)
   data/field.json            the field's count of dots and its named places
   data/read.json             the story page's lists: every story, what no step goes on from, the relations a place does not list
   data/graph.json            only with `ctd build --graph`: everything in one file, for tools; no page reads it
-  world/                     manifest.json, entities.json, {z}/{x}/{y}.bin (world-tiles.md)
+  w/picture.svg              the Map far out, for the home page: the islands' land and every dot in its kind's ink
   static/site.css            theme CSS and tokens (from theme/static/)
-  assets/                    built by web/ (Vite): islands.js|css, world.js|css, atlas.js|css, ask.js|css, read.js|css, life.js, place.js|css (the Stories page), forward.js, maplibre-gl.css (loaded by the Map's Earth when it first draws a map), chunks/ (code two pages share, never inside world.js; the build fails on a CSS file no page links, [ADR-0031](decisions/0031-fewer-views.md))
+  assets/                    built by web/ (Vite): islands.js|css, atlas.js|css, ask.js|css, read.js|css, life.js, place.js|css (the Stories page and the Map), forward.js, chunks/ (code two pages share, never inside one page's bundle; the build fails on a CSS file no page links, [ADR-0031](decisions/0031-fewer-views.md))
   build-manifest.json        engine, built, commit, methodology hash, counts
   .ctd-build                 marks the folder as a build, so the next build may empty it
 ```
@@ -270,10 +268,6 @@ Every story is one page: a column of words over the field of dots where it happe
 
 The script reads the page, `field.bin` and `field.json` after the words have painted, and nothing else until a door is near a pointer or opened: then `schema.json`, `graph-slim.json`, `stories.json`, `read.json` and the detail files of the names opened. "Find a name" reads `search/`. A next story is its own `/c/<id>/` page, fetched (its `.read-story` is taken) and added below the one that offered it, with pushState and popstate keeping the address. A name opened in a story is shown in place: the story folds after the scene, the stop shows the link that joins it with its proof open, the name, the way back, a story it is in (with "and that is all this says"), its links on the record, and how many more open data holds. Groups and traditions join nothing (ADR-0016): a stop on one has no doors, and no way runs through one.
 
-## `data/borders/<id>.json`
-
-A GeoJSON FeatureCollection, copied from `content/borders/`: `name` (what the key says), `source` (a source id), and one feature per period, with `properties.from` and `properties.to` (years, inclusive) and a MultiPolygon. A shot's `borders` lists ids. The old story player drew them; Read does not, so since [ADR-0031](decisions/0031-fewer-views.md) no page reads these files.
-
 ## `data/search/`
 
 The search entries, filed by word:
@@ -341,7 +335,7 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 - On Earth a dot stands at its own `coords`, else its `place`'s, else the place a link of a relation with `locates: true` names (the least connected, so a city before its country). A type with `family: true` (people, peoples and families) is never placed, nor is a sealed entry. Things at one spot open round it like a seed head. What is not placed fades out and is not drawn, named or hit; opening it (or a link touching it, or a way) goes back to the islands.
 - The land is `field.bin`, drawn as one picture far out and as its own dots, those in view only, nearer in. The camera comes no nearer on Earth than a country's view (Web Mercator zoom 5, `NEAREST` in `lib/dotfield.ts`), and a stop's view is fitted within that.
 - The old Map's addresses still work: `?focus=<id>` opens that entry (`#/e/<id>`), and `?view=earth` opens on Earth.
-- `world/` (the old Map's tiles) is still written, for the picture on the home page; no page reads its tiles.
+- The home page's picture of the Map is `w/picture.svg`, drawn from `islands.json` at build time.
 
 **Doors** ([ADR-0028](decisions/0028-one-box.md)): in a story's narration, the first mention of an entry in a scene is a plain link, `<a class="door-<layer>" href="/e/<id>/">`, and so is any link the narration already made to an entry. `door-<layer>` gives the dotted underline in that kind's ink; the page's own `<style>` maps it to `--layer-<layer>`. No script touches them. The engine (`crates/ctd/src/doors.rs`) adds links and changes no word:
 - It looks only for the story's own entries (`focus`, `perspective`, `reveal`, `places`, `routes`). A one-word name needs the scene itself to list the entry; a longer name may be listed by any scene.
@@ -384,7 +378,6 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 - `/a/` and `data/a/<n>.json` (ADR-0023): the atlas, read by `web/src/atlas`. An entry lives in shard `<Wikidata number> % 2048`; `p` was its place on the Map, and is no longer written since the Map draws only the record ([ADR-0033](decisions/0033-the-map-draws-the-record.md)); `r` its next step towards a landmark as `[number, phrase]`, and a neighbour is `[number, name, kind, place, hand id?]`. As `"Q42": { n: name, k: kind (index), g: [[phrase, [[number, name, kind, id written by hand?], ...], how many more]], d: summary, y: years, c: [lon, lat], i: Commons file, u: page written by hand }`. Search rows for the atlas have `url: /a/?q=Q42`.
 - `data/more/<n>.json`: lists that run past 40 names, from name 41 to at most 5,040, as `{ "Q42": { "<group index in g>": [[number, name, kind, hand id?], ...] } }`, in file `<Wikidata number> % 512`. A reader's "Show 834 more" costs one file, and the number of files never grows.
 - `data/routes.json` (ADR-0023): the landmark table, read by `web/src/lib/atlas-route.ts`. `l`: landmarks by Wikidata number. `p`: phrases, each `[one way, the other way]`. `n[i][j]`: the landmark after `i` on the way to `j` (65535: none). `b["i:j"]`, `i < j`: `[x, y, phrase * 2 + flip]`, the crossing between two landmarks' territories, `x` in `i`'s.
-- `earth/index.json`: `{ maxzoom, entries, tiles: { "<z>": [x * 2^z + y, …] } }`, and `earth/<z>/<x>/<y>.json`: rows of `[lon, lat, Wikidata number, name, kind]`, then its years `start, end` if dated (`end` exclusive, 32767: still going), on the web map's tile grid. Read by `web/src/world/earth.ts`, for what is in view.
 - `data/stories.json`: `{ "<entry id>": [[title, url], …] }`, an entry's written stories, most scenes first, at most three. A dot's card lists them, then those of what it links to.
 - `world/picture.svg`: the map's best-connected dots, a picture no page draws today. `/w/` also takes `?focus=Q42` and `?route=Q1,Q2,…`. The one answer for any two entries is Ask (`/ask/?a=<id or Qn>&b=<id or Qn>`, with `&way=<n>` for an alternative); `/r/` forwards there.
 - `stories[]`: up to three written stories that name the entry, the one with the most scenes on it first: `{ title, url, counts }`.

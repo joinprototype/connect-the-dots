@@ -21,7 +21,7 @@ The founder found the Map's Links view a mess at every zoom, picking a dot gave 
 - [x] S25-05 The old Map's addresses work: `?focus=`, `?view=earth`; a typed year goes to Ask.
 
 ### Should
-- [ ] S25-06 Remove the old viewer (`web/src/world/`), deck.gl, MapLibre and the world tiles, once the founder has tried this; draw the home page's picture from the islands instead.
+- [x] S25-06 Remove the old viewer (`web/src/world/`), deck.gl, MapLibre and the world tiles, once the founder has tried this; draw the home page's picture from the islands instead.
 
 ## Demo script
 

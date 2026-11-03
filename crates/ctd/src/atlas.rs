@@ -14,10 +14,7 @@ use flate2::read::GzDecoder;
 use rayon::prelude::*;
 use serde_json::{Value, json};
 
-use crate::{
-    kb::Kb,
-    world::{NO_YEAR, ONGOING},
-};
+use crate::kb::Kb;
 
 /// Files the entries are packed into: what keeps a million entries under a host's limit on files.
 pub const SHARDS: u32 = 2048;
@@ -36,12 +33,7 @@ const TAIL: usize = 5000;
 const LANDMARKS: usize = 256;
 /// An entry with more links than this is a crossroads: sharing it says little, so routes go around it.
 const CROSSROADS: usize = 2000;
-/// The Earth's tiles: how deep they go and how many entries one holds, best known first.
-const EARTH_ZOOM: u8 = 9;
-const EARTH_QUOTA: usize = 200;
 const KINDS: [&str; 8] = ["person", "event", "work", "place", "org", "artifact", "tradition", "concept"];
-/// How long someone with no death on record is taken to have lived, for the era slider.
-const LONG_LIFE: i32 = 80;
 
 pub struct Entry {
     pub qid: u32,
@@ -59,22 +51,6 @@ pub struct Entry {
 impl Entry {
     pub fn kind(&self) -> &'static str {
         KINDS[self.kind as usize]
-    }
-
-    /// Its years on the era slider, the second one past its end. With no end given, a person is taken
-    /// to live a long life, a dated event, work or thing to be of its year, and the rest to go on.
-    pub fn span(&self) -> [i16; 2] {
-        let year = |y: i32| y.clamp(-32767, 32766) as i16;
-        match (self.start, self.end) {
-            (None, None) => [NO_YEAR; 2],
-            (Some(a), Some(b)) => [year(a), year(b + 1)],
-            (None, Some(b)) => [year(b), year(b + 1)],
-            (Some(a), None) => match self.kind() {
-                "person" => [year(a), year(a + LONG_LIFE)],
-                "event" | "work" | "artifact" => [year(a), year(a + 1)],
-                _ => [year(a), ONGOING],
-            },
-        }
     }
 
     fn years(&self) -> Option<String> {
@@ -363,15 +339,7 @@ fn write_tails(a: &Atlas, kb: &Kb, hand: &HashMap<u32, usize>, adjacent: &[Vec<(
     })
 }
 
-fn shard(
-    a: &Atlas,
-    kb: &Kb,
-    hand: &HashMap<u32, usize>,
-    adjacent: &[Vec<(u32, u8, bool)>],
-    spots: &HashMap<u32, [u16; 2]>,
-    routes: &Routes,
-    members: &[u32],
-) -> Value {
+fn shard(a: &Atlas, kb: &Kb, hand: &HashMap<u32, usize>, adjacent: &[Vec<(u32, u8, bool)>], routes: &Routes, members: &[u32]) -> Value {
     let mut out = serde_json::Map::new();
     for &i in members {
         let e = &a.entries[i as usize];
@@ -384,7 +352,8 @@ fn shard(
                     .take(PER_PHRASE)
                     .map(|&j| {
                         let n = &a.entries[j as usize];
-                        let spot = spots.get(&n.qid).copied().unwrap_or_default();
+                        // where it sat on the old Map: no longer drawn, kept so that the row keeps its shape
+                        let spot = [0u16, 0];
                         match hand.get(&n.qid) {
                             Some(&c) => json!([n.qid, kb.entities[c].name, n.kind, spot, kb.entities[c].id]),
                             None => json!([n.qid, n.name, n.kind, spot]),
@@ -397,9 +366,6 @@ fn shard(
         let mut v = json!({ "n": e.name, "k": e.kind, "g": groups });
         if !e.summary.is_empty() {
             v["d"] = json!(e.summary);
-        }
-        if let Some(spot) = spots.get(&e.qid) {
-            v["p"] = json!(spot);
         }
         if let Some((step, said)) = routes.towards[i as usize] {
             v["r"] = json!([a.entries[step as usize].qid, said]);
@@ -422,7 +388,7 @@ fn shard(
 }
 
 /// Packs the atlas into `data/a/<n>.json`. Reading an entry costs one small file, whatever the total.
-pub fn write(a: &Atlas, kb: &Kb, spots: &HashMap<u32, [u16; 2]>, out: &Path) -> Result<()> {
+pub fn write(a: &Atlas, kb: &Kb, out: &Path) -> Result<()> {
     let dir = out.join("data").join("a");
     fs::create_dir_all(&dir)?;
     let hand = curated(kb);
@@ -438,53 +404,10 @@ pub fn write(a: &Atlas, kb: &Kb, spots: &HashMap<u32, [u16; 2]>, out: &Path) -> 
     let routes = routes(a, kb, &adjacent);
     fs::write(out.join("data").join("routes.json"), serde_json::to_vec(&routes.file)?)?;
     shards.par_iter().enumerate().try_for_each(|(n, members)| -> Result<()> {
-        fs::write(dir.join(format!("{n}.json")), serde_json::to_vec(&shard(a, kb, &hand, &adjacent, spots, &routes, members))?)?;
+        fs::write(dir.join(format!("{n}.json")), serde_json::to_vec(&shard(a, kb, &hand, &adjacent, &routes, members))?)?;
         Ok(())
     })?;
-    write_tails(a, kb, &hand, &adjacent, out)?;
-    earth(a, &hand, out)
-}
-
-/// The Earth's entries as tiles, so that it draws what is in view. Each tile holds the best known of
-/// what is left for it: the rest wait a zoom deeper. A person's coordinates are a grave, not a life,
-/// and an entry written by hand has its own dot.
-fn earth(a: &Atlas, hand: &HashMap<u32, usize>, out: &Path) -> Result<()> {
-    let tile = |[lon, lat]: [f32; 2], z: u8| {
-        let (lon, lat, size) = (lon as f64, (lat as f64).clamp(-85.0, 85.0).to_radians(), (1u32 << z) as f64);
-        let x = (lon + 180.0) / 360.0 * size;
-        let y = (1.0 - (lat.tan() + 1.0 / lat.cos()).ln() / std::f64::consts::PI) / 2.0 * size;
-        (x.clamp(0.0, size - 1.0) as u32, y.clamp(0.0, size - 1.0) as u32)
-    };
-    let mut tiles: HashMap<(u8, u32, u32), Vec<Value>> = HashMap::new();
-    let close = |v: f32| (v as f64 * 1e4).round() / 1e4;
-    for e in a.entries.iter().filter(|e| e.kind != 0 && !hand.contains_key(&e.qid)) {
-        let Some(at) = e.coords else { continue };
-        for z in 0..=EARTH_ZOOM {
-            let (x, y) = tile(at, z);
-            let list = tiles.entry((z, x, y)).or_default();
-            if z == EARTH_ZOOM || list.len() < EARTH_QUOTA {
-                let mut row = json!([close(at[0]), close(at[1]), e.qid, e.name, e.kind]);
-                let [start, end] = e.span();
-                if start != NO_YEAR {
-                    row.as_array_mut().unwrap().extend([json!(start), json!(end)]);
-                }
-                list.push(row);
-                break;
-            }
-        }
-    }
-    let dir = out.join("earth");
-    fs::create_dir_all(&dir)?;
-    let mut index: BTreeMap<String, Vec<u64>> = BTreeMap::new();
-    for (&(z, x, y), list) in &tiles {
-        index.entry(z.to_string()).or_default().push(((x as u64) << z) + y as u64);
-        fs::create_dir_all(dir.join(z.to_string()).join(x.to_string()))?;
-        fs::write(dir.join(z.to_string()).join(x.to_string()).join(format!("{y}.json")), serde_json::to_vec(list)?)?;
-    }
-    index.values_mut().for_each(|v| v.sort_unstable());
-    let entries: usize = tiles.values().map(Vec::len).sum();
-    fs::write(dir.join("index.json"), serde_json::to_vec(&json!({ "maxzoom": EARTH_ZOOM, "entries": entries, "tiles": index }))?)?;
-    Ok(())
+    write_tails(a, kb, &hand, &adjacent, out)
 }
 
 /// Search rows for the atlas, best known first. Entries written by hand are already in search.
@@ -593,7 +516,7 @@ mod tests {
         let a = load(&root).unwrap().expect("an atlas");
         assert_eq!(a.entries[0].qid, 2, "best known first");
         assert!(search(&a, &kb).iter().all(|row| row["id"] != "Q2"), "a written entry is already in search");
-        write(&a, &kb, &HashMap::new(), &root).unwrap();
+        write(&a, &kb, &root).unwrap();
         let read = |q: u32| -> Value { serde_json::from_slice(&fs::read(root.join(format!("data/a/{}.json", q % SHARDS))).unwrap()).unwrap() };
         assert_eq!(read(2)["Q2"]["u"], "/e/big-town/");
         let ada = &read(1)["Q1"];

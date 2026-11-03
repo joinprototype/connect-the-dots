@@ -23,5 +23,5 @@ The record has a shape of its own: every entry is there because a story or an an
 - One picture of the record instead of two that disagreed. Connections are always drawn the same way: a picked dot's links in ink, the rest faded.
 - The Earth holds about a fifth of the record. The rest is people and ideas, which is honest: they have no place of their own.
 - The era slider and the Earth's historical borders are gone from the Map for now.
-- The old viewer's code (`web/src/world/`, deck.gl, MapLibre) and the world tiles are still built (the home page's picture comes from them). Removing them is the next clean-up, once this Map has been tried.
+- The old viewer's code (`web/src/world/`, deck.gl, MapLibre), its tiles, the Earth's open-data tiles and `ctd world` were removed in 0.5.3; the home page's picture of the Map is drawn from the islands (`w/picture.svg`), and the policy no longer lets a page fetch map tiles from elsewhere.
 - Amends ADR-0033 (the Map still draws only the record, but as islands and an Earth, not as Links).

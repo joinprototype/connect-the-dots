@@ -21,7 +21,6 @@ pub mod stories;
 pub mod synthetic;
 #[cfg(test)]
 mod testkit;
-pub mod world;
 
 use std::{
     path::{Path, PathBuf},

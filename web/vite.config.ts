@@ -8,7 +8,6 @@ const here = fileURLToPath(new URL('.', import.meta.url));
 /** Entry name -> source module. The names become dist/<name>.js and dist/<name>.css. */
 const ENTRIES = {
   islands: 'src/islands/main.ts',
-  world: 'src/world/main.ts',
   atlas: 'src/atlas/main.ts',
   // Ask (/ask/): the box as the page's heading
   ask: 'src/ask/main.ts',
@@ -41,22 +40,10 @@ const MIME: Record<string, string> = {
  * - /assets/<entry>.js maps to the TypeScript source, so HMR works;
  * - /assets/<entry>.css is empty in dev, because Vite injects the CSS imported by each entry;
  * - /static/site.css is ../theme/static/site.css, so theme edits show without a rebuild;
- * - /world/ and /world-synth/ (tile pyramids) come from the site, /world-synth/ from ../.cache/world-synth
- *   (`ctd world --synthetic <n>`) like `ctd serve`; $CTD_WORLD and $CTD_WORLD_SYNTH point them elsewhere.
- *   Missing tiles are 404s.
  * `apply: 'serve'` keeps all of this out of `vite build`.
  */
 function devSite(): Plugin {
   const siteRoot = resolve(process.env.CTD_DIST ?? join(here, '../dist'));
-  const cacheSynth = join(here, '../.cache/world-synth');
-  const worlds: Record<string, string> = {
-    '/world/': process.env.CTD_WORLD ? resolve(process.env.CTD_WORLD) : join(siteRoot, 'world'),
-    '/world-synth/': process.env.CTD_WORLD_SYNTH
-      ? resolve(process.env.CTD_WORLD_SYNTH)
-      : !existsSync(join(siteRoot, 'world-synth')) && existsSync(cacheSynth)
-        ? cacheSynth
-        : join(siteRoot, 'world-synth'),
-  };
   const themeCss = join(here, '../theme/static/site.css');
   const useTheme = existsSync(themeCss);
   if (!existsSync(join(siteRoot, 'index.html'))) console.warn(`vite: no site at ${siteRoot}; run \`cargo run -q -- build\` first`);
@@ -80,21 +67,6 @@ function devSite(): Plugin {
             return;
           }
           if (path.startsWith('/@') || path.startsWith('/src/') || path.startsWith('/node_modules/')) return next();
-          const world = Object.keys(worlds).find((prefix) => path.startsWith(prefix));
-          if (world) {
-            const base = worlds[world];
-            const file = normalize(join(base, path.slice(world.length)));
-            if (!file.startsWith(base) || !existsSync(file) || statSync(file).isDirectory()) {
-              res.statusCode = 404;
-              res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-              res.end('not found');
-              return;
-            }
-            res.setHeader('Content-Type', MIME[extname(file)] ?? 'application/octet-stream');
-            res.setHeader('Cache-Control', 'no-cache');
-            res.end(readFileSync(file));
-            return;
-          }
           if (path === '/static/site.css' && useTheme) {
             res.setHeader('Content-Type', MIME['.css']);
             res.setHeader('Cache-Control', 'no-cache');
@@ -146,10 +118,10 @@ function devSite(): Plugin {
 /**
  * Build only: a page links its entry's .css and nothing else, so a style sheet two entries share would
  * be written as a file of its own that no page loads. Fail the build instead; the shared sheet goes
- * in each entry's CSS as an @import. maplibre-gl.css is loaded by URL with the first map.
+ * in each entry's CSS as an @import.
  */
 function onlyEntryCss(): Plugin {
-  const allowed = new Set([...Object.keys(ENTRIES).map((name) => `${name}.css`), 'maplibre-gl.css']);
+  const allowed = new Set(Object.keys(ENTRIES).map((name) => `${name}.css`));
   return {
     name: 'only-entry-css',
     apply: 'build',
@@ -178,26 +150,19 @@ export default defineConfig(({ command }) => ({
     rolldownOptions: {
       input: Object.fromEntries(Object.entries(ENTRIES).map(([name, src]) => [name, resolve(here, src)])),
       // An entry exports nothing: code two pages share goes in a chunk of its own, never inside one page's
-      // bundle, or Read would run the Map's world.js (and deck.gl) for one helper they share.
+      // bundle, or one page would run another's bundle for a helper they share.
       preserveEntrySignatures: 'strict',
       output: {
         entryFileNames: '[name].js',
         chunkFileNames: 'chunks/[name]-[hash].js',
         codeSplitting: {
           groups: [
-            // Vite's dynamic-import helper, shared by every bundle: keep it out of the big chunks below,
-            // or islands.js would end up importing deck.gl.
+            // Vite's dynamic-import helper, shared by every bundle: one small chunk of its own.
             { name: 'preload-helper', test: /preload-helper/, priority: 20 },
-            // deck.gl and its WebGL stack: only the world viewer (world.js) loads it.
-            {
-              name: 'deck',
-              test: /[\\/]node_modules[\\/](@deck\.gl|@luma\.gl|@loaders\.gl|@math\.gl|@probe\.gl|mjolnir\.js|@mapbox[\\/]tiny-sdf)[\\/]/,
-            },
           ],
         },
         assetFileNames: (asset) => {
           const name = asset.names[0] ?? '';
-          // The MapLibre worker is copied verbatim (imported with ?url); keep it next to the chunks.
           if (name.endsWith('.mjs') || name.endsWith('.js')) return 'chunks/[name]-[hash][extname]';
           return '[name][extname]';
         },

@@ -122,7 +122,7 @@ function phone() {
     if (px < 12) add(`small text ${name(e)}`, `${px}px`);
   }
   for (const e of document.body.querySelectorAll('*')) {
-    if (!shown(e) || e.closest('canvas, svg, .maplibregl-map')) continue;
+    if (!shown(e) || e.closest('canvas, svg')) continue;
     const r = e.getBoundingClientRect();
     if (r.right <= innerWidth + 1 || r.left >= innerWidth || r.height === 0) continue;
     let held = false;

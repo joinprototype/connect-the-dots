@@ -4,7 +4,7 @@
 
 use std::fmt::Write;
 
-use crate::{markdown::escape as esc, world::Rng};
+use crate::{markdown::escape as esc, synthetic::Rng};
 
 const W: f64 = 300.0;
 const H: f64 = 400.0;

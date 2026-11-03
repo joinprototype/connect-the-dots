@@ -81,13 +81,11 @@ pub fn run(root: PathBuf, port: u16) -> Result<()> {
     rt.block_on(async move {
         let sse_tx = tx.clone();
         let files = ServeDir::new(&out).append_index_html_on_directories(true).not_found_service(ServeFile::new(out.join("404.html")));
-        let synth = ServeDir::new(root.join(".cache").join("world-synth"));
         let error_log = root.join(".cache").join("client-errors.log");
         // the host's rewrite in `_redirects`: every entry's generated story is one page
         let life = ServeFile::new(out.join("e").join("_life").join("index.html"));
         let app = Router::new()
             .route_service("/e/{id}/story/", life)
-            .nest_service("/world-synth", synth)
             .route(
                 "/__client-error",
                 post(move |body: String| {

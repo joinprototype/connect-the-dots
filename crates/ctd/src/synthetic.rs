@@ -17,7 +17,6 @@ use crate::{
     paths::Params,
     schema::Schema,
     site::data,
-    world::{self, Rng},
 };
 
 const FIRST: &[&str] = &[
@@ -66,7 +65,7 @@ fn name(rng: &mut Rng, kind: &str) -> String {
 
 /// `n` entries on `schema`, as if loaded from files, and the number of errors `ctd check` would report.
 pub fn kb(schema: Schema, n: usize, seed: u64) -> (Kb, usize) {
-    let g = world::synthetic(n, seed);
+    let g = graph(n, seed);
     let mut rng = Rng(seed ^ 0x5eed);
     let kinds: Vec<&str> = KINDS.iter().filter(|(k, _)| schema.types.contains_key(*k)).map(|(k, _)| *k).collect();
     let weights: Vec<f64> = KINDS.iter().filter(|(k, _)| schema.types.contains_key(*k)).map(|(_, w)| *w).collect();
@@ -236,4 +235,101 @@ pub fn report(root: &Path, n: usize, seed: u64, out: &Path) -> Result<()> {
     fs::write(dir.join("search").join("index.json"), index)?;
     println!("done in {:.1} s; wrote {}", started.elapsed().as_secs_f64(), dir.display());
     Ok(())
+}
+/// The made-up record's shape: undirected weighted links.
+pub(crate) struct Graph {
+    pub(crate) edges: Vec<(u32, u32, f32)>,
+}
+
+// ---------------------------------------------------------------- random numbers (splitmix64)
+
+pub(crate) struct Rng(pub(crate) u64);
+
+impl Rng {
+    pub(crate) fn next(&mut self) -> u64 {
+        self.0 = self.0.wrapping_add(0x9E37_79B9_7F4A_7C15);
+        let mut z = self.0;
+        z = (z ^ (z >> 30)).wrapping_mul(0xBF58_476D_1CE4_E5B9);
+        z = (z ^ (z >> 27)).wrapping_mul(0x94D0_49BB_1331_11EB);
+        z ^ (z >> 31)
+    }
+
+    pub(crate) fn f(&mut self) -> f64 {
+        (self.next() >> 11) as f64 / (1u64 << 53) as f64
+    }
+
+    pub(crate) fn below(&mut self, n: usize) -> usize {
+        (self.next() % n as u64) as usize
+    }
+}
+
+/// A synthetic graph: power-law communities, local cross links on a ring of communities,
+/// and a few mega-hubs with 10k+ links (like index funds holding stakes everywhere).
+pub(crate) fn graph(n: usize, seed: u64) -> Graph {
+    let mut rng = Rng(seed);
+    let mut sizes = Vec::new();
+    let mut total = 0usize;
+    while total < n {
+        let u = rng.f().max(1e-9);
+        let s = ((120.0 * u.powf(-1.0 / 1.3)) as usize).clamp(30, 25_000).min(n - total);
+        sizes.push(s);
+        total += s;
+    }
+    let c = sizes.len();
+    let mut start = Vec::with_capacity(c);
+    let mut acc = 0;
+    for &s in &sizes {
+        start.push(acc);
+        acc += s;
+    }
+    let mut comm_of = vec![0u32; n];
+    for (ci, &s) in sizes.iter().enumerate() {
+        for j in 0..s {
+            comm_of[start[ci] + j] = ci as u32;
+        }
+    }
+    let mut edges = Vec::with_capacity(n * 4);
+    for ci in 0..c {
+        let (s0, sz) = (start[ci], sizes[ci]);
+        for j in 1..sz {
+            for _ in 0..3.min(j) {
+                let t = (j as f64 * rng.f().powi(2)) as usize;
+                if t != j {
+                    edges.push(((s0 + j) as u32, (s0 + t) as u32, 1.0));
+                }
+            }
+        }
+    }
+    if c > 1 {
+        // communities sit on a hidden 2D grid; cross links mostly go to grid neighbours
+        let side = (c as f64).sqrt().ceil() as i64;
+        let offset = |rng: &mut Rng| -> i64 {
+            let mag = (rng.f().powi(3) * 4.0) as i64 + 1;
+            if rng.f() < 0.5 { mag } else { -mag }
+        };
+        for (i, &comm) in comm_of.iter().enumerate() {
+            if rng.f() < 0.25 {
+                let ci = comm as i64;
+                let (gx, gy) = (ci % side, ci / side);
+                let (tx, ty) = (gx + if rng.f() < 0.5 { offset(&mut rng) } else { 0 }, gy + if rng.f() < 0.5 { offset(&mut rng) } else { 0 });
+                let cj = (ty.clamp(0, side - 1) * side + tx.clamp(0, side - 1)).min(c as i64 - 1) as usize;
+                if cj != ci as usize {
+                    let t = start[cj] + (rng.f().powi(2) * sizes[cj] as f64) as usize;
+                    edges.push((i as u32, t as u32, 0.5));
+                }
+            }
+        }
+    }
+
+    for h in 0..6.min(c) {
+        let hub = start[(h * 97) % c];
+        let deg = 10_000 + rng.below(10_000);
+        for _ in 0..deg.min(n.saturating_sub(1)) {
+            let t = rng.below(n);
+            if t != hub {
+                edges.push((hub as u32, t as u32, 0.3));
+            }
+        }
+    }
+    Graph { edges }
 }

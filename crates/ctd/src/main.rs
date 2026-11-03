@@ -47,17 +47,6 @@ enum Cmd {
     },
     /// Assign permanent ids (uid) to files that lack one
     Fmt,
-    /// Build world tiles: the synthetic test world (--synthetic N) or the content graph
-    World {
-        /// Number of nodes for a synthetic world
-        #[arg(long)]
-        synthetic: Option<usize>,
-        #[arg(long, default_value_t = 7)]
-        seed: u64,
-        /// Output directory (default: .cache/world-synth or .cache/world)
-        #[arg(long)]
-        out: Option<PathBuf>,
-    },
     /// List what the record may be missing, read against the atlas: leads to check, never proof
     Gaps {
         /// How many of each kind to write (default: all)
@@ -142,44 +131,6 @@ fn run(cli: Cli) -> Result<ExitCode> {
         Cmd::Fmt => {
             let n = ctd::fmt::fill_uids(&root)?;
             println!("assigned {}", plural(n, "uid"));
-            Ok(ExitCode::SUCCESS)
-        }
-        Cmd::World { synthetic, seed, out } => {
-            let state = root.join(".cache").join("world-state.json");
-            let (graph, spec, default_dir) = match synthetic {
-                Some(n) => {
-                    let started = std::time::Instant::now();
-                    let g = ctd::world::synthetic(n, seed);
-                    println!("generated {} nodes, {} links in {} ms", g.n, g.edges.len(), started.elapsed().as_millis());
-                    let (palette, palette_labels) = ctd::world::default_palette();
-                    (g, ctd::world::Spec { kind: "synthetic", palette, palette_labels, entities: None }, ".cache/world-synth")
-                }
-                None => {
-                    let (kb, _) = ctd::load_kb(&root)?;
-                    let (g, spec) = ctd::world::from_kb(&kb);
-                    (g, spec, ".cache/world")
-                }
-            };
-            let out = out.unwrap_or_else(|| root.join(default_dir));
-            let (s, _) = ctd::world::build(&graph, &spec, &out, if synthetic.is_none() { Some(state.as_path()) } else { None })?;
-            println!(
-                "world: {} nodes, {} links, {} communities, zoom 0–{}, {} tiles, {:.1} MB, largest tile {} nodes / {} links / {} KB ({} KB gzip), built in {:.1} s → {}",
-                s.nodes,
-                s.edges,
-                s.clusters,
-                s.maxzoom,
-                s.tiles,
-                s.bytes as f64 / 1e6,
-                s.max_tile_nodes,
-                s.max_tile_edges,
-                s.max_tile_bytes / 1024,
-                s.max_tile_gzip / 1024,
-                s.build_ms as f64 / 1000.0,
-                out.display()
-            );
-            if let Some(d) = s.drift {
-                println!("stability: {} nodes compared with the previous build, mean drift {:.4} of the map's width", s.aligned_nodes, d);
-            }
             Ok(ExitCode::SUCCESS)
         }
         Cmd::Gaps { top, out, atlas } => {

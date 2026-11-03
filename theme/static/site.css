@@ -56,9 +56,6 @@
   color-scheme: light;
 }
 
-/* the Map uses the whole window; the header keeps its place */
-.explorer-page { --page: 100%; }
-
 
 *, *::before, *::after { box-sizing: border-box; }
 html { font-family: var(--font-ui); font-size: 100%; line-height: 1.5; color: var(--ink); background: var(--paper); -webkit-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; }
@@ -133,7 +130,7 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
 .threads { display: grid; gap: 2rem; }
 .threads-in { min-width: 0; }
 .home-map { display: block; color: var(--ink); font-weight: 600; }
-.home-map img { display: block; width: 100%; max-width: 420px; height: auto; aspect-ratio: 1; }
+.home-map img { display: block; width: 100%; max-width: 420px; height: auto; aspect-ratio: 600 / 410; }
 @media (min-width: 1000px) { .threads { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); align-items: start; } .home-map { margin-top: 1rem; } }
 .home-ways { max-width: var(--page); margin: 0 auto; padding: 0 var(--gutter); }
 .home-ways h2 { margin-top: 3.2rem; }
@@ -507,10 +504,6 @@ ctd-atlas-links { display: block; }
 .tale-name { display: block; font: 700 1.14rem/1.25 var(--font-display); letter-spacing: -0.01em; }
 .tale-line { display: block; margin-top: 2px; font: 400 0.95rem/1.42 var(--font-body); color: var(--muted); text-wrap: pretty; }
 
-/* ---------------------------------------------------------------- explorer / map shells */
-.explorer-page .site-footer { display: none; }
-.explorer-page main { display: flex; flex-direction: column; }
-#explorer-root, #world-root { flex: 1; min-height: calc(100vh - 54px); }
 
 /* ---------------------------------------------------------------- footer */
 .footer-nav { display: flex; flex-wrap: wrap; gap: 0 22px; margin: -10px 0 1rem; font-size: 1rem; font-weight: 600; }
