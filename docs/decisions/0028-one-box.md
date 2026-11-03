@@ -19,6 +19,8 @@ The founder, 2026-11-02: "the explore and stories and map and connect - too much
 
 ## Rejected
 
+The founder later asked for One Place and One Thread whole, as ways in rather than the whole site: see [ADR-0030](0030-three-pages-whole.md).
+
 - **A question and its route on the first screen** (the One Box prototype): true but thin. "Gutenberg Bible, edition of the Bible, scripture of Christianity" proves a route exists and tells you nothing, and the founder found it short. A route still answers two names, but it does not open the site.
 - **One Place** (one surface, every story an island, nothing else): the most striking first screen, but it costs the real Earth and 434 scenes' maps, needs new engineering everywhere, and hangs a story's name over everyone merely mentioned in it. Its island picture is kept for the Stories page.
 - **One Thread** (open on a story, follow names): the best reading, but following dot to dot is how a conspiracy board works, and on a site read as proof that cannot be the whole shape of it. Its doors are kept inside stories.

@@ -11,7 +11,7 @@
 <ctd-place class="place">
   <div class="place-hello">
     <h1>Stories</h1>
-    <p class="place-line">Every island is a story, and its dots are what it tells of. Zoom in to see their names, and click one to see how it connects.</p>
+    <p class="place-line">Every island is a story, and its dots are what it tells of. Click an island to go in, and a dot to see how it connects. To zoom, pinch, or hold Ctrl and scroll.</p>
     <p class="place-sea" aria-hidden="true">On an island lies what that story is about. Whoever it shares with another, or only mentions, floats in the water near it.</p>
     <p class="place-key" aria-hidden="true">{% for ink in inks %}<span style="--c: {{ ink.color }}">{{ ink.label }}</span>{% endfor %}</p>
     <p class="place-list"><a href="#all">All {{ chapters|length }} stories, as a list</a></p>

@@ -31,5 +31,6 @@ One short file per decision: context, decision, consequences, and when to revisi
 | [0027](0027-contact-is-not-a-route.md) | Contact on the record is shown, with its caveat, and is never a route | accepted |
 | [0028](0028-one-box.md) | One box: the nav goes, every page holds the question, and the old places become what answers lead to | accepted |
 | [0029](0029-the-walk.md) | Explore is a walk | accepted |
+| [0030](0030-three-pages-whole.md) | Ask, Stories and Read, each whole: the three prototypes as three ways in | accepted |
 | [0022](0022-dots-and-lines.md) | Dots and lines: print inks with a job, each story its own ink, Bricolage Grotesque and Literata, stories on white | accepted |
 | [0021](0021-the-world-of-an-era.md) | The Map's era slider draws the world of that year: 30 years from 3000 BCE to 1990, in one grey; the basemap after that | accepted |

@@ -6,6 +6,7 @@ What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versio
 
 - Ask: one big box at /ask/. Type a name, two names, a year or a question, and the page becomes the answer, with its proof and its picture. It opens already asking how two things connect.
 - Stories is one place you move on: every story an island, named at rest. Zoom in and its dots are named; click one and glide to it, with its words, links and proof beside it, and find the way from it to anything else. Only what a story is about lies on its island; whoever it shares or only mentions floats in the water nearby.
+- Read: a story over the world drawn in dots, at /read/. Any name opens with its link and proof, and at the end the next story offers itself, with what it shares.
 
 ## 0.4.8 (2026-11-03)
 

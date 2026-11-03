@@ -716,20 +716,28 @@ class CtdPlace extends HTMLElement {
     });
     // a drag that ends on a link is not a click on it
     this.addEventListener('click', (e) => swallow && (e.preventDefault(), e.stopPropagation()), true);
-    // the surface takes the wheel: a mouse wheel and a pinch zoom, two fingers on a pad pan
+    // a pinch (or Ctrl and the wheel) zooms and a sideways swipe pans; an ordinary wheel scrolls the
+    // page past the picture, so that nobody is caught in it on the way to the list below
     this.addEventListener(
       'wheel',
       (e) => {
         if ((e.target as Element).closest?.('.place-hits')) return;
-        e.preventDefault();
         box = this.getBoundingClientRect();
         const [x, y] = local(e);
         const step = e.deltaMode === 1 ? 18 : 1;
         const [dx, dy] = [e.deltaX * step, e.deltaY * step];
-        if (e.ctrlKey) return this.zoomAt(x, y, Math.exp(-dy * 0.011));
-        if ((e.target as Element).closest?.('.place-words')) return this.panBy(0, this.wordsLimit(-dy));
-        if (dx === 0 && Math.abs(dy) >= 50 && Number.isInteger(dy)) return this.zoomAt(x, y, Math.exp(-dy * 0.0016));
-        this.panBy(-dx, -dy);
+        if (e.ctrlKey) {
+          e.preventDefault();
+          return this.zoomAt(x, y, Math.exp(-dy * 0.011));
+        }
+        if ((e.target as Element).closest?.('.place-words')) {
+          e.preventDefault();
+          return this.panBy(0, this.wordsLimit(-dy));
+        }
+        if (Math.abs(dx) > Math.abs(dy)) {
+          e.preventDefault();
+          this.panBy(-dx, 0);
+        }
       },
       { passive: false },
     );
