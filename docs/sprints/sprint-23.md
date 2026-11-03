@@ -21,6 +21,7 @@ The founder found the four places "too much and complicated", and picked One Box
 - [x] S23-05 Names in stories link to their entries.
 - [x] S23-06 Every old address still works. The footer lists Stories, Map, Explore and Connect.
 - [x] S23-08 Explore is a walk: an entry beside its neighbours, each named, one straight move from one to the next (ADR-0029).
+- [x] S23-ask Ask (`/ask/`): One Box whole. The question is the page's heading, each name inked as it is typed, the answer under it with its picture beside; it arrives on a featured pair with the first proof open. Home links Ask, Stories and Read.
 
 ### Should
 - [x] S23-07 Home's HTML under 100 KB (352 KB before).

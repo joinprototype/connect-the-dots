@@ -5,6 +5,7 @@ What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versio
 ## Next
 
 - The Map, Stories and Explore are back in the header on every page, beside the box. Home shows the Map, and lists every way in.
+- Ask: one big box at /ask/. Type a name, two names, a year or a question, and the page becomes the answer, with its proof and its picture. It opens already asking how two things connect.
 
 ## 0.4.7 (2026-11-02)
 
