@@ -21,6 +21,7 @@ The founder found the four places "too much and complicated", and picked One Box
 - [x] S23-05 Names in stories link to their entries.
 - [x] S23-06 Every old address still works. The footer lists Stories, Map, Explore and Connect.
 - [x] S23-08 Explore is a walk: an entry beside its neighbours, each named, one straight move from one to the next (ADR-0029).
+- [x] Stories is One Place, whole (founder, 2026-11-03): one surface of islands on `/c/`, names at rest, an entry's words and links beside it, proof on a tapped line, the way from a dot to another, one straight move each time. Only what a story is about lies on its island; whoever is shared or only mentioned floats in the water.
 
 ### Should
 - [x] S23-07 Home's HTML under 100 KB (352 KB before).

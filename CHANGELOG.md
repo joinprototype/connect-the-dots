@@ -5,6 +5,7 @@ What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versio
 ## Next
 
 - The Map, Stories and Explore are back in the header on every page, beside the box. Home shows the Map, and lists every way in.
+- Stories is one place you move on: every story an island, named at rest. Zoom in and its dots are named; click one and glide to it, with its words, links and proof beside it, and find the way from it to anything else. Only what a story is about lies on its island; whoever it shares or only mentions floats in the water nearby.
 
 ## 0.4.7 (2026-11-02)
 

@@ -28,14 +28,14 @@ dist/
   data/more/<n>.json         long lists past their first 40 names, fetched when a reader opens one
   data/spots.json            where each entry sits on the Map, read by the explorer
   data/stories.json          the written stories each entry is in, read by the explorer, the Map, the Earth and atlas pages
-  data/islands.json          the Stories page's picture: every written story as an island of dots
+  data/islands.json          the Stories page's surface: where every entry lies, on a story's island or in the water
   data/borders/<id>.json     one polity's historical borders, loaded by a story that draws them (ADR-0020)
   data/borders/world-<year>.json   every polity of a year (world-1960, world-3000-bce), loaded by the Map's era slider (ADR-0021)
   data/search/index.json     the search files' word ranges      data/search/<n>.json   search entries by word
   data/graph.json            only with `ctd build --graph`: everything in one file, for tools; no page reads it
   world/                     manifest.json, entities.json, {z}/{x}/{y}.bin (world-tiles.md)
   static/site.css            theme CSS and tokens (from theme/static/)
-  assets/                    built by web/ (Vite): islands.js|css, explorer.js|css, story.js|css, world.js|css, maplibre-gl.css (loaded by the story maps and the Map's Earth when they first draw a map), chunks/
+  assets/                    built by web/ (Vite): islands.js|css, explorer.js|css, story.js|css, world.js|css, place.js|css (the Stories page), maplibre-gl.css (loaded by the story maps and the Map's Earth when they first draw a map), chunks/
   build-manifest.json        engine, built, commit, methodology hash, counts
   .ctd-build                 marks the folder as a build, so the next build may empty it
 ```
@@ -206,24 +206,28 @@ A story page embeds the entries, links and sources its scenes name, beside its s
 
 ## `data/islands.json`
 
-The picture on the Stories page ([ADR-0028](decisions/0028-one-box.md)), read by `<ctd-isles>`. The build settles every position, deterministically, so nothing moves on screen and the same content gives the same picture.
+The Stories page's one surface ([ADR-0028](decisions/0028-one-box.md), after the One Place prototype), read by `<ctd-place>` with `graph-slim.json`, whose entries and links it places: every written story is an island, and every entry a dot, on an island's land or in the water between. The build settles every position, deterministically, so nothing is laid out on screen and the same content gives the same picture.
 
 ```jsonc
 {
-  "inks": ["#e23d28", "#2346d6"],                                   // the kinds' inks; a dot names one by index
-  "sheets": [ { "w": 4000, "h": 2000, "at": [[812, 340]] } ],       // one layout per shape: each story's centre
-  "stories": [ { "id": "the-trust", "title": "The Trust", "subtitle": "…", "r": 120,
-                 "dots": [[-40, 12, 1, 2]],                         // [x, y, ink, size], from the island's centre
-                 "links": [[0, 3]] } ],                             // dots joined by a link the story reveals
-  "lines": [[4, 17, 2, 1]]                                          // [a, b, strength, shown at rest]: stories by index
+  "w": 6000, "h": 4100,              // the map, in its units
+  "coast": 29,                       // how far land reaches around a dot on it: land is the discs around them
+  "at": [812, 340, 790, 361],        // every entry's place, [x, y] in the order of graph-slim.json's nodes
+  "sealed": [212, 1840],             // entries sealed (ADR-0027), by index
+  "told": [[3, 17], [], [3]],        // for each entry, the stories that tell of it, the one with the most scenes on it first
+  "stories": [ { "id": "pain", "title": "Pain", "subtitle": "…", "scenes": 22,
+                 "x": 2310, "y": 3790, "r": 182,      // the island: its centre, and the radius its land reaches
+                 "land": [17, 40, 41],                // the entries on its land
+                 "trail": [17, 902, 40] } ],          // the subject of each scene in order: its focus, else the first it names
+  "lines": [[4, 17, 2, 1]]           // [a, b, strength, shown at rest]: stories by index
 }
 ```
-- **A dot** is an entry the story reveals: a scene's `focus`, `perspective`, `reveal`, `places` or `routes`, or an end of a link in its `reveal_claims`. An entry in two stories is a dot on each. `size` is 0 to 3, for 1, 2 or 3, 4 to 7, and 8 or more scenes.
-- **The file names no dot.** It holds no entry's id or name, because an island's name hangs over its dots and nobody may read a person as belonging to it. People are named on the story's own page.
-- **`sheets`:** 2:1 for a window, 1:1 for a tablet, 1:4 for a phone, all in the same units and with the same area. The page takes the one nearest the shape of `.isles-sheet`, which the CSS sets.
+- **Land and water.** An island's name sits over its land, so only what the story is about lies on it: an entry no other story tells of, and, for a person (a type marked `family`), only one a scene of that story is about (its `focus`). Whoever two stories share, or a story only mentions, floats in the water near the stories that name them, off every island's land; an entry no story tells of floats near what it links to. A sealed entry, a `group` and a `tradition` never lie on land.
+- **A story tells of** a scene's `focus`, `perspective`, `reveal`, `places` and `routes`, and both ends of each link in its `reveal_claims`. `told` and `trail` leave out sealed entries, groups and traditions: no story is listed through them, and no trail runs through them (ADR-0016, ADR-0027).
+- **Where islands lie:** each starts at the middle of the places its entries are set (a flat Earth), so a new story lands near its part of the world and disturbs the others little; stories that share entries are drawn together, and all are pushed apart until their shores stop touching.
 - **`subtitle`** is null when it would name a sealed person, by name, alias or family name (ADR-0027). The list under the picture still prints it. A story whose title names one stays off the picture.
-- **`lines`** join stories that share an entry. An entry in few stories counts for more than one in many. A sealed entry, and what is about it, joins nobody (ADR-0027), and neither does a `group` or a `tradition`: no line says two stories belong together because of who someone is (ADR-0016). Each island keeps its five strongest. The strongest of each shows at rest, and the rest when the island is picked. `strength` is 1 to 3.
-- **Size:** 36 KB gzip today (75 stories, 4,019 dots). Its budget is 100 KB gzip; past it the build warns.
+- **`lines`** join stories that share an entry. An entry in few stories counts for more than one in many. A sealed entry, and what is about it, joins nobody (ADR-0027), and neither does a `group` or a `tradition`: no line says two stories belong together because of who someone is (ADR-0016). Each island keeps its five strongest. The strongest of each shows at rest, and the rest when a pointer rests on the island. `strength` is 1 to 3.
+- **Size:** 35 KB gzip today (76 stories, 3,453 entries). Its budget is 100 KB gzip; past it the build warns. With `graph-slim.json` and `schema.json`, the surface loads about 220 KB gzip, after the page's words have painted.
 
 ## `data/borders/<id>.json`
 
@@ -277,7 +281,7 @@ All reading pages load `/static/site.css`, `/assets/islands.css` and `/assets/is
 | `<ctd-box>` | Enhances the server's `<form role="search"><input>`, in every header ([ADR-0028](decisions/0028-one-box.md)). Until a person focuses it, it loads nothing: no search file, and only a focus listener of script. Then `web/src/islands/box-field.ts` reads `search/` (the entries for the typed words) and `schema.json` (the inks), and `web/src/lib/box.ts` reads the text as one name, two names, a year or a question. Each name gets a dot in its type's ink, and arrow keys, Enter and Escape work the suggestions. Enter goes to `/e/<id>/` or `/a/?q=Q<n>`, `/r/?a=<id or Qn>&b=<id or Qn>`, `/q/<q>/<id>/`, `/w/?t=<year>`, or with an empty box `/c/`. Otherwise it answers in its own panel, in fixed words, and never repeats the text. For a single name on the explorer and world pages (`html[data-ctd-explorer]`) it first dispatches a cancelable `ctd:focus` `{id}`; a page that can show the entry calls `preventDefault()` and the box stays put. Without JavaScript the field is hidden (`@media (scripting: none)`) and a link to `/c/` stands in. |
 | `<ctd-lens-chips focus="<id>">` | Holds server-rendered chips, `button[data-lens][data-layers]` (`data-layers`: the lens's layer ids, space-separated), so it needs no data file; without chips it builds them from `schema.json`. Clicking dispatches `ctd:lens` `{lens}` on `document`, hides `li.claim` items whose `data-layers` miss the lens layers (and any `.claim-group` left empty), and keeps `?lens=` in the URL. Lens `all` shows everything. |
 
-`<ctd-isles class="isles" aria-hidden="true">` holds `.isles-sheet`, whose shape picks the layout. It draws `data/islands.json` when in view, once the page has loaded, and nothing runs at rest. Hovering, or tapping the dots, brings an island and those it shares with forward and shows its name and `subtitle` in a card; a click, a tap on the name or a second tap on the dots opens `/c/<id>/`. Nothing moves. The list under it (`#all`) is its alternative for screen readers, and all that shows without JavaScript.
+**Stories** (`/c/`, `chapters.html`): `<ctd-place class="place">` takes the first screen, and `/assets/place.js` and `/assets/place.css` load on this page alone. It holds `.place-hello`, the page's `h1` and the fixed words that say what the picture is, which the script leaves in place and fades when the camera leaves the whole map. The script adds one canvas (`aria-hidden`), a layer of words, and one button that zooms out. It reads `graph-slim.json`, `islands.json` and `schema.json`; an entry's detail file when it is opened or a link's proof is read; `ways.json` when a way is asked for; and `search/` when someone types in the way field. The address is the stop, so Back walks back: `#/e/<id>` an entry, `#/i/<story id>` an island, `#/l/<link id>/<from id>` a link and its proof, `#/w/<a id>/<b id>` the way between two entries and `#/w/<a id>/<b id>/<n>` its step `n`. Any other hash, such as `#all`, leaves the surface as it is. The page sets `html[data-ctd-explorer]`, so the header's box shows a single name here. Every move is one straight eased move, and nothing runs at rest. A way is the first `findPaths` finds over `ways.json`, as `/r/` finds it; a sealed entry is never offered as one end. The list under it (`#all`) is its alternative for screen readers, and all that shows without JavaScript.
 
 **Entity page:** a person's page may open with a "Background" card: the links whose relation has `background: true` (born in, citizen of, educated at), and the entry's `background` lines, each with footnotes. Background lines are on that page only. They are in no data file (`graph-slim.json`, `e/<id>.json`, `search/`, a story's data and shots, nor `graph.json`), by rule ([ADR-0016](decisions/0016-who-a-person-is.md)), and a test checks it.
 
@@ -411,7 +415,7 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 - `shelf[]`: the first six written stories free of sealed entries, in the library's order (`featured: true` first), as `book` takes them. `stories`: how many written stories there are.
 - `kinds[]`: `{ id, label }`, each type with entries, for the last line. Its `#index-h` is where a type page's back link lands.
 
-`chapters.html` also gets `questions[]`, the Questions list (question stories, featured first, then the richest, at most 24): `{ title, subtitle, url, kind: "Question", cover }`, and `questions_more`. It lists every story as plain rows, with no covers (the page's budget is 150 KB).
+`chapters.html` also gets `questions[]`, the Questions list (question stories, featured first, then the richest, at most 24): `{ title, subtitle, url, kind: "Question", cover }`, and `questions_more`. It lists every story as plain rows, with no covers (the page's budget is 150 KB). `inks[]`: `{ color, label }`, the key under its surface, one row per ink with the kinds drawn in it ("Works, concepts and traditions"), for kinds with entries.
 
 `question.html` (`/q/<q>/<id>/`); a node is `{ id, name, kind, type_label, color, url }`:
 - `question`: `{ id, ask, label, title, shows, not, url, story_url, explore_url }`. `title` is the asked sentence ("Why did the dissolution of the Soviet Union happen?"); `shows` and `not` are full sentences; `story_url` may be null; `explore_url` is `/x/?focus=<id>`.
