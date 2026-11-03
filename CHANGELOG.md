@@ -2,6 +2,15 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## Next
+
+- One box replaces the menu on every page. Type a name, two names, a year or a question. The footer keeps Stories, Map, Explore and Connect.
+- The first page follows one name through the stories it runs through.
+- Two names now get one answer, with their direct tie first, then the way between them, each step with its proof.
+- Stories are drawn as islands, and any name in a story opens its page.
+- Explore is now a walk: an entry beside its neighbours, each named, and one smooth move to the next. It opens far faster.
+- A new story, Too Big to Fail, tests how much choice Americans really have, market by market.
+
 ## 0.4.6 (2026-11-02)
 
 - Long stories start scrolling sooner, and a finger on a story's graph now scrolls the page. Text no longer jumps when its font arrives.

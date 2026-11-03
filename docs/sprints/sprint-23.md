@@ -45,12 +45,17 @@ The demo runs on 1280x800 and 390x844, light and dark, with no console errors, a
 
 ## Self-check (before the demo)
 
-- [ ] Tests and lints pass
+- [x] Tests and lints pass
 - [ ] Demo script executed; screenshots saved in `docs/sprints/sprint-23/`
-- [ ] Docs and ADRs updated
-- [ ] Known issues listed
+- [x] Docs and ADRs updated
+- [x] Known issues listed
 
 ## Known issues
+
+- Stories show a layout shift of about 0.17 on a phone during scrolling, as text swaps between scenes. 0.4.6 measures the same, so this sprint did not cause it.
+- Real phones and Safari are unmeasured.
+- Story progress dots are small tap targets, as before.
+- `world/picture.svg` is still written, and no page draws it.
 
 ## Review
 
