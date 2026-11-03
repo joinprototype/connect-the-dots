@@ -29,6 +29,7 @@ dist/
   data/spots.json            where each entry sits on the Map, read by the explorer
   data/stories.json          the written stories each entry is in, read by the explorer, the Map, the Earth and atlas pages
   data/islands.json          the Stories page's picture: every written story as an island of dots
+  ask/index.html             Ask: the box as the page's heading, arriving on a featured pair   data/ask.json   what it reads besides
   data/borders/<id>.json     one polity's historical borders, loaded by a story that draws them (ADR-0020)
   data/borders/world-<year>.json   every polity of a year (world-1960, world-3000-bce), loaded by the Map's era slider (ADR-0021)
   data/search/index.json     the search files' word ranges      data/search/<n>.json   search entries by word
@@ -225,6 +226,14 @@ The picture on the Stories page ([ADR-0028](decisions/0028-one-box.md)), read by
 - **`lines`** join stories that share an entry. An entry in few stories counts for more than one in many. A sealed entry, and what is about it, joins nobody (ADR-0027), and neither does a `group` or a `tradition`: no line says two stories belong together because of who someone is (ADR-0016). Each island keeps its five strongest. The strongest of each shows at rest, and the rest when the island is picked. `strength` is 1 to 3.
 - **Size:** 36 KB gzip today (75 stories, 4,019 dots). Its budget is 100 KB gzip; past it the build warns.
 
+## Ask: `ask/index.html` and `data/ask.json`
+
+The One Box page ([ADR-0028](decisions/0028-one-box.md)), written by `crates/ctd/src/site/ask.rs` and read by `web/src/ask/`. Its heading is the box (`#ask-box`, a textarea, under `.ask-mirror`, which paints the same text with each name inked). The page arrives asking the first featured pair, painted in the HTML, and its address names entries alone, so the words are rebuilt from the data and no address can print text: `/ask/?a=<id>&b=<id or Qn>[&way=<n>]` two names, `?a=<id>` one, `?q=<question>&a=<id>` a question with its own page, `?y=<year>` a year. What a reader types and nothing answers stays on their screen and gets no address.
+
+- `script#ask-picks`: the featured pairs of `connections` in `content/featured.yaml` it may arrive on, `[{ a, b, text, parts, note }]`. `parts` is the route question in `questions.yaml` asked about the two, as `[words]` and `[name, id, ink]` (only the name is inked: "the" in "the Gutenberg Bible" is a word). A pair is left out when an end, or any stop of its way, is sealed, about a sealed entry, or named after one (ADR-0027). "Another question" walks these.
+- `data/ask.json`: `{ "stories": [[id, title, subtitle, [years with a scene], [entry ids named]]], "sealed": [ids] }`. The stories are those free of sealed entries, in the library's order, and an entry is named when a scene shows it or reveals a link to it. A `group` or `tradition` is named by none here, so no two names share a story for who someone is (ADR-0016). `sealed` lists what no answer may run through: the sealed entries, what is about them, and everything but a person whose name holds a sealed person's family name. Ask offers no pair, way, story or question through these, draws none around another dot, and lists none under a year. Searched for by name, a sealed entry gets its direct ties with their caveat. About 38 KB gzip (71 stories, 3,871 names); its budget is 100 KB, and past it the build warns.
+- Beside these it reads `schema.json`, `graph-slim.json` (names, links, ways and pictures), an entry's detail file when an answer shows it, `search/` as a person types, and the atlas and `routes.json` only for two names with no written way. The world under an empty box, a year or a place is drawn by `web/src/lib/dotfield.ts`.
+
 ## `data/borders/<id>.json`
 
 A GeoJSON FeatureCollection, copied from `content/borders/`: `name` (what the key says), `source` (a source id), and one feature per period, with `properties.from` and `properties.to` (years, inclusive) and a MultiPolygon. A shot's `borders` lists ids; the story takes the feature whose years hold the floor of the shot's `t`, and draws nothing for an id with none.
@@ -404,6 +413,7 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 `chapter.html`: `chapter` (`id`, `title`, `subtitle`, `summary`, `authors`, `intro_html`, `outro_html`, `shots_json`, `data_json` (the story's own data), `steps[]`, `shot_count`; written stories add `rel_path`, generated ones `generated`, `back` and `explore_url`) and `history`. A question story's `subtitle` is its scope line, its `intro_html` the notice and its `back` the question page.
 
 `home.html`:
+- It opens on three plain links, `.home-doors`: Ask (`/ask/`), Stories (`/c/`) and Read (`/read/`).
 - `threads[]`: the picks in `threads` of `content/featured.yaml`, in order, each with at least two stories: `{ node, name, count, stories[], more, cut }`. `name` is the entry's name as it opens a sentence ("The Federal Reserve"). `count` is how many stories it runs through, in words. `stories[]` (the first four): `{ title, subtitle, url }`. `cut`: there are more, `more` in words.
   - A pick is a person, an organization or a place (`thread: true` in `entity-types.yaml`), never sealed. `ctd check` refuses anything else, and warns of a pick left with too few stories.
   - A story counts from two scenes that name the entry, most scenes first, and only if it is free of sealed entries (ADR-0027): no scene shows one or reveals a link to one, and no sentence names one.

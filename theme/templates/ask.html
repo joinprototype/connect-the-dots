@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Ask: Connect the Dots{% endblock %}
+{% block description %}Ask how anything connects: a name, two names, a year or a question. The page becomes the answer, with its proof.{% endblock %}
+{% block body_class %}ask-page{% endblock %}
+{% block head %}{% if site.assets.ask_css %}<link rel="stylesheet" href="/assets/ask.css">{% endif %}{% endblock %}
+{% block main %}
+{# The box is the page's heading: what a reader types, or a question built from entries. It arrives asking
+   the first featured pair (content/featured.yaml), painted here as ask.js paints it. An address names
+   entries alone (/ask/?a=<id>&b=<id>), and ask.js rebuilds their words from the data. #}
+<div class="ask" id="ask-root">
+  <h1 class="sr-only">Ask how anything connects</h1>
+  <div class="ask-form">
+    <div class="ask-field">
+      <div class="ask-mirror" aria-hidden="true">{% if first %}{% for p in first.parts %}{% if p|length > 1 %}<b><i class="ask-pin is-old" style="--c: {{ p[2] }}"></i>{{ p[0] }}</b>{% else %}{{ p[0] }}{% endif %}{% endfor %}{% else %}<span class="ask-hint">Ask how anything connects</span>{% endif %}&#8203;</div>
+      <textarea id="ask-box" rows="1" aria-label="Ask how anything connects: a name, two names, a year or a question" aria-controls="ask-typed" enterkeyhint="go" autocapitalize="sentences" autocomplete="off" autocorrect="off" spellcheck="false">{% if first %}{{ first.text }}{% endif %}</textarea>
+    </div>
+    <div class="ask-under">
+      <span id="ask-line">{% if first %}Ask how anything connects.{% endif %}</span>
+      {% if first %}<button type="button" class="ask-another" id="ask-another">Another question</button>{% endif %}
+    </div>
+  </div>
+  <div class="ask-stage" aria-hidden="true"><canvas class="ask-map"></canvas><canvas class="ask-ink"></canvas><p class="ask-clock"></p></div>
+  <div class="ask-answer" id="ask-answer">
+    {% if first %}<noscript><p class="ask-lead">The box answers with JavaScript. This way is also told as a story: <a href="/p/{{ first.a }}--{{ first.b }}/">read it</a>, or see <a href="/c/">every story</a>.</p></noscript>{% endif %}
+  </div>
+  <p class="sr-only" role="status" id="ask-said"></p>
+  <button type="button" class="ask-mini" id="ask-mini" hidden><span class="ask-mini-t">{% if first %}{{ first.text }}{% endif %}</span><span class="ask-mini-ask">Ask</span></button>
+  <script type="application/json" id="ask-picks">{{ picks_json|safe }}</script>
+</div>
+{% endblock %}
+{% block scripts %}{% if site.assets.ask_js %}<script type="module" src="/assets/ask.js"></script>{% endif %}{% endblock %}

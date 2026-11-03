@@ -22,6 +22,7 @@ use crate::{
     schema::NEUTRAL,
 };
 
+mod ask;
 pub mod data;
 mod dossier;
 mod history;
@@ -627,6 +628,8 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     let routes = route_stories(&s)?;
     library_page(&s, &chapters, &routes, &lives, &questions)?;
     home_page(&s, &chapters)?;
+    // Ask: the box as the page's heading, arriving on a featured pair, and data/ask.json
+    ask::write_ask(&s)?;
     type_pages(&s)?;
     for (dir, template) in [("x", "explorer.html"), ("w", "world.html")] {
         write(&out.join(dir).join("index.html"), s.render(template, json!({ "site": &s.site }))?)?;
@@ -736,6 +739,8 @@ fn copy_assets(root: &Path, out: &Path) -> Result<Value> {
         "world_js": has_asset("world.js"), "world_css": has_asset("world.css"),
         "atlas_js": has_asset("atlas.js"), "atlas_css": has_asset("atlas.css"), "route_js": has_asset("route.js"),
         "story_js": has_asset("story.js"), "story_css": has_asset("story.css"), "life_js": has_asset("life.js"),
+        // Ask (/ask/)
+        "ask_js": has_asset("ask.js"), "ask_css": has_asset("ask.css"),
     }))
 }
 

@@ -145,6 +145,10 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
 /* not yet verified: a dashed outline, no color */
 .badge.draft, .badge.disputed { background: transparent; color: var(--ink-2); border: 1px dashed var(--muted); padding: 1px 7px; }
 
+/* ---------------------------------------------------------------- home: three ways in, plainly, at the top */
+.home-doors { display: flex; flex-wrap: wrap; gap: 0 24px; max-width: var(--page); margin: 0 auto; padding: 14px var(--gutter) 0; font: 600 1.14rem var(--font-display); }
+.home-doors a { color: var(--ink); padding-block: 10px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.16em; }
+
 /* ---------------------------------------------------------------- home: one name and its stories */
 .threads { max-width: var(--page); margin: 0 auto; padding: clamp(28px, 4vw, 44px) var(--gutter) 0; }
 /* beside the thread, the Map: its best-connected dots, one still picture that loads after the words */
