@@ -1,14 +1,25 @@
-// Headless Chrome for the QA tools: one per run, never left behind. It is killed when the run ends, is
-// interrupted (Ctrl+C, a kill, a closed terminal) or crashes, and each run first stops headless Chromes that
-// earlier runs left behind: only ours (a QA profile folder) and only those over an hour old.
+// Headless Chrome for the QA tools: one per run, never left behind. It and its profile folder are removed
+// when the run ends, is interrupted (Ctrl+C, a kill, a closed terminal) or crashes, and each run first clears
+// what earlier runs left behind: only ours (a QA profile folder) and only over an hour old.
 import { execFileSync, spawn } from 'node:child_process';
-import { mkdtempSync } from 'node:fs';
+import { mkdtempSync, readdirSync, rmSync, statSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 /** Profile folders of QA runs, past and present. */
 const OURS = /--user-data-dir=\S*ctd-(chrome|qa|sweep)-/;
+const PROFILE = /^ctd-(chrome|qa|sweep)-/;
+const HOUR = 3600;
+
+/** Left behind, profiles pile up (1,497 once took 57 GB). Retries while Chrome's helpers exit. */
+function removeProfile(dir) {
+  try {
+    rmSync(dir, { recursive: true, force: true, maxRetries: 5 });
+  } catch {
+    /* the next run's reapStale() removes it */
+  }
+}
 
 function reapStale() {
   let ps = '';
@@ -17,17 +28,30 @@ function reapStale() {
   } catch {
     return;
   }
+  const live = new Set();
   for (const line of ps.split('\n')) {
     const m = /^\s*(\d+)\s+(\S+)\s+(.*)$/.exec(line);
     if (!m || !m[3].includes('--headless') || !OURS.test(m[3])) continue;
     // etime is [[dd-]hh:]mm:ss
     const secs = m[2].split(/[-:]/).map(Number).reverse().reduce((s, v, i) => s + v * [1, 60, 3600, 86400][i], 0);
-    if (secs > 3600) {
+    if (secs > HOUR) {
       try {
         process.kill(Number(m[1]), 'SIGKILL');
       } catch {
         /* already gone */
       }
+    } else {
+      live.add(/--user-data-dir=(\S+)/.exec(m[3])[1]);
+    }
+  }
+  // Folders of runs that could not clean up (kill -9, the Mac asleep): unused and untouched for an hour.
+  for (const name of readdirSync(tmpdir())) {
+    const dir = join(tmpdir(), name);
+    if (!PROFILE.test(name) || live.has(dir)) continue;
+    try {
+      if (Date.now() - statSync(dir).mtimeMs > HOUR * 1000) removeProfile(dir);
+    } catch {
+      /* already gone */
     }
   }
 }
@@ -40,8 +64,9 @@ function reapStale() {
 export async function launch() {
   reapStale();
   const port = 9300 + Math.floor(Math.random() * 600);
+  const profile = mkdtempSync(join(tmpdir(), 'ctd-chrome-'));
   const chrome = spawn(CHROME, [
-    '--headless=new', '--mute-audio', `--remote-debugging-port=${port}`, `--user-data-dir=${mkdtempSync(join(tmpdir(), 'ctd-chrome-'))}`,
+    '--headless=new', '--mute-audio', `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`,
     '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist',
     '--window-size=1440,900', '--hide-scrollbars', 'about:blank',
   ], { stdio: 'ignore' });
@@ -51,6 +76,7 @@ export async function launch() {
     } catch {
       /* already gone */
     }
+    removeProfile(profile);
   };
   const done = (code) => {
     kill();
