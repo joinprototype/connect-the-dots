@@ -2,7 +2,7 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
-## Next
+## 0.4.10 (2026-11-03)
 
 - Read's pictures, and Ask's world, show their names again: since 0.4.9 each name sat under a black bar, because the look of the dots was written to a file no page loaded. The build now stops if that happens again.
 
