@@ -2,7 +2,7 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
-## Next
+## 0.5.2 (2026-11-03)
 
 - The Map is one picture of everything read: every story an island, every entry a dot. Pick a dot and its links draw while the rest steps back, with each link in words beside it.
 - "On Earth" moves whatever has a place onto the world: places, events, and companies where they are headquartered. People are never placed.

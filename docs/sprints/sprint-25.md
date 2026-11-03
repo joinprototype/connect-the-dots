@@ -1,7 +1,7 @@
 # Sprint 25: One map
 
 - Starts: 2026-11-03 · Length: 1 day
-- Status: in review
+- Status: done
 
 ## Goal
 
