@@ -1,5 +1,6 @@
 /* Ask (/ask/): the box is the page's heading, the answer hangs from its left edge, and the picture stands
    beside it. Black on white, or white on black; colour only on the dots. */
+@import '../lib/dotfield.css';
 
 .ask-page {
   /* the words around a name in the box: grey, 4.5:1 on the page */

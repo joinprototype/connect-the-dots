@@ -145,12 +145,29 @@ function devSite(): Plugin {
   };
 }
 
+/**
+ * Build only: a page links its entry's .css and nothing else, so a style sheet two entries share would
+ * be written as a file of its own that no page loads. Fail the build instead; the shared sheet goes
+ * in each entry's CSS as an @import. maplibre-gl.css is loaded by URL with the first map.
+ */
+function onlyEntryCss(): Plugin {
+  const allowed = new Set([...Object.keys(ENTRIES).map((name) => `${name}.css`), 'maplibre-gl.css']);
+  return {
+    name: 'only-entry-css',
+    apply: 'build',
+    generateBundle(_, bundle) {
+      const stray = Object.keys(bundle).filter((file) => file.endsWith('.css') && !allowed.has(file));
+      if (stray.length) this.error(`no page links ${stray.join(', ')}: @import it from each entry's CSS`);
+    },
+  };
+}
+
 export default defineConfig(({ command }) => ({
   // Built files are served from /assets/ by the site; the dev server serves the built site from /.
   base: command === 'build' ? '/assets/' : '/',
   appType: 'custom',
   publicDir: false,
-  plugins: [react(), devSite()],
+  plugins: [react(), devSite(), onlyEntryCss()],
   server: { port: 5173 },
   build: {
     outDir: 'dist',

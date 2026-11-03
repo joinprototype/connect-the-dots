@@ -1,5 +1,7 @@
 /* Read (/read/): one line down the left of the reading, the field of dots beside it (under it on a phone).
    Black on white, colour only on the dots; stories read on white in every mode (the page is data-theme="light"). */
+@import '../lib/dotfield.css';
+
 .read-page {
   --line: clamp(16px, 4vw, 56px);      /* where the thread runs */
   --off: clamp(18px, 2.2vw, 28px);     /* from the thread to the words */

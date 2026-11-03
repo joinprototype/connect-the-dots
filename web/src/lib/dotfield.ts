@@ -25,8 +25,10 @@
 // through around it, a halo; marks in their own ink, ringed in the page's colour. Nothing else. Nothing
 // runs at rest: a frame is drawn when the scene, the size or the data changes, and on each frame of a
 // move, and none while the canvas is out of view.
+//
+// Its look is dotfield.css, which each page's own style sheet @imports: imported here, two pages would
+// share it as a file of its own that no page links.
 import { loadJson } from './data';
-import './dotfield.css';
 
 /** Where the camera looks: a point on the plane, and CSS pixels per unit of the plane. */
 export interface View {
