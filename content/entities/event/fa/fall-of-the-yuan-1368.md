@@ -1,5 +1,5 @@
 ---
-uid: 01M6MEEEXV7ZFG23XWVRH3SFVP
+uid: 01M6MFMX09QM4J1Y29TH3XJ5HD
 id: fall-of-the-yuan-1368
 type: event
 name: "End of Yuan rule, 1368"

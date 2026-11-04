@@ -1,5 +1,5 @@
 ---
-uid: 01M6MEEF2RB4H4XV2SP4YS7VJZ
+uid: 01M6MFMX4V6VFJXRFB52J4R4W5
 id: mamluk-sultanate
 type: org
 name: "Mamluk sultanate"

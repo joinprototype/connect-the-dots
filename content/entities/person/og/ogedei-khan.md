@@ -1,5 +1,5 @@
 ---
-uid: 01M6MEEF859PTHEJ3Y2HV6ZCQ0
+uid: 01M6MFMX9KZZ7JDQ9J6H1G15T7
 id: ogedei-khan
 type: person
 name: "Ögödei Khan"
@@ -12,14 +12,14 @@ claims:
     to: genghis-khan
     role: "son"
     src:
-      - {s: rachewiltz-street-2015-secret-history, at: "Introduction", quote: "Činggis had designated his third son Ögödei as his successor"}
+      - {s: rachewiltz-street-2015-secret-history, at: "§260", quote: "these three sons of Činggis Qa’an"}
   - id: c2
     rel: head_of
     to: mongol-empire
     when: "1229/1241"
     title: "Great Khan"
     src:
-      - {s: rachewiltz-street-2015-secret-history, at: "Introduction", quote: "and with some events of his reign (1229-41)"}
+      - {s: street-2015-introduction-secret-history, at: "Introduction", quote: "and with some events of his reign (1229-41)"}
   - id: c3
     rel: founded
     to: karakorum

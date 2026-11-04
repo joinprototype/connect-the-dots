@@ -1,5 +1,5 @@
 ---
-uid: 01M6MEEFD6RTP4EE1TQYJ483VX
+uid: 01M6MFMXE9E2JAQC66MB38TSKQ
 id: source-of-the-black-death-paper
 type: work
 name: "The source of the Black Death in fourteenth-century central Eurasia"

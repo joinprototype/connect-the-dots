@@ -1,5 +1,5 @@
 ---
-uid: 01M6MEEF57YCJ1J3JJMB41P4DX
+uid: 01M6MFMX6YTHVAXG0NE09WNBJD
 id: berke-khan
 type: person
 name: "Berke Khan"
@@ -12,6 +12,7 @@ claims:
     to: golden-horde
     when: "1257/1265"
     title: "Khan"
+    note: "The dates are Yule's."
     src:
       - {s: yule-1903-notes-vol1, at: "Prologue ch. 2, note 1", quote: "of Juji and Empire of Kipchak (Southern Russia) from 1257 to 1265."}
 ---

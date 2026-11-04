@@ -1,5 +1,5 @@
 ---
-uid: 01M6MEEEYS395QNFPJKQPGY26C
+uid: 01M6MFMX15530130TE6VRA3BNT
 id: mongol-invasions-of-japan
 type: event
 name: "Mongol invasions of Japan"

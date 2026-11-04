@@ -1,9 +1,10 @@
 ---
-uid: 01M6MEEFA1D54SQY0CG9NWZYVE
+uid: 01M6MFMXBBCZMKD0C4FEPNEVHV
 id: hungary
 type: place
 name: "Hungary"
 summary: "Kingdom in central Europe invaded by the Mongols in 1241."
+same_as: {"wikidata": "Q171150"}
 coords: [19.5, 47.2]
 claims:
   - id: c1

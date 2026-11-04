@@ -1,5 +1,5 @@
 ---
-uid: 01M6MEEFBD35GATTB71XZ6YAQ6
+uid: 01M6MFMXCN6WBSPZ0G8Y2E5WND
 id: compendium-of-chronicles
 type: work
 name: "Jami' al-tawarikh (Compendium of Chronicles)"

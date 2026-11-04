@@ -1,10 +1,11 @@
 ---
-uid: 01M6MEEFA0HJP397KE82B8D5KS
+uid: 01M6MFMXBAWY8AS3XET3MMWDS4
 id: hakata-bay
 type: place
 name: "Hakata Bay"
 aliases: ["Fakata"]
-summary: "Bay on the north coast of Kyushu, Japan, where Mongol fleets landed in 1274 and 1281."
+summary: "Bay on the north coast of Kyushu, Japan, where, by the annals Yule quotes, the 1281 invaders were taken prisoner."
+same_as: {"wikidata": "Q2344806"}
 coords: [130.35, 33.67]
 claims:
   - id: c1

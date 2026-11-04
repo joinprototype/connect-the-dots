@@ -1,10 +1,11 @@
 ---
-uid: 01M6MEEFA4VS4MNVM3YVS3KAN4
+uid: 01M6MFMXBF63DBHQ1F5P6NP5NM
 id: karakorum
 type: place
 name: "Karakorum"
 aliases: ["Caracarum", "Qara Qorum"]
 summary: "Capital of the Mongol Empire in Mongolia from the 1230s, near today's Kharkhorin."
+same_as: {"wikidata": "Q62677"}
 coords: [102.8458, 47.1983]
 claims:
   - id: c1

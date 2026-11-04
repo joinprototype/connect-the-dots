@@ -1,5 +1,5 @@
 ---
-uid: 01M6MEEEWYZBEG9WG7ZDE96Z0N
+uid: 01M6MFMWZF8MB8NBTNSX9Q4ZKV
 id: berke-hulagu-war-1262
 type: event
 name: "War of Berke and Hulagu, 1262"
@@ -9,7 +9,7 @@ claims:
   - id: c1
     rel: involved
     to: berke-khan
-    role: "Polo's Barca, lord of the Ponent"
+    role: "Polo's Barca, lord of the Ponent; Polo has him defeated, other accounts differ and were not read"
     src:
       - {s: polo-yule-1903-book-vol1, at: "Prologue ch. 2", quote: "But in the end Barca, the Lord of the Tartars of the Ponent, was defeated, though on both sides there was great slaughter."}
   - id: c2

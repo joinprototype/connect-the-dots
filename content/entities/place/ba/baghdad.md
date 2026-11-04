@@ -1,9 +1,10 @@
 ---
-uid: 01M6MEEF9K3SFDRZ785TYMR6BM
+uid: 01M6MFMXAXEA1FNGHJHMZBQGY8
 id: baghdad
 type: place
 name: "Baghdad"
 summary: "Seat of the Abbasid caliphs, taken by Hulagu's army in 1258."
+same_as: {"wikidata": "Q1530"}
 coords: [44.3661, 33.3152]
 claims:
   - id: c1

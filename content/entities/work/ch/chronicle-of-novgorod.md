@@ -1,5 +1,5 @@
 ---
-uid: 01M6MEEFBBDCQDVD8AEZVG04PT
+uid: 01M6MFMXCKX2V81ADWGBGAY9GZ
 id: chronicle-of-novgorod
 type: work
 name: "The Chronicle of Novgorod"

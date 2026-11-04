@@ -1,5 +1,5 @@
 ---
-uid: 01M6MEEF82FHVFBMABWXRQ94MR
+uid: 01M6MFMX9G4M925TKVBT611XY1
 id: mongke-khan
 type: person
 name: "Möngke Khan"
@@ -11,7 +11,7 @@ claims:
     to: mongol-empire
     title: "Great Khan"
     src:
-      - {s: deremilitari-manning-intro-ayn-jalut, at: "intro", quote: "Hulagu returned home to attempt to seize power when his brother the Great Khan Mongke died."}
+      - {s: deremilitari-manning-intro-ayn-jalut, at: "intro", quote: "when his brother the Great Khan Mongke died."}
   - id: c2
     rel: relative_of
     to: kublai-khan

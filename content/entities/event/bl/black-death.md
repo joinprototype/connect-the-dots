@@ -1,5 +1,5 @@
 ---
-uid: 01M6MEEEX19BFQPXC0NRRRMMDB
+uid: 01M6MFMWZJKXYT2X42YQC5RWPJ
 id: black-death
 type: event
 name: "Black Death"

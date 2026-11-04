@@ -1,10 +1,11 @@
 ---
-uid: 01M6MEEFAJYW8SZ2VKSGKAPBFZ
-id: ryazan
+uid: 01M6MFMXBSVJKS3XK7DMN6VVRW
+id: old-ryazan
 type: place
-name: "Ryazan"
-summary: "Rus city taken by the Mongols in December, in the winter of 1237-38."
-coords: [39.7015, 54.6269]
+name: "Old Ryazan"
+aliases: ["Staraya Ryazan", "Ryazan"]
+summary: "Rus town on the Oka, about 55 km south-east of modern Ryazan, taken by the Mongols in December 1237; the modern city was then Pereyaslavl-Ryazansky."
+coords: [40.428, 54.397]
 claims:
   - id: c1
     rel: appears_in

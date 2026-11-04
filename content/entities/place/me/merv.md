@@ -1,9 +1,10 @@
 ---
-uid: 01M6MEEFABEGZDV11C1MVEQTQ7
+uid: 01M6MFMXBNDFJYYTVVST0VVTBF
 id: merv
 type: place
 name: "Merv"
 summary: "City in Khorasan, today near Mary in Turkmenistan, destroyed by the Mongols in 1221."
+same_as: {"wikidata": "Q193325"}
 coords: [62.1922, 37.6642]
 claims:
   - id: c1

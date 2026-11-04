@@ -1,5 +1,5 @@
 ---
-uid: 01M6MEEF2J63VK1RE4E43TCV65
+uid: 01M6MFMX4PFSY7BPQB1QDP85GA
 id: khwarazmian-empire
 type: org
 name: "Khwarazmian empire"

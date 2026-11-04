@@ -1,5 +1,5 @@
 ---
-uid: 01M6MEEEZN9F47ND9BXGSVXS69
+uid: 01M6MFMX1YC7RB9NSB2BZVAKB3
 id: siege-of-baghdad-1258
 type: event
 name: "Siege of Baghdad, 1258"
@@ -22,7 +22,7 @@ claims:
     rel: involved
     to: baghdad
     role: "the dead, by Bar Hebraeus: tens of thousands"
-    note: "Bar Hebraeus writes tens of thousands of men. Other medieval chroniclers give higher figures; none was read for this story."
+    note: "Bar Hebraeus writes tens of thousands of men. This story read no other count."
     src:
       - {s: bar-hebraeus-budge-1932-chronography, at: "p. 431", quote: "And the Mongols drew their swords, and slew all the people of Baghdad"}
   - id: c4

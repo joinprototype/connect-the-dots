@@ -1,5 +1,5 @@
 ---
-uid: 01M6MEEF82HAFA2412CS2DTPFZ
+uid: 01M6MFMX9GYDYP5K3H3DWBZBZF
 id: muhammad-ii-of-khwarazm
 type: person
 name: "Muhammad II of Khwarazm"

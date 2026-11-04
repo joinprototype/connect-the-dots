@@ -1,5 +1,5 @@
 ---
-uid: 01M6MEEEYS3MBMT2HE0Z8806H2
+uid: 01M6MFMX15XY7KBXEEJ7JZW9EM
 id: mongol-invasion-of-rus
 type: event
 name: "Mongol invasion of Rus"
@@ -8,7 +8,7 @@ when: "1237/1240"
 claims:
   - id: c1
     rel: involved
-    to: ryazan
+    to: old-ryazan
     role: "its princes refused the Mongol demand; the town fell on 21 December"
     src:
       - {s: novgorod-chronicle-michell-forbes-1914, at: "entry for 1238", quote: "Only when none of us remain then all will be yours."}

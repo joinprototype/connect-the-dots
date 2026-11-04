@@ -1,5 +1,5 @@
 ---
-uid: 01M6MEEF29XXHTAWRY4Y5X6Q07
+uid: 01M6MFMX4EB6HYPXMQY95CXAGN
 id: ilkhanate
 type: org
 name: "Ilkhanate"

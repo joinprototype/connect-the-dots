@@ -1,5 +1,5 @@
 ---
-uid: 01M6MEEEXGH6MWF7W37WM7G83M
+uid: 01M6MFMWZZFCSJA9Z7584VVGB4
 id: death-of-jamukha
 type: event
 name: "Death of Jamukha"
