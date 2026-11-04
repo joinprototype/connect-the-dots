@@ -93,6 +93,10 @@ claims:
     according_to: [russia-a-country-study-1996]
     note: "The study's wider point is that the Party was stripped of its leading role and of control over the economy; the repeal of Article 6 is one step in that."
     src: [{s: loc-1996-russia-gorbachev-reform-dilemma, quote: "For seventy years, it had been the cohesive force that kept the union together; without the authority of the party in the Soviet center, the nationalities of the constituent republics pulled harder than ever to break away from the union."}]
+  - id: c14
+    rel: appears_in
+    to: the-struggle-to-save-the-soviet-economy
+    src: [{s: miller-struggle-to-save-the-soviet-economy, quote: "The Struggle to Save the Soviet Economy argues that the difference between the Soviet Union and China—and the ultimate cause of the Soviet collapse—was not economics but politics."}]
 ---
 
 On 25 December 1991 [[mikhail-gorbachev]] resigned and the Soviet flag came down over the Kremlin; the next day the [[soviet-union]] formally ceased to exist, following the [[belovezha-accords]] of 8 December.

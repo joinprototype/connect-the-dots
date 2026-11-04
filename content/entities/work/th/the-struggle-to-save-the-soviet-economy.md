@@ -5,13 +5,7 @@ type: work
 name: "The Struggle to Save the Soviet Economy"
 summary: "Chris Miller's 2016 book on Gorbachev's economic reforms and the collapse of the USSR."
 when: "2016"
-claims:
-  - id: c1
-    rel: influenced
-    to: dissolution-of-the-soviet-union
-    according_to: [chris-miller]
-    note: "The book's own account of the cause, not an effect on the event."
-    src: [{s: miller-struggle-to-save-the-soviet-economy, quote: "The Struggle to Save the Soviet Economy argues that the difference between the Soviet Union and China—and the ultimate cause of the Soviet collapse—was not economics but politics."}]
+claims: []
 ---
 
 Published in 2016 by UNC Press. Its argument, in the author's words: the ultimate cause of the Soviet collapse was not economics but politics. See [[chris-miller]].
