@@ -178,7 +178,7 @@ mod tests {
         // only Bo and Ann may open the page: one end of each other pair is kept out
         let picks = &page[page.find("id=\"ask-picks\">").unwrap()..];
         assert!(picks.contains("\"a\":\"bo\",\"b\":\"ann\"") && !picks.contains("hid") && !picks.contains("den-holdings"), "{picks}");
-        assert!(page.contains("How are <b><i class=\"ask-pin is-old\""), "the first pick is painted in the box");
+        assert!(page.contains("How are <b style=\"--c: "), "the first pick is painted in the box");
         let ask: Value = serde_json::from_slice(&std::fs::read(out.join("data/ask.json")).unwrap()).unwrap();
         let sealed: Vec<&str> = ask["sealed"].as_array().unwrap().iter().filter_map(Value::as_str).collect();
         assert_eq!(sealed, ["den-holdings", "hid"]);

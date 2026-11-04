@@ -103,7 +103,7 @@ export function lineWords(w: World, l: number, from: number, step = ''): string 
   const e = w.links[l];
   const s = sentence(idx, e, w.ids[from]);
   const name = (id: string, text: string): string => (w.byId.has(id) ? `<a href="${entryHref(w, w.byId.get(id)!)}">${esc(text)}</a>` : `<b>${esc(text)}</b>`);
-  let h = `${step}<p class="place-say">${name(s.subjectId, s.subject)}${s.apposition ? ',' : ''} <i>${esc(s.phrase)}</i> ${name(s.objectId, s.object)}</p>`;
+  let h = `${step}<p class="place-say">${name(s.subjectId, s.subject)}${s.apposition ? ',' : ''} <i>${esc(s.phrase)}</i>${s.list ? ':' : ''} ${name(s.objectId, s.object)}</p>`;
   const facts = [s.detail, e.when?.label].filter(Boolean).map(esc);
   if (facts.length) h += `<p class="place-status">${facts.join(', ')}</p>`;
   if (e.according_to.length) h += `<p class="place-status"><b>One side's account:</b> according to ${e.according_to.map((a) => esc(idx.perspectives.get(a)?.name ?? idx.nodes.get(a)?.name ?? a)).join(', ')}.</p>`;

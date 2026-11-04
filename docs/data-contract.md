@@ -65,7 +65,7 @@ The vocabulary:
   "types":    { "person": { "label": "Person", "plural": "People", "layer": "people", "color": "#6e6e73" } },
   "relations":{ "founded": { "label": "founded", "inverse": "founded by", "layers": ["people","power"],
                              "traversable": true, "passive": false, "sensitive": false, "kinship": false, "attributed": false,
-                             "identity": false } },
+                             "identity": false, "locates": false, "noun": false, "inverse_reads": "comma" } },  // noun, inverse_reads: how a sentence joins (content-model.md)
   "lenses":   [ { "id": "money", "label": "Money", "view": "graph", "layers": ["money"] } ],
   "tiers":    { "T1": { "label": "Primary record", "description": "…", "rejected": false } },  // description may be null; users see labels, never codes
   "questions": [ {                                        // content/schema/questions.yaml, in its order

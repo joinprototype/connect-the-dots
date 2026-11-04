@@ -33,6 +33,10 @@ interface RelationDef {
   caveat?: string | null;
   /** It says where its subject is: the Map's Earth stands the subject at its place. */
   locates?: boolean;
+  /** The label is not a verb ("CEO of"): it follows a comma. */
+  noun?: boolean;
+  /** How the inverse reads: after a comma ("founded by"), as a verb ("includes") or as a list ("board members:"). */
+  inverse_reads?: 'comma' | 'verb' | 'list';
   passive: boolean;
   sensitive: boolean;
   /** Family ties. A `role` qualifier ("mother") describes the claim's owner (`from`), not its target. */

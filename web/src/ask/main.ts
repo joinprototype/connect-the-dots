@@ -43,7 +43,6 @@ function start(root: HTMLElement): void {
   /** Each answer and each keystroke takes a number; a late reply to an older one is dropped. */
   let asked = 0;
   let inks: Record<string, string> = {};
-  let pins = new Set<string>();
 
   const pickState = (p: Pick): State => ({ kind: 'pair', a: p.a, b: p.b, way: 0 });
   const pickOf = (s: State) => (s.kind === 'pair' && !s.way ? picks.find((p) => (p.a === s.a && p.b === s.b) || (p.a === s.b && p.b === s.a)) : undefined);
@@ -54,7 +53,8 @@ function start(root: HTMLElement): void {
 
   // ---------------------------------------------------------------- the field
 
-  /** Paints the text again over the field: the words grey, each name inked with its dot. */
+  /** Paints the text again over the field: the words grey, each name black, dotted under in its kind's ink as a
+   *  story's names are. */
   function paint(text: string, names: { at: number; end: number; id: string; ink: string }[]): void {
     line.textContent = text ? 'Ask how anything connects.' : '';
     if (!text) {
@@ -62,22 +62,14 @@ function start(root: HTMLElement): void {
       return;
     }
     const parts: Node[] = [];
-    const now = new Set<string>();
     let at = 0;
     for (const n of names) {
       const b = el('b');
-      if (n.id) {
-        const key = `${n.at}:${n.id}`;
-        now.add(key);
-        const pin = el('i', `ask-pin${pins.has(key) ? ' is-old' : ''}`);
-        pin.style.setProperty('--c', n.ink);
-        b.append(pin);
-      }
+      if (n.id) b.style.setProperty('--c', n.ink);
       b.append(text.slice(n.at, n.end));
       parts.push(document.createTextNode(text.slice(at, n.at)), b);
       at = n.end;
     }
-    pins = now;
     // the space at the end keeps a last empty line its height
     mirror.replaceChildren(...parts, text.slice(at), '\u200b');
   }

@@ -40,14 +40,9 @@
   background: none; color: transparent; caret-color: var(--ink); -webkit-text-fill-color: transparent; border-radius: 0;
 }
 #ask-box::selection { background: var(--highlight); color: transparent; }
-.ask-mirror b { position: relative; font-weight: inherit; color: var(--ink); }
-/* a name's dot, in its kind's ink, in the space before it */
-.ask-pin {
-  position: absolute; left: -0.185em; top: 0.47em; width: 0.125em; height: 0.125em; border-radius: 50%;
-  background: var(--c); animation: ask-pin 0.24s ease-out both;
-}
-.ask-pin.is-old { animation: none; }
-@keyframes ask-pin { from { transform: scale(0); } }
+/* a name: black, dotted under in its kind's ink, as a story's names are */
+.ask-mirror b { font-weight: inherit; color: var(--ink); }
+.ask-mirror b[style] { text-decoration: underline dotted var(--c); text-decoration-thickness: 0.05em; text-underline-offset: 0.12em; text-decoration-skip-ink: none; }
 .ask-hint { color: var(--ask-line); }
 .ask-under {
   display: flex; justify-content: space-between; align-items: baseline; gap: 16px;

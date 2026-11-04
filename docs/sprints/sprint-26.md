@@ -18,6 +18,8 @@ After four releases of cuts, each page was looked at again as a first visitor wo
 - [x] S26-02 On the Earth, names show from the whole world's view: the best-connected dots that fit, twice as many with each step in, none cut by the edge.
 - [x] S26-03 The Earth's land is a light grey however dense the open data, so Europe reads as land, not a blotch.
 - [x] S26-04 Refactor pass: dead CSS, unused templates, assets, data files and exports checked; one dead rule left the stylesheet.
+- [x] S26-05 Ask, Read and the Map read a link as the stories do: "Moses, regarded as a prophet in Christianity", not "Moses regarded as a prophet in Christianity". `schema.json` carries each relation's `noun` and `inverse_reads`.
+- [x] S26-06 Ask's heading marks a name as a story does, dotted under in its kind's ink, in place of a dot that read as punctuation ("are·Moses").
 
 ## Demo script
 
@@ -25,6 +27,7 @@ After four releases of cuts, each page was looked at again as a first visitor wo
 2. Open `/w/?on=earth` at 1280x800: Russia, Ukraine, Israel, the United States government and a few events are named; no name runs off the edge.
 3. Zoom in over Europe: Spain, Italy, Malta, Tehran and more are named as the room allows.
 4. The same at 390x844.
+5. Open `/ask/`: "How are Moses and Elon Musk connected?" with both names dotted under in red, and the first link reads "Moses, regarded as a prophet in Christianity." Type "Bill Gates and IBM": each name is dotted under as it is recognised.
 
 ## Exit criteria
 

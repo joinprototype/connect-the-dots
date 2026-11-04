@@ -6,6 +6,7 @@ What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versio
 
 - The Map's Earth names what is where from the first view, more as you zoom in, and its land is a light grey everywhere, Europe included.
 - The home page no longer repeats the header's links.
+- Ask reads each link as a sentence: "Moses, regarded as a prophet in Christianity", where it used to drop the comma. Names in its heading are dotted under in their colour, as in stories.
 
 ## 0.5.4 (2026-11-03)
 

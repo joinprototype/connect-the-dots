@@ -127,7 +127,7 @@ pub struct Relation {
 
 /// How a phrase joins a sentence: "Apple, *founded by* Steve Jobs" (after a comma), "The Cold War
 /// *includes* …" (a verb) or "Apple, *board members*: Mike Markkula and Arthur Rock" (a list).
-#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Deserialize)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Deserialize, Serialize)]
 #[serde(rename_all = "lowercase")]
 pub enum Reads {
     #[default]

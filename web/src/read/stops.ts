@@ -82,7 +82,7 @@ export function proofHTML(idx: GraphIndex, e: GEdge, most = 3): string {
 /** How a link reads from `from`: its phrase alone when `from` says it, else the whole sentence. */
 function said(idx: GraphIndex, e: GEdge, from: string | null): string {
   const s = sentence(idx, e, from ?? undefined);
-  const line = s.subjectId === from ? esc(s.phrase) : `${esc(s.subject)}${s.apposition ? ',' : ''} ${esc(s.phrase)} ${esc(s.object)}`;
+  const line = s.subjectId === from ? esc(s.phrase) : `${esc(s.subject)}${s.apposition ? ',' : ''} ${esc(s.phrase)}${s.list ? ':' : ''} ${esc(s.object)}`;
   return `${line}${s.detail ? `, ${esc(s.detail)}` : ''}${e.when ? `<small>${esc(e.when.label)}</small>` : ''}`;
 }
 

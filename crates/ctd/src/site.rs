@@ -734,6 +734,7 @@ fn schema_json(kb: &Kb, manifest: &Manifest) -> Value {
             (
                 id.clone(),
                 json!({ "label": r.label, "inverse": r.inverse, "layers": r.layers, "traversable": r.traversable, "passive": r.passive, "locates": r.locates,
+                        "noun": r.noun, "inverse_reads": r.inverse_reads,
                         "sensitive": r.sensitive, "kinship": r.kinship, "attributed": r.attributed, "identity": r.identity, "caveat": r.caveat }),
             )
         })

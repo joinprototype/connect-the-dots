@@ -10,8 +10,10 @@ export interface Sentence {
   object: string;
   objectId: string;
   detail: string | null;
-  /** A comma follows the subject: "Mary Maxwell Gates, mother of Bill Gates". */
+  /** A comma follows the subject: "Mary Maxwell Gates, mother of Bill Gates", "Mike Markkula, CEO of Apple". */
   apposition: boolean;
+  /** A colon follows the phrase, which names a list: "Apple, board members: Mike Markkula". */
+  list: boolean;
 }
 
 /**
@@ -35,9 +37,11 @@ export function detailOf(idx: GraphIndex, e: GEdge): string | null {
 
 /**
  * "Elon Musk founded SpaceX" when read from the claim's own side (or with no side given);
- * "SpaceX founded by Elon Musk" when read from the target's side, using relations[rel].inverse.
- * A kinship claim with a role reads from its owner whichever side asks, because the role only
- * describes the owner: "Mary Maxwell Gates, mother of Bill Gates".
+ * "SpaceX, founded by Elon Musk" when read from the target's side, using relations[rel].inverse.
+ * A label that is not a verb follows a comma ("Mike Markkula, CEO of Apple"), and an inverse reads as
+ * its relation's `inverse_reads` says, as the engine's stories do (`Relation::clause`). A kinship claim
+ * with a role reads from its owner whichever side asks, because the role only describes the owner:
+ * "Mary Maxwell Gates, mother of Bill Gates".
  */
 export function sentence(idx: GraphIndex, e: GEdge, readFrom?: string): Sentence {
   const role = kinshipRole(idx, e);
@@ -45,6 +49,7 @@ export function sentence(idx: GraphIndex, e: GEdge, readFrom?: string): Sentence
   const rel = idx.data.relations[e.rel];
   const phrase = role ? `${role} of` : reverse ? (rel?.inverse ?? e.label) : (e.label || rel?.label || e.rel.replace(/_/g, ' '));
   const [a, b] = reverse ? [e.to, e.from] : [e.from, e.to];
+  const reads = role ? 'comma' : reverse ? (rel?.inverse_reads ?? 'comma') : rel?.noun ? 'comma' : 'verb';
   return {
     subject: nameOf(idx, a),
     subjectId: a,
@@ -52,12 +57,13 @@ export function sentence(idx: GraphIndex, e: GEdge, readFrom?: string): Sentence
     object: nameOf(idx, b),
     objectId: b,
     detail: detailOf(idx, e),
-    apposition: !!role,
+    apposition: reads !== 'verb',
+    list: reads === 'list',
   };
 }
 
 export function sentenceText(s: Sentence): string {
-  return `${s.subject}${s.apposition ? ',' : ''} ${s.phrase} ${s.object}${s.detail ? ` (${s.detail})` : ''}`;
+  return `${s.subject}${s.apposition ? ',' : ''} ${s.phrase}${s.list ? ':' : ''} ${s.object}${s.detail ? ` (${s.detail})` : ''}`;
 }
 
 /** "1962-10-22" -> "22 Oct 1962"; "2026-08" -> "Aug 2026"; anything else unchanged. */

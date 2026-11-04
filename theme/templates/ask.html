@@ -11,7 +11,7 @@
   <h1 class="sr-only">Ask how anything connects</h1>
   <div class="ask-form">
     <div class="ask-field">
-      <div class="ask-mirror" aria-hidden="true">{% if first %}{% for p in first.parts %}{% if p|length > 1 %}<b><i class="ask-pin is-old" style="--c: {{ p[2] }}"></i>{{ p[0] }}</b>{% else %}{{ p[0] }}{% endif %}{% endfor %}{% else %}<span class="ask-hint">Ask how anything connects</span>{% endif %}&#8203;</div>
+      <div class="ask-mirror" aria-hidden="true">{% if first %}{% for p in first.parts %}{% if p|length > 1 %}<b style="--c: {{ p[2] }}">{{ p[0] }}</b>{% else %}{{ p[0] }}{% endif %}{% endfor %}{% else %}<span class="ask-hint">Ask how anything connects</span>{% endif %}&#8203;</div>
       <textarea id="ask-box" rows="1" aria-label="Ask how anything connects: a name, two names, a year or a question" aria-controls="ask-typed" enterkeyhint="go" autocapitalize="sentences" autocomplete="off" autocorrect="off" spellcheck="false">{% if first %}{{ first.text }}{% endif %}</textarea>
     </div>
     <div class="ask-under">
