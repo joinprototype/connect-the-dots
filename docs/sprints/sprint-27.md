@@ -1,7 +1,7 @@
 # Sprint 27: Play and help
 
 - Starts: 2026-11-03 · Length: 1 day
-- Status: active
+- Status: done
 
 ## Goal
 
@@ -36,8 +36,8 @@ The demo runs at 1280x800 and 390x844 with no console errors, and `tools/qa/swee
 
 ## Self-check (before the demo)
 
-- [ ] Tests and lints pass
-- [ ] Demo script executed on a local build
+- [x] Tests and lints pass
+- [x] Demo script executed on a local build
 - [x] Docs and ADRs updated
 - [x] Known issues listed
 
@@ -53,6 +53,6 @@ The demo runs at 1280x800 and 390x844 with no console errors, and `tools/qa/swee
 
 ## Review
 
-- What worked:
-- What felt wrong:
-- Next sprint goal:
+- What worked: the puzzle reads as connect the dots, a line joining coloured dots; the build's picks join two stories between well-known names; the loop's gate and a second fetch caught every weak quote the cheap scout wrote.
+- What felt wrong: the scout's quotes, which the reviewer had to fix seven times in eleven; only 94 names can end a puzzle.
+- Next sprint goal: today's puzzle on the home page, and loop runs that need fewer fixes.
