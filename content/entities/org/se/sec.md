@@ -29,5 +29,5 @@ claims:
     rel: part_of
     to: us-government
     src:
-      - {s: usagov-sec, quote: "The Securities and Exchange Commission (SEC) oversees securities exchanges"}
+      - {s: 911-commission-staff-monograph-terrorist-financing-2004, at: "p. 146, note 166", quote: "The SEC is an independent federal agency entrusted with enforcing the federal securities laws."}
 ---

@@ -11,6 +11,7 @@ claims:
   - id: c1
     rel: member_of
     to: international-energy-agency
+    when: "1974"
     src:
-      - {s: iea-member-countries, at: "Member countries list", quote: "Spain"}
+      - {s: iea-history, at: "History", quote: "The IEA’s founding members were Austria, Belgium, Canada, Denmark, Germany, Ireland, Italy, Japan, Luxembourg, The Netherlands, Norway, Spain, Sweden, Switzerland, Türkiye, United Kingdom, and the United States."}
 ---

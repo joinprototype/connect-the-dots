@@ -10,6 +10,7 @@ claims:
   - id: c1
     rel: member_of
     to: international-energy-agency
+    when: "1981"
     src:
-      - {s: iea-member-countries, at: "Member countries list", quote: "Portugal"}
+      - {s: iea-history, at: "History", quote: "They were followed by Greece (1976), New Zealand (1977), Australia (1979), Portugal (1981)"}
 ---

@@ -12,5 +12,5 @@ claims:
     to: opec
     when: "1969"
     src:
-      - {s: opec-brief-history, quote: "Algeria (1969)"}
+      - {s: opec-brief-history, at: "Brief History", quote: "Algeria (1969)"}
 ---

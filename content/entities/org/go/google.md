@@ -91,7 +91,7 @@ claims:
     rel: part_of
     to: alphabet
     src:
-      - {s: alphabet-ir-2015-letter, quote: "The largest of which, of course, is Google."}
+      - {s: alphabet-ir-2015-letter, quote: "Google will become a wholly-owned subsidiary of Alphabet."}
 ---
 
 Google raised $25 million in 1999 in a round co-led by [[kleiner-perkins]], whose partner [[john-doerr]] joined its board. In 2004 it bought [[keyhole-inc|Keyhole]], an [[in-q-tel]] portfolio company, and turned its software into [[google-earth]].

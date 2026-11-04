@@ -49,7 +49,5 @@ claims:
     when: "1958-07-14/1961-01-20"
     title: "Chairman"
     src:
-      - {s: energy-gov-aec-history, quote: "John A. McCone, Chairman"}
-      - {s: energy-gov-aec-history, quote: "July 14, 1958"}
-      - {s: energy-gov-aec-history, quote: "January 20, 1961"}
+      - {s: energy-gov-aec-history, at: "p. 27, Atomic Energy Commission Commissioners", quote: "John A. McCone, Chairman July 14, 1958 January 20, 1961"}
 ---
