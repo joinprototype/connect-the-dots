@@ -22,17 +22,17 @@ This story follows how they got there, in the words of those who were there: who
   reveal: [sputnik-1, sergei-korolev, space-race]
   reveal_claims: [sputnik-1#c3]
   overlay: {kind: quote, source: nasa-sputnik-origins, quote: "Sputnik 1, launched on 4 October 1957 from the Soviet Union's rocket testing facility in the desert near Tyuratam in the Kazakh Republic, proved a decidedly unspectacular satellite that probably should not have elicited the horrific reaction it wrought.", caption: "Roger Launius, NASA historian"}
-  narration: "**Sputnik.** On 4 October 1957 the Soviet Union put the first satellite into orbit. It was a small radio beacon that beeped at regular intervals. The U.S. State Department says it fueled both the space race and the arms race, and NASA's historian says the American reaction was far out of proportion to the object."
+  narration: "**Sputnik.** On 4 October 1957 the Soviet Union put the first satellite into orbit. It was a 183-pound sphere that carried a radio beacon. The U.S. State Department says it fueled both the space race and the arms race. NASA's historian says it probably should not have caused the reaction it did, but notes that it outweighed the 3.5-pound satellite the U.S. had planned to launch first."
   duration: 14
 
 - shot: nasa-is-born
   view: graph
   focus: nasa
   time: "1958-07-29"
-  reveal: [nasa, sputnik-1, lyndon-b-johnson, dwight-d-eisenhower]
-  reveal_claims: [nasa#c3, sputnik-1#c1]
+  reveal: [nasa, sputnik-1, dwight-d-eisenhower]
+  reveal_claims: [nasa#c3, sputnik-1#c1, dwight-d-eisenhower#c2]
   overlay: {kind: quote, source: nasa-sputnik-origins, quote: "During the summer of 1958 Congress passed the National Aeronautics and Space Act and the president signed it into law on 29 July 1958.", caption: "NASA History Office"}
-  narration: "**A new agency.** Senate Majority Leader Lyndon Johnson opened hearings on the nation's space programs on 25 November 1957. President Eisenhower then sponsored the bill that turned an older research body into a civilian space agency: NASA."
+  narration: "**A new agency.** Within months the administration worked with congressional leaders to draft a law for a permanent civilian space agency. President Eisenhower signed it on 29 July 1958, and NASA was the result."
   duration: 12
 
 - shot: first-human
@@ -118,7 +118,7 @@ This story follows how they got there, in the words of those who were there: who
   reveal: [apollo-program, nasa]
   reveal_claims: [apollo-program#c1]
   overlay: {kind: stat, value: "$25.8 billion", label: "Spent on Apollo, 1960 to 1973, by the Planetary Society, from NASA budget papers", source: planetary-apollo-cost, quote: "The United States spent $25.8 billion on Project Apollo between 1960 and 1973, or approximately $309 billion when adjusted for inflation to 2025 dollars."}
-  narration: "**Two ways to count.** In the money of the day, NASA's chief historian says $25 billion and the NASA historian Roger Launius says $25.4 billion; the Planetary Society counts $25.8 billion. Adjusted figures run from about $95 billion in 1990 dollars to $309 billion in 2025 dollars. They use different years, so they are not one number."
+  narration: "**Two ways to count.** In the money of the day, NASA's chief historian says $25 billion and Roger Launius, a NASA historian, $25.4 billion. The Planetary Society, a space advocacy group, counts $25.8 billion in total, of which $20.6 billion was direct project cost. It adjusts with NASA's aerospace inflation index to $309 billion; its page gives both 2025 and 2020 dollars as the base. Launius's \"nearly $20 billion\" leaves out buildings and support. The totals count different things and use different years, so they are not one number."
   duration: 14
 
 - shot: the-computer
@@ -226,14 +226,14 @@ This story follows how they got there, in the words of those who were there: who
   narration: "**A problem.** On the way to the Moon in April 1970, Apollo 13 lost its power and oxygen supply. The lunar module became the one way home, the landing was called off, and the crew came back on 17 April."
   duration: 12
 
-- shot: who-stopped-it
+- shot: fewer-rockets
   view: graph
   focus: apollo-landings-cut
-  time: "1970-01-04"
-  reveal: [apollo-landings-cut, james-e-webb, thomas-o-paine, saturn-v, nasa]
-  reveal_claims: [apollo-landings-cut#c1, apollo-landings-cut#c2, apollo-landings-cut#c3]
-  overlay: {kind: quote, source: nasa-cancels-apollo-20, quote: "on Aug. 1, 1968, NASA Administrator James E. Webb refused to fund long-lead items for any Saturn V rockets beyond the original 15, essentially shutting down the assembly line for the Moon rocket.", caption: "NASA, 50 Years Ago: NASA Cancels Apollo 20 Mission"}
-  narration: "**Who stopped it.** NASA had contracted for 15 Saturn Vs. In August 1968 its Administrator, James Webb, refused to fund parts for any more. On 4 January 1970 the Administrator, Thomas Paine, announced that Apollo 20's rocket would launch a space station instead, and in September 1970 two more landings were cancelled. The NASA account says budgets tightened but does not say who in the White House or Congress set them; this story has not read those records."
+  time: "1970-09"
+  reveal: [apollo-landings-cut, james-e-webb, thomas-o-paine, richard-nixon, saturn-v, nasa]
+  reveal_claims: [apollo-landings-cut#c1, apollo-landings-cut#c2, apollo-landings-cut#c3, apollo-landings-cut#c4]
+  overlay: {kind: quote, source: nixon-1970-space-statement, quote: "The space budget which I have sent to Congress for fiscal year 1971 is lower than the budget for fiscal year 1970, a condition which reflects the fiscal constraints under which we presently operate and the competing demands of other programs.", caption: "President Nixon, 7 March 1970"}
+  narration: "**Fewer rockets.** NASA had contracted for 15 Saturn Vs, and in August 1968 its Administrator, James Webb, refused to fund parts for more. NASA says tightening budgets drove the cuts: on 4 January 1970 Administrator Thomas Paine said Apollo 20's rocket would launch a space station instead, and in September 1970 two more landings were cancelled. President Nixon said that March that his 1971 space budget was lower than 1970's. Congress's part is not read here."
   duration: 16
 
 - shot: the-last-day

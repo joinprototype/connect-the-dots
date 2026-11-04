@@ -3,13 +3,14 @@ uid: 01M6MF1BE3EABPWEVNYFPRWN1N
 id: james-e-webb
 type: person
 name: "James E. Webb"
-summary: "NASA Administrator in 1968, when he refused to fund more than 15 Saturn V rockets."
+summary: "NASA Administrator from 1961 to 1968, through most of Apollo."
 same_as: {wikidata: Q537520}
 claims:
   - id: c1
     rel: head_of
     to: nasa
     title: "NASA Administrator"
+    when: "1961/1968"
     src:
-      - {s: nasa-cancels-apollo-20, quote: "on Aug. 1, 1968, NASA Administrator James E. Webb refused to fund long-lead items for any Saturn V rockets beyond the original 15, essentially shutting down the assembly line for the Moon rocket."}
+      - {s: launius-sp-2004-4503, quote: "Webb, the NASA Administrator at the height of the program between 1961 and 1968, always contended that Apollo was much more a management exercise than anything else"}
 ---

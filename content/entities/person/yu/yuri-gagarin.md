@@ -9,6 +9,7 @@ claims:
   - id: c1
     rel: citizen_of
     to: soviet-union
+    when: "1961"
     src:
       - {s: launius-sp-2004-4503, quote: "On 12 April 1961 Soviet Cosmonaut Yuri Gagarin became the first human in space with a one-orbit mission aboard the spacecraft Vostok 1."}
 ---

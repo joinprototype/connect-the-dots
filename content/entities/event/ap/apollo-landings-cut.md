@@ -18,6 +18,13 @@ claims:
     role: "refused to fund Saturn V rockets beyond the first 15"
     src:
       - {s: nasa-cancels-apollo-20, quote: "on Aug. 1, 1968, NASA Administrator James E. Webb refused to fund long-lead items for any Saturn V rockets beyond the original 15, essentially shutting down the assembly line for the Moon rocket."}
+  - id: c4
+    rel: involved
+    to: richard-nixon
+    role: "sent Congress a 1971 space budget lower than 1970's"
+    src:
+      - {s: nixon-1970-space-statement, quote: "The space budget which I have sent to Congress for fiscal year 1971 is lower than the budget for fiscal year 1970, a condition which reflects the fiscal constraints under which we presently operate and the competing demands of other programs."}
+      - {s: nixon-1970-space-statement, quote: "We must also realize that space expenditures must take their proper place within a rigorous system of national priorities."}
   - id: c3
     rel: involved
     to: thomas-o-paine

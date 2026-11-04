@@ -18,5 +18,6 @@ claims:
     to: yuri-gagarin
     role: "cosmonaut"
     src:
-      - {s: nasa-science-gagarin, quote: "On April 12, 1961, the era of human spaceflight began when the Cosmonaut Yuri Gagarin became the first human to orbit the Earth in his Vostock I spacecraft. The flight lasted 108 minutes."}
+      - {s: launius-sp-2004-4503, quote: "On 12 April 1961 Soviet Cosmonaut Yuri Gagarin became the first human in space with a one-orbit mission aboard the spacecraft Vostok 1."}
+      - {s: nasa-science-gagarin, quote: "The flight lasted 108 minutes."}
 ---
