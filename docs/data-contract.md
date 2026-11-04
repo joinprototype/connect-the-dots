@@ -248,7 +248,7 @@ Two names a day, the same for every reader ([ADR-0036](decisions/0036-play-and-h
 
 ```jsonc
 {
-  "first": "2026-11-03",                          // puzzle 1's date; puzzle n is the reader's own date, n - 1 days on
+  "first": "2026-11-04",                          // puzzle 1's date; puzzle n is the reader's own date, n - 1 days on
   "days": [ ["martin-luther", "peters-indulgence", "pope-leo-x", "catholic-church", "pope-john-xxiii"], [] ],
   //          one way between the day's two ends by the fewest links, its first and last entries the ends;
   //          [] on a day nothing could be picked

@@ -1,6 +1,6 @@
 # The daily puzzle (/play/): two names a day, and a reader steps from one to the other by links on the
 # record, the links a way may use. Every reader gets the same pair on the same day.
-first: 2026-11-03        # puzzle 1
+first: 2026-11-04        # puzzle 1
 days: 730                # how many days the build writes, from `first`
 steps: [3, 3, 4]         # the fewest links between the two ends, picked from this list each day
 rest: 45                 # days before an end may come back

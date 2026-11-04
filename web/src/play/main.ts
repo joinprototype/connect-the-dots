@@ -169,7 +169,8 @@ function circle(hex: string): string {
 
 async function main(root: HTMLElement): Promise<void> {
   const [file, idx] = await Promise.all([loadJson<PlayFile>('/data/play.json'), loadGraphIndex()]);
-  const today = dayOf(file.first);
+  // a reader whose calendar is still on the day before puzzle 1 gets puzzle 1
+  const today = Math.max(0, dayOf(file.first));
   const asked = Number(new URLSearchParams(location.search).get('n'));
   // an earlier puzzle by its number, never one still to come
   const day = Number.isInteger(asked) && asked >= 1 && asked - 1 <= today ? asked - 1 : today;
