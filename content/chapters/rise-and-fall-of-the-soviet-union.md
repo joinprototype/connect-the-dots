@@ -243,4 +243,4 @@ Whether Reagan's arms build-up and missile defence mattered is a related argumen
   duration: 15
 ```
 
-Explore further: switch the perspective between the U.S., Soviet and Russian governments to compare which causes each one names, or open the explorer and trace a route from Lenin to Putin.
+Read on: The Sealed Train tells how Lenin came home in 1917; The Hunger and The Deported tell what the Union did to millions of its own people; Thirteen Days tells the October of 1962.
