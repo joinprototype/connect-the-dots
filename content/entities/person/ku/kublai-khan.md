@@ -6,6 +6,7 @@ name: "Kublai Khan"
 aliases: ["Qubilai", "Kubilai", "Cublay", "Khubilai"]
 summary: "Grandson of Genghis Khan; Great Khan of the Mongols from 1260 and ruler of the Yuan dynasty in China."
 when: "../1294"
+same_as: {wikidata: Q7523}
 claims:
   - id: c1
     rel: head_of
@@ -26,4 +27,11 @@ claims:
     note: "Yule's note says Kublai sent the fleet; the claim is that he stood behind the invasions, not that he commanded them in the field."
     src:
       - {s: yule-1903-notes-vol2, at: "Bk. III ch. 2, note 1", quote: "he sent a fleet of 300 vessels with 15,000 men against Japan"}
+  - id: c4
+    rel: founded
+    to: khanbaliq
+    when: "1267"
+    note: "Marco Polo adds that the Great Kaan had the new city built beside the old one; the Yuan shi, as Bretschneider reports it, gives the year 1267."
+    src:
+      - {s: bretschneider-1876-researches-on-peking, quote: "Coubilai khan, after having fixed his residence in Peking, built a new capital in 1267."}
 ---

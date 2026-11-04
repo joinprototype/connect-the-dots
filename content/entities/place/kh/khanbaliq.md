@@ -6,7 +6,7 @@ name: "Khanbaliq"
 aliases: ["Cambaluc", "Khan Balik", "Dadu", "Taidu"]
 summary: "Kublai Khan's capital in north China, called Cambaluc by Marco Polo and Taidu in Chinese; Beijing stands on its site."
 same_as: {"wikidata": "Q101186473"}
-coords: [116.39, 39.95]
+coords: [116.4, 39.9333]
 claims:
   - id: c1
     rel: identified_with
