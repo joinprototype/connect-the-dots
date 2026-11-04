@@ -69,8 +69,31 @@ claims:
     rel: located_in
     to: moscow
     src: [{s: state-milestone-collapse-soviet-union, quote: "On December 25, 1991, the Soviet hammer and sickle flag lowered for the last time over the Kremlin, thereafter replaced by the Russian tricolor."}]
+  - id: c10
+    rel: caused_by
+    to: soviet-grain-imports
+    according_to: [yegor-gaidar]
+    src: [{s: aei-2007-04-gaidar-soviet-collapse, quote: "In the meantime, the Soviet Union started to have severe food shortages, and grain deliveries were not being made to large cities."}]
+  - id: c11
+    rel: caused_by
+    to: soviet-economic-crisis-1990-91
+    according_to: [yegor-gaidar]
+    src: [{s: aei-2007-04-gaidar-soviet-collapse, quote: "A state that does not control its borders or military forces and has no revenue simply cannot exist."}]
+  - id: c12
+    rel: caused_by
+    to: perestroika
+    according_to: [chris-miller]
+    note: "Miller's cause is the political fight over Gorbachev's economic reforms, not economics itself."
+    src: [{s: miller-struggle-to-save-the-soviet-economy, quote: "The Struggle to Save the Soviet Economy argues that the difference between the Soviet Union and China—and the ultimate cause of the Soviet collapse—was not economics but politics."}]
+  - id: c13
+    rel: caused_by
+    to: repeal-of-article-6
+    according_to: [library-of-congress]
+    src: [{s: loc-1996-russia-gorbachev-reform-dilemma, quote: "For seventy years, it had been the cohesive force that kept the union together; without the authority of the party in the Soviet center, the nationalities of the constituent republics pulled harder than ever to break away from the union."}]
 ---
 
 On 25 December 1991 [[mikhail-gorbachev]] resigned and the Soviet flag came down over the Kremlin; the next day the [[soviet-union]] formally ceased to exist, following the [[belovezha-accords]] of 8 December.
 
 Why it collapsed is told differently by each side, and each account is attributed: the [[us-government]], Gorbachev and [[stanislav-shushkevich]] point to the [[august-coup-1991]]; Gorbachev in 2006 to [[chernobyl-disaster|Chernobyl]]; the former Russian acting prime minister [[yegor-gaidar]] to the [[oil-price-collapse-1986|oil price collapse]]; the [[russian-government]] under [[vladimir-putin]] to the republics' [[soviet-right-of-secession|right to secede]]; the historian [[serhii-plokhy]] to the [[ukrainian-independence-referendum-1991|Ukrainian referendum]]. The [[reagan-library]] credits the [[strategic-defense-initiative]] with ending the [[end-of-the-cold-war|Cold War]].
+
+The economists weigh it differently: [[yegor-gaidar]] adds grain imports and the 1990–91 economic crisis ([[soviet-grain-imports]], [[soviet-economic-crisis-1990-91]]); [[chris-miller]] argues the ultimate cause was political; the Library of Congress study ties the nationalities' break-away to the end of the Party's monopoly ([[repeal-of-article-6]]).
