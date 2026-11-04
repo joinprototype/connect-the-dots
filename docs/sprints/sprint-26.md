@@ -1,7 +1,7 @@
 # Sprint 26: A fresh look
 
 - Starts: 2026-11-03 · Length: 1 day
-- Status: active
+- Status: done
 
 ## Goal
 
@@ -49,6 +49,6 @@ The demo runs at both sizes with no console errors, and `tools/qa/sweep.mjs --to
 
 ## Review
 
-- What worked:
-- What felt wrong:
-- Next sprint goal:
+- What worked: reading every page as a first visitor turned up small wrong things the tests could not: an empty Earth, a bar that overstated a stake, a cut year, a missing comma.
+- What felt wrong: on a phone the Earth far out still names only two or three places.
+- Next sprint goal: more of the record on the Earth, and fuller stories.

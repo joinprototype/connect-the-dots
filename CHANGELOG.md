@@ -2,7 +2,7 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
-## Next
+## 0.5.5 (2026-11-03)
 
 - The Map's Earth names what is where from the first view, more as you zoom in, and its land is a light grey everywhere, Europe included.
 - The home page no longer repeats the header's links.
