@@ -58,6 +58,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
 
 - shot: lenins-party-named
   view: graph
+  picture: bolsheviks
   focus: vladimir-lenin
   time: "1917-03-31"
   reveal: [german-army-high-command, german-imperial-government, vladimir-lenin, bolsheviks, lenin-sealed-train]
@@ -168,6 +169,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
 
 - shot: at-the-russian-frontier
   view: map
+  picture: russian-provisional-government
   camera: {center: [24.5, 60.4], zoom: 4.4, pitch: 20, duration: 6}
   places: [stockholm, petrograd]
   routes: [[stockholm, petrograd]]

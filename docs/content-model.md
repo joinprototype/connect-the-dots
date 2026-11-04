@@ -221,11 +221,11 @@ The engine knows these flags, never relation names:
 
 ```yaml
 person: {label: Person,       plural: People,        layer: people, family: true, span: Life}
-org:    {label: Organization, plural: Organizations, layer: power, span: Active}
-place:  {label: Place,        plural: Places,        layer: places, map: true}
+org:    {label: Organization, plural: Organizations, layer: power, span: Active, photo_since: 2005}
+place:  {label: Place,        plural: Places,        layer: places, map: true, photo_since: 2005}
 ```
 
-`span` is what an entry's own dates are called on its life line ("Span" when unset). `map: true` marks types that are points on the map: such an entry needs `coords` (`ctd check` warns), and stories show it there.
+`span` is what an entry's own dates are called on its life line ("Span" when unset). `map: true` marks types that are points on the map: such an entry needs `coords` (`ctd check` warns), and stories show it there. `photo_since` is for types whose photos show them as they are now (a skyline, a flag, a headquarters), taken since about that year: a story scene set earlier, or undated, shows one only when its `picture:` names it.
 
 `source-tiers.yaml` gives each tier a label and description, plus two flags the sourcing rules read: `primary: true` (one such source is enough for a sensitive link or a historical figure's background line) and `strong: true` (two independent voices of these are enough). `rejected: true` tiers fail `ctd check`.
 
@@ -421,7 +421,7 @@ Shot fields (v0; the full list is in [data-contract.md](data-contract.md)):
 | `narration` | Voice-over text |
 | `cover` (front matter) | A photograph for the story's cover, public domain or free license. Otherwise one is drawn from its map |
 | `photo` | A photograph over the whole stage: `{url, alt, credit}`. Public domain or free license only |
-| `picture` | Which entry's picture the scene shows, or `none`. By default its focus, or the first thing it reveals with a picture; each picture shows once |
+| `picture` | Which entry's picture the scene shows, or `none`. By default its focus, or the first thing it reveals with a picture, but not a place or an organization in a scene set before its type's `photo_since`: their photos show them as they are now (a 2009 skyline beside 1917). Each picture shows once |
 | `explore` | Ignored since ADR-0031 (the "Explore from here" button is gone); content may still carry it |
 
 ## `ctd check` rules (v0)

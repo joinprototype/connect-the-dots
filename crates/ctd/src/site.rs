@@ -377,14 +377,22 @@ fn same_as_links(e: &Entity) -> Vec<Value> {
 }
 
 /// A scene's picture: what `picture:` names, or else its subject or the first thing it reveals that
-/// has one. Each picture shows once in a story; `picture: none` leaves a scene without.
+/// has one. A type whose photos show it as it is now (`photo_since`: a skyline, a flag, a headquarters)
+/// pictures only scenes set since then, so a 1917 scene never stands beside a 2009 skyline; `picture:`
+/// may still name one. Each picture shows once in a story; `picture: none` leaves a scene without.
 fn scene_picture(kb: &Kb, shot: &Value, used: &mut BTreeSet<String>) -> Option<Value> {
     let chosen = shot["picture"].as_str();
     if chosen == Some("none") || !shot["photo"].is_null() {
         return None;
     }
+    let year = shot["t"].as_f64().map(|t| t.floor() as i64);
+    let then = |e: &&Entity| match kb.schema.types.get(&e.kind).and_then(|t| t.photo_since) {
+        Some(since) => year.is_some_and(|y| y >= since),
+        None => true,
+    };
     let revealed = shot["reveal"].as_array().into_iter().flatten().filter_map(Value::as_str);
-    chosen.into_iter().chain(shot["focus"].as_str()).chain(revealed).filter_map(|id| kb.entity(id)).find_map(|e| {
+    let others = shot["focus"].as_str().into_iter().chain(revealed).filter_map(|id| kb.entity(id)).filter(then);
+    chosen.and_then(|id| kb.entity(id)).into_iter().chain(others).find_map(|e| {
         let image = e.image.as_ref()?;
         let url = image["url"].as_str()?;
         used.insert(url.to_string())
@@ -1462,6 +1470,31 @@ mod tests {
         assert_eq!(stories["ann"].iter().map(|r| r["title"].as_str().unwrap()).collect::<Vec<_>>(), ["twice", "once"]);
         assert_eq!(stories["ann"][0]["counts"], "2 scenes");
         assert_eq!(stories["bo"].len(), 1);
+    }
+
+    #[test]
+    fn an_old_scene_shows_a_photo_of_today_only_when_it_names_it() {
+        let types = "person: {label: Person, plural: People, layer: people, family: true}\norg: {label: Organization, plural: Organizations, layer: power}\nplace: {label: Place, plural: Places, layer: people, map: true, photo_since: 2005}\n";
+        let pictured = |kind: &str, id: &str, more: &str| {
+            let text = format!("---\nid: {id}\ntype: {kind}\nname: {id}\n{more}image: {{url: \"https://example.org/{id}.jpg\"}}\nclaims: []\n---\n");
+            crate::testkit::file(&format!("content/entities/{kind}/{}/{id}.md", &id[..2]), &text)
+        };
+        let files = [
+            crate::testkit::file("content/schema/entity-types.yaml", types),
+            pictured("place", "berlin", "coords: [13.4, 52.5]\n"),
+            pictured("person", "arthur", ""),
+        ];
+        let (kb, diags) = load("site-scene-picture", &files);
+        assert!(diags.iter().all(|d| d.level != crate::diag::Level::Error), "{diags:?}");
+        let picture = |shot: Value| super::scene_picture(&kb, &shot, &mut Default::default()).map(|p| p["name"].as_str().unwrap().to_string());
+        // a city's photo shows it today, beside a scene from 1917: the scene shows the person it reveals
+        assert_eq!(picture(json!({"t": 1917.22, "reveal": ["berlin", "arthur"]})).as_deref(), Some("arthur"));
+        assert_eq!(picture(json!({"t": 1917.22, "reveal": ["berlin"]})), None);
+        assert_eq!(picture(json!({"reveal": ["berlin"]})), None);
+        // a scene from this century may show the city as it is now
+        assert_eq!(picture(json!({"t": 2021.5, "reveal": ["berlin", "arthur"]})).as_deref(), Some("berlin"));
+        // a writer may still choose it
+        assert_eq!(picture(json!({"picture": "berlin", "reveal": ["arthur"]})).as_deref(), Some("berlin"));
     }
 
     #[test]

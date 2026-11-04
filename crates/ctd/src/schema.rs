@@ -30,6 +30,10 @@ pub struct EntityType {
     /// Entries of this type may open the home page as a thread (`threads` in featured.yaml).
     #[serde(default, skip_serializing)]
     pub thread: bool,
+    /// An entry's photo shows it as it is now (a skyline, a flag, a headquarters), taken since about
+    /// this year: a story scene set before it shows the photo only when the scene's `picture:` names it.
+    #[serde(default, skip_serializing)]
+    pub photo_since: Option<i64>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

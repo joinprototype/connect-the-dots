@@ -2,6 +2,10 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## Next
+
+- A story set in the past no longer shows a city or a company as it looks today: no 2009 skyline beside 1917, no modern headquarters beside 1830. Those scenes show a person or a picture of the time, or the map alone.
+
 ## 0.5.6 (2026-11-04)
 
 - A puzzle a day: two names, and you step from one to the other by links on the record, each with its proof, in as few steps as you can. Share your result as a line of dots that gives nothing away.
