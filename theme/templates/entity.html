@@ -194,7 +194,7 @@
       <h3>{{ g.phrase }}</h3>
       <ul class="claims">
         {% for c in g.items %}
-        {# plain words, as in the explorer: a deprecated link reads "Withdrawn" #}
+        {# plain words: a deprecated link reads "Withdrawn" #}
         {% set status_word = "Withdrawn" if c.status == "deprecated" else c.status|capitalize %}
         <li class="claim status-{{ c.status }}" data-layers="{{ c.layers }}" data-edge="{{ c.edge_id }}">
           <a class="claim-target" href="{{ c.other.url }}">{{ c.other.name }}</a>

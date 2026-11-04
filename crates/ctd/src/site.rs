@@ -30,7 +30,7 @@ pub mod islands;
 mod missing;
 mod play;
 mod question;
-// Read (/read/): a story over its field of dots, and the field itself
+// Read (/c/<id>/): a story over its field of dots, and the field itself
 mod field;
 mod read;
 
@@ -400,7 +400,7 @@ fn scene_picture(kb: &Kb, shot: &Value, used: &mut BTreeSet<String>) -> Option<V
     })
 }
 
-/// The step cards for the chapter template: each shot's narration, rendered.
+/// Each shot's narration, rendered, with its picture: the scenes Read shows (read.rs).
 fn story_steps(s: &Site, shots: &[Value]) -> Vec<Value> {
     let cx = &s.cx;
     let resolver = cx.resolver();
@@ -447,7 +447,6 @@ impl<'a> QuestionPages<'a> {
     }
 }
 
-/// What every page writer shares: the base, the output folder, the templates and the `site` context.
 /// A number as a reader sees it: 12,345.
 fn commas(n: usize) -> String {
     let digits = n.to_string();
@@ -486,6 +485,7 @@ fn stories_of(kb: &Kb) -> HashMap<String, Vec<Value>> {
         .collect()
 }
 
+/// What every page writer shares: the record, the output folder, the templates and the `site` context.
 struct Site<'a> {
     kb: &'a Kb,
     cx: Ctx<'a>,
@@ -562,7 +562,7 @@ struct QuestionShelf {
     stories: BTreeSet<String>,
 }
 
-/// The featured route stories: their cards, and each pair's URL.
+/// The featured route stories' cards.
 struct Routes {
     connections: Vec<Value>,
 }
