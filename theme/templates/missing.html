@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{# Missing links (site/missing.rs, ADR-0036): what open data says and the record does not hold yet, each a
+   question for a reader with a source. Nothing here is on the record until a person has checked a source. #}
+{% block title %}Missing links: Connect the Dots{% endblock %}
+{% block description %}Links open data says are there, which nobody here has read a source for yet. Find one, send it, and once it is checked it goes on the record.{% endblock %}
+{% block body_class %}page missing-page{% endblock %}
+{% block main %}
+<div class="missing">
+  <h1>Missing links</h1>
+  <p class="missing-lede">Open data says each of these is so, but nobody here has read a source for it, so it is not on the record yet. Find a source a reader can open, never Wikipedia, and send it with the words in it that show the link. Once a person here has checked it, the link goes on the record with its proof.</p>
+  <ol class="missing-list">
+    {% for r in rows %}
+    <li><p class="missing-said">{{ r.lead }}<a href="{{ r.from.url }}" style="--c: {{ r.from.ink }}">{{ r.from.name }}</a>{{ r.middle }}<a href="{{ r.to.url }}" style="--c: {{ r.to.ink }}">{{ r.to.name }}</a>{{ r.tail }}?</p>
+      <p class="missing-ask">Open data says so. <a href="{{ site.repo }}/issues/new?title={{ r.title|urlencode }}&amp;body={{ r.body|urlencode }}">Send a source</a></p></li>
+    {% endfor %}
+  </ol>
+  {% if not rows %}<p class="missing-lede">Nothing is missing that open data knows of.</p>{% endif %}
+</div>
+{% endblock %}

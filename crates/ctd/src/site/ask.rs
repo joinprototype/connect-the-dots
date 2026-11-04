@@ -20,7 +20,7 @@ pub const BUDGET: usize = 100 * 1024;
 /// What no answer may run through: the sealed entries and what is about them, and every thing named after
 /// a sealed person ("Trump's suit over the Journal's Epstein story"). Another person who shares a family
 /// name (Mary Maxwell Gates) is no more than herself.
-fn kept_out<'a>(s: &Site<'a>) -> BTreeSet<&'a str> {
+pub(super) fn kept_out<'a>(s: &Site<'a>) -> BTreeSet<&'a str> {
     let kb = s.kb;
     let words = |name: &'a str| name.split(|c: char| !c.is_alphanumeric()).filter(|w| !w.is_empty());
     let sealed: Vec<&str> = kb.entities.iter().filter(|e| e.sealed && e.kind == "person").filter_map(|e| words(&e.name).next_back()).collect();

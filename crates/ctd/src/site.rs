@@ -27,6 +27,8 @@ pub mod data;
 mod dossier;
 mod history;
 pub mod islands;
+mod missing;
+mod play;
 mod question;
 // Read (/read/): a story over its field of dots, and the field itself
 mod field;
@@ -610,6 +612,10 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     // Ask: the box as the page's heading, arriving on a featured pair, and data/ask.json
     let asked: Vec<(&str, &str)> = pages.list.iter().map(|a| (kb.schema.questions[a.q].id.as_str(), a.x.id.as_str())).collect();
     ask::write_ask(&s, &asked)?;
+    // the daily puzzle: two names a day, from one to the other by links on the record
+    play::write_play(&s, root, atlas.as_ref())?;
+    // what open data says and the record does not hold yet, each a question for a reader with a source
+    missing::write_missing(&s, root, atlas.as_ref())?;
     type_pages(&s)?;
     // the Map: the Stories surface over the whole window, by story or on Earth (ADR-0034)
     write(&out.join("w").join("index.html"), s.render("map.html", json!({ "site": &s.site, "inks": inks(kb) }))?)?;
@@ -716,6 +722,8 @@ fn copy_assets(root: &Path, out: &Path) -> Result<Value> {
         "read_js": has_asset("read.js"), "read_css": has_asset("read.css"),
         // the Stories page's surface
         "place_js": has_asset("place.js"), "place_css": has_asset("place.css"),
+        // the daily puzzle
+        "play_js": has_asset("play.js"), "play_css": has_asset("play.css"),
     }))
 }
 

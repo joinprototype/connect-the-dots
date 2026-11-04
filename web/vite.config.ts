@@ -16,6 +16,8 @@ const ENTRIES = {
   life: 'src/read/life.ts',
   // the Stories page's surface
   place: 'src/place/main.ts',
+  // the daily puzzle (/play/)
+  play: 'src/play/main.ts',
   // the addresses of Explore and Connect, going on to where their entries are now (ADR-0031)
   forward: 'src/forward.ts',
 } as const;

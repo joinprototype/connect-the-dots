@@ -2,6 +2,11 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## Next
+
+- A puzzle a day: two names, and you step from one to the other by links on the record, each with its proof, in as few steps as you can. Share your result as a line of dots that gives nothing away.
+- Missing links: what open data says and the record does not hold yet, each a question. Know a source? Send it, and once it is checked it goes on the record.
+
 ## 0.5.5 (2026-11-03)
 
 - The Map's Earth names what is where from the first view, more as you zoom in, and its land is a light grey everywhere, Europe included.

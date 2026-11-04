@@ -1,0 +1,5 @@
+# Missing links (/missing/): what open data says about two entries the record holds, and the record does
+# not yet, each a question for a reader with a source. They come from `ctd gaps` (gaps.yaml, ADR-0025);
+# a lead is never proof. Family, background, legal and sensitive links are never asked here.
+most: 150                  # leads on the page, best first
+leave_out: [located_in]    # true and plentiful, and it joins little: where a museum stands

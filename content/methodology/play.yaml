@@ -1,0 +1,25 @@
+# The daily puzzle (/play/): two names a day, and a reader steps from one to the other by links on the
+# record, the links a way may use. Every reader gets the same pair on the same day.
+first: 2026-11-03        # puzzle 1
+days: 730                # how many days the build writes, from `first`
+steps: [3, 3, 4]         # the fewest links between the two ends, picked from this list each day
+rest: 45                 # days before an end may come back
+known: 60                # an end is in this many language editions of an encyclopedia or more (open data)
+# Each end is of a type that may open the home page (`thread: true`), runs through a written story free of
+# sealed entries (two scenes or more), and through none of these: deaths and harms are no game.
+leave_out:
+  - a-hundred-days
+  - agent-orange
+  - bhopal
+  - september-eleven
+  - the-armenians
+  - the-congo
+  - the-deported
+  - the-experiments
+  - the-first-thanksgiving
+  - the-great-dying
+  - the-great-leap
+  - the-hunger
+  - the-most-terrible-bomb
+  - the-ransom
+  - the-slave-trade-money

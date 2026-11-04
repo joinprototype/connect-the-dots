@@ -29,6 +29,8 @@ dist/
   data/stories.json          the written stories each entry is in, read by the Map, the Earth and atlas pages
   data/islands.json          the Stories page's surface: where every entry lies, on a story's island or in the water
   ask/index.html             Ask: the box as the page's heading, arriving on a featured pair   data/ask.json   what it reads besides
+  play/index.html            the daily puzzle: from one name to another by links on the record   data/play.json   every day's way
+  missing/index.html         missing links: what open data says and the record lacks, each a question with a link to send a source
   data/search/index.json     the search files' word ranges      data/search/<n>.json   search entries by word
   data/field.bin             the field of dots: every thing open data places on the Earth (web/src/lib/dotfield.ts)
   data/field.json            the field's count of dots and its named places
@@ -36,7 +38,7 @@ dist/
   data/graph.json            only with `ctd build --graph`: everything in one file, for tools; no page reads it
   w/picture.svg              the Map far out, for the home page: the islands' land and every dot in its kind's ink
   static/site.css            theme CSS and tokens (from theme/static/)
-  assets/                    built by web/ (Vite): islands.js|css, atlas.js|css, ask.js|css, read.js|css, life.js, place.js|css (the Stories page and the Map), forward.js, chunks/ (code two pages share, never inside one page's bundle; the build fails on a CSS file no page links, [ADR-0031](decisions/0031-fewer-views.md))
+  assets/                    built by web/ (Vite): islands.js|css, atlas.js|css, ask.js|css, read.js|css, life.js, place.js|css (the Stories page and the Map), play.js|css (the puzzle), forward.js, chunks/ (code two pages share, never inside one page's bundle; the build fails on a CSS file no page links, [ADR-0031](decisions/0031-fewer-views.md))
   build-manifest.json        engine, built, commit, methodology hash, counts
   .ctd-build                 marks the folder as a build, so the next build may empty it
 ```
@@ -239,6 +241,28 @@ The One Box page ([ADR-0028](decisions/0028-one-box.md)), which answers every pa
 - `data/ask.json`: `{ "stories": [[id, title, subtitle, [years with a scene], [entry ids named]]], "sealed": [ids] }`. The stories are those free of sealed entries, in the library's order, and an entry is named when a scene shows it or reveals a link to it. A `group` or `tradition` is named by none here, so no two names share a story for who someone is (ADR-0016). `sealed` lists what no answer may run through: the sealed entries, what is about them, and everything but a person whose name holds a sealed person's family name. Ask offers no pair, way, story or question through these, draws none around another dot, and lists none under a year. Searched for by name, a sealed entry gets its direct ties with their caveat. About 38 KB gzip (71 stories, 3,871 names); its budget is 100 KB, and past it the build warns.
 - `p.ask-try`, under the box: one example of each kind Ask understands, each a link to its `/ask/` address. "Ask a name, like Standard Oil; two names, like Bill Gates and IBM; a year, like 1914; or a question, like Who is behind Harvard University?" Built by `examples()` in `crates/ctd/src/site/ask.rs` as `{ kind: name|pair|year|question, text, url }`: the name is the first featured thread, the pair the second featured connection (else the first), the year where the first dated scene of the `read` story begins, the question a question page about a featured thread (else the first question page). Nothing sealed or kept out (ADR-0027). Its `<noscript>` says the box needs JavaScript and links `/c/`, where every story reads without it.
 - Beside these it reads `schema.json`, `graph-slim.json` (names, links, ways and pictures), an entry's detail file when an answer shows it, `search/` as a person types, and the atlas and `routes.json` only for two names with no written way. The world under an empty box, a year or a place is drawn by `web/src/lib/dotfield.ts`.
+
+## The puzzle: `play/index.html` and `data/play.json`
+
+Two names a day, the same for every reader ([ADR-0036](decisions/0036-play-and-help.md)). The build picks each day from `content/methodology/play.yaml`; the page fills the day's names and steps by script.
+
+```jsonc
+{
+  "first": "2026-11-03",                          // puzzle 1's date; puzzle n is the reader's own date, n - 1 days on
+  "days": [ ["martin-luther", "peters-indulgence", "pope-leo-x", "catholic-church", "pope-john-xxiii"], [] ],
+  //          one way between the day's two ends by the fewest links, its first and last entries the ends;
+  //          [] on a day nothing could be picked
+  "out": ["den-holdings"]                         // what no step may land on (Ask's kept-out entries that have links)
+}
+```
+- **Steps:** from an entry, every link a way may use (`traversable`, not `passive`, not withdrawn, not to itself) whose far end is not in `out`, read from `graph-slim.json`. A step's proof comes from its ends' detail files.
+- **`?n=<number>`** opens an earlier puzzle, never one still to come.
+- **What a reader did** is kept in their browser alone (`localStorage`, `ctd-play-<day>`): the stops, the link to each, and whether the way was shown.
+- **Size:** about 12 KB gzip for 730 days.
+
+## Missing links: `missing/index.html`
+
+A page with no data file and no script: the `links` leads of `ctd gaps` whose two ends are entries the record holds, best first, at most `most` of them (`content/methodology/missing.yaml`), leaving out `leave_out` relations, family, background, legal and sensitive links, and Ask's kept-out entries. Each reads as a question from its relation's `clause`, links both names to their pages, says "Open data says so", and links a new GitHub issue with the lead and blanks for a source and its words. Built only with open data (not on the dev server).
 
 ## The field of dots: `data/field.bin` and `data/field.json`
 
