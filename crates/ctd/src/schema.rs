@@ -21,6 +21,14 @@ pub struct EntityType {
     /// Can have family ties: kinship relations may only join types marked `family`.
     #[serde(default)]
     pub family: bool,
+    /// A people or a faith (ADR-0016): never a step from one entry to another, never what two stories
+    /// share, never a name an answer lists.
+    #[serde(default)]
+    pub alone: bool,
+    /// An entry about others (an event, a work, a thing): one joined to a sealed entry is kept out
+    /// with it (ADR-0027).
+    #[serde(default, skip_serializing)]
+    pub about: bool,
     /// What an entry's own dates are called on its life line ("Life", "Active"); "Span" when unset.
     #[serde(default, skip_serializing)]
     pub span: Option<String>,

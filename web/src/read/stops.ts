@@ -13,8 +13,10 @@ export interface SiteData {
   inks: Record<string, string>;
   /** Every written story: id, title, subtitle, scenes. */
   stories: [string, string, string | null, number][];
-  /** Sealed entries and what is about them: no step goes on from them (ADR-0027). */
+  /** Sealed entries, what is about them and what is named after them: no step goes on from them (ADR-0027). */
   sealed: string[];
+  /** Types that join nothing: a people or a faith is never a step from one name to another (ADR-0016). */
+  alone: string[];
   /** Relations a place or a school does not list as its own links (born in, citizen of: ADR-0016). */
   background: string[];
 }
@@ -29,9 +31,6 @@ export interface Row {
   score: number;
 }
 
-/** Types that join nothing: a people or a faith is never a step from one person to another (ADR-0016). */
-const ALONE = new Set(['group', 'tradition']);
-
 export function esc(s: string | null | undefined): string {
   return String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 }
@@ -45,7 +44,7 @@ function el(tag: string, cls: string, html: string): HTMLElement {
 
 /** No step goes on from it: it is sealed, about a sealed entry, or a people or a faith. */
 export function joinsNothing(idx: GraphIndex, site: SiteData, id: string): boolean {
-  return site.sealed.includes(id) || ALONE.has(idx.nodes.get(id)?.type ?? '');
+  return site.sealed.includes(id) || site.alone.includes(idx.nodes.get(id)?.type ?? '');
 }
 
 export const inkOf = (site: SiteData, type: string | undefined): string => site.inks[type ?? ''] ?? 'currentColor';

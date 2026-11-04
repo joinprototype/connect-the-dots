@@ -9,7 +9,7 @@ use anyhow::{Result, anyhow};
 use serde::Deserialize;
 use serde_json::{Value, json};
 
-use super::{Site, ask, write};
+use super::{Site, write};
 use crate::atlas::Atlas;
 
 #[derive(Deserialize)]
@@ -27,7 +27,7 @@ pub(super) fn write_missing(s: &Site, root: &Path, atlas: Option<&Atlas>) -> Res
     let read = |name: &str| std::fs::read_to_string(methodology.join(name)).unwrap_or_default();
     let rules: Rules = crate::schema::parse_yaml(&read("missing.yaml")).map_err(|e| anyhow!("{}: {e}", path.display()))?;
     let kb = s.kb;
-    let out = ask::kept_out(s);
+    let out = s.kb.kept_out();
     // a lead someone found wrong is in gaps-ignore.tsv; one tried without a source may still be true
     let leads = crate::gaps::find(kb, a, &read("gaps.yaml"), &read("gaps-ignore.tsv"))?;
     let end = |id: &str| kb.entity(id).map(|e| json!({ "name": e.name, "url": format!("/e/{}/", e.id), "ink": kb.schema.type_color(&e.kind) }));

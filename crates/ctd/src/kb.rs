@@ -189,7 +189,34 @@ impl Kb {
 
     /// What no route may touch (ADR-0027).
     pub fn sealed(&self) -> HashSet<&str> {
-        sealed_ids(&self.entities, &self.index, &self.edges)
+        sealed_ids(&self.entities, &self.index, &self.edges, &self.schema)
+    }
+
+    /// The names that point at a sealed entry, for every page that must not show one (ADR-0027).
+    pub fn sealed_names(&self) -> SealedNames<'_> {
+        let sealed = self.entities.iter().filter(|e| e.sealed);
+        // a written name or alias, not a slug kept for an old address
+        let shown = |a: &&String| a.chars().any(|c| c.is_uppercase() || c == ' ');
+        let names = sealed.clone().flat_map(|e| std::iter::once(e.name.as_str()).chain(e.aliases.iter().filter(shown).map(String::as_str))).collect();
+        let family = sealed.filter(|e| self.schema.types.get(&e.kind).is_some_and(|t| t.family)).filter_map(|e| name_words(&e.name).next_back()).collect();
+        SealedNames { names, family }
+    }
+
+    /// What no answer, way, story tie or named place may run through or show (ADR-0027): the sealed
+    /// entries, what is about them, and every other entry named after one ("Trump's suit over the
+    /// Journal's Epstein story"). Someone who shares a family name (Mary Maxwell Gates) is no more
+    /// than themselves. Every page reads this one set.
+    pub fn kept_out(&self) -> BTreeSet<&str> {
+        let by = self.sealed_names();
+        let mut out: BTreeSet<&str> = self.sealed().into_iter().collect();
+        let kin = |e: &Entity| self.schema.types.get(&e.kind).is_some_and(|t| t.family);
+        out.extend(self.entities.iter().filter(|e| !kin(e) && by.named_after(&e.name)).map(|e| e.id.as_str()));
+        out
+    }
+
+    /// Whether an entry may join two others: a people or a faith never does (`alone`, ADR-0016).
+    pub fn joins(&self, e: &Entity) -> bool {
+        !self.schema.types.get(&e.kind).is_some_and(|t| t.alone)
     }
 
     /// Resolves an id or a slug alias.
@@ -214,9 +241,9 @@ impl Kb {
     /// The written stories free of sealed entries (ADR-0027), the only ones the first screen may show: no
     /// scene shows such an entry or reveals a link to one, and no sentence names one.
     pub fn unsealed_chapters(&self) -> Vec<&Chapter> {
-        let sealed = sealed_ids(&self.entities, &self.index, &self.edges);
-        let names: Vec<&str> = self.entities.iter().filter(|e| e.sealed).map(|e| e.name.as_str()).collect();
-        let named = |text: &str| names.iter().any(|n| text.contains(n));
+        let sealed = self.sealed();
+        let by = self.sealed_names();
+        let named = |text: &str| by.names(text);
         // a claim with several targets has one id per target: "<entity>#<claim>/1"
         let links: HashSet<&str> =
             self.edges.iter().filter(|e| sealed.contains(e.from.as_str()) || sealed.contains(e.to.as_str())).filter_map(|e| e.id.split('/').next()).collect();
@@ -1022,7 +1049,7 @@ fn read_claims(cx: &Names, entities: &[Entity], diags: &mut Vec<Diag>) -> (Vec<E
     let is_seal = |e: &Edge| cx.schema.relations.get(&e.rel).is_some_and(|r| r.seals);
     let tales: HashSet<&str> = edges.iter().filter(|e| is_seal(e)).map(|e| e.from.as_str()).collect();
     // So is an entry marked `sealed`, with the events and works about it: contact is not a finding (ADR-0027).
-    let sealed = sealed_ids(entities, cx.index, &edges);
+    let sealed = sealed_ids(entities, cx.index, &edges, cx.schema);
     for e in edges.iter().filter(|e| e.traversable && !is_seal(e)) {
         for end in [&e.from, &e.to] {
             let file = &entities[cx.index[&e.from]].rel_path;
@@ -1036,10 +1063,45 @@ fn read_claims(cx: &Names, entities: &[Entity], diags: &mut Vec<Diag>) -> (Vec<E
     (edges, held)
 }
 
-/// What no route may touch: the entries marked `sealed`, with the events and works about them (ADR-0027).
-fn sealed_ids<'a>(entities: &'a [Entity], index: &HashMap<String, usize>, edges: &'a [Edge]) -> HashSet<&'a str> {
+/// The names that point at a sealed entry (ADR-0027), as `Kb::sealed_names` gathers them.
+pub struct SealedNames<'a> {
+    /// Each sealed entry's name and written aliases.
+    names: Vec<&'a str>,
+    /// Each sealed person's family name.
+    family: Vec<&'a str>,
+}
+
+impl SealedNames<'_> {
+    /// Whether `text` names a sealed entry outright, by its name or an alias, as whole words.
+    pub fn names(&self, text: &str) -> bool {
+        self.names.iter().any(|n| has_words(text, n))
+    }
+
+    /// Whether `text` is named after one: outright, or by a sealed person's family name as a word.
+    pub fn named_after(&self, text: &str) -> bool {
+        self.names(text) || name_words(text).any(|w| self.family.contains(&w))
+    }
+}
+
+fn name_words(text: &str) -> impl DoubleEndedIterator<Item = &str> {
+    text.split(|c: char| !c.is_alphanumeric()).filter(|w| !w.is_empty())
+}
+
+/// `needle` in `text` with no letter or digit against either side: "Epstein's", not "Epsteiner".
+pub(crate) fn has_words(text: &str, needle: &str) -> bool {
+    !needle.is_empty()
+        && text.match_indices(needle).any(|(i, _)| {
+            let before = text[..i].chars().next_back();
+            let after = text[i + needle.len()..].chars().next();
+            !before.is_some_and(char::is_alphanumeric) && !after.is_some_and(char::is_alphanumeric)
+        })
+}
+
+/// What no route may touch: the entries marked `sealed`, with what is about them (types marked `about`:
+/// events, works, things) (ADR-0027).
+fn sealed_ids<'a>(entities: &'a [Entity], index: &HashMap<String, usize>, edges: &'a [Edge], schema: &Schema) -> HashSet<&'a str> {
     let hand: HashSet<&str> = entities.iter().filter(|e| e.sealed).map(|e| e.id.as_str()).collect();
-    let about = |id: &str, other: &str| hand.contains(other) && matches!(entities[index[id]].kind.as_str(), "event" | "work");
+    let about = |id: &str, other: &str| hand.contains(other) && schema.types.get(&entities[index[id]].kind).is_some_and(|t| t.about);
     let mut sealed = hand.clone();
     for e in edges {
         if about(&e.from, &e.to) {
@@ -1624,6 +1686,37 @@ pub(crate) mod tests {
     }
 
     #[test]
+    fn every_page_keeps_out_the_same_names() {
+        let sealed = "---\nid: hid\ntype: person\nname: Hid Den\nsealed: true\nclaims: []\n---\n";
+        let (kb, _) = load(
+            "kb-kept-out",
+            &[
+                file(
+                    "content/schema/entity-types.yaml",
+                    "person: {label: Person, plural: People, layer: people, family: true}\norg: {label: Organization, plural: Organizations, layer: power}\nevent: {label: Event, plural: Events, layer: power, about: true}\ngroup: {label: Group, plural: Groups, layer: people, family: true, alone: true}\n",
+                ),
+                file("content/entities/person/hi/hid.md", sealed),
+                entity("org", "den-estate", "Estate of Hid Den", ""),
+                entity("event", "dens-suit", "A suit over the Den story", ""),
+                entity("person", "ada-den", "Ada Den", ""),
+                entity("org", "denmark-co", "Denmark Trading", ""),
+                entity("group", "folk", "A folk", ""),
+            ],
+        );
+        let out = kb.kept_out();
+        // named after the sealed person, outright or by family name as a word
+        for id in ["hid", "den-estate", "dens-suit"] {
+            assert!(out.contains(id), "{id}");
+        }
+        // someone who shares the family name is themselves, and "Denmark" is not "Den"
+        assert!(!out.contains("ada-den") && !out.contains("denmark-co"));
+        let by = kb.sealed_names();
+        assert!(by.names("Hid Den's houses") && !by.names("Hid Denby") && by.named_after("the Den files") && !by.names("the Den files"));
+        // a people joins nothing
+        assert!(!kb.joins(kb.entity("folk").unwrap()) && kb.joins(kb.entity("den-estate").unwrap()));
+    }
+
+    #[test]
     fn a_thread_keeps_to_its_own_rules() {
         let sealed = "---\nid: hid\ntype: person\nname: Hid Den\nsealed: true\nclaims: []\n---\n";
         let (kb, diags) = load(
@@ -1697,7 +1790,7 @@ pub(crate) mod tests {
     fn no_route_touches_a_sealed_entry_or_an_event_about_it() {
         let types = file(
             "content/schema/entity-types.yaml",
-            "person: {label: Person, plural: People, layer: people, family: true, span: Life}\nevent: {label: Event, plural: Events, layer: power, span: Dates}\n",
+            "person: {label: Person, plural: People, layer: people, family: true, span: Life}\nevent: {label: Event, plural: Events, layer: power, span: Dates, about: true}\n",
         );
         let relations = file(
             "content/schema/relations.yaml",

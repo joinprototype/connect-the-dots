@@ -145,12 +145,16 @@ impl Atlas {
     pub fn without_sealed(mut self, kb: &Kb) -> Atlas {
         let hand = curated(kb);
         let sealed: Vec<bool> = self.entries.iter().map(|e| hand.get(&e.qid).is_some_and(|&c| kb.entities[c].sealed)).collect();
+        // open data's names for them, and the record's (Kb::sealed_names), as whole words
         let names: Vec<String> = self.entries.iter().zip(&sealed).filter(|(_, s)| **s).map(|(e, _)| e.name.clone()).collect();
-        let about = |e: &Entry| names.iter().any(|n| e.name.contains(n.as_str()) || e.summary.contains(n.as_str()));
+        let by = kb.sealed_names();
+        let names_one = |text: &str| by.names(text) || names.iter().any(|n| crate::kb::has_words(text, n));
+        let about = |e: &Entry| names_one(&e.name) || names_one(&e.summary);
+        let about_kind = |e: &Entry| kb.schema.types.get(e.kind()).is_some_and(|t| t.about);
         let mut gone: Vec<bool> = self.entries.iter().zip(&sealed).map(|(e, s)| !s && about(e)).collect();
         for &(x, _, y) in &self.links {
             for (end, other) in [(x as usize, y as usize), (y as usize, x as usize)] {
-                gone[other] |= sealed[end] && !sealed[other] && matches!(self.entries[other].kind(), "event" | "work" | "artifact");
+                gone[other] |= sealed[end] && !sealed[other] && about_kind(&self.entries[other]);
             }
         }
         let mut next = 0;
@@ -473,7 +477,8 @@ mod tests {
     #[test]
     fn a_sealed_entry_keeps_its_dot_and_loses_its_open_data() {
         let sealed = "---\nid: zoe\ntype: person\nname: Zoe\nsame_as: {wikidata: Q2}\nsealed: true\nclaims: []\n---\n";
-        let (kb, _) = load_kb("atlas-sealed", &[file("content/entities/person/zo/zoe.md", sealed)]);
+        let types = "person: {label: Person, plural: People, layer: people, family: true}\norg: {label: Organization, plural: Organizations, layer: power}\nevent: {label: Event, plural: Events, layer: power, about: true}\n";
+        let (kb, _) = load_kb("atlas-sealed", &[file("content/schema/entity-types.yaml", types), file("content/entities/person/zo/zoe.md", sealed)]);
         // Q1, the sealed Q2, an event about Q2, Q4 who has nothing to do with it, and Q5 whose words name Q2
         let mut entries: Vec<Entry> = [(1, 0), (2, 0), (3, 1), (4, 0), (5, 0)]
             .map(|(qid, kind)| Entry {

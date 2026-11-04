@@ -233,7 +233,7 @@ fn pack(radii: &[f64], pull: &BTreeMap<(usize, usize), f64>, start: Vec<[f64; 2]
 /// one in many. A sealed entry joins nobody (ADR-0027), and neither does a people or a faith: no line says two
 /// stories belong together because of who someone is (ADR-0016).
 fn shared(kb: &Kb, isles: &[&Isle]) -> BTreeMap<(usize, usize), f64> {
-    let sealed = kb.sealed();
+    let out = kb.kept_out();
     let mut tellers: BTreeMap<&str, Vec<usize>> = BTreeMap::new();
     for (s, isle) in isles.iter().enumerate() {
         for id in &isle.ids {
@@ -242,7 +242,7 @@ fn shared(kb: &Kb, isles: &[&Isle]) -> BTreeMap<(usize, usize), f64> {
     }
     let mut pull = BTreeMap::new();
     for (id, stories) in &tellers {
-        if stories.len() < 2 || sealed.contains(id) || kb.entity(id).is_some_and(|e| matches!(e.kind.as_str(), "group" | "tradition")) {
+        if stories.len() < 2 || out.contains(id) || kb.entity(id).is_some_and(|e| !kb.joins(e)) {
             continue;
         }
         let w = 1.0 / (stories.len() - 1) as f64;
@@ -276,12 +276,6 @@ fn lines(pull: &BTreeMap<(usize, usize), f64>, stories: usize) -> Vec<[usize; 4]
             [p.0, p.1, strength, usize::from(rest)]
         })
         .collect()
-}
-
-/// The ways a story's one line might name a sealed person: their names, and their family name alone.
-fn sealed_names(kb: &Kb) -> Vec<&str> {
-    let people = kb.entities.iter().filter(|e| e.sealed && e.kind == "person");
-    people.flat_map(|e| e.aliases.iter().map(String::as_str).chain([e.name.as_str()]).chain(e.name.split_whitespace().last())).collect()
 }
 
 /// Where a story starts on the map: the middle of the places its entries are set, on a flat Earth, so that a
@@ -393,9 +387,9 @@ fn float(sea: &[usize], targets: &[Option<[f64; 2]>], near: &[Vec<usize>], p: &m
 
 /// The whole surface, as `data/islands.json` holds it (docs/data-contract.md).
 pub fn picture<'a>(kb: &Kb, by_id: &BTreeMap<&'a str, &'a Edge>) -> Value {
-    let sealed = kb.sealed();
-    let names = sealed_names(kb);
-    let says_sealed = |text: &str| names.iter().any(|n| text.contains(n));
+    let out = kb.kept_out();
+    let by = kb.sealed_names();
+    let says_sealed = |text: &str| by.named_after(text);
     // the rule the build keeps, not a brief: a story titled after a sealed person stays in the list only
     let told: Vec<(&Chapter, Isle)> =
         kb.chapters.iter().filter(|ch| !says_sealed(&ch.title)).map(|ch| (ch, reveals(kb, by_id, ch))).filter(|(_, isle)| !isle.ids.is_empty()).collect();
@@ -410,7 +404,7 @@ pub fn picture<'a>(kb: &Kb, by_id: &BTreeMap<&'a str, &'a Edge>) -> Value {
             tellers[at[id]].push((s, j));
         }
     }
-    let apart_from_all = |e: &Entity| sealed.contains(e.id.as_str()) || matches!(e.kind.as_str(), "group" | "tradition");
+    let apart_from_all = |e: &Entity| out.contains(e.id.as_str()) || !kb.joins(e);
     let people = |e: &Entity| kb.schema.types.get(&e.kind).is_some_and(|t| t.family);
     let home: Vec<Option<usize>> = kb
         .entities
@@ -512,7 +506,7 @@ pub fn picture<'a>(kb: &Kb, by_id: &BTreeMap<&'a str, &'a Edge>) -> Value {
         })
         .collect();
     let spots: Vec<i64> = p.iter().flat_map(|q| [q[0].round() as i64, q[1].round() as i64]).collect();
-    let quiet: Vec<usize> = (0..n).filter(|&i| sealed.contains(kb.entities[i].id.as_str())).collect();
+    let quiet: Vec<usize> = (0..n).filter(|&i| out.contains(kb.entities[i].id.as_str())).collect();
     json!({ "w": WIDTH as i64, "h": HEIGHT as i64, "coast": coast.round() as i64, "at": spots, "sealed": quiet,
             "told": tellers, "stories": stories, "lines": lines(&pull, told.len()) })
 }
@@ -648,7 +642,7 @@ mod tests {
 
     #[test]
     fn a_sealed_person_a_people_or_a_faith_joins_no_stories_and_lies_on_no_land() {
-        let kinds = "person: {label: Person, plural: People, layer: people, family: true}\norg: {label: Organization, plural: Organizations, layer: power}\ngroup: {label: Group, plural: Groups, layer: people, family: true}\ntradition: {label: Tradition, plural: Traditions, layer: people}\n";
+        let kinds = "person: {label: Person, plural: People, layer: people, family: true}\norg: {label: Organization, plural: Organizations, layer: power}\ngroup: {label: Group, plural: Groups, layer: people, family: true, alone: true}\ntradition: {label: Tradition, plural: Traditions, layer: people, alone: true}\n";
         let zoe = "---\nid: zoe-day\ntype: person\nname: Zoe Day\nsealed: true\nclaims: []\n---\n";
         let (kb, _) = load(
             "islands-sealed",

@@ -1161,16 +1161,9 @@ fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
 /// does. A sealed entry joins no stories (ADR-0027), nor does a group (ADR-0016): the reader chooses
 /// the next story, and no chain of them may lead along either.
 fn shared_names(kb: &Kb) -> Vec<Vec<(usize, Vec<&str>)>> {
-    let sealed = kb.sealed();
-    // nor does an entry named after a sealed one ("Trump's suit over the Journal's Epstein story")
-    let names: Vec<&str> = kb.entities.iter().filter(|e| e.sealed).map(|e| e.name.as_str()).collect();
-    let counts = |e: &str| {
-        kb.entity(e).is_some_and(|x| {
-            !sealed.contains(e)
-                && !matches!(x.kind.as_str(), "group" | "tradition")
-                && !names.iter().any(|n| x.name.contains(n) || n.split(' ').next_back().is_some_and(|s| x.name.contains(s)))
-        })
-    };
+    // nor does what is about one, or named after one (Kb::kept_out)
+    let out = kb.kept_out();
+    let counts = |e: &str| kb.entity(e).is_some_and(|x| !out.contains(e) && kb.joins(x));
     let named: Vec<BTreeSet<&str>> =
         kb.chapters.iter().map(|ch| ch.shots.iter().flat_map(|shot| crate::kb::shot_entries(shot).map(|(_, id)| id)).filter(|e| counts(e)).collect()).collect();
     let mut stories_of: HashMap<&str, usize> = HashMap::new();

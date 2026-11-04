@@ -4,14 +4,16 @@
 # `span` is what an entry's own dates are called on its life line ("Span" when unset).
 # `map: true` marks types that are points on the map: they need coords, and stories show them there.
 # `thread: true` marks types that may open the home page, with the stories they run through.
+# `alone: true` marks a people or a faith (ADR-0016): never a step between two entries, never what two stories share.
+# `about: true` marks types that are about others (events, works, things): one joined to a sealed entry is kept out with it.
 # `photo_since` is for types whose photos show them as they are now (a skyline, a flag, a headquarters), taken since
 #   about that year: a story scene set earlier shows one only when its `picture:` names it, so 1917 never gets a 2009 skyline.
 person:    {label: Person,       plural: People,        layer: people, family: true, span: Life, thread: true}
 org:       {label: Organization, plural: Organizations, layer: power, span: Active, thread: true, photo_since: 2005}
 place:     {label: Place,        plural: Places,        layer: places, map: true, thread: true, photo_since: 2005}
-event:     {label: Event,        plural: Events,        layer: history}
-work:      {label: Work,         plural: Works,         layer: ideas}    # texts, scriptures, laws, documents, films
-artifact:  {label: Artifact,     plural: Artifacts,     layer: tech}     # technologies, systems, weapons, networks, objects
+event:     {label: Event,        plural: Events,        layer: history, about: true}
+work:      {label: Work,         plural: Works,         layer: ideas, about: true}    # texts, scriptures, laws, documents, films
+artifact:  {label: Artifact,     plural: Artifacts,     layer: tech, about: true}     # technologies, systems, weapons, networks, objects
 concept:   {label: Concept,      plural: Concepts,      layer: ideas}    # ideas, doctrines, policies, mottos
-tradition: {label: Tradition,    plural: Traditions,    layer: ideas, span: Active}    # religions, schools of thought, movements
-group:     {label: Group,        plural: Groups,        layer: people, family: true}   # peoples, communities, families
+tradition: {label: Tradition,    plural: Traditions,    layer: ideas, span: Active, alone: true}    # religions, schools of thought, movements
+group:     {label: Group,        plural: Groups,        layer: people, family: true, alone: true}   # peoples, communities, families

@@ -64,15 +64,14 @@ pub fn write_field(kb: &Kb, atlas: Option<&Atlas>, out: &Path) -> Result<()> {
     if gz > BUDGET {
         eprintln!("warning: data/field.bin is {} KB gzip, past its {} KB budget", gz / 1024, BUDGET / 1024);
     }
-    let sealed = kb.sealed();
-    let names: Vec<&str> = kb.entities.iter().filter(|e| e.sealed).map(|e| e.name.as_str()).collect();
+    let kept_out = kb.kept_out();
     // the types that are points on the map (entity-types.yaml)
     let mapped: Vec<&String> = kb.schema.types.iter().filter(|(_, t)| t.map).map(|(id, _)| id).collect();
     let ink = mapped.first().map(|t| kb.schema.type_color(t));
     let mut places: Vec<(usize, &crate::kb::Entity, [f64; 2])> = kb
         .entities
         .iter()
-        .filter(|e| mapped.contains(&&e.kind) && !sealed.contains(e.id.as_str()) && !names.iter().any(|n| e.name.contains(n)))
+        .filter(|e| mapped.contains(&&e.kind) && !kept_out.contains(e.id.as_str()))
         .filter_map(|e| Some((kb.degree(&e.id), e, e.coords?)))
         .collect();
     places.sort_by(|a, b| b.0.cmp(&a.0).then_with(|| a.1.name.cmp(&b.1.name)));

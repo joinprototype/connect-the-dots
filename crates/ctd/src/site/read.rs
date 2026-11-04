@@ -4,7 +4,7 @@
 //! stories that share the most with it, each with its reason. `web/src/read/` draws the picture beside
 //! them, opens a name in place, and joins the next story only when the reader picks it (ADR-0031).
 
-use std::{collections::BTreeSet, sync::LazyLock};
+use std::sync::LazyLock;
 
 use regex::Regex;
 use serde_json::{Value, json};
@@ -162,14 +162,16 @@ pub fn site_json(s: &Site) -> anyhow::Result<String> {
 }
 
 /// `data/read.json`, loaded the first time a reader opens a name or "Find a name": every story, for
-/// Find with nothing typed; the entries no step may go on from (sealed, and what is about them:
-/// ADR-0027); and the relations a place's or a school's side does not list as its links (ADR-0016).
+/// Find with nothing typed; the entries no step may go on from (`Kb::kept_out`, ADR-0027); the types
+/// that join nothing (a people, a faith); and the relations a place's or a school's side does not
+/// list as its links (ADR-0016).
 pub fn data(s: &Site, cards: &[Value]) -> Value {
     let kb = s.kb;
     let stories: Vec<Value> = cards.iter().map(|c| json!([c["id"], c["title"], c["subtitle"], c["shots"]])).collect();
-    let sealed: BTreeSet<&str> = kb.sealed().into_iter().collect();
+    let sealed = kb.kept_out();
+    let alone: Vec<&String> = kb.schema.types.iter().filter(|(_, t)| t.alone).map(|(id, _)| id).collect();
     let background: Vec<&String> = kb.schema.relations.iter().filter(|(_, r)| r.background).map(|(id, _)| id).collect();
-    json!({ "stories": stories, "sealed": sealed, "background": background })
+    json!({ "stories": stories, "sealed": sealed, "alone": alone, "background": background })
 }
 
 /// The quoted proof under a scene: its quote, number or source card, with where the words come from.

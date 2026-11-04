@@ -17,18 +17,6 @@ use crate::{kb::shot_entries, paths};
 /// The file's budget in gzip bytes.
 pub const BUDGET: usize = 100 * 1024;
 
-/// What no answer may run through: the sealed entries and what is about them, and every thing named after
-/// a sealed person ("Trump's suit over the Journal's Epstein story"). Another person who shares a family
-/// name (Mary Maxwell Gates) is no more than herself.
-pub(super) fn kept_out<'a>(s: &Site<'a>) -> BTreeSet<&'a str> {
-    let kb = s.kb;
-    let words = |name: &'a str| name.split(|c: char| !c.is_alphanumeric()).filter(|w| !w.is_empty());
-    let sealed: Vec<&str> = kb.entities.iter().filter(|e| e.sealed && e.kind == "person").filter_map(|e| words(&e.name).next_back()).collect();
-    let mut out: BTreeSet<&str> = kb.sealed().into_iter().collect();
-    out.extend(kb.entities.iter().filter(|e| e.kind != "person" && words(&e.name).any(|w| sealed.contains(&w))).map(|e| e.id.as_str()));
-    out
-}
-
 /// The featured pairs the page may arrive on: neither end, nor any stop of their way, is kept out.
 /// Each is the route question asked about the two, in parts: words, and names with their ids and inks.
 fn picks(s: &Site, out: &BTreeSet<&str>) -> Vec<Value> {
@@ -93,7 +81,7 @@ fn file(s: &Site, out: &BTreeSet<&str>) -> Value {
                 names.extend(shot_entries(shot).map(|(_, id)| id));
                 names.extend(data::revealed(&s.by_id, shot).values().flat_map(|e| [e.from.as_str(), e.to.as_str()]));
             }
-            names.retain(|id| kb.entity(id).is_some_and(|e| !matches!(e.kind.as_str(), "group" | "tradition")) && !out.contains(id));
+            names.retain(|id| kb.entity(id).is_some_and(|e| kb.joins(e)) && !out.contains(id));
             json!([ch.id, ch.title, ch.subtitle, years, names])
         })
         .collect();
@@ -133,7 +121,7 @@ fn examples(s: &Site, out: &BTreeSet<&str>, picks: &[Value], asked: &[(&str, &st
 
 /// The page and its file. `asked` are the question pages, as `(question id, entry id)`.
 pub(super) fn write_ask(s: &Site, asked: &[(&str, &str)]) -> Result<()> {
-    let out = kept_out(s);
+    let out = s.kb.kept_out();
     let picks = picks(s, &out);
     let examples = examples(s, &out, &picks, asked);
     let bytes = serde_json::to_vec(&file(s, &out))?;

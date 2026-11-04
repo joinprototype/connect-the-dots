@@ -13,7 +13,7 @@ use anyhow::{Context, Result, anyhow};
 use serde::Deserialize;
 use serde_json::json;
 
-use super::{Site, ask, write};
+use super::{Site, write};
 use crate::{atlas::Atlas, kb::shot_entries};
 
 #[derive(Deserialize)]
@@ -49,7 +49,7 @@ fn puzzles<'a>(s: &Site<'a>, rules: &Rules, atlas: Option<&Atlas>) -> (Vec<Vec<&
         let at: HashMap<u32, u16> = a.entries.iter().map(|e| (e.qid, e.fame)).collect();
         crate::atlas::curated(kb).into_iter().filter_map(|(q, i)| at.get(&q).map(|&f| (i, f))).collect()
     });
-    let out = ask::kept_out(s);
+    let out = s.kb.kept_out();
     let at: HashMap<&str, usize> = kb.entities.iter().enumerate().map(|(i, e)| (e.id.as_str(), i)).collect();
     // the links a way may use, as data/ways.json holds them, with nothing kept out at either end
     let mut near: Vec<Vec<usize>> = vec![Vec::new(); kb.entities.len()];
