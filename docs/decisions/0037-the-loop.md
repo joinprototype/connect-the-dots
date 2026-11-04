@@ -22,5 +22,5 @@ What the reviewer drops is written down for the next scout, and every run logs w
 
 - An agent may now merge into `main`, within these limits. `main` stays what a careful reader checked; the live site stays what the founder released.
 - The quote check needs no model and the second fetch needs no trust in the first, so the cheap step cannot pass off an invented quote.
-- Running it unattended needs a schedule, which needs the founder's word. Until then a run is started by hand.
+- Running it unattended needs a schedule, which needs the founder's word. The founder gave it on 2026-11-04: one run a night ([tools/loop/night.md](../../tools/loop/night.md)).
 - Amends the leads loop of ADR-0025, where a run could not push or merge.

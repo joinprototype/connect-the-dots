@@ -33,7 +33,7 @@ It leaves the branch, labelled for the founder, when a change:
 
 ## Running it
 
-A run is a Claude Code session in this checkout, asked to "run the loop as docs/loop.md says". It spawns the scout as a subagent on the cheap model and reviews in its own context. It needs a schedule only to run unattended, which needs the founder's word. At most one run at a time; a run that finds the laptop busy (a browser check, a build) waits.
+A run is a Claude Code session in this checkout that follows [tools/loop/night.md](../tools/loop/night.md): it spawns the scout as a subagent on the cheap model and reviews in its own context. The founder gave the word to run it unattended on 2026-11-04: a scheduled task in the Claude desktop app starts one every night at 03:00, and only while the app is open (a night missed runs at the next launch). At most one run at a time, behind a lock; a run that finds the laptop busy (a browser check, a build) waits, then gives up for the night. To run one by hand, ask a session to "run one night of the loop as tools/loop/night.md says".
 
 ## What it costs and what it shows
 
