@@ -2,7 +2,7 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
-## Next
+## 0.5.8 (2026-11-04)
 
 - The Sealed Train says what Berlin's million roubles for Parvus is in today's money: about $10 million at 2026 prices, or nearly half a tonne of gold, with the sums and their sources at the end of the story.
 
