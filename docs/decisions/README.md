@@ -37,5 +37,7 @@ One short file per decision: context, decision, consequences, and when to revisi
 | [0033](0033-the-map-draws-the-record.md) | The Map draws the record: open data leaves the Map, and stays in search, on its pages and as the land behind Read and Ask | accepted, amended by 0034 |
 | [0034](0034-one-map.md) | One map: the Stories surface over the whole window, and "On Earth" as a second arrangement of the same dots | accepted, amended by 0035 |
 | [0035](0035-stories-is-the-shelf.md) | Stories is the shelf: every story's cover to pick and read; the islands are the Map's | accepted |
+| [0036](0036-play-and-help.md) | A puzzle a day, from one name to another by links on the record, and missing links for readers to send sources for | accepted |
+| [0037](0037-the-loop.md) | The loop: cheap scouts source leads, a gate refuses what is mechanically wrong, one careful reviewer merges what holds, the founder releases | accepted |
 | [0022](0022-dots-and-lines.md) | Dots and lines: print inks with a job, each story its own ink, Bricolage Grotesque and Literata, stories on white | accepted |
 | [0021](0021-the-world-of-an-era.md) | The Map's era slider draws the world of that year: 30 years from 3000 BCE to 1990, in one grey; the basemap after that | accepted |

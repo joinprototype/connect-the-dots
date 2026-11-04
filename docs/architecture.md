@@ -173,6 +173,9 @@ Builds are deterministic: a pinned toolchain, sorted output and fixed seeds. Any
   - Sensitive relations (crime, sanctions, health, family, allegations) need two approvals, plus either two independent T1/T2 voices or one T1 record. The build withholds a sensitive claim that falls short, draft or not, until it is sourced.
   - A maintainer reviews every contributor's first PR.
   - CODEOWNERS per area.
+- **Readers and the loop** ([ADR-0036](decisions/0036-play-and-help.md), [ADR-0037](decisions/0037-the-loop.md)):
+  - `/missing/` lists what open data says and the record lacks, each with a link that opens an issue to send a source.
+  - The loop ([loop.md](loop.md)): cheap scouts source leads on their own branches, `tools/loop/gate.sh` refuses what is mechanically wrong, one careful reviewer fetches every source again and merges into `main` what holds. Sealed entries, harms, living people beyond their public acts, interpretations, sensitive links and stories wait for the founder; a release always does.
 - **Evidence:**
   - source tiers T1–T4;
   - archive bot (Wayback Machine plus sha256) *(planned)*;

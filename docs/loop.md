@@ -1,0 +1,40 @@
+# The loop
+
+How the record grows without a person in every step ([ADR-0037](decisions/0037-the-loop.md)): cheap scouts find and source, a gate refuses what is mechanically wrong, one reviewer reads every claim against its source and merges what holds, and a person releases. Every rule of [leads.md](leads.md) and of the story briefs still holds; the loop only changes who does the steps.
+
+```
+ ideas ──> scouts (cheap) ──> branch ──> gate ──> reviewer (careful) ──> main ──> release (the founder's go)
+   ^                                       │            │
+   └──────────── lessons, ignore list <────┴────────────┘
+```
+
+## Where ideas come from
+
+1. `ctd gaps`: the links open data has and the record lacks (`.cache/gaps.tsv`).
+2. The missing-links page's issues on GitHub, titled "Source for: …": a reader sent a source. These go first.
+3. A puzzle's dead ends and Ask's "no written way" pairs, as they are logged.
+4. Story ideas in `.cache/sources/QUEUE.md`.
+
+## One run
+
+1. **Scout** (a cheap model, such as Haiku; any model that can fetch a page and edit a file will do). Brief: [tools/loop/scout.md](../tools/loop/scout.md). It takes a batch of at most 20 leads, finds a source for each, saves the source's text under `.cache/loop/<run>/src/`, and writes the claims on a branch `loop/<run>` in its own worktree. A lead it cannot source goes to `.cache/gaps-tried.tsv`; one it finds wrong, to `content/methodology/gaps-ignore.tsv`.
+2. **Gate** (no model): `tools/loop/gate.sh main .cache/loop/<run>`. Only entries, sources, stories and the ignore list may change; no request header and no personal detail; at most 40 new quotes; `ctd check --base main`; every new quote word for word in saved text. A branch that fails goes back to the scout once, then is dropped.
+3. **Reviewer** (one careful model, such as Opus). Brief: [tools/loop/review.md](../tools/loop/review.md). It fetches every source again itself, into its own folder, and runs the gate on that copy, so a scout's saved text is never the only proof. It reads each claim against its relation's meaning, keeps, fixes or drops it, and writes what it dropped and why to `.cache/loop/lessons.md`, which the next scout reads. If what is left passes the gate, it merges the branch into `main` and pushes.
+4. **Release**: as always, `tools/deploy.sh live` only on the founder's go in chat.
+
+## What the reviewer never merges
+
+It leaves the branch, labelled for the founder, when a change:
+
+- touches a sealed entry, or a story about crimes, deaths, abuse or someone's private life;
+- says anything about a living person beyond an office, a company role, a degree, a public statement or a court's finding;
+- is a story, or a new story's scene (stories keep their writer and skeptic, and the founder reads them);
+- uses `according_to`, a dispute, or a relation marked `sensitive` or `legal`.
+
+## Running it
+
+A run is a Claude Code session in this checkout, asked to "run the loop as docs/loop.md says". It spawns the scout as a subagent on the cheap model and reviews in its own context. It needs a schedule only to run unattended, which needs the founder's word. At most one run at a time; a run that finds the laptop busy (a browser check, a build) waits.
+
+## What it costs and what it shows
+
+Each run ends with one line in `.cache/loop/runs.tsv`: date, leads tried, claims merged, dropped, left for the founder, and tokens. A week of lines says whether the loop is worth its cost.
