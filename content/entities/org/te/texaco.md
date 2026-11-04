@@ -35,4 +35,11 @@ claims:
     note: "Listed in the CIA history as The Texas Company."
     src:
       - {s: cia-battle-for-iran-1981, quote: "7% each to Standard Oil Company of New Jersey, Standard Oil Company of California, Socony Mobil Oil Company, The Texas Company, and Gulf Oil Corporation"}
+  - id: c5
+    rel: part_of
+    to: chevron
+    when: "2001"
+    note: "Merged with Chevron in 2001; the combined company was ChevronTexaco, later Chevron."
+    src:
+      - {s: chevron-history, at: "Timeline, 2001", quote: "Chevron merged with Texaco and became ChevronTexaco, the second-largest U.S.-based energy company at the time."}
 ---
