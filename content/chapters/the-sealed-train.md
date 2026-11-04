@@ -164,7 +164,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   reveal: [alexander-parvus, german-imperial-government, vladimir-lenin, karl-radek, lenin-sealed-train]
   reveal_claims: [lenin-sealed-train#c16, german-imperial-government#c2, alexander-parvus#c1]
   overlay: {kind: quote, source: zeman-1958-germany-revolution-russia, quote: "In Stockholm Parvus tried to see Lenin in the name of the Central Committee of the German Social Democrats; Ilyich not only refused to see him, but asked me, Vorovski and Hanecki, together with Swedish comrades, to record this attempt.", caption: "Karl Radek, in a 1924 piece quoted in a note by the editor of the German files"}
-  narration: "**A man at the door.** Alexander Parvus, to whom Berlin had authorised one million roubles in 1915, asked the German minister in Copenhagen to tell him when the Russians reached Malmö, because he wished to meet them. In Radek's telling, Lenin refused to see him and had the attempt put on record. Zinoviev told comrades in Petrograd that Lenin likewise refused to meet the German Social Democrat Scheidemann."
+  narration: "**A man at the door.** Alexander Parvus, to whom Berlin had authorised one million roubles in 1915 (about $10 million in 2026 prices, or nearly half a tonne of gold), asked the German minister in Copenhagen to tell him when the Russians reached Malmö, because he wished to meet them. In Radek's telling, Lenin refused to see him and had the attempt put on record. Zinoviev told comrades in Petrograd that Lenin likewise refused to meet the German Social Democrat Scheidemann."
   duration: 13
 
 - shot: at-the-russian-frontier
@@ -237,5 +237,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   explore: true
   duration: 14
 ```
+
+**One million roubles in today's money.** In New York in December 1915, 100 roubles cost $29.75 to $32.75, against $51.50 before the war ([Federal Reserve Bulletin, 1 December 1916, p. 729](https://fraser.stlouisfed.org/files/docs/publications/FRB/pages/1915-1919/24652_1915-1919.pdf)), so the million Berlin authorised for Parvus was worth $297,500 to $327,500. US consumer prices were 32.7 times higher in September 2026 than in December 1915 ([Bureau of Labor Statistics, via FRED](https://fred.stlouisfed.org/series/CPIAUCNS)): about $10 million. At the dollar's fixed price of $20.67 an ounce, the same money bought 14,400 to 15,800 ounces of gold, about 450 to 490 kilograms, worth $57 to $62 million at $3,927 an ounce on 3 November 2026 ([Nation Thailand](https://www.nationthailand.com/business/trading-investment/40073078)).
 
 Explore further: follow the road ahead in The Rise and Fall of the Soviet Union, or the road behind in Thirty-Seven Days.

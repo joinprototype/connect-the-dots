@@ -2,6 +2,10 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## Next
+
+- The Sealed Train says what Berlin's million roubles for Parvus is in today's money: about $10 million at 2026 prices, or nearly half a tonne of gold, with the sums and their sources at the end of the story.
+
 ## 0.5.7 (2026-11-04)
 
 - A story set in the past no longer shows a city or a company as it looks today: no 2009 skyline beside 1917, no modern headquarters beside 1830. Those scenes show a person or a picture of the time, or the map alone.
