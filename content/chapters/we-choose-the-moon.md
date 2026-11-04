@@ -13,6 +13,38 @@ In April 1961 a president asked a plain question: is there anything in space we 
 This story follows how they got there, in the words of those who were there: who built the rocket and what its past held, who did the sums, who died on the way, and why it stopped. Nearly all of it comes from NASA's own records.
 
 ```scene
+- shot: sputnik-night
+  view: map
+  camera: {globe: true, center: [62, 48], zoom: 1.8, duration: 7}
+  places: [kazakhstan]
+  borders: [soviet-union]
+  time: "1957-10-04"
+  reveal: [sputnik-1, sergei-korolev, space-race]
+  reveal_claims: [sputnik-1#c3]
+  overlay: {kind: quote, source: nasa-sputnik-origins, quote: "Sputnik 1, launched on 4 October 1957 from the Soviet Union's rocket testing facility in the desert near Tyuratam in the Kazakh Republic, proved a decidedly unspectacular satellite that probably should not have elicited the horrific reaction it wrought.", caption: "Roger Launius, NASA historian"}
+  narration: "**Sputnik.** On 4 October 1957 the Soviet Union put the first satellite into orbit. It was a small radio beacon that beeped at regular intervals. The U.S. State Department says it fueled both the space race and the arms race, and NASA's historian says the American reaction was far out of proportion to the object."
+  duration: 14
+
+- shot: nasa-is-born
+  view: graph
+  focus: nasa
+  time: "1958-07-29"
+  reveal: [nasa, sputnik-1, lyndon-b-johnson, dwight-d-eisenhower]
+  reveal_claims: [nasa#c3, sputnik-1#c1]
+  overlay: {kind: quote, source: nasa-sputnik-origins, quote: "During the summer of 1958 Congress passed the National Aeronautics and Space Act and the president signed it into law on 29 July 1958.", caption: "NASA History Office"}
+  narration: "**A new agency.** Senate Majority Leader Lyndon Johnson opened hearings on the nation's space programs on 25 November 1957. President Eisenhower then sponsored the bill that turned an older research body into a civilian space agency: NASA."
+  duration: 12
+
+- shot: first-human
+  view: graph
+  focus: vostok-1
+  time: "1961-04-12"
+  reveal: [vostok-1, yuri-gagarin, space-race]
+  reveal_claims: [vostok-1#c1, vostok-1#c2, yuri-gagarin#c1]
+  overlay: {kind: stat, value: "108 minutes", label: "Yuri Gagarin's flight once around the Earth, 12 April 1961, by NASA's count", source: nasa-science-gagarin, quote: "The flight lasted 108 minutes."}
+  narration: "**First human in space.** On 12 April 1961 the Soviet cosmonaut Yuri Gagarin orbited the Earth once. The United States had not yet put a person into space at all: Alan Shepard flew his 15-minute up-and-down flight on 5 May. NASA's own history calls Gagarin's flight another case of the Soviets counting coup."
+  duration: 14
+
 - shot: one-question
   view: map
   camera: {globe: true, center: [-60, 32], zoom: 1.7, duration: 7}
@@ -78,6 +110,16 @@ This story follows how they got there, in the words of those who were there: who
   overlay: {kind: stat, value: "400,000", label: "Americans working on Apollo at its peak", source: nasa-langley-first-step, quote: "At its peak, the Apollo program employed 400,000 Americans and required the support of over 20,000 industrial firms and universities."}
   narration: "**The price.** Apollo cost about $25 billion in the money of the time. NASA's chief historian says spending peaked at over 4 percent of the national budget; an earlier NASA history puts 1965 at 5.3 percent."
   duration: 12
+
+- shot: two-ways-to-count
+  view: graph
+  focus: apollo-program
+  time: "1973"
+  reveal: [apollo-program, nasa]
+  reveal_claims: [apollo-program#c1]
+  overlay: {kind: stat, value: "$25.8 billion", label: "Spent on Apollo, 1960 to 1973, by the Planetary Society, from NASA budget papers", source: planetary-apollo-cost, quote: "The United States spent $25.8 billion on Project Apollo between 1960 and 1973, or approximately $309 billion when adjusted for inflation to 2025 dollars."}
+  narration: "**Two ways to count.** In the money of the day, NASA's chief historian says $25 billion and the NASA historian Roger Launius says $25.4 billion; the Planetary Society counts $25.8 billion. Adjusted figures run from about $95 billion in 1990 dollars to $309 billion in 2025 dollars. They use different years, so they are not one number."
+  duration: 14
 
 - shot: the-computer
   view: map
@@ -183,6 +225,16 @@ This story follows how they got there, in the words of those who were there: who
   overlay: {kind: quote, source: nasa-apollo-13-chronology, quote: "Okay, Houston, we’ve had a problem here.", caption: "Apollo 13, April 1970"}
   narration: "**A problem.** On the way to the Moon in April 1970, Apollo 13 lost its power and oxygen supply. The lunar module became the one way home, the landing was called off, and the crew came back on 17 April."
   duration: 12
+
+- shot: who-stopped-it
+  view: graph
+  focus: apollo-landings-cut
+  time: "1970-01-04"
+  reveal: [apollo-landings-cut, james-e-webb, thomas-o-paine, saturn-v, nasa]
+  reveal_claims: [apollo-landings-cut#c1, apollo-landings-cut#c2, apollo-landings-cut#c3]
+  overlay: {kind: quote, source: nasa-cancels-apollo-20, quote: "on Aug. 1, 1968, NASA Administrator James E. Webb refused to fund long-lead items for any Saturn V rockets beyond the original 15, essentially shutting down the assembly line for the Moon rocket.", caption: "NASA, 50 Years Ago: NASA Cancels Apollo 20 Mission"}
+  narration: "**Who stopped it.** NASA had contracted for 15 Saturn Vs. In August 1968 its Administrator, James Webb, refused to fund parts for any more. On 4 January 1970 the Administrator, Thomas Paine, announced that Apollo 20's rocket would launch a space station instead, and in September 1970 two more landings were cancelled. The NASA account says budgets tightened but does not say who in the White House or Congress set them; this story has not read those records."
+  duration: 16
 
 - shot: the-last-day
   view: graph

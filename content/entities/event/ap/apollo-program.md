@@ -15,6 +15,8 @@ claims:
     role: "ran the program"
     src:
       - {s: nasa-history-news-notes-2019-q2, at: "p. 1, From the Chief Historian", quote: "During Apollo, the United States invested $25 billion (in then-year dollars), in spending that peaked at over 4 percent of the national budget, to land people on the Moon and return them safely to Earth."}
+      - {s: planetary-apollo-cost, quote: "The United States spent $25.8 billion on Project Apollo between 1960 and 1973, or approximately $309 billion when adjusted for inflation to 2025 dollars."}
+      - {s: planetary-apollo-cost, quote: "NASA's official budget proposal in 1973 stated simply that \"the planned objectives of the Apollo program have been accomplished. FY 1974 funding is not required.\""}
       - {s: launius-sp-2004-4503, at: "p. 7", quote: "The NASA funding level represented 5.3 percent of the federal budget in 1965."}
       - {s: launius-sp-2004-4503, at: "p. 19", quote: "costing $25.4 billion (about $95 billion in 1990 dollars)"}
       - {s: nasa-cancels-apollo-20, at: "Introduction", quote: "But tightening federal budgets and decisions made in the previous two years resulted in NASA curtailing its plan for 10 Apollo Moon landings."}
