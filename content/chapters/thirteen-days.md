@@ -4,7 +4,7 @@ id: thirteen-days
 type: chapter
 title: Thirteen Days, Two Stories
 subtitle: The Cuban Missile Crisis as Washington and Moscow told it, and the threads that run from it to scripture and to SpaceX
-summary: In October 1962 two governments told two different stories about the same crisis. Their own records agree on the ships and the missiles, differ on a secret promise about Turkey, and show that more nuclear weapons were in Cuba than either public story said.
+summary: In October 1962 two governments told two different stories about the same crisis. Their own records agree on the ships and the missiles, record a secret trade over Turkey that the U.S. memo of it denies, and show that more nuclear weapons were in Cuba than either public story said.
 ---
 
 In October 1962 the United States and the Soviet Union came closer to nuclear war than at any other moment of the Cold War. Each government explained the crisis to its own public in its own way. This chapter follows both accounts side by side: the eighteen months before, the days of the crisis, what the records of both sides confirm and where they differ, and then some of the less obvious lines that lead out of those thirteen days.
@@ -45,7 +45,7 @@ The failed landing did not end the U.S. effort against Castro. It changed its fo
   reveal: [operation-mongoose, bay-of-pigs-invasion, robert-f-kennedy, cia-plots-against-castro, fidel-castro]
   reveal_claims: [operation-mongoose#c1, bay-of-pigs-invasion#c6, robert-f-kennedy#c2, cia-plots-against-castro#c1]
   overlay: {kind: quote, source: frus-1961-63-v11-d19, quote: "He pointed out that the Operation had been under way for a year, that the results were discouraging, that there had been no acts of sabotage, and that even the one which had been attempted had failed twice.", caption: "CIA memo of Attorney General Kennedy's meeting on Operation Mongoose, 16 October 1962"}
-  narration: "**Operation MONGOOSE.** In November 1961, the Church Committee wrote, the U.S. government decided overt paramilitary operations were no longer feasible and “embarked on Operation MONGOOSE,” which tried to use Cuban exiles and dissidents inside Cuba to overthrow Castro. The same Senate committee found at least eight CIA plots to kill him between 1960 and 1965. On 16 October 1962, the day the President first met his advisers on the missiles, Robert Kennedy told the program's officers of the President's “general dissatisfaction.” The committee says MONGOOSE ended when the missile crisis came."
+  narration: "**Operation MONGOOSE.** In November 1961, the Church Committee wrote, the U.S. government decided overt paramilitary operations were no longer feasible and “embarked on Operation MONGOOSE,” which tried to use Cuban exiles and dissidents inside Cuba to overthrow Castro. The same committee found at least eight plots involving the CIA to kill him from 1960 to 1965, but could not find that the Presidents authorized them. On 16 October 1962, the day the President first met his advisers on the missiles, Robert Kennedy told the program's officers of the President's “general dissatisfaction” with its lack of sabotage. The committee says MONGOOSE ended when the missile crisis came."
   duration: 14
 
 - shot: anadyr
@@ -58,11 +58,11 @@ The failed landing did not end the U.S. effort against Castro. It changed its fo
   reveal: [operation-anadyr, nikita-khrushchev, anatoly-gribkov, soviet-government]
   reveal_claims: [operation-anadyr#c1, operation-anadyr#c2, anatoly-gribkov#c1]
   overlay: {kind: stat, value: "about 41,900", label: "Soviet personnel in Cuba by late October 1962, in the CIA's history of the deployment", source: cia-soviet-deception-cmc, quote: "By late October, the size of the contingent in Cuba had reached about 41,900 personnel"}
-  narration: "**Operation Anadyr.** The Soviet General Staff's plan called for 50,874 men. The National Security Archive dates its approval to 10 June 1962, the CIA's history to early July. The CIA counts 36 medium-range SS-4 missiles in Cuba; the Archive says almost 43,000 troops were still there after 28 October. As late as November, U.S. intelligence estimated 16,000. Khrushchev wrote on 26 October that the threat of armed attack on Cuba “impelled us” to answer Cuba's request for aid. The U.S. government called it a secret offensive build-up."
+  narration: "**Operation Anadyr.** The Soviet General Staff's plan called for 50,874 men. The National Security Archive dates its approval to 10 June 1962, the CIA's history to early July. Missile counts differ: 36 SS-4s by the CIA's history, 42 medium-range missiles by the Archive. The Archive says almost 43,000 troops were still there after 28 October. As late as November, U.S. intelligence estimated 16,000. Khrushchev wrote on 26 October that the threat of armed attack on Cuba “impelled us” to answer Cuba's request for aid. The U.S. government called it a secret offensive build-up."
   duration: 14
 ```
 
-What the United States saw first was a photograph.
+What settled it was a photograph.
 
 ```scene
 - shot: u2-photographs
@@ -84,11 +84,11 @@ What the United States saw first was a photograph.
   reveal: [excomm-meeting-1962-10-16, john-f-kennedy, dean-rusk, robert-mcnamara]
   reveal_claims: [excomm-meeting-1962-10-16#c1, excomm-meeting-1962-10-16#c3, excomm-meeting-1962-10-16#c4]
   overlay: {kind: quote, source: frus-1961-63-v11-d18, quote: "there would be associated with it potential casualties of Cubans, not of U.S. citizens, but potential casualties of Cubans in, at least in the hundreds, more likely in the low thousands, say two or three thousand.", caption: "Robert McNamara, White House tape, 16 October 1962"}
-  narration: "**What to do.** At 11:50 a.m. on 16 October, with the tape running, Rusk set out two courses: “the quick strike,” or a build-up of pressure with allies and a warning to Khrushchev. McNamara said a strike would have to hit airfields and nuclear storage too, and that an attack could come “within a matter of days.” He also warned, “I don't believe we have considered the consequences.” Over the days that followed, Kennedy chose a naval blockade."
+  narration: "**What to do.** At 11:50 a.m. on 16 October, with the tape running, Rusk set out two courses: “the quick strike,” or a build-up of pressure with allies and a warning to Khrushchev. McNamara said a strike would have to hit airfields and nuclear storage too, and that the U.S. could carry one out “within a matter of days.” At a second meeting that evening he warned, “I don't believe we have considered the consequences.” Over the days that followed, Kennedy chose a naval blockade."
   duration: 14
 ```
 
-The chosen course had a name that avoided a word of war.
+The course Kennedy chose was announced on 22 October.
 
 ```scene
 - shot: us-story
@@ -135,11 +135,11 @@ On the same day, a third voice spoke to both sides at once.
   camera: {center: [-79, 22], zoom: 5.5, pitch: 0, duration: 4}
   places: [cuba]
   borders: [cuba]
-  time: "1962-10-26"
+  time: "1962-10-27"
   reveal: [fidel-castro, cuba, nikita-khrushchev]
   reveal_claims: [cuban-missile-crisis#c11]
-  overlay: {kind: quote, source: wilson-castro-telegram-1962-10-26, quote: "then in those circumstances the moment would be right for considering the elimination of such a danger, claiming the lawful right to self-defense", caption: "Fidel Castro to Nikita Khrushchev, telegram dated 26 October 1962 (English translation)"}
-  narration: "**Castro's letter.** Castro wrote that “aggression in the next 24 to 72 hours is almost inevitable,” that an invasion to occupy Cuba would bring a danger “so immense for all humanity,” and that if the U.S. attacked, “the moment would be right for considering the elimination of such a danger.” The National Security Archive reads this as a recommendation of a Soviet pre-emptive strike. Years later Khrushchev's aide Fyodor Burlatsky quoted it as “I propose the immediate launching of a nuclear strike,” words that are not in this translation. Castro's own later account was not read for this story."
+  overlay: {kind: quote, source: nsa-2018-harsh-and-terrible-solution, quote: "I do not want to say this directly. But, under certain circumstances, we should forestall them without waiting to experience ourselves the perfidy of the imperialists and the first nuclear blow from their side.", caption: "Fidel Castro, as the Soviet ambassador's cable of 29 October 1962 records him (translation published by the National Security Archive)"}
+  narration: "**Castro's letter.** Overnight into 27 October Castro and the Soviet ambassador, Aleksandr Alekseev, wrote a telegram to Khrushchev expecting a U.S. attack within days. The text of the telegram was not read for this story; the Wilson Center Digital Archive publishes it. Alekseev's cable says he asked whether “we should be the first ones to strike a nuclear blow against the enemy” and Castro answered “No,” then gave the words quoted here. Khrushchev, his son Sergei later told the authors, took it as a proposal to start a nuclear war. Castro told a 1992 conference that invasion would have meant nuclear war. His letter of 31 October was not read."
   duration: 14
 
 - shot: groundless
@@ -149,7 +149,7 @@ On the same day, a third voice spoke to both sides at once.
   reveal: [nikita-khrushchev, john-f-kennedy, cuban-missile-crisis, operation-anadyr]
   reveal_claims: [cuban-missile-crisis#c10, cuban-missile-crisis#c9]
   overlay: {kind: quote, source: frus-1961-63-v06-d65, quote: "In the name of the Soviet Government and the Soviet people, I assure you that your conclusions regarding offensive weapons on Cuba are groundless.", caption: "Nikita Khrushchev to John F. Kennedy, 26 October 1962"}
-  narration: "**“Groundless.”** On 26 October Khrushchev wrote that every weapon in Cuba was “defensive,” and proposed a swap: Soviet ships would carry no arms to Cuba, and the U.S. would pledge not to invade. The CIA's history and the Archive's Soviet documents show that medium-range missiles and nuclear warheads were in Cuba. On the 27th, Robert Kennedy's memo says, he told Dobrynin that Khrushchev had misled the U.S. In his letter of 28 October Khrushchev spoke of “the arms which you described as offensive.”"
+  narration: "**“Groundless.”** On 26 October Khrushchev did not deny there were weapons in Cuba. He argued that the same weapon can be offensive or defensive, that all those in Cuba were “defensive,” and so Kennedy's conclusions were “groundless.” He proposed a swap: Soviet ships would carry no arms to Cuba, and the U.S. would pledge not to invade. Robert Kennedy's memo says the Soviet Union had been “proclaiming, privately and publicly,” that such bases would never be placed there. On 28 October Khrushchev wrote of “the arms which you described as offensive.”"
   duration: 14
 
 - shot: soviet-story
@@ -178,8 +178,8 @@ On the same day, a third voice spoke to both sides at once.
   time: "1962-10-27"
   reveal: [shooting-down-of-rudolf-anderson-1962-10-27, rudolf-anderson, cuba]
   reveal_claims: [shooting-down-of-rudolf-anderson-1962-10-27#c1, shooting-down-of-rudolf-anderson-1962-10-27#c2, shooting-down-of-rudolf-anderson-1962-10-27#c3]
-  overlay: {kind: quote, source: frus-1961-63-v11-d96, quote: "in the last two hours we had found that our planes flying over Cuba had been fired upon and that one of our U-2’s had been shot down and the pilot killed", caption: "Robert Kennedy's memo of his talk with Ambassador Dobrynin, 27 October 1962"}
-  narration: "**Black Saturday.** On 27 October a surface-to-air missile brought down Rudolf Anderson's U-2 over eastern Cuba; he was killed. The National Security Archive says Soviet generals in Cuba, Gorbuz and Grechko, ordered the Banes missile site to fire, and that Castro had earlier ordered his anti-aircraft crews to fire on low-level U.S. reconnaissance planes. It adds that the Joint Chiefs chose not to retaliate at once, and that Khrushchev saw his orders to hold fire could not be enforced. The same day another U-2 strayed into Soviet airspace."
+  overlay: {kind: quote, source: frus-1961-63-v11-d96, quote: "in the last two hours we had found that our planes flying over Cuba had been fired upon and that one of our U-2’s had been shot down and the pilot killed", caption: "Robert Kennedy's memo of 30 October on his talk with Ambassador Dobrynin on the 27th"}
+  narration: "**Black Saturday.** On 27 October a surface-to-air missile brought down Rudolf Anderson's U-2 over eastern Cuba; he was killed. The National Security Archive says Soviet generals in Cuba, Gorbuz and Grechko, ordered the Banes missile site to fire, and that Castro had earlier ordered his anti-aircraft crews to fire on low-level U.S. reconnaissance planes. It adds that the Joint Chiefs chose not to retaliate at once, and that Khrushchev saw that his orders restraining any use of nuclear weapons in conditions of perceived attack were “useless,” since he could not control local commanders. The same day another U-2 strayed into Soviet airspace."
   duration: 14
 
 - shot: b-59
@@ -188,12 +188,12 @@ On the same day, a third voice spoke to both sides at once.
   time: "1962-10-27"
   reveal: [b-59-incident-1962-10-27, submarine-b-59, vasily-arkhipov, operation-anadyr]
   reveal_claims: [b-59-incident-1962-10-27#c2, b-59-incident-1962-10-27#c3, vasily-arkhipov#c1]
-  overlay: {kind: quote, source: nsa-2022-underwater-cuban-missile-crisis, quote: "Arkhipov, who was still on the tower and saw that the Americans were actually signaling, not attacking, called the commander back and calmed him down.", caption: "National Security Archive, 2022, summarizing officers' accounts"}
-  narration: "**B-59.** That night U.S. ships signaled the Soviet submarine B-59 with practice depth charges, as their deck logs show. Four Soviet officers' accounts, which the Archive cites, say Captain Savitsky thought war had begun and called for an urgent dive and the nuclear torpedo; the order never reached the torpedo officer. The disputes: none of the four saw the talk on the tower; Arkhipov's own 1997 account, his only public one, avoids the word “nuclear”; the Archive describes no vote among officers. The Americans did not know of the torpedo."
+  overlay: {kind: quote, source: nsa-2022-underwater-cuban-missile-crisis, quote: "Arkhipov, who was still on the tower and saw that the Americans were actually signaling, not attacking, called the commander back and calmed him down.", caption: "National Security Archive, 2022, reporting the 2012 interview of Ryurik Ketov, who commanded another submarine"}
+  narration: "**B-59.** That night U.S. ships signaled the Soviet submarine B-59 with practice depth charges, as their deck logs show. Ryurik Ketov, who commanded another boat in the brigade, told the Archive in 2012 that Captain Savitsky thought war had begun and called for an urgent dive and the nuclear torpedo; the order never reached the torpedo officer. The Archive says Arkhipov, the brigade's chief of staff, helped Savitsky avoid the decision to launch. Disputes: Ketov and three other officers the Archive cites did not see the talk on the tower, and Arkhipov's own 1997 account, his only public one, never says “nuclear” of it or mentions his role. The Archive describes no vote among officers. The Americans did not know of the torpedo."
   duration: 14
 ```
 
-At the White House, that evening, one meeting was kept out of the public story for years.
+What was said about Turkey that evening was kept secret for decades, the National Security Archive says.
 
 ```scene
 - shot: what-both-confirm
@@ -203,7 +203,7 @@ At the White House, that evening, one meeting was kept out of the public story f
   reveal: [kennedy-dobrynin-meeting-1962-10-27, robert-f-kennedy, anatoly-dobrynin, jupiter-withdrawal-1963, jupiter-missile, turkey]
   reveal_claims: [cuban-missile-crisis#c3, kennedy-dobrynin-meeting-1962-10-27#c2, kennedy-dobrynin-meeting-1962-10-27#c3]
   overlay: {kind: quote, source: frus-1961-63-v11-d96, quote: "there could be no quid pro quo—no deal of this kind could be made", caption: "U.S. record: Robert Kennedy's memo to Dean Rusk, 30 October 1962"}
-  narration: "**The secret part.** Robert Kennedy's memo says he told Dobrynin there could be “no quid pro quo” on the missiles in Turkey. A typed sentence about “four or five months” was crossed out of it. Dobrynin's cable to Moscow has Kennedy saying, “we need 4-5 months” to withdraw the Turkish bases. Kennedy's public reply that night offered to lift the quarantine and give “assurances against an invasion of Cuba”; it did not mention Turkey. The Jupiters came out in April 1963, so the link carries sources from both sides."
+  narration: "**The secret part.** That evening, at the Justice Department, Robert Kennedy met the Soviet ambassador. His memo says there could be “no quid pro quo” on the missiles in Turkey; a typed sentence was crossed out of it: “If some time elapsed—and per your instructions, I mentioned four or five months—I said I was sure that these matters could be resolved satisfactory.” Dobrynin's cable has Kennedy saying, “we need 4-5 months” to withdraw the bases. The National Security Archive says Kennedy agreed to the trade and that this part of the accord “was kept TOP SECRET for decades.” His public reply never mentioned Turkey. The Jupiters left in April 1963."
   explore: true
   duration: 14
 
@@ -228,7 +228,7 @@ At the White House, that evening, one meeting was kept out of the public story f
   duration: 14
 ```
 
-The crisis left two lasting traces: a way to talk, and a prayer for peace.
+In the months that followed came a direct line between the capitals and, from the Pope, an encyclical on peace.
 
 ```scene
 - shot: the-hotline
@@ -241,7 +241,7 @@ The crisis left two lasting traces: a way to talk, and a prayer for peace.
   reveal: [moscow-washington-hotline, pacem-in-terris]
   reveal_claims: [cuban-missile-crisis#c4, moscow-washington-hotline#c1, pope-john-xxiii#c3]
   overlay: {kind: quote, source: state-hotline-mou-1963, quote: "The Cuban missile crisis of October 1962 compellingly underscored the importance of prompt, direct communication between heads of state.", caption: "U.S. Department of State"}
-  narration: "During the crisis the two leaders struggled to read each other's intentions. In April 1963, the month the Jupiters left Turkey, Pope John XXIII issued the encyclical *Pacem in Terris*, addressed to “all men of good will.” In June the two governments agreed on a direct link between Washington and Moscow, the hotline, which began as a teletype circuit rather than a telephone."
+  narration: "During the crisis the two leaders struggled to read each other's intentions. On 11 April 1963 Pope John XXIII issued the encyclical *Pacem in Terris*, addressed to “all men of good will.” In June the two governments agreed on a direct link between Washington and Moscow, the hotline, which began as a teletype circuit rather than a telephone."
   duration: 12
 ```
 

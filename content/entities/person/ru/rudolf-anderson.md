@@ -16,7 +16,7 @@ claims:
     rel: harmed_by
     to: cuban-missile-crisis
     according_to: [us-government]
-    src: [{s: frus-1961-63-v11-d96, quote: "I said these men were flying unarmed planes."}]
+    src: [{s: frus-1961-63-v11-d96, quote: "one of our U-2’s had been shot down and the pilot killed"}]
 ---
 
 Rudolf Anderson flew the U-2 shot down over [[cuba]] on 27 October 1962 ([[shooting-down-of-rudolf-anderson-1962-10-27]]).

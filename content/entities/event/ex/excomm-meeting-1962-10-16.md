@@ -28,8 +28,10 @@ claims:
   - id: c4
     rel: involved
     to: robert-mcnamara
-    role: "Secretary of Defense; set out the military options"
-    src: [{s: frus-1961-63-v11-d18, quote: "Uh, we could carry out an air strike within a matter of days."}]
+    role: "Secretary of Defense; set out the military options and, that evening, warned of consequences"
+    src:
+      - {s: frus-1961-63-v11-d18, quote: "Uh, we could carry out an air strike within a matter of days."}
+      - {s: frus-1961-63-v11-d21, quote: "I don’t believe we have considered the consequences"}
 ---
 
 On the morning of 16 October 1962 [[john-f-kennedy]] met his advisers, among them [[dean-rusk]] and [[robert-mcnamara]], to decide what to do about the missile sites the [[u-2-photographs-of-14-october-1962|U-2 photographs]] had shown. The talk was recorded, and the State Department's *Foreign Relations of the United States* prints it. It is the first of the meetings of the group later called ExComm in the [[cuban-missile-crisis]].

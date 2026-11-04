@@ -10,7 +10,7 @@ claims:
     rel: intervened_in
     to: b-59-incident-1962-10-27
     when: "1962-10-27"
-    role: "Calmed the captain on the conning tower, in the crew's and the National Security Archive's account"
+    role: "Calmed the captain on the conning tower, in Ryurik Ketov's account as the National Security Archive reports it"
     src: [{s: nsa-2022-underwater-cuban-missile-crisis, quote: "Arkhipov, who was still on the tower and saw that the Americans were actually signaling, not attacking, called the commander back and calmed him down."}]
   - id: c2
     rel: intervened_in
