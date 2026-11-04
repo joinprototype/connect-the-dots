@@ -2,9 +2,10 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
-## Next
+## 0.5.7 (2026-11-04)
 
 - A story set in the past no longer shows a city or a company as it looks today: no 2009 skyline beside 1917, no modern headquarters beside 1830. Those scenes show a person or a picture of the time, or the map alone.
+- One more sourced link from the nightly loop: Texaco, part of Chevron since their 2001 merger.
 
 ## 0.5.6 (2026-11-04)
 
