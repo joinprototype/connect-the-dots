@@ -41,5 +41,5 @@ claims:
     when: "2001"
     note: "Merged with Chevron in 2001; the combined company was ChevronTexaco, later Chevron."
     src:
-      - {s: chevron-history, at: "Timeline, 2001", quote: "Chevron merged with Texaco and became ChevronTexaco, the second-largest U.S.-based energy company at the time."}
+      - {s: chevron-history, at: "1980 - 2001", quote: "Chevron merged with Texaco and became ChevronTexaco, the second-largest U.S.-based energy company at the time."}
 ---

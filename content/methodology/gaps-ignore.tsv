@@ -35,9 +35,7 @@ institute-of-medicine	part_of	national-research-council	wrong: the IOM (now the 
 dow-chemical	part_of	e-i-du-pont-de-nemours	wrong: Dow and DuPont were separate companies (both under DowDuPont from 2017), neither part of the other
 siege-of-yorktown	involved	kingdom-of-france	duplicate: the entry already names french-monarchy for the French army and fleet
 gao	part_of	us-congress	loose: GAO calls itself an independent agency that works for Congress; it serves Congress, it is not part of it
-expedia-group	part_of	microsoft	a stake Microsoft held in Expedia is an investment, not Expedia being part of Microsoft; no source names membership
-storming-of-the-bastille	involved	kingdom-of-france	the royal fortress was the target; the kingdom was the defender, not a party that took part in the storming
-october-revolution	involved	communist-party-of-the-soviet-union	the party took its CPSU name in 1918, after the 1917 revolution; the 1917 party is the Bolsheviks, already linked
-j-p-morgan	founded	us-steel	a syndicate that bought and combined firms into U.S. Steel: merging did not found it; the record says it was formed by joining
-j-p-morgan	founded	international-mercantile-marine	a merger of shipping lines arranged by a syndicate; the same trap as U.S. Steel, not a founding
-henry-h-arnold	founded	rand-corporation	the source credits the Army Air Forces with creating Project RAND; a commander who backed it did not found it
+storming-of-the-bastille	involved	kingdom-of-france	loose: the kingdom is a place, not a party; the crown's side is french-monarchy, as the record has it at Yorktown
+october-revolution	involved	communist-party-of-the-soviet-union	duplicate: the entry already names bolsheviks; the record's CPSU begins on 8 March 1918, after the revolution
+j-p-morgan	founded	us-steel	loose: Britannica says he was among those involved in its formation and that Schwab and Gary put it together with his aid; only U. S. Steel's own page says founded
+henry-h-arnold	founded	rand-corporation	loose: RAND's history says the U.S. Army Air Forces created Project RAND in 1946 and RAND became an independent nonprofit in 1948; it does not name Arnold
