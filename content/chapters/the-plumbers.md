@@ -65,6 +65,16 @@ Nearly every line here comes from the Special Prosecutor's report, court opinion
   narration: "**Six days later.** In the Oval Office, H. R. Haldeman told the President the FBI could trace the money, and how it could be stopped. A tape was running. The President's answer: “Good. Good deal. Play it tough.”"
   duration: 13
 
+- shot: a-million-dollars
+  view: graph
+  focus: march-21-conversation
+  time: "1973-03-21"
+  reveal: [march-21-conversation, john-dean, richard-nixon, h-r-haldeman]
+  reveal_claims: [march-21-conversation#c1, march-21-conversation#c2, march-21-conversation#c3, march-21-conversation#c4]
+  overlay: {kind: quote, source: us-v-haldeman-559-f2d-31, quote: "you could get a million dollars. And you could get it in cash. I, I know where it could be gotten.", caption: "President Nixon to John Dean, 21 March 1973, as the U.S. Court of Appeals quotes the tape, 1976"}
+  narration: "**A million dollars.** On 21 March 1973 John Dean told the President that hush-money demands were a “cancer” and might come to another million dollars. The Court of Appeals, quoting the tape, records Nixon’s reply: it could be raised, in cash. Many minutes later, on clemency, he said: “No it's wrong, that's for sure.” In August the President said he had been told only that the money paid for lawyers and families, “not that it had been paid to procure silence.”"
+  duration: 14
+
 - shot: a-letter-to-the-judge
   view: graph
   focus: john-sirica
@@ -74,6 +84,17 @@ Nearly every line here comes from the Special Prosecutor's report, court opinion
   overlay: {kind: quote, source: senate-watergate-final-report-1974-dell, quote: "the letter charged that pressure had been exerted on the defendants to plead guilty and remain silent, that perjury had been committed during the Watergate trial", caption: "Senate Watergate Committee, final report, 1974"}
   narration: "**A letter to the judge.** The burglars pleaded guilty or were found guilty in January 1973. On 23 March, Chief Judge John Sirica read out a sealed letter from McCord. It said witnesses had lied at the trial and the defendants had been pressed to stay silent."
   duration: 12
+
+- shot: the-judge
+  view: map
+  camera: {center: [-118.3, 34.05], zoom: 10.2, pitch: 30, duration: 6}
+  places: [los-angeles]
+  time: "1973-05-11"
+  reveal: [ellsberg-case-dismissal, daniel-ellsberg, us-district-court-central-california, john-ehrlichman, john-n-mitchell, los-angeles]
+  reveal_claims: [ellsberg-case-dismissal#c1, ellsberg-case-dismissal#c2, ellsberg-case-dismissal#c3, ellsberg-case-dismissal#c4, ellsberg-case-dismissal#c5]
+  overlay: {kind: quote, source: fjc-pentagon-papers-federal-courts-2019, quote: "The bizarre events have incurably infected the prosecution of this case.", caption: "Judge Matthew Byrne, 11 May 1973, as printed by the Federal Judicial Center"}
+  narration: "**Dismissed.** On 11 May 1973, the 89th day of Daniel Ellsberg’s trial in Los Angeles, Judge Matthew Byrne dismissed every charge and barred a retrial. He cited the Plumbers’ break-in at the psychiatrist’s office and the government’s failure to produce the records of its wiretap of Ellsberg. John Ehrlichman had met the judge that spring about the FBI directorship; he told the Senate no offer was made. John Mitchell told it the break-in “produced nothing whatsoever,” and Nixon said he learned of it on 17 March."
+  duration: 14
 
 - shot: a-cancer
   view: graph
@@ -165,6 +186,16 @@ Nearly every line here comes from the Special Prosecutor's report, court opinion
   narration: "**The pardon.** A month later Ford pardoned Nixon for all federal offenses he had committed or might have committed. Nixon was never tried."
   duration: 10
 
+- shot: whose-tapes
+  view: graph
+  focus: nixon-tapes-custody
+  time: "1974-09-08"
+  reveal: [nixon-tapes-custody, richard-nixon, gerald-ford, us-congress, us-supreme-court]
+  reveal_claims: [nixon-tapes-custody#c1, nixon-tapes-custody#c2, nixon-tapes-custody#c3, nixon-tapes-custody#c4, nixon-tapes-custody#c5]
+  overlay: {kind: quote, source: nixon-v-gsa-433-us-425, quote: "shall destroy such tapes as [Mr. Nixon] may direct", caption: "The agreement of 8 September 1974 between Nixon and the General Services Administration, as the Supreme Court quotes it"}
+  narration: "**Whose tapes?** On 8 September 1974, the day of the pardon, the head of the General Services Administration announced a deposit agreement with Nixon. After 1 September 1979 it would have let him order the tapes destroyed, and in any case at his death or by 1 September 1984. Congress overrode it with a law Ford signed that December. Nixon sued, arguing separation of powers, privilege and privacy; on 28 June 1977 the Supreme Court upheld the law."
+  duration: 14
+
 - shot: who-answered
   view: graph
   focus: us-district-court-dc
@@ -173,8 +204,18 @@ Nearly every line here comes from the Special Prosecutor's report, court opinion
   reveal_claims: [john-n-mitchell#c1, h-r-haldeman#c2, john-ehrlichman#c2, john-ehrlichman#c3, john-dean#c2, g-gordon-liddy#c3, e-howard-hunt#c2, james-mccord#c2]
   overlay: {kind: quote, source: us-v-haldeman-559-f2d-31, quote: "We deal in the instant appeals only with the convictions of Haldeman, Ehrlichman, and Mitchell.", caption: "U.S. Court of Appeals for the D.C. Circuit, 1976"}
   narration: "**Who answered.** On 1 January 1975 a jury convicted John Mitchell, H. R. Haldeman and John Ehrlichman in the cover-up; the appeal court upheld those verdicts. John Dean pleaded guilty. Every step of each case is on its page."
-  explore: true
   duration: 13
+
+- shot: new-rules
+  view: graph
+  focus: church-committee-created-1975
+  time: "1975-01"
+  reveal: [church-committee-created-1975, church-committee, frank-church, us-senate, ethics-in-government-act-1978, us-department-of-justice]
+  reveal_claims: [church-committee-created-1975#c1, church-committee-created-1975#c2, church-committee-created-1975#c3, church-committee-created-1975#c4, ethics-in-government-act-1978#c1, ethics-in-government-act-1978#c3]
+  overlay: {kind: quote, source: senate-church-committee-history, quote: "there is no inherent constitutional authority for the President or any intelligence agency to violate the law", caption: "Church Committee, final report, April 1976, as the Senate’s history quotes it"}
+  narration: "**New rules.** In January 1975 the Senate voted 82 to 4 to set up the Church Committee. The Senate’s history traces it to Watergate’s disclosures of questionable domestic operations by intelligence agencies, and to a 1974 newspaper report on the CIA. In 1978 the Ethics in Government Act let only the Attorney General remove a special prosecutor, and only for “extraordinary impropriety” or an incapacity. The Senate says some, not all, of the Watergate Committee’s proposals became law."
+  explore: true
+  duration: 15
 ```
 
 It began with the Pentagon Papers: the copying, the court and the case against Daniel Ellsberg are in [The Airfield and the Think Tank](/c/the-airfield-and-the-think-tank/).
