@@ -30,11 +30,6 @@ claims:
     to: russian-government
     role: "its Foreign Ministry called the 2019 Lithuanian verdict \"extremely unfriendly and essentially provocative\""
     src: [{s: rferl-2021-01-12-vilnius-january-1991, quote: "A day after the sentences were announced, the Russian Foreign Ministry called the trial and verdicts \"extremely unfriendly and essentially provocative,\""}]
-  - id: c5
-    rel: involved
-    to: mikhail-gorbachev
-    role: "declined to testify at the 2019 Lithuanian trial"
-    src: [{s: rferl-2021-01-12-vilnius-january-1991, quote: "All were sentenced to 10 years, all except one in absentia as Russia refused to cooperate with the court. Gorbachev also declined to testify."}]
 ---
 
 On 13 January 1991 Soviet troops and KGB units took the television tower in Vilnius. Lithuanian officials counted 14 civilians dead. A Lithuanian court found in 2019 that former Soviet officers and officials were guilty of war crimes; Russia's Foreign Ministry rejected the verdict.

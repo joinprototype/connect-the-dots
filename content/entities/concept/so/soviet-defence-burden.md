@@ -7,15 +7,15 @@ summary: "How much of the Soviet economy the military took; the CIA and the Pent
 claims:
   - id: c1
     rel: led_to
-    to: dissolution-of-the-soviet-union
+    to: perestroika
     according_to: [mikhail-gorbachev]
+    note: "In his farewell speech Gorbachev gave this as part of why reform was needed when he took office in 1985; he blamed the breakup itself on the coup and the dismembering of the state."
     src: [{s: whc-gorbachev-resignation-1991, quote: "the society was suffocating in the vise of the command-bureaucratic system, doomed to serve ideology and bear the terrible burden of the arms race."}]
   - id: c2
     rel: influenced
-    to: soviet-economic-crisis-1990-91
-    according_to: [yegor-gaidar]
-    note: "Gaidar lists cutting the military-industrial complex as an option the leadership never seriously considered."
-    src: [{s: aei-2007-04-gaidar-soviet-collapse, quote: "Third, implement radical cuts in the military-industrial complex. With this option, however, the Soviet leadership risked serious conflict with regional and industrial elites, since a large number of Soviet cities depended solely on the military-industrial complex."}]
+    to: debate-over-the-soviet-defence-burden
+    note: "The question the debate was about."
+    src: [{s: last-warrior-2015-excerpt-cia-and-the-pentagon, quote: "The debate between the CIA and ONA over the burden that Soviet military programs imposed on the USSR’s economy is perhaps the most consequential example of official intelligence estimates simply getting it wrong"}]
 ---
 
-The CIA's estimate of the share of Soviet output spent on defence was revised upward over the years, and analysts in the Pentagon argued it was higher still. [[mikhail-gorbachev]] named the arms race as a burden on the system in his farewell speech. See [[cia]].
+How much of Soviet output went to the military was measured differently by the CIA and by analysts in the Pentagon. [[mikhail-gorbachev]] named the arms race as a burden on the system when he explained, in 1991, why reform had been needed. See [[debate-over-the-soviet-defence-burden]].

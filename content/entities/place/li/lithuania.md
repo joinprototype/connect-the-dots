@@ -3,7 +3,7 @@ uid: 01M6ME6YWGYJRDGRZX0VW4BFZB
 id: lithuania
 type: place
 name: "Lithuania"
-summary: "Baltic country; a Soviet republic from 1940 to 1990, independent since its Act of 11 March 1990."
+summary: "Baltic country; its Supreme Council declared independence restored on 11 March 1990, and the Soviet Union recognised it in September 1991."
 coords: [23.8813, 55.1694]
 claims:
   - id: c1

@@ -14,10 +14,11 @@ claims:
   - id: c2
     rel: caused_by
     to: soviet-anti-alcohol-campaign
-    note: "As the Library of Congress study explains falling tax revenue; Chris Miller puts the same loss at about 15 billion rubles in the first year."
+    according_to: [chris-miller]
+    note: "Miller weighs the campaign's lost revenue against the lost oil export revenue; Gaidar weighs oil more heavily."
     src:
-      - {s: loc-1996-russia-economy-historical-background, quote: "Tax revenues declined because revenues from the sales of vodka plummeted during the anti-alcohol campaign and because republic and local governments withheld tax revenues from the central government under the growing spirit of regional autonomy."}
       - {s: miller-2014-11-11-moscow-times-oil, quote: "In the first year of the anti-alcohol campaign, liquor sales fell by 80 percent, cutting the government's revenue from alcohol taxes by 15 billion rubles."}
+      - {s: miller-2014-11-11-moscow-times-oil, quote: "That was roughly the same size as the decline in export revenue due to lower oil prices."}
   - id: c3
     rel: caused_by
     to: oil-price-collapse-1986
@@ -32,7 +33,9 @@ claims:
     rel: caused_by
     to: soviet-grain-imports
     according_to: [yegor-gaidar]
-    src: [{s: aei-2007-04-gaidar-soviet-collapse, quote: "In the meantime, the Soviet Union started to have severe food shortages, and grain deliveries were not being made to large cities."}]
+    src:
+      - {s: aei-2007-04-gaidar-soviet-collapse, quote: "In a simplified way, the story of the collapse of the Soviet Union could be told as a story about grain and oil."}
+      - {s: aei-2007-04-gaidar-soviet-collapse, quote: "In the meantime, the Soviet Union started to have severe food shortages, and grain deliveries were not being made to large cities."}
   - id: c6
     rel: involved
     to: mikhail-gorbachev

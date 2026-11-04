@@ -7,9 +7,9 @@ subtitle: How the Union began, and why it ended, as economists, Gorbachev, Washi
 summary: The Soviet Union ended in December 1991, and historians still disagree about why. One economist says grain and oil, another says politics, Gorbachev named a reactor and a coup, Washington named Gorbachev's reforms, and the Kremlin names Lenin's right to leave.
 ---
 
-The Soviet Union ended in December 1991. Why is still argued, and none of the explanations here is the narrator's own. Yegor Gaidar, later Russia's acting prime minister, points to grain, oil and an empty treasury. Chris Miller, author of a book on Gorbachev's economic reforms, points to politics. Gorbachev named Chernobyl and the August coup. Washington named Gorbachev's loosening of control, and the Reagan Library names missile defence. Vladimir Putin names Lenin's right to secede, and the historian Serhii Plokhy names one vote in Ukraine.
+The Soviet Union ended in December 1991. Why is still argued, and none of the explanations here is the narrator's own. Yegor Gaidar, later Russia's acting prime minister, points to grain, oil and an empty treasury. Chris Miller, author of a book on Gorbachev's economic reforms, points to politics. Gorbachev named Chernobyl and the August coup. The U.S. State Department's history names Gorbachev's loosening of control and the coup. Vladimir Putin names Lenin's right to secede, and the historian Serhii Plokhy names one vote in Ukraine.
 
-Each holder is named, each source can be opened, and the story runs in time order so you can see what each explanation had to explain. Lines marked "according to" are one side's account. Where records from opposing sides agree, the link is shown as confirmed by both.
+Whether Reagan's arms build-up and missile defence mattered is a related argument, about the end of the Cold War, and the story tells it apart. Each holder is named, each source can be opened, and the story runs in time order so you can see what each explanation had to explain. Lines marked "according to" are one side's account. Where records from opposing sides agree, the link is shown as confirmed by both.
 
 ```scene
 - shot: sealed-train
@@ -45,8 +45,8 @@ Each holder is named, each source can be opened, and the story runs in time orde
   time: "1956-02-25"
   reveal: [khrushchev-secret-speech, nikita-khrushchev, joseph-stalin, communist-party-of-the-soviet-union]
   reveal_claims: [nikita-khrushchev#c4]
-  overlay: {kind: stat, value: "98 of 139", label: "Central Committee members elected at the 17th Party Congress who were arrested and shot, mostly in 1937-1938, by Khrushchev's report", source: khrushchev-1956-secret-speech, quote: "It was determined that of the 139 members and candidates of the Central Committee who were elected at the 17th Congress, 98 persons, i.e., 70 per cent, were arrested and shot (mostly in 1937-1938)."}
-  narration: "**1956: the Party reads out its terror.** On 24 and 25 February 1956 Khrushchev told the Twentieth Party Congress what Stalin's purges had done to the Party itself. Of 1,966 delegates to the 17th Congress, he said, 1,108 were arrested. He added that the matter must not \"get out of the Party, especially not to the press\". The text read for this story never uses the words famine or hunger."
+  overlay: {kind: stat, value: "98 of 139", label: "Central Committee members and candidates elected at the 17th Party Congress who were arrested and shot, mostly in 1937-1938, by Khrushchev's report", source: khrushchev-1956-secret-speech, quote: "It was determined that of the 139 members and candidates of the Central Committee who were elected at the 17th Congress, 98 persons, i.e., 70 per cent, were arrested and shot (mostly in 1937-1938)."}
+  narration: "**1956: the Party reads out its terror.** On 24 and 25 February 1956 Khrushchev told the Twentieth Party Congress what Stalin's purges had done to the Party itself. Of 1,966 delegates to the 17th Congress, he said, 1,108 were arrested. He added that the matter must not \"get out of the Party, especially not to the press\"."
   duration: 12
 
 - shot: growth-and-grain
@@ -54,10 +54,10 @@ Each holder is named, each source can be opened, and the story runs in time orde
   lens: history
   focus: soviet-grain-imports
   time: "1963"
-  reveal: [soviet-grain-imports, nikita-khrushchev, mikhail-gorbachev, yegor-gaidar, soviet-collectivization, soviet-union]
-  reveal_claims: [soviet-grain-imports#c1, soviet-grain-imports#c2, soviet-grain-imports#c3]
+  reveal: [soviet-grain-imports, nikita-khrushchev, mikhail-gorbachev, yegor-gaidar, soviet-collectivization, soviet-union, debate-over-the-soviet-defence-burden]
+  reveal_claims: [soviet-grain-imports#c1, soviet-grain-imports#c2, soviet-grain-imports#c3, debate-over-the-soviet-defence-burden#c4]
   overlay: {kind: stat, value: "5% to 2%", label: "Average yearly growth of Soviet GNP, early 1950s to 1975, then the mid-1970s into the 1980s (the study does not say whose count)", source: loc-1996-russia-economy-historical-background, quote: "By the mid-1970s and into the 1980s, average Soviet GNP growth rates had plummeted to about 2 percent, less than half the rates of the immediate postwar period."}
-  narration: "**Slower growth, imported bread.** A Library of Congress study gives growth of about 5 percent a year until 1975 and about 2 percent after. According to Yegor Gaidar, grain output stalled near 65 million tons a year while the cities grew. In 1963 the state bought 12 million tons abroad and spent a third of its gold reserves, and the Union became the world's biggest grain importer, he says. Gorbachev told a Party meeting: \"We are buying [the grain] because we cannot survive without it.\""
+  narration: "**Slower growth, imported bread.** A Library of Congress study (printed 1998) gives growth of about 5 percent a year until 1975 and about 2 percent after, without saying whose count that is. In 1987 the Soviet economists Selyunin and Khanin argued that Western growth estimates were overstated and the economy had stagnated. According to Yegor Gaidar, the grain the state procured stayed near 65 million tons a year from the 1960s while the cities grew. In 1963 the state bought 12 million tons abroad and spent a third of its gold reserves; later, he says, the Union became the world's biggest importer. Gorbachev told a Party meeting: \"We are buying [the grain] because we cannot survive without it.\""
   duration: 14
 
 - shot: afghanistan
@@ -72,6 +72,27 @@ Each holder is named, each source can be opened, and the story runs in time orde
   narration: "**Afghanistan.** In December 1979 Soviet troops took Kabul. The Archive's editors say a very small group of Politburo members made that decision in secret, against the strong opposition of the military. The last troops left on 15 February 1989; RFE/RL counts more than 14,000 Soviet soldiers dead. Gaidar calls spending oil money on the war one of the leadership's \"biggest blunders\". Chris Miller says it raised military spending, brought Western sanctions and enlarged the deficit."
   duration: 13
 
+- shot: outside-pressure
+  view: graph
+  lens: power
+  focus: strategic-defense-initiative
+  time: "1983-03-23"
+  reveal: [strategic-defense-initiative, ronald-reagan, reagan-library, end-of-the-cold-war, serhii-plokhy]
+  reveal_claims: [end-of-the-cold-war#c2]
+  overlay: {kind: quote, source: reagan-library-sdi-exhibit, quote: "With SDI, President Reagan was able to unleash America’s entrepreneurial spirit. The project ultimately helped end the Cold War.", caption: "Reagan Presidential Library, exhibit page on SDI"}
+  narration: "**Pressure from outside.** The State Department's history says Reagan \"pursued a comprehensive modernization of U.S. nuclear and conventional forces\" and announced the Strategic Defense Initiative in 1983, which Soviet leaders \"found highly threatening\". An exhibit page of the Reagan Library says SDI helped end the Cold War; that is a claim about the Cold War, not about the Union's end. The same State Department history says that as the bloc changed under Bush, \"U.S. policy was reactive\". The Toynbee Prize Foundation summarises Serhii Plokhy's The Last Empire as showing that the collapse arose far more from internal dynamics than from American policy."
+  duration: 14
+
+- shot: arms-race
+  view: graph
+  lens: power
+  focus: soviet-defence-burden
+  reveal: [soviet-defence-burden, debate-over-the-soviet-defence-burden, cia, us-government, mikhail-gorbachev, perestroika]
+  reveal_claims: [soviet-defence-burden#c1, debate-over-the-soviet-defence-burden#c1, debate-over-the-soviet-defence-burden#c2, debate-over-the-soviet-defence-burden#c4]
+  overlay: {kind: stat, value: "Under 14%", label: "The CIA's estimate of the military's share of Soviet GNP, revised up from 6 to 7 percent in the early 1970s; Pentagon-side analysts put it higher, up to 25 percent", source: last-warrior-2015-excerpt-cia-and-the-pentagon, quote: "the burden imposed on the Soviet economy should be higher than the CIA’s estimate of less than 14 percent, which had been revised upward from its earlier estimates of roughly 6–7 percent."}
+  narration: "**The arms race.** The bill was never agreed. An excerpt from The Last Warrior, a book on the Pentagon analyst Andrew Marshall, says the CIA's estimate was wrong: his office's David Epstein added 5 to 8 points of GNP for indirect costs, and the economist Igor Birman put the burden at least 25 percent in 1990. Two former CIA analysts, Noel Firth and James Noren, later recalculated 14.8 percent for 1981-90 and 16.8 percent for the 1970s. The CIA's own reply is not in the excerpt. In 1991 Gorbachev named \"the terrible burden of the arms race\" as part of why reform was needed in 1985."
+  duration: 14
+
 - shot: new-leader
   view: graph
   lens: power
@@ -80,7 +101,7 @@ Each holder is named, each source can be opened, and the story runs in time orde
   reveal: [mikhail-gorbachev, perestroika, communist-party-of-the-soviet-union, soviet-anti-alcohol-campaign, soviet-union]
   reveal_claims: [mikhail-gorbachev#c1, mikhail-gorbachev#c3, soviet-anti-alcohol-campaign#c1]
   overlay: {kind: stat, value: "4.1% a year", label: "Growth of national income the 1986-90 plan promised, a rate the Soviet Union had not reached since the early 1970s", source: loc-1996-russia-economy-historical-background, quote: "The Twelfth Five-Year Plan (1986-90) called for the Soviet national income to increase an average of 4.1 percent annually and labor productivity to increase 4.6 percent annually--rates that the Soviet Union had not achieved since the early 1970s."}
-  narration: "**March 1985.** The Politburo chose Gorbachev within hours of Chernenko's death. He began with discipline and an anti-alcohol campaign, then in 1987 passed laws that let enterprises live on their own earnings and allowed private cooperatives. A Library of Congress study judges these reforms \"not radical enough to restart the country's chronically sluggish economy\", because price controls and the inconvertible ruble stayed in place."
+  narration: "**March 1985.** Gorbachev became General Secretary. He began with discipline and an anti-alcohol campaign, then in 1987 passed laws that let enterprises live on their own earnings and allowed private cooperatives. A Library of Congress study judges these reforms \"not radical enough to restart the country's chronically sluggish economy\", because price controls and the inconvertible ruble stayed in place."
   duration: 12
 
 - shot: oil
@@ -89,9 +110,9 @@ Each holder is named, each source can be opened, and the story runs in time orde
   focus: oil-price-collapse-1986
   time: "1985-09-13"
   reveal: [oil-price-collapse-1986, yegor-gaidar, chris-miller, saudi-arabia, soviet-anti-alcohol-campaign, soviet-union]
-  reveal_claims: [dissolution-of-the-soviet-union#c6, chris-miller#c1, soviet-anti-alcohol-campaign#c1, soviet-economic-crisis-1990-91#c2]
+  reveal_claims: [dissolution-of-the-soviet-union#c6, soviet-anti-alcohol-campaign#c1, soviet-economic-crisis-1990-91#c2]
   overlay: {kind: quote, source: aei-2007-04-gaidar-soviet-collapse, quote: "As a result, the Soviet Union lost approximately $20 billion per year, money without which the country simply could not survive.", caption: "Yegor Gaidar, lecture of 13 November 2006"}
-  narration: "**Oil.** According to Gaidar, the Soviet economy hinged on exporting oil and gas. After Saudi Arabia changed its oil policy on 13 September 1985, he says, prices collapsed. Chris Miller replies that blaming oil is \"misleading\": in the first year of the anti-alcohol campaign alcohol tax revenue fell by 15 billion rubles, \"roughly the same size\" as the oil loss, and food subsidies reached 15 percent of GDP by 1990, by IMF calculations."
+  narration: "**Oil.** According to Gaidar, the Soviet economy hinged on exporting oil and gas. After Saudi Arabia changed its oil policy on 13 September 1985, he says, prices collapsed. Writing in 2014, Chris Miller called blaming oil \"misleading\": in the first year of the anti-alcohol campaign alcohol tax revenue fell by 15 billion rubles, \"roughly the same size\" as the oil loss, and food subsidies reached 15 percent of GDP by 1990, by IMF calculations."
   duration: 14
 
 - shot: chernobyl
@@ -105,27 +126,6 @@ Each holder is named, each source can be opened, and the story runs in time orde
   overlay: {kind: quote, source: project-syndicate-2006-04-14-gorbachev, quote: "The nuclear meltdown at Chernobyl 20 years ago this month, even more than my launch of perestroika, was perhaps the main cause of the Soviet Union’s collapse five years later.", caption: "Mikhail Gorbachev, 14 April 2006"}
   narration: "**Chernobyl.** On 26 April 1986 a power surge during a systems test destroyed Unit 4 of the Chernobyl plant in Soviet Ukraine, and the Soviet government evacuated about 115,000 people. Twenty years later Gorbachev wrote that it was perhaps the main cause of the Union's collapse. Gaidar and Miller name money and politics instead."
   duration: 11
-
-- shot: arms-race
-  view: graph
-  lens: power
-  focus: soviet-defence-burden
-  reveal: [soviet-defence-burden, cia, mikhail-gorbachev, dissolution-of-the-soviet-union]
-  reveal_claims: [soviet-defence-burden#c1, soviet-defence-burden#c2]
-  overlay: {kind: stat, value: "Under 14%", label: "The CIA's estimate of the military's share of Soviet GNP in the mid-1980s, revised up from 6 to 7 percent in the early 1970s", source: last-warrior-2015-excerpt-cia-and-the-pentagon, quote: "the burden imposed on the Soviet economy should be higher than the CIA’s estimate of less than 14 percent, which had been revised upward from its earlier estimates of roughly 6–7 percent."}
-  narration: "**The arms race.** A Pentagon analyst, David Epstein, argued that indirect costs added 5 to 8 percent of GNP to the CIA's figure. After the Cold War two former CIA analysts, Noel Firth and James Noren, recalculated it at 14.8 percent for 1981-90 and 16.8 percent for the 1970s. The authors of The Last Warrior add that the CIA took Soviet GNP for 55 to 60 percent of America's, but it proved nearer 25 to 30 percent. In 1991 Gorbachev said the system had to bear \"the terrible burden of the arms race\"."
-  duration: 14
-
-- shot: outside-pressure
-  view: graph
-  lens: power
-  focus: strategic-defense-initiative
-  time: "1983-03-23"
-  reveal: [strategic-defense-initiative, ronald-reagan, reagan-library, end-of-the-cold-war, serhii-plokhy, soviet-union]
-  reveal_claims: [end-of-the-cold-war#c2, soviet-union#c2]
-  overlay: {kind: quote, source: reagan-library-sdi-exhibit, quote: "With SDI, President Reagan was able to unleash America’s entrepreneurial spirit. The project ultimately helped end the Cold War.", caption: "Reagan Presidential Library exhibit on SDI"}
-  narration: "**Pressure from outside.** The State Department's history says Reagan \"pursued a comprehensive modernization of U.S. nuclear and conventional forces\" and announced the Strategic Defense Initiative in 1983, which Soviet leaders \"found highly threatening\". The Reagan Library credits SDI with ending the Cold War. The Toynbee Prize Foundation summarises Serhii Plokhy's The Last Empire as showing that the collapse arose far more from internal dynamics than from American policy. Gorbachev, in a 2018 film, called it a joint victory."
-  duration: 14
 
 - shot: eastern-europe
   view: map
@@ -157,9 +157,9 @@ Each holder is named, each source can be opened, and the story runs in time orde
   borders: [soviet-union]
   time: "1990-03-11"
   reveal: [lithuanian-independence-act-1990, lithuania, vilnius-crackdown-january-1991, mikhail-gorbachev, george-h-w-bush]
-  reveal_claims: [lithuanian-independence-act-1990#c1, lithuanian-independence-act-1990#c2, vilnius-crackdown-january-1991#c1, vilnius-crackdown-january-1991#c4, vilnius-crackdown-january-1991#c5]
+  reveal_claims: [lithuanian-independence-act-1990#c1, lithuanian-independence-act-1990#c2, vilnius-crackdown-january-1991#c1, vilnius-crackdown-january-1991#c4]
   overlay: {kind: quote, source: lituanus-1990-act-restoration-lithuanian-state, quote: "resolves and solemnly proclaims that the execution of the sovereign power of the Lithuanian State, heretofore constrained by alien forces in 1940, is restored, and henceforth Lithuania is once again an independent state.", caption: "Supreme Council of Lithuania, 11 March 1990"}
-  narration: "**Lithuania.** On 11 March 1990 Lithuania's Supreme Council proclaimed independence restored, and Gorbachev answered with a partial economic blockade. On 13 January 1991 Soviet troops took the Vilnius television tower; Lithuanian officials counted 14 civilians killed. In 2019 a Lithuanian court found 67 former Soviet officers and officials guilty of war crimes. Gorbachev declined to testify, and Russia's Foreign Ministry called the verdict \"extremely unfriendly and essentially provocative\"."
+  narration: "**Lithuania.** On 11 March 1990 Lithuania's Supreme Council proclaimed independence restored, and Gorbachev answered with a partial economic blockade. On 13 January 1991 Soviet troops took the Vilnius television tower; Lithuanian officials counted 14 civilians killed. In 2019 a Lithuanian court found 67 former Soviet officers and officials guilty of war crimes, and Russia's Foreign Ministry called the verdict \"extremely unfriendly and essentially provocative\". The Soviet Union recognised Lithuania's independence in September 1991."
   duration: 14
 
 - shot: empty-treasury
@@ -191,9 +191,9 @@ Each holder is named, each source can be opened, and the story runs in time orde
   places: [moscow]
   time: "1991-08-19"
   reveal: [august-coup-1991, boris-yeltsin, mikhail-gorbachev, george-h-w-bush, moscow]
-  reveal_claims: [august-coup-1991#c1, august-coup-1991#c2, dissolution-of-the-soviet-union#c3]
+  reveal_claims: [august-coup-1991#c1, august-coup-1991#c2, august-coup-1991#c4, dissolution-of-the-soviet-union#c3]
   overlay: {kind: quote, source: whc-gorbachev-resignation-1991, quote: "The August coup brought the general crisis to its ultimate limit. The most damaging thing about this crisis is the breakup of the statehood.", caption: "Mikhail Gorbachev, 25 December 1991"}
-  narration: "**The August coup.** On 19 August 1991, a day before Gorbachev and republic leaders were due to sign a new union treaty, eight men calling themselves the State Emergency Committee tried to seize power. They included the KGB chairman and the defence and interior ministers, all of whom had risen under Gorbachev. Crowds in Moscow and divided loyalties in the armed forces let Yeltsin lead the resistance, and the coup collapsed on 21 August. The State Department says it \"sealed the fate of the Soviet Union\"."
+  narration: "**The August coup.** On 19 August 1991, a day before Gorbachev and republic leaders were due to sign a new union treaty, eight men calling themselves the State Emergency Committee tried to seize power. They included the KGB chairman and the defence and interior ministers, all of whom had risen under Gorbachev. Large demonstrations and divided loyalties in the defence and security establishments prevented the armed forces from crushing the resistance Yeltsin led, and the coup collapsed on 21 August. Gorbachev and the State Department both say it was decisive: it \"sealed the fate of the Soviet Union\"."
   duration: 13
 
 - shot: ukraine-votes
@@ -235,10 +235,10 @@ Each holder is named, each source can be opened, and the story runs in time orde
   view: graph
   lens: all
   focus: dissolution-of-the-soviet-union
-  reveal: [dissolution-of-the-soviet-union, soviet-grain-imports, soviet-economic-crisis-1990-91, oil-price-collapse-1986, chernobyl-disaster, soviet-defence-burden, strategic-defense-initiative, repeal-of-article-6, perestroika, august-coup-1991, ukrainian-independence-referendum-1991, soviet-right-of-secession, chris-miller, yegor-gaidar, serhii-plokhy, mikhail-gorbachev]
-  reveal_claims: [dissolution-of-the-soviet-union#c3, dissolution-of-the-soviet-union#c4, dissolution-of-the-soviet-union#c5, dissolution-of-the-soviet-union#c6, dissolution-of-the-soviet-union#c7, dissolution-of-the-soviet-union#c8, dissolution-of-the-soviet-union#c10, dissolution-of-the-soviet-union#c11, dissolution-of-the-soviet-union#c12, dissolution-of-the-soviet-union#c13, soviet-defence-burden#c1, end-of-the-cold-war#c2]
+  reveal: [dissolution-of-the-soviet-union, soviet-grain-imports, soviet-economic-crisis-1990-91, oil-price-collapse-1986, chernobyl-disaster, repeal-of-article-6, perestroika, august-coup-1991, ukrainian-independence-referendum-1991, soviet-right-of-secession, chris-miller, the-struggle-to-save-the-soviet-economy, yegor-gaidar, serhii-plokhy, mikhail-gorbachev]
+  reveal_claims: [dissolution-of-the-soviet-union#c3, dissolution-of-the-soviet-union#c4, dissolution-of-the-soviet-union#c5, dissolution-of-the-soviet-union#c6, dissolution-of-the-soviet-union#c7, dissolution-of-the-soviet-union#c8, dissolution-of-the-soviet-union#c10, dissolution-of-the-soviet-union#c11, dissolution-of-the-soviet-union#c12, dissolution-of-the-soviet-union#c13]
   overlay: {kind: quote, source: kremlin-2005-04-25-address, quote: "Above all, we should acknowledge that the collapse of the Soviet Union was a major geopolitical disaster of the century. As for the Russian nation, it became a genuine drama. Tens of millions of our co-citizens and compatriots found themselves outside Russian territory.", caption: "Vladimir Putin, address to the Federal Assembly, 25 April 2005"}
-  narration: "**Why it fell, by whom you ask.** Gaidar: grain, oil and an empty treasury. Miller: politics. Gorbachev: the coup, the arms race and, in 2006, Chernobyl. Washington: his elections and loosened grip. The Library of Congress study: the end of the Party's monopoly. The Reagan Library: missile defence, which others dispute. Putin in 2022: Lenin's right to secede. Plokhy: Ukraine's vote. Putin in 2005 called the collapse a disaster for Russians."
+  narration: "**Why it fell, by whom you ask.** Gaidar: grain and oil, then an empty treasury. Miller: politics, the resistance to Gorbachev's reforms. Gorbachev: in 1991 the coup and the dismembering of the state, in 2006 Chernobyl. The State Department's history: his elections and loosened grip, and the coup. The Library of Congress study: the end of the Party's monopoly. Putin in 2022: Lenin's right to secede. Plokhy: Ukraine's vote. Putin in 2005 called the collapse \"a major geopolitical disaster of the century\"."
   explore: true
   duration: 15
 ```

@@ -73,7 +73,9 @@ claims:
     rel: caused_by
     to: soviet-grain-imports
     according_to: [yegor-gaidar]
-    src: [{s: aei-2007-04-gaidar-soviet-collapse, quote: "In the meantime, the Soviet Union started to have severe food shortages, and grain deliveries were not being made to large cities."}]
+    src:
+      - {s: aei-2007-04-gaidar-soviet-collapse, quote: "In a simplified way, the story of the collapse of the Soviet Union could be told as a story about grain and oil."}
+      - {s: aei-2007-04-gaidar-soviet-collapse, quote: "Soviet imports had to be paid for in hard currency."}
   - id: c11
     rel: caused_by
     to: soviet-economic-crisis-1990-91
@@ -83,12 +85,13 @@ claims:
     rel: caused_by
     to: perestroika
     according_to: [chris-miller]
-    note: "Miller's cause is the political fight over Gorbachev's economic reforms, not economics itself."
-    src: [{s: miller-struggle-to-save-the-soviet-economy, quote: "The Struggle to Save the Soviet Economy argues that the difference between the Soviet Union and China—and the ultimate cause of the Soviet collapse—was not economics but politics."}]
+    note: "Miller's cause is resistance to the reforms: the interest groups they threatened, which Gorbachev could not outmaneuver. He does not blame the reforms themselves."
+    src: [{s: miller-struggle-to-save-the-soviet-economy, quote: "The Soviet government was divided by bitter conflict, and Gorbachev, the ostensible Soviet autocrat, was unable to outmaneuver the interest groups that were threatened by his economic reforms."}]
   - id: c13
     rel: caused_by
     to: repeal-of-article-6
-    according_to: [library-of-congress]
+    according_to: [russia-a-country-study-1996]
+    note: "The study's wider point is that the Party was stripped of its leading role and of control over the economy; the repeal of Article 6 is one step in that."
     src: [{s: loc-1996-russia-gorbachev-reform-dilemma, quote: "For seventy years, it had been the cohesive force that kept the union together; without the authority of the party in the Soviet center, the nationalities of the constituent republics pulled harder than ever to break away from the union."}]
 ---
 

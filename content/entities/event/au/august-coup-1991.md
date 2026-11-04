@@ -23,6 +23,11 @@ claims:
     rel: located_in
     to: moscow
     src: [{s: state-milestone-collapse-soviet-union, at: "photo caption", quote: "Boris Yeltsin makes a speech from atop a tank in front of the Russian parliament building in Moscow, U.S.S.R., Monday, Aug. 19, 1991."}]
+  - id: c4
+    rel: involved
+    to: george-h-w-bush
+    role: "publicly condemned the coup as \"extra-constitutional\""
+    src: [{s: state-milestone-collapse-soviet-union, quote: "Bush publicly condemned the coup as “extra-constitutional,”"}]
 ---
 
 On 19 August 1991 hard-line Communist officials tried to remove [[mikhail-gorbachev]]. [[boris-yeltsin]] led the resistance in [[moscow]] and the coup collapsed within three days. Accounts from opposing sides, Washington's and Gorbachev's own, agree that it sealed the Union's fate.

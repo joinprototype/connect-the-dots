@@ -2,7 +2,7 @@
 uid: 01M6ME6YHK0SQM7JGV5QS54BYY
 id: repeal-of-article-6
 type: event
-name: "End of the Communist Party's constitutional monopoly"
+name: "Central Committee agrees to end the Party's constitutional monopoly"
 summary: "In February 1990 the Party's Central Committee agreed to give up the monopoly on power that Article 6 of the Soviet Constitution gave it."
 when: "1990-02"
 claims:
