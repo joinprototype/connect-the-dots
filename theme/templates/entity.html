@@ -95,7 +95,7 @@
         <li class="{{ 'passive' if h.passive else 'owned' }}">
           <a class="share-name" href="{{ h.node.url }}">{{ h.node.name }}</a>
           {% if h.percent %}
-          <span class="share-track"><span class="share-bar" style="width: {{ h.percent / d.share_scale * 100 }}%"></span></span>
+          <span class="share-track"><span class="share-bar" style="width: {{ h.percent }}%"></span></span>
           <span class="share-pct">{{ h.percent }}%</span>
           {% else %}
           <span class="share-count">{{ h.shares }} shares</span>

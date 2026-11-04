@@ -20,6 +20,8 @@ After four releases of cuts, each page was looked at again as a first visitor wo
 - [x] S26-04 Refactor pass: dead CSS, unused templates, assets, data files and exports checked; one dead rule left the stylesheet.
 - [x] S26-05 Ask, Read and the Map read a link as the stories do: "Moses, regarded as a prophet in Christianity", not "Moses regarded as a prophet in Christianity". `schema.json` carries each relation's `noun` and `inverse_reads`.
 - [x] S26-06 Ask's heading marks a name as a story does, dotted under in its kind's ink, in place of a dot that read as punctuation ("are·Moses").
+- [x] S26-07 Entry pages: a stake's bar is its share of the whole, so Elon Musk's 19.8% of Tesla no longer fills the track; a year near either end of a time axis is no longer cut ("20" for 2027); a life line reads "board members: Kimbal Musk".
+- [x] S26-08 A type's A-to-Z page goes back to "Home", where it is linked from, not "On the map".
 
 ## Demo script
 

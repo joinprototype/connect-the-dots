@@ -282,6 +282,8 @@ ctd-atlas-links { display: block; }
 .ll-axis { margin-top: -3px; }
 .ll-ticks { grid-column: 3; position: relative; height: 18px; }
 .ll-ticks span { position: absolute; top: 0; transform: translateX(-50%); font-size: 0.78rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ll-ticks span.start { transform: none; }
+.ll-ticks span.end { transform: translateX(-100%); }
 .ll-more { margin: 10px 0 0; font-size: 0.88rem; }
 .answer-over-time { margin-top: 1.6rem; }
 

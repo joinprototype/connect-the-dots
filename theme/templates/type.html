@@ -7,7 +7,7 @@
 {% block body_class %}type-page{% endblock %}
 {% block main %}
 <section class="page-head">
-  {% if letter %}<p class="chapter-back"><a href="/t/{{ type.id }}/">‹ {{ type.plural }}</a></p>{% else %}<p class="chapter-back"><a href="/#index-h">‹ On the map</a></p>{% endif %}
+  {% if letter %}<p class="chapter-back"><a href="/t/{{ type.id }}/">‹ {{ type.plural }}</a></p>{% else %}<p class="chapter-back"><a href="/#index-h">‹ Home</a></p>{% endif %}
   <h1>{{ type.plural }}{% if letter %}: {{ letter.letter }}{% endif %}</h1>
   <p class="index-intro">{% if letter %}{{ count(letter.items|length, type.label|lower, type.plural|lower) }} of {{ total }}, A to Z.{% else %}{{ count(total, type.label|lower, type.plural|lower) }}, A to Z.{% if split %} Pick a letter.{% endif %}{% endif %}</p>
   {% if letters|length > 1 %}<nav class="letters" aria-label="{{ 'Letters' if split else 'Jump to a letter' }}">{% for g in letters %}<a href="{{ g.url }}"{% if letter and g.letter == letter.letter %} aria-current="page"{% endif %}>{{ g.letter }}</a>{% endfor %}</nav>{% endif %}

@@ -45,8 +45,23 @@ impl Axis {
         (self.pct(a), (self.pct(b) - self.pct(a)).max(0.8), b - a <= 1.0)
     }
 
+    /// Each year's place on the axis; one near an end is set flush with that end (`edge`), so the
+    /// row never cuts its label.
     pub(super) fn ticks(&self) -> Vec<Value> {
-        nice_ticks(self.lo, self.hi).into_iter().map(|(t, l)| json!({ "left": self.pct(t), "label": l })).collect()
+        nice_ticks(self.lo, self.hi)
+            .into_iter()
+            .map(|(t, l)| {
+                let left = self.pct(t);
+                let edge = if left < 6.0 {
+                    "start"
+                } else if left > 94.0 {
+                    "end"
+                } else {
+                    ""
+                };
+                json!({ "left": left, "label": l, "edge": edge })
+            })
+            .collect()
     }
 }
 
@@ -59,13 +74,12 @@ pub(super) fn dossier(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], now: f64,
     // withdrawn (deprecated) links stay listed, marked, under Connections, but never reach the glance band
     let items: Vec<(&Edge, bool)> = items.iter().copied().filter(|(e, _)| e.status != "deprecated").collect();
     let items = items.as_slice();
-    let (holders, holdings, scale) = stakes(cx, items, now, notes);
+    let (holders, holdings) = stakes(cx, items, now, notes);
     json!({
         "family": family(cx, items),
         "lifeline": lifeline(cx, ent, items, now),
         "holders": if holders.is_empty() { Value::Null } else { json!(holders) },
         "holdings": if holdings.is_empty() { Value::Null } else { json!(holdings) },
-        "share_scale": scale,
         "split": split(cx, items),
     })
 }
@@ -98,8 +112,13 @@ fn lifeline(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], now: f64) -> Value 
             for (e, outgoing, span) in &tenures {
                 let other = e.other(*outgoing);
                 let (left, width, point) = axis.bar(*span);
+                // an inverse that names a list reads with a colon: "board members: Kimbal Musk"
+                let mut phrase = link_phrase(kb, e, *outgoing);
+                if !*outgoing && kb.kin_role(e).is_none() && kb.schema.relations[&e.rel].inverse_reads == crate::schema::Reads::List {
+                    phrase.push(':');
+                }
                 rows.push(json!({
-                    "own": false, "phrase": link_phrase(kb, e, *outgoing), "name": kb.name_of(other), "url": format!("/e/{other}/"),
+                    "own": false, "phrase": phrase, "name": kb.name_of(other), "url": format!("/e/{other}/"),
                     "detail": link_detail(kb, e, *outgoing),
                     "when": e.when.as_ref().map(|w| &w.label), "left": left, "width": width, "point": point,
                     "according_to": e.according_to.iter().map(|p| kb.name_of(p)).collect::<Vec<_>>(), "status": e.status, "reason": e.reason,
@@ -117,10 +136,11 @@ fn lifeline(cx: &Ctx, ent: &Entity, items: &[(&Edge, bool)], now: f64) -> Value 
 /// A row of the holders card, with its share count and sources.
 type Stake<'a> = (Value, f64, &'a [EdgeSrc]);
 
-/// Who holds this and what this holds: (holders, holdings, the scale of their bars). A stake that
+/// Who holds this and what this holds: (holders, holdings). Each bar is its percent of the whole, so a
+/// lone 19.8% never fills its track. A stake that
 /// ended is told by the life line and the Timeline, a dated snapshot stays with its date. A filing
 /// may give shares and no percent: no bar and no sum, since each line has its own date.
-fn stakes(cx: &Ctx, items: &[(&Edge, bool)], now: f64, notes: &mut Footnotes) -> (Vec<Value>, Vec<Value>, f64) {
+fn stakes(cx: &Ctx, items: &[(&Edge, bool)], now: f64, notes: &mut Footnotes) -> (Vec<Value>, Vec<Value>) {
     let kb = cx.kb;
     let mut holders = Vec::new();
     let mut holdings = Vec::new();
@@ -153,7 +173,6 @@ fn stakes(cx: &Ctx, items: &[(&Edge, bool)], now: f64, notes: &mut Footnotes) ->
     }
     holders.sort_by(by_pct);
     holdings.sort_by(by_pct);
-    let scale = holders.iter().chain(holdings.iter()).filter_map(|r| r.0["percent"].as_f64()).fold(10.0f64, f64::max);
     // numbered as shown: the rows are sorted first
     let mut shown = |rows: Vec<Stake>| -> Vec<Value> {
         rows.into_iter()
@@ -163,8 +182,7 @@ fn stakes(cx: &Ctx, items: &[(&Edge, bool)], now: f64, notes: &mut Footnotes) ->
             })
             .collect()
     };
-    let (holders, holdings) = (shown(holders), shown(holdings));
-    (holders, holdings, scale)
+    (shown(holders), shown(holdings))
 }
 
 /// Kinship links, each with what that relative did (their own links). Null when there is none.

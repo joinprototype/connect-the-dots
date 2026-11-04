@@ -6,6 +6,8 @@ What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versio
 
 - The Map's Earth names what is where from the first view, more as you zoom in, and its land is a light grey everywhere, Europe included.
 - The home page no longer repeats the header's links.
+- A stake's bar on an entry page is now its share of the whole: Elon Musk's 19.8% of Tesla no longer fills the bar as if it were all of it.
+- Time axes no longer cut their last year short.
 - Ask reads each link as a sentence: "Moses, regarded as a prophet in Christianity", where it used to drop the comma. Names in its heading are dotted under in their colour, as in stories.
 
 ## 0.5.4 (2026-11-03)

@@ -41,7 +41,7 @@
           <span class="ll-track" aria-hidden="true"><span class="ll-bar{% if r.point %} point{% endif %}" style="left: {{ r.left }}%; width: {{ r.width }}%"></span></span>
         </li>
         {% endfor %}
-        <li class="ll-axis" aria-hidden="true"><span class="ll-ticks">{% for t in l.ticks %}<span style="left: {{ t.left }}%">{{ t.label }}</span>{% endfor %}</span></li>
+        <li class="ll-axis" aria-hidden="true"><span class="ll-ticks">{% for t in l.ticks %}<span{% if t.edge %} class="{{ t.edge }}"{% endif %} style="left: {{ t.left }}%">{{ t.label }}</span>{% endfor %}</span></li>
       </ol>{% endmacro %}
 
 {# A story's cover on a shelf: cover art, kind, title and subtitle. #}
