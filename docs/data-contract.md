@@ -157,11 +157,11 @@ Every entry and link, with only what Ask and Stories draw and routes price, as r
 - **An entry** is `[id, name, type, degree, when, coords, place]`. `coords` is its own `[lon, lat]` or 0. `place` is the index of the entry it is set in, or -1. An entry without coords of its own is drawn at its place's (the node's `coords` above), and its `url` is `/e/<id>/`.
 - **A link** is `[from, to, rel, claim, when, tier]`, with its ends as entry indexes. Its id is `<from id>#<claim>`. `label`, `layers`, `passive` and `traversable` are its relation's. An object follows when any of these is not the default: `according_to` (default `[]`), `status` (default `published`) and `voices`, which is there only on a link both sides agree on (`cross_confirmed`).
 - **Left out:** summaries, aliases, qualifiers, notes and sources. They are in the entries' detail files.
-- **Size:** 17 KB gzip today (338 entries, 642 links). Its budget is 1 MB gzip, which holds about 40,000 links of today's kind. Past it the build warns, and Ask and routes need the route service ([ADR-0017](decisions/0017-pages-load-what-they-show.md)).
+- **Size:** 170 KB gzip today (3,453 entries, 6,561 links). Its budget is 1 MB gzip, which holds about 40,000 links of today's kind. Past it the build warns, and Ask and routes need the route service ([ADR-0017](decisions/0017-pages-load-what-they-show.md)).
 
 ## `data/ways.json`
 
-What a route needs and nothing else: 70 KB gzip where `graph-slim.json` is 170. A pair's answer on Ask and Stories finds its way here with `findPaths`, and reads the words of what it found from the detail files of its stops:
+What a route needs and nothing else: 72 KB gzip where `graph-slim.json` is 170. A pair's answer on Ask and Stories finds its way here with `findPaths`, and reads the words of what it found from the detail files of its stops:
 
 ```jsonc
 {
@@ -406,7 +406,7 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
 - `data/more/<n>.json`: lists that run past 40 names, from name 41 to at most 5,040, as `{ "Q42": { "<group index in g>": [[number, name, kind, hand id?], ...] } }`, in file `<Wikidata number> % 512`. A reader's "Show 834 more" costs one file, and the number of files never grows.
 - `data/routes.json` (ADR-0023): the landmark table, read by `web/src/lib/atlas-route.ts`. `l`: landmarks by Wikidata number. `p`: phrases, each `[one way, the other way]`. `n[i][j]`: the landmark after `i` on the way to `j` (65535: none). `b["i:j"]`, `i < j`: `[x, y, phrase * 2 + flip]`, the crossing between two landmarks' territories, `x` in `i`'s.
 - `data/stories.json`: `{ "<entry id>": [[title, url], …] }`, an entry's written stories, most scenes first, at most three. A dot's card lists them, then those of what it links to.
-- `world/picture.svg`: the map's best-connected dots, a picture no page draws today. `/w/` also takes `?focus=Q42` and `?route=Q1,Q2,…`. The one answer for any two entries is Ask (`/ask/?a=<id or Qn>&b=<id or Qn>`, with `&way=<n>` for an alternative); `/r/` forwards there.
+- `w/picture.svg`: the Map far out, which the home page shows. `/w/` also takes `?focus=Q42` and `?route=Q1,Q2,…`. The one answer for any two entries is Ask (`/ask/?a=<id or Qn>&b=<id or Qn>`, with `&way=<n>` for an alternative); `/r/` forwards there.
 - `stories[]`: up to three written stories that name the entry, the one with the most scenes on it first: `{ title, url, counts }`.
 - `dossier`: `family`, `lifeline`, `holders`, `holdings` and `split`, each null when empty. A stake's bar is its percent of a track that stands for the whole (100%).
 - `background` (people, else null; ADR-0016): `{ rows[{ phrase, node, when, detail, refs, draft, disputed, reason }], lines[{ text, refs }] }`. `rows` are the person's own links whose relation has `background: true` (born in, citizen of, educated at); `lines` are the entry's sourced `background` lines. The lines appear on this page only.

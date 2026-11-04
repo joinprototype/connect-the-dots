@@ -80,7 +80,7 @@ Stages:
 ```
 dist/
   e/<id>/index.html          entity pages            c/<id>/index.html   stories
-  ask/                       Ask                     world/              the Map's tiles
+  ask/                       Ask                     w/                  the Map
   data/schema.json           vocabulary              data/graph-slim.json   every entry and link, structure only
   data/e/<n>.json            entries' words and proof, in packs   data/search/   search entries by word range
   data/life/<n>.json         life stories, in packs               e/_life/   the one page that opens them (read.html)
@@ -208,4 +208,4 @@ Cloudflare Workers Paid ($5 a month) serves static assets (free requests, 100k f
 - Fork PRs get no secrets. Never run untrusted code under `pull_request_target`, and never use self-hosted runners on the public repo.
 - Cloudflare tokens are scoped to one bucket and one Worker, and stay on maintainer machines.
 - Every deploy carries `build-manifest.json`, so what is live traces back to a commit.
-- Content arrives as public PRs, so the build treats it as untrusted: raw HTML in markdown is shown as text, links keep only relative, `#`, http(s) and `mailto:` targets, source and image URLs must be http(s) (`ctd check` error), and free text placed into generated stories is escaped. A Content-Security-Policy is in the backlog.
+- Content arrives as public PRs, so the build treats it as untrusted: raw HTML in markdown is shown as text, links keep only relative, `#`, http(s) and `mailto:` targets, source and image URLs must be http(s) (`ctd check` error), and free text placed into generated stories is escaped. Every page carries a strict Content-Security-Policy (`dist/_headers`), so templates hold no inline scripts.
