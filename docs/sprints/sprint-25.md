@@ -46,12 +46,12 @@ The demo runs on 1280x800 and 390x844 with no console errors, the moves keep fra
 ## Known issues
 
 - The era slider and the historical borders are not on the new Map.
-- On the Earth far out, no names show until one zooms in.
+- On the Earth far out, no names show until one zooms in. Fixed in Sprint 26.
 - Only about a fifth of the record has a place on the Earth.
 - Real phones and Safari are unmeasured.
 
 ## Review
 
-- What worked:
-- What didn't:
-- Next:
+- What worked: one surface for the islands and the Earth, morphing between them, and the shelf as its own page once the two looked alike.
+- What didn't: the Earth opened with no names, so a first look gave colour and no meaning; Europe's land read as a grey blotch.
+- Next: a fresh first-visitor look at every page, and the small fixes it finds (Sprint 26).

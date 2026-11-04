@@ -249,9 +249,11 @@ export const across = (w: World, l: number, i: number): number => (w.la[l] === i
 /**
  * Plans every dot's name once, for every nearness, as a printed map's are, so that names never jitter: from
  * the best-connected down, a name shows from the first level at which its box is clear of the names before
- * it. `wide` is a name's width in pixels. A sealed entry is named only when it is opened.
+ * it. `wide` is a name's width in pixels. A sealed entry is named only when it is opened. `from` is the farthest
+ * level named: on the islands their titles say where things are far out, while on the Earth the best-connected
+ * dots are named from the whole world's view.
  */
-export function planNames(w: World, wide: (i: number) => number, at: Layout = w.story): void {
+export function planNames(w: World, wide: (i: number) => number, at: Layout = w.story, from = 1.6): void {
   if (at.planned) return;
   at.planned = true;
   const { x: X, y: Y, nameFrom, vis } = at;
@@ -260,7 +262,7 @@ export function planNames(w: World, wide: (i: number) => number, at: Layout = w.
     .sort((a, b) => w.degree[b] - w.degree[a] || w.names[a].length - w.names[b].length || a - b);
   const width = Float32Array.from({ length: w.n }, (_, i) => (w.sealed[i] ? 0 : wide(i)));
   const placed: number[] = [];
-  for (let level = 1.6; level <= 6.6; level += 0.4) {
+  for (let level = from; level <= 6.6; level += 0.4) {
     const k = K0 * 2 ** level;
     const cell = 140 / k;
     const pad = level < 3 ? 12 : 3;
@@ -281,9 +283,11 @@ export function planNames(w: World, wide: (i: number) => number, at: Layout = w.
       return false;
     };
     for (const i of placed) put(box(i));
-    // far out, a few names say where things are; nearer, every name that fits
-    let budget = level < 1.9 ? 40 : Infinity;
-    for (const i of order) {
+    // far out, a few names say where things are, of the best-connected only, twice as many with each step in;
+    // nearer, every name that fits
+    let budget = level < from + 0.3 ? 40 : Infinity;
+    const top = level < 1.6 ? Math.round(60 * 2 ** ((level - from) / 0.4)) : order.length;
+    for (const i of order.slice(0, top)) {
       if (nameFrom[i] < Infinity || budget <= 0) continue;
       const b = box(i);
       if (hit(b)) continue;

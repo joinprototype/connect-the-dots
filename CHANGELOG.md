@@ -2,6 +2,11 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## Next
+
+- The Map's Earth names what is where from the first view, more as you zoom in, and its land is a light grey everywhere, Europe included.
+- The home page no longer repeats the header's links.
+
 ## 0.5.4 (2026-11-03)
 
 - Stories is the shelf: every story's cover, to pick one and read it. The islands they make are on the Map.

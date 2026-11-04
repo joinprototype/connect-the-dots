@@ -173,7 +173,7 @@ export class Painter {
     }
     for (let q = 0; q < count.length; q++) {
       if (!count[q]) continue;
-      const v = Math.max(150, 222 - 12 * count[q]);
+      const v = Math.round(234 - Math.min(30, 7.5 * Math.sqrt(count[q])));
       // little-endian: alpha, blue, green, red
       px[q] = 0xff000000 | (v << 16) | (v << 8) | v;
     }
@@ -553,7 +553,8 @@ export class Painter {
   /** The dots' own names, nearer in: each from the level planned for it. */
   private dotNames(L: number, dim: number, look: Look, grow: number): void {
     const base = 1 - dim * 0.95;
-    if (L < 1.5 || base < 0.05) return;
+    // far out, the islands' titles name things; on the Earth, the dots' own names do
+    if ((L < 1.5 && look.earth < 1) || base < 0.05) return;
     const { c, w, sx, sy, W, H } = this;
     c.font = NAME;
     c.lineWidth = 3;
@@ -563,6 +564,8 @@ export class Painter {
       if (look.scene?.focus.has(i) || i === look.hover) continue;
       c.globalAlpha = smooth(0, 0.3, d) * base;
       const [x, y, name] = [sx[i] + this.radius[i] * grow + 4, sy[i] + 4, short(w.names[i])];
+      // far out, a name the edge would cut is left out
+      if (L < 1.6 && (sx[i] < 4 || x + c.measureText(name).width > W - 6)) continue;
       if (!look.moving) {
         c.strokeStyle = w.home[i] >= 0 && !w.vis ? this.tok.land : this.tok.paper;
         c.strokeText(name, x, y);

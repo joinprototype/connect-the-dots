@@ -168,7 +168,7 @@ class CtdPlace extends HTMLElement {
     // nearness, and the picture a move far out draws
     const later = 'requestIdleCallback' in window ? (run: () => void) => requestIdleCallback(run, { timeout: 2000 }) : (run: () => void) => setTimeout(run, 300);
     later(() => {
-      planNames(w, this.wide, this.onEarth ? w.earth! : w.story);
+      this.plan(this.onEarth ? w.earth! : w.story);
       this.kick();
       later(() => this.painter.prepare());
     });
@@ -203,7 +203,7 @@ class CtdPlace extends HTMLElement {
     if (earth === this.onEarth || this.morph) return;
     const { w } = this;
     const to = earth ? (w.earth ??= earthLayout(w)) : w.story;
-    planNames(w, this.wide, to);
+    this.plan(to);
     if (earth) this.landing ??= loadField().then((f) => (this.painter.setLand(f, (mx, my) => earthAt(w, mx, my), (x, y) => squareAt(w, x, y)), this.kick()), () => undefined);
     this.onEarth = earth;
     // while they move, what the Earth draws is all that stays bright
@@ -237,6 +237,12 @@ class CtdPlace extends HTMLElement {
     this.look.earth = this.onEarth ? 1 : 0;
     if (!first) this.apply(false);
     this.kick();
+  }
+
+  /** Every dot's name planned for this arrangement; on the Earth, from the whole world's view. */
+  private plan(at: Layout): void {
+    // a name fades in over 0.3 of a level, so the Earth's are planned from a little farther than the whole view
+    planNames(this.w, this.wide, at, at === this.w.story ? 1.6 : Math.min(1.6, Math.log2(this.far.k / K0) - 0.3));
   }
 
   /** The nearest the camera comes: on the Earth, a country's view, past which the land's dots are few and
