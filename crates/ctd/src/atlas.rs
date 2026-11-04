@@ -9,7 +9,7 @@ use std::{
     path::Path,
 };
 
-use anyhow::Result;
+use anyhow::{Context, Result};
 use flate2::read::GzDecoder;
 use rayon::prelude::*;
 use serde_json::{Value, json};
@@ -76,9 +76,12 @@ pub struct Atlas {
     pub relations: Vec<String>,
 }
 
-fn lines(path: &Path) -> Result<impl Iterator<Item = String>> {
-    let reader = BufReader::with_capacity(1 << 20, GzDecoder::new(File::open(path)?));
-    Ok(reader.lines().map_while(|l| l.ok()))
+/// A gzipped file's lines; one that cannot be read, such as a truncated file's last, is an error, not
+/// a quiet end.
+fn lines(path: &Path) -> Result<impl Iterator<Item = Result<String>>> {
+    let reader = BufReader::with_capacity(1 << 20, GzDecoder::new(File::open(path).with_context(|| path.display().to_string())?));
+    let shown = path.display().to_string();
+    Ok(reader.lines().map(move |l| l.with_context(|| format!("{shown}: cannot be read to the end (rerun tools/atlas/build.py)"))))
 }
 
 fn number(q: &str) -> Option<u32> {
@@ -91,16 +94,18 @@ pub fn load(root: &Path) -> Result<Option<Atlas>> {
     if !dir.join("entries.tsv.gz").exists() || !dir.join("links.tsv.gz").exists() {
         return Ok(None);
     }
-    // a people as a group is never an entry (ADR-0016)
-    let left_out = fs::read_to_string(root.join("content").join("methodology").join("atlas-left-out.tsv")).unwrap_or_default();
+    // a people as a group is never an entry (ADR-0016): without the list the atlas is not built at all
+    let path = root.join("content").join("methodology").join("atlas-left-out.tsv");
+    let left_out = fs::read_to_string(&path).with_context(|| format!("{}: the atlas needs its list of what is left out (ADR-0016)", path.display()))?;
     let left_out: HashSet<u32> = left_out.lines().filter_map(|l| number(l.split('\t').next()?)).collect();
     let mut entries: Vec<Entry> = Vec::new();
     for line in lines(&dir.join("entries.tsv.gz"))? {
+        let line = line?;
         let f: Vec<&str> = line.split('\t').collect();
-        if number(f[0]).is_some_and(|q| left_out.contains(&q)) {
+        if f.len() < 11 || number(f[0]).is_some_and(|q| left_out.contains(&q)) {
             continue;
         }
-        let (Some(qid), Some(kind), true) = (number(f[0]), KINDS.iter().position(|k| *k == f[1]), f.len() >= 11) else { continue };
+        let (Some(qid), Some(kind)) = (number(f[0]), KINDS.iter().position(|k| *k == f[1])) else { continue };
         let coords = f[8].parse().ok().zip(f[9].parse().ok()).map(|(a, b)| [a, b]);
         entries.push(Entry {
             qid,
@@ -119,6 +124,7 @@ pub fn load(root: &Path) -> Result<Option<Atlas>> {
     let mut relations: Vec<String> = Vec::new();
     let mut links = Vec::new();
     for line in lines(&dir.join("links.tsv.gz"))? {
+        let line = line?;
         let mut f = line.split('\t');
         let (Some(a), Some(r), Some(b)) = (f.next(), f.next(), f.next()) else { continue };
         let (Some(&a), Some(&b)) = (number(a).and_then(|q| place.get(&q)), number(b).and_then(|q| place.get(&q))) else { continue };
@@ -499,7 +505,7 @@ mod tests {
 
     #[test]
     fn a_written_entry_wins_and_links_are_best_known_first() {
-        let root = write_repo("atlas", &[]).unwrap();
+        let root = write_repo("atlas", &[file("content/methodology/atlas-left-out.tsv", "Q9\ta people as a group\n")]).unwrap();
         let dir = root.join(".cache/atlas");
         fs::create_dir_all(&dir).unwrap();
         // one person, one place in the atlas, and a place written by hand

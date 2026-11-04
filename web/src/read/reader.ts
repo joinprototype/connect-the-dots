@@ -333,7 +333,8 @@ async function openDoor(id: string, at: Element, door: HTMLElement | null, edgeI
     const left = after ? story.detour!.left : story.d.scenes.length - scene - 1;
     const stop = await stopFor(idx, story, id, from, await stepTo(idx, story, edge, from), left, edge ? 1 : after ? null : 0);
     place(story, stop, scene, after, after ? null : door);
-  } catch {
+  } catch (err) {
+    console.error(err);
     if (door instanceof HTMLAnchorElement) location.assign(door.href);
   } finally {
     busy = false;

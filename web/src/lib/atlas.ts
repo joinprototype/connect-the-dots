@@ -1,4 +1,4 @@
-// The atlas (ADR-0023, docs/data-contract.md): entries packed by Wikidata number into 4,096 files, so
+// The atlas (ADR-0023, docs/data-contract.md): entries packed by Wikidata number into 2,048 files, so
 // reading one costs one small file, whatever the total.
 import { loadJson } from './data';
 
@@ -35,16 +35,15 @@ export interface Story {
 /** How many stories an entry offers. */
 const STORIES = 3;
 
-const shards = new Map<number, Promise<Record<string, Entry>>>();
-
+/** One atlas entry; a shard that fails to load is not kept, so the next ask tries again. */
 export function atlasEntry(q: string): Promise<Entry | undefined> {
-  const n = Number(q.slice(1)) % SHARDS;
-  let got = shards.get(n);
-  if (!got) {
-    got = fetch(`/data/a/${n}.json`).then((r) => (r.ok ? r.json() : {}), () => ({}));
-    shards.set(n, got);
-  }
-  return got.then((s) => s[q]);
+  return loadJson<Record<string, Entry>>(`/data/a/${Number(q.slice(1)) % SHARDS}.json`).then(
+    (shard) => shard[q],
+    (err: unknown) => {
+      console.error(err);
+      return undefined;
+    },
+  );
 }
 
 /**

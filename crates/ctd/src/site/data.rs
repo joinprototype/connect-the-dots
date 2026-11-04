@@ -145,7 +145,7 @@ pub fn ways(kb: &Kb) -> Vec<u8> {
     out.extend_from_slice(br#","edges":"#);
     rows(
         &mut out,
-        kb.edges.iter().filter(|e| e.traversable && !e.passive && e.status != "deprecated" && e.from != e.to).map(|e| {
+        kb.edges.iter().filter(|e| e.walkable()).map(|e| {
             let mut row = vec![json!(at[e.from.as_str()]), json!(at[e.to.as_str()]), json!(e.rel), json!(claim_of(e)), json!(e.tier)];
             row.extend(extras(e).map(Value::Object));
             Value::Array(row)

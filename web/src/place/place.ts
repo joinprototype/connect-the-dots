@@ -119,7 +119,8 @@ class CtdPlace extends HTMLElement {
     let w: World;
     try {
       [w] = await Promise.all([loadWorld(), Promise.race([fonts, new Promise((done) => setTimeout(done, 900))])]);
-    } catch {
+    } catch (err) {
+      console.error(err);
       return; // the list below stands alone
     }
     this.w = w;

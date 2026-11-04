@@ -53,7 +53,7 @@ fn puzzles<'a>(s: &Site<'a>, rules: &Rules, atlas: Option<&Atlas>) -> (Vec<Vec<&
     let at: HashMap<&str, usize> = kb.entities.iter().enumerate().map(|(i, e)| (e.id.as_str(), i)).collect();
     // the links a way may use, as data/ways.json holds them, with nothing kept out at either end
     let mut near: Vec<Vec<usize>> = vec![Vec::new(); kb.entities.len()];
-    for e in kb.edges.iter().filter(|e| e.traversable && !e.passive && e.status != "deprecated" && e.from != e.to) {
+    for e in kb.edges.iter().filter(|e| e.walkable()) {
         if out.contains(e.from.as_str()) || out.contains(e.to.as_str()) {
             continue;
         }
@@ -151,7 +151,7 @@ fn puzzles<'a>(s: &Site<'a>, rules: &Rules, atlas: Option<&Atlas>) -> (Vec<Vec<&
         found.push(way.into_iter().map(|i| kb.entities[i].id.as_str()).collect());
     }
     // a step may not land on what is kept out and still has links of its own
-    let linked: HashSet<&str> = kb.edges.iter().filter(|e| e.traversable && !e.passive).flat_map(|e| [e.from.as_str(), e.to.as_str()]).collect();
+    let linked: HashSet<&str> = kb.edges.iter().filter(|e| e.walkable()).flat_map(|e| [e.from.as_str(), e.to.as_str()]).collect();
     (found, out.into_iter().filter(|id| linked.contains(id)).collect())
 }
 

@@ -122,6 +122,13 @@ pub struct Edge {
 }
 
 impl Edge {
+    /// Whether a way between two names may step along this link: it may be walked, it is not a
+    /// passive tie, it is not withdrawn, and it joins two entries. `data/ways.json` holds only these,
+    /// so web/src/lib/paths.ts walks the same links.
+    pub fn walkable(&self) -> bool {
+        self.traversable && !self.passive && self.status != "deprecated" && self.from != self.to
+    }
+
     /// The link's other end, seen from `from` when `outgoing`, else from `to`.
     pub fn other(&self, outgoing: bool) -> &str {
         if outgoing { &self.to } else { &self.from }

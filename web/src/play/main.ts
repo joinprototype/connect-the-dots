@@ -5,6 +5,7 @@
 import { loadDetails, loadGraphIndex, loadJson, type GraphIndex } from '../lib/data';
 import { sentence, sourceView } from '../lib/claims';
 import { el } from '../lib/dom';
+import { walks } from '../lib/paths';
 import type { GEdge } from '../lib/types';
 import './play.css';
 
@@ -206,7 +207,7 @@ async function main(root: HTMLElement): Promise<void> {
   /** The links a step may take from `at`, the best-connected names first. */
   const from = (at: string): GEdge[] =>
     (idx.incident.get(at) ?? [])
-      .filter((e) => e.traversable && !e.passive && e.status !== 'deprecated' && e.from !== e.to && !out.has(other(e, at)))
+      .filter((e) => walks(e) && !out.has(other(e, at)))
       .sort((x, y) => (idx.nodes.get(other(y, at))?.degree ?? 0) - (idx.nodes.get(other(x, at))?.degree ?? 0) || nameOf(idx, other(x, at)).localeCompare(nameOf(idx, other(y, at))));
 
   function drawTrail(): void {

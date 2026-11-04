@@ -32,6 +32,10 @@ interface PathHop {
   cost: number;
 }
 
+/** Whether a way may step along this link: walked, not a passive tie, not withdrawn, joining two
+ *  entries. The engine's `Edge::walkable` (kb.rs) is the same rule. */
+export const walks = (e: GEdge): boolean => e.traversable && !e.passive && e.status !== 'deprecated' && e.from !== e.to;
+
 export interface PathResult {
   nodes: string[];
   hops: PathHop[];

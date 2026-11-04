@@ -10,7 +10,7 @@ import { loadDetails, nameOf, type GraphIndex } from '../lib/data';
 import { formatYearNumber } from '../lib/dates';
 import { el } from '../lib/dom';
 import { hash01 } from '../lib/hash';
-import { findPaths, type PathResult } from '../lib/paths';
+import { findPaths, walks, type PathResult } from '../lib/paths';
 import { claimNotes, NOTICE, statusWords, tierLabel } from '../lib/plain';
 import type { GEdge, GNode, SearchEntry } from '../lib/types';
 import type { Mark, View } from './field';
@@ -95,7 +95,6 @@ const dot = (ink: string, open = false): HTMLElement => {
 
 const other = (e: GEdge, id: string) => (e.from === id ? e.to : e.from);
 /** A link a way may use: what stays off ways stays off the pictures too. */
-const walks = (e: GEdge) => e.traversable && !e.passive && e.status !== 'deprecated';
 const asName = (idx: GraphIndex, id: string): Part => [idx.nodes.get(id)?.name ?? id, id, inkOf(idx, idx.nodes.get(id)?.type)];
 
 /** What an entry also touches, best-connected first, along links a way may use, leaving out `skip`. */

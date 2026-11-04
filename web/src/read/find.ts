@@ -3,6 +3,7 @@
 // reader is, in steps along links a way may use. A name lands in the thread; a story opens.
 import type { GraphIndex } from '../lib/data';
 import { fuzzySearch } from '../lib/fuzzy';
+import { walks } from '../lib/paths';
 import { candidates } from '../lib/search';
 import type { SearchEntry } from '../lib/types';
 import { esc, inkOf, joinsNothing, type SiteData } from './stops';
@@ -135,7 +136,7 @@ export class Find {
         for (const x of ring) {
           if (d > 1 && joinsNothing(idx, this.site, x)) continue;
           for (const e of idx.incident.get(x) ?? []) {
-            if (!e.traversable || e.passive || e.status === 'deprecated') continue;
+            if (!walks(e)) continue;
             const y = e.from === x ? e.to : e.from;
             if (hops.has(y) || joinsNothing(idx, this.site, y)) continue;
             hops.set(y, d);

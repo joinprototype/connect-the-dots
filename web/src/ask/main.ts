@@ -113,7 +113,10 @@ function start(root: HTMLElement): void {
       scrollTo({ top: 0 });
     }
     answerEl.setAttribute('aria-busy', 'true');
-    const a: Answer | null = await answer(state, pick, nextPicks()).catch(() => null);
+    const a: Answer | null = await answer(state, pick, nextPicks()).catch((err: unknown) => {
+      console.error(err);
+      return null;
+    });
     if (mine !== asked) return;
     answerEl.removeAttribute('aria-busy');
     if (!a) {
