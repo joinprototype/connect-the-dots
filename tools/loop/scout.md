@@ -10,7 +10,7 @@ The run gives you a run name `<run>` and up to 20 leads (from `.cache/gaps.tsv`,
 
 1. Find a source a reader can open: an institution's own pages, an archive, a government or court record, scholarship, an established newspaper. Never Wikipedia, never Wikidata, never a content farm or an AI summary. Reuse `content/sources/` first.
 2. Fetch it with `curl -sL <url>` and nothing else: no `-A`, no header, no cookie, and nothing about any person in any request. For a PDF, `pdftotext`. If a site refuses, try `https://web.archive.org/web/2024/<url>`, or give up on that lead. Never try www.sec.gov with curl.
-3. Save the text to `.cache/loop/<run>/src/<source-id>.txt`. Copy the quote out of that file: at most 300 characters, one continuous span, word for word.
+3. Save the text to `.cache/loop/<run>/src/<source-id>.txt`. Copy the quote out of that file: at most 300 characters, one continuous span, word for word. The quote must say the whole link by itself: both ends named (or the page's own subject plainly one of them), the relation, and its date if the link has one. Never a menu item, a lone name from a list, or a date alone. "Works for Congress" is not "part of Congress"; "oversees exchanges" says what a body does, not what it is part of.
 4. Holds: add the claim on the right entry, in the shape of the claims around it, with the relation's real meaning and direction (`content/schema/relations.yaml`), and the source in `content/sources/` if it is new.
 5. Wrong or loose: add `from, relation, to, why` to `content/methodology/gaps-ignore.tsv`. No source in three tries: add the same row to `.cache/gaps-tried.tsv`.
 

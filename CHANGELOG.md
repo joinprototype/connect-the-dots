@@ -6,6 +6,7 @@ What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versio
 
 - A puzzle a day: two names, and you step from one to the other by links on the record, each with its proof, in as few steps as you can. Share your result as a line of dots that gives nothing away.
 - Missing links: what open data says and the record does not hold yet, each a question. Know a source? Send it, and once it is checked it goes on the record.
+- Ten more sourced links, the first found by a cheap model and checked by a careful one: OPEC's and the IEA's members, Kennedy Space Center in NASA, Google in Alphabet, Felipe VI as King of Spain and John McCone at the Atomic Energy Commission.
 
 ## 0.5.5 (2026-11-03)
 

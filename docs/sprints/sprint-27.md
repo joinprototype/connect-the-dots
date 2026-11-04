@@ -20,7 +20,7 @@ The founder asked what makes the site a habit and a moat. The moat is proof: lin
 - [x] S27-04 The loop: `docs/loop.md`, the scout and reviewer briefs, and `tools/loop/gate.sh`.
 
 ### Should
-- [ ] S27-05 One loop run by hand on 20 leads, and its line in `.cache/loop/runs.tsv`.
+- [x] S27-05 One loop run by hand on 20 leads, and its line in `.cache/loop/runs.tsv`: 10 links merged, 7 of them fixed by the reviewer, 1 dropped; 142k tokens on Haiku, 162k on Opus.
 - [ ] S27-06 Today's puzzle on the home page.
 
 ## Demo script
@@ -47,7 +47,9 @@ The demo runs at 1280x800 and 390x844 with no console errors, and `tools/qa/swee
 - A hub such as the United States government shortens many puzzles to three steps.
 - Each day's way is in `data/play.json`, so a reader can read ahead.
 - The dev server has no open data: it picks puzzles from every end and has no missing-links page.
-- The loop has not run yet, and has no schedule: that needs the founder's word.
+- The scout's quotes are weak: the reviewer fixed 7 of its 11 links (fragments, a menu item, a quote that never named the person). Its brief now says a quote must say the whole link by itself.
+- The review costs more than the scouting, and a run yields about ten links.
+- The loop has no schedule: that needs the founder's word.
 
 ## Review
 
