@@ -25,4 +25,9 @@ claims:
     src:
       - {s: fcic-2011-final-report, quote: "But the watershed event in federal regulation occurred in 1975, when the Securities and Exchange Commission modified its minimum capital requirements for broker-dealers to base them on credit ratings"}
       - {s: psi-2011-04-13-levin-coburn-report, quote: "The SEC had developed the NRSRO system, for example, but had no clear statutory basis for establishing that system or exercising regulatory authority over the credit rating agencies."}
+  - id: c3
+    rel: part_of
+    to: us-government
+    src:
+      - {s: 911-commission-staff-monograph-terrorist-financing-2004, at: "p. 146, note 166", quote: "The SEC is an independent federal agency entrusted with enforcing the federal securities laws."}
 ---

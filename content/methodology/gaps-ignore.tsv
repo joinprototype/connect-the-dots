@@ -31,3 +31,7 @@ little-boy	same_as	Q18151808	right id already; Q18151808 is a film
 anthony-russo	same_as	Q18018415	right id already; Q18018415 is a film director
 patrick-dennis	same_as	Q222708	a novelist, not the finance author
 robert-tappan-morris	educated_at	massachusetts-institute-of-technology	his degrees are from Harvard; MIT is where he teaches
+institute-of-medicine	part_of	national-research-council	wrong: the IOM (now the National Academy of Medicine) is one of the three National Academies; the NRC was their working arm, not its parent
+dow-chemical	part_of	e-i-du-pont-de-nemours	wrong: Dow and DuPont were separate companies (both under DowDuPont from 2017), neither part of the other
+siege-of-yorktown	involved	kingdom-of-france	duplicate: the entry already names french-monarchy for the French army and fleet
+gao	part_of	us-congress	loose: GAO calls itself an independent agency that works for Congress; it serves Congress, it is not part of it

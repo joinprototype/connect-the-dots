@@ -21,6 +21,13 @@ claims:
     role: "said there had been much abuse"
     src:
       - {s: eldiario-2026-felipe-vi-abusos, at: "Madrid, 16 March 2026", quote: "hay mucho, mucho abuso", by: felipe-vi}
+  - id: c3
+    rel: head_of
+    to: spain
+    when: "2014-06-19/.."
+    title: "King"
+    src:
+      - {s: lamoncloa-state-organisation, at: "Head of the Spanish State", quote: "Following his abdication on 19 June 2014, his son Felipe VI became the King of Spain."}
 ---
 
 King of Spain since 2014; addressee of the Mexican president's 2019 letter.

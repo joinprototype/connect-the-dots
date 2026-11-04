@@ -87,6 +87,11 @@ claims:
       - {s: nyt-sltrib-2020-gai, at: "Article", quote: "In 2017, Google, for example, donated $200,000 to the group and contributed an additional $300,000 in 2018."}
       - {s: gai-invoice-2017-12-14, at: "Invoice", quote: "FROM: Global Antitrust Institute DATE: December 14, 2017 AMOUNT: $100,000.00 RE: P.O. # 429829; General Support"}
       - {s: gai-invoice-2018-08-27, at: "Invoice", quote: "FROM: Global Antitrust Institute DATE: August 27, 2018 AMOUNT: $200,000.00 RE: General Support; Support for Economics Seminars"}
+  - id: c10
+    rel: part_of
+    to: alphabet
+    src:
+      - {s: alphabet-ir-2015-letter, quote: "Google will become a wholly-owned subsidiary of Alphabet."}
 ---
 
 Google raised $25 million in 1999 in a round co-led by [[kleiner-perkins]], whose partner [[john-doerr]] joined its board. In 2004 it bought [[keyhole-inc|Keyhole]], an [[in-q-tel]] portfolio company, and turned its software into [[google-earth]].
