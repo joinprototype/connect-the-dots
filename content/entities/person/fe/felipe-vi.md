@@ -21,6 +21,12 @@ claims:
     role: "said there had been much abuse"
     src:
       - {s: eldiario-2026-felipe-vi-abusos, at: "Madrid, 16 March 2026", quote: "hay mucho, mucho abuso", by: felipe-vi}
+  - id: c3
+    rel: head_of
+    to: spain
+    title: "King"
+    src:
+      - {s: lamoncloa-constitution-title-2, quote: "The King is the Head of State, the symbol of its unity and permanence."}
 ---
 
 King of Spain since 2014; addressee of the Mexican president's 2019 letter.

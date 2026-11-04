@@ -6,5 +6,11 @@ name: "Algeria"
 summary: "Country in North Africa; the last to use leaded petrol for road vehicles, until July 2021."
 same_as: {wikidata: Q262}
 coords: [1.0, 28.0]
-claims: []
+claims:
+  - id: c1
+    rel: member_of
+    to: opec
+    when: "1969"
+    src:
+      - {s: opec-brief-history, quote: "Algeria (1969)"}
 ---

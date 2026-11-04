@@ -20,4 +20,9 @@ claims:
     when: "2021-10"
     src:
       - {s: gao-2021-mmiw, at: "highlights page", quote: "Highlights of GAO-22-104045, a report to congressional requesters"}
+  - id: c3
+    rel: part_of
+    to: us-congress
+    src:
+      - {s: gao-about, quote: "is an independent, non-partisan agency that works for Congress"}
 ---

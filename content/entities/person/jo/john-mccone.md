@@ -43,4 +43,13 @@ claims:
     src:
       - {s: senate-church-covert-action-in-chile-1975, quote: "John McCone telephoned CIA Director Richard Helms."}
       - {s: senate-church-covert-action-in-chile-1975, quote: "McCone does not receive a responsefrom either man."}
+  - id: c6
+    rel: chair_of
+    to: atomic-energy-commission
+    when: "1958-07-14/1961-01-20"
+    title: "Chairman"
+    src:
+      - {s: energy-gov-aec-history, quote: "John A. McCone, Chairman"}
+      - {s: energy-gov-aec-history, quote: "July 14, 1958"}
+      - {s: energy-gov-aec-history, quote: "January 20, 1961"}
 ---
