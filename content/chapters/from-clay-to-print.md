@@ -9,7 +9,7 @@ summary: The earliest known writing kept accounts in Uruk. About 4,700 years lat
 
 Writing did not begin with poems or scripture. The earliest known writing kept accounts. This story follows one line from those accounts to a printed Bible about 4,700 years later, by way of an alphabet, the oldest surviving copies, two translations and a press.
 
-It is one line among many. Writing in Asia is not thought to come from Sumer, and movable type came first in China and Korea. Belief is told here as belief and scholarship as scholarship, and where a step rests on one tradition or one scholar, the story says so. A connection is not evidence of influence.
+It is one line among many. Egyptian, Chinese and Maya writing, and the paper and type that came from Asia, are told along the way. Writing in Asia is not thought to come from Sumer, and movable type came first in China and Korea. Belief is told here as belief and scholarship as scholarship, and where a step rests on one tradition or one scholar, the story says so. A connection is not evidence of influence.
 
 ```scene
 - shot: open
@@ -33,6 +33,38 @@ It is one line among many. Writing in Asia is not thought to come from Sumer, an
   overlay: {kind: quote, source: bm-2021-01-21-how-to-write-cuneiform, quote: "First developed by scribes as a bookkeeping tool to keep track of bread and beer rations in ancient cities like Uruk (in the south east of modern-day Iraq)", caption: "British Museum, How to write cuneiform, 21 January 2021"}
   narration: "**Bread and beer.** Around 3200 BCE the temple estates of Uruk, in today's Iraq, needed to keep accounts. Scribes drew signs on clay to track rations of bread and beer. The earliest known writing was bookkeeping."
   duration: 11
+
+- shot: signs-that-sound
+  view: map
+  camera: {center: [30.4, 31.4], zoom: 5.6, duration: 4}
+  places: [rosetta]
+  time: "-0195"
+  reveal: [rosetta-stone, decipherment-of-hieroglyphs, jean-francois-champollion, lettre-a-m-dacier, rosetta]
+  reveal_claims: [rosetta-stone#c1, rosetta-stone#c2, decipherment-of-hieroglyphs#c1, jean-francois-champollion#c1]
+  overlay: {kind: quote, source: champollion-1822-lettre-a-dacier, quote: "il s’agit de la série des hiéroglyphes qui, faisant exception à la nature générale des signes de cette écriture, étaient doués de la faculté d’exprimer les sons des mots", caption: "Jean-François Champollion, Lettre à M. Dacier, 1822 (in French: a series of hieroglyphs that could express the sounds of words)"}
+  narration: "**Signs that sound.** In 196 BCE Egyptian priests had one decree cut three times on a stone: in hieroglyphs, in demotic and in Greek. Soldiers of Napoleon's army found it in 1799 near Rosetta. Hieroglyphs had gone out of use by the end of the fourth century CE, and nobody could read them. The British Museum credits Thomas Young with the first sound-signs, a royal name, and Champollion with the next step. His 1822 letter reads the names of Greek and Roman rulers."
+  duration: 14
+
+- shot: questions-on-bone
+  view: map
+  camera: {center: [114.3, 36.1], zoom: 5.6, pitch: 30, duration: 5}
+  places: [yinxu]
+  time: "-1199~"
+  reveal: [oracle-bones, discovery-of-the-oracle-bones, yinxu]
+  reveal_claims: [oracle-bones#c1, discovery-of-the-oracle-bones#c1, discovery-of-the-oracle-bones#c2]
+  overlay: {kind: quote, source: lindahall-wang-yirong, quote: "Liu published the first paper on dragon-bone characters in 1903, arguing that the bones contained records of the oldest Chinese writing.", caption: "Linda Hall Library, on Wang Yirong and Liu E"}
+  narration: "**Questions on bone.** Chinese writing is not told here as a branch of the Sumerian line. A year before he died in 1900, Wang Yirong of the Imperial Academy bought \"dragon bones\" sold as medicine and saw signs on them like early Chinese characters. They were traced to Yinxu, near Anyang, once the Shang capital. The Linda Hall Library says diviners heated ox shoulder blades and turtle shells and read the cracks beside the written questions. Hundreds of thousands have been dug up."
+  duration: 14
+
+- shot: a-script-read-again
+  view: graph
+  focus: decipherment-of-maya-script
+  time: "1562"
+  reveal: [maya-script, burning-of-maya-books-1562, diego-de-landa, relation-of-the-things-of-yucatan, decipherment-of-maya-script, yuri-knorozov, tatiana-proskouriakoff]
+  reveal_claims: [burning-of-maya-books-1562#c2, diego-de-landa#c1, relation-of-the-things-of-yucatan#c1, decipherment-of-maya-script#c1, decipherment-of-maya-script#c2]
+  overlay: {kind: quote, source: pbs-nova-cracking-the-maya-code-timeline, quote: "Landa orchestrated the burning in 1562 of hundreds if not thousands of Maya bark-paper books, which he deemed heretical.", caption: "NOVA, Cracking the Maya Code, PBS"}
+  narration: "**A script read again.** The Maya had a script of more than 800 signs. After the Spanish conquest its meaning was lost. NOVA says the friar Diego de Landa orchestrated the burning of Maya books in 1562, yet his later manuscript helped scholars decode the calendar. In 1952 Yuri Knorozov argued that signs stood for sounds. Tatiana Proskouriakoff showed that carved figures were kings. Scholars can now read over 90 percent of the glyphs, NOVA says."
+  duration: 14
 
 - shot: letters
   view: map
@@ -115,6 +147,17 @@ It is one line among many. Writing in Asia is not thought to come from Sumer, an
   narration: "**What the language shows.** Encyclopaedia Britannica calls the Letter of Aristeas unreliable. Analysis of the Greek places the Torah's translation near the middle of the third century BCE, and the rest of the Old Testament in the second."
   duration: 12
 
+- shot: the-library
+  view: map
+  camera: {center: [29.9, 31.2], zoom: 5.2, duration: 4}
+  places: [alexandria]
+  time: "-0047"
+  reveal: [library-of-alexandria, fire-at-alexandria-48-bce, julius-caesar, tale-of-the-caliph-and-the-library, alexandria]
+  reveal_claims: [library-of-alexandria#c1, fire-at-alexandria-48-bce#c1, fire-at-alexandria-48-bce#c2, tale-of-the-caliph-and-the-library#c1]
+  overlay: {kind: quote, source: gellius-attic-nights-loeb, quote: "By no means all of the Alexandrian Library was destroyed at that time, and the losses were made good, at least in part, by Antony in 41 B.C.", caption: "Editor's note to Aulus Gellius, Attic Nights, Loeb Classical Library"}
+  narration: "**The library.** Gellius gives nearly 700,000 books gathered under the Ptolemies and says they burned in the war of 48 BCE, by accident, set by auxiliary soldiers. Plutarch says Caesar used fire against the enemy and it spread from the dockyards and destroyed the great library. The Loeb editor adds that much survived. A popular tale blames the caliph Umar in 641 CE; Bernard Lewis writes that its earliest source dates from 1203, and calls it a myth."
+  duration: 15
+
 - shot: into-latin
   view: map
   camera: {center: [24, 40], zoom: 3.3, duration: 5}
@@ -126,6 +169,29 @@ It is one line among many. Writing in Asia is not thought to come from Sumer, an
   overlay: {kind: quote, source: britannica-biblical-literature-versions, quote: "By the end of 405 he had executed his own Latin translation of the entire Old Testament based on the “Hebrew truth” (Hebraica veritas).", caption: "Robert M. Grant, Encyclopaedia Britannica"}
   narration: "**Into Latin.** In 382 Pope Damasus asked Jerome for one acceptable Latin Bible. Settled in Bethlehem by 386, Jerome turned from the Greek to the Hebrew and finished his Old Testament by the end of 405. His Latin became known as the Vulgate."
   duration: 13
+
+- shot: paper
+  view: map
+  camera: {center: [30, 38], zoom: 2.9, duration: 6}
+  places: [samarkand, baghdad, xativa]
+  routes: [[samarkand, baghdad], [baghdad, xativa]]
+  time: "0751"
+  reveal: [paper, cai-lun, hou-hanshu, papermaking-reaches-samarkand, papermaking-reaches-baghdad, papermaking-reaches-spain, samarkand, baghdad, xativa]
+  reveal_claims: [cai-lun#c1, cai-lun#c2, paper#c1, paper#c2, paper#c3]
+  overlay: {kind: quote, source: carter-1925-hou-hanshu-cai-lun, quote: "Then Ts’ai Lun thought of using tree bark, hemp, rags and fish nets.", caption: "Hou Hanshu, fifth century, in Thomas Carter's translation"}
+  narration: "**Paper.** Silk was dear and bamboo heavy, the Hou Hanshu says, so the court official Cai Lun reported paper made of bark, hemp, rags and fish nets in 105 CE. Carter, in 1925, says it is uncertain whether he invented it or only backed it. By the Arabic annals, Chinese prisoners taught papermaking at Samarkand in 751. Baghdad had a paper factory in 793-794, and Spain's paper was praised in 1150. This line shows the order, not one road."
+  duration: 15
+
+- shot: type-before-gutenberg
+  view: map
+  camera: {center: [120, 37], zoom: 3.6, duration: 6}
+  places: [cheongju]
+  time: "1377"
+  reveal: [bi-sheng, shen-kuo, dream-pool-essays, movable-type, jikji, printing-of-the-jikji, cheongju]
+  reveal_claims: [bi-sheng#c1, shen-kuo#c1, printing-of-the-jikji#c1, printing-of-the-jikji#c2, jikji#c2]
+  overlay: {kind: stat, value: "78 years", label: "Between the Jikji (1377) and the Gutenberg Bible, by the Bibliothèque nationale de France", source: bnf-jikji-treasure-of-printing, quote: "Jikji is the oldest known book in the world printed with movable metal type. It was printed in 1377 in what is now the city of Cheongju (Republic of Korea), 78 years before the Gutenberg Bible."}
+  narration: "**Type before Gutenberg.** Shen Kuo describes Bi Sheng, a commoner who in 1041-1049 cut characters in clay, baked them and set them in an iron frame. Carter says his type was never greatly used. In 1377 the Jikji, a Buddhist text, was printed with cast metal type at a temple in Cheongju, Korea. Carter found no evidence that Far Eastern type led to Gutenberg's."
+  duration: 15
 
 - shot: into-type
   view: map

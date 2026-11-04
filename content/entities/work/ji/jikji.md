@@ -15,6 +15,13 @@ claims:
     src:
       - {s: unesco-jikji-prize, at: "opening paragraph", quote: "the Buljo jikji simche yojeol, the oldest existing book of movable metal print in the world"}
       - {s: britannica-printing-press, at: "opening paragraph", quote: "Movable type and paper were invented in China, and the oldest known extant book printed from movable type was created in Korea in the 14th century."}
+  - id: c2
+    rel: written_at
+    to: cheongju
+    when: "1377"
+    note: "The BnF says the copy it holds, the second volume, was printed at the Heungdeok temple in Cheongju."
+    src:
+      - {s: bnf-jikji-treasure-of-printing, at: "section \"A treasure of humanity\"", quote: "Dating from 1377, Jikji was printed in the Heungdeok-sa temple in Cheongju, using movable, cast metal characters."}
 ---
 
 The Jikji is older than the [[gutenberg-bible]], and like it was printed from [[movable-type]]. UNESCO names a prize after it.
