@@ -1,23 +1,23 @@
 //! connect-the-dot engine.
 
-pub mod answers;
+pub(crate) mod answers;
 pub mod atlas;
-pub mod covers;
+pub(crate) mod covers;
 pub mod diag;
-pub mod doors;
-pub mod edtf;
+pub(crate) mod doors;
+pub(crate) mod edtf;
 pub mod fmt;
 pub mod gaps;
 pub mod ids;
 pub mod kb;
-pub mod load;
-pub mod markdown;
-pub mod model;
+pub(crate) mod load;
+pub(crate) mod markdown;
+pub(crate) mod model;
 pub mod paths;
 pub mod schema;
 pub mod serve;
 pub mod site;
-pub mod stories;
+pub(crate) mod stories;
 pub mod synthetic;
 #[cfg(test)]
 mod testkit;

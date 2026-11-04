@@ -18,8 +18,6 @@ use crate::kb::Kb;
 
 /// Files the entries are packed into: what keeps a million entries under a host's limit on files.
 pub const SHARDS: u32 = 2048;
-/// A map node id from here up is an atlas entry: the rest is its Wikidata number.
-pub const ATLAS_IDS: u32 = 1 << 31;
 /// How many links of one kind an entry lists, best known first.
 const PER_PHRASE: usize = 40;
 /// Long lists go on past that in this many files, whatever the number of entries: a reader who asks
@@ -183,8 +181,7 @@ impl Atlas {
 
 /// Entries written by hand, by Wikidata number: the atlas points to them instead of standing in.
 pub fn curated(kb: &Kb) -> HashMap<u32, usize> {
-    let wikidata = |e: &crate::kb::Entity| e.same_as.get("wikidata").map(|v| v.to_string().trim_matches('"').to_string());
-    kb.entities.iter().enumerate().filter_map(|(i, e)| wikidata(e).and_then(|q| number(&q)).map(|q| (q, i))).collect()
+    kb.entities.iter().enumerate().filter_map(|(i, e)| e.same_as.get("wikidata").and_then(|q| number(q)).map(|q| (q, i))).collect()
 }
 
 /// Each entry's step towards its nearest landmark, and what a route needs from the landmarks' side.

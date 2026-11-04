@@ -6,6 +6,9 @@ New ideas land in **Inbox** first. At sprint planning each one moves into a spri
 
 _Add ideas here with date and who suggested them._
 
+- 2026-11-04, code review: `gaps.rs` keeps every pair's distance (`Scan::apart`, n² bytes: 12 MB at 3,453 entries, 900 MB at 30,000). Only distances up to 5 are read, for the pairs leads ask about. Replace it before the hand-written record passes about 20,000 entries.
+- 2026-11-04, code review: three renderers word a link's proof differently (`read/stops.ts`, `place/words.ts`, `ask/answers.ts`: "Archived copy" against "Saved copy"); share one in `lib/`. The atlas rows still carry a dummy `[0,0]` spot on both sides (`atlas.rs`, `lib/atlas.ts`).
+
 - 2026-10-16 (Sprint 1 self-check): decide time-slider semantics (snapshot vs cumulative history).
 - ~~2026-10-16 (Sprint 1 self-check): golden test that the TS explorer and Rust `ctd path` return identical paths and costs.~~ Done in Sprint 14: `tools/qa/paths-golden.mjs`, which found a hop-limit bug in the Rust one.
 - 2026-10-30 (Sprint 16): try the site on a real iPhone and Android phone: the iOS zoom fix, pinch and drag in the explorer and the Map, the morph, and Listen.
