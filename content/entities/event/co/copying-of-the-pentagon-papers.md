@@ -39,4 +39,13 @@ claims:
     to: new-york-times-co-v-united-states
     src:
       - {s: scotus-403-us-713-nyt-v-us, at: "per curiam, 403 U.S. at 714", quote: "a classified study entitled \"History of U. S. Decision-Making Process on Viet Nam Policy.\""}
+  - id: c6
+    rel: involved
+    to: daniel-ellsberg
+    role: "made the study public to seek a change in Vietnam policy, by his later account"
+    according_to: [daniel-ellsberg]
+    note: "In a 1973 interview, Ellsberg said people outside the executive branch needed to be able to read the study and learn from it."
+    src:
+      - {s: fjc-pentagon-papers-federal-courts-2019, at: "pp. 103–104, Ellsberg interview in Reason, June 1973", quote: "So the papers had to leave my safe.", by: daniel-ellsberg}
+      - {s: fjc-pentagon-papers-federal-courts-2019, at: "pp. 103–104, Ellsberg interview in Reason, June 1973", quote: "A very important secondary objective—second only to the objective of getting a change in our Vietnam policy—was the hope of changing the tolerance of Executive secrecy", by: daniel-ellsberg}
 ---
