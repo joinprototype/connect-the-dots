@@ -2,6 +2,13 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## Next
+
+- Two new stories: The Mongol Empire, from Temüjin to the fall of the Yuan in 1368, every death toll the chronicler's own; and Built to Last, what Kublai's capital and the Mughals built, what they took from others, and what later builders took from them.
+- Three stories go deeper. The Rise and Fall of the Soviet Union now spends most of its 20 scenes on why the Union ended: grain, oil, the treasury, the arms race, Chernobyl, the republics, the coup and Ukraine's vote, each explanation in its holder's name. Thirteen Days runs 20 scenes, with the U-2 photographs, submarine B-59 and the secret deal over the missiles in Turkey. We Choose the Moon adds Sputnik, Gagarin, the cost counted two ways and who stopped the landings.
+- The stories a story suggests next share truer names: an old rule had dropped any entry whose name held a word like "States" or "Committee".
+- The puzzle's trail no longer breaks beside an open proof.
+
 ## 0.5.8 (2026-11-04)
 
 - The Sealed Train says what Berlin's million roubles for Parvus is in today's money: about $10 million at 2026 prices, or nearly half a tonne of gold, with the sums and their sources at the end of the story.
