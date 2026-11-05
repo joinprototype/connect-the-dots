@@ -1,5 +1,5 @@
 ---
-uid: 01M6MFNPFFRHTZJKRHAVPEJH8N
+uid: 01M6MGQP25VVZTXVDM0P6MKD6Z
 id: burning-of-maya-books-1562
 type: event
 name: "Burning of Maya books, 1562"

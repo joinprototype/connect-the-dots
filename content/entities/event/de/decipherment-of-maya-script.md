@@ -1,9 +1,9 @@
 ---
-uid: 01M6MFNPFH3ZXHMF33RCGWF31E
+uid: 01M6MGQP2FN47Z648K9V2Y67J2
 id: decipherment-of-maya-script
 type: event
 name: "Decipherment of the Maya script"
-summary: "The recovery of the meaning of Maya glyphs, from the 1830s to today; the key steps of 1952 and the 1950s-60s are Knorozov's and Proskouriakoff's."
+summary: "The recovery of the meaning of Maya glyphs, from the 1830s to today; NOVA's timeline includes Knorozov's reading of 1952 and Proskouriakoff's work on the Piedras Negras stelae."
 when: "1832/1981"
 claims:
   - id: c1

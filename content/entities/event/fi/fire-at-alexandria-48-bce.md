@@ -1,5 +1,5 @@
 ---
-uid: 01M6MFNPFMH1JD15GVHQ52WHJF
+uid: 01M6MGQP2W3EV619AWB9K0H4M0
 id: fire-at-alexandria-48-bce
 type: event
 name: "Fire at Alexandria, 48 BCE"
@@ -11,6 +11,11 @@ claims:
     rel: involved
     to: julius-caesar
     role: "Plutarch: he used fire to repel the danger"
+    src:
+      - {s: plutarch-life-of-caesar-loeb, at: "Life of Caesar 49", quote: "was forced to repel the danger by using fire, and this spread from the dockyards and destroyed the great library;"}
+  - id: c3
+    rel: part_of
+    to: alexandrian-war
     src:
       - {s: plutarch-life-of-caesar-loeb, at: "Life of Caesar 49", quote: "was forced to repel the danger by using fire, and this spread from the dockyards and destroyed the great library;"}
   - id: c2

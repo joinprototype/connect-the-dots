@@ -1,5 +1,5 @@
 ---
-uid: 01M6MFNPHQPHQRGGT3VHJ7849B
+uid: 01M6MGQPF32FF0DKZ9G3YPR9Q9
 id: dream-pool-essays
 type: work
 name: "Dream Pool Essays"

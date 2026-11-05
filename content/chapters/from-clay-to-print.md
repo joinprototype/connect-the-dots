@@ -39,10 +39,10 @@ It is one line among many. Egyptian, Chinese and Maya writing, and the paper and
   camera: {center: [30.4, 31.4], zoom: 5.6, duration: 4}
   places: [rosetta]
   time: "-0195"
-  reveal: [rosetta-stone, decipherment-of-hieroglyphs, jean-francois-champollion, lettre-a-m-dacier, rosetta]
-  reveal_claims: [rosetta-stone#c1, rosetta-stone#c2, decipherment-of-hieroglyphs#c1, jean-francois-champollion#c1]
-  overlay: {kind: quote, source: champollion-1822-lettre-a-dacier, quote: "il s’agit de la série des hiéroglyphes qui, faisant exception à la nature générale des signes de cette écriture, étaient doués de la faculté d’exprimer les sons des mots", caption: "Jean-François Champollion, Lettre à M. Dacier, 1822 (in French: a series of hieroglyphs that could express the sounds of words)"}
-  narration: "**Signs that sound.** In 196 BCE Egyptian priests had one decree cut three times on a stone: in hieroglyphs, in demotic and in Greek. Soldiers of Napoleon's army found it in 1799 near Rosetta. Hieroglyphs had gone out of use by the end of the fourth century CE, and nobody could read them. The British Museum credits Thomas Young with the first sound-signs, a royal name, and Champollion with the next step. His 1822 letter reads the names of Greek and Roman rulers."
+  reveal: [rosetta-stone, discovery-of-the-rosetta-stone, decipherment-of-hieroglyphs, jean-francois-champollion, lettre-a-m-dacier, rosetta]
+  reveal_claims: [rosetta-stone#c1, discovery-of-the-rosetta-stone#c1, decipherment-of-hieroglyphs#c1, decipherment-of-hieroglyphs#c2]
+  overlay: {kind: quote, source: champollion-1822-lettre-a-dacier, quote: "il s’agit de la série des hiéroglyphes qui, faisant exception à la nature générale des signes de cette écriture, étaient doués de la faculté d’exprimer les sons des mots", caption: "Jean-François Champollion, Lettre à M. Dacier, 1822 (in French: a series of hieroglyphs that, as an exception to the general nature of the script, could express the sounds of words)"}
+  narration: "**Signs that sound.** In 196 BCE Egyptian priests had one decree cut three times on a stone: in hieroglyphs, demotic and Greek. Soldiers of Napoleon's army found it in 1799 near Rosetta, and it has been in the British Museum since 1802. The Museum says Thomas Young was first to show that some signs spelled the sounds of a royal name, Ptolemy's. In 1822 Champollion wrote that a few hieroglyphs, an exception in the script, spelled the names of Greek and Roman rulers."
   duration: 14
 
 - shot: questions-on-bone
@@ -50,20 +50,20 @@ It is one line among many. Egyptian, Chinese and Maya writing, and the paper and
   camera: {center: [114.3, 36.1], zoom: 5.6, pitch: 30, duration: 5}
   places: [yinxu]
   time: "-1199~"
-  reveal: [oracle-bones, discovery-of-the-oracle-bones, yinxu]
-  reveal_claims: [oracle-bones#c1, discovery-of-the-oracle-bones#c1, discovery-of-the-oracle-bones#c2]
+  reveal: [oracle-bones, discovery-of-the-oracle-bones, tracing-of-the-oracle-bones-to-yinxu, yinxu, shang-dynasty]
+  reveal_claims: [discovery-of-the-oracle-bones#c1, discovery-of-the-oracle-bones#c2, tracing-of-the-oracle-bones-to-yinxu#c1, yinxu#c1, shang-dynasty#c1]
   overlay: {kind: quote, source: lindahall-wang-yirong, quote: "Liu published the first paper on dragon-bone characters in 1903, arguing that the bones contained records of the oldest Chinese writing.", caption: "Linda Hall Library, on Wang Yirong and Liu E"}
-  narration: "**Questions on bone.** Chinese writing is not told here as a branch of the Sumerian line. A year before he died in 1900, Wang Yirong of the Imperial Academy bought \"dragon bones\" sold as medicine and saw signs on them like early Chinese characters. They were traced to Yinxu, near Anyang, once the Shang capital. The Linda Hall Library says diviners heated ox shoulder blades and turtle shells and read the cracks beside the written questions. Hundreds of thousands have been dug up."
+  narration: "**Questions on bone.** Chinese writing is not told here as a branch of the Sumerian line. As the Linda Hall Library tells it, Wang Yirong of the Imperial Academy bought \"dragon bones\" from a pharmacist in 1899 and saw signs on them like early Chinese characters. After 1909 they were traced to Yinxu, the late Shang capital. Diviners heated the bones and read the cracks beside written questions; hundreds of thousands have been dug up."
   duration: 14
 
 - shot: a-script-read-again
   view: graph
   focus: decipherment-of-maya-script
   time: "1562"
-  reveal: [maya-script, burning-of-maya-books-1562, diego-de-landa, relation-of-the-things-of-yucatan, decipherment-of-maya-script, yuri-knorozov, tatiana-proskouriakoff]
+  reveal: [maya-script, burning-of-maya-books-1562, diego-de-landa, relation-of-the-things-of-yucatan, decipherment-of-maya-script, yuri-knorozov, tatiana-proskouriakoff, knorozovs-papers-published-in-the-us, proskouriakoffs-study-of-the-piedras-negras-stelae]
   reveal_claims: [burning-of-maya-books-1562#c2, diego-de-landa#c1, relation-of-the-things-of-yucatan#c1, decipherment-of-maya-script#c1, decipherment-of-maya-script#c2]
   overlay: {kind: quote, source: pbs-nova-cracking-the-maya-code-timeline, quote: "Landa orchestrated the burning in 1562 of hundreds if not thousands of Maya bark-paper books, which he deemed heretical.", caption: "NOVA, Cracking the Maya Code, PBS"}
-  narration: "**A script read again.** The Maya had a script of more than 800 signs. After the Spanish conquest its meaning was lost. NOVA says the friar Diego de Landa orchestrated the burning of Maya books in 1562, yet his later manuscript helped scholars decode the calendar. In 1952 Yuri Knorozov argued that signs stood for sounds. Tatiana Proskouriakoff showed that carved figures were kings. Scholars can now read over 90 percent of the glyphs, NOVA says."
+  narration: "**A script read again.** The Maya had a script of more than 800 signs; after the Spanish conquest its meaning was lost. NOVA says the friar Diego de Landa orchestrated the burning of Maya books in 1562, and that his later manuscript helped scholars decode the calendar. It tells of Yuri Knorozov arguing in 1952 that signs stood for sounds, and of Tatiana Proskouriakoff showing that carved figures were kings. NOVA says scholars can read over 90 percent of the glyphs."
   duration: 14
 
 - shot: letters
@@ -152,10 +152,10 @@ It is one line among many. Egyptian, Chinese and Maya writing, and the paper and
   camera: {center: [29.9, 31.2], zoom: 5.2, duration: 4}
   places: [alexandria]
   time: "-0047"
-  reveal: [library-of-alexandria, fire-at-alexandria-48-bce, julius-caesar, tale-of-the-caliph-and-the-library, alexandria]
-  reveal_claims: [library-of-alexandria#c1, fire-at-alexandria-48-bce#c1, fire-at-alexandria-48-bce#c2, tale-of-the-caliph-and-the-library#c1]
-  overlay: {kind: quote, source: gellius-attic-nights-loeb, quote: "By no means all of the Alexandrian Library was destroyed at that time, and the losses were made good, at least in part, by Antony in 41 B.C.", caption: "Editor's note to Aulus Gellius, Attic Nights, Loeb Classical Library"}
-  narration: "**The library.** Gellius gives nearly 700,000 books gathered under the Ptolemies and says they burned in the war of 48 BCE, by accident, set by auxiliary soldiers. Plutarch says Caesar used fire against the enemy and it spread from the dockyards and destroyed the great library. The Loeb editor adds that much survived. A popular tale blames the caliph Umar in 641 CE; Bernard Lewis writes that its earliest source dates from 1203, and calls it a myth."
+  reveal: [library-of-alexandria, alexandrian-war, fire-at-alexandria-48-bce, julius-caesar, tale-of-the-caliph-and-the-library, alexandria]
+  reveal_claims: [library-of-alexandria#c1, alexandrian-war#c1, fire-at-alexandria-48-bce#c1, fire-at-alexandria-48-bce#c2, tale-of-the-caliph-and-the-library#c1]
+  overlay: {kind: quote, source: gellius-attic-nights-loeb, quote: "By no means all of the Alexandrian Library was destroyed at that time", caption: "Editor's note to Aulus Gellius, Attic Nights, Loeb Classical Library"}
+  narration: "**The library.** The Roman writer Gellius gives nearly 700,000 books gathered under the Ptolemies and says they burned in the war of 48 BCE, by accident, set by auxiliary soldiers. Plutarch says Caesar used fire against the enemy and it spread from the dockyards and destroyed the great library. The Loeb editor notes that not all of it was destroyed. A tale first written down about 1203 says the caliph Umar had it burned after the conquest of 641; Bernard Lewis calls it a myth."
   duration: 15
 
 - shot: into-latin
@@ -179,7 +179,7 @@ It is one line among many. Egyptian, Chinese and Maya writing, and the paper and
   reveal: [paper, cai-lun, hou-hanshu, papermaking-reaches-samarkand, papermaking-reaches-baghdad, papermaking-reaches-spain, samarkand, baghdad, xativa]
   reveal_claims: [cai-lun#c1, cai-lun#c2, paper#c1, paper#c2, paper#c3]
   overlay: {kind: quote, source: carter-1925-hou-hanshu-cai-lun, quote: "Then Ts’ai Lun thought of using tree bark, hemp, rags and fish nets.", caption: "Hou Hanshu, fifth century, in Thomas Carter's translation"}
-  narration: "**Paper.** Silk was dear and bamboo heavy, the Hou Hanshu says, so the court official Cai Lun reported paper made of bark, hemp, rags and fish nets in 105 CE. Carter, in 1925, says it is uncertain whether he invented it or only backed it. By the Arabic annals, Chinese prisoners taught papermaking at Samarkand in 751. Baghdad had a paper factory in 793-794, and Spain's paper was praised in 1150. This line shows the order, not one road."
+  narration: "**Paper.** The Hou Hanshu says silk was dear and bamboo heavy, so the court official Cai Lun reported paper made of bark, hemp, rags and fish nets in 105 CE; Carter, in 1925, says it is uncertain whether he invented it. An Arabic story, which Carter relays, says Chinese prisoners taught papermaking at Samarkand in 751; Jonathan Bloom, as History of Information reports, finds that unlikely, since paper was in use there earlier. Carter also dates a Baghdad paper factory to 793-794 and praise of Spain's paper to 1150."
   duration: 15
 
 - shot: type-before-gutenberg
@@ -187,10 +187,10 @@ It is one line among many. Egyptian, Chinese and Maya writing, and the paper and
   camera: {center: [120, 37], zoom: 3.6, duration: 6}
   places: [cheongju]
   time: "1377"
-  reveal: [bi-sheng, shen-kuo, dream-pool-essays, movable-type, jikji, printing-of-the-jikji, cheongju]
-  reveal_claims: [bi-sheng#c1, shen-kuo#c1, printing-of-the-jikji#c1, printing-of-the-jikji#c2, jikji#c2]
+  reveal: [bi-sheng, bi-shengs-clay-type, shen-kuo, dream-pool-essays, movable-type, jikji, printing-of-the-jikji, cheongju]
+  reveal_claims: [bi-shengs-clay-type#c1, shen-kuo#c1, printing-of-the-jikji#c1, printing-of-the-jikji#c2, jikji#c2]
   overlay: {kind: stat, value: "78 years", label: "Between the Jikji (1377) and the Gutenberg Bible, by the Bibliothèque nationale de France", source: bnf-jikji-treasure-of-printing, quote: "Jikji is the oldest known book in the world printed with movable metal type. It was printed in 1377 in what is now the city of Cheongju (Republic of Korea), 78 years before the Gutenberg Bible."}
-  narration: "**Type before Gutenberg.** Shen Kuo describes Bi Sheng, a commoner who in 1041-1049 cut characters in clay, baked them and set them in an iron frame. Carter says his type was never greatly used. In 1377 the Jikji, a Buddhist text, was printed with cast metal type at a temple in Cheongju, Korea. Carter found no evidence that Far Eastern type led to Gutenberg's."
+  narration: "**Type before Gutenberg.** Shen Kuo describes Bi Sheng, a commoner who in 1041-1049 cut characters in clay, baked them and set them in an iron frame; Carter says it was never greatly used. In 1377 the Jikji, a Buddhist text, was printed with cast metal type at a temple in Cheongju, Korea. Carter, in 1925, before the West knew the Jikji, found no clear link to Gutenberg and kept an open mind."
   duration: 15
 
 - shot: into-type

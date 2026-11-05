@@ -1,13 +1,19 @@
 ---
-uid: 01M6MFNPFHR0Q7JAH5M48A4ZSD
+uid: 01M6MGQP2F7D1XWDW28YPZ2WRW
 id: decipherment-of-hieroglyphs
 type: event
 name: "Decipherment of Egyptian hieroglyphs"
 in_sentence: "the decipherment of Egyptian hieroglyphs"
-summary: "The reading of Egyptian hieroglyphs again, after their meaning was lost in the fourth century CE; Champollion's letter of 1822 is the landmark."
+summary: "The reading of Egyptian hieroglyphs again, after their meaning was lost soon after the fourth century CE; Champollion's letter of 1822 is a landmark."
 when: "1822"
 place: paris
 claims:
+  - id: c2
+    rel: involved
+    to: jean-francois-champollion
+    role: "the Museum credits him with realizing that hieroglyphs recorded sounds"
+    src:
+      - {s: bm-gac-rosetta-stone, at: "paragraph on decipherment", quote: "The French scholar Jean-François Champollion then realized that hieroglyphs recorded the sound of the Egyptian language and laid the foundations of our knowledge of ancient Egyptian language and culture."}
   - id: c1
     rel: appears_in
     to: lettre-a-m-dacier

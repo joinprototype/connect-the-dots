@@ -1,9 +1,9 @@
 ---
-uid: 01M6MFNPGX6DDCHN11DZJ223D5
+uid: 01M6MGQPA7JGQ2DMD1NYT5VF7G
 id: diego-de-landa
 type: person
 name: "Diego de Landa"
-summary: "Spanish friar in Yucatán who ordered Maya books burned in 1562 and wrote a Relation of the Things of Yucatan four years later."
+summary: "Spanish friar in Yucatán who, according to NOVA, orchestrated the burning of Maya books in 1562 and wrote a Relation of the Things of Yucatan four years later."
 same_as: {wikidata: Q379672}
 claims:
   - id: c1

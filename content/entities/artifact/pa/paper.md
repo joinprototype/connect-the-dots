@@ -1,5 +1,5 @@
 ---
-uid: 01M6MFNPFATBGFW526X2E22MKQ
+uid: 01M6MGQP14KJ74R48DGPQK58V2
 id: paper
 type: artifact
 name: "Paper"
@@ -16,6 +16,12 @@ claims:
     to: papermaking-reaches-baghdad
     src:
       - {s: carter-1925-invention-of-printing, at: "chapter on the spread westward", quote: "In the year 793-794 Harun-al-Rashid of Arabian Nights fame brought Chinese workmen for the starting of the first paper factory in the capital."}
+  - id: c4
+    rel: appears_in
+    to: hou-hanshu
+    role: "why a new material was wanted, in the history's words"
+    src:
+      - {s: carter-1925-hou-hanshu-cai-lun, at: "biography of Ts'ai Lun", quote: "But silk being expensive and bamboo heavy, these two materials were not convenient.", by: hou-hanshu}
   - id: c3
     rel: led_to
     to: papermaking-reaches-spain

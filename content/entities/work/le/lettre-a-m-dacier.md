@@ -1,5 +1,5 @@
 ---
-uid: 01M6MFNPHVMMFDAGS1EHFFTWHA
+uid: 01M6MGQPFRN79NGQA8C36HEGFE
 id: lettre-a-m-dacier
 type: work
 name: "Lettre à M. Dacier"
@@ -9,4 +9,4 @@ when: "1822"
 claims: []
 ---
 
-In French. It argues that a series of hieroglyphs wrote sounds, and uses them to read the names of the Ptolemies and Cleopatra. Read in extract to the Académie in September 1822.
+In French. It argues that a series of hieroglyphs wrote sounds, and uses them to read the names of the Ptolemies and Cleopatra.

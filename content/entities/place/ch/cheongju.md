@@ -1,5 +1,5 @@
 ---
-uid: 01M6MFNPHFJPZ51GR3FX9P5XTS
+uid: 01M6MGQPDJGYV2W5B4QSGY0H2Q
 id: cheongju
 type: place
 name: "Cheongju"

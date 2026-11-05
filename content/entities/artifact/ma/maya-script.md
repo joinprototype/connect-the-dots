@@ -1,5 +1,5 @@
 ---
-uid: 01M6MFNPF9JGGJWM8VHTMJ4S1G
+uid: 01M6MGQP13J3SCEJV8760ZPQXM
 id: maya-script
 type: artifact
 name: "Maya script"

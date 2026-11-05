@@ -1,5 +1,5 @@
 ---
-uid: 01M6MFNPHXAN3TTCK654VQMQB0
+uid: 01M6MGQPG6X64JSETSHEXQ9KAX
 id: relation-of-the-things-of-yucatan
 type: work
 name: "Relation of the Things of Yucatan"
@@ -9,7 +9,7 @@ claims:
   - id: c1
     rel: led_to
     to: decipherment-of-maya-script
-    note: "NOVA ties it to decoding the calendar and numbers; the sounds of the glyphs came from other work."
+    note: "NOVA ties it to decoding the calendar, astronomy and mathematics."
     src:
       - {s: pbs-nova-cracking-the-maya-code-timeline, at: "16th century entry", quote: "Together, this manuscript and the Dresden Codex proved essential in the later decoding of the Maya's calendar system and their advanced understanding of astronomy and mathematics."}
 ---
