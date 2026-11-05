@@ -26,7 +26,7 @@ claims:
     to: cia
     when: "1949"
     src:
-      - {s: nyt-2007-01-24-howard-hunt-obituary, at: "opening paragraphs", quote: "He was a high-spirited 30-year-old novelist who aspired to wealth and power when he joined the C.I.A. in 1949. He set out to live the life he had imagined for himself, a glamorous career as a spy."}
+      - {s: nyt-2007-01-24-howard-hunt-obituary, at: "paragraph on joining the CIA", quote: "he joined the C.I.A. in 1949."}
   - id: c3
     rel: appears_in
     to: hsca-final-report

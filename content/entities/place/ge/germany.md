@@ -20,5 +20,6 @@ claims:
     to: world-bank
     when: "1952-08-14"
     src:
-      - {s: world-bank-member-countries, at: "Member Countries", quote: "Germany, Aug 14, 1952"}
+      - {s: world-bank-germany-overview, at: "Germany and the World Bank", quote: "Today, Germany is the fourth-largest shareholder of the World Bank, where it is represented by an Executive Director. It joined the IBRD in 1952, and the IDA in 1960."}
+      - {s: world-bank-member-countries, at: "International Bank for Reconstruction and Development (IBRD), Country / Date of Membership, Germany", quote: "Germany, Aug 14, 1952"}
 ---
