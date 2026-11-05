@@ -2,7 +2,7 @@
 //! someone to check against a source. Nothing here writes to content/, and a lead is never proof.
 
 use std::{
-    collections::{BTreeSet, HashMap, HashSet, VecDeque},
+    collections::{BTreeSet, HashMap, HashSet},
     fmt::Write as _,
     fs,
     path::Path,
@@ -42,7 +42,8 @@ pub struct Lead {
 pub const KINDS: [&str; 4] = ["ids", "links", "thin", "dots"];
 /// How many imported offers a thin entry lists.
 const OFFERS: usize = 3;
-const NOWHERE: u8 = u8::MAX;
+/// How far apart two entries are counted; anything further, or not joined at all, is this.
+const FAR: u8 = 5;
 
 /// Both ends of every link, by entry, then relation and direction, then best known first (the atlas is
 /// in order of fame). A relation group is a run of this list, so its size costs nothing to read, and a
@@ -93,9 +94,8 @@ struct Scan<'a> {
     /// Atlas entry → hand entry, and the way back.
     hand_of: Vec<Option<u32>>,
     atlas_of: Vec<Option<u32>>,
-    /// Who each hand entry is linked to in the record, how far apart any two are, and its stories.
+    /// Who each hand entry is linked to in the record, and its stories.
     near: Vec<HashSet<u32>>,
-    apart: Vec<Vec<u8>>,
     stories: Vec<BTreeSet<usize>>,
 }
 
@@ -113,7 +113,6 @@ impl<'a> Scan<'a> {
                 near[y].insert(x as u32);
             }
         }
-        let apart = (0..n).map(|from| distances(&near, from)).collect();
         let mut stories = vec![BTreeSet::new(); n];
         for (c, chapter) in kb.chapters.iter().enumerate() {
             for (_, id) in chapter.shots.iter().flat_map(shot_entries) {
@@ -122,7 +121,7 @@ impl<'a> Scan<'a> {
                 }
             }
         }
-        Scan { kb, a, index: Index::new(a), rules, ignored, hand_of, atlas_of, near, apart, stories }
+        Scan { kb, a, index: Index::new(a), rules, ignored, hand_of, atlas_of, near, stories }
     }
 
     fn strong(&self, relation: &str) -> bool {
@@ -134,8 +133,35 @@ impl<'a> Scan<'a> {
         &self.kb.entities[hand as usize].id
     }
 
+    /// Steps between two hand entries in the record, up to FAR (further, or not joined). Two steps out
+    /// from each end meet on any way of four steps or fewer, so no table of every pair is kept: at
+    /// 30,000 entries that table was 900 MB.
     fn apart(&self, a: u32, b: u32) -> u8 {
-        self.apart[a as usize][b as usize]
+        if a == b {
+            return 0;
+        }
+        let (from, to) = (self.ball(a), self.ball(b));
+        let (small, big) = if from.len() <= to.len() { (&from, &to) } else { (&to, &from) };
+        small.iter().filter_map(|(x, d)| big.get(x).map(|e| d + e)).min().unwrap_or(FAR).min(FAR)
+    }
+
+    /// The entries within two steps of one, with their steps.
+    fn ball(&self, from: u32) -> HashMap<u32, u8> {
+        let mut steps = HashMap::from([(from, 0u8)]);
+        let mut edge = vec![from];
+        for step in 1..=2u8 {
+            let mut next = Vec::new();
+            for x in edge {
+                for &y in &self.near[x as usize] {
+                    steps.entry(y).or_insert_with(|| {
+                        next.push(y);
+                        step
+                    });
+                }
+            }
+            edge = next;
+        }
+        steps
     }
 
     fn lead(&self, kind: &'static str, score: f64, from: String, relation: &str, to: String, why: String) -> Option<Lead> {
@@ -193,8 +219,8 @@ impl<'a> Scan<'a> {
             } else {
                 2
             };
-            let far = self.apart(p, q).min(5);
-            let why = format!("{} and {}: {} in the record", from.name, to.name, if far == 5 { "not joined".to_string() } else { format!("{far} apart") });
+            let far = self.apart(p, q);
+            let why = format!("{} and {}: {} in the record", from.name, to.name, if far == FAR { "not joined".to_string() } else { format!("{far} apart") });
             leads.extend(self.lead("links", (tier * 10 + far as usize) as f64, from.id.clone(), relation, to.id.clone(), why));
         }
         leads
@@ -283,23 +309,6 @@ impl<'a> Scan<'a> {
     }
 }
 
-/// Steps from one hand entry to each other; NOWHERE when none lead there.
-fn distances(near: &[HashSet<u32>], from: usize) -> Vec<u8> {
-    let mut far = vec![NOWHERE; near.len()];
-    far[from] = 0;
-    let mut queue = VecDeque::from([from]);
-    while let Some(x) = queue.pop_front() {
-        for &y in &near[x] {
-            if far[y as usize] == NOWHERE {
-                far[y as usize] = far[x].saturating_add(1).min(NOWHERE - 1);
-                queue.push_back(y as usize);
-            }
-        }
-    }
-    far
-}
-
-/// Every lead, by kind, best first.
 pub fn find(kb: &Kb, a: &Atlas, rules: &str, ignore: &str) -> Result<Vec<Lead>> {
     let rules: Rules = serde_saphyr::from_str(rules).map_err(|e| anyhow!("gaps.yaml: {e}"))?;
     let ignored = ignore.lines().filter(|l| !l.starts_with('#')).filter_map(|l| {

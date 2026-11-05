@@ -6,7 +6,6 @@ New ideas land in **Inbox** first. At sprint planning each one moves into a spri
 
 _Add ideas here with date and who suggested them._
 
-- 2026-11-04, code review: `gaps.rs` keeps every pair's distance (`Scan::apart`, n² bytes: 12 MB at 3,453 entries, 900 MB at 30,000). Only distances up to 5 are read, for the pairs leads ask about. Replace it before the hand-written record passes about 20,000 entries.
 - 2026-11-04, code review: the atlas rows still carry a dummy `[0,0]` spot on both sides (`atlas.rs`, `lib/atlas.ts`).
 
 - 2026-10-16 (Sprint 1 self-check): decide time-slider semantics (snapshot vs cumulative history).
