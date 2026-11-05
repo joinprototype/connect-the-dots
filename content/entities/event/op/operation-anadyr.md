@@ -17,7 +17,10 @@ claims:
   - id: c2
     rel: involved
     to: [nikita-khrushchev, fidel-castro]
-    src: [{s: state-milestone-cuban-missile-crisis, quote: "in July 1962 Soviet premier Nikita Khrushchev reached a secret agreement with Cuban premier Fidel Castro to place Soviet nuclear missiles in Cuba to deter any future invasion attempt."}]
+    note: "In his later memoir, Khrushchev said the missiles would protect Cuba and equalize the balance of terror."
+    src:
+      - {s: nsa-2022-cuban-missile-crisis-at-60, at: "Khrushchev’s dictated memoirs, 1970, pp. 493–494", quote: "In addition to protecting Cuba, our missiles would have equalized what the West likes to call ‘the balance of terror.’"}
+      - {s: state-milestone-cuban-missile-crisis}
   - id: c3
     rel: located_in
     to: cuba

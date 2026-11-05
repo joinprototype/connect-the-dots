@@ -17,9 +17,11 @@ claims:
     according_to: [us-government]
     src: [{s: jfk-address-1962-10-22, at: "opening paragraph", quote: "Within the past week, unmistakable evidence has established the fact that a series of offensive missile sites is now in preparation on that imprisoned island."}]
   - id: c2
-    rel: caused_by
-    to: jupiter-deployment-turkey
+    rel: involved
+    to: turkey
+    role: site of U.S. missiles Khrushchev proposed exchanging for Soviet weapons in Cuba
     according_to: [soviet-government]
+    note: "In his public letter of 27 October, Khrushchev argued for equal security and reciprocal withdrawal."
     src: [{s: frus-1961-63-v06-d66, quote: "Your missiles are located in Turkey. You are disturbed over Cuba. You say that this disturbs you because it is 90 miles by sea from the coast of the United States of America. But Turkey adjoins us; our sentries patrol back and forth and see each other."}]
   - id: c3
     rel: led_to
@@ -34,7 +36,6 @@ claims:
     to: moscow-washington-hotline
     src:
       - {s: state-milestone-cuban-missile-crisis, quote: "In an effort to prevent this from happening again, a direct telephone link between the White House and the Kremlin was established; it became known as the “Hotline.”"}
-      - {s: state-hotline-mou-1963, at: "Narrative", quote: "The Cuban missile crisis of October 1962 compellingly underscored the importance of prompt, direct communication between heads of state."}
   - id: c5
     rel: part_of
     to: cold-war
@@ -93,6 +94,6 @@ claims:
       - {s: cia-csi-first-line-of-defense-kennedy, at: "Kennedy chapter", quote: "His tragically short administration faced two major crises in which CIA played a prominent part: the Bay of Pigs invasion of Cuba in 1961 and the Cuban Missile Crisis of October 1962."}
 ---
 
-For thirteen days in October 1962 the [[united-states]] and the [[soviet-union]] came closer to nuclear war than at any other time in the [[cold-war]]. The two governments told different stories about its cause.
+For thirteen days in October 1962 the [[united-states]] and the [[soviet-union]] came closer to nuclear war than at any other time in the [[cold-war]]. The two governments framed the confrontation differently.
 
-According to the [[us-government]], the crisis began with the secret Soviet deployment of missiles to [[cuba]] ([[operation-anadyr]]). According to the [[soviet-government]], it grew out of US missiles already in [[turkey]] ([[jupiter-deployment-turkey]]). Records from both sides confirm that the settlement included the quiet [[jupiter-withdrawal-1963|withdrawal of the Jupiters]] in 1963. The crisis also led to the [[moscow-washington-hotline]].
+According to the [[us-government]], the crisis began with the secret Soviet deployment of missiles to [[cuba]] ([[operation-anadyr]]). In his public letter of 27 October, [[nikita-khrushchev]] argued that the Soviet Union deserved equal security and proposed exchanging the Soviet weapons in Cuba for U.S. missiles in [[turkey]] ([[jupiter-deployment-turkey]]). Records from both sides confirm that the settlement included the quiet [[jupiter-withdrawal-1963|withdrawal of the Jupiters]] in 1963. The crisis also led to the [[moscow-washington-hotline]].

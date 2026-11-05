@@ -27,4 +27,4 @@ claims:
 
 From the early 1960s the [[us-government]] kept [[jupiter-missile]] intermediate-range missiles in [[turkey]], within range of the Soviet Union. The deployment was formally a NATO decision.
 
-According to the [[soviet-government]], these missiles were the real cause of the [[cuban-missile-crisis]]. They were removed in April 1963 ([[jupiter-withdrawal-1963]]).
+During the [[cuban-missile-crisis]], [[nikita-khrushchev]] argued in his public letter of 27 October that the Soviet Union deserved equal security and proposed exchanging its weapons in Cuba for these missiles. They were removed in April 1963 ([[jupiter-withdrawal-1963]]).

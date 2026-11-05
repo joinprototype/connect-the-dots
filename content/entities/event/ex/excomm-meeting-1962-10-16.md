@@ -19,7 +19,9 @@ claims:
     rel: involved
     to: john-f-kennedy
     role: "President; chaired the meeting"
-    src: [{s: frus-1961-63-v11-d18, quote: "JFK: Secretary Rusk?"}]
+    src:
+      - {s: frus-1961-63-v11-d18, quote: "JFK: Secretary Rusk?"}
+      - {s: nsa-2022-cuban-missile-crisis-at-60, at: "21–22 October: Sweeney briefing and Kennedy’s taped remarks", quote: "the idea of a quick strike was very tempting, and I really didn’t give up on that until yesterday morning"}
   - id: c3
     rel: involved
     to: dean-rusk
