@@ -32,4 +32,23 @@ claims:
     to: space-race
     src:
       - {s: jfk-1961-05-25-urgent-national-needs, at: "IX. Space", quote: "if we are to win the battle that is now going on around the world between freedom and tyranny, the dramatic achievements in space which occurred in recent weeks should have made clear to us all, as did the Sputnik in 1957"}
+  - id: c4
+    rel: involved
+    to: john-f-kennedy
+    role: "privately justified the accelerated landing by competition with the Soviet Union"
+    src:
+      - {s: nasa-sp-4407-vol7, at: "Document II-33, Cabinet Room meeting, 21 November 1962", quote: "the only justification for it, in my opinion, to do it in this time or fashion, is because we hope to beat them", by: john-f-kennedy}
+  - id: c5
+    rel: involved
+    to: james-e-webb
+    role: "enlarged early cost estimates to allow for later budget cuts, in Launius's reading"
+    according_to: [nasa]
+    src:
+      - {s: launius-sp-2004-4503, at: "Apollo: A Retrospective Analysis, program funding", quote: "with the intent that even if NASA did not receive its full budget requests, as it did not during the latter half of the decade, it would still be able to complete Apollo."}
+  - id: c6
+    rel: involved
+    to: john-f-kennedy
+    role: "defended the expense at Rice University"
+    src:
+      - {s: jfk-1962-09-12-rice, quote: "I think that we must pay what needs to be paid.", by: john-f-kennedy}
 ---

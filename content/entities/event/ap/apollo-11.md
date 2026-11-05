@@ -36,4 +36,17 @@ claims:
     to: saturn-v
     src:
       - {s: nasa-msfc-history, at: "Marshall Space Flight Center history", quote: "Marshall’s legacy in rocket engineering includes providing the Saturn rockets that powered Americans to the moon"}
+  - id: c5
+    rel: involved
+    to: neil-armstrong
+    role: "flew manually over a rock field to choose a landing site"
+    src:
+      - {s: nasa-alsj-a11-postland, at: "102:55:16", quote: "and it required us going in P66 and flying manually over the rock field to find a reasonably good area.", by: neil-armstrong}
+  - id: c6
+    rel: involved
+    to: buzz-aldrin
+    role: "partly closed the hatch before descending to the surface"
+    src:
+      - {s: nasa-alsj-a11-step, at: "109:41:28", quote: "Now I want to back up and partially close the hatch.", by: buzz-aldrin}
+      - {s: nasa-alsj-a11-step, at: "109:41:56", quote: "That's our home for the next couple of hours and we want to take good care of it.", by: buzz-aldrin}
 ---

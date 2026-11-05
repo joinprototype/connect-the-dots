@@ -13,4 +13,10 @@ claims:
     to: apollo-program
     src:
       - {s: nasa-sp-4029-apollo-13, at: "Mission description", quote: "The LM became the only source of sufficient electrical power and oxygen to permit a safe return to Earth, and led to the decision to abort the Apollo 13 mission."}
+  - id: c2
+    rel: involved
+    to: nasa
+    role: "engineers devised an adapter for carbon dioxide scrubber canisters"
+    src:
+      - {s: nasa-apollo-13-successful-failure, at: "Lifeboat mode", quote: "support staff in Houston devised a method for fitting a “square peg in a round hole.”"}
 ---

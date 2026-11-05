@@ -20,4 +20,10 @@ claims:
     src:
       - {s: launius-sp-2004-4503, quote: "On 12 April 1961 Soviet Cosmonaut Yuri Gagarin became the first human in space with a one-orbit mission aboard the spacecraft Vostok 1."}
       - {s: nasa-science-gagarin, quote: "The flight lasted 108 minutes."}
+  - id: c3
+    rel: involved
+    to: yuri-gagarin
+    role: "explained in his postflight report why he signaled that all was well during delayed module separation"
+    src:
+      - {s: nasa-challenge-to-apollo, at: "Vostok 1 reentry, Gagarin's postflight report", quote: "So I decided not to make much ado about that.", by: yuri-gagarin}
 ---
