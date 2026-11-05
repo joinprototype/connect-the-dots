@@ -14,4 +14,12 @@ claims:
     role: "White House aide"
     src:
       - {s: wspf-report-1975, at: "Appendix K, Chronology, p. 255", quote: "Alexander Butterfield informs the Senate Select Committee of the presidential taping system."}
+  - id: c2
+    rel: intervened_in
+    to: watergate-scandal
+    when: "1973-07-16"
+    according_to: [alexander-butterfield]
+    role: "explained that the recordings were made to preserve the President's business for history"
+    src:
+      - {s: senate-watergate-hearings-book-5, at: "Butterfield testimony, 16 July 1973", quote: "They were installed, of course, for historical purposes, to record the President's business and they were installed in his two offices, the Oval Office and the EOB office.", by: alexander-butterfield}
 ---

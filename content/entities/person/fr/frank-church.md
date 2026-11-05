@@ -20,4 +20,12 @@ claims:
     role: "his subcommittee’s hearings on ITT and Chile were called the Church Subcommittee Hearings in a State Department memo"
     src:
       - {s: frus-chile-1969-73-d322, quote: "The Church Subcommittee Hearings on Multinational Corporations: Chile–ITT"}
+  - id: c3
+    rel: intervened_in
+    to: church-committee-created-1975
+    when: "1975"
+    according_to: [frank-church]
+    role: "defended the public's right to know what government agencies had done"
+    src:
+      - {s: senate-church-committee-history, at: "Public Relations", quote: "the right of the public to know what the instrumentalities of their Government have done.", by: frank-church}
 ---

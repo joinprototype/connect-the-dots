@@ -30,6 +30,7 @@ claims:
       - {s: deschlers-precedents-v3-ch14-s15, at: "Ch. 14 § 15, p. 2178", quote: "The Committee then adopted Article I, as amended, by a vote of 27 to 11."}
       - {s: deschlers-precedents-v3-ch14-s15, at: "Ch. 14 § 15, p. 2178", quote: "The Committee then adopted Article II, as amended, by a vote of 28 to 10."}
       - {s: deschlers-precedents-v3-ch14-s15, at: "Ch. 14 § 15, p. 2178", quote: "this amendment was adopted by a vote of 21 to 17 and became Article III."}
+      - {"s": "deschlers-precedents-v3-ch14-s15", "at": "Ch. 14 § 15, p. 2186, Article II(1)", "quote": "confidential information contained in income tax returns for purposes not authorized by law, and to cause, in violation of the constitutional rights of citizens, income tax audits or other income tax investigations to be initiated or conducted in a discriminatory manner."}
   - id: c4
     rel: involved
     to: john-dean

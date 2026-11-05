@@ -20,4 +20,12 @@ claims:
     role: "the target"
     src:
       - {s: wspf-report-1975, at: "p. 60", quote: "Ellsberg was under indictment for his role in the alleged theft of the classified “Pentagon Papers”."}
+  - id: c3
+    rel: involved
+    to: john-ehrlichman
+    role: "approved the operation; denied authorizing a surreptitious search; the jury found he had authorized it"
+    src:
+      - {s: us-v-ehrlichman-546-f2d-910, at: "Background, paragraph 3, quoting Ehrlichman's brief", quote: "The exhibit reflects Ehrlichman's approval of the recommendation with his addition: \"Provided that it is not traceable back to the White House.\""}
+      - {s: us-v-ehrlichman-546-f2d-910, at: "Background, paragraph 4", quote: "He testified that he thought he had approved only a conventional private investigation, involving no surreptitious search of Dr. Fielding's office."}
+      - {s: us-v-ehrlichman-546-f2d-910, at: "Background, paragraph 4", quote: "The jury's guilty verdict on the conspiracy Count I reflected a finding that Ehrlichman had in fact authorized the search."}
 ---

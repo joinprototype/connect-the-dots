@@ -23,4 +23,12 @@ claims:
     src:
       - {s: wspf-report-1975, at: "Appendix A, Status Report of Cases, p. 155", quote: "Pleaded guilty on October 19, 1973, to an information charging one count of violation of 18 USC Section 371,"}
       - {s: wspf-report-1975, at: "Appendix A, Status Report of Cases, p. 155", quote: "Sentenced August 2, 1974, to a prison term of one to four years."}
+  - id: c3
+    rel: intervened_in
+    to: watergate-scandal
+    when: "1973"
+    according_to: [john-dean]
+    role: "said he issued his April 19 statement because he concluded he was being made a scapegoat"
+    src:
+      - {s: senate-watergate-hearings-book-3, at: "Dean's prepared statement, April 17–19 events", quote: "let the word out that I would not be a scapegoat.", by: john-dean}
 ---

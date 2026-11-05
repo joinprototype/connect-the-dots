@@ -13,6 +13,7 @@ claims:
     role: "arrested"
     src:
       - {s: us-v-liddy-509-f2d-428, at: "The Arrests and Subsequent Events", quote: "When McCord, Barker, Martinez, Gonzalez, and Sturgis were apprehended in the DNC offices in the Watergate complex on June 17, at 2:00 a.m., they had in their possession walkie talkies, burglary tools, documents that had been taken from DNC files"}
+      - {"s": "us-v-haldeman-559-f2d-31", "at": "Statement of facts, A. The Gemstone Plan", "quote": "Their mission this time was to fix a defective bugging device placed during the prior entry on the telephone of the DNC chairman;"}
   - id: c2
     rel: involved
     to: g-gordon-liddy

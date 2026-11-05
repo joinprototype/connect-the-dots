@@ -48,4 +48,19 @@ claims:
     role: "instructed the CIA on 15 September 1970 to play a direct role in organizing a military coup"
     src:
       - {s: senate-church-covert-action-in-chile-1975, quote: "President Nixon informed CIA Director Richard Helms that an Allende regime in Chile would not be acceptable to the United States"}
+  - id: c7
+    rel: founded
+    to: white-house-plumbers
+    when: "1971"
+    note: "The appeal court describes the unit's creation after publication of the Pentagon Papers and its task of investigating the theft and preventing further leaks."
+    src:
+      - {s: us-v-ehrlichman-546-f2d-910, at: "Background, paragraph 2", quote: "in the summer of 1971 spurred the President to form a \"Special Investigations\" or \"Room 16\" unit within the White House, whose purpose was to investigate the theft of the Pentagon Papers and prevent other such security leaks."}
+  - id: c8
+    rel: intervened_in
+    to: watergate-scandal
+    when: "1974-08-05"
+    according_to: [richard-nixon]
+    role: "acknowledged that his instructions on the FBI investigation also served to limit exposure of campaign officials"
+    src:
+      - {s: ucsb-nixon-statement-1974-08-05, at: "Statement on the June 23 tapes", quote: "I was aware of the advantages this course of action would have with respect to limiting possible public exposure of involvement by persons connected with the reelection committee.", by: richard-nixon}
 ---

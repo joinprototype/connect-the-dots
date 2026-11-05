@@ -36,4 +36,12 @@ claims:
     src:
       - {s: wspf-report-1975, quote: "Mitchell and Stans are acquitted on all charges in Vesco trial."}
       - {s: wspf-report-1975, quote: "two former members of President Nixon’s cabinet, not guilty of charges connected with contributions by financier"}
+  - id: c4
+    rel: intervened_in
+    to: watergate-scandal
+    when: "1973-07"
+    according_to: [john-n-mitchell]
+    role: "said he withheld other White House activities from Nixon because Nixon's response could endanger reelection; distinguished these from Watergate"
+    src:
+      - {s: senate-watergate-hearings-book-5, at: "Mitchell testimony, Senator Inouye's questions on the White House horror stories", quote: "I think that is a reasonable summary of it.", by: john-n-mitchell}
 ---

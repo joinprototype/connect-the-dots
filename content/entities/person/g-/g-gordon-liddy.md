@@ -28,4 +28,12 @@ claims:
     src:
       - {s: us-v-liddy-509-f2d-428, at: "Opening paragraphs", quote: "On January 30, 1973, the remaining defendants, appellant Liddy and James W. McCord, Jr., were found guilty by the jury."}
       - {s: us-v-liddy-509-f2d-428, at: "Opening paragraphs", quote: "We find no reversible error, and affirm."}
+  - id: c4
+    rel: intervened_in
+    to: watergate-break-in
+    when: "1972"
+    role: "handled campaign checks and supplied cash later traced from the burglars to Barker's account"
+    src:
+      - {s: us-v-liddy-509-f2d-428, at: "I.A, paragraph 5, Sloan's testimony", quote: "The two agreed that the best way to handle these checks was to convert them into cash, and Liddy undertook to do this with the aid of friends around the country."}
+      - {s: us-v-liddy-509-f2d-428, at: "I.A, paragraph 6", quote: "Bills of that denomination were given by Liddy to McCord, who was in charge of security for CRP and the finance committee, and later were found, in sequence, on McCord and the four other defendants apprehended in the DNC offices on June 17."}
 ---

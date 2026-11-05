@@ -25,6 +25,7 @@ claims:
     role: "was told; his words on the tape and his later account"
     src:
       - {s: us-v-haldeman-559-f2d-31, at: "Statement of facts", quote: "you could get a million dollars. And you could get it in cash. I, I know where it could be gotten."}
+      - {"s": "us-v-haldeman-559-f2d-31", "at": "Statement of facts, paragraph 26", "quote": "Each time he stressed, in the presence of Haldeman and Dean, that Hunt's immediate demands should be \"handled\" in order to \"buy time.\""}
       - {s: us-v-haldeman-559-f2d-31, at: "Note 21, tape transcript p. 156", quote: "No it's wrong, that's for sure."}
       - {s: ucsb-nixon-statement-1973-08-15, at: "Statement, 15 August 1973", quote: "I was told that one of the defendants was currently attempting to blackmail the White House by demanding payment of $120,000 as the price of not talking about other activities, unrelated to Watergate, in which he had engaged."}
       - {s: ucsb-nixon-statement-1973-08-15, at: "Statement, 15 August 1973", quote: "But I was only told that the money had been used for attorneys' fees and family support, not that it had been paid to procure silence from the recipients."}
