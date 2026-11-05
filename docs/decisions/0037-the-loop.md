@@ -24,3 +24,4 @@ What the reviewer drops is written down for the next scout, and every run logs w
 - The quote check needs no model and the second fetch needs no trust in the first, so the cheap step cannot pass off an invented quote.
 - Running it unattended needs a schedule, which needs the founder's word. The founder gave it on 2026-11-04: one run a night ([tools/loop/night.md](../../tools/loop/night.md)).
 - Amends the leads loop of ADR-0025, where a run could not push or merge.
+- 2026-11-04: the scout and the reviewer moved to OpenAI's Codex on the founder's ChatGPT plan (GPT-6-Luna and GPT-6.1-Sol, through `tools/loop/codex-stage.sh`, [ADR-0038](0038-stories-at-night.md)); the Claude session that runs the night keeps the gate, the commits and the push.
