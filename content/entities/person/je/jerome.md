@@ -19,6 +19,12 @@ claims:
       - {s: britannica-vulgate, at: "opening paragraph", quote: "In 382 Pope Damasus commissioned Jerome, the leading biblical scholar of his day, to produce an acceptable Latin version of the Bible from the various translations then being used."}
       - {s: britannica-saint-jerome, at: "opening paragraph", quote: "He is known particularly for his Latin translation of the Bible, the Vulgate, and has been designated a doctor of the church"}
       - {s: britannica-biblical-literature-versions, at: "Latin versions, paragraph on Jerome's revisions", quote: "By the end of 405 he had executed his own Latin translation of the entire Old Testament based on the “Hebrew truth” (Hebraica veritas)."}
+  - id: c2
+    rel: authored
+    to: letter-127-to-principia
+    note: "Jerome wrote it in Bethlehem after the sack of Rome in 410, from what others told him."
+    src:
+      - {s: jerome-letter-127-nicene-fathers, at: "section 1", quote: "You have besought me often and earnestly, Principia"}
 ---
 
 Jerome was born about 347 and died in 419 or 420. Britannica says he settled in [[bethlehem]], where a monastery under his direction was finished by 389. His Latin Bible, the [[vulgate]], is the text the [[gutenberg-bible]] printed.
