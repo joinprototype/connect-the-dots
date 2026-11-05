@@ -39,6 +39,6 @@ One short file per decision: context, decision, consequences, and when to revisi
 | [0035](0035-stories-is-the-shelf.md) | Stories is the shelf: every story's cover to pick and read; the islands are the Map's | accepted |
 | [0036](0036-play-and-help.md) | A puzzle a day, from one name to another by links on the record, and missing links for readers to send sources for | accepted |
 | [0037](0037-the-loop.md) | The loop: cheap scouts source leads, a gate refuses what is mechanically wrong, one careful reviewer merges what holds, the founder releases | accepted |
-| [0038](0038-stories-at-night.md) | Stories at night: one a night, sourced by a cheap scout, written and checked by a mid-priced model, read, ending in a pull request the founder merges | accepted |
+| [0038](0038-stories-at-night.md) | Stories at night: one a night, sourced and written on Codex (GPT-6-Luna, GPT-6-Sol), read by Claude, ending in a pull request the founder merges | accepted |
 | [0022](0022-dots-and-lines.md) | Dots and lines: print inks with a job, each story its own ink, Bricolage Grotesque and Literata, stories on white | accepted |
 | [0021](0021-the-world-of-an-era.md) | The Map's era slider draws the world of that year: 30 years from 3000 BCE to 1990, in one grey; the basemap after that | accepted |
