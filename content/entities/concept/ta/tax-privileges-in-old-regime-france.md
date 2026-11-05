@@ -18,4 +18,10 @@ claims:
     according_to: [liberty-equality-fraternity-site]
     src:
       - {s: chnm-1087, quote: "the Third Estate would always be outvoted by the two privileged orders that paid few taxes."}
+  - id: c3
+    rel: "influenced"
+    to: "french-revolution"
+    src: [{s: "day-competing-explanations-source", quote: "passed largely to the bourgeoisie."}]
+    according_to: ["georges-lefebvre"]
+    note: "Lefebvre’s Marxist reading: economic power had passed to the bourgeoisie while nobility and clergy retained legal precedence; read here through Day, pp. 39–40."
 ---

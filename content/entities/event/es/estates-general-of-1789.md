@@ -53,4 +53,12 @@ claims:
     according_to: [liberty-equality-fraternity-site]
     src:
       - {s: chnm-1102, quote: "just a fortnight later the people of Paris had to rally to save it, ending with the 14 July assault on the Bastille."}
+  - id: c8
+    rel: led_to
+    to: french-national-assembly
+    according_to: [liberty-equality-fraternity-site]
+    note: "The Third Estate renamed itself on 17 June; its deputies swore on 20 June not to separate until a constitutional regime was established."
+    src:
+      - {s: chnm-1102, at: "glossary: renaming of 17 June 1789"}
+      - {s: chnm-1057, quote: "swore not to separate until a constitutional regime was established."}
 ---
