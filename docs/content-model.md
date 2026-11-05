@@ -141,7 +141,7 @@ publisher: us-government          # entity id
 author: john-f-kennedy
 published: 1962-10-22
 url: https://www.jfklibrary.org/...        # http(s) only
-archive_url: https://web.archive.org/...   # http(s) only; filled by the archive bot (planned)
+archive_url: https://web.archive.org/...   # http(s) only; filled by the archive bot, tools/loop/sources.py
 sha256: ...                                # filled by the archive bot (planned)
 retrieved: 2026-10-16
 tier: T1                          # schema/source-tiers.yaml

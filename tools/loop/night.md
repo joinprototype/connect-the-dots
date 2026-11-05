@@ -19,6 +19,10 @@ What a scheduled run does, start to end ([docs/loop.md](../../docs/loop.md)). Th
    - any end that is sealed, or a person who may be alive, unless the link is an office or a company role.
    Write them to `$RUN_DIR/leads.tsv` (`from	relation	to`) and make `$RUN_DIR/src/`.
 
+## Sources
+
+6b. **The archive bot** (no model): in the worktree, `python3 tools/loop/sources.py --write --out $RUN_DIR/sources.tsv`. It checks today's seventh of the sources with plain curl and adds the Internet Archive's copy to each that has none. Commit what it adds on `loop/<run>`, apart from the scout's work; the gate passes it with no new quote. List the sources it found gone in the report.
+
 ## Scout
 
 The scout and the reviewer run on OpenAI's Codex, on the founder's ChatGPT plan, through `tools/loop/codex-stage.sh` with `CODEX_ADD_DIR=$ROOT/.cache/loop`: the sandbox writes only in the worktree and `.cache/loop`, and loads none of the founder's own Codex config, plugins or connectors. Codex does not commit, gate, merge or push: you do. Never read a whole fetched page, event log or diff into your own context; grep.

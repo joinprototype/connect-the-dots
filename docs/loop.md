@@ -35,6 +35,10 @@ It leaves the branch, labelled for the founder, when a change:
 
 A run is a Claude Code session in this checkout that follows [tools/loop/night.md](../tools/loop/night.md): it runs the scout and the reviewer as Codex stages on the founder's ChatGPT plan, so Claude's plan stays for code, and keeps the gate, the commits and the push itself. The founder gave the word to run it unattended on 2026-11-04: a scheduled task in the Claude desktop app starts one every night at 03:00, and only while the app is open (a night missed runs at the next launch). At most one run at a time, behind a lock; a run that finds the laptop busy (a browser check, a build) waits, then gives up for the night. To run one by hand, ask a session to "run one night of the loop as tools/loop/night.md says".
 
+## Sources that still open
+
+Each night the leads run also runs the archive bot, `tools/loop/sources.py`, with no model: it checks a seventh of the sources with plain curl, so each is seen once a week, and gives every source without one the Internet Archive's copy closest to the day it was read. It only reads what the Archive has; it asks nothing to be saved. Sources it finds gone are listed in the run's report. Its last check is in `.cache/sources-health.tsv`.
+
 ## Stories at night
 
 Stories go further than links: a writer, a skeptic, the writer's fixes, a careful read, then a person ([ADR-0038](decisions/0038-stories-at-night.md)). A second scheduled task runs [tools/loop/stories.md](../tools/loop/stories.md) each night at 00:30, before the 03:00 leads run. It takes one topic from the queue, new and deepen in turn: Codex on the founder's ChatGPT plan does the story work (GPT-6-Luna fetches and lists the facts, GPT-6.1-Sol writes the story on a branch `story/<id>`, checks it in a fresh session and fixes it), a Claude session reads it and runs the checks, and the run opens a pull request titled "For review: …". It never merges: the founder reads and merges each story, and releases as always. The run keeps its own lock, workspace and log in `.cache/stories/` (`runs.tsv`), apart from the leads loop's.
