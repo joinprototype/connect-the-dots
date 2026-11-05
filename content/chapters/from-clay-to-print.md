@@ -34,38 +34,6 @@ It is one line among many. Egyptian, Chinese and Maya writing, and the paper and
   narration: "**Bread and beer.** Around 3200 BCE the temple estates of Uruk, in today's Iraq, needed to keep accounts. Scribes drew signs on clay to track rations of bread and beer. The earliest known writing was bookkeeping."
   duration: 11
 
-- shot: signs-that-sound
-  view: map
-  camera: {center: [30.4, 31.4], zoom: 5.6, duration: 4}
-  places: [rosetta]
-  time: "-0195"
-  reveal: [rosetta-stone, discovery-of-the-rosetta-stone, decipherment-of-hieroglyphs, jean-francois-champollion, lettre-a-m-dacier, rosetta]
-  reveal_claims: [rosetta-stone#c1, discovery-of-the-rosetta-stone#c1, decipherment-of-hieroglyphs#c1, decipherment-of-hieroglyphs#c2]
-  overlay: {kind: quote, source: champollion-1822-lettre-a-dacier, quote: "il s’agit de la série des hiéroglyphes qui, faisant exception à la nature générale des signes de cette écriture, étaient doués de la faculté d’exprimer les sons des mots", caption: "Jean-François Champollion, Lettre à M. Dacier, 1822 (in French: a series of hieroglyphs that, as an exception to the general nature of the script, could express the sounds of words)"}
-  narration: "**Signs that sound.** In 196 BCE Egyptian priests had one decree cut three times on a stone: in hieroglyphs, demotic and Greek. Soldiers of Napoleon's army found it in 1799 near Rosetta, and it has been in the British Museum since 1802. The Museum says Thomas Young was first to show that some signs spelled the sounds of a royal name, Ptolemy's. In 1822 Champollion wrote that a few hieroglyphs, an exception in the script, spelled the names of Greek and Roman rulers."
-  duration: 14
-
-- shot: questions-on-bone
-  view: map
-  camera: {center: [114.3, 36.1], zoom: 5.6, pitch: 30, duration: 5}
-  places: [yinxu]
-  time: "-1199~"
-  reveal: [oracle-bones, discovery-of-the-oracle-bones, tracing-of-the-oracle-bones-to-yinxu, yinxu, shang-dynasty]
-  reveal_claims: [discovery-of-the-oracle-bones#c1, discovery-of-the-oracle-bones#c2, tracing-of-the-oracle-bones-to-yinxu#c1, yinxu#c1, shang-dynasty#c1]
-  overlay: {kind: quote, source: lindahall-wang-yirong, quote: "Liu published the first paper on dragon-bone characters in 1903, arguing that the bones contained records of the oldest Chinese writing.", caption: "Linda Hall Library, on Wang Yirong and Liu E"}
-  narration: "**Questions on bone.** Chinese writing is not told here as a branch of the Sumerian line. As the Linda Hall Library tells it, Wang Yirong of the Imperial Academy bought \"dragon bones\" from a pharmacist in 1899 and saw signs on them like early Chinese characters. After 1909 they were traced to Yinxu, the late Shang capital. Diviners heated the bones and read the cracks beside written questions; hundreds of thousands have been dug up."
-  duration: 14
-
-- shot: a-script-read-again
-  view: graph
-  focus: decipherment-of-maya-script
-  time: "1562"
-  reveal: [maya-script, burning-of-maya-books-1562, diego-de-landa, relation-of-the-things-of-yucatan, decipherment-of-maya-script, yuri-knorozov, tatiana-proskouriakoff, knorozovs-papers-published-in-the-us, proskouriakoffs-study-of-the-piedras-negras-stelae]
-  reveal_claims: [burning-of-maya-books-1562#c2, diego-de-landa#c1, relation-of-the-things-of-yucatan#c1, decipherment-of-maya-script#c1, decipherment-of-maya-script#c2]
-  overlay: {kind: quote, source: pbs-nova-cracking-the-maya-code-timeline, quote: "Landa orchestrated the burning in 1562 of hundreds if not thousands of Maya bark-paper books, which he deemed heretical.", caption: "NOVA, Cracking the Maya Code, PBS"}
-  narration: "**A script read again.** The Maya had a script of more than 800 signs; after the Spanish conquest its meaning was lost. NOVA says the friar Diego de Landa orchestrated the burning of Maya books in 1562, and that his later manuscript helped scholars decode the calendar. It tells of Yuri Knorozov arguing in 1952 that signs stood for sounds, and of Tatiana Proskouriakoff showing that carved figures were kings. NOVA says scholars can read over 90 percent of the glyphs."
-  duration: 14
-
 - shot: letters
   view: map
   camera: {center: [33.5, 29], zoom: 4.6, duration: 5}
@@ -77,6 +45,17 @@ It is one line among many. Egyptian, Chinese and Maya writing, and the paper and
   overlay: {kind: quote, source: antiquity-2021-lachish-early-alphabet, quote: "The date for the development of early alphabetic script is still disputed", caption: "Felix Höflmayer and colleagues, Antiquity, 2021"}
   narration: "**Letters.** Signs at Serabit el-Khadim, an Egyptian mining site in Sinai, are often taken as the start of the alphabet, made by Semitic speakers. Scholars date them from the nineteenth century BCE to after 1500 BCE. The date is still disputed."
   duration: 12
+
+- shot: questions-on-bone
+  view: map
+  camera: {center: [114.3, 36.1], zoom: 5.6, pitch: 30, duration: 5}
+  places: [yinxu]
+  time: "-1199~"
+  reveal: [oracle-bones, discovery-of-the-oracle-bones, tracing-of-the-oracle-bones-to-yinxu, yinxu, shang-dynasty]
+  reveal_claims: [discovery-of-the-oracle-bones#c1, discovery-of-the-oracle-bones#c2, tracing-of-the-oracle-bones-to-yinxu#c1, yinxu#c1, shang-dynasty#c1]
+  overlay: {kind: quote, source: lindahall-wang-yirong, quote: "Liu published the first paper on dragon-bone characters in 1903, arguing that the bones contained records of the oldest Chinese writing.", caption: "Linda Hall Library, on Wang Yirong and Liu E"}
+  narration: "**Questions on bone.** Chinese writing is not told here as a branch of the Sumerian line. As the Linda Hall Library tells it, Wang Yirong of the Imperial Academy bought \"dragon bones\" from a pharmacist in 1899 and saw signs on them like early Chinese characters. After 1909 they were traced to Yinxu, the late Shang capital. Diviners heated the bones and read the cracks beside written questions; hundreds of thousands have been dug up."
+  duration: 14
 
 - shot: by-sea
   view: map
@@ -112,17 +91,6 @@ It is one line among many. Egyptian, Chinese and Maya writing, and the paper and
   narration: "**The scholars' account.** Modern source criticism reads the same books as woven from older documents, from about the tenth to the sixth century BCE, as Christine Hayes of Yale sums it up. Scholars still differ on the sources and dates. Neither account is stated here as fact."
   duration: 13
 
-- shot: the-oldest-copies
-  view: map
-  camera: {center: [35.46, 31.74], zoom: 5.6, pitch: 30, duration: 5}
-  places: [qumran]
-  time: "-0099~"
-  reveal: [dead-sea-scrolls, qumran, torah]
-  reveal_claims: [dead-sea-scrolls#c1, dead-sea-scrolls#c2]
-  overlay: {kind: stat, value: "Over 1,000 years", label: "How much older the scrolls are than the biblical manuscripts known before them", source: iaa-dss-introduction, quote: "This similarity is quite remarkable, considering that the Qumran Scrolls are over a thousand years older than previously identified biblical manuscripts."}
-  narration: "**The oldest copies.** The Dead Sea Scrolls, found near Qumran, date from the third century BCE to the first century CE. They hold every book of the Hebrew Bible but Esther. Many of the biblical scrolls closely resemble the text in use today, and some differ."
-  duration: 13
-
 - shot: seventy-two-days
   view: map
   camera: {center: [29.9, 31.2], zoom: 4.6, duration: 5}
@@ -146,6 +114,28 @@ It is one line among many. Egyptian, Chinese and Maya writing, and the paper and
   overlay: {kind: quote, source: britannica-septuagint, quote: "Analysis of the language has established that the Torah, or Pentateuch (the first five books of the Old Testament), was translated near the middle of the 3rd century bce and that the rest of the Old Testament was translated in the 2nd century bce.", caption: "Encyclopaedia Britannica, Septuagint"}
   narration: "**What the language shows.** Encyclopaedia Britannica calls the Letter of Aristeas unreliable. Analysis of the Greek places the Torah's translation near the middle of the third century BCE, and the rest of the Old Testament in the second."
   duration: 12
+
+- shot: signs-that-sound
+  view: map
+  camera: {center: [30.4, 31.4], zoom: 5.6, duration: 4}
+  places: [rosetta]
+  time: "-0195"
+  reveal: [rosetta-stone, discovery-of-the-rosetta-stone, decipherment-of-hieroglyphs, jean-francois-champollion, lettre-a-m-dacier, rosetta]
+  reveal_claims: [rosetta-stone#c1, discovery-of-the-rosetta-stone#c1, decipherment-of-hieroglyphs#c1, decipherment-of-hieroglyphs#c2]
+  overlay: {kind: quote, source: champollion-1822-lettre-a-dacier, quote: "il s’agit de la série des hiéroglyphes qui, faisant exception à la nature générale des signes de cette écriture, étaient doués de la faculté d’exprimer les sons des mots", caption: "Jean-François Champollion, Lettre à M. Dacier, 1822 (in French: a series of hieroglyphs that, as an exception to the general nature of the script, could express the sounds of words)"}
+  narration: "**Signs that sound.** In 196 BCE Egyptian priests had one decree cut three times on a stone: in hieroglyphs, demotic and Greek. Soldiers of Napoleon's army found it in 1799 near Rosetta, and it has been in the British Museum since 1802. The Museum says Thomas Young was first to show that some signs spelled the sounds of a royal name, Ptolemy's. In 1822 Champollion wrote that a few hieroglyphs, an exception in the script, spelled the names of Greek and Roman rulers."
+  duration: 14
+
+- shot: the-oldest-copies
+  view: map
+  camera: {center: [35.46, 31.74], zoom: 5.6, pitch: 30, duration: 5}
+  places: [qumran]
+  time: "-0099~"
+  reveal: [dead-sea-scrolls, qumran, torah]
+  reveal_claims: [dead-sea-scrolls#c1, dead-sea-scrolls#c2]
+  overlay: {kind: stat, value: "Over 1,000 years", label: "How much older the scrolls are than the biblical manuscripts known before them", source: iaa-dss-introduction, quote: "This similarity is quite remarkable, considering that the Qumran Scrolls are over a thousand years older than previously identified biblical manuscripts."}
+  narration: "**The oldest copies.** The Dead Sea Scrolls, found near Qumran, date from the third century BCE to the first century CE. They hold every book of the Hebrew Bible but Esther. Many of the biblical scrolls closely resemble the text in use today, and some differ."
+  duration: 13
 
 - shot: the-library
   view: map
@@ -225,6 +215,16 @@ It is one line among many. Egyptian, Chinese and Maya writing, and the paper and
   overlay: {kind: stat, value: "Over 10 million", label: "Printed books made within fifty years of Gutenberg's page", source: cornell-exhibit-gutenberg-bible, quote: "In less than fifty years after the printing of this page, more than ten million printed books had been produced."}
   narration: "**And after.** Within fifty years of Gutenberg's page, more than ten million printed books had been produced. In 1534 Martin Luther's complete Bible was printed at Wittenberg, and its printer is said to have sold over 100,000 copies in forty years."
   duration: 12
+
+- shot: a-script-read-again
+  view: graph
+  focus: decipherment-of-maya-script
+  time: "1562"
+  reveal: [maya-script, burning-of-maya-books-1562, diego-de-landa, relation-of-the-things-of-yucatan, decipherment-of-maya-script, yuri-knorozov, tatiana-proskouriakoff, knorozovs-papers-published-in-the-us, proskouriakoffs-study-of-the-piedras-negras-stelae]
+  reveal_claims: [burning-of-maya-books-1562#c2, diego-de-landa#c1, relation-of-the-things-of-yucatan#c1, decipherment-of-maya-script#c1, decipherment-of-maya-script#c2]
+  overlay: {kind: quote, source: pbs-nova-cracking-the-maya-code-timeline, quote: "Landa orchestrated the burning in 1562 of hundreds if not thousands of Maya bark-paper books, which he deemed heretical.", caption: "NOVA, Cracking the Maya Code, PBS"}
+  narration: "**A script read again.** The Maya had a script of more than 800 signs; after the Spanish conquest its meaning was lost. NOVA says the friar Diego de Landa orchestrated the burning of Maya books in 1562, and that his later manuscript helped scholars decode the calendar. It tells of Yuri Knorozov arguing in 1952 that signs stood for sounds, and of Tatiana Proskouriakoff showing that carved figures were kings. NOVA says scholars can read over 90 percent of the glyphs."
+  duration: 14
 
 - shot: one-line
   view: map
