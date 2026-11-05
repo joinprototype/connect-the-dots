@@ -36,4 +36,11 @@ claims:
     role: "Quataert on the resistance in Anatolia"
     src:
       - {s: quataert-2005-the-ottoman-empire-1700-1922, at: "Chapter 4", quote: "Fighting and defeating the invading forces of the Athens government that claimed western and northern Anatolia for Greece, the resistance leaders gradually redefined their struggle as a Turkish one"}
+  - id: c6
+    rel: involved
+    to: mustafa-kemal
+    role: "Kemal recalls rejecting Sèvres as a death sentence in negotiations with Franklin-Bouillon"
+    according_to: [mustafa-kemal]
+    src:
+      - {s: kemal-1927-speech-english-1929, at: "Speech, negotiations with Franklin-Bouillon", quote: "is such a death sentence for the Turkish nation that we demand that its very name shall not be mentioned by anybody who calls himself our friend."}
 ---

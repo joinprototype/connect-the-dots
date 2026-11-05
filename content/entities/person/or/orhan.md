@@ -32,4 +32,10 @@ claims:
     role: "met Ibn Battuta at Iznik"
     src:
       - {s: ibn-battuta-gibb-1962-travels-vol-2, at: "Bursa", quote: "it was there that I met him and he sent me a large sum of money"}
+  - id: c5
+    rel: appears_in
+    to: travels-of-ibn-battuta
+    role: "Ibn Battuta describes his rounds of the fortresses to inspect them and put them in order"
+    src:
+      - {s: ibn-battuta-gibb-1962-travels-vol-2, at: "Bursa", quote: "staying in each fortress for some days to put it into good order and examine its condition."}
 ---

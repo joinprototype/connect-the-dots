@@ -37,4 +37,18 @@ claims:
     note: "Quataert's chronology lists the battle of Ankara, the collapse of Bayezid I's empire, and then a civil war among his sons for the sultanate."
     src:
       - {s: quataert-2005-the-ottoman-empire-1700-1922, at: "Chronology", quote: "civil war among Bayezit’s sons for sultanate"}
+  - id: c6
+    rel: involved
+    to: timur
+    role: "Doukas reports Timur demanding the return of lands Bayezid took from other rulers"
+    according_to: [doukas]
+    src:
+      - {s: doukas-magoulias-1975-decline-and-fall, at: "Book 15", quote: "The provinces, which you have seized by force from the other rulers, return immediately"}
+  - id: c7
+    rel: involved
+    to: bayezid-i
+    role: "Doukas reports Bayezid shaving the envoys' beards and challenging Timur to come"
+    according_to: [doukas]
+    src:
+      - {s: doukas-magoulias-1975-decline-and-fall, at: "Book 15", quote: "Go and inform your lord to come quickly for I await him."}
 ---

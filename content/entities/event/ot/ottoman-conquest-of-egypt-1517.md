@@ -49,4 +49,19 @@ claims:
     role: "W. H. Salmon's 1921 judgment of Mamluk rule, not Ibn Iyas's"
     src:
       - {s: salmon-1921-introduction, at: "Introduction", quote: "Still their rule was foreign military occupation, which was backed by no popular enthusiasm or loyalty."}
+  - id: c8
+    rel: involved
+    to: selim-i
+    role: "Ibn Iyas reports Selim demanding submission, coinage and Friday prayer in his name, threatening to kill all Circassians in Egypt, including pregnant women and their unborn children"
+    according_to: [ibn-iyas]
+    src:
+      - {s: ibn-iyas-salmon-1921-ottoman-conquest-of-egypt, at: "Chronicle, before the invasion of Egypt", quote: "become our governor from Gaza to Egypt"}
+      - {s: ibn-iyas-salmon-1921-ottoman-conquest-of-egypt, at: "Chronicle, the same letter", quote: "But if you do not obey us, then I will enter Egypt, and kill all the Circassians there"}
+  - id: c9
+    rel: involved
+    to: selim-i
+    role: "Ibn Iyas contrasts Selim's daily public assurances with continuing plunder"
+    according_to: [ibn-iyas]
+    src:
+      - {s: ibn-iyas-salmon-1921-ottoman-conquest-of-egypt, at: "Chronicle, entry into Cairo", quote: "issued proclamations daily in Cairo, assuring the public of security."}
 ---

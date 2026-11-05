@@ -18,6 +18,7 @@ claims:
     role: "the state whose officials carried out the deportations"
     src:
       - {s: ushmm-armenian-genocide-in-depth, at: "Massacres and Deportations", quote: "Taking orders from the central government in Constantinople, regional officials implemented mass shootings and deportations, assisted by local civilians."}
+      - {s: ushmm-armenian-genocide-in-depth, at: "Centralized Orders", quote: "Although the term genocide was not coined until 1944, most scholars agree that the mass murder of Armenians fits this definition."}
   - id: c3
     rel: involved
     to: committee-of-union-and-progress
@@ -27,16 +28,20 @@ claims:
   - id: c4
     rel: involved
     to: talaat-pasha
-    role: "one of the four leaders the 1919 Ottoman court named as principal accused"
+    role: "convicted and sentenced to death in absentia by the Ottoman court in 1919"
     src:
       - {s: ottoman-court-martial-1919-verdict, at: "Verdict", quote: "are the members of its General Assembly, the fugitives -- Prime Minister Talaat Pasha and Minister of War Enver Effendi"}
+      - {s: ottoman-court-martial-1919-verdict, at: "Verdict, sentences", quote: "In accordance therefore with the abovementioned paragraphs in the law code, Talaat, Enver, Djemal and Dr. Nazim are sentenced to death"}
+      - {s: ottoman-court-martial-1919-verdict, at: "Verdict, proceedings in absentia", quote: "These verdicts have been rendered unanimously in absentia in the cases of Talaat, Enver, Djemal and Dr. Nazim"}
       - {s: ottoman-court-martial-1919-indictment-dadrian, at: "Indictment, p. 7", quote: "The massacre and destruction of the Armenians were the result of the decision-making by the Central Committee of Ittihad ve Terakki"}
   - id: c5
     rel: involved
     to: enver-pasha
-    role: "one of the four leaders the 1919 Ottoman court named as principal accused"
+    role: "convicted and sentenced to death in absentia by the Ottoman court in 1919"
     src:
       - {s: ottoman-court-martial-1919-verdict, at: "Verdict", quote: "are the members of its General Assembly, the fugitives -- Prime Minister Talaat Pasha and Minister of War Enver Effendi"}
+      - {s: ottoman-court-martial-1919-verdict, at: "Verdict, sentences", quote: "In accordance therefore with the abovementioned paragraphs in the law code, Talaat, Enver, Djemal and Dr. Nazim are sentenced to death"}
+      - {s: ottoman-court-martial-1919-verdict, at: "Verdict, proceedings in absentia", quote: "These verdicts have been rendered unanimously in absentia in the cases of Talaat, Enver, Djemal and Dr. Nazim"}
   - id: c6
     rel: involved
     to: henry-morgenthau-sr
@@ -113,4 +118,19 @@ claims:
       - {s: ushmm-armenian-genocide-in-depth, at: "Genocide and law", quote: "The origin of the term genocide and its codification in international law have their roots in the mass murder of Armenians."}
       - {s: iags-2005-open-letter-to-erdogan, at: "Open letter", quote: "Polish jurist Raphael Lemkin, when he coined the term genocide in 1944, cited the Turkish extermination of the Armenians and the Nazi extermination of the Jews as defining examples of what he meant by genocide."}
       - {s: iags-1997-armenian-genocide-resolution, at: "Resolution", quote: "reaffirms that the mass murder of over a million Armenians in Turkey in 1915 is a case of genocide which conforms to the statutes of the United Nations Convention on the Prevention and Punishment of Genocide."}
+  - id: c18
+    rel: involved
+    to: talaat-pasha
+    role: "Talaat's later memoir justifies deportation as a preventive measure for the safety of the army and citizens; this is his defence"
+    according_to: [talaat-pasha]
+    src:
+      - {s: current-history-1921-11-talaat-memoirs, at: "Deportation of the Armenians", quote: "The deportation of the Armenians was one of these preventive measures."}
+      - {s: current-history-1921-11-talaat-memoirs, at: "Deportation of the Armenians", quote: "The Porte, acting under the same obligation, and wishing to secure the safety of its army and its citizens, took energetic measures to check these uprisings."}
+  - id: c19
+    rel: involved
+    to: talaat-pasha
+    role: "Morgenthau recalls Talaat privately invoking fear of Armenian revenge as a reason to finish the policy; this is the ambassador's 1918 account"
+    according_to: [henry-morgenthau-sr]
+    src:
+      - {s: morgenthau-1918-ambassador-morgenthaus-story, at: "Chapter 25", quote: "The hatred between the Turks and the Armenians is now so intense that we have got to finish with them. If we don’t, they will plan their revenge."}
 ---

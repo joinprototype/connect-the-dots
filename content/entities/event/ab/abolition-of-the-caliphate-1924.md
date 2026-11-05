@@ -22,4 +22,18 @@ claims:
       - {s: kemal-1927-speech-english-1929, at: "Speech, on 3 March 1924", quote: "When the discussion closed at 6.45 p.m. the Grand National Assembly had promulgated the Laws No. 429, 430 and 431."}
       - {s: kemal-1927-speech-english-1929, at: "Speech, on 3 March 1924", quote: "The Caliph is declared deposed and the dignity abolished."}
       - {s: tbmm-law-431-1924}
+  - id: c3
+    rel: involved
+    to: mustafa-kemal
+    role: "Kemal reproduces his January 1924 cipher reply describing the caliphate as a historical memory and its claims as violating the republic's independence"
+    according_to: [mustafa-kemal]
+    src:
+      - {s: kemal-1927-speech-english-1929, at: "Cipher reply to Ismet, January 1924", quote: "constitutes a flagrant violation of the independence of the Republic."}
+  - id: c4
+    rel: involved
+    to: mustafa-kemal
+    role: "Kemal's cipher reply says the caliph's chamberlains and secretaries sustain his dream of power"
+    according_to: [mustafa-kemal]
+    src:
+      - {s: kemal-1927-speech-english-1929, at: "Cipher reply to Ismet, January 1924", quote: "always sustains the dream of power in the mind of the Caliph."}
 ---

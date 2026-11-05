@@ -37,4 +37,11 @@ claims:
     src:
       - {s: quataert-2005-the-ottoman-empire-1700-1922, at: "Chapter 1", quote: "an event that occurred in 1354 - the Ottoman occupation of a town (Tzympe), on the European side of the Dardanelles"}
       - {s: quataert-2005-the-ottoman-empire-1700-1922, at: "Chapter 1", quote: "Possession of the town gave the Ottomans a secure bridgehead in the Balkans"}
+  - id: c6
+    rel: involved
+    to: john-vi-kantakouzenos
+    role: "Doukas reports the marriage and dowry promised in return for military help"
+    according_to: [doukas]
+    src:
+      - {s: doukas-magoulias-1975-decline-and-fall, at: "Book 9", quote: "Kantakouzenos promised to give him his daughter in marriage and many treasures for a dowry."}
 ---

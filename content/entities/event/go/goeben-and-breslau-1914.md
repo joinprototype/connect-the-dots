@@ -44,4 +44,32 @@ claims:
     role: "its statesmen judged neutrality impossible, by Quataert"
     src:
       - {s: quataert-2005-the-ottoman-empire-1700-1922, at: "Chapter 4", quote: "Ottoman statesmen well understood that neutrality was not a possibility since it would have made partition by the winning coalition inevitable."}
+  - id: c7
+    rel: involved
+    to: enver-pasha
+    role: "Morgenthau recalls Enver's private admiration for Germany"
+    according_to: [henry-morgenthau-sr]
+    src:
+      - {s: morgenthau-1918-ambassador-morgenthaus-story, at: "Chapter 2", quote: "In his private conversation Enver made no secret of his admiration for Germany."}
+  - id: c8
+    rel: involved
+    to: talaat-pasha
+    role: "Morgenthau recalls Talaat explaining German assistance as a way to reconstruct and defend the country until it could stand alone"
+    according_to: [henry-morgenthau-sr]
+    src:
+      - {s: morgenthau-1918-ambassador-morgenthaus-story, at: "Chapter 2", quote: "We shall use Germany to help us reconstruct and defend the country until we are able to govern ourselves with our own strength."}
+  - id: c9
+    rel: involved
+    to: ottoman-empire
+    role: "Morgenthau contrasts public declarations of neutrality with mobilization before entry into the war"
+    according_to: [henry-morgenthau-sr]
+    src:
+      - {s: morgenthau-1918-ambassador-morgenthaus-story, at: "Chapter 4", quote: "Turkey had not entered the war and her political leaders were loudly protesting their intention of maintaining a strict neutrality."}
+  - id: c10
+    rel: involved
+    to: talaat-pasha
+    role: "Morgenthau recalls Talaat privately contradicting the claim that the cruisers belonged to Turkey"
+    according_to: [henry-morgenthau-sr]
+    src:
+      - {s: morgenthau-1918-ambassador-morgenthaus-story, at: "Chapter 5", quote: "Even Talaat told me in so many words that the cruisers did not belong to Turkey."}
 ---

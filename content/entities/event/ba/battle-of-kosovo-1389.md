@@ -42,4 +42,11 @@ claims:
     note: "Quataert's word; Doukas's account ends with the Serb nobles and Murad dead together."
     src:
       - {s: quataert-2005-the-ottoman-empire-1700-1922, at: "Chapter 1", quote: "Less than half a lifetime later, in 1389, Ottoman forces annihilated their Serbian foes at Kossovo, in the western Balkans."}
+  - id: c7
+    rel: involved
+    to: murad-i
+    role: "Doukas says the feigned deserter offered a secret to win the battle and Murad beckoned him forward"
+    according_to: [doukas]
+    src:
+      - {s: doukas-magoulias-1975-decline-and-fall, at: "Book 3", quote: "I wish to see him and tell him something secretly so that he can win this battle; this is the reason I have deserted."}
 ---

@@ -30,4 +30,10 @@ claims:
     role: "the state it set out to reform"
     src:
       - {s: gulhane-edict-1839-english, at: "Edict", quote: "we deem it right to seek by new institutions to give to the provinces composing the Ottoman Empire the benefit of a good administration"}
+  - id: c5
+    rel: involved
+    to: ottoman-empire
+    role: "The edict publicly argues that security produces loyalty and attachment to prince and country"
+    src:
+      - {s: gulhane-edict-1839-english, at: "Preamble and explanation of guarantees", quote: "If, on the contrary, he enjoys in that respect perfect security, he will not depart from the ways of loyalty"}
 ---

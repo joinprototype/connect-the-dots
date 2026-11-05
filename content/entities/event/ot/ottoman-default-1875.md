@@ -25,4 +25,10 @@ claims:
     src:
       - {s: blaisdell-1929-european-financial-control, at: "Chapter 1", quote: "It was during the twenty years from 1854 to 1875 that Turkey borrowed over a billion dollars from Europe."}
       - {s: quataert-2005-the-ottoman-empire-1700-1922, at: "Chapter 3", quote: "But finally, aware of the risks, they took out the first loans, to help finance Ottoman participation in the Crimean war of 1853-1856."}
+  - id: c4
+    rel: involved
+    to: ottoman-empire
+    role: "Blaisdell describes foreign ambassadors encouraging Abdul Aziz to expand his navy as debt charges rose"
+    src:
+      - {s: blaisdell-1929-european-financial-control, at: "Chapter 1", quote: "Foreign ambassadors to the Sublime Porte agreed with Sultan Abdul Aziz (1861-76) that he should expand his navy."}
 ---
