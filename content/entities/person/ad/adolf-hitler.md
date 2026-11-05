@@ -42,6 +42,13 @@ claims:
       - {s: ushmm-antisemitism-and-henry-fords-international-jew, quote: "Hitler also praised Ford in his antisemitic political treatise, Mein Kampf (1925)."}
       - {s: ushmm-protocols-key-dates, quote: "Adolf Hitler publishes his autobiography, Mein Kampf."}
       - {s: ushmm-protocols-key-dates, quote: "By 1938, the Nazi Party’s publishing house will issue 22 printings of the Protocols."}
+  - id: c6
+    rel: appears_in
+    to: judgment-of-the-international-military-tribunal
+    role: "named for his decision to deport Vienna’s remaining Jews in 1940"
+    note: "The judgment cites Lammers’s letter to Schirach of 3 December 1940, which gave a housing shortage as the reason for Hitler’s decision."
+    src:
+      - {s: avalon-imt-vol22-1946-10-01, quote: "Hitler had decided to deport the 60,000 Jews still remaining in Vienna to the Government General because of the housing shortage in Vienna."}
 ---
 
 The Judgment of the International Military Tribunal says that the “final solution” “meant the extermination of the Jews”, and that the persecution “has been proved in the greatest detail before the Tribunal”. It also calls the initiating of a war of aggression “the supreme international crime”. See [[nuremberg-trial-of-the-major-war-criminals]].

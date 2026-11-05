@@ -21,6 +21,7 @@ claims:
     according_to: [baldur-von-schirach]
     src:
       - {s: avalon-imt-vol14-1946-05-23, quote: "was Henry Ford's book, The International Jew; I read it and became anti-Semitic.", by: baldur-von-schirach}
+      - {s: avalon-imt-vol14-1946-05-23, quote: "In those days this book made such a deep impression on my friends and myself because we saw in Henry Ford the representative of success, also the exponent of a progressive social policy.", by: baldur-von-schirach}
       - {s: avalon-imt-vol14-1946-05-23, quote: "Dr. Sauter, the Tribunal thinks, as I have said twice now, that the educational influences of the defendant are quite irrelevant to us."}
 ---
 

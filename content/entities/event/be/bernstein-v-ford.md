@@ -12,6 +12,7 @@ claims:
     role: "plaintiff"
     src:
       - {s: atlantic-schulman-2023-ford, quote: "In 1923, the journalist Herman Bernstein filed a libel suit against Ford, who had remarked in an interview that Bernstein was the one who had told him aboard the “peace ship”"}
+      - {s: jta-1927-bernstein-events, quote: "To prove the falsity of the accusations against the Jewish people and myself I determined upon the only channel open to me. I instituted a suit for libel.", by: herman-bernstein}
   - id: c2
     rel: involved
     to: henry-ford
