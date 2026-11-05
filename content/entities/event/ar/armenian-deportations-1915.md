@@ -133,4 +133,19 @@ claims:
     according_to: [henry-morgenthau-sr]
     src:
       - {s: morgenthau-1918-ambassador-morgenthaus-story, at: "Chapter 25", quote: "The hatred between the Turks and the Armenians is now so intense that we have got to finish with them. If we don’t, they will plan their revenge."}
+  - id: c20
+    rel: involved
+    to: krikoris-balakian
+    role: "his group paid an official 800 Turkish gold pieces to postpone deportation until February 1916, in his later testimony"
+    according_to: [krikoris-balakian]
+    src:
+      - {s: berlin-1921-tehlirian-trial-first-afternoon, at: "Testimony of Krikoris Balakian", quote: "We were able to buy him off by paying him 800 Turkish gold pieces. We were thus able to stay there until February 1916."}
+  - id: c21
+    rel: involved
+    to: krikoris-balakian
+    role: "recalled escaping in a German uniform, hiding in Constantinople until the armistice, and leaving to tell the world about the atrocities"
+    according_to: [krikoris-balakian]
+    src:
+      - {s: berlin-1921-tehlirian-trial-first-afternoon, at: "Testimony of Krikoris Balakian", quote: "With my German uniform, I joined other German soldiers and officers and went with them by train to Constantinople. I stayed in hiding in Constantinople until the Armistice was signed in 1918."}
+      - {s: berlin-1921-tehlirian-trial-first-afternoon, at: "Testimony of Krikoris Balakian", quote: "In November 1918 I left Turkey and came to Paris to try to relate to the world the atrocities that were committed against the Armenians."}
 ---

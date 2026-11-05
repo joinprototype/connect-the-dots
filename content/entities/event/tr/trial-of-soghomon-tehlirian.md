@@ -52,7 +52,7 @@ claims:
     rel: involved
     to: talaat-pasha
     role: "the defence offered telegrams attributed to him and withdrew the motion; their authenticity is disputed"
-    note: "The Berlin record shows the defence offering five telegrams said to come from Aleppo and then withdrawing the motion. Turkey's side lists Orel and Yuca's book against them; an Armenian-American newspaper reports the historian Taner Akcam answering their arguments. We read neither book."
+    note: "The Berlin record shows the defence offering five telegrams said to come from Aleppo and then withdrawing the motion. Turkey's side lists Orel and Yuca's book against them; an Armenian-American newspaper reports the historian Taner Akcam answering their arguments."
     src:
       - {s: berlin-1921-tehlirian-trial-first-afternoon, at: "Motion of counsel von Gordon", quote: "The telegrams prove that Talaat personally gave the orders to massacre alt the Armenians including women and children."}
       - {s: mirror-spectator-2016-akcam-andonian-papers, at: "Report", quote: "The Turkish “debunkers” used the discrepancies between the Andonian text and the Guerguerian material as proof that the documents are forged."}
