@@ -38,4 +38,11 @@ claims:
     role: "addressed by the request, with Pakistan, Qatar, Saudi Arabia and the UAE"
     src:
       - {s: state-2009-12-30-cable-09state131801, quote: "To: Department of the Treasury | Kuwait Kuwait City | Pakistan Islamabad | Qatar Doha | Saudi Arabia Riyadh | United Arab Emirates Abu Dhabi"}
+  - id: c6
+    rel: involved
+    to: us-department-of-state
+    role: "sought senior-level engagement to generate political will to disrupt funding for groups targeting coalition soldiers"
+    src:
+      - {s: state-2009-12-30-cable-09state131801, quote: "to generate the political will necessary to address the problem."}
+      - {s: state-2009-12-30-cable-09state131801, quote: "These points focus on funding for terrorist groups threatening stability in Afghanistan and Pakistan and targeting coalition soldiers."}
 ---

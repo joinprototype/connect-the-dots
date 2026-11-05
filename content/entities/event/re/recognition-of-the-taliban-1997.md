@@ -48,4 +48,12 @@ claims:
     to: 9-11-commission-report
     src:
       - {s: 911-commission-report-2004, quote: "Saudi Arabia, Pakistan, and the United Arab Emirates were the only countries that recognized the Taliban as the legitimate government of Afghanistan."}
+  - id: c8
+    rel: involved
+    to: us-government
+    role: "sent Bill Richardson to urge an end to the civil war in April 1998 and ask the Taliban to expel bin Laden"
+    according_to: [national-commission-on-terrorist-attacks]
+    src:
+      - {s: 911-commission-report-2004, quote: "Ambassador Richardson went primarily to urge negotiations to end the civil war."}
+      - {s: 911-commission-report-2004, quote: "Richardson asked the Taliban to expel Bin Ladin.They answered that they did not know his whereabouts."}
 ---

@@ -42,4 +42,10 @@ claims:
     role: "inherited the agreement and chose to follow through, in his words"
     src:
       - {s: biden-2021-08-16-remarks-on-afghanistan, quote: "When I came into office, I inherited a deal that President Trump negotiated with the Taliban."}
+  - id: c7
+    rel: involved
+    to: us-government
+    role: "envoy Zalmay Khalilzad signed and shook hands with Taliban delegation leader Abdul Ghani Baradar in Doha"
+    src:
+      - {s: ap-2020-02-29-us-taliban-sign-deal, quote: "Mullah Abdul Ghani Baradar, the leader of the Taliban delegation, and Zalmay Khalilzad, U.S. envoy for peace in Afghanistan, shake hands after signing an agreement at a ceremony between members of Afghanistan's Taliban and the U.S. in Doha, Qatar February 29, 2020."}
 ---

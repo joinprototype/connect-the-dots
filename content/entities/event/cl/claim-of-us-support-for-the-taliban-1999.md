@@ -43,4 +43,19 @@ claims:
     src:
       - {s: 911-commission-report-2004, quote: "two senior State Department officials suggested asking the Saudis to offer the Taliban $250 million for Bin Ladin."}
       - {s: 911-commission-report-2004, quote: "Clarke opposed having the United States facilitate a “huge grant to a regime as heinous as the Taliban”"}
+  - id: c6
+    rel: involved
+    to: dana-rohrabacher
+    role: "said he had waited nearly eight months for promised State Department documents, leaving him frustrated and suspicious"
+    according_to: [dana-rohrabacher]
+    src:
+      - {s: rferl-1999-04-15-us-denies-it-supports-taliban, quote: "But nearly eight months later, Rohrbacher says he has yet to receive a single document."}
+  - id: c7
+    rel: involved
+    to: karl-inderfurth
+    role: "said engagement sought peace and action against terrorism and drugs; a document request had to come from the committee chairman"
+    according_to: [karl-inderfurth]
+    src:
+      - {s: rferl-1999-04-15-us-denies-it-supports-taliban, quote: "engaged with the Taliban in an effort to bring long-term peace to the region and to combat international terrorism and the illegal narcotics trade."}
+      - {s: rferl-1999-04-15-us-denies-it-supports-taliban, quote: "a written request must be issued not by Rohrbacher, but by the Chairman of the House International Relations Committee"}
 ---

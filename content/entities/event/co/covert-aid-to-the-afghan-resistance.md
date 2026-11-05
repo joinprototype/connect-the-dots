@@ -102,4 +102,32 @@ claims:
     according_to: [turki-al-faisal]
     src:
       - {s: arabnews-2001-11-04-turki-interview, quote: "We provided them with financial, military and moral support during their struggle against the Soviets."}
+  - id: c16
+    rel: involved
+    to: pakistan
+    role: "Carter offered aid to Zia for cooperation; Zia favored Islamist factions while publicly supporting Afghan self-determination, in Galster’s account"
+    src:
+      - {s: nsarchive-galster-making-of-us-policy-1973-1990, quote: "Literally days after the Soviet invasion, Carter was on the telephone with Zia offering him hundreds of millions of dollars in economic and military aid in exchange for cooperation in helping the rebels."}
+      - {s: nsarchive-galster-making-of-us-policy-1973-1990, quote: "Although Zia spoke in concert with U.S. objectives of supporting Afghan \"self-determination\" and opposing the Afghan \"puppet\" government, he and his military had their own agenda in Afghanistan."}
+  - id: c17
+    rel: involved
+    to: pakistan
+    role: "favored Islamist groups to avoid strengthening nationalists who might seek an independent state across the border"
+    according_to: [human-rights-watch]
+    src:
+      - {s: hrw-2001-crisis-of-impunity, quote: "Specifically, Pakistan sought to avoid building up the strength of Pashtun nationalist groups that might subsequently want to carve an independent Pashtun state from Pakistani and Afghan territory."}
+  - id: c18
+    rel: involved
+    to: turki-al-faisal
+    role: "later described government-ordered aid as helping Afghans help themselves"
+    according_to: [turki-al-faisal]
+    src:
+      - {s: arabnews-2001-11-04-turki-interview, quote: "to help them to help themselves as far as possible. We provided them with financial, military and moral support during their struggle against the Soviets."}
+  - id: c19
+    rel: involved
+    to: ronald-reagan
+    role: "his March 1985 directive called for Soviet withdrawal and good working relations with Pakistan because there was no alternative supply route"
+    src:
+      - {s: reagan-nsdd-166-1985, quote: "Maintain good working relations with Pakistan."}
+      - {s: reagan-nsdd-166-1985, quote: "from Afghanistan and the restoration of its independent status."}
 ---

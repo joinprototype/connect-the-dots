@@ -50,4 +50,13 @@ claims:
     to: ghost-wars
     src:
       - {s: 911-commission-report-2004, quote: "Ghost Wars: The Secret History of the CIA, Afghanistan, and bin Laden, from the Soviet Invasion to September 10, 2001"}
+  - id: c8
+    rel: founded
+    to: al-qaeda
+    when: "1988"
+    note: "he and Azzam agreed to preserve their organization for future jihad as Soviet withdrawal began"
+    according_to: [national-commission-on-terrorist-attacks]
+    src:
+      - {s: 911-commission-report-2004, quote: "Bin Ladin and Azzam agreed that the organization successfully created for Afghanistan should not be allowed to dissolve."}
+      - {s: 911-commission-report-2004, quote: "They established what they called a base or foundation (al Qaeda) as a potential general headquarters for future jihad."}
 ---

@@ -35,4 +35,11 @@ claims:
     role: "approved lethal aid for the Afghan resistance two days later"
     src:
       - {s: frus-1977-80-v12-preface, quote: "Two days later President Carter approved a new covert action to send lethal aid to the Afghan Mujahidin insurgents"}
+  - id: c6
+    rel: involved
+    to: soviet-government
+    role: "its troops killed Amin and installed Karmal; State Department historians describe Moscow fearing a hostile government"
+    according_to: [us-department-of-state]
+    src:
+      - {s: state-milestone-soviet-invasion-afghanistan, quote: "Soviet troops killed Amin and installed Babrak Karmal as the Soviet’s puppet head of government."}
 ---

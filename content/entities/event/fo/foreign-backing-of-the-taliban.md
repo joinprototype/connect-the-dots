@@ -97,4 +97,34 @@ claims:
     to: crisis-of-impunity
     src:
       - {s: hrw-2001-crisis-of-impunity, quote: "the Taliban, which received support primarily from Pakistan and Saudi Arabia."}
+  - id: c13
+    rel: involved
+    to: taliban
+    role: "former mujahideen coalesced around Omar, a village mullah and school head in 1992; their stated aims were stability and enforcing their interpretation of Islamic law"
+    according_to: [human-rights-watch]
+    src:
+      - {s: hrw-2001-crisis-of-impunity, quote: "a former mujahid who had returned to his home village of Singesar in Qandahar province in 1992 where he became the village mullah and head of the local madrasa."}
+      - {s: hrw-2001-crisis-of-impunity, quote: "Their stated aims were to restore stability and enforce (their interpretation of) Islamic law."}
+  - id: c14
+    rel: involved
+    to: taliban
+    role: "Omar stood by bin Laden despite other Taliban leaders’ objections; their relationship brought monetary and other benefits"
+    according_to: [national-commission-on-terrorist-attacks]
+    src:
+      - {s: 911-commission-report-2004, quote: "Mullah Omar would stand by him even when otherTaliban leaders raised objections."}
+  - id: c15
+    rel: involved
+    to: turki-al-faisal
+    role: "asked in 2001 which Afghan faction the kingdom favored, he said it preferred the Afghan people"
+    according_to: [turki-al-faisal]
+    src:
+      - {s: arabnews-2001-11-04-turki-interview, quote: "When Prince Turki was asked if the Kingdom favored any particular Afghan faction, he replied with a smile, \"Yes, we prefer the Afghan people.\""}
+  - id: c16
+    rel: involved
+    to: turki-al-faisal
+    role: "later said his June 1998 demand for bin Laden followed threats to Saudi interests; in September he found Omar had reversed his agreement"
+    according_to: [turki-al-faisal]
+    src:
+      - {s: arabnews-2001-11-04-turki-interview, quote: "This was because of some of his acts and statements and the Saudi move grew out of the Taleban’s promise not to allow Bin Laden to harm the Kingdom’s interests."}
+      - {s: arabnews-2001-11-04-turki-interview, quote: "I wished I had not gone. After previously agreeing to hand the man over, I discovered Mulla Omar had reversed his decision"}
 ---

@@ -58,4 +58,12 @@ claims:
     role: "estimated waste and fraud in wartime contracts"
     src:
       - {s: wartime-contracting-commission-2011-final-report, quote: "At least $31 billion, and possibly as much as $60 billion, has been lost to contract waste and fraud in America’s contingency operations in Iraq and Afghanistan."}
+  - id: c10
+    rel: involved
+    to: sigar
+    role: "recorded commanders’ objections to pressure to spend money and found contractors paying insurgents to leave convoys and project sites alone"
+    according_to: [sigar]
+    src:
+      - {s: sigar-2021-08-what-we-need-to-learn, quote: "Turn this money off. We’re having to look for people and projects to spend money on."}
+      - {s: sigar-2021-08-what-we-need-to-learn, quote: "private security contractors who were paid to protect DOD and USAID assets diverted a substantial percentage of their contract awards to insurgents to buy their cooperation"}
 ---
