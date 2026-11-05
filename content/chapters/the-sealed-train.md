@@ -10,7 +10,7 @@ featured: true
 
 In April 1917 Russia was in revolution, Europe was at war, and Vladimir Lenin was stuck in Switzerland. He went home on a train that crossed Germany with Berlin's leave.
 
-The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krupskaya and others aboard wrote their own accounts. They do not always agree: on who arranged it, on what Berlin granted, on what each side wanted. Where they differ, each is given with its source, and the story does not pick one. Whether German money reached the Bolsheviks, and how much it mattered, is argued by historians; the scene on the files sets out their answers. Dates are in the modern calendar; the old Russian one ran thirteen days behind.
+The German Foreign Ministry's telegrams, published in 1958, differ from Lenin's and his companions' accounts on who arranged the journey and what Berlin granted. Z. A. B. Zeman, who published the files, found no evidence in them of Lenin's direct contact with official German agencies, though he judged the two sides' aims closely aligned. [Kirkus's review of Catherine Merridale's 2017 book](https://kirkusreviews.com/book-reviews/catherine-merridale/lenin-on-the-train/print) describes a faction in the civilian government willing to gamble on Lenin. How much German money reached the Bolsheviks, by what channels and with what effect remains disputed. Dates are in the modern calendar; the old Russian one ran thirteen days behind.
 
 ```scene
 - shot: news-by-the-lake
@@ -21,7 +21,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   reveal: [february-revolution, lenin-sealed-train, vladimir-lenin, nadezhda-krupskaya, zurich]
   reveal_claims: [lenin-sealed-train#c20, lenin-sealed-train#c19]
   overlay: {kind: quote, source: krupskaya-reminiscences-of-lenin-departure, quote: "Haven't you heard the news? There's a revolution in Russia!", caption: "Bronski, bursting in on Lenin and Krupskaya in March 1917, as she remembered it"}
-  narration: "**News by the lake.** In March 1917 Bronski burst in on Lenin and his wife, Nadezhda Krupskaya, with news of a revolution in Russia. Lenin was, she wrote, “all eagerness to go back.” But England and France, she knew, would never let a Bolshevik through, and his nights went on “the most improbable plans”."
+  narration: "**News by the lake.** Nadezhda Krupskaya, Lenin's wife, later recalled how, in Zurich in March 1917, Bronski burst in on her and Lenin with news of revolution in Russia. In her recollection, Lenin was “all eagerness to go back”, but believed England and France would never let a Bolshevik through. She remembered him losing sleep and considering flying or borrowing a neutral foreigner's passport; Krupskaya teased him that he would give himself away by swearing in Russian in his sleep. Revolution was under way without him; the route he would take ran through enemy Germany."
   duration: 13
 
 - shot: the-same-war
@@ -30,8 +30,8 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   time: "1917-04-01"
   reveal: [world-war-i, july-crisis, wilhelm-ii, theobald-von-bethmann-hollweg, lenin-sealed-train]
   reveal_claims: [july-crisis#c1, july-crisis#c2, july-crisis#c11, lenin-sealed-train#c21, lenin-sealed-train#c11]
-  overlay: {kind: quote, source: lenin-1917-how-we-arrived, quote: "Were Karl Liebknecht in Russia now, the Milyukovs would readily let him out to go to Germany; the Bethmann-Holiwegs let you Russian internationalists out to go to Russia.", caption: "Foreign socialists to the Russian exiles, as Lenin reported on 17 April 1917"}
-  narration: "**The same war.** What kept Lenin in Switzerland was the war that began in the thirty-seven days of 1914, told in the story of that name. The Kaiser and Chancellor Bethmann Hollweg who backed Vienna in July 1914 still ruled in Berlin. Now their government held the key to Lenin's way home."
+  overlay: {kind: quote, source: lenin-1917-how-we-arrived, quote: "Your business is to go to Russia and fight there against both German and Russian imperialism.", caption: "Foreign socialists to the Russian exiles, as Lenin reported on 17 April 1917"}
+  narration: "**The same war.** In Berlin in 1917, Kaiser Wilhelm II and Chancellor Bethmann Hollweg still ruled: the men who had backed Vienna during the thirty-seven days that led to war in 1914 now controlled Lenin's way home. Lenin would publicly defend accepting their permission by repeating fellow socialists' advice: “Your business is to go to Russia and fight there against both German and Russian imperialism.” He endorsed it: “We think they were right.” Crossing Germany would bring him home to oppose the war, with the enemy government's help."
   duration: 13
 
 - shot: only-lenin-jumped
@@ -41,7 +41,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   reveal: [vladimir-lenin, robert-grimm, swiss-social-democratic-party, lenin-sealed-train, zurich]
   reveal_claims: [lenin-sealed-train#c5, robert-grimm#c1]
   overlay: {kind: quote, source: krupskaya-reminiscences-of-lenin-departure, quote: "Martov proposed a plan for allowing emigrants to pass through Germany in exchange for German and Austrian prisoners of war interned in Russia. However, no one was inclined to accept this plan. Lenin was the only one who jumped at it.", caption: "Nadezhda Krupskaya, on the exiles’ meeting of 19 March 1917"}
-  narration: "**Only Lenin jumped at it.** On 19 March the Russian exiles in Switzerland met. By Krupskaya's account, Martov's plan was to ask Germany for passage in exchange for interned German and Austrian prisoners, and Lenin alone seized on it. A decision Lenin signed on 31 March records that the Swiss socialist Robert Grimm negotiated with Hoffmann, a member of the Swiss government."
+  narration: "**Only Lenin jumped at it.** At the exiles' meeting on 19 March 1917, Martov proposed crossing Germany in exchange for German and Austrian prisoners interned in Russia. By Krupskaya's recollection, everyone held back except Lenin, who seized on the plan but urged care: the Swiss government should initiate the negotiations. Robert Grimm approached the Swiss minister Hoffmann; Lenin's signed decision of 31 March says Hoffmann refused official intervention because Britain would treat it as a breach of neutrality. Lenin accepted the plan anyway, and the search for passage shifted from a neutral government to Russia's enemy."
   duration: 13
 
 - shot: berlin-is-asked
@@ -53,7 +53,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   reveal: [berlin, arthur-zimmermann, german-army-high-command, german-imperial-government, lenin-sealed-train]
   reveal_claims: [lenin-sealed-train#c6, lenin-sealed-train#c8]
   overlay: {kind: quote, source: zeman-1958-germany-revolution-russia, quote: "Since it is in our interests that the influence of the radical wing of the Russian revolutionaries should prevail, it would seem to me advisable to allow transit to the revolutionaries there.", caption: "Arthur Zimmermann, State Secretary, 23 March 1917 (German Foreign Ministry files)"}
-  narration: "**Berlin is asked.** On 23 March the Foreign Ministry's State Secretary, Arthur Zimmermann, backed letting Russian revolutionaries cross Germany and asked the army's High Command for its view. Two days later the High Command answered: no objection, if they went in a special train with a reliable escort. The telegram names no officer."
+  narration: "**Berlin is asked.** On 23 March 1917, State Secretary Arthur Zimmermann asked the army's High Command to let Russian revolutionaries cross Germany. In his telegram he gave the reason: “it is in our interests that the influence of the radical wing of the Russian revolutionaries should prevail”. Two days later the High Command, naming no officer in its reply, raised no objection if the travellers went in a special train with a reliable escort. Zimmermann's proposal now had military clearance; the officials still had to decide whom to carry."
   duration: 13
 
 - shot: lenins-party-named
@@ -64,7 +64,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   reveal: [german-army-high-command, german-imperial-government, vladimir-lenin, bolsheviks, lenin-sealed-train]
   reveal_claims: [lenin-sealed-train#c8]
   overlay: {kind: quote, source: zeman-1958-germany-revolution-russia, quote: "It was considered advantageous to Germany to bring out the members of Lenin's party, the Bolsheviks, who were about forty in number.", caption: "An agent’s report relayed by Captain Hülsen of the General Staff, 30 March 1917 (German Foreign Ministry files)"}
-  narration: "**Lenin's party is named.** On 30 March a captain in the General Staff's Political Section passed on an agent's report from Switzerland. It said bringing out Lenin's party would be advantageous to Germany. At a General Staff meeting next day a memo records the doubt: “It seems very questionable whether we shall achieve our aims.”"
+  narration: "**Lenin's party is named.** On 30 March 1917, Captain Hülsen of the General Staff's Political Section relayed an agent's report from Switzerland: bringing out Lenin's Bolsheviks, estimated at forty people, would advantage Germany. At the next day's General Staff meeting, the prospect looked less certain: British officials at the Finnish frontier might stop opponents of the war. “It seems very questionable whether we shall achieve our aims,” the memorandum warned. It urged officials to avoid compromising the travellers by showing too much eagerness to help; getting Lenin across Germany would be useless if he could not enter Russia."
   duration: 13
 
 - shot: platten-s-paper
@@ -74,7 +74,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   reveal: [fritz-platten, swiss-social-democratic-party, vladimir-lenin, german-imperial-government, lenin-sealed-train]
   reveal_claims: [lenin-sealed-train#c4, fritz-platten#c1, lenin-sealed-train#c1]
   overlay: {kind: quote, source: zeman-1958-germany-revolution-russia, quote: "All communication with German organizations will be undertaken exclusively by Platten, without whose permission absolutely nobody may enter the carriage, which will be locked at all times.", caption: "Fritz Platten’s draft conditions, Bern–Zurich, 4 April 1917 (German Foreign Ministry files)"}
-  narration: "**Platten's paper.** Fritz Platten, secretary of the Swiss Social Democratic party, set down nine conditions. One carriage with “extra-territorial rights”, no control of passports, passage whatever a traveller thought of the war, tickets at normal fares. In return the travellers would press in Russia for an exchange with interned Germans and Austrians."
+  narration: "**Platten's paper.** In Bern on 4 April 1917, Fritz Platten, secretary of the Swiss Social Democratic party, presented nine conditions for taking Lenin's group across Germany. Romberg reported that Platten urged speed because events in Russia threatened peace and socialist leaders needed to return quickly. Platten demanded a locked carriage with “extra-territorial rights”: nobody could enter without his permission, and he alone would deal with German organizations. There would be no passport checks, tickets would cost normal fares, and passage would not depend on a traveller's views of the war. In return, the exiles would campaign in Russia for an exchange with interned Germans and Austrians; Platten had put his conditions on paper, and Berlin now had to answer."
   duration: 13
 
 - shot: berlin-says-yes
@@ -87,7 +87,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   reveal: [german-imperial-government, fritz-platten, gisbert-von-romberg, lenin-sealed-train, berlin, zurich]
   reveal_claims: [lenin-sealed-train#c7, lenin-sealed-train#c1]
   overlay: {kind: quote, source: zeman-1958-germany-revolution-russia, quote: "Platten's conditions accepted except Clause 2, as proposal for journey was agreed after request from German Trades Unions, on whose behalf Janson will accompany the carriage.", caption: "Berlin to its minister in Bern, 7 April 1917 (German Foreign Ministry files)"}
-  narration: "**Berlin says yes, nearly.** On 5 April Berlin told Bern that the General Staff agreed: the crossing at Gottmadingen, no passport checks, luggage sealed, safe transit, at most sixty people. Two days later it accepted Platten's conditions except Clause 2, which made him the only contact, locked the carriage and gave it extra-territorial rights, because a German trade-union man, Janson, would ride along. Lenin's own report still claims those rights; the records do not reconcile the two."
+  narration: "**Berlin says yes, nearly.** In Bern, German minister Gisbert von Romberg received Berlin's approval on 5 April 1917: the General Staff agreed to passage through Gottmadingen, no passport checks, sealed luggage and safe transit for at most sixty people. On 7 April Berlin accepted Platten's conditions except Clause 2, covering his exclusive control, the locked carriage and its extra-territorial rights: Janson would accompany it for the German trade unions, whose request Berlin said had initiated the arrangement. Lenin's later public report nevertheless described the carriage's extraterritoriality and Platten's control as agreed terms. The travellers set out under an agreement the two sides would describe differently."
   duration: 13
 
 - shot: the-generals-memoir
@@ -97,7 +97,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   reveal: [erich-ludendorff, german-army-high-command, german-imperial-government, lenin-sealed-train]
   reveal_claims: [lenin-sealed-train#c9, lenin-sealed-train#c8, german-imperial-government#c4]
   overlay: {kind: quote, source: ludendorff-1919-war-memories-v2, quote: "By sending Lenin to Russia our Government had, moreover, assumed a great responsibility.", caption: "Erich Ludendorff, My War Memories, 1919"}
-  narration: "**The general writes afterwards.** The 1917 telegrams name the army's High Command, not Ludendorff, as raising no objection. Two years later Ludendorff, the army's First Quartermaster General, wrote that “our Government” had sent Lenin, and that his journey “was justified” from a military point of view, “for Russia had to be laid low”. The editor of the German files, Z. A. B. Zeman, noted that Ludendorff referred to it with “bated breath”."
+  narration: "**The general writes afterwards.** In his 1919 memoir, Erich Ludendorff, the army's First Quartermaster General, defended sending Lenin: “his journey was justified, for Russia had to be laid low.” The 1917 telegrams had recorded the High Command's assent without naming him; afterwards, in what Z. A. B. Zeman called a tone of “bated breath”, he assigned the “great responsibility” to “our Government”. Ludendorff himself warned that the government should have kept Germany from being dragged into Russia's fall. His military justification came with an admission that the danger could cross back over the frontier."
   duration: 13
 
 - shot: what-each-side-wanted
@@ -107,7 +107,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   reveal: [german-imperial-government, bolsheviks, vladimir-lenin, nadezhda-krupskaya, lenin-sealed-train]
   reveal_claims: [german-imperial-government#c7, bolsheviks#c2]
   overlay: {kind: quote, source: zeman-1958-germany-revolution-russia, quote: "Since their immediate departure would be greatly in our interests, I urgently recommend that permission should be granted at once, accepting the conditions laid down.", caption: "Gisbert von Romberg, German minister in Bern, 4 April 1917"}
-  narration: "**What each side wanted.** Berlin's minister in Bern called the exiles' quick departure “greatly in our interests”. The Bolshevik leaders in Switzerland judged the terms “fully acceptable” because they guaranteed passage whatever a traveller thought of the war. Krupskaya wrote that Berlin gave leave “in the belief that revolution was a disaster to a country”, while the Bolsheviks meant to bring one about anyway."
+  narration: "**What each side wanted.** On 4 April 1917, Romberg urged Berlin to approve the exiles' immediate departure, calling it “greatly in our interests”. Lenin had already signed the Bolshevik leaders' judgment that the proposal was “fully acceptable”: passage was guaranteed regardless of their politics or views on continuing the war. Krupskaya later said Berlin thought revolution would be a disaster for Russia; the Bolsheviks aimed for a victorious proletarian revolution, expecting attacks over their journey but believing the masses would follow. Both accepted the crossing for their own stated reasons, and Platten prepared to lead the group home."
   duration: 13
 
 - shot: who-was-aboard
@@ -117,7 +117,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   reveal: [vladimir-lenin, nadezhda-krupskaya, grigory-zinoviev, karl-radek, grigori-sokolnikov, fritz-platten, lenin-sealed-train]
   reveal_claims: [lenin-sealed-train#c12, lenin-sealed-train#c13, lenin-sealed-train#c14, lenin-sealed-train#c15, lenin-sealed-train#c4]
   overlay: {kind: quote, source: krupskaya-reminiscences-of-lenin-departure, quote: "Among the passengers were the Zinovievs, the Usieviches, Inessa Armand, the Safarovs, Olga Ravich, Abramovich from Chaux-de-Fonds, Grebelskaya, Kharitonov, Linda Rosenblum, Boitsov, Mikha Tskhakaya, the Marienhoffs and Sokolnikov. Radek went under the guise of a Russian.", caption: "Nadezhda Krupskaya, Reminiscences of Lenin"}
-  narration: "**Who was aboard.** Krupskaya counted thirty, not counting a four-year-old boy named Robert. Lenin's report to the Petrograd Soviet says thirty-two, nineteen of them Bolsheviks, and a German diplomat counted thirty-three arriving in Sweden. Besides Lenin and Krupskaya there were the Zinovievs, Grigori Sokolnikov, and Karl Radek, who went “under the guise of a Russian”. Fritz Platten rode with them."
+  narration: "**Who was aboard.** Krupskaya later recalled Karl Radek joining the departing exiles on 9 April 1917 “under the guise of a Russian”. She remembered Lenin, the Zinovievs and Grigori Sokolnikov among her fellow passengers, and four-year-old Robert taking a liking to Sokolnikov and filling the carriage with his voice. Krupskaya counted thirty people, excluding the boy; Lenin reported thirty-two travellers, nineteen Bolsheviks; a German diplomat counted thirty-three reaching Sweden. Fritz Platten led the party toward the German frontier, taking the passage he had negotiated through a country at war with Russia."
   duration: 13
 
 - shot: two-hours
@@ -128,8 +128,8 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   time: "1917-04-09"
   reveal: [zurich, vladimir-lenin, nadezhda-krupskaya, lenin-sealed-train, fritz-platten]
   reveal_claims: [lenin-sealed-train#c19, lenin-sealed-train#c14]
-  overlay: {kind: quote, source: lenin-1917-farewell-letter-swiss-workers, quote: "Long live the proletarian revolution that is beginning in Europe!", caption: "Lenin, Farewell Letter to the Swiss Workers, approved 8 April 1917"}
-  narration: "**Two hours.** When word came from Bern that Platten's talks had succeeded, Lenin sprang up: “Let us catch the first train.” Krupskaya had two hours to pack and settle with the landlady. The party gathered at the People's House in Bern and left on 9 April. Merridale's account, as Kirkus Reviews summarises it, calls the journey one “from Zurich to Petrograd”."
+  overlay: {kind: quote, source: lenin-1917-farewell-letter-swiss-workers, quote: "Leaving Switzerland for Russia, to continue revolutionary-internationalist activity in our country", caption: "Lenin, Farewell Letter to the Swiss Workers, approved 8 April 1917"}
+  narration: "**Two hours.** Krupskaya later recalled that when the letter from Bern said Platten's negotiations had succeeded, Lenin sprang up and urged, “Let us catch the first train”; Krupskaya had two hours to settle with the landlady, return library books and pack. “Go by yourself, I'll leave tomorrow,” she recalled telling him, but he insisted they leave together. She remembered destroying letters, choosing clothes and catching the train with him to Bern, where the party gathered at the People's House. On 9 April 1917 the exiles began the journey from Zurich to Petrograd; they had packed away their Swiss household and left it behind."
   duration: 13
 
 - shot: across-germany
@@ -142,7 +142,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   reveal: [berlin, wilhelm-ii, german-imperial-government, lenin-sealed-train]
   reveal_claims: [lenin-sealed-train#c10]
   overlay: {kind: quote, source: zeman-1958-germany-revolution-russia, quote: "His Majesty the Kaiser suggested at breakfast today that the Russian Socialists travelling through Germany should be given White Books and other literature, such as copies of the Easter Message and of the Chancellor's speech, so that they may be able to enlighten others in their own country.", caption: "Memo of 12 April 1917 on what the Kaiser said at breakfast (German Foreign Ministry files)"}
-  narration: "**Across Germany.** They crossed at the frontier station of Gottmadingen and went north to Sassnitz. In Berlin the carriage stood in a siding, and at the stations Krupskaya saw “the total absence of grown-up men”. Berlin's records add milk for the children, and the Kaiser's idea of handing the Russians the Chancellor's speech."
+  narration: "**Across Germany.** Lersner reported that, at breakfast on 12 April 1917, Kaiser Wilhelm II suggested giving the Russian travellers White Books, the Easter Message and the Chancellor's speech, so they could “enlighten others in their own country”. Krupskaya later recalled passing German stations where she saw no grown men, only women, teenagers and children. In Berlin their carriage stood in a siding; German officials reported providing milk for the children. The Kaiser proposed sending his government's words home with the revolutionaries; their carriage carried them from Gottmadingen north to Sassnitz and the Baltic crossing."
   duration: 13
 
 - shot: stockholm
@@ -154,7 +154,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   reveal: [stockholm, swedish-government, vladimir-lenin, lenin-sealed-train]
   reveal_claims: [lenin-sealed-train#c17, lenin-sealed-train#c18, swedish-government#c1]
   overlay: {kind: quote, source: krupskaya-reminiscences-of-lenin-departure, quote: "At Stockholm we were met by the Swedish Social-Democratic M.P.'s Lindhagen, Karlsson, Strom, T. Nerman and others. A red flag had been hung up in the waiting room and a meeting was held there.", caption: "Nadezhda Krupskaya, Reminiscences of Lenin"}
-  narration: "**Stockholm.** Sweden had said yes: “Government here permits transit through Sweden,” Berlin's minister there wired on 10 April. Thirty-three exiles reached Malmö, where, by a German report, the Mayor of Stockholm welcomed them at Trelleborg. In Stockholm Swedish Social Democrat members of parliament met them, and a red flag hung in the waiting room."
+  narration: "**Stockholm.** In Stockholm on 13 April 1917, Krupskaya stepped into a railway waiting room hung with a red flag, where Swedish Social Democrat MPs met the travellers and held a meeting. Sweden had permitted transit, as Germany's minister there wired on 10 April; a German report counted thirty-three exiles reaching Malmö and said Stockholm's mayor welcomed them at Trelleborg. Krupskaya later recalled little of Stockholm because all her thoughts were in Russia. The welcome gave way to another departure, toward the frontier where permission to cross Germany could no longer protect them."
   duration: 13
 
 - shot: a-man-at-the-door
@@ -164,7 +164,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   reveal: [alexander-parvus, german-imperial-government, vladimir-lenin, karl-radek, lenin-sealed-train]
   reveal_claims: [lenin-sealed-train#c16, german-imperial-government#c2, alexander-parvus#c1]
   overlay: {kind: quote, source: zeman-1958-germany-revolution-russia, quote: "In Stockholm Parvus tried to see Lenin in the name of the Central Committee of the German Social Democrats; Ilyich not only refused to see him, but asked me, Vorovski and Hanecki, together with Swedish comrades, to record this attempt.", caption: "Karl Radek, in a 1924 piece quoted in a note by the editor of the German files"}
-  narration: "**A man at the door.** Alexander Parvus, to whom Berlin had authorised one million roubles in 1915 (about $10 million in 2026 prices, or nearly half a tonne of gold), asked the German minister in Copenhagen to tell him when the Russians reached Malmö, because he wished to meet them. In Radek's telling, Lenin refused to see him and had the attempt put on record. Zinoviev told comrades in Petrograd that Lenin likewise refused to meet the German Social Democrat Scheidemann."
+  narration: "**A man at the door.** Germany's minister in Copenhagen reported that Alexander Parvus wished to meet the exiles and asked to be told when they reached Malmö. Berlin had authorised Parvus one million roubles in 1915. In Radek's 1924 recollection, Parvus tried in Stockholm to see Lenin on behalf of the German Social Democrats; Lenin refused and asked Radek and others to record the attempt. Raskolnikov later recalled Zinoviev telling them on the approaching train of another refusal: Scheidemann, a German Social Democrat, had also tried and failed to meet Lenin."
   duration: 13
 
 - shot: at-the-russian-frontier
@@ -178,7 +178,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   reveal: [fritz-platten, russian-provisional-government, vladimir-lenin, petrograd, lenin-sealed-train]
   reveal_claims: [lenin-sealed-train#c4, lenin-sealed-train#c13]
   overlay: {kind: quote, source: zeman-1958-germany-revolution-russia, quote: "He was stopped at the frontier by an English officer, who cancelled his entry permit.", caption: "Gisbert von Romberg, on what Platten told him, 30 April 1917 (German Foreign Ministry files)"}
-  narration: "**At the Russian frontier.** The party crossed into Finland in country sleighs. Platten, who meant to go on to Petrograd, was stopped at the frontier; Berlin's minister in Bern heard that a British officer cancelled his permit. Krupskaya says the Provisional Government refused Platten and Radek but “did not dare to stop the Bolsheviks”. Lenin, she remembered, asked whether they would be arrested on arrival."
+  narration: "**At the Russian frontier.** Fritz Platten intended to accompany the exiles all the way to Petrograd, but at the frontier his permit was cancelled. He later told Romberg that a British officer had stopped him; Krupskaya said the Russian Provisional Government refused both Platten and Radek but “did not dare to stop the Bolsheviks”. The others crossed from Sweden into Finland in country sleighs and boarded familiar, rickety third-class carriages. Nearer Petrograd, Lenin asked the comrades who met them whether they would be arrested on arrival; they smiled, Krupskaya remembered, and the train carried on without its Swiss escort."
   duration: 13
 
 - shot: finland-station
@@ -190,7 +190,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   reveal: [petrograd, vladimir-lenin, nadezhda-krupskaya, bolsheviks, lenin-sealed-train]
   reveal_claims: [lenin-sealed-train#c3, lenin-sealed-train#c14]
   overlay: {kind: quote, source: krupskaya-reminiscences-of-lenin-petrograd, quote: "Red banners, a guard of honour of Kronstadt sailors, searchlights from the Peter and Paul Fortress lighting up the way from the Finland Station to the Krzesinska Mansion, armoured cars, files of working men and women guarding the road.", caption: "Nadezhda Krupskaya, Reminiscences of Lenin"}
-  narration: "**The Finland Station.** Lenin reached Petrograd on the night of 16 April (3 April in the old Russian calendar). Sailors from Kronstadt formed a guard of honour, armoured cars waited outside, and Lenin spoke to the crowd from one of them. The naval officer Raskolnikov, who had met the train on the way, wrote that the idea of crossing Germany “had never entered our heads”."
+  narration: "**The Finland Station.** Naval officer Raskolnikov went out to meet Lenin's train on 16 April 1917; by his later recollection, a route through Germany “had never entered our heads”, so fixed had the wartime barriers seemed. That night, 3 April by Russia's old calendar, Lenin reached Petrograd to a Kronstadt sailors' guard of honour and armoured cars outside the Finland Station. He climbed onto one and called for socialist revolution. Raskolnikov followed him to the party's headquarters and later credited his programme that night with transforming the leaders' thinking; next day Lenin would put it into ten theses."
   duration: 13
 
 - shot: april-theses
@@ -200,17 +200,17 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   reveal: [april-theses, vladimir-lenin, russian-provisional-government, bolsheviks, lenin-sealed-train]
   reveal_claims: [lenin-sealed-train#c22, vladimir-lenin#c5]
   overlay: {kind: quote, source: lenin-1917-april-theses, quote: "No support for the Provisional Government; the utter falsity of all its promises should be made clear, particularly of those relating to the renunciation of annexations.", caption: "Lenin, April Theses, thesis 3, 17 April 1917"}
-  narration: "**The April Theses.** The next day Lenin read ten theses, first to Bolsheviks and then to a joint meeting with Mensheviks. No support for the Provisional Government; a republic of Soviets, not a parliamentary one; confiscation of all landed estates. Krupskaya wrote that his comrades were “somewhat taken aback”; Raskolnikov, a Bolshevik, that the speech “produced a complete revolution in the thinking of the Party’s leaders”."
+  narration: "**The April Theses.** On 17 April 1917 in Petrograd, Lenin read ten theses, first to Bolsheviks, then to a joint meeting with Mensheviks. He demanded no support for the Provisional Government, calling it “a government of capitalists” under which the war remained imperialist; he called for a republic of Soviets rather than a parliamentary republic, and confiscation of all landed estates. Krupskaya remembered comrades “somewhat taken aback”: many thought it too early to speak of socialist revolution. Lenin had returned to press for another transfer of power, and his programme now confronted his own party as well as the government."
   duration: 13
 
 - shot: the-charge
   view: graph
   focus: russian-provisional-government
-  time: "1917-07-05"
+  time: "1917-07-18"
   reveal: [russian-provisional-government, german-imperial-government, vladimir-lenin, bolsheviks, alexander-parvus]
   reveal_claims: [german-imperial-government#c3]
   overlay: {kind: quote, source: raskolnikov-1925-kronstadt-petrograd-1917, quote: "However, it was enough for me to mention the name of Comrade Lenin and to start justifying what he had done, for them to interrupt with loud cries of “Down with him, he’s a German spy!”", caption: "F. F. Raskolnikov, on speaking to soldiers in the weeks after Lenin’s return"}
-  narration: "**The charge.** The train followed Lenin. On 4 July the Provisional Government's Justice Minister authorised a press release saying Germany had sent Lenin to Russia and that money reached the Bolsheviks through Stockholm. Lenin and the Bolshevik leaders flatly denied it. Neither side was heard in court before the Bolsheviks took power in October."
+  narration: "**The charge.** Raskolnikov later recalled defending Lenin's journey before soldiers who shouted that Lenin was a German spy. On 17 July 1917, Justice Minister Pavel Pereverzev authorised a press release accusing Lenin of serving Germany and receiving money through Stockholm; published on 18 July, it met the Bolshevik leaders' flat denial. Lyandres recounts that, from hiding in Finland, Lenin privately demanded that Hanecki publish every intercepted telegram and explain each one; Hanecki did not comply, though Bolsheviks prepared an explanation by autumn. Neither prosecution nor defence reached court before the Bolsheviks took power in November, leaving the accusations to outlive the government that made them."
   duration: 13
 
 - shot: what-the-files-show
@@ -221,7 +221,7 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   reveal: [german-imperial-government, alexander-parvus, bolsheviks, vladimir-lenin, erich-ludendorff]
   reveal_claims: [german-imperial-government#c1, german-imperial-government#c2, german-imperial-government#c3, german-imperial-government#c4]
   overlay: {kind: quote, source: lyandres-1995-german-gold, quote: "But there seems to be no agreement in the literature on either the extent of the German assistance or the ways in which it reached the Bolsheviks", caption: "Semion Lyandres, The Bolsheviks’ “German Gold” Revisited, 1995"}
-  narration: "**What the files show, and what they do not.** Germany's State Secretary Kühlmann wrote in December 1917 that the Bolsheviks had received “a steady flow of funds”. Z. A. B. Zeman, who published the files in 1958, found “no evidence” among them that Lenin was in direct contact with German agencies, and wrote that the two sides' aims “coincided to a high degree”. Lyandres (1995) found the July charge unproven, yet noted that the files show substantial funds set aside for Bolshevik anti-war work in 1917. Kirkus Reviews, summarising Catherine Merridale (2017), says that to speak of “Germany” alone is “to speak too broadly”: one faction was willing to gamble on Lenin."
+  narration: "**What the files show.** On 3 December 1917, State Secretary Kühlmann explained Berlin's support for the Bolsheviks to its liaison officer at army headquarters: Russia was the enemy alliance's weakest link and should be removed. He credited “a steady flow of funds” with helping build Pravda and extend the party's reach. Semion Lyandres, examining the July accusations in 1995, found them unsupported by the intercepted telegrams, while noting that German files showed substantial funds allocated to Bolshevik anti-war work. Kühlmann wrote that the Bolsheviks needed peace to strengthen their position; he urged exploiting their possibly brief hold on power to obtain an armistice and, if possible, peace."
   duration: 15
 
 - shot: what-came-of-it
@@ -232,12 +232,10 @@ The German Foreign Ministry's telegrams were published in 1958, and Lenin, Krups
   time: "1918-03-03"
   reveal: [october-revolution, treaty-of-brest-litovsk, grigori-sokolnikov, erich-ludendorff, bolsheviks, petrograd, berlin]
   reveal_claims: [treaty-of-brest-litovsk#c4, lenin-sealed-train#c15, treaty-of-brest-litovsk#c5, german-imperial-government#c5, october-revolution#c1]
-  overlay: {kind: quote, source: sokolnikov-1918-03-03-brest-statement, quote: "We, the authorized representatives of our Government, are prepared to sign the peace treaty immediately.", caption: "Grigori Sokolnikov, Brest-Litovsk, 3 March 1918"}
-  narration: "**What came of it.** Less than seven months after the Finland Station the Bolsheviks took power. On 3 March 1918 Soviet Russia signed the Treaty of Brest-Litovsk; its delegate Grigori Sokolnikov had crossed Germany on the sealed train. According to Ludendorff, the peace eased the Eastern Front “to an extraordinary degree”. What followed, from the Union's founding to its end in 1991, is the story The Rise and Fall of the Soviet Union."
+  overlay: {kind: quote, source: sokolnikov-1918-03-03-brest-statement, quote: "In the present circumstances the workers' and peasants' Government of the Russian Republic is not in a position to resist the armed attack of German imperialism and, in order to save the revolution, is forced to accept the terms presented to them.", caption: "Grigori Sokolnikov, Brest-Litovsk, 3 March 1918"}
+  narration: "**What came of it.** On 3 March 1918 at Brest-Litovsk, Grigori Sokolnikov, a passenger on Lenin's train, faced Germany's terms after its renewed attack. The Bolsheviks had taken power less than seven months after Lenin's arrival; their delegate said Russia must sign to spare workers and peasants further slaughter and save the revolution. Sokolnikov protested that the terms deprived frontier populations of self-determination and restored land to landlords. Soviet Russia signed that day. Ludendorff later credited both Brest-Litovsk and the preliminary peace of Buftea with easing the Eastern Front, while warning that real peace with Russia had not arrived. The train passenger had signed Russia out of the war; the Soviet state's road would run through the Union's founding to its dissolution in 1991."
   explore: true
   duration: 14
 ```
-
-**One million roubles in today's money.** In New York in December 1915, 100 roubles cost $29.75 to $32.75, against $51.50 before the war ([Federal Reserve Bulletin, 1 December 1916, p. 729](https://fraser.stlouisfed.org/files/docs/publications/FRB/pages/1915-1919/24652_1915-1919.pdf)), so the million Berlin authorised for Parvus was worth $297,500 to $327,500. US consumer prices were 32.7 times higher in September 2026 than in December 1915 ([Bureau of Labor Statistics, via FRED](https://fred.stlouisfed.org/series/CPIAUCNS)): about $10 million. At the dollar's fixed price of $20.67 an ounce, the same money bought 14,400 to 15,800 ounces of gold, about 450 to 490 kilograms, worth $57 to $62 million at $3,927 an ounce on 3 November 2026 ([Nation Thailand](https://www.nationthailand.com/business/trading-investment/40073078)).
 
 Explore further: follow the road ahead in The Rise and Fall of the Soviet Union, or the road behind in Thirty-Seven Days.
