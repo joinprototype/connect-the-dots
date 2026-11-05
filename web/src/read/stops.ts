@@ -2,7 +2,7 @@
 // with its proof open; the name itself; and what goes on from it, each with its reason. Every name and
 // word here comes from the data files, never from the address.
 import type { GraphIndex } from '../lib/data';
-import { kinshipRole, sentence, sourceView } from '../lib/claims';
+import { accountOf, ARCHIVED, fromLine, kinshipRole, sentence, sourceView } from '../lib/claims';
 import type { PathResult } from '../lib/paths';
 import { claimNotes, NOTICE, statusWords, tierLabel } from '../lib/plain';
 import type { GEdge, GNode } from '../lib/types';
@@ -59,8 +59,7 @@ function door(idx: GraphIndex, site: SiteData, n: GNode, from: string, e: GEdge 
 
 /** Whose account a link is, and what stands against it, in plain words. */
 function standing(idx: GraphIndex, e: GEdge): string {
-  const said = e.according_to.map((p) => idx.nodes.get(p)?.name ?? idx.perspectives.get(p)?.name ?? p);
-  const bits = [...(said.length ? [`According to ${said.join(' and ')}`] : []), ...statusWords(e), ...claimNotes(e)];
+  const bits = [accountOf(idx, e) ?? '', ...statusWords(e), ...claimNotes(e)].filter(Boolean);
   return bits.map((b) => esc(/[.!?]$/.test(b) ? b : `${b}.`)).join(' ');
 }
 
@@ -69,8 +68,8 @@ export function proofHTML(idx: GraphIndex, e: GEdge, most = 3): string {
   const out = e.sources.slice(0, most).map((ref) => {
     const s = sourceView(idx, ref.id, ref.at, ref.quote);
     const by = ref.by ? `${esc(idx.nodes.get(ref.by)?.name ?? '')}, in: ` : '';
-    const what = [s.title, s.publisher && s.publisher !== s.title ? s.publisher : '', s.published].filter(Boolean).join(', ');
-    const links = [s.url && `<a href="${esc(s.url)}" target="_blank" rel="noopener">Open the source</a>`, s.archive && `<a href="${esc(s.archive)}" target="_blank" rel="noopener">Archived copy</a>`].filter(Boolean).join(' ');
+    const what = [s.title, fromLine(s)].filter(Boolean).join(', ');
+    const links = [s.url && `<a href="${esc(s.url)}" target="_blank" rel="noopener">Open the source</a>`, s.archive && `<a href="${esc(s.archive)}" target="_blank" rel="noopener">${ARCHIVED}</a>`].filter(Boolean).join(' ');
     return `<figure class="read-quote">${s.quote ? `<blockquote><mark>${esc(s.quote)}</mark></blockquote>` : ''}<figcaption>${by}${esc(what)}.${s.at ? ` ${esc(s.at)}.` : ''} ${esc(tierLabel(idx.data, s.tier))}. ${links}</figcaption></figure>`;
   });
   const more = e.sources.length - most;

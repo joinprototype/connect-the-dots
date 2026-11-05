@@ -4,6 +4,7 @@ What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versio
 
 ## Next
 
+- A link's proof reads the same on a story, the map, Ask and the puzzle: one side's account names whose it is, and a source's saved copy is always "Archived copy".
 - On a phone, a place's name on a story's map no longer sits under the date in the corner.
 
 ## 0.5.9 (2026-11-04)

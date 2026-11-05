@@ -90,6 +90,26 @@ interface SourceView {
   archive: string | null;
 }
 
+/** What the link to a source's saved copy is called, on every page. */
+export const ARCHIVED = 'Archived copy';
+
+/** Who published a source and when, after its title: the publisher left out when the title already names it. */
+export function fromLine(s: SourceView): string {
+  return [s.publisher && !s.title.startsWith(s.publisher) ? s.publisher : '', s.published].filter(Boolean).join(', ');
+}
+
+/** A link's sources, those with a quote first. */
+export function quotedFirst<T extends { quote?: string | null }>(refs: readonly T[]): T[] {
+  return [...refs].sort((x, y) => Number(!!y.quote) - Number(!!x.quote));
+}
+
+/** Whose account a link is, when it is one side's, in the same words on every page. */
+export function accountOf(idx: GraphIndex, e: GEdge): string | null {
+  if (!e.according_to.length) return null;
+  const said = e.according_to.map((p) => idx.nodes.get(p)?.name ?? idx.perspectives.get(p)?.name ?? p);
+  return `One side’s account, not settled fact: according to ${said.join(' and ')}.`;
+}
+
 export function sourceView(idx: GraphIndex, id: string, at?: string | null, quote?: string | null): SourceView {
   const s: SourceDef | undefined = idx.data.sources[id];
   return {

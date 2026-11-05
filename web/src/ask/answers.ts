@@ -5,7 +5,7 @@
 // a way, no dot around one, and no story or question offered next (ADR-0027).
 import { atlasEntry, KINDS } from '../lib/atlas';
 import { routeBetween } from '../lib/atlas-route';
-import { detailOf, kinshipRole, sentence, sentenceText, sourceView } from '../lib/claims';
+import { accountOf, ARCHIVED, detailOf, fromLine, kinshipRole, quotedFirst, sentence, sentenceText, sourceView } from '../lib/claims';
 import { loadDetails, nameOf, type GraphIndex } from '../lib/data';
 import { formatYearNumber } from '../lib/dates';
 import { el } from '../lib/dom';
@@ -116,10 +116,10 @@ function sourceLine(idx: GraphIndex, id: string, at?: string | null): HTMLElemen
   const s = sourceView(idx, id, at);
   const p = el('p', 'ask-src');
   p.append(s.url ? outside(s.title, s.url) : s.title);
-  const rest = [s.title.startsWith(s.publisher) ? '' : s.publisher, s.published].filter(Boolean).join(', ');
+  const rest = fromLine(s);
   const strength = tierLabel(idx.data, s.tier);
   p.append(rest ? `, ${rest}.` : '.', strength ? ` ${strength}.` : '', s.at ? ` ${s.at}.` : '');
-  if (s.archive) p.append(' ', outside('Saved copy', s.archive), '.');
+  if (s.archive) p.append(' ', outside(ARCHIVED, s.archive), '.');
   return p;
 }
 
@@ -127,10 +127,11 @@ function sourceLine(idx: GraphIndex, id: string, at?: string | null): HTMLElemen
 async function proofOf(idx: GraphIndex, e: GEdge): Promise<HTMLElement> {
   if (!e.full) await Promise.all([loadDetails(idx, e.from), loadDetails(idx, e.to)]);
   const body = el('div', 'ask-proof');
-  if (e.according_to.length) body.append(el('p', 'ask-note', 'One side’s account, not settled fact.'));
+  const account = accountOf(idx, e);
+  if (account) body.append(el('p', 'ask-note', account));
   if (e.status === 'draft') body.append(el('p', 'ask-note', 'Being verified. Not yet checked against its sources.'));
   for (const text of claimNotes(e)) body.append(el('p', 'ask-note', text));
-  const rows = [...e.sources].sort((x, y) => Number(!!y.quote) - Number(!!x.quote)).map((ref) => {
+  const rows = quotedFirst(e.sources).map((ref) => {
     const part = el('div');
     if (ref.quote) {
       const q = el('p', 'ask-q');

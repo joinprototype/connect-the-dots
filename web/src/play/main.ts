@@ -3,7 +3,7 @@
 // links (site/play.rs); the names and links come from graph-slim.json, and a step's proof from its detail
 // file. What a reader did today stays in this browser only.
 import { loadDetails, loadGraphIndex, loadJson, type GraphIndex } from '../lib/data';
-import { sentence, sourceView } from '../lib/claims';
+import { accountOf, fromLine, quotedFirst, sentence, sourceView } from '../lib/claims';
 import { el } from '../lib/dom';
 import { walks } from '../lib/paths';
 import type { GEdge } from '../lib/types';
@@ -123,8 +123,9 @@ function linkLine(idx: GraphIndex, e: GEdge, from: string): HTMLElement {
 async function proofOf(idx: GraphIndex, e: GEdge): Promise<HTMLElement> {
   if (!e.full) await Promise.all([loadDetails(idx, e.from), loadDetails(idx, e.to)]);
   const box = el('div', 'play-proof');
-  if (e.according_to.length) box.append(el('p', 'play-note', 'One side’s account, not settled fact.'));
-  const ref = [...e.sources].sort((x, y) => Number(!!y.quote) - Number(!!x.quote))[0];
+  const account = accountOf(idx, e);
+  if (account) box.append(el('p', 'play-note', account));
+  const ref = quotedFirst(e.sources)[0];
   if (!ref) {
     box.append(el('p', 'play-note', 'No proof in this copy of the record.'));
     return box;
@@ -143,7 +144,7 @@ async function proofOf(idx: GraphIndex, e: GEdge): Promise<HTMLElement> {
     a.target = '_blank';
     line.append(a);
   } else line.append(s.title);
-  const rest = [s.title.startsWith(s.publisher) ? '' : s.publisher, s.published].filter(Boolean).join(', ');
+  const rest = fromLine(s);
   line.append(rest ? `, ${rest}.` : '.');
   box.append(line);
   return box;

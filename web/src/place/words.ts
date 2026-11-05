@@ -1,7 +1,7 @@
 // The words that lie on the Stories surface beside what they speak of: an island, an entry and its links, a
 // link and its proof, a way between two entries. Plain HTML from the data, every value escaped; nothing from
 // the address or a field is ever printed (BUILD.md).
-import { sentence, sourceView } from '../lib/claims';
+import { accountOf, ARCHIVED, fromLine, sentence, sourceView } from '../lib/claims';
 import type { Details } from '../lib/data';
 import { claimNotes, NOTICE, statusWords, tierLabel } from '../lib/plain';
 import { across, type World } from './model';
@@ -106,13 +106,14 @@ export function lineWords(w: World, l: number, from: number, step = ''): string 
   let h = `${step}<p class="place-say">${name(s.subjectId, s.subject)}${s.apposition ? ',' : ''} <i>${esc(s.phrase)}</i>${s.list ? ':' : ''} ${name(s.objectId, s.object)}</p>`;
   const facts = [s.detail, e.when?.label].filter(Boolean).map(esc);
   if (facts.length) h += `<p class="place-status">${facts.join(', ')}</p>`;
-  if (e.according_to.length) h += `<p class="place-status"><b>One side's account:</b> according to ${e.according_to.map((a) => esc(idx.perspectives.get(a)?.name ?? idx.nodes.get(a)?.name ?? a)).join(', ')}.</p>`;
+  const account = accountOf(idx, e);
+  if (account) h += `<p class="place-status">${esc(account)}</p>`;
   for (const word of statusWords(e)) h += `<p class="place-status"><span class="${word === 'Both sides agree' ? 'place-agree' : 'place-unread'}">${esc(word)}</span></p>`;
   for (const note of claimNotes(e)) h += `<p class="place-status">${esc(note)}</p>`;
   for (const ref of e.sources) {
     const v = sourceView(idx, ref.id, ref.at, ref.quote);
-    const by = [v.publisher, v.published, v.at, tierLabel(idx.data, v.tier)].filter(Boolean).map(esc).join('. ');
-    const open = [v.url ? `<a href="${esc(v.url)}" target="_blank" rel="external noopener noreferrer">Open the source</a>` : '', v.archive ? `<a href="${esc(v.archive)}" target="_blank" rel="external noopener noreferrer">Archived copy</a>` : '']
+    const by = [fromLine(v), v.at, tierLabel(idx.data, v.tier)].filter(Boolean).map(esc).join('. ');
+    const open = [v.url ? `<a href="${esc(v.url)}" target="_blank" rel="external noopener noreferrer">Open the source</a>` : '', v.archive ? `<a href="${esc(v.archive)}" target="_blank" rel="external noopener noreferrer">${ARCHIVED}</a>` : '']
       .filter(Boolean)
       .join('');
     h += `<figure class="place-quote">${v.quote ? `<blockquote><mark>${esc(v.quote)}</mark></blockquote>` : ''}<figcaption><b>${esc(v.title)}</b>${by ? `. ${by}` : ''}.${open ? `<span class="place-go">${open}</span>` : ''}</figcaption></figure>`;
