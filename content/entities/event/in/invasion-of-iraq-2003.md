@@ -63,4 +63,19 @@ claims:
     according_to: [senate-select-committee-on-intelligence]
     src:
       - {s: ssci-2004-prewar-iraq, at: "Conclusion 1, p. 14", quote: "Most of the major key judgments in the Intelligence Community's October 2002 National Intelligence Estimate (NIE), Iraq's Continuing Programs for Weapons of Mass Destruction, either overstated, or were not supported by, the underlying intelligence reporting."}
+  - id: c10
+    rel: appears_in
+    to: duelfer-report
+    role: "the ISG identified Iran as the chief motivation for Saddam’s wish to rebuild WMD after sanctions"
+    according_to: [iraq-survey-group]
+    note: "The preceding finding says Saddam wanted to recreate Iraq’s WMD capability after sanctions were removed and the economy stabilized."
+    src:
+      - {s: isg-duelfer-2004-comprehensive-report, at: "Regime Strategic Intent, Key Findings", quote: "Iran was the pre-eminent motivator of this policy."}
+  - id: c11
+    rel: involved
+    to: world-health-organization
+    role: "helped conduct a household survey estimating deaths after the invasion"
+    note: "Study co-author Mohamed Ali explained the use of household surveys in the absence of comprehensive death registration and hospital reporting."
+    src:
+      - {s: who-2008-iraq-family-health-survey, at: "9 January 2008 news release", quote: "The estimate is based on interviews conducted in 9345 households in nearly 1000 neighbourhoods and villages across Iraq."}
 ---

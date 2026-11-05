@@ -19,4 +19,11 @@ claims:
     role: "briefed congressional leaders on 4 August 1964"
     src:
       - {s: frus-1964-68-v01-vietnam-1964, at: "Document 280", quote: "I have asked Secretary McNamara to brief you and it would be unjustifiable to refer to it at all."}
+  - id: c3
+    rel: intervened_in
+    to: gulf-of-tonkin-incident
+    when: "1964-08-04"
+    role: "recommended retaliation if a second attack occurred, before one was reported"
+    src:
+      - {s: nsa-archive-lbj-tapes-tonkin, at: "9:43 a.m. telephone conversation", quote: "I, I personally would recommend to you, after a second attack on our ships, that we do retaliate against the coast of North Vietnam some way or other."}
 ---

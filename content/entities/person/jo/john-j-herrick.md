@@ -11,4 +11,11 @@ claims:
     role: "Captain, on-site task force commander"
     src:
       - {s: nsa-hanyok-2001-skunks-bogies, at: "p. 1", quote: "The commander of the Maddox task force, Captain John J. Herrick, was not entirely certain what had transpired."}
+  - id: c2
+    rel: intervened_in
+    to: gulf-of-tonkin-incident
+    when: "1964-08-02"
+    role: "ordered fire if approaching boats came within ten thousand yards"
+    src:
+      - {s: nsa-hanyok-2001-skunks-bogies, at: "p. 16", quote: "At 1500G, Captain Herrick ordered Ogier's gun crews to open fire if the boats approached within ten thousand yards."}
 ---

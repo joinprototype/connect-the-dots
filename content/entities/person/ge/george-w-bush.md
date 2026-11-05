@@ -37,4 +37,16 @@ claims:
     role: "three of the five speeches reviewed were his, among them Cincinnati, 7 October 2002"
     src:
       - {s: senate-intelligence-2008-iraq-statements-report, at: "p. 1 (scanned page, read from the image)", quote: "President George W. Bush, Speech in Cincinnati, October 7, 2002."}
+  - id: c6
+    rel: intervened_in
+    to: invasion-of-iraq-2003
+    role: "accepted responsibility in 2005 while defending the decision after the weapons intelligence proved wrong"
+    src:
+      - {s: bush-2005-12-14-iraqi-elections, at: "14 December 2005 speech", quote: "the intelligence turned out to be wrong. As President, I'm responsible for the decision to go into Iraq"}
+  - id: c7
+    rel: intervened_in
+    to: invasion-of-iraq-2003
+    role: "said September 11 changed his view of threats and justified acting before they materialized"
+    src:
+      - {s: bush-2005-12-14-iraqi-elections, at: "14 December 2005 speech", quote: "In an age of terrorism and weapons of mass destruction, if we wait for threats to fully materialize, we will have waited too long."}
 ---

@@ -42,4 +42,10 @@ claims:
     role: "its subject"
     src:
       - {s: sunday-times-2005-05-01-downing-street-memo, at: "p. 1", quote: "Copy addressees and you met the Prime Minister on 23 July to discuss Iraq."}
+  - id: c7
+    rel: involved
+    to: tony-blair
+    role: "Rycroft’s minute records him saying an Iraqi refusal of inspectors would make a political and legal difference"
+    src:
+      - {s: sunday-times-2005-05-01-downing-street-memo, at: "p. 2", quote: "The Prime Minister said that it would make a big difference politically and legally if Saddam refused to allow in the UN inspectors."}
 ---

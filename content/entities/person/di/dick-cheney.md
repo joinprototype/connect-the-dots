@@ -41,4 +41,11 @@ claims:
     role: "Vice President"
     src:
       - {s: ssci-2008-public-statements, at: "p. 1", quote: "Vice President Richard Cheney, Speech in Tennessee to the Veterans of Foreign Wars National Convention, August 26, 2002."}
+  - id: c6
+    rel: intervened_in
+    to: invasion-of-iraq-2003
+    when: "2002-08-26"
+    role: "argued that the risks of inaction exceeded those of action"
+    src:
+      - {s: cheney-vfw-2002-08-26, at: "Nashville speech", quote: "The risks of inaction are far greater than the risk of action."}
 ---
