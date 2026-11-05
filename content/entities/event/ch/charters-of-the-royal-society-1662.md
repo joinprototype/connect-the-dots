@@ -17,4 +17,12 @@ claims:
     role: "the Crown granted the charter"
     src:
       - {s: history-of-scholarly-societies-royal-society, quote: "And in 1662, King Charles II granted the Society a Royal Charter, making it the Royal Society of London"}
+  - id: c3
+    rel: involved
+    to: royal-society
+    role: "George Ent's draft reserved profits from the Society's inventions, allowing others their enjoyment with its consent; the provision disappeared from the charter"
+    note: "Moxham connects the draft provision to financing the Society beyond members' subscriptions and explains that the Society could still benefit from commercial arrangements without it."
+    src:
+      - {s: moxham-2019-natural-knowledge-inc, at: "George Ent's draft, in Moxham's translation", quote: "the profit of things found/invented by them, should fall to the sole benefit of the College"}
+      - {s: moxham-2019-natural-knowledge-inc, at: "discussion following the draft provision", quote: "In the first instance it simply disappears from the Charter text."}
 ---

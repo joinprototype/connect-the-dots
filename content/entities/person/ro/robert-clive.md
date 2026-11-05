@@ -33,4 +33,12 @@ claims:
     note: "Clive held the title Baron of Plassey."
     src:
       - {s: macaulay-1840-lord-clive, quote: "bitterly complained that he, the Baron of Plassey, had been treated like a sheep-stealer"}
+  - id: c5
+    rel: worked_at
+    to: east-india-company
+    when: "1759"
+    role: "proposed British state sovereignty over Bengal in a letter to Pitt"
+    note: "Lyall describes Clive's proposal and his promise of £2 million in net revenue."
+    src:
+      - {s: lyall-1907-history-of-india-viii-ch08, at: "chapter 8, page 183", quote: "his letter written to Pitt in 1759, in which he suggested to the Prime Minister the acquisition of Bengal in full sovereignty by the English nation, promising him a net revenue of two millions sterling"}
 ---

@@ -31,4 +31,10 @@ claims:
     src:
       - {s: harrison-macartney-embassy-gifts, quote: "For the Company the gifts could be seen as a speculation on the potential profits of the embassy if the negotiations succeeded."}
       - {s: harrison-macartney-embassy-gifts, quote: "The embassy also presented six brass cannon and two mortars which were provided by the government rather than paid for by the East India Company."}
+  - id: c5
+    rel: involved
+    to: qianlong-emperor
+    role: "explained that a resident envoy's freedom to move and correspond would conflict with court rules"
+    src:
+      - {s: qianlong-1793-letter-to-george-iii, quote: "Your proposed Envoy to my Court could not be placed in a position similar to that of European officials in Peking who are forbidden to leave China, nor could he, on the other hand, be allowed liberty of movement and the privilege of corresponding with his own country", by: qianlong-emperor}
 ---
