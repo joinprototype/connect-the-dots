@@ -23,4 +23,10 @@ claims:
     title: "President"
     src:
       - {s: frus-1977-80-v12-d44, quote: "President Jimmy Carter wanted to respond to Soviet allegations that the United States was meddling in Afghan affairs"}
+  - id: c4
+    rel: appears_in
+    to: bayh-dole-act
+    role: "signed the patent reforms into law on 12 December 1980"
+    src:
+      - {s: carter-1980-12-12-patent-reforms, quote: "I have today signed H.R. 6933, a bill which makes several major reforms in the patent and trademark system."}
 ---
