@@ -18,4 +18,10 @@ claims:
     role: "interviewed by SIGAR"
     src:
       - {s: sigar-2021-08-what-we-need-to-learn, by: douglas-lute, quote: "We were devoid of a fundamental understanding of Afghanistan. We didn’t know what we were doing."}
+  - id: c3
+    rel: appears_in
+    to: what-we-need-to-learn
+    role: "described the pressure to spend reconstruction funds quickly in his 20 February 2015 SIGAR interview"
+    src:
+      - {s: sigar-2021-08-what-we-need-to-learn, quote: "Douglas Lute described the prevailing ethos as “spend, spend, spend.”"}
 ---

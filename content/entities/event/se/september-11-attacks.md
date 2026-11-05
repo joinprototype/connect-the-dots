@@ -76,7 +76,7 @@ claims:
       - {s: 911-commission-report-2004, quote: "United 93 crashed in Pennsylvania at 10:03:11, 125 miles from Washington, D.C."}
       - {s: 911-commission-report-2004, quote: "During at least five of the passengers’ phone calls, information was shared about the attacks that had occurred earlier that morning at the World Trade Center. Five calls described the intent of passengers and surviving crew members to revolt against the hijackers."}
       - {s: 911-commission-report-2004, quote: "According to one call, they voted on whether to rush the terrorists in an attempt to retake the plane. They decided, and acted."}
-      - {s: 911-commission-report-2004, quote: "Everyone’s running up to first class. I’ve got to go. Bye."}
+      - {s: 911-commission-report-2004, at: "p. 14; note 85, citing Philip Bradshaw’s FBI interview of 11 September 2001 and Commission interview of 15 June 2004", quote: "Everyone’s running up to first class. I’ve got to go. Bye."}
       - {s: 911-commission-report-2004, quote: "We are sure that the nation owes a debt to the passengers of United 93. Their actions saved the lives of countless others, and may have saved either the Capitol or the White House from destruction."}
       - {s: 911-commission-report-2004, quote: "All on board, as well as many civilian and military personnel in the building, were killed."}
       - {s: 911-commission-report-2004, quote: "the aircraft plowed into an empty field in Shanksville, Pennsylvania, at 580 miles per hour, about 20 minutes’ flying time from Washington, D.C."}
@@ -152,5 +152,10 @@ claims:
     src:
       - {s: 911-commission-staff-monograph-terrorist-financing-2004, quote: "While in the United States, the hijackers spent money primarily for flight training, travel, and living expenses (such as housing, food, cars, and auto insurance)."}
       - {s: 911-commission-report-2004, quote: "They sent the excess funds by wire transfer to Hawsawi in the UAE, about $26,000 altogether."}
-
+  - id: c20
+    rel: appears_in
+    to: 9-11-commission-report
+    role: "records Flight 93 passengers voting to resist and Sandy Bradshaw’s farewell as her husband Philip recalled it to the FBI and Commission"
+    src:
+      - {s: 911-commission-report-2004, at: "p. 14; note 85, citing Philip Bradshaw’s FBI interview of 11 September 2001 and Commission interview of 15 June 2004", quote: "Everyone’s running up to first class. I’ve got to go. Bye."}
 ---

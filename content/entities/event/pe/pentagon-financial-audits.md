@@ -22,4 +22,10 @@ claims:
     src:
       - {s: task-and-purpose-2025-12-20-pentagon-eighth-audit, quote: "The Department of Defense began its audits in 2018, following a Congressional mandate."}
       - {s: task-and-purpose-2024-11-16-pentagon-seventh-audit, quote: "The 2024 National Defense Authorization Act mandates that the Department of Defense must reach a clean audit by 2028."}
+  - id: c3
+    rel: involved
+    to: us-department-of-defense
+    role: "acting chief financial officer Jules Hurst acknowledged that meeting the 2028 clean-audit deadline required accelerating the department’s work"
+    src:
+      - {s: task-and-purpose-2025-12-20-pentagon-eighth-audit, quote: "However Hurst acknowledged in the report that it will take a “significant acceleration of its efforts” to make that happen."}
 ---

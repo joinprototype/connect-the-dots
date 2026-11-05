@@ -66,4 +66,16 @@ claims:
     src:
       - {s: sigar-2021-08-what-we-need-to-learn, quote: "Turn this money off. We’re having to look for people and projects to spend money on."}
       - {s: sigar-2021-08-what-we-need-to-learn, quote: "private security contractors who were paid to protect DOD and USAID assets diverted a substantial percentage of their contract awards to insurgents to buy their cooperation"}
+  - id: c11
+    rel: appears_in
+    to: what-we-need-to-learn
+    role: "records Afghan deputy minister Barna Karimi’s later recollection that he refused to establish an administration in Garmser because his staff could not safely reach it by road"
+    src:
+      - {s: sigar-2021-08-what-we-need-to-learn, quote: "I used to tell them that I am not coming, because I cannot travel there by the road."}
+  - id: c12
+    rel: appears_in
+    to: what-we-need-to-learn
+    role: "John Sopko’s foreword urges applying reconstruction lessons to save lives and prevent waste in future missions"
+    src:
+      - {s: sigar-2021-08-what-we-need-to-learn, quote: "Implementing these critical lessons will save lives and prevent waste, fraud, and abuse in Afghanistan, and in future reconstruction missions elsewhere around the world."}
 ---
