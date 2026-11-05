@@ -37,4 +37,10 @@ claims:
     role: "explained that a resident envoy's freedom to move and correspond would conflict with court rules"
     src:
       - {s: qianlong-1793-letter-to-george-iii, quote: "Your proposed Envoy to my Court could not be placed in a position similar to that of European officials in Peking who are forbidden to leave China, nor could he, on the other hand, be allowed liberty of movement and the privilege of corresponding with his own country", by: qianlong-emperor}
+  - id: c6
+    rel: involved
+    to: qianlong-emperor
+    role: "said China had no use for British manufactures in his answer refusing a resident representative"
+    src:
+      - {s: qianlong-1793-letter-to-george-iii, quote: "I set no value on objects strange or ingenious, and have no use for your country's manufactures.", by: qianlong-emperor}
 ---

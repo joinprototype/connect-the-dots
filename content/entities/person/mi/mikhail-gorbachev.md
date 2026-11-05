@@ -42,6 +42,14 @@ claims:
     to: fall-of-the-berlin-wall
     according_to: [us-government]
     src: [{s: state-milestone-collapse-soviet-union, quote: "Gorbachev’s decision to loosen the Soviet yoke on the countries of Eastern Europe created an independent, democratic momentum that led to the collapse of the Berlin Wall in November 1989"}]
+  - id: c6
+    rel: leads
+    to: perestroika
+    according_to: [mikhail-gorbachev]
+    note: "In his farewell of 25 December 1991, Gorbachev explains his decision to begin radical reform in 1985 through failed partial reforms, living standards and the arms race; he says he knew the risk and still defended the decision."
+    src:
+      - {s: whc-gorbachev-resignation-1991, at: "Farewell address, 25 December 1991", quote: "We could not go on living like that. Everything had to be changed radically.", by: mikhail-gorbachev}
+      - {s: whc-gorbachev-resignation-1991, at: "Farewell address, 25 December 1991", quote: "I realized that to start reforms of such scale in a society such as ours was a most difficult and even a risky thing.", by: mikhail-gorbachev}
 ---
 
 Mikhail Gorbachev led the Soviet Union from March 1985 and launched [[perestroika]] and [[glasnost]]. After the failed [[august-coup-1991]] he gave up the Communist Party leadership, and on 25 December 1991 he resigned as President of the USSR, the day before the Union formally ceased to exist.

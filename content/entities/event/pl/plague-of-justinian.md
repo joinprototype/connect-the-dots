@@ -41,6 +41,14 @@ claims:
     src:
       - {s: "procopius-persian-wars-2-loeb", at: "2.23.5-10", quote: "He therefore detailed soldiers from the palace and distributed money, commanding Theodorus to take charge of this work;"}
       - {s: "procopius-persian-wars-2-loeb", at: "2.23.8", quote: "But Theodorus, by giving out the emperor's money and by making further expenditures from his own purse, kept burying the bodies which were not cared for."}
+  - id: c7
+    rel: involved
+    to: istanbul
+    according_to: [procopius]
+    note: "Procopius says burial workers filled towers in Sycae with bodies after tombs filled and trenches could no longer keep pace; the smell blew over the city."
+    src:
+      - {s: procopius-persian-wars-2-loeb, at: "2.23.9–11", quote: "and they piled them up just as each one happened to fall, and filled practically all the towers with corpses, and then covered them again with their roofs."}
+      - {s: procopius-persian-wars-2-loeb, at: "2.23.11", quote: "As a result of this an evil stench pervaded the city and distressed the inhabitants still more"}
 ---
 
 [[justinian-i]] fell ill. The numbers are Procopius's.

@@ -42,4 +42,11 @@ claims:
     note: "This is Polo’s disputed book’s explanation, not a statement in Kublai’s own words."
     src:
       - {s: polo-yule-1903-book-vol1, at: "Book II chapter 11", quote: "city would prove rebellious, and raise great disorders against his imperial authority."}
+  - id: c6
+    rel: appears_in
+    to: chronography-of-bar-hebraeus
+    according_to: [chronography-of-bar-hebraeus]
+    note: "Bar Hebraeus reports Ariq Böke challenging Kublai's succession because Möngke had left him in charge when he went to war."
+    src:
+      - {s: bar-hebraeus-budge-1932-chronography, at: "p. 438, Kublai's accession", quote: "It is meet that the kingdom should be mine, because munga khan handed it over to me when he went to the war, and during his lifetime he made me to sit in his place"}
 ---

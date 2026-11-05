@@ -29,6 +29,14 @@ claims:
     src:
       - {s: last-warrior-2015-excerpt-cia-and-the-pentagon, quote: "Soviet GNP eventually turned out to be not 55 to 60 percent of US GNP, as the CIA believed during most of the Cold War, but closer to 25 or 30 percent."}
       - {s: last-warrior-2015-excerpt-cia-and-the-pentagon, quote: "Their contention was that Western estimates of recent Soviet economic growth were overstated; in fact, the USSR’s economy had actually stagnated."}
+  - id: c5
+    rel: involved
+    to: cia
+    role: "former analysts Noel Firth and James Noren recalculated the historical estimates after the Cold War, as reported in The Last Warrior"
+    note: "They estimated averages of 14.8 percent of Soviet GNP for 1981–1990 and 16.8 percent for the 1970s, both at constant 1982 ruble prices. These are former analysts' recalculations."
+    src:
+      - {s: last-warrior-2015-excerpt-cia-and-the-pentagon, quote: "They estimated the average burden for 1981–1990 to have been 14.8 percent, using constant 1982 ruble prices"}
+      - {s: last-warrior-2015-excerpt-cia-and-the-pentagon, quote: "Their revised burden for the 1970s was 16.8 percent, using constant 1982 ruble prices."}
 ---
 
 The [[cia]] put the military's share of Soviet GNP at under 14 percent, up from 6 to 7 percent in the early 1970s. Analysts in the Pentagon's Office of Net Assessment said it was higher, and two former CIA analysts, Noel Firth and James Noren, later recalculated it at 14.8 percent for 1981-90 and 16.8 percent for the 1970s. The account comes from an excerpt of *The Last Warrior*, a book on the Pentagon analyst Andrew Marshall.

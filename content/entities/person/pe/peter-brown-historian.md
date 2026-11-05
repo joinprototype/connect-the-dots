@@ -15,9 +15,9 @@ claims:
   - id: c2
     rel: influenced
     to: the-fall-of-rome-debate
-    note: "O'Donnell's picture of the \"Reformers\" of late antique studies, with Brown's 1971 book as their start. Brown's own books were not read for this story."
+    note: "O'Donnell's picture of the \"Reformers\" of late antique studies, with Brown's 1971 book as their start."
     src:
       - {s: "bmcr-2005-odonnell-heather-ward-perkins", at: "review", quote: "If the Reformation began when Peter Brown pounded twice ninety-five pages of The World of Late Antiquity on the basilica door in 1971 and flourished through at least the 1980s, the 1990s have seen the rise of the resistance."}
 ---
 
-O'Donnell links Brown's 1971 book to the "transformation" view of late antiquity; see [[transformations-of-late-antiquity]]. Brown's own words were not read for this story.
+O'Donnell links Brown's 1971 book to the "transformation" view of late antiquity; see [[transformations-of-late-antiquity]].

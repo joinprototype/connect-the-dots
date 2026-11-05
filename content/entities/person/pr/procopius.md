@@ -3,7 +3,7 @@ uid: 01M6P8B9BTH5R18KCNA8ZCG58Y
 id: procopius
 type: person
 name: "Procopius"
-summary: "Ancient historian whose account is read here in English translation."
+summary: "Ancient historian and author of the History of the Wars."
 claims:
   - id: c1
     rel: authored
@@ -18,4 +18,4 @@ claims:
       - {s: "gibbon-decline-and-fall-gutenberg", at: "chapter 31, discussion of Honorius", quote: "historian Procopius"}
 ---
 
-[[history-of-the-wars-procopius]] is the account cited here; reported private words are not independently authenticated originals.
+Procopius wrote [[history-of-the-wars-procopius]].
