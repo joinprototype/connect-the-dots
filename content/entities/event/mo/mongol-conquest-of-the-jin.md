@@ -24,4 +24,11 @@ claims:
     role: "its capital Zhongdu (Yenking) was taken in 1215, by Yule's note"
     src:
       - {s: yule-1903-notes-vol1, at: "Bk. II ch. 11, note", quote: "Under the name of Yenking, [given to this city in 1013] it has a conspicuous place in the wars of Chinghiz against the latter dynasty."}
+  - id: c4
+    rel: involved
+    to: jin-dynasty
+    role: "its ruler ordered the defence of the Tunggon Pass"
+    according_to: [secret-history-of-the-mongols]
+    src:
+      - {s: rachewiltz-street-2015-secret-history, at: "§251", quote: "do not let them cross the defile!"}
 ---

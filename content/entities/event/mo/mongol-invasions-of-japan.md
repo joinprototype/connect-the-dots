@@ -30,4 +30,17 @@ claims:
     role: "told with different dates and numbers"
     src:
       - {s: polo-yule-1903-book-vol2, at: "Book III ch. 2", quote: "Cublay, the Grand Kaan who now reigneth, having heard much of the immense wealth that was in this Island, formed a plan to get possession of it."}
+  - id: c5
+    rel: involved
+    to: yuan-government
+    role: "its general Fan Wen-hu fled after the 1281 storm"
+    note: "The annals quoted by Yule describe 100,000 men left seeking escape; the passage gives no explanation from the general."
+    according_to: [yule-cordier-notes-to-marco-polo]
+    src:
+      - {s: yule-1903-notes-vol2, at: "Book III chapter 2, note 1, Japanese annals", quote: "The General (Fan Wen-hu) fled with the other Generals on the vessels that had least suffered"}
+  - id: c6
+    rel: appears_in
+    to: yule-cordier-notes-to-marco-polo
+    src:
+      - {s: yule-1903-notes-vol2, at: "Book III chapter 2, note 1"}
 ---

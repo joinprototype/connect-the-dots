@@ -34,4 +34,12 @@ claims:
     note: "Marco Polo adds that the Great Kaan had the new city built beside the old one; the Yuan shi, as Bretschneider reports it, gives the year 1267."
     src:
       - {s: bretschneider-1876-researches-on-peking, quote: "Coubilai khan, after having fixed his residence in Peking, built a new capital in 1267."}
+  - id: c5
+    rel: appears_in
+    to: the-travels-of-marco-polo
+    role: "built a new capital after astrologers warned the old city would rebel"
+    according_to: [the-travels-of-marco-polo]
+    note: "This is Polo’s disputed book’s explanation, not a statement in Kublai’s own words."
+    src:
+      - {s: polo-yule-1903-book-vol1, at: "Book II chapter 11", quote: "city would prove rebellious, and raise great disorders against his imperial authority."}
 ---

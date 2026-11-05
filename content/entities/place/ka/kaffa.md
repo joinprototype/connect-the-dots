@@ -13,4 +13,9 @@ claims:
     to: crimea
     src:
       - {s: wheelis-2002-caffa, at: "Narrative", quote: "hurled plague-infected cadavers into the besieged Crimean city of Caffa"}
+  - id: c2
+    rel: appears_in
+    to: biological-warfare-at-caffa-1346
+    src:
+      - {s: wheelis-2002-caffa, at: "de’ Mussi’s account", quote: "What seemed like mountains of dead were thrown into the city, and the Christians could not hide or flee or escape from them"}
 ---

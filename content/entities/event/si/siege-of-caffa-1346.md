@@ -18,4 +18,17 @@ claims:
     note: "Wheelis doubts the attack had a decisive role in the spread."
     src:
       - {s: wheelis-2002-caffa, at: "abstract", quote: "the Black Death is widely believed to have reached Europe from the Crimea as the result of a biological warfare attack"}
+  - id: c3
+    rel: involved
+    to: kaffa
+    role: "de’ Mussi attributes the hurling of bodies to a hope of killing the inhabitants with stench"
+    note: "De’ Mussi does not claim to have witnessed the siege; he also describes inhabitants dumping bodies into the sea."
+    according_to: [biological-warfare-at-caffa-1346]
+    src:
+      - {s: wheelis-2002-caffa, at: "de’ Mussi’s account", quote: "in the hope that the intolerable stench would kill everyone inside."}
+  - id: c4
+    rel: appears_in
+    to: biological-warfare-at-caffa-1346
+    src:
+      - {s: wheelis-2002-caffa, at: "de’ Mussi’s account", quote: "in the hope that the intolerable stench would kill everyone inside."}
 ---

@@ -9,8 +9,11 @@ claims:
   - id: c1
     rel: involved
     to: berke-khan
-    role: "Polo's Barca, lord of the Ponent; Polo has him defeated, other accounts differ and were not read"
+    role: "Polo's Barca, lord of the Ponent; defeated in Polo's telling"
+    note: "Yule’s volume 2 notes, chapters 26–27, instead have Berke drive Abaka back across the Terek and chase him to Derbend; Yule rejects Polo’s accuracy."
+    according_to: [the-travels-of-marco-polo]
     src:
+      - {s: yule-1903-notes-vol2, at: "Book IV chapters 26–27, note: Yule’s counteraccount"}
       - {s: polo-yule-1903-book-vol1, at: "Prologue ch. 2", quote: "But in the end Barca, the Lord of the Tartars of the Ponent, was defeated, though on both sides there was great slaughter."}
   - id: c2
     rel: involved

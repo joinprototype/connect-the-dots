@@ -9,7 +9,7 @@ summary: In 1206 the Mongol people gave a chieftain the title of qan. Within two
 
 In 1206 the Mongol people gathered at the source of the Onon river and gave a steppe chieftain the title of qan. Within about two generations his family ruled lands from the Pacific to the Black Sea, and the empire was splitting between his grandsons.
 
-Here is the road, in the words of those who wrote it down: the Mongols' own Secret History, Persian, Arabic, Syriac, Rus and Latin chroniclers, friars who travelled there, and Marco Polo, whose book is disputed. Most of them wrote as people the Mongols conquered, served or visited, and the story says so when it matters. Every death toll below is a medieval writer's own number, named as his, not a modern count. The story read no Chinese, Mongolian-script, Hungarian or Japanese source in the original and no modern estimate of the dead; it says where that leaves a gap. It does not rank the empire's builders, destroyers or traders against each other. Dates are in the modern calendar.
+Here is the road, in the words of those who wrote it down: the Mongols' own Secret History, Persian, Arabic, Syriac, Rus and Latin chroniclers, friars who travelled there, and Marco Polo, whose book is disputed. Most of them wrote as people the Mongols conquered, served or visited, and the story says so when it matters. Every death toll below is a medieval writer's own number, named as his, not a modern count. The story read no Chinese, Mongolian-script, Hungarian or Japanese source in the original and no modern estimate of the dead; it says where that leaves a gap. It does not rank the empire's builders, destroyers or traders against each other. Dates use the modern calendar; unresolved differences in the sources are stated.
 
 ```scene
 - shot: the-wolf
@@ -17,27 +17,27 @@ Here is the road, in the words of those who wrote it down: the Mongols' own Secr
   camera: {center: [103.8, 47.0], zoom: 4.6, pitch: 20, duration: 6}
   places: []
   reveal: ["genghis-khan", "secret-history-of-the-mongols", "mongol-empire"]
-  reveal_claims: ["genghis-khan#c2"]
-  overlay: {kind: quote, source: rachewiltz-street-2015-secret-history, quote: "At the beginning there was a blue-grey wolf, born with his destiny ordained by Heaven Above.", caption: "The Secret History of the Mongols, §1, translated by Igor de Rachewiltz"}
-  narration: "**The wolf.** The only surviving Mongol account of Genghis Khan's life is the Secret History. Its translator calls it “the only genuine (not to be confused with reliable) native account” of his deeds, and the text we have is “a much altered, expanded, and elaborately edited version,” mostly changed under Kublai. It begins with a wolf and a doe, and then a boy called Temüjin. This story follows what became of him."
+  reveal_claims: ["genghis-khan#c2", "genghis-khan#c3"]
+  overlay: {kind: quote, source: rachewiltz-street-2015-secret-history, quote: "Now those same people will surely save me.", caption: "Temüjin chooses a household to seek shelter with, as told in the Secret History §84"}
+  narration: "**The wolf.** At a feast beside the Onon, the captive boy Temüjin struck his guard and ran; fearing he would be seen in the forest, he lay in the river with his wooden collar floating and only his face above water. That is the Secret History's telling, the only surviving Mongol account of his life: its translator cautions that genuine does not mean reliable, and the surviving version was much altered, expanded and edited, mostly under Kublai. The book begins with a wolf and a doe; its boy told himself, “Now those same people will surely save me.” He went to the household that had helped him before, seeking shelter from his captors."
   duration: 13
 
 - shot: no-friend-but-our-shadow
   view: graph
   focus: genghis-khan
   reveal: ["genghis-khan", "secret-history-of-the-mongols"]
-  reveal_claims: ["genghis-khan#c2"]
+  reveal_claims: ["genghis-khan#c2", "genghis-khan#c4"]
   overlay: {kind: quote, source: rachewiltz-street-2015-secret-history, quote: "We have no friend but our shadow, We have no whip but our horse’s tail", caption: "Bekter, Temüjin's half-brother, before he was shot, Secret History §77"}
-  narration: "**No friend but our shadow.** In the Secret History Temüjin's father, Yisügei, was poisoned at a feast by men who “remembered their grievance for his former raid upon them.” The family was left without a chief. Some years later Temüjin and his brother Qasar shot their half-brother Bekter at close range and left him. Their mother cried out: “You who have destroyed life!” The book tells it and does not hide it."
+  narration: "**No friend but our shadow.** The Secret History says men poisoned Temüjin's father Yisügei at a feast, remembering his earlier raid; his family had no chief. Beside the Onon, in the Secret History's account, Bekter and Belgütei snatched a fish from Temüjin and Qasar; the two brothers complained that they had already taken a bird: “How can we live together with them?” They found Bekter guarding nine horses on a hillock, approached from front and rear, and shot their half-brother at close range despite his plea that they had no friend but their shadow. They left him; their mother cried out against them for destroying life, and Temüjin's later struggles would turn on companions beyond this household."
   duration: 13
 
 - shot: sworn-friend
   view: graph
   focus: jamukha
   reveal: ["genghis-khan", "jamukha", "death-of-jamukha"]
-  reveal_claims: ["death-of-jamukha#c1", "death-of-jamukha#c2"]
-  overlay: {kind: quote, source: rachewiltz-street-2015-secret-history, quote: "As for me, I lost my parents when I was small and had no younger brothers.", caption: "Jamukha to Temüjin, asking to die, Secret History §200"}
-  narration: "**A sworn friend.** Raiders from the Merkit people carried off Temüjin's wife, Börte. He found her in the night: “I have found what I was looking for.” His sworn friend Jamukha helped, then became his rival. Beaten, Jamukha asked for a quick death. Temüjin said he had not heard that Jamukha “has plotted harm against my life,” and offered to spare him. Jamukha refused. He was killed, as he asked, without bloodshed, and buried with honour."
+  reveal_claims: ["death-of-jamukha#c1", "death-of-jamukha#c2", "death-of-jamukha#c3"]
+  overlay: {kind: quote, source: rachewiltz-street-2015-secret-history, quote: "As for me, I lost my parents when I was small and had no younger brothers.", caption: "Jamukha to Temüjin, asking to die, Secret History §201"}
+  narration: "**A sworn friend.** Jamukha had helped Temüjin recover Börte, abducted by Merkit raiders. Now defeated and brought before him, he declined renewed companionship, in the Secret History's account: he had lost his parents young, had no younger brothers, and would be “a louse in your collar”. He asked to die swiftly, without bloodshed. Only then did Temüjin acknowledge that he knew of no plot against his life; killing without good reason was wrong, he said. He instructed his men to cite Jamukha's earlier rebellion, which had forced him into the Jerene Gorge, and his refusal of companionship and pardon. The book says Temüjin ordered the requested death without bloodshed and a fitting burial."
   duration: 13
 
 - shot: the-assembly
@@ -46,9 +46,9 @@ Here is the road, in the words of those who wrote it down: the Mongols' own Secr
   places: []
   time: "1206"
   reveal: ["quriltai-of-1206", "genghis-khan", "mongol-empire"]
-  reveal_claims: ["quriltai-of-1206#c1", "quriltai-of-1206#c2", "genghis-khan#c1"]
+  reveal_claims: ["quriltai-of-1206#c1", "quriltai-of-1206#c2", "genghis-khan#c1", "quriltai-of-1206#c3"]
   overlay: {kind: quote, source: rachewiltz-street-2015-secret-history, quote: "They hoisted the white standard with nine tails and there they gave Činggis Qa’an the title of qan.", caption: "The Secret History, §202: the assembly of 1206"}
-  narration: "**The assembly.** In the Year of the Tiger, 1206, the people of the felt tents gathered at the source of the Onon river. They raised a white standard and gave Temüjin the title of qan, and the Secret History says he then finished “setting the Mongol people in order.” This story calls the realm from that year the Mongol Empire."
+  narration: "**The assembly.** At the source of the Onon in the Year of the Tiger, 1206, Temüjin stood among the people of the felt tents as they raised a white standard with nine tails and gave him the title of qan. Having finished “setting the Mongol people in order,” the Secret History says, he turned to those who had sided with him while he established the nation. He announced that he would express his appreciation by appointing commanders of a thousand. This story dates the Mongol Empire from that gathering: his companions would now command its people."
   duration: 13
 
 - shot: tens-hundreds-thousands
@@ -57,16 +57,16 @@ Here is the road, in the words of those who wrote it down: the Mongols' own Secr
   reveal: ["mongol-empire", "genghis-khan", "quriltai-of-1206"]
   reveal_claims: ["quriltai-of-1206#c2"]
   overlay: {kind: stat, value: "95", label: "Commanders of a thousand he named in 1206, not counting the People of the Forest, as the Secret History lists them", source: rachewiltz-street-2015-secret-history, quote: "the commanders of a thousand of the Mongol people appointed by Činggis Qa’an were ninety-five."}
-  narration: "**Tens, hundreds, thousands.** To those “who sided with me,” Genghis gave units of a thousand to command, and the list is headed by “Father Mönglik.” Juvaini, who began his history at Karakorum in 1252–53 and later governed Baghdad for the Mongols, recorded the rule that held the units fast: “no man may depart to another unit than the hundred, thousand or ten to which he has been assigned.” A man who moved was executed."
+  narration: "**Tens, hundreds, thousands.** In 1206 Genghis named ninety-five commanders of a thousand, excluding the People of the Forest; “Father Mönglik” headed the Secret History's list. He presented command as a reward for those “who sided with me”, but a soldier could not choose another commander. Juvaini, who began his history at Karakorum in 1252–53 and later governed Baghdad for the Mongols, records the rule: “no man may depart to another unit than the hundred, thousand or ten to which he has been assigned”. A man who transferred was executed: the appointments bound ordinary men to the units that would carry out the conquests."
   duration: 13
 
 - shot: all-sects-as-one
   view: graph
   focus: genghis-khan
   reveal: ["genghis-khan", "mongol-empire", "history-of-the-world-conqueror"]
-  reveal_claims: []
-  overlay: {kind: quote, source: juvaini-boyle-1958-world-conqueror-vol1, quote: "he eschewed bigotry, and the preference of one faith to another, and the placing of some above others", caption: "Juvaini on Genghis Khan, in J. A. Boyle's translation"}
-  narration: "**All sects as one.** Juvaini wrote that Genghis honoured “the learned and pious of every sect.” His descendants, Juvaini adds, took different faiths but did “not swerve from the yasa of Chingiz-Khan, namely, to consider all sects as one.” That is one writer's report, from a man who served the Mongols. The next scenes show what he and others wrote of the conquests."
+  reveal_claims: ["genghis-khan#c5"]
+  overlay: {kind: quote, source: juvaini-boyle-1958-world-conqueror-vol1, quote: "recognizing such conduct as the way to the Court of God.", caption: "Juvaini attributes a reason for Genghis’s treatment of different faiths; he served the Mongols"}
+  narration: "**All sects as one.** Command did not require one faith, in Juvaini's account. The later official in Mongol service says Genghis honoured learned and pious people of every sect, esteeming Christians and others alongside Muslims because he recognized such conduct as “the way to the Court of God”. This is Juvaini's explanation, without Genghis's own words; he says the heirs mostly kept the rule “to consider all sects as one” even after adopting different religions."
   duration: 13
 
 - shot: zhongdu
@@ -75,9 +75,9 @@ Here is the road, in the words of those who wrote it down: the Mongols' own Secr
   places: ["beijing"]
   time: "1215"
   reveal: ["mongol-conquest-of-the-jin", "jin-dynasty", "genghis-khan", "beijing"]
-  reveal_claims: ["mongol-conquest-of-the-jin#c1", "mongol-conquest-of-the-jin#c2", "mongol-conquest-of-the-jin#c3", "jin-dynasty#c1"]
+  reveal_claims: ["mongol-conquest-of-the-jin#c1", "mongol-conquest-of-the-jin#c2", "mongol-conquest-of-the-jin#c3", "jin-dynasty#c1", "mongol-conquest-of-the-jin#c4"]
   overlay: {kind: quote, source: rachewiltz-street-2015-secret-history, quote: "As the remnants of his troops were dying of starvation, they ate human flesh between them.", caption: "The Secret History on the Jin troops after they lost the Tunggon Pass"}
-  narration: "**Zhongdu.** In the Year of the Sheep, 1211, the Secret History has Genghis set out against the Jin state in the north. Its ruler fled the capital, Zhongdu, and the Jin army was “dying of starvation.” Henry Yule's notes to Marco Polo put the Mongol capture of the city, now Beijing, in 1215. None of the sources saved for this story counts the dead in China, so the story gives no number."
+  narration: "**Zhongdu.** Genghis set out against the northern Jin state in 1211; later in the campaign, its ruler ordered his commanders to block the Tunggon Pass and “do not let them cross the defile!” In the Secret History's account they failed, and the ruler fled Zhongdu while the remnants of his army starved and ate human flesh. The text gives his order to defend the pass, but no explanation from him for abandoning the capital; Henry Yule's notes date the Mongol capture of Zhongdu, now Beijing, to 1215. The saved sources give no count of China's dead; the capital had fallen, and Genghis would also carry war west."
   duration: 13
 
 - shot: bukhara
@@ -88,7 +88,7 @@ Here is the road, in the words of those who wrote it down: the Mongols' own Secr
   reveal: ["mongol-conquest-of-khwarazm", "genghis-khan", "muhammad-ii-of-khwarazm", "khwarazmian-empire", "bukhara"]
   reveal_claims: ["mongol-conquest-of-khwarazm#c1", "mongol-conquest-of-khwarazm#c2", "mongol-conquest-of-khwarazm#c3", "mongol-conquest-of-khwarazm#c4"]
   overlay: {kind: quote, source: juvaini-boyle-1958-world-conqueror-vol1, quote: "If you had not committed great sins, God would not have sent a punishment like me upon you", caption: "Genghis Khan to the people of Bukhara, 1220, as Juvaini reports it"}
-  narration: "**Bukhara.** Two accounts of how the war began differ. The Secret History says Genghis's hundred envoys were slain and he set out “to take revenge.” Juvaini says 450 men sent to trade were arrested at Otrar, and “the Sultan sanctioned the shedding of their blood.” Juvaini was born about 1226 and wrote some thirty years later in Mongol service: he is an interested source, not an eyewitness. He writes that at Bukhara in 1220 the Mongols “cast the Korans right and left.”"
+  narration: "**Bukhara.** In Bukhara in 1220, Genghis told the conquered inhabitants that their sins had brought him upon them as God's punishment, in Juvaini's account. His declared reason for going to war differs in the Secret History: a hundred envoys had been slain, and he would set out “To take revenge”. The later chronicler instead describes 450 traders arrested at Otrar and Sultan Muhammad authorizing their deaths; born about 1226 and writing thirty years later in Mongol service, he was no eyewitness. His account follows the conquerors into Bukhara's mosque, where they threw Korans aside and used their cases as horse mangers; revenge was Genghis's justification as reported in the Secret History."
   duration: 13
 
 - shot: merv
@@ -97,9 +97,9 @@ Here is the road, in the words of those who wrote it down: the Mongols' own Secr
   places: ["merv"]
   time: "1221-02-25"
   reveal: ["siege-of-merv-1221", "merv", "tolui"]
-  reveal_claims: ["siege-of-merv-1221#c1", "siege-of-merv-1221#c2"]
+  reveal_claims: ["siege-of-merv-1221#c1", "siege-of-merv-1221#c2", "siege-of-merv-1221#c3"]
   overlay: {kind: quote, source: juvaini-boyle-1958-world-conqueror-vol1, quote: "passed thirteen days and nights in counting the people slain within the town.", caption: "Juvaini on the dead at Merv, 1221"}
-  narration: "**Merv.** On 25 February 1221 Genghis's son Tolui arrived at Merv with his army. Juvaini, who was not there (he was born about 1226), says the Mongols ordered that “the whole population, including the women and children, should be killed,” apart from four hundred artisans. A team counted bodies for thirteen days and reached more than 1,300,000, he says: a later chronicler's number, not a modern estimate. Ibn al-Athir, an Arabic historian of the same years, called these conquests “the greatest catastrophe and the most dire calamity.”"
+  narration: "**Merv.** Tolui, Genghis's son, arrived at Merv on 25 February 1221; the saved accounts give no reason in his own words for the killing that followed. Juvaini, born about 1226 and not a witness, says the Mongols ordered the whole population killed, women and children included, except four hundred artisans and some children carried into captivity. Izz-ad-Din Nassaba and others then spent thirteen days and nights counting visible bodies: he gives more than 1,300,000, a later chronicler's number, excluding hidden bodies and those outside the town, not a modern estimate. Ibn al-Athir called these conquests “the greatest catastrophe and the most dire calamity”; Tolui's army left Merv with captives and a population put to death."
   duration: 13
 
 - shot: post-stations
@@ -108,9 +108,9 @@ Here is the road, in the words of those who wrote it down: the Mongols' own Secr
   places: ["karakorum"]
   time: "1235"
   reveal: ["ogedei-khan", "karakorum", "mongol-empire"]
-  reveal_claims: ["ogedei-khan#c2", "ogedei-khan#c3", "karakorum#c1"]
-  overlay: {kind: quote, source: rachewiltz-street-2015-secret-history, quote: "As my second deed, I had post stations set up so that our messengers could ride in haste all along the way; and for that purpose I had all necessities conveyed to the post stations.", caption: "Ögödei Khan listing his good deeds, Secret History §281"}
-  narration: "**The relay.** After Genghis died, the assembly chose his son Ögödei. Two advisers proposed a post for messengers, and his brother Chagatai called it “the most appropriate that has been proposed.” Each stage kept twenty post-horse keepers. Marco Polo later wrote of a station every twenty-five miles, some with “four hundred horses,” and more than 300,000 horses in all, a figure that is his alone. Ögödei also named four faults of his own, the first being that he was “vanquished by wine.”"
+  reveal_claims: ["ogedei-khan#c2", "ogedei-khan#c3", "karakorum#c1", "ogedei-khan#c5"]
+  overlay: {kind: quote, source: rachewiltz-street-2015-secret-history, quote: "they are an affliction on the people.", caption: "Ögödei on messengers moving among his subjects, Secret History §279"}
+  narration: "**The relay.** Chosen by the assembly after Genghis's death, Ögödei faced messengers moving slowly through his subjects' camps: “they are an affliction on the people”, the Secret History has him say. He accepted two advisers' proposal for stations, which Chagatai called the most appropriate measure proposed; each stage kept twenty post-horse keepers. His later list of four faults began with being “vanquished by wine”, but he counted the relay among his good deeds because messengers could ride in haste. Polo later described stations every twenty-five to thirty miles, or thirty-five to forty-five in less settled stretches, some with four hundred horses and over 300,000 altogether—Polo's figures; the relay served imperial messages."
   duration: 13
 
 - shot: rus
@@ -121,7 +121,7 @@ Here is the road, in the words of those who wrote it down: the Mongols' own Secr
   reveal: ["mongol-invasion-of-rus", "batu-khan", "old-ryazan", "moscow"]
   reveal_claims: ["mongol-invasion-of-rus#c1", "mongol-invasion-of-rus#c2", "mongol-invasion-of-rus#c3"]
   overlay: {kind: quote, source: novgorod-chronicle-michell-forbes-1914, quote: "Only when none of us remain then all will be yours.", caption: "The princes of Ryazan to the Mongol envoys, Novgorod Chronicle, entry for 1238"}
-  narration: "**Rus.** Mongol envoys, the Novgorod Chronicle says, demanded “one-tenth of everything: of men and Knyazes and horses.” The princes of Ryazan refused. The town fell on 21 December and its people were killed, “men, women, and children.” Moscow was among those taken. The friar Carpini, passing through in 1246, wrote that “the greater part of the men of Ruscia had been killed by the Tartars or taken off into captivity.”"
+  narration: "**Rus.** At Voronezh, Gyurgi and the other princes of Ryazan faced envoys demanding a tenth of their men, princes and horses, the Novgorod Chronicle says. They refused entry to their towns: “Only when none of us remain then all will be yours.” The chronicle reports Ryazan taken on 21 December under its 1238 heading; the 1237 date shown here differs from that heading, for reasons the saved sources do not explain. It says the Mongols killed men, women and children by fire and sword and raped nuns, priests' wives, women and girls before their relatives. Moscow also fell; passing through Rus in 1246, Carpini reported most men killed or carried captive. The princes' refusal had not saved their people."
   duration: 13
 
 - shot: hungary
@@ -132,7 +132,7 @@ Here is the road, in the words of those who wrote it down: the Mongols' own Secr
   reveal: ["mongol-invasion-of-hungary", "hungary", "batu-khan", "ogedei-khan"]
   reveal_claims: ["mongol-invasion-of-hungary#c1", "mongol-invasion-of-hungary#c2", "mongol-invasion-of-hungary#c3"]
   overlay: {kind: quote, source: rockhill-1900-notes-and-introduction, quote: "so the news of the death of Ogodai put an end to the invasion of Europe", caption: "W. W. Rockhill, introduction to the friars' journeys, 1900"}
-  narration: "**Hungary.** In 1241 the Mongol army invaded Hungary. Rockhill, in 1900, put King Béla IV's defeat at Pest and the Mongols' stay until 1243. Historians since put the battle at Mohi, in April 1241, and the departure in 1242; the texts read for this story do not say so. Rockhill and Carpini both tie the retreat to Ögödei's death in December 1241. Carpini adds that the reigning emperor's aunt “had killed his father in the time when their army was in Hungary,” a tale heard at court. No Hungarian source was read."
+  narration: "**Hungary.** At the imperial court in 1246, Carpini saw the emperor and his mother depart separately to administer justice. He reports that the emperor's aunt was imprisoned, accused in his account of killing the emperor's father while the army was in Hungary; she and others were tried and executed. He links the retreat to that death, without claiming to have witnessed the killing or withdrawal. His editor Rockhill could not trace this tale, but explains Batu's retreat through the chiefs' need to choose Ögödei's successor. Rockhill dates Béla IV's defeat to Pest and departure to 1243; later historians give Mohi, April 1241, and withdrawal in 1242. No Hungarian source was read; Batu's own explanation is absent here."
   duration: 13
 
 - shot: karakorum
@@ -143,7 +143,7 @@ Here is the road, in the words of those who wrote it down: the Mongols' own Secr
   reveal: ["william-of-rubruck", "mongke-khan", "karakorum", "journey-of-william-of-rubruck"]
   reveal_claims: ["mongke-khan#c4", "karakorum#c1"]
   overlay: {kind: quote, source: rockhill-1900-journey-of-william-of-rubruck, quote: "But as God gives us the different fingers of the hand, so he gives to men divers ways.", caption: "Möngke Khan to William of Rubruck, Pentecost 1254, as the friar wrote it"}
-  narration: "**Karakorum.** The friar William of Rubruck found a town “not as big as the village of Saint Denis,” but with a silver tree pouring wine and mare's milk, made for the Khan by a Paris goldsmith, William Buchier. On Pentecost Möngke told him the Moal “believe that there is only one God, by whom we live and by whom we die.” The letter the friar was given to carry home said “on Earth there is only one lord, Chingis Chan.” Priests of several faiths had argued before Möngke."
+  narration: "**Karakorum.** At Pentecost 1254 Möngke spoke to William of Rubruck after priests of several faiths had debated: “But as God gives us the different fingers of the hand, so he gives to men divers ways.” The friar records Möngke's belief in one God, by whom people live and die; the letter he was given to carry home also proclaimed one lord on earth, Chingis Chan. In Rubruck's account, Möngke put different paths to God beside a demand for universal rule. The friar left a town smaller than Saint Denis, with Parisian goldsmith William Buchier's silver tree pouring wine and mare's milk, carrying the Khan's words west."
   duration: 13
 
 - shot: baghdad
@@ -152,9 +152,9 @@ Here is the road, in the words of those who wrote it down: the Mongols' own Secr
   places: ["baghdad"]
   time: "1258"
   reveal: ["siege-of-baghdad-1258", "hulagu-khan", "abbasid-caliphate", "baghdad"]
-  reveal_claims: ["siege-of-baghdad-1258#c1", "siege-of-baghdad-1258#c2", "siege-of-baghdad-1258#c3", "hulagu-khan#c3"]
+  reveal_claims: ["siege-of-baghdad-1258#c1", "siege-of-baghdad-1258#c2", "siege-of-baghdad-1258#c3", "hulagu-khan#c3", "siege-of-baghdad-1258#c5"]
   overlay: {kind: quote, source: bar-hebraeus-budge-1932-chronography, quote: "And the Mongols drew their swords, and slew all the people of Baghdad", caption: "Bar Hebraeus, Syriac chronicler, on Baghdad in 1258"}
-  narration: "**Baghdad.** In 1258 Hulagu, brother of the Great Khan Möngke, besieged Baghdad. Bar Hebraeus, a Syriac chronicler writing under Mongol rule, says the Mongols “drew their swords, and slew all the people of Baghdad—tens of thousands of men,” and that “the iberians especially effected a great slaughter.” The Catholicus gathered the Christians in a church and “none of the Christians was injured.” The caliph al-Musta'sim was sewn in sackcloth and killed “with kicks of their feet.” This story read no other count. The caliphate ended in Baghdad."
+  narration: "**Baghdad.** In 1258 Hulagu, Möngke's brother, besieged Baghdad; after its walls fell, the caliph al-Musta'sim went out to him. Bar Hebraeus, a Syriac chronicler under Mongol rule, says the Mongols slew the inhabitants, tens of thousands of men, with the Iberians especially carrying out slaughter; the Catholicus gathered Christians into a church and protected them, and none was injured. Hulagu condemned the caliph, had him sewn in sackcloth and killed with kicks; in this account, men had warned Hulagu that spilling his blood would stop the rain. This story read no other count; the caliph's surrender had not saved him, and Abbasid rule in Baghdad ended."
   duration: 13
 
 - shot: ayn-jalut
@@ -163,9 +163,9 @@ Here is the road, in the words of those who wrote it down: the Mongols' own Secr
   places: ["ain-jalut"]
   time: "1260-09"
   reveal: ["battle-of-ain-jalut", "qutuz", "hulagu-khan", "mamluk-sultanate", "ain-jalut"]
-  reveal_claims: ["battle-of-ain-jalut#c1", "battle-of-ain-jalut#c2", "battle-of-ain-jalut#c3", "battle-of-ain-jalut#c4"]
-  overlay: {kind: quote, source: rashid-al-din-thackston-ayn-jalut, quote: "God the great has elevated Genghis Khan and his progeny and given us the realms of the face of the earth altogether.", caption: "Hulagu's message to Cairo, 1260, in Rashid al-Din, translated by W. M. Thackston"}
-  narration: "**Ayn Jalut.** Hulagu sent envoys to Cairo demanding submission. Rashid al-Din, the Ilkhans' court historian, says Qutuz “had the emissaries crucified”; the editor's summary says he displayed their heads on the city gates. In Rashid's account Qutuz said that “were it not for the news of his brother’s death” Hulagu would have added Egypt too. At Ayn Jalut “the trap was sprung from three sides,” and the commander Ket Buqa was captured and beheaded. No Mamluk account was read: this is the Mongol side's telling."
+  reveal_claims: ["battle-of-ain-jalut#c1", "battle-of-ain-jalut#c2", "battle-of-ain-jalut#c3", "battle-of-ain-jalut#c4", "battle-of-ain-jalut#c5", "battle-of-ain-jalut#c6"]
+  overlay: {kind: quote, source: rashid-al-din-thackston-ayn-jalut, quote: "we will not suffer blame from the people.", caption: "Qutuz urges battle before his commanders, in Rashid al-Din’s account"}
+  narration: "**Ayn Jalut.** In Cairo in 1260, Qutuz faced Hulagu's demand for submission. Rashid al-Din reports Qaymari warning that Hulagu broke assurances and killed those who submitted, and Qutuz saying Egypt faced destruction and exile was impossible across the desert to North Africa. Before his commanders he urged battle to avoid public blame; privately he approved Bunduqdar's plan to kill the envoys and attack together for people's gratitude. Rashid says Qutuz crucified the envoys by night; the editor instead summarizes heads displayed on gates. At Ayn Jalut, his army ambushed Ket Buqa's from three sides. In this account Qutuz burned hiding cavalrymen alive and had Ket Buqa beheaded. No Mamluk account was read; these are the Ilkhans' historian's reported speeches and acts."
   duration: 13
 
 - shot: cousins-at-war
@@ -174,7 +174,7 @@ Here is the road, in the words of those who wrote it down: the Mongols' own Secr
   reveal: ["kublai-khan", "hulagu-khan", "berke-khan", "berke-hulagu-war-1262", "golden-horde", "ilkhanate"]
   reveal_claims: ["berke-hulagu-war-1262#c1", "berke-hulagu-war-1262#c2", "berke-hulagu-war-1262#c3", "berke-hulagu-war-1262#c4", "berke-khan#c1", "hulagu-khan#c3"]
   overlay: {kind: quote, source: yule-1903-notes-vol1, quote: "It began in the summer of 1262, and ended about eight months later.", caption: "Henry Yule's note on the war between Barca and Alau, in his edition of Marco Polo"}
-  narration: "**Cousins at war.** Bar Hebraeus says Möngke died on campaign in China and Kublai's brothers “agreed that he should be Khan,” but the youngest, Ariq Böke, answered: “It is meet that the kingdom should be mine.” In 1262 the rulers of the west (Berke) and of Persia (Hulagu) fought each other for about eight months, by Yule's note. Polo has Berke beaten; other accounts differ and none was read here. The empire no longer had one ruler."
+  narration: "**Cousins at war.** After Möngke died, Ariq Böke challenged his brother Kublai: Möngke had left him in charge, he said. Bar Hebraeus reports the other brothers agreeing to Kublai's accession, but gives Ariq Böke's answer: “It is meet that the kingdom should be mine”. In the west Berke and Hulagu fought from summer 1262 for about eight months, in Yule's dating; the passages read give neither ruler's reason. Polo reports great slaughter on both sides and Berke defeated. Yule's counteraccount has Berke rally, drive Hulagu's son Abaka back across the frozen Terek, where the ice broke and many died, and chase him to Derbend. Yule explicitly rejects Polo's accuracy; the accounts disagree over who won."
   duration: 13
 
 - shot: khanbaliq
@@ -183,9 +183,9 @@ Here is the road, in the words of those who wrote it down: the Mongols' own Secr
   places: ["beijing"]
   time: "1267"
   reveal: ["kublai-khan", "yuan-government", "khanbaliq", "beijing", "the-travels-of-marco-polo"]
-  reveal_claims: ["kublai-khan#c2", "khanbaliq#c1", "khanbaliq#c2"]
-  overlay: {kind: quote, source: polo-yule-1903-book-vol1, quote: "You must know that the city of Cambaluc hath such a multitude of houses, and such a vast population inside the walls and outside, that it seems quite past all possibility.", caption: "Marco Polo on Kublai Khan's capital"}
-  narration: "**Khanbaliq.** Kublai made the old Jin city his residence in 1264 and founded a new one, Taidu, in 1267, by Yule's note. Polo's book describes the court, and paper money made from “the bark of a certain tree” that nobody, he says, “dares to refuse them on pain of death.” Whether Polo saw it is argued. Yule felt “certain every puzzle has a solution”; Frances Wood, quoted by the Fordham editor, suggested he “got only as far as Persia.” Replies to Wood by Igor de Rachewiltz (1997) and H. U. Vogel (2013) exist and were not read."
+  reveal_claims: ["kublai-khan#c2", "khanbaliq#c1", "khanbaliq#c2", "kublai-khan#c5"]
+  overlay: {kind: quote, source: polo-yule-1903-book-vol1, quote: "city would prove rebellious, and raise great disorders against his imperial authority.", caption: "Polo’s disputed book reports what Kublai’s astrologers warned him about the old capital"}
+  narration: "**Khanbaliq.** Kublai made the old Jin city his residence in 1264, then founded Taidu beside it in 1267, in Yule's dating. Polo's disputed book gives a reason: astrologers warned that the old city would rebel against his authority, so he ordered another built across the river. The same book describes his court and paper money made from “the bark of a certain tree” that nobody “dares to refuse them on pain of death.” Whether Polo saw these things remains disputed; in his telling, Kublai answered a warning about his subjects by building a capital and made refusal of his currency punishable by death."
   duration: 13
 
 - shot: japan
@@ -194,18 +194,18 @@ Here is the road, in the words of those who wrote it down: the Mongols' own Secr
   places: ["hakata-bay"]
   time: "1281"
   reveal: ["mongol-invasions-of-japan", "yuan-government", "hakata-bay", "kublai-khan"]
-  reveal_claims: ["mongol-invasions-of-japan#c1", "mongol-invasions-of-japan#c2", "mongol-invasions-of-japan#c3", "kublai-khan#c3"]
+  reveal_claims: ["mongol-invasions-of-japan#c1", "mongol-invasions-of-japan#c2", "mongol-invasions-of-japan#c3", "kublai-khan#c3", "mongol-invasions-of-japan#c5"]
   overlay: {kind: quote, source: yule-1903-notes-vol2, quote: "A frightful storm arose ; the Mongol ships foundered or were sorely shattered.", caption: "The Japanese annals, translated by Titsingh and quoted in Yule's notes; Yule says the annalist had the Chinese annals to hand"}
-  narration: "**Japan.** Yule says Kublai sent a fleet in 1274, “300 vessels with 15,000 men,” and that it was beaten near Tsushima. For 1281 he quotes Japanese annals: an army of 100,000, of whom 30,000 were taken prisoner and put to death. Chinese annals, he adds, say the Japanese kept 10,000 or 12,000 southern Chinese as slaves. Polo dates the war 1279 and tells it differently. These are chroniclers' numbers, and they differ."
+  narration: "**Japan.** Kublai sent 300 vessels and 15,000 men in 1274, provoked by failed embassies in Yule's reading; the fleet lost near Tsushima. Polo instead dates the war 1279 and says Kublai planned to possess the island after hearing of its wealth. Neither explanation is Kublai's surviving personal testimony. Japanese annals quoted by Yule say General Fan Wen-hu fled the storm-wrecked fleet in 1281 aboard a less damaged ship, leaving 100,000 men seeking escape; they give no reason from him. Those annals report 30,000 captured and executed at Hakata; Chinese annals say 10,000 or 12,000 southern Chinese were kept as slaves. These are the chroniclers' numbers; the fleets left men facing execution or captivity."
   duration: 13
 
 - shot: plague
   view: graph
   focus: black-death
   reveal: ["black-death", "siege-of-caffa-1346", "kaffa", "epidemic-of-1338-1339", "source-of-the-black-death-paper"]
-  reveal_claims: ["siege-of-caffa-1346#c1", "siege-of-caffa-1346#c2", "epidemic-of-1338-1339#c1", "epidemic-of-1338-1339#c2"]
+  reveal_claims: ["siege-of-caffa-1346#c1", "siege-of-caffa-1346#c2", "epidemic-of-1338-1339#c1", "epidemic-of-1338-1339#c2", "siege-of-caffa-1346#c3"]
   overlay: {kind: quote, source: wheelis-2002-caffa, quote: "What seemed like mountains of dead were thrown into the city, and the Christians could not hide or flee or escape from them", caption: "Gabriele de' Mussi, a notary in Piacenza, as translated in Wheelis 2002; he does not claim to have been there"}
-  narration: "**The plague.** De' Mussi wrote that plague struck the Mongol army besieging Caffa in 1346 and the dead were thrown into the city. Mark Wheelis finds this plausible but thinks “it is unlikely that the attack had a decisive role in the spread of plague to Europe.” In 2022 Spyrou and others found plague DNA in graves near Lake Issyk-Kul dated 1338–39. They place the source in central Eurasia in the early fourteenth century, say their sampling cannot show how the strain spread, and note a rival view tying it to the thirteenth-century Mongol expansion. The Mongol link is argued, not shown."
+  narration: "**The plague.** In Piacenza, the notary Gabriele de' Mussi described a decision at besieged Caffa in 1346 without claiming to have been there: plague-stricken Mongols hurled their dead over the walls, hoping the stench would kill those inside. The inhabitants dumped bodies into the sea; the account sends survivors fleeing with disease, but Wheelis finds the attack plausible while doubting it decisively spread plague to Europe. In 2022 a team found plague DNA in graves near Lake Issyk-Kul dated 1338–39, supporting an early-fourteenth-century central Eurasian source; its sampling cannot establish the route, against a rival theory linking the strain to thirteenth-century Mongol expansion. De' Mussi's story made the siege an explanation for Europe's plague; that Mongol link remains argued, not shown."
   duration: 13
 
 - shot: 1368
@@ -214,10 +214,12 @@ Here is the road, in the words of those who wrote it down: the Mongols' own Secr
   places: ["beijing"]
   time: "1368"
   reveal: ["fall-of-the-yuan-1368", "yuan-government", "ming-dynasty", "khanbaliq", "beijing"]
-  reveal_claims: ["fall-of-the-yuan-1368#c1", "fall-of-the-yuan-1368#c2", "fall-of-the-yuan-1368#c3", "ming-dynasty#c1"]
+  reveal_claims: ["fall-of-the-yuan-1368#c1", "fall-of-the-yuan-1368#c2", "fall-of-the-yuan-1368#c3", "ming-dynasty#c1", "fall-of-the-yuan-1368#c4"]
   overlay: {kind: quote, source: yule-1903-notes-vol1, quote: "After the expulsion of the Mongols (1368) the new native Dynasty of Ming established their capital at Nanking.", caption: "Henry Yule's notes to Marco Polo"}
-  narration: "**1368.** The Mongols were expelled from China, and the Ming made Nanjing their first capital. Yule writes that the third Ming ruler “re-occupied Taidu” and that repairs began in 1409. In a note from Yule's own lifetime, he says the old wall still stood, called by the Chinese “The Wall of the Yuen.”"
+  narration: "**1368.** After the Mongols were expelled from China in 1368, the Ming rulers established their capital at Nanjing. The dynasty's third ruler later returned to Taidu, Kublai's city, and repairs began in 1409; in Yule's account Nanjing had proved inconvenient, though the passage gives no reason in the ruler's own words. He cut nearly a third off the city's northern end, leaving a stretch of wall outside the rebuilt capital. Yule records that it still stood in his own lifetime as “The Wall of the Yuen”: Yuan rule had ended, but a Ming ruler's rebuilding carried the Mongol capital into the next dynasty."
   duration: 13
 ```
+
+On Polo’s book: Yule felt “certain every puzzle has a solution”; Frances Wood, quoted by the Fordham editor, suggested he “got only as far as Persia”. Replies to Wood by Igor de Rachewiltz (1997) and H. U. Vogel (2013) exist and were not read. The book’s presence here does not settle whether Polo saw Kublai’s court.
 
 What this story did not read: Chinese court histories, Hungarian chronicles, the Japanese scrolls, and modern estimates of how many died and how big the empire was. Where it gives a number it names whose number it is.

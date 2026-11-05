@@ -31,4 +31,12 @@ claims:
     role: "the chronicle's account"
     src:
       - {s: bar-hebraeus-budge-1932-chronography, at: "p. 431", quote: "And the Tatars on their return from Baghdad came and encamped"}
+  - id: c5
+    rel: involved
+    to: hulagu-khan
+    role: "condemned the caliph and ordered his death in sackcloth"
+    note: "Bar Hebraeus reports a warning that spilling the caliph’s blood would stop the rain, explaining the method of execution in his account."
+    according_to: [chronography-of-bar-hebraeus]
+    src:
+      - {s: bar-hebraeus-budge-1932-chronography, at: "p. 431", quote: "because certain of the Arabs had frightened the King of Kings saying,"}
 ---

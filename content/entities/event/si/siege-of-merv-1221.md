@@ -19,4 +19,12 @@ claims:
     role: "the commander who arrived on 25 February 1221, in Juvaini's account"
     src:
       - {s: juvaini-boyle-1958-world-conqueror-vol1, at: "ch. 'Of Merv'", quote: "Toli, that furious lion, arrived with an army like unto a dark night and a raging sea"}
+  - id: c3
+    rel: involved
+    to: merv
+    role: "Izz-ad-Din Nassaba and others counted visible bodies for thirteen days and nights"
+    note: "Juvaini names the counter and says the count excluded hidden bodies and people killed outside the town. He also describes four hundred artisans spared and some children taken captive."
+    according_to: [history-of-the-world-conqueror]
+    src:
+      - {s: juvaini-boyle-1958-world-conqueror-vol1, at: "chapter Of Merv", quote: "Now the sayyid Izz-ad-Din Nassaba was one of the great"}
 ---

@@ -32,4 +32,12 @@ claims:
     role: "speaker of his own good deeds and faults"
     src:
       - {s: rachewiltz-street-2015-secret-history, at: "§281", quote: "I was at fault to let myself be vanquished by wine.", by: ogedei-khan}
+  - id: c5
+    rel: appears_in
+    to: secret-history-of-the-mongols
+    role: "explained why he would set up post stations"
+    according_to: [secret-history-of-the-mongols]
+    note: "Ögödei says messengers moving freely among the population travel slowly and afflict the people; he orders stations instead."
+    src:
+      - {s: rachewiltz-street-2015-secret-history, at: "§279", quote: "they are an affliction on the people.", by: ogedei-khan}
 ---

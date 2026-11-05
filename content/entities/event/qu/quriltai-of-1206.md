@@ -18,4 +18,11 @@ claims:
     to: mongol-empire
     src:
       - {s: rachewiltz-street-2015-secret-history, at: "§202", quote: "Having thus completed the task of setting the Mongol people in order"}
+  - id: c3
+    rel: involved
+    to: genghis-khan
+    role: "announced commands as appreciation for his companions"
+    according_to: [secret-history-of-the-mongols]
+    src:
+      - {s: rachewiltz-street-2015-secret-history, at: "§202", quote: "To those who sided with me when I was establishing our nation, I shall express my appreciation", by: genghis-khan}
 ---

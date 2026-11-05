@@ -24,4 +24,17 @@ claims:
     role: "re-occupied by the Ming; repairs from 1409"
     src:
       - {s: yule-1903-notes-vol1, at: "Bk. II ch. 11, note", quote: "the third sovereign of the Dynasty re-occupied Taidu or Cambaluc, the repairs of which began in 1409"}
+  - id: c4
+    rel: involved
+    to: khanbaliq
+    role: "the third Ming ruler reduced the rebuilt city by nearly a third at the north"
+    note: "Yule attributes the return from Nanjing to its inconvenience; he gives no explanation in the ruler’s own words."
+    according_to: [yule-cordier-notes-to-marco-polo]
+    src:
+      - {s: yule-1903-notes-vol1, at: "Book II chapter 11, note", quote: "He reduced it in size by cutting off nearly a third part of the city at the north end."}
+  - id: c5
+    rel: appears_in
+    to: yule-cordier-notes-to-marco-polo
+    src:
+      - {s: yule-1903-notes-vol1, at: "Book II chapter 11, note"}
 ---
