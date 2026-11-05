@@ -5,6 +5,7 @@ type: org
 name: "Byzantine Empire"
 in_sentence: "the Byzantine Empire"
 aliases: ["Eastern Roman Empire"]
+same_as: {wikidata: Q12544}
 summary: "The eastern half of the Roman Empire, ruled from Constantinople until the Ottomans took the city in 1453."
 claims:
   - id: c1
@@ -15,4 +16,4 @@ claims:
       - {s: "gibbon-decline-and-fall-gutenberg", at: "chapter 32", quote: "from the reign of Arcadius to the taking of Constantinople by the Turks, subsisted one thousand and fifty-eight years"}
 ---
 
-Historians call the eastern empire "Byzantine"; its rulers kept the title of Emperor of the Romans. See [[division-of-the-empire-395]] and [[death-of-constantine-xi]].
+Historians call the eastern empire "Byzantine"; its rulers kept the title of Emperor of the Romans, and its citizens called themselves Romans until 1453. See [[division-of-the-empire-395]] and [[death-of-constantine-xi]].
