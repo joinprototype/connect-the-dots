@@ -269,9 +269,13 @@ export class DotField {
   private readonly watch: ResizeObserver;
   private readonly view: IntersectionObserver;
 
-  constructor(host: HTMLElement, opts: { onPick?: (m: Mark) => void; fade?: number } = {}) {
+  /** Where something is set over the field, such as a date, so no name is put under it. */
+  private readonly clear?: () => DOMRect | null;
+
+  constructor(host: HTMLElement, opts: { onPick?: (m: Mark) => void; fade?: number; clear?: () => DOMRect | null } = {}) {
     this.onPick = opts.onPick;
     this.fade = opts.fade ?? 0;
+    this.clear = opts.clear;
     this.canvas = document.createElement('canvas');
     this.canvas.className = 'dotfield-dots';
     this.ctx = this.canvas.getContext('2d')!;
@@ -556,6 +560,12 @@ export class DotField {
       const r = (d.mark.r ?? 5) + 1;
       return [x - r, y - r, x + r, y + r];
     });
+    const over = this.clear?.();
+    if (over && over.width > 0) {
+      const at0 = this.canvas.getBoundingClientRect();
+      const [l, t] = [over.left - at0.left, over.top - at0.top];
+      taken.push([l - 6, t - 6, l + over.width + 6, t + over.height + 6]);
+    }
     const hits = (b: [number, number, number, number]) => taken.some((o) => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]);
     const order = this.drawn.filter((d) => d.mark.label).sort((a, b) => (b.mark.rank ?? 0) - (a.mark.rank ?? 0));
     for (const d of order) {

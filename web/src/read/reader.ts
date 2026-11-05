@@ -23,6 +23,13 @@ const threadEl = document.querySelector<HTMLElement>('.read-thread');
 const pictureEl = document.querySelector<HTMLElement>('.read-picture');
 const stampEl = pictureEl?.querySelector<HTMLElement>('.read-stamp');
 const ink = (type: string) => inkOf(site, type);
+/** The date stamped on the picture, as drawn: names on the map keep off it. */
+function stampBox(): DOMRect | null {
+  if (!stampEl?.firstChild) return null;
+  const r = document.createRange();
+  r.selectNodeContents(stampEl);
+  return r.getBoundingClientRect();
+}
 const calm = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /** A name the reader landed on. */
@@ -497,7 +504,7 @@ function renderBar(): void {
 
 function startPicture(): void {
   if (!pictureEl) return;
-  field = new DotField(pictureEl, { onPick: (m: Mark) => active && void openDoor(m.id, active, null), fade: phone() ? 0 : 110 });
+  field = new DotField(pictureEl, { onPick: (m: Mark) => active && void openDoor(m.id, active, null), fade: phone() ? 0 : 110, clear: stampBox });
   const band = stories[0]?.el.querySelector('.read-band');
   const now = active ? pictures.get(active) : undefined;
   if (calm() || (active && active !== band)) {
