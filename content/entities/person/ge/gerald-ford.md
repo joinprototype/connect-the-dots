@@ -36,4 +36,11 @@ claims:
     src:
       - {s: ford-statement-1974-10-15, at: "Statement", quote: "TODAY I am signing into law the Federal [Election] Campaign Act Amendments of 1974."}
       - {s: ford-statement-1974-10-15, at: "Statement", quote: "And although I do have reservations about the first amendment implications inherent in the limits on individual contributions and candidate expenditures, I am sure that such issues can be resolved in the courts."}
+  - id: c5
+    rel: enacted
+    to: hart-scott-rodino-act-1976
+    when: "1976-09-30"
+    note: "Signed despite reservations about state damages suits; supported advance notice so agencies could investigate before irreversible consolidation."
+    src:
+      - {s: ford-hsr-signing-1976-09-30, at: "Statement", quote: "AFTER CAREFUL reflection, I am signing into law today H.R. 8532, the Hart-Scott-Rodino Antitrust Improvements Act of 1976."}
 ---

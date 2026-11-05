@@ -32,4 +32,11 @@ claims:
     according_to: [federal-reserve]
     src:
       - {s: fed-history-federal-reserve-act-signed, quote: "Wilson, however, felt the plan needed an oversight agency."}
+  - id: c5
+    rel: influenced
+    to: federal-trade-commission-act-1914
+    note: "In his 20 January 1914 address, asked Congress for a trade commission to guide businesses and shape corrections where ordinary court remedies were inadequate."
+    according_to: [woodrow-wilson]
+    src:
+      - {s: wilson-trusts-address-1914-01-20, at: "Address to Congress", quote: "They desire the advice, the definite guidance and information which can be supplied by an administrative body, an interstate trade commission."}
 ---
