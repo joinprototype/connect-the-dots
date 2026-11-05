@@ -36,4 +36,10 @@ claims:
     role: "the study credits some success in preventing the diversion of Nazi assets abroad"
     src:
       - {s: eizenstat-1997-us-and-allied-efforts-gold, at: "Executive summary", quote: "The Safehaven program achieved many of its goals, including some success in preventing the diversion of Nazi assets abroad"}
+  - id: c6
+    rel: involved
+    to: us-government
+    role: "Roosevelt’s aide Lauchlin Currie led the American delegation to Allied-Swiss trade and Safehaven negotiations in February 1945"
+    src:
+      - {s: eizenstat-1997-us-and-allied-efforts-gold, at: "Executive summary, Safehaven negotiations", quote: "A potential breakthrough with the Swiss came in February 1945 when President Roosevelt’s Administrative Assistant Lauchlin Currie led the American delegation to the Allied-Swiss trade and Safehaven negotiations."}
 ---

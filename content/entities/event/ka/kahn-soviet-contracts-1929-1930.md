@@ -37,4 +37,16 @@ claims:
     role: "site of a truck assembly plant designed in Detroit"
     src:
       - {s: melnikova-raich-2010-kahn, at: "Part I, text", quote: "The major projects designed in Detroit included the tractor plants in Stalingrad and Chelyabinsk, the Avtostroi truck assembly plants in Moscow and Nizhny Novgorod"}
+  - id: c6
+    rel: involved
+    to: albert-kahn-inc
+    role: "Albert Kahn publicly compared his professional role in Soviet Russia to a doctor treating a patient"
+    src:
+      - {s: melnikova-raich-2010-kahn, at: "Part I, departure for Moscow, March 1930", quote: "as a professional man, his attitude towards Russia was “that of a doctor toward his patient.”"}
+  - id: c7
+    rel: involved
+    to: nizhny-novgorod
+    role: "a Soviet commission headed by Tukhachevsky set wartime tankette production at 20–25 percent of automobile capacity in 1931"
+    src:
+      - {s: melnikova-raich-2010-kahn, at: "Part I, dual-use industry", quote: "the decision of the special commission on tank industry headed by Tukhachevsky on July 5, 1931, set the wartime numbers for production of tankettes at the plant in Nizhny Novgorod at 20–25 percent of its automobile capacity."}
 ---

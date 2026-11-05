@@ -38,4 +38,11 @@ claims:
     src:
       - {s: state-milestone-us-soviet-alliance, at: "text", quote: "to impose a “moral embargo” on the export of certain products to the Soviets"}
       - {s: state-milestone-us-soviet-alliance, at: "text", quote: "Roosevelt never lost sight of the fact that Nazi Germany, not the Soviet Union, posed the greatest threat to world peace."}
+  - id: c6
+    rel: involved
+    to: franklin-d-roosevelt
+    role: "publicly condemned Soviet dictatorship but privately said he would cooperate to defeat the German threat"
+    src:
+      - {s: state-milestone-us-soviet-alliance, at: "text", quote: "to condemn the Soviet Union publicly as a “dictatorship as absolute as any other dictatorship in the world,”"}
+      - {s: state-milestone-us-soviet-alliance, at: "text", quote: "In order to defeat that threat, Roosevelt confided that he “would hold hands with the devil” if necessary."}
 ---

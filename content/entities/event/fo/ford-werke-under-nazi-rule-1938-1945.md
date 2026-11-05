@@ -39,4 +39,18 @@ claims:
       - {s: ford-2001-research-findings-ford-werke, at: "Simon Reich's independent assessment", quote: "The record reveals that communication between the American parent and the German subsidiary ceased by November of 1941, before the use of forced or slave labor began.", by: ford-motor-company}
       - {s: dobbs-1998-washington-post-ford-gm, at: "article text", quote: "there appear to have been indirect contact. In June 1943, the Nazi custodian of the Cologne plant, Robert Schmidt, traveled to Portugal for talks with Ford managers."}
       - {s: dobbs-1998-washington-post-ford-gm, at: "article text", quote: "The investigation ended without charges being filed."}
+  - id: c6
+    rel: involved
+    to: ford-werke
+    role: "In a postwar memorandum, as Ford’s report recounts, Schmidt described the separate military-equipment firm he helped establish in 1939 as a way to keep Ford-Werke producing vehicles"
+    src:
+      - {s: ford-2001-research-findings-ford-werke, at: "Report Summary", quote: "Schmidt described it as a strategy to permit Ford-Werke to continue manufacturing vehicles rather than war matériel.", by: ford-motor-company}
+      - {s: ford-2001-research-findings-ford-werke, at: "Chapter 4, postwar memorandum", quote: "In a postwar memorandum, Schmidt described the venture as a secret compromise with the military that would allow Ford-Werke to continue manufacturing trucks.", by: ford-motor-company}
+  - id: c7
+    rel: involved
+    to: ford-motor-company
+    role: "Elsa Iwanowa sued in March 1998, saying Nazis abducted her as a teenager and forced her to work at Ford-Werke"
+    src:
+      - {s: ford-2001-research-findings-ford-werke, at: "Introduction, page 1", quote: "On March 4, 1998, attorneys filed a class action lawsuit against Ford."}
+      - {s: ford-2001-research-findings-ford-werke, at: "Introduction, page 1", quote: "The attorneys represented Elsa Iwanowa, a Belgian citizen who said she was abducted from Russia as a teenager by the Nazis during World War II and forced to perform heavy labor at Ford-Werke in Cologne, Germany."}
 ---
