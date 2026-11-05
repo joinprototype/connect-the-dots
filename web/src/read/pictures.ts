@@ -140,12 +140,15 @@ export class StoryPictures {
     const web = this.layout();
     const earlier = new Set<string>();
     for (const s of this.d.scenes.slice(0, i + 1)) [...(s.r ?? []), ...(s.f ? [s.f] : [])].forEach((id) => earlier.add(id));
+    // a link the scene reveals is seen whole: both its ends are in view and named
+    const ends = new Set<string>();
+    for (const ref of sc.x ?? []) for (const e of this.claims.get(ref) ?? []) ends.add(e.from).add(e.to);
     const marks: Mark[] = [];
     const bright: { x: number; y: number }[] = [];
     for (const id of earlier) {
       const p = web.get(id);
       if (!p) continue;
-      const on = hot.has(id);
+      const on = hot.has(id) || ends.has(id);
       const m = this.mark(id, p.x, p.y, {
         label: id === sc.f || (!sc.f && on) ? 'strong' : on ? 'plain' : undefined,
         rank: id === sc.f ? 20 : on ? 10 : 0,
