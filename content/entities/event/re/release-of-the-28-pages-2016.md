@@ -38,4 +38,20 @@ claims:
       - {s: 911-commission-staff-monograph-terrorist-financing-2004, quote: "the Commission staff has found no persuasive evidence that the Saudi government as an institution or as individual senior officials knowingly support or supported al Qaeda."}
       - {s: 911-commission-report-2004, quote: "charitable giving was both essential to the culture and subject to very limited oversight."}
       - {s: cbs-2016-28-pages-of-congressional-report-released, quote: "Later investigations found no evidence that the Saudi government or senior Saudi officials knowingly supported those who orchestrated the attacks."}
+  - id: c4
+    rel: involved
+    to: us-congress
+    note: "Representative Stephen Lynch sought release to pursue accountability; ODNI said transparency now outweighed the national security harm."
+    src:
+      - {s: cbs-2016-28-pages-of-congressional-report-released, quote: "Rep. Stephen F. Lynch, D-Massachusetts, a longtime advocate of the declassification, said the release allows for greater transparency about the investigation into 9/11."}
+      - {s: cbs-2016-28-pages-of-congressional-report-released, quote: "It may help us at last hold those who are responsible accountable."}
+      - {s: odni-2016-statement-declassification-part-four-joint-inquiry, quote: "the Executive Branch determined that the harm to national security by releasing portions of Part Four of the report at this time is outweighed by the public interest in additional transparency concerning the Committees’ findings."}
+  - id: c5
+    rel: involved
+    to: saudi-government
+    note: "Foreign Minister Adel al-Jubeir said he hoped fourteen years of accusations would end after the release."
+    according_to: [saudi-government]
+    src:
+      - {s: cbs-2016-28-pages-of-congressional-report-released, quote: "Saudi Foreign Minister Adel bin Ahmed Al-Jubeir said he can only hope that the aspersions cast against the Saudi government throughout the past 14 years draw to an end, but he also recognized that people's mindsets may remain unchanged."}
+
 ---

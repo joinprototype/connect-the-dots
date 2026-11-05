@@ -39,4 +39,12 @@ claims:
     src:
       - {s: 911-commission-report-2004, quote: "FBI information since that time indicates patterns of suspicious activity in this country consistent with preparations for hijackings or other types of attacks, including recent surveillance of federal buildings in New York."}
       - {s: 911-commission-report-2004, quote: "We have not been able to corroborate some of the more sensational threat reporting"}
+  - id: c5
+    rel: involved
+    to: cia
+    note: "The CIA authors saw the brief as a warning that the domestic threat was current and serious."
+    according_to: [national-commission-on-terrorist-attacks]
+    src:
+      - {s: 911-commission-report-2004, quote: "Two CIA analysts involved in preparing this briefing article believed it represented an opportunity to communicate their view that the threat of a Bin Ladin attack in the United States remained both current and serious."}
+
 ---

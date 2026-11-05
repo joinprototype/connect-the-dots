@@ -28,4 +28,13 @@ claims:
     to: kuala-lumpur
     src:
       - {s: 911-commission-report-2004, quote: "arrived in Kuala Lumpur on January 5, 2000"}
+  - id: c4
+    rel: involved
+    to: cia
+    note: "The Commission found that the desk officer had moved to other work by the time the March 2000 cable arrived."
+    according_to: [national-commission-on-terrorist-attacks]
+    src:
+      - {s: 911-commission-report-2004, quote: "when the trail went cold after the Kuala Lumpur meeting in January 2000, the desk officer moved on to different things."}
+      - {s: 911-commission-report-2004, quote: "By the time the March 2000 cable arrived with information that one of the travelers had flown to Los Angeles, the case officer was no longer responsible for follow-up."}
+
 ---

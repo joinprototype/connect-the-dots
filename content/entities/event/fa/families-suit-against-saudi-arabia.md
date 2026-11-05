@@ -23,4 +23,13 @@ claims:
       - {s: abc-2026-appeals-court-hears-saudi-911-suit, quote: "Attorneys involved in the case do not expect a ruling until early 2027."}
       - {s: abc-2025-judge-lets-911-families-sue-saudi-arabia, quote: "On a notepad seized from Bayoumi, authorities said they saw a handwritten sketch of an airplane along with some numbers, calculations and notes."}
       - {s: abc-2025-judge-lets-911-families-sue-saudi-arabia, quote: "they were brought to the mosque and introduced to Thumairy, who left the U.S. five weeks prior to the attacks."}
+  - id: c2
+    rel: involved
+    to: george-daniels-judge
+    note: "Brett Eagleson, who lost his father at fifteen, described the ruling as a chance to pursue accountability, justice and closure."
+    src:
+      - {s: abc-2025-judge-lets-911-families-sue-saudi-arabia, quote: "Eagleson was just 15 when he lost his father in the attacks."}
+      - {s: abc-2025-judge-lets-911-families-sue-saudi-arabia, quote: "\"We've never recovered him, not even a trace,\" he told ABC News in 2021."}
+      - {s: abc-2025-judge-lets-911-families-sue-saudi-arabia, quote: "Nearly a quarter-century after we lost our loved ones, Judge Daniels' ruling gives us the chance to finally pursue accountability, justice, and closure in their memory"}
+
 ---

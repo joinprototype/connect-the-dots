@@ -26,4 +26,12 @@ claims:
       - {s: state-dept-contemporary-global-anti-semitism-2008, at: "ch. 2", quote: "and the Pentagon at the time of the attacks”—in other words, in New York City and Washington, D.C."}
       - {s: forward-2002-spy-rumors-fly-on-gusts-of-truth, quote: "Sources emphasized that the release of all the Israelis under investigation indicates that they were cleared of any suspicion that they had prior knowledge of the September 11 attacks, as some anti-Israel media outlets have suggested."}
       - {s: forward-2002-spy-rumors-fly-on-gusts-of-truth, quote: "a group of five Israelis arrested in New Jersey shortly after the September 11 attacks and held for more than two months"}
+  - id: c3
+    rel: tale_about
+    to: september-11-attacks
+    note: "The Forward’s sources said the men were cleared of suspicion of foreknowledge; it also reported Ellner’s refusal of interviews and their allegations of mistreatment in detention."
+    src:
+      - {s: forward-2002-spy-rumors-fly-on-gusts-of-truth, quote: "After they returned to Israel at the end of November, the five men told local media that they were kept in solitary confinement, beaten, deprived of food and questioned while blindfolded and in their underwear."}
+      - {s: forward-2002-spy-rumors-fly-on-gusts-of-truth, quote: "Mr. Ellner, one of the five Israelis, said on two occasions in recent weeks that the five men had decided not to grant any interviews right now “because we went through a very difficult period and we are not ready for this.”"}
+
 ---

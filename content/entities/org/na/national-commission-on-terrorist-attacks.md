@@ -25,6 +25,14 @@ claims:
     src:
       - {s: 911-commission-staff-monograph-terrorist-financing-2004, quote: "This study is on terrorist financing."}
       - {s: 911-commission-staff-monograph-terrorist-financing-2004, quote: "We used more of this material in preparing draft sections of the Commission’s final report."}
+  - id: c3
+    rel: authored
+    to: 9-11-commission-report
+    when: "2004-07"
+    note: "Kean and Hamilton described their purpose as identifying lessons rather than assigning individual blame."
+    src:
+      - {s: 911-commission-report-2004, at: "Preface", quote: "Our aim has not been to assign individual blame. Our aim has been to provide the fullest possible account of the events surrounding 9/11 and to identify lessons learned."}
+
 ---
 
 Created by the Congress and the President in Public Law 107-306 of 27 November 2002.

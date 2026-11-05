@@ -124,4 +124,33 @@ claims:
     src:
       - {s: 911-commission-report-2004, quote: "How did this happen, and how can we avoid such tragedy again?"}
       - {s: 911-commission-report-2004, quote: "To answer these questions, the Congress and the President created the National Commission on Terrorist Attacks Upon the United States (Public Law 107-306, November 27, 2002)."}
+  - id: c16
+    rel: involved
+    to: world-trade-center
+    note: "Betty Ong and Amy Sweeney reported the American 11 hijacking by phone."
+    src:
+      - {s: 911-commission-report-2004, quote: "The emergency call lasted approximately 25 minutes, as Ong calmly and professionally relayed information about events taking place aboard the airplane to authorities on the ground."}
+      - {s: 911-commission-report-2004, quote: "American also began getting identifications of the hijackers, as Ong and then Sweeney passed on some of the seat numbers of those who had gained unauthorized access to the cockpit."}
+  - id: c17
+    rel: involved
+    to: washington-dc
+    note: "Barbara Olson called her husband from American 77; he tried to alert the Attorney General."
+    src:
+      - {s: 911-commission-report-2004, quote: "Solicitor General Olson tried unsuccessfully to reach Attorney General John Ashcroft."}
+      - {s: 911-commission-report-2004, quote: "She reported that the pilot had announced that the flight had been hijacked, and she asked her husband what she should tell the captain to do."}
+  - id: c18
+    rel: involved
+    to: world-trade-center
+    note: "Some Port Authority police officers slowed their evacuation to help civilians who could not walk."
+    src:
+      - {s: 911-commission-report-2004, quote: "Some greatly slowed their own descent in order to assist nonambulatory civilians."}
+  - id: c19
+    rel: involved
+    to: al-qaeda
+    note: "The hijackers paid for training and living costs, then returned leftover funds before the attacks."
+    according_to: [national-commission-on-terrorist-attacks]
+    src:
+      - {s: 911-commission-staff-monograph-terrorist-financing-2004, quote: "While in the United States, the hijackers spent money primarily for flight training, travel, and living expenses (such as housing, food, cars, and auto insurance)."}
+      - {s: 911-commission-report-2004, quote: "They sent the excess funds by wire transfer to Hawsawi in the UAE, about $26,000 altogether."}
+
 ---
