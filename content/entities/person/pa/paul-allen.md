@@ -28,6 +28,20 @@ claims:
     to: lakeside-school
     role: student
     src: [{s: gates-foundation-lakeside-2005, quote: "The experience and insight Paul Allen and I gained here gave us the confidence to start a company based on this wild idea that nobody else agreed with"}]
+  - id: c310
+    rel: founded
+    to: traf-o-data
+    when: "1972"
+    role: "partner with Bill Gates"
+    src:
+      - {s: spokesman-2025-04-03-birth-of-microsoft, quote: "They called their partnership Traf-O-Data."}
+  - id: c311
+    rel: worked_at
+    to: mits
+    when: "1975"
+    role: "vice-president of software"
+    src:
+      - {s: historylink-21161-microsoft-albuquerque, quote: "MITS hired him as vice-president of software; he moved to Albuquerque in the spring"}
 ---
 
 Paul Allen co-founded [[microsoft]] with [[bill-gates]] in 1975. He was among the first signatories of the [[giving-pledge]] in 2010.

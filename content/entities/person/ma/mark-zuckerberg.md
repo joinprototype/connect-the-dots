@@ -18,6 +18,7 @@ claims:
     src:
       - {s: time-2010-zuckerberg, quote: "in February 2004, when Zuckerberg was a 19-year-old sophomore at Harvard, he started a Web service from his dorm. It was called Thefacebook.com"}
       - {s: facebook-s1-2012, at: "Management", quote: "Mark Zuckerberg is our founder and has served as our CEO and as a member of our board of directors since July 2004."}
+      - {s: crimson-2004-02-09-thefacebook, quote: "After about a week of coding, Zuckerberg launched thefacebook.com last Wednesday afternoon."}
   - id: c2
     rel: ceo_of
     to: meta-platforms
@@ -31,6 +32,7 @@ claims:
     role: studied computer science; left without a degree
     when: "2002/2004"
     src:
+      - {s: crimson-2003-11-19-facemash, quote: "The creator of the short-lived but popular Harvard version of the Am I Hot or Not? website said he will not have to leave school after being called before the Administrative Board yesterday afternoon."}
       - {s: facebook-s1-2012, at: "Management", quote: "Mr. Zuckerberg attended Harvard University where he studied computer science."}
       - {s: harvard-gazette-2017-05-25-zuckerberg, quote: "I’m an unlikely speaker, not just because I dropped out, but because we’re technically in the same generation."}
   - id: c4

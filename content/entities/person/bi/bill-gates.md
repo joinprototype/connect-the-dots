@@ -39,10 +39,11 @@ claims:
   - id: c5
     rel: educated_at
     to: harvard-university
-    role: left in 1975 without a degree (honorary degree 2007)
-    when: "1973/1975"
+    role: left without a degree; divided his time between Harvard and Albuquerque until January 1977 (honorary degree 2007)
+    when: "1973/1977"
     src:
       - {s: harvard-gazette-2007-06-07-gates, quote: "For my part, I’m just happy that the Crimson has called me “Harvard’s most successful dropout.”"}
+      - {s: historylink-21161-microsoft-albuquerque, quote: "Gates, who divided his time between Harvard and Albuquerque until January 1977, had appetites for fast food, fast cars, and the orange drink mix Tang."}
       - {s: historylink-7188-mary-maxwell-gates, at: "William H. Gates Jr. section", quote: "Bill Gates grew up in Seattle's Laurelhurst neighborhood and attended Lakeside School where he developed an interest in computers."}
   - id: c6
     rel: citizen_of
@@ -93,6 +94,13 @@ claims:
       - {s: aljazeera-2026-06-10-gates-testifies, quote: "At that point, I concluded Epstein would never deliver on his promises. I told him we would go no further and stopped communicating or meeting with him,", by: bill-gates}
       - {s: pbs-2026-06-10-gates-takeaways, quote: "He said while he was not blackmailed by Epstein, the emails \"raises a serious probability that he contemplated blackmailing me.\""}
       - {s: aljazeera-2026-06-10-gates-testifies, quote: "to pressure me to re-engage with him. He was unsuccessful in this effort.", by: bill-gates}
+  - id: c310
+    rel: founded
+    to: traf-o-data
+    when: "1972"
+    role: "partner with Paul Allen"
+    src:
+      - {s: spokesman-2025-04-03-birth-of-microsoft, quote: "They called their partnership Traf-O-Data."}
 ---
 
 Bill Gates co-founded [[microsoft]] with [[paul-allen]] in 1975, in [[albuquerque]]. He later turned to philanthropy.

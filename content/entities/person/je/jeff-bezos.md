@@ -60,6 +60,7 @@ claims:
     src:
       - {s: amazon-s1a-1997-05-14, at: "Management", quote: "From December 1990 to June 1994, Mr. Bezos was employed by D.E. Shaw & Co., a Wall Street investment firm, becoming Senior Vice President in 1992."}
       - {s: daily-princetonian-2010-05-bezos, quote: "At the time he made his decision, Bezos had just married MacKenzie Bezos ’92 and was working at the high-powered hedge fund D.E. Shaw."}
+      - {s: paw-2000-04-19-bezos, quote: "Before he cracked the cover on Amazon.com, Bezos worked for a small fund company in Manhattan, D.E. Shaw & Co."}
   - id: c9
     rel: citizen_of
     to: united-states
