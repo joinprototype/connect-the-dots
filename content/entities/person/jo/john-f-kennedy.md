@@ -19,6 +19,13 @@ claims:
     rel: member_of
     to: catholic-church
     src: [{s: millercenter-jfk-campaigns, quote: "West Virginia was critical for Kennedy, who had to show that a wealthy Catholic was electable there."}]
+  - id: c3
+    rel: founded
+    to: usaid
+    when: "1961-11-03"
+    src:
+      - {s: usaid-history, at: "International Aid in the 1960s: An Agency is Born", quote: "In 1961, President Kennedy signed the Foreign Assistance Act into law and created USAID by executive order."}
+      - {s: usaid-history, at: "Celebrating Sixty Years of Progress", quote: "President Kennedy recognized the need to unite development into a single agency responsible for administering aid to foreign countries to promote social and economic development. On November 3, 1961, USAID was born and with it a spirit of progress and innovation."}
 ---
 
 John F. Kennedy was President of the United States from January 1961 until his assassination in November 1963. He led the [[us-government]] through the [[cuban-missile-crisis]].
