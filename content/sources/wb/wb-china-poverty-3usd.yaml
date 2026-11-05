@@ -1,0 +1,9 @@
+uid: 01M6MRZ9F8XHDVTCSSXT0MSF4E
+id: wb-china-poverty-3usd
+title: "Poverty headcount ratio at $3.00 a day (2021 PPP), China (World Development Indicators)"
+publisher: "World Bank"
+published: 2026-10-08
+url: https://api.worldbank.org/v2/country/CHN/indicator/SI.POV.DDAY?format=json&date=1981:2022&per_page=100
+retrieved: 2026-11-04
+tier: T1
+voice: world-bank

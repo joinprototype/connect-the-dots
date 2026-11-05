@@ -22,4 +22,11 @@ claims:
     src:
       - {s: walder-su-2003-cultural-revolution-countryside, at: "abstract", quote: "a similar number of people permanently injured, and 36 million who suffered some form of political persecution"}
       - {s: walder-su-2003-cultural-revolution-countryside, at: "abstract", quote: "The vast majority of these casualties occurred from 1968 to 1971, after the end of the period of popular rebellion and factional conflict and the establishment of provisional organs of local state power."}
+  - id: c3
+    rel: involved
+    to: communist-party-of-china
+    role: "its 1981 history calls the setback the most severe since 1949"
+    according_to: [communist-party-of-china]
+    src:
+      - {s: cpc-1981-resolution-party-history, at: "para 19", quote: "The “cultural revolution\", which lasted from May 1966 to October 1976, was responsible for the most severe setback and the heaviest losses suffered by the Party, the state and the people since the founding of the People’s Republic."}
 ---

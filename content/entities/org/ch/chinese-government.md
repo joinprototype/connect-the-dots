@@ -53,4 +53,34 @@ claims:
     src:
       - {s: icij-2019-china-cables, at: "UK embassy press office", quote: "First, there are no so-called ‘detention camps’ in Xinjiang. Vocational education and training centres have been established for the prevention of terrorism.", by: chinese-government}
       - {s: icij-2019-china-cables, at: "paragraph 20", quote: "the Chinese government called the leaked documents “pure fabrication and fake news.”", by: chinese-government}
+  - id: c6
+    rel: adopted
+    to: household-responsibility-system
+    according_to: [chinese-government]
+    src:
+      - {s: chinadaily-2018-xiaogang, at: "paragraph 3", quote: "Soon the central government gave its approval to the system, which was quickly adopted across China."}
+  - id: c7
+    rel: deployed
+    to: hukou-system
+    when: "1958"
+    according_to: [kam-wing-chan]
+    src:
+      - {s: chan-2021-hukou-census, at: "paragraph 2", quote: "The system China adopted in 1958, which was similar to the Soviet Union’s residence registration system (propiska), broadly divided all Chinese citizens into a “dual system”"}
+  - id: c8
+    rel: authored
+    to: poverty-alleviation-white-paper-2021
+    when: "2021-04-06"
+    according_to: [chinese-government]
+    src:
+      - {s: chinadaily-hk-2021-poverty-white-paper, at: "paragraph 1", quote: "China pulled more than 770 million rural residents out of dire poverty after its embrace of wide-ranging reforms in 1978, according to a white paper"}
+      - {s: pov-cgtn, at: "poverty line", quote: "In 2011, China readjusted the line to 2,300 yuan based on the 2010 price index."}
+  - id: c9
+    rel: authored
+    to: migrant-worker-monitoring-report-2023
+    when: "2024-04"
+    note: "The report is the National Bureau of Statistics's."
+    according_to: [chinese-government]
+    src:
+      - {s: xinhua-2024-migrant-workers-2023, at: "paragraph 3", quote: "The report also shows that China's migrant worker population stood at 297.53 million last year, an increase of 1.91 million over the previous year."}
+      - {s: xinhua-2024-migrant-workers-2023, at: "paragraph 2", quote: "according to a report released by the National Bureau of Statistics."}
 ---

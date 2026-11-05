@@ -1,0 +1,9 @@
+uid: 01M6MRZ9F8QE865C7FYS9PQSS9
+id: wb-china-gdp-per-capita
+title: "GDP per capita (current US$), China (World Development Indicators)"
+publisher: "World Bank"
+published: 2026-10-08
+url: https://api.worldbank.org/v2/country/CHN/indicator/NY.GDP.PCAP.CD?format=json&date=1978:2023&per_page=100
+retrieved: 2026-11-04
+tier: T1
+voice: world-bank
