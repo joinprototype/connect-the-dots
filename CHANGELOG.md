@@ -2,6 +2,11 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## Next
+
+- A new story, Why Empires Fall, sets side by side what the record's historians and witnesses say ended Rome's west, the Ottomans, the Mongol Empire and the Yuan, and the Soviet Union: money, armies, outside pressure, disease, succession, reform and transformation, each in its holder's name, with no rule of its own.
+- A source with no saved copy now gets the Internet Archive's copy closest to the day it was read, checked a seventh of the sources a night.
+
 ## 0.5.10 (2026-11-04)
 
 - Five new stories: Why Rome Fell, the evidence and then each historian's explanation in their own name; Six Hundred Years, the Ottomans from Osman to the end of the caliphate on 3 March 1924; From Four Ships to Portsmouth, Japan from 1853 to 1911, with Taiwan's and Korea's side as far as the record read allows; Reform and Opening, China from 1978, with whose poverty line and whose count is whose; and The House of Wisdom, Baghdad's learning and what Europe took from it, legend set apart on both sides.
