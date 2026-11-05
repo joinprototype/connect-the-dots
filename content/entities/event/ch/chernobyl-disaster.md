@@ -20,6 +20,13 @@ claims:
     to: soviet-government
     role: plant operator; evacuated about 115,000 people in 1986
     src: [{s: nrc-chernobyl-backgrounder, quote: "The Soviet (and later on, Russian) government evacuated about 115,000 people from the most heavily contaminated areas in 1986, and another 220,000 people in subsequent years"}]
+  - id: c3
+    rel: led_to
+    to: perestroika
+    according_to: [russia-a-country-study-1996]
+    note: "Gorbachev cited the accident as an example of the need for economic restructuring; it did not start the reform program."
+    src:
+      - {s: loc-1996-russia-new-thinking, quote: "Gorbachev turned the accident in his favor by citing it as an example of the need for economic perestroika"}
 ---
 
 On 26 April 1986 reactor 4 at [[chernobyl]] exploded during a test. The [[soviet-government]] evacuated about 115,000 people that year. In 2006 [[mikhail-gorbachev]] wrote that the disaster, even more than perestroika, was "perhaps the main cause" of the Soviet collapse.

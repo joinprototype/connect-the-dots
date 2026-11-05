@@ -25,6 +25,12 @@ claims:
     rel: part_of
     to: perestroika
     src: [{s: deseret-1990-02-07-soviets-end-party-monopoly, quote: "At its last meeting in December, the Congress of People's Deputies heeded Gorbachev's plea and blocked an effort by reformers to strike Article 6."}]
+  - id: c5
+    rel: involved
+    to: mikhail-gorbachev
+    role: "told the Central Committee the Party should prove its worthiness to govern instead of relying on constitutional guarantees"
+    src:
+      - {s: deseret-1990-02-07-soviets-end-party-monopoly, quote: "He told the Central Committee on Monday that rather than relying on constitutional guaran tees, the party must prove its worthiness to govern."}
 ---
 
 Article 6 of the Soviet Constitution made the [[communist-party-of-the-soviet-union]] the leading force of the state. The Congress of People's Deputies blocked an effort to strike it in December 1989; in February 1990 the Central Committee agreed to give it up.

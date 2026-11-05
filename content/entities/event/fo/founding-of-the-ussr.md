@@ -62,6 +62,12 @@ claims:
     src:
       - {s: msu-1922-union-treaty, at: "Treaty of Union", quote: "The Russian Socialist Federal Soviet Republic (RSFSR), the Ukrainian Socialist Soviet Republic (USSR), the Belorussian Socialist Soviet Republic (BSSR) and the Transcaucasian Socialist Federal Soviet Republics (Georgia, Azerbaijan, and Armenia), hereby conclude a treaty"}
       - {s: loc-blog-2013-01-08-union-treaty, quote: "This was the Treaty on the Creation of the Soviet Union, which was adopted 90 years ago on December 30, 1922, by representatives from Belarus, Russia, Transcaucasian SFSR (Transcaucasia, aka South Caucasus), and Ukraine."}
+  - id: c10
+    rel: involved
+    to: joseph-stalin
+    role: "said pooling the republics' resources was necessary to restore the economy after war and famine"
+    src:
+      - {s: stalin-1922-12-30-formation-of-the-union, quote: "Today is the day of the union of our republics into a single state for the purpose of pooling all our forces for the restoration of our economy."}
 ---
 
 On 30 December 1922 delegates of Soviet [[russia]], [[ukraine]], [[belarus]] and the Transcaucasian republic, meeting in [[moscow]], founded the [[soviet-union]]. [[joseph-stalin]], then Commissar of Nationality Affairs, presented the treaty. Its article 26 kept each republic's "full liberty to leave the Union", the [[soviet-right-of-secession|right]] invoked when the Union was dissolved in 1991.
