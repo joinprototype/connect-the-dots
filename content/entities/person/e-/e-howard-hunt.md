@@ -21,6 +21,12 @@ claims:
     title: "pleaded guilty to the charges in the break-in indictment"
     src:
       - {s: wspf-report-1975, at: "Appendix K, Chronology, p. 253", quote: "Hunt pleads guilty to charges in break-in indictment."}
+  - id: c4
+    rel: worked_at
+    to: cia
+    when: "1949"
+    src:
+      - {s: nyt-2007-01-24-howard-hunt-obituary, at: "opening paragraphs", quote: "He was a high-spirited 30-year-old novelist who aspired to wealth and power when he joined the C.I.A. in 1949. He set out to live the life he had imagined for himself, a glamorous career as a spy."}
   - id: c3
     rel: appears_in
     to: hsca-final-report

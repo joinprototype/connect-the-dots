@@ -15,4 +15,10 @@ claims:
     when: "1974"
     src:
       - {s: iea-history, at: "History", quote: "The IEA’s founding members were Austria, Belgium, Canada, Denmark, Germany, Ireland, Italy, Japan, Luxembourg, The Netherlands, Norway, Spain, Sweden, Switzerland, Türkiye, United Kingdom, and the United States."}
+  - id: c2
+    rel: member_of
+    to: world-bank
+    when: "1952-08-14"
+    src:
+      - {s: world-bank-member-countries, at: "Member Countries", quote: "Germany, Aug 14, 1952"}
 ---

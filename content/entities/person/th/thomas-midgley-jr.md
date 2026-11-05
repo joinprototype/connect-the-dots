@@ -27,4 +27,10 @@ claims:
     role: "the article’s account of the 1921 finding and the 1924 demonstration"
     src:
       - {s: kitman-2000-nation-secret-history-of-lead, quote: "On December 9, 1921, a young engineer named Thomas Midgley Jr. , working in the laboratory of the General Motors Research Corporation in Dayton, Ohio, reported to his boss, Charles Kettering , that he’d discovered that tetraethyl lead"}
+  - id: c4
+    rel: worked_at
+    to: general-motors
+    when: "1920"
+    src:
+      - {s: kitman-2000-nation-secret-history-of-lead, at: "The Search for an Antiknock", quote: "In February 1920, shortly after joining General Motors’ employ, Thomas Midgley filed a patent application for a blend of alcohol and cracked (olefin) gasoline, as an antiknock fuel."}
 ---

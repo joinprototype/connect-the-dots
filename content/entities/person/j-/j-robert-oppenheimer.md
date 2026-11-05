@@ -9,6 +9,12 @@ image: {url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Oppenheim
 same_as: {wikidata: Q132537}
 when: "1904/1967"
 claims:
+  - id: c3
+    rel: worked_at
+    to: california-institute-of-technology
+    title: "Physics teacher"
+    src:
+      - {s: britannica-j-robert-oppenheimer, at: "Early life and education", quote: "After short visits at science centres in Leiden and Zürich, he returned to the United States to teach physics at the University of California at Berkeley and the California Institute of Technology."}
   - id: c1
     rel: head_of
     to: los-alamos-laboratory

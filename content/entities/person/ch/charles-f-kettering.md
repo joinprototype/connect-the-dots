@@ -13,6 +13,13 @@ claims:
     role: "led the research team"
     src:
       - {s: phb-158-1925-tel-conference, quote: "almost as a last resort we started to study the properties of lead.", by: charles-f-kettering}
+  - id: c3
+    rel: worked_at
+    to: general-motors
+    when: "1920/1947"
+    title: "Vice president and director of research"
+    src:
+      - {s: britannica-charles-f-kettering, at: "Biography", quote: "Kettering was vice president and director of research for GM from 1920 to 1947."}
   - id: c2
     rel: head_of
     to: ethyl-corporation
