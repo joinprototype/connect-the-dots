@@ -24,4 +24,11 @@ claims:
     role: "delivered its report"
     src:
       - {s: "clinton-1995-radiation-remarks", quote: "This report I received today is a monumental document"}
+  - id: c3
+    rel: involved
+    to: bill-clinton
+    role: "instructed his Cabinet to devise relief including compensation"
+    src:
+      - {s: "clinton-1995-radiation-remarks", quote: "Those who led the government when these decisions were made are no longer here to take responsibility for what they did.", by: bill-clinton}
+      - {s: "clinton-1995-radiation-remarks", quote: "That's why I am instructing my Cabinet to use and build on these recommendations, to devise promptly a system of relief, including compensation, that meets the standards of justice and conscience.", by: bill-clinton}
 ---

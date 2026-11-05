@@ -9,9 +9,10 @@ claims:
   - id: c1
     rel: involved
     to: peter-buxtun
-    role: "gave the documents to the reporter"
+    role: "gave documents to Edith Lederer, who sent them to Jean Heller"
     src:
       - {s: "elliott-2017-tuskegee-truth-teller", quote: "Only when Associated Press reporter Jean Heller wrote about the abuse, using documents provided by Buxtun, did the Tuskegee study eventually end."}
+      - {s: "elliott-2017-tuskegee-truth-teller", quote: "Lederer took the documents to her bureau chief, who decided that the story should be written by a more experienced reporter. Lederer sent the material to Jean Heller, an investigative reporter in the Washington office."}
       - {s: "elliott-2017-tuskegee-truth-teller", quote: "It is unclear whether Brown ever read that report, but he certainly read a letter Buxtun sent him in November 1966."}
       - {s: "elliott-2017-tuskegee-truth-teller", quote: "Have any of the men been told the nature of this study?"}
       - {s: "elliott-2017-tuskegee-truth-teller", quote: "In other words, are untreated syphilitics still being followed for autopsy?"}

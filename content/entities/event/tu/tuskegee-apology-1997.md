@@ -37,4 +37,13 @@ claims:
     role: "thanked by the President"
     src:
       - {s: "clinton-1997-tuskegee-apology", quote: "A great friend of freedom, Fred Gray, thank you for fighting this long battle all these long years."}
+  - id: c4
+    rel: involved
+    to: bill-clinton
+    role: "pledged support for a bioethics center and closer work with communities to rebuild trust"
+    src:
+      - {s: "clinton-1997-tuskegee-apology", quote: "And without remembering it, we cannot make amends and we cannot go forward.", by: bill-clinton}
+      - {s: "clinton-1997-tuskegee-apology", quote: "The Department of Health and Human Services will award a planning grant so the school can pursue establishing a center for bioethics in research and health care.", by: bill-clinton}
+      - {s: "clinton-1997-tuskegee-apology", quote: "An apology is the first step, and we take it with a commitment to rebuild that broken trust.", by: bill-clinton}
+      - {s: "clinton-1997-tuskegee-apology", quote: "We need to do more to ensure that medical research practices are sound and ethical, and that researchers work more closely with communities.", by: bill-clinton}
 ---

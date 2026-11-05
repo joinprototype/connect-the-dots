@@ -20,4 +20,11 @@ claims:
     role: "its military tribunal tried the case"
     src:
       - {s: "ushmm-doctors-trial", quote: "On December 9, 1946, an American military tribunal opened criminal proceedings against 23 leading German physicians and administrators for their willing participation in war crimes and crimes against humanity."}
+  - id: c3
+    rel: involved
+    to: us-government
+    role: "prosecution doctors Ivy and Alexander helped formulate principles for legitimate experiments"
+    src:
+      - {s: "ushmm-nuremberg-code", quote: "This argument was a great concern to two US doctors who had worked with the prosecution during the trial, Dr. Andrew Ivy and Dr. Leo Alexander."}
+      - {s: "ushmm-nuremberg-code", quote: "As a result, on April 17, 1947, Dr. Alexander submitted a memorandum to the United States Counsel for War Crimes. The memo outlined six points that defined legitimate medical research."}
 ---

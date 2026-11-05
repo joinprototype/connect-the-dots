@@ -44,6 +44,8 @@ claims:
     role: "its researchers made the injections"
     src:
       - {s: "achre-final-report-ch5", quote: "From 1945 through 1947 Manhattan Project researchers injected eighteen human subjects with plutonium"}
+      - {s: "achre-final-report-ch5", quote: "By March 1945, there was disturbing news that urine samples from Los Alamos workers were indicating, based on models developed from animal experimentation, that some might be approaching or had exceeded a body burden of 1 microgram."}
+      - {s: "achre-final-report-ch5", quote: "It is suggested that a hospital patient at either Rochester or Chicago be chosen for injection of from one to ten micrograms of material and that the excreta be sent to the laboratory for analysis."}
   - id: c5
     rel: involved
     to: atomic-energy-commission
@@ -51,4 +53,11 @@ claims:
     src:
       - {s: "achre-final-report-ch5", quote: "It appears that this decision was based on concerns about legal liability and adverse public reaction, not national security."}
       - {s: "achre-final-report-ch5", quote: "When the civilian Atomic Energy Commission took over for the Manhattan District on January 1, 1947, the plutonium injections provoked a strong reaction at the highest levels."}
+  - id: c6
+    rel: involved
+    to: manhattan-project
+    role: "Langham sent plutonium from Los Alamos with instructions for use on a human subject"
+    src:
+      - {s: "achre-final-report-ch5", quote: "Wright Langham, of the Los Alamos Laboratory's Health Division, sent 5 micrograms of plutonium to Dr. Friedell, with instructions for their use on a human subject."}
+      - {s: "achre-response-exec-summary", quote: "ACHRE recommended that the government compensate the families of the 18 subjects of the plutonium injection experiments."}
 ---

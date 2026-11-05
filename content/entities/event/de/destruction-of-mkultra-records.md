@@ -20,4 +20,7 @@ claims:
     role: "gave the verbal order, by Gottlieb's and his own confirmation"
     src:
       - {s: "senate-1977-mkultra-hearing", quote: "The records of all these activities were destroyed in January 1973, at the instruction of then CIA Director Richard Helms."}
+      - {s: "senate-1977-mkultra-hearing", quote: "And I also believe part of the reason for our thinking this was advisable was there had been relationships with outsiders in government agencies and other organizations and that these would be sensitive in this kind of a thing"}
+      - {s: "senate-1977-mkultra-hearing", quote: "anybody who assisted us in the past would not be subject to follow-up or questions, embarrassment, if you will."}
+      - {s: "senate-1977-mkultra-hearing", quote: "The destruction also prevented the CIA from locating and providing medical assistance to the individuals who were subjects in the program."}
 ---

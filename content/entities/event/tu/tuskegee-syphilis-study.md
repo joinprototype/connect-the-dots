@@ -86,4 +86,11 @@ claims:
       - {s: "senate-1973-human-experimentation-hearing", quote: "They said I had bad blood and they was working on it."}
       - {s: "senate-1973-human-experimentation-hearing", quote: "they give me a spinal tap."}
       - {s: "senate-1973-human-experimentation-hearing", quote: "gave me $25, a $20 and a $5 bill."}
+  - id: c7
+    rel: involved
+    to: us-public-health-service
+    role: "Wenger argued in 1950 that deaths obligated the researchers to make the best study possible"
+    according_to: [us-public-health-service]
+    src:
+      - {s: "tuskegee-panel-report-1973", at: "Panel report quoting O. C. Wenger, 1950", quote: "I think the least we can say is that we have a high moral obligation to those that have died to make this the best study possible ."}
 ---

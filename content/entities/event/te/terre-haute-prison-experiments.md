@@ -27,4 +27,11 @@ claims:
       - {s: "pcsbi-2011-ethically-impossible", quote: "At the conclusion of the experiments, participants received $100, a certificate of merit, and a letter of commendation to the parole board."}
       - {s: "pcsbi-2011-ethically-impossible", quote: "The investigators required that participants be at least 21 years old and provide “[a]ssurance that the volunteer possessed a thorough understanding of the purpose underlying the study and the possible risks involved.”"}
       - {s: "pcsbi-2011-ethically-impossible", quote: "Dr. Cutler, age 28, was relatively new to PHS, having joined in 1942"}
+  - id: c4
+    rel: involved
+    to: us-public-health-service
+    role: "tested prevention of gonorrhea with military support"
+    src:
+      - {s: "pcsbi-2011-ethically-impossible", quote: "the incidence of gonorrhea in the armed forces and the lost manpower resulting therefrom constitutes a problem of major military importance."}
+      - {s: "pcsbi-2011-ethically-impossible", quote: "the inability to develop a reliable method for gonorrheal infection in Terre Haute left the researchers unable to address their primary research goal, more effective prophylaxis, and wondering about alternative infection strategies."}
 ---

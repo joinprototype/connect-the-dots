@@ -34,4 +34,10 @@ claims:
     to: new-york-city
     src:
       - {s: "senate-1977-mkultra-hearing", quote: "While in New York for treatment, Olson fell to his death from a tenth story window in the Statler Hotel."}
+  - id: c4
+    rel: involved
+    to: sidney-gottlieb
+    role: "told participants about the dosing after they had drunk the liqueur"
+    src:
+      - {s: "senate-1977-mkultra-hearing", quote: "About twenty minutes after they finished their Cointreau, Gottlieb informed the other participants that they had received LSD."}
 ---

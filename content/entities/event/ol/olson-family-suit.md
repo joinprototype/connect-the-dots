@@ -9,7 +9,7 @@ claims:
   - id: c1
     rel: involved
     to: frank-olson
-    role: "body exhumed in 1994"
+    role: "sons’ complaint describes 1994 exhumation and disputed cause of death"
     src:
       - {s: "olson-v-us-2013", quote: "Now questioning the CIA story once again, Plaintiffs exhumed Dr. Olson’s body in 1994."}
       - {s: "olson-v-us-2013", quote: "An autopsy revealed a hematoma on Olson’s temple, resulting (according to a forensic scientist) from a blow to the head before the fall"}
