@@ -82,10 +82,11 @@ claims:
     according_to: [yegor-gaidar]
     src: [{s: aei-2007-04-gaidar-soviet-collapse, quote: "A state that does not control its borders or military forces and has no revenue simply cannot exist."}]
   - id: c12
-    rel: caused_by
-    to: perestroika
+    rel: appears_in
+    to: the-struggle-to-save-the-soviet-economy
     according_to: [chris-miller]
-    note: "Miller's cause is resistance to the reforms: the interest groups they threatened, which Gorbachev could not outmaneuver. He does not blame the reforms themselves."
+    role: discussed through political conflict over Gorbachev's economic reforms
+    note: "In his description of the book, Miller says Gorbachev could not outmaneuver interest groups threatened by his economic reforms. This does not identify perestroika itself as the cause of collapse."
     src: [{s: miller-struggle-to-save-the-soviet-economy, quote: "The Soviet government was divided by bitter conflict, and Gorbachev, the ostensible Soviet autocrat, was unable to outmaneuver the interest groups that were threatened by his economic reforms."}]
   - id: c13
     rel: caused_by
