@@ -83,4 +83,20 @@ claims:
     src:
       - {s: xinhua-2024-migrant-workers-2023, at: "paragraph 3", quote: "The report also shows that China's migrant worker population stood at 297.53 million last year, an increase of 1.91 million over the previous year."}
       - {s: xinhua-2024-migrant-workers-2023, at: "paragraph 2", quote: "according to a report released by the National Bureau of Statistics."}
+  - id: c10
+    rel: disputes_finding
+    to: exposed-chinas-operating-manuals
+    when: "2019-11"
+    note: "Its UK embassy said trainees’ freedom was guaranteed while rejecting the leaked documents."
+    according_to: [chinese-government]
+    src:
+      - {s: icij-2019-china-cables, at: "UK embassy press office", quote: "Second, the trainees take various courses at the vocational education and training centres, and their personal freedom of the trainees is fully guaranteed.", by: chinese-government}
+  - id: c11
+    rel: disputes_finding
+    to: ohchr-xinjiang-assessment-2022
+    when: "2022-09-01"
+    note: "Spokesman Wang Wenbin said the report was a Western tool to contain China."
+    according_to: [chinese-government]
+    src:
+      - {s: cgtn-2022-09-01-wang-wenbin-on-ohchr, at: "Wang Wenbin at his daily briefing", quote: "The report is a hodgepodge of misinformation, a political tool used by the West to push its strategy of 'using Xinjiang to contain China.'"}
 ---

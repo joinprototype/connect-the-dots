@@ -21,4 +21,18 @@ claims:
       - {s: npr-2012-11-10-yang-tombstone, at: "interview, childhood loss", quote: "I didn't think my father's death was the country's fault. I thought it was my fault."}
       - {s: npr-2012-11-10-yang-tombstone, at: "interview, through translator", quote: "If a country can't face its own history, then it has no future."}
       - {s: npr-2012-11-10-yang-tombstone, at: "closing paragraph", quote: "He called his book \"Tombstone\" as a memorial to his father and other famine victims."}
+  - id: c3
+    rel: harmed_by
+    to: great-chinese-famine
+    note: "Lost the uncle who had raised him as his father; later told NPR he had blamed himself."
+    according_to: [yang-jisheng]
+    src:
+      - {s: npr-2012-11-10-yang-tombstone, at: "Louisa Lim, childhood loss", quote: "One victim was the man Yang Jisheng called father, the uncle who'd brought him up. Yang, just 18 years old, was at boarding school. He rushed home, but arrived too late to save him."}
+      - {s: npr-2012-11-10-yang-tombstone, at: "Yang, through translator", quote: "I didn't think my father's death was the country's fault. I thought it was my fault."}
+  - id: c4
+    rel: authored
+    to: tombstone-yang-jisheng
+    note: "Used his Xinhua credentials to research provincial archives secretly."
+    src:
+      - {s: npr-2012-11-10-yang-tombstone, at: "Louisa Lim, archive research", quote: "Yang used his official credentials to cajole and beg his way into provincial archives. He worked undercover for a decade, pretending to be researching official grain policy at immense personal risk."}
 ---

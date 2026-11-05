@@ -26,4 +26,11 @@ claims:
     according_to: [chinese-government]
     src:
       - {s: ohchr-2022-xinjiang-assessment, at: "paragraph 36", quote: "The Government has maintained that the VETC facilities have been closed since 2019."}
+  - id: c4
+    rel: involved
+    to: chinese-government
+    role: "ICIJ reports that the leaked manual orders staff to prevent escapes and double-lock dormitory doors; China says the documents are fabricated"
+    src:
+      - {s: icij-2019-china-cables, at: "manual’s security rules", quote: "The manual emphasizes that personnel must “prevent escapes” and mandates the use of guard posts, patrols, video surveillance, alarms and other security measures typical of prisons."}
+      - {s: icij-2019-china-cables, at: "manual’s security rules", quote: "Dormitory doors must be double-locked"}
 ---

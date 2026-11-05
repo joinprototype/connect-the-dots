@@ -21,4 +21,10 @@ claims:
       - {s: reuters-2026-10-29-uflpa-medical-firms, quote: "China's commerce ministry on Thursday condemned the United States for placing several Chinese companies on a list of businesses Washington alleges use Uyghur forced labour or source material from Xinjiang"}
       - {s: mofcom-2026-08-01-uflpa-remarks, quote: "There is simply no such thing as so-called “forced labor” in Xinjiang in any form.", by: chinese-government}
       - {s: reuters-2026-10-29-uflpa-medical-firms, quote: "Beijing rejected the allegations as groundless."}
+  - id: c3
+    rel: involved
+    to: us-government
+    role: "restricts imports from listed companies unless exporters rebut the forced-labour presumption"
+    src:
+      - {s: reuters-2026-10-29-uflpa-medical-firms, at: "customs consequences", quote: "US Customs and Border Protection is instructed to stop goods from the listed companies from entering the United States unless exporters can rebut the presumption they were made with forced labour."}
 ---

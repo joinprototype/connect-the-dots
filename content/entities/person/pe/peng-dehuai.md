@@ -24,4 +24,21 @@ claims:
     according_to: [communist-party-of-china]
     src:
       - {s: cpc-1981-resolution-party-history, at: "para 18", quote: "The resolution passed by the Eighth Plenary Session of the Eighth Central Committee of the Party concerning the so-called anti-Party group of Peng Dehuai, Huang Kecheng, Zhang Wentian and Zhou Xiaozhou was entirely wrong."}
+  - id: c3
+    rel: intervened_in
+    to: lushan-conference-1959
+    when: "1959-07"
+    role: "later recalled expecting Mao to consider his letter privately, then receiving a printed copy circulated on 17 July"
+    according_to: [peng-dehuai]
+    src:
+      - {s: peng-1984-memoirs-of-a-chinese-marshal, at: "chapter XV, p. 503, later recollection", quote: "my letter to the Chairman was only for his reference, and he would consider it carefully."}
+      - {s: peng-1984-memoirs-of-a-chinese-marshal, at: "chapter XV, p. 503, later recollection", quote: "On the morning of July 17, I received a copy of my letter printed and distributed by the General Office of the Party"}
+  - id: c4
+    rel: intervened_in
+    to: great-leap-forward
+    when: "1959-07-14"
+    role: "urged a practical 1960 plan and suspension of construction projects that could not be completed"
+    src:
+      - {s: peng-1984-memoirs-of-a-chinese-marshal, at: "appendix, letter of 14 July 1959, pp. 511–512", quote: "In working out the plan for 1960, we should give it more serious consideration on a practical and reliable basis."}
+      - {s: peng-1984-memoirs-of-a-chinese-marshal, at: "appendix, letter of 14 July 1959, p. 512", quote: "Some capital construction projects started in 1958 or in the first half of 1959 which cannot be completed must be suspended"}
 ---

@@ -29,4 +29,11 @@ claims:
     according_to: [communist-party-of-china]
     src:
       - {s: cpc-1981-resolution-party-history, at: "para 19", quote: "The “cultural revolution\", which lasted from May 1966 to October 1976, was responsible for the most severe setback and the heaviest losses suffered by the Party, the state and the people since the founding of the People’s Republic."}
+  - id: c4
+    rel: involved
+    to: peng-dehuai
+    role: "wrote autobiographical notes under interrogation; his memoir’s editors link his persecution to his death in 1974"
+    src:
+      - {s: peng-1984-memoirs-of-a-chinese-marshal, at: "publisher’s note, p. i", quote: "The autobiographical notes were written in response to interrogations during the “Cultural Revolution” (1966-76)."}
+      - {s: peng-1984-memoirs-of-a-chinese-marshal, at: "publisher’s note, p. i", quote: "The persecution of Marshal Peng intensified during the Cultural Revolution under circumstances that led to his death on November 29, 1974."}
 ---

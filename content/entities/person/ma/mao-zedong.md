@@ -60,4 +60,20 @@ claims:
     src:
       - {s: johnson-2012-worse-than-you-ever-imagined, at: "review", quote: "At the Lushan Conference, Mao purged Peng and his supporters, accusing them of “right-opportunism.”"}
       - {s: johnson-2012-worse-than-you-ever-imagined, at: "review", quote: "Chastened officials returned to the provinces eager to save their careers, duplicating Mao’s attack on Peng at the local level."}
+  - id: c8
+    rel: intervened_in
+    to: great-chinese-famine
+    when: "1960"
+    role: "with the Central Committee began correcting rural policies in winter 1960, in the Party’s later account"
+    according_to: [communist-party-of-china]
+    src:
+      - {s: cpc-1981-resolution-party-history, at: "paragraph 18", quote: "set about rectifying the “Left” errors in rural work"}
+  - id: c9
+    rel: leads
+    to: cultural-revolution
+    when: "1966-05"
+    note: "The Party’s 1981 resolution says Mao argued that mass mobilisation was needed to recapture power from alleged capitalist-roaders; it rejects those premises."
+    according_to: [communist-party-of-china]
+    src:
+      - {s: cpc-1981-resolution-party-history, at: "paragraph 19, its summary of Mao’s theses", quote: "the power usurped by the capitalist-roaders could be recaptured only by carrying out a great cultural revolution, by openly and fully mobilizing the broad masses from the bottom up to expose these sinister phenomena"}
 ---

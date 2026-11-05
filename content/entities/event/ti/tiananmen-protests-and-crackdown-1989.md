@@ -94,4 +94,27 @@ claims:
     src:
       - {s: aljazeera-2019-06-02-wei-fenghe, at: "paragraph 3", quote: "Chinese Defence Minister Wei Fenghe, speaking at the Shangri-La Dialogue in Singapore on Sunday"}
       - {s: aljazeera-2019-06-02-wei-fenghe, at: "paragraph 4", quote: "Rights groups and witnesses say hundreds or even thousands may have been killed, but the government has kept a lid on what really happened and the number of dead."}
+  - id: c13
+    rel: involved
+    to: li-peng
+    role: "later told American emissaries that without the June measures China would be even more turbulent"
+    according_to: [li-peng]
+    src:
+      - {s: nsa-ebb16-tiananmen-declassified-history, at: "December 1989 meeting with American emissaries", quote: "\"Had we not adopted the resolute measures on June 4,\" he added, \"the present situation in China would be even more turbulent today.\""}
+  - id: c14
+    rel: involved
+    to: us-department-of-state
+    role: "its diplomats collected eyewitness testimony about live fire and assembled a 22 June reconstruction"
+    src:
+      - {s: nsa-ebb16-tiananmen-declassified-history, at: "document 30, cable of 22 June 1989", quote: "The source indicated that the students had believed that the soldiers would be firing rubber bullets"}
+      - {s: nsa-ebb16-tiananmen-declassified-history, at: "document 30, eyewitness quoted in cable", quote: "he had a sickening feeling when he noticed the bullets striking sparks off the pavement near his feet."}
+      - {s: nsa-ebb16-tiananmen-declassified-history, at: "document 31, cable of 22 June 1989", quote: "attempts to set the record straight"}
+  - id: c15
+    rel: involved
+    to: british-government
+    role: "Ambassador Alan Donald relayed his source’s allegations of attacks on wounded people and medical crews and fears of imminent civil war"
+    src:
+      - {s: hkfp-2017-donald-cable, at: "report of Alan Donald’s telegrams", quote: "Alan Donald, Britain’s ambassador when the Chinese government sent tanks into Tiananmen square to quell the student-led protests, sent telegrams to the foreign office on June 5, a day after the massacre."}
+      - {s: hkfp-2017-donald-cable, at: "Donald relaying his source", quote: "some members of the State Council considered that civil war is imminent."}
+      - {s: hkfp-2017-donald-cable, at: "reported text of Donald’s telegram", quote: "Army ambulances who attempted to give aid were shot up as was a Sino-Japanese Hospital ambulance."}
 ---

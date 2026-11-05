@@ -25,4 +25,11 @@ claims:
     src:
       - {s: ohchr-2026-01-22-experts-forced-labour, at: "first paragraph", quote: "persistent allegations of forced labour affecting Uyghur, Kazakh and Kyrgyz minority groups as well as Tibetans within the Xinjiang Uyghur Autonomous Region and across other parts of China"}
       - {s: ohchr-2026-01-22-experts-forced-labour, at: "note at the foot of the release", quote: "Any views or opinions presented are solely those of the author and do not necessarily represent those of the UN or OHCHR."}
+  - id: c4
+    rel: appears_in
+    to: un-experts-statement-on-forced-labour-2026
+    note: "Tomoya Obokata and other independent UN experts said transferred workers reportedly could not refuse or change jobs for fear of punishment and detention."
+    src:
+      - {s: ohchr-2026-01-22-experts-forced-labour, at: "alleged labour-transfer coercion", quote: "They are reportedly subjected to systematic monitoring, surveillance and exploitation, with no choice to refuse or change the work due to a pervasive fear of punishment and arbitrary detention."}
+      - {s: ohchr-2026-01-22-experts-forced-labour, at: "list of experts", quote: "Tomoya Obokata, Special Rapporteur on contemporary forms of slavery, including its causes and consequences"}
 ---

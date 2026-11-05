@@ -29,4 +29,19 @@ claims:
       - {s: ohchr-2022-xinjiang-assessment, at: "paragraph 108", quote: "Uyghur-majority areas represented the bulk of this decline, with two of the largest Uyghur prefectures especially affected by it."}
       - {s: ohchr-2022-xinjiang-assessment, at: "paragraph 108", quote: "these figures remain unusual and stark."}
       - {s: ohchr-2022-xinjiang-assessment, at: "paragraph 148, whose subject is the extent of arbitrary and discriminatory detention of these groups", quote: "members of Uyghur and other predominantly Muslim groups, pursuant to law and policy, in context of restrictions and deprivation more generally of fundamental rights enjoyed individually and collectively, may constitute international crimes, in particular crimes against humanity."}
+  - id: c3
+    rel: authored
+    to: ohchr-xinjiang-assessment-2022
+    when: "2022-08-31"
+    note: "Recorded a former detainee’s testimony that he was asked to confess without knowing the accusation."
+    src:
+      - {s: ohchr-2022-xinjiang-assessment, at: "paragraph 48, former detainee’s testimony", quote: "I was asked to confess a crime, but I did not know what I was supposed to confess to."}
+  - id: c4
+    rel: authored
+    to: ohchr-xinjiang-assessment-2022
+    when: "2022-08-31"
+    note: "Considered first-hand accounts of forced abortions or IUD insertions credible; women also described detention risks for violating birth limits."
+    src:
+      - {s: ohchr-2022-xinjiang-assessment, at: "paragraph 111", quote: "Some women spoke of the risk of harsh punishments including “internment” or “imprisonment” for violations of the family planning policy."}
+      - {s: ohchr-2022-xinjiang-assessment, at: "paragraph 111", quote: "OHCHR interviewed some women who said they were forced to have abortions or forced to have IUDs inserted, after having reached the permitted number of children under the family planning policy."}
 ---
