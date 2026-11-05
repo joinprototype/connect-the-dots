@@ -101,6 +101,37 @@ claims:
     according_to: [nikita-khrushchev]
     src:
       - {s: khrushchev-1956-secret-speech, quote: "All the more monstrous are those acts whose initiator was Stalin and which were rude violations of the basic Leninist principles [behind our] Soviet state’s nationalities policies."}
+  - id: c13
+    rel: "intervened_in"
+    to: "soviet-famine-of-1930-33"
+    when: "1933-05-06"
+    role: "answered Mikhail Sholokhov’s 4 April report of officials’ atrocities against peasants by accusing the farmers of sabotage and a war against Soviet power"
+    src:
+      - {s: "werth-2016-food-shortages-hunger-famines", quote: "reply to the letter Mikhail Sholokhov wrote to him on 4 April 1933 detailing the atrocities local Bolshevik officials committed against the peasants"}
+      - {s: "werth-2016-food-shortages-hunger-famines", quote: "War by starvation, Comrade Sholokhov.", by: "joseph-stalin"}
+  - id: c14
+    rel: "intervened_in"
+    to: "soviet-famine-of-1930-33"
+    role: "Applebaum: he publicly celebrated collectivisation while concealing its disaster and seeking no international assistance"
+    according_to: [anne-applebaum]
+    src:
+      - {s: "rferl-2017-09-25-applebaum-interview", quote: "The Soviet Union didn't ask for assistance in 1932 and 1933 partly because Stalin didn't want the world to know that collectivization, which he was trumpeting as a great triumph – he didn't want people to know that it was a real disaster."}
+  - id: c15
+    rel: "intervened_in"
+    to: "holodomor"
+    when: "1932-08-07"
+    role: "the SBU investigation, as recited in the Kyiv court’s ruling, said he and Kaganovich organised adoption of the law"
+    according_to: [kyiv-court-of-appeal]
+    src:
+      - {s: "kyiv-court-of-appeal-2010-01-13-ruling", quote: "Stalin and Kaganovich organized the adoption on 7 August 1932 by the Central Executive Committee [CEC] and Sovnarkom of the Resolution"}
+  - id: c16
+    rel: "intervened_in"
+    to: "asharshylyk"
+    role: "Cameron suggests that his fixation on grain procurements and Moscow officials’ belief that nomads had limitless livestock may help explain the slow response to herd losses"
+    according_to: [sarah-cameron]
+    src:
+      - {s: "cameron-2016-08-kluge-blog", quote: "I am still working towards an answer on this, but I think some of it has to do with Stalin’s fixation with grain procurements (he was less concerned about livestock levels)."}
+      - {s: "cameron-2016-08-kluge-blog", quote: "Many officials in Moscow also seemed to imagine that Kazakh nomads had limitless numbers of animals, despite reports to the contrary."}
 ---
 
 Joseph Stalin presented the union treaty at the [[founding-of-the-ussr]] in 1922, as Commissar of Nationality Affairs, and became General Secretary of the [[communist-party-of-the-soviet-union|Communist Party]] that year.

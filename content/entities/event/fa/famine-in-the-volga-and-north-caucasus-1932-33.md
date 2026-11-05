@@ -40,4 +40,11 @@ claims:
     src:
       - {s: levchuk-2020-regional-famine-losses, quote: "However, the blacklisting policy was not used on such a mass scale in Lower Volga kraj as in UkrSSR"}
       - {s: levchuk-2020-regional-famine-losses, quote: "but the scale of detention of peasants and returning them back was much smaller than in UkrSSR."}
+  - id: c6
+    rel: "involved"
+    to: "russia"
+    role: "Werth: Pavel Postyshev softened proposed repressive measures in the Lower Volga before later acting ruthlessly in Ukraine"
+    according_to: [nicolas-werth]
+    src:
+      - {s: "werth-2016-food-shortages-hunger-famines", quote: "Postyshev, who would later act ruthlessly in Ukraine after his nomination as second secretary of the CP(B)U in January 1933, even softened the most repressive measures local officials proposed in the lower Volga Region."}
 ---

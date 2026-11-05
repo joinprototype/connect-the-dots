@@ -57,6 +57,23 @@ claims:
     src:
       - {s: pohl-2024-crimean-tatars-special-settlers, quote: "These restrictions were streamlined into a single codified resolution by the SNK (Council of People’s Commissariats) on 8 I 1945."}
       - {s: pohl-2000-paper-crimean-tatars, quote: "The Soviet government created the special settlement regime during the collectivization of agriculture during 1929-1931."}
+  - id: c8
+    rel: "intervened_in"
+    to: "asharshylyk"
+    when: "1937"
+    role: "Cameron: officials preparing Kazakhstan’s census sought to cover up the famine by explaining the population drop as emigration for work"
+    according_to: [sarah-cameron]
+    src:
+      - {s: "cameron-2016-kazakh-famine", quote: "During preparations for the 1937 census, some officials in Kazakhstan even used this refugee flight as a way of covering up the famine’s existence."}
+      - {s: "cameron-2016-kazakh-famine", quote: "The republic’s precipitous population drop, they reasoned, could be explained by the fact that so many Kazakhs had emigrated to work in other republics during the period of Stalin’s first Five-Year Plan"}
+  - id: c9
+    rel: "intervened_in"
+    to: "soviet-famine-of-1930-33"
+    when: "1933"
+    role: "Werth: secret food-relief instructions aimed to secure spring sowing and restricted minimal food allowances to those already working conscientiously"
+    according_to: [nicolas-werth]
+    src:
+      - {s: "werth-2016-food-shortages-hunger-famines", quote: "A minimal food allowance is to be distributed solely to those who conscientiously participate and have already started working"}
 ---
 
 The government of the [[soviet-union]], seated in [[moscow]]. In this graph it is also a perspective: claims marked "according to the Soviet government" follow official Soviet accounts, such as [[nikita-khrushchev]]'s letter of 27 October 1962.

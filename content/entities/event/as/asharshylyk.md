@@ -88,6 +88,29 @@ claims:
     src:
       - {s: cameron-2016-kazakh-famine, quote: "Of its 1.5 million victims, approximately 1.3 million were Kazakhs. More than a third of all Kazakhs perished in the famine, and in the aftermath of the disaster Kazakhs became a minority in their own republic."}
       - {s: nurtazina-great-famine-in-kazakhstan, quote: "The previous number of Kazakhs in the republic was recovered only forty years later in 1972."}
+  - id: c12
+    rel: "involved"
+    to: "kazakhstan"
+    role: "Nŭrziya Qajïbaeva recalled that her father Qajïbay left Bighash in 1930 as a state farm was being established; fearing the new authorities and forced baptism, the family abandoned its house for the Tarbaghatay foothills"
+    src:
+      - {s: "nurtazina-great-famine-in-kazakhstan", quote: "My father particularly feared for the religion: he was afraid that the Kazakhs might be baptized", at: "pp. 114–115"}
+      - {s: "nurtazina-great-famine-in-kazakhstan", quote: "My father and his close relatives again decided to return to the Tarbaghatay foothills. They left, leaving behind everything they had: the house they had constructed, and some of their property.", at: "p. 115"}
+  - id: c13
+    rel: "involved"
+    to: "kazakhstan"
+    role: "Qajïbaeva recalled her family taking blankets, wheat and ornaments to Xinjiang in 1933 by a mountain pass to avoid Soviet border patrols; her father sold her silver amulet for white rolls"
+    src:
+      - {s: "nurtazina-great-famine-in-kazakhstan", quote: "Women’s adornments, rings, earrings, bracelets, silver necklaces, and several fox-fur coats (íshík) were also taken in order to exchange them for food or maybe livestock.", at: "p. 116"}
+      - {s: "nurtazina-great-famine-in-kazakhstan", quote: "cross the border by a roundabout route, through the range of the Tarbaghatay Mountains, because the direct road was dangerous: the Soviet border patrol forced refugees to return or shot them.", at: "p. 116"}
+      - {s: "nurtazina-great-famine-in-kazakhstan", quote: "My father took my silver sheath amulet (tŭmar) to sell. Soon, when they came back, they brought some rolls.", at: "p. 117"}
+      - {s: "nurtazina-great-famine-in-kazakhstan", quote: "I was surprised to see those big rolls made of white flour, and they were so delicious.", at: "p. 117"}
+  - id: c14
+    rel: "involved"
+    to: "kazakhstan"
+    role: "Nazira Nurtazina recorded her mother Nŭrziya Qajïbaeva’s memories to preserve the lives and experiences of ordinary families; she distinguished eyewitness memories from events told by relatives"
+    src:
+      - {s: "nurtazina-great-famine-in-kazakhstan", quote: "oral history is that, as a rule, they show a micro-history and help to reconstruct the daily life and mentality of the “common person,” the individuals or families that are traditionally lost to macro-historical sight.", at: "p. 110"}
+      - {s: "nurtazina-great-famine-in-kazakhstan", quote: "Guided by the above-mentioned motives, I put down everything my mother remembers, which she witnessed herself and heard from her parents and relatives about the Kazakh Holodomor of 1931–1933", at: "p. 110"}
 ---
 
 "Asharshylyk" is the Kazakh name. The famine began in the winter of 1930, a year before the others. See [[kazakh-famine-genocide-question]] for how it is named today.

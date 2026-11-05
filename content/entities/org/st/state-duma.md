@@ -39,4 +39,13 @@ claims:
     src:
       - {s: un-a62-813-duma-statement-2008, quote: "The State Duma reaffirms its backing for the joint statement by the delegations of a number of States Members of the United Nations, adopted at the fifty-eighth session of the General Assembly in 2003"}
       - {s: unian-2008-04-02-duma-vote, quote: "The 370-56 vote by Russia`s lower house of parliament, the State Duma, is a pointed rejection of Ukraine`s repeated arguments that the Soviet leadership engineered the famine to target Ukrainians."}
+  - id: c5
+    rel: "intervened_in"
+    to: "holodomor-genocide-question"
+    when: "2008-04-11"
+    role: "Russian diplomat Igor Shcherbak transmitted its statement rejecting genocide to the UN and requested its circulation"
+    src:
+      - {s: "un-a62-813-duma-statement-2008", quote: "Letter dated 11 April 2008 from the Chargé d’affaires a.i. of the Permanent Mission of the Russian Federation to the United Nations addressed to the Secretary-General"}
+      - {s: "un-a62-813-duma-statement-2008", quote: "(Signed) Igor Shcherbak"}
+      - {s: "un-a62-813-duma-statement-2008", quote: "I have the honour to transmit herewith a statement by the State Duma of the Federal Assembly of the Russian Federation in memory of the victims of the famine"}
 ---

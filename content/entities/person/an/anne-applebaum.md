@@ -24,4 +24,12 @@ claims:
       - {s: rferl-2017-09-25-applebaum-interview, quote: "I'm very happy to call it a genocide, according to the original definition of the word genocide as it was invented by Raphael Lemkin, who was the lawyer who came up with the term."}
       - {s: rferl-2017-09-25-applebaum-interview, quote: "I know that legally it can be more difficult to do it, but, yes, of course, I believe in essence it was a genocide."}
       - {s: rferl-2017-09-25-applebaum-interview, quote: "the UN Convention on Genocide was created with the help of the Soviet Union, which was very anxious not to include Ukrainian famine and other Soviet crimes"}
+  - id: c3
+    rel: "intervened_in"
+    to: "holodomor"
+    role: "interprets Stalin’s targeting of Ukraine as a response to fears of counterrevolution and a challenge to central Soviet power"
+    according_to: [anne-applebaum]
+    src:
+      - {s: "rferl-2017-09-25-applebaum-interview", quote: "Stalin was afraid of counterrevolution and he was particularly afraid of Ukraine."}
+      - {s: "rferl-2017-09-25-applebaum-interview", quote: "The idea of an independent Ukraine was a challenge to central Soviet power that could potentially undermine the Soviet state."}
 ---

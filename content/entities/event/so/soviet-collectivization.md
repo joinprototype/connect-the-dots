@@ -21,6 +21,13 @@ claims:
       - {s: un-a62-813-duma-statement-2008, quote: "suffered as a result of the famine caused by forced collectivization."}
       - {s: cameron-2016-kazakh-famine, quote: "The Kazakh famine was a part of the collectivization famines that afflicted the Soviet Union during the years 1930-33, most notably in Ukraine but also in the Volga, Don, and Kuban areas"}
       - {s: cameron-2016-kazakh-famine, quote: "The catastrophe, which was sparked by Joseph Stalin’s policies of radical state transformation"}
+  - id: c3
+    rel: "involved"
+    to: "joseph-stalin"
+    role: "Cameron: Moscow sought more productive agriculture and the destruction of existing social structures"
+    according_to: [sarah-cameron]
+    src:
+      - {s: "cameron-2016-08-kluge-blog", quote: "Through it, Moscow hoped both to “modernize” agriculture (making Soviet agriculture more productive and efficient) and to break apart existing social structures."}
 ---
 
 The drive to collectivise Soviet farming began in 1929 with the [[joseph-stalin|Stalin]]-led First Five-Year Plan. Scholars and the Russian State Duma agree that the famines of 1930 to 1933 followed from it; they differ on how far the famine was planned and whom it targeted.

@@ -56,6 +56,14 @@ claims:
       - {s: levchuk-2020-regional-famine-losses, quote: "and 3,322.1 thousand in RSFSR"}
       - {s: levchuk-2020-regional-famine-losses, quote: "The relative direct losses, per 1,000 population, are 133.3 in Soviet Ukraine and 32.0 in Russian Federation, that is, direct losses in RSFSR are 4.2 times smaller than in UkrSSR."}
       - {s: levchuk-2020-regional-famine-losses, quote: "It should be noted that Kazakhstan was a part of RSFSR as the Kazak ASSR until 1936, but it is excluded from our analysis"}
+  - id: c8
+    rel: "involved"
+    to: "ukraine"
+    role: "Ambassador Valeriy Kuchinsky transmitted the joint remembrance statement to the UN on 7 November 2003; it called for acknowledgement and historical records to prevent similar catastrophes"
+    src:
+      - {s: "un-2003-joint-statement-a-c3-58-9", quote: "Letter dated 7 November 2003 from the Permanent Representative of Ukraine to the United Nations addressed to the Secretary-General"}
+      - {s: "un-2003-joint-statement-a-c3-58-9", quote: "(Signed) Valeriy Kuchinsky"}
+      - {s: "un-2003-joint-statement-a-c3-58-9", quote: "exposing violations of human rights, preserving historical records and restoring the dignity of victims through acknowledgement of their suffering, will guide future societies and help to avoid similar catastrophes in the future."}
 ---
 
 Several famines, not one. Union-wide totals given in our sources run from 5.5 to 6.5 million (Sarah Cameron) and 6.5 to 7 million (Nicolas Werth), through some 7 million (the Russian State Duma, 2008), to about 14 million (the Law Library of Congress, citing Robert Conquest).

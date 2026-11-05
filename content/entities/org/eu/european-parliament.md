@@ -21,4 +21,11 @@ claims:
     role: "its 2022 resolution says the Soviet regime deliberately confiscated grain harvests and sealed the borders"
     src:
       - {s: ep-2022-holodomor-resolution-summary, quote: "The Soviet regime deliberately confiscated grain harvests and sealed the borders to prevent Ukrainians from escaping from starvation."}
+  - id: c3
+    rel: "intervened_in"
+    to: "holodomor-genocide-question"
+    when: "2022-12-15"
+    role: "coupled recognition of genocide with a call for Russia and other countries to open famine archives"
+    src:
+      - {s: "ep-2022-holodomor-resolution-summary", quote: "called on Russia and other countries to open up their archives on the artificial famine of 1932-1933 in Ukraine."}
 ---

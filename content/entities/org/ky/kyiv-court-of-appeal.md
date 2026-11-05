@@ -15,4 +15,12 @@ claims:
       - {s: kyiv-court-of-appeal-2010-01-13-ruling, quote: "To terminate the criminal case initiated over the committing of genocide in Ukraine in 1932-1933 against Stalin (Dzhugashvili), Joseph Vissarionovich; Molotov (Skryabin), Viacheslav; Kaganovich, Lazar;"}
       - {s: kyiv-court-of-appeal-2010-01-13-ruling, quote: "Postyshev, Pavel; Kosior, Stanislav; Chubar, Vlas and Khatayevych, Mendel in connection with their death."}
       - {s: kyiv-court-of-appeal-2010-01-13-ruling, quote: "such examination with regard to people who are deceased is not allowed for by Ukraine’s current criminal procedure legislation"}
+  - id: c2
+    rel: "intervened_in"
+    to: "holodomor-genocide-question"
+    when: "2010-01-13"
+    role: "Judge V.M. Skavronik conducted the preliminary examination and issued the ruling; Ukrainian criminal procedure did not allow a trial of dead defendants"
+    src:
+      - {s: "kyiv-court-of-appeal-2010-01-13-ruling", quote: "Judge of the Criminal Chamber of the Kyiv Court of Appeal, V.M. Skavronik"}
+      - {s: "kyiv-court-of-appeal-2010-01-13-ruling", quote: "such examination with regard to people who are deceased is not allowed for by Ukraine’s current criminal procedure legislation"}
 ---
