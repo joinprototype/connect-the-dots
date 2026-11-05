@@ -25,6 +25,13 @@ claims:
     note: "Jerome wrote it in Bethlehem after the sack of Rome in 410, from what others told him."
     src:
       - {s: jerome-letter-127-nicene-fathers, at: "section 1", quote: "You have besought me often and earnestly, Principia"}
+  - id: c3
+    rel: authored
+    to: vulgate
+    when: "0382/0405~"
+    note: "In Letter 57 (395), section 11, Jerome compares the Septuagint with Hebrew and his own version. He criticizes Greek additions and omissions while defending the Greek version's place in churches by its antiquity and apostolic use."
+    src:
+      - {s: jerome-letter-57-nicene-fathers, at: "section 11", quote: "what great additions and omissions the Septuagint has made", by: jerome}
 ---
 
 Jerome was born about 347 and died in 419 or 420. Britannica says he settled in [[bethlehem]], where a monastery under his direction was finished by 389. His Latin Bible, the [[vulgate]], is the text the [[gutenberg-bible]] printed.

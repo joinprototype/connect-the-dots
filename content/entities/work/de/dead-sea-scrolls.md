@@ -16,6 +16,7 @@ claims:
     src:
       - {s: iaa-dss-scrolls-content, at: "Composition Types: Biblical Compositions", quote: "Every book is represented among the Dead Sea Scrolls, except the book of Esther. These are the oldest known copies of biblical works."}
       - {s: iaa-dss-introduction, at: "Qumran Caves Scrolls: Biblical Manuscripts", quote: "This similarity is quite remarkable, considering that the Qumran Scrolls are over a thousand years older than previously identified biblical manuscripts."}
+      - {s: iaa-dss-introduction, at: "Biblical Manuscripts; photograph PAM 43.784, 11Q5 Psalms", quote: "Additions and deletions in certain texts imply that the writers felt free to modify texts they were copying."}
   - id: c2
     rel: holds_copies_of
     to: torah

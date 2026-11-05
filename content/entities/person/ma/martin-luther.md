@@ -45,6 +45,12 @@ claims:
     src:
       - {s: ghdi-marburg-articles-1529-intro, quote: "This text contains the articles of the agreement signed at Marburg by Luther, Zwingli, and eight other preachers."}
       - {s: ghdi-marburg-articles-1529, quote: "The following articles were written and signed in Marburg on October 3, 1529."}
+  - id: c7
+    rel: authored
+    to: luther-bible
+    note: "In remarks on translation quoted by Preserved Smith, Luther describes his effort to use the speech of the marketplace."
+    src:
+      - {s: smith-1911-life-and-letters-of-martin-luther, at: "chapter on the Bible translation, remarks on style", quote: "I try to speak as men do in the market-place.", by: martin-luther}
 ---
 
 Martin Luther was a friar and a lecturer in theology at the [[university-of-wittenberg]] when he wrote the [[ninety-five-theses]] in 1517. His German [[german-new-testament-1522]] and the complete [[luther-bible]] carry his name.

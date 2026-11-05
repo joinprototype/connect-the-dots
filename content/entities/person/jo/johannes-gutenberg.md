@@ -34,6 +34,13 @@ claims:
     src:
       - {s: cornell-exhibit-gutenberg-bible, at: "exhibit text, last sentences", quote: "It is thought that Gutenberg printed 165 copies on paper and thirty-five copies on parchment. Of this total, only forty-eight Gutenberg Bibles are known to have survived."}
       - {s: loc-guide-gutenberg-faq, at: "Q: How many copies of the Gutenberg Bible were initially printed?", quote: "The total number of bibles printed was likely at least 120 paper copies and perhaps as many as 40 vellum copies."}
+  - id: c5
+    rel: produced
+    to: gutenberg-bible
+    when: "1455~"
+    note: "The pages used Gothic type resembling regional handwriting, in two columns."
+    src:
+      - {s: cornell-exhibit-gutenberg-bible, at: "exhibition text", quote: "The pages of the Gutenberg Bible, printed with a Gothic type similar to handwriting of the period and region, are divided into two columns."}
 ---
 
 Johannes Gutenberg of [[mainz]] is credited with inventing printing from uniform, interchangeable metal type. His workshop completed the [[gutenberg-bible]], an edition of the Latin [[bible]], around 1455.

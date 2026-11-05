@@ -28,6 +28,13 @@ claims:
     to: letter-of-aristeas
     role: the story it tells
     src: [{s: charles-1913-letter-of-aristeas, at: "section 307", quote: "it so chanced that the work of translation was completed in seventy-two days, just as if this had been arranged of set purpose.", by: letter-of-aristeas}]
+  - id: c4
+    rel: led_to
+    to: septuagint
+    according_to: [letter-of-aristeas]
+    note: "The king's letter gives a place in his library as the purpose; sections 301–308 put the translators in a house beside the sea at Pharos and describe their agreement on wording and the public reading."
+    src:
+      - {s: charles-1913-letter-of-aristeas, at: "sections 38–39, 301–308", quote: "that these books may be added to the other royal books in my library.", by: letter-of-aristeas}
 ---
 
 In the [[letter-of-aristeas]], seventy-two elders translate the law in seventy-two days. Britannica's account rests on analysis of the Greek itself: the Torah first, the rest of the [[septuagint]] over the next century or so. The two accounts differ on who asked for it and how long it took; they agree it happened in Egypt.

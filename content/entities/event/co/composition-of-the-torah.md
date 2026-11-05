@@ -16,6 +16,13 @@ claims:
     src:
       - {s: hayes-2006-yale-rlst145-lecture-5, at: "near the end, on the priestly school and the Torah", quote: "the Torah is really the result of five centuries of religious and literary activity. And this of course is a very, very different portrait from traditional claims about the authorship of the Pentateuch by one man, Moses, in approximately the fourteenth century BCE.", by: christine-hayes}
       - {s: hayes-2006-yale-rlst145-lecture-5, at: "summing up the documentary hypothesis", quote: "the documentary hypothesis is an effort to explain the contradictions, the doublets, anachronisms and so on in the Bible by means of hypothetical source documents.", by: christine-hayes}
+  - id: c2
+    rel: led_to
+    to: torah
+    according_to: [christine-hayes]
+    note: "Hayes describes priestly editors assembling older documents after exile in Babylon, adding bridges and conclusions; she reads the final editors' purpose as making the sources into a unity."
+    src:
+      - {s: hayes-2006-yale-rlst145-lecture-5, at: "priestly school and final redaction", quote: "wanted them to be read as a unity", by: christine-hayes}
 ---
 
 According to [[christine-hayes]], source critics hold that the [[torah]] was assembled from older documents, with its last editing after the exile in Babylon. According to [[judaism]]'s tradition, [[moses]] wrote it. Both accounts are shown side by side; the sources here do not settle between them.
