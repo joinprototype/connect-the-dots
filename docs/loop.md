@@ -13,7 +13,7 @@ How the record grows without a person in every step ([ADR-0037](decisions/0037-t
 1. `ctd gaps`: the links open data has and the record lacks (`.cache/gaps.tsv`).
 2. The missing-links page's issues on GitHub, titled "Source for: …": a reader sent a source. These go first.
 3. A puzzle's dead ends and Ask's "no written way" pairs, as they are logged.
-4. Story ideas in `.cache/sources/QUEUE.md`.
+4. Story ideas in `.cache/stories/queue.md`, for the story run below.
 
 ## One run
 
@@ -34,6 +34,10 @@ It leaves the branch, labelled for the founder, when a change:
 ## Running it
 
 A run is a Claude Code session in this checkout that follows [tools/loop/night.md](../tools/loop/night.md): it spawns the scout as a subagent on the cheap model and reviews in its own context. The founder gave the word to run it unattended on 2026-11-04: a scheduled task in the Claude desktop app starts one every night at 03:00, and only while the app is open (a night missed runs at the next launch). At most one run at a time, behind a lock; a run that finds the laptop busy (a browser check, a build) waits, then gives up for the night. To run one by hand, ask a session to "run one night of the loop as tools/loop/night.md says".
+
+## Stories at night
+
+Stories go further than links: a writer, a skeptic, the writer's fixes, a careful read, then a person ([ADR-0038](decisions/0038-stories-at-night.md)). A second scheduled task runs [tools/loop/stories.md](../tools/loop/stories.md) each night at 00:30, before the 03:00 leads run. It takes at most two topics from the queue, one new and one to deepen, writes each on a branch `story/<id>`, and opens a pull request titled "For review: …". It never merges: the founder reads and merges each story, and releases as always. The run keeps its own lock, workspace and log in `.cache/stories/` (`runs.tsv`), apart from the leads loop's.
 
 ## What it costs and what it shows
 
