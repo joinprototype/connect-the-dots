@@ -39,4 +39,11 @@ claims:
     role: "supplied Zyklon B; the Tribunal did not find the Farben defendants guilty of this"
     src:
       - {s: nmt8-p1169-zyklon, quote: "The proof is quite convincing that large quantities of Cyclon-B were supplied to the SS by Degesch and that it was used in the mass extermination of inmates of concentration camps, including Auschwitz."}
+  - id: c6
+    rel: involved
+    to: ig-farben-auschwitz-plant
+    role: "judgment records the site's selection on Otto Ambros's recommendation, with camp labour planned from the start"
+    src:
+      - {s: nmt8-p1180-auschwitz-site, quote: "It appears that, pursuant to this instruction and upon the recommendation of the defendant Ambros, the site at Auschwitz was chosen."}
+      - {s: nmt8-p1180-auschwitz-site, quote: "from the beginning, it was planned to use concentration-camp labor to supplement the supply of workers."}
 ---
