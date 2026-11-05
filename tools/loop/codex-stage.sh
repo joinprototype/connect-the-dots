@@ -14,7 +14,7 @@ S=$ROOT/.cache/stories
 mkdir -p "$RUN_DIR"
 codex exec \
   --ignore-user-config \
-  -m "${CODEX_MODEL:-gpt-6-sol}" \
+  -m "${CODEX_MODEL:-gpt-6.1-sol}" \
   -c model_reasoning_effort="\"${CODEX_EFFORT:-medium}\"" \
   -c approval_policy='"never"' \
   -s workspace-write \
