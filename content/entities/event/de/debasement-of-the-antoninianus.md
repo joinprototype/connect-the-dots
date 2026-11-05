@@ -24,6 +24,13 @@ claims:
     role: "Cassius Dio reports Caracalla saying he wanted all money to give to the soldiers"
     src:
       - {s: "cassius-dio-roman-history-78-loeb", at: "78.10", quote: "Nobody in the world should have money but me; and want it to bestow upon the soldiers."}
+  - id: c4
+    rel: involved
+    to: caracalla
+    note: "Dio reports Julia warning that revenue was exhausted and Caracalla answering by displaying his sword. These are Dio's reported words, not a surviving private letter."
+    according_to: ["cassius-dio"]
+    src:
+      - {s: "cassius-dio-roman-history-78-loeb", at: "78.10.4", quote: "Be of good cheer, mother: for as long as we have this, we shall not run short of money.", by: "caracalla"}
 ---
 
 The figures are Sylviane Estiot's, in the RIC online summary. The coin is the [[antoninianus]].

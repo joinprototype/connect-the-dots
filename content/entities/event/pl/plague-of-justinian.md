@@ -34,6 +34,13 @@ claims:
     to: the-fate-of-rome
     src:
       - {s: "aeon-2017-harper-climate-disease-fall-of-rome", at: "Aeon essay", quote: "Most dramatically, in the 6th century a resurgent empire led by Justinian faced a pandemic of bubonic plague, a prelude to the medieval Black Death."}
+  - id: c6
+    rel: involved
+    to: justinian-i
+    note: "Procopius reports Justinian sending palace soldiers and money to arrange burials, and the official Theodorus spending his own money as well."
+    src:
+      - {s: "procopius-persian-wars-2-loeb", at: "2.23.5-10", quote: "He therefore detailed soldiers from the palace and distributed money, commanding Theodorus to take charge of this work;"}
+      - {s: "procopius-persian-wars-2-loeb", at: "2.23.8", quote: "But Theodorus, by giving out the emperor's money and by making further expenditures from his own purse, kept burying the bodies which were not cared for."}
 ---
 
 [[justinian-i]] fell ill. The numbers are Procopius's.

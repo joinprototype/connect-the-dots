@@ -25,9 +25,15 @@ claims:
   - id: c4
     rel: influenced
     to: the-fall-of-rome-debate
-    note: "His own hedge on religion."
+    note: "Gibbon assigns some influence to Christianity but also credits it with benefiting northern converts and tempering the conquerors: even if Constantine's conversion hastened decline, his religion softened the fall."
     src:
       - {s: "gibbon-decline-and-fall-gutenberg", at: "General Observations, chapter 38", quote: "introduction or at least the abuse, of Christianity had some influence on the decline and fall of the Roman empire."}
+  - id: c5
+    rel: authored
+    to: decline-and-fall-of-the-roman-empire
+    note: "At his history's close Gibbon recalled conceiving it among the Capitol's ruins and working at it for nearly twenty years."
+    src:
+      - {s: "gibbon-decline-and-fall-gutenberg", at: "chapter 71, closing paragraph", quote: "It was among the ruins of the\n Capitol that I first conceived the idea of a work which has\n amused and exercised near twenty years of my life", by: "edward-gibbon"}
 ---
 
 Gibbon wrote [[decline-and-fall-of-the-roman-empire]].

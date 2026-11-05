@@ -29,6 +29,12 @@ claims:
     to: res-gestae-divi-augusti
     src:
       - {s: "res-gestae-divi-augusti-loeb-1924", at: "chapter 8", quote: "In this lustrum 4,937,000 Roman citizens were entered on the census roll."}
+  - id: c5
+    rel: involved
+    to: augustus
+    note: "Augustus's public record gives Tiberius as his colleague in the third census and presents his own acts as precedents for posterity."
+    src:
+      - {s: "res-gestae-divi-augusti-loeb-1924", at: "8", quote: "I myself set precedents in many things for posterity to imitate.", by: "augustus"}
 ---
 
 The counts are 4,063,000, 4,233,000 and 4,937,000. See [[res-gestae-divi-augusti]].

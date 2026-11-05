@@ -31,6 +31,12 @@ claims:
     src:
       - {s: "pears-1903-destruction-of-the-greek-empire", at: "chapter on the capture", quote: "None of these stories as to the manner of death can be regarded as altogether trustworthy."}
       - {s: "pears-1903-destruction-of-the-greek-empire", at: "chapter on the capture", quote: "his death within the Inner Enclosure of the Lycus valley cannot reasonably be doubted"}
+  - id: c5
+    rel: involved
+    to: constantine-xi
+    note: "Pears relays an account of Constantine refusing advice to leave Constantinople, saying he would not abandon its people, clergy, churches or his throne. These are reported words, not a surviving transcript."
+    src:
+      - {s: "pears-1903-destruction-of-the-greek-empire", at: "chapter 13, proposal that the emperor should leave the city", quote: "I am ready to die with you.", by: "constantine-xi"}
 ---
 
 [[constantine-xi]] was the last emperor of the [[byzantine-empire]].

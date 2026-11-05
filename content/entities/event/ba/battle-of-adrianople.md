@@ -29,6 +29,26 @@ claims:
     role: "the battle was fought near it"
     src:
       - {s: "dir-theodosius-i", at: "Theodosius I", quote: "of Adrianople on 9 August 378"}
+  - id: c5
+    rel: involved
+    according_to: [ammianus-marcellinus]
+    to: valens
+    note: "Ammianus reports Fritigern's public request for Thrace and a private letter asking Valens to show his army nearby so fear would make Fritigern's people accept terms. Ammianus calls this deception and pretended friendship; the envoys were distrusted and departed without achieving their purpose. Valens had already chosen battle. Neither letter is presented as a surviving original here."
+    src:
+      - {s: "ammianus-marcellinus-31-loeb", at: "31.12.8-9", quote: "a private letter of the same king"}
+      - {s: "ammianus-marcellinus-31-loeb", at: "31.12.9", quote: "unless the emperor should from time to time show them near at hand his army ready for battle, and through the fear aroused by the imperial name check their destructive eagerness for war."}
+  - id: c6
+    rel: involved
+    according_to: [ammianus-marcellinus]
+    to: valens
+    note: "Ammianus reports that Valens chose battle despite advice to wait for Gratian; courtiers urged haste to keep Gratian from sharing the victory."
+    src:
+      - {s: "ammianus-marcellinus-31-loeb", at: "31.12.5-7", quote: "courtiers, who urged him to make all haste in order that Gratian might not have a share in the victory"}
+  - id: c7
+    rel: appears_in
+    to: roman-history-of-ammianus-marcellinus
+    src:
+      - {s: "ammianus-marcellinus-31-loeb", at: "31.14.1", quote: "Thus then died Valens, at the age of almost fifty and after a reign of a little less than fourteen years."}
 ---
 
 [[valens]] led the army. Ammianus, the Roman historian, says barely a third of it escaped.
