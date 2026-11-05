@@ -15,7 +15,7 @@ claims:
     rel: convicted_by
     to: international-criminal-tribunal-for-rwanda
     when: "2004-06-17"
-    title: "genocide and crimes against humanity; 30 years at trial (the appeal was not read)"
+    title: "genocide and crimes against humanity; 30 years at trial"
     case: "Prosecutor v. Gacumbitsi"
     src:
       - {s: ictr-gacumbitsi-judgement-2004, at: "Verdict", quote: "Count 1 (Genocide): GUILTY"}

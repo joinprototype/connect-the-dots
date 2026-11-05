@@ -24,4 +24,12 @@ claims:
     to: rwandan-genocide
     src:
       - {s: duclert-2021-commission-report-english, at: "Section 5.3.3", quote: "The Bisesero massacres perpetrated by extremist Hutu militias against Tutsi civilians taking refuge on a hillside"}
+  - id: c4
+    rel: appears_in
+    to: muse-report
+    role: "Lafourcade's later explanation of the delay"
+    according_to: [muse-report]
+    note: "The report quotes a 2019 interview in which Lafourcade said caution about fighting the RPF delayed intervention at Bisesero and accepted responsibility."
+    src:
+      - {s: rwanda-2021-muse-report, at: "Chapter X, interview with General Lafourcade, notes 375–377", quote: "That’s my responsibility. And I take it on."}
 ---

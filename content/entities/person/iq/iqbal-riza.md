@@ -20,4 +20,11 @@ claims:
     note: "He signed the cable that went out under Kofi Annan’s name."
     src:
       - {s: un-1999-independent-inquiry-rwanda, at: "The 11 January Cable", quote: "It was a cable from Annan (signed off by Riza) to Booh Booh, marked \"Immediate\" and \"Only\"."}
+  - id: c3
+    rel: appears_in
+    to: triumph-of-evil
+    role: "recalled his reaction to Dallaire's proposed arms raid"
+    note: "Riza gave this explanation in a later interview about the January 1994 refusal."
+    src:
+      - {s: pbs-frontline-triumph-of-evil-script, at: "Interview with Iqbal Riza", quote: "We said, \"Not Somalia again.\"", by: iqbal-riza}
 ---

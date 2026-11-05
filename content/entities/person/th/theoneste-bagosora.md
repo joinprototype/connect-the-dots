@@ -16,7 +16,7 @@ claims:
     rel: convicted_by
     to: international-criminal-tribunal-for-rwanda
     when: "2008-12-18"
-    title: "genocide, crimes against humanity and war crimes; acquitted of conspiracy before 7 April; 35 years, affirmed on appeal in 2011"
+    title: "trial conviction for genocide, crimes against humanity and war crimes; acquitted of conspiracy before 7 April; case page lists 35 years after appeal in 2011"
     case: "Prosecutor v. Bagosora et al."
     src:
       - {s: ictr-bagosora-judgement-2008, at: "Summary, paragraph 36", quote: "Bagosora is therefore guilty of genocide, crimes against humanity (murder, extermination, rape, persecution and other inhumane acts)"}
