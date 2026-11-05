@@ -21,4 +21,12 @@ claims:
     title: "Governor"
     src:
       - {s: bradford-of-plimoth-plantation, quote: "William Bradford who was elected Governor of New Plymouth in April 1621 and continued Governor thereof from that date excepting between the years 1635 and 1637 up to 1650"}
+  - id: c3
+    rel: influenced
+    to: plymouth-colony
+    according_to: [william-bradford]
+    note: "In December 1620, Bradford describes the explorers accepting Plymouth’s cornfields and brooks as the best site they could find, under pressure of the season and their immediate need."
+    src:
+      - {s: bradford-of-plimoth-plantation, at: "Book II, 1620", quote: "made them glad to accepte of it."}
+      - {s: mourts-relation-1622, quote: "Captain Standish, Master Carver, William Bradford, Edward Winslow, John Tilley, Edward Tilley, John Howland"}
 ---

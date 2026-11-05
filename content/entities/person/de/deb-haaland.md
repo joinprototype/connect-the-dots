@@ -25,4 +25,12 @@ claims:
     to: biden-remarks-at-gila-river-2024
     src:
       - {s: biden-gila-river-remarks-2024, quote: "I can't tell you what a special thanks I have for Deb Haaland, my Interior Secretary."}
+  - id: c4
+    rel: influenced
+    to: federal-indian-boarding-school-initiative
+    according_to: [deb-haaland]
+    note: "Haaland’s later explanation for launching the investigation; she also recalled her grandmother Helen, grandfather Tony and mother Mary attending St. Catherine’s."
+    src:
+      - {s: haaland-impact-of-boarding-school-apology-2025, quote: "One of the reasons I launched the Federal Indian Boarding School Initiative was to ensure that this important story was told."}
+      - {s: haaland-impact-of-boarding-school-apology-2025, quote: "That all of America knows of the intergenerational impacts of these policies, and that we – as a nation – take steps to heal from them."}
 ---
