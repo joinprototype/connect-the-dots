@@ -76,4 +76,12 @@ claims:
     role: "his 1978 suit, continued by his estate, began the litigation"
     src:
       - {s: agent-orange-818-f2d-145-1987, quote: "The Agent Orange litigation began in July 1978, with the filing of a lawsuit by Vietnam veteran Paul Reutershan, now deceased"}
+  - id: c10
+    rel: involved
+    to: jack-b-weinstein
+    role: "approved the settlement because further litigation risked years of expense and no recovery, while the fund could help some families sooner"
+    src:
+      - {s: agent-orange-597-fsupp-740-1984, at: "pp. 747–749", quote: "It gives the class more than it would likely achieve by attempting to litigate to the death."}
+      - {s: agent-orange-597-fsupp-740-1984, quote: "It provides funds to help at least some men, women and children whose hardships will be reduced in some small degree."}
+      - {s: agent-orange-597-fsupp-740-1984, quote: "benefit to plaintiffs from an ultimate recovery, if any, would not be available for many years."}
 ---

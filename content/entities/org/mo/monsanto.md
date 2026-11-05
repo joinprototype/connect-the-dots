@@ -27,4 +27,13 @@ claims:
       - {s: agent-orange-597-fsupp-740-1984, quote: "defendants have agreed to pay to the class $180 million plus interest in a manner directed by the court."}
       - {s: agent-orange-597-fsupp-740-1984, quote: "Neither this Agreement nor any proceeding taken hereunder shall be construed as or deemed to be evidence or an admission or concession by any defendant of any liability or wrongdoing whatsoever, which is expressly denied by each defendant"}
       - {s: agent-orange-597-fsupp-740-1984, quote: "or on the part of the plaintiffs of any lack of merit in their claims."}
+  - id: c3
+    rel: produced
+    to: agent-orange
+    when: "1965/1969"
+    according_to: [monsanto]
+    note: "Monsanto calls the former company one of nine wartime government contractors and says Washington set the specifications and decided when, where and how Agent Orange was used."
+    src:
+      - {s: monsanto-agent-orange-background-2017, quote: "From 1965 to 1969, the former Monsanto Company was one of nine wartime government contractors who manufactured Agent Orange."}
+      - {s: monsanto-agent-orange-background-2017, quote: "The government set the specifications for making Agent Orange and determined when, where and how it was used."}
 ---

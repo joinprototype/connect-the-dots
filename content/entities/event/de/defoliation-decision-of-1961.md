@@ -31,4 +31,11 @@ claims:
     role: "as Deputy Secretary of Defense, sent the Defense Department memorandum Rusk endorsed"
     src:
       - {s: frus-1961-63-v01-d275, quote: "I concur with the attached memorandum from Mr. Gilpatric on the foregoing subject."}
+  - id: c5
+    rel: involved
+    to: dean-rusk
+    role: "endorsed spraying as assistance in defeating the Viet Cong, while warning Kennedy of a Communist propaganda campaign"
+    src:
+      - {s: frus-1961-63-v01-d275, quote: "I am satisfied that successful plant-killing operations in VietNam, carefully coordinated with and incidental to larger operations, can be of substantial assistance in the control and defeat of the Viet Cong."}
+      - {s: frus-1961-63-v01-d275, quote: "We will, of course, be the object of an intense Communist “germ warfare” campaign which may be picked up by some neutrals."}
 ---

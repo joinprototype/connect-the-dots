@@ -22,4 +22,10 @@ claims:
       - {s: agent-orange-517-f3d-104-2008, quote: "In June 1966, a government study on the long-term health effects of pesticides, including 2,4,5-T (known as the Bionetics Study), uncovered evidence of teratogenicity (birth defects) in mice."}
       - {s: agent-orange-517-f3d-104-2008, quote: "did not restrict the ongoing herbicide program in Vietnam."}
       - {s: buckingham-operation-ranch-hand-1982, quote: "The Chairman of the JCS favored the second option, however,"}
+  - id: c3
+    rel: involved
+    to: us-government
+    role: "John Foster urged suspension, arguing that continued use or limited restrictions would probably cause an adverse public reaction"
+    src:
+      - {s: buckingham-operation-ranch-hand-1982, at: "pp. 166–167", quote: "Foster argued against the first two options because they would probably cause adverse public reaction."}
 ---

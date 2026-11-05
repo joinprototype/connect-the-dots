@@ -71,4 +71,11 @@ claims:
       - {s: agent-orange-373-fsupp2d-7-2005, quote: "more than four million litres of the other agents, primarily containing 2,4,5-T, were also used on crops."}
       - {s: agent-orange-517-f3d-104-2008, quote: "utilized only in areas remote from population."}
       - {s: agent-orange-373-fsupp2d-7-2005, quote: "Among the hamlets with some population data, 3,181 were sprayed directly and at least 2.1 million but perhaps as many as 4.8 million people would have been present during the spraying."}
+  - id: c8
+    rel: involved
+    to: us-government
+    role: "Captain Carl Marshall's detachment practiced spray patterns without chemicals while awaiting orders in the Philippines in December 1961"
+    src:
+      - {s: buckingham-operation-ranch-hand-1982, at: "pp. 23–26", quote: "Capt. Carl W. Marshall, the SASF commander,"}
+      - {s: buckingham-operation-ranch-hand-1982, at: "p. 26", quote: "spray patterns. Chemicals were not used on these practice runs."}
 ---

@@ -30,4 +30,11 @@ claims:
       - {s: crs-rl34761-2012, quote: "be seen as a humanitarian act, and not an admission of culpability."}
       - {s: ap-2025-03-19-usaid-cuts-agent-orange, quote: "USAID has three contracts conducting dioxin remediation at Bien Hoa in Vietnam that are active and running."}
       - {s: ap-2025-03-19-usaid-cuts-agent-orange, quote: "Funding for the cleanup at Bien Hoa Air Base was frozen for about a week and then restored"}
+  - id: c4
+    rel: involved
+    to: us-government
+    role: "Senator Patrick Leahy secured original funding for Vietnam War remediation projects and criticized the 2025 aid cuts as jeopardizing relations with Vietnam"
+    src:
+      - {s: ap-2025-03-19-usaid-cuts-agent-orange, quote: "the Vermont Democrat secured the original funding for Vietnam War remediation projects."}
+      - {s: ap-2025-03-19-usaid-cuts-agent-orange, quote: "Leahy, who retired from the Senate in 2023, told The Associated Press that it had been a lengthy process over the last 35 years to build the relationship by working hand-in-hand with the Vietnamese to address the problems left behind."}
 ---
