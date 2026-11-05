@@ -2,7 +2,7 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
-## Next
+## 0.5.11 (2026-11-04)
 
 - A new story, Why Empires Fall, sets side by side what the record's historians and witnesses say ended Rome's west, the Ottomans, the Mongol Empire and the Yuan, and the Soviet Union: money, armies, outside pressure, disease, succession, reform and transformation, each in its holder's name, with no rule of its own.
 - A source with no saved copy now gets the Internet Archive's copy closest to the day it was read, checked a seventh of the sources a night.
