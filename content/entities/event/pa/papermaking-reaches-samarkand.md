@@ -3,7 +3,7 @@ uid: 01M6MGQP41NQJD22XPNPFPJGAM
 id: papermaking-reaches-samarkand
 type: event
 name: "Papermaking reaches Samarkand, 751 (a disputed story)"
-summary: "An Arabic story, told in Carter's 1925 book from an eleventh-century writer, says Chinese prisoners taught papermaking at Samarkand in 751; Jonathan Bloom, as reported by History of Information, finds it unlikely."
+summary: "An Arabic story, relayed by Carter in 1925 from an eleventh-century writer, says Chinese prisoners taught papermaking at Samarkand in 751. The saved evidence read here does not independently establish that origin story."
 when: "0751"
 place: samarkand
 claims:
@@ -11,11 +11,10 @@ claims:
     rel: located_in
     to: samarkand
     status: disputed
-    reason: "Carter (1925) relays the Arabic story, which he supports with an eleventh-century writer, Tha'alibi. History of Information reports that Jonathan Bloom thinks the prisoners story unlikely to be factual and that paper was in use in Samarkand decades before 751."
+    reason: "Carter (1925) relays the Arabic story, citing the eleventh-century writer Tha'alibi. The saved evidence read here does not independently establish this origin story. The previously cited History of Information counteraccount was a Wikipedia quotation and has been removed."
     note: "Carter adds that the Chinese annals of the T’ang dynasty describe the same battle and the date exactly agrees."
     src:
       - {s: carter-1925-invention-of-printing, at: "chapter on the spread westward", quote: "Among the prisoners taken were some paper makers, who taught the art of paper making at Samarkand."}
-      - {s: hoi-talas-papermaking, at: "entry text", quote: "Archaeological evidence shows that paper was already known and used in Samarkand decades before 751 CE."}
   - id: c2
     rel: involved
     to: abbasid-caliphate
