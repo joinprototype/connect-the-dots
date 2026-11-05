@@ -2,7 +2,7 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
-## Next
+## 0.5.10 (2026-11-04)
 
 - Five new stories: Why Rome Fell, the evidence and then each historian's explanation in their own name; Six Hundred Years, the Ottomans from Osman to the end of the caliphate on 3 March 1924; From Four Ships to Portsmouth, Japan from 1853 to 1911, with Taiwan's and Korea's side as far as the record read allows; Reform and Opening, China from 1978, with whose poverty line and whose count is whose; and The House of Wisdom, Baghdad's learning and what Europe took from it, legend set apart on both sides.
 - Behind the Success Stories goes from 10 scenes to 23: Traf-O-Data, the MITS deal, IBM and Digital Research with the flying story told as a story, the 1986 share sale, the Amazon prospectus, Facemash and the lawsuits.
