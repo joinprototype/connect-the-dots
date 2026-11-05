@@ -43,4 +43,36 @@ claims:
     to: july-crisis
     src:
       - {s: fay-1930-origins-of-the-world-war, at: "p. 558", quote: "But the verdict of the Versailles Treaty that Germany and her allies were responsible for the War, in view of the evidence now available, is historically unsound."}
+
+  - id: c7
+    rel: involved
+    to: franz-ferdinand
+    role: "continued the visit after the bomb"
+    note: "Fay recounts that he checked the damage and had the wounded sent to hospital before continuing to the Town Hall."
+    src:
+      - {s: "fay-1930-origins-of-the-world-war", at: "pp. 124–125", quote: "Come on. The fellow is insane. Gentlemen, let us proceed with our program."}
+
+  - id: c8
+    rel: involved
+    to: franz-ferdinand
+    role: "insisted on visiting the wounded officer"
+    note: "The intended hospital visit explains the changed route after the Town Hall reception."
+    src:
+      - {s: "fay-1930-origins-of-the-world-war", at: "p. 126", quote: "The Archduke insisted that he wanted to visit the hospital to inquire after the officer who had been wounded by Chabrinovitch’s bomb."}
+
+  - id: c9
+    rel: involved
+    to: gavrilo-princip
+    role: "received weapons training, according to the Austrian court record"
+    note: "Grabež testified that Major Tankosić questioned his determination and ordered shooting lessons after he said he could not shoot."
+    src:
+      - {s: "rastko-austrian-report-horne", at: "District Court record, shooting instruction", quote: "Ciganovic also familiarized Princip, Grabez and Cabrinovic with the use of bombs which were given them."}
+  - id: c10
+    rel: involved
+    to: franz-ferdinand
+    role: "asked Sophie to stay alive for their children, in Fay’s retelling"
+    according_to: [sidney-fay]
+    note: "Fay recounts the Archduke’s last words to Sophie before both died within minutes."
+    src:
+      - {s: fay-1930-origins-of-the-world-war, at: "p. 127", quote: "Sophie, Sophie, do not die. Live for our children.", by: franz-ferdinand}
 ---

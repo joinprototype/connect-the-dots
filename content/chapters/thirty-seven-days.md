@@ -10,7 +10,7 @@ featured: true
 
 On 28 June 1914 two shots were fired in Sarajevo. Thirty-seven days later most of Europe was at war.
 
-Nearly every line here comes from the documents the governments themselves published. Much of the German and Austrian record reaches this story through the English of the historian Sidney Fay, who took a side in the argument over blame; the story says so when it gets there. Who was to blame is still disputed, so each answer gets its say, and the story does not pick one. Dates are in the modern calendar.
+A ruler promised support, ministers drew up demands, and a Tsar signed an order he had cancelled the night before. By the end of the war, four estimates put the military dead between 9,164,000 and 10,057,600; the civilian toll cannot be calculated precisely. Responsibility remains disputed. Dates are in the modern calendar.
 
 ```scene
 - shot: st-vitus-day
@@ -20,9 +20,9 @@ Nearly every line here comes from the documents the governments themselves publi
   places: [sarajevo]
   time: "1914-06-28"
   reveal: [assassination-of-franz-ferdinand, franz-ferdinand, nedeljko-cabrinovic, sarajevo]
-  reveal_claims: [assassination-of-franz-ferdinand#c1, assassination-of-franz-ferdinand#c3]
+  reveal_claims: [assassination-of-franz-ferdinand#c1, assassination-of-franz-ferdinand#c3, assassination-of-franz-ferdinand#c7]
   overlay: {kind: quote, source: fay-1930-origins-of-the-world-war, quote: "Come on. The fellow is insane. Gentlemen, let us proceed with our program.", caption: "Archduke Franz Ferdinand, after the bomb, as told by Sidney Fay"}
-  narration: "**St. Vitus' Day.** On the morning of 28 June 1914 Archduke Franz Ferdinand, heir to the throne of Austria-Hungary, rode through Sarajevo in an open car. Nedeljko Čabrinović knocked the cap off a bomb and threw it. It bounced off the folded hood and wrecked the car behind."
+  narration: "**St. Vitus' Day.** On the morning of 28 June 1914, Franz Ferdinand rode through Sarajevo in an open car, heir to Austria-Hungary's throne. Nedeljko Čabrinović knocked the cap off a bomb and threw it; it bounced off the folded hood and wrecked the car behind. The Archduke stopped to learn who was hurt and saw the wounded sent to hospital. Then, in Sidney Fay's telling, he said: “Come on. The fellow is insane. Gentlemen, let us proceed with our program.” He continued to the Town Hall; afterward he insisted on visiting the wounded officer."
   duration: 13
 
 - shot: the-wrong-way
@@ -32,9 +32,9 @@ Nearly every line here comes from the documents the governments themselves publi
   places: [sarajevo]
   time: "1914-06-28"
   reveal: [assassination-of-franz-ferdinand, gavrilo-princip, oskar-potiorek, franz-ferdinand]
-  reveal_claims: [assassination-of-franz-ferdinand#c2, assassination-of-franz-ferdinand#c4]
+  reveal_claims: [assassination-of-franz-ferdinand#c2, assassination-of-franz-ferdinand#c4, assassination-of-franz-ferdinand#c8, assassination-of-franz-ferdinand#c10]
   overlay: {kind: quote, source: fay-1930-origins-of-the-world-war, quote: "but Potiorek called out. \"That's the wrong way! Drive straight down the Appel Quay!\" The chauffeur put on the brakes in order to back up.", caption: "Sidney Fay, The Origins of the World War"}
-  narration: "**The wrong way.** Later that morning the driver took the wrong street. He stopped to back up at the corner where a student, Gavrilo Princip, was standing. Princip “stepped forward and fired two shots point blank.” Count Harrach, on the running board, heard the Archduke say: “Sophie, Sophie, don't die. Stay alive for the children!” Both died."
+  narration: "**The wrong way.** Franz Ferdinand wanted to visit the officer wounded by the bomb; the cars were to stay on the Appel Quay. But his driver turned into the wrong street and stopped to back up where the student Gavrilo Princip stood. Princip stepped forward and fired two shots point blank. Count Harrach stood on the running board; Fay recounts the Archduke’s plea to Sophie: “Sophie, Sophie, do not die. Live for our children.” Both husband and wife died within minutes; the murder became the crisis Vienna would take to Berlin."
   duration: 13
 
 - shot: who-sent-them
@@ -42,9 +42,9 @@ Nearly every line here comes from the documents the governments themselves publi
   focus: gavrilo-princip
   time: "1914-05-24"
   reveal: [gavrilo-princip, young-bosnia, dragutin-dimitrijevic, assassination-of-franz-ferdinand, belgrade]
-  reveal_claims: [gavrilo-princip#c1, assassination-of-franz-ferdinand#c5]
-  overlay: {kind: quote, source: fay-1930-origins-of-the-world-war, quote: "the inspiration for the plot sprang from the group of Bosnian revolutionaries—Gatchinovitch, Princip, Ilitch, and others—all of whom had been in Belgrade and in close touch with “Black Hand” members.", caption: "Sidney Fay, The Origins of the World War"}
-  narration: "**Who sent them.** Young Bosnia was “impatient with the politicians.” In Belgrade in May, by the Austrian court record, a Serbian major asked one of the plotters: “Are you the man? Are you determined?” The Serbian scholar Stanoje Stanojević wrote that Colonel Dragutin Dimitrijević, known as Apis, “took over and organized” the plot."
+  reveal_claims: [gavrilo-princip#c1, assassination-of-franz-ferdinand#c5, assassination-of-franz-ferdinand#c9]
+  overlay: {kind: "quote", source: "rastko-austrian-report-horne", quote: "Are you the man? Are you determined?", caption: "Major Tankosić to Grabež, according to the Austrian court record"}
+  narration: "**Who sent them.** The Austrian report says Trifko Grabež admitted visiting Major Voja Tankosić in a Belgrade room on 24 May: “Are you the man? Are you determined?” the major asked. Grabež answered: “I am.” The report says he could not shoot a revolver, Tankosić ordered shooting lessons, and Princip proved the better shot; it describes the young men leaving Belgrade with weapons and training for Sarajevo. Fay describes Young Bosnia as impatient with politicians and convinced assassination could end Austrian rule. Stanoje Stanojević attributed the plot's organization to Colonel Dragutin Dimitrijević, known as Apis."
   duration: 13
 
 - shot: what-belgrade-knew
@@ -52,9 +52,9 @@ Nearly every line here comes from the documents the governments themselves publi
   focus: nikola-pasic
   time: "1914-06"
   reveal: [nikola-pasic, serbia, assassination-of-franz-ferdinand, belgrade]
-  reveal_claims: [nikola-pasic#c1]
+  reveal_claims: [nikola-pasic#c1, july-crisis#c12]
   overlay: {kind: quote, source: fay-1930-origins-of-the-world-war, quote: "that certain persons [neki] were making ready to go to Sarajevo to murder Franz Ferdinand who was to go there to be solemnly received on St. Vitus' Day.", caption: "Ljuba Jovanović, a Serbian minister, on what Prime Minister Pašić told ministers. Written in 1924"}
-  narration: "**What Belgrade knew.** Sidney Fay read this to mean that ministers knew a month ahead and “took no effective measures.” R. W. Seton-Watson replied that the onus lay on Belgrade to show its information was vaguer than this, or that it had warned Vienna some other way. Fay found no official warning reached Vienna's Foreign Office. The point is still disputed."
+  narration: "**What Belgrade knew.** At the end of May or beginning of June, Prime Minister Nikola Pašić told ministers that men were preparing to murder Franz Ferdinand, minister Ljuba Jovanović recalled in 1924. He described a decision to stop them at the frontier, frustrated by border officials who belonged to the organization. Fay thought Pašić feared the murder’s consequences but also feared that an effective warning would expose his knowledge of a Belgrade plot. Fay judged the preventive measures ineffective and found no official warning reached Vienna’s Foreign Office; Seton-Watson demanded evidence of vaguer information or another warning. The disputed warning never stopped the journey to Sarajevo."
   duration: 13
 
 - shot: lunch-at-potsdam
@@ -63,9 +63,9 @@ Nearly every line here comes from the documents the governments themselves publi
   places: [potsdam]
   time: "1914-07-05"
   reveal: [wilhelm-ii, theobald-von-bethmann-hollweg, potsdam, july-crisis]
-  reveal_claims: [july-crisis#c1, july-crisis#c2]
+  reveal_claims: [july-crisis#c1, july-crisis#c2, july-crisis#c13]
   overlay: {kind: quote, source: fay-1930-origins-of-the-world-war, quote: "His Majesty authorized me to report that in this case also we could reckon on Germany's full support.", caption: "Ambassador Szögyény to Vienna, 5 July 1914, printed by Sidney Fay"}
-  narration: "**Lunch at Potsdam.** Vienna's ambassador lunched with Kaiser Wilhelm II. By his report, the Kaiser would be sorry if Vienna “left unused the present moment.” Next day Chancellor Bethmann Hollweg wrote that the Kaiser “will faithfully stand by Austria-Hungary.” Historians call this the “blank check.” Those are their words, not the documents'."
+  narration: "**Lunch at Potsdam.** On 5 July, Vienna's ambassador put the danger of Russian intervention to Kaiser Wilhelm II over lunch. By the ambassador's report, Wilhelm promised Germany's full support even in a war with Russia: he thought Russia was not ready to fight and Vienna should use the favorable moment. Next day Chancellor Bethmann Hollweg wrote that Wilhelm would stand by Austria-Hungary under their alliance and old friendship, while writing that he could not interfere in its dispute with Serbia. This assurance became known as the blank check. Vienna's ministers could now plan their next move with Berlin behind them."
   duration: 13
 
 - shot: too-hard-to-accept
@@ -73,9 +73,9 @@ Nearly every line here comes from the documents the governments themselves publi
   focus: leopold-berchtold
   time: "1914-07-07"
   reveal: [leopold-berchtold, istvan-tisza, franz-conrad-von-hotzendorf, austro-hungarian-government, vienna]
-  reveal_claims: [leopold-berchtold#c1, istvan-tisza#c1, franz-conrad-von-hotzendorf#c1, july-crisis#c3, july-crisis#c4]
+  reveal_claims: [leopold-berchtold#c1, istvan-tisza#c1, franz-conrad-von-hotzendorf#c1, july-crisis#c3, july-crisis#c4, july-crisis#c14]
   overlay: {kind: quote, source: fay-1930-origins-of-the-world-war, quote: "their rejection would be a foregone conclusion, and so the way would be prepared for a radical solution through a military attack.", caption: "Minutes of Vienna’s Council of Ministers, 7 July 1914, retouched by Berchtold, printed by Sidney Fay"}
-  narration: "**Too hard to accept.** Foreign Minister Leopold Berchtold asked whether the time had come “to make Serbia harmless once for all.” Hungary's Prime Minister, István Tisza, “would never agree to a surprise attack.” The others wanted demands that Serbia would have to refuse."
+  narration: "**Too hard to accept.** In Vienna on 7 July, Foreign Minister Leopold Berchtold asked his fellow ministers whether force could make Serbia harmless once for all. Hungary's Prime Minister István Tisza refused a surprise attack without diplomatic steps first; the others agreed on demands Serbia would have to reject. In the minutes, retouched by Berchtold, that rejection would prepare the way for a military attack. A note would go to Belgrade as a demand for satisfaction, while the ministers had already discussed how to make refusal certain."
   duration: 13
 
 - shot: forty-eight-hours
@@ -87,7 +87,7 @@ Nearly every line here comes from the documents the governments themselves publi
   reveal: [serbia, belgrade, austria-hungary, edward-grey]
   reveal_claims: [edward-grey#c1]
   overlay: {kind: quote, source: hmso-1915-collected-diplomatic-documents, quote: "I had never before seen one State address to another independent State a document of so formidable a character.", caption: "British Foreign Secretary Edward Grey, 24 July 1914"}
-  narration: "**Forty-eight hours.** At 6 p.m. on 23 July, Vienna's minister handed Belgrade a note. The answer was due by 6 p.m. on Saturday. Among the demands: that Austro-Hungarian officials work inside Serbia against the movement aimed at the monarchy."
+  narration: "**Forty-eight hours.** At 6 p.m. on 23 July, Vienna's minister delivered the note in Belgrade: Serbia had until 6 p.m. on Saturday to answer. Berchtold's instructions demanded that Austro-Hungarian officials work inside Serbia to suppress the movement against the monarchy and take part in investigating the assassination. In London, Foreign Secretary Edward Grey told Vienna's ambassador he had never seen such a formidable demand from one independent state to another. He objected that outside officials would compromise Serbia's independence. The ministers in Belgrade now had forty-eight hours to decide how much authority to yield."
   duration: 13
 
 - shot: the-reply
@@ -97,9 +97,9 @@ Nearly every line here comes from the documents the governments themselves publi
   places: [belgrade]
   time: "1914-07-25"
   reveal: [serbia, nikola-pasic, july-crisis, belgrade]
-  reveal_claims: [july-crisis#c5]
+  reveal_claims: [july-crisis#c5, july-crisis#c15]
   overlay: {kind: quote, source: byu-serbian-reply-1914-07-25, quote: "As far as the cooperation in this investigation of specially delegated officials of the I. and R. Government is concerned, this cannot be accepted, as this is a violation of the constitution and of criminal procedure.", caption: "Serbia’s reply, 25 July 1914"}
-  narration: "**The reply.** Serbia accepted most of the ten points, with conditions, and offered to let The Hague or the Great Powers decide. It refused one thing. Vienna's minister left Belgrade that night."
+  narration: "**The reply.** On 25 July, Pašić carried Serbia's answer to Vienna's minister just before the deadline; a broken typewriter had forced a secretary to copy it by hand. Serbia accepted most of the ten points, with conditions, and offered arbitration at The Hague or by the Great Powers. It refused Austrian officials' participation in the investigation, calling it “a violation of the constitution and of criminal procedure.” The minister declared the answer unsatisfactory and left that night with his staff on the 6:30 train. Pašić's concessions had not preserved diplomatic relations."
   duration: 13
 
 - shot: every-cause-for-war
@@ -107,9 +107,9 @@ Nearly every line here comes from the documents the governments themselves publi
   focus: wilhelm-ii
   time: "1914-07-28"
   reveal: [wilhelm-ii, gottlieb-von-jagow, austria-hungary, serbia, july-crisis]
-  reveal_claims: [wilhelm-ii#c1, gottlieb-von-jagow#c1, july-crisis#c11]
+  reveal_claims: [wilhelm-ii#c1, gottlieb-von-jagow#c1, july-crisis#c11, july-crisis#c20]
   overlay: {kind: quote, source: kautsky-1924-outbreak-of-the-world-war, quote: "A brilliant performance for a time-limit of only forty-eight hours. This is more than one could have expected! A great moral victory for Vienna; but with it every reason for war drops away", caption: "Kaiser Wilhelm II, written on Serbia’s reply"}
-  narration: "**Every reason.** The Kaiser read the reply on the morning of 28 July, and told his Foreign Secretary that “every cause for war falls to the ground.” That same day Vienna telegraphed Serbia. Austria-Hungary, it said, “considers herself henceforward in state of war.”"
+  narration: "**Every reason.** On the morning of 28 July, Wilhelm read Serbia's reply and wrote to Foreign Secretary Jagow that “every cause for war falls to the ground.” He thought its remaining reservations could be negotiated. Yet he also proposed occupying Belgrade as security until Serbia fulfilled its promises. That same day, Berchtold's telegram gave Serbia Vienna's answer: Austria-Hungary said it was compelled to protect its rights and interests by force, and “considers herself henceforward in state of war.” The Kaiser had found grounds to negotiate; Vienna had declared war."
   duration: 13
 
 - shot: nicky-and-willy
@@ -119,7 +119,7 @@ Nearly every line here comes from the documents the governments themselves publi
   reveal: [nicholas-ii, wilhelm-ii, july-crisis, russia]
   reveal_claims: [july-crisis#c6]
   overlay: {kind: quote, source: kautsky-1924-outbreak-of-the-world-war, quote: "In this most serious moment I appeal to you to help me. An ignoble war has been declared to a weak country.", caption: "Tsar Nicholas II to Kaiser Wilhelm II, 29 July 1914"}
-  narration: "**Nicky and Willy.** The Tsar and the Kaiser telegraphed in English, signing Nicky and Willy. Russian military measures, wrote Wilhelm, “would precipitate a calamity we both wish to avoid.” Nicholas answered: “It would be right to give over the Austro-Serbian problem to the Hague Conference.”"
+  narration: "**Nicky and Willy.** On 29 July, Nicholas II appealed to Wilhelm in English, signing himself Nicky: “In this most serious moment I appeal to you to help me. An ignoble war has been declared to a weak country.” Wilhelm, signing Willy, warned that Russian military measures “would precipitate a calamity we both wish to avoid.” Nicholas proposed sending the Austro-Serbian dispute to the Hague Conference. That night, after another telegram from Wilhelm, he cancelled the general mobilization he had signed for. His ministers would press him to reverse himself again the next day."
   duration: 13
 
 - shot: smash-the-telephone
@@ -129,9 +129,9 @@ Nearly every line here comes from the documents the governments themselves publi
   places: [petrograd]
   time: "1914-07-30"
   reveal: [nicholas-ii, sergey-sazonov, russian-government, petrograd]
-  reveal_claims: [sergey-sazonov#c1, july-crisis#c7]
+  reveal_claims: [sergey-sazonov#c1, july-crisis#c7, july-crisis#c16]
   overlay: {kind: quote, source: fay-1930-origins-of-the-world-war, quote: "\"Think of the responsibility which you are advising me to take!\" said the Tsar. \"Think of the thousands and thousands of men who will be sent to their death!\"", caption: "Peterhof, 30 July 1914, as told by Sidney Fay"}
-  narration: "**The order.** The Tsar signed for general mobilization on 29 July, then called it off that night after the Kaiser's telegram. Next afternoon Foreign Minister Sergey Sazonov pressed him for nearly an hour. “I will decide,” said the Tsar, and ordered it. Sazonov telephoned the general: “Now you can smash the telephone.”"
+  narration: "**The order.** At Peterhof on 30 July, Nicholas faced the decision he had cancelled the night before. Fay recounts Sazonov arguing for nearly an hour that war was inevitable and delay would disrupt Russia’s military organization and unsettle its allies. In Fay's telling, Nicholas answered: “Think of the thousands and thousands of men who will be sent to their death!” Then he ordered general mobilization. Fay reports that Sazonov hurried to the palace telephone and told the general: “Now you can smash the telephone.” The orders went out; Germany would demand that Russia stop them."
   duration: 13
 
 - shot: time-limits
@@ -139,9 +139,9 @@ Nearly every line here comes from the documents the governments themselves publi
   focus: german-imperial-government
   time: "1914-08-01"
   reveal: [german-imperial-government, russia, germany, nicholas-ii, wilhelm-ii]
-  reveal_claims: [wilhelm-ii#c1, theobald-von-bethmann-hollweg#c1]
+  reveal_claims: [wilhelm-ii#c1, theobald-von-bethmann-hollweg#c1, july-crisis#c19]
   overlay: {kind: quote, source: kautsky-1924-outbreak-of-the-world-war, quote: "Understand you are obliged to mobilize but wish to have the same guaranty from you as I gave you, that these measures DO NOT mean war and that we shall continue negotiating for the benefit of our countries and universal peace dear to all our hearts.", caption: "Tsar Nicholas II to Kaiser Wilhelm II, 1 August 1914"}
-  narration: "**Time limits.** Germany gave Russia twelve hours and France eighteen. At 7:10 p.m. on 1 August its ambassador declared war on Russia. On 3 August at 6:45 p.m. it declared war on France, citing French aviators over German soil. France had already called one such German report “pure invention.”"
+  narration: "**Time limits.** On 1 August, Nicholas asked Wilhelm to promise that mobilization did not mean war and that negotiations would continue. Berlin had given Russia twelve hours to halt its military measures and France eighteen to declare neutrality. Germany's ambassador delivered the declaration of war in St. Petersburg at 7:10 p.m., saying Russia's refusal had forced Germany to act. On 3 August at 6:45 p.m., its ambassador declared war on France, citing French aviators over German soil. French Premier René Viviani had already called one such report “pure invention.” The declarations now turned the crisis into war on two fronts."
   duration: 13
 
 - shot: free-passage
@@ -152,7 +152,7 @@ Nearly every line here comes from the documents the governments themselves publi
   reveal: [german-invasion-of-belgium, belgium, brussels, theobald-von-bethmann-hollweg, germany]
   reveal_claims: [german-invasion-of-belgium#c1, german-invasion-of-belgium#c2, german-invasion-of-belgium#c3]
   overlay: {kind: quote, source: byu-belgian-reply-1914-08-03, quote: "The Belgian Government, if they were to accept the proposals submitted to them, would sacrifice the honour of the nation and betray their duty towards Europe.", caption: "Belgium’s reply to Germany, 3 August 1914"}
-  narration: "**Free passage.** Germany's way to France ran through Belgium. On 2 August it asked to cross, saying it had to “anticipate” an attack. Belgium said no. “Necessity knows no law,” Bethmann told the Reichstag on 4 August, as a Belgian envoy reported it. “For the wrong which we are thus doing, we will make reparation.”"
+  narration: "**Free passage.** In Brussels, Foreign Minister Julien Davignon delivered Belgium's refusal on 3 August. Germany had asked the day before to cross toward France, claiming it must anticipate a French attack; Belgium's answer said consent would sacrifice national honor and betray its duty to Europe. On 4 August, Bethmann Hollweg defended the invasion before the Reichstag: “necessity knows no law,” a Belgian envoy reported him saying. He admitted Germany was doing wrong and promised reparation once its military objective was attained. German troops entered Belgium; the invasion brought Britain's demand for withdrawal."
   duration: 13
 
 - shot: a-scrap-of-paper
@@ -164,7 +164,7 @@ Nearly every line here comes from the documents the governments themselves publi
   reveal: [theobald-von-bethmann-hollweg, edward-goschen, german-imperial-government, british-government, berlin]
   reveal_claims: [edward-goschen#c1, theobald-von-bethmann-hollweg#c1, july-crisis#c10]
   overlay: {kind: quote, source: hmso-1915-collected-diplomatic-documents, quote: "just for a word — “neutrality,” a word which in war time had so often been disregarded — just for a scrap of paper Great Britain was going to make war on a kindred nation who desired nothing better than to be friends with her.", caption: "British ambassador Edward Goschen, reporting Chancellor Bethmann Hollweg, 4 August 1914"}
-  narration: "**A scrap of paper.** Britain wanted an answer on Belgium by midnight. That evening its ambassador called on the Chancellor, who spoke for about twenty minutes. To attack Germany now, he said, was “like striking a man from behind while he was fighting for his life against two assailants.”"
+  narration: "**A scrap of paper.** On the evening of 4 August in Berlin, British ambassador Edward Goschen faced Bethmann Hollweg with Britain's deadline: an answer on Belgium by midnight. In Goschen’s report, the Chancellor protested for about twenty minutes that Britain would fight over a scrap of paper; attacking Germany was like striking a man from behind as he fought two assailants. Goschen says he answered that keeping Britain’s promise to defend Belgium's neutrality was a matter of life and death for British honor. Goschen left without the undertaking Britain demanded, and the deadline drew nearer."
   duration: 13
 
 - shot: the-lamps
@@ -173,9 +173,9 @@ Nearly every line here comes from the documents the governments themselves publi
   places: [london]
   time: "1914-08-03"
   reveal: [edward-grey, british-government, london, world-war-i]
-  reveal_claims: [edward-grey#c1, july-crisis#c8]
-  overlay: {kind: quote, source: grey-1925-twenty-five-years, quote: "My friend recalls that I remarked on this with the words: 'The lamps are going out all over Europe; we shall not see them lit again in our life-time.\"", caption: "Viscount Grey, memoir, 1925. It is not in the record of the day"}
-  narration: "**The lamps.** On 3 August Grey told the Commons: “We are going to suffer, I am afraid, terribly in this war whether we are in it or whether we stand aside.” The line he is remembered for comes only from his memoir, eleven years later, and from a friend's memory. Thirty-seven days after Sarajevo, the deadline ran out."
+  reveal_claims: [edward-grey#c1, july-crisis#c8, july-crisis#c17]
+  overlay: {kind: quote, source: grey-1925-twenty-five-years, quote: "My friend recalls that I remarked on this with the words: 'The lamps are going out all over Europe; we shall not see them lit again in our life-time.\"", caption: "Grey’s 1925 memoir, quoting a friend’s recollection of August 1914"}
+  narration: "**The lamps.** In the Commons on 3 August, Grey opposed unconditional neutrality: Britain had made a commitment to France and had obligations toward Belgium. “We are going to suffer, I am afraid, terribly in this war whether we are in it or whether we stand aside,” he told MPs. In his memoir eleven years later, he placed a quieter moment at a Foreign Office window at dusk, quoting a friend's memory of him saying the lamps were going out across Europe. Thirty-seven days after Sarajevo, Britain's deadline ran out and Britain entered the war."
   duration: 13
 
 - shot: who-counted
@@ -185,7 +185,7 @@ Nearly every line here comes from the documents the governments themselves publi
   reveal: [world-war-i, july-crisis, germany, russia, austria-hungary]
   reveal_claims: [july-crisis#c11]
   overlay: {kind: stat, value: "9.2 to 10 million", label: "Soldiers dead, in four counts by Urlanis, Winter, Overmans and Prost", source: 1418online-war-losses-prost, quote: "TOTAL 9,164,000 9,450,000 9,206,000 10,057,600"}
-  narration: "**Who counted.** The soldiers' dead are counted four ways, from 9,164,000 to 10,057,600. The civilian dead, wrote Antoine Prost, are “impossible to calculate with precision.” On the front line the Allies paid the highest price, he found. On the home front, the Central Powers and Russia paid more."
+  narration: "**Who counted.** Counting the dead, Antoine Prost faced a choice: should he include over 38,000 American soldiers who died of illness before crossing the Atlantic? He excluded them because, he argued, they had not endured battlefield conditions. French doctors faced another choice: classifying a dead soldier’s illness as service-related could determine his family’s pension. Prost compared four military death counts, from 9,164,000 to 10,057,600; civilian deaths remained impossible to calculate precisely. He found that the Allies lost more on the front line, the Central Powers and Russia more at home. Families carried the losses into the peace; reparations would include survivors’ pensions."
   duration: 13
 
 - shot: article-231
@@ -195,8 +195,8 @@ Nearly every line here comes from the documents the governments themselves publi
   time: "1919-06-28"
   reveal: [treaty-of-versailles, versailles, germany, world-war-i]
   reveal_claims: [treaty-of-versailles#c1]
-  overlay: {kind: quote, source: avalon-versailles-part8, quote: "The Allied and Associated Governments affirm and Germany accepts the responsibility of Germany and her allies for causing all the loss and damage to which the Allied and Associated Governments and their nationals have been subjected", caption: "Treaty of Versailles, Article 231, 28 June 1919"}
-  narration: "**The verdict.** The treaty was signed five years to the day after Sarajevo. In Germany, no political camp accepted it as a verdict of guilt. The argument over who was to blame had only begun, and historians have given at least three answers."
+  overlay: {kind: "quote", source: "1418online-versailles-brandt", quote: "The German National Assembly only unconditionally approved the signing of the treaty shortly before the ultimatum would have expired.", caption: "Susanne Brandt on Germany’s decision to sign the Treaty of Versailles"}
+  narration: "**The verdict.** On 28 June 1919, five years to the day after Sarajevo, Hermann Müller and Johannes Bell signed for Germany at Versailles. The previous government had resigned during the argument over signing; the National Assembly approved acceptance shortly before an Allied ultimatum expired. Article 231 made Germany accept responsibility for the loss and damage caused by Germany and its allies, laying the basis for reparations. The signatures did not bring agreement over guilt: as Susanne Brandt writes, no political camp in Germany accepted the treaty as that verdict. The argument moved from the peace table into books about who had chosen war."
   duration: 13
 
 - shot: the-verdict-of-1928
@@ -206,7 +206,7 @@ Nearly every line here comes from the documents the governments themselves publi
   reveal: [sidney-fay, origins-of-the-world-war, treaty-of-versailles, serbia, germany]
   reveal_claims: [sidney-fay#c1]
   overlay: {kind: quote, source: fay-1930-origins-of-the-world-war, quote: "and for that factor Serbian nationalism was primarily responsible. But the verdict of the Versailles Treaty that Germany and her allies were responsible for the War, in view of the evidence now available, is historically unsound.", caption: "Sidney Fay, 1928. “That factor” is the assassination"}
-  narration: "**To blame? 1928.** Much of the German and Austrian record in this story reaches us through Sidney Fay's book. He was also a party to the argument. The war had many deep causes, he wrote, and he called for the treaty's verdict to be revised."
+  narration: "**To blame? 1928.** Sidney Fay ended his history by asking that the Versailles verdict be revised. He called Serbian nationalism primarily responsible for the assassination, but distinguished that spark from the war's many deeper causes. He called the treaty's verdict against Germany and its allies historically unsound. He also doubted that a legal revision was yet possible while feeling ran so high in the Entente countries. Fay argued that scholars first had to revise the history and, through it, public opinion. He called for revision of the judgment of 1919."
   duration: 13
 
 - shot: the-verdict-of-1961
@@ -215,9 +215,9 @@ Nearly every line here comes from the documents the governments themselves publi
   focus: fritz-fischer
   time: "1961"
   reveal: [fritz-fischer, germanys-aims-in-the-first-world-war, germany, wilhelm-ii]
-  reveal_claims: [fritz-fischer#c1]
+  reveal_claims: [fritz-fischer#c1, july-crisis#c18]
   overlay: {kind: quote, source: viu-fischer-germanys-aims, quote: "As Germany willed and coveted the Austro-Serbian war and, in her confidence in her military superiority, deliberately faced the risk of a conflict with Russia and France, her leaders must bear a substantial share of the historical responsibility for the outbreak of general war in 1914.", caption: "Fritz Fischer, 1961"}
-  narration: "**To blame? 1961.** The German historian Fritz Fischer answered the other way. It was not a matter of everyone stumbling in, he argued: the leaders in Berlin knew the risk they were taking."
+  narration: "**To blame? 1961.** Fritz Fischer put German statesmen's claims that war had been forced on them beside Bethmann Hollweg's private calculations. In Kurt Riezler's diary, as Fischer quoted it, the Chancellor said on 8 July: “If war doesn't come, if the Tsar doesn't want it or France panics and advises peace, we have still achieved this much, that we have manoeuvred the Entente into disintegration over this move.” Fischer concluded that Berlin's leaders, confident of military superiority, deliberately risked war with Russia and France and bore a substantial share of responsibility. Their choices, he argued, challenged the defense that everyone had merely stumbled into war."
   duration: 13
 
 - shot: the-verdict-of-2012
@@ -227,6 +227,6 @@ Nearly every line here comes from the documents the governments themselves publi
   reveal: [christopher-clark, the-sleepwalkers, july-crisis, world-war-i]
   reveal_claims: [christopher-clark#c1]
   overlay: {kind: quote, source: npr-2013-clark-sleepwalkers, quote: "none of the individuals who brought about this war - at least none of the civilian leaders who were really responsible for it - actually wanted war. And certainly none of them wanted the war that actually happened between 1914 and 1918.", caption: "Christopher Clark on NPR, 2013"}
-  narration: "**To blame? 2012.** The historian Christopher Clark called his book The Sleepwalkers. This story does not settle the question either. The telegrams are here, in the words of those who sent them."
+  narration: "**To blame? 2012.** As Christopher Clark finished The Sleepwalkers, Europe's leaders were struggling with the euro crisis. In his 2013 NPR interview, he recalled watching them share a fear of collapse without finding a common solution; it made him reconsider the choices of 1914. None of the responsible civilian leaders wanted war, he argued, and certainly none wanted the war that followed; most accepted it if persuaded someone else was forcing it upon them. He traced how statesmen trapped themselves in stories of their own making. For Clark, their fear of catastrophe had not stopped their decisions from bringing it about. The telegrams left later readers arguing over how much each decision mattered."
   duration: 13
 ```
