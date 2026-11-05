@@ -26,4 +26,10 @@ claims:
     role: "under what became known as the Allende Doctrine it proposed to deduct “excess profits” from compensation, so that U.S. copper companies “were in fact told they owed money”"
     src:
       - {s: senate-church-covert-action-in-chile-1975, quote: "U.S. copper companies were in fact told they owed money."}
+  - id: c4
+    rel: involved
+    to: salvador-allende
+    role: "announced that excess profits would be deducted from compensation for nationalized copper companies"
+    src:
+      - {s: senate-church-covert-action-in-chile-1975, at: "Chronology, 28 September 1971", quote: "President Allende announces that \"excess profits\" will be deducted from compensation to be paid to nationalized copper companies."}
 ---

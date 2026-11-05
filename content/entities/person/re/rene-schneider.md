@@ -13,4 +13,10 @@ claims:
     role: "the staff report: the group that staged the kidnap attempt apparently was not the one that received CIA weapons"
     src:
       - {s: senate-church-covert-action-in-chile-1975, quote: "The group which staged the abortive kidnap of Schneider, which resulted in his death, apparently was not the same as the group which received CIA weapons."}
+  - id: c2
+    rel: appears_in
+    to: covert-action-in-chile
+    role: "opposed a coup and insisted that the constitutional process be followed, making his removal part of the conspirators' plans, the Church Committee found"
+    src:
+      - {s: senate-church-interim-report-1975, quote: "General Rene Schneider, who insisted the constitutional process be followed."}
 ---

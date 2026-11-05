@@ -13,4 +13,12 @@ claims:
     when: "1999"
     src:
       - {s: ceh-guatemala-memory-of-silence-1999, quote: "the CEH estimates that the number of persons killed or disappeared as a result of the fratricidal confrontation reached a total of over 200,000."}
+  - id: c2
+    rel: authored
+    to: guatemala-memory-of-silence
+    when: "1999"
+    note: "coordinator Tomuschat said the army withheld operational reports for 1981–83 and that some 9,000 witnesses helped fill the documentary gap"
+    src:
+      - {s: un-press-conference-historical-clarification-commission-1999-03-01, quote: "The army had first said those reports were covered by the principle of State secrets; later, it said there were no reports whatsoever in the archives"}
+      - {s: un-press-conference-historical-clarification-commission-1999-03-01, quote: "The vacuum left by that lack of documentary evidence had been filled by the testimony of some 9,000 witnesses."}
 ---

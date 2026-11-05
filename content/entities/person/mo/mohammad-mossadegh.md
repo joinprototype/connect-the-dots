@@ -45,4 +45,18 @@ claims:
     role: "sentenced to three years in prison after the coup, then kept under virtual house arrest in his village until his death in 1967"
     src:
       - {s: cia-battle-for-iran-1981, quote: "Sentenced to three years in prison in a post-coup trial, he was eventually pardoned by the Shah in August 1956, but he was forced to remain in his village of Ahmadabad under virtual house arrest for the 11 years until his death in March 1967."}
+  - id: c6
+    rel: intervened_in
+    to: oil-dispute-at-the-un-1951-52
+    when: "1951-10-15"
+    role: "told the Security Council that Iran's oil should provide work and food for its population"
+    src:
+      - {s: un-security-council-560th-meeting-1951-10-15, quote: "Our greatest natural asset is oil. This should be the source of work and of food for the population of Iran.", by: mohammad-mossadegh}
+  - id: c7
+    rel: intervened_in
+    to: iran-oil-nationalization-1951
+    when: "1951"
+    role: "put 20,000 Abadan oil workers on the government payroll after Anglo-Iranian laid them off"
+    src:
+      - {s: cia-koch-zendebad-shah-1998, quote: "The AIOC laid off 20,000 oil workers at the port at Abadan and Mossadeq had to put them on the government payroll."}
 ---

@@ -57,4 +57,17 @@ claims:
     role: "told in the CIA’s 2000 report"
     src:
       - {s: cia-activities-in-chile-2000-09-18, quote: "Awareness of Coup Plotting in 1973."}
+  - id: c8
+    rel: involved
+    to: salvador-allende
+    role: "the CIA's later report says he refused the coup leaders' offer of safe passage before taking his own life"
+    src:
+      - {s: cia-activities-in-chile-2000-09-18, quote: "Allende would refuse the putchists’ offer of safe passage out of the country"}
+  - id: c9
+    rel: involved
+    to: chilean-government
+    role: "commission director María Luisa Sepúlveda announced recognition of 9,800 further political prisoners and torture survivors; survivors would receive lifetime pensions"
+    src:
+      - {s: bbc-2011-08-18-chile-recognises-more-victims, quote: "Commission director Maria Luisa Sepulveda said they had identified another 9,800 people who had been held as political prisoners and tortured."}
+      - {s: bbc-2011-08-18-chile-recognises-more-victims, quote: "The survivors will get lifetime pensions of about $260 (£157) a month."}
 ---

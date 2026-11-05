@@ -21,4 +21,10 @@ claims:
     src:
       - {s: cia-cullather-operation-pbsuccess-1994, quote: "Corcoran met in May 1950 with the head of the State Department's office on Central America, Thomas C. Mann, to discuss ways to secure the election of a centrist candidate."}
       - {s: cia-cullather-operation-pbsuccess-1994, quote: "without approval from State, CIA evinced little interest."}
+  - id: c3
+    rel: appears_in
+    to: operation-pbsuccess-history
+    role: "advised United Fruit officials to address their political problem"
+    src:
+      - {s: cia-cullather-operation-pbsuccess-1994, quote: "You've got to handle your political problem.", by: thomas-g-corcoran}
 ---

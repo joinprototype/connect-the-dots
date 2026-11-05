@@ -20,4 +20,13 @@ claims:
     according_to: [bitter-fruit]
     src:
       - {s: schlesinger-kinzer-bitter-fruit-1982, quote: "Undersecretary of State Bedell Smith was seeking an executive job with United Fruit while helping to plan the coup against Guatemala"}
+  - id: c3
+    rel: appears_in
+    to: bitter-fruit
+    role: "Corcoran later recalled Smith expressing a desire to become United Fruit's president after becoming Under Secretary of State; the authors describe Smith as unhappy working for Dulles"
+    according_to: [bitter-fruit]
+    src:
+      - {s: schlesinger-kinzer-bitter-fruit-1982, quote: "Smith wondered about the possibility of a job at the United Fruit Company."}
+      - {s: schlesinger-kinzer-bitter-fruit-1982, quote: "Smith conceded profound unhappiness about leaving the CIA to work for Dulles"}
+      - {s: schlesinger-kinzer-bitter-fruit-1982, quote: "He told me he always liked to watch those pretty sailing ships on the Atlantic—the Great White Fleet.", by: thomas-g-corcoran}
 ---

@@ -31,4 +31,12 @@ claims:
     src:
       - {s: cia-cullather-operation-pbsuccess-1994, quote: "allowed Arbenz free passage to Mexico on 12 September 1954."}
       - {s: cia-cullather-operation-pbsuccess-1994, quote: "returning finally to Mexico where in 1971 he drowned in his bathtub."}
+  - id: c4
+    rel: intervened_in
+    to: guatemala-agrarian-reform-1952
+    when: "1951"
+    role: "in his inaugural address, set out economic independence and higher living standards as objectives of his government's economic policy"
+    src:
+      - {s: schlesinger-kinzer-bitter-fruit-1982, quote: "to an economically independent country", by: jacobo-arbenz}
+      - {s: schlesinger-kinzer-bitter-fruit-1982, quote: "and to make this transformation in a way that will raise the standard of living of the great mass of our people to the highest level.", by: jacobo-arbenz}
 ---

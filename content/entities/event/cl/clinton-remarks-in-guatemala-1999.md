@@ -24,4 +24,10 @@ claims:
     role: "said U.S. support for forces that engaged in violent and widespread repression was wrong"
     src:
       - {s: clinton-guatemala-city-1999-03-10, quote: "support for military forces or intelligence units which engaged in violent and widespread repression of the kind described in the report was wrong, and the United States must not repeat that mistake.", by: bill-clinton}
+  - id: c4
+    rel: involved
+    to: bill-clinton
+    role: "pledged continued U.S. support for peace and reconciliation after calling support for repressive forces wrong"
+    src:
+      - {s: clinton-guatemala-city-1999-03-10, quote: "We must, and we will, instead, continue to support the peace and reconciliation process in Guatemala.", by: bill-clinton}
 ---
