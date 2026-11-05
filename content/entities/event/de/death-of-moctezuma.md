@@ -59,6 +59,13 @@ claims:
     to: true-history-of-the-conquest-of-new-spain
     src:
       - {s: bernal-diaz-lockhart-1844-v1, at: "volume 1", quote: "Cortes, his officers, and all of us, shed tears for this unfortunate monarch"}
+  - id: c9
+    rel: involved
+    to: moctezuma-ii
+    according_to: [hernan-cortes]
+    note: "Cortés says Moctezuma asked to address the people from the fort roof to stop the war; he says he later sent the body out with two prisoners and the fighting continued."
+    src:
+      - {s: "cortes-letters-macnutt-1908-v1", at: "Second Letter", quote: "asked to be carried to the roof of the fort where he could speak to the captains and the people, and cause the war to cease."}
 ---
 
 Moctezuma died in Spanish hands in late June 1520. Cortés and Bernal Díaz say his own people wounded him; accounts that MacNutt reports from the Mexican side say the Spaniards killed him.

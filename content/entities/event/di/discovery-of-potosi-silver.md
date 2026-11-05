@@ -43,6 +43,12 @@ claims:
     src:
       - {s: cieza-cronica-del-peru-pease-2005-es, at: "ch. 109", quote: "al que tenía mina, le daban los indios que en ella entraban un marco. Y si era muy rica dos cada semana."}
       - {s: cieza-cronica-del-peru-pease-2005-es, at: "ch. 109", quote: "Y si no tenía mina, a los señores encomenderos de indios les daban medio marco cada semana."}
+  - id: c6
+    rel: involved
+    to: potosi
+    note: "Markham’s note citing Acosta says Hualpa secretly worked the vein before telling a man from Xauxa, who told his master Villaroel."
+    src:
+      - {s: "markham-notes-cieza-travels-1864", at: "Markham’s note, citing Acosta", quote: "He secretly worked the vein himself for some time, but eventually disclosed the secret to a native of Xauxa"}
 ---
 
 Silver mining began in earnest at Cerro Rico above Potosí in the mid-1540s: Acosta, through Markham, says April 1545; Cieza says 1546 in Markham's English and 1547 in a modern Spanish edition.

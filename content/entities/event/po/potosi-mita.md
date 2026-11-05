@@ -27,9 +27,17 @@ claims:
     rel: appears_in
     to: persistent-effects-of-perus-mining-mita
     according_to: [melissa-dell]
-    note: "Dell's finding concerns districts that were subject to the mita. Only the abstract was read."
+    note: "Dell’s 2010 study estimates lasting effects on household consumption and child growth in formerly subjected districts at the time of the study."
     src:
       - {s: dell-2010-mita, at: "abstract", quote: "lowers household consumption by around 25% and increases the prevalence of stunted growth in children by around 6 percentage points in subjected districts today"}
+  - id: c4
+    rel: involved
+    to: potosi
+    note: "The encyclopedia describes villages resisting the draft or paying for substitutes, workers staying for free labor’s higher wages, and the Spanish preservation of the draft as a mining subsidy."
+    src:
+      - {s: "encyclopedia-com-mita", at: "entry", quote: "Some villages successfully resisted fulfillment of the mita obligation. Other villages paid colonial administrators to hire substitutes from the pool of voluntary laborers."}
+      - {s: "encyclopedia-com-mita", at: "entry", quote: "Mitayos (mita workers) sometimes stayed on to earn the higher wages paid free labor."}
+      - {s: "encyclopedia-com-mita", at: "entry", quote: "the Spaniards preserved the mita because it subsidized mining through low wages."}
 ---
 
 A forced labour draft that supplied miners to Potosí and other mines in the Spanish viceroyalty of Peru, 1573 to 1812; the reference entry credits Viceroy Toledo with setting it up.

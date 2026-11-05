@@ -36,6 +36,20 @@ claims:
     note: "Bernal Díaz says the treasure of Moctezuma that Avila was taking to the emperor was seized by a French pirate."
     src:
       - {s: bernal-diaz-lockhart-1844-v1, at: "volume 1", quote: "Avila, with the whole of those treasures, was captured by the redoubted French pirate Jean Florin"}
+  - id: c5
+    rel: involved
+    to: hernan-cortes
+    according_to: [hernan-cortes]
+    note: "Cortés explains his decision to leave at night by the wounded men and his fear that the remaining causeway would be destroyed."
+    src:
+      - {s: "cortes-letters-macnutt-1908-v1", at: "Second Letter", quote: "all, or nearly all, were wounded so badly that they could no longer fight, I determined to leave that same night."}
+  - id: c6
+    rel: involved
+    to: maxixcatzin
+    according_to: [hernan-cortes]
+    note: "After Maxixcatzin died of smallpox, Cortés says he recognized his son as heir in Charles V’s name."
+    src:
+      - {s: "cortes-letters-macnutt-1908-v2", at: "Third Letter", quote: "they prayed me to recognise him as his heir. And I in the name of Your Majesty did this"}
 ---
 
 In 1520 the Spaniards and their allies fought their way out of the capital. Cortés counts the Spanish and allied dead and the lost gold; Bernal Díaz counts far more Spanish dead.

@@ -57,6 +57,13 @@ claims:
     src:
       - {s: pedro-pizarro-means-1921-v1, at: "Pedro Pizarro", quote: "there broke out among them a plague of smallpox, never seen among them before, which killed many Indians"}
       - {s: pedro-pizarro-means-1921-v1, at: "Pedro Pizarro", quote: "had the land not been divided by the wars between Guascar and Atabalipa, we would not have been able to enter or win the land unless we could gather one thousand Spaniards for the task"}
+  - id: c9
+    rel: involved
+    to: atahualpa
+    according_to: [pedro-pizarro]
+    note: "Pedro Pizarro’s later narrative says Atahualpa refused Huascar’s summons to Cuzco, answering that Quito needed an Inca governor."
+    src:
+      - {s: "pedro-pizarro-means-1921-v1", at: "Pedro Pizarro, after Huayna Capac’s death", quote: "as he had to have an Inga there [in Quito] as a governor"}
 ---
 
 War between Huascar at Cuzco and his brother Atahualpa at Quito, ended in Atahualpa's favour as the Spaniards landed.

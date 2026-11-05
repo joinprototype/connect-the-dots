@@ -3,7 +3,7 @@ uid: 01M6DQG20Y47X9QZ2DCJ3Z7TQC
 id: torture-of-cuauhtemoc
 type: event
 name: "Cuauhtémoc tortured over the hidden gold"
-summary: "After the fall, Cuauhtémoc and another ruler were tortured to make them say where treasure was hidden; Bernal Díaz says the crown officials pressed for it and Cortés at last consented."
+summary: "After the fall, Cuauhtémoc and another ruler were tortured to make them say where treasure was hidden; Bernal Díaz says Cortés consented after crown officials pressed for it, to dispel suspicions that he meant to keep the treasure and avoid being called to account."
 when: "1521"
 place: tenochtitlan
 coords: [-99.1314, 19.435]
@@ -31,4 +31,4 @@ claims:
       - {s: florentine-codex-book-12-1975, at: "Book 12", quote: "That which was guarded in Mexico? You will show it all. For our lords seek it diligently!"}
 ---
 
-After the fall, Cuauhtémoc and another ruler were tortured to make them say where treasure was hidden; Bernal Díaz says the crown officials pressed for it and Cortés at last consented.
+After the fall, Cuauhtémoc and another ruler were tortured to make them say where treasure was hidden; Bernal Díaz says Cortés consented after crown officials pressed for it, to dispel suspicions that he meant to keep the treasure and avoid being called to account.

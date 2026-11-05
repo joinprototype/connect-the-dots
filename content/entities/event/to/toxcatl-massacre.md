@@ -39,6 +39,14 @@ claims:
     src:
       - {s: cortes-letters-macnutt-1908-v1, at: "Second Letter", quote: "Indians had assaulted the fort on all sides, and set fire to it in many parts"}
       - {s: cortes-letters-macnutt-1908-v1, at: "Second Letter", quote: "the armada and people in the port belonged to Diego Velasquez, and had come by his orders"}
+  - id: c5
+    rel: involved
+    to: pedro-de-alvarado
+    according_to: [bernal-diaz-del-castillo]
+    note: "Díaz later recalled Alvarado admitting he permitted the feast, then chose it to surprise and terrify the participants while alleging an impending attack; Cortés rejected his explanation."
+    src:
+      - {s: bernal-diaz-lockhart-1844-v1, at: "volume 1, Cortés questions Alvarado", quote: "Alvarado could certainly not deny this, but assured him he had selected that opportunity to punish them that it might come the more unexpectedly, and strike the greater terror among them"}
+      - {s: bernal-diaz-lockhart-1844-v1, at: "volume 1, Cortés questions Alvarado", quote: "he told Alvarado, rather sharply, that he saw very little truth in all this"}
 ---
 
 In May 1520, while Cortés was on the coast, Alvarado's men attacked Mexica gathered for the feast of Toxcatl in Tenochtitlan; the Spanish and Nahua accounts disagree about why.

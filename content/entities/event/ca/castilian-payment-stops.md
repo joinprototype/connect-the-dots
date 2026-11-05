@@ -23,6 +23,14 @@ claims:
     according_to: [carlos-alvarez-nogal, christophe-chamley]
     src:
       - {s: alvarez-nogal-chamley-2015-credit-freeze, at: "abstract", quote: "The evidence strikingly confirms that the strategy of Philip II was not directed against the bankers but against the cities that were represented in the Cortes."}
+  - id: c4
+    rel: involved
+    to: philip-ii-of-spain
+    according_to: [carlos-alvarez-nogal, christophe-chamley]
+    note: "Álvarez-Nogal and Chamley interpret the 1575–77 credit freeze as Philip’s pressure on the cities: trade suffered while bankers received legal protection; the cities doubled their tax commitment before payments resumed."
+    src:
+      - {s: "alvarez-nogal-chamley-2015-credit-freeze", at: "abstract", quote: "Commercial fairs stopped, banks failed and trade suffered while the King granted legal protection to the Genoese bankers."}
+      - {s: "alvarez-nogal-chamley-2015-credit-freeze", at: "Introduction", quote: "After resisting for more than two years, the cities accepted and voted in the Cortes a doubling of their tax contributions"}
 ---
 
 Three times, in 1557-60, 1575-77 and 1596-97, Philip II halted payments on his contracts with bankers.

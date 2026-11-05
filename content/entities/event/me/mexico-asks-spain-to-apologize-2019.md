@@ -29,6 +29,13 @@ claims:
     according_to: [andres-manuel-lopez-obrador]
     src:
       - {s: reuters-nbc-2019-mexico-asks-spain-to-apologize, at: "Reuters report", quote: "I already sent a letter to the king of Spain and another letter to the Pope so that they ask forgiveness of indigenous peoples for violations of what are now known as human rights"}
+  - id: c5
+    rel: involved
+    to: andres-manuel-lopez-obrador
+    according_to: [andres-manuel-lopez-obrador]
+    note: "Speaking in Tabasco in March 2019, López Obrador presented the apology request as a step toward reconciliation."
+    src:
+      - {s: "reuters-nbc-2019-mexico-asks-spain-to-apologize", at: "Reuters report", quote: "We are going to reconcile but first we ask for forgiveness.", by: "andres-manuel-lopez-obrador"}
 ---
 
 In March 2019 Mexico's president wrote to the King of Spain and the Pope asking them to apologise to indigenous peoples; Spain's government rejected the request.

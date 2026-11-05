@@ -34,6 +34,14 @@ claims:
     src:
       - {s: munro-eh-net-review-of-hamilton, at: "review", quote: "Many economic historians (myself included, regrettably) have misunderstood Hamilton on this point"}
       - {s: munro-eh-net-review-of-hamilton, at: "review", quote: "only a minority of us today espouse a basically monetary explanation for the European Price Revolution (ca. 1515/20-1650) — though no such explanation can be purely monetary."}
+  - id: c5
+    rel: appears_in
+    to: american-treasure-and-the-price-revolution
+    according_to: [john-h-munro]
+    note: "Munro reports Hamilton’s purpose and his preface’s count of 30,750 hours of work by Hamilton and his wife on bullion, price and wage data."
+    src:
+      - {s: "munro-eh-net-review-of-hamilton", at: "review, purpose of Hamilton’s study", quote: "His object was to validate the Quantity Theory of Money"}
+      - {s: "munro-eh-net-review-of-hamilton", at: "review, conclusion", quote: "he and his wife spent 30,750 hours in collecting and processing this vast amount of quantitative data on Spanish bullion imports and prices and wages"}
 ---
 
 The long rise in European prices from about 1520 to 1650.

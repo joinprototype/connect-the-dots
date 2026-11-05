@@ -18,7 +18,7 @@ claims:
     rel: involved
     to: francisco-pizarro
     according_to: [francisco-de-xerez]
-    note: "Xerez adds, in a line the scan garbles, that Pizarro told him to send for the metal and that once it came he need have no fear."
+    note: "Xerez says Pizarro told him to send for the metal and that once it came he need have no fear."
     src:
       - {s: xerez-reports-markham-1872, at: "Xerez", quote: "I will give gold enough to fill a room twenty-two feet long and seventeen wide, up to a white line which is half way up the wall."}
   - id: c3

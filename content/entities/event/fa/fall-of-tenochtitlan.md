@@ -54,6 +54,13 @@ claims:
     src:
       - {s: cortes-letters-macnutt-1908-v2, at: "Third Letter", quote: "such was the slaughter done that day on water and on land"}
       - {s: cortes-letters-macnutt-1908-v2, at: "Third Letter", quote: "they numbered in all more than forty thousand men; and such were the shrieks and the weeping of the women and children that there was none whose heart did not break"}
+  - id: c8
+    rel: involved
+    to: hernan-cortes
+    according_to: [hernan-cortes]
+    note: "Cortés says he ordered his allies not to hurt emaciated women and children leaving the city."
+    src:
+      - {s: "cortes-letters-macnutt-1908-v2", at: "Third Letter", quote: "who came out so emaciated and thin, that it was the greatest pity in the world to behold them, so I ordered our friends not to hurt them."}
 ---
 
 The siege that began on 30 May 1521 ended on 13 August 1521 with the capture of Cuauhtémoc.

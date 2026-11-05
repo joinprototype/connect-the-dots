@@ -39,6 +39,13 @@ claims:
     note: "On the killing at Cholula, Book 12 says the Tlaxcalans had incited the Spaniards against the people of Cholula."
     src:
       - {s: florentine-codex-book-12-1975, at: "Book 12", quote: "For in truth the Tlaxcallans had incited [the Spaniards] against them."}
+  - id: c6
+    rel: involved
+    to: maxixcatzin
+    according_to: [bernal-diaz-del-castillo]
+    note: "After the retreat in 1520, Maxixcatzin defended the Spanish alliance by pointing to wealth, respect and renewed access to salt, in the speech Bernal Díaz recalled in old age."
+    src:
+      - {s: "bernal-diaz-lockhart-1844-v1", at: "volume 1, speech after the retreat", quote: "it is since that time only we eat salt again", by: "maxixcatzin"}
 ---
 
 After fighting him, the lords of Tlaxcala made peace with Cortés in 1519 and joined him against Moctezuma's rule; Bernal Díaz gives their reasons from memory.

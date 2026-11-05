@@ -20,6 +20,13 @@ claims:
     src:
       - {s: macnutt-notes-letters-of-cortes-1908-v2, at: "note to the Fifth Letter", quote: "who, without more ado hanged the three Princes that night on a Ceiba tree"}
       - {s: macnutt-notes-letters-of-cortes-1908-v2, at: "note to the Fifth Letter", quote: "Bernal Diaz states that both Quauhtemotzin and Tetepanquezatl protested their entire innocence, and that all the Spaniards disapproved of the execution"}
+  - id: c3
+    rel: involved
+    to: cuauhtemoc
+    according_to: [francis-augustus-macnutt]
+    note: "MacNutt’s note, drawing on a Mexican manuscript through Torquemada, names Cohuanocox of Texcoco as the speaker about captivity and revenge for Cuauhtémoc’s burned feet; the others stopped him, but an eavesdropper reported his words to Cortés. MacNutt adds Torquemada’s view that Cortés used a pretext to kill the captives."
+    src:
+      - {s: "macnutt-notes-letters-of-cortes-1908-v2", at: "note to the Fifth Letter", quote: "Cortes for burning Quauhtemotzin's feet. At this point the others stopped him"}
 ---
 
 Cuauhtémoc was hanged on a later expedition under Cortés, who says he had plotted; later writers disputed that.

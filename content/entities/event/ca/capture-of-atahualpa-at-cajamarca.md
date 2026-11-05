@@ -69,6 +69,14 @@ claims:
     note: "Salcamayhua puts the dead at twelve thousand; Xerez at two thousand."
     src:
       - {s: salcamayhua-antiquities-markham-1873, at: "Salcamayhua", quote: "after he had spoken with the friar Vicente de Valverde, when twelve thousand men were killed"}
+  - id: c10
+    rel: involved
+    to: francisco-pizarro
+    according_to: [francisco-de-xerez]
+    note: "Xerez reports Pizarro’s promise of a friendly reception and his preparations for the cavalry to charge on the cry of Santiago."
+    src:
+      - {s: "xerez-reports-markham-1872", at: "Xerez, before Atahualpa entered Cajamarca", quote: "Tell your lord to come when and how he pleases, and that, in what way soever he may come, I will receive him as a friend and brother.", by: "francisco-pizarro"}
+      - {s: "xerez-reports-markham-1872", at: "Xerez, preparations for the attack", quote: "the cavalry mounted, when they heard the cry of Santiago."}
 ---
 
 On 16 November 1532 Pizarro seized Atahualpa in the plaza of Cajamarca and his men opened fire. Xerez says two thousand were killed and that no Indian raised arms against a Spaniard.

@@ -52,6 +52,21 @@ claims:
     according_to: [juan-de-santa-cruz-pachacuti-yamqui-salcamayhua]
     src:
       - {s: salcamayhua-antiquities-markham-1873, at: "Salcamayhua", quote: "Atahuallpa was baptized and called Don Francisco, and afterwards he was put to death as a traitor."}
+  - id: c8
+    rel: involved
+    to: diego-de-almagro
+    according_to: [pedro-pizarro]
+    note: "Pedro Pizarro says Almagro’s latecomers resented exclusion from Atahualpa’s treasure and wanted his death to end the proclamation governing its distribution."
+    src:
+      - {s: "pedro-pizarro-means-1921-v1", at: "Pedro Pizarro, dispute over the treasure", quote: "And to those who came afterwards nothing was given."}
+      - {s: "pedro-pizarro-means-1921-v1", at: "Pedro Pizarro, dispute over the treasure", quote: "they would never have anything."}
+  - id: c9
+    rel: involved
+    to: atahualpa
+    according_to: [pedro-pizarro]
+    note: "Pedro Pizarro says Atahualpa agreed to baptism after being told he would not be burned if he became a Christian."
+    src:
+      - {s: "pedro-pizarro-means-1921-v1", at: "Pedro Pizarro, execution", quote: "he said that if they would not burn him, he would be baptized"}
 ---
 
 In July 1533 Atahualpa was baptised and strangled at Cajamarca. The Spanish accounts give different reasons for the sentence; Pedro Pizarro says Soto came back afterwards having found nothing.

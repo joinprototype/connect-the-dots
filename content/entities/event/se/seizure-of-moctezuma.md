@@ -62,6 +62,13 @@ claims:
       - {s: florentine-codex-book-12-1975, at: "Book 12", quote: "And as all the gold was detached, at once they ignited, set fire to, applied fire to all the various precious things [which remained]."}
       - {s: florentine-codex-book-12-1975, at: "Book 12", quote: "And the gold the Spaniards formed into separate bars."}
       - {s: florentine-codex-book-12-1975, at: "Book 12", quote: "But the rest of the green stone the Tlaxcallans just stole."}
+  - id: c9
+    rel: involved
+    to: hernan-cortes
+    according_to: [hernan-cortes]
+    note: "Cortés told Charles V that royal service and Spanish security required keeping Moctezuma in his power, while reporting that he had promised Moctezuma liberty."
+    src:
+      - {s: "cortes-letters-macnutt-1908-v1", at: "Second Letter", quote: "and to our security, that Montezuma should be in my power, and not at his entire liberty"}
 ---
 
 Soon after arriving, Cortés took Moctezuma to the Spanish quarters. Cortés writes that it was to settle the killing of Spaniards on the coast; the Nahua account describes a seizure.
