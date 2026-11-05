@@ -25,4 +25,12 @@ claims:
     according_to: [chinese-government]
     src:
       - {s: xinhua-2020-shenzhen-40, at: "paragraph 4", quote: "On Aug 26, 1980, the 15th meeting of the Standing Committee of the fifth National People's Congress, the national legislature, approved the establishment of special economic zones"}
+  - id: c4
+    rel: involved
+    to: shenzhen
+    role: "Xinhua recounts Wang Chuanfu building BYD in Shenzhen from 1995 and quotes his explanation of its work on core technology"
+    according_to: [chinese-government]
+    src:
+      - {s: xinhua-2020-shenzhen-40, at: "Shenzhen dream, Chinese dream", quote: "Wang has been chasing his dream, like millions of others, in Shenzhen since 1995."}
+      - {s: xinhua-2020-shenzhen-40, at: "Wang Chuanfu quoted", quote: "We have taken root in Shenzhen and worked hard to master the core technology."}
 ---

@@ -18,4 +18,11 @@ claims:
     role: "Judge Linda Chan made the order"
     src:
       - {s: bloomberg-2024-evergrande-liquidation, at: "court hearing", quote: "even after a wind-up, it’s still possible for the company to put forward a scheme of arrangement"}
+  - id: c3
+    rel: involved
+    to: hong-kong-high-court
+    role: "Judge Linda Chan cited unfulfilled steps and lack of progress before ordering the company wound up"
+    src:
+      - {s: bloomberg-2024-evergrande-liquidation, at: "Judge Linda Chan at the hearing", quote: "While creditors were not seeking a wind-up order, Judge Chan noted the lack of progress."}
+      - {s: bloomberg-2024-evergrande-liquidation, at: "Judge Linda Chan at the hearing", quote: "“The company said it will do one, two, three,” she said. “None of that has been done.”"}
 ---

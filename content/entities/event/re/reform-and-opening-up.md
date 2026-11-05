@@ -60,4 +60,13 @@ claims:
     according_to: [chinese-government]
     src:
       - {s: chinadaily-hk-2021-poverty-white-paper, at: "paragraph 1", quote: "China pulled more than 770 million rural residents out of dire poverty after its embrace of wide-ranging reforms in 1978"}
+  - id: c9
+    rel: appears_in
+    to: capitalism-with-chinese-characteristics-2008
+    role: "Carnegie reports that Huang clarified his rural-policy reversal argument after Prasad’s growth question, urged rural priority because people understood market principles, and that the Party had restored some rural policies"
+    according_to: [yasheng-huang]
+    src:
+      - {s: carnegie-2008-huang-rethinking-model, at: "Questions & Answers", quote: "In response, Huang clarified that he was only referring to a reversal in rural areas that increased inequality and decreased poverty alleviation."}
+      - {s: carnegie-2008-huang-rethinking-model, at: "Questions & Answers", quote: "They have already abolished the rural tax, reduced education and health fees, and revised rural finance."}
+      - {s: carnegie-2008-huang-rethinking-model, at: "Questions & Answers", quote: "Huang emphasizes the rural region, where people usually have an intuitive understanding of market principles."}
 ---

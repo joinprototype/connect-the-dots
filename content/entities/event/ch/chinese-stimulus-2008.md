@@ -19,4 +19,12 @@ claims:
     according_to: [barry-naughton]
     src:
       - {s: naughton-2009-stimulus, at: "The Investment Plan", quote: "the central government committed to directly fund only 1.18 trillion RMB of the investment, about 30 percent of the overall program."}
+  - id: c3
+    rel: involved
+    to: chinese-government
+    role: "in April 2009 Wen Jiabao convened the State Council; its press release defended its economic policies while warning against excessive optimism"
+    according_to: [barry-naughton]
+    src:
+      - {s: naughton-2009-stimulus, at: "footnote 29", quote: "Wen Jiabao convenes a plenary meeting of the State Council to study and arrange the new stage of economic work"}
+      - {s: naughton-2009-stimulus, at: "conclusion, State Council press release", quote: "it would be wrong to be “blindly optimistic,” and better to “over-estimate the magnitude and duration of the difficulties.”"}
 ---

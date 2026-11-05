@@ -34,4 +34,11 @@ claims:
     according_to: [martin-king-whyte]
     src:
       - {s: whyte-wang-cai-2015-myths, at: "section on the 1980s", quote: "1983 was a particularly dreadful year—China performed 14.4 million abortions, 20.7 million sterilizations and 17.8 million IUD insertions that year"}
+  - id: c4
+    rel: involved
+    to: chinese-government
+    role: "Jamestown reports that Li Bin acknowledged population ageing as an important reason for loosening the limit in October 2015 while defending earlier birth policies"
+    src:
+      - {s: jamestown-2015-fifth-plenum, at: "Li Bin interview", quote: "Li also acknowledged that China’s population aging"}
+      - {s: jamestown-2015-fifth-plenum, at: "Li Bin interview", quote: "was an important reason for loosening the policy."}
 ---

@@ -62,7 +62,7 @@ claims:
   - id: c8
     rel: involved
     to: british-government
-    role: "its ambassador's cable of 5 June 1989 passed on a second-hand estimate of at least 10,000 civilian dead; this story has not seen the cable"
+    role: "its ambassador's cable of 5 June 1989 passed on a second-hand estimate of at least 10,000 civilian dead, as Hong Kong Free Press reports"
     src:
       - {s: hkfp-2017-donald-cable, at: "paragraph 1, Hong Kong Free Press's own wording", quote: "A member of the Chinese State Council estimated that at least 10,000 civilians were killed in the Tiananmen massacre of June 4, 1989, declassified files reveal."}
       - {s: hkfp-2017-donald-cable, at: "paragraph 2", quote: "He said a person – whose name was redacted from the document – passed along the information from an unnamed member of the State Council."}

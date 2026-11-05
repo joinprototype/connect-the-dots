@@ -27,7 +27,7 @@ claims:
     rel: intervened_in
     to: one-child-policy
     when: "2015-10-29"
-    role: "its Fifth Plenum proposed that all couples may have two children; the proposal needed approval from the legislature, and the later law was not read"
+    role: "its Fifth Plenum proposed that all couples may have two children; the proposal needed legislative approval, Canada’s Immigration and Refugee Board reports, citing Xinhua"
     src:
       - {s: irb-2015-two-child-policy, at: "summary of Xinhua, 29 October 2015", quote: "a new proposal to allow all Chinese couples to have two children was issued by the Communist Party of China (CPC) Central Committee at the Party's Fifth Plenary Session on 29 October 2015"}
       - {s: irb-2015-two-child-policy, at: "summary of Xinhua, 29 October 2015", quote: "the proposed policy change requires approval from the \"top legislature\" before it can be enacted"}
