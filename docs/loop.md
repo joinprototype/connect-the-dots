@@ -37,7 +37,7 @@ A run is a Claude Code session in this checkout that follows [tools/loop/night.m
 
 ## Stories at night
 
-Stories go further than links: a writer, a skeptic, the writer's fixes, a careful read, then a person ([ADR-0038](decisions/0038-stories-at-night.md)). A second scheduled task runs [tools/loop/stories.md](../tools/loop/stories.md) each night at 00:30, before the 03:00 leads run. It takes at most two topics from the queue, one new and one to deepen, writes each on a branch `story/<id>`, and opens a pull request titled "For review: …". It never merges: the founder reads and merges each story, and releases as always. The run keeps its own lock, workspace and log in `.cache/stories/` (`runs.tsv`), apart from the leads loop's.
+Stories go further than links: a writer, a skeptic, the writer's fixes, a careful read, then a person ([ADR-0038](decisions/0038-stories-at-night.md)). A second scheduled task runs [tools/loop/stories.md](../tools/loop/stories.md) each night at 00:30, before the 03:00 leads run. It takes one topic from the queue, new and deepen in turn: a Haiku scout fetches and lists the facts, a Sonnet writer writes the story on a branch `story/<id>`, a Sonnet skeptic checks it, and the run opens a pull request titled "For review: …". It never merges: the founder reads and merges each story, and releases as always. The run keeps its own lock, workspace and log in `.cache/stories/` (`runs.tsv`), apart from the leads loop's.
 
 ## What it costs and what it shows
 
