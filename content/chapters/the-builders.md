@@ -7,9 +7,9 @@ subtitle: What Kublai's capital and the Mughals really built, what they took fro
 summary: "Did Kublai Khan's capital and the Mughals create all of modern architecture? Here is what the builders and their eyewitnesses wrote about a Mongol capital in 1267, Persian domes in Delhi, the Taj Mahal, and Lutyens's New Delhi."
 ---
 
-Did Kublai Khan's capital and the Mughals create all of modern architecture? None of the sources read here says so.
+Kublai founded Khanbaliq in 1267; the Ming built over it. Haji Begum commissioned a Persian dome in Delhi. Shah Jahan built the Taj Mahal, officially completed in 1643. Lutyens began planning New Delhi after the imperial announcement of 1911. These buildings carried older ideas into new hands.
 
-They show builders who drew on older builders and were drawn on in turn. The sources are old translations, travellers' books, Archaeological Survey of India guides and one modern study of the Taj Mahal. Where they differ, the story says who counted. Some sites (UNESCO's files, the Metropolitan Museum's essays, the Aga Khan Trust) refused a plain request, and the Chinese histories were not read. The story says where that leaves a gap.
+Behind them stood people making choices: a ruler warned of rebellion, a widow choosing an architect, a conqueror demanding gardens, a viceroy cutting an architect's budget. Behind those choices stood the people who cut and carried the stone, including masons Timur took as booty and hired men buried when Babur's well collapsed.
 
 ```scene
 - shot: one-claim-tested
@@ -19,7 +19,7 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   reveal: [shah-jahan, taj-mahal, mughal-empire, kublai-khan, khanbaliq, yuan-government]
   reveal_claims: [kublai-khan#c4, shah-jahan#c1]
   overlay: {kind: quote, source: koch-2005-taj-mahal-architecture-symbolism, quote: "and, as the contemporary sources reveal, it was conceived as such from the very beginning", caption: "Ebba Koch, on the Taj Mahal, Muqarnas 22, 2005"}
-  narration: "**One claim, tested.** Did Kublai Khan's capital and the Mughals create all of modern architecture? No source read here says so. The smaller claim is Ebba Koch's: the Taj Mahal is the Mughals' great contribution to world architecture, conceived as such from the start. The sources show builders who used older ideas and passed theirs on: Khanbaliq of 1267, which the Ming built over; the Persian dome of Humayun's tomb; the Taj Mahal, finished in 1643; Lutyens's New Delhi, begun in 1911. Koch also counts 24 of Shah Jahan's 35 palaces and garden residences still standing. Nothing read here covers how steel-and-glass building began."
+  narration: "**One claim, tested.** At Agra in 1632, Shah Jahan was building a tomb for Mumtaz Mahal. He intended it to “excell all other”, the merchant Peter Mundy reported: a commission to surpass, with labour and money to match. Ebba Koch calls the Taj the Mughals' great contribution to world architecture, conceived that way from the beginning; she found 24 of Shah Jahan's 35 palaces and garden residences still standing. Did these rulers create all modern architecture? No: Koch describes its four-part garden and Agra riverfront layout, and reads its red and white stone alongside older Indian building texts. Shah Jahan's demand for an unequalled tomb drew on forms that preceded his commission."
   duration: 13
 
 - shot: a-new-capital
@@ -30,7 +30,7 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   reveal: [khanbaliq, kublai-khan, yuan-government, beijing]
   reveal_claims: [kublai-khan#c4, kublai-khan#c2, khanbaliq#c1]
   overlay: {kind: quote, source: bretschneider-1876-researches-on-peking, quote: "Coubilai khan, after having fixed his residence in Peking, built a new capital in 1267.", caption: "Emil Bretschneider, Archaeological and Historical Researches on Peking, 1876"}
-  narration: "**A new capital.** In 1264, by the Yuan shi, Kublai made Yenking his residence. In 1267, by the Yuan shi as Emil Bretschneider reports it, he built a new city to the northeast of the old Kin capital, which in 1271 was named Ta-tu, the great capital. The Mongols called it Khanbaligh. Beijing stands on its site. The sources read here do not name who laid it out."
+  narration: "**A new capital.** Kublai had already made Yenking his residence in 1264 when he began another city in 1267. He placed it northeast of the old Kin capital and moved his residence into it, according to the Yuan shi in Emil Bretschneider's translation. He committed builders to a new imperial seat beside an existing city. In 1271 it received the name Ta-tu, the great capital; the Mongols called it Khanbaligh. His choice fixed the site on which Beijing stands."
   duration: 13
 
 - shot: why-a-new-city
@@ -40,7 +40,7 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   reveal: [khanbaliq, kublai-khan, yuan-government]
   reveal_claims: [khanbaliq#c1]
   overlay: {kind: quote, source: polo-yule-1903-book-of-ser-marco-polo, quote: "But the Great Kaan was informed by his Astrologers that this city would prove rebellious, and raise great disorders against his imperial authority.", caption: "Marco Polo, in Henry Yule's translation"}
-  narration: "**Why a new city?** Marco Polo wrote that the Khan's astrologers told him the old city would prove rebellious, so he built a new one beside it. The Persian historian Rashid al-Din, as Bretschneider quotes him, wrote that Kublai first meant to restore the old city but preferred, for the glory of his name, to found a new one. Two accounts, two motives. The line Bretschneider quotes from the Yuan shi gives dates and no reason. The story picks none."
+  narration: "**Why a new city?** Kublai could restore the old capital or build beside it. In Marco Polo's telling, astrologers warned him that the old city would rebel against his authority; he answered by founding a new one across the river and ordering inhabitants to move, though he let some he trusted remain when the new city could not hold everyone. Rashid al-Din, as quoted by Bretschneider, gives him another reason: he first intended restoration, then chose a new foundation for the glory of his name. In both tellings, the emperor's choice made a second city beside the first, and in Polo's it uprooted the people who would fill it."
   duration: 13
 
 - shot: the-shape-of-the-city
@@ -50,8 +50,8 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   time: "1280"
   reveal: [khanbaliq, yuan-government, kublai-khan]
   reveal_claims: [yuan-government#c2]
-  overlay: {kind: stat, value: "12 or 11", label: "gates of Khanbaliq: twelve in Marco Polo, eleven in the Yuan shi and other Yuan works, as Bretschneider reports", source: polo-yule-1903-book-of-ser-marco-polo, quote: "There are 12 gates, and over each gate there is a great and handsome palace"}
-  narration: "**The shape of the city.** Polo gives Khanbaliq twelve gates and six miles of wall on each side, with streets so straight you could “see right along them from end to end.” The Yuan shi and other Yuan works, Bretschneider reports, give eleven gates and a circuit of 60 li, which he reckons at about 40 common li. Yule, from a Russian survey, found the old outline about 18 English miles around. The counts differ, and the story does not choose."
+  overlay: {kind: stat, value: "12 or 11", label: "gates of Khanbaliq: twelve in Marco Polo, eleven in the Yuan shi and other Yuan works, as Bretschneider reports; Yule reckoned the old circuit at about 18 English miles from a Russian survey", source: polo-yule-1903-book-of-ser-marco-polo, quote: "There are 12 gates, and over each gate there is a great and handsome palace"}
+  narration: "**The shape of the city.** In Kublai's capital, Marco Polo described streets so straight that you could “see right along them from end to end.” He counted twelve gates and six miles of wall on each side. Each gate had a thousand guards: he gives their purpose as respect for the ruler and protection against robbers, and describes the Khan allowing only people he did not suspect to stay in the old city. The Yuan shi and other Yuan works give eleven gates and a circuit of 60 li, about 40 common li in Bretschneider's reckoning. Inside these disputed dimensions, Kublai's guards controlled the entrances to the city he had ordered built."
   duration: 13
 
 - shot: the-ming-move-in
@@ -62,7 +62,7 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   reveal: [yongle-emperor, forbidden-city, beijing, khanbaliq]
   reveal_claims: [yongle-emperor#c1, forbidden-city#c1]
   overlay: {kind: quote, source: bretschneider-1876-researches-on-peking, quote: "In the year 1406, the emperor Yung-le decided to establish his residence in Peking. He ordered the imperial palace to be built, and the wall of the city to be repaired", caption: "Ming shi, as translated by Emil Bretschneider, 1876"}
-  narration: "**The Ming move in.** The Ming drove the Mongols out in 1368. The sources differ on what the Ming gave up of the old city: Bretschneider's Ming works say five li at the north; Yule says nearly a third. In 1406, the Ming shi says, Emperor Yongle “decided to establish his residence in Peking,” and ordered the imperial palace built and the wall repaired. By 1421, it says, “all was finished.” The palace complex that stands there now is the Forbidden City."
+  narration: "**The Ming move in.** In 1406 Yongle decided to make Peking his residence and ordered an imperial palace built and the city wall repaired, says the Ming shi in Bretschneider's translation. He was taking up a capital the Ming had seized from the Mongols in 1368. They had cut away part of the old city: five li at the north in the Ming works, nearly a third in Yule's estimate. Yongle's orders put a new palace inside the inherited city; by 1421, the history says, “all was finished.” The Forbidden City stands there today."
   duration: 13
 
 - shot: built-on-the-old-traces
@@ -72,7 +72,7 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   reveal: [khanbaliq, forbidden-city, beijing, yongle-emperor]
   reveal_claims: [khanbaliq#c1, yongle-emperor#c2]
   overlay: {kind: quote, source: polo-yule-1903-book-of-ser-marco-polo, quote: "I think the strong probability is that the Ming really built on the old traces", caption: "Henry Yule, notes to Marco Polo, 1903 edition"}
-  narration: "**Built on the old traces.** The Ming board of works records that five gates of the new wall kept the names of the Mongol city's gates, until they were renamed in 1436. Yule thought the Ming built on the Mongol plan, and that “policy or patriotism” may have spread the belief that the Mongol traces were wiped out. An ambassador of Shah Rukh, arriving in December 1420, saw the walls still going up behind scaffolding; his diarist wrote of a hundred thousand scaffoldings."
+  narration: "**Built on the old traces.** In December 1420, an ambassador of Shah Rukh reached Khanbaligh while the outer walls were still going up. His diarist described a magnificent stone city hidden behind a hundred thousand scaffoldings. Workmen were enclosing Yongle's capital, but the Mongol city persisted in its gates: the Ming board of works records that five kept their old names until 1436. Yule thought the Ming had followed the old plan and that “policy or patriotism” may have helped spread the belief that Mongol traces had been wiped out. The new walls enclosed inherited ground, and the five old gate names passed into another reign."
   duration: 13
 
 - shot: samarkand
@@ -83,7 +83,7 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   reveal: [samarkand, timur, baburnama, babur]
   reveal_claims: [timur#c1, timur#c2, samarkand#c1]
   overlay: {kind: quote, source: babur-beveridge-1921-baburnama, quote: "on it 200 stone-cutters worked, from Āẕarbāījān, Fars, Hindūstān and other countries.", caption: "Babur, on Timur's stone mosque, citing Mulla Sharaf; Annette Beveridge's translation"}
-  narration: "**Samarkand.** Babur, who took the city, wrote that Timur “made it his capital” and that “few towns in the whole habitable world are so pleasant.” On Timur's stone Friday mosque, he says, many stone-cutters from Hindustan worked; Mulla Sharaf names Azerbaijan, Fars and Hindustan. Timur's garden kiosk was painted with pictures of his battles in Hindustan. The Archaeological Survey guide says stone-masons were part of the booty Timur took from India in 1398, and that his descendants, the Mughals, aspired to his ideal of the king as both warrior and patron of the arts."
+  narration: "**Samarkand.** Babur took Samarkand in 1497 and later described it in his memoir: “Few towns in the whole habitable world are so pleasant as Samarkand.” At its stone Friday mosque he noted masons brought from Hindustan; citing Mulla Sharaf, he counted 200 from Azerbaijan, Fars, Hindustan and elsewhere. In Timur's garden kiosk, paintings celebrated battles in Hindustan. The Archaeological Survey's guide puts the workers beside those victories: Timur took stone-masons as booty from India in 1398. In the Survey's reading, Timur's combination of warrior and patron of the arts became an ideal for his Mughal descendants. Babur would later compare his own workforce in Hindustan with Timur's."
   duration: 13
 
 - shot: babur-in-hindustan
@@ -94,7 +94,7 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   reveal: [babur, baburnama, agra, mughal-empire]
   reveal_claims: [babur#c1, babur#c2, mughal-empire#c1]
   overlay: {kind: stat, value: "680 and 1,491", label: "stone-cutters at work daily on Babur's buildings: 680 at Agra alone, 1,491 across six places, by his own count", source: babur-beveridge-1921-baburnama, quote: "But 680 men worked daily on my buildings in Āgra and of Āgra stone-cutters only; while 1491 stone-cutters worked daily on my buildings in Āgra, Sīkrī, Bīāna, Dūlpūr, Gūālīār and Kūīl."}
-  narration: "**Babur in Hindustan.** Babur won Hindustan in April 1526. His verdict, in his own memoir: “a country of few charms.” Of its crafts: “in handicraft and work there is no form or symmetry, method or quality.” Yet he built there, with its labour: “unnumbered and endless workmen of every kind.” The 680 in his count are Agra's own stone-cutters."
+  narration: "**Babur in Hindustan.** After winning Hindustan in April 1526, Babur dismissed it in his memoir as “a country of few charms.” He judged its crafts harshly: “in handicraft and work there is no form or symmetry, method or quality”. But he also called its “unnumbered and endless workmen of every kind” a good thing. He counted 680 local stone-cutters working daily on his buildings at Agra, and 1,491 across six places, against the 200 credited to Timur's mosque. The conqueror who disparaged their work depended on their hands; at Agra he put them to making the ordered grounds he said Hindustan lacked."
   duration: 13
 
 - shot: orderly-and-symmetrical
@@ -104,7 +104,7 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   reveal: [babur, charbagh, humayuns-tomb, baburnama]
   reveal_claims: [babur#c3, humayuns-tomb#c1]
   overlay: {kind: quote, source: babur-beveridge-1921-baburnama, quote: "also that grounds should be laid out in an orderly and symmetrical way.", caption: "Babur, Baburnama, in Annette Beveridge's translation"}
-  narration: "**Orderly and symmetrical.** Hindustan lacked “running-waters,” Babur wrote, so he meant to raise water by wheels and lay out grounds in order. The land near Agra was “so bad and unattractive” that he crossed it “with a hundred disgusts and repulsions.” He made the garden anyway. A large stepped well he ordered inside the fort “fell in several times and buried the hired workmen.” The Survey's guide says his layout, as his memoirs describe it, set the design for all future Mughal gardens."
+  narration: "**Orderly and symmetrical.** In his memoir, Babur recalled that Hindustan's lack of running water made him want water raised by wheels and grounds laid out “in an orderly and symmetrical way.” A few days after entering Agra, he crossed the river to choose garden land; he described his disgust at the ground but said he used it because no other land lay nearby. His memoir also records the cost to workers: in the fort, the stepped well he ordered fell in several times and buried hired workmen. The Archaeological Survey's guide credits his garden layout with setting the design for future Mughal gardens: water and symmetry became a model for later rulers."
   duration: 13
 
 - shot: a-persian-dome-in-delhi
@@ -115,7 +115,7 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   reveal: [humayuns-tomb, haji-begum, mirak-mirza-ghiyas, charbagh]
   reveal_claims: [haji-begum#c1, haji-begum#c2, mirak-mirza-ghiyas#c1, humayuns-tomb#c1]
   overlay: {kind: quote, source: asi-2002-humayuns-tomb-world-heritage-series, quote: "The first time this Persian-style dome appeared on the Indian skyline was in Humayun's Tomb.", caption: "Archaeological Survey of India, Humayun's Tomb and Adjacent Monuments, 2002"}
-  narration: "**A Persian dome in Delhi.** Humayun, Babur's son, spent 15 years in exile, some at the Persian court, and came back in 1555 with a borrowed Persian army. His widow Haji Begum then built his tomb: 1569 by one manuscript, 1565 by other writers, at an estimated 15 lakh rupees. The guide says it “is said to have been built” under Mirak Mirza Ghiyas, who had worked in Herat and Bukhara, and calls it India's first major double dome. It notes the red sandstone and white marble first appeared in Delhi in 1311."
+  narration: "**A Persian dome in Delhi.** Haji Begum commissioned a tomb for Humayun, Babur's son, who had spent fifteen years in exile and returned in 1555 with a borrowed Persian army. The Archaeological Survey reports a tradition that she chose Mirak Mirza Ghiyas because she admired Persian building and he knew it from work in Herat and Bukhara. Her reported taste became a commission estimated at fifteen lakh rupees, dated 1569 by one manuscript and 1565 by other writers. Its red sandstone and white marble had appeared in Delhi in 1311; its Persian dome became, in the guide's description, India's first major double dome. The widow's reported choice brought that form onto Delhi's skyline."
   duration: 13
 
 - shot: akbars-city
@@ -126,7 +126,7 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   reveal: [fatehpur-sikri, akbar, mughal-empire, agra]
   reveal_claims: [akbar#c1, akbar#c2, fatehpur-sikri#c1]
   overlay: {kind: quote, source: asi-fatehpur-sikri-world-heritage-series, quote: "This 'Akbari' style of architecture consisted of a synthesis of earlier styles, Timurid, Persian and Indian.", caption: "Archaeological Survey of India, Fatehpur Sikri, World Heritage Series"}
-  narration: "**Akbar's city.** In 1571 Akbar chose a village, Sikri, 37 kilometres west of Agra, and built a capital there. The Survey calls its style a synthesis of earlier ones: Timurid, Persian and Indian. Father Monserrate, who visited in 1580, wrote that Akbar quarried stone himself beside the workmen. The court left in 1585. The popular tale, that the water failed, the guide calls unlikely given the city's careful planning."
+  narration: "**Akbar's city.** In 1571 Akbar chose Sikri, a village 37 kilometres west of Agra, for his capital. The Archaeological Survey's guide connects the choice to Shaikh Salim Chishti, who had promised the heirless emperor three sons: the Survey says Akbar sought to attach the mystic's charisma to imperial authority by building beside him. His son Salim had been born there in 1569. Father Monserrate, visiting in 1580, saw Akbar quarry stone alongside the workmen. The city joined Timurid, Persian and Indian styles, but its maker left in 1585. The guide attributes the move to political demands in Lahore and rejects water failure as unlikely given the planning. When Akbar took his court away, the capital lost its courtly life."
   duration: 13
 
 - shot: famine-and-a-death
@@ -136,7 +136,7 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   reveal: [famine-in-the-deccan-and-gujarat-1630, shah-jahan, mughal-empire, mumtaz-mahal]
   reveal_claims: [famine-in-the-deccan-and-gujarat-1630#c1, famine-in-the-deccan-and-gujarat-1630#c2, mumtaz-mahal#c1]
   overlay: {kind: quote, source: elliot-dowson-1877-history-of-india-vol-7, quote: "taxes amounting to nearly seventy lacs of rupees were remitted by the revenue officers", caption: "Abdul Hamid Lahori, Badshah-nama, in the translation printed by Elliot and Dowson"}
-  narration: "**Famine and a death.** The court history of Abdul Hamid Lahori records a famine in the Deccan and Gujarat. Shah Jahan, at Burhanpur, ordered soup kitchens and 5,000 rupees to the poor every Monday. Lahori says remitted taxes came to nearly seventy lakh rupees, one-eleventh of the revenue. In the same chronicle his queen, Mumtaz Mahal (called Aliya Begam there), died on 17 Dhu al-Qa'da 1040, having borne eight sons and six daughters. Mundy gives her 9 or 10 children and says she died at Burhanpur. No source read ties the famine to the tomb's cost or labour."
+  narration: "**Famine and a death.** At Burhanpur during the Deccan and Gujarat famine, Shah Jahan ordered soup kitchens and 5,000 rupees for the poor every Monday. It was his accession day, says his court historian Abdul Hamid Lahori, who describes roads obstructed by the dying and nearly seventy lakh rupees in remitted taxes, one-eleventh of the revenue. Then Mumtaz Mahal, called Aliya Begam in the chronicle, died on 17 Dhu al-Qa'da 1040. Lahori records her husband's grief and eight sons and six daughters; Mundy places her death at Burhanpur and counts nine or ten children. Shah Jahan would make a new demand on builders at Agra: a tomb for her."
   duration: 13
 
 - shot: a-sepulchre-at-agra
@@ -147,7 +147,7 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   reveal: [taj-mahal, shah-jahan, mumtaz-mahal, agra]
   reveal_claims: [shah-jahan#c1, mumtaz-mahal#c1, taj-mahal#c3]
   overlay: {kind: quote, source: mundy-1914-travels-vol-2, quote: "The buildinge is begun and goes on with excessive labour and cost, prosecuted with extraordinary dilligence, Gold and silver esteemed comon Mettail, and Marble but as ordinarie stones", caption: "Peter Mundy, who was in Agra in 1632, in the Hakluyt Society edition of 1914"}
-  narration: "**A sepulchre at Agra.** Peter Mundy, an English merchant at Agra in 1632, saw the work begin. The king, he wrote, meant it to “excell all other,” and already about her tomb stood “a raile of gold,” which his editor Temple says was worth six lakh rupees and was removed in 1642. Mundy adds that the king intended, “as some thinck,” to move the whole city there. Temple dates the building from early 1632 to some twelve years later."
+  narration: "**A sepulchre at Agra.** In 1632 Shah Jahan set builders to work beside the river where Mumtaz Mahal had been brought from Burhanpur. Peter Mundy, an English merchant watching at Agra, reported the king's intention that it should “excell all other”. Already her tomb had “a raile of gold”; gold and silver seemed common metals as the work consumed labour and money. Mundy's editor Temple values the rail at six lakh rupees and dates its removal to 1642, with construction running from early 1632 for some twelve years. The merchant also heard that the king might move the whole city there, “as some thinck”. The royal commission was remaking the riverbank."
   duration: 13
 
 - shot: who-designed-it
@@ -155,8 +155,8 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   focus: taj-mahal
   time: "1632"
   reveal: [taj-mahal, shah-jahan, mumtaz-mahal]
-  overlay: {kind: quote, source: mundy-1914-travels-vol-2, quote: "yet he says nothing of the Italians connection with the work", caption: "Richard Carnac Temple, introduction to Mundy's travels, 1914"}
-  narration: "**Who designed it?** Manrique credited a goldsmith at Agra, Geronimo Veroneo. Temple, Mundy's editor, notes that Mundy knew the man and never mentioned it. E. B. Havell, writing in 1904, called that an error: Veroneo is believed to have submitted designs, but the one accepted was Ustad Isa's. Havell points only to his own 1903 article. Most modern accounts name another architect; the studies behind them were not read here. The sources read do not settle it."
+  overlay: {kind: quote, source: mundy-1914-travels-vol-2, quote: "yet he says nothing of the Italians connection with the work", caption: "Richard Carnac Temple, 1914: Manrique credited the Agra goldsmith Geronimo Veroneo with designing the Taj"}
+  narration: "**Who designed it?** Shah Jahan inspected proposals for the tomb, in E. B. Havell's 1904 description. Havell believed Geronimo Veroneo, a goldsmith at Agra, had submitted designs, and credited Ustad Isa with the design the emperor accepted. Another attribution came from the traveller Manrique, who named Veroneo as the architect. Temple, editing Mundy's travels in 1914, argued against that credit: Veroneo knew Mundy, who watched construction at Agra without naming him as its designer. Temple thought so accurate a chronicler would probably have mentioned such a role. The emperor's tomb rose beside the river; the competing attributions left its designer in dispute."
   duration: 13
 
 - shot: twenty-thousand-men
@@ -165,8 +165,8 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   time: "1643"
   reveal: [taj-mahal, shah-jahan, agra]
   reveal_claims: [taj-mahal#c2]
-  overlay: {kind: stat, value: "20,000", label: "men at work for 22 years, by the French traveller Tavernier", source: tavernier-1889-travels-in-india-vol-1, quote: "on which twenty-two years have been spent, during which twenty thousand men worked incessantly"}
-  narration: "**Twenty thousand men.** Tavernier, a French traveller, gives twenty-two years and 20,000 men, with scaffolding of brick because wood was scarce. Havell gives seventeen years, 20,000 men and a cost of nearly 185 lakh rupees “according to native accounts.” Koch, from Lahori and Salih Kanbo, dates the official completion to 6 February 1643, about eleven years after Mundy saw it begin. Havell's 20,000 may echo Tavernier, and Crooke, Tavernier's editor, warns he is not always to be trusted as a historian. The texts read do not say how the workers were recruited or paid."
+  overlay: {kind: stat, value: "20,000", label: "men at work for 22 years, by Tavernier; Havell gives 17 years, 20,000 men and nearly 185 lakh rupees from native accounts. His count may echo Tavernier, whose editor Crooke warns he is not always reliable as a historian", source: tavernier-1889-travels-in-india-vol-1, quote: "on which twenty-two years have been spent, during which twenty thousand men worked incessantly"}
+  narration: "**Twenty thousand men.** Shah Jahan's builders lacked wood, so they raised brick scaffolding and brick supports for the arches, according to the French traveller Tavernier. He claimed to have witnessed the work from beginning to end and counted twenty thousand men working incessantly for twenty-two years. His explanation of the expense was concrete: the scaffolding alone was said to cost more than the building. Koch, drawing on Lahori and Salih Kanbo, dates the official completion to 6 February 1643, about eleven years after Mundy saw construction begin. The men had to build the temporary structure that let them raise the permanent one; when the court marked completion, their stonework remained."
   duration: 13
 
 - shot: names-on-the-stones
@@ -176,7 +176,7 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   reveal: [taj-mahal, charbagh, agra, mughal-empire]
   reveal_claims: [taj-mahal#c1, taj-mahal#c2]
   overlay: {kind: quote, source: koch-2005-taj-mahal-architecture-symbolism, quote: "this close encounter with the architecture has revealed the contribution of the anonymous workmen who inscribed their mason marks on the stones", caption: "Ebba Koch, The Taj Mahal: Architecture, Symbolism, and Urban Significance"}
-  narration: "**Names on the stones.** Ebba Koch measured the complex with the Survey's leave and found the mason marks of anonymous workmen cut into the stones. No text read here names a worker on the Taj. She finds the plan joins older things: a classical four-part garden on a raised terrace at the river, and, in Koch's reading, a red-and-white scheme linked to Indian building texts from before Islam. Havell wrote that since Akbar the best builders of India, Persia, Arabia and Central Asia had been drawn to the court."
+  narration: "**Names on the stones.** Shah Jahan's builders faced a slow river at Agra, rather than the mountain springs of Central Asia. Koch explains that water lifts had to bring running water into Mughal gardens. At the Taj, the mausoleum stands on a raised river terrace, with the four-part garden inland. In her reading, that riverfront arrangement offered cooling and a carefully composed view from boats and the opposite bank. The workers who cut the stones also inscribed mason marks into them. Centuries later, measuring the complex with the Archaeological Survey's permission, Koch found those traces of otherwise anonymous hands in the building they had raised."
   duration: 13
 
 - shot: built-from-ruins
@@ -187,7 +187,7 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   reveal: [shahjahanabad, red-fort, shah-jahan, delhi]
   reveal_claims: [shah-jahan#c2, shahjahanabad#c1, red-fort#c1]
   overlay: {kind: quote, source: carr-stephen-1876-archaeology-of-delhi, quote: "The materials for the new city were furnished, in great measure, by the neighbouring ruins", caption: "Bernier in 1663, as quoted by Carr Stephen, 1876"}
-  narration: "**Built from ruins.** Shah Jahan built a new city beside the old site of Delhi, with the Red Fort as its citadel. The traveller Bernier, who saw it in 1663, wrote that its materials came “in great measure” from the neighbouring ruins; he gives Shah Jahan's reason as the summer heat of Agra. Carr Stephen dates the city to 1648. For the fort he gives the foundation in 1638, ’Izzat Khan in charge, “Ostads Ahmad and Hira” as chiefs of the workmen, and a cost “believed” to be 100 lakh rupees."
+  narration: "**Built from ruins.** Shah Jahan ordered a new city at Delhi: Bernier gives his reason as Agra's excessive summer heat. In 1638, workmen laid the Red Fort's foundation under ’Izzat Khan, with Ahmad and Hira as their chiefs, according to Carr Stephen. Stephen dates the new city, Shahjahanabad, to 1648 and reports the fort's believed cost as 100 lakh rupees. Bernier, visiting in 1663, described materials from neighbouring ruins furnishing the new city “in great measure”. The emperor's new capital stood beside old Delhi, with the fort as its citadel."
   duration: 13
 
 - shot: delhi-1911
@@ -198,7 +198,7 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   reveal: [delhi-durbar-1911, george-v, charles-hardinge, delhi, new-delhi]
   reveal_claims: [delhi-durbar-1911#c1, delhi-durbar-1911#c2, george-v#c1, new-delhi#c1]
   overlay: {kind: quote, source: fortescue-1912-narrative-royal-visit-to-india, quote: "he announced that the capital of India would be transferred from Calcutta to Delhi", caption: "John Fortescue, Narrative of the Visit to India of Their Majesties, 1912"}
-  narration: "**Delhi, 1911.** King George V arrived at Delhi's great fort on 7 December 1911, met by the Viceroy, Lord Hardinge. On the 12th, at the Durbar, he rose with a paper “to the general surprise,” the official programme having given no hint. The change was kept secret until that afternoon. On the 15th he laid a foundation stone; Hardinge wrote later that the site was not the one chosen, and a year on had the stones quietly moved. The narrator of the visit judged the start “decidedly modest.”"
+  narration: "**Delhi, 1911.** On 7 December George V arrived at Delhi's fort, met by Viceroy Hardinge. Five days later he rose at the Durbar with a paper absent from the programme: India's capital would move from Calcutta to Delhi. In his later memoir, Hardinge advocated moving the capital and reuniting Bengal as a means of reconciliation, recalled urging “extreme secrecy”, and called Calcutta's legislature “a field for intrigue” under Bengali influence. On the 15th the king laid a foundation stone before a site had been chosen. Hardinge wrote that he had the stones quietly moved a year later. Fortescue called the start “decidedly modest”. The public imperial gesture preceded the choice of a site."
   duration: 13
 
 - shot: lutyens
@@ -208,7 +208,7 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   reveal: [edwin-lutyens, new-delhi, charles-hardinge, my-indian-years]
   reveal_claims: [edwin-lutyens#c1, edwin-lutyens#c2]
   overlay: {kind: quote, source: byron-1931-new-delhi, quote: "Like all humanists, Sir Edwin Lutyens had drunk of the European past, and he now drank of the Indian.", caption: "Robert Byron, New Delhi, 1931"}
-  narration: "**Lutyens.** Lord Hardinge wrote that a committee including “Lutyens, the distinguished architect,” came out to study the site. Of the two architects, Baker's plans he found admirable and within the estimate; Lutyens's, though beautiful, “were made absolutely regardless of cost and had to be reduced in every way.” Hardinge adds that Lutyens told people, the Queen among them, that he had spoilt his plans, and that he himself allotted Lutyens over half a million pounds. Byron (1931) says Lutyens followed the taste of Mogul builders in using red and white stone."
+  narration: "**Lutyens.** Lutyens came to Delhi on the committee studying the site, then faced Hardinge over the price of his designs. In the viceroy's later memoir, Baker's plans were admirable and within the estimate; Lutyens's beautiful plans ignored cost, so Hardinge demanded reductions. Hardinge later recalled that Lutyens told others, including the Queen, that Hardinge had spoiled them. The viceroy defended an allowance of more than half a million pounds for Government House. Cost constrained the materials too: Robert Byron describes the intended Mughal red and white stone, with white marble giving way to sandstone because of expense. The budget helped determine the capital's visible stone."
   duration: 13
 
 - shot: what-came-of-it
@@ -218,6 +218,6 @@ They show builders who drew on older builders and were drawn on in turn. The sou
   reveal: [mughal-empire, khanbaliq, beijing, edwin-lutyens, taj-mahal, humayuns-tomb]
   reveal_claims: [humayuns-tomb#c1]
   overlay: {kind: quote, source: asi-2002-humayuns-tomb-world-heritage-series, quote: "This style of raising a dome had been prevalent in West Asia for a while before Mirak Mirza Ghiyas brought it to India.", caption: "Archaeological Survey of India, Humayun's Tomb and Adjacent Monuments, 2002"}
-  narration: "**What came of it.** Built: a Mongol capital whose site and gate names the Ming kept; a Persian dome in Delhi; the Taj. Taken: the dome and the garden plan from Persia and Timur's world; red and white stone from the Delhi sultans; Indian building ideas, by Koch; Timur's stone-masons as booty; Babur's from Agra. Handed on: Byron says Lutyens used red and white stone in the Mogul taste. What the sources do not show: any link to modern steel-and-glass building. Not read: the Yuan shi, UNESCO's files, the Aga Khan Trust."
+  narration: "**What came of it.** Lutyens chose red and white for the Viceroy's House, following Mughal taste in Robert Byron's description; expense meant sandstone replaced the hoped-for marble. That is the particular borrowing Byron identifies in New Delhi. Separately, Yule thought the Ming had built on Khanbaliq's old traces in Beijing. The Archaeological Survey describes Haji Begum's commission bringing a Persian dome to Delhi, and Timur taking masons to Samarkand as booty: building could carry coercion as well as forms. Babur's memoir counts 680 local stone-cutters on his Agra buildings each day. Behind imperial commissions stood people cutting stone; in New Delhi, an architect's choice of colours met a viceroy's demand to cut costs."
   duration: 13
 ```
