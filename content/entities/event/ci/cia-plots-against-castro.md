@@ -34,4 +34,12 @@ claims:
     role: "Described in"
     src:
       - {s: senate-church-interim-report-1975, at: "Summary", quote: "The Committee investigated alleged United States involvement in assassination plots in five foreign countries"}
+  - id: c5
+    rel: "involved"
+    to: "john-f-kennedy"
+    role: "Szulc testified in 1975, as reported by the Church Committee, that Kennedy asked his view of ordering Castro killed and then agreed with his opposition on moral grounds"
+    according_to: ["church-committee"]
+    src:
+      - {s: "senate-church-interim-report-1975", quote: "what would you think if I ordered Castro to be assassinated?", at: "Kennedy and Szulc, 9 November 1961", by: "john-f-kennedy"}
+      - {s: "senate-church-interim-report-1975", quote: "I agree with you completely.", at: "Kennedy and Szulc, 9 November 1961", by: "john-f-kennedy"}
 ---

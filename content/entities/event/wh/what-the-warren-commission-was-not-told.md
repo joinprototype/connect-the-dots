@@ -68,4 +68,10 @@ claims:
     src:
       - {s: cia-studies-2013-robarge-death-of-a-president, quote: "McCone did have a place in a \"benign cover-up,\""}
       - {s: cia-studies-2013-robarge-death-of-a-president, quote: "the only one that existed was the conspiracy to kill Castro and then keep that effort secret after November 22nd."}
+  - id: c10
+    rel: "involved"
+    to: "john-mccone"
+    role: "Told the Justice Department in early 1965 that he had ordered full cooperation and nothing withheld from the Warren Commission"
+    src:
+      - {s: "cia-studies-2013-robarge-death-of-a-president", quote: "to cooperate fully with the President's Commission", by: "john-mccone"}
 ---

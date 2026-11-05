@@ -48,4 +48,11 @@ claims:
     role: "told McNamara that merely responding was a weakness"
     src:
       - {s: nsa-archive-lbj-tapes-tonkin, at: "9:43 a.m. telephone conversation", quote: "we respond only to an action and we don't have any of our own."}
+  - id: c7
+    rel: "appears_in"
+    to: "warren-commission-report"
+    role: "The foreword says he sought to avoid parallel investigations and concentrate fact-finding in a body with a national mandate"
+    according_to: ["warren-commission"]
+    src:
+      - {s: "nara-warren-report-foreword", quote: "President Johnson sought to avoid parallel investigations and to concentrate fact-finding in a body having the broadest national mandate.", at: "The Commission’s Function"}
 ---

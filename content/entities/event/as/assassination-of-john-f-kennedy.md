@@ -44,4 +44,17 @@ claims:
     to: jfk-records-collection-act
     src:
       - {s: nara-jfk-collection-background, at: "The Act", quote: "Almost 30 years later, hoping to allay lingering doubts about the circumstances surrounding that event, Congress enacted the President John F. Kennedy Assassination Records Collection Act."}
+  - id: c7
+    rel: "involved"
+    to: "john-f-kennedy"
+    role: "Asked twice for the motorcade to stop so he could greet well-wishers"
+    src:
+      - {s: "nara-warren-report-ch1", quote: "stopping twice at the President's request to greet well-wishers among the friendly crowds.", at: "Narrative of Events"}
+  - id: c8
+    rel: "involved"
+    to: "lee-harvey-oswald"
+    role: "The Warren Commission could not definitively determine his motives"
+    according_to: ["warren-commission"]
+    src:
+      - {s: "nara-warren-report-ch1", quote: "The Commission could not make any definitive determination of Oswald's motives.", at: "Conclusions"}
 ---

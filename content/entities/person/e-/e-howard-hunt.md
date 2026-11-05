@@ -36,4 +36,10 @@ claims:
       - {s: us-11th-circuit-1983-hunt-v-liberty-lobby, at: "Part I, quoting the 14 August 1978 Spotlight", quote: "published pictures of three apparent bums who were arrested at Dealy Plaza just after President Kennedy's murder, but who were strangely released without any record of the arrest having been made by the Dallas police. One of the tramps the authors identified as Hunt."}
       - {s: nara-hsca-report-part1b, at: "Section on photographic analysis, note 23", quote: "a rumor was circulating that the committee had uncovered a memorandum in CIA files indicating Hunt was in Dallas on November 22, 1963. The rumor was not founded on fact."}
       - {s: nara-hsca-report-part1b, at: "Photographic analysis", quote: "Of all the subjects compared, only Fred Lee Chrisman, a conservative active in New Orleans at the time of the assassination, was found to have facial measurements consistent with any of the tramps."}
+  - id: c5
+    rel: "appears_in"
+    to: "hsca-final-report"
+    role: "Said at his libel trial that he demanded to appear before the House investigators to clear his name"
+    src:
+      - {s: "us-11th-circuit-1983-hunt-v-liberty-lobby", quote: "he demanded to appear before the House Assassinations Committee in order to clear his name.", at: "Part I, Hunt’s testimony at the libel trial"}
 ---

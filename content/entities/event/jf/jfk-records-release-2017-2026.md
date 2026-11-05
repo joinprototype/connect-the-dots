@@ -60,4 +60,16 @@ claims:
     role: "One of the agencies whose withheld records were released"
     src:
       - {s: nara-jfk-release-2017-2018, at: "Release page", quote: "These releases include FBI, CIA, and other agency documents"}
+  - id: c9
+    rel: "involved"
+    to: "donald-trump"
+    role: "Ordered six months of review for some records at CIA and FBI request while about 2,800 were released; White House officials quoted his memo saying he had no choice"
+    src:
+      - {s: "pbs-ap-2017-10-26-trump-withholds-jfk-files", quote: "I have no choice,", by: "donald-trump"}
+  - id: c10
+    rel: "involved"
+    to: "j-edgar-hoover"
+    role: "The AP reported in 2017 that his memo preferred an FBI report to public hearings because airing Oswald’s Soviet correspondence would complicate foreign relations"
+    src:
+      - {s: "pbs-ap-2017-10-28-jfk-files-quell-conspiracy-theories", quote: "To have that drawn into a public hearing would muddy the waters internationally,", by: "j-edgar-hoover"}
 ---

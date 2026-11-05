@@ -24,4 +24,12 @@ claims:
     role: "Visited both embassies"
     src:
       - {s: senate-church-book-v-1976, at: "Summary", quote: "Oswald visited Mexico City, where he visited both the Cuban and Soviet diplomatic establishments"}
+  - id: c4
+    rel: "involved"
+    to: "lee-harvey-oswald"
+    role: "Oswald said he sought Soviet-bound transit, the Commission reports; Marina called this a deception to reach Cuba, and the Commission thought staying there more likely; Duran said Cuba later approved the application conditional on a Soviet visa"
+    src:
+      - {s: "nara-warren-report-ch6", quote: "At the Cuban Embassy, he requested an \"in-transit\" visa to permit him to visit Cuba on his way to the Soviet Union.", at: "Trip to Mexico"}
+      - {s: "nara-warren-report-ch6", quote: "Marina Oswald has testified that these statements were deceptions designed to get him to Cuba.", at: "Trip to Mexico"}
+      - {s: "nara-warren-report-ch6", quote: "approving the visa, but on the condition that the Russian visa be obtained first", at: "Duran’s statement"}
 ---

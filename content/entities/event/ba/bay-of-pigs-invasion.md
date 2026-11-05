@@ -46,4 +46,10 @@ claims:
     according_to: [church-committee]
     src:
       - {s: senate-church-book-v-1976, at: "Summary", quote: "In November of that year, the United States Government decided that further such overt paramilitary operations were no longer feasible, and embarked on Operation MONGOOSE."}
+  - id: c7
+    rel: "involved"
+    to: "john-f-kennedy"
+    role: "Declined detailed public discussion, saying it would not benefit the country in the difficult situation"
+    src:
+      - {s: "jfk-1961-04-21-news-conference", quote: "I do not believe that such a discussion would benefit us during the present difficult situation.", by: "john-f-kennedy"}
 ---
