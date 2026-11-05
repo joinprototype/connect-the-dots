@@ -84,7 +84,8 @@ claims:
   - id: c11
     rel: appears_in
     to: pohl-m-chechen-ingush-in-kazakstan
-    role: "NKVD death figures for 1944-49 in Kazakhstan, and the debate over life in exile"
+    role: "Michaela Pohl reports NKVD death figures for Kazakhstan and contrasts Bugai’s labor-mobilization argument with J. Otto Pohl’s argument that deportees were sent to knowingly deadly conditions"
+    according_to: [pohl-m-chechen-ingush-in-kazakstan]
     src:
       - {s: pohl-m-article-chechen-ingush-kazakstan, quote: "101,036 Chechens, Ingush, Balkardians, and Karachaevtsy died in this period (23.3 percent of the deportees), 485 Kalmycks (20.7 percent), 443 Crimean Tatars (10.1 percent), and 19,501 Germans, representing 8.9 percent of the German exiles."}
       - {s: pohl-m-article-chechen-ingush-kazakstan, quote: "In Kazakstan, according to an NKVD report on excess deaths, 16.5 percent of all special settlers perished between 1944 and 1949, a total of 125,564 out of a special settler population of 760,642 individuals."}
@@ -94,4 +95,49 @@ claims:
       - {s: pohl-m-article-chechen-ingush-kazakstan, quote: "Without minimizing in any way the brutality and injustice of deportation itself, Bugai argues that on site the special settlers were successfully mobilized into the labor force,"}
       - {s: pohl-m-article-chechen-ingush-kazakstan, quote: "Pohl argues that the deportations “constituted acts of ethnically motivated murder,”"}
       - {s: pohl-m-article-chechen-ingush-kazakstan, quote: "Already in 1978 the •migr• historian Alexander Nekrich cited evidence from memoirs and unpublished dissertations that testified to extremely harsh conditions"}
+  - id: c12
+    rel: involved
+    to: kazakhstan
+    role: "Ahmed Dokaev, in the memoir quoted by Zauresh Saktaganova, recalled labor units and credited Kazakh kindness with survival"
+    according_to: [qalam-operation-lentil]
+    src:
+      - {s: qalam-2026-operation-lentil, quote: "They recorded labor units. I want to say that if we had ended up with cruel people, Chechens and Ingush would not exist on earth. They would have perished immediately. This is thanks to the kindness of the Kazakhs"}
+
+  - id: c13
+    rel: involved
+    to: lavrentiy-beria
+    role: "Beria, in his report quoted by Zauresh Saktaganova, said Molaev wept on learning of deportation, then promised to carry out his tasks"
+    according_to: [lavrentiy-beria]
+    src:
+      - {s: qalam-2026-operation-lentil, quote: "Upon receiving this information, Molaev shed tears, but quickly composed himself and promised to carry out all tasks assigned to him in connection with the deportation."}
+
+  - id: c14
+    rel: involved
+    to: lavrentiy-beria
+    role: "In July Beria called the removal satisfactory while reporting inadequate housing, work and typhus in Kazakhstan"
+    according_to: [lavrentiy-beria]
+    src:
+      - {s: beria-1944-07-report-special-settlers, quote: "Removing this contingent from the territory of the Northern Caucasus to their new places of residence was performed in satisfactory fashion."}
+      - {s: beria-1944-07-report-special-settlers, quote: "As a result the living conditions of the special settlers in Kazakhstan and their acquaintance with socially useful work was not found to be in a satisfactory state."}
+
+  - id: c15
+    rel: involved
+    to: nkvd
+    role: "M. Kuznetsov, in the NKVD report quoted by Zauresh Saktaganova, reported 1,361 transit deaths and no incidents during reception and unloading"
+    according_to: [nkvd]
+    src:
+      - {s: qalam-2026-operation-lentil, quote: "According to M. Kuznetsov, colonel of State Security and head of the NKVD Special Settler Department, 1,361 people (0.27 per cent) died en route, and 1,070 were hospitalized. He reported that no incidents occurred during the unloading and reception of the trains."}
+
+  - id: c16
+    rel: involved
+    to: soviet-government
+    role: "In secret-police testimony quoted by Michaela Pohl, Muskhadzhi Khaidiev said he would not vote, saying the government had sent them to die and an Anglo-American government would be better"
+    according_to: [pohl-m-chechen-ingush-in-kazakstan]
+    src:
+      - {s: pohl-m-article-chechen-ingush-kazakstan, quote: "I won’t participate in the polling, because the Soviet government did not send us to Kazakstan to live, but to die."}
+  - id: c17
+    rel: appears_in
+    to: qalam-operation-lentil
+    src:
+      - {s: qalam-2026-operation-lentil, quote: "They were then transferred onto freight trains waiting in Grozny."}
 ---

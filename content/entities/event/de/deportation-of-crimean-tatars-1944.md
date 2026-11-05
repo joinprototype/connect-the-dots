@@ -130,4 +130,19 @@ claims:
       - {s: pohl-2000-paper-crimean-tatars, quote: "The Crimean Tatars actively petitioned and lobbied Moscow for rehabilitation from 1957 on."}
       - {s: pohl-2000-paper-crimean-tatars, quote: "On 21 April 1968, Crimean Tatars in Chirchik, Uzbekistan staged a major demonstration to celebrate Lenin's birthday and demand repatriation to the Crimea."}
       - {s: pohl-2000-paper-crimean-tatars, quote: "In a little over four years nearly 250,000 or almost half of all Crimean Tatars in the former Soviet Union managed to returnto the Crimea."}
+  - id: c16
+    rel: involved
+    to: nkvd
+    role: "In the report quoted by J. Otto Pohl, Colonel G. B. Malkov described barefoot forest work and interrupted bread supplies on 10 October 1944"
+    according_to: [pohl-2000-deportation-and-fate-of-the-crimean-tatars]
+    src:
+      - {s: pohl-2000-paper-crimean-tatars, quote: "Special settlers work in the forest bare foot. The supplies to special settlers of bread are interrupted for two to three days at a time."}
+
+  - id: c17
+    rel: involved
+    to: lavrentiy-beria
+    role: "J. Otto Pohl writes that Beria’s decision to use deportees in lumber and paper production underlay their diversion to Russian regions"
+    according_to: [j-otto-pohl]
+    src:
+      - {s: pohl-2000-paper-crimean-tatars, quote: "This resolution was based upon a decision by Beria to use Crimean Tatars special settlers in the paper and cellulose industries and lumber preparation in these territories."}
 ---

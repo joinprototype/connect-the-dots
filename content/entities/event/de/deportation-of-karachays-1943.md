@@ -30,4 +30,17 @@ claims:
     role: "counted with Chechens, Ingush and Balkars in the NKVD death report"
     src:
       - {s: pohl-m-article-chechen-ingush-kazakstan, quote: "101,036 Chechens, Ingush, Balkardians, and Karachaevtsy died in this period (23.3 percent of the deportees), 485 Kalmycks (20.7 percent), 443 Crimean Tatars (10.1 percent), and 19,501 Germans, representing 8.9 percent of the German exiles."}
+  - id: c4
+    rel: involved
+    to: nkvd
+    role: "Fatima told the committee a family story heard in childhood: a relative protested the toilet bucket and was confined overnight with corpses"
+    according_to: [nhc-deportation-anniversary-series]
+    src:
+      - {s: nhc-2023-karachays, quote: "One of my family members refused and cursed the guards."}
+      - {s: nhc-2023-karachays, quote: "He was thrown into a wagon which was full of corpses."}
+  - id: c5
+    rel: appears_in
+    to: nhc-deportation-anniversary-series
+    src:
+      - {s: nhc-2023-karachays, quote: "One of my family members refused and cursed the guards."}
 ---

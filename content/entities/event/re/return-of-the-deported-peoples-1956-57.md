@@ -39,4 +39,12 @@ claims:
       - {s: pohl-2024-crimean-tatars-special-settlers, quote: "On 28 IV 1956, the Presidium of the Supreme Soviet passed an ukaz freeing the Crimean Tatars along with Balkars, Turks, Kurds, and Hemshils from the special settlement restrictions."}
       - {s: pohl-2024-crimean-tatars-special-settlers, quote: "This decree, however, also prohibited these people from returning to their previous areas of settlement or returning to them any of the property they lost during their resettlement."}
       - {s: pohl-2024-crimean-tatars-special-settlers, quote: "But, even then unlike the Kalmyks, Chechens, Ingush, Balkars, and Karachais they were not allowed to return to their homeland during his tenure."}
+  - id: c5
+    rel: involved
+    to: communist-party-of-the-soviet-union
+    role: "Michaela Pohl reports Emen Israilov’s demand for repatriation and an Ingush delegation led by Idris Bazorkin seeking a meeting with Central Committee members"
+    according_to: [pohl-m-chechen-ingush-in-kazakstan]
+    src:
+      - {s: pohl-m-article-chechen-ingush-kazakstan, quote: "This period has ended and we will demand that they send us back to the Caucasus, just like they sent us here to Kazakstan."}
+      - {s: pohl-m-article-chechen-ingush-kazakstan, quote: "The Ingush of the town of Makinsk sent a delegation to Moscow, headed by Idris Bazorkin, to attempt a meeting with Central Committee members, and not one of them signed the document."}
 ---

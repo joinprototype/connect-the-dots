@@ -41,6 +41,13 @@ claims:
       - {s: khrushchev-1956-secret-speech, quote: "Ukrainians avoided meeting this fate only because there were too many of them and there was no place to which to deport them. Otherwise, [Stalin] would have deported them also."}
       - {s: khrushchev-1956-secret-speech, quote: "how it is possible to make whole nations responsible for inimical activity, including women, children, old people, Communists and Komsomols, to use mass repression against them, and to expose them to misery and suffering for the hostile acts of individual persons or groups of persons."}
       - {s: schmaltz-2008-our-memory-is-the-future, quote: "he made no mention of Stalin’s policy toward Volga and other ethnic Germans."}
+  - id: c5
+    rel: authored
+    to: khrushchev-secret-speech
+    note: "He insisted that the discussion stay inside the Party, to avoid giving ammunition to the enemy"
+    src:
+      - {s: khrushchev-1956-secret-speech, quote: "We cannot let this matter get out of the Party, especially not to the press."}
+      - {s: khrushchev-1956-secret-speech, quote: "We should know the limits; we should not give ammunition to the enemy; we should not wash our dirty linen before their eyes."}
 ---
 
 Nikita Khrushchev led the Soviet Union during the [[cuban-missile-crisis]]. As Chairman of the Council of Ministers he headed the [[soviet-government]]; in July 1962 he agreed with [[fidel-castro]] to place Soviet missiles in [[cuba]].

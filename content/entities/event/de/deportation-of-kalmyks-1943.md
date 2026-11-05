@@ -31,4 +31,16 @@ claims:
     role: "named by Khrushchev in 1956"
     src:
       - {s: khrushchev-1956-secret-speech, quote: "In the same period, at the end of December, 1943, the same lot befell the [Kalmyks] of the Kalmyk Autonomous Republic."}
+  - id: c4
+    rel: involved
+    to: nkvd
+    role: "Inna Sangadzhieva told the committee what she learned after perestroika: her grandmother kept her father alive on the train to Siberia by wrapping him in a carpet"
+    according_to: [nhc-deportation-anniversary-series]
+    src:
+      - {s: nhc-2023-kalmyks, quote: "It turned out that my grandmother had wrapped my father in a small carpet, where he sat in the cattle wagon for about a month on the way to Siberia. This is how he survived."}
+  - id: c5
+    rel: appears_in
+    to: nhc-deportation-anniversary-series
+    src:
+      - {s: nhc-2023-kalmyks, quote: "This is how he survived."}
 ---

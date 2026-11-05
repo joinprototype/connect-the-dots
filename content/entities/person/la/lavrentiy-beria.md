@@ -13,6 +13,11 @@ claims:
     title: "People's Commissar of Internal Affairs"
     src:
       - {s: beria-1944-03-07-to-gko, quote: "People’s Commissar of Internal Affairs of the USSR"}
+  - id: c2
+    rel: appears_in
+    to: qalam-operation-lentil
+    src:
+      - {s: qalam-2026-operation-lentil, quote: "By 11 a.m., Stalin had received the first report from Lavrentiy Beria: 94,741 people have been removed from populated localities of the republic"}
 ---
 
 Beria's reports to Stalin and the State Defense Committee in 1944 are among the Soviet documents this story quotes.

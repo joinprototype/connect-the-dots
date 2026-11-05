@@ -13,7 +13,7 @@ claims:
     src:
       - {s: beria-1944-03-07-to-gko, quote: "many of whom had previously participated in operations to resettle the Karachai and Kalmyks, and in addition will participate in the forthcoming operation to resettle Balkarians"}
       - {s: nhc-2024-balkars, quote: "The operation to gather all ethnic Balkars for deportation was implemented by Lavrenti Beria of the NKVD (present-day FSB). Joseph Stalin approved it. Beria arrived in Nalchik on 2 March 1944, and the deportation began six days later."}
-      - {s: nhc-2024-balkars, quote: "The entire Balkar ethnic group, a total of 37,713 individuals, were rounded up and loaded into 14 cattle wagons headed for Kazakhstan and Kyrgyzstan."}
+      - {s: nhc-2024-balkars, quote: "The entire Balkar ethnic group, a total of 37,713 individuals, were rounded up"}
   - id: c2
     rel: involved
     to: kazakhstan
@@ -36,4 +36,18 @@ claims:
     role: "counted with Chechens, Ingush and Karachays in the NKVD death report"
     src:
       - {s: pohl-m-article-chechen-ingush-kazakstan, quote: "101,036 Chechens, Ingush, Balkardians, and Karachaevtsy died in this period (23.3 percent of the deportees), 485 Kalmycks (20.7 percent), 443 Crimean Tatars (10.1 percent), and 19,501 Germans, representing 8.9 percent of the German exiles."}
+  - id: c5
+    rel: involved
+    to: nkvd
+    role: "Aslan told the committee Gulnaz could not bear to lose her family; he relayed relatives’ recollections of soldiers throwing bodies from the train and said his father still saved bread crusts"
+    according_to: [nhc-deportation-anniversary-series]
+    src:
+      - {s: nhc-2024-balkars, quote: "my grandmother Gulnaz could have stayed. She was Kabardian. However, she couldn’t lose her husband and children."}
+      - {s: nhc-2024-balkars, quote: "The family were not allowed to bury them. Instead, the soldiers threw their dead bodies out of the cattle car."}
+      - {s: nhc-2024-balkars, quote: "He never leaves a bread crust and eats every part of every fruit or vegetable."}
+  - id: c6
+    rel: appears_in
+    to: nhc-deportation-anniversary-series
+    src:
+      - {s: nhc-2024-balkars, quote: "In 1957, the Balkars were allowed to return home."}
 ---

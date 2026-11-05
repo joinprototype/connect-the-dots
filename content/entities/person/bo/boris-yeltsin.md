@@ -17,6 +17,12 @@ claims:
     src:
       - {s: rferl-1999-12-31-yeltsin-resigns, quote: "Russian President Boris Yeltsin says he resigned today after nine years in office because of Russia's overall problems and not because of his personal health problems."}
       - {s: state-milestone-collapse-soviet-union, quote: "Earlier in the day, Mikhail Gorbachev resigned his post as president of the Soviet Union, leaving Boris Yeltsin as president of the newly independent Russian state."}
+  - id: c2
+    rel: signatory_of
+    to: rsfsr-law-1991-rehabilitation-of-repressed-peoples
+    note: "Signed the law adopted on 26 April 1991"
+    src:
+      - {s: pohl-2000-paper-crimean-tatars, quote: "Signed by Boris Yeltsin, this law was the first official recognition by the Russian government that Stalin's actions towards the Crimean Tatars and others was genocide."}
 ---
 
 Boris Yeltsin led the resistance to the [[august-coup-1991]] and, with the leaders of Ukraine and Belarus, signed the [[belovezha-accords]] that ended the Soviet Union. He was President of Russia until 31 December 1999, when he made [[vladimir-putin]] acting president.
