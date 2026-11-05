@@ -10,6 +10,7 @@ claims:
   - id: c1
     rel: caused_by
     to: watergate-scandal
+    according_to: [us-senate]
     note: "The Senate's own history of the Church Committee names Watergate as the first of its origins. It also names a 1974 newspaper report on the CIA."
     src:
       - {s: senate-church-committee-history, at: "Origins", quote: "In 1973 the Senate Watergate Committee investigation revealed that the executive branch had directed national intelligence agencies to carry out constitutionally questionable domestic security operations."}

@@ -72,7 +72,7 @@ Nearly every line here comes from the Special Prosecutor's report, court opinion
   reveal: [march-21-conversation, john-dean, richard-nixon, h-r-haldeman]
   reveal_claims: [march-21-conversation#c1, march-21-conversation#c2, march-21-conversation#c3, march-21-conversation#c4]
   overlay: {kind: quote, source: us-v-haldeman-559-f2d-31, quote: "you could get a million dollars. And you could get it in cash. I, I know where it could be gotten.", caption: "President Nixon to John Dean, 21 March 1973, as the U.S. Court of Appeals quotes the tape, 1976"}
-  narration: "**A million dollars.** On 21 March 1973 John Dean told the President that hush-money demands were a “cancer” and might come to another million dollars. The Court of Appeals, quoting the tape, records Nixon’s reply: it could be raised, in cash. Many minutes later, on clemency, he said: “No it's wrong, that's for sure.” In August the President said he had been told only that the money paid for lawyers and families, “not that it had been paid to procure silence.”"
+  narration: "**A million dollars.** As the Court of Appeals tells it, John Dean told the President on 21 March 1973 that hush-money demands were a “cancer” and might reach another million dollars, and Nixon replied that it could be raised, in cash. Haldeman later told the Senate Nixon had added “it would be wrong”; the tape put those words many minutes later, on clemency, and a jury convicted Haldeman of perjury on that count. Nixon wrote in August 1973 that he was told of a $120,000 blackmail demand over activities “unrelated to Watergate,” and that the money went to lawyers and families, “not that it had been paid to procure silence.”"
   duration: 14
 
 - shot: a-letter-to-the-judge
@@ -90,10 +90,10 @@ Nearly every line here comes from the Special Prosecutor's report, court opinion
   camera: {center: [-118.3, 34.05], zoom: 10.2, pitch: 30, duration: 6}
   places: [los-angeles]
   time: "1973-05-11"
-  reveal: [ellsberg-case-dismissal, daniel-ellsberg, us-district-court-central-california, john-ehrlichman, john-n-mitchell, los-angeles]
-  reveal_claims: [ellsberg-case-dismissal#c1, ellsberg-case-dismissal#c2, ellsberg-case-dismissal#c3, ellsberg-case-dismissal#c4, ellsberg-case-dismissal#c5]
+  reveal: [ellsberg-case-dismissal, daniel-ellsberg, anthony-russo, us-district-court-central-california, john-ehrlichman, fielding-break-in, los-angeles]
+  reveal_claims: [ellsberg-case-dismissal#c1, ellsberg-case-dismissal#c2, ellsberg-case-dismissal#c3, ellsberg-case-dismissal#c4, ellsberg-case-dismissal#c5, ellsberg-case-dismissal#c6, daniel-ellsberg#c4]
   overlay: {kind: quote, source: fjc-pentagon-papers-federal-courts-2019, quote: "The bizarre events have incurably infected the prosecution of this case.", caption: "Judge Matthew Byrne, 11 May 1973, as printed by the Federal Judicial Center"}
-  narration: "**Dismissed.** On 11 May 1973, the 89th day of Daniel Ellsberg’s trial in Los Angeles, Judge Matthew Byrne dismissed every charge and barred a retrial. He cited the Plumbers’ break-in at the psychiatrist’s office and the government’s failure to produce the records of its wiretap of Ellsberg. John Ehrlichman had met the judge that spring about the FBI directorship; he told the Senate no offer was made. John Mitchell told it the break-in “produced nothing whatsoever,” and Nixon said he learned of it on 17 March."
+  narration: "**Dismissed.** On 11 May 1973, the 89th day of the trial of Daniel Ellsberg and Anthony Russo, Judge W. Matthew Byrne dismissed every charge and barred a retrial. He cited the Plumbers’ break-in at the psychiatrist’s office, where, he said, it was hard to tell what, if anything, was obtained, and the government’s failure to produce the records of an FBI wiretap that had overheard Ellsberg. During the trial John Ehrlichman twice met the judge about the FBI directorship, and Nixon greeted him once. The Federal Judicial Center calls it an offer; Ehrlichman told the Senate none was made. Nixon said he learned of the break-in on 17 March."
   duration: 14
 
 - shot: a-cancer
@@ -192,8 +192,8 @@ Nearly every line here comes from the Special Prosecutor's report, court opinion
   time: "1974-09-08"
   reveal: [nixon-tapes-custody, richard-nixon, gerald-ford, us-congress, us-supreme-court]
   reveal_claims: [nixon-tapes-custody#c1, nixon-tapes-custody#c2, nixon-tapes-custody#c3, nixon-tapes-custody#c4, nixon-tapes-custody#c5]
-  overlay: {kind: quote, source: nixon-v-gsa-433-us-425, quote: "shall destroy such tapes as [Mr. Nixon] may direct", caption: "The agreement of 8 September 1974 between Nixon and the General Services Administration, as the Supreme Court quotes it"}
-  narration: "**Whose tapes?** On 8 September 1974, the day of the pardon, the head of the General Services Administration announced a deposit agreement with Nixon. After 1 September 1979 it would have let him order the tapes destroyed, and in any case at his death or by 1 September 1984. Congress overrode it with a law Ford signed that December. Nixon sued, arguing separation of powers, privilege and privacy; on 28 June 1977 the Supreme Court upheld the law."
+  overlay: {kind: quote, source: nixon-v-gsa-433-us-425, quote: "shall destroy such tapes as [Mr. Nixon] may direct", caption: "The agreement announced 8 September 1974 between Nixon and the General Services Administration, as the Supreme Court quotes it"}
+  narration: "**Whose tapes?** On 8 September 1974, the day of the pardon, the head of the General Services Administration announced a deposit agreement with Nixon, after the Attorney General advised that by the practice of past Presidents the materials were Nixon’s. After 1 September 1979 the agreement would have had the tapes destroyed as he directed, and in any case at his death or on 1 September 1984, whichever came first. Congress overrode it with a law Ford signed that December. Nixon sued, arguing separation of powers, privilege and privacy; on 28 June 1977 the Supreme Court upheld the law against his challenge to it on its face."
   duration: 14
 
 - shot: who-answered
@@ -213,7 +213,7 @@ Nearly every line here comes from the Special Prosecutor's report, court opinion
   reveal: [church-committee-created-1975, church-committee, frank-church, us-senate, ethics-in-government-act-1978, us-department-of-justice]
   reveal_claims: [church-committee-created-1975#c1, church-committee-created-1975#c2, church-committee-created-1975#c3, church-committee-created-1975#c4, ethics-in-government-act-1978#c1, ethics-in-government-act-1978#c3]
   overlay: {kind: quote, source: senate-church-committee-history, quote: "there is no inherent constitutional authority for the President or any intelligence agency to violate the law", caption: "Church Committee, final report, April 1976, as the Senate’s history quotes it"}
-  narration: "**New rules.** In January 1975 the Senate voted 82 to 4 to set up the Church Committee. The Senate’s history traces it to Watergate’s disclosures of questionable domestic operations by intelligence agencies, and to a 1974 newspaper report on the CIA. In 1978 the Ethics in Government Act let only the Attorney General remove a special prosecutor, and only for “extraordinary impropriety” or an incapacity. The Senate says some, not all, of the Watergate Committee’s proposals became law."
+  narration: "**New rules.** In January 1975 the Senate voted 82 to 4 to set up the Church Committee. The Senate’s history traces it to Watergate’s revelation that the executive branch had directed intelligence agencies to run questionable domestic operations, and to a 1974 newspaper report on the CIA. In 1978 the Ethics in Government Act wrote into law the rule in Cox’s 1973 charter, under which Judge Gesell had found his firing illegal: removal only for “extraordinary impropriety,” incapacity or a like condition, now by the Attorney General’s own act, with a panel of judges naming the prosecutor and a court able to review a removal."
   explore: true
   duration: 15
 ```

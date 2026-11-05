@@ -18,6 +18,7 @@ claims:
     to: richard-nixon
     role: "agreed to the deposit terms, then sued to overturn the Act"
     src:
+      - {s: nixon-v-gsa-433-us-425, at: "Opinion, Part I", quote: "The Attorney General advised that the historical practice of former Presidents and the absence of any governing statute to the contrary supported ownership in the appellant, with a possible limited exception."}
       - {s: nixon-v-gsa-433-us-425, at: "Opinion, Part I", quote: "On September 8, 1974, after issuance of the Attorney General's opinion, the Administrator of General Services, Arthur F. Sampson, announced that he had signed a depository agreement with appellant"}
       - {s: nixon-v-gsa-433-us-425, at: "Opinion, Part I", quote: "shall destroy such tapes as [Mr. Nixon] may direct"}
       - {s: nixon-v-gsa-433-us-425, at: "Opinion, Part I", quote: "shall be destroyed at the time of [his] death or on September 1, 1984, whichever event shall first occur."}

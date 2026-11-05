@@ -26,11 +26,15 @@ claims:
     src:
       - {s: us-v-haldeman-559-f2d-31, at: "Statement of facts", quote: "you could get a million dollars. And you could get it in cash. I, I know where it could be gotten."}
       - {s: us-v-haldeman-559-f2d-31, at: "Note 21, tape transcript p. 156", quote: "No it's wrong, that's for sure."}
+      - {s: ucsb-nixon-statement-1973-08-15, at: "Statement, 15 August 1973", quote: "I was told that one of the defendants was currently attempting to blackmail the White House by demanding payment of $120,000 as the price of not talking about other activities, unrelated to Watergate, in which he had engaged."}
       - {s: ucsb-nixon-statement-1973-08-15, at: "Statement, 15 August 1973", quote: "But I was only told that the money had been used for attorneys' fees and family support, not that it had been paid to procure silence from the recipients."}
   - id: c4
     rel: involved
     to: h-r-haldeman
-    role: "joined the talk"
+    role: "joined the talk; later convicted of perjury about what the tape said"
     src:
+      - {s: us-v-haldeman-559-f2d-31, at: "Note 21", quote: "Haldeman testified before the Senate Select Committee that he had listened to a tape of the Nixon-Dean conversation, that Nixon had in substance made the remark quoted in text, but that Nixon then said \"but it would be wrong.\""}
+      - {s: us-v-haldeman-559-f2d-31, at: "Note 21", quote: "The tape of the conversation revealed, however, that many minutes passed and the topic had shifted before Nixon uttered any words to that effect:"}
+      - {s: us-v-haldeman-559-f2d-31, at: "Statement of facts, note 17", quote: "These statements formed the basis for Counts 7, 8, and 9 of the indictment charging Haldeman with perjury. 18 U.S.C. § 1621 (1970). He was convicted on all three counts."}
       - {s: us-v-haldeman-559-f2d-31, at: "Statement of facts", quote: "Nixon returned to the Hunt demand several times during the ensuing conversation, and he continued to mention it after Haldeman joined the discussion."}
 ---
