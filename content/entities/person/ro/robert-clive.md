@@ -41,4 +41,12 @@ claims:
     note: "Lyall describes Clive's proposal and his promise of £2 million in net revenue."
     src:
       - {s: lyall-1907-history-of-india-viii-ch08, at: "chapter 8, page 183", quote: "his letter written to Pitt in 1759, in which he suggested to the Prime Minister the acquisition of Bengal in full sovereignty by the English nation, promising him a net revenue of two millions sterling"}
+  - id: c6
+    rel: intervened_in
+    to: battle-of-plassey
+    when: "1757"
+    according_to: [robert-clive]
+    note: "Macaulay reports Clive's justification for deceiving Omichund about payment under the treaty: he called the merchant a villain and considered deception justified."
+    src:
+      - {s: macaulay-1840-lord-clive, quote: "The man, he said, was a villain. Any artifice which would defeat such knavery was justifiable."}
 ---

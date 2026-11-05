@@ -18,4 +18,10 @@ claims:
     role: "the merchants incorporated were of London"
     src:
       - {s: hunter-1906-history-of-india-vi, quote: "by the name of the Governor and Company of Merchants of London trading into the East Indies"}
+  - id: c3
+    rel: involved
+    to: east-india-company
+    note: "The charter stated its public purpose as the honour of the nation and the wealth of the people."
+    src:
+      - {s: hunter-1906-history-of-india-vi, quote: "for the Honour of our Nation, the Wealth of our People"}
 ---

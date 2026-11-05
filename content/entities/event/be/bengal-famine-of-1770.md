@@ -27,4 +27,10 @@ claims:
       - {s: hunter-1868-annals-of-rural-bengal, quote: "amounted for last year to sicca rupees 1,57,26,576"}
       - {s: hunter-1868-annals-of-rural-bengal, quote: "1,53,33,660:14:9:2"}
       - {s: hunter-1868-annals-of-rural-bengal, quote: "1,31,49,148 : 6 : 3 : 2"}
+  - id: c3
+    rel: involved
+    to: east-india-company
+    note: "Hunter says that in April 1770 the Council followed its finance minister’s advice to raise the next year’s land-tax by ten percent."
+    src:
+      - {s: hunter-1868-annals-of-rural-bengal, quote: "the Council, acting upon the advice of its Mussulman Minister of Finance, added ten per cent, to the land-tax"}
 ---

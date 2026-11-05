@@ -11,4 +11,10 @@ claims:
     to: bengal-famine-of-1770
     src:
       - {s: hunter-1868-annals-of-rural-bengal, quote: "The effects of the dreadful Famine which visited these", by: warren-hastings}
+  - id: c2
+    rel: part_of
+    to: bengal-famine-of-1770
+    note: "Hastings and his Council described Najay as a customary assessment on survivors to make up the rents of dead or departed neighbours, and denied that it had government sanction."
+    src:
+      - {s: hunter-1868-annals-of-rural-bengal, quote: "It had not the sanction of Government, but took place as a matter of course."}
 ---

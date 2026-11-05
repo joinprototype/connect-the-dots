@@ -11,4 +11,10 @@ claims:
     to: indian-rebellion-of-1857
     src:
       - {s: sayyid-ahmad-khan-causes-of-the-indian-revolt, quote: "The non-admission of a native as a member into the Legislative Council was the original cause of the out-break."}
+  - id: c2
+    rel: part_of
+    to: indian-rebellion-of-1857
+    note: "Khan explained his decision to write as a duty of loyal men to tell the government their views on why the revolt happened."
+    src:
+      - {s: sayyid-ahmad-khan-causes-of-the-indian-revolt, quote: "I think that loyal men, and such as really wish well to their government, should not content themselves with reflection: but explain with all possible fidelity, their views on the origin of this rebellion."}
 ---
