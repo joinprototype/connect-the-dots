@@ -48,6 +48,14 @@ claims:
       - {s: reuters-2007-11-calvi-court-reasons, quote: "It's more credible that the killing of Roberto Calvi was decided as a punishment and to prevent him from revealing his relations with people who acted as a link to the criminal organisation"}
       - {s: reuters-2007-11-calvi-court-reasons, quote: "In its explanation, the court said prosecutors had relied on circumstantial evidence from witnesses who were now dead, some of them killed."}
       - {s: reuters-2007-11-calvi-court-reasons, quote: "Similar operations can be considered compatible with the mentality of mafiosi and have similar precedents in the criminal history of the Cosa Nostra"}
+  - id: c5
+    rel: involved
+    to: flavio-carboni
+    role: "said during the 2005 trial that he had more interest in keeping Calvi alive"
+    according_to: [flavio-carboni]
+    note: "English paraphrase of the Italian report: Carboni told the trial in 2005 that keeping Calvi alive was more in his interest. The appeal court's reasons also described his interests as compatible with keeping the banker alive."
+    src:
+      - {s: blitz-2010-07-15-calvi-appeal-reasons, at: "Carboni's 2005 testimony and the appeal court's reasons"}
 ---
 
 Five people were tried in Rome for the murder of [[roberto-calvi]] and all were acquitted on 6 June 2007. The appeal court upheld the acquittals of three of them on 7 May 2010. The Court of Cassation turned down the prosecutor's appeal.

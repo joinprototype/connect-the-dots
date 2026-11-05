@@ -26,6 +26,14 @@ claims:
     role: "issued four rescripts widening the prosecutors' powers; the Court of Appeal found one ineffective because it was not published"
     src:
       - {s: catholic-review-2026-03-17-becciu-mistrial, quote: "The appeals court found that one of the rescripts effectively functioned as legislation, and that Pope Francis’ failure to make it public rendered it ineffective."}
+  - id: c4
+    rel: intervened_in
+    to: reform-of-vatican-finances
+    when: "2013-06-24"
+    role: "gave the commission the purpose of aligning the IOR with the Apostolic See's mission"
+    according_to: [pope-francis]
+    src:
+      - {s: vatican-chirograph-2013-06-24, quote: "to permit, when necessary, a better harmonization of the said Institute with the universal mission of the Apostolic See", by: pope-francis}
 ---
 
 Pope from 2013; asked forgiveness for crimes against native peoples during the conquest in Bolivia in 2015.

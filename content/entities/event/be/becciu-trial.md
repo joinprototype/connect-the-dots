@@ -50,6 +50,12 @@ claims:
     role: "acquitted on all other charges (Vatican News)"
     src:
       - {s: vatican-news-2023-12-17-becciu-sentence, quote: "In contrast, defendants Mincione, Torzi, Tirabassi, Becciu, Squillace, Crasso, Di Ruzza and Brulhart were acquitted of all other crimes charged against them."}
+  - id: c8
+    rel: involved
+    to: vatican-court-of-appeal
+    role: "17 March 2026: ordered parts reheard because prosecutorial procedural errors undermined the right to a fair defence"
+    src:
+      - {s: catholic-review-2026-03-17-becciu-mistrial, quote: "Vatican prosecutors made procedural errors that undermined the defendants’ right to a fair defense"}
 ---
 
 The trial concerned the Secretariat of State's investments, chiefly a London property. The IOR was not a defendant.

@@ -59,6 +59,12 @@ claims:
     according_to: [holy-see]
     src:
       - {s: vatican-news-2024-05-moneyval-follow-up, quote: "The Holy See, including Vatican City State has received a positive assessment in the First \"Regular Follow-up Report\" by the MONEYVAL Committee"}
+  - id: c7
+    rel: involved
+    to: holy-see
+    role: "24 February 2011: Secretary of State Cardinal Tarcisio Bertone requested MONEYVAL evaluation and follow-up"
+    src:
+      - {s: moneyval-2012-holy-see, at: "preface, paragraph 1", quote: "On 24 February 2011, His Eminence Cardinal Bertone, Secretary of State, wrote to the Secretary General of the Council of Europe"}
 ---
 
 Since December 2010 the Holy See and Vatican City State have adopted an anti-money-laundering law, set up a supervisor, asked MONEYVAL to evaluate them (reports in 2012 and 2021), and the IOR has reviewed and closed accounts.

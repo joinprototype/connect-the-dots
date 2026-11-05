@@ -124,6 +124,35 @@ claims:
     src:
       - {s: time-1982-09-13-great-vatican-bank-mystery, at: "page 2 of 8", quote: "Marcinkus has remained inside the Vatican, where he cannot be questioned by the government."}
       - {s: seattle-times-2006-02-22-marcinkus-dies, quote: "The archbishop, who was known for saying that \"You can't run the church on Hail Marys,\" was kept a virtual prisoner in the Vatican for long stretches in the 1980s."}
+  - id: c15
+    rel: involved
+    to: michele-sindona
+    role: "his explanation for putting Marcinkus on the Bahamian bank's board"
+    according_to: [michele-sindona]
+    src:
+      - {s: time-1982-09-13-great-vatican-bank-mystery, at: "page 4 of 8", quote: "I told him clearly that I put him in because it helps me get money.", by: michele-sindona}
+  - id: c16
+    rel: involved
+    to: roberto-calvi
+    role: "bought Ambrosiano shares to strengthen his control, in TIME's reconstruction"
+    note: "TIME describes the purpose of the share purchases; its suggestion that they were financed by borrowing is qualified as a possibility."
+    according_to: [time-magazine]
+    src:
+      - {s: time-1982-09-13-great-vatican-bank-mystery, at: "page 5 of 8", quote: "in an attempt to strengthen his grip on the parent bank"}
+  - id: c17
+    rel: involved
+    to: roberto-calvi
+    role: "needed IOR letters to reassure directors of Ambrosiano's Peruvian bank, according to TIME"
+    according_to: [time-magazine]
+    src:
+      - {s: time-1982-09-13-great-vatican-bank-mystery, at: "page 6 of 8", quote: "Calvi needed them to appease the directors of Ambrosiano's Peruvian bank, who questioned the value of the shell companies."}
+  - id: c18
+    rel: involved
+    to: paul-marcinkus
+    role: "Cardinal Martini privately requested his replacement on 6 March 1987"
+    note: "English paraphrase of Martini's letter to Casaroli, reproduced in the press report on the Casaroli papers: he argued that changing the IOR leadership would signify a wish to return to its original purposes without admitting guilt, and asked whether someone facing an arrest warrant should remain in charge while many people in Milan had lost their savings."
+    src:
+      - {s: martini-ior-casaroli-papers-press-report, at: "Martini's letter of 6 March 1987"}
 ---
 
 Banco Ambrosiano failed in June 1982, owed about $1.2 to $1.3 billion by shell companies abroad. The IOR had issued letters of patronage for those companies and paid $244 million to the bank's creditors in 1984.
