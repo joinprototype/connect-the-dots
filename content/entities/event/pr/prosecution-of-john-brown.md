@@ -15,4 +15,11 @@ claims:
       - {s: brown-slavery-and-justice-report-2006, quote: "Though the offending ship was impounded, John Brown triumphed in the ensuing jury trial, emerging with an acquittal and a judgment for costs against the Providence Abolition Society."}
       - {s: brown-slavery-and-justice-report-2006, quote: "were both longtime allies of John Brown"}
       - {s: brown-slavery-and-justice-report-2006, quote: "Thus did John Brown become the first Rhode Islander, and apparently the first American, prosecuted in federal court for illegal slave trading"}
+  - id: c2
+    rel: involved
+    to: john-brown-of-providence
+    role: "publicly defended slave trading"
+    note: "John Brown defended slave trading as right, just and lawful in the brothers’ debate, emphasising property rights."
+    src:
+      - {s: brown-slavery-and-justice-report-2006, quote: "Trafficking Negroes was “right, just and lawful,” John insisted"}
 ---

@@ -26,4 +26,11 @@ claims:
     role: "named defendant (as the Society of Lloyd’s)"
     src:
       - {s: clearinghouse-in-re-descendants-of-african-slavery, quote: "R.J. Reynolds Tobacco Co. The Society of Lloyd's Union Pacific Railway Co."}
+  - id: c3
+    rel: involved
+    to: aetna
+    role: "dismissal of the reparations claims in 2004"
+    note: "Judge Charles Norgle held that the plaintiffs had not alleged a specific connection between themselves and the defendants sufficient to establish constitutional standing."
+    src:
+      - {s: clearinghouse-in-re-descendants-of-african-slavery, quote: "Judge Norgle held that Plaintiffs failed to plead sufficient facts to establish constitutional standing because they failed to allege any specific connection between themselves and Defendants."}
 ---

@@ -25,4 +25,11 @@ claims:
       - {s: maritime-executive-2023-lloyds-ledgers, quote: "the researchers reasoned that this percentage could be an undercount"}
       - {s: reuters-2023-lloyds-invest, quote: "“There’s no way to compensate for the damage that has been done – too much has happened,” said Junior Garba, co-founder of Equity"}
       - {s: reuters-2023-lloyds-invest, quote: "Garba added that Lloyd’s initiatives were “a good starting point.”"}
+  - id: c3
+    rel: involved
+    to: lloyds-of-london
+    role: "chairman explained the response"
+    note: "In 2023 chairman Bruce Carnegie-Brown said that Lloyd’s had asked itself how it could have the greatest impact."
+    src:
+      - {s: reuters-2023-lloyds-invest, quote: "“We’ve asked ourselves how we could have the greatest impact,” Lloyd’s Chairman Bruce Carnegie-Brown told Reuters."}
 ---

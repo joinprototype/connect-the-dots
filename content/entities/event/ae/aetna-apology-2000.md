@@ -16,6 +16,9 @@ claims:
       - {s: ap-2000-aetna-apology, quote: "Aetna said its records show the company wrote no more than a dozen such policies to slave owners."}
       - {s: ap-2000-aetna-apology, quote: "“We have concluded that no further actions are required at this time,” Laberge said."}
       - {s: democracy-now-2000-aetna, quote: "there’s limited and incomplete information on our archives on the extent of that participation"}
+      - {s: democracy-now-2000-aetna, quote: "we believe that any policy decisions made in the distant past are more than outweighed by our record of diversity and our support of fairness and equality for all people."}
+      - {s: democracy-now-2000-aetna, quote: "we only have four such policies in our archives. The premiums on those policies don’t even total a hundred dollars, I don’t believe"}
+      - {s: democracy-now-2000-aetna, quote: "no further actions are required, especially considering our strong, consistent commitment to diversity over many years, and the numerous philanthropic and workplace diversity initiatives that we undertake"}
       - {s: ap-2000-aetna-apology, quote: "Aetna has long acknowledged that for several years shortly after its founding in 1853 that the company may have insured the lives of slaves"}
   - id: c2
     rel: involved

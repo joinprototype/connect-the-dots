@@ -43,4 +43,13 @@ claims:
     src:
       - {s: burnard-2019-zong-case, quote: "It had an inexperienced captain – Luke Collingwood, a surgeon by trade who had never commanded a slave vessel."}
       - {s: burnard-2019-zong-case, quote: "Luke Collingwood, despite being desperately ill, made his way immediately after the sale of slaves from the Zong to Kingston, in which town he quickly died"}
+  - id: c6
+    rel: involved
+    to: luke-collingwood
+    role: "captain whose decision witnesses justified as preventing revolt"
+    note: "James Kelsall and Robert Stubbs later said that the crew believed an insurrection would occur if they did not act. Kelsall said he initially objected but then agreed. Burnard records that no insurrection occurred."
+    src:
+      - {s: burnard-2019-zong-case, quote: "Stubbs supported Collingwood’s decision to murder Africans"}
+      - {s: burnard-2019-zong-case, quote: "But the crew were convinced that if they had not acted on 29 November an insurrection would have occurred."}
+      - {s: burnard-2019-zong-case, quote: "Kelsall claimed he objected at first but soon came around."}
 ---

@@ -31,4 +31,12 @@ claims:
     role: "administered the payments"
     src:
       - {s: boe-2022-collection-of-slavery-compensation, quote: "The Bank of England administered the payment of slavery compensation on behalf of the British government."}
+  - id: c4
+    rel: involved
+    to: british-government
+    role: "received colonial appeals over compensation"
+    note: "St Vincent council president John Peterson complained that compensation would not cover mortgaged estates or future labour costs. John Colquhoun sought changed rules; Edward Smith-Stanley and John Lefevre directed him to the appeal process."
+    src:
+      - {s: national-archives-1833-act-and-compensation, quote: "He wrote that it would be inadequate to cover estates held under mortgage, or for the future costs of owners as employers of labourers."}
+      - {s: national-archives-1833-act-and-compensation, quote: "An agent for the legislatures of the nineteen colonies included in the Act, John Colquhoun, tried to persuade the government to change the rules."}
 ---

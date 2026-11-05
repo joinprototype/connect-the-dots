@@ -27,4 +27,10 @@ claims:
     when: "1862-04-16"
     src:
       - {s: nps-emancipation-in-washington-dc, quote: "Congress passed the act in a landslide vote, and President Lincoln signed it on April 16, 1862."}
+  - id: c4
+    rel: enacted
+    to: dc-compensated-emancipation-act
+    note: "On signing the act, Lincoln told Congress that he had long desired to free the capital from slavery in a satisfactory way."
+    src:
+      - {s: nps-emancipation-in-washington-dc, quote: "I have ever desired to see the national capital freed from the institution in some satisfactory way."}
 ---

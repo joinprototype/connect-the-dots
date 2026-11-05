@@ -27,4 +27,11 @@ claims:
     role: "subject of the report"
     src:
       - {s: harvard-2022-bacow-letter, quote: "Harvard’s history includes extensive entanglements with slavery"}
+  - id: c4
+    rel: involved
+    to: larry-bacow
+    role: "stated a moral responsibility to address slavery’s effects"
+    note: "Bacow wrote that Harvard bore a moral responsibility to address the continuing effects of the practices from which it had benefited."
+    src:
+      - {s: harvard-2022-bacow-letter, quote: "Consequently, I believe we bear a moral responsibility to do what we can to address the persistent corrosive effects of those historical practices on individuals, on Harvard, and on our society."}
 ---

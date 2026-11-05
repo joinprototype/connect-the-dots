@@ -32,4 +32,12 @@ claims:
     to: georgetown-jesuit-sale-1838
     src:
       - {s: jesuits-2017-apology, quote: "descendants of the 272 men, women and children Jesuits enslaved and then sold in 1838"}
+  - id: c5
+    rel: involved
+    to: georgetown-university
+    role: "subsequent reconciliation fund and delay"
+    note: "In December 2021 The Hoya reported that students and descendants were pressing for payments. A university spokesperson attributed the reconciliation fund’s delay to the pandemic and anticipated a spring 2022 launch."
+    src:
+      - {s: hoya-2021-gu272-referendum, quote: "descendants have yet to receive any funds from the university as of December 2021, according to a petition circulated by the Georgetown University Student Association (GUSA)."}
+      - {s: hoya-2021-gu272-referendum, quote: "the fund was delayed due to the COVID-19 pandemic, according to a university spokesperson, who anticipates a spring 2022 launch."}
 ---
