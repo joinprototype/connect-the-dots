@@ -22,4 +22,12 @@ claims:
     role: "told a U.S. official that Saudi Arabia had opposed the rise"
     src:
       - {s: frus-1969-76-v36-d271, at: "note 4", quote: "Saudi Arabia had “strongly opposed” the price increase at the Tehran meeting"}
+  - id: c3
+    rel: intervened_in
+    to: oapec-kuwait-meeting-1973
+    when: "1973-10-16/1973-10-17"
+    role: "carried the new Saudi-Egyptian brief to Kuwait and insisted that the public statement omit a specific reference to the United States"
+    according_to: [us-government]
+    src:
+      - {s: frus-1969-76-v36-d218, at: "Kamal Adham’s description of the Saudi-Egyptian agreement", quote: "the public statement of this decision will include no specific reference to the United States"}
 ---
