@@ -20,6 +20,7 @@ The writer and skeptic briefs are in `$ROOT/.cache`: `STORY-BRIEF.md`, `WRITER.m
 1. **One at a time.** If `$S/lock` exists and is less than 8 hours old, stop: another run is going. Otherwise write the run name into it, and remove it at the end, whatever happens.
 2. **A quiet laptop.** If the 1-minute load (`sysctl -n vm.loadavg`) is over 8, or a headless Chrome from `tools/qa` or a `ctd build` is running, wait 10 minutes and look again, at most three times. Then stop, and say the laptop was busy.
 3. **The run's name** is `stories-` plus today's date and a number, `stories-2026-11-05-1`. `RUN_DIR=$S/runs/<run>`.
+   Note the plan's weekly usage now (`mcp__ccd_session_mgmt__get_usage`, "Weekly · all models"), to log what the run cost.
 4. **The topics.** In `$S/queue.md`, take the first open item (`- [ ]`) marked `new` and the first marked `deepen`: two at most, or one if only one kind is open. If none is open, stop and say the queue is empty. Mark each taken item `- [>] <run>`.
 
 ## Write
@@ -73,12 +74,12 @@ The writer and skeptic briefs are in `$ROOT/.cache`: `STORY-BRIEF.md`, `WRITER.m
     - that nothing is live until a release.
 
     It ends with `🤖 Generated with [Claude Code](https://claude.com/claude-code)`.
-16. In `$S/queue.md` mark the item `- [>] <run> <pull request URL>`. Add a line to `$S/runs.tsv`: the date, run, story, kind, scenes, pull request, writer tokens and skeptic tokens.
+16. In `$S/queue.md` mark the item `- [>] <run> <pull request URL>`. Add a line to `$S/runs.tsv`: the date, run, story, kind, scenes, pull request, writer tokens, skeptic tokens, and the weekly usage at the run's start and end.
 
 ## After
 
 17. Remove the worktrees with `git -C $ROOT worktree remove`. Keep the local branches: they are pushed. Remove the lock.
-18. Report in a few lines: each story, its pull request, what the skeptic and your read changed, and what waits for the founder. None of it is on `main` or live until the founder merges it and releases.
+18. Report in a few lines: each story, its pull request, the weekly usage the run took, what the skeptic and your read changed, and what waits for the founder. None of it is on `main` or live until the founder merges it and releases.
 
 ## Never
 
