@@ -40,4 +40,11 @@ claims:
     src:
       - {s: ostler-2015-genocide-and-american-indian-history, quote: "While most scholars who have studied boarding schools regard them as oppressive institutions and would likely accept cultural genocide as an apt term for their objectives"}
       - {s: ostler-2015-genocide-and-american-indian-history, quote: "Boarding schools have also been characterized as institutions of outright genocide on the grounds that the mortality rate (from disease) within boarding schools was very high and that boarding schools took children from Native groups and in this way prevented births within them."}
+  - id: c6
+    rel: appears_in
+    to: dunbar-ortiz-yes-native-americans-were-the-victims-of-genocide
+    note: "Dunbar-Ortiz quotes Pratt's 1892 speech on the assimilation of Native children."
+    src:
+      - {s: dunbar-ortiz-2016-yes-genocide, quote: "Kill the Indian in him and save the man."}
+
 ---

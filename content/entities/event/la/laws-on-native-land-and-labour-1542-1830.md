@@ -53,4 +53,19 @@ claims:
     to: indian-removal-act
     src:
       - {s: us-statute-1830-indian-removal-act, quote: "An Act to provide for an exchange of lands with the Indians residing in any of the states or territories, and for their removal west of the river Mississippi."}
+  - id: c9
+    rel: appears_in
+    to: raudot-ordinance-of-1709
+    note: "Intendant Raudot issued the 1709 ordinance and forbade enslaved people to leave their masters."
+    src:
+      - {s: cmh-new-france-slavery, quote: "the intendant Raudot issued an ordinance in 1709 that legalized slavery"}
+      - {s: cmh-new-france-slavery, quote: "it shall be forbidden to said Panis and Negroes to leave their masters"}
+
+  - id: c10
+    rel: appears_in
+    to: royal-proclamation-of-1763
+    note: "The Crown described land fraud as injuring its interests and causing Native discontent, and stated that its rules aimed to prevent further irregularities."
+    src:
+      - {s: us-1763-royal-proclamation, quote: "great Frauds and Abuses have been committed in purchasing Lands of the Indians, to the great Prejudice of our Interests. and to the great Dissatisfaction of the said Indians"}
+
 ---

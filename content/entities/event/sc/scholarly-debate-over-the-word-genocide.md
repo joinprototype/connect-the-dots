@@ -105,4 +105,12 @@ claims:
     to: declaration-of-continuing-independence-1974
     src:
       - {s: ostler-2015-genocide-and-american-indian-history, quote: "recognized that this absence “comes from the genocidal policies of the colonial power of the United States.”"}
+  - id: c15
+    rel: appears_in
+    to: honouring-the-truth-reconciling-for-the-future
+    note: "At the Victoria regional event, survivors and family members challenged school supervisor Tom Cavanaugh to tell the truth. He then acknowledged and condemned abuse of children."
+    src:
+      - {s: trc-2015-summary-final-report, quote: "Truth, tell the truth."}
+      - {s: trc-2015-summary-final-report, quote: "Cavanaugh then went on to acknowledge that children had also been abused in the schools, and he condemned such actions"}
+
 ---

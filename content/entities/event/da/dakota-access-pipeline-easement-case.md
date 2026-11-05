@@ -36,4 +36,12 @@ claims:
       - {s: insurance-journal-2026-dapl-easement, quote: "The US Army Corps of Engineers finalized an easement for a stretch of the Dakota Access pipeline that passes under a North Dakota lake, ending a years-long environmental review of the hotly contested oil conduit."}
       - {s: insurance-journal-2026-dapl-easement, quote: "Thursday’s result includes additional conditions including enhanced leak detection and monitoring requirements"}
       - {s: kfyr-2025-dapl-final-eis, quote: "Final environmental impact statement for DAPL easement shows ‘remote’ chance of leak under Lake Oahe"}
+  - id: c6
+    rel: involved
+    to: standing-rock-sioux-tribe
+    note: "The D.C. Circuit quotes a letter from chairman Dave Archambault II describing Lake Oahe's role in the Tribe's water supply, subsistence and sacred practices."
+    src:
+      - {s: dc-cir-2021-standing-rock-v-corps, quote: "Lake Oahe is the source of life for the Tribe."}
+      - {s: dc-cir-2021-standing-rock-v-corps, quote: "Letter from Dave Archambault II, Chairman, Standing Rock Sioux Tribe"}
+
 ---

@@ -62,4 +62,12 @@ claims:
     src:
       - {s: doi-2010-cobell-settlement-signed, quote: "The agreement also establishes a $1.9 billion fund for the voluntary buy-back and consolidation of fractionated land interests"}
       - {s: doi-2012-cobell-final-steps, quote: "Congress approved the Cobell settlement on November 30, 2010 as part of the Claims Resolution Act of 2010."}
+  - id: c10
+    rel: appears_in
+    to: broken-promises-2018
+    note: "Stacy Bohlen testified in Washington on 19 February 2016 that Native nations exchanged more than 400 million acres, ways of life and lives for peace and treaty services."
+    src:
+      - {s: usccr-2018-broken-promises, quote: "[W]e exchanged 400 million plus acres of land, and our way of life, and our very lives, for peace"}
+      - {s: usccr-2018-broken-promises, quote: "Washington D.C., Feb. 19, 2016"}
+
 ---

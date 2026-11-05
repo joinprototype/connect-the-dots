@@ -58,4 +58,20 @@ claims:
     src:
       - {s: ostler-2015-genocide-and-american-indian-history, quote: "But the evidence marshaled thus far has failed to dislodge a scholarly consensus that the intentional infliction of disease was rare."}
       - {s: fenn-2000-biological-warfare, quote: "Usually treated as an isolated anomaly, the Fort Pitt episode itself points to the possibility that biological warfare was not as rare as it might seem."}
+  - id: c9
+    rel: appears_in
+    to: biological-warfare-in-eighteenth-century-north-america
+    according_to: [elizabeth-fenn]
+    note: "Fenn reports fifteen-year-old captive John M'Cullough's account that smallpox took hold after an attack on infected settlers along the Juniata River; she allows multiple sources for the epidemic."
+    src:
+      - {s: fenn-2000-biological-warfare, quote: "John M'Cullough, a fifteen-year-old captive among the Indians, reported that the disease took hold after an attack on some settlers sick with the smallpox along central Pennsylvania's Juniata River."}
+
+  - id: c10
+    rel: appears_in
+    to: biological-warfare-in-eighteenth-century-north-america
+    note: "Trent framed the gifts as regard for the envoys and wrote that he hoped for their desired effect. The envoys had requested provisions and liquor for their return home."
+    src:
+      - {s: fenn-2000-biological-warfare, quote: "Out of our regard to them"}
+      - {s: fenn-2000-biological-warfare, quote: "I hope it will have the desired effect."}
+
 ---

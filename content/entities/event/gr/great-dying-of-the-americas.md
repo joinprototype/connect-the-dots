@@ -75,4 +75,20 @@ claims:
       - {s: koch-2019-great-dying, quote: "The lower range of population estimates for North America lies between 900,000 and 2.4 million, based on tribe-by-tribe counts for the period 1600 CE to mid-1800 CE"}
       - {s: koch-2019-great-dying, quote: "has been criticized for its assumptions on food acquisition strategies"}
       - {s: koch-2019-great-dying, quote: "did not make any judgement on their relative quality."}
+  - id: c10
+    rel: appears_in
+    to: virgin-soils-revisited
+    note: "Jones describes Pizarro meeting Atahuallpa at Cajamarca in 1532, after smallpox had reached the Inca empire."
+    src:
+      - {s: jones-2003-virgin-soils-revisited, quote: "Francisco Pizarro met Inca emperor Atahuallpa"}
+      - {s: jones-2003-virgin-soils-revisited, quote: "Smallpox, introduced to Mexico by Cortes, reached the Incan empire before Pizarro."}
+
+  - id: c11
+    rel: involved
+    to: united-states
+    according_to: [jeffrey-ostler]
+    note: "Ostler describes Leopold Pokagon negotiating permission for about 280 people to remain in Michigan after the 1833 Treaty of Chicago, with the support of a Michigan Supreme Court justice. Other Potawatomi bands later returned and secured land and federal recognition."
+    src:
+      - {s: futurity-2019-ostler-surviving-genocide, quote: "obtained the support of a Michigan Supreme Court justice and negotiated an agreement allowing his community of around 280 people to remain on their traditional homelands."}
+
 ---

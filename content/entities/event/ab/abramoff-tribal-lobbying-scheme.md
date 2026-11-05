@@ -23,4 +23,11 @@ claims:
     to: gimme-five-report-2006
     src:
       - {s: senate-2006-gimme-five-report, quote: "The Committee, therefore, finds that most of the Tribes received little of the intended benefit for the significant sums they paid to Scanlon and that most of the money paid by the Tribes was used for purposes unintended by the Tribes."}
+  - id: c4
+    rel: appears_in
+    to: gimme-five-report-2006
+    note: "The committee quotes Abramoff's private reply to Scanlon's proposal to share profits."
+    src:
+      - {s: senate-2006-gimme-five-report, quote: "Sounds like a plan, but let’s discuss when we are together."}
+
 ---

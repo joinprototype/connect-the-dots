@@ -40,4 +40,12 @@ claims:
     src:
       - {s: nij-2016-rosay-violence, quote: "American Indian and Alaska Native women are 1.2 times as likely to have experienced violence in their lifetime and are 1.7 times as likely to have experienced violence in the past year"}
       - {s: nij-2016-rosay-violence, quote: "Among American Indian and Alaska Native victims, 96 percent of women and 89 percent of men have experienced sexual violence by an interracial perpetrator."}
+  - id: c7
+    rel: involved
+    to: us-department-of-the-interior
+    note: "Deb Haaland helped lead the Not Invisible Act in Congress before becoming Interior Secretary. She described a lack of urgency, transparency and coordination as obstacles to combating violence."
+    src:
+      - {s: doi-not-invisible-act-commission, quote: "led by Secretary Deb Haaland during her time in Congress."}
+      - {s: doi-not-invisible-act-commission, quote: "A lack of urgency, transparency, and coordination has hampered our country’s efforts to combat violence against American Indian and Alaska Native people."}
+
 ---

@@ -53,4 +53,12 @@ claims:
     src:
       - {s: lewy-2004-were-american-indians-victims-of-genocide, quote: "Similarly, military engagements that led to the death of noncombatants, like the battle of the Washita, cannot be seen as genocidal acts, for the loss of innocent life was not intended and the soldiers did not aim at the destruction of the Indians as a defined group."}
       - {s: lewy-2004-were-american-indians-victims-of-genocide, quote: "But, as Robert Utley has concluded in a careful analysis, it is better described as “a regrettable, tragic accident of war,” a bloodbath that neither side intended."}
+  - id: c8
+    rel: appears_in
+    to: lewy-were-american-indians-the-victims-of-genocide
+    according_to: [guenter-lewy]
+    note: "Lewy recounts Chivington's orders to give no quarter and his soldiers' scalping and mutilation at Sand Creek."
+    src:
+      - {s: lewy-2004-were-american-indians-victims-of-genocide, quote: "he had issued orders not to give quarter, or that his soldiers had engaged in massive scalping and other mutilations."}
+
 ---
