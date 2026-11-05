@@ -31,4 +31,11 @@ claims:
     role: "fined €39,109,000 on the personal-care market, €74,923,000 for Gillette and €39,830,000 on home care, under the negotiated settlement procedure"
     src:
       - {s: adlc-decision-14-d-19-press-release, quote: "Procter & Gamble (Gillette) 74 923 000 € - negotiated settlement procedure"}
+  - id: c5
+    rel: involved
+    to: unilever
+    role: "its sales director Philippe F. testified about first contact with the personal-care managers' group in 2002"
+    src:
+      - {s: adlc-decision-14-d-19-full, at: "paragraph 251"}
+
 ---

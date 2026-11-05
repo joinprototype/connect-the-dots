@@ -18,6 +18,7 @@ claims:
     role: "objected to the stake; agreed the truce of 3 September 2014"
     src:
       - {s: thelocal-2013-07-02-lvmh-fine, quote: "LVMH, led by tycoon Bernard Arnault, later built this holding up to 22.6 percent prompting Hermes to cry foul and accuse Arnault of surreptitiously trying to add Hermes to his large stable of brands."}
+      - {s: tradingsat-2010-10-24-hermes-reply, at: "Hermès statement of 24 October 2010: family unity and the partnership structure"}
   - id: c3
     rel: involved
     to: amf
