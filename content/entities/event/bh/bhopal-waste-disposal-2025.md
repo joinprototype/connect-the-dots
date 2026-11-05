@@ -19,4 +19,17 @@ claims:
     role: "its Bhopal Gas Tragedy Relief and Rehabilitation Department moved the waste"
     src:
       - {s: scroll-2025-bhopal-waste-moved, quote: "PTI quoted Swatantra Kumar Singh, the director of the Bhopal Gas Tragedy Relief and Rehabilitation Department, as saying."}
+  - id: c3
+    rel: involved
+    to: madhya-pradesh-government
+    note: "Relief director Swatantra Kumar Singh described short packing shifts and a cleared route for the trucks after a court deadline to move the waste."
+    src:
+      - {s: scroll-2025-bhopal-waste-moved, quote: "On December 3, the High Court had set a four-week deadline to shift the waste."}
+      - {s: scroll-2025-bhopal-waste-moved, quote: "They underwent health check-ups and were given rest every 30 minutes"}
+  - id: c4
+    rel: involved
+    to: madhya-pradesh-government
+    note: "Pollution board officer Srinivas Dwivedi said the residue would be treated before burial to avoid environmental harm."
+    src:
+      - {s: pti-2025-bhopal-waste-burned, quote: "Before this, the residue will be treated scientifically so that their burial does not cause any harm to the environment"}
 ---

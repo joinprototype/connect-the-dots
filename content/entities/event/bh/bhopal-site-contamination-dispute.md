@@ -50,4 +50,11 @@ claims:
     src:
       - {s: ucc-bhopal-reports, quote: "groundwater in general is not contaminated due to seepage of contaminants from the UCIL dumps."}
       - {s: ucc-bhopal-reports, quote: "is still incomplete."}
+  - id: c8
+    rel: involved
+    to: madhya-pradesh-government
+    according_to: [madhya-pradesh-government]
+    note: "In 2009 Chief Minister Shivraj Singh Chouhan said the plant was safe and his government planned to open it as a memorial."
+    src:
+      - {s: bbc-2009-site-not-leaking, quote: "Chief Minister Chouhan said the Union Carbide plant had been made safe, and that the government was planning to turn it into a memorial site, to be opened to the public."}
 ---

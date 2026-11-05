@@ -79,4 +79,13 @@ claims:
     title: "quashing of the criminal proceedings set aside on review"
     src:
       - {s: sc-india-2023-curative-order, quote: "The extinguishment of criminal liabilities by the settlement was held to not be appropriate and thus, that aspect of the original order was reviewed."}
+  - id: c9
+    rel: owns_stake
+    to: union-carbide-india
+    when: "1984"
+    according_to: [union-carbide]
+    note: "Browning later explained the overseas investment strategy as contributing to and benefiting from growing national economies."
+    src:
+      - {s: ucc-browning-1993-disaster-at-bhopal, quote: "Union Carbide Corporation held 50.9 percent of the stock as part of a corporate global business strategy that evolved in the post World War II era."}
+      - {s: ucc-browning-1993-disaster-at-bhopal, quote: "By investing in companies abroad, Union Carbide expected to contribute to -- and benefit from -- growing national economies around the world."}
 ---

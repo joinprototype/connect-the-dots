@@ -31,4 +31,10 @@ claims:
     src:
       - {s: ca2-1987-in-re-bhopal-809f2d195, quote: "The Union of India, however, has changed its position and now supports the district court's order."}
       - {s: sc-india-2023-curative-order, quote: "a suit was filed by the Union of India against UCC before the District Judge, Bhopal, seeking compensation of approximately US $ 3.3 billion."}
+  - id: c5
+    rel: involved
+    to: us-district-court-southern-district-of-new-york
+    note: "The appeals court upheld Keenan’s choice of India, where most witnesses and documents were located and the sealed plant could be inspected."
+    src:
+      - {s: ca2-1987-in-re-bhopal-809f2d195, quote: "The vast majority of material witnesses and documentary proof bearing on causation of and liability for the accident is located in India, not the United States"}
 ---

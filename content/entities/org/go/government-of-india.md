@@ -25,4 +25,12 @@ claims:
     src:
       - {s: sc-india-2023-curative-order, quote: "This granted the Central Government an exclusive right to represent and act in place of every person who was entitled to make a claim for compensation."}
       - {s: ca2-1987-in-re-bhopal-809f2d195, at: "Opinion, background", quote: "Thereupon the UOI, purporting to act in the capacity of parens patriae, and with retainers executed by many of the victims, on April 8, 1985, filed a complaint in the Southern District of New York"}
+  - id: c3
+    rel: intervened_in
+    to: bhopal-curative-petition
+    according_to: [government-of-india]
+    note: "In 2011 an unnamed ministry official defended the 5,295 adjudicated death claims out of around 22,000 filed, arguing a recount would delay justice."
+    src:
+      - {s: dte-2011-curative-petition-numbers, quote: "There were around 22,000 claims for deaths before the commissioner but only 5,295 were adjudicated on the basis of documents and surveys."}
+      - {s: dte-2011-curative-petition-numbers, quote: "Repeating the whole process will further delay justice"}
 ---

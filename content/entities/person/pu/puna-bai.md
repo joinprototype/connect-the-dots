@@ -18,4 +18,11 @@ claims:
     role: "her account of the night opens the report"
     src:
       - {s: amnesty-2004-clouds-of-injustice, quote: "For Puna Bai, then a young mother of three, living in Jai Prakash Nagar, a poor urban settlement just across the road from the factory"}
+  - id: c3
+    rel: harmed_by
+    to: bhopal-gas-leak
+    according_to: [amnesty-international]
+    note: "She recalled fleeing after a warning, becoming separated from her family and losing consciousness."
+    src:
+      - {s: amnesty-2004-clouds-of-injustice, quote: "We all started running and eventually I got separated from my family. I just remember not being able to locate my family and then after that I had lost consciousness."}
 ---
