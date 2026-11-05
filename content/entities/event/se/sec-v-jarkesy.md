@@ -20,4 +20,10 @@ claims:
     role: "brought the case in its own in-house proceeding"
     src:
       - {s: scotus-22-859-sec-v-jarkesy, quote: "The SEC opted to adjudicate the matter in-house."}
+  - id: c3
+    rel: involved
+    to: sec
+    role: "Jarkesy challenged the agency’s in-house adjudication as violating his Seventh Amendment jury right"
+    src:
+      - {s: "crs-lsb11229-sec-v-jarkesy", at: "Background on SEC v. Jarkesy, printed p. 2"}
 ---

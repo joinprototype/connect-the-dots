@@ -21,4 +21,10 @@ claims:
     role: "held that trading on the undisclosed drilling results violated Rule 10b-5"
     src:
       - {s: ca2-401f2d833-sec-v-texas-gulf-sulphur, quote: "We hold, therefore, that all transactions in TGS stock or calls by individuals apprised of the drilling results of K-55-1 were made in violation of Rule 10b-5."}
+  - id: c3
+    rel: involved
+    to: sec
+    role: "sued over Crawford’s orders before public disclosure; the court held good faith insufficient and judged trades by order time to protect public access to the news"
+    src:
+      - {s: "ca2-401f2d833-sec-v-texas-gulf-sulphur", at: "Opinion, facts and sections I.C–D", quote: "Crawford ordered 300 shares at midnight on the 15th and another 300 shares at 8:30 A. M. the next day, and these orders were executed over the Midwest Exchange in Chicago at its opening on April 16."}
 ---

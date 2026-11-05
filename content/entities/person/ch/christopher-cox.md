@@ -12,4 +12,11 @@ claims:
     title: "Chairman"
     src:
       - {s: fcic-2011-final-report, quote: "Former SEC chairman Christopher Cox called the CSE supervisory program “fundamentally flawed from the beginning.”"}
+  - id: c2
+    rel: appears_in
+    to: financial-crisis-inquiry-report
+    role: "expressed comfort about investment banks’ capital cushions days before Bear Stearns collapsed, the FCIC reported"
+    according_to: [fcic]
+    src:
+      - {s: "fcic-2011-final-report", at: "Conclusions of the Financial Crisis Inquiry Commission", quote: "comfort about the capital cushions"}
 ---

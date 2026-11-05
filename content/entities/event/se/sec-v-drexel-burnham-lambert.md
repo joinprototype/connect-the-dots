@@ -22,4 +22,10 @@ claims:
     role: "heard the case; Judge Pollack’s opinion of 1 December 1993 recounts its outcome"
     src:
       - {s: sec-v-drexel-burnham-lambert-837fsupp587, quote: "all of whom ultimately were cast in judgment and permanently enjoined from violating the United States Securities and Exchange Act and the Securities Act."}
+  - id: c3
+    rel: involved
+    to: us-district-court-southern-district-of-new-york
+    role: "Pollack found Boesky bought on assurances against loss while omitting the arrangement from public filings; he credited Boesky over Milken’s trial denial"
+    src:
+      - {s: "sec-v-drexel-burnham-lambert-837fsupp587", at: "Findings 16–22 and 32–39", quote: "Neither the original Schedule 13D filed by Boesky on Fischbaeh nor any of the amendments to it disclosed the arrangement between him and Milken and the Pos-ners."}
 ---

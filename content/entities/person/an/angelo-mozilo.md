@@ -20,6 +20,7 @@ claims:
     title: "securities fraud"
     src:
       - {s: sec-2009-06-04-press-2009-129-countrywide, at: "press release 2009-129, 4 June 2009", quote: "The Securities and Exchange Commission today charged former Countrywide Financial CEO Angelo Mozilo and two other former executives with securities fraud for deliberately misleading investors about the significant credit risks being taken in efforts to build and maintain the company's market share."}
+      - {s: chrg-111shrg55785-madoff-2009-09-10, at: "SEC mortgage-related enforcement testimony", quote: "The SEC’s charges allege that Countrywide portrayed itself as underwriting mainly prime quality mortgages, while privately describing as ‘‘toxic’’ certain of the loans it was extending."}
   - id: c3
     rel: settled_with
     to: sec

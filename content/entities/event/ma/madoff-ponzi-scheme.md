@@ -40,4 +40,11 @@ claims:
     role: "the 2005 submission"
     src:
       - {s: chrg-111shrg55785-madoff-2009-09-10, quote: "The complaint submitted in 2005, entitled “The World’s Largest Hedge Fund is a Fraud,” detailed approximately 30 red flags"}
+  - id: c6
+    rel: involved
+    to: sec
+    role: "investigators discounted Markopolos as an outsider seeking a bounty, although his likely Ponzi explanation offered none, Kotz told senators"
+    according_to: [sec-office-of-inspector-general]
+    src:
+      - {s: "chrg-111shrg55785-madoff-2009-09-10", at: "Kotz’s response to Chairman Dodd"}
 ---

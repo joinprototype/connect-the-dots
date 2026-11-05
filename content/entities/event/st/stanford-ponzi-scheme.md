@@ -39,4 +39,25 @@ claims:
     to: sec-oig-stanford-report-2010
     src:
       - {s: chrg-111shrg63685-stanford-2010-09-22, quote: "On March 31, 2010, we issued to the Chairman of the SEC a comprehensive report of our investigation in the Stanford matter"}
+  - id: c6
+    rel: involved
+    to: sec
+    role: "Enforcement closed its 1998 inquiry after three months when Stanford failed to produce documents requested voluntarily"
+    according_to: [sec-office-of-inspector-general]
+    src:
+      - {s: "chrg-111shrg63685-stanford-2010-09-22", at: "Kotz’s oral statement"}
+  - id: c7
+    rel: involved
+    to: sec
+    role: "Fort Worth officials discouraged complex cases because they believed they were judged by case totals, the inspector general found"
+    according_to: [sec-office-of-inspector-general]
+    src:
+      - {s: "chrg-111shrg63685-stanford-2010-09-22", at: "Kotz’s oral statement"}
+  - id: c8
+    rel: involved
+    to: sec
+    role: "former Fort Worth Enforcement head Spence Barasch briefly represented Stanford in 2006 until SEC ethics officials said it was improper; Kotz said he had helped quash earlier investigations"
+    according_to: [sec-office-of-inspector-general]
+    src:
+      - {s: "chrg-111shrg63685-stanford-2010-09-22", at: "Kotz’s oral statement and response to Senator Vitter"}
 ---

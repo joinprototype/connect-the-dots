@@ -51,4 +51,18 @@ claims:
     to: sec-oig-bear-stearns-report-2008
     src:
       - {s: fcic-2011-final-report, quote: "Securities and Exchange Commission, Office of Inspector General, “SECs Oversight of Bear Stearns and Related Entities: The Consolidated Supervised Entity Program,” Report No. 446-A, September 25, 2008"}
+  - id: c8
+    rel: involved
+    to: sec
+    role: "at a 2004 meeting Annette Nazareth assured commissioners that her division could handle supervision, after Harvey Goldschmid questioned investor protection"
+    according_to: [fcic]
+    src:
+      - {s: "fcic-2011-final-report", at: "Chapter 8, printed pp. 152–153"}
+  - id: c9
+    rel: involved
+    to: sec
+    role: "Erik Sirri later explained that supervision focused on liquidity because securities firms traditionally lacked a lender of last resort"
+    according_to: [fcic]
+    src:
+      - {s: "fcic-2011-final-report", at: "Chapter 8, printed p. 153"}
 ---

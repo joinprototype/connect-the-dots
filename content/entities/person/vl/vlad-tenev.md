@@ -22,4 +22,11 @@ claims:
     when: "2013"
     src:
       - {s: robinhood-s1-2021-07-01, at: "Prospectus summary, Founder-Led, Passionate and Experienced Team", quote: "Robinhood was founded in 2013 by Vladimir Tenev and Baiju Bhatt."}
+  - id: c3
+    rel: appears_in
+    to: sec-staff-report-early-2021
+    role: "quoted denying that Robinhood restricted trading at hedge funds’ request or to move GameStop’s price in his 18 February 2021 testimony"
+    according_to: [vlad-tenev]
+    src:
+      - {s: "sec-staff-report-2021-10-14", at: "Printed p. 33, note 92", quote: "Robinhood did not impose these trading restrictions at the request of hedge funds\nor to try and move prices in GameStop one way or the other.", by: vlad-tenev}
 ---
