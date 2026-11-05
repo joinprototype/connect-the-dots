@@ -22,4 +22,13 @@ claims:
       - {s: icj-1995-11-14-eknilang, by: lijon-eknilang, quote: "I cannot have children. I have had miscarriages on seven occasions. On one of those occasions, I miscarried after four months. The child I miscarried was severely deformed; it had only one eye."}
       - {s: icj-1995-11-14-eknilang, by: lijon-eknilang, quote: "I have also had thyroid surgery to remove nodules."}
       - {s: icj-1995-11-14-eknilang, by: lijon-eknilang, quote: "We began to learn about leukaemia for the first time when the body of Lekoj Anjain, a 15-year old boy who had been strong and healthy, was return to Rongelap in a coffin."}
+  - id: c3
+    rel: harmed_by
+    to: castle-bravo
+    note: "Eknilang testified about the flash, food causing mouth blisters after the return, and John Anjain listing deaths and thyroid operations because there were so many people to remember."
+    according_to: [lijon-eknilang]
+    src:
+      - {s: icj-1995-11-14-eknilang, by: lijon-eknilang, quote: "We all ran outside our homes to see it."}
+      - {s: icj-1995-11-14-eknilang, by: lijon-eknilang, quote: "What we did eat gave us blisters on our lips and in our mouths and we suffered terrible stomach problems and nausea."}
+      - {s: icj-1995-11-14-eknilang, by: lijon-eknilang, quote: "Lekoj Anjain's father John began to keep a list of all the Rongelapese who died and all of those who went to the United States to have their thyroids removed, because there were so many people involved. We were afraid we would not remember all of them."}
 ---

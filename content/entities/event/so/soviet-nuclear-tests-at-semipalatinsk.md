@@ -104,4 +104,16 @@ claims:
       - {s: morrison-2024-polygon-thesis, quote: "Nazarbayev also applauded NSM for raising awareness about radioactive pollution in the Semipalatinsk Oblast."}
       - {s: morrison-2024-polygon-thesis, quote: "Yet, in Nazarbayev’s opinion, the military could not be blamed."}
       - {s: morrison-2024-polygon-thesis, quote: "Supporting the Soviet military’s outlook, he noted that nuclear testing had not been suspended in the US and that the Test Site personnel were merely adhering to their mission to defend the Soviet Union from external threats."}
+  - id: c12
+    rel: involved
+    to: joseph-stalin
+    role: "ordered a Soviet nuclear weapon after the American atomic bombings of Japan, according to Togzhan Kassenova"
+    src:
+      - {s: carnegie-2022-kassenova-kazakhstan, quote: "Stalin immediately tasked his government to build a Soviet nuclear weapon to catch up with the American one."}
+  - id: c13
+    rel: involved
+    to: kazakhstan
+    role: "Gulsum Kakimzhanova led Iris, helping people affected by testing find medical and social care"
+    src:
+      - {s: bulletin-2009-kassenova-semipalatinsk, quote: "Gulsum Kakimzhanova, the head of the nongovernmental organization Iris, which is based in Semipalatinsk and helps those affected by the testing find the proper medical and social care."}
 ---

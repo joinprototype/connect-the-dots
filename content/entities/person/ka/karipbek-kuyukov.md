@@ -23,4 +23,13 @@ claims:
       - {s: beyondnuclear-2018-kuyukov-last-victim, by: karipbek-kuyukov, quote: "They didn’t even know about the health threats and devastating consequences of the crimes being committed against them. People were basically treated as guinea pigs."}
       - {s: rferl-kuyukov-visa, quote: "Kuyukov attributes his disabilities to the high levels of radiation his parents were exposed to."}
       - {s: beyondnuclear-2018-kuyukov-last-victim, by: karipbek-kuyukov, quote: "My main mission on this land is to do everything I can for people like me to be the last victims of nuclear tests"}
+  - id: c3
+    rel: harmed_by
+    to: soviet-nuclear-tests-at-semipalatinsk
+    note: "Kuyukov recalled his parents watching the mushroom clouds, described learning to paint without arms, and took his art and campaign abroad."
+    according_to: [karipbek-kuyukov]
+    src:
+      - {s: beyondnuclear-2018-kuyukov-last-victim, by: karipbek-kuyukov, quote: "My parents would climb on the hill to better see the nuclear mushrooms, although they were instructed to lie down on the ground and cover themselves."}
+      - {s: beyondnuclear-2018-kuyukov-last-victim, by: karipbek-kuyukov, quote: "I did this without arms, but with my feet, legs and mouth."}
+      - {s: beyondnuclear-2018-kuyukov-last-victim, quote: "When his art is exhibited in galleries around the world, Kuyukov travels with it, giving presentations and urging the need for a nuclear weapons-free world."}
 ---

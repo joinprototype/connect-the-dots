@@ -28,4 +28,11 @@ claims:
     src:
       - {s: niedenthal-1997-bikini, quote: "The population of islanders on Bikini slowly increased over the years until in June of 1975, during regular monitoring of Bikini, radiological tests discovered"}
       - {s: niedenthal-1997-bikini, quote: "In October of 1975, after the contemplation of these new, terrifying and confusing reports on the radiological condition of their atoll, the Bikinians filed a lawsuit in U.S. federal court demanding that a complete scientific survey of Bikini and the northern Marshalls be conducted."}
+  - id: c4
+    rel: involved
+    to: lyndon-b-johnson
+    role: "publicly promised the Bikinians a return in June 1968 on the Atomic Energy Commission’s advice"
+    src:
+      - {s: niedenthal-1997-bikini, quote: "in June of 1968, President Lyndon B. Johnson publicly promised"}
+      - {s: niedenthal-1997-bikini, quote: "Bikinians living on Kili and other islands that they would now be able to return to their homeland."}
 ---

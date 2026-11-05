@@ -52,10 +52,12 @@ claims:
   - id: c7
     rel: involved
     to: advisory-committee-on-human-radiation-experiments
-    role: "reviewed it in the 1990s"
+    role: "identified two minimal-risk nontherapeutic studies; found no evidence that research motivated exposure or resettlement"
     src:
       - {s: achre-1995-ch12-marshallese, quote: "we found no evidence to support the claim that the exposures of the Marshallese, either initially or after resettlement, were motivated by research purposes."}
       - {s: achre-1995-ch12-marshallese, quote: "We have found only two examples of research in the Rongelap and Utirik populations that appear to have been nontherapeutic: this research was intended to learn about radiation effects in this population and offered little or no prospect of benefit to the individual subjects."}
+      - {s: achre-1995-ch12-marshallese, quote: "In the second experiment, a radioactive tracer (chromium 51) was used to tag red blood cells in ten unexposed Rongelapese to measure their red blood cell mass."}
+      - {s: achre-1995-ch12-marshallese, quote: "The tracer dose used would have posed a very minimal risk, but it was clearly not for the benefit of the ten subjects themselves."}
       - {s: achre-1995-ch12-marshallese, quote: "For the most part, consent for tests and treatment appears to have been neither sought nor obtained."}
       - {s: achre-1995-ch12-marshallese, quote: "the Committee believes that the AEC had an ethical imperative to take advantage of the unique opportunity posed by the fallout from Bravo to learn as much as possible about radiation effects in humans."}
       - {s: achre-1995-ch12-marshallese, quote: "As best the Advisory Committee can determine, it is carrying out this responsibility well."}

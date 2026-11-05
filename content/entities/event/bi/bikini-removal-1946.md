@@ -28,7 +28,7 @@ claims:
     to: king-juda
     role: "answered the request for his people"
     src:
-      - {s: niedenthal-1997-bikini, by: king-juda, quote: "King Juda, then the leader of the Bikinian people, stood up after much confused and sorrowful deliberation among his people"}
+      - {s: niedenthal-1997-bikini, quote: "King Juda, then the leader of the Bikinian people, stood up after much confused and sorrowful deliberation among his people"}
       - {s: niedenthal-1997-bikini, by: king-juda, quote: "If the United States government and the scientists of the world want to use our island and atoll for furthering development, which with God’s blessing will result in kindness and benefit to all mankind, my people will be pleased to go elsewhere"}
       - {s: niedenthal-1997-bikini, quote: "No one dissented in front of the Americans when they"}
       - {s: niedenthal-1997-bikini, quote: "While the 167 Bikinians were preparing for their exodus, preparations for the U.S. nuclear testing program advanced rapidly."}

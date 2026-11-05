@@ -26,4 +26,13 @@ claims:
       - {s: bulletin-2018-ropeik-lucky-dragon, quote: "while the Lucky Dragon was 86 miles from the test site and outside the officially declared warning zone, it was well within the range of the bomb’s impact"}
       - {s: bulletin-2018-ropeik-lucky-dragon, quote: "nine minutes later a roaring sound arrives like overlapping avalanches."}
       - {s: hpmm-lucky-dragon-no5-exhibit, quote: "saw the western sky suddenly light up with a fireball"}
+  - id: c4
+    rel: involved
+    to: japan
+    role: "Japan Press links survivor Matashichi Oishi’s decision to publish to his accusation that Japan hushed up the disaster and failed its victims"
+    src:
+      - {s: japanpress-2003-oishi, quote: "Oishi tasted the powder. It was not hot. It had no smell or taste."}
+      - {s: japanpress-2003-oishi, quote: "The government has hushed up the calamities and failed to take care of the more than 10 thousand victims."}
+      - {s: japanpress-2003-oishi, quote: "This is why he made up his mind to write everything he has experienced during the past 50 years and have it published."}
+      - {s: japanpress-2003-oishi, quote: "About ten students of Waseda University, who are members of the group \"Peace Walk\", were listening to Oishi relating his experience."}
 ---

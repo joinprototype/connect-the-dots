@@ -46,4 +46,17 @@ claims:
     src:
       - {s: doe-2020-runit-dome-report, quote: "In the mid to late 1970s, the U.S. conducted cleanup operations at the Enewetak Atoll by stripping off successive layers of contaminated soil to reduce the level of Pu in surface soils."}
       - {s: doe-2020-runit-dome-report, quote: "The waste soil and other radiologically contaminated debris were mixed with cement grout, placed inside the crater formed from the Cactus nuclear weapons test, and covered with a circular, dome-shaped concrete cap"}
+  - id: c8
+    rel: involved
+    to: harry-s-truman
+    role: "directed Army and Navy officials in December 1945 to prepare tests of atomic bombs on warships"
+    src:
+      - {s: niedenthal-1997-bikini, quote: "President Harry S. Truman issued a directive to Army and Navy officials that joint testing of nuclear weapons would be necessary"}
+      - {s: niedenthal-1997-bikini, quote: "to determine the effect of atomic bombs on American warships."}
+  - id: c9
+    rel: involved
+    to: us-department-of-energy
+    role: "planned groundwater monitoring at Runit Dome in its 2020 report"
+    src:
+      - {s: doe-2020-runit-dome-report, quote: "DOE is in the process of establishing a groundwater radiochemical analysis program"}
 ---
