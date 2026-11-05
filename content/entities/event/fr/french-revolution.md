@@ -44,4 +44,19 @@ claims:
     role: "subject"
     src:
       - {s: chnm-1087, quote: "When the monarchy’s fiscal problems left it with almost no other choices, Louis XVI called for the convening of the Estates-General in May 1789."}
+  - id: c7
+    rel: "appears_in"
+    to: "mcphee-vendee-2021"
+    src: [{s: "mcphee-vendee-2021-source", quote: "The National Convention responded to this desperate military situation by imposing a levy of 300,000 conscripts."}]
+    role: "civil war in western France"
+  - id: c8
+    rel: "appears_in"
+    to: "coming-of-the-french-revolution"
+    src: [{s: "day-competing-explanations-source", quote: "passed largely to the bourgeoisie.", at: "p. 39, quoting Lefebvre; R. R. Palmer translation"}]
+    role: "Lefebvre’s class interpretation"
+  - id: c9
+    rel: "appears_in"
+    to: "interpreting-the-french-revolution"
+    src: [{s: "day-competing-explanations-source", quote: "neither capitalism nor the bourgeoisie needed", at: "p. 52, quoting Furet; Elborg Forster translation"}]
+    role: "Furet’s revisionist interpretation"
 ---

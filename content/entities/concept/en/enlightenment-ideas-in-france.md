@@ -12,4 +12,10 @@ claims:
     src:
       - {s: cambridge-modern-europe-coursebook-france, quote: "they had a major influence on the whole revolutionary process in France."}
       - {s: cambridge-modern-europe-coursebook-france, quote: "It can be difficult to assess the importance of abstract ideas on actual events"}
+  - id: c2
+    rel: "influenced"
+    to: "french-revolution"
+    src: [{s: "day-competing-explanations-source", at: "pp. 51–54"}]
+    according_to: ["francois-furet"]
+    note: "Furet’s revisionist account emphasizes the political and ideological event and the pre-revolutionary role of intellectuals; read here through Day, pp. 51–54."
 ---
