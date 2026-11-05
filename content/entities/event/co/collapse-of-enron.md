@@ -25,4 +25,11 @@ claims:
       - {s: scotus-544us696-arthur-andersen, at: "Opinion of the Court", quote: "Also on November 8, the SEC served Enron and petitioner with subpoenas for records."}
       - {s: scotus-544us696-arthur-andersen, at: "Opinion of the Court", quote: "Per Dave–No more shredding"}
       - {s: scotus-544us696-arthur-andersen, at: "Opinion of the Court, note 4 (the firm's own policy)", quote: "the related information should not be destroyed"}
+  - id: c3
+    rel: involved
+    to: david-duncan
+    role: "Andersen audit partner warned by Sherron Watkins in August 2001"
+    src:
+      - {s: scotus-544us696-arthur-andersen, at: "Opinion of the Court, factual background", quote: "Petitioner’s “engagement team” for Enron was headed by David Duncan."}
+      - {s: scotus-544us696-arthur-andersen, at: "Opinion of the Court, factual background", quote: "She likewise informed Duncan and Michael Odom, one of petitioner’s partners who had supervisory responsibility over Duncan, of the looming problems."}
 ---

@@ -25,4 +25,12 @@ claims:
     role: "disciplined the 2016–2018 auditors"
     src:
       - {s: apas-2023-04-03-wirecard-decision, quote: "In its decision of 31 March 2023, the panel concluded that there were breaches of professional duties regarding the 2016-2018 audits of Wirecard AG and Wirecard Bank AG."}
+  - id: c4
+    rel: involved
+    to: wirecard
+    role: "company whose chief executive promised a complaint against unknown persons after EY refused to sign the 2019 accounts"
+    note: "Braun made the announcement on 18 June 2020."
+    src:
+      - {s: rte-2020-06-18-wirecard-loan-crunch, quote: "Wirecard's auditor has refused to sign off its 2019 accounts over a missing €1.9 billion."}
+      - {s: rte-2020-06-18-wirecard-loan-crunch, quote: "It is currently unclear whether fraudulent transactions to the detriment of Wirecard have occurred. Wirecard will file a complaint against unknown persons,"}
 ---

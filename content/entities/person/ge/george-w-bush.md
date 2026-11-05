@@ -49,4 +49,12 @@ claims:
     role: "said September 11 changed his view of threats and justified acting before they materialized"
     src:
       - {s: bush-2005-12-14-iraqi-elections, at: "14 December 2005 speech", quote: "In an age of terrorism and weapons of mass destruction, if we wait for threats to fully materialize, we will have waited too long."}
+  - id: c8
+    rel: enacted
+    to: sarbanes-oxley-act
+    when: "2002-07-30"
+    note: "At the White House signing, Bush said the law would enforce standards for accountants and protect workers and investors."
+    src:
+      - {s: bush-2002-07-30-sarbanes-oxley-signing, at: "Signing remarks, East Room", quote: "And today I sign the most far-reaching reforms of American business practices since the time of Franklin Delano Roosevelt."}
+      - {s: bush-2002-07-30-sarbanes-oxley-signing, at: "Signing remarks, East Room", quote: "the auditors will be audited; the accountants will be held to account."}
 ---
