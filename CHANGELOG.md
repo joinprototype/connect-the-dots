@@ -2,6 +2,13 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.5.12 (2026-11-05)
+
+- Every story but the four about Jeffrey Epstein is retold through the people who decided: in each scene a king, an executive, a judge, a soldier or a family at a moment, what they faced and chose, their reasons in their own words where the record has them, and, where it has both, what they said in public beside what they said in private.
+- A new story, Liberty and the Terror, follows the French Revolution from Calonne's tax plan in 1787 to Bonaparte's coup in 1799, with the votes on the king and the Terror's dead by each historian's count.
+- One Land names the claim that the Rothschilds created Israel as antisemitic, as the fact-check it cites does.
+- Five new links from the nightly leads run, and the Internet Archive's copy for 147 more sources.
+
 ## 0.5.11 (2026-11-04)
 
 - A new story, Why Empires Fall, sets side by side what the record's historians and witnesses say ended Rome's west, the Ottomans, the Mongol Empire and the Yuan, and the Soviet Union: money, armies, outside pressure, disease, succession, reform and transformation, each in its holder's name, with no rule of its own.
