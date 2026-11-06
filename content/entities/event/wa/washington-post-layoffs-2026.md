@@ -19,4 +19,10 @@ claims:
     role: "the cuts were at his behest, NPR reported; he stayed silent"
     src:
       - {s: npr-2026-bezos-orders-washington-post-layoffs, quote: "The Washington Post moved Wednesday at the behest of owner Jeff Bezos to cut a third of its entire workforce."}
+  - id: c3
+    rel: involved
+    to: the-washington-post
+    role: "executive editor Matt Murray told a newsroom Zoom call the reset was needed to compete in the era of artificial intelligence"
+    src:
+      - {s: "npr-2026-bezos-orders-washington-post-layoffs", quote: "In a newsroom Zoom call, Executive Editor Matt Murray called the move \"a strategic reset\" it needs to compete in the era of artificial intelligence."}
 ---

@@ -24,4 +24,24 @@ claims:
     role: "its opinion editor stepped away"
     src:
       - {s: nbc-2025-bezos-washington-post-opinion, quote: "Washington Post owner Jeff Bezos said Wednesday that the paper’s opinion editor has “decided to step away” as the section takes a new direction focusing on “personal liberties and free markets.”"}
+  - id: c4
+    rel: involved
+    to: ann-telnaes
+    role: "said cartoonists must have freedom to express their views after resigning"
+    according_to: [ann-telnaes]
+    src:
+      - {s: "npr-2025-telnaes-quits-washington-post", quote: "We have to have the freedom to say what we want to say", by: "ann-telnaes"}
+  - id: c5
+    rel: involved
+    to: the-washington-post
+    role: "opinion editor David Shipley said he rejected the cartoon to avoid repetition after one column ran and another was scheduled"
+    src:
+      - {s: "npr-2025-telnaes-quits-washington-post", quote: "The only bias was against repetition."}
+  - id: c6
+    rel: involved
+    to: jeff-bezos
+    role: "said he offered David Shipley the choice of leading the new opinion section or stepping away"
+    according_to: [jeff-bezos]
+    src:
+      - {s: "nbc-2025-bezos-washington-post-opinion", quote: "I suggested to him that if the answer wasn’t ‘hell yes’ then it had to be ‘no.’", by: "jeff-bezos"}
 ---

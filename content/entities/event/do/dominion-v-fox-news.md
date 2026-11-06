@@ -26,4 +26,17 @@ claims:
     role: "gave testimony under oath"
     src:
       - {s: npr-2023-fox-settles-dominion, quote: "Fox founder Rupert Murdoch — who, under oath, called himself a newsman at heart —"}
+  - id: c4
+    rel: involved
+    to: dominion-voting-systems
+    role: "chief executive John Poulos said the company sought accountability after damage to the company, employees and customers"
+    according_to: [dominion-voting-systems]
+    src:
+      - {s: "npr-2023-fox-settles-dominion", quote: "Throughout this process, we have sought accountability"}
+  - id: c5
+    rel: involved
+    to: fox-news
+    role: "before trial, Judge Eric Davis ruled the allegations about Dominion aired on Fox were false"
+    src:
+      - {s: "pbs-2023-ap-fox-dominion-settlement", quote: "emphasizing it was \"CRYSTAL clear\" that none of the allegations about Dominion aired on Fox by Trump allies were true."}
 ---

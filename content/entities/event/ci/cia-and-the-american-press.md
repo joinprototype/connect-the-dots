@@ -32,4 +32,10 @@ claims:
     role: "named by Bernstein, citing CIA officials, among the most valuable CIA ties; no source here shows the CIA owning it"
     src:
       - {s: bernstein-1977-rolling-stone-cia-and-the-media, quote: "By far the most valuable of these associations, according to CIA officials, have been with the New York Times, CBS and Time Inc."}
+  - id: c5
+    rel: involved
+    to: carl-bernstein
+    role: "spent six months investigating CIA ties to the press after leaving the Washington Post in 1977"
+    src:
+      - {s: "bernstein-1977-rolling-stone-cia-and-the-media", quote: "Carl Bernstein spent six months looking at the relationship of the CIA and the press during the Cold War years."}
 ---
