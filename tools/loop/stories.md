@@ -69,7 +69,7 @@ The writer and skeptic briefs are in `$ROOT/.cache`: `STORY-BRIEF.md`, `WRITER.m
 
 ## Pull request
 
-16. Squash the branch into one commit: `git reset --soft origin/main`, then commit. The message says what the story covers in plain sentences, that Codex (GPT-6-Luna and GPT-6.1-Sol) sourced and wrote it, and ends with `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` for this session's read.
+16. Squash the branch into one commit on the commit it started from: `git reset --soft $(git merge-base HEAD origin/main)`, then commit, then `git fetch -q origin && git rebase origin/main` and run step 14's checks again. Never `git reset --soft origin/main`: if main moved during the run, that commit would undo main's new changes (2026-11-06: it would have removed 170 archive copies). Before pushing, `git diff --stat origin/main...HEAD` lists only this story's files. The message says what the story covers in plain sentences, that Codex (GPT-6-Luna and GPT-6.1-Sol) sourced and wrote it, and ends with `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` for this session's read.
 17. Push `story/<id>`. Open the pull request with `gh pr create --base main --head story/<id> --title "For review: <story title>"`. The body says:
     - what the story asks and answers, in two sentences;
     - its scenes, and the new entries and sources;
