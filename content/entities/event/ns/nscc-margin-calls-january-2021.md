@@ -23,4 +23,13 @@ claims:
       - {s: hfsc-2021-02-18-tenev-testimony, at: "Section VIII, GameStop and Market Volatility, p. 9", quote: "On January 25, Robinhood Securities’ collateral obligation from NSCC, its principal clearinghouse, totaled approximately $124 million.", by: vlad-tenev}
       - {s: hfsc-2021-02-18-tenev-testimony, at: "Section VIII, GameStop and Market Volatility, p. 9", quote: "In total, the NSCC automated notice indicated that Robinhood Securities owed NSCC a total clearing fund deposit of approximately $3.7 billion.", by: vlad-tenev}
       - {s: sec-staff-report-2021-10-14, at: "Section 3.5, p. 31", quote: "Absent this waiver, one retail broker-dealer would have had an additional ECP charge of more than double its margin requirement of $1.4 billion on January 28, 2021."}
+  - id: c3
+    rel: involved
+    to: robinhood
+    role: "broker whose executives were concerned about liquidity before the 28 January deposit demand"
+    according_to: [house-financial-services-committee]
+    note: "The House majority staff reported that Tenev expressed liquidity concerns to finance chief Jason Warnick on 27 January. Robinhood Markets drew $500 million from a $600 million credit line that day, then the remaining $100 million on 28 January."
+    src:
+      - {s: hfsc-2022-06-24-game-stopped-staff-report, at: "Section III.1.g, p. 30", quote: "Vlad Tenev was concerned going into Wednesday, January 27, 2021, about the company’s ability to maintain adequate liquidity as expressed to the company’s Chief Financial Officer, Jason Warnick."}
+      - {s: hfsc-2022-06-24-game-stopped-staff-report, at: "Section III.1.o, footnote 323", quote: "Robinhood Markets also had access to a $600 million credit line, which it drew from January 27, 2021, in the amount of $500 million and a further amount of $100 million on January 28, 2021"}
 ---

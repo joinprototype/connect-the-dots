@@ -28,7 +28,7 @@ claims:
     rel: involved
     to: keith-gill
     role: "individual investor who posted his GameStop analysis on social media"
-    note: "He testified that he bought call options on GameStop stock on 7 June 2019, and added to his position through much of 2019 and 2020."
+    note: "Gill told Congress that he invested in GameStop in 2019 and 2020 as he grew more confident in his analysis."
     src:
       - {s: hfsc-2021-02-18-gill-testimony, at: "pp. 1–2", quote: "I am an individual investor. My investment in GameStop and my posts on social media were entirely my own."}
   - id: c4
@@ -91,4 +91,41 @@ claims:
     role: "posted the one-word tweet \"Gamestonk!!\" after the market closed on 26 January"
     src:
       - {s: cnn-2021-01-26-musk-gamestop-tweet, at: "Report", quote: "CEO Elon Musk appeared to join the pile-on with a tweet that sent GameStop shares briefly above $200."}
+  - id: c13
+    rel: involved
+    to: keith-gill
+    role: "investor who believed the market overstated GameStop’s bankruptcy risk and underestimated its existing stores and digital prospects"
+    according_to: [keith-gill]
+    note: "Gill’s own explanation to Congress for buying in 2019 and 2020. He said he had grown up playing video games and shopping at GameStop."
+    src:
+      - {s: hfsc-hearing-117-3-transcript, at: "Keith Gill, opening statement", quote: "First, the market was underestimating the prospects of GameStop's legacy business and overestimating the likelihood of bankruptcy.", by: keith-gill}
+      - {s: hfsc-hearing-117-3-transcript, at: "Keith Gill, opening statement", quote: "By embracing the digital economy, GameStop may be able to find new revenue streams that vastly exceed the value of its business.", by: keith-gill}
+  - id: c14
+    rel: involved
+    to: melvin-capital
+    role: "fund whose founder attributed its short position to a shift from physical stores to downloads"
+    according_to: [gabe-plotkin]
+    note: "Plotkin said the pandemic accelerated downloads in 2020; he closed the GameStop short at a loss because unprecedented events were occurring, while maintaining his view of the business. He said Melvin’s investors suffered significant losses and pledged to earn them back."
+    src:
+      - {s: hfsc-hearing-117-3-transcript, at: "Gabriel Plotkin, opening statement", quote: "is being overtaken by digital downloads through the internet.", by: gabe-plotkin}
+      - {s: hfsc-hearing-117-3-transcript, at: "Gabriel Plotkin, opening statement", quote: "When this frenzy began, Melvin started closing out its position in GameStop at a loss, not because our investment thesis had changed, but because something unprecedented was happening.", by: gabe-plotkin}
+      - {s: hfsc-hearing-117-3-transcript, at: "Gabriel Plotkin, opening statement", quote: "Investors in Melvin suffered significant losses. It is now our job to earn it back.", by: gabe-plotkin}
+  - id: c15
+    rel: involved
+    to: ryan-cohen
+    role: "board appointee whom Gill later cited as a reason to expect a turnaround"
+    according_to: [keith-gill]
+    note: "Gill pointed to Cohen and the colleagues he brought into GameStop. This is Gill’s assessment of the board appointments."
+    src:
+      - {s: hfsc-hearing-117-3-transcript, at: "Keith Gill, answering Representative Lynch", quote: "And one big element of that is indeed one of the largest investors in GameStop, Ryan Cohen. And he has brought in some colleagues who could turn around this company.", by: keith-gill}
+  - id: c16
+    rel: involved
+    to: keith-gill
+    role: "investor who remained bullish and invested when he testified in February 2021"
+    according_to: [keith-gill]
+    note: "Gill recalled visiting family in Brockton for the holidays after the stock broke $20 in December, when he already regarded his investment as a success. He acknowledged others’ losses, welcomed the committee’s examination and supported individuals’ right to choose their investments."
+    src:
+      - {s: hfsc-hearing-117-3-transcript, at: "Keith Gill, opening statement", quote: "When the stock price broke $20 in December, I knew my investment was a success. I was so happy to visit my family in Brockton for the holidays. The money would go such a long way for us.", by: keith-gill}
+      - {s: hfsc-hearing-117-3-transcript, at: "Keith Gill, opening statement", quote: "I'm as bullish as I've ever been on a potential turnaround for GameStop, and I remain invested in the company.", by: keith-gill}
+      - {s: hfsc-hearing-117-3-transcript, at: "Keith Gill, opening statement", quote: "It is tragic that some people lost money, and my heart goes out to them.", by: keith-gill}
 ---

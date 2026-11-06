@@ -10,10 +10,10 @@ claims:
   - id: c1
     rel: invested_in
     to: gamestop
-    when: "2019-06-07"
-    role: "bought call options; added to the position through much of 2019 and 2020"
-    note: "His stated reason: he believed GameStop was undervalued."
+    when: "2019/2020"
+    role: "invested in GameStop after concluding the stock was undervalued"
+    according_to: [keith-gill]
+    note: "Gill told Congress that in early June 2019 the share price fell below what he thought was fair value; he invested in 2019 and 2020 as his confidence in his analysis grew."
     src:
-      - {s: hfsc-2021-02-18-gill-testimony, at: "p. 2", quote: "Because I thought the stock was undervalued, I purchased call options on June 7, 2019.", by: keith-gill}
-      - {s: hfsc-2021-02-18-gill-testimony, at: "p. 1", quote: "I believed the company was dramatically undervalued by the market.", by: keith-gill}
+      - {s: hfsc-hearing-117-3-transcript, at: "Keith Gill, opening statement", quote: "In early June of 2019, the price of GameStop stock declined below what I thought was its fair value.", by: keith-gill}
 ---

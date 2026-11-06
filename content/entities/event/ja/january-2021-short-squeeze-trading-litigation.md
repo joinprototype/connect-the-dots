@@ -29,6 +29,13 @@ claims:
     src:
       - {s: ca11-2024-06-26-guzman-v-robinhood, at: "Opinion, p. 3", quote: "Defendants reject Plaintiffs’ conspiracy allegations and argue that Robinhood implemented the restrictions on its own accord to reduce market volatility and thereby reduce its collateral requirements with the National Securities Clearing Corporation"}
       - {s: ca11-2024-06-26-guzman-v-robinhood, at: "Opinion, p. 4", quote: "Because this failure is dispositive of their claim, we need not decide whether Plaintiffs plausibly alleged an agreement between Defendants to prohibit purchases of the relevant securities."}
+  - id: c4
+    rel: involved
+    to: robinhood
+    role: "defendant sued by investors who said they sold at deflated prices after the purchase restrictions"
+    note: "The appeals opinion recounts the investors’ complaint; the antitrust appeal was decided on the adequacy of allegations about competition in the defined markets."
+    src:
+      - {s: ca11-2024-06-26-guzman-v-robinhood, at: "Opinion, p. 3", quote: "Retail investors who sold the relevant securities at a deflated price because of Robinhood’s trading restrictions sued."}
 ---
 
 Lawsuits over [[robinhood-trading-restrictions-2021]], brought against [[robinhood]] and, in the antitrust case, [[citadel-securities]].

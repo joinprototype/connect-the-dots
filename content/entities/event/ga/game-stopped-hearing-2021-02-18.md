@@ -56,4 +56,29 @@ claims:
     src:
       - {s: hfsc-2021-02-15-game-stopped-hearing-memo, at: "Witness list, p. 1", quote: "Vladimir Tenev, Chief Executive Officer, Robinhood Markets, Inc."}
       - {s: hfsc-2021-02-18-tenev-testimony, at: "Section I, Introduction", quote: "My name is Vlad Tenev, and I am the co-founder and CEO of Robinhood Markets, Inc."}
+  - id: c8
+    rel: involved
+    to: ken-griffin
+    role: "witness who said deposing his whole organization would support his denial about restricting buying"
+    note: "Representative Juan Vargas asked whether anyone in Griffin’s organization had talked to Robinhood about restricting buying of GameStop. Griffin denied it, then affirmed Vargas’s follow-up about deposing everyone."
+    src:
+      - {s: hfsc-hearing-117-3-transcript, at: "Kenneth Griffin, answering Representative Vargas", quote: "Let me be perfectly clear: Absolutely not.", by: ken-griffin}
+      - {s: hfsc-hearing-117-3-transcript, at: "Kenneth Griffin, answering Representative Vargas", quote: "That is correct.", by: ken-griffin}
+  - id: c9
+    rel: involved
+    to: vlad-tenev
+    role: "witness who said Robinhood had raised $3.4 billion to restore normal trading"
+    according_to: [vlad-tenev]
+    note: "Tenev said Robinhood raised the additional capital after the restrictions so customers could resume normal trading, including in the affected stocks."
+    src:
+      - {s: hfsc-2021-02-18-tenev-testimony, at: "Section I, Introduction, p. 1", quote: "We have since taken steps to raise $3.4 billion in additional capital to allow our customers to resume normal trading across Robinhood’s platform, including trading in the stocks we restricted on January 28.", by: vlad-tenev}
+  - id: c10
+    rel: involved
+    to: vlad-tenev
+    role: "witness who advocated real-time settlement to reduce risk and avoid restrictions during volatility"
+    according_to: [vlad-tenev]
+    note: "Tenev’s argument: brokers’ own cash remains locked up during the two-day settlement period. He said real-time settlement would have let Robinhood Securities respond better without restricting purchases."
+    src:
+      - {s: hfsc-2021-02-18-tenev-testimony, at: "Section X, Real-Time Settlement, pp. 12–13", quote: "The existing two-day period to settle trades exposes investors and the industry to unnecessary risk", by: vlad-tenev}
+      - {s: hfsc-2021-02-18-tenev-testimony, at: "Section X, Real-Time Settlement, p. 12", quote: "Investors are left waiting for their trades to clear, and the clearing brokers have their proprietary cash locked up, until the settlement is final days after the trade.", by: vlad-tenev}
 ---

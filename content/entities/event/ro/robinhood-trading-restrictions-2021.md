@@ -69,4 +69,24 @@ claims:
     note: "SEC staff describe that narrative, and record that witnesses testified the restrictions did not result from such pressure."
     src:
       - {s: sec-staff-report-2021-10-14, at: "Section 3.6, Broker-Dealer Reactions and Trading Restrictions, pp. 32–33", quote: "This narrative was the subject of testimony at a Congressional hearing, where witnesses testified that the trading restrictions did not result from such pressure."}
+  - id: c9
+    rel: involved
+    to: robinhood
+    role: "broker whose internal liquidity warning differed from its chief executive’s public description"
+    according_to: [house-financial-services-committee]
+    note: "The House majority staff reported that clearing president Jim Swartwout texted COO Gretchen Howard at 6:29 a.m. Eastern on 28 January about a huge liquidity issue. Tenev told CNBC that evening that there was no liquidity problem, and told Congress in February that the company had always been comfortable with its liquidity. Swartwout later explained that his message concerned the ability to meet the DTCC collateral requirement. NSCC waived the excess capital premium that morning, before the CNBC interview; Howard said Robinhood was comfortable with its liquidity after the waiver. Staff found earlier liquidity concerns and inadequate preparation, and said the waiver gave the leadership breathing room."
+    src:
+      - {s: hfsc-2022-06-24-game-stopped-staff-report, at: "Section III.1.l, p. 54", quote: "Huge liquidity issue."}
+      - {s: hfsc-2022-06-24-game-stopped-staff-report, at: "Section III.1.o, p. 66", quote: "there’s no liquidity problem.", by: vlad-tenev}
+      - {s: hfsc-2022-06-24-game-stopped-staff-report, at: "Section III.1.o, p. 66", quote: "we were always comfortable with our liquidity.", by: vlad-tenev}
+  - id: c10
+    rel: involved
+    to: nscc
+    role: "clearinghouse that waived the excess capital premium charge after Robinhood decided to restrict purchases"
+    note: "Tenev’s written testimony places the restriction decision between 6:30 and 7:30 a.m. Eastern and the complete waiver of that day’s excess capital premium shortly after 9 a.m. on 28 January. His oral testimony named Robinhood Securities’ president as the decision maker; the House majority report identifies him as Jim Swartwout."
+    src:
+      - {s: hfsc-2021-02-18-tenev-testimony, at: "Section VIII, p. 9", quote: "Between 6:30 and 7:30 am EST, the Robinhood Securities operations team made the decision to impose trading restrictions on GameStop and other securities.", by: vlad-tenev}
+      - {s: hfsc-2021-02-18-tenev-testimony, at: "Section VIII, p. 9", quote: "Then, shortly after 9:00 am EST, NSCC informed Robinhood Securities that the excess capital premium charge had been waived entirely for that day", by: vlad-tenev}
+      - {s: hfsc-hearing-117-3-transcript, at: "Vladimir Tenev, answering Representative McHenry", quote: "It was a collateral depository requirement decision made by our Robinhood Securities president, and we stand by it.", by: vlad-tenev}
+      - {s: hfsc-2022-06-24-game-stopped-staff-report, at: "Section III.1.e, p. 22", quote: "Jim Swartwout, President and Chief Operating Officer for Robinhood’s clearing operation"}
 ---
