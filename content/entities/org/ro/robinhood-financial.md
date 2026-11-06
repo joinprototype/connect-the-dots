@@ -44,6 +44,40 @@ claims:
     src:
       - {s: finra-2021-06-30-robinhood-financial-awc, at: "Acceptance and consent", quote: "Respondent hereby accepts and consents, without admitting or denying the findings and solely for the purposes of this proceeding"}
       - {s: finra-2021-06-30-robinhood-financial-awc, at: "Sanctions", quote: "a censure; a $57 million fine; restitution of $12,598,445.16 plus interest as described below;"}
+  - id: c5
+    rel: "charged_by"
+    to: "massachusetts-securities-division"
+    when: "2021-10-21"
+    case: "E-2020-0047"
+    title: "amended administrative complaint alleging Massachusetts securities-law violations"
+    note: "The consent order describes allegations about app features and promotions, supervision, options approvals and platform outages. An allegation is not a finding of guilt."
+    src:
+      - {s: "mass-robinhood-consent-order-2024-01-18", at: "p. 1", quote: "amended administrative complaint filed by the Enforcement Section of the Massachusetts Securities Division"}
+      - {s: "mass-robinhood-consent-order-2024-01-18", at: "p. 1", quote: "Robinhood on October 21, 2021 (the \"Complaint\"), alleging Robinhood violated the"}
+      - {s: "mass-robinhood-consent-order-2024-01-18", at: "Section VI(A), pp. 6–9", quote: "Digital confetti raining down from the top of the screen after a customer's first trade;"}
+      - {s: "mass-robinhood-consent-order-2024-01-18", at: "Section VI(A), p. 9", quote: "Robinhood failed to adequately supervise the approval process through which Massachusetts customer accounts were approved to engage in options trading."}
+  - id: c6
+    rel: "settled_with"
+    to: "massachusetts-securities-division"
+    when: "2024-01-18"
+    case: "E-2020-0047 and E-2022-0006"
+    title: "consent order resolving complaint and cybersecurity investigation"
+    amount: 7500000
+    currency: "USD"
+    note: "Robinhood neither admitted nor denied the complaint-related factual allegations or the legal violations; it admitted the facts of the joined investigation into a November 2021 data breach. The order also required changes to app features and an independent consultant’s review."
+    src:
+      - {s: "mass-robinhood-consent-order-2024-01-18", at: "p. 2", quote: "Respondent neither admits nor denies the factual allegations set forth in Section VI(A), admits the factual allegations set forth in Section VI(B), neither admits nor denies the Violations of Law set forth in Section VII"}
+      - {s: "mass-robinhood-consent-order-2024-01-18", at: "p. 23", quote: "pay an administrative fine in the amount of $7,500,000 to the Commonwealth of Massachusetts."}
+  - id: c7
+    rel: charged_by
+    to: massachusetts-securities-division
+    when: "2020-12-16"
+    case: "E-2020-0047"
+    title: "original administrative complaint alleging tactics aimed at inexperienced investors, supervision failures and platform outages"
+    note: "The Securities Division filed the original complaint before the January 2021 trading restrictions. It amended the complaint on 21 October 2021; Robinhood settled it on 18 January 2024 without admitting or denying its facts or legal violations."
+    src:
+      - {s: "hfsc-2021-02-15-game-stopped-hearing-memo", at: "p. 5", quote: "On December 16, 2020, Massachusetts regulators filed a complaint against Robinhood"}
+      - {s: "hfsc-2021-02-15-game-stopped-hearing-memo", at: "p. 5", quote: "aggressive tactics to attract inexperienced investors, its use of gamification strategies to manipulate customers, and its failure to prevent frequent outages and disruptions on its trading platform."}
 ---
 
 Robinhood Financial LLC is the broker-dealer of [[robinhood]] that holds its customers' accounts. It settled with the SEC in December 2020 and with [[finra]] in June 2021.

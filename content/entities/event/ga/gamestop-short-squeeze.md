@@ -128,4 +128,63 @@ claims:
       - {s: hfsc-hearing-117-3-transcript, at: "Keith Gill, opening statement", quote: "When the stock price broke $20 in December, I knew my investment was a success. I was so happy to visit my family in Brockton for the holidays. The money would go such a long way for us.", by: keith-gill}
       - {s: hfsc-hearing-117-3-transcript, at: "Keith Gill, opening statement", quote: "I'm as bullish as I've ever been on a potential turnaround for GameStop, and I remain invested in the company.", by: keith-gill}
       - {s: hfsc-hearing-117-3-transcript, at: "Keith Gill, opening statement", quote: "It is tragic that some people lost money, and my heart goes out to them.", by: keith-gill}
+  - id: c17
+    rel: "involved"
+    to: "interactive-brokers"
+    role: "broker that restricted options and stock trading"
+    note: "Options restrictions began on 27 January; stock restrictions followed on 28 January. The firm told House majority staff that its reason was risk management, not a shortage of liquidity or capital."
+    src:
+      - {s: "hfsc-2022-06-24-game-stopped-staff-report", at: "pp. 90–91", quote: "as of mid-day on January 27, 2021, Interactive Brokers put AMC, BB, EXPR, GME, and KOSS options trading into liquidation only"}
+      - {s: "hfsc-2022-06-24-game-stopped-staff-report", at: "p. 91", quote: "Interactive Brokers also placed several symbols into PCO for approximately nine hours."}
+  - id: c18
+    rel: "involved"
+    to: "thomas-peterffy"
+    role: "publicly explained Interactive Brokers’ independent restriction decision"
+    according_to: ["thomas-peterffy"]
+    src:
+      - {s: "bloomberglaw-peterffy-2021-01-28", at: "Bloomberg Television interview, 28 January", quote: "Simply put, we are worried about the integrity of the marketplace and the system,", by: "thomas-peterffy"}
+      - {s: "bloomberglaw-peterffy-2021-01-28", at: "Interview report", quote: "Peterffy, 76, said his firm took the actions on its own"}
+  - id: c19
+    rel: "involved"
+    to: "webull"
+    role: "introducing broker that implemented Apex’s instruction to restrict new purchases of GME, AMC and KOSS"
+    src:
+      - {s: "hfsc-2022-06-24-game-stopped-staff-report", at: "p. 79", quote: "Webull complied with this instruction"}
+  - id: c20
+    rel: "involved"
+    to: "anthony-denier"
+    role: "attributed Webull’s restrictions to its clearing firm’s settlement costs"
+    according_to: ["anthony-denier"]
+    src:
+      - {s: "yahoo-webull-denier-2021-01-29", at: "Interview, 29 January", quote: "Our clearing firm simply cannot afford the cost to settle those trades,", by: "anthony-denier"}
+      - {s: "yahoo-webull-denier-2021-01-29", at: "Interview, 29 January", quote: "We cannot use customer funds to front that cost due to regulation,", by: "anthony-denier"}
+  - id: c21
+    rel: "involved"
+    to: "apex-clearing"
+    role: "clearing broker that directed Webull to stop accepting new purchase positions in three securities"
+    src:
+      - {s: "hfsc-2022-06-24-game-stopped-staff-report", at: "p. 79", quote: "On January 28, 2021, at 10:30 a.m. EST, Webull received an emergency notice via email from Apex expressly instructing it that GME, AMC, and KOSS securities be placed into “liquidation only” statuses"}
+  - id: c22
+    rel: "involved"
+    to: "amc-entertainment"
+    role: "issuer of AMC, one of the stocks and options restricted by Webull"
+    src:
+      - {s: "hfsc-2022-06-24-game-stopped-staff-report", at: "p. 79", quote: "These restrictions effectively prohibited Webull from accepting new purchase positions in AMC, GME, and KOSS stocks and options."}
+  - id: c23
+    rel: involved
+    to: apex-clearing
+    role: "clearing broker that lifted its purchase restrictions the same afternoon"
+    according_to: [house-financial-services-committee]
+    note: "Staff reported that Apex calculated an excess capital premium internally and feared an intraday call including it; DTCC said that premium could only have been collected the next morning. Apex lifted its closing-only instruction at about 1:54 p.m. Eastern, except for short sales and options expiring on 29 January. Webull then reopened purchases after about 193 minutes of restrictions."
+    src:
+      - {s: "hfsc-2022-06-24-game-stopped-staff-report", at: "Section III.2.a.ii, p. 81", quote: "Webull thereafter removed the trading restrictions, which lasted for approximately 193 minutes in total."}
+      - {s: "hfsc-2022-06-24-game-stopped-staff-report", at: "Section III.2.a.ii, p. 86", quote: "the clearinghouse would not have been permitted to include an Excess Capital Premium charge in any intraday margin call to Apex"}
+  - id: c24
+    rel: involved
+    to: apex-clearing
+    role: "anticipated further collateral demands and said it would need more capital even if the excess premium came the following morning"
+    according_to: [apex-clearing]
+    note: "Apex told House staff that the timing of the premium would not have changed its restriction decision. Staff separately reported that Apex calculated a potential excess premium itself, although NSCC could not collect it in an intraday call."
+    src:
+      - {s: "hfsc-2022-06-24-game-stopped-staff-report", at: "Section III.2.a.ii, p. 86", quote: "company leadership still believed they were going to have to come up with more capital."}
 ---

@@ -89,4 +89,21 @@ claims:
       - {s: hfsc-2021-02-18-tenev-testimony, at: "Section VIII, p. 9", quote: "Then, shortly after 9:00 am EST, NSCC informed Robinhood Securities that the excess capital premium charge had been waived entirely for that day", by: vlad-tenev}
       - {s: hfsc-hearing-117-3-transcript, at: "Vladimir Tenev, answering Representative McHenry", quote: "It was a collateral depository requirement decision made by our Robinhood Securities president, and we stand by it.", by: vlad-tenev}
       - {s: hfsc-2022-06-24-game-stopped-staff-report, at: "Section III.1.e, p. 22", quote: "Jim Swartwout, President and Chief Operating Officer for Robinhood’s clearing operation"}
+  - id: c11
+    rel: "involved"
+    to: "amc-entertainment"
+    role: "issuer of AMC, one of eight securities initially restricted"
+    note: "The eight were AMC, BlackBerry, Bed Bath & Beyond, Express, GameStop, Koss, Naked Brand and Nokia. Robinhood moved from closing-only status on 28 January to position limits on 29 January; its list then grew to over 50 names."
+    src:
+      - {s: "sec-staff-report-2021-10-14", at: "§3.6, p. 33", quote: "On January 28, the firm stated that it would restrict all new customer purchases in eight securities—AMC; BlackBerry Ltd.; BBBY; EXPR; GME; KOSS; NAKD; and Nokia Corp."}
+      - {s: "sec-staff-report-2021-10-14", at: "§3.6, p. 33", quote: "At one point, on January 29, the firm’s list of restricted securities grew to over 50 names."}
+  - id: c12
+    rel: involved
+    to: robinhood
+    role: "employees planning position limits discussed firm risk and customer messaging"
+    according_to: [house-financial-services-committee]
+    note: "House majority staff reported that employees coded position limits on 27 January. A brokerage manager gave firm risk and slowing trading as the reason, opposed exposing that reason to customers, and received the product manager’s agreement. This discussion preceded the next morning’s deposit notice."
+    src:
+      - {s: "hfsc-2022-06-24-game-stopped-staff-report", at: "Section III.1.f, pp. 31–32", quote: "The real reason is firm risk and us needing to control the velocity of trading."}
+      - {s: "hfsc-2022-06-24-game-stopped-staff-report", at: "Section III.1.f, p. 32", quote: "But we shouldn’t expose that."}
 ---
