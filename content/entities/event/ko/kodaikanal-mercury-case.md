@@ -44,4 +44,11 @@ claims:
     role: "where the exposure took place; a central government committee counted about 45 deaths and over 600 people exposed"
     src:
       - {s: scroll-2016-03-09-hul-kodaikanal-settlement, quote: "A central government committee found that around 45 people had died and over 600 were exposed to toxic vapours during the 19 years that the factory had operated."}
+  - id: c7
+    rel: involved
+    to: ex-mercury-employees-welfare-association
+    role: "Counsel R. Vaigai said the workers asked for economic rehabilitation and healthcare; both sides later brought settlement papers to court in a sealed cover."
+    src:
+      - {s: scroll-2016-03-09-hul-kodaikanal-settlement, quote: "R Vaigai said they had not sought compensation, but asked the government to make sure that HUL pays for economic rehabilitation and healthcare for the former workers and other victims of mercury poisoning at the factory."}
+      - {s: deccan-chronicle-2016-03-10-hul-kodaikanal-settlement, quote: "counsel for both parties produced the settlement records in a sealed cover"}
 ---

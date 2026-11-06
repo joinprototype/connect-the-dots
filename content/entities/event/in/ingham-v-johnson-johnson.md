@@ -57,4 +57,32 @@ claims:
     src:
       - {s: ca3-2023-01-30-in-re-ltl-management, quote: "According to LTL’s expert, of 15 completed ovarian cancer trials, only Ingham resulted in a monetary award for the plaintiffs that was not reversed"}
       - {s: ca3-2023-01-30-in-re-ltl-management, quote: "settling roughly 6,800 talc-related claims for just under $1 billion in total"}
+  - id: c9
+    rel: involved
+    to: johnsons-baby-powder
+    role: "One of the products at issue in Gail Ingham and the other plaintiffs' ovarian cancer trial, which began on 31 May 2018."
+    src:
+      - {s: mo-app-2020-06-23-ingham-v-johnson-johnson, quote: "Plaintiffs proceeded to trial on May 31, 2018."}
+      - {s: mo-app-2020-06-23-ingham-v-johnson-johnson, quote: "After hearing testimony from over thirty witnesses over six weeks, the jury returned a verdict finding Defendants liable on all claims."}
+  - id: c10
+    rel: involved
+    to: missouri-court-of-appeals-eastern-district
+    role: "Judge Philip M. Hess wrote the appellate decision; Gail Ingham and four other plaintiffs died while the appeal was pending."
+    src:
+      - {s: mo-app-2020-06-23-ingham-v-johnson-johnson, quote: "During the pendency of this appeal alone, Plaintiffs Gail Ingham, Annette Koman, Toni Roberts, Andrea Lynn Schwartz-Thomas, and Olga Salazar have died."}
+  - id: c11
+    rel: involved
+    to: johnson-and-johnson-consumer
+    role: "The court recounted plaintiffs’ internal-document evidence, including a 2008 employee email proposing cornstarch and anticipating controversy over its cost."
+    according_to: [missouri-court-of-appeals-eastern-district]
+    src:
+      - {s: mo-app-2020-06-23-ingham-v-johnson-johnson, quote: "This would align with our Best for Baby charter."}
+      - {s: mo-app-2020-06-23-ingham-v-johnson-johnson, quote: "I know this will be controversial and we’ll need to work hard to justify the cost implications"}
+  - id: c12
+    rel: involved
+    to: johnson-and-johnson
+    role: "Called Reuters' December 2018 report of known asbestos contamination and nondisclosure false and inflammatory."
+    according_to: [johnson-and-johnson]
+    src:
+      - {s: ap-2018-12-14-jj-asbestos-baby-powder-reuters-report, quote: "The company called the story false and inflammatory."}
 ---

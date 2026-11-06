@@ -64,4 +64,17 @@ claims:
     role: "part of the joint investigation"
     src:
       - {s: cdc-2006-04-10-mmwr-fusarium-keratitis, quote: "An ongoing investigation by CDC, state and local health departments, and the Food and Drug Administration is under way"}
+  - id: c10
+    rel: involved
+    to: cdc
+    role: "Epidemiologist Benjamin Park participated in the investigation and later cautioned that surveillance captures only part of an outbreak."
+    src:
+      - {s: ap-2009-05-31-bausch-lomb-600-eye-fungus-suits, quote: "Surveillance usually captures the tip of the iceberg and sometimes it captures a larger tip than other times,"}
+  - id: c11
+    rel: involved
+    to: bausch-and-lomb
+    role: "Chief executive Ronald Zarrella said the 2007 sale to Warburg Pincus would let the company pursue growth without outside distraction; Andrea Martin, whose eye was scarred, settled her case in May 2009."
+    src:
+      - {s: ap-2009-05-31-bausch-lomb-600-eye-fungus-suits, quote: "without a lot of outside distraction."}
+      - {s: ap-2009-05-31-bausch-lomb-600-eye-fungus-suits, quote: "Among out-of-court settlements reached in May was a potential bellwether case brought by Andrea Martin, a Broadway actress and comedienne whose eye was scarred."}
 ---

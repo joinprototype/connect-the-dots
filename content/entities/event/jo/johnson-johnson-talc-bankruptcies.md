@@ -64,4 +64,10 @@ claims:
     src:
       - {s: biospace-2025-04-02-red-river-talc-dismissed, quote: "In a statement following the dismissal, J&J insisted that its settlement plan was “supported by the overwhelming majority of the claimants.”"}
       - {s: biospace-2025-04-02-red-river-talc-dismissed, quote: "According to its press statement on Tuesday, J&J has already settled 95% of the suits related to mesothelioma linked to talc and closed all State consumer protection claims."}
+  - id: c10
+    rel: involved
+    to: johnson-and-johnson
+    role: "Its treasurer described isolating asbestos liabilities in a bankruptcy subsidiary in a July 2021 email to a ratings agency; its court position described resolving claims equitably and efficiently."
+    src:
+      - {s: ca3-2023-01-30-in-re-ltl-management, quote: "In a July 2021 email with a ratings agency, J&J’s treasurer described a potential restructuring that would capture all asbestos liability in a subsidiary to be put into bankruptcy."}
 ---

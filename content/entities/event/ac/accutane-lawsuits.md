@@ -61,4 +61,10 @@ claims:
     role: "in 2018 held that the trial court properly excluded plaintiffs' experts in the Crohn's disease cases, reversing the Appellate Division"
     src:
       - {s: njsc-2018-08-01-in-re-accutane-litigation, quote: "Our analysis of this record leads to a clear result: the trial court properly excluded plaintiffs’ experts’ testimony."}
+  - id: c10
+    rel: involved
+    to: hoffmann-la-roche
+    role: "Andrew McCarrell’s lawyer David R. Buchanan said the 2007 trial sought appropriate warnings; Roche’s spokeswoman said there was no reliable scientific evidence of causation."
+    src:
+      - {s: dermatology-times-2007-roche-to-appeal-accutane-judgment, quote: "Our issue in this trial is ensuring that people get the appropriate warnings about Accutane and all of its potential side effects,"}
 ---
