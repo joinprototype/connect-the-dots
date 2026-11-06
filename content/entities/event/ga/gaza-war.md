@@ -95,4 +95,10 @@ claims:
     src:
       - {s: icj-south-africa-v-israel-order-2024-03-28, quote: "Israel rejects “in the strongest terms” South Africa’s claims that incidents of starvation in Gaza are a direct result of its deliberate acts and omissions."}
       - {s: icj-south-africa-v-israel-order-2024-03-28, quote: "famine is setting in"}
+  - id: c17
+    rel: involved
+    to: gaza-strip
+    role: "JTA reports the ministry's 71,667 deaths since 7 October 2023, including over 450 since the ceasefire, on 29 January 2026"
+    src:
+      - {s: jta-idf-official-gaza-toll-2026, quote: "The Gaza Health Ministry says 71,667 Gazans died between Oct. 7, 2023, when Hamas attacked Israel from the enclave, and today, including over 450 killed since the U.S.-brokered ceasefire went into effect in October."}
 ---

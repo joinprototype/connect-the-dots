@@ -79,4 +79,10 @@ claims:
     role: "one of the questions on which the sides stayed at odds"
     src:
       - {s: history-state-oslo-1993, quote: "remained strongly at odds over borders, Jerusalem"}
+  - id: c14
+    rel: "involved"
+    to: "bill-clinton"
+    role: "explained on 25 July 2000 why he convened the summit"
+    src:
+      - {s: "avalon-clinton-camp-david-statement-2000", quote: "because the parties were not making progress on their own and the September deadline they set for themselves was fast approaching, I thought we had no choice."}
 ---

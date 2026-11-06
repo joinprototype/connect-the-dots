@@ -12,4 +12,10 @@ claims:
     role: "spoke at the ceremony"
     src:
       - {s: clinton-remarks-oslo-signing-1993, quote: "followed by Prime Minister Yitzhak Rabin of Israel and Chairman Yasser Arafat of the PLO"}
+  - id: c3
+    rel: "appears_in"
+    to: "oslo-declaration-of-principles"
+    role: "CIE's background essay says he believed accommodation with the PLO could counter Hamas"
+    src:
+      - {s: "shamgar-commission-report-rabin-assassination-1996", quote: "He believed that it was better for Israel to reach some kind of accommodation with the secular element of the Palestinian leadership and, if possible, truncate the status of Hamas."}
 ---

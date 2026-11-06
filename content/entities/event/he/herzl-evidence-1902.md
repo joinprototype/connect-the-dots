@@ -24,4 +24,10 @@ claims:
     src:
       - {s: herzl-complete-diaries-vol-4, at: "9 June 1902 entry", quote: "By giving evidence before the Royal Commission whose perplexity caused by the horns of a dilemma I want to bring out: either a break with the glorious principle of free asylum, or leaving the native working class unprotected."}
       - {s: herzl-complete-diaries-vol-4, at: "9 June 1902 entry", quote: "My way out — if they ask for it — is the creation of a Chartered Company in Cyprus."}
+  - id: c4
+    rel: "involved"
+    to: "theodor-herzl"
+    role: "his diary records difficulty speaking and understanding English at the hearing"
+    src:
+      - {s: "herzl-complete-diaries-vol-4", at: "9 July 1902 entry", quote: "made a number of mistakes due to caution."}
 ---

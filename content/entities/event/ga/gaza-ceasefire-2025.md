@@ -48,4 +48,10 @@ claims:
     src:
       - {s: un-security-council-resolution-2803-2025, quote: "Endorses the Comprehensive Plan"}
       - {s: un-security-council-resolution-2803-2025, quote: "the conditions may finally be in place for a credible pathway to Palestinian self-determination and statehood"}
+  - id: c8
+    rel: "involved"
+    to: "icrc"
+    role: "delegation head Julien Lerisson explains the return of hostages and remains and calls for a lasting ceasefire"
+    src:
+      - {s: "icrc-release-hostages-2026-01-29", quote: "For families whose deceased relatives were returned, we hope this brought the possibility to fully mourn"}
 ---

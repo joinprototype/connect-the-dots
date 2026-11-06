@@ -87,4 +87,11 @@ claims:
     according_to: [benny-morris]
     src:
       - {s: haaretz-morris-interview-2004, quote: "we lost an entire 1 percent of the population"}
+  - id: c15
+    rel: "involved"
+    to: "united-nations"
+    role: "Ralph Bunche succeeded the assassinated Bernadotte and obtained armistice signatures"
+    src:
+      - {s: "nobel-bunche-biographical", quote: "After eleven months of virtually ceaseless negotiating, Bunche obtained signatures on armistice agreements between Israel and the Arab States."}
+      - {s: "nobel-bunche-lecture-1950", quote: "mankind could readily live in peace and freedom and good neighbourliness if there were but a minimum of will to do so."}
 ---

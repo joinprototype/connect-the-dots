@@ -55,4 +55,10 @@ claims:
     role: "the 2004 opinion on the barrier"
     src:
       - {s: icj-press-release-wall-2004, quote: "under an obligation to cease forthwith the works of construction of the wall being built in the Occupied Palestinian Territory, including in and around East Jerusalem, to dismantle forthwith the structure therein situated"}
+  - id: c9
+    rel: "involved"
+    to: "ocha"
+    role: "OCHA describes Hanin holding a school notebook recovered from her demolished home at At Tur"
+    src:
+      - {s: "ocha-humanitarian-situation-report-2026-10-15-west-bank", quote: "Hanin holds her daughter’s school notebook, retrieved from beneath the rubble of their home after it was demolished by Israeli authorities in At Tur, East Jerusalem."}
 ---

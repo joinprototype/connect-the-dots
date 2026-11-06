@@ -27,4 +27,11 @@ claims:
     note: "Suzanne Rutland of the University of Sydney, quoted by AAP FactCheck."
     src:
       - {s: aap-factcheck-rothschild-israel, quote: "Chaim Weizmann, who became Israel's first president, as influential in the Balfour Declaration"}
+  - id: c4
+    rel: "influenced"
+    to: "balfour-declaration"
+    according_to: ["chaim-weizmann"]
+    note: "In his memoir he opposed international administration because rivalries and compromises could paralyse Zionist work."
+    src:
+      - {s: "weizmann-trial-and-error-1949", quote: "rivalries, inefficiencies, compromises and intrigues"}
 ---

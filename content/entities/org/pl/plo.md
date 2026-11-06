@@ -42,4 +42,11 @@ claims:
     when: "1993-09-13"
     src:
       - {s: history-state-oslo-1993, quote: "Israel accepted the PLO as the representative of the Palestinians, and the PLO renounced terrorism and recognized Israel’s right to exist in peace."}
+  - id: c7
+    rel: "adopted"
+    to: "palestinian-declaration-of-independence"
+    when: "1988-11-15"
+    note: "Riyad Mansour delivered the declaration to the United Nations on 18 November, together with Jordan’s representative."
+    src:
+      - {s: "palestinian-declaration-of-independence-1988", quote: "Delivered to the United Nations on 18 November 1988 by Dr. Riyad Mansour"}
 ---

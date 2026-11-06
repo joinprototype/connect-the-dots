@@ -19,4 +19,11 @@ claims:
     note: "The Peel Commission's summary of the Arab Higher Committee's evidence."
     src:
       - {s: palestine-royal-commission-report-1937, quote: "their quarrel is with the existence of the Mandate itself. They do not accept the interpretation of the McMahon letter set out in the Government’s statement of British policy in Palestine in June, Igzz. They deny the validity of the"}
+  - id: c3
+    rel: "intervened_in"
+    to: "arab-revolt-1936-39"
+    when: "1937-01"
+    note: "The Mufti and other representatives testified to the Peel Commission in Jerusalem after ending their boycott."
+    src:
+      - {s: "palestine-royal-commission-report-1937", quote: "The boycott was at length called off on the 6th January and we prolonged our stay until evidence had been heard from His Eminence the Mufti of Jerusalem and other representatives of the Arab Higher Committee."}
 ---

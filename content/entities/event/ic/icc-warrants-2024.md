@@ -49,4 +49,11 @@ claims:
     role: "the Chamber found it could not determine that all elements of extermination were met, while finding reasonable grounds for murder"
     src:
       - {s: icc-pre-trial-chamber-decision-2024-11-21, quote: "could not determine that all elements of the crime against humanity of extermination were met"}
+  - id: c8
+    rel: "involved"
+    to: "international-criminal-court"
+    role: "the Chamber’s grounds for the starvation warrants, including its account of aid restrictions and decisions to increase aid"
+    src:
+      - {s: "icc-pre-trial-chamber-decision-2024-11-21", quote: "both individuals intentionally and knowingly deprived the civilian population in Gaza of objects indispensable to their survival"}
+      - {s: "icc-pre-trial-chamber-decision-2024-11-21", quote: "they were a response to the pressure of the international community or requests by the United States of America."}
 ---

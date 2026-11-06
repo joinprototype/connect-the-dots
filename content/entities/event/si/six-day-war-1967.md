@@ -65,4 +65,11 @@ claims:
     role: "East Jerusalem occupied by Israel from June 1967"
     src:
       - {s: history-state-arab-israeli-war-1967, quote: "Between June 5 and June 10, Israel defeated Egypt, Jordan, and Syria and occupied the Sinai Peninsula, the Gaza Strip, the West Bank, East Jerusalem, and the Golan Heights."}
+  - id: c16
+    rel: "involved"
+    to: "saudi-arabia"
+    role: "Saud bin Faisal explained in July 1972 that Saudi aid payments followed lifting the 1967 boycott at Khartoum"
+    according_to: ["saudi-arabia"]
+    src:
+      - {s: "frus-1969-76-v36-d134", quote: "It was only after the boycott was lifted that Saudi Arabia agreed to make its payments to Egypt and Jordan."}
 ---

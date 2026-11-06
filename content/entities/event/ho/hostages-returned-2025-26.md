@@ -3,7 +3,7 @@ uid: 01M6DMCFRXC9NCA4STE130D5KS
 id: hostages-returned-2025-26
 type: event
 name: "Return of hostages under the 2025 ceasefire"
-summary: "Twenty living hostages were released in October 2025 and the last remains returned on 29 January 2026, with the ICRC facilitating."
+summary: "Twenty living hostages were released in October 2025; the ICRC reported completion of its transfer operation on 29 January 2026, after Israeli authorities recovered the final hostage’s remains."
 when: "2025-10/2026-01"
 claims:
   - id: c1
@@ -13,6 +13,7 @@ claims:
     src:
       - {s: icrc-release-hostages-2026-01-29, quote: "The operation began in October with the release and transfer of 20 living hostages and 1,808 detainees."}
       - {s: icrc-release-hostages-2026-01-29, quote: "after the remains of the final deceased hostage were recovered by Israeli authorities"}
+      - {s: icrc-release-hostages-2026-01-29, quote: "In subsequent phases, the ICRC facilitated the return of the deceased, including 27 out of 28 hostages, and 360 Palestinians."}
   - id: c2
     rel: involved
     to: gaza-strip

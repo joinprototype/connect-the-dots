@@ -47,4 +47,10 @@ claims:
     according_to: [israel]
     src:
       - {s: israel-mfa-expulsion-of-jews-from-arab-countries, quote: "In 1948, there were 1,000,000 Jews that lived in Muslim countries. In 2020, only 30,000 Jews remained in those countries."}
+  - id: c7
+    rel: "involved"
+    to: "egypt"
+    role: "Heykal Pasha warned the UN in November 1947 that partition could endanger Jews in Muslim countries, as quoted by Meron"
+    src:
+      - {s: "meq-meron-why-jews-fled-the-arab-countries-1995", quote: "If the United Nations decides to partition Palestine, it might be responsible for the massacre of a large number of Jews."}
 ---

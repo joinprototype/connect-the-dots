@@ -21,4 +21,10 @@ claims:
     according_to: [edmond-de-rothschild]
     src:
       - {s: ramat-hanadiv-baron-edmond, quote: "He and his descendants supported 44 settlements, from Metulla in the north to Mazkeret Batya (Ekron)"}
+  - id: c3
+    rel: "funded"
+    to: "farming-colonies-in-ottoman-palestine"
+    note: "His family foundation records his 1893 explanation to farmers at Zikhron Ya’akov: support for their commitment to work and live there."
+    src:
+      - {s: "ramat-hanadiv-baron-edmond", quote: "I did not support you and take you under my wing due to your poverty"}
 ---

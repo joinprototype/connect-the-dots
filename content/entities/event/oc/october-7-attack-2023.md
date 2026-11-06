@@ -54,4 +54,11 @@ claims:
     role: "the Court states the toll in its own voice"
     src:
       - {s: icj-south-africa-v-israel-order-2024-01-26, quote: "carried out an attack in Israel, killing more than 1,200 persons"}
+  - id: c10
+    rel: "involved"
+    to: "israel"
+    role: "the Commission reconstructs the killing of Ohad Cohen and his infant daughter at Be’eri after his 11:47 warning to a cousin"
+    src:
+      - {s: "un-commission-of-inquiry-detailed-findings-7-october-2023", quote: "At 11:47, Ohad texted to his cousin that militants were massacring residents and burning homes."}
+      - {s: "un-commission-of-inquiry-detailed-findings-7-october-2023", quote: "shot and killed baby Mila Cohen, who was held in her mother’s arms, and shot and killed Ohad Cohen."}
 ---
