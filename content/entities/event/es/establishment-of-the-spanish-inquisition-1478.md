@@ -20,4 +20,11 @@ claims:
     role: "named inquisitor-general in 1483"
     src:
       - {s: je-1906-inquisition, quote: "On Oct. 17, 1483, Thomas de Torquemada, then sixty-three years of age and prior of a monastery at Segovia, his native city, was appointed inquisitor-general."}
+  - id: c3
+    rel: involved
+    to: sixtus-iv
+    role: "questioned Isabella's motives in a letter of 23 February 1483 while conceding authority to the crown"
+    src:
+      - {s: je-1906-inquisition, quote: "by ambition and greed for earthly possessions, rather than by zeal for the faith and true fear of God."}
+      - {s: je-1906-inquisition, quote: "Still, he made many concessions."}
 ---

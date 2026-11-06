@@ -7,11 +7,11 @@ subtitle: How kings and parliaments in Europe drove out their Jewish communities
 summary: From England in 1290 to the Pale of Settlement and a Soviet case in 1953, rulers ordered Jews out, fenced them in, or let them in. Here are the decrees in their own words, the charges the rulers made, and what historians say drove them, with the claim of "109 countries" set beside the record.
 ---
 
-In 1290 King Edward I told his sheriffs that every Jew in England had until 1 November to leave. That is where this story starts.
+In 1290 King Edward I told his sheriffs that every Jew in England had until 1 November to leave.
 
-This is a history of what power did: kings, parliaments, popes and inquisitors, and the decrees they signed. The reasons the rulers gave were charges and prejudice, and the story quotes them as theirs, next to what historians say drove the decisions. The Encyclopaedia Judaica gives the root of the expulsions as “hatred of the Jew,” which rulers at times exploited for money. Where a charge was false, such as the poisoning of wells or the murder of Christian children, the story says so. Where historians disagree, as on the alleged Soviet deportation plan of 1953, each account gets its say.
+The Encyclopaedia Judaica identifies “hatred of the Jew,” sometimes exploited for money, as the root of expulsions. Rulers accused Jews of poisoning wells and murdering Christian children; those charges were false. Edward invoked religion while bargaining with Parliament over a tax; centuries later, Cromwell publicly remained undecided while, Ariel Hessayon infers, privately permitting Jewish worship.
 
-A number is going round: Jews expelled from “109 countries.” The Anti-Defamation League says it is shorthand used by antisemites, and the story sets it beside the record. Amsterdam, in this story, is a refuge with limits.
+The Anti-Defamation League traces the claim of expulsions from “109 countries” to a probable list of 109 locations on an antisemitic website. A town, a kingdom and repeated expulsions are different things: Philip Augustus expelled Jews from his lands in 1182 and readmitted them in 1198. Amsterdam later offered refuge with limits; the existence of a Soviet deportation plan in 1953 remains disputed among historians.
 
 ```scene
 - shot: the-statute
@@ -21,7 +21,7 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   reveal: [edward-i-of-england, statute-of-the-jewry-1275, parliament-of-england, kingdom-of-england]
   reveal_claims: [edward-i-of-england#c1, edward-i-of-england#c2]
   overlay: {kind: quote, source: tna-jews-in-england-1290, quote: "by the usuries (lending money at interest) of Jews made in time past, and that various sins have followed thereafter; [and] although he and his ancestors have received much benefit from the Jewish people in all time past", caption: "Statute of the Jewry, about 1275, in the National Archives’ translation: the king’s reason, and his admission"}
-  narration: "**The statute.** In about 1275 Edward I forbade Jews in England to lend at interest. His reason was harm to “the good men of his land,” yet in the same sentence he admits that he and his ancestors had “received much benefit” from them. Lending had been pressed on them: the Church condemned interest as a sin, Jews were barred from guilds and from owning farmland, and the crown taxed what they earned. The statute also ordered a yellow badge for everyone over seven and made Jews “taxable to the king and to no other.”"
+  narration: "**The king’s benefit.** In about 1275 Edward I forbade England’s Jews to lend at interest, accusing them of harming “the good men of his land” while admitting he and his ancestors had “received much benefit” from them. He said he acted “for the honour of God and the common benefit of the people,” and permitted trade and labour; guilds nevertheless excluded Jews, and they could not own farmland. Edward ordered every Jew over seven to wear a yellow felt badge. He exempted Jews from municipal taxation because they were “taxable to the king and to no other but the king”."
   duration: 14
 
 - shot: the-charge
@@ -32,7 +32,7 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   reveal: [coin-clipping-arrests-1278, london, edward-i-of-england]
   reveal_claims: [coin-clipping-arrests-1278#c1, coin-clipping-arrests-1278#c2]
   overlay: {kind: stat, value: "269", label: "Jews executed in London by 7 May 1279 on coin-clipping charges, by the record the National Archives cites", source: tna-jews-in-england-1290, quote: "Coin-clipping was punishable by death and, by 7th May 1279, it was recorded that 269 Jews had been executed in London."}
-  narration: "**The charge.** On 17 November 1278 all the Jews of England were arrested at once on a charge of clipping coins, and their houses were searched. Christians were accused of the same crime, but the National Archives say the Jews were “targeted as the key suspects.” The crime was punishable by death, and a record shows 269 Jews executed in London by 7 May 1279. The Archives give the toll, not the proof; many families were left poor, and the crown lost the taxes they had paid."
+  narration: "**A house searched.** On 17 November 1278 officials in Edward I’s England arrested every Jew at once and searched their houses for evidence of clipping silver from coins, a crime punishable by death. Christians faced the same accusation, but Jews were “targeted as the key suspects,” the National Archives says; by 7 May 1279, the recorded executions in London numbered 269 Jews. New laws and heavy taxation had left many families poor, and Edward could no longer collect their taxes, the Archives explains. A decade later, he would bargain over their expulsion."
   duration: 14
 
 - shot: the-price
@@ -43,7 +43,7 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   reveal: [expulsion-of-the-jews-from-england-1290, parliamentary-tax-grant-of-1290, edward-i-of-england, parliament-of-england, seizure-of-jewish-debts-and-property, london]
   reveal_claims: [expulsion-of-the-jews-from-england-1290#c1, parliamentary-tax-grant-of-1290#c1, parliamentary-tax-grant-of-1290#c2, expulsion-of-the-jews-from-england-1290#c4, expulsion-of-the-jews-from-england-1290#c5]
   overlay: {kind: quote, source: tna-jews-in-england-1290, quote: "To make the tax more bearable Edward essentially offered to expel all Jews in exchange.", caption: "The National Archives (UK), on the tax of 1290"}
-  narration: "**The price.** Edward I came home in 1289 deeply in debt, the National Archives says, and offered to expel all Jews in exchange for a tax. Parliament granted £116,000, and on 18 July 1290 he told his sheriffs that every Jew had until 1 November to leave; the crown took their houses. His letter of 5 November gives his charge, that Jews had turned lending into a worse kind, and calls them “perfidious,” meaning faithless. Historians still argue over why; about 3,000 left by the Archives’ estimate, 16,000 by the Encyclopaedia Judaica’s."
+  narration: "**The price.** Edward came home in 1289 deeply in debt and offered expulsion in exchange for a tax, the National Archives says; Parliament granted £116,000. On 18 July 1290 he told his sheriffs to make every Jew leave England by 1 November, and the crown took their houses. To his Exchequer on 5 November, he justified the decision “for the honour of Christ,” charging Jews with turning lending into a worse kind and calling them “perfidious,” or faithless. About 3,000 people left by the Archives’ estimate, 16,000 by the Encyclopaedia Judaica’s; their homes became the king’s property."
   duration: 14
 
 - shot: france-1306
@@ -52,9 +52,9 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   places: [paris]
   time: "1306-07-22"
   reveal: [expulsion-of-the-jews-from-france-1306, philip-iv-of-france, seizure-of-jewish-debts-and-property, paris, kingdom-of-france]
-  reveal_claims: [expulsion-of-the-jews-from-france-1306#c1, expulsion-of-the-jews-from-france-1306#c3]
+  reveal_claims: [expulsion-of-the-jews-from-france-1306#c1, expulsion-of-the-jews-from-france-1306#c3, expulsion-of-the-jews-from-france-1306#c4]
   overlay: {kind: quote, source: ej-philip-iv-the-fair, quote: "The date had been fixed for July 22 and the secret was so well guarded that not one Jew escaped.", caption: "Encyclopaedia Judaica, on the arrests of 22 July 1306"}
-  narration: "**France, 1306.** On 21 June 1306 Philip IV secretly ordered every Jew in his kingdom arrested on 22 July, their belongings seized, and then expelled. Before they had left he issued rules for auctioning their houses, and the crown collected the debts owed to them until 1325. The Encyclopaedia Judaica judges that his policy toward the Jews was driven throughout by the crown’s interest. Nine years later Jews were back; in 1323 they were expelled again."
+  narration: "**The king’s auction.** On 21 June 1306 Philip IV secretly instructed three officials to arrange the arrest of every Jew in his kingdom on 22 July, seize their belongings and expel them. Some lords resisted losing Jews under their own authority; he promised them the largest share of the spoils. Before the prisoners had left, Philip issued rules for auctioning their houses; in the Encyclopaedia Judaica’s reading, the crown’s interest drove his policy throughout. Jews returned nine years later and were expelled again in 1323; the treasury was still collecting their confiscated debts in 1325."
   duration: 14
 
 - shot: france-1394
@@ -64,7 +64,7 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   reveal: [expulsion-of-the-jews-from-france-1394, charles-vi-of-france, expulsion-of-the-jews-from-france-1306, kingdom-of-france]
   reveal_claims: [expulsion-of-the-jews-from-france-1394#c1, expulsion-of-the-jews-from-france-1394#c2, expulsion-of-the-jews-from-france-1306#c2]
   overlay: {kind: quote, source: ej-charles-vi, quote: "On Sept. 17, 1394, the expulsion of the Jews from France was ordered in Charles' name. Properly speaking, this constituted a refusal on the part of the throne to renew the residence authorization issued by Charles v and which had expired in that year.", caption: "Encyclopaedia Judaica, on the ordinance of 17 September 1394"}
-  narration: "**France, 1394.** The last order was given in the name of Charles VI, for whom his uncles had acted as regents since 1392. It told officers to press debtors to repay so the Jews’ pledges could be redeemed, to guard them, and to escort them to the frontier. With 1306, the Encyclopaedia Judaica counts it among the “general expulsions” that kept Jews out of most of France until 1789."
+  narration: "**An escort to the frontier.** In 1389 Charles VI extended Jews’ permission to live in France until 1394; his uncles resumed the regency in 1392. When permission expired, the throne refused to renew it, and on 17 September 1394 an expulsion order went out in Charles’s name, the Encyclopaedia Judaica explains. Crown officers were ordered to call on debtors to repay and redeem their pledges, guard Jewish families and their property, then conduct them under protective escort to the frontier. The encyclopedia counts this and 1306 among the general expulsions that kept Jews out of most of France until 1789."
   duration: 14
 
 - shot: how-many-countries
@@ -74,7 +74,7 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   reveal: [expulsion-of-the-jews-from-france-1182, philip-ii-of-france, seizure-of-jewish-debts-and-property, expulsion-of-the-jews-from-france-1306, expulsion-of-the-jews-from-england-1290]
   reveal_claims: [expulsion-of-the-jews-from-france-1182#c1, expulsion-of-the-jews-from-france-1182#c2, expulsion-of-the-jews-from-france-1182#c3, expulsion-of-the-jews-from-france-1306#c2, expulsion-of-the-jews-from-england-1290#c3]
   overlay: {kind: quote, source: adl-109-110, quote: "Antisemites use this purported figure to claim that Jews must be a malicious and harmful people to have been expelled from so many places; they also use the figure to call for the expulsion of Jews from countries where they currently live.", caption: "Anti-Defamation League, on the number 109"}
-  narration: "**The “109 countries” count.** A number circulates: Jews “expelled from 109 different countries.” The Anti-Defamation League says it probably comes from a list of “109 locations” on an Australian antisemitic website, and that antisemites use it to claim Jews must be “a malicious and harmful people.” That argument treats what rulers, councils and mobs did as proof against the people it was done to. The Encyclopaedia Judaica gives the root of the expulsions as “hatred of the Jew,” which rulers at times exploited for money. In France, Philip Augustus, who needed money, annulled loans to Christians in 1181 and kept a fifth, drove Jews from his own lands in 1182, and readmitted them in 1198. His chronicler repeated a charge of ritual murder; it was false."
+  narration: "**Who made the choice?** In the sourcebook editors’ reading, Philip Augustus needed money: in 1181 he cancelled Christians’ debts to Jews and kept a fifth, expelled Jews from his lands in 1182, then readmitted them in 1198. His chronicler repeated a false ritual-murder charge. Today, antisemites turn rulers’ decisions against their victims: the Anti-Defamation League says they use the claim of expulsion from “109 different countries” to portray Jews as “a malicious and harmful people,” and traces its probable origin to “109 locations” on an Australian antisemitic website. Philip’s own choices sent families away and allowed their return sixteen years later."
   duration: 14
 
 - shot: the-wells
@@ -82,9 +82,9 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   focus: mandate-of-clement-vi-1348
   time: "1348"
   reveal: [persecution-of-jews-in-the-black-death, amadeus-vi-of-savoy, clement-vi, mandate-of-clement-vi-1348, catholic-church]
-  reveal_claims: [persecution-of-jews-in-the-black-death#c1, persecution-of-jews-in-the-black-death#c2, clement-vi#c2]
+  reveal_claims: [persecution-of-jews-in-the-black-death#c1, persecution-of-jews-in-the-black-death#c2, clement-vi#c2, persecution-of-jews-in-the-black-death#c4]
   overlay: {kind: quote, source: jewish-currents-clement-vi-1348, quote: "It cannot be true that the Jews, by such a heinous crime, are the cause or occasion of the plague, because through many parts of the world the same plague, by the hidden judgment of God, has afflicted and afflicts the Jews themselves and many other races who have never lived alongside them.", caption: "Pope Clement VI, 1348, in the translation Jewish Currents prints"}
-  narration: "**The wells.** In 1348 a rumor said Jews had poisoned wells to spread the plague. It was false. Prisoners seized by order of Count Amadeus VI of Savoy were tortured and “confessed,” the records went from town to town, and Jews were burned in at least two hundred places. Pope Clement VI wrote that the charge could not be true, but his commands were little obeyed, especially in Germany."
+  narration: "**Agimet in the castle.** At Châtel on Lake Geneva in October 1348, Agimet was tortured, released from torture, then tortured again until he confessed. Count Amadeus VI’s court was investigating the false rumor that Jews had poisoned wells to spread the plague. Pope Clement VI rejected the charge because the plague “has afflicted and afflicts the Jews themselves” and people who had never lived alongside them; his commands were little obeyed, especially in Germany. The coerced confessions travelled from town to town and down the Rhine; the sourcebook’s editors count Jews butchered and burned in at least two hundred places."
   duration: 14
 
 - shot: strasbourg
@@ -94,8 +94,8 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   time: "1349-02-14"
   reveal: [strasbourg-massacre-1349, strasbourg, persecution-of-jews-in-the-black-death]
   reveal_claims: [strasbourg-massacre-1349#c1, strasbourg-massacre-1349#c2, strasbourg-massacre-1349#c3]
-  overlay: {kind: quote, source: fordham-black-death-and-the-jews-1348, quote: "Thus in this city, at least, it was not merely religious bigotry and fear of the plague, but economic resentment that fired the craftsmen and the nobles to their work of extermination.", caption: "The sourcebook’s editor, on Strasbourg"}
-  narration: "**Strasbourg, 1349.** The council wanted to save the Jews, and a mob led by the butchers’ and tanners’ guilds and by nobles who owed them money overthrew it. By the chronicler’s count about two thousand were burned on 14 February; debts owed to them were cancelled and the new council shared their cash among the working men. Königshofen, writing decades later, blamed the money; the sourcebook’s editor adds that fear and bigotry drove it too. Basel’s council was forced to swear to bar Jews for two hundred years; Strasbourg let them back in 1368."
+  overlay: {kind: quote, source: fordham-black-death-and-the-jews-1348, quote: "The money was indeed the thing that killed the Jews. If they had been poor and if the feudal lords had not been in debt to them, they would not have been burnt.", caption: "Königshofen, writing decades after the Strasbourg massacre"}
+  narration: "**The council falls.** The sourcebook’s editors say Strasbourg’s councillors tried to save the Jews before butchers, tanners and indebted nobles overthrew them, driven by religious bigotry, fear and economic resentment. Königshofen, writing decades later, counts about two thousand Jews burned in their cemetery on 14 February 1349; those accepting baptism were spared, and children were baptized against their parents’ will. He blamed money: the new council cancelled debts and divided the victims’ cash among working men. He also records Basel’s citizens forcing councillors to swear to burn the Jews and exclude them for two hundred years; Strasbourg admitted Jews again in 1368."
   duration: 14
 
 - shot: the-inquisition
@@ -103,9 +103,9 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   focus: spanish-inquisition
   time: "1483"
   reveal: [spanish-inquisition, establishment-of-the-spanish-inquisition-1478, sixtus-iv, tomas-de-torquemada, ferdinand-ii-of-aragon, isabella-i-of-castile]
-  reveal_claims: [establishment-of-the-spanish-inquisition-1478#c1, establishment-of-the-spanish-inquisition-1478#c2]
-  overlay: {kind: quote, source: je-1906-inquisition, quote: "The two inquisitors at Seville were so cruel that complaints were made to Sixtus IV.", caption: "The Jewish Encyclopedia, 1906, on the Inquisition at Seville"}
-  narration: "**The Inquisition.** In 1478 a papal bull let Ferdinand and Isabella name inquisitors, to try converts accused of secretly keeping their old faith. Complaints that the two inquisitors at Seville were cruel reached Pope Sixtus IV, and in 1482 he wrote to the monarchs of his dissatisfaction. In October 1483 Torquemada was named inquisitor-general."
+  reveal_claims: [establishment-of-the-spanish-inquisition-1478#c1, establishment-of-the-spanish-inquisition-1478#c2, establishment-of-the-spanish-inquisition-1478#c3]
+  overlay: {kind: quote, source: je-1906-inquisition, quote: "by ambition and greed for earthly possessions, rather than by zeal for the faith and true fear of God.", caption: "Sixtus IV’s letter to Isabella, 23 February 1483, as quoted by the Jewish Encyclopedia: his suspicion about her motives"}
+  narration: "**The pope’s concessions.** Sixtus IV had authorized Ferdinand and Isabella in 1478 to name inquisitors to try converts accused of secretly keeping their old faith, but complaints about the cruelty of Seville’s two inquisitors reached him. On 29 January 1482 he told the monarchs that only consideration for them kept him from dismissing the men. In a further letter, as the Jewish Encyclopedia relates, he questioned whether Isabella’s rigor came from “ambition and greed for earthly possessions, rather than by zeal for the faith and true fear of God.” Yet he kept conceding authority to the crown: in October 1483 Torquemada became inquisitor-general, and tribunals spread to more cities."
   duration: 14
 
 - shot: alhambra
@@ -116,7 +116,7 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   reveal: [alhambra-decree, expulsion-of-the-jews-from-spain-1492, contact-between-jews-and-converts, anxiety-about-converts-and-hopes-of-conversion, ferdinand-ii-of-aragon, isabella-i-of-castile, granada, spain]
   reveal_claims: [ferdinand-ii-of-aragon#c3, isabella-i-of-castile#c3, alhambra-decree#c1, expulsion-of-the-jews-from-spain-1492#c3, expulsion-of-the-jews-from-spain-1492#c4, expulsion-of-the-jews-from-spain-1492#c8, expulsion-of-the-jews-from-spain-1492#c9]
   overlay: {kind: quote, source: cojs-edict-of-expulsion-spain-1492, quote: "under pain that if they do not perform and comply with this command and should be found in our said kingdom and lordships and should in any manner live in them, they incur the penalty of death and the confiscation of all their possessions by our Chamber of Finance", caption: "The Alhambra Decree, Granada, 31 March 1492 (translation by Edward Peters)"}
-  narration: "**The Alhambra Decree.** The monarchs charged that contact with Jews drew converts back to their old faith; their proof was “many statements and confessions” gathered by the crown’s own inquisition. A reference article says most scholars read it instead as anxiety about converts, or as pressure to convert. Every Jew had until the end of July to leave, on pain of death and confiscation, and could not take out gold, silver or coin. Faith or home: Henry Kamen reckons at most 70,000 Jews in Castile and 10,000 in Aragon, and most, the best evidence suggests, converted; estimates of those who left run from 40,000 to hundreds of thousands."
+  narration: "**Faith or home.** At Granada on 31 March 1492, Ferdinand and Isabella ordered every Jew to leave by July’s end on pain of death and confiscation, blaming contact with Jews for converts’ return to Judaism and citing their Inquisition’s “many statements and confessions”. Families could sell homes but take out no gold, silver or coin. Gretchen Starr-LeBeau writes that scholars generally explain the decree through anxiety about converts or pressure to convert, and that the best evidence suggests most Jews converted; Henry Kamen separately estimates at most 70,000 Jews in Castile and 10,000 in Aragon. Starr-LeBeau puts departures at possibly 40,000–50,000, while noting that many returned and converted by 1499."
   duration: 17
 
 - shot: portugal-1496
@@ -127,7 +127,7 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   reveal: [portuguese-edict-of-1496, manuel-i-of-portugal, lisbon, portugal, expulsion-of-the-jews-from-spain-1492]
   reveal_claims: [manuel-i-of-portugal#c2, expulsion-of-the-jews-from-spain-1492#c6]
   overlay: {kind: quote, source: ej-manuel-i, quote: "But in 1496 the king entered a politically motivated marriage with Princess Isabella of Spain, daughter of Ferdinand and Isabella, who made their consent conditional to Manuel's ridding Portugal of the Jews.", caption: "Encyclopaedia Judaica, on Manuel I"}
-  narration: "**Portugal, 1496.** Most of Spain’s exiles had crossed into Portugal. When King Manuel sought the daughter of Ferdinand and Isabella, they demanded that he expel Portugal’s Jews. His edict of 4 December 1496 (5 December in some accounts) gave them eleven months to leave, on pain of death."
+  narration: "**The marriage condition.** In 1496 Manuel sought marriage to Princess Isabella, daughter of Ferdinand and Isabella; her parents made their consent conditional on his expelling Portugal’s Jews, the Encyclopaedia Judaica says. Most of Spain’s exiles had already crossed into his kingdom. Manuel accepted the condition: his edict of 4 December 1496, dated 5 December in some accounts, gave Jews eleven months to leave on pain of death and promised help with travel and departure with their belongings. Families who had fled one royal decree now faced another; the king would soon prevent the departure he had ordered."
   duration: 14
 
 - shot: lisbon-1497
@@ -135,9 +135,9 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   focus: forced-baptism-in-portugal-1497
   time: "1497"
   reveal: [forced-baptism-in-portugal-1497, manuel-i-of-portugal, lisbon, portuguese-edict-of-1496]
-  reveal_claims: [forced-baptism-in-portugal-1497#c1, forced-baptism-in-portugal-1497#c2, portuguese-edict-of-1496#c1]
+  reveal_claims: [forced-baptism-in-portugal-1497#c1, forced-baptism-in-portugal-1497#c2, portuguese-edict-of-1496#c1, forced-baptism-in-portugal-1497#c3]
   overlay: {kind: stat, value: "About 20,000", label: "People gathered at Lisbon and forcibly converted in 1497, by the Encyclopaedia Judaica", source: ej-manuel-i, quote: "When some 20,000 had convened in Lisbon, Manuel herded them together for forced conversion."}
-  narration: "**Lisbon, 1497.** The Encyclopaedia Judaica says Manuel saw that losing so many subjects would cost Portugal dearly; another account says conversion came first. He ordered them to gather at Lisbon, supposedly to embark, and had some 20,000 baptized by force. In 1506 a Lisbon mob killed some 4,000 converts, and Manuel had the friars who incited it executed."
+  narration: "**No ship out.** Manuel told Jews preparing to leave Portugal in 1497 to gather at Lisbon, supposedly for embarkation; once some 20,000 had assembled, he had them baptized by force, the Encyclopaedia Judaica says. The encyclopedia attributes his reversal to the economic cost of losing those subjects; historian Gretchen Starr-LeBeau instead emphasizes conversion as his primary concern. Manuel then withdrew converts’ freedom to sell property and emigrate. In 1506 a Lisbon mob killed some 4,000 converts, by the encyclopedia’s count; Manuel executed the friars who had incited it."
   duration: 14
 
 - shot: ottoman-empire
@@ -146,9 +146,9 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   places: [ottoman-empire]
   time: "1492~"
   reveal: [ottoman-welcome-of-spanish-exiles, bayezid-ii, ottoman-empire]
-  reveal_claims: [ottoman-welcome-of-spanish-exiles#c1, ottoman-welcome-of-spanish-exiles#c2]
+  reveal_claims: [ottoman-welcome-of-spanish-exiles#c1, ottoman-welcome-of-spanish-exiles#c2, ottoman-welcome-of-spanish-exiles#c3]
   overlay: {kind: quote, source: ej-bayazid-ii, quote: "According to R. Elijah Capsali, Sultan Bayazid issued an order to the governors of the provinces not to refuse those Jews entry or cause them difficulties but to receive them cordially and provide them with the help they needed to settle themselves.", caption: "Encyclopaedia Judaica, citing the chronicler Elijah Capsali"}
-  narration: "**The Ottoman Empire.** Many exiles settled in Ottoman towns in the Balkans and Anatolia, and the chronicler Elijah Capsali says Sultan Bayezid II ordered his governors to receive them kindly. A reference article adds that the economic cost to Spain, once thought great, now seems relatively minor. The Encyclopaedia Judaica also records forced conversions in his reign and that he enforced the ban on new synagogues."
+  narration: "**A governor’s orders.** As exiles arrived from Spain after 1492, Bayezid II ordered provincial governors to admit them, receive them kindly and help them settle, according to the chronicler Elijah Capsali. Immanuel Aboab later attributed an explanation to the sultan: Spain’s monarchs had impoverished their kingdom and enriched his. Many exiles made homes across the Balkans and Anatolia, but Capsali also records forced conversions under Bayezid, who enforced the ban on new synagogues. Gretchen Starr-LeBeau puts Spain’s economic loss relatively low; for arriving families, the order to governors opened places to settle."
   duration: 14
 
 - shot: poland
@@ -158,8 +158,8 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   time: "1264"
   reveal: [statute-of-kalisz-1264, settlement-of-jews-in-poland-lithuania, boleslaus-the-pious, casimir-iii-of-poland, kalisz]
   reveal_claims: [settlement-of-jews-in-poland-lithuania#c1, settlement-of-jews-in-poland-lithuania#c2, settlement-of-jews-in-poland-lithuania#c3]
-  overlay: {kind: quote, source: ej-poland, quote: "Subsequently, the princes of Poland eagerly sought immigrants from the west, mainly from Germany, and gave them energetic assistance to settle in the villages and towns.", caption: "Encyclopaedia Judaica, on Poland after the Mongol invasions"}
-  narration: "**Poland.** After the Mongol invasions of 1241 Polish princes wanted settlers from the west. In 1264 Duke Boleslaus the Pious of Kalisz issued a charter, modelled on one from Austria, that saw Jews as protected lenders; Casimir III confirmed and widened it. The Encyclopaedia Judaica says Polish Jews spread into almost every branch of trade, which it holds contradicts the antisemitic myth of a “Jewish spirit of usury.” It was no refuge without limits: town and church pressed the badge, and Lithuania expelled its Jews for a short time in 1495."
+  overlay: {kind: quote, source: ej-poland, quote: "it is preferable to live on dry bread and in peace in Poland", caption: "Moses Isserles, sixteenth-century responsum, quoted in the Encyclopaedia Judaica"}
+  narration: "**A charter at Kalisz.** In 1264 Duke Boleslaus the Pious of Kalisz issued a charter modelled on Austria’s, protecting Jews as lenders; after the Mongol invasions of 1241, Polish princes sought western settlers, the Encyclopaedia Judaica explains. Casimir III later confirmed and widened the charter, and Jews worked in almost every branch of trade, contradicting the antisemitic myth of a “Jewish spirit of usury,” as the encyclopedia observes. Town and church still pressed for the badge, and Lithuania briefly expelled its Jews in 1495. Yet settlers kept coming: in the sixteenth century Moses Isserles preferred “dry bread and in peace in Poland” to better living in more dangerous lands."
   duration: 14
 
 - shot: luther
@@ -168,8 +168,8 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   time: "1543"
   reveal: [martin-luther, lutheranism]
   reveal_claims: [martin-luther#c5]
-  overlay: {kind: quote, source: forde-luther-and-the-jews, quote: "Later, he avers that if the authorities are not willing to do this, Jews should be exiled from the country.", caption: "Gerhard Forde, on Luther’s treatise of 1543"}
-  narration: "**A reformer asks the rulers.** [Ninety-Five Theses](/c/ninety-five-theses/) told how Luther’s church began. In 1543 he wrote On the Jews and Their Lies, advising the authorities to take seven steps, among them burning synagogues and razing houses. The Lutheran scholar Gerhard Forde reports that Luther added: if they would not, Jews should be exiled. In 1994 the Evangelical Lutheran Church in America rejected that “violent invective.”"
+  overlay: {kind: quote, source: forde-luther-and-the-jews, quote: "it would be the same as if we were doing all this and even worse ourselves", caption: "Luther, 1543, quoted by Gerhard Forde: his argument that protecting a synagogue made Christians complicit in what he called blasphemy"}
+  narration: "**Luther asks for fire.** In 1543 Martin Luther urged rulers to burn synagogues and raze Jewish houses in On the Jews and Their Lies, arguing that protecting a synagogue where, he charged, Christ was blasphemed made Christians complicit. The Lutheran scholar Gerhard Forde reads fear of God’s wrath as central to his demand for seven measures; if rulers would not impose them, Luther urged exile. The reformer whose church began in [Ninety-Five Theses](/c/ninety-five-theses/) was asking secular power to destroy homes and places of worship. In 1994 the Evangelical Lutheran Church in America acknowledged Luther’s violent recommendations, rejected his “violent invective” and expressed sorrow over its effects on subsequent generations."
   duration: 14
 
 - shot: amsterdam
@@ -178,9 +178,9 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   places: [amsterdam, utrecht]
   time: "1598"
   reveal: [arrival-of-exiles-in-amsterdam-1593, union-of-utrecht-1579, expulsion-of-the-jews-from-utrecht-1444, amsterdam, utrecht, dutch-republic]
-  reveal_claims: [union-of-utrecht-1579#c1, arrival-of-exiles-in-amsterdam-1593#c1, arrival-of-exiles-in-amsterdam-1593#c2, expulsion-of-the-jews-from-utrecht-1444#c1]
+  reveal_claims: [union-of-utrecht-1579#c1, arrival-of-exiles-in-amsterdam-1593#c1, arrival-of-exiles-in-amsterdam-1593#c2, expulsion-of-the-jews-from-utrecht-1444#c1, arrival-of-exiles-in-amsterdam-1593#c3]
   overlay: {kind: quote, source: bodian-2008-1616-amsterdam-regulations, quote: "They were never officially denied (or granted) freedom of worship.", caption: "Miriam Bodian, historian, on the Portuguese Jews of Amsterdam"}
-  narration: "**Amsterdam.** Amsterdam, in this story, is a refuge with limits, not the Netherlands as a whole: in 1444 Utrecht’s council ordered Jews tortured, imprisoned and expelled. Exiles from Portugal began to arrive in Amsterdam from about 1593; the city’s oldest record of them, probably, is dated 28 November 1598. The Union of Utrecht of 1579 had forbidden persecution on religious grounds, but its supporters were rarely clear whether that covered non-Christians. From 1619 each town set its own rules, and in 1632 Amsterdam denied Jews the full rights of burghers."
+  narration: "**A home in Amsterdam.** On 28 November 1598 Amsterdam recorded Maria Nuñez’s intended marriage to Manuel Lopez Homé, probably its oldest record of Portuguese Jews. In 1612 the council prohibited a synagogue under clergy pressure, yet a councillor bought the building and it served as a synagogue, Miriam Bodian writes. She says clergy complaints about sexual relations with Christian women, criticism of Christianity and conversion of Dutch Christians apparently prompted the burgomasters’ regulations of 1616, which prohibited those acts and repeated the synagogue restriction. Bodian reads both measures as attempts to pacify the clergy while telling Jews to keep a low profile; Portuguese Jews established a community without formal worship rights, and Amsterdam denied them full burgher rights in 1632."
   duration: 14
 
 - shot: cromwell
@@ -188,9 +188,9 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   focus: whitehall-conference-1655
   time: "1655-12"
   reveal: [whitehall-conference-1655, oliver-cromwell, expulsion-of-the-jews-from-england-1290, london, kingdom-of-england]
-  reveal_claims: [oliver-cromwell#c1, whitehall-conference-1655#c1, whitehall-conference-1655#c2]
-  overlay: {kind: quote, source: hessayon-jews-in-england-1290-1656, quote: "The Whitehall Conference had ended without a definite conclusion.", caption: "Ariel Hessayon, historian, on the conference of December 1655"}
-  narration: "**England again.** In December 1655 Cromwell called a conference at Whitehall on whether Jews could return. It ended without a definite conclusion: merchants and clergy opposed readmission, though some delegates argued that Jewish trading networks would lower the price of imports. Hessayon writes that Cromwell, like some delegates, may have hoped for conversions. The National Archives dates his permission to 1656."
+  reveal_claims: [oliver-cromwell#c1, whitehall-conference-1655#c1, whitehall-conference-1655#c2, whitehall-conference-1655#c3]
+  overlay: {kind: quote, source: hessayon-jews-in-england-1290-1656, quote: "To take us as citizens under your protection", caption: "Menasseh ben Israel’s petition of November 1655, as quoted by Ariel Hessayon"}
+  narration: "**A petition reaches Whitehall.** In November 1655 Menasseh ben Israel asked England’s Council of State “To take us as citizens under your protection”, requesting synagogues and a cemetery. Cromwell’s December conference met opposition from merchants and clergy, while some delegates argued Jewish trade would lower import prices; Ariel Hessayon thinks Cromwell may have hoped for conversions. The conference ended inconclusively, and Hessayon describes tacit readmission without a welcoming proclamation or Council order, with Cromwell publicly undecided. The National Archives dates permission to return to 1656; Hessayon infers a private verbal assurance allowing Jews to worship in their homes."
   duration: 14
 
 - shot: pale
@@ -199,9 +199,9 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   places: [moscow]
   time: "1791/1917"
   reveal: [pale-of-settlement, russian-decree-of-1791, temporary-laws-of-1882, expulsion-from-moscow-1891, moscow, russia]
-  reveal_claims: [russian-decree-of-1791#c1, expulsion-from-moscow-1891#c1, expulsion-from-moscow-1891#c2, pale-of-settlement#c2, pale-of-settlement#c1]
-  overlay: {kind: quote, source: ej-pale-of-settlement, quote: "These decrees were intended to serve the national and economic interests of the state by preventing competition of the Jewish with Russian merchants and encouraging settlement in the desolate steppes of southern Russia", caption: "Encyclopaedia Judaica, on the Russian decrees of 1791 and 1794"}
-  narration: "**The Pale.** Russia had barred Jews since the end of the 15th century. After Poland’s partitions it ruled masses of them, so in 1791 the law fixed where they might live and barred them from trading in inner Russia. The May Laws of May 1882 forbade Jews to settle outside towns; the Encyclopaedia Judaica says they met the demands of rural merchants who wanted rid of Jewish rivals. In 1891–92 thousands of craftsmen were expelled from Moscow. About 4.9 million Jews lived in the Pale in 1897, some 11.6% of its people; the provisional government ended it in 1917."
+  reveal_claims: [russian-decree-of-1791#c1, expulsion-from-moscow-1891#c1, expulsion-from-moscow-1891#c2, pale-of-settlement#c2, pale-of-settlement#c1, temporary-laws-of-1882#c1, temporary-laws-of-1882#c2]
+  overlay: {kind: quote, source: ej-may-laws, quote: "justice demands that it immediately impose severe regulations", caption: "Interior Minister Ignatiev to Alexander III after the 1881 pogroms, blaming Jews for the violence against them; quoted in the Encyclopaedia Judaica"}
+  narration: "**Confined by law.** After Poland’s partitions brought Jewish subjects under Russian rule, Catherine II’s government restricted their residence and trade through decrees of 1791 and 1794; the Encyclopaedia Judaica explains that these sought to prevent competition with Russian merchants and encourage settlement of the southern steppes. In 1882 Interior Minister Ignatiev blamed Jews for violence against them and urged restrictions against their alleged “harmful activity”; Alexander III approved the May Laws, forbidding new settlement outside towns. They satisfied rural merchants seeking to remove Jewish rivals, the encyclopedia says; thousands of craftsmen were expelled from Moscow in 1891–92. The 1897 census counted about 4.9 million Jews in the Pale, 11.6% of its people; the provisional government abolished it in 1917."
   duration: 14
 
 - shot: doctors-plot
@@ -211,7 +211,7 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   reveal: [doctors-plot, soviet-government, joseph-stalin]
   reveal_claims: [doctors-plot#c1, doctors-plot#c2]
   overlay: {kind: quote, source: ej-doctors-plot, quote: "On January 13, 1953, Pravda and Radio Moscow announced that nine eminent doctors were under arrest and had confessed to murdering two Soviet leaders of the past, A.S. Shcherbakov and A.A. Zhdanov", caption: "Encyclopaedia Judaica, reporting the announcement of 13 January 1953: the state’s charge"}
-  narration: "**The Doctors’ Plot.** The Encyclopaedia Judaica calls it the most dramatic anti-Jewish episode in the Soviet Union under Stalin. On 13 January 1953 the Soviet press announced the arrest of doctors said to have confessed to murdering two Soviet leaders, and falsely tied them to a Jewish aid organization in the U.S.; one of the doctors, Yakov Etinger, died under torture. Stalin died on 5 March, and on 3 April Pravda said the doctors were not guilty and that “impermissible means of investigation” had been used. The encyclopedia reads the Plot as apparently part of a plan for a new purge of Stalin’s own leadership."
+  narration: "**A doctor under interrogation.** Yakov Etinger died under torture as interrogators questioned him about an alleged plot; on 13 January 1953 Stalin’s government announced that doctors had confessed to murdering two Soviet leaders and falsely linked them to a Jewish aid organization in the U.S. The Encyclopaedia Judaica calls this Stalin’s most dramatic anti-Jewish episode and reads it as apparently part of a plan to purge his own top leadership. Stalin died on 5 March; on 3 April Pravda declared the doctors not guilty and acknowledged “impermissible means of investigation.” The surviving doctors went free; Etinger’s son would later describe alleged plans for an expulsion to follow."
   duration: 16
 
 - shot: the-alleged-plan
@@ -221,6 +221,6 @@ A number is going round: Jews expelled from “109 countries.” The Anti-Defama
   reveal: [alleged-deportation-plan-1953, doctors-plot, joseph-stalin]
   reveal_claims: [alleged-deportation-plan-1953#c1, alleged-deportation-plan-1953#c2]
   overlay: {kind: quote, source: ivanov-2021-stalins-alleged-deportation-plan, quote: "The dearth of archival material confirming Stalin’s alleged Jewish deportation plan has prevented a consensus regarding its existence from forming.", caption: "Oleg Ivanov, UCLA doctoral dissertation in comparative literature, 2021, summing up the debate"}
-  narration: "**An alleged plan.** Did Stalin mean to follow the Plot by deporting about two million Soviet Jews to Siberia and Central Asia? Most Soviet-era Western scholars took it as fact, Oleg Ivanov writes, citing memoirs and insiders such as the doctor’s adopted son, also named Yakov Etinger, who said Nikolai Bulganin told him of orders to gather cattle cars in February 1953. Gennady Kostyrchenko finds no credible evidence and calls it a “Cold War legend”; David Brandenberger, Jonathan Brent and others say the question must stay unresolved. No archival document has been found."
+  narration: "**What the son was told.** Yakov Etinger, the dead doctor’s adopted son, later said Nikolai Bulganin privately told him Stalin ordered thousands of cattle cars assembled outside Soviet cities in February 1953 and pogroms along the trains’ routes to Siberia so only a fraction of deportees would arrive. Oleg Ivanov writes that most Soviet-era Western scholars accepted a plan to deport about two million Jews, drawing on memoirs and insiders’ recollections. He contrasts Gennady Kostyrchenko’s rejection of it as a “Cold War legend” with David Brandenberger, Jonathan Brent and others leaving the question unresolved. Ivanov says the lack of confirming archival material has prevented consensus on whether the plan existed."
   duration: 18
 ```

@@ -18,4 +18,12 @@ claims:
     src:
       - {s: je-1906-cromwell, quote: "The first question which arose for consideration was whether there existed any law forbidding the readmission of the Jews"}
       - {s: hessayon-jews-in-england-1290-1656, quote: "The Whitehall Conference had ended without a definite conclusion."}
+  - id: c3
+    rel: involved
+    to: oliver-cromwell
+    role: "opened discussion of Menasseh ben Israel's petition for protection, synagogues and a cemetery"
+    src:
+      - {s: hessayon-jews-in-england-1290-1656, quote: "To take us as citizens under your protection"}
+      - {s: hessayon-jews-in-england-1290-1656, quote: "To allow us public synagogues in England and its dominions"}
+      - {s: hessayon-jews-in-england-1290-1656, quote: "To give us a cemetery to bury our dead"}
 ---

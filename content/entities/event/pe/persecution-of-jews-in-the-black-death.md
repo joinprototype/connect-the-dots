@@ -25,4 +25,11 @@ claims:
     to: strasbourg
     src:
       - {s: fordham-black-death-and-the-jews-1348, quote: "On Saturday - that was St. Valentine's Day-they burnt the Jews on a wooden platform in their cemetery. There were about two thousand people of them."}
+  - id: c4
+    rel: involved
+    to: amadeus-vi-of-savoy
+    role: "his court's inquiry at Châtel in October 1348 recorded Agimet's confession after repeated torture"
+    src:
+      - {s: fordham-black-death-and-the-jews-1348, quote: "Agimet the Jew, who lived at Geneva and was arrested at Châtel, was there put to the torture a little and then he was released from it."}
+      - {s: fordham-black-death-and-the-jews-1348, quote: "And after a long time, having been subjected again to torture a little, he confessed"}
 ---

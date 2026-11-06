@@ -21,4 +21,10 @@ claims:
     to: lisbon
     src:
       - {s: encyclopedia-jews-expulsion-of-spain-portugal, quote: "When October 1497 arrived, the thousands of Jews assembled there were forcibly converted."}
+  - id: c3
+    rel: involved
+    to: manuel-i-of-portugal
+    role: "withdrew converts' freedom to dispose of property and emigrate"
+    src:
+      - {s: ej-manuel-i, quote: "When the king learned soon after that the Conversos were emigrating in large numbers, he quickly withdrew their liberty to dispose of property and emigrate."}
 ---

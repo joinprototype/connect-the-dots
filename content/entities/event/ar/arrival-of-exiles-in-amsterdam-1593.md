@@ -22,4 +22,10 @@ claims:
       - {s: bodian-2008-1616-amsterdam-regulations, quote: "It was amended only by an (admittedly significant) regulation of 1632 that denied Amsterdam’s Jews the full rights of burghers."}
       - {s: bodian-2008-1616-amsterdam-regulations, quote: "the resolution of 1612, issued under pressure from the Calvinist clergy, not only called for modesty, but prohibited the construction and use of a synagogue."}
       - {s: je-1906-amsterdam, quote: "a city ordinance, dated November 8, 1616, prohibited them from speaking publicly against the Christian religion or publishing anything against it, and forbade them to intermarry with Christians"}
+  - id: c3
+    rel: involved
+    to: amsterdam
+    role: "recorded Maria Nuñez's intended marriage to Manuel Lopez Homé on 28 November 1598"
+    src:
+      - {s: je-1906-amsterdam, quote: "the announcement of the intended marriage of Manuel Lopez Homé and the above-mentioned Maria Nuñez."}
 ---

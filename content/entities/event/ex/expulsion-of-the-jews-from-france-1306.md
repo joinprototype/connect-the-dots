@@ -31,4 +31,10 @@ claims:
     src:
       - {s: ej-philip-iv-the-fair, quote: "The various changes in Philip's policy toward the Jews were all motivated by the sole purpose of furthering the interests of the monarchy and the kingdom."}
       - {s: ej-philip-iv-the-fair, quote: "The king's essentially mercenary interest in the Jews was finally manifested on June 21, 1306."}
+  - id: c4
+    rel: involved
+    to: philip-iv-of-france
+    role: "promised resisting lords a share of the confiscated property"
+    src:
+      - {s: ej-philip-iv-the-fair, quote: "The king easily overcame their objections by promising them the lion's share of the spoils."}
 ---

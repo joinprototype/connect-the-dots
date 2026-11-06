@@ -14,4 +14,11 @@ claims:
     src:
       - {s: ej-may-laws, quote: "As a result, the \"temporary regulations\" of May 3 (15), 1882 stated: (1) Jews are forbidden to settle outside the towns and townlets;"}
       - {s: ej-may-laws, quote: "The \"temporary laws\" satisfied the demands of the Russian rural merchant class that sought to be rid of its Jewish rivals in the villages of the Ukraine and Belorussia."}
+  - id: c2
+    rel: part_of
+    to: pale-of-settlement
+    note: "After the 1881 pogroms, Interior Minister Ignatiev's letter to Alexander III blamed Jews for the violence against them and called for restrictions; Alexander approved the laws in May 1882."
+    src:
+      - {s: ej-may-laws, quote: "justice demands that it immediately impose severe regulations which will alter the unfair relations between the general inhabitants and the Jews and protect the former from the harmful activity of the latter."}
+      - {s: ej-may-laws, quote: "confirmed by Czar Alexander iii in May 1882"}
 ---

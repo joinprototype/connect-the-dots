@@ -20,4 +20,10 @@ claims:
       - {s: ej-bayazid-ii, quote: "Nevertheless, according to the same source, Bayazid was a devout Muslim and was responsible for certain cases of forced conversion of Jews to Islam."}
       - {s: ej-bayazid-ii, quote: "He was also the only sultan to enforce the prohibition against building new synagogues."}
       - {s: encyclopedia-jews-expulsion-of-spain-portugal, quote: "The economic costs to Spain of the expulsion, once thought to be significant, now seem to have been relatively minor."}
+  - id: c3
+    rel: involved
+    to: bayezid-ii
+    role: "Immanuel Aboab later attributed to him a remark that Spain's expulsion enriched the Ottoman Empire"
+    src:
+      - {s: ej-bayazid-ii, quote: "Immanuel Aboab attributes to Bayazid the famous remark that the Catholic monarchs (Ferdinand and Isabella) were considered wise, but wrongly so, since they impoverished Spain (by the expulsion of the Jews) and enriched the Ottoman Empire."}
 ---
