@@ -2,6 +2,11 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.5.13 (2026-11-06)
+
+- The Week the Buying Stopped goes from 16 scenes to 21: what Interactive Brokers, Webull and its clearing firm Apex decided that week and why, in their own words; Robinhood's $3.4 billion raise; FINRA's 2021 fine and what it was for, which was not the January restrictions; the Massachusetts case; GameStop's own share sales of 2021; and Keith Gill's return in 2024.
+- The Internet Archive's copy for 170 more sources.
+
 ## 0.5.12 (2026-11-05)
 
 - Every story but the four about Jeffrey Epstein is retold through the people who decided: in each scene a king, an executive, a judge, a soldier or a family at a moment, what they faced and chose, their reasons in their own words where the record has them, and, where it has both, what they said in public beside what they said in private.
