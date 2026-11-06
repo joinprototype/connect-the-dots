@@ -13,4 +13,11 @@ claims:
     to: grapevine-texas
     src:
       - {s: gamestop-proxy-2021, at: "Notice of Annual Meeting", quote: "our corporate headquarters located at 625 Westport Parkway, Grapevine, Texas 76051"}
+  - id: c2
+    rel: "contracted"
+    to: "jefferies"
+    when: "2021-04-05"
+    title: "sales agent for at-the-market equity offering"
+    src:
+      - {s: "gamestop-atm-2021-04-05", at: "Offering announcement", quote: "Common Stock will be offered through Jefferies LLC (“Jefferies”), which is serving as the sales agent."}
 ---

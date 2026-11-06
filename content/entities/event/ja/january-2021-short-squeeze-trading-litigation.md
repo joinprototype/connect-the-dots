@@ -25,10 +25,11 @@ claims:
     rel: involved
     to: citadel-securities
     role: "defendant in the antitrust class action; the court affirmed its dismissal without deciding whether an agreement was alleged"
-    note: "Plaintiffs alleged a conspiracy between Robinhood and Citadel Securities. The defendants rejected it. The Eleventh Circuit decided only that the complaint did not plausibly allege an unreasonable restraint of trade."
+    note: "Plaintiffs alleged that Robinhood and Citadel Securities agreed to restrict purchases to drive prices down and protect Citadel’s short positions; they said Robinhood depended on Citadel’s payments. The defendants rejected this allegation and said Robinhood acted independently to reduce volatility and collateral demands. The Eleventh Circuit decided only that the complaint did not plausibly allege an unreasonable restraint of trade."
     src:
       - {s: ca11-2024-06-26-guzman-v-robinhood, at: "Opinion, p. 3", quote: "Defendants reject Plaintiffs’ conspiracy allegations and argue that Robinhood implemented the restrictions on its own accord to reduce market volatility and thereby reduce its collateral requirements with the National Securities Clearing Corporation"}
       - {s: ca11-2024-06-26-guzman-v-robinhood, at: "Opinion, p. 4", quote: "Because this failure is dispositive of their claim, we need not decide whether Plaintiffs plausibly alleged an agreement between Defendants to prohibit purchases of the relevant securities."}
+      - {s: "ca11-2024-06-26-guzman-v-robinhood", at: "Opinion, p. 3", quote: "alleged that Robinhood implemented these restrictions as part of a conspiracy with its market maker, Citadel LLC, to reduce the stock prices of the relevant securities and save Citadel from the massive losses it faced due to its short positions in those securities."}
   - id: c4
     rel: involved
     to: robinhood
