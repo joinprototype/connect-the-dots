@@ -50,4 +50,12 @@ claims:
     role: "deposited money"
     src:
       - {s: bruner-carr-panic-of-1907-npr, at: "excerpt", quote: "John D. Rockefeller Sr. also called on Morgan to assure him of his willingness to help. Rockefeller deposited $10 million with the Union Trust Company, and promised additional deposits of $40 million, if needed."}
+  - id: c8
+    rel: funded
+    to: rockefeller-foundation
+    amount: 182000000
+    currency: USD
+    note: "Time's 1937 obituary counted this among Rockefeller's lifetime gifts, separately from his son's giving. It put his total lifetime giving at no less than $530 million."
+    src:
+      - {s: time-1937-last-titan, at: "Obituary, philanthropy and inheritance", quote: "the biggest sums went to the Rockefeller Foundation ($182,000,000)"}
 ---
