@@ -36,4 +36,14 @@ claims:
     when: "2025-08-29"
     src:
       - {s: cec-sbx12-abx21-implementation, quote: "At the August 29, 2025 Business Meeting, the Commissioners resolved to deprioritize implementing the maximum GGRM and penalty for at least five years while the state continues to develop and implement a sector-wide managed transition strategy."}
+  - id: c6
+    rel: intervened_in
+    to: cec-margin-cap-pause-2025
+    when: "2025-06-27"
+    role: "vice chair Siva Gunda recommended a pause in a letter to Governor Newsom"
+    note: "Gunda recommended prioritizing resupply and minimum-inventory rules, coordinating agencies and ports to improve import capacity, and continuing cap-and-trade with cost containment as the state moved away from petroleum."
+    src:
+      - {s: cec-response-to-governor-2025-06-27, at: "Page 20, recommendation on the maximum margin", quote: "we recommend that the CEC adopt a pause for a reasonable length of time on implementing a maximum GGRM and penalty."}
+      - {s: cec-response-to-governor-2025-06-27, at: "Recommendations on import infrastructure", quote: "Address regulatory and permitting issues to import capacity and efficiency, especially in regions with major refining capacity loss."}
+      - {s: cec-response-to-governor-2025-06-27, at: "Page 21, cap-and-trade", quote: "including progress towards required targets, cost containment strategies and minimizing leakage."}
 ---
