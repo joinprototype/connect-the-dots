@@ -82,6 +82,26 @@ claims:
       - {s: doi-boarding-school-report-vol2-2024, quote: "The assimilation of Indian children through the Federal Indian boarding school system was intentional and part of that broader goal of Indian territorial dispossession for the expansion of the United States."}
       - {s: doi-boarding-school-report-vol2-2024, quote: "From the earliest days of the Republic, the United States’ official objective—based on Federal and other records—was to sever the cultural and economic connection between Indian Tribes, Alaska Native Villages, the Native Hawaiian Kingdom, and their territories."}
       - {s: nps-sand-creek-legacies, quote: "Government policies in the 1950s and 1960s force tribal members off the reservations and into urban areas in a continuation of assimilation policies."}
+  - id: c12
+    rel: signatory_of
+    to: hay-bunau-varilla-treaty
+    when: "1903-11-18"
+    src:
+      - {s: "us-rise-panama-treaty", at: "Preamble and Articles I–III"}
+  - id: c13
+    rel: member_of
+    to: international-monetary-fund
+    when: "1945-12"
+    note: "Congress authorized U.S. entry in July 1945; the institutions formally came into existence in December 1945."
+    src:
+      - {s: us-rise-bretton-history, at: "Bretton Woods Agreements Act and entry into force"}
+  - id: c14
+    rel: member_of
+    to: world-bank
+    when: "1945-12"
+    note: "Congress authorized U.S. entry in July 1945; the institutions formally came into existence in December 1945."
+    src:
+      - {s: us-rise-bretton-history, at: "Bretton Woods Agreements Act and entry into force"}
 ---
 
 The federal government of the [[united-states]], seated in [[washington-dc]]. In this graph it is also a perspective: claims marked "according to the United States government" follow official US accounts, such as [[john-f-kennedy]]'s address of 22 October 1962.

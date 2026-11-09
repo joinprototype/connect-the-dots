@@ -334,4 +334,13 @@ claims:
       - {s: 26-usc-4940, at: "Subsection (a), history note", quote: "2019—Subsec. (a). Pub. L. 116–94, § 206(a), substituted “1.39 percent” for “2 percent”."}
       - {s: 26-usc-4940, at: "Subsection (a)", quote: "a tax equal to 1.39 percent of the net investment income of such foundation for the taxable year."}
       - {s: 26-usc-4942, at: "Subsection (a)", quote: "a tax equal to 30 percent of the amount of such income remaining undistributed at the beginning of such second (or succeeding) taxable year."}
+  - id: c63
+    rel: adopted
+    to: lend-lease-act
+    when: "1941-03-11"
+    note: "Congress authorized the program; Roosevelt signed the law. State estimates about $50 billion of wartime aid to more than 30 countries, in contemporary dollars, and describes Britain’s Article VII undertaking to cooperate toward a liberalized postwar economic order."
+    src:
+      - {s: "nara-milestone-lend-lease-act", at: "Act of 11 March 1941"}
+      - {s: "us-rise-lend-lease-history", at: "Passage of the Lend-Lease Act"}
+
 ---

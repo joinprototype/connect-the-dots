@@ -39,4 +39,20 @@ claims:
     according_to: [woodrow-wilson]
     src:
       - {s: wilson-trusts-address-1914-01-20, at: "Address to Congress", quote: "They desire the advice, the definite guidance and information which can be supplied by an administrative body, an interstate trade commission."}
+  - id: c6
+    rel: intervened_in
+    to: world-war-i
+    when: "1917-04-02"
+    role: "requested a declaration of war against Germany"
+    note: "Wilson cited unrestricted submarine warfare and German intrigues. The Archives notes his 1916 reelection slogan, “He kept us out of war,” and the release of the Zimmermann telegram on 1 March 1917."
+    src:
+      - {s: "us-rise-wilson-war", at: "Address and introductory chronology", quote: "The world must be made safe for democracy."}
+      - {s: "us-rise-zimmermann", at: "Decoded telegram"}
+  - id: c7
+    rel: influenced
+    to: world-war-i
+    note: "Wilson’s proposed peace terms called for open agreements, fewer economic barriers, equal weight for colonial populations’ interests and a general association of nations. These were his program, not proof of its implementation."
+    according_to: ["woodrow-wilson"]
+    src:
+      - {s: "us-rise-fourteen-points", at: "Points I, III, V and XIV"}
 ---

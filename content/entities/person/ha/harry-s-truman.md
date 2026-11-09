@@ -24,4 +24,19 @@ claims:
     title: "chairman"
     src:
       - {s: truman-committee-hearings-part-11-rubber-1942, at: "title page", quote: "SPECIAL COMMITTEE INVESTIGATING THE NATIONAL DEFENSE PROGRAM HARRY S. TRUMAN, Missouri, Chairman"}
+  - id: c3
+    rel: intervened_in
+    to: cold-war
+    when: "1947-03-12"
+    role: "requested $400 million for Greece and Turkey"
+    note: "Truman said Britain could give Greece no further financial or economic aid after 31 March. He requested aid authority from Congress and said the United Nations could not supply the required immediate help."
+    src:
+      - {s: "us-rise-truman-doctrine", at: "Message of 12 March 1947", quote: "I believe that our help should be primarily through economic and financial aid"}
+  - id: c4
+    rel: influenced
+    to: united-nations
+    note: "Truman said U.S. aid to free and independent nations would give effect to the principles of the U.N. Charter."
+    according_to: ["harry-s-truman"]
+    src:
+      - {s: "us-rise-truman-doctrine", at: "Discussion of the United Nations"}
 ---
