@@ -15,6 +15,12 @@ claims:
     to: united-states
     src:
       - {s: state-milestone-wwi, at: "U.S. entry", quote: "On April 4, 1917, the U.S. Senate voted in support of the measure to declare war on Germany."}
+  - id: c2
+    rel: involved
+    to: us-congress
+    role: "Congress voted to bring the United States into the war in April 1917"
+    src:
+      - {s: "us-rise-wilson-war", at: "Introduction: resulting congressional vote"}
 ---
 
 The First World War set the stage for the Russian revolutions of 1917. Accounts differ on how much it caused them: [[vladimir-lenin]] described the "revolutionary situation" it created, and teaching historians count it as one cause among several of the [[october-revolution]].

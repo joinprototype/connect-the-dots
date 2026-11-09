@@ -45,4 +45,10 @@ claims:
     src:
       - {s: state-milestone-us-soviet-alliance, at: "text", quote: "to condemn the Soviet Union publicly as a “dictatorship as absolute as any other dictatorship in the world,”"}
       - {s: state-milestone-us-soviet-alliance, at: "text", quote: "In order to defeat that threat, Roosevelt confided that he “would hold hands with the devil” if necessary."}
+  - id: c7
+    rel: part_of
+    to: world-war-ii
+    when: "1941/1945"
+    src:
+      - {s: "state-milestone-us-soviet-alliance", at: "First aid sent by the end of October 1941"}
 ---
