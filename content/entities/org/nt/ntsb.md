@@ -28,4 +28,9 @@ claims:
     according_to: [ntsb]
     src:
       - {s: ntsb-2022-us-comments-et302, at: "US comments, proposed probable cause", quote: "the flight crew’s inadequate use of manual electric trim and management of thrust to maintain airplane control", by: ntsb}
+  - id: c4
+    rel: headquartered_in
+    to: washington-dc
+    src:
+      - {s: ntsb-headquarters, at: "Employment at NTSB", quote: "The NTSB has approximately 400 employees located in its Headquarters in Washington, DC, and in regional field offices in Aurora (CO), Federal Way (WA), and Anchorage (AK)."}
 ---

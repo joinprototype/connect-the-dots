@@ -26,4 +26,9 @@ claims:
     role: "the court"
     src:
       - {s: harvard-nmt5-flick, quote: "The defendants were leading officials in the Flick Concern or its subsidiary companies"}
+  - id: c4
+    rel: involved
+    to: hjalmar-schacht
+    src:
+      - {s: harvard-nmt5-flick, at: "Detailed Chronology, 22 July 1947", quote: "3981-4076 Dr. Hjalmar Schacht; Hermann von Hanneken 22 July 1947"}
 ---
