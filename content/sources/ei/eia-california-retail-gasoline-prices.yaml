@@ -3,5 +3,6 @@ id: eia-california-retail-gasoline-prices
 title: "California Gasoline and Diesel Retail Prices (monthly and annual series)"
 publisher: "us-energy-information-administration"
 url: https://www.eia.gov/dnav/pet/pet_pri_gnd_dcus_sca_m.htm
+archive_url: https://web.archive.org/web/20260927173716/https://www.eia.gov/dnav/pet/pet_pri_gnd_dcus_sca_m.htm
 retrieved: 2026-11-02
 tier: T1

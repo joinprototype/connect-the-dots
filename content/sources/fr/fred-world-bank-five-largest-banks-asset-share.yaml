@@ -4,6 +4,7 @@ title: "Bank concentration for United States: assets of the five largest banks a
 publisher: "Federal Reserve Bank of St. Louis (FRED), World Bank data"
 published: 2021
 url: https://fred.stlouisfed.org/series/DDOI06USA156NWDB
+archive_url: https://web.archive.org/web/20261012120822/https://fred.stlouisfed.org/series/DDOI06USA156NWDB
 note: "Latest year in the series is 2021. A different measure from the FDIC sum used for 2026."
 retrieved: 2026-11-02
 tier: T1

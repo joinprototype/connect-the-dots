@@ -4,6 +4,7 @@ title: "Maddison Project Database 2020: GDP per head, selected rows (China, Indi
 publisher: "Groningen Growth and Development Centre, University of Groningen"
 published: "2020"
 url: https://www.rug.nl/ggdc/historicaldevelopment/maddison/data/mpd2020.xlsx
+archive_url: https://web.archive.org/web/20261012145316/https://www.rug.nl/ggdc/historicaldevelopment/maddison/data/mpd2020.xlsx
 retrieved: 2026-11-04
 tier: T2
 note: "GDP per head in 2011 U.S. dollars, as in the file. The rows quoted are copied from the spreadsheet into plain lines of text: country code, country, year, GDP per head, population in thousands where given; two lines come from its Sources sheet. The file asks users to cite the original papers: Broadberry, Guan and Li (2018) for China to 1661; Broadberry, Campbell, Klein, Overton and van Leeuwen (2015) for England from 1252; Broadberry, Custodis and Gupta (2015) for India 1600-1870; Pamuk and Shatzmiller (2011) for Iraq and Egypt before 1500. The Sources sheet names none for the United Kingdom figure of the year 1000."
