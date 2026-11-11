@@ -16,5 +16,5 @@ claims:
   - id: c2
     rel: headquartered_in
     to: washington-dc
-    src: [{s: csb-about-archived, quote: "The CSB is an independent federal agency charged with investigating industrial chemical accidents. Headquartered in Washington, DC, the agency's board members are appointed by the President and confirmed by the Senate."}]
+    src: [{s: csb-about-archived, at: "opening paragraph, archived 2024-12-26", quote: "The CSB is an independent federal agency charged with investigating industrial chemical accidents. Headquartered in Washington, DC, the agency's board members are appointed by the President and confirmed by the Senate."}]
 ---

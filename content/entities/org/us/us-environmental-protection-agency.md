@@ -10,5 +10,5 @@ claims:
   - id: c1
     rel: headquartered_in
     to: washington-dc
-    src: [{s: epa-about-headquarters, quote: "EPA headquarters, Washington, D.C."}]
+    src: [{s: epa-about-headquarters, at: "EPA headquarters, Washington, D.C. heading", quote: "EPA headquarters, Washington, D.C."}]
 ---

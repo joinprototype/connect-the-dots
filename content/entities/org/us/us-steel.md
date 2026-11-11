@@ -16,5 +16,5 @@ claims:
   - id: c2
     rel: headquartered_in
     to: pittsburgh
-    src: [{s: us-steel-contact, quote: "United States Steel Corporation Corporate Headquarters 600 Grant Street Pittsburgh, PA 15219"}]
+    src: [{s: us-steel-contact, at: "footer, Corporate Headquarters", quote: "United States Steel Corporation Corporate Headquarters 600 Grant Street Pittsburgh, PA 15219"}]
 ---

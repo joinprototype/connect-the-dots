@@ -16,5 +16,5 @@ claims:
   - id: c2
     rel: headquartered_in
     to: washington-dc
-    src: [{s: cftc-contact, quote: "CFTC Headquarters Three Lafayette Centre 1155 21st Street, NW Washington, DC 20581"}]
+    src: [{s: cftc-contact, at: "footer, CFTC Headquarters", quote: "CFTC Headquarters Three Lafayette Centre 1155 21st Street, NW Washington, DC 20581"}]
 ---
