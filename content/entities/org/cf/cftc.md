@@ -13,4 +13,8 @@ claims:
     to: us-government
     src:
       - {s: cftc-1998-05-12-concept-release-otc-derivatives, at: "end of release, signature block", quote: "By the Commission (Chairperson BORN, Commissioners TULL and SPEARS; Commissioner HOLUM dissenting)."}
+  - id: c2
+    rel: headquartered_in
+    to: washington-dc
+    src: [{s: cftc-contact, quote: "CFTC Headquarters Three Lafayette Centre 1155 21st Street, NW Washington, DC 20581"}]
 ---

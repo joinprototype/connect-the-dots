@@ -40,6 +40,10 @@ claims:
     note: "The S-IVB was the upper stage of the Saturn IB and Saturn V. Its propellant tank domes and bulkheads were made at the Douglas plant in Santa Monica."
     src:
       - {s: nasa-sp-4206-stages-to-saturn, at: "ch. 6, p. 160", quote: "The space agency seemed somewhat sensitive about the S-IVB contract, because there had been no bidders' conference or active competition by other firms. NASA awarded the contract to Douglas for reasons of cost and schedules"}
+  - id: c5
+    rel: headquartered_in
+    to: washington-dc
+    src: [{s: nasa-headquarters, quote: "NASA Headquarters, in Washington, provides overall guidance and direction to the agency"}]
 ---
 
 The National Aeronautics and Space Administration was created by the National Aeronautics and Space Act, which [[dwight-d-eisenhower]] signed on 29 July 1958, as a direct outgrowth of the [[sputnik-1]] crisis.

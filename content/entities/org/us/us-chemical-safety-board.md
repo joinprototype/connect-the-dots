@@ -13,4 +13,8 @@ claims:
     when: "2017-05-03"
     src:
       - {s: csb-torrance-news-release-2017, quote: "This explosion and near miss should not have happened, and likely would not have happened, had a more robust process safety management system been in place."}
+  - id: c2
+    rel: headquartered_in
+    to: washington-dc
+    src: [{s: csb-about-archived, quote: "The CSB is an independent federal agency charged with investigating industrial chemical accidents. Headquartered in Washington, DC, the agency's board members are appointed by the President and confirmed by the Senate."}]
 ---

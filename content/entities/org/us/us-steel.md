@@ -13,4 +13,8 @@ claims:
     when: "1907-11"
     src:
       - {s: roosevelt-autobiography-1913, at: "Appendix A", quote: "One of the grounds for the suit is the acquisition by the Steel Corporation of the Tennessee Coal and Iron Company"}
+  - id: c2
+    rel: headquartered_in
+    to: pittsburgh
+    src: [{s: us-steel-contact, quote: "United States Steel Corporation Corporate Headquarters 600 Grant Street Pittsburgh, PA 15219"}]
 ---
