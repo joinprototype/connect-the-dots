@@ -43,6 +43,7 @@ claims:
     note: "Exxon merged with Mobil in 1999."
     src:
       - {s: britannica-standard-oil, at: "article text", quote: "Standard Oil Company (New Jersey) changed its name to Exxon Corporation in 1972."}
+      - {s: britannica-standard-oil, at: "Dissolution aftermath", quote: "Exxon and Mobil merged in 1999"}
   - id: c5
     rel: owns_stake
     to: ethyl-corporation
@@ -59,6 +60,15 @@ claims:
     src:
       - {s: kitman-2000-nation-secret-history-of-lead, quote: "the oil company (one of twenty-seven companies formed by the 1911 breakup of Rockefeller’s Standard Oil Trust) and the automobile company formed a joint venture, which they called the Ethyl Gasoline Corporation."}
       - {s: phb-158-1925-tel-conference, at: "Frank A. Howard, representing Ethyl", quote: "which includes the General Motors Corporation and the Standard Oil Co. (N. J.)", by: frank-a-howard}
+  - id: c7
+    rel: sanctioned_by
+    to: us-supreme-court
+    when: "1911-05-15"
+    case: "Standard Oil Co. of New Jersey v. United States"
+    title: "dissolution decree upheld with modifications"
+    note: "White used the early conduct to establish purpose; he did not adjudicate each early allegation separately. The Court upheld dissolution and extended the compliance period to at least six months."
+    src:
+      - {s: "govinfo-standard-oil-221-us-1", at: "Opinion of the Court, pp. 75–76 and 81", quote: "an intent and purpose to exclude others which was frequently manifested by acts and dealings wholly inconsistent with the theory that they were made with the single conception of advancing the development of business power by usual methods"}
 ---
 
 Its 1929 agreements with [[ig-farben]] were examined by the Senate in 1942 in the [[senate-rubber-hearings-1942]].

@@ -19,4 +19,11 @@ claims:
     src:
       - {s: chevron-history, at: "1980 - 2001", quote: "1984 Socal became Chevron Corporation to align our company identity globally."}
       - {s: britannica-standard-oil, at: "section on the aftermath", quote: "Standard Oil of California acquired Standard Oil of Kentucky in 1961 and was renamed Chevron Corporation in 1984."}
+  - id: c3
+    rel: acquired
+    to: standard-oil-of-kentucky
+    when: "1961"
+    src:
+      - {s: chevron-history, at: "1947–1979, 1961 entries", quote: "1961 Socal merged with Kentucky Standard Oil (KYSO)."}
+      - {s: britannica-standard-oil, at: "Dissolution aftermath", quote: "Standard Oil of California acquired Standard Oil of Kentucky in 1961 and was renamed Chevron Corporation in 1984."}
 ---

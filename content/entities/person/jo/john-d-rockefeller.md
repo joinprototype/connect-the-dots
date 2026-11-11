@@ -58,4 +58,13 @@ claims:
     note: "Time's 1937 obituary counted this among Rockefeller's lifetime gifts, separately from his son's giving. It put his total lifetime giving at no less than $530 million."
     src:
       - {s: time-1937-last-titan, at: "Obituary, philanthropy and inheritance", quote: "the biggest sums went to the Rockefeller Foundation ($182,000,000)"}
+  - id: c9
+    rel: authored
+    to: random-reminiscences-of-men-and-events
+    when: "1909"
+    according_to: [john-d-rockefeller]
+    src:
+      - {s: "rockefeller-random-reminiscences-1909", at: "Title and author", quote: "Author: John D. Rockefeller"}
 ---
+
+The [[standard-oil-v-united-states|1911 dissolution decree]] provided for distributing subsidiary shares proportionally to the New Jersey parent’s shareholders, as [President Taft explained that December](https://www.presidency.ucsb.edu/documents/third-annual-message-17). Rockefeller retained his proportional holdings. [Time’s 1937 obituary](https://content.time.com/time/subscriber/article/0,33009,847905-3,00.html) reported that the successor shares rose sharply after dissolution as investors recognized understated property values; it also credited gasoline with multiplying the fortune he had made in kerosene. The decree separated control while leaving him with shares that appreciated.

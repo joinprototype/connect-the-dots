@@ -42,4 +42,11 @@ claims:
     note: "Listed in the Energy Commission’s ownership history as Mobil Oil Corp from 1966 to 2000; the list shows the site under Vacuum Oil Co. from 1907 and Mobil Oil Corp from 1966."
     src:
       - {s: cec-oil-refinery-history, quote: "Mobil Oil Corp: 1966-2000 ExxonMobil: 2000-July 2016 PBF Energy: July 2016-Present"}
+  - id: c6
+    rel: became
+    to: exxonmobil
+    when: "1999"
+    title: "merged with Exxon to form ExxonMobil"
+    src:
+      - {s: britannica-standard-oil, at: "Dissolution aftermath", quote: "Exxon and Mobil merged in 1999"}
 ---
