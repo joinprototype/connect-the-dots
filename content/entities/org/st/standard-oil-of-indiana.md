@@ -35,4 +35,16 @@ claims:
     when: "1985"
     src:
       - {s: britannica-standard-oil, at: "section on the aftermath", quote: "Standard Oil (Indiana) absorbed Standard Oil of Nebraska in 1939 and Standard Oil of Kansas in 1948 and was renamed Amoco Corporation in 1985."}
+  - id: c5
+    rel: acquired
+    to: standard-oil-of-nebraska
+    when: "1939"
+    src:
+      - {s: britannica-standard-oil, at: "Dissolution aftermath", quote: "Standard Oil (Indiana) absorbed Standard Oil of Nebraska in 1939 and Standard Oil of Kansas in 1948 and was renamed Amoco Corporation in 1985."}
+  - id: c6
+    rel: acquired
+    to: standard-oil-of-kansas
+    when: "1948"
+    src:
+      - {s: britannica-standard-oil, at: "Dissolution aftermath", quote: "Standard Oil (Indiana) absorbed Standard Oil of Nebraska in 1939 and Standard Oil of Kansas in 1948 and was renamed Amoco Corporation in 1985."}
 ---
