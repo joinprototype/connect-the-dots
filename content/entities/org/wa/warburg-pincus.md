@@ -14,6 +14,11 @@ claims:
     src:
       - {s: reuters-2013-05-27-valeant-to-buy-bausch-lomb, quote: "The deal, to be financed through debt and equity, will see some $4.5 billion go to an investor group led by Warburg Pincus LLC"}
   - id: c2
+    rel: headquartered_in
+    to: new-york-city
+    src:
+      - {s: warburg-pincus-contact, at: "Our Global Locations", quote: "The firm is headquartered in New York with more than 15 offices globally."}
+  - id: c3
     rel: acquired
     to: bausch-and-lomb
     when: "2007-10"

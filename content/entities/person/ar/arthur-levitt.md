@@ -14,4 +14,11 @@ claims:
     title: "Chairman"
     src:
       - {s: treasury-1998-06-05-rubin-greenspan-levitt-letter, at: "signature", quote: "Arthur Levitt, Chairman"}
+  - id: c2
+    rel: worked_at
+    to: goldman-sachs
+    when: "2009-06-02"
+    role: "advisor"
+    src:
+      - {s: goldman-2009-levitt-advisor, at: "Arthur Levitt to Serve as Advisor to Goldman Sachs", quote: "Arthur Levitt has agreed to serve as an advisor to Goldman Sachs."}
 ---
