@@ -1,0 +1,202 @@
+---
+uid: 01M78EVWSA6S3CWZ6PS3WW4CJ2
+id: "partition-of-british-india"
+type: "event"
+name: "Partition of British India"
+summary: "The division of British India into India and Pakistan in August 1947, accompanied by killings and mass displacement."
+when: "1947"
+claims:
+  - id: "c1"
+    rel: "involved"
+    to: "muhammad-ali-jinnah"
+    note: "Jinnah demanded recognition of Pakistan in a letter to Cripps, 9 February 1946."
+    src:
+      - s: "uk-national-archives-partition"
+        quote: "The Government should, without any further delay, make a clear declaration of its policy accepting Pakistan as the only solution of India’s constitutional problem"
+  - id: "c2"
+    rel: "involved"
+    to: "jawaharlal-nehru"
+    note: "Nehru spoke to the Constituent Assembly at midnight, 14–15 August 1947."
+    src:
+      - s: "nehru-selected-works-v3"
+        quote: "The service of India means the service of the millions who suffer."
+  - id: "c3"
+    rel: "involved"
+    to: "clement-attlee"
+    note: "Attlee moved the Independence Bill on 10 July 1947."
+    src:
+      - s: "hansard-bill-jul10"
+        quote: "a Bill to enable the representatives of India and Pakistan to frame their own Constitutions"
+  - id: "c4"
+    rel: "involved"
+    to: "louis-mountbatten"
+    note: "On 3 June Mountbatten publicly defended partition as an alternative to coercion."
+    src:
+      - s: "mountbatten-time-forward"
+        quote: "the only alternative to coercion is partition."
+  - id: "c5"
+    rel: "involved"
+    to: "cyril-radcliffe"
+    note: "Radcliffe signed the boundary awards; disagreement prevented an agreed Punjab line."
+    src:
+      - s: "partition-radcliffe-awards-gazette"
+        quote: "impossible to arrive at any agreed line."
+  - id: "c6"
+    rel: "involved"
+    to: "all-india-muslim-league"
+    note: "Participated in the negotiations but declined participation in the existing Constituent Assembly."
+    src:
+      - s: "hansard-attlee-jun3"
+  - id: "c7"
+    rel: "involved"
+    to: "indian-national-congress"
+    according_to: ["jawaharlal-nehru"]
+    note: "In his 3 June broadcast Nehru defends Congress leaders’ acceptance of partition and recommends acceptance to the larger committees: unity must be a willing association rather than compulsion. He hopes voluntary unity may come sooner through this choice."
+    src:
+      - s: "nehru-selected-works-v3"
+        at: "3 June broadcast, pp. 98–99"
+        quote: "The united India that we have laboured for was not one of compulsion and coercion, but a free and a willing association of a free people."
+        by: "jawaharlal-nehru"
+  - id: "c8"
+    rel: "involved"
+    to: "india"
+    note: "Named as one of the two independent Dominions in section 1."
+    src:
+      - s: "indian-independence-act"
+  - id: "c9"
+    rel: "involved"
+    to: "pakistan"
+    note: "Named as one of the two independent Dominions in section 1."
+    src:
+      - s: "indian-independence-act"
+  - id: "c10"
+    rel: "involved"
+    to: "bengal"
+    note: "Sections 3 and 4 divided Bengal and Punjab into new provinces."
+    src:
+      - s: "indian-independence-act"
+  - id: "c11"
+    rel: "involved"
+    to: "punjab-boundary-force"
+    note: "The National Army Museum describes the force’s deployment and its failure to prevent massacres."
+    src:
+      - s: "partition-national-army-museum"
+  - id: "c12"
+    rel: "answered_by"
+    to: "government-of-india"
+    note: "The preamble of India’s 1949 law names the two governments’ agreement to recover abducted persons."
+    src:
+      - s: "partition-recovery-act"
+        quote: "an agreement has been reached between the Government of India and the Government of Pakistan for the recovery and restoration of abducted persons"
+  - id: "c13"
+    rel: "answered_by"
+    to: "government-of-pakistan"
+    note: "The preamble of India’s 1949 law names the two governments’ agreement to recover abducted persons."
+    src:
+      - s: "partition-recovery-act"
+        quote: "an agreement has been reached between the Government of India and the Government of Pakistan for the recovery and restoration of abducted persons"
+  - id: "c14"
+    rel: "appears_in"
+    to: "indian-independence-act-1947"
+    note: "Sections 1, 3, 4 and 7 establish the Dominions, divide provinces and end British responsibility for government."
+    src:
+      - s: "indian-independence-act"
+  - id: "c15"
+    rel: "appears_in"
+    to: "radcliffe-boundary-awards"
+    note: "The Gazette published both boundary awards on 17 August 1947."
+    src:
+      - s: "partition-radcliffe-awards-gazette"
+  - id: "c16"
+    rel: "appears_in"
+    to: "the-big-march"
+    note: "Bharadwaj, Khwaja and Mian estimate 14.5 million inflows and 17.9 million outflows at 1951 population levels, including children born to migrants in 1947–51. Their 1931/1951 district-census comparisons cover both borders, including present-day Bangladesh, but exclude Jammu and Kashmir and other districts lacking comparable data (§6.4). Outflows use population-growth projections. The abstract’s 3.4 million residual includes deaths and migration elsewhere; §3.1.4 instead prints 3.7 million. Neither is a count of identified deaths."
+    src:
+      - s: "partition-big-march"
+  - id: "c17"
+    rel: "appears_in"
+    to: "remembering-partition"
+    note: "Pandey (2001), pp. 66, 89–91, quotes Butalia’s 1998 range of 200,000 (an unnamed contemporary British figure) to two million (a later Indian estimate) and questions her widely accepted million. Separately, Pandey describes Moon’s 200,000 for August–December 1947 in the two Punjabs and neighbouring states: local knowledge, information from former magistrates and police, extrapolation to other western districts and an assumption of twice as many eastern deaths. Moon later thought that assumption inflated his total."
+    src:
+      - s: "partition-pandey-remembering"
+  - id: "c18"
+    rel: "appears_in"
+    to: "guardian-partition-survivors-2022"
+    note: "The Guardian’s 11 August 2022 report gives at least one million dead and about 15 million displaced; those are the newspaper’s figures."
+    src:
+      - s: "guardian-partition-survivors"
+  - id: "c19"
+    rel: "involved"
+    to: "british-government"
+    according_to: ["british-government"]
+    note: "Secretary of State’s advice of 19 February 1947 acknowledges the risk of worsening violence as withdrawal approaches, but argues that giving no statement carries the same risk. The public statement on 20 February promises transfer by June 1948."
+    src:
+      - s: "partition-british-policy-records"
+        quote: "as date for our withdrawal draws near communal situation will deteriorate seriously"
+  - id: "c20"
+    rel: "involved"
+    to: "louis-mountbatten"
+    according_to: ["louis-mountbatten"]
+    note: "Attlee had announced on 3 June that legislation would transfer power during 1947, citing the major parties’ demands for speed. On 4 June Mountbatten proposed August and suggested 15 August; he did not foresee mass population transfer because of physical difficulties. On 15 August he defended haste as averting general conflagration and linked the day to Japan’s surrender anniversary."
+    src:
+      - s: "mountbatten-time-forward"
+        quote: "Personally I do not—I am speaking as a prophet—because of the physical difficulties involved"
+        by: "louis-mountbatten"
+      - s: "mountbatten-time-forward"
+        at: "Address to the India Constituent Assembly, 15 August 1947"
+        quote: "It seemed to me that a decision had to be taken at the earliest possible moment unless there was to be risk of a general conflagration"
+        by: "louis-mountbatten"
+  - id: "c21"
+    rel: "involved"
+    to: "cyril-radcliffe"
+    according_to: ["nawaz-partition-punjab-1947"]
+    note: "Ghazala Nawaz reports the five-week deadline imposed on 8 July and attributes delayed publication to Mountbatten’s wish to avoid responsibility for disturbances before independence. The Gazette establishes publication on 17 August."
+    src:
+      - s: "partition-nawaz-boundary"
+        quote: "he had to complete his Award within five weeks."
+  - id: "c22"
+    rel: "involved"
+    to: "jawaharlal-nehru"
+    according_to: ["jawaharlal-nehru"]
+    note: "The British High Commissioner’s 15 September telegram reports Nehru saying on 12 September that the government had not planned population exchange, but it was forced upon it; Gandhi on 13 September opposed transfer as greater misery."
+    src:
+      - s: "partition-british-policy-records"
+        quote: "they had not been thinking of exchange of population but it was forced upon them and they had to carry out their duty."
+  - id: "c23"
+    rel: "appears_in"
+    to: "nawaz-partition-punjab-1947"
+    note: "Ghazala Nawaz’s historical study examines the boundary commissions and attributes the delay in publication to Mountbatten’s concerns about responsibility for disturbances."
+    src:
+      - s: "partition-nawaz-boundary"
+  - id: "c24"
+    rel: "involved"
+    to: "clement-attlee"
+    according_to: ["british-government"]
+    note: "On 3 June Attlee announces legislation to transfer power during 1947, anticipating June 1948 because, he says, the major parties repeatedly requested the earliest possible transfer."
+    src:
+      - s: "hansard-attlee-jun3"
+        quote: "The major political parties have repeatedly emphasised their desire that there should be the earliest possible transfer of power in India."
+        by: "clement-attlee"
+  - id: "c25"
+    rel: "involved"
+    to: "louis-mountbatten"
+    note: "Mountbatten recalls receptions in Karachi on 14 August and Delhi on 15 August. The ceremonies differ from the Act’s common statutory date of 15 August for both Dominions."
+    src:
+      - s: "mountbatten-time-forward"
+        quote: "both in Karachi on the 14th and in Delhi on the 15th of August"
+  - id: "c26"
+    rel: "involved"
+    to: "mahatma-gandhi"
+    according_to: ["mahatma-gandhi"]
+    note: "The High Commissioner’s 15 September telegram reports Gandhi’s 13 September prayer speech opposing population transfer because it would mean greater misery and asking both governments to reject it."
+    src:
+      - s: "partition-british-policy-records"
+  - id: "c27"
+    rel: "involved"
+    to: "muhammad-ali-jinnah"
+    according_to: ["muhammad-ali-jinnah"]
+    note: "Jinnah’s 4 May statement opposes dividing Bengal and Punjab, arguing that this would disrupt their administrative, economic and political life."
+    src:
+      - s: "partition-british-policy-records"
+        at: "Source 4, Jinnah’s statement, 4 May 1947"
+---
