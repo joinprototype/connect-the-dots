@@ -3,197 +3,163 @@ uid: 01M6MSQ24W5CG3886J5Z4NRXQA
 id: the-house-of-wisdom
 type: chapter
 title: "The House of Wisdom"
-subtitle: "What Baghdad's age of learning was, what Europe took from it, and what is legend on both sides"
-summary: "Baghdad was founded in 762. MacTutor describes its House of Wisdom as an academy translating Greek works; other writers dispute Europe's debt to Arabic learning. Scholars disagree about the institution, the translations and their legacy."
+subtitle: "One book through Baghdad: the translators, readers and conqueror who carried the Almagest on"
+summary: "The Almagest passed through successive Arabic translations to Gerard's Latin readers. Tusi continued to challenge its astronomy under Hulagu, whose army sacked Baghdad. One book's road tests the story of a single academy and a final destruction."
 ---
 
-Baghdad was founded in 762. MacTutor describes its House of Wisdom as an academy translating Greek philosophy and science. Dimitri Gutas disputes that institutional picture. Latin readers did study Arabic books; writers disagree about Europe's debt to them. The Mongols sacked Baghdad in 1258, but the ink-black Tigris is a tale.
-
-On the House of Wisdom, Dimitri Gutas finds a library, most likely a bureau, while MacTutor's biographies still describe an academy where Greek works were translated. Alongside that institutional dispute stand a large movement of translation into Arabic, a Latin Europe that read Arabic books from the twelfth century in Spain, the Mongol sack of 1258, and a dispute over why Islamic science slowed afterwards. The ink in the Tigris is a tale.
-
-Al-Khwarizmi's public preface and Fibonacci's later recollection give their reasons in their own words. Historians reconstruct other decisions. Richard Bastien summarises Gouguenheim as a supporter; the bookseller's site History of Information reproduces Gutas's pages. Nuh Aydin reviews Saliba's 2007 book, while Santoyo and Biran set out their arguments in abstracts.
+In 1515, a printer in Venice issued a Greek astronomer's book in Latin translated from Arabic. Follow the Almagest back through Baghdad's translators, then forward through the copies, readers and decisions that let it outlive the Abbasid caliphate.
 
 ```scene
-- shot: one-city-two-stories
-  view: "map"
-  camera: {globe: true, center: [22, 37], zoom: 2.6, duration: 6}
-  places: ["baghdad", "toledo"]
-  routes: [["baghdad", "toledo"]]
-  reveal: ["baghdad", "al-mansur", "house-of-wisdom", "toledo"]
-  reveal_claims: ["al-mansur#c1"]
-  overlay: {kind: "quote", source: "hoi-2014-foundation-of-the-house-of-wisdom", quote: "It was a library, most likely established as a 'bureau' under al Mansur, part of the 'Abbasid administration modeled on that of the Sasanians.", caption: "Dimitri Gutas, Greek Thought, Arabic Culture, 1998, as printed by History of Information"}
-  narration: "**One city, two stories.** In 762 the Abbasid caliph al-Mansur founded Baghdad, a new capital for his dynasty. In Dimitri Gutas's reconstruction, he most likely also established a library as an administrative bureau. Gutas describes hired translators and bookbinders preserving the books. MacTutor describes an academy translating Greek works, while Gutas disputes that picture. Whatever its institutional home, translation would put Arabic books into the hands of Latin readers: Gerard of Cremona would travel to Toledo seeking one of them."
-
-- shot: paper-and-bookshops
-  view: "map"
-  camera: {center: [55, 36], zoom: 3.9, duration: 6}
-  places: ["samarkand", "baghdad"]
-  routes: [["samarkand", "baghdad"]]
-  reveal: ["paper", "papermaking-reaches-samarkand", "papermaking-reaches-baghdad", "harun-al-rashid", "samarkand", "baghdad"]
-  reveal_claims: ["papermaking-reaches-samarkand#c1", "harun-al-rashid#c2"]
-  overlay: {kind: "stat", value: "100+", label: "Booksellers' shops in one market of Abbasid Baghdad, as the old geographers counted them in Guy Le Strange's account", source: "lestrange-1900-baghdad-during-the-abbasid-caliphate", quote: "more than one hundred booksellers' shops being found here"}
-  narration: "**Paper and bookshops.** In 793–794 Harun al-Rashid brought Chinese workmen to Baghdad to start its first paper factory, in Thomas Carter's 1925 account. Carter also relays an Arabic story of prisoners teaching papermaking at Samarkand in 751, citing an eleventh-century writer. Paper supplied a city whose Arabic geographers counted more than a hundred booksellers' shops in one market, the Suk-al-Warrakin. Guy Le Strange describes booksellers in the quarter and on the bridge itself."
-
-- shot: persian-and-sanskrit-too
-  view: "map"
-  camera: {center: [58, 29], zoom: 3.4, duration: 6}
-  places: ["india", "baghdad"]
-  routes: [["india", "baghdad"]]
-  time: "0770~"
-  reveal: ["india", "baghdad", "al-mansur", "greek-arabic-translation-movement"]
-  reveal_claims: ["al-mansur#c2"]
-  overlay: {kind: "quote", source: "sachau-1888-alberunis-india", quote: "They learned from Brahmagupta earlier than from Ptolemy.", caption: "Edward Sachau, preface to Alberuni's India, 1888"}
-  narration: "**Persian and Sanskrit too.** Under al-Mansur, Alfazari worked with scholars who had come in embassies from Sindh to Baghdad carrying two Sanskrit astronomy books. In Edward Sachau's 1888 reconstruction, those visitors helped him translate Brahmagupta's Brahmasiddhanta and Khandakhadyaka. The library's work also reached east: in Gutas's reading, its primary function was to house translations of Sasanian history and culture from Persian into Arabic. The visitors and their translator made Indian astronomy available before Ptolemy's work: Baghdad's learning began with more than Greek books."
-
-- shot: what-the-house-of-wisdom-was
-  view: "graph"
-  focus: "house-of-wisdom"
-  reveal: ["house-of-wisdom", "dispute-over-the-house-of-wisdom", "dimitri-gutas", "greek-thought-arabic-culture", "al-mansur", "al-mamun", "greek-arabic-translation-movement"]
-  reveal_claims: ["al-mansur#c2", "al-mamun#c2", "dimitri-gutas#c1", "greek-arabic-translation-movement#c4"]
-  overlay: {kind: "quote", source: "hoi-2014-foundation-of-the-house-of-wisdom", quote: "What the bayt-al-hikma did do for the Graeco-Arabic translation movement, however, is to foster a climate in which it could be both demanded and then conducted successfully.", caption: "Dimitri Gutas, Greek Thought, Arabic Culture, 1998, as printed by History of Information"}
-  narration: "**What the House of Wisdom was.** Al-Mamun commissioned Greek translations; MacTutor places such work in an academy he founded. Dimitri Gutas instead reconstructs an older library or bureau: under al-Mamun it appears to have added astronomy and mathematics, though he finds no specific information about those activities. Gutas proposes the caliph's rationalist ideology as the reason for that expansion. In his reconstruction, institutional support for recovering ancient texts through translation helped authorize Greek translation beyond the library: officials and private patrons followed the caliphs' example. He finds no report tying Greek translation itself to the House."
-
-- shot: a-book-for-inheritances-and-canals
-  view: "graph"
-  focus: "compendious-book-on-calculation"
-  time: "0820~"
-  reveal: ["al-khwarizmi", "compendious-book-on-calculation", "al-mamun"]
-  reveal_claims: ["al-khwarizmi#c1", "al-mamun#c3"]
-  overlay: {kind: "quote", source: "rosen-1831-algebra-of-mohammed-ben-musa", quote: "such as men constantly require in cases of inheritance, legacies, partition, law-suits, and trade, and in all their dealings with one another", caption: "Al-Khwarizmi's preface, in Frederic Rosen's translation, 1831"}
-  narration: "**A book for inheritances and canals.** Al-Khwarizmi credited al-Mamun's support: it “has encouraged me to compose a short work”, he wrote in his preface to Completion and Reduction. In Frederic Rosen's 1831 translation, he names the people it would serve: those dividing inheritances, trading, measuring land and digging canals. He also states a personal hope in that public preface: learned readers' prayers would obtain divine mercy for him. Old Arabic sources cited by Rosen call it the first work on the subject; Rosen reads the preface as implying earlier treatises. Its methods served ordinary dealings, and al-jabr in its title gave algebra its name."
-
-- shot: invented-or-gathered
-  view: "graph"
-  focus: "al-khwarizmi"
-  reveal: ["al-khwarizmi", "algoritmi-de-numero-indorum", "india"]
-  reveal_claims: ["al-khwarizmi#c2"]
-  overlay: {kind: "quote", source: "mactutor-al-khwarizmi", quote: "It is impossible to overstress the originality of the conception and style of al-Khwarizmi's algebra", caption: "Roshdi Rashed, quoted in MacTutor's biography of al-Khwarizmi"}
-  narration: "**Invented, or gathered?** Al-Khwarizmi set out the Indian place-value system in a book on reckoning: nine numerals and zero. The Arabic original is lost; only a much-changed Latin version survives. The judgments preserved by MacTutor pull apart: Roshdi Rashed stresses his algebra's originality, while G. J. Toomer calls his scientific achievements “at best mediocre” yet this elementary account of numerals “of seminal importance”. The Indian system travelled through his book, and his name became algorithm."
-
-- shot: the-translators-hunt
-  view: "map"
-  camera: {center: [38, 33], zoom: 4.4, duration: 6}
-  places: ["baghdad", "alexandria"]
-  time: "0850~"
-  reveal: ["hunayn-ibn-ishaq", "greek-arabic-translation-movement", "dispute-over-the-house-of-wisdom", "alexandria", "baghdad", "al-mamun"]
-  reveal_claims: ["greek-arabic-translation-movement#c2", "dispute-over-the-house-of-wisdom#c3", "greek-arabic-translation-movement#c5"]
-  overlay: {kind: "quote", source: "dsb-hunayn-ibn-ishaq", quote: "I sought for it earnestly and travelled in search of it in the lands of Mesopotamia, Syria, Palestine and Egypt, until I reached Alexandria, but I was not able to find anything, except about half of it at Damascus", caption: "Hunayn ibn Ishaq on a book of Galen, as translated in the Dictionary of Scientific Biography"}
-  narration: "**The translator's hunt.** Hunayn ibn Ishaq crossed Mesopotamia, Syria, Palestine and Egypt seeking a book of Galen, finding only half at Damascus; Gutas notes that his report never mentions the House of Wisdom. G. C. Anawati's Dictionary of Scientific Biography account describes al-Mamun's manuscript mission, then a different caliph, al-Mutawakkil: a rival tricked Hunayn into spitting on an icon, leading to dismissal, confiscation of his library and imprisonment. Anawati says the caliph's illness six months later forced him to recall the physician. This court story is contested: Anawati flags contradictory reports and Franz Rosenthal's authenticity objection, also raised against Hunayn's attributed autobiographical letter."
-
-- shot: light-in-cairo
-  view: "map"
-  camera: {center: [31.2357, 30.0444], zoom: 7.5, pitch: 30, duration: 6}
-  time: "1021"
-  reveal: ["ibn-al-haytham", "book-of-optics", "basra"]
-  reveal_claims: ["ibn-al-haytham#c1", "ibn-al-haytham#c2"]
-  overlay: {kind: "quote", source: "mactutor-ibn-al-haytham", quote: "to employ justice, not follow prejudice, and to take care in all that we judge and criticise that we seek the truth and not be swayed by opinions", caption: "Ibn al-Haytham on his aim, in MacTutor's translation"}
-  narration: "**Light, in Cairo.** In al-Qifti's account relayed by MacTutor, Ibn al-Haytham discovered that his proposed Nile works would not succeed. Al-Hakim gave him an administrative post; fearing the caliph, he apparently feigned madness and was confined at home until al-Hakim died in 1021. Another account sends him fleeing to Syria; MacTutor judges that version unlikely. After his release, al-Qifti has him writing, teaching and copying texts in Cairo. His stated aim in the seven-volume Book of Optics was “to employ justice, not follow prejudice”. MacTutor credits it with the first correct explanation of vision: light reflected from an object into the eye, an account later read in Latin."
-
-- shot: the-canon
-  view: "graph"
-  focus: "canon-of-medicine"
-  time: "1025~"
-  reveal: ["ibn-sina", "canon-of-medicine", "latin-canon-of-medicine", "gerard-of-cremona", "bukhara"]
-  reveal_claims: ["ibn-sina#c1", "ibn-sina#c2", "latin-canon-of-medicine#c1"]
-  overlay: {kind: "stat", value: "17th century", label: "How long the Latin Canon formed the basis of medical teaching in European universities, by Dimitri Gutas", source: "sep-ibn-sina", quote: "the Latin translation of his medical Canon (GMed 1), often revised, formed the basis of medical instruction in European universities until the 17 th century"}
-  narration: "**The Canon.** Ibn Sina wrote for all levels of literate society and for posterity, in Dimitri Gutas's interpretation of his writings. Gerard of Cremona later found Arabic books on every subject in Toledo and learned the language to translate them, according to the life attached to his translation list. The Canon was among his translations. The Dictionary of Scientific Biography counts fifteen Latin editions by 1500. Gutas says the Latin Canon underpinned university medical teaching until the seventeenth century; Glasgow's Royal College of Physicians and Surgeons gives the span as the twelfth to the seventeenth centuries."
-
-- shot: reason-for-my-guide
-  view: "graph"
-  focus: "natural-questions"
-  reveal: ["adelard-of-bath", "natural-questions", "arabic-learning-reaches-latin-europe"]
-  reveal_claims: ["adelard-of-bath#c1", "arabic-learning-reaches-latin-europe#c3"]
-  overlay: {kind: "quote", source: "fordham-adelard-natural-questions", quote: "with reason for my guide, have learned one thing from my Arab teachers, you, something different; dazzled by the outward show of authority you wear a head-stall.", caption: "Adelard of Bath, Natural Questions, in the Fordham sourcebook translation"}
-  narration: "**Reason for my guide.** Back in England after study in France and Mediterranean travels, Adelard of Bath staged a dialogue with his nephew: “with reason for my guide”, he had learned from Arab teachers, while the nephew followed authority. Yet he asked readers to credit Arab authorities for his own ideas, explaining that his age accepted nothing new from living authors. His complaint about authority sat beside a practical appeal to it. The sourcebook dates the dialogue about 1137, though its preface places his return under Henry I, dead in 1135; through this dialogue Adelard brought his argument for reason to English readers."
-
-- shot: the-books-of-toledo
-  view: "map"
-  camera: {center: [-4.0273, 39.8628], zoom: 7.8, pitch: 30, duration: 6}
-  places: ["toledo"]
-  reveal: ["gerard-of-cremona", "toledo", "latin-almagest", "almagest", "latin-canon-of-medicine", "arabic-learning-reaches-latin-europe"]
-  reveal_claims: ["gerard-of-cremona#c1", "gerard-of-cremona#c2", "arabic-learning-reaches-latin-europe#c1", "latin-almagest#c1"]
-  overlay: {kind: "stat", value: "71", label: "Works in the list of Gerard of Cremona's translations drawn up by his companions, per the Dictionary of Scientific Biography", source: "dsb-gerard-of-cremona", quote: "a list of seventy-one works translated by Gerard"}
-  narration: "**The books of Toledo.** Gerard of Cremona went to Toledo for a book he could not find in Latin: Ptolemy's Almagest, according to the life attached to his translation list. Seeing Arabic books on every subject, that life says, he learned the language so he could translate them. Toledo had capitulated to Christian forces in 1085, and Arabic-to-Latin translation began under Archbishop Raymond (1125–1151); D. M. Dunlop puts Gerard's arrival in 1167, while the Dictionary of Scientific Biography estimates 1144 at the latest. The search for one book became a lifetime's work: his companions listed seventy-one translations, including Ibn Sina's Canon."
-
-- shot: a-school-that-wasnt
-  view: "graph"
-  focus: "toledo"
-  reveal: ["toledo", "arabic-learning-reaches-latin-europe", "gerard-of-cremona"]
-  reveal_claims: ["arabic-learning-reaches-latin-europe#c1"]
-  overlay: {kind: "quote", source: "santoyo-2011-when-the-east-reached-the-west", quote: "the so-called (and non-existent) Toledo “school of translators” in the 12th century", caption: "Julio César Santoyo, English abstract, Acta Universitatis Carolinae, 2011"}
-  narration: "**A school that wasn't?** In 2011 Julio César Santoyo challenged the Toledo school of translators: his abstract says myths had ended up “distorting the truth” about medieval Spanish translation. He called the twelfth-century school “non-existent”; D. M. Dunlop's 1959 account credits Valentin Rose in 1874 with showing a real school where instruction took place. Both accounts accept the translators' work: the challenge changes what institution readers picture behind the books that reached Latin Europe."
-
-- shot: a-boy-in-bugia
-  view: "map"
-  camera: {center: [8, 40.4], zoom: 4.9, duration: 6}
-  places: ["bejaia", "pisa"]
-  routes: [["bejaia", "pisa"]]
-  time: "1202"
-  reveal: ["fibonacci", "liber-abaci", "bejaia", "pisa", "algoritmi-de-numero-indorum"]
-  reveal_claims: ["fibonacci#c1", "fibonacci#c2", "bejaia#c2", "algoritmi-de-numero-indorum#c1"]
-  overlay: {kind: "quote", source: "mactutor-fibonacci", quote: "and having an eye to usefulness and future convenience, desired me to stay there and receive instruction in the school of accounting.", caption: "Fibonacci recalling his father's reason for having him taught, Liber abbaci, in MacTutor's translation"}
-  narration: "**A boy in Bugia.** At Bugia's customs house, a Pisan official summoned his young son Leonardo to learn calculation. In his Liber abbaci of 1202, Leonardo, later called Fibonacci, recalled his father's “eye to usefulness and future convenience”. Richard Grimm's translation gives the intended instruction as “for some days”. Leonardo's own retrospective reason for writing was to teach seekers the Indian method he had embraced, with proofs, and keep Latin readers from lacking it. His suggestion that they had lacked it is his claim: MacTutor lists seven twelfth-century Latin treatises from al-Khwarizmi's lost numeral book, and Leonardo himself knew “the algorism”."
-
-- shot: what-europe-named
+- shot: a-book-outlives-the-caliphate
   view: "graph"
   focus: "latin-almagest"
-  reveal: ["al-khwarizmi", "algoritmi-de-numero-indorum", "compendious-book-on-calculation", "almagest", "latin-almagest", "gerard-of-cremona"]
-  reveal_claims: ["al-khwarizmi#c1", "al-khwarizmi#c2", "latin-almagest#c1"]
-  overlay: {kind: "quote", source: "ridpath-star-tales-ptolemys-almagest", quote: "Surprisingly, some of the brightest stars in the sky including Aldebaran, Betelgeuse, and Rigel did not have names in Greek times, or if they did they were not mentioned by Ptolemy.", caption: "Ian Ridpath, Star Tales: Ptolemy's Almagest"}
-  narration: "**What Europe named.** Ptolemy described stars by their positions in constellation figures, naming only eleven in the Almagest, in Ian Ridpath's account. His Lyra became Vega and his Aetos became Altair, both Arabic names; Aldebaran, Betelgeuse and Rigel have no names in his text. Gerard of Cremona translated the Almagest into Latin at Toledo, where Arabic names entered the book's European life. The same passage between languages left algebra from al-Khwarizmi's title and algorithm from his name: readers inherited words along with methods."
+  time: "1515"
+  reveal: ["almagest", "latin-almagest", "gerard-of-cremona", "baghdad"]
+  reveal_claims: ["latin-almagest#c1", "gerard-of-cremona#c1"]
+  overlay: {kind: "quote", source: "ridpath-star-tales-ptolemys-almagest", quote: "THE first printed edition of Ptolemy’s Almagest was published in Venice in 1515.", caption: "Ian Ridpath, Star Tales"}
+  narration: "**How did the Almagest outlive Baghdad's caliphate?** In Venice in 1515, a printer issued Ptolemy's astronomy in Gerard of Cremona's Latin translation, made from ninth-century Arabic versions. Long before Hulagu's army sacked Baghdad in 1258, translators and copyists had carried the book beyond the caliphs' reach; afterwards, Tusi continued reworking its astronomy under Hulagu himself. The printed volume supplies an answer that can be followed backwards to Baghdad, then forward through the people who translated, compared and challenged it. The versions let us test how much depended on one famous library and how much on successive readers."
 
-- shot: did-europe-owe-little
-  view: "graph"
-  focus: "gouguenheim-controversy-2008"
-  time: "2008"
-  reveal: ["gouguenheim-controversy-2008", "sylvain-gouguenheim", "aristote-au-mont-saint-michel", "les-grecs-les-arabes-et-nous"]
-  reveal_claims: ["gouguenheim-controversy-2008#c1", "gouguenheim-controversy-2008#c2", "sylvain-gouguenheim#c1"]
-  overlay: {kind: "quote", source: "mercator-2008-bastien-on-gouguenheim", quote: "Third, Islam did not pass on its intellectual heritage to the West.", caption: "Richard Bastien, a supporter, summarising Sylvain Gouguenheim's book, 2008"}
-  narration: "**Did Europe owe little?** In 2008 Sylvain Gouguenheim published a challenge to Europe's debt to Arabic learning. His supporter Richard Bastien summarises his case: Islam's contribution was “largely overemphasized”, Eastern Christian translators brought Greek learning into Arabic, Islam did not pass its intellectual heritage westward, and Jacques de Venise translated directly from Greek. Aurélien Robert calls many central theses historically false and says Jacques appears in any good encyclopedia. Publishing that challenge opened a dispute over how Europe should tell the history of its learning."
-
-- shot: 1258
+- shot: a-translation-for-the-caliph
   view: "map"
-  camera: {center: [44.3661, 33.3152], zoom: 9.5, pitch: 30, duration: 6}
+  focus: "hajjaj-arabic-almagest"
+  time: "0827/0828"
+  reveal: ["al-mamun", "baghdad", "almagest", "hajjaj-arabic-almagest"]
+  reveal_claims: ["al-mamun#c4", "hajjaj-arabic-almagest#c1"]
+  overlay: {kind: "quote", source: "pal-hajjaj-almagest", quote: "All books start with a table of contents and all tables and diagrams are included.", caption: "Ptolemaeus Arabus et Latinus, description of the Arabic translation"}
+  narration: "**The book behind the printed volume.** In 827–828, al-Hajjaj ibn Yusuf ibn Matar and Sarjun ibn Hiliya translated Ptolemy's Almagest from Greek into Arabic for the caliph al-Mamun. The Bavarian Academy's manuscript catalogue identifies the translators and their patron; a complete copy survives at Leiden. They retained the tables and diagrams alongside thirteen books of astronomy. This was a substantial text to copy and learn, and another translator would return to the Greek rather than simply reproduce their Arabic."
+  camera: {"center": [44.3661, 33.3152], "zoom": 8.2, "duration": 6}
   places: ["baghdad"]
-  time: "1258-02"
-  reveal: ["siege-of-baghdad-1258", "hulagu-khan", "abbasid-caliphate", "baghdad", "mongol-empire"]
-  reveal_claims: ["siege-of-baghdad-1258#c1", "siege-of-baghdad-1258#c2", "siege-of-baghdad-1258#c3"]
-  overlay: {kind: "quote", source: "bar-hebraeus-budge-1932-chronography", quote: "And the Mongols drew their swords, and slew all the people of Baghdad — tens of thousands of men", caption: "Bar Hebraeus, Chronography, translated by E. A. Wallis Budge, 1932"}
-  narration: "**1258.** In February 1258 Hulagu took Baghdad. Bar Hebraeus reports that he shackled the caliph for seven days; the Mongols slew “tens of thousands of men”, the chronicler's count. Hulagu condemned the caliph, and his men sewed him into sackcloth and kicked him to death. Bar Hebraeus says Hulagu chose that method after being warned that spilling the caliph's blood would stop rain and bring fire from the earth. MacTutor also records Hulagu's burning, plunder and killings. Abbasid rule in Baghdad ended."
 
-- shot: two-tales-of-lost-libraries
+- shot: a-translation-worth-revising
   view: "graph"
-  focus: "tale-of-the-black-tigris"
-  time: "1258"
-  reveal: ["tale-of-the-black-tigris", "siege-of-baghdad-1258", "tale-of-the-caliph-and-the-library", "library-of-alexandria", "baghdad"]
-  reveal_claims: ["tale-of-the-black-tigris#c1", "tale-of-the-caliph-and-the-library#c1"]
-  overlay: {kind: "quote", source: "wocmes-2010-biran-cultural-life-in-ilkhanid-baghdad", quote: "One of the well known clichés related to the Mongol conquest of Baghdad in 1258 is that following Hulegu's invasion, the Tigris' water blackened from the amount of ink drawn from the books that the Mongols threw into the water.", caption: "Michal Biran, abstract of a 2010 conference paper"}
-  narration: "**Two tales of lost libraries.** Bar Hebraeus recorded Baghdad's slaughter but, Bernard Lewis reports, also copied Ibn al-Qifti's story of Umar ordering Alexandria's library burned after 641. Lewis calls it a myth whose earliest source visited Egypt in 1203, centuries after the conquest. Following Paul Casanova, Lewis interprets the tale as justification for dispersing the Fatimid library under Saladin. The story of books blackening the Tigris has a different use in Michal Biran's reading: she calls it a cliché invoked to mark Muslim civilization's loss of its lead over the West. Neither tale establishes the destruction it describes."
+  focus: "ishaq-thabit-almagest"
+  time: "0880~"
+  reveal: ["ishaq-thabit-almagest", "hajjaj-arabic-almagest", "almagest", "baghdad", "thabit-ibn-qurra"]
+  reveal_claims: ["ishaq-thabit-almagest#c1", "thabit-ibn-qurra#c1", "thabit-ibn-qurra#c2"]
+  overlay: {kind: "quote", source: "pal-ishaq-thabit-almagest", quote: "and revised by Thābit b. Qurra (836–901).", caption: "Ptolemaeus Arabus et Latinus; Burnett dates Ishaq’s translation about 880"}
+  narration: "**Back to the Greek.** Around 880, in Charles Burnett's dating, Ishaq ibn Hunayn made another Arabic translation; Thabit ibn Qurra revised it. Its dedication names the Abbasid minister Ismail ibn Bulbul. Court support had personal stakes for its reviser: MacTutor describes Thabit being forced to recant before a religious court in Harran, then leaving to escape further persecution and becoming an astronomer in Baghdad. His revision gave readers a second wording against which to test al-Hajjaj's. Later copies would preserve both together."
 
-- shot: after-the-sack
+- shot: the-book-reaches-spain
+  view: "graph"
+  focus: "ishaq-thabit-almagest"
+  time: "1000~"
+  reveal: ["ishaq-thabit-almagest", "hajjaj-arabic-almagest", "arabic-learning-reaches-latin-europe"]
+  reveal_claims: ["ishaq-thabit-almagest#c1"]
+  overlay: {kind: "quote", source: "pal-ishaq-thabit-almagest", quote: "four vellum fragments that stem from the same original Andalusian codex dating from around the year 390/1000.", caption: "Ptolemaeus Arabus et Latinus, surviving manuscripts"}
+  narration: "**The revision travels west.** By about 1000, a copyist in al-Andalus was writing Ishaq and Thabit's Almagest on vellum. Four surviving fragments come from that same manuscript, according to the Bavarian Academy's catalogue. The copyist's name and reasons are unknown, but the object establishes a western readership long before Gerard's arrival. It also changes what can be claimed about the route: Arabic astronomy had reached Spain, though these fragments do not identify the particular book Gerard later used. Another surviving copy shows how readers compared the translations."
+
+- shot: two-readings-on-one-page
+  view: "graph"
+  focus: "ishaq-thabit-almagest"
+  time: "1085"
+  reveal: ["ishaq-thabit-almagest", "hajjaj-arabic-almagest", "latin-almagest"]
+  reveal_claims: ["hajjaj-arabic-almagest#c2", "ishaq-thabit-almagest#c2"]
+  overlay: {kind: "quote", source: "burnett-2008-why-study-ptolemys-almagest", quote: "One of the characteristics of Gerard's revision is that it includes many additions from the second Arabic version of the text.", caption: "Charles Burnett, La Trobe Journal, 2008"}
+  narration: "**The alternatives survive together.** In an Arabic manuscript written in 1085 and now in Tunis, a reader could find alternative versions of passages from the Almagest. Burnett points to these readings when explaining the later Latin text: material Gerard put in the margins was probably already present in his Arabic exemplar. The Tunis manuscript is evidence of that practice, rather than an identified possession of Gerard. Copying had made the book available; comparison made more than one translation available to the next reader. A scholar looking for Ptolemy in Latin would have to learn to read this Arabic inheritance."
+
+- shot: the-book-gerard-could-not-find
   view: "map"
-  camera: {center: [46.2375, 37.389], zoom: 7.2, pitch: 30, duration: 6}
-  places: ["maragheh"]
-  time: "1259"
-  reveal: ["nasir-al-din-al-tusi", "founding-of-the-maragha-observatory", "maragheh", "hulagu-khan", "ilkhanate", "tale-of-the-black-tigris"]
-  reveal_claims: ["nasir-al-din-al-tusi#c2", "founding-of-the-maragha-observatory#c1", "founding-of-the-maragha-observatory#c2", "tale-of-the-black-tigris#c2"]
+  focus: "gerard-of-cremona"
+  time: "1144/1167"
+  reveal: ["gerard-of-cremona", "toledo", "almagest", "latin-almagest"]
+  reveal_claims: ["gerard-of-cremona#c1"]
+  overlay: {kind: "quote", source: "dsb-gerard-of-cremona", quote: "it was the love of the Almagest, which he knew was not available in Latin, that led Gerard to Toledo", caption: "Gerard’s medieval biography, discussed in the Dictionary of Scientific Biography"}
+  narration: "**He learns the language of the books.** The Almagest drew Gerard of Cremona to Toledo because he could not find it in Latin, says the biography attached to his translation list. Seeing Arabic books on every subject, that biography says, he learned Arabic so he could translate them. His arrival date is disputed: the Dictionary of Scientific Biography estimates 1144 at the latest; D. M. Dunlop gives 1167. His next task required help from someone who could read the book with him."
+  camera: {"center": [-4.0273, 39.8628], "zoom": 7.8, "pitch": 30, "duration": 6}
+  places: ["toledo"]
+
+- shot: a-collaborator-and-a-copyist
+  view: "graph"
+  focus: "latin-almagest"
+  time: "1175"
+  reveal: ["gerard-of-cremona", "latin-almagest", "hajjaj-arabic-almagest", "ishaq-thabit-almagest", "toledo"]
+  reveal_claims: ["latin-almagest#c2", "latin-almagest#c3", "latin-almagest#c4"]
+  overlay: {kind: "quote", source: "dsb-gerard-of-cremona", quote: "The date of 1175 is attested only for the transcription made at", caption: "Dictionary of Scientific Biography, on Thaddeus of Hungary’s copy"}
+  narration: "**Galib helps; Thaddeus copies.** Gerard worked on the Almagest with Galib, the collaborator named in the Dictionary of Scientific Biography. His Latin combines al-Hajjaj's version in Books I–IX with Ishaq and Thabit's in Books X–XIII, Burnett shows. In 1175 Thaddeus of Hungary transcribed the Latin text at Toledo. That is the secure event behind a familiar date: Ridpath dates Gerard's translation around 1175, but the dictionary warns that a copy's date does not establish when the translation was finished. The copy places the work in another person's hands; Gerard's companions would next compile a list of his work."
+
+- shot: the-companions-make-a-list
+  view: "graph"
+  focus: "gerard-of-cremona"
+  time: "1187"
+  reveal: ["gerard-of-cremona", "latin-almagest", "latin-canon-of-medicine", "canon-of-medicine"]
+  reveal_claims: ["gerard-of-cremona#c1", "gerard-of-cremona#c2"]
+  overlay: {kind: "quote", source: "dsb-gerard-of-cremona", quote: "a list of seventy-one works translated by Gerard", caption: "Dictionary of Scientific Biography, on the list compiled by Gerard’s companions"}
+  narration: "**They put his name to the work.** After Gerard died in 1187, his companions compiled a list of seventy-one translations. A short biography and a eulogy also travelled with the list, though the Dictionary of Scientific Biography argues that the biography came from a different hand. The distinction matters: the reason for Gerard's journey comes from the biographer; the catalogue of his work comes from his companions. Their list includes Ibn Sina's Canon as well as the Almagest. The search for one astronomical book had opened a larger reading life, and copyists kept the Latin Almagest circulating after its translator's death."
+
+- shot: readers-fill-the-margins
+  view: "graph"
+  focus: "latin-almagest"
+  time: "1200~"
+  reveal: ["latin-almagest", "almagest", "hajjaj-arabic-almagest", "ishaq-thabit-almagest"]
+  reveal_claims: ["latin-almagest#c3", "latin-almagest#c4"]
+  overlay: {kind: "quote", source: "burnett-2008-why-study-ptolemys-almagest", quote: "to strive for a noble and disciplined disposition", caption: "Ptolemy’s preface, in the English translation quoted by Charles Burnett"}
+  narration: "**Two hands keep copying.** Two scribes in northern Italy copied the Latin Almagest now held in Melbourne in the thirteenth century, probably early, Burnett judges. Its first chapter preserves competing translations and glosses that he thinks may be contemporary with those translations. The text offered readers Ptolemy's purpose as well as his calculations. His public preface urged them “to strive for a noble and disciplined disposition”, treating mathematical study as a way to reform character. The names behind these marginal notes are unknown. The book they copied also remained a text for Arabic readers to challenge."
+
+- shot: tusi-reworks-the-book
+  view: "graph"
+  focus: "nasir-al-din-al-tusi"
+  time: "1247"
+  reveal: ["nasir-al-din-al-tusi", "almagest", "tusi-couple"]
+  reveal_claims: ["almagest#c1", "nasir-al-din-al-tusi#c1"]
+  overlay: {kind: "quote", source: "mactutor-nasir-al-din-al-tusi", quote: "In 1247 al-Tusi wrote Tahrir al-Majisti ( Commentary on the Almagest )", caption: "MacTutor, biography of Nasir al-Din al-Tusi"}
+  narration: "**An Arabic reader rewrites the astronomy.** The Almagest that Gerard had translated also occupied Nasir al-Din al-Tusi, who worked directly on its astronomical problems. In 1247 he wrote a commentary introducing trigonometric techniques for calculating sine tables. That year he also proposed the device later called the Tusi couple, combining two circular motions into motion along a line. MacTutor describes his aim as removing parts of Ptolemy's system that failed the requirement of uniform circular motion. Within nine years, the army that would take Baghdad reached the castle where he was living."
+
+- shot: he-joins-the-conqueror
+  view: "graph"
+  focus: "nasir-al-din-al-tusi"
+  time: "1256"
+  reveal: ["nasir-al-din-al-tusi", "hulagu-khan", "mongol-empire", "baghdad"]
+  reveal_claims: ["nasir-al-din-al-tusi#c2"]
+  overlay: {kind: "quote", source: "mactutor-nasir-al-din-al-tusi", quote: "the victorious Mongols who appointed him as their scientific advisor", caption: "MacTutor, biography of Nasir al-Din al-Tusi"}
+  narration: "**The army reaches his castle.** Tusi was at Alamut in 1256 when Hulagu's Mongol forces attacked and destroyed it. He joined the victors and became their scientific adviser. MacTutor suggests that he may have felt held at Alamut against his will, and explains Hulagu's welcome through the ruler's interest in science. His new service took him with Hulagu's forces to Baghdad in 1258. The Almagest's commentator would be present with the army that ended the caliphate under which its Arabic translations had begun."
+
+- shot: the-city-is-sacked
+  view: "map"
+  focus: "siege-of-baghdad-1258"
+  time: "1258-02"
+  reveal: ["siege-of-baghdad-1258", "hulagu-khan", "abbasid-caliphate", "nasir-al-din-al-tusi", "baghdad"]
+  reveal_claims: ["siege-of-baghdad-1258#c1", "siege-of-baghdad-1258#c2", "siege-of-baghdad-1258#c3", "siege-of-baghdad-1258#c5"]
+  overlay: {kind: "quote", source: "bar-hebraeus-budge-1932-chronography", quote: "And the Mongols drew their swords, and slew all the people of Baghdad", caption: "Bar Hebraeus, Chronography, translated by E. A. Wallis Budge, 1932"}
+  narration: "**Tusi's patrons take Baghdad.** In February 1258 Hulagu's army entered the city. MacTutor records burning, plunder and the killing of many inhabitants. Bar Hebraeus says the Mongols killed tens of thousands of men, his count. He reports that Hulagu shackled the caliph al-Mustasim for seven days and condemned him; his men sewed the caliph into sackcloth and kicked him to death. The chronicler explains the method through a warning that spilling the caliph's blood would stop rain and bring fire from the earth. Gerard's Latin Almagest was already circulating abroad. Tusi, accompanying the conqueror, would now ask that ruler to build a new home for astronomy."
+  camera: {"center": [44.3661, 33.3152], "zoom": 9.5, "pitch": 30, "duration": 6}
+  places: ["baghdad"]
+
+- shot: an-observatory-from-hulagu
+  view: "map"
+  focus: "founding-of-the-maragha-observatory"
+  time: "1259/1262"
+  reveal: ["founding-of-the-maragha-observatory", "nasir-al-din-al-tusi", "hulagu-khan", "maragheh", "almagest"]
+  reveal_claims: ["founding-of-the-maragha-observatory#c1", "founding-of-the-maragha-observatory#c2", "founding-of-the-maragha-observatory#c3"]
   overlay: {kind: "quote", source: "mactutor-nasir-al-din-al-tusi", quote: "Construction of the Observatory began in 1259 west of Maragheh, and traces of it can still be seen there today.", caption: "MacTutor, biography of Nasir al-Din al-Tusi"}
-  narration: "**After the sack.** Nasir al-Din al-Tusi accompanied Hulagu's forces at Baghdad, then presented plans for an observatory near Maragheh. MacTutor explains Hulagu's agreement through his interest in science and pleasure that Tusi had joined him. Hulagu had made Maragheh his capital; the observatory rose to its west. Construction began in 1259, and the institution gained a library. Tusi built under the ruler whose army had burned and plundered Baghdad and killed many inhabitants. Michal Biran's reading also finds libraries developing in Baghdad itself and book trading still profitable: scholars continued working under the new rulers."
+  narration: "**The conqueror agrees to his plans.** Tusi presented Hulagu with plans for an observatory at Maragheh, and Hulagu approved them. MacTutor attributes the ruler's agreement to his pleasure in Tusi's service and his interest in science. Construction began in 1259; the observatory became operational in 1262, with a library and instruments including a copper wall quadrant four metres across. Under the ruler whose army had burned and plundered Baghdad, Tusi continued the astronomical work that sought to repair Ptolemy's models. His later lunar model used uniformly rotating spheres and the theorem that would reappear in Copernicus. The Almagest continued to be copied in Latin and reworked in Arabic."
+  camera: {"center": [46.2375, 37.389], "zoom": 7.2, "pitch": 30, "duration": 6}
+  places: ["maragheh"]
 
-- shot: the-al-ghazali-thesis
+- shot: the-margins-reach-print
   view: "graph"
-  focus: "debate-over-science-after-al-ghazali"
-  reveal: ["debate-over-science-after-al-ghazali", "steven-weinberg", "george-saliba", "al-ghazali", "incoherence-of-the-philosophers"]
-  reveal_claims: ["debate-over-science-after-al-ghazali#c1", "debate-over-science-after-al-ghazali#c2", "debate-over-science-after-al-ghazali#c3", "al-ghazali#c1"]
-  overlay: {kind: "quote", source: "nyrb-2008-weinberg-without-god", quote: "At any rate, science in Muslim countries, which had led the world in the ninth and tenth centuries, went into a decline in the century or two after al-Ghazzali.", caption: "Steven Weinberg, The New York Review of Books, 25 September 2008"}
-  narration: "**The al-Ghazali thesis.** In 2008 Steven Weinberg placed scientific decline in the century or two after al-Ghazali, who died in 1111, while admitting, “I wish I knew enough to judge” his contribution to it. Al-Ghazali attacked philosophers' claims to proof; Frank Griffel interprets his acceptance of demonstration as helping produce a flowering of Aristotelian logic and metaphysics. George Saliba rejects decline after al-Ghazali, pointing to later scientific production, in Nuh Aydin's review of his book. Weinberg's chronology and Saliba's counterargument conflict; Griffel's account concerns logic and metaphysics. Tusi's astronomy gives that debate a concrete next case."
+  focus: "latin-almagest"
+  time: "1515"
+  reveal: ["latin-almagest", "almagest", "gerard-of-cremona", "nasir-al-din-al-tusi"]
+  reveal_claims: ["latin-almagest#c1", "gerard-of-cremona#c1"]
+  overlay: {kind: "quote", source: "ridpath-star-tales-ptolemys-almagest", quote: "Gerard’s Latin translation was the version of the Almagest most widely used from the 12th century onwards", caption: "Ian Ridpath, Star Tales"}
+  narration: "**Gerard's version reaches the press.** Readers kept adding to the Latin book: Burnett dates the Melbourne manuscript's scholarly commentary to the fourteenth or fifteenth century. In 1515 the first printed Almagest appeared in Venice using Gerard's Latin. Ridpath explains the choice through that version's wide use since the twelfth century. Its pages still carried Arabic traces: in Perseus, Ptolemy's Gorgon's head had become the head of Algol. The printed text made the long passage between languages visible in a star's name. Greek copies had survived too, and a Greek edition followed in 1538. Printing multiplied the inherited astronomy. Copernicus would challenge its machinery, drawing on a theorem whose route to Europe remains disputed."
 
-- shot: tusis-couple
+- shot: a-theorem-in-copernicus
   view: "graph"
-  focus: "tusi-couple"
+  focus: "de-revolutionibus"
   time: "1543"
-  reveal: ["tusi-couple", "nasir-al-din-al-tusi", "nicolaus-copernicus", "de-revolutionibus", "george-saliba", "whose-science-is-arabic-science"]
-  reveal_claims: ["tusi-couple#c1", "nasir-al-din-al-tusi#c1", "george-saliba#c1", "nicolaus-copernicus#c1"]
+  reveal: ["de-revolutionibus", "nicolaus-copernicus", "tusi-couple", "nasir-al-din-al-tusi", "george-saliba"]
+  reveal_claims: ["tusi-couple#c1", "nasir-al-din-al-tusi#c1", "nicolaus-copernicus#c1"]
   overlay: {kind: "quote", source: "saliba-1999-whose-science-is-arabic-science", quote: "As far as we know, none of the Arabic works containing these theorems had ever been translated into Latin", caption: "George Saliba, Whose Science is Arabic Science in Renaissance Europe?, 1999"}
-  narration: "**Tusi's couple.** In 1247 Tusi devised a way to combine circular motions into straight-line motion; MacTutor gives his aim as removing parts of Ptolemy's system that lacked uniform circular motion. George Saliba argues from such astronomy against decline after al-Ghazali, as a reviewer summarises his book. In his 1999 article he argues that Copernicus used two thirteenth-century theorems, including Tusi's, citing Willy Hartner's finding that their diagrams keep matching point letters. None of the Arabic works containing them is known to have been translated into Latin; MacTutor notes a competing derivation from Proclus's Euclid commentary. In Copernicus's 1543 work the theorem appeared again, leaving a disputed route between the two astronomers."
+  narration: "**A reader changes the system.** Copernicus, who seems to have obtained Gerard's printed Almagest according to the Dictionary of Scientific Biography, also used a theorem familiar from its Arabic afterlife. In his De revolutionibus of 1543, the theorem Tusi had used to reform Ptolemy appeared again. George Saliba argues that Copernicus used Tusi's work, citing Willy Hartner's comparison of matching diagram letters. But Saliba also says none of the Arabic works containing those theorems is known to have been translated into Latin. MacTutor records a competing derivation from Proclus's commentary on Euclid. The route from Tusi to Copernicus remains disputed; Gerard's route from Arabic to Latin is documented in the translations themselves. Those different kinds of evidence matter when the book's history becomes a story about a whole civilization's rise or collapse."
+
+- shot: what-survived-and-why
+  view: "graph"
+  focus: "almagest"
+  time: "0827/2010"
+  reveal: ["almagest", "hajjaj-arabic-almagest", "ishaq-thabit-almagest", "latin-almagest", "house-of-wisdom", "dispute-over-the-house-of-wisdom", "tale-of-the-black-tigris"]
+  reveal_claims: ["dispute-over-the-house-of-wisdom#c1", "dispute-over-the-house-of-wisdom#c2", "tale-of-the-black-tigris#c2"]
+  overlay: {kind: "quote", source: "hoi-2014-foundation-of-the-house-of-wisdom", quote: "Among the dozens of reports about the translation of Greek works into Arabic that we have, there is not even a single one that mentions the bayt-al-hikma .", caption: "Dimitri Gutas, Greek Thought, Arabic Culture, 1998, quoted by History of Information"}
+  narration: "**Readers carried it on.** The Almagest survived through successive translations, copies and readers, from al-Hajjaj, Ishaq and Thabit to Gerard and Tusi. MacTutor pictures the House of Wisdom as a translation academy; Dimitri Gutas rejects that picture, reconstructing a library or bureau with no report tying Greek translation to it. In his explanation, if it was a bureau, institutionalizing Persian-to-Arabic translation helped give Greek translation indirect official sanction. Michal Biran's 2010 paper challenges the ink-black Tigris tale and finds Baghdad's libraries developing under Mongol rule. Survival through continued use does not erase Hulagu's slaughter. Paper making, algebra, medicine, optics and Alexandria's library tale belong to other stories. This book survived because successive readers kept translating, copying and changing it."
+
 ```
