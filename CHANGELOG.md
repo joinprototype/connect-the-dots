@@ -2,6 +2,11 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.5.15 (2026-11-12)
+
+- On a phone, the Map no longer jumps away after a two-finger zoom: lifting one finger used to move the map by everything that finger had moved during the zoom.
+- Visits are counted with Cloudflare's Web Analytics, which sets no cookie and keeps no visitor id; before, the site's own security policy blocked it.
+
 ## 0.5.14 (2026-11-12)
 
 - A new story, Midnight, 1947, follows the partition of British India: from Jinnah's letter of February 1946 and the Cabinet Mission's plan to Mountbatten's date, Radcliffe's five weeks and the awards published after independence, with four survivors in their own words and the counts of the displaced and the dead, each with who made it.
