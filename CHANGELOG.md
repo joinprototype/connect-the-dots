@@ -2,6 +2,10 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.5.17 (2026-11-12)
+
+- The home page names today's puzzle under the picture of the Map, "From United Arab Emirates to Grover Cleveland", with how few steps it takes, or that you solved it today. "More ways in" lists the puzzle too.
+
 ## 0.5.16 (2026-11-12)
 
 - Each story's cover is drawn from its own web: the people, bodies, events and works its scenes bring in, each in its kind's colour, and the links the record holds between them, with the best-connected one in black. Before, most covers were a few dots on a line or a made-up star.
