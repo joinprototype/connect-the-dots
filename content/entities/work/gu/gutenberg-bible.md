@@ -25,6 +25,12 @@ claims:
     to: movable-type
     src:
       - {s: britannica-printing-press, at: "article body, paragraph 2", quote: "Gutenberg used his press to print an edition of the Bible in 1455; this Bible is the first complete extant book in the West, and it is one of the earliest books printed from movable type."}
+  - id: "c4"
+    rel: "edition_of"
+    to: "vulgate"
+    note: "The Library of Congress traces the text through manuscript changes and revisions, a standardization of book sequence and presentation that it dates to twelfth-century Paris (the Paris Bible), and an emended version common on the Rhine in the fourteenth and fifteenth centuries. This identifies a textual tradition, not an unbroken chain of individual manuscripts from antiquity."
+    src:
+      - {s: "loc-guide-gutenberg-faq", at: "Q: What version of the Bible was used to create the Gutenberg Bible?", quote: "the Gutenberg Bible is based on an emendated version of the Paris Bible that was common to this area of the Rhine in the 14th and 15th centuries."}
 ---
 
 The Gutenberg Bible was printed by [[johannes-gutenberg]] in [[mainz]] and completed around 1455. It is an edition of the Latin Vulgate [[bible]]. The Library of Congress holds one of the few perfect copies on vellum.
