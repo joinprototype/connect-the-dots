@@ -26,6 +26,8 @@ The site is live and listed (2026-10-30), the story and leads runs add to it eve
 - [x] S28-08 Harvest pilot: links from sources the stories already saved (ADR-0039). Kept 10 from 227 candidates, under its bar of 20; stays a tool run by hand.
 - [x] S28-09 Harvest proposes the people a story's sources name often and the record lacks, each joined to two old entries (ADR-0039 newcomers). On Partition: Liaquat Ali Khan, Rajendra Prasad, Abul Kalam Azad and Winston Churchill, 8 links, all kept (2026-11-12).
 - [x] S28-15 The home page's shelf opens with the two newest stories, each "Added <day>", so it changes as stories arrive; the featured ones follow.
+- [x] S28-16 More stories (ADR-0041): `ctd seeds` finds topics in the record (entries no story shows, names that run through several stories, stories with entries they lack) and the story run refills its queue from them; up to two stories a night, the second a retry when the first fails.
+- [x] S28-17 Harvest every night after the leads run (ADR-0039, founder's word 2026-11-13). Hand runs before it: Partition, Watergate and Cuba gave 9 new people and 29 links (0.5.19).
 - [x] S28-14 Unit tests for the browser's pure logic: `npm --prefix web test` (dates, the puzzle's day, names search, hash).
 - [x] S28-10 A phone pass over the live site with touch checks: `sweep.mjs --touch --size=390x844` on `/w/`, `/play/`, `/ask/` and all 89 pages under `/c/` found no touch problem; each page's one console error is the zone's blocked bot-detection script (S28-12). (2026-11-12)
 - [ ] S28-13 The founder's own try on a real iPhone: the pinch fix, the puzzle, the covers (backlog, 2026-10-30).
@@ -36,7 +38,6 @@ The site is live and listed (2026-10-30), the story and leads runs add to it eve
 
 ### Not in this sprint
 - Google Analytics or any tracker with cookies (ADR-0040).
-- A nightly harvest, until a run keeps 20 links.
 
 ## Demo script
 
@@ -67,5 +68,5 @@ The demo runs at 390x844 on the live site with no console errors but the zone's 
 - What worked:
 - What felt wrong:
 - New ideas (moved to the backlog):
-- Decisions (ADRs): 0039 harvest, 0040 counting visits.
+- Decisions (ADRs): 0039 harvest, 0040 counting visits, 0041 more stories.
 - Next sprint goal:
