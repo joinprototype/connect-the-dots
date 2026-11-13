@@ -67,4 +67,10 @@ claims:
     note: "Hartung’s Table 1 lists $14.2 billion for fiscal year 2019 and $20.3 billion for 2020."
     src:
       - {s: hartung-2021-profits-of-war, at: "Table 1", quote: "Northrop Grumman 14.2 20.3"}
+  - id: c8
+    rel: produced
+    to: pentagon-papers
+    when: "1967/1969"
+    src:
+      - {s: fjc-pentagon-papers-federal-courts-2019, quote: "United States-Vietnam Relations: 1945–1967, a forty-seven-volume history of American involvement in Vietnam, commissioned by Secretary of Defense Robert McNamara and prepared by a Pentagon task force between 1967 and 1969."}
 ---

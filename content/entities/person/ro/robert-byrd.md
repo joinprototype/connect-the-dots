@@ -12,4 +12,11 @@ claims:
     role: "Senator for West Virginia"
     src:
       - {s: crec-2002-10-10-senate, at: "Senate, 10 Oct 2002", quote: "Mr. President, 38 years ago I, ROBERT C. BYRD, voted on the Tonkin Gulf Resolution"}
+  - id: c2
+    rel: member_of
+    to: us-senate
+    when: "1973-03-14"
+    role: "Senator"
+    src:
+      - {s: senate-watergate-hearings-book-3, quote: "the statements made by Senator Robert Byrd in the Senate (Congressional Record, March 14, 1973. )"}
 ---

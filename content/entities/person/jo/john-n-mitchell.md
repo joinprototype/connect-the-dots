@@ -44,4 +44,9 @@ claims:
     role: "said he withheld other White House activities from Nixon because Nixon's response could endanger reelection; distinguished these from Watergate"
     src:
       - {s: senate-watergate-hearings-book-5, at: "Mitchell testimony, Senator Inouye's questions on the White House horror stories", quote: "I think that is a reasonable summary of it.", by: john-n-mitchell}
+  - id: c5
+    rel: head_of
+    to: committee-to-re-elect-the-president
+    src:
+      - {s: us-v-haldeman-559-f2d-31, quote: "John N. Mitchell, former Attorney General of the United States and later head of the Committee to Re-elect the President (CRP), President Nixon's campaign organization for the 1972 election;"}
 ---
