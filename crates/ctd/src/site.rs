@@ -234,12 +234,13 @@ const STORIES_ON_PAGE: usize = 3;
 const LISTED: bool = true;
 /// Response headers for every file (Cloudflare `_headers`): no sniffing, no framing, no
 /// referrer beyond the origin, no device APIs, and a Content-Security-Policy. Scripts come only
-/// from the site itself (theme/static, web/dist), and so does everything a page fetches. Chunks have
+/// from the site itself (theme/static, web/dist), and so does everything a page fetches, but for
+/// Cloudflare's Web Analytics beacon, which counts visits with no cookie (ADR-0040). Chunks have
 /// their hash in the name, so they never change.
 const HEADERS: &str = "/*\n  X-Content-Type-Options: nosniff\n  X-Frame-Options: DENY\n  Referrer-Policy: strict-origin-when-cross-origin\n  \
 Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()\n  Cross-Origin-Opener-Policy: same-origin\n  \
-Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; \
-connect-src 'self'; worker-src 'self'; child-src 'self'; font-src 'self'; object-src 'none'; \
+Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; \
+connect-src 'self' https://cloudflareinsights.com; worker-src 'self'; child-src 'self'; font-src 'self'; object-src 'none'; \
 base-uri 'self'; form-action 'self'; frame-ancestors 'none'\n\
 /data/*\n  Cache-Control: public, max-age=300, stale-while-revalidate=86400\n\
 /assets/chunks/*\n  Cache-Control: public, max-age=31536000, immutable\n\

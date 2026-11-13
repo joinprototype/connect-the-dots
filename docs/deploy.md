@@ -52,7 +52,7 @@ curl -sI https://dots.joinprototype.com/sitemap.xml | grep -i -E 'HTTP/|content-
 node tools/qa/sweep.mjs --dist=dist --base=https://dots.joinprototype.com --scheme=dark --size=390x844
 ```
 
-Cloudflare adds its own scripts to every page on this zone, for Web Analytics and bot detection. The Content-Security-Policy blocks both, so they do nothing, but the sweep reports them as console errors on every page. The cure is on the zone, not in this repo: exclude this hostname from Web Analytics and turn off JavaScript detections.
+Cloudflare adds its own scripts to every page on this zone, for Web Analytics and bot detection. The Content-Security-Policy lets the Web Analytics beacon run, so the zone's Web Analytics counts visits, pages, referrers and countries with no cookie ([ADR-0040](decisions/0040-counting-visits.md)). It blocks the bot detection's inline script, so the sweep reports that one as a console error on every page; the cure is on the zone: turn off JavaScript detections.
 
 To undo a deploy: `npx wrangler@4 rollback` makes the version before it live at once. Leave the tag where it is, and put the fix out as the next patch.
 
