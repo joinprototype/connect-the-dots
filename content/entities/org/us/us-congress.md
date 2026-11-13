@@ -358,7 +358,7 @@ claims:
     rel: adopted
     to: dodd-frank-act
     src:
-      - {s: fcic-2011-final-report, at: "Wallison dissent, Introduction", quote: "Congress passed and the President signed the Dodd-Frank Act (DFA), far reaching and highly consequential regulatory legislation."}
+      - {s: fcic-2011-final-report, at: "Wallison dissent, Introduction", quote: "Congress passed and the President signed the Dodd-Frank Act (DFA)"}
   - id: c67
     rel: founded
     to: cftc
@@ -370,6 +370,6 @@ claims:
     to: fdic
     when: "1933"
     src:
-      - {s: fcic-2011-final-report, at: "p. 29", quote: "So in 1933 Congress passed the Glass- Steagall Act, which, among other changes, established the Federal Deposit Insurance Corporation."}
+      - {s: fcic-2011-final-report, at: "p. 29", quote: "So in 1933 Congress passed the Glass-Steagall Act, which, among other changes, established the Federal Deposit Insurance Corporation."}
 
 ---
