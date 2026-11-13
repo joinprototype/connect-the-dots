@@ -23,4 +23,11 @@ claims:
       - {s: ej-manuel-i, quote: "On Dec. 4, 1496, an edict was passed ordering every Jew to leave Portugal before November 1497, on penalty of death."}
       - {s: encyclopedia-jews-expulsion-of-spain-portugal, quote: "Manuel agreed, and five days after the marriage agreement was signed, on 5 December 1496, he issued a decree giving Portugal's Jews eleven months to leave the country."}
       - {s: ej-manuel-i, quote: "But in 1496 the king entered a politically motivated marriage with Princess Isabella of Spain, daughter of Ferdinand and Isabella, who made their consent conditional to Manuel's ridding Portugal of the Jews."}
+  - id: c3
+    rel: head_of
+    to: portugal
+    note: "Initially removed restrictions imposed by John II and retained Abraham Zacuto as his astronomer."
+    when: "1495/1496"
+    src:
+      - {s: ej-manuel-i, quote: "He retained the esteemed Abraham b. Samuel *Zacuto as his astronomer, and removed the Jewish disabilities imposed by his predecessor John ii."}
 ---
