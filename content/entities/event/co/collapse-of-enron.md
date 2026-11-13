@@ -25,6 +25,11 @@ claims:
       - {s: scotus-544us696-arthur-andersen, at: "Opinion of the Court", quote: "Also on November 8, the SEC served Enron and petitioner with subpoenas for records."}
       - {s: scotus-544us696-arthur-andersen, at: "Opinion of the Court", quote: "Per Dave–No more shredding"}
       - {s: scotus-544us696-arthur-andersen, at: "Opinion of the Court, note 4 (the firm's own policy)", quote: "the related information should not be destroyed"}
+      - {s: scotus-544us696-arthur-andersen, at: "Opinion of the Court, note 4 (Andersen policy)", quote: "no related information will be destroyed."}
+      - {s: scotus-544us696-arthur-andersen, at: "Opinion of the Court, factual background", quote: "Her notes from that meeting reflect that “some SEC investigation” is “highly probable.”"}
+      - {s: scotus-544us696-arthur-andersen, at: "Opinion of the Court, factual background", quote: "On October 12, Temple entered the Enron matter into her computer, designating the “Type of Potential Claim” as “Professional Practice–Government/Regulatory Inv[estigation].”"}
+      - {s: scotus-544us696-arthur-andersen, at: "Opinion of the Court, note 5", quote: "suggested deleting some language that might suggest we have concluded the release is misleading."}
+      - {s: scotus-544us696-arthur-andersen, at: "Opinion of the Court, note 6: John Riley’s warning, citing government brief", quote: "this wouldn’t be the best time in the world for you guys to be shredding a bunch of stuff."}
   - id: c3
     rel: involved
     to: david-duncan
@@ -32,4 +37,13 @@ claims:
     src:
       - {s: scotus-544us696-arthur-andersen, at: "Opinion of the Court, factual background", quote: "Petitioner’s “engagement team” for Enron was headed by David Duncan."}
       - {s: scotus-544us696-arthur-andersen, at: "Opinion of the Court, factual background", quote: "She likewise informed Duncan and Michael Odom, one of petitioner’s partners who had supervisory responsibility over Duncan, of the looming problems."}
+      - {s: enron-2002-02-01-powers-report, at: "Section VII.C, Watkins’s letter", quote: "I am incredibly nervous that we will implode in a wave of accounting scandals."}
+      - {s: house-2002-02-14-watkins-testimony, at: "Watkins’s testimony", quote: "I was not comfortable confronting either Mr. Skilling or Mr. Fastow with my concerns. To do so I believed would have been a job terminating move."}
+  - id: c4
+    rel: appears_in
+    to: powers-report
+    role: "Enron board committee’s investigation of related-party transactions"
+    src:
+      - {s: enron-2002-02-01-powers-report, at: "Summary, Outside Professional Advisors", quote: "The evidence available to us suggests that Andersen did not fulfill its professional responsibilities in connection with its audits of Enron’s financial statements"}
+      - {s: enron-2002-02-01-powers-report, at: "Introduction", quote: "have had only limited access to certain workpapers of Arthur Andersen LLP"}
 ---

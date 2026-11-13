@@ -41,4 +41,5 @@ claims:
       - {s: cnn-2024-09-13-china-fines-pwc-evergrande, quote: "“PwC has, to a certain extent, covered up and even condoned Evergrande’s financial fraud and fraudulent issuance of corporate bonds,” said the CSRC statement."}
       - {s: cnn-2024-09-13-china-fines-pwc-evergrande, quote: "“We are disappointed by PwC Zhong Tian’s audit work of Hengda, which fell unacceptably below the standards we expect of member firms of the PwC network,” PwC network, the alliance of PwC’s global member units, said in a statement.", by: pwc}
       - {s: accountingtoday-2024-09-13-china-penalty-pwc-evergrande, quote: "The work performed by PwC Zhong Tian's Hengda audit team fell well below our high expectations and was completely unacceptable", by: pwc}
+      - {s: irishtimes-2024-09-13-pwc-china-sanctions, at: "PwC global chairman Mohamed Kande’s response", quote: "The work performed by PwC Zhong Tian’s Hengda audit team fell well below our high expectations and was completely unacceptable.", by: pwc}
 ---
