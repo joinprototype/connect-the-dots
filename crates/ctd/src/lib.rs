@@ -15,6 +15,7 @@ pub(crate) mod markdown;
 pub(crate) mod model;
 pub mod paths;
 pub mod schema;
+pub mod seeds;
 pub mod serve;
 pub mod site;
 pub(crate) mod stories;

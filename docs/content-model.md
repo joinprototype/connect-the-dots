@@ -21,7 +21,7 @@
 ```
 content/
   schema/        entity-types.yaml  relations.yaml  layers.yaml  lenses.yaml  source-tiers.yaml  perspectives.yaml  questions.yaml
-  methodology/   paths.yaml
+  methodology/   paths.yaml  gaps.yaml  missing.yaml  play.yaml  seeds.yaml   # how routes, leads, the puzzle and story topics are ranked
   entities/<type>/<xx>/<id>.md      # <xx> = first two characters of <id>
   sources/<xx>/<id>.yaml
   chapters/<id>.md

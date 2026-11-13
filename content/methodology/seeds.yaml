@@ -1,0 +1,8 @@
+# How `ctd seeds` finds topics for the next stories (ADR-0041). A seed is a lead for the story run to
+# judge, never a story: the run writes the brief, a writer reads the sources, the founder merges.
+topics: [person, org, event, artifact]   # what a new story may be about; a work or place is read in another's story
+threads: [person, org]                   # what may run through stories as a thread
+reach: 4                 # a new topic's sourced links reach this many entries or more
+ties: 2                  # an entry a story lacks is joined to this many of its entries or more
+thread_stories: [3, 10]  # a thread runs through this many stories; in more it is the world they happen in
+about: 0.4               # a story is about an entry when this share of its scenes shows it

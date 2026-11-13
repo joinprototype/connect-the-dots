@@ -59,6 +59,15 @@ enum Cmd {
         #[arg(long)]
         atlas: Option<PathBuf>,
     },
+    /// List topics for the next stories, read from the record: leads to judge, never stories (ADR-0041)
+    Seeds {
+        /// How many of each kind to write (default: all)
+        #[arg(long)]
+        top: Option<usize>,
+        /// Output file (default: .cache/seeds.tsv)
+        #[arg(long)]
+        out: Option<PathBuf>,
+    },
     /// Show the best-ranked connections between two entities
     Path {
         from: String,
@@ -142,6 +151,11 @@ fn run(cli: Cli) -> Result<ExitCode> {
             let atlas = atlas.without_sealed(&kb);
             let out = out.unwrap_or_else(|| root.join(".cache").join("gaps.tsv"));
             ctd::gaps::run(&root, &kb, &atlas, top, &out)?;
+            Ok(ExitCode::SUCCESS)
+        }
+        Cmd::Seeds { top, out } => {
+            let (kb, _) = ctd::load_kb(&root)?;
+            ctd::seeds::run(&root, &kb, top, &out.unwrap_or_else(|| root.join(".cache").join("seeds.tsv")))?;
             Ok(ExitCode::SUCCESS)
         }
         Cmd::Path { from, to, k, include_passive, max_hops, json } => {

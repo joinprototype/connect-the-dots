@@ -42,5 +42,6 @@ One short file per decision: context, decision, consequences, and when to revisi
 | [0038](0038-stories-at-night.md) | Stories at night: one a night, sourced and written on Codex (GPT-6-Luna, GPT-6.1-Sol), read by Claude, ending in a pull request the founder merges | accepted |
 | [0039](0039-harvest.md) | Harvest: read the sources stories already saved for the links they state between entries in the record; and the people they name whom the record lacks; one older story a night after the leads run (pilot: 10 links, then 4 people and 8 links) | accepted |
 | [0040](0040-counting-visits.md) | Counting visits: Cloudflare Web Analytics, which the zone already injects, allowed through the Content-Security-Policy; no cookie, no tracker | accepted |
+| [0041](0041-more-stories.md) | More stories: `ctd seeds` finds topics in the record and keeps the story queue full; up to two stories a night | accepted |
 | [0022](0022-dots-and-lines.md) | Dots and lines: print inks with a job, each story its own ink, Bricolage Grotesque and Literata, stories on white | accepted |
 | [0021](0021-the-world-of-an-era.md) | The Map's era slider draws the world of that year: 30 years from 3000 BCE to 1990, in one grey; the basemap after that | accepted |

@@ -13,7 +13,7 @@ How the record grows without a person in every step ([ADR-0037](decisions/0037-t
 1. `ctd gaps`: the links open data has and the record lacks (`.cache/gaps.tsv`).
 2. The missing-links page's issues on GitHub, titled "Source for: …": a reader sent a source. These go first.
 3. A puzzle's dead ends and Ask's "no written way" pairs, as they are logged.
-4. Story ideas in `.cache/stories/queue.md`, for the story run below.
+4. Story ideas in `.cache/stories/queue.md`, for the story run below. When the queue runs low, the run adds topics from `ctd seeds`: entries no story shows, names that run through several stories with none of their own, and stories that lack entries joined to theirs ([ADR-0041](decisions/0041-more-stories.md)).
 5. The texts a story run already saved: a harvest reads them for links the story did not use ([Harvest](#harvest), [ADR-0039](decisions/0039-harvest.md)).
 
 ## One run
@@ -52,7 +52,7 @@ Each night the leads run also runs the archive bot, `tools/loop/sources.py`, wit
 
 ## Stories at night
 
-Stories go further than links: a writer, a skeptic, the writer's fixes, a careful read, then a person ([ADR-0038](decisions/0038-stories-at-night.md)). A second scheduled task runs [tools/loop/stories.md](../tools/loop/stories.md) each night at 00:30, before the 03:00 leads run. It takes one topic from the queue, new and deepen in turn: Codex on the founder's ChatGPT plan does the story work (GPT-6-Luna fetches and lists the facts, GPT-6.1-Sol writes the story on a branch `story/<id>`, checks it in a fresh session and fixes it), a Claude session reads it and runs the checks, and the run opens a pull request titled "For review: …". It never merges: the founder reads and merges each story, and releases as always. The run keeps its own lock, workspace and log in `.cache/stories/` (`runs.tsv`), apart from the leads loop's.
+Stories go further than links: a writer, a skeptic, the writer's fixes, a careful read, then a person ([ADR-0038](decisions/0038-stories-at-night.md)). A second scheduled task runs [tools/loop/stories.md](../tools/loop/stories.md) each night at 00:30, before the 03:00 leads run. It takes a topic from the queue, new and deepen in turn, and a second one after it while the run is young and the plan has room, so a night that loses one story still gives another ([ADR-0041](decisions/0041-more-stories.md)): Codex on the founder's ChatGPT plan does the story work (GPT-6-Luna fetches and lists the facts, GPT-6.1-Sol writes the story on a branch `story/<id>`, checks it in a fresh session and fixes it), a Claude session reads it and runs the checks, and the run opens a pull request titled "For review: …". It never merges: the founder reads and merges each story, and releases as always. The run keeps its own lock, workspace and log in `.cache/stories/` (`runs.tsv`), apart from the leads loop's.
 
 ## What it costs and what it shows
 
