@@ -38,6 +38,7 @@ claims:
   - id: c4
     rel: headquartered_in
     to: stamford-connecticut
+    note: "Historical headquarters: the May 4, 2026 report of Purdue's dissolution described it as Stamford-based."
     src:
-      - {s: connecticut-2019-purdue-amended-complaint, at: "The Parties, paragraph 5", quote: "Defendant Purdue Pharma L.P. is a limited partnership established in Delaware with its principal place of business in Connecticut. Its corporate headquarters is at One Stamford Forum, Stamford, Connecticut."}
+      - {s: hartford-business-journal-2026-05-04-purdue-dissolved, at: "Opening paragraph", quote: "Stamford-based Purdue Pharma has been dissolved following the conclusion of its bankruptcy case"}
 ---
