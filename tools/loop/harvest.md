@@ -10,13 +10,27 @@ You read sources the record has already saved and write the links they support t
 - `sources.tsv`: each source's id, title and address.
 - `entries.tsv`: every entry in the record (id, type, name, when, sealed). Grep it; never read it whole.
 - `links.tsv`: every link the record already holds (from, rel, to). A link already there is not new, in either direction.
-- `candidates.tsv`: pairs of entries that one saved text names close together and the record does not join yet, most often named first. Columns: `a, a_name, b, b_name, source, passages, passage`; `passage` is one place in `src/<source>.txt` where both are named.
+- `candidates.tsv`: pairs of entries that one saved text names close together and the record does not join yet, best first. Columns: `a, a_name, b, b_name, source, passages, passage`; `passage` holds up to three places where both are named, each led by its source id in brackets.
+- `newcomers.tsv`: people the texts name whom the record lacks, each named near two or more record entries, best first. Columns: `wikidata, name, description, years, living, same_name, mentions, joined, passages`. The name, id, description and years come from the atlas, open data anyone can edit: a lead to the right person, never a source. `same_name` counts atlas people with that name; `joined` lists the record entries named near them; `passages` are led by `[source id · entry id]`.
 
 Read `.cache/loop/lessons.md` if it exists: what the reviewer dropped before, and why.
 
-## Your work: every candidate, in order
+## Your work: newcomers first, then every candidate
 
-Go through `candidates.tsv` row by row, all of it. For each row:
+### Newcomers
+
+Go through `newcomers.tsv` row by row. For each person:
+
+1. Read the passages, and grep `src/` for more places that name them. Is the person the texts mean the atlas's person? The description and years must fit the texts (a 1947 governor is not a judge born in 1960); with `same_name` over 1, be sure. If not, log `not this person`.
+2. Find links to entries in `entries.tsv` that one continuous span states, by the rules for each link below. A new entry needs two or more such links, to two different entries; with fewer, log `not stated` and write nothing.
+3. Write the entry at `content/entities/person/<first two letters of id>/<id>.md`, in the shape of the person entries around it: `id` (the name in lower case with hyphens, unused in `entries.tsv`), `type: person`, `name`, a one-line `summary` that says what the sources show them doing, with no evaluative label, `same_as: {wikidata: <id>}` only when step 1 is sure, and its `claims`. A link that belongs on the other entry (a body's chair, say) still goes on the new person's entry, in the relation's direction.
+4. Log one line in `judged.tsv`: `<wikidata>, <name>, verdict, <links written>, <sources>`, the verdict `written`, `not stated`, `not this person` or `forbidden`.
+
+At most eight new people in a run. When you have added them, run `ctd fmt` (the engine's path, as for `check`) once, so each new file gets its permanent id.
+
+### Candidates
+
+Then go through `candidates.tsv` row by row, all of it. For each row:
 
 1. Read its passage. Then grep `src/<source>.txt`, and the other files in `src/`, for more places that name both (a person is often named by surname alone: "Nehru", "Lord Mountbatten").
 2. Ask: does one continuous span of one text state a link between these two, in a relation of `content/schema/relations.yaml`? Being named side by side is not a link: two leaders at one conference, a survivor who mentions a leader, a book that discusses a man.
@@ -27,7 +41,6 @@ Typical links: who held which office and when; who was a member of which body, p
 
 When the candidates are done, you may add other links you met on the way, by the same rules, and log them too.
 
-A new entry only when a source names a person, body or document plainly and the same sources give it two or more links to entries already in `entries.tsv`. Give it the shape of entries of its type around it, an id like theirs, and a one-line summary with no evaluative label. At most five new entries in a run.
 
 ## For each link
 
@@ -48,4 +61,4 @@ A new entry only when a source names a person, body or document plainly and the 
 
 ## Done
 
-Run `ctd check` (the run gives you its path) until it reports 0 errors, then `python3 tools/qa/quotecheck.py <run dir> origin/main`, and report: how many candidates you judged and each verdict's count (from `judged.tsv`), links added (from, rel, to, source, one line each), new entries, and the checks' last lines.
+Run `ctd check` (the run gives you its path) until it reports 0 errors, then `python3 tools/qa/quotecheck.py <run dir> origin/main`, and report: how many newcomers and candidates you judged and each verdict's count (from `judged.tsv`), new entries (id, wikidata or none), links added (from, rel, to, source, one line each), and the checks' last lines.

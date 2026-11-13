@@ -1,6 +1,6 @@
 # ADR-0039: Harvest the sources we already saved
 
-- Status: accepted as a tool; not on the nightly schedule (pilot kept 10 links, under its bar of 20)
+- Status: accepted as a tool; not on the nightly schedule (two pilot runs: 10 links, then 4 people and 8 links)
 - Date: 2026-11-12
 
 ## Context
@@ -29,9 +29,13 @@ What limited it:
 
 1. Most pairs named side by side are not a stated link: 185 of 227 were "not stated" and 33 forbidden, mostly two leaders who "dealt with" each other, a sensitive relation.
 2. A new story has already taken its sources' best links; an older one with big official reports gives more (no-model counts of candidates with role words: the 2008 crash 103, Watergate 105, Cuba 106, against 9 for Partition).
-3. The people the sources name most are often not in the record (Maulana Azad, Liaquat Ali Khan, Stafford Cripps, Winston Churchill), and the harvester added no new entry.
+3. The people the sources name most are often not in the record (Maulana Azad, Liaquat Ali Khan, Stafford Cripps, Winston Churchill), and the harvester added no new entry. Newcomers, below, answer this.
 
-Next, before any schedule: candidates for people a story's sources name often and the record lacks, each joined to two old entries. Harvest stays a tool to run by hand; a nightly harvest needs the founder's word.
+**Newcomers** (a second run, `harvest-2026-11-12-2`, the same day). Prep now also lists the people a story's texts name whom the record lacks, found by their names in the atlas (420,000 well-known people, with a Wikidata id, description and years; a lead to the right person, never a source), each named near two or more record entries. People the record holds under another spelling ("Mohammad Ali Jinnah"), and a bare surname the record already uses ("Nehru"), do not count. On Partition's 25 newcomers the harvester wrote 4 new people with two links each: Liaquat Ali Khan (the Muslim League's general secretary, finance minister in the interim government), Rajendra Prasad, Abul Kalam Azad and Winston Churchill, who was not in the record at all. It set aside 3 as not the atlas's person. The reviewer checked each Wikidata id against Wikidata and kept all 4 entries and 8 links, trimming 2 quotes. Cost: 2.1M input tokens (94% cached) to write, 1.1M to review.
+
+So one story gave 2 links from its pairs and 8 links and 4 people from its newcomers. Newcomers yield more because a story's sources name many more people than the record holds. On the 2008 crash's sources the atlas matched famous namesakes for lesser-known bankers (a silent-film comedian for Citigroup's Charles Prince): the harvester must judge, and does.
+
+Harvest stays a tool to run by hand. A nightly harvest (one older story a night, newcomers then pairs) needs the founder's word.
 
 ## Consequences
 
