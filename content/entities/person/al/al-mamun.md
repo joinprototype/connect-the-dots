@@ -26,4 +26,10 @@ claims:
     role: "named in the preface as the caliph whose fondness for science encouraged the book"
     src:
       - {s: "rosen-1831-algebra-of-mohammed-ben-musa", at: "author's preface", quote: "That fondness for science, by which God has distinguished the Imam al Mamun, the Commander of the Faithful", by: "al-khwarizmi"}
+  - id: c4
+    rel: appears_in
+    to: hajjaj-arabic-almagest
+    role: "caliph for whom the translation was prepared"
+    src:
+      - {s: pal-hajjaj-almagest, quote: "for the Abbasid caliph al-Maʾmūn (r. 813–833)."}
 ---
