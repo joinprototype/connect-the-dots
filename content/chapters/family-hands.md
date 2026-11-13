@@ -160,8 +160,8 @@ These stakes are shares of companies, not shares of the beauty, eyewear or jewel
   view: graph
   focus: eyewear-decision-21-d-20
   time: "2021-07-22"
-  reveal: [eyewear-decision-21-d-20, luxottica, chanel, lvmh, essilorluxottica, essilor-fine-2022, autorite-de-la-concurrence, paris-court-of-appeal, loreal, federal-trade-commission]
-  reveal_claims: [eyewear-decision-21-d-20#c1, eyewear-decision-21-d-20#c2, eyewear-decision-21-d-20#c3, luxottica#c10, essilor-fine-2022#c1, essilorluxottica#c4, loreal#c2, loreal#c3]
+  reveal: [eyewear-decision-21-d-20, luxottica, chanel, lvmh, essilorluxottica, essilor-fine-2022, autorite-de-la-concurrence, paris-court-of-appeal, loreal, loreal-usa, federal-trade-commission]
+  reveal_claims: [eyewear-decision-21-d-20#c1, eyewear-decision-21-d-20#c2, eyewear-decision-21-d-20#c3, luxottica#c10, essilor-fine-2022#c1, essilorluxottica#c4, loreal-usa#c1, loreal-usa#c2]
   overlay: {kind: quote, source: adlc-2021-07-23-eyewear-press-release, quote: "Luxottica 125 174 000 LVMH 500 000 Chanel 130 000", caption: "Fines in euros, Autorité de la concurrence, 23 July 2021"}
   narration: "**The optician’s price police.** An optical-store manager described competitors monitoring prices as a “price police”; France’s authority found Luxottica pressured opticians to keep recommended prices and retaliated against discounters. It fined Luxottica €125.2 million in 2021, upheld by the Paris Court of Appeal in December 2024; calling the fine unfounded, the company appealed to the Cour de cassation in January 2025. Essilor’s €81 million 2022 fine also reached that court, while EssilorLuxottica appealed Turkey’s TRY 492 million 2023 fine; Chanel (€130,000) and LVMH (€500,000, no contest) were fined over their own licences, with online-sales restrictions’ economic damage judged very limited. In 2014 the U.S. FTC separately proposed a consent order to settle allegations about two L’Oréal USA products."
   duration: 14
