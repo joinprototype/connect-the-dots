@@ -59,3 +59,6 @@
 {% macro corrections(site, name, url, rel_path) %}{% set report = "Page: " ~ site.url ~ url ~ "\n\nWhat is wrong or missing:\n\nA source that shows it:\n" %}<p class="file-path page-fix">Something wrong or missing? <a href="{{ site.repo }}/issues/new?title={{ ("Correction: " ~ name)|urlencode }}&amp;body={{ report|urlencode }}">Tell us, with a source</a>, or <a href="{{ site.repo }}/edit/main/{{ rel_path }}">edit this page</a>.</p>{% endmacro %}
 {# each kind of thing's ink for the doors in a story's text (web/src/read/read.css) #}
 {% macro door_inks(site) %}<style>{% for l in site.layers %}.door-{{ l.id }}{--door:var(--layer-{{ l.id }})}{% endfor %}</style>{% endmacro %}
+
+{# The build line in the footer of the home and About pages (base.html's `build` block). #}
+{% macro build_line(site) %}Version {{ site.manifest.engine }}, built {{ site.manifest.built }} from {% if site.manifest.commit %}commit {{ site.manifest.commit }}{% else %}uncommitted content{% endif %}, methodology {{ site.manifest.methodology[:8] }}. {% endmacro %}

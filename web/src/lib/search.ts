@@ -33,7 +33,8 @@ export async function candidates(text: string, keep: (key: string) => boolean = 
   if (files.length === 1) return (await file(0)).entries;
   const w = words(text);
   const keys = [...new Set([...w, ...w.slice(1).map((x, i) => `${w[i]} ${x}`)])].filter(keep);
-  const found = new Map<number, SearchEntry>();
+  // by address, which no two entries share; `rank` only orders them
+  const found = new Map<string, SearchEntry>();
   await Promise.all(
     keys.map(async (key) => {
       // the file `key` falls in, and the next one when words starting with `key` run on into it
@@ -41,7 +42,7 @@ export async function candidates(text: string, keep: (key: string) => boolean = 
       const range = first + 1 < files.length && files[first + 1].startsWith(key) ? [first, first + 1] : [first];
       for (const f of await Promise.all(range.map(file))) {
         for (const [word, at] of f.words ?? []) {
-          if (word.startsWith(key)) for (const j of at) found.set(f.entries[j].rank, f.entries[j]);
+          if (word.startsWith(key)) for (const j of at) found.set(f.entries[j].url, f.entries[j]);
         }
       }
     }),

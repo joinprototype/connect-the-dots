@@ -797,19 +797,25 @@ fn write_search(kb: &Kb, pages: &QuestionPages, ranked: &[&Entity], atlas: Optio
             if let Some(w) = e.same_as.get("wikidata") {
                 entry["w"] = json!(w);
             }
+            entry["rank"] = json!(data::search_rank(0, 64 - data::doubling(kb.degree(&e.id)), &e.id));
             entry
         })
         .collect();
     for c in &kb.chapters {
-        search.push(json!({ "id": c.id, "name": c.title, "aliases": [], "type": "chapter", "summary": c.summary, "url": format!("/c/{}/", c.id) }));
+        search.push(json!({ "id": c.id, "name": c.title, "aliases": [], "type": "chapter", "summary": c.summary, "url": format!("/c/{}/", c.id),
+                            "rank": data::search_rank(1, 0, &c.id) }));
     }
     for a in &pages.list {
         let id = a.id(kb);
         let q = &kb.schema.questions[a.q];
+        // question by question, featured first, then the richest, as `pages.list` holds them
+        let featured = kb.featured.questions.contains(&id);
+        let worse = a.q as u64 * 1_000 + if featured { 0 } else { 100 } + 64 - data::doubling(a.links);
         // "Who is behind Facebook?" finds Meta's page
         let aliases: Vec<String> =
             std::iter::once(&a.x.name).chain(&a.x.aliases).map(|n| q.ask.replace("{x}", n)).filter(|t| *t != answers::title(kb, q, &a.x.id)).collect();
-        search.push(json!({ "id": id, "name": answers::title(kb, q, &a.x.id), "aliases": aliases, "type": "question", "summary": answer_counts(a), "url": format!("/q/{id}/") }));
+        search.push(json!({ "id": id, "name": answers::title(kb, q, &a.x.id), "aliases": aliases, "type": "question", "summary": answer_counts(a), "url": format!("/q/{id}/"),
+                            "rank": data::search_rank(2, worse, &id) }));
     }
     search.extend(atlas.map(|a| crate::atlas::search(a, kb)).unwrap_or_default());
     let search_dir = out.join("data").join("search");
@@ -1790,8 +1796,10 @@ mod tests {
         assert_eq!(index["files"], json!([""]), "one search file while everything fits");
         let mut search: Vec<Value> = serde_json::from_str::<Value>(&read("data/search/0.json")).unwrap()["entries"].as_array().unwrap().clone();
         search.sort_by_key(|e| e["rank"].as_u64());
+        // rank keeps question by question; within one, links count in powers of two, so two pages may swap
         let asked: Vec<&str> = search.iter().filter(|e| e["type"] == "question").map(|e| e["name"].as_str().unwrap()).collect();
-        assert_eq!(asked, ["Who is behind Party?", "Who is behind the Reds?", "Why did Fall happen?", "Who benefited from Fall?"]);
+        assert_eq!(asked[2..], ["Why did Fall happen?", "Who benefited from Fall?"]);
+        assert_eq!(asked[..2].iter().collect::<std::collections::BTreeSet<_>>(), ["Who is behind Party?", "Who is behind the Reds?"].iter().collect());
         let party = search.iter().find(|e| e["id"] == "party").unwrap();
         assert_eq!(party["q"], json!(["behind"]));
         let pack: Value = serde_json::from_str(&read(&format!("data/e/{}.json", super::data::pack_of("party")))).unwrap();

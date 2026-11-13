@@ -423,7 +423,11 @@ pub fn search(a: &Atlas, kb: &Kb) -> Vec<Value> {
     a.entries
         .iter()
         .filter(|e| !hand.contains_key(&e.qid))
-        .map(|e| json!({ "id": format!("Q{}", e.qid), "name": e.name, "aliases": [], "type": e.kind(), "summary": e.summary.chars().take(70).collect::<String>(), "when": e.years(), "url": format!("/a/?q=Q{}", e.qid) }))
+        .map(|e| {
+            let id = format!("Q{}", e.qid);
+            let rank = crate::site::data::search_rank(3, u64::from(u16::MAX - e.fame), &id);
+            json!({ "id": id, "name": e.name, "aliases": [], "type": e.kind(), "summary": e.summary.chars().take(70).collect::<String>(), "when": e.years(), "url": format!("/a/?q=Q{}", e.qid), "rank": rank })
+        })
         .collect()
 }
 

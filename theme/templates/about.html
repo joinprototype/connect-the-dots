@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% from "macros.html" import count %}
+{% from "macros.html" import count, build_line %}
+{% block build %}{{ build_line(site) }}{% endblock %}
 {# How the site works, in readers' words: the proof on every link, what a connection is not, the
    questions and their scope, how routes are ranked, families, and how to correct something. #}
 {% block title %}How this site works – Connect the Dots{% endblock %}

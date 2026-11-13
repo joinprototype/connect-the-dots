@@ -204,7 +204,7 @@ The same packs, for life stories: `{ "<id>": { "title": "The story of Alphabet: 
 
 ## A story's own data
 
-A story page embeds the entries, links and sources its scenes name (`script.read-data`'s `data`, see "Story" below): `{ "nodes": [...], "edges": [...], "sources": {...} }` in the shapes above, with links in full. Its entries are the scenes' `focus`, `perspective`, `reveal`, `places` and `routes`, and the ends, accounts and quoted speakers of the links its scenes reveal (`reveal_claims`). Its sources are those links' and the overlays'.
+A story page embeds the entries, links and sources its scenes name (`script.read-data`'s `data`, see "Story" below): `{ "nodes": [...], "edges": [...], "sources": {...} }` in the shapes above, with links in full. Its entries are the scenes' `focus`, `perspective`, `reveal`, `places` and `routes`, and the ends, accounts and quoted speakers of the links its scenes reveal (`reveal_claims`). Its sources are those links' and the overlays'. An entry's `degree` here is rounded: exact below 10, to the nearest 10 below 100, then to two figures (178 is 180), so one more link on a hub leaves the stories that show it unchanged.
 
 ## `data/islands.json`
 
@@ -302,12 +302,12 @@ The search entries, filed by word:
 { "files": ["", "kennedy", "smith"] }
 // data/search/<n>.json
 { "entries": [ { "id": "meta-platforms", "name": "Meta Platforms", "aliases": ["Facebook"], "type": "org", "summary": "…",
-                 "when": "2004 –", "url": "/e/meta-platforms/", "q": ["behind"], "rank": 41 } ],
+                 "when": "2004 –", "url": "/e/meta-platforms/", "q": ["behind"], "rank": 3891302402 } ],
   "words": [ ["facebook", [0]], ["meta", [0]], ["meta platforms", [0]] ] }   // a word and its entries' places in `entries`
 ```
-- **Entries:** entities (best-connected first, then by name), then written chapters (`type: "chapter"`), then question pages (`type: "question"`, question by question in `questions.yaml` order, featured first, then the richest). `rank` is an entry's place in that order, across files. Go to `url`; only entity entries can be shown in place by the Map.
-- **Words:** each entry is filed under every word, and every pair of neighbouring words, of its name and aliases. A word is folded: lower case, accents dropped, apostrophes and full stops removed, split at everything else that is not a letter or digit ("O'Brien" is `obrien`). A word lists its 100 best entries; a longer query finds the rest.
-- **Files:** the words are sorted and cut into files between words, at about 50 KB gzip. While everything fits in one file, which is today, that file holds every entry and no `words`: search reads all of it.
+- **Entries:** entities written by hand, then written chapters (`type: "chapter"`), then question pages (`type: "question"`), then the atlas's open-data names. `rank` orders them, lowest first: the band times 10^10, then how far down it is (an entity's or a question page's links in powers of two, a question page after its question's number and featured first; an atlas name's fame down from 65,535) times 4,096, then a hash of its id below 4,096. It comes from the entry alone, so a new entry renumbers no other; two entries may share one, so tell them apart by `url`. Go to `url`; only entity entries can be shown in place by the Map.
+- **Words:** each entry is filed under every word, and every pair of neighbouring words, of its name and aliases. A word is folded: lower case, accents dropped, apostrophes and full stops removed, split at everything else that is not a letter or digit ("O'Brien" is `obrien`). A word lists its 100 best entries, by `rank`; a longer query finds the rest.
+- **Files:** the words are sorted and cut into files between words: past 150,000 bytes of JSON before a word whose hash says so, and always before 300,000 (about 75 KB gzip). Since the words choose the cuts, a new entry changes only the files its words are in. While everything fits in one file, that file holds every entry and no `words`: search reads all of it.
 - **Looking up a query:** fold its words, take each word and each pair of neighbouring words, find the file whose range holds it (and the next file when its first word starts with it), and gather the entries under the words that start with it.
 - `q` (entity entries only, present when non-empty): the ids of the questions with a page about this entry, in `questions.yaml` order. The box reads a question through it.
 - `sealed` (present only then): `true` on an entry marked `sealed` (ADR-0027). The box finds it by name and answers a person who types it, and never offers a pair through it.

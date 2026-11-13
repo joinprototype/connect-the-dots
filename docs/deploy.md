@@ -59,10 +59,14 @@ To undo a deploy: `npx wrangler@4 rollback` makes the version before it live at 
 ## Limits to watch
 
 - **File count:** up to 20,000 files per version on the free plan, 100,000 on Workers Paid.
-  - Today the site has 12,482 files: 3,295 entry pages, 2,323 search files, 2,162 Earth tiles, 2,048 atlas files, 1,044 world tiles, 1,024 packs, 312 question pages, and the rest.
+  - On 2026-11-13 the site has 9,924 files: 4,056 entry pages, 2,168 search files, 2,048 atlas files, 1,024 packs, 361 question pages, 114 type pages, 89 stories, and the rest.
   - A new entry adds one file, its page, plus any question pages it earns ([ADR-0026](decisions/0026-entries-share-files.md)).
-  - World tiles and Earth tiles grow with the Map: the 1M-node synthetic world is 2,693 tiles.
   - Past 20,000 files, the next step is Workers Paid. Past roughly 50k, move tiles and long-tail pages to R2 (ADR-0006).
+- **What a release uploads:** Wrangler uploads only files whose content is new. A page or data file changes only when what it shows does, so a release uploads about what it changed: 0.5.19 (9 new people, 29 links) uploaded 7,255 files; the same change now rewrites 340, most of them the new people's pages, their neighbours' and the search files their names are in. Keep it so:
+  - the version, the build time and the commit are printed on the home and About pages only (`build_line` in `macros.html`);
+  - a search entry's `rank` and the cuts between search files come from the entries and words themselves, never from a place in a list (`search_rank`, `SEARCH_CUT` in `site/data.rs`);
+  - a link count a page embeds is rounded (`rounded`), and a total counted across the record ("of 1,078") sits on one page, not on every page of a list.
+  `ctd build` twice from the same commit gives the same files but the home page, About, `schema.json` and `build-manifest.json`.
 - **File size:** at most 25 MiB per asset. The largest files today are the atlas's search and shard files and `field.bin` (about 300 KB). The data files are small: `graph-slim.json` is about 65 KB (17 KB gzip), a detail file a few KB.
 - **Third-party requests:** story maps and the Map's Earth view load OpenFreeMap tiles and glyphs (ADR-0014). Everything else is same-origin.
 

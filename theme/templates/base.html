@@ -70,7 +70,9 @@
   </nav>
   <p class="footer-principle">A connection is not evidence of wrongdoing. Every line cites its sources, and every interpretation says whose it is. <a href="/about/">How this site works</a></p>
   <p class="footer-maker">Made by <a href="https://joinprototype.com/">Prototype</a> in Santa Monica.</p>
-  <p class="footer-build">Version {{ site.manifest.engine }}, built {{ site.manifest.built }} from {% if site.manifest.commit %}commit {{ site.manifest.commit }}{% else %}uncommitted content{% endif %}, methodology {{ site.manifest.methodology[:8] }}. <a href="{{ site.repo }}">Source</a> · <a href="{{ site.repo }}/blob/main/LICENSING.md">License</a></p>
+  {# the version and build only on the home and About pages: a line that changes with every build
+     would make every page a new file at each release (docs/deploy.md) #}
+  <p class="footer-build">{% block build %}{% endblock %}<a href="{{ site.repo }}">Source</a> · <a href="{{ site.repo }}/blob/main/LICENSING.md">License</a></p>
 </footer>
 {% if site.assets.islands_js %}<script type="module" src="/assets/islands.js"></script>{% endif %}
 {% block scripts %}{% endblock %}

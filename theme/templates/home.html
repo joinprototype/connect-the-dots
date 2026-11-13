@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% from "macros.html" import book %}
+{% from "macros.html" import book, build_line %}
+{% block build %}{{ build_line(site) }}{% endblock %}
 {% block body_class %}home{% endblock %}
 {% block main %}
 {# One name and the written stories it runs through. Every thread is in the page and they share one

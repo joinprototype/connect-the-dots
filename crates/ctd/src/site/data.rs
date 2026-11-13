@@ -38,8 +38,32 @@ pub const PER_KIND: usize = 100;
 pub const SLIM_BUDGET: usize = 1024 * 1024;
 /// Entries filed under one search word, best-connected first; a longer query finds the rest.
 const PER_WORD: usize = 100;
-/// Search files are cut between words past this many bytes of JSON (about 50 KB gzip).
-const SEARCH_FILE: usize = 185_000;
+/// A search file holds at most this many bytes of JSON (about 75 KB gzip).
+const SEARCH_FILE: usize = 300_000;
+/// Past this many bytes a search file ends before a word whose hash `SEARCH_CUT` divides, so the cuts
+/// come from the words themselves: a new entry changes the files its words are in, not every file
+/// after them, and a release uploads only those. A word takes about 330 bytes, so a file ends about
+/// 50 KB past the minimum, and one in twenty runs into the most a file holds.
+const SEARCH_MIN: usize = 150_000;
+const SEARCH_CUT: u64 = 160;
+
+/// FNV-1a, 64 bits: a hash that stays the same from build to build.
+pub fn fnv(s: &str) -> u64 {
+    s.bytes().fold(0xcbf2_9ce4_8422_2325_u64, |h, b| (h ^ u64::from(b)).wrapping_mul(0x0100_0000_01b3))
+}
+
+/// How many binary digits `n` takes: 0 for 0, 1 for 1, 4 for 8 to 15. A search rank's step, so one
+/// more link moves an entry only when its count doubles.
+pub fn doubling(n: usize) -> u64 {
+    u64::from(usize::BITS - n.leading_zeros())
+}
+
+/// A search entry's `rank`, best first: its band (written entries, stories, questions, the atlas),
+/// how far down the band it is (fewer links, less fame), and a hash of its id to keep ties apart.
+/// It comes from the entry alone, so a new entry renumbers no other.
+pub fn search_rank(band: u64, worse: u64, id: &str) -> u64 {
+    band * 10_000_000_000 + worse.min(999_999) * 4096 + fnv(id) % 4096
+}
 
 /// How many bytes `bytes` take gzipped, as a host serves them.
 pub fn gzip_len(bytes: &[u8]) -> usize {
@@ -61,6 +85,20 @@ fn span(w: Option<&Span>) -> Value {
 pub fn node(kb: &Kb, e: &Entity) -> Value {
     json!({ "id": e.id, "type": e.kind, "name": e.name, "when": e.when, "coords": kb.coords(e), "place": e.place,
             "url": format!("/e/{}/", e.id), "degree": kb.degree(&e.id) })
+}
+
+/// A link count as a page that embeds it keeps it: exact below 10, to the nearest 10 below 100, then
+/// to two figures. A story draws a dot's size and orders names by it, and needs no more; one more link
+/// on a hub then leaves the stories that show it, and the search files that list it, as they were.
+pub fn rounded(degree: usize) -> usize {
+    match degree {
+        0..10 => degree,
+        10..100 => (degree + 5) / 10 * 10,
+        _ => {
+            let step = 10usize.pow(degree.ilog10() - 1);
+            (degree + step / 2) / step * step
+        }
+    }
 }
 
 /// A source record as the browser reads it.
@@ -245,7 +283,15 @@ pub fn story(kb: &Kb, by_id: &BTreeMap<&str, &Edge>, shots: &[Value]) -> Value {
             names.extend(s.by.as_deref());
         }
     }
-    let nodes: Vec<Value> = names.iter().filter_map(|id| kb.entity(id)).map(|e| node(kb, e)).collect();
+    let nodes: Vec<Value> = names
+        .iter()
+        .filter_map(|id| kb.entity(id))
+        .map(|e| {
+            let mut n = node(kb, e);
+            n["degree"] = json!(rounded(kb.degree(&e.id)));
+            n
+        })
+        .collect();
     json!({ "nodes": nodes, "edges": links.values().collect::<Vec<_>>(), "sources": sources(kb, cited) })
 }
 
@@ -269,11 +315,12 @@ pub fn words(text: &str) -> Vec<String> {
     folded.split(|c: char| !c.is_alphanumeric()).filter(|w| !w.is_empty()).map(String::from).collect()
 }
 
-/// The search files: each entry (given best-connected first, which its `rank` keeps) is filed
+/// The search files: each entry (given best-connected first, with its `rank`, `search_rank`) is filed
 /// under every word, and every pair of neighbouring words, of its name and aliases; a word keeps
-/// its `PER_WORD` best entries. Words are sorted and cut into files between words, and each file is
-/// handed to `emit` as `<n>.json`. Returns `index.json`: each file's first word (the first file's
-/// is ""). While everything fits in one file, that file is every entry and needs no words.
+/// its `PER_WORD` best entries. Words are sorted and cut into files between words, where a word's
+/// own hash says (`SEARCH_CUT`), and each file is handed to `emit` as `<n>.json`. Returns
+/// `index.json`: each file's first word (the first file's is ""). While everything fits in one
+/// file, that file is every entry and needs no words.
 pub fn search(entries: &[Value], mut emit: impl FnMut(usize, Vec<u8>) -> Result<()>) -> Result<Vec<u8>> {
     let mut filed: BTreeMap<String, Vec<usize>> = BTreeMap::new();
     for (i, e) in entries.iter().enumerate() {
@@ -287,11 +334,7 @@ pub fn search(entries: &[Value], mut emit: impl FnMut(usize, Vec<u8>) -> Result<
             filed.entry(k).or_default().push(i);
         }
     }
-    let ranked = |i: usize| {
-        let mut e = entries[i].clone();
-        e["rank"] = json!(i);
-        e
-    };
+    let ranked = |i: usize| entries[i].clone();
     let size: Vec<usize> = (0..entries.len()).map(|i| ranked(i).to_string().len()).collect();
 
     // cut the sorted words into files: each file's entries, and its words with their entries' places in it
@@ -306,9 +349,11 @@ pub fn search(entries: &[Value], mut emit: impl FnMut(usize, Vec<u8>) -> Result<
     let mut files: Vec<File> = Vec::new();
     let mut cur = new_file("");
     for (key, mut list) in filed {
+        list.sort_by_key(|&i| (entries[i]["rank"].as_u64(), i));
         list.truncate(PER_WORD);
         let grows = key.len() + 8 + list.iter().map(|i| if cur.local.contains_key(i) { 6 } else { size[*i] + 6 }).sum::<usize>();
-        if cur.bytes + grows > SEARCH_FILE && !cur.words.is_empty() {
+        let cut = cur.bytes >= SEARCH_MIN && fnv(&key) % SEARCH_CUT == 0;
+        if (cut || cur.bytes + grows > SEARCH_FILE) && !cur.words.is_empty() {
             files.push(std::mem::replace(&mut cur, new_file(&key)));
         }
         let mut at = Vec::with_capacity(list.len());
@@ -406,6 +451,12 @@ mod tests {
     }
 
     #[test]
+    fn link_counts_round_where_a_page_embeds_them() {
+        let r: Vec<usize> = [0, 7, 9, 10, 12, 14, 16, 94, 95, 100, 176, 178, 1234, 98_765].into_iter().map(super::rounded).collect();
+        assert_eq!(r, [0, 7, 9, 10, 10, 10, 20, 90, 100, 100, 180, 180, 1200, 99_000]);
+    }
+
+    #[test]
     fn words_fold_case_accents_and_apostrophes() {
         assert_eq!(words("Nursultan Nazarbaýev"), ["nursultan", "nazarbayev"]);
         assert_eq!(words("O'Brien & U.S. Steel"), ["obrien", "us", "steel"]);
@@ -414,7 +465,9 @@ mod tests {
 
     #[test]
     fn search_files_word_ranges_and_keep_ranks() {
-        let entries: Vec<_> = (0..3000).map(|i| json!({ "id": format!("e{i}"), "name": format!("Name{i} Family{}", i % 7), "aliases": [] })).collect();
+        let entries: Vec<_> = (0..3000)
+            .map(|i| json!({ "id": format!("e{i}"), "name": format!("Name{i} Family{}", i % 7), "aliases": [], "rank": super::search_rank(0, i, "") }))
+            .collect();
         let mut files: Vec<serde_json::Value> = Vec::new();
         let index = search(&entries, |_, bytes| {
             files.push(serde_json::from_slice(&bytes)?);

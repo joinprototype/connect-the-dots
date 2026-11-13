@@ -145,7 +145,7 @@ if (dist) {
       const first = Math.max(0, files.findLastIndex((f) => f <= key));
       for (const n of first + 1 < files.length && files[first + 1].startsWith(key) ? [first, first + 1] : [first]) {
         const f = file(n);
-        for (const [word, at] of f.words ?? []) if (word.startsWith(key)) for (const j of at) found.set(f.entries[j].rank, f.entries[j]);
+        for (const [word, at] of f.words ?? []) if (word.startsWith(key)) for (const j of at) found.set(f.entries[j].url, f.entries[j]);
       }
     }
     return [...found.values()].sort((a, b) => a.rank - b.rank);
