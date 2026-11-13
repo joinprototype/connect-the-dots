@@ -39,6 +39,7 @@ claims:
     according_to: [kenneth-pomeranz]
     src:
       - {s: warwick-cage-pomeranz-why-the-west, quote: "Britain gets its [ecological] relief partially from coal, and partially from its vast colonial possessions in the Americas", by: kenneth-pomeranz}
+      - {s: warwick-cage-pomeranz-why-the-west, quote: "the precious raw material of the British Industrial Revolution was grown on land “acquired” from Native Americans and worked by enslaved labour, mostly trafficked from Africa."}
   - id: c5
     rel: caused_by
     to: dear-labour-cheap-energy
@@ -115,7 +116,7 @@ claims:
   - id: c18
     rel: caused_by
     to: slavery-and-british-industry
-    note: "Williams's second thesis, as Gerald Horne describes it. Horne says it has stirred less controversy than Williams's first. This story read no critic of it and not the book."
+    note: "Williams's second thesis, as Gerald Horne describes it. Horne says it has stirred less controversy than Williams's first."
     according_to: [eric-williams]
     src:
       - {s: the-nation-horne-on-eric-williams, quote: "He insisted that slavery fueled British industrial development, and therefore that slavery was the foundation not only of British capitalism but of capitalism as a whole."}
