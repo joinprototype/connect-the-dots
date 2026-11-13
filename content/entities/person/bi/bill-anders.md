@@ -7,7 +7,7 @@ summary: "Apollo 8 lunar module pilot who later served as chief executive of Gen
 same_as: {wikidata: Q19242}
 claims:
   - id: c1
-    rel: member_of
+    rel: worked_at
     to: nasa
     src:
       - {s: nasa-sp-4407-vol7, quote: "Anders resigned from NASA and the Air Force (active duty) in September 1969 and became Executive Secretary of the National Aeronautics and Space Council."}

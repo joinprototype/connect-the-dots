@@ -43,10 +43,4 @@ claims:
     note: "Signed despite reservations about state damages suits; supported advance notice so agencies could investigate before irreversible consolidation."
     src:
       - {s: ford-hsr-signing-1976-09-30, at: "Statement", quote: "AFTER CAREFUL reflection, I am signing into law today H.R. 8532, the Hart-Scott-Rodino Antitrust Improvements Act of 1976."}
-  - id: c6
-    rel: member_of
-    to: us-congress
-    role: "House of Representatives"
-    src:
-      - {s: nasa-space-act-1958, quote: "Gerald R. Ford (1913- ) (R-MI) was elected to the House of Representatives in 1948 and served there until he became vice president in 1973 following the resignation of Spiro T. Agnew."}
 ---

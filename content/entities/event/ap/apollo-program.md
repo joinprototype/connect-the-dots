@@ -60,9 +60,9 @@ claims:
   - id: c8
     rel: involved
     to: wernher-von-braun
-    role: "Led the agency developing the Saturn boosters used to launch Apollo"
+    role: "Headed the booster program needed for the lunar effort"
     src:
-      - {s: launius-sp-2004-4503, quote: "NASA inherited the effort to develop the Saturn family of boosters used to launch Apollo to the Moon in 1960 when it acquired the Army Ballistic Missile Agency under Wernher von Braun."}
+      - {s: launius-sp-2004-4503, quote: "Wernher von Braun, director of NASA's George C. Marshall Space Flight Center at Huntsville, Alabama, and head of the big booster program needed for the lunar effort, responded to a similar request for information from Johnson."}
   - id: c9
     rel: involved
     to: langley-research-center

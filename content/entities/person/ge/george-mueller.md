@@ -17,5 +17,5 @@ claims:
     to: apollo-program
     when: "1963/1969"
     src:
-      - {s: nasa-space-act-1958, quote: "George E. Mueller (1918 ) was associate administrator for the Office of Manned Space Flight at NASA headquarters, 1963-1969, where he responsible for overseeing the completion of Project Apollo and for beginning the development of the Space Shuttle."}
+      - {s: nasa-sp-4407-vol7, quote: "George E. Mueller (1918– ) was Associate Administrator for the Office of Manned Space Flight at NASA Headquarters, 1963–1969, where he was responsible for overseeing the completion of Project Apollo"}
 ---

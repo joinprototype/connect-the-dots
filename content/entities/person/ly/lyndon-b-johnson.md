@@ -61,5 +61,5 @@ claims:
     when: "1937/1949"
     role: "House of Representatives"
     src:
-      - {s: nasa-space-act-1958, quote: "Lyndon B. Johnson (1908-1973) (DTX) was elected to the House of Representatives in 1937 and served until 1949."}
+      - {s: nasa-sp-4407-vol7, quote: "Lyndon B. Johnson (1908–1973) was President of the United States from 1963– 1969. Johnson was elected to the House of Representatives in 1937 and served until 1949."}
 ---
