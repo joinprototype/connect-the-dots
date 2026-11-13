@@ -1,7 +1,7 @@
 //! Renders the static site and the data files described in docs/data-contract.md.
 
 use std::{
-    collections::{BTreeMap, BTreeSet, HashMap},
+    collections::{BTreeMap, BTreeSet, HashMap, HashSet},
     fs,
     path::{Path, PathBuf},
 };
@@ -1098,8 +1098,63 @@ fn question_pages(s: &Site, pages: &QuestionPages) -> Result<QuestionShelf> {
     })
 }
 
-/// A chapter's cover: its own map when it visits enough places, else a constellation.
+/// A chapter's cover: its own web of entries and links; else its map when it visits enough places;
+/// else a constellation.
 fn chapter_cover(kb: &Kb, ch: &crate::kb::Chapter) -> String {
+    story_web(kb, ch).unwrap_or_else(|| chapter_map(kb, ch))
+}
+
+/// The entries a story's scenes reveal (sealed ones left out, at most 90, in the order they come), in
+/// their kinds' inks, and the links the record holds between them.
+fn story_web(kb: &Kb, ch: &crate::kb::Chapter) -> Option<String> {
+    // sealed entries and the events and works about them stay off covers, as off routes (ADR-0027)
+    let sealed = kb.sealed();
+    let mut ids: Vec<&str> = Vec::new();
+    let mut seen = HashSet::new();
+    for shot in &ch.shots {
+        for id in shot["reveal"].as_array().into_iter().flatten().filter_map(Value::as_str) {
+            if ids.len() < 90 && kb.entity(id).is_some() && !sealed.contains(id) && seen.insert(id) {
+                ids.push(id);
+            }
+        }
+    }
+    let at: HashMap<&str, usize> = ids.iter().enumerate().map(|(i, id)| (*id, i)).collect();
+    let mut links: Vec<(usize, usize)> = Vec::new();
+    let mut joined = HashSet::new();
+    for (i, id) in ids.iter().enumerate() {
+        for (e, _) in kb.links_of(id) {
+            let other = if e.from == *id { e.to.as_str() } else { e.from.as_str() };
+            if let Some(&j) = at.get(other) {
+                if i != j && joined.insert((i.min(j), i.max(j))) {
+                    links.push((i.min(j), i.max(j)));
+                }
+            }
+        }
+    }
+    let colors: Vec<&str> = ids
+        .iter()
+        .map(|id| {
+            let kind = kb.entity(id).map_or("", |e| e.kind.as_str());
+            kb.schema.types.get(kind).and_then(|t| kb.schema.layers.get(&t.layer)).map_or(NEUTRAL, |l| l.color.as_str())
+        })
+        .collect();
+    crate::covers::web(&ch.id, &colors, &links)
+}
+
+/// "18 scenes, 1946–1992": what a story's card says above its title.
+fn chapter_span(ch: &crate::kb::Chapter) -> String {
+    let years: Vec<i32> = ch.shots.iter().filter_map(|s| s["t"].as_f64()).map(|t| t.floor() as i32).collect();
+    let year = |y: i32| if y < 0 { format!("{} BCE", -y) } else { y.to_string() };
+    let scenes = plural(ch.shots.len(), "scene");
+    match (years.iter().min(), years.iter().max()) {
+        (Some(&a), Some(&b)) if a == b => format!("{scenes}, {}", year(a)),
+        (Some(&a), Some(&b)) => format!("{scenes}, {}–{}", year(a), year(b)),
+        _ => scenes,
+    }
+}
+
+/// A chapter's map cover: the places it visits, when it visits enough; else a constellation.
+fn chapter_map(kb: &Kb, ch: &crate::kb::Chapter) -> String {
     let mut ids: Vec<&str> = Vec::new();
     let mut routes: Vec<(&str, &str)> = Vec::new();
     fn strings(v: &Value) -> Vec<&str> {
@@ -1129,7 +1184,7 @@ fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
         .chapters
         .iter()
         .map(|ch| {
-            json!({ "id": ch.id, "title": ch.title, "subtitle": ch.subtitle, "summary": ch.summary, "url": format!("/c/{}/", ch.id), "shots": ch.shots.len(), "kind": plural(ch.shots.len(), "scene"),
+            json!({ "id": ch.id, "title": ch.title, "subtitle": ch.subtitle, "summary": ch.summary, "url": format!("/c/{}/", ch.id), "shots": ch.shots.len(), "kind": chapter_span(ch),
                     "cover": ch.cover.as_ref().map_or_else(|| chapter_cover(kb, ch), |u| format!(r#"<img class="cover-art cover-photo" src="{}" alt="" loading="lazy">"#, markdown::escape(u))) })
         })
         .collect();
@@ -1299,7 +1354,7 @@ fn home_page(s: &Site, chapters: &[Value]) -> Result<()> {
         .iter()
         .filter(|c| c["id"].as_str().is_some_and(|id| unsealed.contains(id)))
         .take(HOME_SHELF)
-        .map(|c| json!({ "title": c["title"], "subtitle": c["subtitle"], "url": c["url"], "kind": "Story", "cover": c["cover"] }))
+        .map(|c| json!({ "title": c["title"], "subtitle": c["subtitle"], "url": c["url"], "kind": c["kind"], "cover": c["cover"] }))
         .collect();
     let kinds: Vec<Value> =
         kb.schema.types.iter().filter(|(tid, _)| kb.entities.iter().any(|e| &e.kind == *tid)).map(|(tid, t)| json!({ "id": tid, "label": t.plural })).collect();

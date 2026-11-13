@@ -2,7 +2,7 @@
 //! above a drawing of its own links in white, with the dots in their inks. Deterministic: same id,
 //! same cover.
 
-use std::fmt::Write;
+use std::{collections::HashMap, fmt::Write};
 
 use crate::{markdown::escape as esc, synthetic::Rng};
 
@@ -193,6 +193,120 @@ pub fn journey(id: &str, label: &str, stops: &[[f64; 2]], routes: &[(usize, usiz
     Some(svg)
 }
 
+/// A story's own web: the entries its scenes reveal, each in its kind's ink, and the links the record
+/// holds between them, laid out by a small force simulation (seeded, so the same story draws the same).
+/// The title is set under the cover, so the web fills it. `colors[i]` and `links` index the same entries;
+/// the best-connected entry is drawn black, as the centre of the story. `None` with too few links.
+pub fn web(id: &str, colors: &[&str], links: &[(usize, usize)]) -> Option<String> {
+    // Only the story's web: its largest connected part and any other part of four or more. A lone
+    // entry or a pair drifts to the edge and shrinks the drawing around it to a knot.
+    let mut root: Vec<usize> = (0..colors.len()).collect();
+    fn find(root: &mut [usize], i: usize) -> usize {
+        let mut r = i;
+        while root[r] != r {
+            r = root[r];
+        }
+        root[i] = r;
+        r
+    }
+    for &(a, b) in links {
+        let (ra, rb) = (find(&mut root, a), find(&mut root, b));
+        root[ra] = rb;
+    }
+    let mut size = vec![0usize; colors.len()];
+    for i in 0..colors.len() {
+        let r = find(&mut root, i);
+        size[r] += 1;
+    }
+    let biggest = size.iter().copied().max().unwrap_or(0);
+    let keep: Vec<usize> = (0..colors.len())
+        .filter(|&i| {
+            let s = size[find(&mut root, i)];
+            s > 1 && (s == biggest || s >= 4)
+        })
+        .collect();
+    let new: HashMap<usize, usize> = keep.iter().enumerate().map(|(n, &i)| (i, n)).collect();
+    let colors: Vec<&str> = keep.iter().map(|&i| colors[i]).collect();
+    let links: Vec<(usize, usize)> = links.iter().filter_map(|(a, b)| Some((*new.get(a)?, *new.get(b)?))).collect();
+    let (colors, links) = (colors.as_slice(), links.as_slice());
+    let n = colors.len();
+    if n < 5 || links.len() < 4 {
+        return None;
+    }
+    let mut deg = vec![0usize; n];
+    for &(a, b) in links {
+        deg[a] += 1;
+        deg[b] += 1;
+    }
+    // Fruchterman–Reingold in a unit square, with a pull to the middle so loose entries stay near
+    let mut rng = Rng(seed(id));
+    let mut p: Vec<(f64, f64)> = (0..n).map(|_| (rng.f(), rng.f())).collect();
+    let k = (1.0 / n as f64).sqrt() * 1.7;
+    let mut heat = 0.12;
+    for _ in 0..320 {
+        let mut d = vec![(0.0f64, 0.0f64); n];
+        for i in 0..n {
+            for j in i + 1..n {
+                let (dx, dy) = (p[i].0 - p[j].0, p[i].1 - p[j].1);
+                let dist = (dx * dx + dy * dy).sqrt().max(1e-4);
+                let f = k * k / dist;
+                d[i].0 += dx / dist * f;
+                d[i].1 += dy / dist * f;
+                d[j].0 -= dx / dist * f;
+                d[j].1 -= dy / dist * f;
+            }
+        }
+        for &(a, b) in links {
+            let (dx, dy) = (p[a].0 - p[b].0, p[a].1 - p[b].1);
+            let dist = (dx * dx + dy * dy).sqrt().max(1e-4);
+            let f = dist * dist / k;
+            d[a].0 -= dx / dist * f;
+            d[a].1 -= dy / dist * f;
+            d[b].0 += dx / dist * f;
+            d[b].1 += dy / dist * f;
+        }
+        for i in 0..n {
+            d[i].0 += (0.5 - p[i].0) * 0.3 * k * (1.0 + deg[i] as f64).sqrt();
+            d[i].1 += (0.5 - p[i].1) * 0.3 * k * (1.0 + deg[i] as f64).sqrt();
+            let len = (d[i].0 * d[i].0 + d[i].1 * d[i].1).sqrt().max(1e-9);
+            let step = len.min(heat);
+            p[i].0 += d[i].0 / len * step;
+            p[i].1 += d[i].1 / len * step;
+        }
+        heat *= 0.985;
+    }
+    // fit the drawing to the cover, keeping its shape
+    let (x0, x1) = p.iter().fold((f64::MAX, f64::MIN), |(lo, hi), q| (lo.min(q.0), hi.max(q.0)));
+    let (y0, y1) = p.iter().fold((f64::MAX, f64::MIN), |(lo, hi), q| (lo.min(q.1), hi.max(q.1)));
+    let (pad, room_w, room_h) = (26.0, W - 52.0, H - 52.0);
+    let scale = (room_w / (x1 - x0).max(1e-6)).min(room_h / (y1 - y0).max(1e-6));
+    let (ox, oy) = (pad + (room_w - (x1 - x0) * scale) / 2.0, pad + (room_h - (y1 - y0) * scale) / 2.0);
+    let at: Vec<(f64, f64)> = p.iter().map(|q| (ox + (q.0 - x0) * scale, oy + (q.1 - y0) * scale)).collect();
+
+    let fg = INK.fg;
+    let mut svg = open();
+    stars(&mut svg, &mut rng, 6, fg);
+    for &(a, b) in links {
+        let _ = write!(
+            svg,
+            r#"<line x1="{:.1}" y1="{:.1}" x2="{:.1}" y2="{:.1}" stroke="{fg}" stroke-opacity="0.3" stroke-width="1.1"/>"#,
+            at[a].0, at[a].1, at[b].0, at[b].1
+        );
+    }
+    let hub = (0..n).max_by_key(|&i| (deg[i], std::cmp::Reverse(i))).unwrap_or(0);
+    for i in 0..n {
+        if i == hub {
+            continue;
+        }
+        // smaller dots when there are many, so a big story is a web and not a blot
+        let r = (3.2 + 1.5 * (deg[i] as f64).sqrt()).min(8.5) * if n > 50 { 0.8 } else { 1.0 };
+        let _ = write!(svg, r#"<circle cx="{:.1}" cy="{:.1}" r="{r:.1}" fill="{}"/>"#, at[i].0, at[i].1, colors[i]);
+    }
+    let (x, y) = at[hub];
+    let _ = write!(svg, r#"<circle cx="{x:.1}" cy="{y:.1}" r="16" fill="{fg}" fill-opacity="0.22"/><circle cx="{x:.1}" cy="{y:.1}" r="9" fill="{fg}"/></svg>"#);
+    Some(svg)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -225,5 +339,18 @@ mod tests {
             assert!((0.0..=W).contains(&cx), "{cx}");
         }
         assert!(journey("c", "Too few", &places[..2], &[]).is_none(), "two places make no shape");
+    }
+
+    #[test]
+    fn a_web_draws_every_entry_inside_the_cover() {
+        let colors = ["#e23d28"; 8];
+        let links = [(0, 1), (0, 2), (0, 3), (1, 4), (2, 5), (6, 7)];
+        let svg = web("s", &colors, &links).unwrap();
+        assert_eq!(svg, web("s", &colors, &links).unwrap(), "same story, same drawing");
+        assert_eq!(svg.matches("<line").count(), links.len() - 1, "the lone pair 6-7 is left out");
+        for cx in svg.split(r#"<circle cx=""#).skip(1).map(|s| s.split('"').next().unwrap().parse::<f64>().unwrap()) {
+            assert!((0.0..=W).contains(&cx), "{cx}");
+        }
+        assert!(web("s", &colors[..4], &links[..3]).is_none(), "too few to make a web");
     }
 }
