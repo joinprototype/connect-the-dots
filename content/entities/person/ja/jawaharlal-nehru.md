@@ -20,4 +20,14 @@ claims:
     note: "Prime minister of independent India; the High Commissioner reports his press conference of 12 September 1947."
     src:
       - s: "partition-british-policy-records"
+  - id: "c3"
+    rel: "head_of"
+    to: "indian-national-congress"
+    when: "1946-07-10"
+    title: "President"
+    src:
+      - s: "partition-nawaz-boundary"
+        at: "p. 97"
+        quote: "On July 10, 1946, Nehru took over as President of the\nCongress from Maulana Azad."
+
 ---
