@@ -27,4 +27,10 @@ claims:
     role: "withdrew converts' freedom to dispose of property and emigrate"
     src:
       - {s: ej-manuel-i, quote: "When the king learned soon after that the Conversos were emigrating in large numbers, he quickly withdrew their liberty to dispose of property and emigrate."}
+  - id: c4
+    rel: involved
+    to: lisbon
+    role: "Manuel restricted departure from three ports to Lisbon"
+    src:
+      - {s: encyclopedia-jews-expulsion-of-spain-portugal, quote: "Initially, he instructed the Jews to leave from one of three ports, but soon he restricted them to leaving from Lisbon only."}
 ---
