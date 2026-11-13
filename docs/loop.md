@@ -14,6 +14,7 @@ How the record grows without a person in every step ([ADR-0037](decisions/0037-t
 2. The missing-links page's issues on GitHub, titled "Source for: …": a reader sent a source. These go first.
 3. A puzzle's dead ends and Ask's "no written way" pairs, as they are logged.
 4. Story ideas in `.cache/stories/queue.md`, for the story run below.
+5. The texts a story run already saved: a harvest reads them for links the story did not use ([Harvest](#harvest), [ADR-0039](decisions/0039-harvest.md)).
 
 ## One run
 
@@ -34,6 +35,14 @@ It leaves the branch, labelled for the founder, when a change:
 ## Running it
 
 A run is a Claude Code session in this checkout that follows [tools/loop/night.md](../tools/loop/night.md): it runs the scout and the reviewer as Codex stages on the founder's ChatGPT plan, so Claude's plan stays for code, and keeps the gate, the commits and the push itself. The founder gave the word to run it unattended on 2026-11-04: a scheduled task in the Claude desktop app starts one every night at 03:00, and only while the app is open (a night missed runs at the next launch). At most one run at a time, behind a lock; a run that finds the laptop busy (a browser check, a build) waits, then gives up for the night. To run one by hand, ask a session to "run one night of the loop as tools/loop/night.md says".
+
+## Harvest
+
+A leads run starts from a lead and hunts the web for a source; most hunts find nothing. A harvest starts from a source the record already holds and reads it for every link it states ([ADR-0039](decisions/0039-harvest.md)). A story run saves the text of every source it reads under `.cache/stories/research/<story>/src/`, and a story uses a small part of each.
+
+1. **Prepare** (no model): in the run's worktree, `CTD=<engine> python3 tools/loop/harvest-prep.py .cache/stories/research/<story> .cache/loop/<run>`. It reads the record through `ctd build --graph`, finds for each source the saved file that holds the quotes the record already cites from it, and copies it to `<run>/src/<source id>.txt`. Then it lists the **candidates**: pairs of entries that one of those texts names within a few lines of each other and the record does not join, with up to three passages each, those with words such as "President", "member" or "signed" first. People, bodies, events and works only; a surname or an alias counts only where the full name is in the same text.
+2. **Harvester** (no network). Brief: [tools/loop/harvest.md](../tools/loop/harvest.md). It judges every candidate and logs a verdict for each in `<run>/judged.tsv`, writing a link only where one continuous span states it, and at most five new entries that join two or more old ones. No harms, no heritage, no stories, no sensitive or legal relations. GPT-6-Luna judged too quickly in the pilot; GPT-6.1-Sol at medium effort reads each passage.
+3. **Gate, reviewer, merge**: as in a leads run. The reviewer fetches every source again itself; a book it cannot fetch is read from the saved copy and named in its report.
 
 ## Sources that still open
 

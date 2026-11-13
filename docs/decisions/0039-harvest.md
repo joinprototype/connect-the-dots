@@ -1,0 +1,40 @@
+# ADR-0039: Harvest the sources we already saved
+
+- Status: accepted as a tool; not on the nightly schedule (pilot kept 10 links, under its bar of 20)
+- Date: 2026-11-12
+
+## Context
+
+The leads run (ADR-0025, ADR-0037) starts from a lead that open data suggests and hunts the web for a source. In nine runs from 2026-11-03 to 2026-11-12 it kept 26 links from about 160 leads, and three nights kept none. Most leads are the dull kind open data holds in bulk (located in, born in, headquarters), and each one costs a web search that a cheap model usually loses. At that rate the record never reaches a million read dots.
+
+The story runs (ADR-0038) meanwhile save the text of every source they read: 5,190 files from 96 stories by 2026-11-12. Hearings, treaties, gazettes, court opinions, speeches and letters, each naming far more people, bodies and acts than its story uses.
+
+## Decision
+
+1. A **harvest** starts from a source instead of a lead. It reads a story's saved sources and writes the links they state between entries already in the record, quoted word for word from the saved text. Steps in [docs/loop.md](../loop.md#harvest), brief in [tools/loop/harvest.md](../../tools/loop/harvest.md).
+2. `tools/loop/harvest-prep.py` (no model) matches each saved file to its source by the quotes the record already cites from it, so the harvester knows which text is which source and quotes only those.
+3. The harvester fetches nothing. The gate and the reviewer are the leads run's: the reviewer fetches every source again itself, and a book it cannot fetch is read from the saved copy and named.
+4. What a harvest may not write is narrower than a leads run: no harms or deaths tied to a named person, no heritage or religion, no stories, no sensitive, legal, kinship or background relation, and at most five new entries, each joined to two or more old ones.
+
+## Pilot
+
+One run by hand on 2026-11-12, `harvest-2026-11-12-1`, line in `.cache/loop/runs.tsv`. The bar set before it: keep harvest if one run keeps 20 links or more, against about 3 a night from leads.
+
+- **Midnight, 1947** (25 sources, written the same day): 107 candidates, 3 links written, 2 kept (the Commons and the Lords adopted the Indian Independence Act). Nehru as the Congress's president was dropped: the source dates it to 10 July 1946, the Prime Minister's Office to 6 July.
+- **The Crash of 2008** (19 sources, the Inquiry Commission's report the largest): 120 candidates, 8 links written, 8 kept, 2 of them with a quote trimmed: Congress founded the Federal Reserve, the FDIC, the CFTC and the Inquiry Commission and passed Dodd-Frank; the Fed and the New York Fed funded Bear Stearns; the Senate Banking Committee is part of the Senate.
+- In all: **10 links kept, 1 dropped, 0 for the founder**, against 26 in nine leads runs. The reviewer fetched every source again and found no invented quote.
+- The harvester fetched nothing. GPT-6-Luna wrote nothing in 80 candidates (it marked all "not stated" in four minutes); GPT-6.1-Sol at medium read them: 1.8M input tokens for one story, 4.7M for the other, 95% cached, on the ChatGPT plan. Claude's weekly use went from 29% to 30%.
+
+What limited it:
+
+1. Most pairs named side by side are not a stated link: 185 of 227 were "not stated" and 33 forbidden, mostly two leaders who "dealt with" each other, a sensitive relation.
+2. A new story has already taken its sources' best links; an older one with big official reports gives more (no-model counts of candidates with role words: the 2008 crash 103, Watergate 105, Cuba 106, against 9 for Partition).
+3. The people the sources name most are often not in the record (Maulana Azad, Liaquat Ali Khan, Stafford Cripps, Winston Churchill), and the harvester added no new entry.
+
+Next, before any schedule: candidates for people a story's sources name often and the record lacks, each joined to two old entries. Harvest stays a tool to run by hand; a nightly harvest needs the founder's word.
+
+## Consequences
+
+- Links that join two stories come from the stories' own reading, which is where the site's value is.
+- No fetching in the cheap step, so it costs less and cannot break the fetch rules.
+- A harvest only reaches what a story already read: it deepens the record around stories, and does not replace leads for entries no story touches.
