@@ -24,4 +24,26 @@ claims:
     note: "Fenn writes that the Fort Pitt act came before the letters and was not ordered by them."
     src:
       - {s: fenn-2000-biological-warfare, quote: "Unbeknownst to both Bouquet and his commander in chief, their subordinates at Fort Pitt had already conceived and executed the very plan proposed."}
+
+  - id: c4
+    rel: appears_in
+    to: biological-warfare-in-eighteenth-century-north-america
+    note: "Amherst’s 16 July 1763 reply approved trying to infect Native people through blankets and urged every other method to extirpate those he called an execrable race."
+    src:
+      - {s: fenn-2000-biological-warfare, quote: "You will Do well to try to Innoculate the Indians by means of Blanketts"}
+      - {s: fenn-2000-biological-warfare, quote: "Execreble Race."}
+  - id: c5
+    rel: appears_in
+    to: biological-warfare-in-eighteenth-century-north-america
+    note: "Bouquet’s 13 July 1763 letter also proposed hunting Native people with dogs, rangers and light horse, giving reluctance to expose British men as his reason."
+    src:
+      - {s: fenn-2000-biological-warfare, quote: "As it is a pity to expose good men against them"}
+      - {s: fenn-2000-biological-warfare, quote: "could make use of the Spaniard's method, and hunt them with English Dogs, Supported by Rangers, and some Light Horse, who would I think effectualy extirpate or remove that Vermine."}
+  - id: c6
+    rel: appears_in
+    to: biological-warfare-in-eighteenth-century-north-america
+    note: "On 7 August 1763 Amherst wrote to George Croghan that total extirpation scarcely atoned for deeds he attributed to Native people."
+    src:
+      - {s: fenn-2000-biological-warfare, quote: "their Total Extirpation is scarce sufficient Attonement for the Bloody and Inhuman deeds they have Committed."}
+
 ---

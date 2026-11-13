@@ -74,4 +74,54 @@ claims:
       - {s: fenn-2000-biological-warfare, quote: "Out of our regard to them"}
       - {s: fenn-2000-biological-warfare, quote: "I hope it will have the desired effect."}
 
+  - id: c11
+    rel: appears_in
+    to: biological-warfare-in-eighteenth-century-north-america
+    note: "Ecuyer reported overcrowding and smallpox to Bouquet on 16 June 1763; Bouquet passed the outbreak news to Amherst on 23 June."
+    src:
+      - {s: fenn-2000-biological-warfare, quote: "We are so crowded in the fort that I fear disease"}
+      - {s: fenn-2000-biological-warfare, quote: "Henry Bouquet, in a letter dated June 23, passed the news on to Jeffery Amherst,"}
+      - {s: fenn-2000-biological-warfare, quote: "Unluckily the small Pox has broken out in the Garrison."}
+  - id: c12
+    rel: appears_in
+    to: biological-warfare-in-eighteenth-century-north-america
+    note: "At the 24 June conference the envoys urged British withdrawal; the British refused. The envoys then requested provisions and liquor to take home."
+    src:
+      - {s: fenn-2000-biological-warfare, quote: "A conference took place the following day, June 24, in which the Indians urged the British to abandon the fort, and the British, for their part, refused."}
+      - {s: fenn-2000-biological-warfare, quote: "a little Provisions and Liquor, to carry us Home."}
+  - id: c13
+    rel: appears_in
+    to: biological-warfare-in-eighteenth-century-north-america
+    note: "The account was submitted on 13 August 1763 for June expenses. Gage ultimately endorsed payment and directed Bouquet to discharge it; this is not a date for Gage’s approval."
+    src:
+      - {s: fenn-2000-biological-warfare, quote: "While the account was submitted for payment in August, the items in it are all listed under the date \"1763 June.\""}
+      - {s: fenn-2000-biological-warfare, quote: "The Within Acct. not belonging to any particular Department, but the Articles ordered for the use of the Service, by the ofF. Comrn's, Colo. Bouquet will order the Acct. to be discharged & place it in his Acct. of extraordinarys."}
+  - id: c14
+    rel: appears_in
+    to: biological-warfare-in-eighteenth-century-north-america
+    note: "In his 14 April 1764 deposition, escaped captive Gershom Hicks reported smallpox deaths among Mingoes, Delawares and Shawnees since the preceding spring; this does not establish the source of infection."
+    src:
+      - {s: fenn-2000-biological-warfare, quote: "very general & raging amongst the Indians since last spring and that 30 or 40 Mingoes, as many Delawares and some Shawneese Died all of the Small pox since that time, that it still continues amongst them."}
+  - id: c15
+    rel: appears_in
+    to: biological-warfare-in-eighteenth-century-north-america
+    according_to: [elizabeth-fenn]
+    note: "Fenn reports that officials pressured Hicks into recanting much of his testimony five days later; his second deposition apparently did not mention smallpox."
+    src:
+      - {s: fenn-2000-biological-warfare, quote: "Five days later, under pressure from Fort Pitt officials, Hicks recanted much of his testimony and de-emphasized the Indians' martial intentions. He apparently made no reference to smallpox in his second deposition."}
+  - id: c16
+    rel: appears_in
+    to: biological-warfare-in-eighteenth-century-north-america
+    note: "In a 10 September 1764 letter to Bouquet, Andrew Lewis described Shawnees dying of smallpox, offering little resistance and facing further deaths if routed."
+    src:
+      - {s: fenn-2000-biological-warfare, quote: "the epidemic continued to wreak havoc among the Shawnees."}
+      - {s: fenn-2000-biological-warfare, quote: "must parish in great Numbers"}
+  - id: c17
+    rel: appears_in
+    to: biological-warfare-in-eighteenth-century-north-america
+    note: "In March 1765 Killibuck told William Johnson that the Shawnees had lost 149 men in three months to sickness more than a year earlier, besides women and children. He also reported many smallpox deaths the previous summer."
+    src:
+      - {s: fenn-2000-biological-warfare, quote: "lost in three Months time 149 Men besides Women & Children by Sickness above a year ago"}
+      - {s: fenn-2000-biological-warfare, quote: "also many of them dyed last Summer of the Small Pox, as did Several of their Nation."}
+
 ---
