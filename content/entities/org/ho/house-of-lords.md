@@ -28,4 +28,11 @@ claims:
     note: "With the Commons and the Queen, as the enacting words say."
     src:
       - {s: east-india-stock-dividend-redemption-act-1873-text, quote: "Be it therefore enacted by the Queen’s most Excellent Majesty, by and with the advice and consent of the Lords Spiritual and Temporal, and Commons, in the present Parliament assembled"}
+  - id: c4
+    rel: enacted
+    to: indian-independence-act-1947
+    when: "1947-07-18"
+    note: "With the Commons and the Crown, as the enacting words say."
+    src:
+      - {s: indian-independence-act, quote: "Be it enacted by the King's most Excellent Majesty, by and with the advice and consent of the Lords Spiritual and Temporal, and Commons, in this present Parliament assembled, and by the authority of the same, as follows :—"}
 ---
