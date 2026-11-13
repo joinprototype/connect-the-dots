@@ -10,13 +10,11 @@ claims:
     rel: "head_of"
     to: "white-house-plumbers"
     src:
-      - {s: "senate-watergate-final-report-1974-dell", quote: "In June 1971, the leak of the Pentagoi Papers prompted the President to create a special investiga tions unit (later known as the Plumbers) inside the White House under the direction of Egil Krogh."}
-    when: "1971-06"
+      - {s: "wspf-report-1975", quote: "Egil Krogh, Jr., former head of the White House “Plumbers,”"}
   - id: c2
     rel: "worked_at"
     to: "us-government"
     src:
-      - {s: "senate-watergate-final-report-1974-dell", quote: "In June 1971, the leak of the Pentagoi Papers prompted the President to create a special investiga tions unit (later known as the Plumbers) inside the White House under the direction of Egil Krogh."}
+      - {s: "senate-watergate-final-report-1974-dell", quote: "inside the White House under the direction of Egil Krogh."}
     role: "director of the White House special investigations unit"
-    when: "1971-06"
 ---

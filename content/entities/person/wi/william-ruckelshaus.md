@@ -16,5 +16,6 @@ claims:
     rel: "worked_at"
     to: "us-department-of-justice"
     src:
-      - {s: "senate-watergate-final-report-1974-dell", quote: "the Justice Department's two top men, hihot Richardson and William Ruckelshaus,"}
+      - {s: "wspf-report-1975", quote: "Deputy Attorney General William Ruckelshaus was fired for his refusal to obey; finally, Solicitor General Robert Bork, next in seniority at the Justice Department, dismissed Cox as Special Prosecutor."}
+    title: "Deputy Attorney General"
 ---
