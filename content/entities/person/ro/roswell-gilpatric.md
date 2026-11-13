@@ -20,4 +20,11 @@ claims:
     role: "put the Defense Department’s preferred option to the President"
     src:
       - {s: buckingham-operation-ranch-hand-1982, quote: "The Department of Defense preferred the second option."}
+  - id: c3
+    rel: intervened_in
+    to: cuban-missile-crisis
+    when: "1962-10-18"
+    role: "Prepared notes comparing political and military options"
+    src:
+      - {s: nsa-2022-cuban-missile-crisis-at-60, at: "October 18: Kennedy the Dove Emerges on October 18, 1962", quote: "Deputy Secretary of Defense Roswell Gilpatric summarizes the options facing the U.S. in these two handwritten pages from October 18, 1962. Gilpatric’s notes list both political options, with certain advantages and disadvantages, and military options like air strikes and the blockade."}
 ---

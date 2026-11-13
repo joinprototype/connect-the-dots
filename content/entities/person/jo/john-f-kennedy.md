@@ -26,6 +26,13 @@ claims:
     src:
       - {s: usaid-history, at: "International Aid in the 1960s: An Agency is Born", quote: "In 1961, President Kennedy signed the Foreign Assistance Act into law and created USAID by executive order."}
       - {s: usaid-history, at: "Celebrating Sixty Years of Progress", quote: "President Kennedy recognized the need to unite development into a single agency responsible for administering aid to foreign countries to promote social and economic development. On November 3, 1961, USAID was born and with it a spirit of progress and innovation."}
+  - id: c4
+    rel: intervened_in
+    to: operation-mongoose
+    when: "1962-03"
+    role: "Tacitly approved the program’s guidelines"
+    src:
+      - {s: nsa-1998-cuban-missile-crisis-photographs, quote: "Guidelines for OPERATION MONGOOSE, tacitly approved by President Kennedy in March 1962, noted that the \"final success\" of the program would \"require decisive U.S. military intervention.\""}
 ---
 
 John F. Kennedy was President of the United States from January 1961 until his assassination in November 1963. He led the [[us-government]] through the [[cuban-missile-crisis]].

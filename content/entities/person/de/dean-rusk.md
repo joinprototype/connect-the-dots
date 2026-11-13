@@ -20,4 +20,11 @@ claims:
     role: "backed a limited program starting with transport routes"
     src:
       - {s: buckingham-operation-ranch-hand-1982, quote: "Secretary Rusk seconded Gilpatric's recommendation for a limited initial defoliation program restricted to transportation routes"}
+  - id: c3
+    rel: intervened_in
+    to: cuban-missile-crisis
+    when: "1962-10-27"
+    role: "Requested Robert Kennedy’s telephone call to Dobrynin on October 27"
+    src:
+      - {s: frus-1961-63-v11-d96, at: "Opening paragraph", quote: "At the request of Secretary Rusk, I telephoned Ambassador Dobrynin at approximately 7:15 p.m. on Saturday, October 27th. I asked him if he would come to the Justice Department at a quarter of eight."}
 ---
