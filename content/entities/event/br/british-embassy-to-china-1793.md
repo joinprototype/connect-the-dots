@@ -43,4 +43,9 @@ claims:
     role: "said China had no use for British manufactures in his answer refusing a resident representative"
     src:
       - {s: qianlong-1793-letter-to-george-iii, quote: "I set no value on objects strange or ingenious, and have no use for your country's manufactures.", by: qianlong-emperor}
+  - id: "c7"
+    rel: "involved"
+    to: "east-india-company"
+    note: "Henrietta Harrison quotes an internal British government document distinguishing the embassy’s ostensible purpose from hoped-for privileges for the Company."
+    src: [{s: "harrison-macartney-embassy-gifts", quote: "although the avowed and ostensible purpose of the Embassy is compliment and conciliation, We hope that means may be found to secure substantial priviledges and advantages for the Company."}]
 ---
