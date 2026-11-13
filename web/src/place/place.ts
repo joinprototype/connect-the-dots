@@ -745,6 +745,20 @@ class CtdPlace extends HTMLElement {
     // fields, buttons and the first words' link are themselves, not the surface
     const control = (t: EventTarget | null): boolean => !!(t as Element | null)?.closest?.('input, button, .place-hits, .place-hello a');
     const local = (e: { clientX: number; clientY: number }): [number, number] => [e.clientX - box.left, e.clientY - box.top];
+    // Each time a finger lands or lifts, the gesture starts again from where the fingers are now: two or
+    // more pinch from the first two, and the one left pans from where it is. Without this, the finger left
+    // after a pinch moved the map by everything it had moved during the pinch, and the map jumped away.
+    const rebase = (): void => {
+      if (!drag) return;
+      const [a, b] = [...ptrs.values()];
+      if (a && b) {
+        drag.pinch = { d: Math.max(1, Math.hypot(a.x - b.x, a.y - b.y)), cx: (a.x + b.x) / 2, cy: (a.y + b.y) / 2 };
+        drag.moved = true;
+      } else {
+        drag.pinch = null;
+        if (a) [drag.x, drag.y] = [a.x, a.y];
+      }
+    };
 
     this.addEventListener('pointerdown', (e) => {
       if (control(e.target) || e.button > 0) return;
@@ -761,12 +775,8 @@ class CtdPlace extends HTMLElement {
         }
       }
       this.flight = null;
-      drag = { x, y, x0: x, y0: y, moved: false, words, pinch: null };
-      if (ptrs.size === 2) {
-        const [a, b] = [...ptrs.values()];
-        drag.pinch = { d: Math.hypot(a.x - b.x, a.y - b.y), cx: (a.x + b.x) / 2, cy: (a.y + b.y) / 2 };
-        drag.moved = true;
-      }
+      if (ptrs.size === 1 || !drag) drag = { x, y, x0: x, y0: y, moved: false, words, pinch: null };
+      rebase();
     });
     this.addEventListener('pointermove', (e) => {
       if (!ptrs.has(e.pointerId)) {
@@ -779,9 +789,9 @@ class CtdPlace extends HTMLElement {
       const [x, y] = local(e);
       ptrs.set(e.pointerId, { x, y });
       if (!drag) return;
-      if (ptrs.size === 2 && drag.pinch) {
+      if (ptrs.size >= 2 && drag.pinch) {
         const [a, b] = [...ptrs.values()];
-        const [d, cx, cy] = [Math.hypot(a.x - b.x, a.y - b.y), (a.x + b.x) / 2, (a.y + b.y) / 2];
+        const [d, cx, cy] = [Math.max(1, Math.hypot(a.x - b.x, a.y - b.y)), (a.x + b.x) / 2, (a.y + b.y) / 2];
         this.zoomAt(cx, cy, d / drag.pinch.d);
         this.panBy(cx - drag.pinch.cx, cy - drag.pinch.cy);
         drag.pinch = { d, cx, cy };
@@ -800,7 +810,7 @@ class CtdPlace extends HTMLElement {
       this.classList.remove('place-grab');
       if (!drag) return;
       if (ptrs.size) {
-        drag.pinch = null;
+        rebase();
         return;
       }
       const d = drag;
