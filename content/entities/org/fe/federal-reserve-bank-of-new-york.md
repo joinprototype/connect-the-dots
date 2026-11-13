@@ -14,4 +14,12 @@ claims:
     to: federal-reserve
     src:
       - {s: fed-2008-09-16-press-release-aig, at: "press release, 16 September 2008", quote: "authorized the Federal Reserve Bank of New York to lend up to $85 billion to the American International Group (AIG) under section 13(3) of the Federal Reserve Act."}
+  - id: c2
+    rel: funded
+    to: bear-stearns
+    when: "2008-03-14"
+    role: "bridge loan through JPMorgan Chase"
+    src:
+      - {s: fed-history-support-for-specific-institutions, quote: "On Friday, March 14, 2008, the Board of Governors of the Federal Reserve System authorized the FRBNY to extend credit to Bear Stearns through JPMC. The loan from the FRBNY was for $12.9 billion and was secured by assets valued at $13.8 billion"}
+
 ---

@@ -29,4 +29,12 @@ claims:
       - {s: fed-audited-annual-financial-statements, quote: "The Reserve Banks' and LLC’s financial statements are audited annually by an independent public accounting firm retained by the Board of Governors."}
       - {s: fed-faq-does-the-fed-get-audited, quote: "The Government Accountability Office (GAO) conducts numerous reviews of Federal Reserve activities every year."}
       - {s: fed-audited-annual-financial-statements, quote: "The Board of Governors' financial statements are audited annually by an independent public accounting firm retained by the Board's Office of Inspector General"}
+  - id: c4
+    rel: funded
+    to: bear-stearns
+    when: "2008-03-14"
+    role: "bridge loan through JPMorgan Chase"
+    src:
+      - {s: fed-history-support-for-specific-institutions, quote: "Despite the receipt by Bear Stearns of Federal Reserve funding through the JPMC bridge loan on Friday, March 14, 2008, market pressures on Bear Stearns worsened that day and during the weekend."}
+
 ---

@@ -342,5 +342,34 @@ claims:
     src:
       - {s: "nara-milestone-lend-lease-act", at: "Act of 11 March 1941"}
       - {s: "us-rise-lend-lease-history", at: "Passage of the Lend-Lease Act"}
+  - id: c64
+    rel: founded
+    to: federal-reserve
+    when: "1913"
+    src:
+      - {s: fcic-2011-final-report, at: "p. 29", quote: "To stabilize financial markets, Congress created the Federal Reserve System in 1913, which acted as the lender of last resort to banks."}
+  - id: c65
+    rel: founded
+    to: fcic
+    when: "2009-05"
+    src:
+      - {s: fcic-2011-final-report, at: "Preface, p. xi", quote: "The Commission was established as part of the Fraud Enforcement and Recovery Act (Public Law 111-21) passed by Congress and signed by the President in May 2009."}
+  - id: c66
+    rel: adopted
+    to: dodd-frank-act
+    src:
+      - {s: fcic-2011-final-report, at: "Wallison dissent, Introduction", quote: "Congress passed and the President signed the Dodd-Frank Act (DFA), far reaching and highly consequential regulatory legislation."}
+  - id: c67
+    rel: founded
+    to: cftc
+    when: "1974"
+    src:
+      - {s: fcic-2011-final-report, at: "p. 46", quote: "In 1974, Congress amended the act to require that futures and options contracts on virtually all commodities, including financial instruments, be traded on a regulated exchange, and created a new federal independent agency, the Commodity Futures Trading Commission (CFTC)"}
+  - id: c68
+    rel: founded
+    to: fdic
+    when: "1933"
+    src:
+      - {s: fcic-2011-final-report, at: "p. 29", quote: "So in 1933 Congress passed the Glass- Steagall Act, which, among other changes, established the Federal Deposit Insurance Corporation."}
 
 ---
