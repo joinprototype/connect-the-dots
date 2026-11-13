@@ -19,4 +19,10 @@ claims:
     role: "spoke against the war"
     src:
       - {s: hansard-1840-04-08, quote: "a war more unjust in its origin, a war more calculated in its progress to cover this country with permanent disgrace, I do not know, and I have not read of", by: william-ewart-gladstone}
+  - id: "c3"
+    rel: "intervened_in"
+    to: "commons-debate-on-the-china-war-1840"
+    note: "While condemning the war, Gladstone allowed sending an armament to demand equitable terms; he explicitly did not assert that Chinese authorities had poisoned wells."
+    when: "1840-04-08"
+    src: [{s: "hansard-1840-04-08", quote: "I do not mean to say that you ought not to send out an armament against China. Far from it."}]
 ---

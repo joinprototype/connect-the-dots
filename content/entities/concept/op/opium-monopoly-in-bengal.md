@@ -14,7 +14,7 @@ claims:
   - id: c2
     rel: identified_with
     to: bengal
-    note: "In the Commons on 8 April 1840 Hawes read the Company’s stated reason for high opium prices: reducing use or abuse while avoiding being undersold by foreign powers."
+    note: "In the Commons on 8 April 1840 Hawes read the Company’s stated reason for high opium prices: reducing use or abuse while avoiding being undersold by foreign powers; the Company claimed preventing use altogether was impracticable."
     src:
       - {s: hansard-1840-04-08, quote: "They do not wish to increase but to lessen the use, or rather the abuse, of opium, by making the price, both at home and abroad, as high as possible"}
 ---
