@@ -35,6 +35,20 @@ claims:
     note: "The king's letter gives a place in his library as the purpose; sections 301–308 put the translators in a house beside the sea at Pharos and describe their agreement on wording and the public reading."
     src:
       - {s: charles-1913-letter-of-aristeas, at: "sections 38–39, 301–308", quote: "that these books may be added to the other royal books in my library.", by: letter-of-aristeas}
+  - id: "c5"
+    rel: "led_to"
+    to: "septuagint"
+    according_to: ["letter-of-aristeas"]
+    note: "The Letter of Aristeas, an unreliable account according to Britannica, links the translation request to the release of Jewish captives. It says Ptolemy’s father transported at least 100,000 people and enslaved those not selected for military service, including women and the old and young, excusing him as yielding to soldiers. The son’s decree calls enslavement military wantonness against his father’s will, compensates owners twenty drachmae per captive and threatens disobedient owners with enslavement. The captives’ individual voices are absent from this narrative."
+    src:
+      - {s: "charles-1913-letter-of-aristeas", at: "sections 12–27, 35–39", quote: "all who possess such captives are required to set them at liberty at once, receiving twenty drachmae per head as ransom money.", by: "letter-of-aristeas"}
+  - id: "c6"
+    rel: "led_to"
+    to: "septuagint"
+    according_to: ["letter-of-aristeas"]
+    note: "In the letter’s account, Eleazar sends the translators with a request for their safe return; they compare their work at Pharos. Following the public reading, community leaders approve the Greek law and curse anyone adding, changing or omitting words. This is the author’s account of the Greek translation’s authority, not independently established proceedings."
+    src:
+      - {s: "charles-1913-letter-of-aristeas", at: "sections 46, 301–311", quote: "they bade them pronounce a curse in accordance with their custom upon any one who should make any alteration", by: "letter-of-aristeas"}
 ---
 
 In the [[letter-of-aristeas]], seventy-two elders translate the law in seventy-two days. Britannica's account rests on analysis of the Greek itself: the Torah first, the rest of the [[septuagint]] over the next century or so. The two accounts differ on who asked for it and how long it took; they agree it happened in Egypt.

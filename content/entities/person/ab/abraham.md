@@ -30,6 +30,14 @@ claims:
     rel: appears_in
     to: quran
     src: [{s: quran-clear-quran, at: "22:78"}]
+  - id: c6
+    rel: appears_in
+    to: letter-57-to-pammachius
+    role: figure in a comparison of biblical quotations
+    note: "In section 10, Jerome compares Genesis and Acts over the purchase of a burial place and the patriarchs’ burials, as part of his defense of translation. This records what Jerome discusses, not an independently verified event in Abraham’s life."
+    src:
+      - {s: jerome-letter-57-nicene-fathers, at: "section 10", quote: "for it is Abraham that buys of Ephron the Hittite", by: jerome}
+
 ---
 
 Abraham is the patriarch of the Hebrew Bible's narratives in Genesis. [[judaism]], [[christianity]] and [[islam]] each regard him as a father of their faith, each on the authority of its own scripture: the [[torah]], the [[bible]] and the [[quran]].
