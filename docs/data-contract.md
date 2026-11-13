@@ -432,7 +432,7 @@ Every template gets `site` (`title`, `tagline`, `dev`, `assets`, `lenses`, `laye
   - A pick is a person, an organization or a place (`thread: true` in `entity-types.yaml`), never sealed. `ctd check` refuses anything else, and warns of a pick left with too few stories.
   - A story counts from two scenes that name the entry, most scenes first, and only if it is free of sealed entries (ADR-0027): no scene shows one or reveals a link to one, and no sentence names one.
   - Every thread is in the page, in one grid cell, so the tallest holds the room. `.thread.on` is the one shown, and `web/src/islands/threads.ts` moves it.
-- `shelf[]`: the first six written stories free of sealed entries, in the library's order (`featured: true` first), as `book` takes them. `stories`: how many written stories there are.
+- `shelf[]`: six written stories free of sealed entries, as `book` takes them: the two newest by the day their file was first committed, whose `kind` reads "Added 12 Nov 2026", then the rest in the library's order (`featured: true` first). `stories`: how many written stories there are.
 - `kinds[]`: `{ id, label }`, each type with entries, for the last line. Its `#index-h` is where a type page's back link lands.
 
 `chapters.html` also gets `questions[]`, the Questions list (question stories, featured first, then the richest, at most 24): `{ title, subtitle, url, kind: "Question", cover }`, and `questions_more`. It lists every story as plain rows, with no covers (the page's budget is 150 KB). `inks[]`: `{ color, label }`, the key under its surface, one row per ink with the kinds drawn in it ("Works, concepts and traditions"), for kinds with entries.

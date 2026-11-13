@@ -49,6 +49,11 @@ impl History {
     pub(super) fn of(&self, rel_path: &str) -> &[Commit] {
         self.0.get(rel_path).map_or(&[], Vec::as_slice)
     }
+
+    /// The day a file was first committed (YYYY-MM-DD), under any earlier name.
+    pub(super) fn added(&self, rel_path: &str) -> Option<&str> {
+        self.of(rel_path).last().map(|c| c.date.as_str())
+    }
 }
 
 /// Reads `git log -z --name-status` output, newest commit first. Each commit opens with 0x1e and
@@ -152,6 +157,9 @@ mod tests {
         assert_eq!(subjects, ["Edit Anna", "Rename Ann", "Add Ann"]);
         assert_eq!(history.of("content/entities/anna.md")[0].author, "Ann Author");
         assert!(history.of("content/entities/ann.md").is_empty());
+        let first = history.of("content/entities/anna.md").last().map(|c| c.date.clone());
+        assert_eq!(history.added("content/entities/anna.md"), first.as_deref(), "added: the first commit, under its old name");
+        assert_eq!(history.added("content/entities/nobody.md"), None);
         let _ = std::fs::remove_dir_all(&root);
         assert!(History::load(Path::new(&root)).0.is_empty(), "no repository, no history");
     }

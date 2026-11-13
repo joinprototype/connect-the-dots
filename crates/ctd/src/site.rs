@@ -223,6 +223,8 @@ fn write(path: &Path, contents: impl AsRef<[u8]>) -> Result<()> {
 const THREAD_LISTS: usize = 4;
 /// How many covers the home page's shelf shows.
 const HOME_SHELF: usize = 6;
+/// How many of them are the newest stories, with the day each was added; featured stories fill the rest.
+const HOME_NEWEST: usize = 2;
 /// How many covers one shelf of the Stories library shows (richest stories first).
 const SHELF_MAX: usize = 24;
 /// The site's address, for the few things that cannot be relative.
@@ -1349,12 +1351,25 @@ fn home_page(s: &Site, chapters: &[Value]) -> Result<()> {
                          "more": in_words(stories.len().saturating_sub(THREAD_LISTS)), "cut": stories.len() > THREAD_LISTS }))
         })
         .collect();
-    let unsealed: BTreeSet<&str> = kb.unsealed_chapters().iter().map(|c| c.id.as_str()).collect();
-    let shelf: Vec<Value> = chapters
+    // the newest stories first, so the shelf changes as stories arrive; then the featured ones, in order
+    let unsealed = kb.unsealed_chapters();
+    let mut newest: Vec<(&str, &str)> = unsealed.iter().filter_map(|c| Some((s.history.added(&c.rel_path)?, c.id.as_str()))).collect();
+    newest.sort_by(|a, b| b.0.cmp(a.0).then(a.1.cmp(b.1)));
+    newest.truncate(HOME_NEWEST);
+    let card = |c: &Value, kind: Value| json!({ "title": c["title"], "subtitle": c["subtitle"], "url": c["url"], "kind": kind, "cover": c["cover"] });
+    let shelf: Vec<Value> = newest
         .iter()
-        .filter(|c| c["id"].as_str().is_some_and(|id| unsealed.contains(id)))
+        .filter_map(|&(day, id)| {
+            let when = crate::edtf::parse(day).map_or_else(|_| day.to_string(), |d| d.label);
+            Some(card(chapters.iter().find(|c| c["id"] == id)?, json!(format!("Added {when}"))))
+        })
+        .chain(
+            chapters
+                .iter()
+                .filter(|c| c["id"].as_str().is_some_and(|id| unsealed.iter().any(|u| u.id == id) && !newest.iter().any(|n| n.1 == id)))
+                .map(|c| card(c, c["kind"].clone())),
+        )
         .take(HOME_SHELF)
-        .map(|c| json!({ "title": c["title"], "subtitle": c["subtitle"], "url": c["url"], "kind": c["kind"], "cover": c["cover"] }))
         .collect();
     let kinds: Vec<Value> =
         kb.schema.types.iter().filter(|(tid, _)| kb.entities.iter().any(|e| &e.kind == *tid)).map(|(tid, t)| json!({ "id": tid, "label": t.plural })).collect();
