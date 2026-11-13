@@ -3,6 +3,7 @@ uid: 01M78EVWVQ5YG8D17K6TNNG196
 id: "indian-national-congress"
 type: "org"
 name: "Indian National Congress"
+aliases: ["Congress", "Congress Party"]
 summary: "Political party that participated in the Cabinet Mission negotiations and the transfer of power."
 claims:
   - id: "c1"
