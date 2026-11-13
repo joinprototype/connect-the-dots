@@ -252,7 +252,8 @@ Two names a day, the same for every reader ([ADR-0036](decisions/0036-play-and-h
   "days": [ ["martin-luther", "peters-indulgence", "pope-leo-x", "catholic-church", "pope-john-xxiii"], [] ],
   //          one way between the day's two ends by the fewest links, its first and last entries the ends;
   //          [] on a day nothing could be picked
-  "out": ["den-holdings"]                         // what no step may land on (Ask's kept-out entries that have links)
+  "out": ["den-holdings"],                        // what no step may land on (Ask's kept-out entries that have links)
+  "names": { "martin-luther": "Martin Luther" }   // every day's two ends by name, for the home page's "Today's puzzle"
 }
 ```
 - **Steps:** from an entry, every link a way may use (`traversable`, not `passive`, not withdrawn, not to itself) whose far end is not in `out`, read from `graph-slim.json`. A step's proof comes from its ends' detail files.

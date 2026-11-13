@@ -6,7 +6,7 @@
 //! runs through a written story free of sealed entries and through none the rules leave out, and is
 //! nothing Ask keeps out; the two ends share no story, so a puzzle joins two of them.
 
-use std::collections::{BTreeSet, HashMap, HashSet, VecDeque};
+use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet, VecDeque};
 use std::path::Path;
 
 use anyhow::{Context, Result, anyhow};
@@ -168,7 +168,9 @@ pub(super) fn write_play(s: &Site, root: &Path, atlas: Option<&Atlas>) -> Result
     }
     chrono::NaiveDate::parse_from_str(&rules.first, "%Y-%m-%d").map_err(|e| anyhow!("{}: `first` must be a date, YYYY-MM-DD: {e}", path.display()))?;
     let (found, out) = puzzles(s, &rules, atlas);
-    write(&s.out.join("data").join("play.json"), serde_json::to_vec(&json!({ "first": rules.first, "days": found, "out": out }))?)?;
+    // the ends' names, so the home page can say today's puzzle without the whole graph
+    let names: BTreeMap<&str, String> = found.iter().flat_map(|w| [w.first(), w.last()]).flatten().map(|&id| (id, s.kb.name_of(id))).collect();
+    write(&s.out.join("data").join("play.json"), serde_json::to_vec(&json!({ "first": rules.first, "days": found, "out": out, "names": names }))?)?;
     write(&s.out.join("play").join("index.html"), s.render("play.html", json!({ "site": &s.site }))?)
 }
 

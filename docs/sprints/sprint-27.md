@@ -21,7 +21,7 @@ The founder asked what makes the site a habit and a moat. The moat is proof: lin
 
 ### Should
 - [x] S27-05 One loop run by hand on 20 leads, and its line in `.cache/loop/runs.tsv`: 10 links merged, 7 of them fixed by the reviewer, 1 dropped; 142k tokens on Haiku, 162k on Opus.
-- [ ] S27-06 Today's puzzle on the home page.
+- [x] S27-06 Today’s puzzle on the home page: its two names under the map, from `data/play.json` (2026-11-12).
 
 ## Demo script
 

@@ -7,3 +7,9 @@ export function formatYearNumber(year: number): string {
   return String(year);
 }
 
+
+/** The daily puzzle's number from 0 on the reader's own calendar, puzzle 1 being on `first` (YYYY-MM-DD). */
+export function puzzleDay(first: string, now = new Date()): number {
+  const [y, m, d] = first.split('-').map(Number);
+  return Math.round((Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) - Date.UTC(y, m - 1, d)) / 86_400_000);
+}

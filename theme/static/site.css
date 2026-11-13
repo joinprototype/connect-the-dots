@@ -127,8 +127,16 @@ a.badge:hover { text-decoration: none; color: var(--ink); }
 /* beside the thread, the Map: its best-connected dots, one still picture that loads after the words */
 .threads { display: grid; gap: 2rem; }
 .threads-in { min-width: 0; }
+.home-side { min-width: 0; }
 .home-map { display: block; color: var(--ink); font-weight: 600; }
 .home-map img { display: block; width: 100%; max-width: 420px; height: auto; aspect-ratio: 600 / 410; }
+/* today's puzzle, under the map: its two names, set like a title, and one line */
+.home-play { display: block; max-width: 420px; margin-top: 1.6rem; padding-top: 12px; border-top: 3px solid var(--ink); color: var(--ink); }
+.home-play:hover { text-decoration: none; }
+.home-play:hover .home-play-ends { text-decoration: underline; text-underline-offset: 0.14em; }
+.home-play-kind { display: block; font: 500 0.875rem/1.3 var(--font-ui); color: var(--muted); }
+.home-play-ends { display: block; margin-top: 4px; font: 700 1.375rem/1.2 var(--font-display); letter-spacing: -0.01em; }
+.home-play-line { display: block; margin-top: 6px; font: 400 0.9375rem/1.4 var(--font-ui); color: var(--muted); }
 @media (min-width: 1000px) { .threads { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); align-items: start; } .home-map { margin-top: 1rem; } }
 .home-ways { max-width: var(--page); margin: 0 auto; padding: 0 var(--gutter); }
 .home-ways h2 { margin-top: 3.2rem; }

@@ -4,6 +4,7 @@
 // file. What a reader did today stays in this browser only.
 import { loadDetails, loadGraphIndex, loadJson, type GraphIndex } from '../lib/data';
 import { accountOf, fromLine, quotedFirst, sentence, sourceView } from '../lib/claims';
+import { puzzleDay } from '../lib/dates';
 import { el } from '../lib/dom';
 import { walks } from '../lib/paths';
 import type { GEdge } from '../lib/types';
@@ -28,18 +29,12 @@ interface Played {
   shown?: boolean;
 }
 
-const DAY = 86_400_000;
 /** Links listed at a stop before "Show all". */
 const FIRST = 12;
 const WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
 const count = (n: number, one: string, many = `${one}s`) => `${WORDS[n] ?? n} ${n === 1 ? one : many}`;
 const GREY = '#8c8c8c';
 
-/** The day's number from 0, by the reader's own calendar. */
-function dayOf(first: string, now = new Date()): number {
-  const [y, m, d] = first.split('-').map(Number);
-  return Math.round((Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) - Date.UTC(y, m - 1, d)) / DAY);
-}
 
 function dateOf(first: string, day: number): Date {
   const [y, m, d] = first.split('-').map(Number);
@@ -172,7 +167,7 @@ function circle(hex: string): string {
 async function main(root: HTMLElement): Promise<void> {
   const [file, idx] = await Promise.all([loadJson<PlayFile>('/data/play.json'), loadGraphIndex()]);
   // a reader whose calendar is still on the day before puzzle 1 gets puzzle 1
-  const today = Math.max(0, dayOf(file.first));
+  const today = Math.max(0, puzzleDay(file.first));
   const asked = Number(new URLSearchParams(location.search).get('n'));
   // an earlier puzzle by its number, never one still to come
   const day = Number.isInteger(asked) && asked >= 1 && asked - 1 <= today ? asked - 1 : today;
