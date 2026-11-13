@@ -2,6 +2,11 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.5.16 (2026-11-12)
+
+- Each story's cover is drawn from its own web: the people, bodies, events and works its scenes bring in, each in its kind's colour, and the links the record holds between them, with the best-connected one in black. Before, most covers were a few dots on a line or a made-up star.
+- A story's card says how many scenes it has and the years it spans, where it said "Story".
+
 ## 0.5.15 (2026-11-12)
 
 - On a phone, the Map no longer jumps away after a two-finger zoom: lifting one finger used to move the map by everything that finger had moved during the zoom.
