@@ -2,6 +2,14 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.5.14 (2026-11-12)
+
+- A new story, Midnight, 1947, follows the partition of British India: from Jinnah's letter of February 1946 and the Cabinet Mission's plan to Mountbatten's date, Radcliffe's five weeks and the awards published after independence, with four survivors in their own words and the counts of the displaced and the dead, each with who made it.
+- A new story, How America Became a Superpower, goes from the war with Spain in 1898 to Marshall's offer in 1947: the Philippine war and its dead by each count, Panama, Wilson's war, the war debts, Lend-Lease, Bretton Woods, and the governments that bargained or refused.
+- The Trust goes from 18 scenes to 22: the railroad deals after the South Improvement Company, the Supreme Court's 1911 opinion in its own words, what became of the separated companies, and Rockefeller's and Flagler's own defences.
+- The daily puzzle no longer offers names already on your way and shows each name once; "Back a step" undoes a step, and after each step the page says how far the end is.
+- Nine new links from the nightly leads run, among them the headquarters of NASA, the EPA and the CFTC and Arthur Levitt at Goldman Sachs, and the Internet Archive's copy for 771 more sources.
+
 ## 0.5.13 (2026-11-06)
 
 - The Week the Buying Stopped goes from 16 scenes to 21: what Interactive Brokers, Webull and its clearing firm Apex decided that week and why, in their own words; Robinhood's $3.4 billion raise; FINRA's 2021 fine and what it was for, which was not the January restrictions; the Massachusetts case; GameStop's own share sales of 2021; and Keith Gill's return in 2024.
