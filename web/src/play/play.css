@@ -51,8 +51,9 @@
 .play-go:hover .play-name, .play-go:focus-visible .play-name { text-decoration-style: solid; }
 .play-more { margin: 0; padding: 14px 0; }
 .play-none { padding: 14px 0; font: 400 0.9375rem/1.4 var(--font-ui); color: var(--muted); }
-.play-tools { margin: 26px 0 0; }
-.play-show { font: 400 0.9375rem/1.3 var(--font-ui); color: var(--muted); background: none; border: 0; padding: 12px 0; cursor: pointer; text-decoration: underline; text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+.play-tools { display: flex; flex-wrap: wrap; gap: 0 24px; margin: 26px 0 0; }
+.play-back[hidden] { display: none; }
+.play-back, .play-show { font: 400 0.9375rem/1.3 var(--font-ui); color: var(--muted); background: none; border: 0; padding: 12px 0; cursor: pointer; text-decoration: underline; text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
 
 /* ---------------------------------------------------------------- there */
 .play-done { margin-top: 30px; border-top: 3px solid var(--ink); padding-top: 16px; }

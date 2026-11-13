@@ -202,14 +202,38 @@ async function main(root: HTMLElement): Promise<void> {
   const find = $<HTMLInputElement>('play-find');
   const done = $('play-done');
   const show = $<HTMLButtonElement>('play-show');
+  const back = $<HTMLButtonElement>('play-back');
   const steps = $('play-steps');
   let all = false;
 
-  /** The links a step may take from `at`, the best-connected names first. */
-  const from = (at: string): GEdge[] =>
-    (idx.incident.get(at) ?? [])
+  /** The links a step may take from `at`: one per name, none back to a name already on the way, the end
+   *  first if it is one step away, then the best-connected names. */
+  const from = (at: string, been: ReadonlySet<string> = new Set()): GEdge[] => {
+    const seen = new Set<string>();
+    return (idx.incident.get(at) ?? [])
       .filter((e) => walks(e) && !out.has(other(e, at)))
-      .sort((x, y) => (idx.nodes.get(other(y, at))?.degree ?? 0) - (idx.nodes.get(other(x, at))?.degree ?? 0) || nameOf(idx, other(x, at)).localeCompare(nameOf(idx, other(y, at))));
+      .sort((x, y) => Number(other(y, at) === b) - Number(other(x, at) === b) || (idx.nodes.get(other(y, at))?.degree ?? 0) - (idx.nodes.get(other(x, at))?.degree ?? 0) || nameOf(idx, other(x, at)).localeCompare(nameOf(idx, other(y, at))))
+      .filter((e) => {
+        const o = other(e, at);
+        if (been.has(o) || seen.has(o)) return false;
+        seen.add(o);
+        return true;
+      });
+  };
+
+  /** How many steps each name is from the end, by the same links (worked out once, from the end). */
+  const away = new Map<string, number>([[b, 0]]);
+  for (let ring = [b]; ring.length; ) {
+    const outer: string[] = [];
+    for (const id of ring)
+      for (const e of idx.incident.get(id) ?? []) {
+        const o = other(e, id);
+        if (!walks(e) || out.has(o) || away.has(o)) continue;
+        away.set(o, away.get(id)! + 1);
+        outer.push(o);
+      }
+    ring = outer;
+  }
 
   function drawTrail(): void {
     const end = played.stops[played.stops.length - 1] === b;
@@ -242,7 +266,7 @@ async function main(root: HTMLElement): Promise<void> {
 
   function drawNext(): void {
     const at = played.stops[played.stops.length - 1];
-    const links = from(at);
+    const links = from(at, new Set(played.stops));
     const q = find.value.trim().toLowerCase();
     const shown = q ? links.filter((e) => nameOf(idx, other(e, at)).toLowerCase().includes(q)) : all ? links : links.slice(0, FIRST);
     list.replaceChildren(
@@ -271,8 +295,12 @@ async function main(root: HTMLElement): Promise<void> {
     find.hidden = links.length <= FIRST;
     const n = played.links.length;
     const so = count(n, 'step');
-    steps.textContent = n ? `${so.charAt(0).toUpperCase()}${so.slice(1)} so far` : '';
-    $('play-where').textContent = links.length ? `Where next from ${nameOf(idx, at)}?` : `${nameOf(idx, at)} has no other links on the record.`;
+    // how far the end is now, so each step says whether it went closer
+    const left = away.get(at);
+    const far = left === undefined ? `${nameOf(idx, b)} cannot be reached from here.` : `${nameOf(idx, b)} is ${count(left, 'step')} away.`;
+    steps.textContent = n ? `${so.charAt(0).toUpperCase()}${so.slice(1)} so far. ${far}` : '';
+    back.hidden = n === 0 || played.shown === true;
+    $('play-where').textContent = links.length ? `Where next from ${nameOf(idx, at)}?` : `${nameOf(idx, at)} has no other links on the way. Go back a step.`;
   }
 
   function step(e: GEdge, at: string): void {
@@ -331,6 +359,14 @@ async function main(root: HTMLElement): Promise<void> {
   }
 
   find.addEventListener('input', drawNext);
+  back.addEventListener('click', () => {
+    if (!played.links.length) return;
+    played = { ...played, stops: played.stops.slice(0, -1), links: played.links.slice(0, -1) };
+    keep(day, played);
+    find.value = '';
+    all = false;
+    draw();
+  });
   show.addEventListener('click', () => {
     const links: string[] = [];
     for (let i = 1; i < way.length; i++) {
