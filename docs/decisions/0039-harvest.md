@@ -1,6 +1,6 @@
 # ADR-0039: Harvest the sources we already saved
 
-- Status: accepted as a tool; not on the nightly schedule (two pilot runs: 10 links, then 4 people and 8 links)
+- Status: accepted; nightly since 2026-11-13, one older story a night after the leads run (pilot runs: 10 links, then 4 people and 8 links)
 - Date: 2026-11-12
 
 ## Context
@@ -35,7 +35,7 @@ What limited it:
 
 So one story gave 2 links from its pairs and 8 links and 4 people from its newcomers. Newcomers yield more because a story's sources name many more people than the record holds. On the 2008 crash's sources the atlas matched famous namesakes for lesser-known bankers (a silent-film comedian for Citigroup's Charles Prince): the harvester must judge, and does.
 
-Harvest stays a tool to run by hand. A nightly harvest (one older story a night, newcomers then pairs) needs the founder's word.
+The founder gave the word for a nightly harvest on 2026-11-12: one older story a night, newcomers then pairs, run by the 03:00 leads run after its own merge, under the same lock ([night.md](../../tools/loop/night.md), "Harvest"; the order in `tools/loop/harvest-pick.py`).
 
 ## Consequences
 
