@@ -49,6 +49,14 @@ claims:
     src:
       - {s: procopius-persian-wars-2-loeb, at: "2.23.9–11", quote: "and they piled them up just as each one happened to fall, and filled practically all the towers with corpses, and then covered them again with their roofs."}
       - {s: procopius-persian-wars-2-loeb, at: "2.23.11", quote: "As a result of this an evil stench pervaded the city and distressed the inhabitants still more"}
+  - id: c8
+    rel: appears_in
+    to: history-of-the-wars-procopius
+    according_to: [procopius]
+    note: "Procopius says he can conceive no explanation except to refer the plague to God; he reports people dying even in sanctuaries where they sought refuge."
+    src:
+      - {s: "procopius-persian-wars-2-loeb", at: "2.22.2", quote: "But for this calamity it is quite impossible either to express in words or to conceive in thought any explanation, except indeed to refer it to God."}
+      - {s: "procopius-persian-wars-2-loeb", at: "2.22.11", quote: "they were dying constantly."}
 ---
 
 [[justinian-i]] fell ill. The numbers are Procopius's.

@@ -13,6 +13,7 @@ claims:
     note: "The treaty names the Emperor and his High Commissioners as the other party."
     src:
       - {s: treaty-of-nanking-1842-text, quote: "There shall henceforward be Peace and Friendship between Her Majesty the Queen of the United Kingdom of Great Britain and Ireland, and His Majesty the Emperor of China"}
+      - {s: treaty-of-nanking-1842-text, at: "Article III", quote: "His Majesty the Emperor of China cedes to Her Majesty the Queen of Great Britain, etc., the Island of Hongkong"}
   - id: c2
     rel: signatory_of
     to: treaty-of-tientsin-1858

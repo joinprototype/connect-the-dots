@@ -59,6 +59,8 @@ claims:
     note: "The Queen's plenipotentiary, Henry Pottinger, is described in the treaty as a Major General in the East India Company's service."
     src:
       - {s: treaty-of-nanking-1842-text, quote: "HENRY POTTINGER, Bart., a Major General in the Service of the East India Company"}
+      - {s: treaty-of-nanking-1842-text, at: "Article IV", quote: "the sum of Six Millions of Dollars as the value of Opium"}
+      - {s: treaty-of-nanking-1842-text, at: "Article VI", quote: "the sum of Twelve Millions of Dollars on account of the Expenses incurred"}
   - id: c9
     rel: signatory_of
     to: treaty-of-tientsin-1858

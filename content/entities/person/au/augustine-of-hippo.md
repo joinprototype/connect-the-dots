@@ -17,6 +17,7 @@ claims:
     note: "He wrote in defence of the Christian city against those who preferred their own gods; the sack of 410 is the occasion."
     src:
       - {s: "augustine-city-of-god-book-1-nicene-fathers", at: "preface", quote: "I have undertaken its defense against those who prefer their own gods to the Founder of this city"}
+      - {s: "augustine-city-of-god-book-1-nicene-fathers", at: "chapter 1", quote: "to that divine providence which is wont to reform the depraved manners of men by chastisement, and which exercises with similar afflictions the righteous and praiseworthy", by: augustine-of-hippo}
   - id: c3
     rel: authored
     to: city-of-god
