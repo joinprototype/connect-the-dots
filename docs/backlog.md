@@ -11,7 +11,7 @@ _Add ideas here with date and who suggested them._
 - 2026-10-16 (Sprint 1 self-check): decide time-slider semantics (snapshot vs cumulative history).
 - ~~2026-10-16 (Sprint 1 self-check): golden test that the TS explorer and Rust `ctd path` return identical paths and costs.~~ Done in Sprint 14: `tools/qa/paths-golden.mjs`, which found a hop-limit bug in the Rust one.
 - 2026-10-30 (Sprint 16): try the site on a real iPhone and Android phone: the iOS zoom fix, pinch and drag in the explorer and the Map, the morph, and Listen.
-- 2026-10-30 (Sprint 14): unit tests for the browser's pure logic (`web/src/lib/`: filters, dates, claims). Node runs TypeScript by itself, so `node --test` needs no new dependency. There are none today.
+- ~~2026-10-30 (Sprint 14): unit tests for the browser's pure logic (`web/src/lib/`: filters, dates, claims). Node runs TypeScript by itself, so `node --test` needs no new dependency. There are none today.~~ Started in Sprint 28: `npm --prefix web test` covers dates, the puzzle's day, names search and the hash. Modules that import values (claims, data) need `.ts` extensions in their imports before Node can load them.
 - ~~2026-10-16 (Sprint 1 self-check): ego-graph label collision and parallel-edge drawing.~~ Labels done (explorer in Sprint 3, story graphs in Sprint 9); parallel links merged in the explorer in Sprint 11.
 - 2026-10-16 (Sprint 1 self-check): verify the two draft claims (Gise at ARPA 1958; crisis → Pacem in Terris) or drop them.
 - 2026-10-16 (Sprint 1 self-check): perspectives.yaml covers only the Cold War pair; add contested sets as new domains arrive.
@@ -73,7 +73,7 @@ _Add ideas here with date and who suggested them._
 - 2026-11-02 (Sprint 22): stories run twice as long per scene as the first ones (median 98 words against 48). Every scene is now under 150. A writer's pass could bring the densest down without losing what the checks fought for.
 - 2026-11-02 (Sprint 22): routes are one graph, so two far-apart dots still connect through a government or a war. Israel to the attacks of 11 September is six hops through the U.S. war in Afghanistan, like any distant country. Nothing on that path is a false claim, but a route page could say when it runs only through a government.
 - 2026-11-01 (Sprint 22): a tile is parsed on the main thread. The Map holds 60 fps as it is, but a Worker would make room on slow phones. The explorer and the Earth still load everything, not what is in view.
-- 2026-11-01 (Sprint 22): a story with 21 scenes draws 7 px scene dots, too small for a thumb to pick one.
+- ~~2026-11-01 (Sprint 22): a story with 21 scenes draws 7 px scene dots, too small for a thumb to pick one.~~ Gone with the chapter player: Read (ADR-0031) has no scene dots; its bar shows "N of M".
 - 2026-11-01 (Sprint 21): a story map after 1800 still shows today's country names, so 1924 has a Pakistan on it. The Map's world files (ADR-0021) could give stories the names of their year.
 - 2026-10-17 (Sprint 4 review): an account column with no words of its own shows no quote (a reporter's or scholar's summary is never shown as the account's words). Where an account is known only through a summary, consider showing it as "as reported by <publisher>".
 

@@ -24,7 +24,8 @@ The site is live and listed (2026-10-30), the story and leads runs add to it eve
 
 ### Should
 - [x] S28-08 Harvest pilot: links from sources the stories already saved (ADR-0039). Kept 10 from 227 candidates, under its bar of 20; stays a tool run by hand.
-- [ ] S28-09 Harvest proposes the people a story's sources name often and the record lacks, each joined to two old entries (ADR-0039, "Next").
+- [x] S28-09 Harvest proposes the people a story's sources name often and the record lacks, each joined to two old entries (ADR-0039 newcomers). On Partition: Liaquat Ali Khan, Rajendra Prasad, Abul Kalam Azad and Winston Churchill, 8 links, all kept (2026-11-12).
+- [x] S28-14 Unit tests for the browser's pure logic: `npm --prefix web test` (dates, the puzzle's day, names search, hash).
 - [x] S28-10 A phone pass over the live site with touch checks: `sweep.mjs --touch --size=390x844` on `/w/`, `/play/`, `/ask/` and all 89 pages under `/c/` found no touch problem; each page's one console error is the zone's blocked bot-detection script (S28-12). (2026-11-12)
 - [ ] S28-13 The founder's own try on a real iPhone: the pinch fix, the puzzle, the covers (backlog, 2026-10-30).
 

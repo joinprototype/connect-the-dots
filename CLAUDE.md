@@ -34,6 +34,7 @@ cargo run -q -- build --synthetic 100000   # made-up entries on the real schema:
 cargo run -q -- serve                 # dev server on http://127.0.0.1:4321 with live reload (builds into .cache/serve/; dist/ is production only)
 npm --prefix web run build            # rebuild islands / explorer / story bundles into web/dist
 npm --prefix web run dev              # the built dist/ with the browser code live (HMR)
+npm --prefix web test                 # unit tests for the browser's pure logic (web/test/, Node strips the types)
 cargo fmt && cargo test && cargo clippy   # format (rustfmt.toml), engine tests and lints
 tools/deploy.sh [live]                # preview upload, or production at dots.joinprototype.com (docs/deploy.md); both put content online
 node tools/qa/cdp.mjs <url> [actions.js] --shot=out.png --scheme=light   # headless Chrome check: errors, logs, screenshot
