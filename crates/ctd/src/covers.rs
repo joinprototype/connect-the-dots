@@ -198,8 +198,8 @@ pub fn journey(id: &str, label: &str, stops: &[[f64; 2]], routes: &[(usize, usiz
 /// The title is set under the cover, so the web fills it. `colors[i]` and `links` index the same entries;
 /// the best-connected entry is drawn black, as the centre of the story. `None` with too few links.
 pub fn web(id: &str, colors: &[&str], links: &[(usize, usize)]) -> Option<String> {
-    // Only the story's web: its largest connected part and any other part of four or more. A lone
-    // entry or a pair drifts to the edge and shrinks the drawing around it to a knot.
+    // Only the story's web: its largest connected part. Any part not joined to it drifts to an edge and
+    // shrinks the drawing around it to a knot.
     let mut root: Vec<usize> = (0..colors.len()).collect();
     fn find(root: &mut [usize], i: usize) -> usize {
         let mut r = i;
@@ -218,13 +218,8 @@ pub fn web(id: &str, colors: &[&str], links: &[(usize, usize)]) -> Option<String
         let r = find(&mut root, i);
         size[r] += 1;
     }
-    let biggest = size.iter().copied().max().unwrap_or(0);
-    let keep: Vec<usize> = (0..colors.len())
-        .filter(|&i| {
-            let s = size[find(&mut root, i)];
-            s > 1 && (s == biggest || s >= 4)
-        })
-        .collect();
+    let biggest = (0..colors.len()).max_by_key(|&r| (size[r], std::cmp::Reverse(r))).unwrap_or(0);
+    let keep: Vec<usize> = (0..colors.len()).filter(|&i| find(&mut root, i) == biggest).collect();
     let new: HashMap<usize, usize> = keep.iter().enumerate().map(|(n, &i)| (i, n)).collect();
     let colors: Vec<&str> = keep.iter().map(|&i| colors[i]).collect();
     let links: Vec<(usize, usize)> = links.iter().filter_map(|(a, b)| Some((*new.get(a)?, *new.get(b)?))).collect();
