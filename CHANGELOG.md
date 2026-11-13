@@ -2,6 +2,11 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.5.19 (2026-11-13)
+
+- Nine people the record lacked, read from the sources three stories had already saved, with 29 sourced links: Liaquat Ali Khan, Rajendra Prasad, Abul Kalam Azad and Winston Churchill (Midnight, 1947); Elliot Richardson, Egil Krogh, William Rehnquist and William Ruckelshaus (Watergate); and McGeorge Bundy, with who sat on Operation MONGOOSE's oversight groups (the Cuban missile crisis).
+- The home page's shelf of stories opens with the two newest, each saying the day it was added; the featured stories follow.
+
 ## 0.5.18 (2026-11-12)
 
 - Ten new sourced links read from the sources two stories had already saved: Congress created the Federal Reserve, the FDIC, the CFTC and the Financial Crisis Inquiry Commission and passed Dodd-Frank; the Fed and the New York Fed funded Bear Stearns; the Senate Banking Committee is part of the Senate; the Commons and the Lords passed the Indian Independence Act.
