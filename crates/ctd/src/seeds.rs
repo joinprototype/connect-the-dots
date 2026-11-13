@@ -10,6 +10,10 @@
 //! - `deepen`: a written story, by the entries it lacks that are joined to two or more of its own
 //!   (most come from a harvest, ADR-0039), and the sourced links between its own entries that no
 //!   story tells.
+//! - `retell`: a written story told as a list of cases rather than one storyline, by its undated
+//!   scenes, its steps back in time and over long gaps, and its scenes that share no name with the
+//!   scenes beside them. A hint to read, never a verdict: an answer up front and a closing block of
+//!   explanations step out of order by design.
 
 use std::{
     collections::{BTreeMap, BTreeSet, HashMap},
@@ -51,12 +55,18 @@ pub struct Rules {
     pub thread_stories: (usize, usize),
     /// A story is about an entry when this share of its scenes or more shows it.
     pub about: f64,
+    /// A story whose jumps score this or more is a `retell` seed.
+    pub retell: f64,
+    /// Years between two scenes that count as a jump.
+    pub gap: f64,
+    /// An entry in more stories than this is the world they happen in: sharing it joins no scenes.
+    pub hub: usize,
 }
 
 /// How many names, stories and sources a row lists.
 const LIST: usize = 5;
 /// The kinds, in the order they are listed.
-pub const KINDS: [&str; 3] = ["new", "thread", "deepen"];
+pub const KINDS: [&str; 4] = ["new", "thread", "deepen", "retell"];
 
 /// Every seed, by kind in `KINDS` order, best first.
 pub fn find(kb: &Kb, rules: &Rules) -> Vec<Seed> {
@@ -200,8 +210,63 @@ pub fn find(kb: &Kb, rules: &Rules) -> Vec<Seed> {
             sources: top(edges.flat_map(|e| e.sources.iter().map(|s| s.id.as_str()))).into_iter().map(String::from).collect(),
         });
     }
+    out.extend(retell(kb, rules, &open, &shown_in));
     let rank = |k: &str| KINDS.iter().position(|x| *x == k);
     out.sort_by(|a, b| rank(a.kind).cmp(&rank(b.kind)).then(b.score.cmp(&a.score)).then(a.id.cmp(&b.id)));
+    out
+}
+
+/// Stories that read as a list of cases: scenes with no date, steps back in time after the opening
+/// scene, gaps of more than `gap` years, and scenes that share no name (but the world's hubs) with
+/// the scene before or after. Score: those faults per scene, plus the share of unjoined scenes.
+fn retell(kb: &Kb, rules: &Rules, open: &BTreeSet<usize>, shown_in: &HashMap<&str, BTreeSet<usize>>) -> Vec<Seed> {
+    let mut out = Vec::new();
+    for &i in open {
+        let ch = &kb.chapters[i];
+        let n = ch.shots.len();
+        if n < 3 {
+            continue;
+        }
+        let years: Vec<Option<f64>> = ch.shots.iter().map(|s| s["time"].as_str().and_then(|t| crate::edtf::parse(t).ok()).map(|w| w.start)).collect();
+        let names: Vec<BTreeSet<&str>> = ch
+            .shots
+            .iter()
+            .map(|s| {
+                shot_entries(s)
+                    .map(|(_, id)| kb.resolve(id).map_or(id, |e| e.id.as_str()))
+                    .filter(|id| shown_in.get(id).map_or(0, BTreeSet::len) <= rules.hub)
+                    .collect()
+            })
+            .collect();
+        let undated = years.iter().filter(|y| y.is_none()).count();
+        let steps: Vec<(f64, f64)> = (2..n).filter_map(|k| Some((years[k - 1]?, years[k]?))).collect();
+        let back = steps.iter().filter(|(a, b)| b < &(a - 1.0)).count();
+        let gaps = steps.iter().filter(|(a, b)| (b - a).abs() > rules.gap).count();
+        let joined = (0..n).filter(|&k| (k > 0 && !names[k].is_disjoint(&names[k - 1])) || (k + 1 < n && !names[k].is_disjoint(&names[k + 1]))).count();
+        let score = (undated + back + gaps) as f64 / n as f64 + (n - joined) as f64 / n as f64;
+        if score < rules.retell {
+            continue;
+        }
+        let mut faults = Vec::new();
+        for (count, one, many) in [(undated, "undated scene", "undated scenes"), (back, "step back in time", "steps back in time"), (gaps, "jump", "jumps")] {
+            if count > 0 {
+                faults.push(if count == 1 { format!("1 {one}") } else { format!("{count} {many}") });
+            }
+        }
+        if gaps > 0 {
+            let last = faults.len() - 1;
+            faults[last].push_str(&format!(" over {} years", rules.gap));
+        }
+        faults.push(format!("{} of {n} scenes share no name with a scene beside them", n - joined));
+        out.push(Seed {
+            kind: "retell",
+            score: (score * 100.0).round() as usize,
+            id: ch.id.clone(),
+            name: ch.title.clone(),
+            why: faults.join("; "),
+            sources: Vec::new(),
+        });
+    }
     out
 }
 
@@ -297,8 +362,17 @@ mod tests {
         files.push(chapter("two", &["o3"], &[]));
         let (kb, diags) = load("seeds", &files);
         assert!(diags.iter().all(|d| d.level != crate::diag::Level::Error), "{diags:?}");
-        let rules =
-            Rules { topics: vec!["person".into(), "org".into()], threads: vec!["person".into()], reach: 4, ties: 2, thread_stories: (3, 10), about: 0.4 };
+        let rules = Rules {
+            topics: vec!["person".into(), "org".into()],
+            threads: vec!["person".into()],
+            reach: 4,
+            ties: 2,
+            thread_stories: (3, 10),
+            about: 0.4,
+            retell: 0.5,
+            gap: 60.0,
+            hub: 8,
+        };
         let seeds = find(&kb, &rules);
         let new: Vec<&Seed> = seeds.iter().filter(|s| s.kind == "new").collect();
         assert_eq!(new.iter().map(|s| s.id.as_str()).collect::<Vec<_>>(), ["hub"], "lone reaches one entry");

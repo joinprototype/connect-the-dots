@@ -18,6 +18,8 @@ Since 2026-11-04 the story work runs on Codex, on the founder's ChatGPT plan; Cl
 2. **The queue stays full.** When either kind has fewer than 3 open items, the story run adds up to three from the seeds at the end of the queue, written as the founder's items are, and marked "from seeds". It skips any seed already in the queue in any state, so one the founder strikes (`- [-]`) never comes back, and anything the queue's notes rule out.
 3. **Two stories a run.** After its first story the run starts a second, of the other kind, if it started under 4 hours ago, Claude's weekly usage is under 75% and no Codex stage hit a usage limit. A first story that ended without a pull request makes the second its retry. Never more than two.
 
+4. **Stories told as one storyline** (the founder, 2026-11-13: a story that jumps from case to case is confusing; "investigative journalism, cohesive"). The story briefs gained "One storyline": one question, one spine in date order, each scene following from the last, a survey split into stories. `ctd seeds` lists `retell` rows: stories scored by their undated scenes, steps back in time, jumps over 60 years, and scenes that share no name with their neighbours (the world's hubs aside). A retell item keeps the story's id, entries, claims and sources and tells it again around one spine; retells come before new and deepen items. Nine were queued first, Why Empires Fall leading; the founder's own Epstein set is left to the founder.
+
 The founder still reads and merges every story, and still gives each release.
 
 ## Consequences

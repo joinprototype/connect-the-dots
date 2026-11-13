@@ -6,3 +6,6 @@ reach: 4                 # a new topic's sourced links reach this many entries o
 ties: 2                  # an entry a story lacks is joined to this many of its entries or more
 thread_stories: [3, 10]  # a thread runs through this many stories; in more it is the world they happen in
 about: 0.4               # a story is about an entry when this share of its scenes shows it
+retell: 0.5              # a story scoring this or more is a retell seed: its undated scenes, steps back in time and jumps per scene, plus its share of scenes joined to neither neighbour
+gap: 60                  # years between two scenes that count as a jump
+hub: 8                   # an entry in more stories than this joins no scenes: it is the world they happen in

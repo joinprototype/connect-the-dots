@@ -13,7 +13,7 @@ How the record grows without a person in every step ([ADR-0037](decisions/0037-t
 1. `ctd gaps`: the links open data has and the record lacks (`.cache/gaps.tsv`).
 2. The missing-links page's issues on GitHub, titled "Source for: …": a reader sent a source. These go first.
 3. A puzzle's dead ends and Ask's "no written way" pairs, as they are logged.
-4. Story ideas in `.cache/stories/queue.md`, for the story run below. When the queue runs low, the run adds topics from `ctd seeds`: entries no story shows, names that run through several stories with none of their own, and stories that lack entries joined to theirs ([ADR-0041](decisions/0041-more-stories.md)).
+4. Story ideas in `.cache/stories/queue.md`, for the story run below. When the queue runs low, the run adds topics from `ctd seeds`: entries no story shows, names that run through several stories with none of their own, stories that lack entries joined to theirs, and stories told as a list of cases, to be retold as one storyline ([ADR-0041](decisions/0041-more-stories.md)).
 5. The texts a story run already saved: a harvest reads them for links the story did not use ([Harvest](#harvest), [ADR-0039](decisions/0039-harvest.md)).
 
 ## One run
