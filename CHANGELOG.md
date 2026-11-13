@@ -2,6 +2,11 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.5.18 (2026-11-12)
+
+- Ten new sourced links read from the sources two stories had already saved: Congress created the Federal Reserve, the FDIC, the CFTC and the Financial Crisis Inquiry Commission and passed Dodd-Frank; the Fed and the New York Fed funded Bear Stearns; the Senate Banking Committee is part of the Senate; the Commons and the Lords passed the Indian Independence Act.
+- The Indian National Congress and the All-India Muslim League are listed under the names their sources use.
+
 ## 0.5.17 (2026-11-12)
 
 - The home page names today's puzzle under the picture of the Map, "From United Arab Emirates to Grover Cleveland", with how few steps it takes, or that you solved it today. "More ways in" lists the puzzle too.
