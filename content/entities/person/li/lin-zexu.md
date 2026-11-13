@@ -27,4 +27,5 @@ claims:
     note: "Lin asked Queen Victoria to uproot the opium plants in the Indian territories he named and replace them with grain."
     src:
       - {s: lin-zexu-1839-letter-to-queen-victoria, quote: "You, the queen of the said honorable nation, ought immediately to have the plant in those parts plucked up by the very root!"}
+      - {s: lin-zexu-letter-1839, at: "paragraph on opium cultivation in Bengal and Bombay", quote: "We urge you to eradicate the opium plants there and replace them with beneficial crops.", by: lin-zexu}
 ---
