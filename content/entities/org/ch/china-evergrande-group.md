@@ -23,4 +23,10 @@ claims:
     src:
       - {s: cnn-2024-09-13-china-fines-pwc-evergrande, quote: "Chinese authorities have been examining PwC’s role in the accounting of Hengda Real Estate since the CSRC accused the developer in March of a $78-billion fraud over a period of two years through 2020."}
       - {s: accountingtoday-2024-09-13-china-penalty-pwc-evergrande, quote: "Authorities have said developer Evergrande's main onshore unit Hengda overstated its revenue by 564 billion yuan in the two years through 2020."}
+  - id: c3
+    rel: headquartered_in
+    to: shenzhen
+    note: "The Associated Press described Evergrande as headquartered in Shenzhen in 2025."
+    src:
+      - {s: ap-2025-08-25-evergrande-delisted, at: "Evergrande’s status", quote: "Evergrande, headquartered in southern China’s Shenzhen, near Hong Kong"}
 ---

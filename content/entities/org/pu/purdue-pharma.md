@@ -35,4 +35,9 @@ claims:
     src:
       - {s: doj-2020-11-24-purdue-pleads-guilty, at: "Penalties", quote: "Purdue has also agreed to a civil settlement that provides the United States with an allowed, unsubordinated, general unsecured bankruptcy claim for recovery of $2.8 billion to resolve its civil liability under the False Claims Act."}
       - {s: doj-2020-11-24-purdue-pleads-guilty, at: "End of release", quote: "the claims resolved by the civil settlements are allegations only. There has been no determination of liability in the civil matters."}
+  - id: c4
+    rel: headquartered_in
+    to: stamford-connecticut
+    src:
+      - {s: connecticut-2019-purdue-amended-complaint, at: "The Parties, paragraph 5", quote: "Defendant Purdue Pharma L.P. is a limited partnership established in Delaware with its principal place of business in Connecticut. Its corporate headquarters is at One Stamford Forum, Stamford, Connecticut."}
 ---
