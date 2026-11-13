@@ -51,6 +51,15 @@ claims:
     to: russia-a-country-study-1996
     role: "figures for 1991"
     src: [{s: loc-1996-russia-economy-historical-background, quote: "In 1991 the Soviet GDP had declined 17 percent and was declining at an accelerating rate."}]
+  - id: c9
+    rel: involved
+    to: mikhail-gorbachev
+    according_to: [yegor-gaidar]
+    role: "Western credits constrained his choices about using force abroad, in Gaidar's later interpretation"
+    src:
+      - {s: aei-2007-04-gaidar-soviet-collapse, at: "The Crash", quote: "Government-to-government loans were bound to come with a number of rigid conditions."}
+      - {s: aei-2007-04-gaidar-soviet-collapse, at: "The Crash", quote: "if the Soviet military crushed Solidarity Party demonstrations in Warsaw, the Soviet Union would not have received the desperately needed $100 billion from the West."}
+      - {s: aei-2007-04-gaidar-soviet-collapse, at: "The Crash", quote: "a number of Soviet agencies urged him to secure at any cost these “politically motivated credits.”"}
 ---
 
 In its last two years the [[soviet-union]] saw output fall, prices rise and foreign debt go unpaid. [[yegor-gaidar]] traces this to oil and grain; [[chris-miller]] gives more weight to the anti-alcohol campaign, the war in Afghanistan and food subsidies, and in his book to politics.
