@@ -55,4 +55,11 @@ claims:
     according_to: ["warren-commission"]
     src:
       - {s: "nara-warren-report-foreword", quote: "President Johnson sought to avoid parallel investigations and to concentrate fact-finding in a body having the broadest national mandate.", at: "The Commission’s Function"}
+  - id: c8
+    rel: member_of
+    to: us-congress
+    when: "1937/1949"
+    role: "House of Representatives"
+    src:
+      - {s: nasa-space-act-1958, quote: "Lyndon B. Johnson (1908-1973) (DTX) was elected to the House of Representatives in 1937 and served until 1949."}
 ---

@@ -51,4 +51,22 @@ claims:
     role: "defended the expense at Rice University"
     src:
       - {s: jfk-1962-09-12-rice, quote: "I think that we must pay what needs to be paid.", by: john-f-kennedy}
+  - id: c7
+    rel: involved
+    to: lyndon-b-johnson
+    role: "Polled political leaders about committing to an accelerated Apollo program"
+    src:
+      - {s: launius-sp-2004-4503, quote: "After gaining these technical opinions, Johnson began to poll political leaders for their sense of the propriety of committing the nation to an accelerated space program with Project Apollo as its centerpiece."}
+  - id: c8
+    rel: involved
+    to: wernher-von-braun
+    role: "Led the agency developing the Saturn boosters used to launch Apollo"
+    src:
+      - {s: launius-sp-2004-4503, quote: "NASA inherited the effort to develop the Saturn family of boosters used to launch Apollo to the Moon in 1960 when it acquired the Army Ballistic Missile Agency under Wernher von Braun."}
+  - id: c9
+    rel: involved
+    to: langley-research-center
+    role: "Designed, built and operated facilities for Apollo rendezvous and astronaut preparation"
+    src:
+      - {s: nasa-langley-first-step, quote: "facilities used to develop techniques for LOR and prepare the astronauts for Apollo missions were designed, built and operated by the Langley Research Center."}
 ---
