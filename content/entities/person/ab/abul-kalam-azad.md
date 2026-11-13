@@ -22,5 +22,5 @@ claims:
     src:
       - s: "partition-pandey-remembering"
         at: "p. 171"
-        quote: "Maulana Abul Kalam Azad, the education minister of India, forwarded this letter to the home minister, Vallabhbhai Patel, who responded briefly:"
+        quote: "Maulana Abul Kalam Azad, the education minister of India"
 ---

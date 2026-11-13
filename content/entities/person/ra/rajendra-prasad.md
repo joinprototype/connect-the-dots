@@ -21,5 +21,5 @@ claims:
     src:
       - s: "nehru-selected-works-v3"
         at: "p. 16, Nehru to Mountbatten, 19 July 1947"
-        quote: "We propose that the following existing Members of the Cabinet should continue: Sardar Vallabhbhai Patel, Maulana Abul Kalam Azad, Dr. Rajendra Prasad, Dr. John Matthai, Shri Rajagopalachari, Sardar Baldev Singh, Mr. Jagjivan Ram, Mr. C.H. Bhabha and Jawaharlal Nehru."
+        quote: "We propose that the following existing Members of the Cabinet should continue: Sardar Vallabhbhai Patel, Maulana Abul Kalam Azad, Dr. Rajendra Prasad"
 ---
