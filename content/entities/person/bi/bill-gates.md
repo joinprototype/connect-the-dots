@@ -101,6 +101,13 @@ claims:
     role: "partner with Paul Allen"
     src:
       - {s: spokesman-2025-04-03-birth-of-microsoft, quote: "They called their partnership Traf-O-Data."}
+  - id: c311
+    rel: head_of
+    to: gates-foundation
+    when: "2026"
+    title: "chair"
+    src:
+      - {s: gates-foundation-fact-sheet, at: "Governing Board and Executive Leadership", quote: "As chair of the Gates Foundation, Bill Gates shapes and approves foundation strategies, advocates for the foundation’s issues, and sets the organization’s overall direction."}
 ---
 
 Bill Gates co-founded [[microsoft]] with [[paul-allen]] in 1975, in [[albuquerque]]. He later turned to philanthropy.
