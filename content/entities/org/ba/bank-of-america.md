@@ -38,4 +38,13 @@ claims:
     note: "The words of a Bank of America spokesperson, as American Banker quotes them."
     src:
       - {s: americanbanker-2026-08-04-wyden-report, quote: "We take our legal and regulatory obligations seriously and, as we have previously said, the bank did not facilitate wrongdoing.", by: bank-of-america}
+  - id: c52
+    rel: settled_with
+    to: us-department-of-justice
+    when: "2014-08-21"
+    case: "2014 mortgage-backed securities settlement"
+    title: "civil settlement; no release from potential criminal prosecution"
+    note: "DOJ said the civil agreement neither released individuals from civil charges nor absolved the bank, affiliates or individuals from potential criminal prosecution."
+    src:
+      - {s: doj-2014-08-21-bank-of-america-settlement, at: "settlement announcement", quote: "The settlement does not release individuals from civil charges, nor does it absolve Bank of America, its current or former subsidiaries and affiliates or any individuals from potential criminal prosecution."}
 ---

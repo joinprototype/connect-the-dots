@@ -13,4 +13,10 @@ claims:
     title: "auditor"
     src:
       - {s: valukas-2010-03-11-lehman-examiner-report, at: "Volume 1, Executive Summary", quote: "Lehman’s auditors, Ernst & Young, were aware of but did not question Lehman’s use and nondisclosure of the Repo 105 accounting transactions."}
+  - id: c2
+    rel: "adopted"
+    to: "repo-105"
+    note: "Lehman treated Repo 105 transactions as sales, temporarily removing about $50 billion of assets at the ends of the first two quarters of 2008; it retained obligations to repurchase them."
+    src:
+      - {s: "valukas-2010-03-11-lehman-examiner-report", at: "Vol. 1, pp. 6–8"}
 ---
