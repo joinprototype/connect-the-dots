@@ -14,4 +14,11 @@ claims:
     to: us-government
     src:
       - {s: fcic-2011-final-report, at: "p. XVII", quote: "We conclude this financial crisis was avoidable. The crisis was the result of human action and inaction, not of Mother Nature or computer models gone haywire."}
+  - id: c2
+    rel: "authored"
+    to: "financial-crisis-inquiry-report"
+    when: "2011-01"
+    note: "Six commissioners adopted the majority findings. Three commissioners issued a joint dissent and Peter Wallison issued a separate dissent. The majority found that housing goals contributed only marginally to Fannie’s and Freddie’s purchases of risky mortgages."
+    src:
+      - {s: "fcic-2011-final-report", at: "conclusions, pp. xvii–xxviii"}
 ---
