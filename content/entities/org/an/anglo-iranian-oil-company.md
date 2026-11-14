@@ -15,10 +15,4 @@ claims:
     note: "The CIA history gives the new name in its account of the 1954 oil agreement."
     src:
       - {s: cia-battle-for-iran-1981, quote: "British Petroleum, the new name of the AIOC, owned 40%"}
-  - id: c2
-    rel: headquartered_in
-    to: london
-    note: "Until 1954, when the company’s name was changed to British Petroleum; the source dates the headquarters at Britannic House to December 1954."
-    src:
-      - {s: bp-our-history, at: "1954", quote: "the board changed the company’s name to the British Petroleum Company. Fixing the company’s new name plate on its headquarters at Britannic House in London, December 1954"}
 ---

@@ -18,6 +18,7 @@ claims:
   - id: c2
     rel: headquartered_in
     to: washington-dc
+    note: "Historical headquarters: the OIG overview describes USAID's earlier operations, before the agency's status changed."
     src:
-      - {s: usaid-oig-overview, at: "USAID Overview", quote: "With headquarters in Washington, D.C. and missions around the world, USAID partners with private voluntary organizations, indigenous organizations, universities, the private sector, international agencies, other governments, and other U.S. Government agencies."}
+      - {s: usaid-oig-overview, at: "OIG Oversight: USAID Overview", quote: "With headquarters in Washington, D.C. and missions around the world, USAID partners with private voluntary organizations, indigenous organizations, universities, the private sector, international agencies, other governments, and other U.S. Government agencies."}
 ---
