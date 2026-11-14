@@ -19,5 +19,5 @@ claims:
     rel: headquartered_in
     to: washington-dc
     src:
-      - {s: usaid-oig-overview, at: "USAID Overview", quote: "With headquarters in Washington, D.C. and missions around the world, USAID partners with private voluntary organizations, indigenous organizations, universities, the private sector, international agencies, other governments, and U.S. government agencies in support of U.S. foreign policy."}
+      - {s: usaid-oig-overview, at: "USAID Overview", quote: "With headquarters in Washington, D.C. and missions around the world, USAID partners with private voluntary organizations, indigenous organizations, universities, the private sector, international agencies, other governments, and other U.S. Government agencies."}
 ---
