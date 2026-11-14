@@ -5,5 +5,6 @@ type: work
 name: "The Financial Crisis Inquiry Report"
 summary: "Report of January 2011 by the U.S. commission on the crisis, with the dissents of four of its ten members."
 when: "2011-01"
+finding: {s: "fcic-2011-final-report", at: "p. xvii", quote: "We conclude this financial crisis was avoidable."}
 claims: []
 ---

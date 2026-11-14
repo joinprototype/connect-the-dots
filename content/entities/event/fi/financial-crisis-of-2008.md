@@ -60,4 +60,16 @@ claims:
     to: standard-and-poors
     src:
       - {s: psi-2011-04-13-levin-coburn-report, quote: "Inaccurate AAA credit ratings introduced risk into the U.S. financial system and constituted a key cause of the financial crisis."}
+      - {s: fcic-2011-final-report, at: "p. 146", quote: "The machine churning out CDOs would not have worked without the stamp of approval given to these deals by the three leading rating agencies: Moody’s, S&P, and Fitch."}
+  - id: c11
+    rel: "involved"
+    to: "credit-suisse"
+    src:
+      - {s: "doj-2013-11-22-serageldin-sentencing", at: "opening", quote: "Once discovered, SERAGELDIN’s manipulation of these bond prices contributed to Credit Suisse taking a $2.65 billion write-down of its 2007 year-end financial results."}
+  - id: c12
+    rel: involved
+    to: us-department-of-justice
+    note: "In Frontline’s January 2013 broadcast, Justice Department criminal division chief Lanny Breuer said criminal cases required proof of every element beyond a reasonable doubt. The interview discussed proving individual intent separately from his concern about the economic effects of prosecuting an institution."
+    src:
+      - {s: "pbs-frontline-2013-01-22-untouchables", at: "Breuer interview, proof standard and closing discussion of intent and institutional prosecutions", quote: "What makes a criminal case is that I can prove beyond a reasonable doubt every element of a crime."}
 ---
