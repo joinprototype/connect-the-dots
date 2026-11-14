@@ -12,4 +12,9 @@ claims:
     to: state-street
     src:
       - {s: state-street-10k-2025, at: "Item 1, Investment Management", quote: "Our Investment Management line of business provides a comprehensive range of investment management solutions and products for our clients through State Street Investment Management (previously State Street Global Advisors)."}
+  - id: c2
+    rel: headquartered_in
+    to: boston
+    src:
+      - {s: ssga-contact, at: "Office Locations", quote: "Boston (Headquarters) State Street Investment Management One Congress Street Boston, MA 02114-2016 United States"}
 ---

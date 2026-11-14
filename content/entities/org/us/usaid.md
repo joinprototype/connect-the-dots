@@ -15,4 +15,9 @@ claims:
     note: "Sources give the size as a $34 million contract (the Crimson, 2004) and a $40 million grant (the Crimson, August 2004, and Harvard Magazine)."
     src:
       - {s: harvard-opinion-2004, quote: "In 1992, USAID entered into a Cooperative Agreement with the Harvard Institute for International Development (“HIID”), a Harvard University entity, to create a program to support the Russian reform effort."}
+  - id: c2
+    rel: headquartered_in
+    to: washington-dc
+    src:
+      - {s: usaid-oig-overview, at: "USAID Overview", quote: "With headquarters in Washington, D.C. and missions around the world, USAID partners with private voluntary organizations, indigenous organizations, universities, the private sector, international agencies, other governments, and U.S. government agencies in support of U.S. foreign policy."}
 ---
