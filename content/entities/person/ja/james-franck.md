@@ -24,5 +24,5 @@ claims:
     rel: worked_at
     to: manhattan-project
     src:
-      - {s: nsa-ebb162-atomic-bomb-primary-sources, at: "Document 16 commentary", quote: "Physicists Leo Szilard and James Franck, a Nobel Prize winner, were on the staff of the Metallurgical Laboratory at the University of Chicago , a cover for the Manhattan Project program to produce fuel for the bomb."}
+      - {s: nsa-ebb162-atomic-bomb-primary-sources, at: "Document 16 commentary", quote: "Physicists Leo Szilard and James Franck, a Nobel Prize winner, were on the staff of the “Metallurgical Laboratory” at the University of Chicago, a cover for the Manhattan Project program to produce fuel for the bomb."}
 ---
