@@ -30,4 +30,9 @@ claims:
     to: us-government
     src:
       - {s: 911-commission-staff-monograph-terrorist-financing-2004, at: "p. 146, note 166", quote: "The SEC is an independent federal agency entrusted with enforcing the federal securities laws."}
+  - id: c4
+    rel: headquartered_in
+    to: washington-dc
+    src:
+      - {s: fdicoig-cigfo-2019, at: "U.S. Securities and Exchange Commission, Background", quote: "The SEC’s headquarters are in Washington, DC, and the agency has 11 regional offices located throughout the country."}
 ---
