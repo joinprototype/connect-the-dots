@@ -33,6 +33,7 @@ claims:
   - id: c4
     rel: headquartered_in
     to: washington-dc
+    note: "Headquarters as described in the July 2019 report."
     src:
-      - {s: fdicoig-cigfo-2019, at: "U.S. Securities and Exchange Commission, Background", quote: "The SEC’s headquarters are in Washington, DC, and the agency has 11 regional offices located throughout the country."}
+      - {s: fdicoig-cigfo-2019, at: "Office of Inspector General, U. S. Securities and Exchange Commission — Background (HTML report text; printed p. 46)", quote: "The SEC’s headquarters are in Washington, DC, and the agency has 11 regional offices located throughout the country."}
 ---
