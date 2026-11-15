@@ -3,216 +3,193 @@ uid: 01M6DMZR6PF6T0K9RVM84F5ZKB
 id: family-hands
 type: chapter
 title: Family Hands
-subtitle: Who holds the big beauty and luxury companies, by what structure, and how much say each holder really has
-summary: At some big beauty, eyewear and jewellery firms a family holds control, at some a large minority, at some nothing. Voting rules and holding companies give those stakes different powers; company decisions have also brought regulatory fines and court challenges.
+subtitle: How Hermès held its family majority through a four-year dispute with LVMH
+summary: LVMH announced a stake in Hermès in October 2010. The family pooled a majority in H51; the French markets regulator penalized LVMH’s disclosures, which LVMH disputed. A September 2014 settlement left family control intact and sent LVMH’s shares to its investors.
 ---
 
-A family can hold a third of a company, a majority of its votes, or both ownership and executive office. At the end of 2024 the Bettencourt Meyers family held 34.76 per cent of L’Oréal; the Arnault family group held 49.00 per cent of LVMH’s capital and 64.81 per cent of its votes. Estée Lauder’s 2022 proxy put the Lauder family’s voting power at about 84 per cent. Shiseido reported no controlling shareholder.
-
-These stakes are shares of companies, not shares of the beauty, eyewear or jewellery markets. The companies’ decisions matter too: French authorities found coordinated price increases and restrictions on opticians’ prices and sales channels. A connection is not evidence of wrongdoing.
+How did Hermès keep family control through its dispute with LVMH? The family pooled 50.15 per cent of Hermès’s capital in H51, adding a majority block to its partnership safeguards. The AMF allowed the family to pool its shares without bidding for the rest, and the Paris Court of Appeal upheld that waiver. LVMH denied seeking control; in 2014, the companies settled, and LVMH distributed its stake to its shareholders. The family kept control.
 
 ```scene
-- shot: the-question
-  view: map
-  camera: {center: [2.3522, 48.8566], zoom: 9.2, pitch: 20, duration: 6}
-  places: [paris]
-  time: "2024-12-31"
-  reveal: [paris, loreal, lvmh, hermes-international]
-  reveal_claims: [francoise-bettencourt-meyers#c1]
-  overlay: {kind: stat, value: "34.76%", label: "The share of L’Oréal that its 2024 report counts for the Bettencourt Meyers family", source: loreal-urd-2024-governance, quote: "Françoise Bettencourt Meyers and family ( 1 ) : 34.76%"}
-  narration: "**Who gets to decide?** In Paris on 3 September 2014, Bernard Arnault and Axel Dumas agreed to end their companies’ fight over Hermès: LVMH would distribute its Hermès shares, while Arnault’s group would retain about 8.5 per cent and stop buying for five years. The family kept control through the conflict with its growing outside shareholder. Elsewhere, families held different powers: the Bettencourt Meyers family owned 34.76 per cent of L’Oréal at the end of 2024, while the Lauders held about 84 per cent of Estée Lauder’s votes in 2022. Voting rules, agreements and executive office determined what an outside shareholder could challenge."
+- shot: "the-question"
+  view: "map"
+  camera: {"center": [2.3522, 48.8566], "zoom": 9.2, "pitch": 20, "duration": 6}
+  places: ["paris"]
+  time: "2010-10-23"
+  reveal: ["paris", "hermes-international", "lvmh", "lvmh-hermes-stake-fight"]
+  reveal_claims: ["lvmh#c3"]
+  overlay: {kind: "quote", source: "reuters-lvmh-hermes-2010", quote: "LVMH has no intention of launching a tender offer, taking control of Hermes, nor seeking board representation,", caption: "LVMH statement, quoted by Reuters, 23 October 2010"}
+  narration: "**How did Hermès keep family control?** On 23 October 2010, LVMH announced 15,016,000 Hermès shares: 14.2 per cent, rising to 18,017,246 shares, or 17.1 per cent, after conversion of derivatives. Led by chief executive Bernard Arnault, LVMH said it intended to remain a long-term shareholder and preserve the house’s family character. It ruled out control or a board seat; Hermès’s managers would decide how to respond."
   duration: 14
 
-- shot: loreal-holders
-  view: graph
-  focus: loreal
-  time: "2024-12-31"
-  reveal: [loreal, nestle, francoise-bettencourt-meyers, tethys-sas, financiere-l-arcouest]
-  reveal_claims: [nestle#c2, francoise-bettencourt-meyers#c1, francoise-bettencourt-meyers#c2, tethys-sas#c1, financiere-l-arcouest#c1]
-  overlay: {kind: quote, source: loreal-nestle-2021, quote: "We are delighted to continue the development of L’Oréal with the support of the Bettencourt Meyers family and Nestlé.", caption: "Nicolas Hieronimus, L’Oréal chief executive, 7 December 2021"}
-  narration: "**The chief executive’s backers.** In December 2021 Nicolas Hieronimus said: “We are delighted to continue the development of L’Oréal with the support of the Bettencourt Meyers family and Nestlé.” By the end of 2024, Françoise Bettencourt Meyers and two other family members sat on the board; L’Oréal counted the family at 34.76 per cent and Nestlé at 20.14. Most family shares sat in Téthys, with 152,514,292, and Financière L’Arcouest, with 27,650,000, out of 534,312,021 shares. L’Oréal said stable governance supported long-term objectives, but strategic decisions belonged to a 16-member board: three family directors, two linked to Nestlé and seven independents, alongside the chairman, chief executive and two employee representatives."
-  duration: 14
-
-- shot: loreal-votes
-  view: graph
-  focus: loreal
-  time: "2021-12-07"
-  reveal: [loreal, nestle, francoise-bettencourt-meyers, amf, loreal-nestle-buyback-2021, bettencourt-nestle-agreement-2004]
-  reveal_claims: [loreal-nestle-buyback-2021#c1, loreal-nestle-buyback-2021#c2, loreal-nestle-buyback-2021#c3, loreal-nestle-buyback-2021#c4, bettencourt-nestle-agreement-2004#c1, bettencourt-nestle-agreement-2004#c2]
-  overlay: {kind: quote, source: loreal-urd-2024-voting-rights, quote: "Since the Annual General Meeting of 29 April 2004 , double voting rights have been eliminated.", caption: "L’Oréal, 2024 universal registration document"}
-  narration: "**The family steps aside.** In Paris on 7 December 2021, L’Oréal’s board approved buying 4 per cent of its shares from Nestlé; directors tied to Nestlé and the Bettencourt Meyers family did not take part in the deliberations or vote. Chairman Jean-Paul Agon called it a milestone in “reinforcing the shareholder stability of L’Oréal around the Bettencourt Meyers founding family and Nestlé.” Cancelling the shares raised the family’s stake past one third without a family purchase; the AMF waived a mandatory bid, and the family undertook not to use votes above 33.33 per cent until the 2025 meeting. L’Oréal had abolished double votes in 2004, and its report says the family’s 2004 agreement with Nestlé expired on 21 March 2018, ending their concerted action: the buyback strengthened an existing holder without adding directors."
-  duration: 14
-
-- shot: ten-votes
-  view: map
-  camera: {center: [-73.9772, 40.7648], zoom: 11.2, pitch: 20, duration: 6}
-  places: [new-york-city]
-  time: "2022-09-29"
-  reveal: [new-york-city, estee-lauder-companies, lal-family-corporation, william-p-lauder, lauder-stockholders-agreement, blackrock, the-vanguard-group]
-  reveal_claims: [lal-family-corporation#c1, william-p-lauder#c1, william-p-lauder#c2, lauder-stockholders-agreement#c1, lauder-stockholders-agreement#c2, blackrock#fh1, the-vanguard-group#fh1]
-  overlay: {kind: stat, value: "About 84%", label: "The Lauder family’s share of the voting power of The Estée Lauder Companies, by its 2022 proxy", source: elc-proxy-2022, quote: "The Lauder family has direct and indirect holdings of approximately 84% of the voting power of the Company as of the Record Date."}
-  narration: "**An invitation to vote.** From 767 Fifth Avenue, William P. Lauder invited shareholders to Estée Lauder’s November 2022 meeting. The company defended keeping him and Richard Parsons on board committees despite their lack of independence: it said both contributed business, leadership and financial experience, and Lauder was a significant shareholder from the founding family. Class A shares carried one vote each and Class B ten, giving his family about 84 per cent of voting power, the proxy said. Family signatories had committed to support named director nominees; BlackRock and Vanguard held only 1.1 and 1.2 per cent of votes. The family could elect the board, and the company chose to retain insiders in its governance."
-  duration: 14
-
-- shot: arnault-chain
-  view: graph
-  focus: lvmh
-  time: "2024-12-31"
-  reveal: [lvmh, christian-dior-se, financiere-agache, bernard-arnault]
-  reveal_claims: [christian-dior-se#c1, financiere-agache#c1, financiere-agache#c2]
-  overlay: {kind: stat, value: "49.00% of capital, 64.81% of votes", label: "The Arnault family group’s share of LVMH at 31 December 2024, by LVMH’s report", source: lvmh-urd-2024, quote: "Arnault family group (b) 245,173,934 477,086,351 49.00 64.81"}
-  narration: "**Keeping control.** In September 2026 Bernard Arnault’s family proposed merging its holding companies to “ensure the long-term stability of its control” over LVMH, Christian Dior said, with Arnault remaining a general partner and manager. LVMH counted the family at 49.00 per cent of capital and 64.81 of votes in 2024, with Dior alone at 41.87 and 56.77: registered shares held over three years carried double votes. No other holder reached 5 per cent in 2024; the 2025 report put the family at 49.8 and 65.9, and FashionUnited reported 50.33 and 66.27 in 2026. The plan would go to Dior’s December meeting, followed by a cash offer for the remaining shares."
-  duration: 14
-
-- shot: sephora-tiffany
-  view: graph
-  focus: lvmh
-  time: "2021-01-07"
-  reveal: [lvmh, sephora, tiffany-and-co, bernard-arnault]
-  reveal_claims: [sephora#c1, lvmh#c1, bernard-arnault#c1]
-  overlay: {kind: quote, source: lvmh-2019-11-25-agreement-with-tiffany, quote: "The acquisition of Tiffany will strengthen LVMH's position in jewelry and further increase its presence in the United States.", caption: "LVMH, announcing the Tiffany agreement, 25 November 2019"}
-  narration: "**Buying the blue box.** When Bernard Arnault agreed to buy Tiffany in November 2019, he promised the dedication given to LVMH’s other houses; the company said the purchase would strengthen its jewellery business and U.S. presence. LVMH completed the deal on 7 January 2021 at $131.50 a share in cash, adding Tiffany alongside Sephora, which it calls the world’s leading selective beauty retailer. Arnault sat at both ends: chairman and chief executive of LVMH, general partner of Agache SCA and chairman of Christian Dior SE. Here the holder also ran the buyer, and the acquisition extended the business under his direction."
-  duration: 14
-
-- shot: hermes-cries-foul
-  view: map
-  camera: {center: [2.3522, 48.8566], zoom: 12.4, pitch: 20, duration: 6}
-  places: [paris]
+- shot: "hermes-cries-foul"
+  view: "graph"
+  focus: "hermes-international"
   time: "2010-10-24"
-  reveal: [paris, lvmh-hermes-stake-fight, hermes-international, lvmh]
-  reveal_claims: [lvmh-hermes-stake-fight#c1, lvmh-hermes-stake-fight#c2]
-  overlay: {kind: quote, source: thelocal-2013-07-02-lvmh-fine, quote: "LVMH, led by tycoon Bernard Arnault, later built this holding up to 22.6 percent prompting Hermes to cry foul and accuse Arnault of surreptitiously trying to add Hermes to his large stable of brands.", caption: "The Local, 2 July 2013; Hermès’s accusation"}
-  narration: "**An unwelcome shareholder.** In October 2010 Bernard Arnault’s LVMH announced it held 14.2 per cent of Hermès, rising to 17 through financial contracts, and said it sought a long-term investment rather than control. On 24 October Hermès answered that its family holding remained united and its partnership limited by shares guaranteed long-term control. Later, the AMF found that LVMH had concealed stages of its stakebuilding through swaps with three banks. As the holding grew to 22.6 per cent in The Local’s report and 23.1 in City AM’s, Hermès accused Arnault of trying to add it to his brands; their dispute moved to the regulator and the courts."
+  reveal: ["hermes-international", "lvmh-hermes-stake-fight", "lvmh"]
+  reveal_claims: ["lvmh-hermes-stake-fight#c2"]
+  overlay: {kind: "quote", source: "reuters-lvmh-hermes-2010", quote: "a corporate structure that concentrates power in the hands of a ruling committee controlled by the family.", caption: "Reuters on Hermès’s limited partnership, 23 October 2010; Hermès reaffirmed its protection the following day"}
+  narration: "**The family answers.** The following evening, Hermès said its family shareholders remained united and planned no significant sale of capital. Its limited partnership structure guaranteed long-term control, the company said: outside investors could buy minority holdings through the stock market. LVMH had said it supported the family’s strategy; Hermès’s reply insisted that the family would continue to decide it."
   duration: 14
 
-- shot: h51
-  view: graph
-  focus: hermes-international
-  time: "2025-12-31"
-  reveal: [hermes-international, h51]
-  reveal_claims: [h51#c1]
-  overlay: {kind: stat, value: "54.3% of shares, about 64% of votes", label: "H51’s share of Hermès International at 31 December 2025, by Hermès’s report", source: hermes-urd-2025, quote: "H51 57,375,794 54.3 114,655,588 64.0 114,655,588 64.2"}
-  narration: "**The family’s gatekeeper.** Axel Dumas took office on 5 June 2013, appointed the day before by Hermès’s active partner. That family company, now Émile Hermès SAS, could appoint and dismiss executive chairmen; Hermès said independence preserved its long-term strategy. By the end of 2025 H51 was the majority limited partner, with 54.3 per cent of shares and about 64 per cent of votes; H51, H2 and other relatives together held 66.7 per cent, both holding companies belonged only to family members, and Hermès reported no other holder above 5 per cent. Since 13 December 2011, H51 also had priority buying rights granted over family shares representing about 12.3 per cent, giving the family another safeguard when relatives sold."
+- shot: "the-family-asks-for-withdrawal"
+  view: "graph"
+  focus: "hermes-international"
+  time: "2010-11-04"
+  reveal: ["hermes-international", "patrick-thomas", "bertrand-puech", "lvmh", "bernard-arnault"]
+  reveal_claims: ["lvmh-hermes-stake-fight#c2", "patrick-thomas#c2", "bertrand-puech#c2", "lvmh#c3"]
+  overlay: {kind: "quote", source: "vogue-hermes-2011-12-21", quote: "Bertrand Puech and Patrick Thomas said that Arnault should \"withdraw\" if the investment was to remain \"friendly\" and insisted that the acquisition should be investigated by the AMF.", caption: "British Vogue update, 4 November 2010"}
+  narration: "**Friendship would mean withdrawing.** Hermès executive chairman Patrick Thomas and Bertrand Puech, representing co-executive chairman Émile Hermès SARL, rejected LVMH’s assurances. In its 4 November update, British Vogue reported that they asked Arnault to withdraw if the investment was to remain friendly and called for an AMF investigation. LVMH maintained that it sought a friendly, long-term investment; the Hermès leaders wanted it to leave. The family then set about binding a majority of its shares together."
   duration: 14
 
-- shot: fine-and-truce
-  view: graph
-  focus: lvmh-hermes-stake-fight
+- shot: "a-majority-together"
+  view: "graph"
+  focus: "h51"
+  time: "2010-12-03"
+  reveal: ["h51", "hermes-international", "lvmh-hermes-stake-fight"]
+  reveal_claims: ["lvmh-hermes-stake-fight#c5"]
+  overlay: {kind: "quote", source: "hermes-2011-sales", quote: "Under the terms of agreements reached on 3 December 2010,", caption: "Hermès’s February 2012 release dates the family agreement"}
+  narration: "**Unity becomes an agreement.** On 3 December 2010, members of the Hermès family group agreed on the arrangement that would place a majority of the company’s capital in H51, Hermès later reported. British Vogue’s 6 December update described the family meeting that Friday and the announcement of a nonlisted holding company controlling more than 50 per cent of the capital. Separate family holdings would become one majority block; the plan still needed the regulator’s permission to proceed without a bid for the remaining shares."
+  duration: 14
+
+- shot: "permission-to-pool"
+  view: "graph"
+  focus: "amf"
+  time: "2011-01-06"
+  reveal: ["amf", "h51", "hermes-international", "lvmh"]
+  reveal_claims: ["lvmh-hermes-stake-fight#c12"]
+  overlay: {kind: "stat", value: "No compulsory bid", label: "The AMF’s waiver let the family pool its majority without offering to buy the remaining shares", source: "hermes-2011-sales", quote: "This internal reclassification of shares will not cause a mandatory public tender offer to be filed"}
+  narration: "**Permission to pool the shares.** The Autorité des marchés financiers granted the family a waiver on 6 January 2011, Hermès’s annual report records. British Vogue reported the permission on 7 January: the family could group more than 50 per cent of Hermès’s capital in a holding company to protect its control. The waiver meant the family need not offer to buy out the remaining shareholders, as Hermès later explained in its sales release. Vogue also reported Arnault’s position: he was content to remain a friendly, long-term shareholder. The regulator’s decision would face an appeal."
+  duration: 14
+
+- shot: "thomas-draws-the-line"
+  view: "graph"
+  focus: "patrick-thomas"
+  time: "2011-03"
+  reveal: ["patrick-thomas", "hermes-international", "lvmh", "bernard-arnault"]
+  reveal_claims: ["patrick-thomas#c3"]
+  overlay: {kind: "quote", source: "vogue-hermes-2011-12-21", quote: "It's not a financial fight, because we would lose that. It's a cultural fight.", caption: "Patrick Thomas, quoted in British Vogue’s rolling report during the March 2011 dispute"}
+  narration: "**Thomas draws the line.** In March 2011, Patrick Thomas publicly challenged LVMH’s methods of acquiring its stake, British Vogue reported. In the same report, quoting his comments to the New York Times, Thomas explained why Hermès would resist joining LVMH: he contrasted abundance, glitz and glamour with refinement and making beautiful objects, and objected to treating people as goods or raw materials. Arnault offered a different future, Vogue reported: “Hermès can be an even rarer and greater quality business, if they ever wanted to work with us.” The family’s holding plan would keep that choice in its hands."
+  duration: 14
+
+- shot: "the-waiver-survives"
+  view: "graph"
+  focus: "h51"
+  time: "2011-09-15"
+  reveal: ["h51", "hermes-international", "amf", "lvmh"]
+  reveal_claims: ["lvmh-hermes-stake-fight#c13", "lvmh#c9"]
+  overlay: {kind: "quote", source: "vogue-hermes-2011-12-21", quote: "An appeal against the January decision to allow Hermès to protect itself from takeover by LVMH has been rejected by the court of appeal in France today.", caption: "British Vogue update, 15 September 2011; Hermès identifies the Paris Court of Appeal"}
+  narration: "**The waiver survives the appeal.** LVMH kept buying while the family awaited the court’s decision: British Vogue reported on 9 August that its stake had risen from 20.2 to 21.4 per cent, despite its assurances that it did not seek control. On 15 September, the Paris Court of Appeal rejected the appeal against the AMF waiver, Vogue reported that day and Hermès’s annual report confirms. Vogue said trading in Hermès shares was suspended in anticipation of the ruling. The family could proceed with the holding company without making a bid for the rest."
+  duration: 14
+
+- shot: "h51"
+  view: "graph"
+  focus: "hermes-international"
+  time: "2011-12-13"
+  reveal: ["h51", "hermes-international", "patrick-thomas", "bertrand-puech"]
+  reveal_claims: ["h51#c2", "h51#c3", "patrick-thomas#c1", "bertrand-puech#c1"]
+  overlay: {kind: "quote", source: "hermes-ar-2011", quote: "The Hermès family established a holding company that possesses over 50% of Hermès International’s capital, tangibly demonstrating its long-standing determination to preserve the Group’s independence.", caption: "Thomas and Puech’s retrospective message in the 2011 annual report, published in 2012"}
+  narration: "**The majority moves inside.** By 13 December 2011, H51 held 52,943,797 shares, or 50.15 per cent of Hermès’s capital and 55.41 per cent of voting rights, according to the threshold notice reproduced by Hermès. A priority buying right took effect over family shares representing about another 12.3 per cent of capital, giving H51 first claim when relatives sold those shares. Looking back in their 2011 annual-report message, published in 2012, Thomas and Puech said the majority holding demonstrated the family’s determination to preserve independence."
+  duration: 14
+
+- shot: "the-cost-of-staying"
+  view: "graph"
+  focus: "h51"
+  time: "2011-12-15"
+  reveal: ["h51", "hermes-international", "lvmh"]
+  reveal_claims: ["h51#c3", "lvmh-hermes-stake-fight#c5", "lvmh#c7"]
+  overlay: {kind: "quote", source: "ibtimes-hermes-2011-12-17", quote: "confirms the unity of the family in their commitment to defend the independence of Hermes to preserve its values and culture.", caption: "Hermès statement, reproduced by International Business Times, 17 December 2011"}
+  narration: "**The cost of staying together.** On 15 December, Family Business Magazine, reporting the Financial Times, described H51 retaining a third of annual dividends to buy shares from relatives who wanted to sell; after 20 years, shareholders could recover a third of their holding-company shares. The family’s statement said the structure defended Hermès’s independence, values and culture. LVMH kept buying: its threshold notice, reproduced by Hermès, counted 23,518,942 shares, or 22.28 per cent of capital, on 15 December. British Vogue’s 21 December update reported the rise from 21.4 to a rounded 22.3 per cent."
+  duration: 14
+
+- shot: "arnault-at-the-meeting"
+  view: "graph"
+  focus: "bernard-arnault"
+  time: "2013-04-18"
+  reveal: ["bernard-arnault", "lvmh", "hermes-international", "lvmh-hermes-stake-fight"]
+  reveal_claims: ["bernard-arnault#c1", "bernard-arnault#c2", "lvmh#c8", "lvmh-hermes-stake-fight#c10", "lvmh-hermes-stake-fight#c11"]
+  overlay: {kind: "quote", source: "vogue-arnault-2013-04-19", quote: "We found ourselves owning shares in this company unexpectedly. We had not planned to be shareholders in this firm.", caption: "Bernard Arnault at LVMH’s Paris annual meeting, 18 April 2013; British Vogue"}
+  narration: "**Arnault gives his explanation.** At LVMH’s Paris annual meeting on 18 April 2013, Arnault called its 22.6 per cent Hermès stake the unexpected outcome of a financial investment, British Vogue reported the next day. Its report described opposing lawsuits: Hermès alleged insider trading and stock-price manipulation; LVMH replied with allegations of false accusations and blackmail. Arnault said LVMH wanted to support Hermès’s policies, called the motives assigned to it unfounded and denied plans to increase its holding to play a role there. The AMF enforcement committee would examine public disclosures; its June decision treated the criminal complaint as a separate proceeding concerning different facts."
+  duration: 14
+
+- shot: "three-banks"
+  view: "graph"
+  focus: "lvmh-hermes-stake-fight"
+  time: "2013-06-25"
+  reveal: ["lvmh-hermes-stake-fight", "amf", "lvmh", "hermes-international"]
+  reveal_claims: ["lvmh-hermes-stake-fight#c6", "lvmh-hermes-stake-fight#c7"]
+  overlay: {kind: "quote", source: "thelocal-2013-07-02-lvmh-fine", quote: "While it acknowledged that in isolation, none of the deals infringed disclosure rules, the AMF found there was no commercial justification for how they were structured and, taken together, constituted a breach.", caption: "The Local’s English report of the AMF decision, 2 July 2013"}
+  narration: "**The committee rejects the investment explanation.** On 25 June 2013, the AMF enforcement committee found that LVMH’s combined swap arrangement circumvented transparency rules. Two subsidiaries and three banks arranged contracts covering 13,001,246 underlying shares at the end of 2008; each bank held below 5 per cent, and the contracts initially promised cash settlement. LVMH maintained that it sought a financial investment. The committee also found that LVMH’s reports failed to explain that its derivative risk lay largely with Hermès in 2008 and entirely with Hermès in 2009. It rejected the separate complaint about accounting classification of directly held shares, whose recorded amounts were undisputed and whose total remained below 5 per cent."
+  duration: 14
+
+- shot: "the-date-that-mattered"
+  view: "graph"
+  focus: "lvmh-hermes-stake-fight"
+  time: "2013-06-25"
+  reveal: ["lvmh-hermes-stake-fight", "amf", "lvmh"]
+  reveal_claims: ["lvmh-hermes-stake-fight#c7"]
+  overlay: {kind: "quote", source: "thelocal-2013-07-02-lvmh-fine", quote: "Moreover, LVMH should have disclosed the deals when it agreed in June 2010 to settle the swaps and acquire the shares in Hermes.", caption: "The Local on the AMF’s disclosure finding, 2 July 2013"}
+  narration: "**Disclosure was due in June.** The committee found that LVMH owed the market an announcement four months before it made one. By 21 June 2010, it found, LVMH knew two banks would agree in principle to early settlement and acquisition of their Hermès shares, and it had the funds to proceed. LVMH argued that exploratory discussions had not made the transaction sufficiently definite before its board’s decision on 21 October. The committee rejected that reply: LVMH should have told the market from 21 June about the planned acquisition and its remaining uncertainties. LVMH called the decision and fine totally unjustified when they became public."
+  duration: 14
+
+- shot: "the-fine-and-the-reply"
+  view: "map"
+  camera: {"center": [2.3522, 48.8566], "zoom": 12.4, "pitch": 20, "duration": 6}
+  places: ["paris"]
+  time: "2013-07-01"
+  reveal: ["paris", "amf", "lvmh", "lvmh-hermes-stake-fight"]
+  reveal_claims: ["lvmh#c4", "lvmh-hermes-stake-fight#c1", "lvmh-hermes-stake-fight#c3"]
+  overlay: {kind: "quote", source: "thelocal-2013-07-02-lvmh-fine", quote: "totally unjustified", caption: "LVMH’s response to the decision and fine, reported by The Local, 2 July 2013"}
+  narration: "**Eight million euros, disputed.** When the decision became public on 1 July, LVMH faced an €8 million penalty for its failures to inform the public. The committee said the circumvention of transparency rules warranted punishment proportionate to the disruption caused. LVMH immediately announced an appeal and called both the decision and the size of the fine totally unjustified. The regulator had imposed a disclosure penalty; the company contested it."
+  duration: 14
+
+- shot: "the-appeal-ends"
+  view: "graph"
+  focus: "lvmh"
+  time: "2013-09-03"
+  reveal: ["lvmh", "amf", "hermes-international"]
+  reveal_claims: ["lvmh-hermes-stake-fight#c8", "lvmh#c4"]
+  overlay: {kind: "quote", source: "cityam-2013-09-03-lvmh-drops-appeal", quote: "LVMH never breached regulations regarding ownership thresholds or engaged in insider trading or market manipulation.", caption: "LVMH’s statement on what the AMF had confirmed, reported by City AM, 3 September 2013"}
+  narration: "**LVMH keeps its objection and its shares.** On 3 September, LVMH said it would not appeal, while maintaining that an appeal would have been entirely justified. It said ending the proceedings would avoid interference with the sound management of its holding, then reported at 23.1 per cent. LVMH said the AMF had confirmed no ownership-threshold breach, insider trading or market manipulation. The €8 million disclosure fine stood while the companies’ conflict continued."
+  duration: 14
+
+- shot: "fine-and-truce"
+  view: "map"
+  camera: {"center": [2.3522, 48.8566], "zoom": 12.4, "pitch": 20, "duration": 6}
+  places: ["paris"]
   time: "2014-09-03"
-  reveal: [lvmh-hermes-stake-fight, lvmh, hermes-international, amf, christian-dior-se]
-  reveal_claims: [lvmh-hermes-stake-fight#c1, lvmh-hermes-stake-fight#c3, lvmh-hermes-stake-fight#c4]
-  overlay: {kind: quote, source: cityam-2013-09-03-lvmh-drops-appeal, quote: "to avoid interference with “the sound management” of its stake", caption: "LVMH’s reason for dropping its appeal, reported by City AM, September 2013"}
-  narration: "**The price of ending the fight.** On 3 September 2014 Axel Dumas and Bernard Arnault accepted a truce proposed by Paris Commercial Court president Franck Gentin. LVMH faced an €8 million AMF fine, imposed on 25 June 2013: separate swaps broke no disclosure rule individually, but the AMF found no commercial justification for their structure and together they breached disclosure requirements. LVMH called the fine “totally unjustified”, then dropped its appeal in September 2013 to avoid interference with “the sound management” of its stake, saying the AMF had confirmed no ownership-threshold breach, insider trading or market manipulation. Under the agreement, LVMH would distribute its Hermès shares and Dior would pass its allocation onward; Groupe Arnault would hold about 8.5 per cent, all three promised no purchases for five years, and Dumas and Arnault ended all related disputes."
+  reveal: ["paris", "lvmh-hermes-stake-fight", "lvmh", "hermes-international", "axel-dumas", "bernard-arnault", "christian-dior-se"]
+  reveal_claims: ["lvmh#c5", "lvmh-hermes-stake-fight#c4", "axel-dumas#c1", "axel-dumas#c2"]
+  overlay: {kind: "quote", source: "lvmh-hermes-joint-release-2014-09-03", quote: "LVMH, Dior and Groupe Arnault have undertaken not to acquire any shares in Hermès for the next five years.", caption: "Joint announcement, 3 September 2014"}
+  narration: "**A truce with shares attached.** On 3 September 2014, the companies announced a settlement following conciliation proposed by Paris Commercial Court president Franck Gentin. LVMH would distribute its Hermès shares to its shareholders, and Christian Dior would pass its allocation onward; Groupe Arnault was expected to retain about 8.5 per cent of Hermès. The joint release said the agreement ended the conflict and all related actions; it recorded Hermès Executive Chairman Axel Dumas and LVMH chief Bernard Arnault expressing satisfaction that relations had been restored."
   duration: 14
 
-- shot: delfin
-  view: map
-  camera: {center: [12.0442, 46.2833], zoom: 9.5, pitch: 20, duration: 6}
-  places: [agordo]
-  time: "2024-12-31"
-  reveal: [agordo, leonardo-del-vecchio, delfin, essilorluxottica, luxottica]
-  reveal_claims: [leonardo-del-vecchio#c1, leonardo-del-vecchio#c2, delfin#c1]
-  overlay: {kind: quote, source: globe-2022-del-vecchio-obituary, quote: "the dream that I had to do something that was mine", caption: "Leonardo Del Vecchio, quoted by Corriere della Sera, relayed by AP in The Globe and Mail, 27 June 2022"}
-  narration: "**A business of his own.** In 1961 Leonardo Del Vecchio moved to Agordo, taking an offer of free land to create jobs, and started Luxottica in a trailer. Later, as Corriere della Sera quoted him and AP reported, he recalled lunches of boiled cabbage and described “the dream that I had to do something that was mine”; he chaired EssilorLuxottica until his death in 2022. By the end of 2024 his family’s Delfin held 32.26 per cent of shares and 31.4 per cent of votes, S&P reported, while the public held 63.14 per cent of shares and employees and partners 4.43. A company notice separately puts a shareholder’s voting cap at 31 per cent under its by-laws: the founder’s business had become a listed group with a large family minority alongside public and employee holders."
+- shot: "the-five-year-terms"
+  view: "graph"
+  focus: "lvmh"
+  time: "2014-11-03"
+  reveal: ["lvmh", "hermes-international", "h51", "bernard-arnault", "christian-dior-se"]
+  reveal_claims: ["lvmh#c5", "lvmh#c6", "h51#c3"]
+  overlay: {kind: "quote", source: "lvmh-2014-distribution", quote: "the Hermès Supervisory Board (Conseil de surveillance) approves a tender offer on Hermès.", caption: "One exception to the purchase restrictions, LVMH’s 3 November 2014 disclosure"}
+  narration: "**The promise has conditions.** On 3 November, LVMH disclosed detailed terms of the agreement signed on 2 September: it held 24,473,545 Hermès shares, representing 23.18 per cent of capital on the 30 September basis. The five-year period would begin after all fractional and other undistributed shares were sold; Arnault accepted a cap on his direct and indirect holding at his distribution allocation. These undertakings would cease if H51 decided to sell its entire Hermès holding, H51’s shareholders decided to sell their controlling interest in Hermès outside the family group, or Hermès’s supervisory board approved a tender offer. A decision to sell could release the restrictions before a sale happened."
   duration: 14
 
-- shot: never-listed
-  view: graph
-  focus: chanel
-  time: "2025-12-31"
-  reveal: [chanel, alain-wertheimer, gerard-wertheimer, mars-incorporated, kellanova, mars-kellanova-review-2025, european-commission]
-  reveal_claims: [alain-wertheimer#c1, gerard-wertheimer#c1, mars-incorporated#c1, mars-kellanova-review-2025#c1, mars-kellanova-review-2025#c2]
-  overlay: {kind: quote, source: confectionerynews-2026-08-12-mars-115, quote: "Our 115-year history reflects the enduring power of our values and the long-term perspective that comes with being family-owned,", caption: "Poul Weihrauch, chief executive of Mars, August 2026"}
-  narration: "**A family firm buys bigger.** In August 2026 Mars chief executive Poul Weihrauch credited family ownership with a “long-term perspective”. Mars remained family-owned across five generations, while Chanel belonged to brothers Alain and Gérard Wertheimer; both companies remained private. Weihrauch’s company had secured unconditional European Commission approval in December 2025 for its $35.9 billion Kellanova purchase, although the Commission found that both businesses already enjoyed some market power. It said the evidence did not support a finding that the deal would increase Mars’s bargaining power over retailers, clearing the family-owned buyer to expand further."
+- shot: "shares-in-the-shareholders-hands"
+  view: "graph"
+  focus: "christian-dior-se"
+  time: "2014-12-17"
+  reveal: ["christian-dior-se", "lvmh", "hermes-international", "lvmh-hermes-stake-fight"]
+  reveal_claims: ["lvmh-hermes-stake-fight#c9", "lvmh#c6"]
+  overlay: {kind: "stat", value: "€6.9 billion", label: "Dior’s value for the distribution, using Hermès’s €280.10 opening share price on 17 December 2014", source: "dior-ar-2015", quote: "was determined on the basis of the Hermès opening share price on December 17, 2014, which was 280.10 euros."}
+  narration: "**The shares change hands.** On 17 December, LVMH shareholders received two Hermès shares per 41 LVMH shares; Dior shareholders received one per 24 Dior shares, plus an interim dividend of three per 200, with cash for fractions. Dior’s later report valued the group’s distributions at €6.9 billion using Hermès’s €280.10 opening price that morning, against a €3.7 billion accounting cost, producing a €3.2 billion gain before tax effects. It separately put cash cost at €2.7 billion after deducting the 2010 swap gain. LVMH’s corporate stake had become shares in its investors’ hands."
   duration: 14
 
-- shot: no-family
-  view: graph
-  focus: shiseido
-  time: "2025-12-31"
-  reveal: [shiseido, unilever, procter-and-gamble, blackrock, the-vanguard-group]
-  reveal_claims: [blackrock#fh2, the-vanguard-group#fh2, blackrock#c9, the-vanguard-group#c10]
-  overlay: {kind: quote, source: shiseido-governance-report-2026, quote: "The Company does not have a controlling shareholder.", caption: "Shiseido, Corporate Governance Report, April 2026"}
-  narration: "**Oversight and room to act.** On 26 March 2024, Shiseido’s shareholders voted to move to three statutory committees. Shiseido says the change separated and strengthened oversight and business execution amid growing uncertainty: the board would focus on policies, strategy and supervision, while delegating substantial authority to executives so they could respond quickly to change. Kentaro Fujiwara’s April 2026 governance report declared: “The Company does not have a controlling shareholder.” Its largest listed holders were two Japanese trust-bank accounts holding for others, at 17.10 and 5.13 per cent, and Norway’s government at 5.44. Without a controlling family, the company placed its answer in the division of responsibilities between directors and executives."
-  duration: 14
-
-- shot: richemont
-  view: graph
-  focus: richemont
-  time: "2026-03-31"
-  reveal: [richemont, compagnie-financiere-rupert, johann-rupert]
-  reveal_claims: [compagnie-financiere-rupert#c1, johann-rupert#c1, johann-rupert#c2]
-  overlay: {kind: quote, source: richemont-2025-05-fy25-results, quote: "Our long-term perspective, underpinned by a healthy balance sheet, constitutes a proven formula that has delivered seven-fold sales growth over the past 25 years, and remains central to our strategy.", caption: "Johann Rupert, Richemont full-year results, May 2025"}
-  narration: "**Rupert’s half of the votes.** In 2025 Johann Rupert told Richemont shareholders the company kept investing in manufacturing and distribution for future growth, defending its “long-term perspective, underpinned by a healthy balance sheet”. By March 2026 he chaired Richemont and was general managing partner of Compagnie Financière Rupert, holder of every unlisted B share. Richemont had as many B shares as listed A shares, each with a tenth of an A share’s par value: 9.1 per cent of equity carried 50 per cent of votes, while the holding company’s A shares brought it to 10.18 per cent of capital and 50.60 per cent of votes. The holding company held the entire B-share block at that date; Richemont’s board could approve transfers of those shares."
-  duration: 14
-
-- shot: no-pact
-  view: graph
-  focus: french-personal-care-cartel-2014
-  time: "2014-12-18"
-  reveal: [french-personal-care-cartel-2014, autorite-de-la-concurrence, loreal, unilever, procter-and-gamble]
-  reveal_claims: [french-personal-care-cartel-2014#c1, french-personal-care-cartel-2014#c2, french-personal-care-cartel-2014#c3, french-personal-care-cartel-2014#c4, french-personal-care-cartel-2014#c5]
-  overlay: {kind: quote, source: adlc-decision-14-d-19-press-release, quote: "Between 2003 and 2006, on both markets, they coordinated their commercial policy towards supermarkets, and in particular their price increases.", caption: "Autorité de la concurrence, 18 December 2014"}
-  narration: "**Restaurants and price increases.** Unilever sales director Philippe F. told investigators he first had contact with the personal-care managers’ group in 2002. France’s competition authority found that managers met secretly in restaurants, sent correspondence to private homes and coordinated price increases and supermarket policy during 2003–2006 to avoid increased competition. It fined suppliers including L’Oréal, Unilever and P&G in December 2014: L’Oréal contested its €189.5 million fine, and the Paris Court of Appeal changed the decision in part in 2016, then left the fine at that figure on 18 June 2020; Unilever and P&G did not contest the facts. L’Oréal reports its family and Nestlé have not acted in concert since 2018, and LVMH reports no known agreement covering even 0.5 per cent of its shares; the managers’ coordination brought company penalties."
-  duration: 14
-
-- shot: regulators
-  view: graph
-  focus: eyewear-decision-21-d-20
-  time: "2021-07-22"
-  reveal: [eyewear-decision-21-d-20, luxottica, chanel, lvmh, essilorluxottica, essilor-fine-2022, autorite-de-la-concurrence, paris-court-of-appeal, loreal, loreal-usa, federal-trade-commission]
-  reveal_claims: [eyewear-decision-21-d-20#c1, eyewear-decision-21-d-20#c2, eyewear-decision-21-d-20#c3, luxottica#c10, essilor-fine-2022#c1, essilorluxottica#c4, loreal-usa#c1, loreal-usa#c2]
-  overlay: {kind: quote, source: adlc-2021-07-23-eyewear-press-release, quote: "Luxottica 125 174 000 LVMH 500 000 Chanel 130 000", caption: "Fines in euros, Autorité de la concurrence, 23 July 2021"}
-  narration: "**The optician’s price police.** An optical-store manager described competitors monitoring prices as a “price police”; France’s authority found Luxottica pressured opticians to keep recommended prices and retaliated against discounters. It fined Luxottica €125.2 million in 2021, upheld by the Paris Court of Appeal in December 2024; calling the fine unfounded, the company appealed to the Cour de cassation in January 2025. Essilor’s €81 million 2022 fine also reached that court, while EssilorLuxottica appealed Turkey’s TRY 492 million 2023 fine; Chanel (€130,000) and LVMH (€500,000, no contest) were fined over their own licences, with online-sales restrictions’ economic damage judged very limited. In 2014 the U.S. FTC separately proposed a consent order to settle allegations about two L’Oréal USA products."
-  duration: 14
-
-- shot: giant-three
-  view: graph
-  focus: blackrock
-  time: "2019"
-  reveal: [blackrock, the-vanguard-group, state-street, the-specter-of-the-giant-three, lucian-bebchuk, scott-hirst]
-  reveal_claims: [lucian-bebchuk#c1, scott-hirst#c1]
-  overlay: {kind: stat, value: "About 25%", label: "The Big Three’s share of the votes cast in S&P 500 director elections in 2018, by Bebchuk and Hirst", source: bebchuk-hirst-2019-specter, quote: "shares held by the Big Three represent an average of about 25% of the shares voted in director elections at S&P 500 companies in 2018."}
-  narration: "**Who challenges the managers?** In 2019 Lucian Bebchuk and Scott Hirst asked policymakers to take three fund managers’ growth seriously: BlackRock, Vanguard and State Street’s average S&P 500 stake had risen from 5.2 per cent in 1998 to 20.5 in 2017. Together they cast about a quarter of director-election votes in 2018; extrapolating past trends, the authors estimated about 34 per cent in a decade and as much as 40 in two. Their concern was that fund managers’ incentives encouraged deference to corporate managers, leaving too few checks. Their scenario concerned U.S. companies without controlling shareholders, unlike Lauder, Arnault or Hermès, and raised a practical question: would these growing voters back a challenger?"
-  duration: 14
-
-- shot: exxon
-  view: graph
-  focus: exxonmobil
-  time: "2021-05-26"
-  reveal: [exxonmobil, engine-no-1, exxon-board-vote-2021, blackrock, the-vanguard-group]
-  reveal_claims: [exxon-board-vote-2021#c1, exxon-board-vote-2021#c2, exxon-board-vote-2021#c3, exxon-board-vote-2021#c4, blackrock#fh3, the-vanguard-group#fh3]
-  overlay: {kind: quote, source: mondaq-2021-07-07-engine-no-1-exxon, quote: "Engine No. 1, a small, three-month-old hedge fund with about an 0.02 percent ownership in ExxonMobil", caption: "ExxonMobil’s letter to shareholders, 16 March 2021, as quoted by Mondaq"}
-  narration: "**A tiny holder challenges the board.** Chris James’s Engine No. 1 held about 0.02 per cent of ExxonMobil when it nominated four directors in 2021, saying more clean-energy investment could help Exxon diversify profitably. Exxon answered that the proposals would jeopardize earnings, dividends and growth. BlackRock, holding 6.7 per cent, supported three nominees, citing concern about Exxon’s strategic direction; Vanguard, with 8.2 per cent, backed two. Kok Chee Kheong’s account credits support from investment and pension funds, including State Street, T. Rowe Price, Fidelity funds, CalPERS and CalSTRS, with Engine No. 1’s success. At the 26 May meeting, three challengers won, Exxon confirmed on 2 June, giving the nominees a part in future decisions and leaving the new board to decide what changed."
-  duration: 14
-
-- shot: stewardship
-  view: graph
-  focus: blackrock
-  time: "2026-06-30"
-  reveal: [blackrock, blackrock-voting-choice, the-vanguard-group, vanguard-proxy-year-2025]
-  reveal_claims: [blackrock#fh4, vanguard-proxy-year-2025#c1, vanguard-proxy-year-2025#c2]
-  overlay: {kind: stat, value: "$3.96 trillion", label: "Index equity assets BlackRock says are eligible for Voting Choice, as of 30 June 2026", source: blackrock-voting-choice-page, quote: "$3.96tn of our index equity assets are eligible for BlackRock Voting Choice"}
-  narration: "**Choosing who casts the vote.** Larry Fink promoted BlackRock’s Voting Choice as a way to bring new voices into shareholder democracy; launched in 2022, it let eligible clients steer votes on shares held for them. By 30 June 2026, BlackRock said $923 billion of $3.96 trillion eligible index equity assets was committed, with clients able to choose a voting policy or leave decisions with BlackRock. Vanguard says that, under its voting policy, its Vanguard-advised funds backed 97 per cent of 23,631 U.S. management director proposals in the year to June 2025; those funds neither nominated directors nor filed shareholder proposals, leaving strategy to management and boards. Choosing a fund manager could therefore also mean entrusting it with a vote on who ran the companies."
-  duration: 14
-
-- shot: common-ownership
-  view: graph
-  focus: common-ownership-of-us-airlines
-  time: "2022-09"
-  reveal: [common-ownership-of-us-airlines, anticompetitive-effects-of-common-ownership, common-ownership-does-not-have-anticompetitive-effects, jose-azar, patrick-dennis, blackrock, the-vanguard-group]
-  reveal_claims: [common-ownership-does-not-have-anticompetitive-effects#c1, common-ownership-of-us-airlines#c5]
-  overlay: {kind: quote, source: azar-schmalz-tecu-2018-jof, quote: "Within‐route changes in common ownership concentration robustly correlate with route‐level changes in ticket prices", caption: "José Azar, Martin Schmalz and Isabel Tecu, 2018 abstract"}
-  narration: "**Does a shared owner change the fare?** In 2018 José Azar and his coauthors warned that investors’ private gains from diversification came with a social cost: less competition. They reported that changes in common ownership on a U.S. airline route correlated with changes in fares, including when two large asset managers combined. Patrick Dennis and his coauthors challenged that explanation in 2022, attributing the correlation to the measure’s market-share component rather than its ownership and control components. A shareholder’s influence was the disputed question: whether shared holdings changed competitors’ pricing incentives. The airline findings did not establish what shared owners changed in beauty, eyewear or jewellery."
-  duration: 14
-
-- shot: cannot-do
-  view: graph
-  focus: estee-lauder-companies
-  time: "2022-09-29"
-  reveal: [estee-lauder-companies, lal-family-corporation, blackrock, the-vanguard-group, exxonmobil, engine-no-1]
-  reveal_claims: [lal-family-corporation#c1, blackrock#fh1, the-vanguard-group#fh1]
-  overlay: {kind: quote, source: delaware-code-title-8-section-141, quote: "The business and affairs of every corporation organized under this chapter shall be managed by or under the direction of a board of directors", caption: "Delaware Code, Title 8, section 141(a)"}
-  narration: "**The ballot and the jar.** When William P. Lauder sought reelection in 2022, his family held about 84 per cent of Estée Lauder’s votes and BlackRock and Vanguard 1.1 and 1.2; Delaware law placed management with the board, while holders voted on directors and certain other matters. Vanguard said its Vanguard-advised funds under its voting policy did not nominate directors, while Engine No. 1 had done so at Exxon and won three seats, giving its nominees board responsibilities rather than handing the fund management authority. Bernard Arnault combined ownership with executive office at LVMH. Each arrangement put decisions in different hands: a vote could install a director, while deciding what went into a jar still required action inside the company."
+- shot: "what-held"
+  view: "graph"
+  focus: "hermes-international"
+  time: "2014-12-17"
+  reveal: ["hermes-international", "h51", "lvmh", "axel-dumas", "bernard-arnault"]
+  reveal_claims: ["h51#c2", "h51#c3", "lvmh#c5", "axel-dumas#c2"]
+  overlay: {kind: "stat", value: "About 8.5%", label: "The stake the September agreement expected Groupe Arnault to retain after distribution", source: "lvmh-hermes-joint-release-2014-09-03", quote: "Following this distribution, Groupe Arnault will hold around 8.5% of the capital of Hermès International."}
+  narration: "**The family kept the deciding votes.** Hermès’s family kept control by pooling 50.15 per cent of its capital in H51, alongside its partnership safeguards, withdrawal restrictions and priority buying rights. The AMF waiver and the Paris Court of Appeal’s ruling let it do so without bidding for the rest. LVMH denied seeking control; the settlement ended the dispute, distributed its stake and added purchase limits, while expecting Groupe Arnault to retain about 8.5 per cent. Other stories are [[loreal|L’Oréal]], [[estee-lauder-companies|Estée Lauder]], [[tiffany-and-co|Tiffany]], [[luxottica|Luxottica]], [[mars-incorporated|Mars]], [[shiseido|Shiseido]] and [[richemont|Richemont]]."
   duration: 14
 ```
