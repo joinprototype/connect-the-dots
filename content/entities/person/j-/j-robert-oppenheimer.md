@@ -27,4 +27,11 @@ claims:
     role: "scientific adviser"
     src:
       - {s: osti-debate, at: "Debate Over How to Use the Bomb", quote: "Robert Oppenheimer , Enrico Fermi , Arthur Compton , and Ernest Lawrence served as scientific advisors"}
+  - id: c4
+    rel: head_of
+    to: manhattan-project
+    when: "1944"
+    note: "The photograph caption dates this approximately to 1944."
+    src:
+      - {s: nara-calutron, at: "Photograph caption, National Archives Identifier 558579", quote: "Dr. J. Robert Oppenheimer, atomic physicist and head of the Manhattan Project, ca. 1944."}
 ---

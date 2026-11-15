@@ -19,4 +19,9 @@ claims:
     to: massachusetts-institute-of-technology
     src:
       - {s: osti-groves, at: "Leslie Groves", quote: "After studying engineering at the University of Washington and at the Massachusetts Institute of Technology, in 1916 Groves enrolled at West Point."}
+  - id: c3
+    rel: worked_at
+    to: us-army-corps-of-engineers
+    src:
+      - {s: osti-groves, at: "Leslie R. Groves", quote: "He joined the Army Corps of Engineers and distinguished himself through a succession of assignments relating to construction and administration."}
 ---

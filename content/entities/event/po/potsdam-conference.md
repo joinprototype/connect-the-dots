@@ -26,4 +26,9 @@ claims:
     to: world-war-ii
     src:
       - {s: osti-potsdam-decision, at: "Potsdam and the Final Decision", quote: "On July 29, 1945, the Japanese rejected the Potsdam Declaration."}
+  - id: c4
+    rel: involved
+    to: winston-churchill
+    src:
+      - {s: docsteach-diary, at: "Description", quote: "Truman also describes the meeting with Winston Churchill and Joseph Stalin as part of the Potsdam Conference."}
 ---

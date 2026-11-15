@@ -26,4 +26,9 @@ claims:
     note: "A year of physics there, between his M.A. at Minnesota and his Ph.D. at Yale."
     src:
       - {s: nobel-1939-lawrence-biographical, at: "Biographical", quote: "He spent a year at University of Chicago doing physics"}
+  - id: c4
+    rel: worked_at
+    to: university-of-california
+    src:
+      - {s: nara-calutron, at: "The Calutron Girls", quote: "Ernest Lawrence, a leader of the Manhattan Project and the inventor of the calutron, employed Ph.D. students to operate the calutrons at the University of California, Berkeley."}
 ---
