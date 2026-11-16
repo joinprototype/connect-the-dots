@@ -18,6 +18,8 @@ claims:
       - {s: fullfact-2020-slavery-compensation-loan, quote: "A large proportion of the money was raised by a syndicate led by the bankers Nathan Mayer Rothschild and Moses Montefiore"}
       - {s: boe-2022-collection-of-slavery-compensation, quote: "a public loan contracted with a syndicate of City financiers led by Nathan Mayer Rothschild and Moses Montefiore"}
       - {s: fullfact-2020-slavery-compensation-loan, quote: "we don’t know how much they retained and how much they distributed or sub-underwrote"}
+      - {s: fullfact-2020-slavery-compensation-loan, quote: "A further £5 million was paid out directly in government stock."}
+      - {s: fullfact-2020-slavery-compensation-loan, quote: "Therefore, it’s not known how much of this loan was repaid in 2015."}
       - {s: boe-2022-collection-of-slavery-compensation, quote: "Parliament passed legislation that abolished slavery within the British Empire"}
   - id: c2
     rel: appears_in
