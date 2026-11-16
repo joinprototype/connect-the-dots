@@ -28,4 +28,4 @@ claims:
       - {s: jerome-letter-127-nicene-fathers, at: "section 14", quote: "You she made the heir of her poverty, or rather the poor through you."}
 ---
 
-Her death is known only from [[jerome]]'s [[letter-127-to-principia]], which he wrote from Bethlehem from what others told him.
+In [[letter-127-to-principia]], [[jerome]] reports Marcella’s ordeal and death from what witnesses told him, writing from Bethlehem.
