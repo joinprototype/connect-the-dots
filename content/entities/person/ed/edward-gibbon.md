@@ -13,11 +13,15 @@ claims:
   - id: c2
     rel: influenced
     to: the-fall-of-rome-debate
+    according_to: [edward-gibbon]
+    note: "Gibbon’s postscript dated 1 March 1781 announces completion of the western history. The General Observations give his explanation of its decline."
     src:
       - {s: "gibbon-decline-and-fall-gutenberg", at: "General Observations, chapter 38", quote: "the decline of Rome was the natural and inevitable effect of immoderate greatness."}
+      - {s: "gibbon-decline-and-fall-gutenberg", at: "postscript to the first-volume preface, dated 1 March 1781", quote: "P. S. The entire History, which is now published, of the Decline\n and Fall of the Roman Empire in the West, abundantly discharges\n my engagements with the Public."}
   - id: c3
     rel: influenced
     to: the-fall-of-rome-debate
+    according_to: [edward-gibbon]
     note: "Gibbon's account of the army and the emperors."
     src:
       - {s: "gibbon-decline-and-fall-gutenberg", at: "General Observations, chapter 38", quote: "The victorious legions, who, in distant wars, acquired the vices of strangers and mercenaries, first oppressed the freedom of the republic, and afterwards violated the majesty of the purple."}
@@ -25,6 +29,7 @@ claims:
   - id: c4
     rel: influenced
     to: the-fall-of-rome-debate
+    according_to: [edward-gibbon]
     note: "Gibbon assigns some influence to Christianity but also credits it with benefiting northern converts and tempering the conquerors: even if Constantine's conversion hastened decline, his religion softened the fall."
     src:
       - {s: "gibbon-decline-and-fall-gutenberg", at: "General Observations, chapter 38", quote: "introduction or at least the abuse, of Christianity had some influence on the decline and fall of the Roman empire."}

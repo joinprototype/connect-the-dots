@@ -1,245 +1,212 @@
 ---
-uid: 01M6MSCNQ2XVPQ8F5814FER3AJ
-id: the-fall-of-rome
-type: chapter
+uid: "01M6MSCNQ2XVPQ8F5814FER3AJ"
+id: "the-fall-of-rome"
+type: "chapter"
 title: "Why Rome Fell"
-subtitle: "How a city grew into an empire, why its western half ended, and why the eastern half lasted until 1453"
-summary: "The western Roman empire ended in the 400s; the eastern half lasted until 1453. Why the west ended is still argued, and so is the word “fell”. Here is the evidence, and each explanation in its holder's name."
+subtitle: "The road to August 410: a hungry city, a court’s refusals, and the argument over who was to blame"
+summary: "Who let Alaric into Rome, and whom did Romans blame? From Valens’s choice at Adrianople to Marcella’s ordeal and Augustine’s answer, follow the decisions behind the sack of 410, with the ancient writers’ accounts distinguished by when they wrote."
 ---
 
-The western Roman empire ended in the 400s. The eastern half went on until 1453. Why the west ended is one of the oldest arguments in history, and whether “fell” is even the right word is part of it: some historians describe a catastrophe, others a long change.
+In August 410 Alaric’s army entered Rome after sieges, ransom and failed negotiations. Who opened the gates is disputed in the stories Procopius wrote about 140 years later. The blame was also contested: Augustine says Romans charged Christianity with the disaster, and answered by pointing to people sheltered in churches.
 
-From the Senate's offer of citizenship to its Italian allies, through the third-century crisis and the sacks of the city, Rome's rulers faced choices about who belonged, who paid and who fought. Historians still disagree about what broke the western empire: the army and its cost, pressure from outside, the loss of living standards, transformation, or climate and disease.
+Follow the road from Adrianople in 378 to the hungry city in 410. Ammianus, Zosimus, Jerome and Augustine give different kinds of testimony; their reasons, figures and judgments remain theirs.
 
 ```scene
-- shot: two-dots
-  view: map
-  camera: {"center": [20, 40], "zoom": 3.6, "duration": 6}
-  places: ["rome", "istanbul"]
-  routes: [["rome", "istanbul"]]
-  time: "0395"
-  reveal: [roman-empire, byzantine-empire, rome, istanbul]
-  reveal_claims: [byzantine-empire#c1]
-  overlay: {kind: "stat", value: "1,058 years", label: "How long the eastern empire lasted after the division of 395, until the Turks took Constantinople, by Edward Gibbon's count", source: "gibbon-decline-and-fall-gutenberg", quote: "from the reign of Arcadius to the taking of Constantinople by the Turks, subsisted one thousand and fifty-eight years"}
-  narration: "**Two dots.** In 395 Theodosius left his sons an empire stretching between Rome on the Tiber and Constantinople on the Bosphorus. David Woods places his vague entrustment of both sons to Stilicho about three months before his January death. Theodosius left no recorded reason. Arcadius ruled in the east, Honorius in the west. The western court would lose its emperor in 476; the eastern empire survived until the Ottomans took Constantinople in 1453. In Peter Heather's explanation, losing the territory and taxes that paid the soldiers broke the western state. The two courts now faced the task of holding the land that paid their soldiers."
-  duration: 13
-
-- shot: allies
-  view: map
-  camera: {"center": [13.5, 41.5], "zoom": 5.2, "duration": 5}
+- shot: "the-city-was-taken"
+  view: "map"
+  camera: {center: [12.4829, 41.8933], zoom: 7, duration: 5}
   places: ["rome"]
-  time: "-0089"
-  reveal: [roman-senate, social-war, rome]
-  reveal_claims: [roman-senate#c1, social-war#c1, social-war#c2]
-  overlay: {kind: "quote", source: "appian-civil-wars-1-loeb", quote: "By this favour the Senate made the faithful more faithful, confirmed the wavering, and mollified their enemies by the hope of similar treatment.", caption: "Appian, Civil Wars, book 1, Loeb translation"}
-  narration: "**Allies.** In Rome, the tribune Livius Drusus promised citizenship to Italy's allies at their request; in Appian's account, they sought to become “rulers instead of subjects”. One evening, sending visitors away from his dimly lit house, Drusus was stabbed with a shoemaker's knife. Around 90 BCE the allies rose in the Social War. Appian says the Senate feared encirclement and offered citizenship to allies who had stayed loyal, but put the new citizens into tribes that voted last, often after a majority had already decided the result. By the war's end, Appian says, all Italy except the Lucanians and Samnites belonged to the Roman state for the time being. Citizenship had left the city; the unequal vote became the source of another conflict."
+  time: "0410-08"
+  reveal: ["sack-of-rome-410", "alaric", "rome", "procopius"]
+  reveal_claims: ["sack-of-rome-410#c5", "sack-of-rome-410#c6", "sack-of-rome-410#c4"]
+  overlay: {kind: "quote", source: "procopius-vandal-wars-3-loeb", quote: "felt pity for the Romans who were being destroyed by hunger and the other suffering they endured;", caption: "Procopius, Wars 3.2.27, about 140 years after 410: the alternative story about Proba"}
+  narration: "**Who opened the gates.** Who let Alaric into Rome in August 410, and whom did Romans blame? Procopius, writing about 140 years later, gives rival stories: three hundred youths planted as slaves killed the gate guards, or Proba ordered her household to open the gates out of pity for starving residents. Neither version identifies a settled culprit; Augustine says Romans blamed Christ for the disaster. Before the gates opened, emperors, generals and senators had made decisions about whether the city would eat."
   duration: 13
 
-- shot: four-million
-  view: graph
-  focus: augustus
-  time: "-0027"
-  reveal: [augustus, res-gestae-divi-augusti, augustus-census, roman-senate, roman-empire]
-  reveal_claims: [augustus#c1, augustus-census#c1, augustus-census#c2, augustus-census#c4, augustus-census#c5]
-  overlay: {kind: "stat", value: "4,063,000 to 4,937,000", label: "Roman citizens on the census rolls in 28 BCE and 14 CE, in Augustus's own count", source: "res-gestae-divi-augusti-loeb-1924", quote: "In this lustrum 4,937,000 Roman citizens were entered on the census roll."}
-  narration: "**Four million.** In 14 CE Augustus counted Roman citizens with his son Tiberius: 4,937,000 citizens, against 4,063,000 in 28 BCE and 4,233,000 in his second census. His record of these acts stood on two bronze columns before his mausoleum in Rome. He presented himself as a model: “I myself set precedents in many things for posterity to imitate.” The 1924 Loeb editor thought the earlier jump from 450,000 citizens of military age in 69 BCE probably reflected counting citizens throughout the empire. Augustus left both a claim to exemplary rule and numbers whose meaning remains contested."
-  duration: 13
-
-- shot: everyone
-  view: map
-  camera: {"center": [20, 38], "zoom": 3.4, "duration": 5}
-  places: ["rome"]
-  time: "0212"
-  reveal: [caracalla, edict-of-caracalla-212, cassius-dio, roman-history-of-cassius-dio, roman-empire]
-  reveal_claims: [caracalla#c1, edict-of-caracalla-212#c1, edict-of-caracalla-212#c2, edict-of-caracalla-212#c3, edict-of-caracalla-212#c4, edict-of-caracalla-212#c5, edict-of-caracalla-212#c6, cassius-dio#c1]
-  overlay: {kind: "quote", source: "ostia-antica-constitutio-antoniniana", quote: "It is necessary for the masses not only to share in our burden, but also to be included in victory.", caption: "Caracalla's edict, Papyrus Giessen 40, translated by Alex Imrie, 2018"}
-  narration: "**Everyone.** In 212 Caracalla issued an edict making the empire's free people Roman citizens. His public reason was gratitude to the gods for protecting him: “It is necessary for the masses not only to share in our burden, but also to be included in victory.” The surviving papyrus is badly damaged; restored words appear in brackets, and Heichelheim's 1941 translation excepts the dediticians. Cassius Dio gives a different explanation: aliens escaped most citizen taxes, so the emperor was raising revenue. Gibbon later called it avarice too. Caracalla's act extended citizenship across the empire and, in Dio's account, brought new taxpayers within reach."
-  duration: 13
-
-- shot: silver
-  view: graph
-  focus: debasement-of-the-antoninianus
-  time: "0268"
-  reveal: [debasement-of-the-antoninianus, antoninianus, caracalla, roman-empire]
-  reveal_claims: [debasement-of-the-antoninianus#c1, debasement-of-the-antoninianus#c2, debasement-of-the-antoninianus#c3, caracalla#c2, debasement-of-the-antoninianus#c4]
-  overlay: {kind: "stat", value: "2.2 g to under 0.1 g", label: "Silver in the antoninianus over thirty years, in Sylviane Estiot's figures as summarised on Roman Imperial Coinage online, which does not name the analyses behind them", source: "ric-online-estiot-monetary-system", quote: "In thirty years, the weight of silver in the antoninianus dropped from roughly 2.2 g to less than 0.1 g."}
-  narration: "**Silver.** Caracalla introduced the antoninianus in 215. Cassius Dio reports him saying, “Nobody in the world should have money but me; and want it to bestow upon the soldiers.” When his mother warned that revenue had run out, he showed his sword and answered, “Be of good cheer, mother: for as long as we have this, we shall not run short of money.” Between 238 and 268 it lost weight and silver, becoming almost copper under Claudius II. In Sylviane Estiot's account, war expenditure shrank the budget while lost provinces reduced tax income; 2.2 grams of silver fell below 0.1 in thirty years. Aurelian's 274 reform, in her reading, guaranteed 5 per cent silver: the demands of war had reached into the coin itself."
-  duration: 13
-
-- shot: a-price-list
-  view: graph
-  focus: price-edict-of-301
-  time: "0301"
-  reveal: [price-edict-of-301, diocletian, roman-empire]
-  reveal_claims: [price-edict-of-301#c1, price-edict-of-301#c2, price-edict-of-301#c3, diocletian#c1, price-edict-of-301#c4]
-  overlay: {kind: "quote", source: "kropff-2016-edict-on-maximum-prices", quote: "we decree that if anyone should, in his boldness, strive against the form of this statute, he shall undergo a capital penalty.", caption: "Price Edict preface, translated by Antony Kropff, 2016"}
-  narration: "**A price list.** In late 301 Diocletian and his three co-rulers ordered ceilings for more than 1,200 goods and services: 1 denarius for green fodder, 150,000 for a male lion or purple silk. Their preface blamed greed: buying one thing could consume a soldier's bonus and salary. They threatened death for breaking the limits. The encyclopedia De Imperatoribus Romanis reports a black market. Translator Antony Kropff gives hostile Lactantius's allegation that the edict ruined trade, caused much bloodshed and was withdrawn, but questions his reliability. The western empire lasted another 175 years. The emperors' declared protection of soldiers had, in that account, cost lives."
-  duration: 13
-
-- shot: the-wagons
-  view: map
-  camera: {"center": [26.5, 41.7], "zoom": 6, "duration": 5}
+- shot: "the-wagons"
+  view: "map"
+  camera: {center: [26.5, 41.7], zoom: 6, duration: 5}
   places: ["adrianople"]
   time: "0378-08-09"
-  reveal: [battle-of-adrianople, valens, adrianople]
-  reveal_claims: [battle-of-adrianople#c1, battle-of-adrianople#c2, battle-of-adrianople#c4, battle-of-adrianople#c5, battle-of-adrianople#c6]
-  overlay: {kind: "stat", value: "A third", label: "How much of the Roman army escaped Adrianople, in Ammianus Marcellinus's words", source: "ammianus-marcellinus-31-loeb", quote: "barely a third part of our army escaped"}
-  narration: "**The wagons.** Before Adrianople, Valens chose battle rather than await Gratian; Ammianus says courtiers urged haste so Gratian could not share the victory. While preparations proceeded, Fritigern sent envoys with two letters. In the letters Ammianus reports, the public letter asked for Thrace as a home for exiles, promising peace. The private letter asked Valens to bring his army close: fear, Fritigern claimed, would make his followers accept terms. Ammianus calls this deception and pretended friendship; the envoys were distrusted and left without achieving their purpose. On 9 August 378 Valens marched to the circle of Gothic wagons. He died, and barely a third of his army escaped, the writer says."
+  reveal: ["battle-of-adrianople", "valens", "adrianople", "ammianus-marcellinus"]
+  reveal_claims: ["battle-of-adrianople#c1", "battle-of-adrianople#c6", "valens#c1"]
+  overlay: {kind: "quote", source: "ammianus-marcellinus-31-loeb", quote: "barely a third part of our army escaped", caption: "Ammianus, 31.13.18: his estimate of the Roman survivors"}
+  narration: "**The wagons.** The road begins outside Adrianople on 9 August 378, when Valens chose battle before his fellow emperor Gratian arrived. Ammianus Marcellinus, writing around 390, about a decade later, says Valens wanted a glorious deed to equal his nephew’s victories; courtiers urged haste so Gratian could not share the credit. His account follows soldiers marching through heat and hunger toward a circle of Gothic wagons, then losing the battle: Valens died and “barely a third part of our army escaped”. Theodosius would inherit the task of ruling the east after him."
   duration: 13
 
-- shot: two-sons
-  view: graph
-  focus: division-of-the-empire-395
+- shot: "two-sons"
+  view: "graph"
+  focus: "division-of-the-empire-395"
   time: "0395-01-17"
-  reveal: [division-of-the-empire-395, theodosius-i, byzantine-empire, roman-empire]
-  reveal_claims: [division-of-the-empire-395#c1, division-of-the-empire-395#c2, division-of-the-empire-395#c3, theodosius-i#c1]
-  overlay: {kind: "quote", source: "gibbon-decline-and-fall-gutenberg", quote: "The division of the Roman world between the sons of Theodosius marks the final establishment of the empire of the East", caption: "Edward Gibbon, The Decline and Fall of the Roman Empire"}
-  narration: "**Two sons.** On 17 January 395 Theodosius died, leaving Arcadius ruling in the east and Honorius in the west. The general Stilicho had charge of Honorius. David Woods places Theodosius's vague entrustment of both sons to Stilicho about three months before his death; Stilicho interpreted it in his own interest to extend his authority over Arcadius too, Woods says. Theodosius left no recorded reason. Shared rule was familiar from Diocletian and his co-rulers; Gibbon nevertheless treated 395 as the final establishment of the eastern empire. An earlier instruction had become the basis for a general's claim to authority across both courts."
+  reveal: ["division-of-the-empire-395", "theodosius-i", "honorius", "stilicho"]
+  reveal_claims: ["division-of-the-empire-395#c1", "division-of-the-empire-395#c4", "division-of-the-empire-395#c5"]
+  overlay: {kind: "quote", source: "dir-theodosius-i", quote: "By the time of his death by illness on 17 January 395", caption: "David Woods, Theodosius I, De Imperatoribus Romanis"}
+  narration: "**Two sons.** On 17 January 395 Theodosius died, leaving Honorius ruling in the west and Arcadius in the east, with the general Stilicho responsible for Honorius. Historian David Woods places a vague instruction entrusting the sons to Stilicho about three months earlier, and says Stilicho interpreted it to extend his authority over Arcadius too. Zosimus, writing about a century later and hostile to the Christian court, reports Stilicho’s claim that Theodosius had charged him with both emperors on his deathbed. Authority over the two courts was already an argument when Stilicho began bargaining with Alaric."
   duration: 13
 
-- shot: the-city-was-taken
-  view: map
-  camera: {"center": [12.4829, 41.8933], "zoom": 7, "duration": 5}
+- shot: "paying-an-ally"
+  view: "map"
+  camera: {center: [12.4829, 41.8933], zoom: 6, duration: 5}
+  places: ["rome"]
+  time: "0408"
+  reveal: ["sieges-of-rome-408-410", "stilicho", "alaric", "roman-senate"]
+  reveal_claims: ["sieges-of-rome-408-410#c3"]
+  overlay: {kind: "quote", source: "zosimus-new-history-books-5-6", quote: "a peace, but a bond of servitude,", caption: "Lampadius’s objection as Zosimus reports it, book 5, pp. 155–156"}
+  narration: "**Paying an ally.** In 408 Alaric demanded payment for waiting in Epirus and marching toward Italy; Zosimus says Stilicho took the demand to the Senate. In the speech Zosimus reports, Stilicho defended payment because Alaric had waited to join him against the eastern emperor and transfer territory to Honorius. The Senate approved three thousand pounds of silver, in the 1814 English translation of Zosimus; senator Lampadius called the bargain “a bond of servitude” and fled to a church. Stilicho had defended agreement with Alaric, but his own position at court was about to collapse."
+  duration: 13
+
+- shot: "a-second-letter"
+  view: "graph"
+  focus: "execution-of-stilicho"
+  time: "0408-08-22"
+  reveal: ["execution-of-stilicho", "stilicho", "honorius", "zosimus"]
+  reveal_claims: ["execution-of-stilicho#c1", "execution-of-stilicho#c2", "execution-of-stilicho#c3"]
+  overlay: {kind: "quote", source: "zosimus-new-history-books-5-6", quote: "Stilico deterred them from the attempt by all imaginable menaces, and calmly submitted his neck to the sword.", caption: "Zosimus, book 5, p. 160"}
+  narration: "**A second letter.** On 22 August 408, at Ravenna, Stilicho left a church after soldiers swore before the bishop that Honorius had ordered custody, not death, Zosimus says. A second imperial letter then ordered his execution; Stilicho forbade his armed followers to rescue him and submitted to the sword. Zosimus says Olympius next had Duterius and Petrus tortured for accusations against Stilicho, then beaten to death when they supplied none. The purge reached beyond the general’s household."
+  duration: 13
+
+- shot: "the-families"
+  view: "graph"
+  focus: "killings-after-stilichos-death"
+  time: "0408"
+  reveal: ["killings-after-stilichos-death", "alaric", "stilicho", "sieges-of-rome-408-410"]
+  reveal_claims: ["killings-after-stilichos-death#c1", "killings-after-stilichos-death#c2", "alaric#c2"]
+  overlay: {kind: "quote", source: "zosimus-new-history-books-5-6", quote: "destroyed every individual of them, they plundered them of all they possessed.", caption: "Zosimus’s account of the killing and robbery, book 5, p. 161"}
+  narration: "**The families.** After news of Stilicho’s death, Roman soldiers fell on the wives and children of the allied troops Zosimus calls “the Barbarians”, he says: they killed every one they found and plundered their possessions. He says the victims’ relatives gathered from different quarters and joined Alaric, counting thirty thousand men. Even then, in his telling, Alaric preferred peace, remembering his agreement with Stilicho, and offered to withdraw for a smaller payment and exchanged hostages. Honorius refused; Alaric marched toward Rome."
+  duration: 13
+
+- shot: "serena"
+  view: "graph"
+  focus: "sieges-of-rome-408-410"
+  time: "0408"
+  reveal: ["sieges-of-rome-408-410", "roman-senate", "rome", "zosimus"]
+  reveal_claims: ["sieges-of-rome-408-410#c4", "sieges-of-rome-408-410#c1"]
+  overlay: {kind: "quote", source: "zosimus-new-history-books-5-6", quote: "This suspicion was in reality groundless, as Serena never had any such intentions.", caption: "Zosimus rejects the charge against Serena, book 5, p. 163"}
+  narration: "**A suspected betrayer.** With Alaric outside Rome, the Senate and Honorius’s sister Placidia condemned Stilicho’s widow Serena, expecting her death to make him leave, Zosimus says. He calls their suspicion of her betrayal “groundless”, yet himself calls her execution just punishment for taking ornaments from a goddess’s statue. His defense of the old rites sits beside his rejection of the senators’ accusation. Serena was strangled; Alaric stayed and blocked the city’s food."
+  duration: 13
+
+- shot: "the-ransom"
+  view: "map"
+  camera: {center: [12.4829, 41.8933], zoom: 7, duration: 5}
+  places: ["rome"]
+  time: "0408"
+  reveal: ["sieges-of-rome-408-410", "rome", "alaric", "zosimus"]
+  reveal_claims: ["sieges-of-rome-408-410#c5", "sieges-of-rome-408-410#c6", "sieges-of-rome-408-410#c7", "sieges-of-rome-408-410#c16"]
+  overlay: {kind: "quote", source: "zosimus-new-history-books-5-6", quote: "Laeta the wife of the late emperor Gratian, and her mother Pissamena, supplied great numbers with food for some time.", caption: "Zosimus, book 5, p. 164: two women feeding residents"}
+  narration: "**Buying food.** With grain rations cut to a third, Laeta and Pissamena shared their imperial allowance with hungry residents, Zosimus says. He reports Alaric demanding wealth and slaves; asked what would remain for the citizens, Alaric replied, “Their Souls.” Zosimus lists the ransom as five thousand pounds of gold, thirty thousand of silver, four thousand silk robes, three thousand scarlet fleeces and three thousand pounds of pepper; Romans melted sacred images, including Virtus, which he said extinguished Roman courage. Alaric then allowed three days of market and grain from the port, while the court had yet to confirm peace."
+  duration: 13
+
+- shot: "no-command"
+  view: "graph"
+  focus: "sieges-of-rome-408-410"
+  time: "0409"
+  reveal: ["sieges-of-rome-408-410", "honorius", "alaric"]
+  reveal_claims: ["sieges-of-rome-408-410#c8", "sieges-of-rome-408-410#c10"]
+  overlay: {kind: "quote", source: "zosimus-new-history-books-5-6", quote: "no dignity or command should ever be conferred on Alaric, or any of his family.", caption: "Honorius’s answer as Zosimus reports it, book 5, p. 171"}
+  narration: "**No command.** The respite depended on an agreement with Honorius: at Ariminum in 409, Alaric asked the court’s envoy Jovius for annual gold and grain and land in Venetia, Noricum and Dalmatia, Zosimus reports. Jovius privately advised Honorius to make Alaric commander of both armies to soften those demands. Honorius left the gold and grain to Jovius’s judgment but refused any dignity or command to Alaric or his family; Jovius read that answer aloud to Alaric. Zosimus says the affront sent Alaric toward Rome again, while Jovius bound the court by oaths to wage continual war."
+  duration: 13
+
+- shot: "the-bishops"
+  view: "graph"
+  focus: "sieges-of-rome-408-410"
+  time: "0409"
+  reveal: ["sieges-of-rome-408-410", "alaric", "honorius"]
+  reveal_claims: ["sieges-of-rome-408-410#c9", "sieges-of-rome-408-410#c10"]
+  overlay: {kind: "quote", source: "zosimus-new-history-books-5-6", quote: "only demanded annually as much corn as the emperor should think proper to grant, and would remit the gold.", caption: "Alaric’s reduced terms as Zosimus reports them, book 5, p. 171"}
+  narration: "**A smaller demand.** Before attacking again, Alaric sent bishops to Honorius with reduced terms, Zosimus says: only the two Noric provinces, grain at the emperor’s discretion, no gold and no office. In his report, Alaric asked the emperor to spare Rome’s people and buildings and offered an alliance against the empire’s enemies. The ministers answered that their oath by the emperor’s head forbade peace. Alaric returned to Rome and its port."
+  duration: 13
+
+- shot: "an-emperor-for-bread"
+  view: "map"
+  camera: {center: [12.4829, 41.8933], zoom: 7, duration: 5}
+  places: ["rome"]
+  time: "0409"
+  reveal: ["sieges-of-rome-408-410", "alaric", "roman-senate", "honorius"]
+  reveal_claims: ["sieges-of-rome-408-410#c11"]
+  overlay: {kind: "quote", source: "zosimus-new-history-book-6-1814", quote: "Finding that all the stores of the city were there, he threatened to distribute them among his men, unless the Romans should accede to his terms.", caption: "Zosimus, book 6, p. 175"}
+  narration: "**An emperor for bread.** Alaric seized Rome’s port and threatened to distribute its food stores to his men unless the city turned against Honorius, Zosimus says. Facing hunger, the Senate installed the city prefect Attalus as emperor and gave Alaric military command. But Attalus refused Alaric’s advice to send a substantial force to Africa against Heraclianus, who held the province for Honorius; Zosimus says Attalus trusted predictions of victory without fighting. Rome had a new emperor and still depended on grain controlled by his rival."
+  duration: 13
+
+- shot: "hunger-returns"
+  view: "map"
+  camera: {center: [12.4829, 41.8933], zoom: 7, duration: 5}
   places: ["rome"]
   time: "0410"
-  reveal: [sack-of-rome-410, alaric, rome]
-  reveal_claims: [sack-of-rome-410#c1, sack-of-rome-410#c2, alaric#c1]
-  overlay: {kind: "quote", source: "jerome-letter-127-nicene-fathers", quote: "The City which had taken the whole world was itself taken", caption: "Jerome, Letter 127, to Principia"}
-  narration: "**The city was taken.** In 410 Alaric held an army outside Rome; inside, people were starving. Procopius, writing under Justinian, preserves two stories about the opening: young men killed the gate guards, or Proba, a wealthy woman of the senatorial class, ordered her slaves to open the gates by night. Procopius's second story gives her reason as pity: people were dying of hunger, and she saw no hope while the enemy held river and harbour. Alaric's army entered and took the city. In Bethlehem, Jerome heard of Romans buying their lives with gold and famine preceding the sword. The city's capture did not end the danger for the people in its houses."
+  reveal: ["sieges-of-rome-408-410", "rome", "honorius", "alaric"]
+  reveal_claims: ["sieges-of-rome-408-410#c12", "sieges-of-rome-408-410#c13", "sieges-of-rome-408-410#c14", "sieges-of-rome-408-410#c17"]
+  overlay: {kind: "quote", source: "zosimus-new-history-book-6-1814", quote: "Fix a certain price on human flesh.", caption: "The cry in the Hippodrome as Zosimus reports it, book 6, p. 177"}
+  narration: "**Hunger returns.** Heraclianus stopped provisions leaving Africa for Rome; Zosimus describes a worse famine, sellers concealing food for profit and a cry in the Hippodrome demanding a price for human flesh. Honorius, he says, stayed at Ravenna after six thousand reinforcements arrived, planning to fight if Africa held and flee east if it fell. When Attalus again refused Alaric’s proposed expedition, Alaric stripped him of the purple and sent his regalia to Honorius. Zosimus next places Alaric at Ravenna seeking confirmation of peace, while Sarus, threatened by Alaric’s brother-in-law Ataulphus, joined Honorius against him."
   duration: 13
 
-- shot: marcella
-  view: graph
-  focus: marcella
-  time: "0410"
-  reveal: [marcella, letter-127-to-principia, jerome, sack-of-rome-410]
-  reveal_claims: [marcella#c1, marcella#c2, sack-of-rome-410#c3, jerome#c2]
-  overlay: {kind: "quote", source: "jerome-letter-127-nicene-fathers", quote: "She said she was thankful too that the taking of the city had found her poor, not made her so", caption: "Marcella, as Jerome reports her, Letter 127"}
-  narration: "**Marcella.** In Rome in 410, soldiers demanded gold from Marcella. The old woman pointed to her coarse dress: there was no hidden treasure. They refused to believe her and scourged her with cudgels. At their feet she pleaded for Principia, asking that the young woman not be taken away or suffer what Marcella's age spared her from fearing. Jerome's letter to Principia reports this; he was in Bethlehem, relying on what he heard and what holy men had seen. The soldiers took both women to Paul's basilica, where Marcella thanked God that Principia was unharmed and that the sack had found her poor rather than made her so. Days later she died in Principia's arms, leaving her to carry their care for the poor forward."
+- shot: "the-third-siege"
+  view: "map"
+  camera: {center: [12.4829, 41.8933], zoom: 8, duration: 5}
+  places: ["rome"]
+  time: "0410-08-24"
+  reveal: ["sieges-of-rome-408-410", "sack-of-rome-410", "alaric", "rome"]
+  reveal_claims: ["sieges-of-rome-408-410#c18", "sack-of-rome-410#c7", "sack-of-rome-410#c8"]
+  overlay: {kind: "quote", source: "gibbon-decline-and-fall-gutenberg", quote: "appeared in arms under the walls of the capital;", caption: "Gibbon, chapter 31: Alaric’s third attack on Rome"}
+  narration: "**The third siege.** In Gibbon’s telling, Sarus attacked Alaric’s troops outside Ravenna; Alaric returned to besiege Rome a third time. J. B. Bury dates the army’s entry through the Salarian Gate to 24 August 410. Orosius says the army left on the third day after entering; Bury gives two or three days of sack, Gibbon six—a range of two to six days. Soldiers entered residents’ homes."
   duration: 13
 
-- shot: whose-fault
-  view: graph
-  focus: augustine-of-hippo
-  time: "0410"
-  reveal: [augustine-of-hippo, city-of-god, sack-of-rome-410, the-fall-of-rome-debate]
-  reveal_claims: [augustine-of-hippo#c1, augustine-of-hippo#c2, sack-of-rome-410#c4, augustine-of-hippo#c3]
-  overlay: {kind: "quote", source: "augustine-city-of-god-book-1-nicene-fathers", quote: "Thus escaped multitudes who now reproach the Christian religion , and impute to Christ the ills that have befallen their city", caption: "Augustine, The City of God, book 1, chapter 1"}
-  narration: "**Whose fault.** After Rome's sack, Augustine took up a promise to Marcellinus: to defend the city of God against people who preferred their own gods. His opponents blamed Christianity for the catastrophe. He turned their survival against them: in his account, many accusers had escaped by sheltering in churches whose sanctity the invaders respected. He told his reader: “This is a great and arduous work, but God is my helper.” Augustine answered the sack with a defense of the Christian city. Rome's defeat had become an argument about which allegiance could outlast a city, and he made that argument into The City of God."
+- shot: "the-people-in-the-city"
+  view: "graph"
+  focus: "sack-of-rome-410"
+  time: "0410-08"
+  reveal: ["sack-of-rome-410", "rome", "jerome", "augustine-of-hippo", "city-of-god"]
+  reveal_claims: ["sack-of-rome-410#c9", "sack-of-rome-410#c10", "sack-of-rome-410#c11"]
+  overlay: {kind: "quote", source: "augustine-city-of-god-book-1-nicene-fathers", quote: "all the slaughter, plundering, burning, and misery", caption: "Augustine, City of God 1.7, on what Rome suffered"}
+  narration: "**The people in the city.** Soldiers killed residents and took captives: Jerome, writing to Principia in 412, says Romans bought their lives with gold, then lost their lives in the renewed siege. Augustine describes “all the slaughter, plundering, burning, and misery” and acknowledges Christians led away captive. He writes that captors raped married women, unmarried women and consecrated virgins; addressing survivors, he says that violence against their bodies was no fault of theirs. Among the people soldiers confronted were Marcella and Principia."
   duration: 13
 
-- shot: the-breadbasket
-  view: map
-  camera: {"center": [10.5, 36.5], "zoom": 5.5, "duration": 5}
-  places: ["carthage"]
-  time: "0439"
-  reveal: [vandal-conquest-of-africa-439, gaiseric, carthage]
-  reveal_claims: [vandal-conquest-of-africa-439#c1, vandal-conquest-of-africa-439#c2, vandal-conquest-of-africa-439#c3]
-  overlay: {kind: "quote", source: "procopius-vandal-wars-3-loeb", quote: "But as much of the land as did not seem to him good he allowed to remain in the hands of the former owners, but assessed so large a sum to be paid on this land for taxes to the government that nothing whatever remained to those who retained their farms.", caption: "Procopius, Wars, book 3, Loeb translation"}
-  narration: "**The breadbasket.** After conquering North Africa in 439, Gaiseric redistributed its land. In Procopius's later account, he gave the best estates to his followers free of tax; former owners kept poorer farms under taxes that left them nothing. He handed prominent landowners and their property to his sons as slaves. Procopius reports that many others were repeatedly exiled or killed; hiding money was the gravest charge. He also explains Gaiseric's demolition of city walls except Carthage's as denying bases to rebels or an imperial army. Peter Heather ties western collapse to losing the taxes that supported its army. For dispossessed owners, conquest meant their fields sustained the conqueror's men."
+- shot: "marcella"
+  view: "graph"
+  focus: "marcella"
+  time: "0410-08"
+  reveal: ["marcella", "letter-127-to-principia", "jerome", "sack-of-rome-410"]
+  reveal_claims: ["marcella#c1", "marcella#c3", "sack-of-rome-410#c3", "jerome#c2"]
+  overlay: {kind: "quote", source: "jerome-letter-127-nicene-fathers", quote: "She said she was thankful too that the taking of the city had found her poor, not made her so", caption: "Marcella’s words as Jerome reports them in Letter 127, written two years after the sack"}
+  narration: "**Marcella.** Inside Marcella’s house, soldiers demanded gold, rejected her coarse dress as proof of poverty and beat her with cudgels, Jerome says in his letter to Principia. Marcella pleaded for the younger Principia’s safety; the soldiers took both women to Paul’s basilica, where she thanked God that the sack had found her poor rather than made her so. Jerome, writing from Bethlehem in 412, reports what witnesses told him: Marcella died days later in Principia’s arms."
   duration: 13
 
-- shot: fourteen-days
-  view: map
-  camera: {"center": [11.5, 39.3], "zoom": 5, "duration": 5}
-  places: ["carthage", "rome"]
-  routes: [["carthage", "rome"]]
-  time: "0455"
-  reveal: [sack-of-rome-455, gaiseric, carthage, rome]
-  reveal_claims: [sack-of-rome-455#c1, sack-of-rome-455#c2, sack-of-rome-455#c3, gaiseric#c1, sack-of-rome-455#c4]
-  overlay: {kind: "quote", source: "gibbon-decline-and-fall-gutenberg", quote: "The pillage lasted fourteen days and nights", caption: "Edward Gibbon, The Decline and Fall of the Roman Empire, chapter 36"}
-  narration: "**Fourteen days.** In Procopius's account, in 455 Eudoxia appealed to Gaiseric in Carthage to avenge Valentinian. Maximus had killed her husband, seized the throne and forced her to marry him; privately, he told her he had done it for her love. She asked for rescue. Gaiseric sailed for Italy expecting money, the same account says. Gibbon describes Pope Leo obtaining a promise to spare people and buildings, neither seriously given nor strictly obeyed; pillage lasted fourteen days and nights. Gaiseric stripped the palace and half the bronze roof of Jupiter's temple. Procopius says Eudoxia and her daughters went to Carthage as captives. Gaiseric later sent Eudoxia and Placidia to Byzantium at the emperor's request; Eudocia married his son."
+- shot: "whose-fault"
+  view: "graph"
+  focus: "augustine-of-hippo"
+  time: "0413"
+  reveal: ["augustine-of-hippo", "city-of-god", "sack-of-rome-410", "the-fall-of-rome-debate"]
+  reveal_claims: ["augustine-of-hippo#c4", "sack-of-rome-410#c4"]
+  overlay: {kind: "quote", source: "augustine-city-of-god-book-1-nicene-fathers", quote: "but the injuries you suffer, you impute to Christianity", caption: "Augustine, City of God 1.33: his reply to the accusation against Christianity"}
+  narration: "**Whose fault.** The churches where people like Marcella found shelter became Augustine’s answer to Romans who blamed Christianity and the prohibition of the old worship. In The City of God, composed in 413–426 by Gibbon’s dating, Augustine says refugees found “open sanctuary” whether Christian or pagan, then blamed Christ for their losses while crediting survival to luck. In his words, “the injuries you suffer, you impute to Christianity”; he credits Christ for restraint in the churches. The gate-opening culprit remains disputed in Procopius’s later stories, while Augustine’s opponents and Zosimus’s defense of the rites locate responsibility in religious allegiance."
   duration: 13
 
-- shot: four-seventy-six
-  view: graph
-  focus: deposition-of-romulus-augustulus
-  time: "0476-09"
-  reveal: [deposition-of-romulus-augustulus, odoacer, romulus-augustulus, roman-empire]
-  reveal_claims: [deposition-of-romulus-augustulus#c1, deposition-of-romulus-augustulus#c2, deposition-of-romulus-augustulus#c3, deposition-of-romulus-augustulus#c4, odoacer#c1, romulus-augustulus#c1]
-  overlay: {kind: "quote", source: "dir-romulus-augustulus-mathisen", quote: "The legitimate western emperor Nepos not only continued to rule, albeit in Dalmatia, but even had coins issued in his name in Odovacar's Italy.", caption: "Ralph W. Mathisen, De Imperatoribus Romanis"}
-  narration: "**476.** On 28 August Odoacer killed Orestes, whose son Romulus, nicknamed Augustulus, occupied the western throne. In early September he deposed the boy. In Ralph Mathisen's quotation of the Anonymus Valesianus, Odoacer spared him out of pity for his youth, but granted 6,000 solidi a year because he was “comely”, sending him to Campania. Count Marcellinus instead describes exile to a castle there and laments that the western empire “perished” with him. Nepos still claimed the throne from Dalmatia until 480 and had coins struck in his name in Odoacer's Italy. The boy lost his court; even the date that became Rome's ending left a rival emperor alive."
+- shot: "barbarism-and-religion"
+  view: "graph"
+  focus: "edward-gibbon"
+  time: "1781"
+  reveal: ["edward-gibbon", "decline-and-fall-of-the-roman-empire", "the-fall-of-rome-debate"]
+  reveal_claims: ["edward-gibbon#c2", "edward-gibbon#c4"]
+  overlay: {kind: "quote", source: "gibbon-decline-and-fall-gutenberg", quote: "the decline of Rome was the natural and inevitable effect of immoderate greatness.", caption: "Edward Gibbon, General Observations, chapter 38"}
+  narration: "**Gibbon’s explanation.** In a postscript dated 1 March 1781, Edward Gibbon announced that his history of Rome’s fall in the west was complete; his General Observations called the decline a consequence of “immoderate greatness”. He argued that conquest multiplied the causes of destruction and assigned Christianity’s introduction, or abuse, some influence on decline. Yet he also credited the religion with tempering the conquerors’ violence and cushioning the fall. His explanation reaches across centuries beyond the decisions that brought Alaric to Rome."
   duration: 13
 
-- shot: the-plague
-  view: map
-  camera: {"center": [29, 41], "zoom": 5.4, "duration": 5}
-  places: ["istanbul"]
-  time: "0541"
-  reveal: [plague-of-justinian, justinian-i, istanbul, the-justinianic-plague-an-inconsequential-pandemic]
-  reveal_claims: [plague-of-justinian#c1, plague-of-justinian#c2, plague-of-justinian#c4, plague-of-justinian#c3, justinian-i#c1, plague-of-justinian#c6]
-  overlay: {kind: "stat", value: "5,000 to 10,000 a day", label: "Deaths a day at the worst of the plague in Constantinople, as Procopius reported", source: "procopius-persian-wars-2-loeb", quote: "the tale of dead reached five thousand each day, and again it even came to ten thousand and still more than that"}
-  narration: "**The plague.** In Constantinople in 542, Justinian sent palace soldiers and money to bury people whose households could no longer bury them. His official Theodorus spent his own money too, in Procopius's eyewitness account. The disease had begun at Pelusium in Egypt in 541; it reached the capital in the spring of its second year and lasted four months, three at its worst. Procopius reported 5,000, then 10,000 or more deaths a day; even the emperor fell ill. A 2019 PNAS paper by Mordechai and colleagues finds estimates of tens of millions unsupported by the evidence examined. The burial crews filled the tombs, then trenches, then towers: keeping up with the dead became work for the imperial state."
+- shot: "the-disappearance-of-comfort"
+  view: "graph"
+  focus: "bryan-ward-perkins"
+  time: "2005"
+  reveal: ["bryan-ward-perkins", "the-fall-of-rome-and-the-end-of-civilization", "the-fall-of-rome-debate"]
+  reveal_claims: ["bryan-ward-perkins#c1", "bryan-ward-perkins#c2"]
+  overlay: {kind: "quote", source: "bmcr-2005-odonnell-heather-ward-perkins", quote: "too much devoted to special pleading for a single line of argument", caption: "James J. O’Donnell reviewing Ward-Perkins and Heather, 2005"}
+  narration: "**Pots and explanations.** Where Gibbon weighed imperial greatness and religion, Bryan Ward-Perkins in 2005 put ordinary households’ pots before readers: good kitchenware and storage jars once reached poor people across long distances. He argued that the archaeological record showed a startling fall in western living standards during the fifth to seventh centuries. Reviewing him that year, James J. O’Donnell accepted the material decline but said omitting much of the east prevented a comprehensive explanation; he called both Ward-Perkins’s and Peter Heather’s arguments too devoted to a single line. The losses of households were evidence, while what explained the empire’s whole transformation remained contested."
   duration: 13
 
-- shot: the-army-and-its-taxes
-  view: graph
-  focus: odoacer
-  time: "0476"
-  reveal: [edward-gibbon, peter-heather, the-fall-of-rome-debate, roman-empire, deposition-of-romulus-augustulus, odoacer]
-  reveal_claims: [edward-gibbon#c3, peter-heather#c3, peter-heather#c2, deposition-of-romulus-augustulus#c5]
-  overlay: {kind: "quote", source: "procopius-gothic-wars-5-loeb", quote: "And by giving the third part of the land to the barbarians, and in this way gaining their allegiance most firmly he held the supreme power securely for ten years.", caption: "Procopius, Wars, book 5: Odoacer's bargain with the soldiers"}
-  narration: "**The army and its taxes.** In Italy in 476, Orestes refused soldiers demanding a third of the land. They killed him; Odoacer promised the land if they made him ruler, according to Procopius. The same account says Roman soldiers' standing had fallen as their allies grew stronger; distributing land secured Odoacer's power for ten years. Peter Heather instead points to a state spending two-thirds of its taxes on its professional army, then losing that tax base to migrants. In Odoacer's bargain, soldiers received land and allegiance passed to the man who delivered it."
-  duration: 13
-
-- shot: barbarism-and-religion
-  view: graph
-  focus: edward-gibbon
-  time: "0476"
-  reveal: [edward-gibbon, decline-and-fall-of-the-roman-empire, the-fall-of-rome-debate]
-  reveal_claims: [edward-gibbon#c1, edward-gibbon#c2, edward-gibbon#c4, decline-and-fall-of-the-roman-empire#c1, edward-gibbon#c5]
-  overlay: {kind: "quote", source: "gibbon-decline-and-fall-gutenberg", quote: "the decline of Rome was the natural and inevitable effect of immoderate greatness.", caption: "Edward Gibbon, The Decline and Fall of the Roman Empire, General Observations"}
-  narration: "**Barbarism and religion.** Among Rome's ruined Capitol, Edward Gibbon conceived the history that would occupy nearly twenty years, as he recalled at its close. His explanation was blunt: “the decline of Rome was the natural and inevitable effect of immoderate greatness.” He blamed legions for oppressing republic and emperors, and Constantine for dissolving military government. He assigned some influence to Christianity's introduction or abuse, summing up his volumes as “the triumph of barbarism and religion”. But his account also credited Christianity with benefiting northern converts and softening their violence. Even if Constantine's conversion hastened decline, Gibbon argued, his religion cushioned the fall by tempering the conquerors. His explanation gave the same religion a part in both weakening imperial power and limiting the cost of its defeat."
-  duration: 13
-
-- shot: the-outside-push
-  view: graph
-  focus: peter-heather
-  time: "0378"
-  reveal: [peter-heather, the-fall-of-the-roman-empire-heather, battle-of-adrianople, the-fall-of-rome-debate]
-  reveal_claims: [battle-of-adrianople#c3, peter-heather#c1, peter-heather#c2, the-fall-of-the-roman-empire-heather#c1, battle-of-adrianople#c6]
-  overlay: {kind: "quote", source: "bbc-history-2011-heather-the-fall-of-rome", quote: "The central Roman state collapsed because the migrants forcibly stripped it of the tax base which it had used to fund its armies, not because of long-term 'organic' transformations.", caption: "Peter Heather, The Fall of Rome, BBC History, 2011"}
-  narration: "**The outside push.** At Adrianople in 378, Valens chose to march against the wagons rather than wait for Gratian's reinforcements; he died facing people displaced from beyond his frontier. In Peter Heather's reading, Hunnic pressure pushed other peoples into Roman territory; settlement became armed expansion, stripping the state of land and the taxes that paid its armies between 378 and 476. The danger, in that explanation, arrived from outside. Reviewing the book, James O'Donnell says this emphasis minimizes overtaxation, moral decay and religious zealotry. For Heather, the lost territory meant lost army funding: armed expansion had broken the central state by taking away its tax base."
-  duration: 13
-
-- shot: the-disappearance-of-comfort
-  view: graph
-  focus: bryan-ward-perkins
-  time: "0500"
-  reveal: [bryan-ward-perkins, the-fall-of-rome-and-the-end-of-civilization, the-fall-of-rome-debate]
-  reveal_claims: [bryan-ward-perkins#c1, bryan-ward-perkins#c2, the-fall-of-rome-and-the-end-of-civilization#c1]
-  overlay: {kind: "quote", source: "oupblog-2005-ward-perkins-fall-of-rome", quote: "it does not fit the mass of archaeological evidence now available, which shows a startling decline in western standards of living during the fifth to seventh centuries.", caption: "Bryan Ward-Perkins, The Fall of Rome and the End of Civilization, OUPblog excerpt, 2005"}
-  narration: "**The disappearance of comfort.** In a 2005 book excerpt, archaeologist Bryan Ward-Perkins asked readers to look past emperors to the things ordinary Romans used: kitchenwares, tablewares and great jars for wine and oil, produced in huge numbers and reaching poor households too. He challenged a painless transformation with objects that poor people could once afford. In his description, pots travelled hundreds of miles from their makers to the households that used them. He puts the fall in western living standards in the fifth to seventh centuries, with comparable sophistication returning perhaps only in the fourteenth. For him this was “the end of a civilization”: his broken pots made ordinary people's lost comfort part of the argument."
-  duration: 13
-
-- shot: transformation
-  view: graph
-  focus: peter-brown-historian
-  time: "0500"
-  reveal: [peter-brown-historian, transformations-of-late-antiquity, the-fall-of-rome-debate]
-  reveal_claims: [peter-brown-historian#c1, peter-brown-historian#c2, transformations-of-late-antiquity#c1]
-  overlay: {kind: "quote", source: "bmcr-2005-odonnell-heather-ward-perkins", quote: "If the Reformation began when Peter Brown pounded twice ninety-five pages of The World of Late Antiquity on the basilica door in 1971 and flourished through at least the 1980s, the 1990s have seen the rise of the resistance.", caption: "James J. O'Donnell, Bryn Mawr Classical Review, 2005"}
-  narration: "**Transformation.** Reviewing rival histories in 2005, James O'Donnell accepted Ward-Perkins's evidence of material decline but refused to call it a comprehensive explanation. His reason was concrete: a history that substantially omitted the east could not explain the transformation of the whole ancient world. He found the portrayal of transformation's advocates “a bit overplayed”; accepting suffering did not settle the argument. He traced the turn toward transformation to Peter Brown's 1971 book. A 2010 review reports Robert Markus's reason for that approach: Late Antiquity deserved treatment as a period with its own positive character. O'Donnell's objection leaves the eastern half demanding an answer too."
-  duration: 13
-
-- shot: climate-and-disease
-  view: graph
-  focus: kyle-harper
-  time: "0541"
-  reveal: [kyle-harper, the-fate-of-rome, plague-of-justinian, the-justinianic-plague-an-inconsequential-pandemic, the-fall-of-rome-debate]
-  reveal_claims: [kyle-harper#c1, kyle-harper#c2, kyle-harper#c3, plague-of-justinian#c5, the-justinianic-plague-an-inconsequential-pandemic#c1]
+- shot: "climate-and-disease"
+  view: "graph"
+  focus: "kyle-harper"
+  time: "2017"
+  reveal: ["kyle-harper", "the-fate-of-rome", "the-fall-of-rome-debate", "byzantine-empire"]
+  reveal_claims: ["kyle-harper#c2", "kyle-harper#c3"]
   overlay: {kind: "quote", source: "aeon-2017-harper-climate-disease-fall-of-rome", quote: "The end of this lucky climate regime did not immediately, or in any simple deterministic sense, spell the doom of Rome.", caption: "Kyle Harper, Aeon, 2017"}
-  narration: "**Climate and disease.** In 2017 Kyle Harper explained why he put nature into Roman history: new climate data and greater awareness of the environment made it possible to ask different questions. His public purpose was to make readers reconsider environmental power and learn from dangers Rome had failed to master. He followed germs through Roman trade networks and argued that worsening climate weakened imperial power alongside enemies from outside; he rejected climate alone as an immediate doom. Sixth-century cold and plague struck the east more than sixty years after 476. Mordechai and colleagues dispute plague as a primary cause of that period's changes. Harper asks readers to learn from Rome's vulnerability; the disputed scale of mortality limits what his explanation can settle."
+  narration: "**Other endings.** In 2017 Kyle Harper argued that climate and disease weakened imperial power alongside military enemies, while rejecting an immediate, inevitable doom from climate alone. The sack’s closer record leaves decisions and suffering: a court refusing terms, a city denied food, residents killed, enslaved and raped, Marcella asking for Principia’s safety. Who let Alaric in remains unsettled in Procopius’s rival gate stories; Augustine says Romans blamed Christianity, and answers with lives protected in churches. The Vandals, 476, Justinian’s plague and Constantinople’s fall in 1453 belong to other stories of Rome’s endings."
   duration: 13
 
-- shot: the-other-half
-  view: map
-  camera: {"center": [28.9784, 41.0082], "zoom": 8, "duration": 5}
-  places: ["istanbul"]
-  time: "1453-05-29"
-  reveal: [death-of-constantine-xi, constantine-xi, byzantine-empire, istanbul, ottoman-empire]
-  reveal_claims: [death-of-constantine-xi#c1, death-of-constantine-xi#c2, death-of-constantine-xi#c3, death-of-constantine-xi#c4, constantine-xi#c1, death-of-constantine-xi#c5]
-  overlay: {kind: "quote", source: "pears-1903-destruction-of-the-greek-empire", quote: "No news was received of his fate, whether he was living or dead, but some say that his body was seen among the number of the dead, while others asserted that he was trampled to death", caption: "Nicolò Barbaro, who was in the city, as translated in Edwin Pears, 1903"}
-  narration: "**The other half.** Before Constantinople fell, Constantine XI rejected advice to escape. In the account Edwin Pears relays, he said he would not abandon his people, clergy, churches and throne: “I am ready to die with you.” On 29 May 1453 Ottoman troops entered; in Pears's account, the emperor disappeared in the Janissaries' final charge. Pears judged his death in the assault beyond reasonable doubt, but none of the stories of how he died altogether trustworthy. Barbaro, who was in the city, could report only rumours of a body seen or a man trampled. The eastern empire had kept the Roman name for 1,058 years after 395 in Gibbon's count. Its last ruler's reported refusal ended with the city taken and the fate of his body uncertain."
-  duration: 13
 ```

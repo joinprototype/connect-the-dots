@@ -23,6 +23,7 @@ claims:
     note: "In his preface Augustine says Marcellinus suggested the work and that he had promised it to him."
     src:
       - {s: "augustine-city-of-god-book-1-nicene-fathers", at: "preface", quote: "which you, my dearest son Marcellinus , suggested, and which is due to you by my promise.", by: "augustine-of-hippo"}
+  - {id: "c4", rel: "influenced", to: "the-fall-of-rome-debate", according_to: ["augustine-of-hippo"], note: "Augustine says the accusers blamed Christ for the sack but credited their own survival in churches to luck. He credits the protection to Christ. Gibbon dates composition of The City of God to 413–426.", src: [{s: "augustine-city-of-god-book-1-nicene-fathers", at: "1.1", quote: "they attribute not to our Christ , but to their own good luck."}, {s: "gibbon-decline-and-fall-gutenberg", at: "chapter 28, note 79", quote: "Augustin composed the two-and-twenty books de\n Civitate Dei in the space of thirteen years, A.D. 413-426."}]}
 ---
 
 Augustine's reply to the people who blamed the old gods' neglect is [[city-of-god]].
