@@ -18,4 +18,9 @@ claims:
     title: "Director of the Manned Spacecraft Center"
     src:
       - {s: nasa-apollo-1-55-years, quote: "Robert R. Gilruth , director of the Manned Spacecraft Center (MSC), now NASA’s Johnson Space Center in Houston,"}
+  - id: c3
+    rel: leads
+    to: apollo-program
+    src:
+      - {s: nasa-sp-2005-4112-bilstein-douglas, at: "p. 213, Godfather to the Astronauts: Robert Gilruth and the Birth of Human Spaceflight", quote: "Under his direction, NASA successfully completed Projects Mercury, Gemini, and Apollo."}
 ---
