@@ -2,6 +2,13 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.5.20 (2026-11-17)
+
+- Thirteen stories that read as a list of cases are each told again as one storyline, in date order, every scene following from the last: Why Empires Fall (the people who explained a fall while living through it, 410 to 1991), Why Rome Fell (the road to the sack of 410), On the Books (the Zong), Signed Off (Andersen and Enron), Does Google Have to Break Up? (United States v. Google, from the complaint of 2020 to the appeals of 2026), The Lab (Jesse Gelsinger's trial at Penn), Family Hands (how Hermès kept its family majority through LVMH's stake), How Europe Pulled Ahead, The Jar, Giving, Decrees, The Torah to the Press, The Great Dying and The House of Wisdom.
+- The Crash of 2008 goes from 19 scenes to 22: what the Lehman examiner found, the prosecutions measured against "no banker went to jail", and Treasury's final count of TARP.
+- New people read from the sources stories had already saved, among them Alan Shepard, Bill Anders, George Mueller and Robert Gilruth (Apollo), Ed Heinemann, George McGovern and Ben Bagdikian, with the links those sources give; the head offices of the SEC and eight more organisations from the nightly leads run; and the Internet Archive's copy for 1,066 more sources.
+- A release now rewrites only the pages whose content changed: the version and build time are printed on the home and About pages only.
+
 ## 0.5.19 (2026-11-13)
 
 - Nine people the record lacked, read from the sources three stories had already saved, with 29 sourced links: Liaquat Ali Khan, Rajendra Prasad, Abul Kalam Azad and Winston Churchill (Midnight, 1947); Elliot Richardson, Egil Krogh, William Rehnquist and William Ruckelshaus (Watergate); and McGeorge Bundy, with who sat on Operation MONGOOSE's oversight groups (the Cuban missile crisis).
