@@ -5,6 +5,8 @@
    the reader picks it. An entry's life story is this page's main, kept in its pack (ADR-0026). #}
 {% block title %}{{ story.title }}{{ " –" if story.title[-1:] == "?" else ":" }} Connect the Dots{% endblock %}
 {% block description %}{{ story.summary or story.subtitle or story.title }}{% endblock %}
+{% block og_image %}{% if share_card %}<meta property="og:image" content="{{ site.url|safe }}{{ share_card|safe }}">
+<meta property="og:image:alt" content="{{ story.title }}, a story on Connect the Dots">{% else %}{{ super() }}{% endif %}{% endblock %}
 {% block body_class %}read-page{% endblock %}
 {% block head %}{{ door_inks(site) }}{% if site.assets.read_css %}<link rel="stylesheet" href="/assets/read.css">{% endif %}{% endblock %}
 {% block main %}
@@ -38,6 +40,7 @@
   {% if story.outro|trim %}<div class="read-outro">{{ story.outro|safe }}</div>{% endif %}
   <footer class="read-end">
     <p class="read-ended"><i class="read-mark small"></i>That is the end of {{ story.title }}.</p>
+    {% if share_card %}<button type="button" class="read-share" data-url="/c/{{ story.id }}/" data-title="{{ story.title }}">Share this story</button>{% endif %}
     {% if story.next %}
     <h2 class="read-next-h">Keep reading</h2>
     <ul class="read-next">

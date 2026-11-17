@@ -60,7 +60,7 @@ To undo a deploy: `npx wrangler@4 rollback` makes the version before it live at 
 
 - **File count:** up to 20,000 files per version on the free plan, 100,000 on Workers Paid.
   - On 2026-11-13 the site has 9,924 files: 4,056 entry pages, 2,168 search files, 2,048 atlas files, 1,024 packs, 361 question pages, 114 type pages, 89 stories, and the rest.
-  - A new entry adds one file, its page, plus any question pages it earns ([ADR-0026](decisions/0026-entries-share-files.md)).
+  - A new entry adds one file, its page, plus any question pages it earns ([ADR-0026](decisions/0026-entries-share-files.md)). A new story adds two: its page and its share card (`share.png`, under 100 KB).
   - Past 20,000 files, the next step is Workers Paid. Past roughly 50k, move tiles and long-tail pages to R2 (ADR-0006).
 - **What a release uploads:** Wrangler uploads only files whose content is new. A page or data file changes only when what it shows does, so a release uploads about what it changed: 0.5.19 (9 new people, 29 links) uploaded 7,255 files; the same change now rewrites 340, most of them the new people's pages, their neighbours' and the search files their names are in. Keep it so:
   - the version, the build time and the commit are printed on the home and About pages only (`build_line` in `macros.html`);

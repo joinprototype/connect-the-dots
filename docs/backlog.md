@@ -101,7 +101,7 @@ _Add ideas here with date and who suggested them._
 ### E3 Reading pages
 - Map tab (MapLibre) for places and events
 - Pagefind search, later a custom or Tantivy index
-- Share cards (OG images) per entity and chapter
+- ~~Share cards (OG images) per entity and chapter~~ Stories done in Sprint 28 (S28-18), with a share button and `/feed.xml`; entries still share the site's picture.
 - "Wanted pages" (red links) list
 - Accessibility pass: a list for every visual, keyboard paths, reduced motion
 

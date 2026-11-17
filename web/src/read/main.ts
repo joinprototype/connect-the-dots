@@ -2,3 +2,4 @@
 // (life.ts) starts it once its words are in the page.
 import './read.css';
 import './reader';
+import './share';

@@ -80,6 +80,7 @@ Stages:
 ```
 dist/
   e/<id>/index.html          entity pages            c/<id>/index.html   stories
+  c/<id>/share.png           a story's share card (og:image), 1200x630   feed.xml   the 30 newest stories as RSS
   ask/                       Ask                     w/                  the Map
   data/schema.json           vocabulary              data/graph-slim.json   every entry and link, structure only
   data/e/<n>.json            entries' words and proof, in packs   data/search/   search entries by word range
@@ -137,6 +138,8 @@ Builds are deterministic: a pinned toolchain, sorted output and fixed seeds. Any
   - Timeline, Proof (with archive links) and Page history as folded sections; no tabs.
 - **Rendering:**
   - MiniJinja templates produce static HTML.
+  - Each story's share card (`/c/<id>/share.png`, its `og:image`) is drawn by the build: title, subtitle and span beside the drawing from its cover, black on white, rendered with resvg from SVG in the site's own typefaces (static instances in `crates/ctd/fonts/`). Same story, same bytes. Other pages share `/static/og.png`.
+  - `/feed.xml` lists the 30 newest stories free of sealed entries, dated by the day each was added.
   - Islands are light-DOM custom elements, loaded when they scroll into view.
   - No React on reading pages; ≤15 KB JS before islands.
 - **SEO and accessibility:** all content is real HTML. Every graph and timeline has a list or table equivalent, and reduced motion is respected.

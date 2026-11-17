@@ -33,6 +33,7 @@ mod question;
 // Read (/c/<id>/): a story over its field of dots, and the field itself
 mod field;
 mod read;
+mod share;
 
 use history::{History, git};
 use question::{answer_counts, answer_view};
@@ -620,6 +621,7 @@ pub fn build(root: &Path, kb: &Kb, opts: &Opts) -> Result<Manifest> {
     let routes = route_stories(&s)?;
     library_page(&s, &chapters, &routes, &lives, &questions)?;
     home_page(&s, &chapters)?;
+    story_feed(&s)?;
     // Ask: the box as the page's heading, arriving on a featured pair, and data/ask.json
     let asked: Vec<(&str, &str)> = pages.list.iter().map(|a| (kb.schema.questions[a.q].id.as_str(), a.x.id.as_str())).collect();
     ask::write_ask(&s, &asked)?;
@@ -1109,7 +1111,7 @@ fn question_pages(s: &Site, pages: &QuestionPages) -> Result<QuestionShelf> {
 /// A chapter's cover: its own web of entries and links; else its map when it visits enough places;
 /// else a constellation.
 fn chapter_cover(kb: &Kb, ch: &crate::kb::Chapter) -> String {
-    story_web(kb, ch).unwrap_or_else(|| chapter_map(kb, ch))
+    story_web(kb, ch).unwrap_or_else(|| chapter_map(kb, ch, &ch.title))
 }
 
 /// The entries a story's scenes reveal (sealed ones left out, at most 90, in the order they come), in
@@ -1162,7 +1164,8 @@ fn chapter_span(ch: &crate::kb::Chapter) -> String {
 }
 
 /// A chapter's map cover: the places it visits, when it visits enough; else a constellation.
-fn chapter_map(kb: &Kb, ch: &crate::kb::Chapter) -> String {
+/// `label` is set on it as a title; the share card passes none, as it sets the title itself.
+fn chapter_map(kb: &Kb, ch: &crate::kb::Chapter, label: &str) -> String {
     let mut ids: Vec<&str> = Vec::new();
     let mut routes: Vec<(&str, &str)> = Vec::new();
     fn strings(v: &Value) -> Vec<&str> {
@@ -1183,7 +1186,7 @@ fn chapter_map(kb: &Kb, ch: &crate::kb::Chapter) -> String {
     let at = |id: &str| placed.iter().position(|(p, _)| *p == id);
     let lines: Vec<(usize, usize)> = routes.into_iter().filter_map(|(a, b)| Some((at(a)?, at(b)?))).collect();
     let stops: Vec<[f64; 2]> = placed.iter().map(|&(_, p)| p).collect();
-    crate::covers::journey(&ch.id, &ch.title, &stops, &lines).unwrap_or_else(|| crate::covers::entity(&ch.id, &ch.title, ch.shots.len()))
+    crate::covers::journey(&ch.id, label, &stops, &lines).unwrap_or_else(|| crate::covers::entity(&ch.id, label, ch.shots.len()))
 }
 
 fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
@@ -1196,6 +1199,7 @@ fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
                     "cover": ch.cover.as_ref().map_or_else(|| chapter_cover(kb, ch), |u| format!(r#"<img class="cover-art cover-photo" src="{}" alt="" loading="lazy">"#, markdown::escape(u))) })
         })
         .collect();
+    share_cards(s)?;
     let shared = shared_names(kb);
     let read_site = read::site_json(s)?;
     write(&s.out.join("data").join("read.json"), serde_json::to_vec(&read::data(s, &cards))?)?;
@@ -1214,10 +1218,63 @@ fn chapter_pages(s: &Site) -> Result<Vec<Value>> {
         }
         let steps = story_steps(s, &ch.shots);
         let story = read::story(s, &read::Told::written(ch), &steps, &next)?;
-        let html = s.render("read.html", json!({ "site": &s.site, "story": &story, "read_json": &read_site }))?;
+        let card = format!("/c/{}/{SHARE_CARD}", ch.id);
+        let html = s.render("read.html", json!({ "site": &s.site, "story": &story, "read_json": &read_site, "share_card": card }))?;
         write(&s.out.join("c").join(&ch.id).join("index.html"), html)?;
     }
     Ok(cards)
+}
+
+/// How many stories the feed lists, newest first.
+const FEED_STORIES: usize = 30;
+
+/// `/feed.xml`: the newest stories as RSS, for feed readers. Only stories free of sealed entries, as on
+/// the home page's shelf (ADR-0027); dated by the day each was added, so the file changes only when a
+/// story arrives or its words change.
+fn story_feed(s: &Site) -> Result<()> {
+    use std::fmt::Write;
+    let mut stories: Vec<(chrono::NaiveDate, &crate::kb::Chapter)> =
+        s.kb.unsealed_chapters()
+            .into_iter()
+            .filter_map(|c| Some((chrono::NaiveDate::parse_from_str(s.history.added(&c.rel_path)?, "%Y-%m-%d").ok()?, c)))
+            .collect();
+    stories.sort_by(|a, b| b.0.cmp(&a.0).then(a.1.id.cmp(&b.1.id)));
+    stories.truncate(FEED_STORIES);
+    let day = |d: &chrono::NaiveDate| d.format("%a, %d %b %Y 00:00:00 +0000").to_string();
+    let mut items = String::new();
+    for (added, c) in &stories {
+        let url = format!("{SITE_URL}/c/{}/", c.id);
+        let about = c.summary.as_deref().or(c.subtitle.as_deref()).unwrap_or_default();
+        let _ = writeln!(
+            items,
+            "<item><title>{}</title><link>{url}</link><guid isPermaLink=\"true\">{url}</guid><pubDate>{}</pubDate><description>{}</description></item>",
+            markdown::escape(&c.title),
+            day(added),
+            markdown::escape(about)
+        );
+    }
+    let newest = stories.first().map(|(d, _)| format!("<pubDate>{}</pubDate>", day(d))).unwrap_or_default();
+    let feed = format!(
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rss version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\"><channel>\n<title>Connect the Dots: new stories</title><link>{SITE_URL}/</link><atom:link href=\"{SITE_URL}/feed.xml\" rel=\"self\" type=\"application/rss+xml\"/><description>Stories told from sourced links: who decided what, and why, in their own words.</description><language>en</language>{newest}\n{items}</channel></rss>\n"
+    );
+    write(&s.out.join("feed.xml"), feed)
+}
+
+/// The picture a shared link to a story shows: `/c/<id>/share.png` (site/share.rs).
+const SHARE_CARD: &str = "share.png";
+
+/// Every story's share card: its title and subtitle beside the drawing from its cover. A story with
+/// its own cover photo gets the drawing too: the photo's licence asks for credit the card has no room for.
+fn share_cards(s: &Site) -> Result<()> {
+    use rayon::prelude::*;
+    let kb = s.kb;
+    let css = fs::read_to_string(s.out.join("static").join("site.css")).unwrap_or_default();
+    let tokens = share::tokens(&css);
+    kb.chapters.par_iter().try_for_each(|ch| {
+        let art = story_web(kb, ch).unwrap_or_else(|| chapter_map(kb, ch, ""));
+        let svg = share::svg(&ch.title, ch.subtitle.as_deref(), &chapter_span(ch), &art, &tokens);
+        write(&s.out.join("c").join(&ch.id).join(SHARE_CARD), share::png(&svg).with_context(|| format!("share card for {}", ch.id))?)
+    })
 }
 
 /// For each story, the others that share the most with it, by the entries their scenes name, with the
@@ -1540,6 +1597,33 @@ mod tests {
         assert_eq!(stories["ann"].iter().map(|r| r["title"].as_str().unwrap()).collect::<Vec<_>>(), ["twice", "once"]);
         assert_eq!(stories["ann"][0]["counts"], "2 scenes");
         assert_eq!(stories["bo"].len(), 1);
+    }
+
+    #[test]
+    fn a_story_has_its_own_share_card_and_a_share_button() {
+        let files = [
+            crate::testkit::entity("person", "ann", "Ann", ""),
+            crate::testkit::file(
+                "content/chapters/once.md",
+                "---\nid: once\ntype: chapter\ntitle: Once & Again\nsubtitle: A test\n---\n\n```scene\n- shot: a\n  focus: ann\n```\n",
+            ),
+        ];
+        let root = write_repo("site-share", &files).unwrap();
+        super::copy_dir(&Path::new(env!("CARGO_MANIFEST_DIR")).join("../../theme"), &root.join("theme")).unwrap();
+        let (kb, _) = crate::load_kb(&root).unwrap();
+        let out = root.join("dist");
+        super::build(&root, &kb, &super::Opts { out: out.clone(), dev: false, graph: false }).unwrap();
+        let card = std::fs::read(out.join("c/once/share.png")).unwrap();
+        assert_eq!(&card[1..4], b"PNG");
+        let page = std::fs::read_to_string(out.join("c/once/index.html")).unwrap();
+        assert!(page.contains(&format!(r#"<meta property="og:image" content="{SITE_URL}/c/once/share.png">"#)), "the card, its slashes unescaped");
+        assert!(page.contains(r#"class="read-share" data-url="/c/once/""#));
+        // other pages keep the site's own picture and offer the feed
+        let home = std::fs::read_to_string(out.join("index.html")).unwrap();
+        assert!(home.contains("/static/og.png") && home.contains(r#"href="/feed.xml""#));
+        let feed = std::fs::read_to_string(out.join("feed.xml")).unwrap();
+        assert!(feed.starts_with("<?xml") && feed.contains("<channel>") && feed.trim_end().ends_with("</rss>"));
+        let _ = std::fs::remove_dir_all(&root);
     }
 
     #[test]

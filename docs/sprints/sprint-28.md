@@ -28,6 +28,7 @@ The site is live and listed (2026-10-30), the story and leads runs add to it eve
 - [x] S28-15 The home page's shelf opens with the two newest stories, each "Added <day>", so it changes as stories arrive; the featured ones follow.
 - [x] S28-16 More stories (ADR-0041): `ctd seeds` finds topics in the record (entries no story shows, names that run through several stories, stories with entries they lack) and the story run refills its queue from them; up to two stories a night, the second a retry when the first fails.
 - [x] S28-17 Harvest every night after the leads run (ADR-0039, founder's word 2026-11-13). Hand runs before it: Partition, Watergate and Cuba gave 9 new people and 29 links (0.5.19).
+- [x] S28-18 Getting found: each story has its own share card (`/c/<id>/share.png`), a "Share this story" button at its end, and the newest stories as RSS at `/feed.xml` (founder's word 2026-11-17, after 20 visits in the dots' first five counted days).
 - [x] S28-14 Unit tests for the browser's pure logic: `npm --prefix web test` (dates, the puzzle's day, names search, hash).
 - [x] S28-10 A phone pass over the live site with touch checks: `sweep.mjs --touch --size=390x844` on `/w/`, `/play/`, `/ask/` and all 89 pages under `/c/` found no touch problem; each page's one console error is the zone's blocked bot-detection script (S28-12). (2026-11-12)
 - [ ] S28-13 The founder's own try on a real iPhone: the pinch fix, the puzzle, the covers (backlog, 2026-10-30).
