@@ -2,6 +2,12 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.5.21 (2026-11-17)
+
+- A link to a story now shows that story when it is shared: its title, subtitle and years beside the drawing from its cover, where before every link showed the same picture of the site.
+- "Share this story" at the end of every story: on a phone it opens the share sheet, on a computer it copies the link.
+- The newest stories as an RSS feed, at /feed.xml, for feed readers.
+
 ## 0.5.20 (2026-11-17)
 
 - Thirteen stories that read as a list of cases are each told again as one storyline, in date order, every scene following from the last: Why Empires Fall (the people who explained a fall while living through it, 410 to 1991), Why Rome Fell (the road to the sack of 410), On the Books (the Zong), Signed Off (Andersen and Enron), Does Google Have to Break Up? (United States v. Google, from the complaint of 2020 to the appeals of 2026), The Lab (Jesse Gelsinger's trial at Penn), Family Hands (how Hermès kept its family majority through LVMH's stake), How Europe Pulled Ahead, The Jar, Giving, Decrees, The Torah to the Press, The Great Dying and The House of Wisdom.
