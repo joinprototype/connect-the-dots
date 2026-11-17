@@ -2,6 +2,10 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.5.22 (2026-11-17)
+
+- Links to every other page show a new picture of the site, black on white like the site itself, where they showed the old dark one.
+
 ## 0.5.21 (2026-11-17)
 
 - A link to a story now shows that story when it is shared: its title, subtitle and years beside the drawing from its cover, where before every link showed the same picture of the site.
