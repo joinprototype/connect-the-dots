@@ -1263,8 +1263,9 @@ fn story_feed(s: &Site) -> Result<()> {
 /// The picture a shared link to a story shows: `/c/<id>/share.png` (site/share.rs).
 const SHARE_CARD: &str = "share.png";
 
-/// Every story's share card: its title and subtitle beside the drawing from its cover. A story with
-/// its own cover photo gets the drawing too: the photo's licence asks for credit the card has no room for.
+/// Every story's share card, its title and subtitle beside the drawing from its cover, and the site's own
+/// card, `/static/og.png`, for every other page. A story with its own cover photo gets the drawing too:
+/// the photo's licence asks for credit the card has no room for.
 fn share_cards(s: &Site) -> Result<()> {
     use rayon::prelude::*;
     let kb = s.kb;
@@ -1274,7 +1275,12 @@ fn share_cards(s: &Site) -> Result<()> {
         let art = story_web(kb, ch).unwrap_or_else(|| chapter_map(kb, ch, ""));
         let svg = share::svg(&ch.title, ch.subtitle.as_deref(), &chapter_span(ch), &art, &tokens);
         write(&s.out.join("c").join(&ch.id).join(SHARE_CARD), share::png(&svg).with_context(|| format!("share card for {}", ch.id))?)
-    })
+    })?;
+    // every other page shares the site's own card: what it does, beside a constellation
+    let host = SITE_URL.trim_start_matches("https://");
+    let art = crate::covers::entity("connect-the-dots", "", 14);
+    let svg = share::svg("Ask how anything connects.", Some("Every link shows its proof, and every interpretation says whose it is."), host, &art, &tokens);
+    write(&s.out.join("static").join("og.png"), share::png(&svg).context("the site's share card")?)
 }
 
 /// For each story, the others that share the most with it, by the entries their scenes name, with the
@@ -1621,6 +1627,7 @@ mod tests {
         // other pages keep the site's own picture and offer the feed
         let home = std::fs::read_to_string(out.join("index.html")).unwrap();
         assert!(home.contains("/static/og.png") && home.contains(r#"href="/feed.xml""#));
+        assert_eq!(&std::fs::read(out.join("static/og.png")).unwrap()[1..4], b"PNG", "the build draws the site's card");
         let feed = std::fs::read_to_string(out.join("feed.xml")).unwrap();
         assert!(feed.starts_with("<?xml") && feed.contains("<channel>") && feed.trim_end().ends_with("</rss>"));
         let _ = std::fs::remove_dir_all(&root);

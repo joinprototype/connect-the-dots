@@ -80,7 +80,8 @@ fn stars(svg: &mut String, rng: &mut Rng, n: usize, fg: &str) {
     }
 }
 
-/// A constellation: the entry at the centre, its links around it (count = `links`).
+/// A constellation: the entry at the centre, its links around it (count = `links`). With no label, as
+/// on a share card that sets the title beside it, the drawing takes the middle of the cover.
 pub fn entity(id: &str, label: &str, links: usize) -> String {
     let mut rng = Rng(seed(id));
     let fg = INK.fg;
@@ -88,7 +89,7 @@ pub fn entity(id: &str, label: &str, links: usize) -> String {
     title(&mut svg, label, fg);
     stars(&mut svg, &mut rng, 7, fg);
     let n = links.clamp(3, 16);
-    let (cx, cy) = (W / 2.0, 272.0);
+    let (cx, cy) = (W / 2.0, if label.is_empty() { H / 2.0 } else { 272.0 });
     let rot = rng.f() * std::f64::consts::TAU;
     let mut pts = Vec::with_capacity(n);
     for i in 0..n {

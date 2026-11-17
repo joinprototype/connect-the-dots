@@ -138,7 +138,7 @@ Builds are deterministic: a pinned toolchain, sorted output and fixed seeds. Any
   - Timeline, Proof (with archive links) and Page history as folded sections; no tabs.
 - **Rendering:**
   - MiniJinja templates produce static HTML.
-  - Each story's share card (`/c/<id>/share.png`, its `og:image`) is drawn by the build: title, subtitle and span beside the drawing from its cover, black on white, rendered with resvg from SVG in the site's own typefaces (static instances in `crates/ctd/fonts/`). Same story, same bytes. Other pages share `/static/og.png`.
+  - Each story's share card (`/c/<id>/share.png`, its `og:image`) is drawn by the build: title, subtitle and span beside the drawing from its cover, black on white, rendered with resvg from SVG in the site's own typefaces (static instances in `crates/ctd/fonts/`). Same story, same bytes. Every other page shares the site's own card, `/static/og.png`, drawn the same way.
   - `/feed.xml` lists the 30 newest stories free of sealed entries, dated by the day each was added.
   - Islands are light-DOM custom elements, loaded when they scroll into view.
   - No React on reading pages; ≤15 KB JS before islands.
