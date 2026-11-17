@@ -31,4 +31,10 @@ claims:
     to: vietnam
     src:
       - {s: agent-orange-517-f3d-104-2008, quote: "The Paris Peace Accords of January 1973 ended the United States’ participation in the Vietnam War. After the fall of Saigon in 1975"}
+  - id: c5
+    rel: involved
+    to: daniel-ellsberg
+    role: "worked on escalation as Special Assistant in the Defense Department"
+    src:
+      - {s: ellsberg-net-bio, at: "Bio (short version)", quote: "Ellsberg joined the Defense Department in 1964 as Special Assistant to Assistant Secretary of Defense (International Security Affairs) John McNaughton, working on the escalation of the war in Vietnam."}
 ---

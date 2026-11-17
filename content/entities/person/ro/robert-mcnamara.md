@@ -26,4 +26,17 @@ claims:
     role: "recommended retaliation if a second attack occurred, before one was reported"
     src:
       - {s: nsa-archive-lbj-tapes-tonkin, at: "9:43 a.m. telephone conversation", quote: "I, I personally would recommend to you, after a second attack on our ships, that we do retaliate against the coast of North Vietnam some way or other."}
+  - id: c4
+    rel: head_of
+    to: world-bank
+    title: "President"
+    src:
+      - {s: rand-cp564-rand-in-southeast-asia, at: "p. 424", quote: "By this time, McNamara had become president of the World Bank."}
+  - id: c5
+    rel: head_of
+    to: ford-motor-company
+    when: "1960-11"
+    title: "President"
+    src:
+      - {s: fjc-pentagon-papers-federal-courts-2019, at: "Robert McNamara, p. 29", quote: "In 1946, McNamara took a job with the Ford Motor Company, helping to turn around what was then a troubled company. He rose through the organization’s ranks quickly and was named president of the company, under chief executive Henry Ford II, in November 1960."}
 ---

@@ -92,6 +92,12 @@ claims:
     role: "Played “a prominent part” in the crisis, in the CIA’s own history"
     src:
       - {s: cia-csi-first-line-of-defense-kennedy, at: "Kennedy chapter", quote: "His tragically short administration faced two major crises in which CIA played a prominent part: the Bay of Pigs invasion of Cuba in 1961 and the Cuban Missile Crisis of October 1962."}
+  - id: c16
+    rel: involved
+    to: daniel-ellsberg
+    role: "member of two working groups reporting to EXCOM"
+    src:
+      - {s: ellsberg-net-bio, at: "Bio (short version)", quote: "He was a member of two of the three working groups reporting to the Executive Committee of the National Security Council (EXCOM) during the Cuban Missile Crisis in 1962."}
 ---
 
 For thirteen days in October 1962 the [[united-states]] and the [[soviet-union]] came closer to nuclear war than at any other time in the [[cold-war]]. The two governments framed the confrontation differently.

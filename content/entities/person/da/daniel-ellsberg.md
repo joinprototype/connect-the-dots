@@ -47,4 +47,18 @@ claims:
       - {s: fjc-pentagon-papers-federal-courts-2019, at: "Ruling of May 11, 1973, pp. 106-108", quote: "the conduct of the Government has placed the case in such a posture that it precludes the fair, dispassionate resolution of these issues by a jury."}
       - {s: fjc-pentagon-papers-federal-courts-2019, at: "Ruling of May 11, 1973", quote: "After reporting to a White House assistant and apparently receiving specific authorization, the special unit then planned and executed the break-in of the psychiatrist’s office in search of the records of one of the defendants."}
       - {s: time-1973-05-21-pentagon-papers-case-dismissed, at: "Page 1", quote: "of eight charges of espionage, six of theft and one of conspiracy."}
+  - id: c5
+    rel: worked_at
+    to: us-department-of-defense
+    when: "1964"
+    title: "Special Assistant to the Assistant Secretary of Defense (International Security Affairs)"
+    src:
+      - {s: ellsberg-net-bio, at: "Bio (short version)", quote: "Ellsberg joined the Defense Department in 1964 as Special Assistant to Assistant Secretary of Defense (International Security Affairs) John McNaughton, working on the escalation of the war in Vietnam."}
+  - id: c6
+    rel: worked_at
+    to: us-department-of-state
+    when: "1965/1967"
+    role: "U.S. Embassy in Saigon; evaluating pacification in the field"
+    src:
+      - {s: ellsberg-net-bio, at: "Bio (short version)", quote: "He transferred to the State Department in 1965 to serve two years at the U.S. Embassy in Saigon, evaluating pacification in the field."}
 ---
