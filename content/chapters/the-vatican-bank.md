@@ -22,17 +22,6 @@ A press report on Casaroli’s papers, hosted by the Archdiocese of Milan, descr
   narration: "**A bill after a death.** Archbishop Paul Marcinkus opposed paying for Banco Ambrosiano’s collapse. He told reporters in 1990: “The Italians should have looked into their own banking system”. In June 1982 the Milan bank failed with about $1.2 billion owed by shell companies, and its chairman Roberto Calvi, the press’s “God’s banker”, was found hanging in London. In 1984 the Vatican agreed to pay creditors $244–250 million on moral grounds while denying legal responsibility. The payment settled claims without a ruling on liability. Five defendants later tried for Calvi’s death were acquitted; the 2007 court considered mob punishment more credible than suicide, and the 2010 appeal court said he was killed. Neither identified a killer. Creditors got a settlement; the death led to decades of proceedings."
   duration: 13
 
-- shot: three-bodies
-  view: map
-  camera: {center: [12.4528, 41.9035], zoom: 14.2, pitch: 30, duration: 6}
-  places: [vatican-city]
-  time: "2021"
-  reveal: [holy-see, catholic-church, institute-for-the-works-of-religion, vatican-city, moneyval, paul-marcinkus]
-  reveal_claims: [holy-see#c1, institute-for-the-works-of-religion#c5, paul-marcinkus#c4]
-  overlay: {kind: quote, source: moneyval-2021-holy-see, quote: "The Holy See, the Catholic Church and the Vatican City State are three different legal entities with different status under international law.", caption: "MONEYVAL, Council of Europe, 2021"}
-  narration: "**Two desks, one archbishop.** In 1981 John Paul II gave Paul Marcinkus another job: running Vatican City’s administration. He already headed the Institute for the Works of Religion, the IOR, where funds given for religious works were invested. TIME dates its founding to 1942; the Financial Times to 1887. By 1982 Marcinkus held both posts as the bank’s dealings with Calvi came under investigation. MONEYVAL distinguishes the Holy See, the Catholic Church and Vatican City State as separate legal entities; the IOR, too, is a separate institution, ultimately controlled by the Holy See and city-state. Marcinkus’s two offices put him at the center of the approaching dispute over who would answer for the bank."
-  duration: 13
-
 - shot: the-financier
   view: graph
   focus: michele-sindona
@@ -54,16 +43,6 @@ A press report on Casaroli’s papers, hosted by the Archdiocese of Milan, descr
   narration: "**Buying control.** Calvi became Ambrosiano’s director-general in 1971 and later its president. In TIME’s reconstruction, he bought shares to strengthen his grip on the bank; its companies lent at least $800 million to thinly capitalised shells in Panama, Luxembourg and Liechtenstein. In July 1981 he received four years for illegally exporting capital, but remained free pending appeal. Marcinkus defended dealing with him by pointing to the Bank of Italy’s approval of the 1981 balance sheet. When Ambrosiano failed, more than 200 institutions held the loans; the Bank of Italy covered about half the missing money. In his letter quoted by the press report on Casaroli’s papers, Martini said Milan residents lost their savings. TIME attributed the collapse to lire-denominated shares failing to keep pace with dollar debts; lenders and savers faced losses."
   duration: 13
 
-- shot: the-letters
-  view: graph
-  focus: institute-for-the-works-of-religion
-  time: "1982-06"
-  reveal: [institute-for-the-works-of-religion, paul-marcinkus, banco-ambrosiano, roberto-calvi]
-  reveal_claims: [institute-for-the-works-of-religion#c1, banco-ambrosiano-collapse#c3, banco-ambrosiano-collapse#c11, banco-ambrosiano-collapse#c17]
-  overlay: {kind: quote, source: time-1982-09-13-great-vatican-bank-mystery, quote: "The letters do not legally obligate the Vatican bank to pay off debts of the companies in question. But the letters do, according to some banking officials, imply a moral obligation.", caption: "TIME, 13 September 1982"}
-  narration: "**Two letters, two promises.** Calvi needed to reassure directors of Ambrosiano’s Peruvian bank about the shell companies, TIME reports. The IOR, Ambrosiano’s fourth-largest shareholder with 1.589%, supplied letters saying it controlled them, effectively vouching for him. Vatican officials called these assurances “internal use”, written after the loans. Five days earlier, Calvi had privately written a letter releasing the IOR from responsibility; lenders were never told. TIME called that concealment the appearance of a conspiracy. Ownership of the shells remained disputed. Calvi asked for renewal when the assurances expired in June 1982. Marcinkus refused; no reason for that refusal was recorded. Calvi faced the collapse without renewed assurances."
-  duration: 13
-
 - shot: the-list
   view: graph
   focus: p2-lodge
@@ -72,6 +51,16 @@ A press report on Casaroli’s papers, hosted by the Archdiocese of Milan, descr
   reveal_claims: [p2-list-seizure#c1, p2-list-seizure#c2, p2-list-seizure#c3, italian-parliamentary-commission-on-p2#c1, institute-for-the-works-of-religion#c4, licio-gelli#c2]
   overlay: {kind: stat, value: "962", label: "Alleged members on the lists seized at Licio Gelli’s offices on 17 March 1981, according to the parliamentary report", source: p2-commission-report-1984-text, quote: "962"}
   narration: "**Gelli chose an editor.** From 1977, Gelli and Ortolani managed Rizzoli’s publishing group and chose Di Bella to direct the Corriere della Sera, tightening control over its editorial line, Parliament’s 1984 majority report says. It traced IOR money into Rizzoli’s capital increase and a $184 million credit backed by an IOR letter. On 17 March 1981, Milan judges investigating Sindona ordered a search of Gelli’s offices. Officers found lists naming 962 alleged P2 members, including Sindona and Calvi. The commission called P2 a secret association and a privileged meeting place in their affairs; it did not call the IOR a lodge member. The newspaper operation became part of Parliament’s investigation; Gelli later received twelve years for the Ambrosiano bankruptcy."
+  duration: 13
+
+- shot: the-letters
+  view: graph
+  focus: institute-for-the-works-of-religion
+  time: "1982-06"
+  reveal: [institute-for-the-works-of-religion, paul-marcinkus, banco-ambrosiano, roberto-calvi]
+  reveal_claims: [institute-for-the-works-of-religion#c1, banco-ambrosiano-collapse#c3, banco-ambrosiano-collapse#c11, banco-ambrosiano-collapse#c17]
+  overlay: {kind: quote, source: time-1982-09-13-great-vatican-bank-mystery, quote: "The letters do not legally obligate the Vatican bank to pay off debts of the companies in question. But the letters do, according to some banking officials, imply a moral obligation.", caption: "TIME, 13 September 1982"}
+  narration: "**Two letters, two promises.** Calvi needed to reassure directors of Ambrosiano’s Peruvian bank about the shell companies, TIME reports. The IOR, Ambrosiano’s fourth-largest shareholder with 1.589%, supplied letters saying it controlled them, effectively vouching for him. Vatican officials called these assurances “internal use”, written after the loans. Five days earlier, Calvi had privately written a letter releasing the IOR from responsibility; lenders were never told. TIME called that concealment the appearance of a conspiracy. Ownership of the shells remained disputed. Calvi asked for renewal when the assurances expired in June 1982. Marcinkus refused; no reason for that refusal was recorded. Calvi faced the collapse without renewed assurances."
   duration: 13
 
 - shot: the-last-week
@@ -85,16 +74,6 @@ A press report on Casaroli’s papers, hosted by the Archdiocese of Milan, descr
   narration: "**A secretary’s last words.** On 17 June 1982 Graziella Corrocher, Calvi’s secretary, fell to her death from Ambrosiano’s Milan headquarters, aged 55. Her apparent suicide note blamed him for damage to the bank and its employees. That day the board stripped Calvi of his powers and the Bank of Italy appointed a commission. He had fled with businessman Flavio Carboni, using a false passport through Austria to London. On 18 June he was found hanging beneath Blackfriars Bridge, pockets holding about $13,000 and twelve pounds of bricks and stones. Some Italians saw a P2 sign in the bridge’s name because members reportedly called one another friar; no court established that connection. Corrocher’s accusation survived her; Calvi’s death left investigators to pursue the missing money."
   duration: 13
 
-- shot: inquests-then-experts
-  view: graph
-  focus: calvi-inquests
-  time: "1983-06-27"
-  reveal: [calvi-inquests, death-of-roberto-calvi, london, roberto-calvi]
-  reveal_claims: [calvi-inquests#c1, calvi-inquests#c2, calvi-inquests#c3, death-of-roberto-calvi#c7, death-of-roberto-calvi#c8, death-of-roberto-calvi#c9]
-  overlay: {kind: quote, source: lrb-1983-10-06-gods-godfather, quote: "The possibility that Calvi might have been murdered was therefore admitted officially, even if reluctantly.", caption: "Douglas Johnson, London Review of Books, 6 October 1983"}
-  narration: "**His family kept pressing.** Calvi had attempted suicide during his 1981 imprisonment, the BBC reported. After a British inquest ruled his London death suicide, his family pressed for further investigation. On 27 June 1983 a second inquest replaced that verdict with an open one, leaving the manner of death undecided. In October 2002 experts appointed by Italian judges concluded he had been murdered: his neck lacked the injuries usually associated with hanging, and his hands had never touched the stones in his pockets. British police reopened the case in 2003. The family’s efforts had helped keep the investigation alive; the experts’ findings would now face the different test of proving a murder charge in court."
-  duration: 13
-
 - shot: the-vaticans-answer
   view: graph
   focus: paul-marcinkus
@@ -103,6 +82,16 @@ A press report on Casaroli’s papers, hosted by the Archdiocese of Milan, descr
   reveal_claims: [banco-ambrosiano-collapse#c12, banco-ambrosiano-collapse#c7, banco-ambrosiano-collapse#c13, banco-ambrosiano-collapse#c14, banco-ambrosiano-collapse#c8, banco-ambrosiano-collapse#c9]
   overlay: {kind: quote, source: time-1982-09-13-great-vatican-bank-mystery, quote: "The old archbishop is tranquil. His conscience is clear.", caption: "Archbishop Paul Marcinkus, quoted by TIME, 1982"}
   narration: "**Inside the walls.** Marcinkus stayed inside the Vatican, beyond Italian magistrates’ reach, while he and two lay managers were investigated. Italy had ordered Ambrosiano liquidated. On 8 October 1982 Finance Minister Beniamino Andreatta told the Chamber the IOR’s letters made it responsible and presented a $1,159 million bill, a press report on Vatican papers says. Marcinkus answered that Calvi had released him in writing; he told reporters in 1990: “The Italians should have looked into their own banking system”. He denied wrongdoing. Vatican officials called the dealings normal banking and the IOR Calvi’s unwitting victim. Citing sovereignty, the Vatican declined cooperation with Italy; Secretary of State Casaroli instead appointed three bankers to examine the IOR. Italy’s demand and the Vatican’s refusal carried the dispute into negotiations."
+  duration: 13
+
+- shot: inquests-then-experts
+  view: graph
+  focus: calvi-inquests
+  time: "1983-06-27"
+  reveal: [calvi-inquests, death-of-roberto-calvi, london, roberto-calvi]
+  reveal_claims: [calvi-inquests#c1, calvi-inquests#c2, calvi-inquests#c3, death-of-roberto-calvi#c7, death-of-roberto-calvi#c8, death-of-roberto-calvi#c9]
+  overlay: {kind: quote, source: lrb-1983-10-06-gods-godfather, quote: "The possibility that Calvi might have been murdered was therefore admitted officially, even if reluctantly.", caption: "Douglas Johnson, London Review of Books, 6 October 1983"}
+  narration: "**His family kept pressing.** Calvi had attempted suicide during his 1981 imprisonment, the BBC reported. After a British inquest ruled his London death suicide, his family pressed for further investigation. On 27 June 1983 a second inquest replaced that verdict with an open one, leaving the manner of death undecided. In October 2002 experts appointed by Italian judges concluded he had been murdered: his neck lacked the injuries usually associated with hanging, and his hands had never touched the stones in his pockets. British police reopened the case in 2003. The family’s efforts had helped keep the investigation alive; the experts’ findings would now face the different test of proving a murder charge in court."
   duration: 13
 
 - shot: the-payment
@@ -187,6 +176,17 @@ A press report on Casaroli’s papers, hosted by the Archdiocese of Milan, descr
   narration: "**Freyberg checked the names.** In June 2013 Francis commissioned information on the IOR’s status and activities to align it with the Church’s mission. President Ernst von Freyberg explained his own decision: the bank’s future depended on knowing its clients. By July 2014, he said, thirty specialists had checked over 16,000 accounts in twelve months. Of 3,000 closures, 2,600 were dormant and 400 were lay accounts he called perfectly fine. Freyberg said they closed those accounts because the bank changed its eligibility policy in July 2013 to focus on the Church. He said nearly every scandal rumour was untrue. The Telegraph reported over 2,000 accounts blocked, €44 million flowing out and profit falling from €86.6 million to €2.9 million. His review closed relationships and put the bank’s accounts online for others to examine."
   duration: 13
 
+- shot: three-bodies
+  view: map
+  camera: {center: [12.4528, 41.9035], zoom: 14.2, pitch: 30, duration: 6}
+  places: [vatican-city]
+  time: "2021"
+  reveal: [holy-see, catholic-church, institute-for-the-works-of-religion, vatican-city, moneyval, paul-marcinkus]
+  reveal_claims: [holy-see#c1, institute-for-the-works-of-religion#c5, paul-marcinkus#c4]
+  overlay: {kind: quote, source: moneyval-2021-holy-see, quote: "The Holy See, the Catholic Church and the Vatican City State are three different legal entities with different status under international law.", caption: "MONEYVAL, Council of Europe, 2021"}
+  narration: "**Two desks, one archbishop.** Before Freyberg’s review, in 1981 John Paul II gave Paul Marcinkus another job: running Vatican City’s administration. He already headed the Institute for the Works of Religion, the IOR, where funds given for religious works were invested. TIME dates its founding to 1942; the Financial Times to 1887. By 1982 Marcinkus held both posts as the bank’s dealings with Calvi came under investigation. MONEYVAL distinguishes the Holy See, the Catholic Church and Vatican City State as separate legal entities; the IOR, too, is a separate institution, ultimately controlled by the Holy See and city-state. Marcinkus’s two offices put him at the center of the dispute over who would answer for the bank."
+  duration: 13
+
 - shot: the-former-head
   view: graph
   focus: angelo-caloia
@@ -197,6 +197,16 @@ A press report on Casaroli’s papers, hosted by the Archdiocese of Milan, descr
   narration: "**The bank sued its former president.** Angelo Caloia led the IOR until 2009, from 1989 by the Financial Times’s dating, 1999 by Crux’s. After complaints from the IOR and its financial supervisor in 2014, he faced trial over property sales in 2002–2007, with his former bank seeking damages. On 21 January 2021 the Vatican Tribunal found that he and lawyer Gabriele Liuzzo had appropriated about €19 million. It convicted them of embezzlement and self-laundering and sentenced each to eight years and eleven months; both were acquitted on sales where appropriation was unproven, the Holy See Press Office said. They appealed. Crux reports five-month sentence reductions in July 2022. Caloia’s former institution had become the plaintiff in a case that survived appeal."
   duration: 13
 
+- shot: what-stays-open
+  view: graph
+  focus: moneyval
+  time: "2021"
+  reveal: [moneyval, holy-see, institute-for-the-works-of-religion, financial-information-authority]
+  reveal_claims: [reform-of-vatican-finances#c4, reform-of-vatican-finances#c6, banco-ambrosiano-collapse#c18]
+  overlay: {kind: quote, source: moneyval-2021-holy-see, quote: "The authorities have advised that they consider the risk of abuse of office for personal or other benefits presented by insiders and related ML to be low. However, the assessment team (AT) disagrees with this conclusion and is of the view that risks presented by insiders are important.", caption: "MONEYVAL, 2021"}
+  narration: "**Martini asked for a change.** In March 1987 Martini privately asked Casaroli why Marcinkus still held office while Milan residents had lost savings, in a letter quoted by a press report hosted by the Archdiocese of Milan. In that letter, replacement would signal a wish to return the IOR to its original purpose without admitting guilt. The Ambrosiano settlement left liability unresolved; Calvi’s killer remained unidentified. Il Manifesto reports that investigators classified Sindona’s death as suicide; ANSA calls it a killing. Becciu’s proceedings would remain unfinished. MONEYVAL’s 2021 examiners disputed Vatican authorities’ view that insider abuse posed little risk, calling court results modest and laundering sanctions rather minimal. In May 2024 the Holy See Press Office announced a positive follow-up evaluation."
+  duration: 13
+
 - shot: a-different-office
   view: graph
   focus: angelo-becciu
@@ -205,16 +215,6 @@ A press report on Casaroli’s papers, hosted by the Archdiocese of Milan, descr
   reveal_claims: [angelo-becciu#c2, becciu-trial#c6, becciu-trial#c5, pope-francis#c3, becciu-trial#c8]
   overlay: {kind: quote, source: ansa-2023-12-18-becciu, quote: "I want to shout to the world that I am innocent in the legal proceedings and in every way, that I absolutely did not commit these crimes that I am accused of", caption: "Cardinal Angelo Becciu, 18 December 2023, quoted by ANSA"}
   narration: "**Becciu promised to fight.** After his 16 December 2023 sentence, Cardinal Angelo Becciu told ANSA he would work to prove his innocence. The Vatican Tribunal gave him five years and six months over Secretariat of State funds, separate from the IOR: three embezzlement counts in Vatican News, two plus aggravated fraud in ANSA. Nine of ten defendants were convicted; the financial authority’s former president and director were cleared of abuse of office but convicted of failing to report a suspect transaction. On 17 March 2026 the appeal court ordered parts reheard because prosecutors’ procedural errors impaired the defence. The 29 October hearing lasted eleven minutes. Becciu’s challenge would continue at hearings set for 26–29 January 2027."
-  duration: 13
-
-- shot: what-stays-open
-  view: graph
-  focus: moneyval
-  time: "2021"
-  reveal: [moneyval, holy-see, institute-for-the-works-of-religion, financial-information-authority]
-  reveal_claims: [reform-of-vatican-finances#c4, reform-of-vatican-finances#c6, banco-ambrosiano-collapse#c18]
-  overlay: {kind: quote, source: moneyval-2021-holy-see, quote: "The authorities have advised that they consider the risk of abuse of office for personal or other benefits presented by insiders and related ML to be low. However, the assessment team (AT) disagrees with this conclusion and is of the view that risks presented by insiders are important.", caption: "MONEYVAL, 2021"}
-  narration: "**Martini asked for a change.** In March 1987 Martini privately asked Casaroli why Marcinkus still held office while Milan residents had lost savings, in a letter quoted by a press report hosted by the Archdiocese of Milan. In that letter, replacement would signal a wish to return the IOR to its original purpose without admitting guilt. The Ambrosiano settlement left liability unresolved; Calvi’s killer remained unidentified. Il Manifesto reports that investigators classified Sindona’s death as suicide; ANSA calls it a killing. Becciu’s proceedings remained unfinished. MONEYVAL’s 2021 examiners disputed Vatican authorities’ view that insider abuse posed little risk, calling court results modest and laundering sanctions rather minimal. In May 2024 the Holy See Press Office announced a positive follow-up evaluation."
   duration: 13
 
 ```
