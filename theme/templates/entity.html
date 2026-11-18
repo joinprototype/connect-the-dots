@@ -5,6 +5,8 @@
 {% block title %}{{ entity.name }}: Connect the Dots{% endblock %}
 {% block description %}{{ entity.summary or entity.name }}{% endblock %}
 {% block body_class %}entity-page{% endblock %}
+{# what this page is about, for search engines (ADR-0042): a data block, never run as script #}
+{% block head %}<script type="application/ld+json">{{ entity.json_ld|safe }}</script>{% endblock %}
 {% block main %}
 <article class="entity" style="--c: {{ entity.color }}">
   <header class="entity-head">

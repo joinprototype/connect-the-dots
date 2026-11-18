@@ -43,5 +43,6 @@ One short file per decision: context, decision, consequences, and when to revisi
 | [0039](0039-harvest.md) | Harvest: read the sources stories already saved for the links they state between entries in the record; and the people they name whom the record lacks; one older story a night after the leads run (pilot: 10 links, then 4 people and 8 links) | accepted |
 | [0040](0040-counting-visits.md) | Counting visits: Cloudflare Web Analytics, which the zone already injects, allowed through the Content-Security-Policy; no cookie, no tracker | accepted |
 | [0041](0041-more-stories.md) | More stories: `ctd seeds` finds topics in the record and keeps the story queue full; up to two stories a night; stories told as one storyline | accepted |
+| [0042](0042-what-a-page-is-about.md) | Telling search engines what a page is about: one block of schema.org data on every entry's page, its type from `entity-types.yaml`, only what the page shows, no dates | accepted |
 | [0022](0022-dots-and-lines.md) | Dots and lines: print inks with a job, each story its own ink, Bricolage Grotesque and Literata, stories on white | accepted |
 | [0021](0021-the-world-of-an-era.md) | The Map's era slider draws the world of that year: 30 years from 3000 BCE to 1990, in one grey; the basemap after that | accepted |

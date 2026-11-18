@@ -6,6 +6,8 @@ New ideas land in **Inbox** first. At sprint planning each one moves into a spri
 
 _Add ideas here with date and who suggested them._
 
+- 2026-11-17 (ADR-0042): structured data states no dates. Keep an entry's dates as written, so a page can give exact ones (`birthDate`, `foundingDate`, `startDate`) and events can be described as `Event`.
+- 2026-11-17 (ADR-0042): describe a story's page as an `Article`, with its title, summary and years.
 - 2026-11-04, code review: the atlas rows still carry a dummy `[0,0]` spot on both sides (`atlas.rs`, `lib/atlas.ts`).
 
 - 2026-10-16 (Sprint 1 self-check): decide time-slider semantics (snapshot vs cumulative history).

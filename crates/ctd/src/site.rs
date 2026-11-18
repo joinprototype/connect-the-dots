@@ -27,6 +27,7 @@ pub mod data;
 mod dossier;
 mod history;
 pub mod islands;
+mod linked;
 mod missing;
 mod play;
 mod question;
@@ -230,6 +231,8 @@ const HOME_NEWEST: usize = 2;
 const SHELF_MAX: usize = 24;
 /// The site's address, for the few things that cannot be relative.
 const SITE_URL: &str = "https://dots.joinprototype.com";
+/// The site's name as its pages and link previews give it (`og:site_name`).
+const SITE_NAME: &str = "Connect the Dots";
 /// How many written stories an entry's page lists.
 const STORIES_ON_PAGE: usize = 3;
 /// Whether search engines may list the site (docs/deploy.md). Previews never are: HEADERS has
@@ -378,6 +381,27 @@ fn same_as_links(e: &Entity) -> Vec<Value> {
             json!({ "key": k, "value": v, "url": url })
         })
         .collect()
+}
+
+/// An entry page's structured data (ADR-0042): what the page shows in its heading and facts, in
+/// schema.org's words. Only the links that have an address count as "the same thing elsewhere".
+fn entity_json_ld(kb: &Kb, e: &Entity) -> Value {
+    let url = format!("{SITE_URL}/e/{}/", e.id);
+    let same_as: Vec<String> = same_as_links(e).iter().filter_map(|l| l["url"].as_str().map(str::to_string)).collect();
+    linked::entity(
+        SITE_URL,
+        SITE_NAME,
+        &linked::Subject {
+            url: &url,
+            kind: kb.schema.schema_org(&e.kind),
+            name: &e.name,
+            summary: e.summary.as_deref(),
+            aliases: &display_aliases(e),
+            same_as: &same_as,
+            image: e.image.as_ref().and_then(|i| i["url"].as_str()),
+            coords: e.coords,
+        },
+    )
 }
 
 /// A scene's picture: what `picture:` names, or else its subject or the first thing it reveals that
@@ -919,6 +943,7 @@ fn entity_page(
         "open_links": s.open_links.get(&ent.id).map(|&n| commas(n)),
         "cover": crate::covers::entity(&ent.id, &ent.name, items.len()),
         "evidence_line": evidence_line,
+        "json_ld": script_json(&entity_json_ld(kb, ent))?,
     });
     if let Some(url) = &story_url {
         lives.ids.push(ent.id.clone());

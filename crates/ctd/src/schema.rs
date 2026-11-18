@@ -42,6 +42,10 @@ pub struct EntityType {
     /// this year: a story scene set before it shows the photo only when the scene's `picture:` names it.
     #[serde(default, skip_serializing)]
     pub photo_since: Option<i64>,
+    /// What search engines call this type, in schema.org's vocabulary ("Person", "Organization"):
+    /// an entry's page says so in its structured data (ADR-0042). "Thing" when unset.
+    #[serde(default, skip_serializing)]
+    pub schema_org: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -430,6 +434,11 @@ impl Schema {
 
     pub fn type_label(&self, t: &str) -> String {
         self.types.get(t).map(|ty| ty.label.clone()).unwrap_or_else(|| t.to_string())
+    }
+
+    /// The schema.org type an entry of type `t` is described as: its own, or "Thing" (ADR-0042).
+    pub fn schema_org(&self, t: &str) -> &str {
+        self.types.get(t).and_then(|ty| ty.schema_org.as_deref()).unwrap_or("Thing")
     }
 
     /// Tier rank: lower is stronger. Unknown tiers rank last.

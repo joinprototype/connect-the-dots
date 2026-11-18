@@ -8,11 +8,13 @@
 # `about: true` marks types that are about others (events, works, things): one joined to a sealed entry is kept out with it.
 # `photo_since` is for types whose photos show them as they are now (a skyline, a flag, a headquarters), taken since
 #   about that year: a story scene set earlier shows one only when its `picture:` names it, so 1917 never gets a 2009 skyline.
-person:    {label: Person,       plural: People,        layer: people, family: true, span: Life, thread: true}
-org:       {label: Organization, plural: Organizations, layer: power, span: Active, thread: true, photo_since: 2005}
-place:     {label: Place,        plural: Places,        layer: places, map: true, thread: true, photo_since: 2005}
+# `schema_org` is what search engines call the type, in schema.org's words: an entry's page says so in its
+#   structured data (ADR-0042). Unset means "Thing". Events stay unset until their pages can state exact dates.
+person:    {label: Person,       plural: People,        layer: people, family: true, span: Life, thread: true, schema_org: Person}
+org:       {label: Organization, plural: Organizations, layer: power, span: Active, thread: true, photo_since: 2005, schema_org: Organization}
+place:     {label: Place,        plural: Places,        layer: places, map: true, thread: true, photo_since: 2005, schema_org: Place}
 event:     {label: Event,        plural: Events,        layer: history, about: true}
-work:      {label: Work,         plural: Works,         layer: ideas, about: true}    # texts, scriptures, laws, documents, films
+work:      {label: Work,         plural: Works,         layer: ideas, about: true, schema_org: CreativeWork}    # texts, scriptures, laws, documents, films
 artifact:  {label: Artifact,     plural: Artifacts,     layer: tech, about: true}     # technologies, systems, weapons, networks, objects
 concept:   {label: Concept,      plural: Concepts,      layer: ideas}    # ideas, doctrines, policies, mottos
 tradition: {label: Tradition,    plural: Traditions,    layer: ideas, span: Active, alone: true}    # religions, schools of thought, movements
