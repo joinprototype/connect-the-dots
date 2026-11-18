@@ -24,16 +24,6 @@ In Kazakhstan, herders slaughtered animals to eat and fled when the herds were g
   narration: "**Grain and meat.** In 1929 Stalin led the Party into the First Five-Year Plan: peasants would lose their land and herders their animals to collective farms, with meat and grain flowing to the state. In Sarah Cameron’s reading, Moscow sought both more productive agriculture and the destruction of existing social structures. Activists uprooted the people who had supplied the food; famine followed in Kazakhstan, Ukraine, the Volga and the North Caucasus. The drive to remake farming became a struggle over who would eat."
   duration: 12
 
-- shot: how-many
-  view: graph
-  focus: soviet-famine-of-1930-33
-  time: "1933"
-  reveal: [soviet-famine-of-1930-33, sarah-cameron, nicolas-werth, state-duma, ukraine, russia]
-  reveal_claims: [sarah-cameron#c2, nicolas-werth#c1, state-duma#c3, soviet-famine-of-1930-33#c5, soviet-famine-of-1930-33#c6, soviet-famine-of-1930-33#c7, soviet-famine-of-1930-33#c8]
-  overlay: {kind: quote, source: un-2003-joint-statement-a-c3-58-9, quote: "the dignity of victims through acknowledgement of their suffering, will guide future societies and help to avoid similar catastrophes in the future.", caption: "Joint UN remembrance statement transmitted by Valeriy Kuchinsky, 7 November 2003"}
-  narration: "**How many?** On 7 November 2003 Ukraine’s ambassador Valeriy Kuchinsky sent the UN a joint remembrance statement backed by Russia, Kazakhstan, Ukraine and the U.S.; it claimed 7–10 million deaths in Ukraine alone and called for acknowledgement to prevent future abuses. Union-wide totals differ: Cameron gives 5.5–6.5 million, Werth 6.5–7 million, Russia’s Duma some 7 million, and the Law Library of Congress about 14 million, citing Conquest. Levchuk’s demographers reconstruct populations, counting 3.9 million deaths in Ukraine and 3.3 million in Russia, excluding Kazakhstan; Werth gives Kazakhstan 1.3–1.5 million. The Duma and UN statement supply no counting method; Kuchinsky carried the disputed toll into a joint act of mourning by former Soviet republics and the U.S."
-  duration: 18
-
 - shot: the-steppe
   view: map
   camera: {center: [67, 48], zoom: 3.4, pitch: 20, duration: 5}
@@ -68,16 +58,6 @@ In Kazakhstan, herders slaughtered animals to eat and fled when the herds were g
   narration: "**Moscow knew.** By September 1932 Stalin had received regular letters from Goloshchekin about Kazakhstan’s suffering, yet at several crucial points he offered no concessions, in Cameron’s reading. She suggests that his fixation on grain, and officials’ belief that nomads had limitless livestock, may help explain the slow response to dying herds. On 17 September, nearly three years into the famine, the Central Committee authorised limited food aid and allowed nomads to own animals; in early 1933 Moscow dismissed Goloshchekin. Snyder writes that Stalin blamed Goloshchekin. Hunger continued until 1934; Werth calls the famine unplanned, caused by destruction of the herding economy and aggravated by local officials’ prejudice."
   duration: 13
 
-- shot: was-it-planned
-  view: graph
-  focus: kazakh-famine-genocide-question
-  time: "2016"
-  reveal: [kazakh-famine-genocide-question, sarah-cameron, nicolas-werth, asharshylyk, kazakhstan]
-  reveal_claims: [sarah-cameron#c3, nicolas-werth#c3, kazakh-famine-genocide-question#c4]
-  overlay: {kind: quote, source: cameron-2016-kazakh-famine, quote: "All of these scholars agree that Moscow sought to use famine as a means of bringing Kazakhs under Soviet rule.", caption: "Sarah Cameron, 2016"}
-  narration: "**Animals allowed again.** On 17 September 1932, after nearly three years of famine, Stalin’s Party leadership allowed nomads to own animals and authorised limited food aid. But permission could not replace the herds already lost: without them, people lacked both food and the means to keep moving, Cameron explains. Most Kazakhs had to settle, the transformation she says Moscow pursued, though she argues the outcome differed from what Moscow had hoped. The five Western scholars she compares agree that Moscow used famine to bring Kazakhs under Soviet rule, while disagreeing over how much catastrophe it foresaw. In limited areas after the famine, Moscow revived nomadism to rebuild livestock numbers, Cameron records: officials were restoring the way of life they had tried to eradicate."
-  duration: 17
-
 - shot: the-law
   view: map
   camera: {center: [34, 49], zoom: 3.6, pitch: 10, duration: 5}
@@ -97,8 +77,28 @@ In Kazakhstan, herders slaughtered animals to eat and fled when the herds were g
   reveal: [holodomor, lazar-kaganovich, nicolas-werth, famine-in-the-volga-and-north-caucasus-1932-33]
   reveal_claims: [lazar-kaganovich#c1, lazar-kaganovich#c2, nicolas-werth#c2, holodomor#c10, famine-in-the-volga-and-north-caucasus-1932-33#c5]
   overlay: {kind: quote, source: levchuk-2020-regional-famine-losses, quote: "(c) the most extensive practice of blacklisting was implemented, covering the whole territory of UkrSSR and targeting not only collective and State farms but also entire villages and districts", caption: "Levchuk, Wolowyna, Rudnytskyi and colleagues, 2020, on Ukraine"}
-  narration: "**The men sent to take grain.** In autumn 1932 Molotov went to Ukraine and Kaganovich to the North Caucasus with extraordinary committees, charged with forcing peasants to work and meet grain quotas, according to Levchuk’s team. Werth places their commissions in Ukraine and the Kuban and describes what failure brought: blacklisting, fines in kind and confiscation of all foodstuffs. The penalties reached farms, whole villages and districts; blacklists also reached the Volga, though the demographers find them far less sweeping there than in Ukraine. Missing a delivery target could leave an entire village without food, and the next orders would block the road out."
+  narration: "**The men sent to take grain.** In autumn 1932 Molotov went to Ukraine and Kaganovich to the North Caucasus with extraordinary committees, charged with forcing peasants to work and meet grain quotas, according to Levchuk’s team. Werth places their commissions in Ukraine and the Kuban and describes what failure brought: blacklisting, fines in kind and confiscation of all foodstuffs. The penalties reached farms, whole villages and districts; blacklists also reached the Volga, though the demographers find them far less sweeping there than in Ukraine. Missing a delivery target could leave an entire village without food, and orders would also block the road out."
   duration: 15
+
+- shot: the-case-for-genocide
+  view: graph
+  focus: holodomor
+  time: "1932-11"
+  reveal: [holodomor, anne-applebaum, nicolas-werth, ukraine]
+  reveal_claims: [anne-applebaum#c1, nicolas-werth#c2, holodomor#c7, holodomor#c8, anne-applebaum#c3]
+  overlay: {kind: quote, source: levchuk-2020-regional-famine-losses, quote: "the Famine in the UkrSSR transformed into Holodomor, as in, terror by Famine carried out by the central government against the peasants in the UkrSSR and Kuban", caption: "Levchuk and colleagues, 2020, describing one of two views"}
+  narration: "**The threat, in Applebaum’s reading.** In autumn 1932 Stalin turned a general famine against Ukraine because he feared counterrevolution and an independent Ukraine’s challenge to Soviet power, in Anne Applebaum’s reading. Blacklists, sealed borders, attacks on Ukrainian institutions and language, and the end of Ukrainisation came together; she argues that the aim was to kill more people in Ukraine. Werth describes the confiscation of all foodstuffs and a campaign against Ukrainian nationalism that brought some 200,000 arrests in 1932–33. Rudnytskyi’s team, citing Kulchytskyi and Graziosi, argues that the famine in Ukraine and the Kuban had a national and ethnic component. Whether this was genocide would turn on the purpose of those simultaneous attacks."
+  duration: 19
+
+- shot: how-many
+  view: graph
+  focus: soviet-famine-of-1930-33
+  time: "1933"
+  reveal: [soviet-famine-of-1930-33, sarah-cameron, nicolas-werth, state-duma, ukraine, russia]
+  reveal_claims: [sarah-cameron#c2, nicolas-werth#c1, state-duma#c3, soviet-famine-of-1930-33#c5, soviet-famine-of-1930-33#c6, soviet-famine-of-1930-33#c7, soviet-famine-of-1930-33#c8]
+  overlay: {kind: quote, source: un-2003-joint-statement-a-c3-58-9, quote: "the dignity of victims through acknowledgement of their suffering, will guide future societies and help to avoid similar catastrophes in the future.", caption: "Joint UN remembrance statement transmitted by Valeriy Kuchinsky, 7 November 2003"}
+  narration: "**How many?** On 7 November 2003 Ukraine’s ambassador Valeriy Kuchinsky sent the UN a joint remembrance statement backed by Russia, Kazakhstan, Ukraine and the U.S.; it claimed 7–10 million deaths in Ukraine alone and called for acknowledgement to prevent future abuses. Union-wide totals differ: Cameron gives 5.5–6.5 million, Werth 6.5–7 million, Russia’s Duma some 7 million, and the Law Library of Congress about 14 million, citing Conquest. Levchuk’s demographers reconstruct populations, counting 3.9 million deaths in Ukraine and 3.3 million in Russia, excluding Kazakhstan; Werth gives Kazakhstan 1.3–1.5 million. The Duma and UN statement supply no counting method; Kuchinsky carried the disputed toll into a joint act of mourning by former Soviet republics and the U.S."
+  duration: 18
 
 - shot: the-border
   view: map
@@ -176,16 +176,6 @@ In Kazakhstan, herders slaughtered animals to eat and fled when the herds were g
   narration: "**Triumph in public, deaths in the files.** Stalin publicly celebrated collectivisation as a triumph while concealing its disaster and seeking no international aid, in Anne Applebaum’s explanation; Soviet authorities then hid the 1937 census that revealed the deaths. In Kazakhstan, officials preparing for that census proposed explaining the population collapse as people emigrating for work, Cameron records. The government blocked demographic information for years, Soviet publications said little of the Kazakh famine, and Kazakhstan’s secret police archives and some leaders’ personal files remained closed to most researchers in 2016. Officials’ explanations and locked records left survivors’ families carrying a history that public statistics concealed."
   duration: 13
 
-- shot: the-case-for-genocide
-  view: graph
-  focus: holodomor
-  time: "1932-11"
-  reveal: [holodomor, anne-applebaum, nicolas-werth, ukraine]
-  reveal_claims: [anne-applebaum#c1, nicolas-werth#c2, holodomor#c7, holodomor#c8, anne-applebaum#c3]
-  overlay: {kind: quote, source: levchuk-2020-regional-famine-losses, quote: "the Famine in the UkrSSR transformed into Holodomor, as in, terror by Famine carried out by the central government against the peasants in the UkrSSR and Kuban", caption: "Levchuk and colleagues, 2020, describing one of two views"}
-  narration: "**The threat, in Applebaum’s reading.** In autumn 1932 Stalin turned a general famine against Ukraine because he feared counterrevolution and an independent Ukraine’s challenge to Soviet power, in Anne Applebaum’s reading. Blacklists, sealed borders, attacks on Ukrainian institutions and language, and the end of Ukrainisation came together; she argues that the aim was to kill more people in Ukraine. Werth describes the confiscation of all foodstuffs and a campaign against Ukrainian nationalism that brought some 200,000 arrests in 1932–33. Rudnytskyi’s team, citing Kulchytskyi and Graziosi, argues that the famine in Ukraine and the Kuban had a national and ethnic component. Whether this was genocide would turn on the purpose of those simultaneous attacks."
-  duration: 19
-
 - shot: the-word
   view: graph
   focus: genocide-convention
@@ -196,15 +186,15 @@ In Kazakhstan, herders slaughtered animals to eat and fled when the herds were g
   narration: "**Lemkin gives it a name.** Raphael Lemkin campaigned for the Genocide Convention adopted in 1948; Article II includes deliberately imposing conditions calculated to physically destroy a national, ethnic, racial or religious group, in whole or in part. In 1953 he applied his word to Soviet Ukraine: the U.S. Senate quotes him calling it “a case of genocide, of destruction, not of individuals only, but of a culture and a nation”. Anne Applebaum accepts Lemkin’s meaning but argues that international law is harder to apply because the Soviet Union helped write the Convention and sought to exclude the Ukrainian famine. Naming the crime made intent and the choice of a national target the questions later courts and parliaments would have to answer."
   duration: 19
 
-- shot: those-who-say-genocide
+- shot: after-the-union
   view: graph
-  focus: holodomor-genocide-question
-  time: "2022-12-15"
-  reveal: [holodomor-genocide-question, ukraine, us-congress, european-parliament, kyiv-court-of-appeal]
-  reveal_claims: [holodomor-genocide-question#c1, us-congress#c5, european-parliament#c1, kyiv-court-of-appeal#c1, kyiv-court-of-appeal#c2, european-parliament#c3]
-  overlay: {kind: quote, source: ep-2022-holodomor-resolution-summary, quote: "Parliament recognises the Holodomor, the artificial famine of 1932-1933 in Ukraine caused by a deliberate policy of the Soviet regime, as a genocide against the Ukrainian people", caption: "European Parliament, 15 December 2022"}
-  narration: "**The judge closes the case.** In Kyiv on 13 January 2010 Judge V.M. Skavronik endorsed the SBU investigation’s conclusion that Stalin, Molotov, Kaganovich and four other leaders had committed genocide, then closed proceedings because all seven were dead; there was no trial or conviction. Ukraine had recognised the Holodomor as genocide by law on 28 November 2006, and a 2018 U.S. Senate resolution recognised the finding of the commission Congress established in 1985. On 15 December 2022 the European Parliament voted 507 to 12, with 17 abstentions, for recognition as genocide. Parliament coupled recognition with a call for Russia and other countries to open their archives."
-  duration: 18
+  focus: dissolution-of-the-soviet-union
+  time: "1991-12-08"
+  reveal: [dissolution-of-the-soviet-union, ukrainian-independence-referendum-1991, soviet-union, asharshylyk, holodomor]
+  reveal_claims: [asharshylyk#c1, holodomor#c1, asharshylyk#c14]
+  overlay: {kind: quote, source: nurtazina-great-famine-in-kazakhstan, quote: "Guided by the above-mentioned motives, I put down everything my mother remembers", caption: "Nazira Nurtazina, introducing her mother’s memories"}
+  narration: "**A daughter writes it down.** Nazira Nurtazina says she recorded her mother Nŭrziya’s memories to preserve ordinary families’ lives lost from broader histories, including both her mother’s experiences and stories inherited from relatives. Discussion of Kazakhstan’s famine had burst into public view in the late 1980s and early 1990s, as the Union crumbled. In Ukraine, where parents had passed famine memories to children in private, revived remembrance helped motivate the turn toward independence, in Applebaum’s reading: Ukraine voted on 1 December 1991, a week before the Belovezha Accords. She sees other motives too, but argues that the revived Ukrainian idea helped undermine the Union; families could now carry their memories into the public life of independent states."
+  duration: 15
 
 - shot: the-duma
   view: graph
@@ -226,6 +216,26 @@ In Kazakhstan, herders slaughtered animals to eat and fled when the herds were g
   narration: "**Kuromiya questions intent.** In 2008 Hiroaki Kuromiya argued that evidence was insufficient to show Stalin caused famine to kill millions or targeted Ukrainians as an ethnic group, stressing the international context. Davies and Wheatcroft argued that food shortage immediately caused famine, with agricultural technology helping explain low grain production, as Levchuk’s team summarises. In the same summary, Tauger gives natural disaster the predominant role alongside human actions. Ukraine and the North Caucasus received the largest quota cuts, 35 and 30 percent, and Ukraine received food aid in 1933, the team notes. The Law Library of Congress finds no extermination instruction in the documents it examines. For Kuromiya, the evidence did not establish either intentional mass killing through famine or Ukrainian ethnic genocide."
   duration: 19
 
+- shot: was-it-planned
+  view: graph
+  focus: kazakh-famine-genocide-question
+  time: "2016"
+  reveal: [kazakh-famine-genocide-question, sarah-cameron, nicolas-werth, asharshylyk, kazakhstan]
+  reveal_claims: [sarah-cameron#c3, nicolas-werth#c3, kazakh-famine-genocide-question#c4]
+  overlay: {kind: quote, source: cameron-2016-kazakh-famine, quote: "All of these scholars agree that Moscow sought to use famine as a means of bringing Kazakhs under Soviet rule.", caption: "Sarah Cameron, 2016"}
+  narration: "**Animals allowed again.** On 17 September 1932, after nearly three years of famine, Stalin’s Party leadership allowed nomads to own animals and authorised limited food aid. But permission could not replace the herds already lost: without them, people lacked both food and the means to keep moving, Cameron explains. Most Kazakhs had to settle, the transformation she says Moscow pursued, though she argues the outcome differed from what Moscow had hoped. The five Western scholars she compares agree that Moscow used famine to bring Kazakhs under Soviet rule, while disagreeing over how much catastrophe it foresaw. In limited areas after the famine, Moscow revived nomadism to rebuild livestock numbers, Cameron records: officials were restoring the way of life they had tried to eradicate."
+  duration: 17
+
+- shot: those-who-say-genocide
+  view: graph
+  focus: holodomor-genocide-question
+  time: "2022-12-15"
+  reveal: [holodomor-genocide-question, ukraine, us-congress, european-parliament, kyiv-court-of-appeal]
+  reveal_claims: [holodomor-genocide-question#c1, us-congress#c5, european-parliament#c1, kyiv-court-of-appeal#c1, kyiv-court-of-appeal#c2, european-parliament#c3]
+  overlay: {kind: quote, source: ep-2022-holodomor-resolution-summary, quote: "Parliament recognises the Holodomor, the artificial famine of 1932-1933 in Ukraine caused by a deliberate policy of the Soviet regime, as a genocide against the Ukrainian people", caption: "European Parliament, 15 December 2022"}
+  narration: "**The judge closes the case.** In Kyiv on 13 January 2010 Judge V.M. Skavronik endorsed the SBU investigation’s conclusion that Stalin, Molotov, Kaganovich and four other leaders had committed genocide, then closed proceedings because all seven were dead; there was no trial or conviction. Ukraine had recognised the Holodomor as genocide by law on 28 November 2006, and a 2018 U.S. Senate resolution recognised the finding of the commission Congress established in 1985. On 15 December 2022 the European Parliament voted 507 to 12, with 17 abstentions, for recognition as genocide. Parliament coupled recognition with a call for Russia and other countries to open their archives."
+  duration: 18
+
 - shot: kazakhstan-answers
   view: map
   camera: {center: [71.45, 51.17], zoom: 6, pitch: 0, duration: 5}
@@ -236,16 +246,6 @@ In Kazakhstan, herders slaughtered animals to eat and fled when the herds were g
   overlay: {kind: quote, source: cameron-2016-kazakh-famine, quote: "But we should be wise in interpreting history and not allow the politicization of this theme", caption: "Nursultan Nazarbayev, Astana, May 2012, quoted by Sarah Cameron"}
   narration: "**Remember, but cautiously.** Dedicating Astana’s famine memorial in 2012, President Nazarbayev urged remembrance but warned against politicising it; Tokayev asked in 2021 for research without slogans or sensationalism. The 1992 commission called it genocide in Cameron’s description, ethnocide in RFE/RL’s, but Kazakhstan postponed formal assessment. Its leaders described misguided policies rather than an intended crime. Cameron finds it outside the UN genocide definition but potentially within broader ones; Payne alone among the five Western scholars she compares calls it genocide. She suggests fears of harming relations with Russia pushed the subject aside. In October 2025 Astana officials replaced “Holodomor” with “famine” on the plaque, citing bilingual consistency; critics saw Soviet responsibility downplayed. Dastan Abdyrakhmanuly demanded the word’s restoration: the memorial itself became an argument over what to call the deaths."
   duration: 20
-
-- shot: after-the-union
-  view: graph
-  focus: dissolution-of-the-soviet-union
-  time: "1991-12-08"
-  reveal: [dissolution-of-the-soviet-union, ukrainian-independence-referendum-1991, soviet-union, asharshylyk, holodomor]
-  reveal_claims: [asharshylyk#c1, holodomor#c1, asharshylyk#c14]
-  overlay: {kind: quote, source: nurtazina-great-famine-in-kazakhstan, quote: "Guided by the above-mentioned motives, I put down everything my mother remembers", caption: "Nazira Nurtazina, introducing her mother’s memories"}
-  narration: "**A daughter writes it down.** Nazira Nurtazina says she recorded her mother Nŭrziya’s memories to preserve ordinary families’ lives lost from broader histories, including both her mother’s experiences and stories inherited from relatives. Discussion of Kazakhstan’s famine had burst into public view in the late 1980s and early 1990s, as the Union crumbled. In Ukraine, where parents had passed famine memories to children in private, revived remembrance helped motivate the turn toward independence, in Applebaum’s reading: Ukraine voted on 1 December 1991, a week before the Belovezha Accords. She sees other motives too, but argues that the revived Ukrainian idea helped undermine the Union; families could now carry their memories into the public life of independent states."
-  duration: 15
 ```
 
 Explore further: compare Ukraine's law, the State Duma and the European Parliament in the explorer, or open the Kazakh and Ukrainian famines side by side.
