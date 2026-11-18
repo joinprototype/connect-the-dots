@@ -105,6 +105,26 @@ The road follows that choice through the sales, the ships and Portugal’s borde
   narration: "**A refuge with an expiry date.** For the larger movement into Portugal, Vidal bar Benveniste del Cavalleria negotiated with King John II. The 1495 chronicler reports admission for six months at one ducat a person and a quarter of the merchandise brought in. After that term, he says, the king enslaved those remaining and sent children to an island to settle it. He counted seven hundred children, reported another estimate twice as high, and said all died; the sourcebook’s editors identify the island as São Tomé and date the enslavement to 1493. Escape from Spain had placed these families under another king’s power. John’s successor Manuel would initially remove restrictions, then negotiate with the Spanish monarchs."
   duration: 14
 
+- shot: the-cost
+  view: graph
+  focus: expulsion-of-the-jews-from-spain-1492
+  time: "1492/1506"
+  reveal: [expulsion-of-the-jews-from-spain-1492, anxiety-about-converts-and-hopes-of-conversion, ottoman-welcome-of-spanish-exiles, sixtus-iv]
+  reveal_claims: [expulsion-of-the-jews-from-spain-1492#c4, expulsion-of-the-jews-from-spain-1492#c9, expulsion-of-the-jews-from-spain-1492#c18, ottoman-welcome-of-spanish-exiles#c3, establishment-of-the-spanish-inquisition-1478#c3]
+  overlay: {kind: quote, source: encyclopedia-jews-expulsion-of-spain-portugal, quote: "most traumatic was the terrible cost to Jewish individuals and families, who were faced with the horrific choice of giving up their faith or their home", caption: "Gretchen Starr-LeBeau, weighing the consequences"}
+  narration: "**Who left, who paid?** The 1495 chronicler put Spain’s departures at 50,000–53,000 families. Starr-LeBeau instead gives possibly 40,000–50,000 people, warning even that may be high because many returned; she cites Henry Kamen’s estimates of at most 70,000 Jews in Castile and 10,000 in Aragon, and judges that most converted. Immanuel Aboab later attributed to Bayezid the remark that Spain’s monarchs had impoverished their kingdom and enriched his; Starr-LeBeau assesses Spain’s economic loss as relatively minor. She places the greater cost in lost talents, divided families and the choice between faith and home. For her, scholars’ leading explanations concern anxiety about converts or pressure for conversion."
+  duration: 14
+
+- shot: the-answer
+  view: graph
+  focus: alhambra-decree
+  time: "1492/1497"
+  reveal: [alhambra-decree, expulsion-of-the-jews-from-spain-1492, portuguese-edict-of-1496, forced-baptism-in-portugal-1497, manuel-i-of-portugal]
+  reveal_claims: [expulsion-of-the-jews-from-spain-1492#c6, expulsion-of-the-jews-from-spain-1492#c8, manuel-i-of-portugal#c2, forced-baptism-in-portugal-1497#c1, forced-baptism-in-portugal-1497#c4]
+  overlay: {kind: quote, source: adl-109-110, quote: "Antisemites use this purported figure to claim that Jews must be a malicious and harmful people to have been expelled from so many places;", caption: "Anti-Defamation League, on the misuse of an expulsion count"}
+  narration: "**How leaving became compulsory staying.** Ferdinand and Isabella justified expulsion as protecting converts from Jewish influence. Their marriage condition carried that demand into Portugal; Manuel accepted it, ordered departure, then confined the exit to Lisbon and imposed baptism. The Encyclopaedia Judaica explains his reversal through economic loss; Starr-LeBeau emphasizes conversion. Their accounts locate the choices with the rulers, while families lost property, freedom, children and lives. The Anti-Defamation League traces the claim of “109 countries” probably to a list of 109 locations on an antisemitic website. Towns, kingdoms and repeated expulsions cannot be counted as interchangeable countries. The path from expulsion to forced baptism ran through a decree, a marriage condition and a king’s decision to keep the people he had ordered out."
+  duration: 14
+
 - shot: the-marriage-condition
   view: graph
   focus: manuel-i-of-portugal
@@ -167,33 +187,13 @@ The road follows that choice through the sales, the ships and Portugal’s borde
   narration: "**Baptism did not protect them.** The danger facing Portugal’s converts became mass killing in Lisbon in 1506. A mob killed some 4,000 New Christians, according to the Encyclopaedia Judaica. Manuel executed the Dominican friars who had incited the riot and restored the converts’ previous rights and immunities. The same reference records that he reversed that decision in the year of his death, 1521. His earlier demand had prevented people leaving as Jews; forced baptism had kept thousands in the country; Christian status had not protected those the mob attacked. The losses of lives and homes remain even when historians revise the much larger totals once given for Spain’s expulsion."
   duration: 14
 
-- shot: the-cost
-  view: graph
-  focus: expulsion-of-the-jews-from-spain-1492
-  time: "1492/1506"
-  reveal: [expulsion-of-the-jews-from-spain-1492, anxiety-about-converts-and-hopes-of-conversion, ottoman-welcome-of-spanish-exiles, sixtus-iv]
-  reveal_claims: [expulsion-of-the-jews-from-spain-1492#c4, expulsion-of-the-jews-from-spain-1492#c9, expulsion-of-the-jews-from-spain-1492#c18, ottoman-welcome-of-spanish-exiles#c3, establishment-of-the-spanish-inquisition-1478#c3]
-  overlay: {kind: quote, source: encyclopedia-jews-expulsion-of-spain-portugal, quote: "most traumatic was the terrible cost to Jewish individuals and families, who were faced with the horrific choice of giving up their faith or their home", caption: "Gretchen Starr-LeBeau, weighing the consequences"}
-  narration: "**Who left, who paid?** The 1495 chronicler put Spain’s departures at 50,000–53,000 families. Starr-LeBeau instead gives possibly 40,000–50,000 people, warning even that may be high because many returned; she cites Henry Kamen’s estimates of at most 70,000 Jews in Castile and 10,000 in Aragon, and judges that most converted. Immanuel Aboab later attributed to Bayezid the remark that Spain’s monarchs had impoverished their kingdom and enriched his; Starr-LeBeau assesses Spain’s economic loss as relatively minor. She places the greater cost in lost talents, divided families and the choice between faith and home. For her, scholars’ leading explanations concern anxiety about converts or pressure for conversion."
-  duration: 14
-
 - shot: other-decrees
   view: graph
   focus: expulsion-of-the-jews-from-france-1182
-  time: "1182/1953"
+  time: "2021"
   reveal: [expulsion-of-the-jews-from-france-1182, expulsion-of-the-jews-from-england-1290, doctors-plot, alleged-deportation-plan-1953]
   reveal_claims: [expulsion-of-the-jews-from-france-1182#c1, expulsion-of-the-jews-from-england-1290#c3, doctors-plot#c1, doctors-plot#c2, alleged-deportation-plan-1953#c2]
   overlay: {kind: quote, source: ivanov-2021-stalins-alleged-deportation-plan, quote: "The dearth of archival material confirming Stalin’s alleged Jewish deportation plan has prevented a consensus regarding its existence from forming.", caption: "Oleg Ivanov, 2021, on the disputed Soviet deportation plan"}
   narration: "**Other rulers, other decisions.** Spain’s chain of decisions does not supply the reasons for every decree. France’s expulsions of 1182, 1306 and 1394, England’s expulsion of 1290, the Black Death massacres, Poland’s charter of refuge, Luther’s demands in 1543, Amsterdam’s limited welcome, Cromwell’s readmission and Russia’s residence restrictions are other stories. In 1953 the Soviet government falsely charged doctors with murder; the alleged deportation plan remains disputed. Oleg Ivanov describes memoirists and scholars accepting it, Gennady Kostyrchenko rejecting it as a Cold War legend, and others leaving it unresolved. Philip Augustus himself expelled Jews in 1182 and readmitted them in 1198. Repetition names decisions by rulers, including reversals; it does not establish an accusation against their victims."
-  duration: 14
-
-- shot: the-answer
-  view: graph
-  focus: alhambra-decree
-  time: "1492/1497"
-  reveal: [alhambra-decree, expulsion-of-the-jews-from-spain-1492, portuguese-edict-of-1496, forced-baptism-in-portugal-1497, manuel-i-of-portugal]
-  reveal_claims: [expulsion-of-the-jews-from-spain-1492#c6, expulsion-of-the-jews-from-spain-1492#c8, manuel-i-of-portugal#c2, forced-baptism-in-portugal-1497#c1, forced-baptism-in-portugal-1497#c4]
-  overlay: {kind: quote, source: adl-109-110, quote: "Antisemites use this purported figure to claim that Jews must be a malicious and harmful people to have been expelled from so many places;", caption: "Anti-Defamation League, on the misuse of an expulsion count"}
-  narration: "**How leaving became compulsory staying.** Ferdinand and Isabella justified expulsion as protecting converts from Jewish influence. Their marriage condition carried that demand into Portugal; Manuel accepted it, ordered departure, then confined the exit to Lisbon and imposed baptism. The Encyclopaedia Judaica explains his reversal through economic loss; Starr-LeBeau emphasizes conversion. Their accounts locate the choices with the rulers, while families lost property, freedom, children and lives. The Anti-Defamation League traces the claim of “109 countries” probably to a list of 109 locations on an antisemitic website. Towns, kingdoms and repeated expulsions cannot be counted as interchangeable countries. The path from expulsion to forced baptism ran through a decree, a marriage condition and a king’s decision to keep the people he had ordered out."
   duration: 14
 ```
