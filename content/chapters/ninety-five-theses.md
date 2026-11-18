@@ -91,16 +91,6 @@ Whether Luther posted the theses on a church door remains disputed. His letters,
   narration: "**Far beyond my expectation.** On 5 March 1518, Luther wrote to Christoph Scheurl in Nuremberg that he had meant to consult a few neighbors, then destroy the theses if they were condemned or publish them with approval. Instead, friends had carried them to presses: reprints appeared in Nuremberg and Basel by the end of 1517, and Nuremberg friends had them translated into German. In his letter, he sought to spread truth but judged this method ill suited to public instruction and admitted doubts about the theses; in 1541, he recalled their crossing Germany in two weeks. He turned to a German Sermon on Indulgence and Grace, which went through more than twenty reprints."
   duration: 15
 
-- shot: the-presses
-  view: graph
-  focus: johann-froben
-  time: "1519-02-14"
-  reveal: [johann-froben, melchior-lotter, spread-of-luthers-writings, erasmus-greek-new-testament, basel]
-  reveal_claims: [johann-froben#c2, johann-froben#c1, melchior-lotter#c2]
-  overlay: {kind: "quote", source: "smith-jacobs-1913-luthers-correspondence-v1", quote: "as they were approved by all the learned, I immediately reprinted.", caption: "Johann Froben to Luther, Basel, 14 February 1519"}
-  narration: "**The presses.** At Basel on 14 February 1519, Johann Froben told Luther he had reprinted his books because learned readers approved them; he had sent copies to France and Spain and sold all but ten. This was the printer who had published Erasmus’s Greek New Testament in 1516, but Luther also chose his printers: an edition of his Explanations was so full of errors that he gave the work to Melchior Lotter at Leipzig. In 1520 Henry Glarean reported 1,400 copies of Luther’s works sold at one Frankfurt fair. By 1525, the Pitts Theology Library says, Luther was the most published author since the press’s invention; his words now reached readers far beyond Wittenberg."
-  duration: 15
-
 - shot: before-the-legate
   view: map
   camera: {center: [11.4, 49.9], zoom: 5.9, pitch: 20, duration: 5}
@@ -111,6 +101,16 @@ Whether Luther posted the theses on a church door remains disputed. His letters,
   reveal_claims: [diet-of-augsburg-1518#c3, diet-of-augsburg-1518#c2, cajetan#c1]
   overlay: {kind: "quote", source: "smith-jacobs-1913-luthers-correspondence-v1", quote: "I will die first by fire, or be exiled and cursed.", caption: "Luther to Andreas Karlstadt, Augsburg, 14 October 1518"}
   narration: "**Before the legate.** In Augsburg on 14 October 1518, Luther told Karlstadt what recanting would cost him: he would contradict the belief that had made him a Christian. He wrote, “I will die first by fire, or be exiled and cursed”; Rome had summoned him for heresy, but his request and the emperor’s help brought the hearing to Augsburg. The pope authorized Cardinal Cajetan to receive him kindly if he repented; Luther reported that the cardinal wanted only a recantation, while they clashed over whether indulgences drew on Christ’s merits. He chose to draw up an appeal, carrying the quarrel beyond the legate’s demand."
+  duration: 15
+
+- shot: the-presses
+  view: graph
+  focus: johann-froben
+  time: "1519-02-14"
+  reveal: [johann-froben, melchior-lotter, spread-of-luthers-writings, erasmus-greek-new-testament, basel]
+  reveal_claims: [johann-froben#c2, johann-froben#c1, melchior-lotter#c2]
+  overlay: {kind: "quote", source: "smith-jacobs-1913-luthers-correspondence-v1", quote: "as they were approved by all the learned, I immediately reprinted.", caption: "Johann Froben to Luther, Basel, 14 February 1519"}
+  narration: "**The presses.** At Basel on 14 February 1519, Johann Froben told Luther he had reprinted his books because learned readers approved them; he had sent copies to France and Spain and sold all but ten. This was the printer who had published Erasmus’s Greek New Testament in 1516, but Luther also chose his printers: an edition of his Explanations was so full of errors that he gave the work to Melchior Lotter at Leipzig. In 1520 Henry Glarean reported 1,400 copies of Luther’s works sold at one Frankfurt fair. By 1525, the Pitts Theology Library says, Luther was the most published author since the press’s invention; his words now reached readers far beyond Wittenberg."
   duration: 15
 
 - shot: leipzig-1519
@@ -179,16 +179,6 @@ Whether Luther posted the theses on a church door remains disputed. His letters,
   narration: "**A Testament in German.** From the Wartburg on 18 December 1521, Luther told Johann Lang he would translate the New Testament: “Would that every town had its interpreter”. He drafted it in eleven weeks, working from Erasmus’s Greek text rather than Latin alone, then revised it with Melanchthon at Wittenberg. The September 1522 edition ran to 3,000–5,000 copies, at one guilder each, two months of a schoolmaster’s pay, according to the Gruber collection, and a second edition was needed by December. The book he wished into everyone’s hands had buyers despite that price, and the work continued toward a complete Bible."
   duration: 14
 
-- shot: back-to-the-press
-  view: graph
-  focus: luther-bible
-  time: "1534"
-  reveal: [luther-bible, german-new-testament-1522, bible, vulgate, gutenberg-bible, printing-press]
-  reveal_claims: [german-new-testament-1522#c4, german-new-testament-1522#c5, luther-bible#c1, gutenberg-bible#c2, printing-press#c1]
-  overlay: {kind: quote, source: cornell-exhibit-luther-bible, quote: "It is said that Lufft sold over 100,000 copies of Luther's Bible in forty years.", caption: "Cornell University Library, Paper, Leather, Clay & Stone"}
-  narration: "**Back to the press.** Preserved Smith quotes Luther describing the labor behind his German Bible: “I try to speak as men do in the market-place.” In 1534 Hans Lufft printed the whole Bible at Wittenberg, eighty years after Gutenberg had printed Jerome’s Latin at Mainz, the road traced in From Clay to Print. Luther’s New Testament had already reached 87 editions in High German and about 19 in Low German, and now a printer could supply the whole text in the language Luther had chosen for ordinary speech. The German Historical Institute’s editors describe its spread across the German-speaking lands: the press carried his words into readers’ daily language."
-  duration: 14
-
 - shot: two-protestant-churches
   view: graph
   focus: marburg-articles
@@ -198,6 +188,16 @@ Whether Luther posted the theses on a church door remains disputed. His letters,
   overlay: {kind: quote, source: ghdi-marburg-articles-1529, quote: "And although we have not been able to agree at this time, whether the true body and blood of Christ are corporally present in the bread and wine [of communion], each party should display towards the other Christian love, as far as each respective conscience allows", caption: "The Marburg Articles, article 15, 3 October 1529"}
   narration: "**Two Protestant churches.** At Marburg on 3 October 1529, Luther defended Christ’s bodily presence in communion; Zwingli rejected it. They signed fifteen articles with eight other preachers, pledging Christian love as far as conscience allowed. In 1530 Melanchthon drafted the Augsburg Confession, and Lutheran princes and cities presented it to Charles V, but the diet ended without agreement. Writing to Martin Bucer on 22 January 1531, Luther said he would give his life three times to heal the breach, but declined union: his conscience forbade terms he believed would sow worse discord. The Marburg division eventually became separate Lutheran and Reformed confessions, the German Historical Institute’s editors explain; rulers would have to confront a lasting split."
   duration: 15
+
+- shot: back-to-the-press
+  view: graph
+  focus: luther-bible
+  time: "1534"
+  reveal: [luther-bible, german-new-testament-1522, bible, vulgate, gutenberg-bible, printing-press]
+  reveal_claims: [german-new-testament-1522#c4, german-new-testament-1522#c5, luther-bible#c1, gutenberg-bible#c2, printing-press#c1]
+  overlay: {kind: quote, source: cornell-exhibit-luther-bible, quote: "It is said that Lufft sold over 100,000 copies of Luther's Bible in forty years.", caption: "Cornell University Library, Paper, Leather, Clay & Stone"}
+  narration: "**Back to the press.** Preserved Smith quotes Luther describing the labor behind his German Bible: “I try to speak as men do in the market-place.” In 1534 Hans Lufft printed the whole Bible at Wittenberg, eighty years after Gutenberg had printed Jerome’s Latin at Mainz, the road traced in From Clay to Print. Luther’s New Testament had already reached 87 editions in High German and about 19 in Low German, and now a printer could supply the whole text in the language Luther had chosen for ordinary speech. The German Historical Institute’s editors describe its spread across the German-speaking lands: the press carried his words into readers’ daily language."
+  duration: 14
 
 - shot: luther-and-the-jews
   view: graph
