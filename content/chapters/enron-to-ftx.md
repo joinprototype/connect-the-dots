@@ -83,6 +83,16 @@ A director put $85,000 of his savings behind a blood-testing machine. A patient 
   narration: "**The plea.** At Fastow's September 2006 sentencing, investor Brian Durbin said Enron's reputation made investing a “no-brainer”; investors became “victims of an elaborate scam, if not outright theft”. Fastow faced 78 counts in October 2002 by Famous Trials' count, 98 by AP's, before pleading guilty to two conspiracy counts in January 2004, admitting schemes to hide debt, inflate profits and enrich himself. He surrendered $23.8 million by the former's figure, nearly $30 million by AP's, and told victims, “I am ashamed of what I did.” He said helping prosecutors and investors' lawyers was his attempt to repair the damage. His lawyers sought leniency for his cooperation; Judge Kenneth Hoyt imposed six years, citing persecution and family suffering: “These factors call for mercy.”"
   duration: 13
 
+- shot: insurance-paid-most
+  view: graph
+  focus: enron
+  time: "2004-10-06"
+  reveal: [robert-jaedicke, university-of-california, enron]
+  reveal_claims: [robert-jaedicke#c2]
+  overlay: {kind: "quote", source: "uc-2005-01-12-enron-directors-settlement", quote: "It was important to reach this settlement to staunch the consumption of the directors, and officers, insurance by defense fees", caption: "William Lerach, lead counsel for the investor class, explaining the settlement, January 2005"}
+  narration: "**Insurance paid most.** Lawyer William Lerach explained the October 2004 settlement with Enron's former directors as a race to stop defense fees consuming the insurance and get money to victims. Ten directors, Robert Jaedicke among them, agreed to contribute more than $13 million personally, which the University of California, the lead plaintiff, called insider trading proceeds. Insurance supplied $155 million, 92 percent of the $168 million settlement announced in January 2005. The deal resolved Section 11 strict-liability claims, rather than Section 10(b) fraud claims; after two inquiries criticised the board, investors had secured some of the directors' own money."
+  duration: 13
+
 - shot: the-verdict
   view: map
   camera: {center: [-95.3698, 29.7604], zoom: 11.2, pitch: 30, duration: 6}
@@ -104,16 +114,6 @@ A director put $85,000 of his savings behind a blood-testing machine. A patient 
   narration: "**Erased.** After losing $8,000 in Enron's collapse, Russell Butler asked for restitution based on Kenneth Lay's conviction. On 25 May 2006, a jury had convicted Lay on six counts and Judge Sim Lake on four more; Lay insisted, “I firmly believe I am innocent of the charges against me, as I have said from Day One.” Lay died of heart disease on 5 July, and on 17 October Lake vacated the conviction under a Fifth Circuit rule covering death pending appeal. Lake denied Butler's request and closed the criminal route to $43.5 million prosecutors alleged Lay took; Butler's lawyer called the ruling unfair to victims left penniless, while the government pledged to pursue other restitution remedies."
   duration: 13
 
-- shot: insurance-paid-most
-  view: graph
-  focus: enron
-  time: "2004-10-06"
-  reveal: [robert-jaedicke, university-of-california, enron]
-  reveal_claims: [robert-jaedicke#c2]
-  overlay: {kind: "quote", source: "uc-2005-01-12-enron-directors-settlement", quote: "It was important to reach this settlement to staunch the consumption of the directors, and officers, insurance by defense fees", caption: "William Lerach, lead counsel for the investor class, explaining the settlement, January 2005"}
-  narration: "**Insurance paid most.** Lawyer William Lerach explained the October 2004 settlement with Enron's former directors as a race to stop defense fees consuming the insurance and get money to victims. Ten directors, Robert Jaedicke among them, agreed to contribute more than $13 million personally, which the University of California, the lead plaintiff, called insider trading proceeds. Insurance supplied $155 million, 92 percent of the $168 million settlement announced in January 2005. The deal resolved Section 11 strict-liability claims, rather than Section 10(b) fraud claims; after two inquiries criticised the board, investors had secured some of the directors' own money."
-  duration: 13
-
 - shot: palo-alto
   view: map
   camera: {center: [-122.143, 37.4419], zoom: 11.4, pitch: 30, duration: 6}
@@ -125,16 +125,6 @@ A director put $85,000 of his savings behind a blood-testing machine. A patient 
   narration: "**Palo Alto, 2013.** Elizabeth Holmes offered a blood test from a finger-prick and launched Theranos in Walgreens stores that fall; according to the Justice Department, she promised any test a conventional lab could run. She promised better, cheaper, faster results, but most patient tests ran on other companies' machines, the SEC said; the Ninth Circuit counted just twelve of 300 assays ever run on Theranos's Edison. The SEC counted more than $700 million raised, while the Justice Department counted over $730 million from Series C-1 and C-2 investors alone. As scrutiny grew in 2015, Fortune's Jennifer Reingold described a board assembled for government connections rather than technological understanding; Theranos called the Wall Street Journal's reporting “factually and scientifically erroneous”, and the dispute reached directors who had trusted Holmes."
   duration: 13
 
-- shot: the-patients
-  view: graph
-  focus: ramesh-balwani
-  time: "2015"
-  reveal: [ramesh-balwani, theranos, elizabeth-holmes, us-district-court-northern-district-of-california]
-  reveal_claims: [ramesh-balwani#c3, elizabeth-holmes#c6]
-  overlay: {kind: quote, source: doj-ndca-2022-12-07-balwani-sentenced, quote: "Theranos itself eventually concluded a patient impact existed for every test run on a patient and voided all tests with its analyzer.", caption: "U.S. Attorney's Office, Northern District of California, on Balwani's sentencing, 7 December 2022"}
-  narration: "**The patients.** Erin Tompkins chose Theranos for its low prices, TechCrunch reported; flagged HIV-positive, she waited three months until she could afford another test, which showed she did not have HIV. A pregnant woman told she was miscarrying delivered a healthy baby, and a physician received falsely high cancer-marker results, the U.S. Attorney said. Staff had warned Holmes and Balwani about unreliable tests, the Ninth Circuit recorded; inspectors found “immediate jeopardy” to patients, and Theranos eventually voided every test run on its analyzer. At his trial, Balwani's text to Holmes said “I am responsible for everything at Theranos”; his jury convicted him of defrauding patients, while Holmes's had acquitted her on those counts."
-  duration: 13
-
 - shot: a-board-like-no-other
   view: graph
   focus: theranos
@@ -143,6 +133,16 @@ A director put $85,000 of his savings behind a blood-testing machine. A patient 
   reveal_claims: [james-mattis#c1, james-mattis#c2, george-shultz#c1]
   overlay: {kind: "quote", source: "ap-2021-09-22-mattis-testifies-in-holmes-trial", quote: "I believe in what you are doing.", caption: "James Mattis, recalling his offer to serve Holmes for free, in testimony reported by AP, September 2021"}
   narration: "**A board like no other.** Retired general James Mattis testified in 2021 that he had hoped Theranos could save soldiers' lives and that Holmes recruited him in 2013 for leadership and team-building help. Her lawyers showed his July 2013 email anticipating no immediate or large military customer, and $150,000 annual board pay; he testified he had offered to serve for free: “I believe in what you are doing.” He said he invested $85,000 of his savings to have skin in the game, but had lost faith by his 2016 departure and felt misled. At Holmes's sentencing, Alex Shultz said she “took advantage of my dad,” director George Shultz; people who had given her credibility were now testifying against her."
+  duration: 13
+
+- shot: the-patients
+  view: graph
+  focus: ramesh-balwani
+  time: "2015"
+  reveal: [ramesh-balwani, theranos, elizabeth-holmes, us-district-court-northern-district-of-california]
+  reveal_claims: [ramesh-balwani#c3, elizabeth-holmes#c6]
+  overlay: {kind: quote, source: doj-ndca-2022-12-07-balwani-sentenced, quote: "Theranos itself eventually concluded a patient impact existed for every test run on a patient and voided all tests with its analyzer.", caption: "U.S. Attorney's Office, Northern District of California, on Balwani's sentencing, 7 December 2022"}
+  narration: "**The patients.** Erin Tompkins chose Theranos for its low prices, TechCrunch reported; flagged HIV-positive, she waited three months until she could afford another test, which showed she did not have HIV. A pregnant woman told she was miscarrying delivered a healthy baby, and a physician received falsely high cancer-marker results, the U.S. Attorney said. Staff had warned Holmes and Balwani about unreliable tests, the Ninth Circuit recorded; inspectors found “immediate jeopardy” to patients, and Theranos eventually voided every test run on its analyzer. At his trial, Balwani's text to Holmes said “I am responsible for everything at Theranos”; his jury convicted him of defrauding patients, while Holmes's had acquitted her on those counts."
   duration: 13
 
 - shot: the-sec
@@ -187,6 +187,16 @@ A director put $85,000 of his savings behind a blood-testing machine. A patient 
   narration: "**The investors.** On a November 2022 call, Sequoia leader Roelof Botha apologised to investors for backing FTX with $214 million, now written down to zero, Bloomberg reported, citing unnamed people; Sequoia declined to comment. Partners defended their checks, including unaudited statements reviewed in July 2021, and said they believed they had been misled. In May 2023, Temasek's chairman said investing in young companies helped it understand emerging technologies, and said fraudulent conduct at FTX had been intentionally hidden from investors. Temasek's review found “no misconduct by the investment team”; the team and senior management took pay cuts, and the U.S. Attorney put Bankman-Fried's fraud on FTX investors at more than $1.7 billion."
   duration: 13
 
+- shot: what-no-source-says
+  view: graph
+  focus: john-j-ray-iii
+  time: "2022-11-17"
+  reveal: [john-j-ray-iii, enron, ftx, theranos, prager-metis]
+  reveal_claims: [john-j-ray-iii#c2]
+  overlay: {kind: "quote", source: "ray-first-day-declaration-2022-11-17", quote: "The Debtors are locating and securing all available financial records but expect it will be some time before reliable historical financial statements can be prepared for the FTX Group with which I am comfortable as Chief Executive Officer.", caption: "John J. Ray III, sworn declaration for the FTX bankruptcy, 17 November 2022"}
+  narration: "**Start with the books.** In November 2022, Ray refused to recommend that FTX's creditors trust its audited financial statements and began securing records to reconstruct them. He had worked through Enron, whose Powers committee also faulted outside auditors. The committee found Enron's directors had approved Fastow's conflict; Theranos director Mattis testified he was misled; Ray said he understood many FTX entities had never held board meetings. Ray set out his reason for pursuing the assets: a substantial portion of the estate's property might be missing or stolen. His team began locating and securing what remained, the work needed before money could be returned to customers and creditors."
+  duration: 13
+
 - shot: new-york
   view: map
   camera: {center: [-74.006, 40.7128], zoom: 11.4, pitch: 30, duration: 6}
@@ -206,15 +216,5 @@ A director put $85,000 of his savings behind a blood-testing machine. A patient 
   reveal_claims: [sam-bankman-fried#c4]
   overlay: {kind: stat, value: "about 119%", label: "Share of their allowed claims that 98% of FTX creditors by number would receive under the plan, per the FTX estate; claims are fixed at bankruptcy-date prices", source: ftx-2024-10-09-plan-confirmation, quote: "Under the terms of the Plan, 98% of the creditors of FTX by number will receive approximately 119% of the amount of their allowed claims"}
   narration: "**On appeal.** Bankman-Fried testified that he believed customers could be repaid because Alameda's assets exceeded its liabilities by $10 billion, even counting its $8 billion debt to FTX. The Second Circuit rejected his repayment defense on 12 June 2026, applying the Supreme Court's 2025 ruling that fraud need not cause a net loss. The estate projected about 119% of allowed claims for 98% of creditors by number; a digest of NYT and WSJ reports put recovery at 118%, with claims valued at November 2022 prices, excluding later crypto gains. Bankman-Fried petitioned the Supreme Court on 10 September 2026; the government's response was due 16 November, and on 30 October it asked for more time."
-  duration: 13
-
-- shot: what-no-source-says
-  view: graph
-  focus: john-j-ray-iii
-  time: "2022-11-17"
-  reveal: [john-j-ray-iii, enron, ftx, theranos, prager-metis]
-  reveal_claims: [john-j-ray-iii#c2]
-  overlay: {kind: "quote", source: "ray-first-day-declaration-2022-11-17", quote: "The Debtors are locating and securing all available financial records but expect it will be some time before reliable historical financial statements can be prepared for the FTX Group with which I am comfortable as Chief Executive Officer.", caption: "John J. Ray III, sworn declaration for the FTX bankruptcy, 17 November 2022"}
-  narration: "**Start with the books.** In November 2022, Ray refused to recommend that FTX's creditors trust its audited financial statements and began securing records to reconstruct them. He had worked through Enron, whose Powers committee also faulted outside auditors. The committee found Enron's directors had approved Fastow's conflict; Theranos director Mattis testified he was misled; Ray said he understood many FTX entities had never held board meetings. Ray set out his reason for pursuing the assets: a substantial portion of the estate's property might be missing or stolen. His team began locating and securing what remained, the work needed before money could be returned to customers and creditors."
   duration: 13
 ```
