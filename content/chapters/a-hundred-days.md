@@ -70,17 +70,6 @@ Before the killing, an informant offered to reveal an arms cache if UN peacekeep
   narration: "**6 April.** President Habyarimana was flying home to Kigali with Burundi's President Ntaryamira after regional talks; Tanzanian officials said he had committed to implementing the Arusha agreement. At about 20:30, a missile brought down their plane as it approached the airport, killing everyone aboard. No court has identified who fired: a French investigation produced arrest warrants for senior RPF officials in 2006, the Paris Court of Appeals dismissed the case in 2020, and the Rwanda Tribunal took no view on the perpetrators. Within an hour, roadblocks went up; at them, the Tribunal found, Tutsi were seized and killed, sometimes on the spot."
   duration: 13
 
-- shot: who-ran-it
-  view: graph
-  picture: none
-  focus: theoneste-bagosora
-  time: "2008-12-18"
-  reveal: [theoneste-bagosora, rwandan-armed-forces, interim-government-of-rwanda, jean-kambanda, rwandan-genocide]
-  reveal_claims: [theoneste-bagosora#c2, jean-kambanda#c1, rwandan-genocide#c2]
-  overlay: {kind: quote, source: ictr-bagosora-judgement-2008, quote: "Bagosora is therefore guilty of genocide, crimes against humanity (murder, extermination, rape, persecution and other inhumane acts) and serious violations of Article 3 common to the Geneva Conventions and Additional Protocol II", caption: "ICTR Trial Chamber, Bagosora and others, 18 December 2008"}
-  narration: "**Who ran it.** At army headquarters on the night of 6 April, Dallaire found Colonel Théoneste Bagosora in “the position of authority”; he testified that Bagosora rejected the Prime Minister's authority, saying she was not the right person for the situation. The Trial Chamber convicted Bagosora of genocide and held him responsible as a superior for the killings of the Prime Minister, Landoald Ndasingwa and ten Belgian peacekeepers; the Tribunal's case page lists his sentence after appeal as 35 years. It acquitted him and three co-accused of conspiracy before 7 April: a genocidal plan was not the only reasonable inference. Interim Prime Minister Jean Kambanda admitted his government armed militias knowing they would massacre civilians, while cabinet ministers followed the massacres and did nothing to stop them."
-  duration: 13
-
 - shot: the-prime-minister
   view: graph
   picture: none
@@ -250,6 +239,17 @@ Before the killing, an informant offered to reveal an arms cache if UN peacekeep
   narration: "**What the UN found.** On 16 December 1999, Kofi Annan accepted an inquiry into decisions he had helped make as head of UN peacekeeping; Ingvar Carlsson's team found a failure of the whole UN system, rooted in insufficient resources and will. The inquiry said a force of 2,500 should have been able to stop or at least limit the massacres, faulted Boutros-Ghali for not doing more and credited peacekeepers who stayed. Annan accepted conclusions reflecting on Secretariat officials, “of whom I myself was one”, and said: “I acknowledge this failure and express my deep remorse.” To prevent another catastrophe, he called for prompt action on recommendations directed at the Secretariat, the Council and member states, putting the task of changing civilian protection before them."
   duration: 13
 
+- shot: who-ran-it
+  view: graph
+  picture: none
+  focus: theoneste-bagosora
+  time: "2008-12-18"
+  reveal: [theoneste-bagosora, rwandan-armed-forces, interim-government-of-rwanda, jean-kambanda, rwandan-genocide]
+  reveal_claims: [theoneste-bagosora#c2, jean-kambanda#c1, rwandan-genocide#c2]
+  overlay: {kind: quote, source: ictr-bagosora-judgement-2008, quote: "Bagosora is therefore guilty of genocide, crimes against humanity (murder, extermination, rape, persecution and other inhumane acts) and serious violations of Article 3 common to the Geneva Conventions and Additional Protocol II", caption: "ICTR Trial Chamber, Bagosora and others, 18 December 2008"}
+  narration: "**Who ran it.** At army headquarters on the night of 6 April, Dallaire found Colonel Théoneste Bagosora in “the position of authority”; he testified that Bagosora rejected the Prime Minister's authority, saying she was not the right person for the situation. The Trial Chamber convicted Bagosora of genocide and held him responsible as a superior for the killings of the Prime Minister, Landoald Ndasingwa and ten Belgian peacekeepers; the Tribunal's case page lists his sentence after appeal as 35 years. It acquitted him and three co-accused of conspiracy before 7 April: a genocidal plan was not the only reasonable inference. Interim Prime Minister Jean Kambanda admitted his government armed militias knowing they would massacre civilians, while cabinet ministers followed the massacres and did nothing to stop them."
+  duration: 13
+
 - shot: mapping
   view: map
   picture: none
@@ -262,6 +262,17 @@ Before the killing, an informant offered to reveal an arms cache if UN peacekeep
   narration: "**Mapping.** In September 2010, Foreign Minister Louise Mushikiwabo sent the UN seven objections to its Congo Mapping report, calling it “flawed and dangerous from start to finish” and citing omitted historical context, including armed refugees threatening Rwanda's border. Covering 1993–2003, the UN human rights office's report describes attacks by Rwanda's army and Congolese allies on Rwandan Hutu refugees and Congolese Hutu in 1996–1997, after the hundred days: if proven in court, they could constitute genocide. The report identifies collective retribution against civilians suspected of ties to the former army and Interahamwe as an alternative inference that could prevent a finding of genocidal intent. HRW says Rwanda threatened to withdraw Darfur peacekeepers, then backed down; on 1 October the UN published the allegations despite that pressure."
   duration: 13
 
+- shot: who-counted
+  view: graph
+  picture: none
+  focus: rwandan-genocide
+  time: "2020"
+  reveal: [rwandan-genocide, census-of-genocide-victims-2000, leave-none-to-tell-the-story, un-independent-inquiry-report, rwandan-government]
+  reveal_claims: [rwandan-genocide#c8, rwandan-government#c1, rwandan-genocide#c9]
+  overlay: {kind: stat, value: "1,074,017", label: "Victims counted by Rwanda’s census of July 2000. Other estimates run from 500,000 up", source: roape-2020-accounting-for-the-dead, quote: "The report speaks of a total of 1,074,017 victims"}
+  narration: "**Who counted.** Eric Rousseau told the Tribunal his team opened graves, counted skulls and collated testimony to estimate about 1.2 million victims in Rwanda's first official census in 1996, Luc Reydams reports. Rwanda's July 2000 census counted 1,074,017; Reydams reports that it invoked privacy laws to withhold names, an explanation he challenges, pointing to public death records and names on memorials. In 2020 he argued that the state's “more than a million” was propaganda incompatible with demographic figures. The UN inquiry gives about 800,000 without a method; HRW notes a UN expert's 800,000 included other causes of death. UN experts in 1994 estimated 500,000, perhaps nearer a million; HRW concluded at least half a million. Reydams challenged whether the public totals could be verified while the names remained secret."
+  duration: 13
+
 - shot: france-2021
   view: map
   picture: none
@@ -272,16 +283,5 @@ Before the killing, an informant offered to reveal an arms cache if UN peacekeep
   reveal_claims: [vincent-duclert#c2, research-commission-on-french-archives-on-rwanda#c1, muse-report#c1, emmanuel-macron#c2, paul-kagame#c4]
   overlay: {kind: quote, source: duclert-2021-commission-report-english, quote: "the French authorities, although sufficiently informed through multiple channels of the threats of destruction of the Tutsi of Rwanda, did not reorient their policy to better take into account these risks, their significance and their consequences.", caption: "The Duclert report's introduction, on the French authorities"}
   narration: "**France, 2021.** At Kigali's memorial on 27 May, Emmanuel Macron acknowledged France's responsibilities while denying complicity; Duclert's commission had found no archival evidence of a will to join the genocide, but said France backed a regime encouraging racist massacres, stayed blind to preparations and bore serious, overwhelming responsibilities. Rwanda's Muse report objected that Duclert failed to say what France had done, finding significant responsibility for enabling a foreseeable genocide. Macron said, as Rwanda's government reported: “I come to recognise the magnitude of our responsibilities.” Kagame called his words “something more valuable than an apology: they were the truth”; Macron said the new relationship would deepen cooperation and promised faster efforts to bring genocide fugitives in France to justice."
-  duration: 13
-
-- shot: who-counted
-  view: graph
-  picture: none
-  focus: rwandan-genocide
-  time: "2020"
-  reveal: [rwandan-genocide, census-of-genocide-victims-2000, leave-none-to-tell-the-story, un-independent-inquiry-report, rwandan-government]
-  reveal_claims: [rwandan-genocide#c8, rwandan-government#c1, rwandan-genocide#c9]
-  overlay: {kind: stat, value: "1,074,017", label: "Victims counted by Rwanda’s census of July 2000. Other estimates run from 500,000 up", source: roape-2020-accounting-for-the-dead, quote: "The report speaks of a total of 1,074,017 victims"}
-  narration: "**Who counted.** Eric Rousseau told the Tribunal his team opened graves, counted skulls and collated testimony to estimate about 1.2 million victims in Rwanda's first official census in 1996, Luc Reydams reports. Rwanda's July 2000 census counted 1,074,017; Reydams reports that it invoked privacy laws to withhold names, an explanation he challenges, pointing to public death records and names on memorials. In 2020 he argued that the state's “more than a million” was propaganda incompatible with demographic figures. The UN inquiry gives about 800,000 without a method; HRW notes a UN expert's 800,000 included other causes of death. UN experts in 1994 estimated 500,000, perhaps nearer a million; HRW concluded at least half a million. Reydams challenged whether the public totals could be verified while the names remained secret."
   duration: 13
 ```
