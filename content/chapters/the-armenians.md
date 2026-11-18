@@ -128,26 +128,6 @@ Bishop Krikoris Balakian survived arrest and deportation, then travelled to Berl
   narration: "**“They are practically all dead now”.** Talaat later defended deportation as preventive; Morgenthau recalled him saying privately in August 1915 that Armenians had enriched themselves at Turks’ expense, sought a separate state and helped Russia. Talaat said they must be made powerless before war's end and could live only in the desert; in the same recollection, he said three quarters had already been disposed of and invoked fear of revenge: “If we don’t, they will plan their revenge.” Morgenthau's cable of 11 August likewise reported Talaat saying no Armenians could remain friendly after their treatment. In Morgenthau’s later recollection, Talaat also asked for American insurers’ Armenian policyholder lists because “They are practically all dead now”, proposing that their unclaimed insurance money go to the state; Morgenthau refused."
   duration: 15
 
-- shot: talaats-own-account
-  view: graph
-  focus: talaat-pasha
-  time: "1921-11"
-  reveal: [talaat-pasha, ottoman-empire, committee-of-union-and-progress]
-  reveal_claims: [talaat-pasha#c1]
-  overlay: {kind: quote, source: current-history-1921-11-talaat-memoirs, quote: "I admit that we deported many Armenians from our eastern provinces, but we never acted in this matter upon a previously prepared scheme.", caption: "Talaat Pasha, manuscript written in Berlin, printed in Current History, November 1921"}
-  narration: "**The defence from exile.** Writing in Berlin, Talaat called reports of deportation and killing “exceedingly exaggerated” and denied a prepared scheme, while admitting deportation; he blamed the deportees themselves and claimed Russian-armed Armenian bands killed more than 300,000 Muslims, without sourcing that number. He conceded deportation “was not carried out lawfully everywhere”. He claimed some looters had been punished, but most perpetrators remained untouched. He explained postponement: their supporters were numerous and strong, and immediate punishment “would have aroused great discontent among the people, who favored their acts”. In his telling, arresting them all risked anarchy when the government needed unity against enemies outside; his admission of unlawful acts ended in a justification for postponing punishment."
-  duration: 15
-
-- shot: turkeys-losses
-  view: graph
-  focus: turkish-ministry-of-foreign-affairs
-  time: "1922"
-  reveal: [turkish-ministry-of-foreign-affairs, turkey, ottoman-empire]
-  reveal_claims: [turkish-ministry-of-foreign-affairs#c1]
-  overlay: {kind: stat, value: "2.5 million", label: "Anatolian Muslims who died over 1912 to 1922, in Turkey's foreign ministry's account; all causes", source: turkey-mfa-armenian-allegation-of-genocide, quote: "The statistics tell us that more than 2.5 million Anatolian Muslims also perished."}
-  narration: "**Whose dead are remembered.** In his April 2014 message, Prime Minister Erdoğan asked for remembrance without discrimination by religion or ethnicity, calling the First World War “our shared pain”. Turkey's foreign ministry says greater numbers of Turks died or were killed, and cites more than 2.5 million Anatolian Muslims dead over 1912–22; its paper says the figures do not establish the exact manner of death and include war, intercommunal violence, forced migration, disease and starvation. The ministry also says a later terror campaign by Armenian groups killed 31 Turkish diplomats and their family members. Its diplomats make those losses part of Turkey's answer to genocide recognition, extending the dispute over remembrance to colleagues and relatives killed decades later."
-  duration: 15
-
 - shot: who-counted-what
   view: graph
   focus: armenian-deportations-1915
@@ -166,6 +146,16 @@ Bishop Krikoris Balakian survived arrest and deportation, then travelled to Berl
   reveal_claims: [talaat-pasha#c2, enver-pasha#c2, ottoman-court-martial-1919#c1]
   overlay: {kind: quote, source: ottoman-court-martial-1919-verdict, quote: "it is obvious that the massacres which took place in the Kaza of Boghazlayan (Ankara), the Sanjak of Yozgat, and the Vilayet of Trebizond, were organized and perpetrated by the leaders of the Ittihad and Terakki Party.", caption: "Ottoman court-martial, verdict of 5 July 1919, in the translation printed in the Armenian Review, 1971"}
   narration: "**Death sentences, absent defendants.** On 5 July 1919, Ottoman military judges in Constantinople sentenced the absent Talaat, Enver, Djemal and Dr. Nazim to death, finding ruling-party leaders had organized and perpetrated massacres at Boghazlayan, Yozgat and Trebizond. The indictment traced destruction to the Central Committee's decisions; the judges rejected the defence that leaders learned of atrocities only afterward, saying they still neither stopped repetition nor punished perpetrators. They required individual judgments of guilt, refusing to ascribe the crimes to all accused alike. Mehmet Kemal was hanged, but Hakobyan counts only three executions from over twenty death sentences in 63 cases; the Museum calls them aborted postwar trials, and Talaat remained abroad."
+  duration: 15
+
+- shot: talaats-own-account
+  view: graph
+  focus: talaat-pasha
+  time: "1921-11"
+  reveal: [talaat-pasha, ottoman-empire, committee-of-union-and-progress]
+  reveal_claims: [talaat-pasha#c1]
+  overlay: {kind: quote, source: current-history-1921-11-talaat-memoirs, quote: "I admit that we deported many Armenians from our eastern provinces, but we never acted in this matter upon a previously prepared scheme.", caption: "Talaat Pasha, manuscript written in Berlin, printed in Current History, November 1921"}
+  narration: "**The defence from exile.** Writing in Berlin, Talaat called reports of deportation and killing “exceedingly exaggerated” and denied a prepared scheme, while admitting deportation; he blamed the deportees themselves and claimed Russian-armed Armenian bands killed more than 300,000 Muslims, without sourcing that number. He conceded deportation “was not carried out lawfully everywhere”. He claimed some looters had been punished, but most perpetrators remained untouched. He explained postponement: their supporters were numerous and strong, and immediate punishment “would have aroused great discontent among the people, who favored their acts”. In his telling, arresting them all risked anarchy when the government needed unity against enemies outside; his admission of unlawful acts ended in a justification for postponing punishment."
   duration: 15
 
 - shot: malta
@@ -200,6 +190,16 @@ Bishop Krikoris Balakian survived arrest and deportation, then travelled to Berl
   narration: "**The lawyer withdraws his motion.** In Berlin in 1921, defence lawyer von Gordon offered five Aleppo telegrams, saying Aram Andonian could authenticate them. Lepsius recalled a Talaat-signed document saying, “The destination of the deportation is annihilation”; Balakian recalled a vice-governor showing him a telegram signed “Talaat” asking how many Armenians remained, then saying: “Why are you waiting? Kill them all.” Balakian could not recall its exact words or attest to authenticity. After the prosecutor said the issue was Tehlirian's belief, von Gordon withdrew the motion to read the telegrams; the trial did not decide authenticity. Orel and Yuca later called the Andonian documents forgeries; the Armenian Mirror-Spectator reports Taner Akçam answering their objections with Ottoman archival evidence about Naim, the ciphers and paper."
   duration: 15
 
+- shot: turkeys-losses
+  view: graph
+  focus: turkish-ministry-of-foreign-affairs
+  time: "1922"
+  reveal: [turkish-ministry-of-foreign-affairs, turkey, ottoman-empire]
+  reveal_claims: [turkish-ministry-of-foreign-affairs#c1]
+  overlay: {kind: stat, value: "2.5 million", label: "Anatolian Muslims who died over 1912 to 1922, in Turkey's foreign ministry's account; all causes", source: turkey-mfa-armenian-allegation-of-genocide, quote: "The statistics tell us that more than 2.5 million Anatolian Muslims also perished."}
+  narration: "**Whose dead are remembered.** In his April 2014 message, Prime Minister Erdoğan asked for remembrance without discrimination by religion or ethnicity, calling the First World War “our shared pain”. Turkey's foreign ministry says greater numbers of Turks died or were killed, and cites more than 2.5 million Anatolian Muslims dead over 1912–22; its paper says the figures do not establish the exact manner of death and include war, intercommunal violence, forced migration, disease and starvation. The ministry also says a later terror campaign by Armenian groups killed 31 Turkish diplomats and their family members. Its diplomats make those losses part of Turkey's answer to genocide recognition, extending the dispute over remembrance to colleagues and relatives killed decades later."
+  duration: 15
+
 - shot: a-word-for-it
   view: graph
   focus: raphael-lemkin
@@ -220,15 +220,14 @@ Bishop Krikoris Balakian survived arrest and deportation, then travelled to Berl
   narration: "**Counsel draws a line.** In 2003, independent lawyers answered a Turkish-Armenian reconciliation commission's request: could the 1948 Genocide Convention apply to 1915? Its definition requires acts “committed with intent to destroy, in whole or in part, a national, ethnical, racial or religious group, as such”; counsel concluded that no legal, financial or territorial claim from 1915 could succeed under the non-retroactive treaty. Without undertaking an independent factual investigation, they acknowledged contested intent but judged that at least some perpetrators knew their actions would destroy Armenians of eastern Anatolia, in whole or part, or acted toward that goal. Those perpetrators therefore possessed genocidal intent, counsel concluded, justifying the term genocide while leaving the Convention unavailable as a route to claims for 1915."
   duration: 15
 
-- shot: washington
-  view: map
-  camera: {center: [-77.0369, 38.9072], zoom: 8.4, pitch: 15, duration: 6}
-  places: [washington-dc]
-  time: "2019-10-29"
-  reveal: [congress-resolutions-2019, us-congress, ronald-reagan, joe-biden, biden-statement-2021, united-states]
-  reveal_claims: [congress-resolutions-2019#c1, congress-resolutions-2019#c2, joe-biden#c1, biden-statement-2021#c1]
-  overlay: {kind: stat, value: "405 to 11", label: "U.S. House vote on H. Res. 296, 29 October 2019, with 3 present", source: us-house-roll-591-2019, quote: "Affirming the United States record on the Armenian Genocide"}
-  narration: "**A president chooses the word.** On 24 April 2021, President Biden called the Armenian deaths genocide and explained his purpose: “We do this not to cast blame but to ensure that what happened is never repeated.” Reagan had used the word in a 1981 Holocaust proclamation; on 29 October 2019 the House voted 405 to 11, with three present, for H. Res. 296, citing 1.5 million killed, and the Senate adopted S. Res. 150 on 12 December. The House resolution also included a remark attributed to Hitler in 1939 that Turkey's ministry calls fraudulent. Biden's declaration joined those of Congress and Reagan as acts of recognition, carrying survivors' history into U.S. public remembrance."
+- shot: turkeys-position
+  view: graph
+  focus: turkish-ministry-of-foreign-affairs
+  time: "2014-04-23"
+  reveal: [turkish-ministry-of-foreign-affairs, turkey, recep-tayyip-erdogan, biden-statement-2021]
+  reveal_claims: [turkish-ministry-of-foreign-affairs#c1, recep-tayyip-erdogan#c1, recep-tayyip-erdogan#c2, biden-statement-2021#c2]
+  overlay: {kind: quote, source: turkey-mfa-events-of-1915-overview, quote: "Nevertheless, no authentic evidence exists to support the claim that there was a premeditated plan by the Ottoman Government to kill off Armenians.", caption: "Turkey's foreign ministry, \"The Events of 1915 and the Turkish-Armenian Controversy over History\""}
+  narration: "**Condolences and refusal.** On 23 April 2014, Prime Minister Erdoğan called 1915 “our shared pain” and offered condolences to the grandchildren of Armenians who died, expressing hope that neighbours could remember their losses together. Turkey's foreign ministry says it does not deny Armenian suffering but denies authentic evidence of a planned extermination, calling genocide recognition “factually problematic, morally unsound and legally unfounded”. It says parliaments should not replace courts and proposes a joint historians' commission; the genocide scholars had answered in 2005 that scholars advising Turkey's government were not impartial. When Biden used genocide in 2021, the ministry called his statement “a vulgar distortion of history”, keeping the refusal alongside the condolences."
   duration: 15
 
 - shot: others-who-use-the-word
@@ -241,14 +240,15 @@ Bishop Krikoris Balakian survived arrest and deportation, then travelled to Berl
   narration: "**Francis speaks at the centenary.** On 12 April 2015, Pope Francis told Armenian worshippers that their forebears' slaughter was widely considered the twentieth century's first genocide, quoting John Paul II and Karekin II. He gave his reason plainly: “Concealing or denying evil is like allowing a wound to keep bleeding without bandaging it!” The Association of Genocide Scholars had unanimously recognized the murder of over a million Armenians as genocide in 1997 and told Erdoğan in 2005 that 126 Holocaust scholars called it an incontestable fact in 2000; the Museum says most scholars agree. On 2 June 2016, Bundestag members recognized genocide with one vote against and one abstention, also acknowledging the German Empire's share of guilt as the Ottoman government's wartime ally."
   duration: 15
 
-- shot: turkeys-position
-  view: graph
-  focus: turkish-ministry-of-foreign-affairs
-  time: "2014-04-23"
-  reveal: [turkish-ministry-of-foreign-affairs, turkey, recep-tayyip-erdogan, biden-statement-2021]
-  reveal_claims: [turkish-ministry-of-foreign-affairs#c1, recep-tayyip-erdogan#c1, recep-tayyip-erdogan#c2, biden-statement-2021#c2]
-  overlay: {kind: quote, source: turkey-mfa-events-of-1915-overview, quote: "Nevertheless, no authentic evidence exists to support the claim that there was a premeditated plan by the Ottoman Government to kill off Armenians.", caption: "Turkey's foreign ministry, \"The Events of 1915 and the Turkish-Armenian Controversy over History\""}
-  narration: "**Condolences and refusal.** On 23 April 2014, Prime Minister Erdoğan called 1915 “our shared pain” and offered condolences to the grandchildren of Armenians who died, expressing hope that neighbours could remember their losses together. Turkey's foreign ministry says it does not deny Armenian suffering but denies authentic evidence of a planned extermination, calling genocide recognition “factually problematic, morally unsound and legally unfounded”. It says parliaments should not replace courts and proposes a joint historians' commission; the genocide scholars had answered in 2005 that scholars advising Turkey's government were not impartial. When Biden used genocide in 2021, the ministry called his statement “a vulgar distortion of history”, keeping the refusal alongside the condolences."
+- shot: washington
+  view: map
+  camera: {center: [-77.0369, 38.9072], zoom: 8.4, pitch: 15, duration: 6}
+  places: [washington-dc]
+  time: "2019-10-29"
+  reveal: [congress-resolutions-2019, us-congress, ronald-reagan, joe-biden, biden-statement-2021, united-states]
+  reveal_claims: [congress-resolutions-2019#c1, congress-resolutions-2019#c2, joe-biden#c1, biden-statement-2021#c1]
+  overlay: {kind: stat, value: "405 to 11", label: "U.S. House vote on H. Res. 296, 29 October 2019, with 3 present", source: us-house-roll-591-2019, quote: "Affirming the United States record on the Armenian Genocide"}
+  narration: "**A president chooses the word.** On 24 April 2021, President Biden called the Armenian deaths genocide and explained his purpose: “We do this not to cast blame but to ensure that what happened is never repeated.” Reagan had used the word in a 1981 Holocaust proclamation; on 29 October 2019 the House voted 405 to 11, with three present, for H. Res. 296, citing 1.5 million killed, and the Senate adopted S. Res. 150 on 12 December. The House resolution also included a remark attributed to Hitler in 1939 that Turkey's ministry calls fraudulent. Biden's declaration joined those of Congress and Reagan as acts of recognition, carrying survivors' history into U.S. public remembrance."
   duration: 15
 
 - shot: where-it-stands
