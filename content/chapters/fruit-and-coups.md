@@ -32,6 +32,27 @@ Oil remained nationalized in Iran, but foreign companies returned to operate it.
   narration: "**His case.** At the UN Security Council on 15 October 1951, Mossadegh answered Britain's complaint with the company's figures: £61 million net revenue in 1948, £9 million for Iran, £28 million for the British Treasury in income tax. His statement offered security for compensation: 25 percent of the National Oil Company's earnings. British leaders regarded cheap oil and company profits as vital national interests, the CIA's history says; from September Britain embargoed steel, sugar and oil equipment bound for Iran. Britain also took the company's case to the International Court of Justice, which ruled in July 1952 that it lacked jurisdiction, leaving the oil dispute unresolved."
   duration: 13
 
+- shot: what-the-company-did
+  view: graph
+  focus: united-fruit-company
+  time: "1951-05"
+  reveal: [united-fruit-company, thomas-g-corcoran, united-fruit-antitrust-case, us-department-of-justice, carlos-castillo-armas, guatemala-coup-1954]
+  reveal_claims: [thomas-g-corcoran#c1, thomas-g-corcoran#c2, guatemala-coup-1954#c1, united-fruit-antitrust-case#c1, thomas-g-corcoran#c3]
+  overlay: {kind: quote, source: cia-cullather-operation-pbsuccess-1994, quote: "Company officials encouraged Castillo Armas with money and arms, and the rebel leader began seeking support from Central American leaders and the United States.", caption: "Nicholas Cullather, the CIA’s history of Operation PBSUCCESS"}
+  narration: "**What the company did.** In Guatemala, Thomas Corcoran advised United Fruit's officials, in the CIA history's telling: “You've got to handle your political problem.” In May 1950 he met State's Thomas Mann to seek a centrist election victory, though the history's timeline describes his proposal as ousting President Arévalo; the CIA showed little interest. Company publicity sent journalists to report on Guatemalan Communism, while officials supplied Castillo Armas with money and arms. When Justice lawyers prepared an antitrust action in May 1951, State objected and the suit was suspended; Nicholas Cullather reads this as suggesting Washington could use the company for its purposes, even as Castillo Armas received company money and arms."
+  duration: 13
+
+- shot: guatemala-1952
+  view: map
+  camera: {center: [-90.513, 14.642], zoom: 7.2, pitch: 20, duration: 6}
+  places: [guatemala-city]
+  time: "1952-06-17"
+  reveal: [guatemala-agrarian-reform-1952, jacobo-arbenz, guatemalan-government, united-fruit-company, victor-manuel-gutierrez, guatemala-city]
+  reveal_claims: [jacobo-arbenz#c1, jacobo-arbenz#c2, guatemalan-government#c1, guatemala-agrarian-reform-1952#c3, guatemala-agrarian-reform-1952#c4, victor-manuel-gutierrez#c2, jacobo-arbenz#c4]
+  overlay: {kind: stat, value: "2% · 72%", label: "Share of the people and the share of the arable land they held, in the State Department historians’ words", source: frus-guatemala-1952-54-introduction, quote: "A mere 2 percent of the population controlled more than 72 percent of Guatemala’s arable land."}
+  narration: "**Guatemala, 1952.** Jacobo Árbenz took office in early 1951 after winning the November election on land reform; in his inaugural address, quoted by Schlesinger and Kinzer, he proposed economic independence, a modern capitalist state, stronger private initiative and higher living standards. On 17 June 1952 he promulgated Decree 900: redistribute idle holdings above 223 acres, paying owners in 25-year bonds at declared tax value. He had secretly met Communists to draft it; the CIA history names three drafters but notes only four Communist deputies among 61. Gleijeses, Cullather reports, judged fears of Soviet links “grossly exaggerated” after examining seized party records and interviewing former officials. The law brought United Fruit's idle acres within reach."
+  duration: 13
+
 - shot: washingtons-worry
   view: graph
   focus: nsc-meetings-on-iran-march-1953
@@ -39,7 +60,7 @@ Oil remained nationalized in Iran, but foreign companies returned to operate it.
   reveal: [nsc-meetings-on-iran-march-1953, allen-dulles, cia, cold-war, mohammad-mossadegh]
   reveal_claims: [nsc-meetings-on-iran-march-1953#c1, nsc-meetings-on-iran-march-1953#c2]
   overlay: {kind: quote, source: frus-iran-1951-54-d171, quote: "As long as the latter lives there was but little danger, but if he were to be assassinated or otherwise to disappear from power, a political vacuum would occur in Iran and the Communists might easily take over.", caption: "Allen Dulles to the National Security Council, 4 March 1953, as minuted"}
-  narration: "**Washington's worry.** Allen Dulles briefed Eisenhower on 1 March 1953: a Communist takeover in Iran was “becoming more and more of a possibility,” yet the crisis would probably end without a Tudeh victory. Truman's administration had urged Britain to settle and, Koch writes, opposed occupying Abadan for fear of partitioning Iran. On 4 March, Dulles told the National Security Council that Mossadegh's survival offered protection: “As long as the latter lives there was but little danger”; his removal could leave a vacuum for Communists. The Council agreed to explore limited aid to strengthen the very prime minister the CIA would help overthrow that August."
+  narration: "**Washington's worry.** Allen Dulles briefed Eisenhower on Iran on 1 March 1953: a Communist takeover in Iran was “becoming more and more of a possibility,” yet the crisis would probably end without a Tudeh victory. Truman's administration had urged Britain to settle and, Koch writes, opposed occupying Abadan for fear of partitioning Iran. On 4 March, Dulles told the National Security Council that Mossadegh's survival offered protection: “As long as the latter lives there was but little danger”; his removal could leave a vacuum for Communists. The Council agreed to explore limited aid to strengthen the very prime minister the CIA would help overthrow that August."
   duration: 13
 
 - shot: tehran-1953
@@ -82,27 +103,6 @@ Oil remained nationalized in Iran, but foreign companies returned to operate it.
   narration: "**Oil and the NSC.** Before the coup, Eisenhower faced a choice about bargaining with Mossadegh. At the National Security Council in March 1953, he doubted a deal could succeed and feared its example might have “very grave effects on United States oil concessions in other parts of the world.” The CIA's internal history gives the danger of Soviet aggression as the reason for intervention; Eisenhower's minutes also put oil interests inside the room where policy was made. In August, the U.S. government helped remove the man with whom he doubted he could make a lasting deal."
   duration: 13
 
-- shot: admitted
-  view: graph
-  focus: acknowledgements-of-the-1953-coup
-  time: "2000-03-17"
-  reveal: [acknowledgements-of-the-1953-coup, madeleine-albright, barack-obama, cia, us-government, mohammad-mossadegh]
-  reveal_claims: [acknowledgements-of-the-1953-coup#c1, acknowledgements-of-the-1953-coup#c2, acknowledgements-of-the-1953-coup#c3, acknowledgements-of-the-1953-coup#c4, mohammad-mossadegh#c5]
-  overlay: {kind: quote, source: albright-american-iranian-council-2000-03-17, quote: "In 1953 the United States played a significant role in orchestrating the overthrow of Iran's popular Prime Minister, Mohammed Massadegh. The Eisenhower Administration believed its actions were justified for strategic reasons; but the coup was clearly a setback for Iran's political development.", caption: "Secretary of State Madeleine Albright, 17 March 2000"}
-  narration: "**Admitted.** Mossadegh received three years in prison after the coup, then virtual house arrest until his death in 1967. In 2000 Madeleine Albright acknowledged a significant U.S. role in his overthrow: Eisenhower's administration had believed its actions strategically justified, she said, but the coup damaged Iran's political development; she called for a better relationship; in Cairo in 2009, Obama acknowledged the coup while also naming Iran's hostage-taking and violence against U.S. troops. Official disclosures followed: a CIA history written in the mid-1970s and released by 2013 said the agency planned and helped execute the coup. State's 1989 volume had omitted the CIA; its 2017 volume documented covert operations, bringing those decisions into the public record."
-  duration: 13
-
-- shot: guatemala-1952
-  view: map
-  camera: {center: [-90.513, 14.642], zoom: 7.2, pitch: 20, duration: 6}
-  places: [guatemala-city]
-  time: "1952-06-17"
-  reveal: [guatemala-agrarian-reform-1952, jacobo-arbenz, guatemalan-government, united-fruit-company, victor-manuel-gutierrez, guatemala-city]
-  reveal_claims: [jacobo-arbenz#c1, jacobo-arbenz#c2, guatemalan-government#c1, guatemala-agrarian-reform-1952#c3, guatemala-agrarian-reform-1952#c4, victor-manuel-gutierrez#c2, jacobo-arbenz#c4]
-  overlay: {kind: stat, value: "2% · 72%", label: "Share of the people and the share of the arable land they held, in the State Department historians’ words", source: frus-guatemala-1952-54-introduction, quote: "A mere 2 percent of the population controlled more than 72 percent of Guatemala’s arable land."}
-  narration: "**Guatemala, 1952.** Jacobo Árbenz took office in early 1951 after winning the November election on land reform; in his inaugural address, quoted by Schlesinger and Kinzer, he proposed economic independence, a modern capitalist state, stronger private initiative and higher living standards. On 17 June 1952 he promulgated Decree 900: redistribute idle holdings above 223 acres, paying owners in 25-year bonds at declared tax value. He had secretly met Communists to draft it; the CIA history names three drafters but notes only four Communist deputies among 61. Gleijeses, Cullather reports, judged fears of Soviet links “grossly exaggerated” after examining seized party records and interviewing former officials. The law brought United Fruit's idle acres within reach."
-  duration: 13
-
 - shot: the-companys-land
   view: graph
   focus: united-fruit-company
@@ -110,17 +110,7 @@ Oil remained nationalized in Iran, but foreign companies returned to operate it.
   reveal: [united-fruit-company, guatemala-agrarian-reform-1952, guatemalan-government, cia, john-foster-dulles]
   reveal_claims: [guatemala-agrarian-reform-1952#c1, guatemala-agrarian-reform-1952#c2]
   overlay: {kind: stat, value: "$627,572 vs $15,854,849", label: "Guatemala’s offer for the Tiquisate land, and the State Department’s April 1954 demand, as told by Schlesinger and Kinzer", source: schlesinger-kinzer-bitter-fruit-1982, quote: "the government offered $627,572 in bonds, based on United Fruit's declared tax value of the land."}
-  narration: "**The company's land.** On 20 April 1954, John Foster Dulles's State Department demanded $15,854,849 for United Fruit's Tiquisate land; Árbenz's government offered $627,572 in bonds at declared tax value, Schlesinger and Kinzer report. They count 209,842 acres taken there in March 1953; the CIA timeline counts 234,000 acres in February 1953 and 173,000 in February 1954; its history puts the tax appraisal just above $1 million and the company's valuation near $20 million. United Fruit said idle acres insured against plant disease; critics said its reserves exceeded its needs. On 2 June, a CIA officer warned that State's backing lent credibility to Guatemala's charge that U.S. policy served “big capitalists”: the compensation demand had become part of the political struggle."
-  duration: 13
-
-- shot: what-the-company-did
-  view: graph
-  focus: united-fruit-company
-  time: "1951-05"
-  reveal: [united-fruit-company, thomas-g-corcoran, united-fruit-antitrust-case, us-department-of-justice, carlos-castillo-armas, guatemala-coup-1954]
-  reveal_claims: [thomas-g-corcoran#c1, thomas-g-corcoran#c2, guatemala-coup-1954#c1, united-fruit-antitrust-case#c1, thomas-g-corcoran#c3]
-  overlay: {kind: quote, source: cia-cullather-operation-pbsuccess-1994, quote: "Company officials encouraged Castillo Armas with money and arms, and the rebel leader began seeking support from Central American leaders and the United States.", caption: "Nicholas Cullather, the CIA’s history of Operation PBSUCCESS"}
-  narration: "**What the company did.** Thomas Corcoran advised United Fruit's officials, in the CIA history's telling: “You've got to handle your political problem.” In May 1950 he met State's Thomas Mann to seek a centrist election victory, though the history's timeline describes his proposal as ousting President Arévalo; the CIA showed little interest. Company publicity sent journalists to report on Guatemalan Communism, while officials supplied Castillo Armas with money and arms. When Justice lawyers prepared an antitrust action in May 1951, State objected and the suit was suspended; Nicholas Cullather reads this as suggesting Washington could use the company for its purposes, even as Castillo Armas received company money and arms."
+  narration: "**The company's land.** In Guatemala, on 20 April 1954, John Foster Dulles's State Department demanded $15,854,849 for United Fruit's Tiquisate land; Árbenz's government offered $627,572 in bonds at declared tax value, Schlesinger and Kinzer report. They count 209,842 acres taken there in March 1953; the CIA timeline counts 234,000 acres in February 1953 and 173,000 in February 1954; its history puts the tax appraisal just above $1 million and the company's valuation near $20 million. United Fruit said idle acres insured against plant disease; critics said its reserves exceeded its needs. On 2 June, a CIA officer warned that State's backing lent credibility to Guatemala's charge that U.S. policy served “big capitalists”: the compensation demand had become part of the political struggle."
   duration: 13
 
 - shot: two-accounts
@@ -183,16 +173,6 @@ Oil remained nationalized in Iran, but foreign companies returned to operate it.
   narration: "**After.** Peasants tried to stay on the land Decree 900 had granted them; Castillo Armas's police arrested thousands, the CIA history says. He canceled land reform, disfranchised illiterates—two-thirds of the electorate—and outlawed political parties, labor confederations and peasant organizations. Árbenz left for Mexico on 12 September 1954 and lived in exile until he drowned in his bathtub in 1971; the CIA's Chief Historian later questioned calling the operation a Cold War victory. Labor leader Víctor Manuel Gutiérrez remained among those organizing: in the late 1960s, Nicholas Cullather records, Guatemalan police arrested, tortured and killed him and 11 other leaders, sewed their bodies into burlap sacks and dropped them from an army plane into the ocean."
   duration: 13
 
-- shot: a-report-and-a-reply
-  view: graph
-  focus: guatemalan-armed-conflict
-  time: "1999-03-10"
-  reveal: [guatemalan-armed-conflict, historical-clarification-commission, guatemala-memory-of-silence, christian-tomuschat, clinton-remarks-in-guatemala-1999, bill-clinton, guatemala-coup-1954, us-government, guatemala-city]
-  reveal_claims: [guatemalan-armed-conflict#c3, guatemalan-armed-conflict#c4, guatemalan-armed-conflict#c2, guatemala-coup-1954#c12, christian-tomuschat#c2, clinton-remarks-in-guatemala-1999#c3, clinton-remarks-in-guatemala-1999#c1, historical-clarification-commission#c2, clinton-remarks-in-guatemala-1999#c4]
-  overlay: {kind: quote, source: ceh-guatemala-memory-of-silence-1999, quote: "agents of the State of Guatemala, within the framework of counterinsurgency operations carried out between 1981 and 1983, committed acts of genocide against groups of Mayan people which lived in the four regions analysed.", caption: "Commission for Historical Clarification, Guatemala: Memory of Silence, 1999"}
-  narration: "**1999.** Christian Tomuschat, the UN-appointed German jurist coordinating Guatemala's truth commission, faced an army that withheld its operational reports; testimony from some 9,000 witnesses helped fill the gap. His commission estimated over 200,000 killed or disappeared and found state agents committed genocide in 1981–83; it named structural injustice, racism and closed political spaces as underlying causes, linking diminished political expression to the 1954 overthrow and also stressing the Cold War. Tomuschat said the U.S. bore no direct responsibility for genocide but knew and kept supporting the army. In Guatemala City on 10 March, Clinton did not mention 1954; he called U.S. support for forces committing widespread repression wrong and pledged not to repeat it, committing instead to peace and reconciliation."
-  duration: 13
-
 - shot: santiago-1970
   view: map
   camera: {center: [-70.65, -33.437], zoom: 7.8, pitch: 20, duration: 6}
@@ -202,16 +182,6 @@ Oil remained nationalized in Iran, but foreign companies returned to operate it.
   reveal_claims: [chile-election-1970#c1, chile-election-1970#c3, chile-election-1970#c4, chile-election-1970#c5]
   overlay: {kind: quote, source: kissinger-memo-for-the-president-1970-11-05, quote: "The election of Allende as President of Chile poses for us one of the most serious challenges ever faced in this hemisphere.", caption: "Henry Kissinger to President Nixon, 5 November 1970"}
   narration: "**Santiago, 1970.** Salvador Allende won 36.3 percent on 4 September; Congress would choose between the top two candidates on 24 October. In November, Henry Kissinger privately conceded to Nixon that Allende had won legally and possessed legitimacy, part of the danger he described: a Titoist government could become an insidious model elsewhere in Latin America. He also warned that some of the billion dollars in U.S. investments might be lost and called Allende's election one of the hemisphere's gravest challenges. An interdepartmental group had concluded the U.S. had no vital interests within Chile, the Church Committee staff report says; the administration nevertheless chose intervention against the president whose legitimacy Kissinger acknowledged."
-  duration: 13
-
-- shot: copper-and-credit
-  view: graph
-  focus: copper-and-credit-squeeze-1970-73
-  time: "1972"
-  reveal: [copper-and-credit-squeeze-1970-73, us-government, chilean-government]
-  reveal_claims: [copper-and-credit-squeeze-1970-73#c1, copper-and-credit-squeeze-1970-73#c2, copper-and-credit-squeeze-1970-73#c3, copper-and-credit-squeeze-1970-73#c4]
-  overlay: {kind: quote, source: senate-church-covert-action-in-chile-1975, quote: "the United States alone refused to consider rescheduling Chile's foreign debt payments until there was movement toward indemnization for the U.S. copper companies.", caption: "Church Committee staff report on Chile, 1975"}
-  narration: "**Copper and credit.** In fall 1970, the Export-Import Bank lowered Chile's credit rating. On 28 September 1971, Allende announced that excess profits would be deducted from compensation for nationalized copper companies; the calculation left U.S. firms owing money. In the 1972–73 Paris Club negotiations, the U.S. alone refused debt rescheduling without movement on compensation. The Church Committee staff identify three concerns behind U.S. economic pressure: stop Allende's experiment attracting followers, prevent Chile harboring subversives, and defend compensation for nationalized firms. They leave the balance of political and credit judgments unsettled but conclude that political opposition drove policy more than technical finance; Washington had tied Chile's debt negotiations to compensation for U.S. companies."
   duration: 13
 
 - shot: itt
@@ -244,6 +214,16 @@ Oil remained nationalized in Iran, but foreign companies returned to operate it.
   narration: "**The general.** René Schneider insisted the army let the constitutional process proceed; removing him became essential to coup plotters, the Church Committee found. U.S. officials kept supporting plans despite knowing kidnapping came first. After two failed attempts, the CIA supplied three submachine guns; its attaché could offer $50,000 but insisted on kidnapping first. Schneider was shot on 22 October 1970 and died on the 25th. The Committee found no evidence of a plan to kill him and thought CIA guns probably unused; the staff report says they were returned. The CIA later said Viaux's group acted independently and that it paid a member $35,000 in November to keep prior contact secret, maintain goodwill and provide humanitarian assistance."
   duration: 13
 
+- shot: copper-and-credit
+  view: graph
+  focus: copper-and-credit-squeeze-1970-73
+  time: "1972"
+  reveal: [copper-and-credit-squeeze-1970-73, us-government, chilean-government]
+  reveal_claims: [copper-and-credit-squeeze-1970-73#c1, copper-and-credit-squeeze-1970-73#c2, copper-and-credit-squeeze-1970-73#c3, copper-and-credit-squeeze-1970-73#c4]
+  overlay: {kind: quote, source: senate-church-covert-action-in-chile-1975, quote: "the United States alone refused to consider rescheduling Chile's foreign debt payments until there was movement toward indemnization for the U.S. copper companies.", caption: "Church Committee staff report on Chile, 1975"}
+  narration: "**Copper and credit.** In fall 1970, the Export-Import Bank lowered Chile's credit rating. On 28 September 1971, Allende announced that excess profits would be deducted from compensation for nationalized copper companies; the calculation left U.S. firms owing money. In the 1972–73 Paris Club negotiations, the U.S. alone refused debt rescheduling without movement on compensation. The Church Committee staff identify three concerns behind U.S. economic pressure: stop Allende's experiment attracting followers, prevent Chile harboring subversives, and defend compensation for nationalized firms. They leave the balance of political and credit judgments unsettled but conclude that political opposition drove policy more than technical finance; Washington had tied Chile's debt negotiations to compensation for U.S. companies."
+  duration: 13
+
 - shot: eleventh-of-september
   view: map
   camera: {center: [-70.65, -33.437], zoom: 10.4, pitch: 30, duration: 6}
@@ -253,16 +233,6 @@ Oil remained nationalized in Iran, but foreign companies returned to operate it.
   reveal_claims: [chile-coup-1973#c1, chile-coup-1973#c2, chile-coup-1973#c3, chile-coup-1973#c4, augusto-pinochet#c1, augusto-pinochet#c2, cia#c13, church-committee#c4, chile-coup-1973#c8]
   overlay: {kind: quote, source: kissinger-nixon-telcon-1973-09-16, quote: "K: I mean instead of celebrating - in the Eisenhower period we would be heros. P: Well we didn't - as you know - our hand doesn't show on this one though. K: We didn't do it. I mean we helped them. ________ created the conditions as great as possible(??)", caption: "Henry Kissinger and President Nixon, by telephone, 16 September 1973; the transcript’s typed “(??)” and a blank"}
   narration: "**11 September 1973.** Allende refused the coup leaders' offer of safe passage, the CIA later reported; with tanks and aircraft bombarding La Moneda and the palace burning, he took his life, as the Rettig Commission concluded. Pinochet became the junta's first president under an agreed rotation; on 18 December 1974 he was declared Supreme Leader. The Church staff's tentative finding was no evidence of direct covert U.S. involvement; the CIA said it had not instigated the coup but knew of plotting and probably appeared to condone it. Five days after the overthrow, Nixon privately noted their hand did not show; Kissinger said they had helped, with the transcript leaving the next word blank, and Kissinger spoke of creating conditions, a phrase marked uncertain in the transcript; Pinochet's junta now governed Chile."
-  duration: 13
-
-- shot: the-count
-  view: graph
-  focus: chile-coup-1973
-  time: "1990"
-  reveal: [augusto-pinochet, chilean-government, chile-coup-1973, henry-kissinger]
-  reveal_claims: [augusto-pinochet#c2, chile-coup-1973#c5, chile-coup-1973#c3, chile-coup-1973#c9]
-  overlay: {kind: stat, value: "2,279", label: "Victims recognized by Chile’s Rettig Commission, 1991: 2,115 of human rights violations and 164 of political violence", source: chile-rettig-report-1991, quote: "Victims of human rights violations 2,115 Victims of political violence 164 TOTAL NUMBER OF VICTIMS 2,279"}
-  narration: "**The count.** Asked what to tell Congress about hundreds killed after the coup, Kissinger answered, the National Security Archive reports: “this government is better for us than Allende was.” Chile's Rettig Commission recognized 2,279 victims: 2,115 of human rights violations, including 957 disappeared after arrest and 90 killed by politically motivated private citizens, plus 164 of political violence; the 1996 update gave 3,197. In 2011, the BBC reported 3,065 killed or forcibly disappeared and 40,018 victims overall, including those detained or tortured, for 11 September 1973–10 March 1990; that year's commission director, María Luisa Sepúlveda, announced recognition of 9,800 more political prisoners and torture survivors. Recognition made survivors eligible for lifetime pensions."
   duration: 13
 
 - shot: three-cases
@@ -282,5 +252,35 @@ Oil remained nationalized in Iran, but foreign companies returned to operate it.
   reveal: [church-committee, frank-church, covert-action-in-chile, cia, us-government, allen-dulles, cold-war, covert-funding-of-chilean-opposition-1970-73, senate-itt-hearings-1973, harold-geneen, john-mccone, international-telephone-and-telegraph, anglo-iranian-oil-company, united-fruit-company, john-foster-dulles]
   reveal_claims: [frank-church#c1, church-committee#c4, covert-funding-of-chilean-opposition-1970-73#c2, senate-itt-hearings-1973#c1, senate-itt-hearings-1973#c2, senate-itt-hearings-1973#c3]
   narration: "**Company roles.** State's executive secretary Theodore Eliot faced an approaching Senate inquiry into allegations that CIA representatives had asked ITT to injure Chile's economy. In a private memo to Kissinger, Eliot wrote that State would make every effort to avoid confrontation with Frank Church's subcommittee while planning to withhold its Santiago cable file; he said it might need to ask Nixon to invoke executive privilege. Geneen and McCone were due to testify privately on 16 March 1973, with six days of public hearings to follow. ITT's offers and the CIA's dealings with the company were headed into public view; Eliot was preparing to keep the department's own communications back."
+  duration: 13
+
+- shot: the-count
+  view: graph
+  focus: chile-coup-1973
+  time: "1990"
+  reveal: [augusto-pinochet, chilean-government, chile-coup-1973, henry-kissinger]
+  reveal_claims: [augusto-pinochet#c2, chile-coup-1973#c5, chile-coup-1973#c3, chile-coup-1973#c9]
+  overlay: {kind: stat, value: "2,279", label: "Victims recognized by Chile’s Rettig Commission, 1991: 2,115 of human rights violations and 164 of political violence", source: chile-rettig-report-1991, quote: "Victims of human rights violations 2,115 Victims of political violence 164 TOTAL NUMBER OF VICTIMS 2,279"}
+  narration: "**The count.** Asked what to tell Congress about hundreds killed after the coup, Kissinger answered, the National Security Archive reports: “this government is better for us than Allende was.” Chile's Rettig Commission recognized 2,279 victims: 2,115 of human rights violations, including 957 disappeared after arrest and 90 killed by politically motivated private citizens, plus 164 of political violence; the 1996 update gave 3,197. In 2011, the BBC reported 3,065 killed or forcibly disappeared and 40,018 victims overall, including those detained or tortured, for 11 September 1973–10 March 1990; that year's commission director, María Luisa Sepúlveda, announced recognition of 9,800 more political prisoners and torture survivors. Recognition made survivors eligible for lifetime pensions."
+  duration: 13
+
+- shot: a-report-and-a-reply
+  view: graph
+  focus: guatemalan-armed-conflict
+  time: "1999-03-10"
+  reveal: [guatemalan-armed-conflict, historical-clarification-commission, guatemala-memory-of-silence, christian-tomuschat, clinton-remarks-in-guatemala-1999, bill-clinton, guatemala-coup-1954, us-government, guatemala-city]
+  reveal_claims: [guatemalan-armed-conflict#c3, guatemalan-armed-conflict#c4, guatemalan-armed-conflict#c2, guatemala-coup-1954#c12, christian-tomuschat#c2, clinton-remarks-in-guatemala-1999#c3, clinton-remarks-in-guatemala-1999#c1, historical-clarification-commission#c2, clinton-remarks-in-guatemala-1999#c4]
+  overlay: {kind: quote, source: ceh-guatemala-memory-of-silence-1999, quote: "agents of the State of Guatemala, within the framework of counterinsurgency operations carried out between 1981 and 1983, committed acts of genocide against groups of Mayan people which lived in the four regions analysed.", caption: "Commission for Historical Clarification, Guatemala: Memory of Silence, 1999"}
+  narration: "**1999.** In Guatemala, Christian Tomuschat, the UN-appointed German jurist coordinating Guatemala's truth commission, faced an army that withheld its operational reports; testimony from some 9,000 witnesses helped fill the gap. His commission estimated over 200,000 killed or disappeared and found state agents committed genocide in 1981–83; it named structural injustice, racism and closed political spaces as underlying causes, linking diminished political expression to the 1954 overthrow and also stressing the Cold War. Tomuschat said the U.S. bore no direct responsibility for genocide but knew and kept supporting the army. In Guatemala City on 10 March, Clinton did not mention 1954; he called U.S. support for forces committing widespread repression wrong and pledged not to repeat it, committing instead to peace and reconciliation."
+  duration: 13
+
+- shot: admitted
+  view: graph
+  focus: acknowledgements-of-the-1953-coup
+  time: "2000-03-17"
+  reveal: [acknowledgements-of-the-1953-coup, madeleine-albright, barack-obama, cia, us-government, mohammad-mossadegh]
+  reveal_claims: [acknowledgements-of-the-1953-coup#c1, acknowledgements-of-the-1953-coup#c2, acknowledgements-of-the-1953-coup#c3, acknowledgements-of-the-1953-coup#c4, mohammad-mossadegh#c5]
+  overlay: {kind: quote, source: albright-american-iranian-council-2000-03-17, quote: "In 1953 the United States played a significant role in orchestrating the overthrow of Iran's popular Prime Minister, Mohammed Massadegh. The Eisenhower Administration believed its actions were justified for strategic reasons; but the coup was clearly a setback for Iran's political development.", caption: "Secretary of State Madeleine Albright, 17 March 2000"}
+  narration: "**Admitted.** Mossadegh received three years in prison after the coup, then virtual house arrest until his death in 1967. In 2000 Madeleine Albright acknowledged a significant U.S. role in his overthrow: Eisenhower's administration had believed its actions strategically justified, she said, but the coup damaged Iran's political development; she called for a better relationship; in Cairo in 2009, Obama acknowledged the coup while also naming Iran's hostage-taking and violence against U.S. troops. Official disclosures followed: a CIA history written in the mid-1970s and released by 2013 said the agency planned and helped execute the coup. State's 1989 volume had omitted the CIA; its 2017 volume documented covert operations, bringing those decisions into the public record."
   duration: 13
 ```
