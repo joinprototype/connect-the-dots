@@ -43,15 +43,6 @@ This story follows the pieces from the decree to the board seats the FTC fought 
   narration: "**The forecast.** On 5 December 1911 Taft answered the breakup’s critics in a message to Congress. They assumed that common owners would preserve one command over the pieces; he called that “erroneous”. His reason was enforcement: thousands of shareholders could hardly conceal concerted action, and its organizers risked contempt proceedings and imprisonment. Different managers, directors and sales agents would compete, he predicted, and the stock would change hands. He was defending a remedy that left the trust’s stockholders owning its pieces. Whether they obeyed would determine whether the breakup became more than a change of names."
   duration: 13
 
-- shot: the-fortune
-  view: graph
-  focus: john-d-rockefeller
-  time: "1937-05-31"
-  reveal: [john-d-rockefeller, standard-oil, rockefeller-foundation]
-  overlay: {kind: quote, source: rockefeller-random-reminiscences-1909, quote: "Let us erect a foundation, a Trust, and engage directors who will make it a life work to manage, with our personal coöperation, this business of benevolence properly and effectively.", caption: "John D. Rockefeller, Random Reminiscences of Men and Events, 1909"}
-  narration: "**The fortune.** Rockefeller’s 1907 stake was about a quarter of the parent: 247,692 of 983,383 shares on a newspaper’s list. Breaking up the company did not take those shares away. Time’s 1937 obituary says the pieces soared on the market, he gave away at least $530 million, and he transferred the rest principally to his son, leaving probably only a few million at death. The Supreme Court Historical Society instead puts his fortune at death at $1.5 billion; Bloomberg, citing his obituary, uses $1.5 billion for career earnings. In his 1909 memoir, Rockefeller argued that charitable money deserved the experienced management he would demand for his children’s trust. By his later account, he urged businessmen to appoint directors and give now rather than wait to study every need."
-  duration: 13
-
 - shot: section-eight
   view: graph
   focus: clayton-antitrust-act
@@ -71,6 +62,15 @@ This story follows the pieces from the decree to the board seats the FTC fought 
   reveal_claims: [standard-oil-of-new-york#c2, standard-oil-of-california#c2, standard-oil-of-indiana#c4]
   overlay: {kind: quote, source: briscoe-exxonmobil-collection, quote: "Provisions of the 1911 dissolution agreement assigned marketing for New York state and New England to Standard Oil Company of New York (Socony)", caption: "Briscoe Center, ExxonMobil Historical Collection"}
   narration: "**The pieces.** White refused to forbid every agreement between the separated businesses: he pointed to pipelines that might need connecting and tank cars that needed distributing. His decree allowed lawful contracts while forbidding restoration of the monopoly. The 1911 marketing division gave New York and New England to Socony and the mid-Atlantic to Jersey. In 1933 the two companies, Socony now Socony-Vacuum, formed Stanvac, a 50/50 venture operating in nearly 50 countries until 1962. The Supreme Court Historical Society describes the 34 pieces as competitors, yet they could also share ventures. New names followed—Mobil in 1966, Exxon in 1972, Chevron in 1984 and Amoco in 1985—as the pieces built businesses of their own."
+  duration: 13
+
+- shot: the-fortune
+  view: graph
+  focus: john-d-rockefeller
+  time: "1937-05-31"
+  reveal: [john-d-rockefeller, standard-oil, rockefeller-foundation]
+  overlay: {kind: quote, source: rockefeller-random-reminiscences-1909, quote: "Let us erect a foundation, a Trust, and engage directors who will make it a life work to manage, with our personal coöperation, this business of benevolence properly and effectively.", caption: "John D. Rockefeller, Random Reminiscences of Men and Events, 1909"}
+  narration: "**The fortune.** Rockefeller’s 1907 stake was about a quarter of the parent: 247,692 of 983,383 shares on a newspaper’s list. Breaking up the company did not take those shares away. Time’s 1937 obituary says the pieces soared on the market, he gave away at least $530 million, and he transferred the rest principally to his son, leaving probably only a few million at death. The Supreme Court Historical Society instead puts his fortune at death at $1.5 billion; Bloomberg, citing his obituary, uses $1.5 billion for career earnings. In his 1909 memoir, Rockefeller argued that charitable money deserved the experienced management he would demand for his children’s trust. By his later account, he urged businessmen to appoint directors and give now rather than wait to study every need."
   duration: 13
 
 - shot: four-chairmen
@@ -104,6 +104,16 @@ This story follows the pieces from the decree to the board seats the FTC fought 
   narration: "**Exxon and Mobil.** Around 1 December 1998 Exxon’s and Mobil’s executives agreed to reunite the old New Jersey and New York companies. FTC officials reviewing the deal in 1999 faced a merger of direct rivals in most of the markets they examined. Their complaint alleged harm in 12 markets, from Northeast and Mid-Atlantic gasoline to jet-turbine lubricants; their analysis said these markets were already not fully competitive. They required sales including Exxon’s Benicia refinery and Mobil’s Mid-Atlantic gasoline marketing. The companies accepted a settlement that admitted no law violation. Two heirs could combine, but they had to surrender businesses where the Commission said their union would cost customers competition."
   duration: 13
 
+- shot: best-evidence-for-a-link
+  view: graph
+  focus: exxonmobil
+  time: "1999-11"
+  reveal: [exxonmobil, mobil, chevron, standard-oil, iranian-oil-consortium, federal-trade-commission]
+  reveal_claims: [exxonmobil#c4, exxonmobil#c7]
+  overlay: {kind: quote, source: ftc-1999-exxon-mobil-analysis, quote: "This is an earmark of oligopolistic market behavior.", caption: "FTC analysis of the Exxon–Mobil consent order, 1999"}
+  narration: "**The best evidence for a link.** In 1973 Jamieson and his fellow chairmen carried a joint warning to the White House; their companies also shared the Iran consortium’s formula for annual oil liftings. Earlier cooperation included the 1911 regional marketing division and Stanvac’s 50/50 operations in nearly 50 countries. When Exxon’s and Mobil’s pricing managers set gasoline prices in the Northeast and Mid-Atlantic, the FTC said in 1999, they watched rivals’ prices rather than their own costs. It called this an earmark of oligopolistic behavior in markets already not fully competitive. The FTC’s analysis said local price zones and the remaining competitors gave the companies power to raise prices profitably."
+  duration: 13
+
 - shot: chevron-and-texaco
   view: graph
   focus: chevron
@@ -114,6 +124,42 @@ This story follows the pieces from the decree to the board seats the FTC fought 
   narration: "**Chevron and Texaco.** On 7 September 2001 FTC official Sean Royall defended a bargain: Chevron and Texaco could complete their $45 billion merger, but Texaco had to surrender its interests in Equilon and Motiva, the ventures it shared with Shell, and sell other assets. Royall said the remedy would preserve the competitive balance that existed before the deal. Chevron, descended from Standard Oil of California, had agreed to the merger in October 2000. Its shareholders were to hold about 61 percent of the combined company, Texaco’s about 39. Officials allowed one union by requiring Texaco to withdraw from others."
   duration: 13
 
+- shot: what-ftc-staff-said
+  view: graph
+  focus: federal-trade-commission
+  time: "2004-08-13"
+  reveal: [federal-trade-commission, exxonmobil, chevron, bp, conocophillips]
+  overlay: {kind: quote, source: ftc-2004-08-press-staff-report, quote: "to inform public policy concerning competition in the petroleum industry and to add transparency to the Commission’s merger analyses", caption: "FTC chairman Timothy Muris on why he was releasing the staff report, August 2004"}
+  narration: "**What FTC staff said.** In August 2004 FTC chairman Timothy Muris released his economists’ review of two decades of oil consolidation. He said he wanted to inform policy and make the agency’s merger analysis more transparent. Staff reported little change in worldwide crude-oil concentration from private-company mergers, and low to moderate concentration at most industry levels despite some increases. They also counted 15 large mergers since 1981 that the FTC alleged would harm competition and consumers as announced: 11 required asset sales; four were abandoned. Commissioner Pamela Jones Harbour abstained from issuing the report. Muris put the agency’s own record before the public to explain why officials had required sales or blocked deals to protect consumers."
+  duration: 13
+
+- shot: one-worry
+  view: graph
+  focus: anticompetitive-effects-of-common-ownership
+  time: "2018"
+  reveal: [anticompetitive-effects-of-common-ownership, common-ownership-of-us-airlines, blackrock, the-vanguard-group, state-street]
+  overlay: {kind: quote, source: azar-schmalz-tecu-2018-jof, quote: "Within‐route changes in common ownership concentration robustly correlate with route‐level changes in ticket prices, even when we only use variation in ownership due to the combination of two large asset managers.", caption: "José Azar, Martin Schmalz and Isabel Tecu, 2018 airline study"}
+  narration: "**One worry.** In 2018 José Azar, Martin Schmalz and Isabel Tecu put a cost alongside the benefits investors sought from diversification. Their airline study reported that changes in common ownership within routes correlated with changes in ticket prices, including when they used ownership changes from two asset managers combining. They concluded that reduced competition accompanied the private benefits of diversification and good governance. For passengers, their argument meant that separate airlines could still compete less when investors held stakes across rivals. Their study concerned airlines, without measuring an effect on Exxon and Chevron. It shifted the question from who occupied a board seat to what incentives shared owners might create."
+  duration: 13
+
+- shot: not-the-holders-of-1911
+  view: graph
+  focus: the-vanguard-group
+  time: "2022"
+  reveal: [the-vanguard-group, blackrock, state-street, exxonmobil, standard-oil]
+  overlay: {kind: quote, source: blackrock-voting-choice-page, quote: "We launched BlackRock Voting Choice in 2022 to make participation in the proxy voting process easier and more accessible for eligible clients.", caption: "BlackRock on why it introduced client voting choices"}
+  narration: "**Not the holders of 1911.** Larry Fink promoted bringing more voices into shareholder voting. BlackRock says it launched Voting Choice in 2022 to make participation easier for eligible clients. The authority at stake was large: an earlier, 2017 study found Vanguard, BlackRock and State Street together were the largest shareholder in 88 percent of S&P 500 companies. At Exxon, BlackRock reported sole voting power over 254,681,764 of its 272,498,849 shares. These managers held for clients, unlike the trust’s stockholders receiving shares in 1911; holding stakes in both heirs did not establish that they directed either company or acted together. BlackRock’s program offered eligible clients a way to choose how holdings would be voted."
+  duration: 13
+
+- shot: the-doubt
+  view: graph
+  focus: common-ownership-does-not-have-anticompetitive-effects
+  time: "2022"
+  reveal: [common-ownership-does-not-have-anticompetitive-effects, refutation-of-common-ownership-does-not-have-anticompetitive-effects, common-ownership-of-us-airlines, blackrock, the-vanguard-group]
+  overlay: {kind: quote, source: vanguard-ftc-hsr-letter-2021-02-01, quote: "The common ownership concept is an unproven hypothesis that should, at a minimum, be studied in greater depth before becoming a part of the rules", caption: "Vanguard’s letter signed by Anne Robinson and Gregory Davis, 1 February 2021"}
+  narration: "**One doubt.** In February 2021 Vanguard counsel Anne Robinson signed a letter asking the FTC to study common ownership more deeply before incorporating it into merger-notification rules. Vanguard called it “an unproven hypothesis”: uncertainty was its stated reason to resist that change. The firm also opposed the broader proposal because, it said, higher investing costs would reduce ordinary investors’ returns without a corresponding benefit. In 2022 Patrick Dennis, Kristopher Gerardi and Carola Schenone supplied a competing explanation for the airline result: their reanalysis attributed the fare correlation to airlines’ market shares rather than the ownership and control components of the measure. Robinson’s requested choice had practical stakes for fund clients as well as competition enforcement."
+  duration: 13
+
 - shot: two-more-pieces
   view: graph
   focus: conocophillips
@@ -122,15 +168,6 @@ This story follows the pieces from the decree to the board seats the FTC fought 
   reveal_claims: [ohio-oil-company#c1, ohio-oil-company#c2, continental-oil-company#c1, continental-oil-company#c2, conocophillips#c1, conocophillips#c2]
   overlay: {kind: quote, source: worldoil-2024-11-22-cop-marathon, quote: "Marathon Oil adds high-quality, low cost of supply inventory adjacent to our leading U.S. unconventional position.", caption: "Ryan Lance on completing the Marathon purchase, 22 November 2024"}
   narration: "**Two more pieces.** On 22 November 2024 Ryan Lance announced that ConocoPhillips had completed its purchase of Marathon Oil. He called Marathon’s low-cost oil prospects next to ConocoPhillips’ existing U.S. operations a reason for the deal, and expected to reach an annual rate of savings and other gains exceeding $1 billion within twelve months. Both lineages reached the Court’s 1911 list: Continental Oil became part of Conoco; Ohio Oil, bought by Standard in 1889, became Marathon Oil in 1962. Phillips and Conoco had merged in 2002 after FTC demands for sales in the Rocky Mountains and elsewhere; Marathon and Ashland had formed a venture in 1998. Lance’s acquisition brought two more descendants into one company."
-  duration: 13
-
-- shot: what-ftc-staff-said
-  view: graph
-  focus: federal-trade-commission
-  time: "2004-08-13"
-  reveal: [federal-trade-commission, exxonmobil, chevron, bp, conocophillips]
-  overlay: {kind: quote, source: ftc-2004-08-press-staff-report, quote: "to inform public policy concerning competition in the petroleum industry and to add transparency to the Commission’s merger analyses", caption: "FTC chairman Timothy Muris on why he was releasing the staff report, August 2004"}
-  narration: "**What FTC staff said.** In August 2004 FTC chairman Timothy Muris released his economists’ review of two decades of oil consolidation. He said he wanted to inform policy and make the agency’s merger analysis more transparent. Staff reported little change in worldwide crude-oil concentration from private-company mergers, and low to moderate concentration at most industry levels despite some increases. They also counted 15 large mergers since 1981 that the FTC alleged would harm competition and consumers as announced: 11 required asset sales; four were abandoned. Commissioner Pamela Jones Harbour abstained from issuing the report. Muris put the agency’s own record before the public to explain why officials had required sales or blocked deals to protect consumers."
   duration: 13
 
 - shot: a-board-seat
@@ -184,6 +221,15 @@ This story follows the pieces from the decree to the board seats the FTC fought 
   narration: "**The boards today.** John Hess became a Chevron director on 28 July 2025. The company had closed its Hess purchase ten days earlier, after an arbitration ruling over Guyana’s Stabroek field. Chevron’s directors elected him under the acquisition agreement; their 2026 proxy credited his four decades of energy leadership and experience with governments. The FTC placed Chevron in Houston and Exxon in Spring, Texas. Mike Wirth led Chevron as chairman and chief executive; Darren Woods held both jobs at Exxon. The two companies’ 2026 director lists shared no name. The seat the FTC had barred became one man’s position at Chevron, while the two heirs retained separate boards."
   duration: 13
 
+- shot: best-evidence-against-a-link
+  view: graph
+  focus: chevron
+  time: "2025-07-17"
+  reveal: [chevron, exxonmobil, federal-trade-commission, john-b-hess, scott-sheffield]
+  overlay: {kind: quote, source: ftc-exxon-setaside-order, quote: "the Commission had no reason to believe the law had been violated in a market as unconcentrated as the oil market solely on the basis of Mr. Sheffield’s alleged statements.", caption: "FTC order setting aside the Exxon–Pioneer order, 17 July 2025"}
+  narration: "**The best evidence against a link.** Ferguson and his fellow commissioners chose to remove the board-seat restrictions in July 2025 because, they said, these mergers barely changed global oil concentration. They put Exxon and Pioneer’s share in the low single digits; a dissent they quoted put Chevron and Hess near 2 percent. FTC staff had found low to moderate concentration at most industry levels in 2004; Time had argued in 1937 that independents would probably have curbed Standard anyway. In their 2026 proxies the companies named each other as competitors—Chevron for money and talent, Exxon among oil majors used for comparison—and listed no shared director. Those records supported separate-company merger decisions, rather than a finding that the heirs formed one monopoly."
+  duration: 13
+
 - shot: who-holds-them
   view: graph
   focus: exxonmobil
@@ -192,52 +238,6 @@ This story follows the pieces from the decree to the board seats the FTC fought 
   reveal_claims: [the-vanguard-group#fh3, blackrock#fh3, state-street#c12, the-vanguard-group#c11, state-street#c13, blackrock#c13, blackrock#c1, blackrock#c2]
   overlay: {kind: stat, value: "10.4%", label: "Vanguard’s share of ExxonMobil, in the company’s 2026 proxy statement. BlackRock held 6.5% and State Street 5.1%", source: exxon-proxy-2026, quote: "The Vanguard Group(2) 436,662,435 10.4%"}
   narration: "**Who holds them.** Inviting owners to Exxon’s May 2026 meeting, Darren Woods urged even small holders to vote because he wanted their voices represented. Its proxy identified the largest holdings: Vanguard 10.4%, BlackRock 6.5% and State Street 5.1%. Chevron named the same three, at 8.56%, 7.00% and 7.50%, and Berkshire Hathaway at 6.70%. The first three manage shares for fund clients; Berkshire holds for itself. The figures draw on 2024 and 2025 filings covering positions from December 2023 to September 2025; Vanguard said in March 2026 its units would report separately. Woods promised convenient, economical online access; the holdings figures and voting disclosures showed how much authority sat with intermediaries."
-  duration: 13
-
-- shot: not-the-holders-of-1911
-  view: graph
-  focus: the-vanguard-group
-  time: "2022"
-  reveal: [the-vanguard-group, blackrock, state-street, exxonmobil, standard-oil]
-  overlay: {kind: quote, source: blackrock-voting-choice-page, quote: "We launched BlackRock Voting Choice in 2022 to make participation in the proxy voting process easier and more accessible for eligible clients.", caption: "BlackRock on why it introduced client voting choices"}
-  narration: "**Not the holders of 1911.** Larry Fink promoted bringing more voices into shareholder voting. BlackRock says it launched Voting Choice in 2022 to make participation easier for eligible clients. The authority at stake was large: an earlier, 2017 study found Vanguard, BlackRock and State Street together were the largest shareholder in 88 percent of S&P 500 companies. At Exxon, BlackRock reported sole voting power over 254,681,764 of its 272,498,849 shares. These managers held for clients, unlike the trust’s stockholders receiving shares in 1911; holding stakes in both heirs did not establish that they directed either company or acted together. BlackRock’s program offered eligible clients a way to choose how holdings would be voted."
-  duration: 13
-
-- shot: one-worry
-  view: graph
-  focus: anticompetitive-effects-of-common-ownership
-  time: "2018"
-  reveal: [anticompetitive-effects-of-common-ownership, common-ownership-of-us-airlines, blackrock, the-vanguard-group, state-street]
-  overlay: {kind: quote, source: azar-schmalz-tecu-2018-jof, quote: "Within‐route changes in common ownership concentration robustly correlate with route‐level changes in ticket prices, even when we only use variation in ownership due to the combination of two large asset managers.", caption: "José Azar, Martin Schmalz and Isabel Tecu, 2018 airline study"}
-  narration: "**One worry.** In 2018 José Azar, Martin Schmalz and Isabel Tecu put a cost alongside the benefits investors sought from diversification. Their airline study reported that changes in common ownership within routes correlated with changes in ticket prices, including when they used ownership changes from two asset managers combining. They concluded that reduced competition accompanied the private benefits of diversification and good governance. For passengers, their argument meant that separate airlines could still compete less when investors held stakes across rivals. Their study concerned airlines, without measuring an effect on Exxon and Chevron. It shifted the question from who occupied a board seat to what incentives shared owners might create."
-  duration: 13
-
-- shot: the-doubt
-  view: graph
-  focus: common-ownership-does-not-have-anticompetitive-effects
-  time: "2022"
-  reveal: [common-ownership-does-not-have-anticompetitive-effects, refutation-of-common-ownership-does-not-have-anticompetitive-effects, common-ownership-of-us-airlines, blackrock, the-vanguard-group]
-  overlay: {kind: quote, source: vanguard-ftc-hsr-letter-2021-02-01, quote: "The common ownership concept is an unproven hypothesis that should, at a minimum, be studied in greater depth before becoming a part of the rules", caption: "Vanguard’s letter signed by Anne Robinson and Gregory Davis, 1 February 2021"}
-  narration: "**One doubt.** In February 2021 Vanguard counsel Anne Robinson signed a letter asking the FTC to study common ownership more deeply before incorporating it into merger-notification rules. Vanguard called it “an unproven hypothesis”: uncertainty was its stated reason to resist that change. The firm also opposed the broader proposal because, it said, higher investing costs would reduce ordinary investors’ returns without a corresponding benefit. In 2022 Patrick Dennis, Kristopher Gerardi and Carola Schenone supplied a competing explanation for the airline result: their reanalysis attributed the fare correlation to airlines’ market shares rather than the ownership and control components of the measure. Robinson’s requested choice had practical stakes for fund clients as well as competition enforcement."
-  duration: 13
-
-- shot: best-evidence-for-a-link
-  view: graph
-  focus: exxonmobil
-  time: "1999-11"
-  reveal: [exxonmobil, mobil, chevron, standard-oil, iranian-oil-consortium, federal-trade-commission]
-  reveal_claims: [exxonmobil#c4, exxonmobil#c7]
-  overlay: {kind: quote, source: ftc-1999-exxon-mobil-analysis, quote: "This is an earmark of oligopolistic market behavior.", caption: "FTC analysis of the Exxon–Mobil consent order, 1999"}
-  narration: "**The best evidence for a link.** In 1973 Jamieson and his fellow chairmen carried a joint warning to the White House; their companies also shared the Iran consortium’s formula for annual oil liftings. Earlier cooperation included the 1911 regional marketing division and Stanvac’s 50/50 operations in nearly 50 countries. When Exxon’s and Mobil’s pricing managers set gasoline prices in the Northeast and Mid-Atlantic, the FTC said in 1999, they watched rivals’ prices rather than their own costs. It called this an earmark of oligopolistic behavior in markets already not fully competitive. The FTC’s analysis said local price zones and the remaining competitors gave the companies power to raise prices profitably."
-  duration: 13
-
-- shot: best-evidence-against-a-link
-  view: graph
-  focus: chevron
-  time: "2025-07-17"
-  reveal: [chevron, exxonmobil, federal-trade-commission, john-b-hess, scott-sheffield]
-  overlay: {kind: quote, source: ftc-exxon-setaside-order, quote: "the Commission had no reason to believe the law had been violated in a market as unconcentrated as the oil market solely on the basis of Mr. Sheffield’s alleged statements.", caption: "FTC order setting aside the Exxon–Pioneer order, 17 July 2025"}
-  narration: "**The best evidence against a link.** Ferguson and his fellow commissioners chose to remove the board-seat restrictions in July 2025 because, they said, these mergers barely changed global oil concentration. They put Exxon and Pioneer’s share in the low single digits; a dissent they quoted put Chevron and Hess near 2 percent. FTC staff had found low to moderate concentration at most industry levels in 2004; Time had argued in 1937 that independents would probably have curbed Standard anyway. In their 2026 proxies the companies named each other as competitors—Chevron for money and talent, Exxon among oil majors used for comparison—and listed no shared director. Those records supported separate-company merger decisions, rather than a finding that the heirs formed one monopoly."
   duration: 13
 
 - shot: the-test
