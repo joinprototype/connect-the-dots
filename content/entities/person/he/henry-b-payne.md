@@ -15,7 +15,6 @@ claims:
   - id: c2
     rel: member_of
     to: us-senate
-    when: "1884-01"
     src:
       - {s: tarbell-history-standard-oil-1904, at: "Vol. 2, ch. 13", quote: "The case was the familiar one of the election of H. B. Payne of Ohio to the United States Senate in January, 1884."}
 ---

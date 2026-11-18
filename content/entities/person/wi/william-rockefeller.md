@@ -22,6 +22,7 @@ claims:
   - id: c3
     rel: owns_stake
     to: south-improvement-company
+    as_of: "1872"
     src:
       - {s: tarbell-history-standard-oil-1904, at: "Vol. 1, ch. 2", quote: "The company most heavily interested in the South Improvement Company was the Standard Oil of Cleveland, J. D. Rockefeller, William Rockefeller and H. M. Flagler, all stockholders of that company, each having 180 shares—540 in the company."}
 ---
