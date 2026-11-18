@@ -22,9 +22,12 @@ claims:
     to: us-district-court-southern-district-of-new-york
     when: "2019-10-01"
     case: "United States v. Collins"
-    title: "pleaded guilty to a scheme to commit insider trading and to making false statements to federal agents"
+    title: "pleaded guilty to conspiracy to commit securities fraud under 18 U.S.C. §371 and false statements under 18 U.S.C. §1001"
+    note: "The information came from his corporate board role. These were not STOCK Act charges."
     src:
       - {s: doj-sdny-2019-10-01-collins-plea, at: "Press release", quote: "pled guilty to participating in a scheme to commit insider trading and to making false statements to federal law enforcement agents when interviewed about his conduct"}
+      - {s: doj-sdny-2019-10-01-collins-plea, at: "Charges and statutory basis", quote: "pled guilty to one count of conspiracy to commit securities fraud, in violation of Title 18, United States Code, Section 371"}
+      - {s: doj-sdny-2019-10-01-collins-plea, at: "Charges and statutory basis", quote: "one count of making false statements to law enforcement officials, in violation of Title 18, United States Code, Section 1001"}
   - id: c4
     rel: convicted_by
     to: us-district-court-southern-district-of-new-york

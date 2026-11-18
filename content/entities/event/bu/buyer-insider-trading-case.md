@@ -13,6 +13,7 @@ claims:
     src:
       - {s: ap-2026-06-06-buyer-pardon, at: "Article", quote: "Buyer said the pardon “corrects a politically motivated prosecution” and that it was “horrific to be imprisoned for a crime that I did not commit.”", by: stephen-buyer}
       - {s: ap-2026-06-06-buyer-pardon, at: "Article", quote: "The Supreme Court in May rejected Buyer’s appeal without comment or noted dissent."}
+      - {s: willkie-2025-03-26-buyer-appeal, at: "Appeal result", quote: "the Second Circuit of U.S. Court of Appeals affirmed the insider trading conviction of former Indiana Congressman Stephen Buyer."}
   - id: c2
     rel: involved
     to: us-department-of-justice
