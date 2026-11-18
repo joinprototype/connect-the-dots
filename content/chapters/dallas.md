@@ -23,6 +23,38 @@ Kennedy had faced a failed invasion of Cuba and publicly honored the CIA directo
   narration: "**22 November 1963.** Kennedy twice asked for the motorcade to stop after leaving Love Field to greet the crowds, the Warren Commission reports. At 12:30 p.m. his open car turned onto Elm Street in Dealey Plaza, past the Texas School Book Depository; seconds later bullets struck him and Governor John Connally. Secret Service agent Roy Kellerman ordered the driver out of the line of fire and radioed for the nearest hospital; they raced to Parkland, where Kennedy was pronounced dead at 1 p.m. At 2:38 p.m., on the plane at Love Field, Lyndon Johnson took the oath as President: the journey Kennedy had interrupted to greet well-wishers ended with his successor flying home."
   duration: 13
 
+- shot: bay-of-pigs
+  view: map
+  camera: {center: [-80.3, 22.0], zoom: 5.4, pitch: 0, duration: 6}
+  places: [bay-of-pigs-cuba]
+  time: "1961-04-17"
+  reveal: [bay-of-pigs-invasion, bay-of-pigs-cuba, cuba, cia, fidel-castro]
+  reveal_claims: [bay-of-pigs-invasion#c1, bay-of-pigs-invasion#c2, bay-of-pigs-invasion#c3]
+  overlay: {kind: quote, source: nara-hsca-report-part1c, quote: "It was launched on April 17, 1961, but it was thwarted by Cuban troops, said to have been commanded by Castro himself.", caption: "House Select Committee on Assassinations, 1979"}
+  narration: "**Bay of Pigs.** Two and a half years before Dallas, Fidel Castro faced a CIA-backed landing on Cuba’s southern coast: on 17 April 1961 Cuban exiles came ashore, and Cuban troops defeated them, reportedly under Castro’s own command, the House committee later said. CIA director Allen Dulles’s agency had backed an attempt to depose Cuba’s leader. The Church Committee placed the invasion and the later Operation MONGOOSE among fully authorized assaults on Castro’s government; the committee says U.S. officials then judged another overt paramilitary operation infeasible and turned to exiles and dissidents inside Cuba. Dulles would leave office, but the effort to overthrow Castro would continue."
+  duration: 13
+
+- shot: a-medal-for-the-director
+  view: map
+  camera: {center: [-77.1469, 38.9517], zoom: 11.8, pitch: 25, duration: 6}
+  places: [langley-virginia]
+  time: "1961-11-28"
+  reveal: [allen-dulles, john-mccone, john-f-kennedy, cia, langley-virginia, bay-of-pigs-invasion]
+  reveal_claims: [allen-dulles#c1, john-mccone#c1, cia#c4, bay-of-pigs-invasion#c5, bay-of-pigs-invasion#c4, bay-of-pigs-invasion#c7]
+  overlay: {kind: quote, source: ucsb-jfk-1961-11-28-dulles-award, quote: "It is not always easy. Your successes are unheralded--your failures are trumpeted. I sometimes have that feeling myself.", caption: "President Kennedy at CIA headquarters, 28 November 1961"}
+  narration: "**A medal for the director.** At his 21 April 1961 news conference, Kennedy called himself “the responsible officer of the government” but refused a detailed discussion of the failed invasion, saying it would not benefit the country in the difficult situation. Seven months later, on 28 November, he stood at CIA headquarters in Langley and gave Allen Dulles the National Security Medal: “Your successes are unheralded--your failures are trumpeted.” The CIA’s history says Dulles lost his job after the Bay of Pigs; John McCone succeeded him the next day. Kennedy publicly honored the departing director and praised the work as essential; the medal accompanied a change of command while the CIA kept its place in his government."
+  duration: 13
+
+- shot: plots-against-castro
+  view: graph
+  focus: cia-plots-against-castro
+  time: "1961-11"
+  reveal: [cia-plots-against-castro, cia, fidel-castro, church-committee, church-committee-interim-report, operation-mongoose, bay-of-pigs-invasion, cuban-missile-crisis, john-f-kennedy]
+  reveal_claims: [cia-plots-against-castro#c1, cia-plots-against-castro#c2, cia-plots-against-castro#c3, cia-plots-against-castro#c4, church-committee#c2, church-committee#c1, operation-mongoose#c1, bay-of-pigs-invasion#c6, cuban-missile-crisis#c15, cia-plots-against-castro#c5]
+  overlay: {kind: "quote", source: "senate-church-interim-report-1975", quote: "because indeed U.S. morally must not be part [sic] to assassinations.", caption: "Tad Szulc’s notes of his conversation with Kennedy, 9 November 1961, quoted by the Church Committee"}
+  narration: "**A question in the Oval Office.** Tad Szulc later testified that on 9 November 1961 Kennedy asked what he would think if he ordered Castro assassinated; Szulc opposed murder and Kennedy agreed on moral grounds. Szulc’s notes say Kennedy was resisting pressure to approve a Castro murder. Senator Smathers also recalled Kennedy raising assassination and opposing it. Yet the Church Committee found at least eight CIA plots against Castro in 1960–1965, one involving underworld figures reportedly twice sending poison pills to Cuba; MONGOOSE, the overthrow program, ended with the Cuban Missile Crisis. The committee could not establish whether any President knew of the plots because command was so ambiguous: Kennedy’s reported refusal coexisted with assassination operations that investigators would later have to unravel."
+  duration: 13
+
 - shot: two-days-later
   view: graph
   focus: killing-of-lee-harvey-oswald
@@ -30,7 +62,7 @@ Kennedy had faced a failed invasion of Cuba and publicly honored the CIA directo
   reveal: [killing-of-lee-harvey-oswald, jack-ruby, lee-harvey-oswald, assassination-of-john-f-kennedy, trial-of-jack-ruby, texas-court-of-criminal-appeals]
   reveal_claims: [killing-of-lee-harvey-oswald#c1, killing-of-lee-harvey-oswald#c2, assassination-of-john-f-kennedy#c5, assassination-of-john-f-kennedy#c3, killing-of-lee-harvey-oswald#c4, trial-of-jack-ruby#c1, trial-of-jack-ruby#c3]
   overlay: {kind: quote, source: nara-warren-report-ch1, quote: "Ruby entered the basement of the Dallas Police Department shortly after 11:17 a.m. and killed Lee Harvey Oswald at 11:21 a.m.", caption: "Warren Commission report, 1964"}
-  narration: "**Two days later.** On Sunday 24 November, Jack Ruby stepped from the crowd in the Dallas police basement and shot Oswald as millions watched on television; officers were transferring the man they had arrested in a movie theater the afternoon Kennedy died. Ruby told interrogators he had acted in a “temporary fit of depression and rage” over the President’s death. The House committee later believed the shooting was not spontaneous and found many underworld contacts, though Ruby was not an organized-crime member. Ruby was convicted of murder on 14 March 1964, but the Texas Court of Criminal Appeals reversed the conviction on 5 October 1966 and ordered retrial outside Dallas; Oswald had died before he could stand trial."
+  narration: "**Two days after the killing.** On Sunday 24 November, Jack Ruby stepped from the crowd in the Dallas police basement and shot Oswald as millions watched on television; officers were transferring the man they had arrested in a movie theater the afternoon Kennedy died. Ruby told interrogators he had acted in a “temporary fit of depression and rage” over the President’s death. The House committee later believed the shooting was not spontaneous and found many underworld contacts, though Ruby was not an organized-crime member. Ruby was convicted of murder on 14 March 1964, but the Texas Court of Criminal Appeals reversed the conviction on 5 October 1966 and ordered retrial outside Dallas; Oswald had died before he could stand trial."
   duration: 13
 
 - shot: oswald
@@ -54,6 +86,16 @@ Kennedy had faced a failed invasion of Cuba and publicly honored the CIA directo
   narration: "**The Commission.** On 29 November 1963 Johnson put seven people under Chief Justice Earl Warren to investigate the killing, seeking “to avoid parallel investigations” and give one body a national mandate, according to its foreword. He chose Representative Gerald Ford, a future President, and Allen Dulles, CIA director until November 1961, who now sat among the people questioning his former agency. CIA historian David Robarge describes Dulles warning CIA officers what his fellow commissioners would ask and protecting Agency interests by steering them away from lethal anti-Castro operations; whether he privately told the others about the plots remains unknown. Johnson’s choice put a former director inside the inquiry while his agency’s Cuba secrets stayed outside it."
   duration: 13
 
+- shot: amlash
+  view: graph
+  focus: amlash-operation
+  time: "1963-11-22"
+  reveal: [amlash-operation, cia, fidel-castro, church-committee-book-v]
+  reveal_claims: [amlash-operation#c1, amlash-operation#c2, amlash-operation#c3]
+  overlay: {kind: quote, source: senate-church-book-v-1976, quote: "On November 22, at a pre-arranged meeting, a CIA Case Officer told AMLASH he would be provided rifles with telescopic sights, and explosives with which to carry out his plan.", caption: "Church Committee, Book V, 1976"}
+  narration: "**The day Kennedy died.** The Church Committee says AM/LASH, a high-level Cuban official, proposed an inside job against Castro in 1963, considering assassination necessary; the CIA renewed contact. In September Castro publicly warned that Cuba would “answer in kind” against such plotting, but on 22 November a CIA case officer promised AM/LASH rifles with telescopic sights and explosives. Officials directing the CIA and FBI assassination investigations were not told; they later testified they would have considered it relevant. The Church Committee found no evidence Castro plotted Kennedy’s killing, insufficient evidence to conclude there was a conspiracy, and reached no final conclusions: an operation underway the day Kennedy died had never been examined for a connection to his death."
+  duration: 13
+
 - shot: what-it-found
   view: graph
   focus: warren-commission-report
@@ -64,26 +106,14 @@ Kennedy had faced a failed invasion of Cuba and publicly honored the CIA directo
   narration: "**Warren’s answer.** In September 1964 Earl Warren and his fellow commissioners concluded that Oswald fired the shots that killed Kennedy and acted alone; they found no support for calling him an FBI or CIA agent. They held that he killed Patrolman J. D. Tippit 45 minutes after the assassination; the House committee later agreed that he owned the rifle and occupied the sixth floor. On the bullet that struck Kennedy and Governor Connally, the commissioners found the evidence very persuasive but acknowledged disagreement, and they could not definitively determine Oswald’s motives. Their answer became the official finding, with a qualification that later investigators would revisit: because negatives were difficult to prove, they could not categorically establish that nobody else was involved."
   duration: 13
 
-- shot: bay-of-pigs
-  view: map
-  camera: {center: [-80.3, 22.0], zoom: 5.4, pitch: 0, duration: 6}
-  places: [bay-of-pigs-cuba]
-  time: "1961-04-17"
-  reveal: [bay-of-pigs-invasion, bay-of-pigs-cuba, cuba, cia, fidel-castro]
-  reveal_claims: [bay-of-pigs-invasion#c1, bay-of-pigs-invasion#c2, bay-of-pigs-invasion#c3]
-  overlay: {kind: quote, source: nara-hsca-report-part1c, quote: "It was launched on April 17, 1961, but it was thwarted by Cuban troops, said to have been commanded by Castro himself.", caption: "House Select Committee on Assassinations, 1979"}
-  narration: "**Bay of Pigs.** Two and a half years before Dallas, Fidel Castro faced a CIA-backed landing on Cuba’s southern coast: on 17 April 1961 Cuban exiles came ashore, and Cuban troops defeated them, reportedly under Castro’s own command, the House committee later said. CIA director Allen Dulles’s agency had backed an attempt to depose Cuba’s leader. The Church Committee placed the invasion and the later Operation MONGOOSE among fully authorized assaults on Castro’s government; the committee says U.S. officials then judged another overt paramilitary operation infeasible and turned to exiles and dissidents inside Cuba. Dulles would leave office, but the effort to overthrow Castro would continue."
-  duration: 13
-
-- shot: a-medal-for-the-director
-  view: map
-  camera: {center: [-77.1469, 38.9517], zoom: 11.8, pitch: 25, duration: 6}
-  places: [langley-virginia]
-  time: "1961-11-28"
-  reveal: [allen-dulles, john-mccone, john-f-kennedy, cia, langley-virginia, bay-of-pigs-invasion]
-  reveal_claims: [allen-dulles#c1, john-mccone#c1, cia#c4, bay-of-pigs-invasion#c5, bay-of-pigs-invasion#c4, bay-of-pigs-invasion#c7]
-  overlay: {kind: quote, source: ucsb-jfk-1961-11-28-dulles-award, quote: "It is not always easy. Your successes are unheralded--your failures are trumpeted. I sometimes have that feeling myself.", caption: "President Kennedy at CIA headquarters, 28 November 1961"}
-  narration: "**A medal for the director.** At his 21 April 1961 news conference, Kennedy called himself “the responsible officer of the government” but refused a detailed discussion of the failed invasion, saying it would not benefit the country in the difficult situation. Seven months later, on 28 November, he stood at CIA headquarters in Langley and gave Allen Dulles the National Security Medal: “Your successes are unheralded--your failures are trumpeted.” The CIA’s history says Dulles lost his job after the Bay of Pigs; John McCone succeeded him the next day. Kennedy publicly honored the departing director and praised the work as essential; the medal accompanied a change of command while the CIA kept its place in his government."
+- shot: not-told
+  view: graph
+  focus: what-the-warren-commission-was-not-told
+  time: "1964"
+  reveal: [what-the-warren-commission-was-not-told, cia, fbi, allen-dulles, warren-commission, john-mccone, david-robarge, robarge-death-of-a-president-2013]
+  reveal_claims: [what-the-warren-commission-was-not-told#c1, what-the-warren-commission-was-not-told#c2, what-the-warren-commission-was-not-told#c3, what-the-warren-commission-was-not-told#c7, what-the-warren-commission-was-not-told#c8, what-the-warren-commission-was-not-told#c9, david-robarge#c1, david-robarge#c2, what-the-warren-commission-was-not-told#c10]
+  overlay: {kind: "quote", source: "cia-studies-2013-robarge-death-of-a-president", quote: "to cooperate fully with the President's Commission", caption: "McCone’s description of his orders, given to the Justice Department in early 1965, quoted by David Robarge"}
+  narration: "**The cooperation McCone promised.** In early 1965 McCone told the Justice Department he had ordered full cooperation and nothing withheld; Robarge reports he also requested 75-year secrecy for CIA documents, arguing national security outweighed other considerations. The Church Committee said neither CIA nor FBI disclosed the Castro plots, Dulles presumably knew earlier schemes but probably not AM/LASH, and the FBI concealed discipline of seventeen staff over Oswald. McCone later testified that employees withheld the plots from him and he assumed Dulles would have told the Commission. Robarge called his part a “benign cover-up” of Castro operations, interpreting the agency’s purpose as keeping those issues off the agenda and focusing on its preferred conclusion that Oswald acted alone. McCone’s promised cooperation and his demand for secrecy left commissioners and the public with different access to the evidence."
   duration: 13
 
 - shot: the-remark
@@ -106,34 +136,14 @@ Kennedy had faced a failed invasion of Cuba and publicly honored the CIA directo
   narration: "**The agency he kept.** At Langley on 28 November 1961, Kennedy told CIA employees their work was essential and thanked them for serving the country, publicly praising the institution he reportedly threatened in private. The same 1966 Times article said he had investigated its affairs after the Bay of Pigs but neither dismantled it nor recommended congressional supervision. Checking the famous phrase in 2017, Gizmodo traced no earlier printing and found echoes in older sermons and fiction. The unnamed official’s reported conversation remained a disputed recollection; Kennedy’s surviving agency went on conducting operations against Castro."
   duration: 13
 
-- shot: plots-against-castro
+- shot: the-tape
   view: graph
-  focus: cia-plots-against-castro
-  time: "1961-11"
-  reveal: [cia-plots-against-castro, cia, fidel-castro, church-committee, church-committee-interim-report, operation-mongoose, bay-of-pigs-invasion, cuban-missile-crisis, john-f-kennedy]
-  reveal_claims: [cia-plots-against-castro#c1, cia-plots-against-castro#c2, cia-plots-against-castro#c3, cia-plots-against-castro#c4, church-committee#c2, church-committee#c1, operation-mongoose#c1, bay-of-pigs-invasion#c6, cuban-missile-crisis#c15, cia-plots-against-castro#c5]
-  overlay: {kind: "quote", source: "senate-church-interim-report-1975", quote: "because indeed U.S. morally must not be part [sic] to assassinations.", caption: "Tad Szulc’s notes of his conversation with Kennedy, 9 November 1961, quoted by the Church Committee"}
-  narration: "**A question in the Oval Office.** Tad Szulc later testified that on 9 November 1961 Kennedy asked what he would think if he ordered Castro assassinated; Szulc opposed murder and Kennedy agreed on moral grounds. Szulc’s notes say Kennedy was resisting pressure to approve a Castro murder. Senator Smathers also recalled Kennedy raising assassination and opposing it. Yet the Church Committee found at least eight CIA plots against Castro in 1960–1965, one involving underworld figures reportedly twice sending poison pills to Cuba; MONGOOSE, the overthrow program, ended with the Cuban Missile Crisis. The committee could not establish whether any President knew of the plots because command was so ambiguous: Kennedy’s reported refusal coexisted with assassination operations that investigators would later have to unravel."
-  duration: 13
-
-- shot: not-told
-  view: graph
-  focus: what-the-warren-commission-was-not-told
-  time: "1964"
-  reveal: [what-the-warren-commission-was-not-told, cia, fbi, allen-dulles, warren-commission, john-mccone, david-robarge, robarge-death-of-a-president-2013]
-  reveal_claims: [what-the-warren-commission-was-not-told#c1, what-the-warren-commission-was-not-told#c2, what-the-warren-commission-was-not-told#c3, what-the-warren-commission-was-not-told#c7, what-the-warren-commission-was-not-told#c8, what-the-warren-commission-was-not-told#c9, david-robarge#c1, david-robarge#c2, what-the-warren-commission-was-not-told#c10]
-  overlay: {kind: "quote", source: "cia-studies-2013-robarge-death-of-a-president", quote: "to cooperate fully with the President's Commission", caption: "McCone’s description of his orders, given to the Justice Department in early 1965, quoted by David Robarge"}
-  narration: "**The cooperation McCone promised.** In early 1965 McCone told the Justice Department he had ordered full cooperation and nothing withheld; Robarge reports he also requested 75-year secrecy for CIA documents, arguing national security outweighed other considerations. The Church Committee said neither CIA nor FBI disclosed the Castro plots, Dulles presumably knew earlier schemes but probably not AM/LASH, and the FBI concealed discipline of seventeen staff over Oswald. McCone later testified that employees withheld the plots from him and he assumed Dulles would have told the Commission. Robarge called his part a “benign cover-up” of Castro operations, interpreting the agency’s purpose as keeping those issues off the agenda and focusing on its preferred conclusion that Oswald acted alone. McCone’s promised cooperation and his demand for secrecy left commissioners and the public with different access to the evidence."
-  duration: 13
-
-- shot: amlash
-  view: graph
-  focus: amlash-operation
-  time: "1963-11-22"
-  reveal: [amlash-operation, cia, fidel-castro, church-committee-book-v]
-  reveal_claims: [amlash-operation#c1, amlash-operation#c2, amlash-operation#c3]
-  overlay: {kind: quote, source: senate-church-book-v-1976, quote: "On November 22, at a pre-arranged meeting, a CIA Case Officer told AMLASH he would be provided rifles with telescopic sights, and explosives with which to carry out his plan.", caption: "Church Committee, Book V, 1976"}
-  narration: "**The same day.** The Church Committee says AM/LASH, a high-level Cuban official, proposed an inside job against Castro in 1963, considering assassination necessary; the CIA renewed contact. In September Castro publicly warned that Cuba would “answer in kind” against such plotting, but on 22 November a CIA case officer promised AM/LASH rifles with telescopic sights and explosives. Officials directing the CIA and FBI assassination investigations were not told; they later testified they would have considered it relevant. The Church Committee found no evidence Castro plotted Kennedy’s killing, insufficient evidence to conclude there was a conspiracy, and reached no final conclusions: an operation underway the day Kennedy died had never been examined for a connection to his death."
+  focus: dallas-police-recording-analysis
+  time: "1978"
+  reveal: [dallas-police-recording-analysis, hsca-final-report, house-select-committee-on-assassinations, dealey-plaza]
+  reveal_claims: [house-select-committee-on-assassinations#c2, dallas-police-recording-analysis#c1, dallas-police-recording-analysis#c3, dallas-police-recording-analysis#c7]
+  overlay: {kind: stat, value: "95 percent", label: "The certainty the House committee’s analysts computed for a shot from the grassy knoll; the whole sequence they put at 76 percent", source: nara-hsca-report-part1b, quote: "they mathematically computed that, with a certainty factor of 95 percent or better, there was a shot fired at the Presidential limousine from the grassy knoll."}
+  narration: "**The tape.** In September 1978 House investigators asked Mark Weiss and Ernest Aschkenasy to improve on an uncertain result from a Dallas police Dictabelt recording; a vehicle’s stuck transmit switch, the committee believed, had left one channel open. Bolt Beranek and Newman initially put the chance of a grassy-knoll shot at only 50 percent, so Weiss and Aschkenasy extended the analysis by predicting echoes from shooter and microphone positions. They calculated at least 95 percent certainty for a knoll shot; allowing for whether the sound was a supersonic bullet gave 76 percent for the sequence. The committee judged two gunmen highly probable, but the knoll shot missed Kennedy; only the acoustic study established its second gunman, making the recording crucial to that finding."
   duration: 13
 
 - shot: what-the-house-said-about-the-agencies
@@ -156,14 +166,14 @@ Kennedy had faced a failed invasion of Cuba and publicly honored the CIA directo
   narration: "**1979: probably a conspiracy.** G. Robert Blakey served as chief counsel to the House inquiry reopened in 1976; his committee agreed Oswald fired three shots and hit Kennedy twice, but judged the killing probably a conspiracy. It gave four grounds: seriously flawed Warren and FBI conspiracy inquiries; mistaken conclusions about Oswald’s and Ruby’s associations; the inability to rule out a limited conspiracy; and a high probability of a second gunman, which alone did not establish conspiracy. It could identify neither that gunman nor the conspiracy’s extent and believed the Soviet and Cuban governments uninvolved, as well as anti-Castro groups and organized crime as groups, while leaving individual members possible. The finding depended partly on sounds captured by a Dallas police recorder."
   duration: 13
 
-- shot: the-tape
+- shot: a-name-from-another-story
   view: graph
-  focus: dallas-police-recording-analysis
-  time: "1978"
-  reveal: [dallas-police-recording-analysis, hsca-final-report, house-select-committee-on-assassinations, dealey-plaza]
-  reveal_claims: [house-select-committee-on-assassinations#c2, dallas-police-recording-analysis#c1, dallas-police-recording-analysis#c3, dallas-police-recording-analysis#c7]
-  overlay: {kind: stat, value: "95 percent", label: "The certainty the House committee’s analysts computed for a shot from the grassy knoll; the whole sequence they put at 76 percent", source: nara-hsca-report-part1b, quote: "they mathematically computed that, with a certainty factor of 95 percent or better, there was a shot fired at the Presidential limousine from the grassy knoll."}
-  narration: "**The tape.** In September 1978 House investigators asked Mark Weiss and Ernest Aschkenasy to improve on an uncertain result from a Dallas police Dictabelt recording; a vehicle’s stuck transmit switch, the committee believed, had left one channel open. Bolt Beranek and Newman initially put the chance of a grassy-knoll shot at only 50 percent, so Weiss and Aschkenasy extended the analysis by predicting echoes from shooter and microphone positions. They calculated at least 95 percent certainty for a knoll shot; allowing for whether the sound was a supersonic bullet gave 76 percent for the sequence. The committee judged two gunmen highly probable, but the knoll shot missed Kennedy; only the acoustic study established its second gunman, making the recording crucial to that finding."
+  focus: e-howard-hunt
+  time: "1979"
+  reveal: [e-howard-hunt, white-house-plumbers, hsca-final-report, watergate-break-in]
+  reveal_claims: [e-howard-hunt#c1, e-howard-hunt#c3, e-howard-hunt#c5]
+  overlay: {kind: quote, source: nara-hsca-report-part1b, quote: "During the course of the committee's investigation, a rumor was circulating that the committee had uncovered a memorandum in CIA files indicating Hunt was in Dallas on November 22, 1963. The rumor was not founded on fact.", caption: "House Select Committee on Assassinations, 1979, note 23"}
+  narration: "**Hunt demands a hearing.** Hunt later testified at his libel trial that he had demanded a House hearing to clear his name after Spotlight named him in 1978; the former intelligence officer and White House Plumber sued over claims placing him among three men arrested near Dealey Plaza, attributed to Weberman and Canfield, and in a supposed CIA memo locating him in Dallas. The committee found the memo rumor unfounded and no evidence contradicting Hunt’s sworn denial. Photograph comparisons matched only Fred Lee Chrisman’s measurements, but investigators established he was absent from Dealey Plaza. Hunt pursued libel damages, but an appeals court returned his verdict for a new trial in 1983 without deciding the assassination allegation; the rumor had sent investigators from photographs into sworn testimony and Hunt into years of litigation."
   duration: 13
 
 - shot: the-acoustics-disputed
@@ -176,16 +186,6 @@ Kennedy had faced a failed invasion of Cuba and publicly honored the CIA directo
   narration: "**The minute that mattered.** In 2001 D. B. Thomas challenged a result that had undercut the second-gunman finding: reviewing the recording at Justice Department arrangement in 1982, a National Research Council committee had placed the supposed shots about a minute after Kennedy was hit and rejected acoustic proof of a knoll shot. That addressed one of the House committee’s four grounds, but Thomas argued in Science & Justice that the sounds coincided with the shooting and the chance of random noise was no greater than 0.037. In 2005 N. F. Ramsey, first author of the 1982 report, joined Linsker, Garwin and colleagues in replying that Thomas made serious errors; they corrected errors of their own and reaffirmed the minute’s delay. The second-gunman evidence remained disputed."
   duration: 13
 
-- shot: a-name-from-another-story
-  view: graph
-  focus: e-howard-hunt
-  time: "1979"
-  reveal: [e-howard-hunt, white-house-plumbers, hsca-final-report, watergate-break-in]
-  reveal_claims: [e-howard-hunt#c1, e-howard-hunt#c3, e-howard-hunt#c5]
-  overlay: {kind: quote, source: nara-hsca-report-part1b, quote: "During the course of the committee's investigation, a rumor was circulating that the committee had uncovered a memorandum in CIA files indicating Hunt was in Dallas on November 22, 1963. The rumor was not founded on fact.", caption: "House Select Committee on Assassinations, 1979, note 23"}
-  narration: "**Hunt demands a hearing.** Hunt later testified at his libel trial that he had demanded a House hearing to clear his name after Spotlight named him in 1978; the former intelligence officer and White House Plumber sued over claims placing him among three men arrested near Dealey Plaza, attributed to Weberman and Canfield, and in a supposed CIA memo locating him in Dallas. The committee found the memo rumor unfounded and no evidence contradicting Hunt’s sworn denial. Photograph comparisons matched only Fred Lee Chrisman’s measurements, but investigators established he was absent from Dealey Plaza. Hunt pursued libel damages, but an appeals court returned his verdict for a new trial in 1983 without deciding the assassination allegation; the rumor had sent investigators from photographs into sworn testimony and Hunt into years of litigation."
-  duration: 13
-
 - shot: open-the-files
   view: graph
   focus: jfk-records-collection-act
@@ -194,26 +194,6 @@ Kennedy had faced a failed invasion of Cuba and publicly honored the CIA directo
   reveal_claims: [jfk-records-collection-act#c1, assassination-of-john-f-kennedy#c6, assassination-records-review-board#c1]
   overlay: {kind: "quote", source: "nara-arrb-final-report-1998", quote: "I favor a broad definition in order to fulfill the clear intent of Congress.", caption: "Judge John Tunheim’s answer during confirmation, quoted in the Review Board’s final report"}
   narration: "**1992: open the files.** Facing confirmation to the records Review Board, Judge John Tunheim favored a broad definition “in order to fulfill the clear intent of Congress”; the Board’s report says Congress, disturbed by Oliver Stone’s JFK, passed the 1992 law to allay lingering doubts and gather records in one National Archives collection. Tunheim and four colleagues, sworn in on 11 April 1994 to decide agencies’ secrecy requests, voted on over 27,000 redacted records and obtained consent to release 33,000 more. In January 1995 the Secret Service destroyed protection survey reports for some fall 1963 trips; the Board learned of it a week later. The law required disclosure by 2017 unless the President certified specific harm; Tunheim’s Board left more than four million pages open, while some records were already lost."
-  duration: 13
-
-- shot: the-case-officer
-  view: graph
-  focus: george-joannides
-  time: "2025-07"
-  reveal: [george-joannides, directorio-revolucionario-estudiantil, g-robert-blakey, jefferson-morley, dan-hardway, morley-v-cia, cia, joannides-records-release-2025, anna-paulina-luna]
-  reveal_claims: [george-joannides#c1, george-joannides#c2, george-joannides#c6, morley-v-cia#c1, morley-v-cia#c2, morley-v-cia#c3, g-robert-blakey#c1, dan-hardway#c1, joannides-records-release-2025#c1, joannides-records-release-2025#c2, joannides-records-release-2025#c3, joannides-records-release-2025#c4, joannides-records-release-2025#c5, joannides-records-release-2025#c6, joannides-records-release-2025#c7, anna-paulina-luna#c1]
-  overlay: {kind: "quote", source: "house-oversight-2025-05-20-hardway-statement", quote: "Had I known that at the time, he would have been under oath and in our hearings, not obstructing them for his special position in the CIA.", caption: "G. Robert Blakey’s 2014 sworn statement, quoted in Dan Hardway’s 2025 testimony"}
-  narration: "**The man across the table.** In 1978–1979 Blakey’s House investigators dealt with CIA liaison George Joannides; in 2003 Blakey and Jefferson Morley, joined by writers with opposing views, demanded disclosure of his past. Joannides had guided the CIA-funded student group whose New Orleans delegates denounced Oswald in 1963, a role the agency concealed from the committee, their letter said. The CIA later acknowledged two covert projects in court, JMWAVE and his House liaison assignment; Blakey later swore the CIA knowingly and corruptly obstructed the inquiry and said he would have put Joannides under oath had he known. Hardway quotes CIA counsel as replying that undercover meant only his affiliation was not publicly acknowledged, leaving former investigators demanding answers about the intermediary they had dealt with."
-  duration: 13
-
-- shot: the-2025-files
-  view: graph
-  focus: george-joannides
-  time: "2025-07"
-  reveal: [george-joannides, directorio-revolucionario-estudiantil, g-robert-blakey, jefferson-morley, dan-hardway, morley-v-cia, cia, joannides-records-release-2025, anna-paulina-luna]
-  reveal_claims: [george-joannides#c1, george-joannides#c2, george-joannides#c6, morley-v-cia#c1, morley-v-cia#c2, morley-v-cia#c3, g-robert-blakey#c1, dan-hardway#c1, joannides-records-release-2025#c1, joannides-records-release-2025#c2, joannides-records-release-2025#c3, joannides-records-release-2025#c4, joannides-records-release-2025#c5, joannides-records-release-2025#c6, joannides-records-release-2025#c7, anna-paulina-luna#c1]
-  overlay: {kind: "quote", source: "luna-2025-07-14-joannides", quote: "We just learned definitively that the CIA has been lying for 62 years about the assassination of an American President.", caption: "Representative Anna Paulina Luna, 14 July 2025"}
-  narration: "**The alias emerges.** On 14 July 2025 Representative Anna Paulina Luna declared that the CIA had been “lying for 62 years” after it posted about forty Joannides documents, including a 17 January 1963 direction to obtain the alias “Howard Gebler”; Axios reported the agency had denied he was known as Howard. Michael Isikoff and Gus Russo disputed the inference of an Oswald operation, arguing there was no evidence of an actual CIA connection to him. The documents established an alias, without establishing a Joannides–Oswald meeting or settling whether Oswald acted alone; the CIA told Axios it had complied with Trump’s direction. Luna’s task force expected further disclosures, and the argument now centered on what Joannides’s concealed work meant."
   duration: 13
 
 - shot: 2017-to-2026
@@ -234,5 +214,25 @@ Kennedy had faced a failed invasion of Cuba and publicly honored the CIA directo
   reveal_claims: [jfk-records-collection-act#c2, jfk-records-release-2017-2026#c1, jfk-records-release-2017-2026#c2, jfk-records-release-2017-2026#c6, jfk-records-release-2017-2026#c3, jfk-records-release-2017-2026#c4, jfk-records-release-2017-2026#c5, jfk-records-release-2017-2026#c10]
   overlay: {kind: "quote", source: "pbs-ap-2017-10-28-jfk-files-quell-conspiracy-theories", quote: "To have that drawn into a public hearing would muddy the waters internationally", caption: "J. Edgar Hoover’s memo, 24 November 1963, quoted by the AP in 2017"}
   narration: "**The Hoover memo.** The AP reported in 2017 that Hoover’s memo of 24 November 1963, included in that year’s release, called for “having something issued so we can convince the public that Oswald is the real assassin.” Ruby had killed Oswald hours earlier; Hoover said an FBI agent had hoped to obtain a confession at the hospital. With Johnson considering a presidential commission, Hoover preferred an FBI report to public hearings: airing Oswald’s Soviet correspondence would “muddy the waters internationally,” he wrote. Hoover proposed sending photographs, laboratory work and other evidence to the attorney general, then letting Johnson decide whether to publish the report, because public hearings could complicate foreign relations."
+  duration: 13
+
+- shot: the-case-officer
+  view: graph
+  focus: george-joannides
+  time: "2025-07"
+  reveal: [george-joannides, directorio-revolucionario-estudiantil, g-robert-blakey, jefferson-morley, dan-hardway, morley-v-cia, cia, joannides-records-release-2025, anna-paulina-luna]
+  reveal_claims: [george-joannides#c1, george-joannides#c2, george-joannides#c6, morley-v-cia#c1, morley-v-cia#c2, morley-v-cia#c3, g-robert-blakey#c1, dan-hardway#c1, joannides-records-release-2025#c1, joannides-records-release-2025#c2, joannides-records-release-2025#c3, joannides-records-release-2025#c4, joannides-records-release-2025#c5, joannides-records-release-2025#c6, joannides-records-release-2025#c7, anna-paulina-luna#c1]
+  overlay: {kind: "quote", source: "house-oversight-2025-05-20-hardway-statement", quote: "Had I known that at the time, he would have been under oath and in our hearings, not obstructing them for his special position in the CIA.", caption: "G. Robert Blakey’s 2014 sworn statement, quoted in Dan Hardway’s 2025 testimony"}
+  narration: "**The man across the table.** In 1978–1979 Blakey’s House investigators dealt with CIA liaison George Joannides; in 2003 Blakey and Jefferson Morley, joined by writers with opposing views, demanded disclosure of his past. Joannides had guided the CIA-funded student group whose New Orleans delegates denounced Oswald in 1963, a role the agency concealed from the committee, their letter said. The CIA later acknowledged two covert projects in court, JMWAVE and his House liaison assignment; Blakey later swore the CIA knowingly and corruptly obstructed the inquiry and said he would have put Joannides under oath had he known. Hardway quotes CIA counsel as replying that undercover meant only his affiliation was not publicly acknowledged, leaving former investigators demanding answers about the intermediary they had dealt with."
+  duration: 13
+
+- shot: the-2025-files
+  view: graph
+  focus: george-joannides
+  time: "2025-07"
+  reveal: [george-joannides, directorio-revolucionario-estudiantil, g-robert-blakey, jefferson-morley, dan-hardway, morley-v-cia, cia, joannides-records-release-2025, anna-paulina-luna]
+  reveal_claims: [george-joannides#c1, george-joannides#c2, george-joannides#c6, morley-v-cia#c1, morley-v-cia#c2, morley-v-cia#c3, g-robert-blakey#c1, dan-hardway#c1, joannides-records-release-2025#c1, joannides-records-release-2025#c2, joannides-records-release-2025#c3, joannides-records-release-2025#c4, joannides-records-release-2025#c5, joannides-records-release-2025#c6, joannides-records-release-2025#c7, anna-paulina-luna#c1]
+  overlay: {kind: "quote", source: "luna-2025-07-14-joannides", quote: "We just learned definitively that the CIA has been lying for 62 years about the assassination of an American President.", caption: "Representative Anna Paulina Luna, 14 July 2025"}
+  narration: "**The alias emerges.** On 14 July 2025 Representative Anna Paulina Luna declared that the CIA had been “lying for 62 years” after it posted about forty Joannides documents, including a 17 January 1963 direction to obtain the alias “Howard Gebler”; Axios reported the agency had denied he was known as Howard. Michael Isikoff and Gus Russo disputed the inference of an Oswald operation, arguing there was no evidence of an actual CIA connection to him. The documents established an alias, without establishing a Joannides–Oswald meeting or settling whether Oswald acted alone; the CIA told Axios it had complied with Trump’s direction. Luna’s task force expected further disclosures, and the argument now centered on what Joannides’s concealed work meant."
   duration: 13
 ```
