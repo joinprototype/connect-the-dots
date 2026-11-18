@@ -85,6 +85,16 @@ Aldrich’s group put bankers at the center of its plan. Wilson insisted that go
   narration: "**Nineteen twelve.** Carter Glass opposed Aldrich’s plan even from the Democratic Party’s center; its Bryanite wing recoiled in horror, in Gerald Dunne’s telling. The party made rejection part of its platform, and Wilson won with Democrats controlling both houses; the Kansas City Fed says bankers who had backed Aldrich were anxious about the replacement. That winter, Samuel Untermyer questioned witnesses for Arsène Pujo’s House subcommittee, which was investigating whether a few financiers controlled money and credit. Asked whether owning all New York’s banks would bring control of credit, Morgan answered: “No, sir; not at all.”"
   duration: 13
 
+- shot: the-ship
+  view: graph
+  focus: titanic-federal-reserve-tale
+  time: "1912-04-15"
+  reveal: [titanic-federal-reserve-tale, j-p-morgan, sinking-of-the-titanic, federal-reserve]
+  reveal_claims: [titanic-federal-reserve-tale#c1, titanic-federal-reserve-tale#c2, titanic-federal-reserve-tale#c3]
+  overlay: {kind: quote, source: snopes-titanic-inside-job, quote: "Benjamin Guggenheim, Isidor Straus, [and John] Jacob Astor [all] opposed the new Federal Reserve bank.", caption: "A meme Snopes rated False, shared on Telegram in September 2022"}
+  narration: "**The ship.** Earlier that year, Morgan booked passage on the Titanic, then cancelled; George Behe told Reuters he could find no authoritative 1912 explanation, but the cancellation was not mere hours before sailing. That decision became the seed of a false murder tale: Morgan supposedly sank the ship to kill Federal Reserve opponents Guggenheim, Straus and Astor. Snopes rates it False and dates the meme to at least 2014; Lead Stories traces the tale to 2012, calls it antisemitic, and quotes a version invoking “the Rothschild ponzi scheme.” Historians debate Morgan’s reason for cancelling, with the booking and cancellation reported by History.com and Reuters; the tale gave the dead men a political position that their words would have to bear out."
+  duration: 13
+
 - shot: public-not-private
   view: map
   camera: {center: [-77.0369, 38.9072], zoom: 12.4, pitch: 30, duration: 6}
@@ -117,6 +127,16 @@ Aldrich’s group put bankers at the center of its plan. Wilson insisted that go
   narration: "**The twenty-third of December.** Wilson signed on 23 December 1913 at 6:02 p.m., wearing a gray suit and using four gold pens, in Dunne’s telling. He had refused a holiday for himself or Congress until passage. In Dunne’s account, bankers objected to financing a system whose central Board excluded their representatives; concessions included an advisory council alongside the government Board. The law gave Wilson a Board entirely of presidential appointees, some serving through cabinet offices, others appointed for terms; twelve bankers elected by regional banks formed the council. The Kansas City Fed says governors’ ten-year terms were staggered to prevent any president filling every seat in two terms: Wilson could appoint the first leadership, but the arrangement would outlast him."
   duration: 13
 
+- shot: the-test
+  view: graph
+  focus: sinking-of-the-titanic
+  time: "1913-12-23"
+  reveal: [sinking-of-the-titanic, federal-reserve-act, titanic-federal-reserve-tale, aldrich-plan]
+  reveal_claims: [titanic-federal-reserve-tale#c3]
+  overlay: {kind: quote, source: reuters-fact-check-titanic-federal-reserve, quote: "George Behe told Reuters he was unable to find any documents in his 45 years of researching the Titanic that proved the three men opposed the Federal Reserve.", caption: "Reuters fact check, March 2021"}
+  narration: "**The test.** Before Wilson signed the Act, Isidor Straus argued for reserve reform in a Times letter published on 25 October 1911, Lead Stories notes; during the sinking he declined a lifeboat place so women and children could board, J. Kent Layton told Snopes. Layton said all three men were seen during the sinking, so a plot could not ensure their deaths; more than 1,500 died, including Straus, Astor and Guggenheim. Reuters, citing the Washington Post, reports no public stance from Astor or Guggenheim and Straus reportedly in favor of Aldrich’s proposal, the plan at issue in April 1912; Snopes says Astor favored it, but its lone cited 1911 Times item names Straus. Morgan died on 31 March 1913, nine months before Wilson signed on 23 December; Straus’s letter contradicts the opposition the tale assigns him."
+  duration: 13
+
 - shot: a-mere-yarn
   view: graph
   focus: jekyll-island-meeting-1910
@@ -134,6 +154,36 @@ Aldrich’s group put bankers at the center of its plan. Wilson insisted that go
   reveal_claims: [paul-warburg#c2, paul-warburg#c4, carter-glass#c1, aldrich-plan#c2]
   overlay: {kind: quote, source: fed-history-jekyll-island-conference, quote: "Together, these ideas formed the basis of the final Federal Reserve Act, which Congress passed and the president signed in December 1913.", caption: "The Federal Reserve’s history of the meeting at Jekyll Island"}
   narration: "**Whose act?** Glass, now a senator, defended his claim to the Act’s key ideas in his 1927 memoir and in a Times exchange with Columbia’s Edwin Seligman. Samuel Untermyer answered with a pamphlet calling Glass’s claim “fiction”; a June 1927 Times headline records his case for Owen, with Wilson, McAdoo and Bryan also deserving credit. The Fed’s history credits Glass, Owen, Wilson’s advisers and Warburg together: the law’s machinery closely resembled Aldrich’s plan, while its major differences lay in who decides. The Fed’s history suggests that Glass’s claim brought the secret drafters into the open, leaving competing claims beside a law that put its central Board in government hands."
+  duration: 13
+
+- shot: where-it-came-from
+  view: graph
+  focus: jekyll-island-meeting-1910
+  time: "1952"
+  reveal: [jekyll-island-meeting-1910, nelson-aldrich, henry-p-davison, a-piatt-andrew, frank-vanderlip, paul-warburg, the-secrets-of-the-federal-reserve, federal-reserve]
+  reveal_claims: [the-secrets-of-the-federal-reserve#c1]
+  overlay: {kind: quote, source: adl-jewish-control-federal-reserve, quote: "the antisemitic notion that \"the Jews\" dominate and command the U.S. Federal Reserve System and in effect control the world’s money has surfaced across the extremist spectrum.", caption: "Anti-Defamation League, “Jewish ‘Control’ of the Federal Reserve: A Classic Antisemitic Myth”"}
+  narration: "**Where it came from.** Eustace Mullins said Ezra Pound asked him to investigate the Fed, reportedly instructing him, “You must work on it as a detective story”; Mullins produced the 1952 book later called The Secrets of the Federal Reserve. The Woodrow Wilson Presidential Library says he took it toward “hatred against bankers and Jews.” The ADL traces related attacks through A. N. Field in 1931 and Wickliffe Vennard in the 1950s; it reproduces Mullins naming Warburg and two other monetary architects by religion and descent, and calls Jewish control of the Fed a classic antisemitic myth. The meeting had been real and secret; the Library credits his book with spreading false banking conspiracies."
+  duration: 13
+
+- shot: the-audit-fight
+  view: graph
+  focus: federal-reserve
+  time: "2012-07-25"
+  reveal: [federal-reserve, house-vote-on-federal-reserve-transparency-act-2012, gao-reports-on-the-federal-reserve-2011, us-congress]
+  reveal_claims: [house-vote-on-federal-reserve-transparency-act-2012#c1, house-vote-on-federal-reserve-transparency-act-2012#c2, house-vote-on-federal-reserve-transparency-act-2012#c3, gao-reports-on-the-federal-reserve-2011#c1, gao-reports-on-the-federal-reserve-2011#c3]
+  overlay: {kind: quote, source: house-oversight-2012-audit-the-fed, quote: "The Fed’s balance sheet now stands at nearly $3 trillion. It is long past time for a real audit.", caption: "Chairman Issa, House Oversight Committee, June 2012"}
+  narration: "**The audit fight.** Ron Paul introduced the Federal Reserve Transparency Act (H.R. 459) in January 2011 for more comprehensive GAO audits; Darrell Issa advanced it through House Oversight in June 2012. Pointing to the Fed’s nearly $3 trillion balance sheet, Issa said: “It is long past time for a real audit.” Dennis Kucinich spoke for it before the committee’s voice vote; on 25 July the House passed it 327 to 98. The Fed argues that shielding policy prevents political pressures from producing undesirable outcomes, and says the July 2011 GAO emergency-lending audit found no conflicts of interest or material weaknesses in internal controls; that report nevertheless identified opportunities to strengthen policies, while the House vote challenged how far protection for policy should reach."
+  duration: 13
+
+- shot: what-it-pays
+  view: graph
+  focus: federal-reserve
+  time: "2021"
+  reveal: [federal-reserve, us-treasury, federal-reserve-banks-combined-financial-statements-2021, federal-reserve-banks-combined-financial-statements-2024]
+  reveal_claims: [federal-reserve#c1, federal-reserve#c2, federal-reserve-act-section-7#c1, woodrow-wilson#c3]
+  overlay: {kind: stat, value: "$109 billion", label: "Sent to the Treasury by the Reserve Banks in 2021, against $583 million paid in dividends, in the Fed’s combined statements (figures in millions)", source: fed-combined-financial-statements-2021, quote: "Earnings remittances to the Treasury 109,025 86,890"}
+  narration: "**What it pays.** When Wilson signed in 1913, he also signed rules assigning earnings to the government; the Treasury secretary could use them to strengthen gold reserves or reduce government debt. Under the law as amended, Reserve Banks pay costs and dividends, retain a capped surplus and send the rest to the Treasury; their statements report $109,025 million sent in 2021, after $86,890 million in 2020, against $583 million in 2021 dividends. When weekly earnings cannot cover costs, dividends and surplus requirements, the Banks suspend payments and record a deferred asset. At the end of 2024 it stood at $215,955 million, a shortfall future earnings must cover before remittances resume, keeping that money from the Treasury until then."
   duration: 13
 
 - shot: who-runs-it
@@ -156,16 +206,6 @@ Aldrich’s group put bankers at the center of its plan. Wilson insisted that go
   narration: "**Who owns it.** In 1983 a writer in a Pennsylvania chapter newsletter for retired federal employees named banks as the Fed’s owners; the ADL checked New York Fed membership and found all but Chase Manhattan absent. The Fed says it “is not \"owned\" by anyone” and that its corporate form misleads some observers. Member banks do hold stock they cannot transfer or pledge, vote for six of nine directors, and receive capped dividends. The dividend is 6 percent, or, above an inflation-adjusted asset threshold of about $10 billion, the lesser of 6 percent and the ten-year Treasury yield: those statutory rights determine who votes and who receives dividends."
   duration: 13
 
-- shot: what-it-pays
-  view: graph
-  focus: federal-reserve
-  time: "2021"
-  reveal: [federal-reserve, us-treasury, federal-reserve-banks-combined-financial-statements-2021, federal-reserve-banks-combined-financial-statements-2024]
-  reveal_claims: [federal-reserve#c1, federal-reserve#c2, federal-reserve-act-section-7#c1, woodrow-wilson#c3]
-  overlay: {kind: stat, value: "$109 billion", label: "Sent to the Treasury by the Reserve Banks in 2021, against $583 million paid in dividends, in the Fed’s combined statements (figures in millions)", source: fed-combined-financial-statements-2021, quote: "Earnings remittances to the Treasury 109,025 86,890"}
-  narration: "**What it pays.** When Wilson signed in 1913, he also signed rules assigning earnings to the government; the Treasury secretary could use them to strengthen gold reserves or reduce government debt. Under the law as amended, Reserve Banks pay costs and dividends, retain a capped surplus and send the rest to the Treasury; their statements report $109,025 million sent in 2021, after $86,890 million in 2020, against $583 million in 2021 dividends. When weekly earnings cannot cover costs, dividends and surplus requirements, the Banks suspend payments and record a deferred asset. At the end of 2024 it stood at $215,955 million, a shortfall future earnings must cover before remittances resume, keeping that money from the Treasury until then."
-  duration: 13
-
 - shot: audited-but-how-far
   view: graph
   focus: federal-reserve
@@ -174,45 +214,5 @@ Aldrich’s group put bankers at the center of its plan. Wilson insisted that go
   reveal_claims: [federal-reserve#c3, house-vote-on-federal-reserve-transparency-act-2012#c1]
   overlay: {kind: quote, source: usc-31-714, quote: "deliberations, decisions, or actions on monetary policy matters, including discount window operations, reserves of member banks, securities credit, interest on deposits, and open market operations;", caption: "31 U.S. Code section 714(b): what audits of the Board and Reserve Banks by the Comptroller General “may not include”"}
   narration: "**Audited, but how far.** On 25 July 2012 Glenn Thompson voted for wider GAO audits: “Providing for audits promotes much needed transparency that the Federal Reserve System has historically lacked.” The Fed says outside firms already audit Reserve Bank statements annually, hired by the Board; an outside auditor hired by its inspector general audits the Board, and the GAO reviews it often. But 31 U.S.C. 714(b) bars the Comptroller General from auditing monetary-policy decisions, foreign central-bank and government dealings, and Open Market Committee transactions. Subsections (e) and (f) allow audits of section 13(3) emergency lending and discount-window and open-market “covered transactions” for operations, accounting, internal controls and collateral policies, but not policy itself; Thompson’s vote sought to move that boundary."
-  duration: 13
-
-- shot: the-audit-fight
-  view: graph
-  focus: federal-reserve
-  time: "2012-07-25"
-  reveal: [federal-reserve, house-vote-on-federal-reserve-transparency-act-2012, gao-reports-on-the-federal-reserve-2011, us-congress]
-  reveal_claims: [house-vote-on-federal-reserve-transparency-act-2012#c1, house-vote-on-federal-reserve-transparency-act-2012#c2, house-vote-on-federal-reserve-transparency-act-2012#c3, gao-reports-on-the-federal-reserve-2011#c1, gao-reports-on-the-federal-reserve-2011#c3]
-  overlay: {kind: quote, source: house-oversight-2012-audit-the-fed, quote: "The Fed’s balance sheet now stands at nearly $3 trillion. It is long past time for a real audit.", caption: "Chairman Issa, House Oversight Committee, June 2012"}
-  narration: "**The audit fight.** Ron Paul introduced the Federal Reserve Transparency Act (H.R. 459) in January 2011 for more comprehensive GAO audits; Darrell Issa advanced it through House Oversight in June 2012. Pointing to the Fed’s nearly $3 trillion balance sheet, Issa said: “It is long past time for a real audit.” Dennis Kucinich spoke for it before the committee’s voice vote; on 25 July the House passed it 327 to 98. The Fed argues that shielding policy prevents political pressures from producing undesirable outcomes, and says the July 2011 GAO emergency-lending audit found no conflicts of interest or material weaknesses in internal controls; that report nevertheless identified opportunities to strengthen policies, while the House vote challenged how far protection for policy should reach."
-  duration: 13
-
-- shot: the-ship
-  view: graph
-  focus: titanic-federal-reserve-tale
-  time: "1912-04-15"
-  reveal: [titanic-federal-reserve-tale, j-p-morgan, sinking-of-the-titanic, federal-reserve]
-  reveal_claims: [titanic-federal-reserve-tale#c1, titanic-federal-reserve-tale#c2, titanic-federal-reserve-tale#c3]
-  overlay: {kind: quote, source: snopes-titanic-inside-job, quote: "Benjamin Guggenheim, Isidor Straus, [and John] Jacob Astor [all] opposed the new Federal Reserve bank.", caption: "A meme Snopes rated False, shared on Telegram in September 2022"}
-  narration: "**The ship.** Morgan booked passage on the Titanic, then cancelled; George Behe told Reuters he could find no authoritative 1912 explanation, but the cancellation was not mere hours before sailing. That decision became the seed of a false murder tale: Morgan supposedly sank the ship to kill Federal Reserve opponents Guggenheim, Straus and Astor. Snopes rates it False and dates the meme to at least 2014; Lead Stories traces the tale to 2012, calls it antisemitic, and quotes a version invoking “the Rothschild ponzi scheme.” Historians debate Morgan’s reason for cancelling, with the booking and cancellation reported by History.com and Reuters; the tale gave the dead men a political position that their words would have to bear out."
-  duration: 13
-
-- shot: the-test
-  view: graph
-  focus: sinking-of-the-titanic
-  time: "1913-12-23"
-  reveal: [sinking-of-the-titanic, federal-reserve-act, titanic-federal-reserve-tale, aldrich-plan]
-  reveal_claims: [titanic-federal-reserve-tale#c3]
-  overlay: {kind: quote, source: reuters-fact-check-titanic-federal-reserve, quote: "George Behe told Reuters he was unable to find any documents in his 45 years of researching the Titanic that proved the three men opposed the Federal Reserve.", caption: "Reuters fact check, March 2021"}
-  narration: "**The test.** Isidor Straus argued for reserve reform in a Times letter published on 25 October 1911, Lead Stories notes; during the sinking he declined a lifeboat place so women and children could board, J. Kent Layton told Snopes. Layton said all three men were seen during the sinking, so a plot could not ensure their deaths; more than 1,500 died, including Straus, Astor and Guggenheim. Reuters, citing the Washington Post, reports no public stance from Astor or Guggenheim and Straus reportedly in favor of Aldrich’s proposal, the plan at issue in April 1912; Snopes says Astor favored it, but its lone cited 1911 Times item names Straus. Morgan died on 31 March 1913, nine months before Wilson signed on 23 December; Straus’s letter contradicts the opposition the tale assigns him."
-  duration: 13
-
-- shot: where-it-came-from
-  view: graph
-  focus: jekyll-island-meeting-1910
-  time: "1952"
-  reveal: [jekyll-island-meeting-1910, nelson-aldrich, henry-p-davison, a-piatt-andrew, frank-vanderlip, paul-warburg, the-secrets-of-the-federal-reserve, federal-reserve]
-  reveal_claims: [the-secrets-of-the-federal-reserve#c1]
-  overlay: {kind: quote, source: adl-jewish-control-federal-reserve, quote: "the antisemitic notion that \"the Jews\" dominate and command the U.S. Federal Reserve System and in effect control the world’s money has surfaced across the extremist spectrum.", caption: "Anti-Defamation League, “Jewish ‘Control’ of the Federal Reserve: A Classic Antisemitic Myth”"}
-  narration: "**Where it came from.** Eustace Mullins said Ezra Pound asked him to investigate the Fed, reportedly instructing him, “You must work on it as a detective story”; Mullins produced the 1952 book later called The Secrets of the Federal Reserve. The Woodrow Wilson Presidential Library says he took it toward “hatred against bankers and Jews.” The ADL traces related attacks through A. N. Field in 1931 and Wickliffe Vennard in the 1950s; it reproduces Mullins naming Warburg and two other monetary architects by religion and descent, and calls Jewish control of the Fed a classic antisemitic myth. The meeting had been real and secret; the Library credits his book with spreading false banking conspiracies."
   duration: 13
 ```
