@@ -147,53 +147,53 @@ Between those documents lay an opium trade, a commissioner’s demand to stop it
   narration: "**The troops stay until the terms are met.** The compensation clauses were followed by guarantees enforced through occupation. Pottinger’s treaty opened Canton, Amoy, Foochow, Ningpo and Shanghai to British residents and consular officers, abolished compulsory dealing through Hong merchants and ceded Hong Kong in perpetuity. It required the release of British prisoners and an amnesty for Chinese subjects who had served or dealt with Britain. British forces would leave Nanking and the Grand Canal after imperial assent and the first payment; they would retain two islands until payments and port arrangements were complete. The treaty promised to stop molesting or obstructing China’s trade. It left opium’s future regulation unresolved. Qianlong’s refusal had become an agreement enforced by troops; explaining Britain’s ability to impose it requires looking behind the signatures."
   duration: 13
 
-- shot: "when"
+- shot: "who-gets-to-change-the-rules"
   view: "graph"
-  focus: "stephen-broadberry"
-  time: "2017/2026"
-  reveal: ["stephen-broadberry", "kenneth-pomeranz", "china-europe-and-the-great-divergence-2018", "great-divergence"]
-  reveal_claims: ["stephen-broadberry#c1", "stephen-broadberry#c2", "great-divergence#c17", "great-divergence#c2"]
-  overlay: {kind: "quote", source: "warwick-cage-pomeranz-why-the-west", quote: "I date the great divergence to 1700, but that’s because I focus on the Yangtze Delta", caption: "Stephen Broadberry, May 2026 interview quoted by CAGE"}
-  narration: "**Broadberry moves the starting line.** The signatures establish who could dictate terms in 1842; they do not date the economic lead that preceded them. Reconstructing Chinese output with Hanhui Guan and David Li, Stephen Broadberry placed China behind Italy by 1300 and the gap by 1750 beyond what regional differences could bridge. In 2026 he put the break nearer 1700 when comparing the Yangtze Delta instead of whole China. The Maddison Project reports two independent reconstructions finding Chinese income fell about a third in the eighteenth century. Kenneth Pomeranz, comparing dynamic regional cores, placed the decisive break near 1800. That disagreement changes what must be explained: an earlier gap cannot originate in this war. It also changes how much weight Britain’s late access to coal and American land can carry."
+  focus: "atlantic-trade-and-institutions"
+  time: "2005"
+  reveal: ["daron-acemoglu", "simon-johnson", "james-a-robinson", "joel-mokyr", "atlantic-trade-and-institutions", "europes-culture-of-growth", "great-divergence"]
+  reveal_claims: ["great-divergence#c6", "great-divergence#c7", "great-divergence#c13"]
+  overlay: {kind: "quote", source: "acemoglu-johnson-robinson-2005-rise-of-europe-abstract", quote: "This trade and the associated colonialism affected Europe not only directly, but also indirectly by inducing institutional change.", caption: "Acemoglu, Johnson and Robinson, 2005"}
+  narration: "**Follow who could change the rules.** Beyond the treaty, Daron Acemoglu, Simon Johnson and James Robinson’s account examines how Atlantic trade and colonialism strengthened merchants where monarchs already faced checks, helping merchants obtain stronger property rights. Joel Mokyr instead follows the European culture and institutions that encouraged useful knowledge, choosing the centuries between Columbus and Newton to explain sustained innovation. These accounts locate power in different places: merchants changing political rules, or people changing how knowledge was pursued. The Canton documents show another use of rules: officials arguing over sovereignty, a company defending its drug policy and ministers defending force. Neither economic explanation turns those recorded choices into an inevitable outcome."
   duration: 13
 
 - shot: "coal-and-colonies"
   view: "graph"
   focus: "coal-and-colonies"
-  time: "2000/2026"
+  time: "2010"
   reveal: ["kenneth-pomeranz", "robert-c-allen", "coal-and-colonies", "dear-labour-cheap-energy", "newcomen-engine", "james-watt", "watt-separate-condenser"]
   reveal_claims: ["great-divergence#c4", "great-divergence#c5", "coal-and-colonies#c2", "dear-labour-cheap-energy#c2", "james-watt#c1"]
   overlay: {kind: "quote", source: "allen-2010-british-industrial-revolution-keynes-lecture", quote: "The reason it was profitable to develop the Newcomen engine in Britain was because there were coal mines to be drained.", caption: "Robert Allen, Keynes Lecture, 2009"}
-  narration: "**Pomeranz follows the fuel and land.** Pomeranz’s late break led him to coal and colonies: fossil fuel and American land relieved pressures on British land and woodland. The CAGE feature describes cotton grown on land taken from Native Americans, worked by enslaved people mostly trafficked from Africa. Robert Allen asks why firms paid to develop machines: high wages and cheap energy made them profitable, a price structure he traces partly to mercantilism and imperialism. Coal mines needed draining and supplied cheap fuel for Newcomen’s wasteful engine; engineers then reduced its consumption. James Watt’s 1769 patent sought to save steam and fuel by keeping the working cylinder hot and condensing steam elsewhere. The colonial cotton supplying industry depended on the forced labour Williams would put at the centre of his explanation."
+  narration: "**Pomeranz follows the fuel and land.** Alongside these accounts of institutions, Pomeranz’s explanation of a late break points to coal and colonies: fossil fuel and American land relieved pressures on British land and woodland. The CAGE feature describes cotton grown on land taken from Native Americans, worked by enslaved people mostly trafficked from Africa. Robert Allen asks why firms paid to develop machines: high wages and cheap energy made them profitable, a price structure he traces partly to mercantilism and imperialism. Coal mines needed draining and supplied cheap fuel for Newcomen’s wasteful engine; engineers then reduced its consumption. James Watt’s 1769 patent sought to save steam and fuel by keeping the working cylinder hot and condensing steam elsewhere. The colonial cotton supplying industry depended on the forced labour Williams put at the centre of his explanation."
+  duration: 13
+
+- shot: "the-answer"
+  view: "graph"
+  focus: "great-divergence"
+  time: "2020"
+  reveal: ["great-divergence", "maddison-project-database-2020", "first-opium-war", "treaty-of-nanking-1842"]
+  reveal_claims: ["great-divergence#c1", "treaty-of-nanking-1842#c2"]
+  overlay: {kind: "stat", value: "$8,212 against $985", label: "Estimated income per head in 1913: United Kingdom and China, 2011 U.S. dollars", source: "maddison-project-2020-data-extract", quote: "GBR United Kingdom 1913 8212 45649"}
+  narration: "**Power to make the other side pay.** Britain came to dictate terms by making commercial claims enforceable through war: five ports, Hong Kong and $21 million. Lin demanded suppression of poison; British defenders demanded redress for confinement and threats. Maddison Project estimates put income per head in 1913 at $8,212 in the United Kingdom and $985 in China, in 2011 U.S. dollars. Coal, colonial resources, enslaved labour, incentives and institutions remain disputed explanations of the wider lead. Charlemagne’s schools, Petrarch’s darkness, plague and wage controls, printing, Columbus and Gama, Potosí, Clive’s Bengal, the Royal Society and Rhodes’s imperialism are other stories; so are Landes’s, Diamond’s and Parthasarathi’s different comparisons. Britain’s negotiators could enforce demands Qianlong had rejected; his refusal does not explain how Britain acquired that power."
   duration: 13
 
 - shot: "slavery-and-industry"
   view: "graph"
   focus: "eric-williams"
-  time: "1944/2021"
+  time: "2021-10-05"
   reveal: ["eric-williams", "capitalism-and-slavery", "slavery-and-british-industry", "transatlantic-slave-trade", "great-divergence"]
   reveal_claims: ["great-divergence#c18", "great-divergence#c19", "slavery-and-british-industry#c1"]
   overlay: {kind: "quote", source: "the-nation-horne-on-eric-williams", quote: "He insisted that slavery fueled British industrial development, and therefore that slavery was the foundation not only of British capitalism but of capitalism as a whole.", caption: "Gerald Horne describing Eric Williams’s argument"}
   narration: "**Williams puts the enslaved in the calculation.** The labour behind colonial products was central to Eric Williams’s Capitalism and Slavery, published in 1944 after his Oxford thesis on abolition. Gerald Horne describes his argument: enslaved people’s labour fuelled British industrial development, while their resistance helped bring slavery down. Horne credits the book’s lasting influence but says many historians neglect its resistance thesis, preferring an account centred on the American Revolution. In Williams’s explanation, as Horne presents it, abolition also followed economic self-interest rather than humanitarianism alone. The people forced to produce wealth were actors resisting enslavement, not merely inputs."
   duration: 13
 
-- shot: "who-gets-to-change-the-rules"
+- shot: "when"
   view: "graph"
-  focus: "atlantic-trade-and-institutions"
-  time: "2005/2017"
-  reveal: ["daron-acemoglu", "simon-johnson", "james-a-robinson", "joel-mokyr", "atlantic-trade-and-institutions", "europes-culture-of-growth", "great-divergence"]
-  reveal_claims: ["great-divergence#c6", "great-divergence#c7", "great-divergence#c13"]
-  overlay: {kind: "quote", source: "acemoglu-johnson-robinson-2005-rise-of-europe-abstract", quote: "This trade and the associated colonialism affected Europe not only directly, but also indirectly by inducing institutional change.", caption: "Acemoglu, Johnson and Robinson, 2005"}
-  narration: "**Follow who could change the rules.** The colonial commerce Williams examined also figures in Daron Acemoglu, Simon Johnson and James Robinson’s account: Atlantic trade and colonialism strengthened merchants where monarchs already faced checks, helping merchants obtain stronger property rights. Joel Mokyr instead follows the European culture and institutions that encouraged useful knowledge, choosing the centuries between Columbus and Newton to explain sustained innovation. These accounts locate power in different places: merchants changing political rules, or people changing how knowledge was pursued. The Canton documents show another use of rules: officials arguing over sovereignty, a company defending its drug policy and ministers defending force. Neither economic explanation turns those recorded choices into an inevitable outcome."
-  duration: 13
-
-- shot: "the-answer"
-  view: "graph"
-  focus: "great-divergence"
-  time: "1793/1913"
-  reveal: ["great-divergence", "maddison-project-database-2020", "first-opium-war", "treaty-of-nanking-1842"]
-  reveal_claims: ["great-divergence#c1", "treaty-of-nanking-1842#c2"]
-  overlay: {kind: "stat", value: "$8,212 against $985", label: "Estimated income per head in 1913: United Kingdom and China, 2011 U.S. dollars", source: "maddison-project-2020-data-extract", quote: "GBR United Kingdom 1913 8212 45649"}
-  narration: "**Power to make the other side pay.** Britain came to dictate terms by making commercial claims enforceable through war: five ports, Hong Kong and $21 million. Lin demanded suppression of poison; British defenders demanded redress for confinement and threats. Maddison Project estimates put income per head in 1913 at $8,212 in the United Kingdom and $985 in China, in 2011 U.S. dollars. Coal, colonial resources, enslaved labour, incentives and institutions remain disputed explanations of the wider lead. Charlemagne’s schools, Petrarch’s darkness, plague and wage controls, printing, Columbus and Gama, Potosí, Clive’s Bengal, the Royal Society and Rhodes’s imperialism are other stories; so are Landes’s, Diamond’s and Parthasarathi’s different comparisons. Britain’s negotiators could enforce demands Qianlong had rejected; his refusal does not explain how Britain acquired that power."
+  focus: "stephen-broadberry"
+  time: "2026"
+  reveal: ["stephen-broadberry", "kenneth-pomeranz", "china-europe-and-the-great-divergence-2018", "great-divergence"]
+  reveal_claims: ["stephen-broadberry#c1", "stephen-broadberry#c2", "great-divergence#c17", "great-divergence#c2"]
+  overlay: {kind: "quote", source: "warwick-cage-pomeranz-why-the-west", quote: "I date the great divergence to 1700, but that’s because I focus on the Yangtze Delta", caption: "Stephen Broadberry, May 2026 interview quoted by CAGE"}
+  narration: "**Broadberry moves the starting line.** The explanations of Britain’s industrial development leave a question about timing: when did the economic lead that preceded the signatures in 1842 begin? Reconstructing Chinese output with Hanhui Guan and David Li, Stephen Broadberry placed China behind Italy by 1300 and the gap by 1750 beyond what regional differences could bridge. In 2026 he put the break nearer 1700 when comparing the Yangtze Delta instead of whole China. The Maddison Project reports two independent reconstructions finding Chinese income fell about a third in the eighteenth century. Kenneth Pomeranz, comparing dynamic regional cores, placed the decisive break near 1800. That disagreement changes what must be explained: an earlier gap cannot originate in this war. It also changes how much weight Britain’s late access to coal and American land can carry."
   duration: 13
 ```
