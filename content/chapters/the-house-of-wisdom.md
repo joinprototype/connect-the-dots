@@ -156,7 +156,7 @@ In 1515, a printer in Venice issued a Greek astronomer's book in Latin translate
 - shot: what-survived-and-why
   view: "graph"
   focus: "almagest"
-  time: "0827/2010"
+  time: "2014"
   reveal: ["almagest", "hajjaj-arabic-almagest", "ishaq-thabit-almagest", "latin-almagest", "house-of-wisdom", "dispute-over-the-house-of-wisdom", "tale-of-the-black-tigris"]
   reveal_claims: ["dispute-over-the-house-of-wisdom#c1", "dispute-over-the-house-of-wisdom#c2", "tale-of-the-black-tigris#c2"]
   overlay: {kind: "quote", source: "hoi-2014-foundation-of-the-house-of-wisdom", quote: "Among the dozens of reports about the translation of Greek works into Arabic that we have, there is not even a single one that mentions the bayt-al-hikma .", caption: "Dimitri Gutas, Greek Thought, Arabic Culture, 1998, quoted by History of Information"}
