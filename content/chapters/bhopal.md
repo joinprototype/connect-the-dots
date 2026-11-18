@@ -172,16 +172,6 @@ On the night of 2 to 3 December 1984, gas from a pesticide plant in Bhopal, Indi
   narration: "**Who would pay later?** The Supreme Court’s 2023 order recounts Justice Ranganath Mishra’s concern in the October 1991 review: UCIL’s Indian assets were about Rs 100 crore, and a larger judgment might prove unenforceable in the United States. The Supreme Court kept the settlement but revived criminal cases, ruling that their extinguishment was inappropriate. It ordered insurance for at least 100,000 people who might fall ill later; India, as a welfare state, must cover any shortfall. India subsequently opposed reopening the sum, calling a 2006 challenge frivolous, according to Carbide. In 2023 the Court found that India had never bought the insurance. The judges had preserved the money and assigned future victims insurance that India never bought."
   duration: 13
 
-- shot: the-criminal-case
-  view: graph
-  focus: bhopal-verdict-2010
-  time: "2010-06-07"
-  reveal: [bhopal-verdict-2010, bhopal-cjm-court, keshub-mahindra, union-carbide-india]
-  reveal_claims: [keshub-mahindra#c2, union-carbide-india#c1]
-  overlay: {kind: "quote", source: "governancenow-2010-mahindra-evidence", quote: "Help them with health. Instead of spending time on legal matters, we should help the people of Bhopal.", caption: "Keshub Mahindra in Bhopal for bail formalities, 6 July 2010, as quoted by Governance Now"}
-  narration: "**Two years, then bail.** In Bhopal on 7 June 2010, UCIL chairman Keshub Mahindra was among seven people convicted, along with the company, of causing death by negligence. The seven received the maximum two years and bail. The CBI’s 1987 culpable-homicide charge carried ten years; the accused won its reduction in the Supreme Court in 1996. Returning for bail formalities, Mahindra challenged the evidence and urged help: “Help them with health.” He was unhappy with the verdict: “Where are the evidences,” he asked. In May 2011 the Supreme Court refused to recall its 1996 ruling but said the Sessions Court could raise the charge; appeals were pending. Mahindra died in 2023 without serving prison time, his obituary records. The convictions had brought no immediate imprisonment."
-  duration: 13
-
 - shot: the-absconders
   view: graph
   focus: warren-anderson
@@ -202,6 +192,16 @@ On the night of 2 to 3 December 1984, gas from a pesticide plant in Bhopal, Indi
   narration: "**The hose and the unnamed man.** In his 1988 paper for Union Carbide, Arthur D. Little investigator Ashok Kalelkar proposed a reason: a disgruntled operator connected a hose to tank 610 to spoil its contents. He wrote “We believe”; his firm was on Carbide’s investigation team. Carbide says safety systems prevented accidental water entry and police barred interviews for over a year. Workers described routine pipe washing instead. Amnesty says Carbide’s 1985 report identified no specific cause of water entry and the company refused to name its alleged saboteur or produce specific sabotage evidence in court. Edward Broughton’s review says Carbide fabricated sabotage scenarios; independent sources challenged them. Kalelkar’s proposed act became Carbide’s explanation for the disaster, contested by workers and researchers."
   duration: 13
 
+- shot: the-criminal-case
+  view: graph
+  focus: bhopal-verdict-2010
+  time: "2010-06-07"
+  reveal: [bhopal-verdict-2010, bhopal-cjm-court, keshub-mahindra, union-carbide-india]
+  reveal_claims: [keshub-mahindra#c2, union-carbide-india#c1]
+  overlay: {kind: "quote", source: "governancenow-2010-mahindra-evidence", quote: "Help them with health. Instead of spending time on legal matters, we should help the people of Bhopal.", caption: "Keshub Mahindra in Bhopal for bail formalities, 6 July 2010, as quoted by Governance Now"}
+  narration: "**Two years, then bail.** In Bhopal on 7 June 2010, UCIL chairman Keshub Mahindra was among seven people convicted, along with the company, of causing death by negligence. The seven received the maximum two years and bail. The CBI’s 1987 culpable-homicide charge carried ten years; the accused won its reduction in the Supreme Court in 1996. Returning for bail formalities, Mahindra challenged the evidence and urged help: “Help them with health.” He was unhappy with the verdict: “Where are the evidences,” he asked. In May 2011 the Supreme Court refused to recall its 1996 ruling but said the Sessions Court could raise the charge; appeals were pending. Mahindra died in 2023 without serving prison time, his obituary records. The convictions had brought no immediate imprisonment."
+  duration: 13
+
 - shot: dow
   view: graph
   focus: dow-chemical
@@ -212,16 +212,6 @@ On the night of 2 to 3 December 1984, gas from a pesticide plant in Bhopal, Indi
   narration: "**Produce the subsidiary.** In July 2013, a Bhopal magistrate summoned Dow to explain why its subsidiary had not appeared for trial, Amnesty says. Dow had bought all UCC’s shares in February 2001, over 16 years after the leak; Amnesty says it never compelled UCC to face the outstanding criminal charges. Dow’s answer is that UCC remained separate, Dow assumed none of its liabilities, and the Indian criminal court has jurisdiction over neither company. It calls the notice a procedural request to explain why it should not have to produce UCC, rather than a summons. India’s 2010 compensation petition also named Dow as a respondent; Dow says it should not have been a party. The purchase had brought survivors to another company’s door."
   duration: 13
 
-- shot: 2023
-  view: graph
-  focus: bhopal-curative-petition
-  time: "2023-03-14"
-  reveal: [bhopal-curative-petition, supreme-court-of-india, government-of-india, union-carbide]
-  reveal_claims: [bhopal-curative-petition#c1, bhopal-curative-petition#c3, supreme-court-of-india#c2]
-  overlay: {kind: "quote", source: "sc-india-2023-curative-order", quote: "The money was needed in the immediate aftermath of the tragedy and not after three decades.", caption: "Supreme Court of India, 14 March 2023"}
-  narration: "**A sum the judges would keep.** On 14 March 2023, Justice Sanjay Kishan Kaul and four colleagues dismissed India’s petitions. India’s December 2010 petition sought Rs 7,844 crore beyond Rs 750 crore already paid; by 2022 its demand approached Rs 14,000 crore. The judges found compensation sufficient, exceeding India’s own figures except for minor injuries; the Welfare Commissioner put payouts near six times motor-accident awards. They acknowledged no amount could truly suffice but preferred a lump sum to a trial with no foreseeable end. The judges held that a top-up had no legal footing and called India’s failure to buy insurance gross negligence. Amnesty called the settlement highly inadequate in 2014. The dismissal left the settlement standing and India obliged to cover any shortfall."
-  duration: 13
-
 - shot: the-ground
   view: graph
   focus: bhopal-site-contamination-dispute
@@ -230,6 +220,16 @@ On the night of 2 to 3 December 1984, gas from a pesticide plant in Bhopal, Indi
   reveal_claims: [bhopal-site-contamination-dispute#c1, bhopal-site-contamination-dispute#c2, bhopal-site-contamination-dispute#c3, bhopal-site-contamination-dispute#c4, bhopal-site-contamination-dispute#c6, bhopal-site-contamination-dispute#c7, bhopal-site-contamination-dispute#c8]
   overlay: {kind: "quote", source: "bbc-2009-survivors-fight-for-justice", quote: "The test found that it contained nearly 4,000 micrograms per litre of carbon tetrachloride - nearly 1,000 times the World Health Organisation's safe limit.", caption: "BBC, 2009, on a pump just north of the plant, tested in a U.K. laboratory"}
   narration: "**Open the gates?** In 2009, Chief Minister Shivraj Singh Chouhan proposed opening the plant as a memorial, assuring the BBC there was “nothing hazardous to human life”. Amnesty said groundwater pollution continued; in May 2004 the Supreme Court found dumping had damaged groundwater and ordered tanker water. Carbide reports NEERI’s 1997 finding of contamination inside but none outside; in 2010, generally uncontaminated groundwater, but five nearby wells contaminated by dump runoff and incomplete waste recovery. A 2013 review of 15 studies found contaminated soil and varied groundwater results. The BBC’s pump sample north of the plant held nearly 1,000 times the WHO limit for carbon tetrachloride. Carbide assigns cleanup to the state; in 2013 a U.S. appeals court rejected Sahu I’s pollution claims against it. Residents faced conflicting findings about their water."
+  duration: 13
+
+- shot: 2023
+  view: graph
+  focus: bhopal-curative-petition
+  time: "2023-03-14"
+  reveal: [bhopal-curative-petition, supreme-court-of-india, government-of-india, union-carbide]
+  reveal_claims: [bhopal-curative-petition#c1, bhopal-curative-petition#c3, supreme-court-of-india#c2]
+  overlay: {kind: "quote", source: "sc-india-2023-curative-order", quote: "The money was needed in the immediate aftermath of the tragedy and not after three decades.", caption: "Supreme Court of India, 14 March 2023"}
+  narration: "**A sum the judges would keep.** On 14 March 2023, Justice Sanjay Kishan Kaul and four colleagues dismissed India’s petitions. India’s December 2010 petition sought Rs 7,844 crore beyond Rs 750 crore already paid; by 2022 its demand approached Rs 14,000 crore. The judges found compensation sufficient, exceeding India’s own figures except for minor injuries; the Welfare Commissioner put payouts near six times motor-accident awards. They acknowledged no amount could truly suffice but preferred a lump sum to a trial with no foreseeable end. The judges held that a top-up had no legal footing and called India’s failure to buy insurance gross negligence. Amnesty called the settlement highly inadequate in 2014. The dismissal left the settlement standing and India obliged to cover any shortfall."
   duration: 13
 
 - shot: what-remains
