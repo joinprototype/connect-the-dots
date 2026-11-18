@@ -36,6 +36,17 @@ The islanders petitioned the United Nations, sued for their land and left island
   narration: "**A king stands up.** After church in February 1946, Commodore Ben Wyatt asked King Juda and Bikini’s 167 people to leave “temporarily” for “the good of mankind and to end all world wars.” After deliberation Jack Niedenthal describes as confused and sorrowful, Juda agreed conditionally: if the tests benefited mankind, his people would go. Emso Leviticus later recalled that they had agreed beforehand to stand behind Juda; their leaders chose Rongerik because they did not want another king’s rule on Ujae. The Navy took them with several weeks’ food; by 1947, Harold Ickes reported, they were “actually and literally starving.” They moved again to Kwajalein, then Kili. In 1998 the IAEA advised against permanent resettlement of Bikini; the temporary departure had become exile."
   duration: 13
 
+- shot: semipalatinsk
+  view: map
+  camera: {center: [79.0, 50.0], zoom: 6.6, pitch: 0, duration: 6}
+  places: [semipalatinsk-test-site, semey, kurchatov-kazakhstan]
+  time: "1949-08-29"
+  reveal: [soviet-nuclear-tests-at-semipalatinsk, semipalatinsk-test-site, first-soviet-atomic-test, soviet-government, kazakhstan, joseph-stalin]
+  reveal_claims: [soviet-nuclear-tests-at-semipalatinsk#c1, soviet-nuclear-tests-at-semipalatinsk#c3, first-soviet-atomic-test#c4, first-soviet-atomic-test#c3, soviet-nuclear-tests-at-semipalatinsk#c12]
+  overlay: {kind: stat, value: "456", label: "Nuclear tests the Soviet Union fired at Semipalatinsk between 1949 and 1989: 340 underground and 116 aboveground", source: bulletin-2009-kassenova-semipalatinsk, quote: "In all, the Soviet Union conducted 456 nuclear tests at Semipalatinsk (340 underground and 116 aboveground), starting with that first one in August 1949 and ending with the final test on October 19, 1989."}
+  narration: "**Semipalatinsk.** After Hiroshima and Nagasaki, Stalin ordered a Soviet bomb to catch up with the Americans, Togzhan Kassenova writes; Soviet leaders chose the Semipalatinsk region and kept local people ignorant of its purpose. Kassenova writes that on the rainy, windy morning of 29 August 1949, test personnel fired the first bomb knowing the weather increased nearby people’s exposure to fallout. The military ran the site in secrecy and withheld radiation data; testing continued until 19 October 1989, with totals of 456 in her figures, 468 in Kazakhstan’s Finnish embassy’s, about 500 in the closing decree. That first morning’s radioactive cloud reached settlements whose inhabitants had received no explanation."
+  duration: 13
+
 - shot: bravo
   view: map
   camera: {center: [165.4, 11.6], zoom: 7.5, pitch: 0, duration: 6}
@@ -108,16 +119,6 @@ The islanders petitioned the United Nations, sued for their land and left island
   narration: "**What Moscow said.** At an ambassador’s apartment on 9 June 1954, Soviet diplomat Mikhail Sumskoi asked Mason Sears how Washington would handle the islanders’ petition; when Sears asked about Soviet atomic explosions, Sumskoi replied, Sears recorded, “but that was not in a trust territory”. On 16 July the Soviet delegate publicly urged the Trusteeship Council to recognize “irreparable harm to the health of part of the indigenous population” and tell the U.S. it “should desist.” The Soviet draft failed, as did India’s proposal for a World Court opinion; the Soviet Union, Syria and India voted against the U.S. resolution. Moscow challenged Washington’s tests while its own Semipalatinsk site, operating since 1949, stayed open."
   duration: 13
 
-- shot: what-it-did-to-health
-  view: graph
-  focus: lijon-eknilang
-  time: "1976"
-  reveal: [lijon-eknilang, rongelap-atoll, utirik-atoll, castle-bravo, us-nuclear-tests-in-the-marshall-islands, rongelap-resettlement-1957]
-  reveal_claims: [lijon-eknilang#c2, rongelap-atoll#c2, utirik-atoll#c2, us-nuclear-tests-in-the-marshall-islands#c5, rongelap-resettlement-1957#c3, lijon-eknilang#c3]
-  overlay: {kind: quote, source: icj-1995-11-14-eknilang, quote: "I cannot have children. I have had miscarriages on seven occasions. On one of those occasions, I miscarried after four months. The child I miscarried was severely deformed; it had only one eye.", caption: "Lijon Eknilang, to the International Court of Justice, 14 November 1995"}
-  narration: "**What it did to health.** Eknilang recalled in 1995 that Lekoj Anjain’s body returned in a coffin; his father John listed the dead and those sent away for thyroid surgery, fearing they would forget the names. She reported thyroid surgery and seven miscarriages. The U.S. radiation-experiments committee identified thyroid abnormalities and one fatal leukemia case as major late effects. A Brookhaven doctor counted three thyroid cancers each on Utirik and Rongelap in 1976, despite Utirik’s estimated dose being a tenth as high; the National Cancer Institute estimated 530 extra lifetime cancers among 14,000 exposed. Eknilang said officials used illnesses in the “control group” to dismiss her community’s fears; the committee considered it likely that many controls had also been exposed."
-  duration: 13
-
 - shot: project-4-1
   view: graph
   focus: project-4-1
@@ -138,57 +139,14 @@ The islanders petitioned the United Nations, sued for their land and left island
   narration: "**Home to Rongelap.** Robert Conard wrote in 1956 that returning home was the Rongelap people’s “express wish,” although U.S. medical officers had advised in 1954 against more radiation for at least twelve years, perhaps the rest of their lives. The Commission approved return on 27 February 1957 despite residual radiation in food; health physicist Gordon Dunning wanted a full survey but wrote “we will have to settle for the external readings only,” and the U.S. committee could not establish why. A 1957 report called habitation safe and valuable for radiation research. Eknilang recalled food blistering their mouths and worsening illness after their return: “We had to believe that our island was radioactive, and we evacuated ourselves from Rongelap in 1985.”"
   duration: 13
 
-- shot: bikini-again
-  view: map
-  camera: {center: [165.4, 11.6], zoom: 8.0, pitch: 0, duration: 6}
-  places: [bikini-atoll, kili-island]
-  time: "1978-09"
-  reveal: [bikini-resettlement-1968-1978, bikini-atoll, atomic-energy-commission, us-government, kili-island, lyndon-b-johnson]
-  reveal_claims: [bikini-resettlement-1968-1978#c1, bikini-resettlement-1968-1978#c2, bikini-resettlement-1968-1978#c3, section-177-agreement#c3, bikini-resettlement-1968-1978#c4]
-  overlay: {kind: quote, source: niedenthal-1997-bikini, quote: "There’s virtually no radiation left and we can find no discernible effect on either plant or animal life", caption: "Atomic Energy Commission, 1969, as quoted in a 1997 history of the Bikini people"}
-  narration: "**Bikini again.** Following agency discussions begun in 1967 and Atomic Energy Commission advice, Lyndon Johnson promised the Bikinians in June 1968 that they could return home; the Commission assured them in 1969, “There’s virtually no radiation left”. Families returned, but when 1975 tests found more radioactivity than expected, the islanders sued in federal court for a complete survey. In April 1978 doctors found radiation levels in many of Bikini’s 139 residents well above the U.S. limit; officials removed them again that September. The Bikinians pursued compensation in Juda v. United States, but the case was dismissed after the 1986 Compact took effect, leaving their claim dependent on the settlement replacing the courts."
-  duration: 13
-
-- shot: what-was-paid
+- shot: dispensary-no-4
   view: graph
-  focus: nuclear-claims-tribunal
-  time: "2004-12"
-  reveal: [section-177-agreement, nuclear-claims-tribunal, republic-of-the-marshall-islands, us-government]
-  reveal_claims: [section-177-agreement#c1, section-177-agreement#c4, section-177-agreement#c3, nuclear-claims-tribunal#c1]
-  overlay: {kind: stat, value: "$71.7 million", label: "Paid by the Nuclear Claims Tribunal on personal-injury awards of over $87 million, to 1,917 people, as of December 2004, by the Congressional Research Service’s account", source: crs-2005-rl32811-changed-circumstances, quote: "As of December 2004, the NCT had paid $71.7 million on personal injury awards totaling over $87 million to 1,917 individuals."}
-  narration: "**What was paid.** In 2021 Enewetak’s lawyer David Cohen took the unpaid awards to Congress: the 1986 Compact had accepted U.S. responsibility for compensation and supplied $150 million for a full and final settlement, under which the Marshall Islands legislature created a tribunal. By December 2004 it had paid $71.7 million of over $87 million in injury awards to 1,917 people; over forty percent of awardees died before full payment. Land awards were $563 million for Bikini and $386 million for Enewetak; Cohen listed $307 million for Utrik and $1.03 billion for Rongelap, almost all unpaid. Payments stopped in January 2009 and later lawsuits were dismissed; Cohen put unpaid awards above $3 billion in 2021 dollars and asked Congress to address that debt."
-  duration: 13
-
-- shot: the-us-answer
-  view: graph
-  focus: changed-circumstances-petition
-  time: "2004-11"
-  reveal: [changed-circumstances-petition, us-government, us-congress, republic-of-the-marshall-islands]
-  reveal_claims: [changed-circumstances-petition#c1, changed-circumstances-petition#c2, changed-circumstances-petition#c3]
-  overlay: {kind: quote, source: crs-2005-rl32811-changed-circumstances, quote: "the Marshall Islands' request does not qualify as \"changed circumstances\" within the meaning of Article IX of the nuclear claims settlement agreement", caption: "U.S. interagency report of November 2004, as quoted by the Congressional Research Service"}
-  narration: "**The U.S. answer.** Eknilang said ERUB sent her sister Chiyoko Tamayose to a congressional hearing to speak for nuclear survivors. The Marshall Islands had asked Congress in 2000 for about $3.3 billion, invoking injuries unforeseen in 1986 that made compensation “manifestly inadequate.” A 2004 State, Energy and Defense report rejected that case, saying present fallout effects were limited to northerly atolls and the tribunal awarded too liberally; Dick Thornburgh’s review for the Marshall Islands found the tribunal proper. In 2023 Washington still called the Compact and tribunal the full settlement of all claims, while the Marshallese still claimed about $3 billion; Eknilang said Tamayose never got to tell her story there."
-  duration: 13
-
-- shot: the-dome
-  view: map
-  camera: {center: [162.35, 11.55], zoom: 10.5, pitch: 0, duration: 6}
-  places: [runit-island, enewetak-atoll]
-  time: "2020-06"
-  reveal: [runit-dome, runit-island, enewetak-atoll, us-department-of-energy, us-nuclear-tests-in-the-marshall-islands]
-  reveal_claims: [runit-dome#c1, runit-island#c1, us-nuclear-tests-in-the-marshall-islands#c7, us-nuclear-tests-in-the-marshall-islands#c9]
-  overlay: {kind: stat, value: "100,000+", label: "Cubic yards of contaminated soil and debris sealed in the Runit Dome, by the U.S. Department of Energy’s count", source: doe-2020-runit-dome-report, quote: "The containment structure, built in the late 1970s, contains over 100,000 cubic yards of radioactively contaminated soil and debris that were encapsulated in concrete (waste pile) inside an unlined nuclear test crater"}
-  narration: "**The dome.** In 2019 U.N. Secretary-General António Guterres said President Hilda Heine feared radioactive material leaking from Runit Dome, “a kind of coffin.” The U.S. had sealed over 100,000 cubic yards of contaminated soil and debris in an unlined test crater on Runit Island, Enewetak, under a concrete cap completed in 1979; a U.N. expert reported information in 2012 that its structure was “substandard.” The Energy Department’s 2020 answer said the dome faced no immediate collapse or failure, no data showed measurable environmental harm, and the Marshall Islands had assumed responsibility. It acknowledged islanders’ concern and planned groundwater monitoring to determine whether the contents affected the surrounding environment."
-  duration: 13
-
-- shot: semipalatinsk
-  view: map
-  camera: {center: [79.0, 50.0], zoom: 6.6, pitch: 0, duration: 6}
-  places: [semipalatinsk-test-site, semey, kurchatov-kazakhstan]
-  time: "1949-08-29"
-  reveal: [soviet-nuclear-tests-at-semipalatinsk, semipalatinsk-test-site, first-soviet-atomic-test, soviet-government, kazakhstan, joseph-stalin]
-  reveal_claims: [soviet-nuclear-tests-at-semipalatinsk#c1, soviet-nuclear-tests-at-semipalatinsk#c3, first-soviet-atomic-test#c4, first-soviet-atomic-test#c3, soviet-nuclear-tests-at-semipalatinsk#c12]
-  overlay: {kind: stat, value: "456", label: "Nuclear tests the Soviet Union fired at Semipalatinsk between 1949 and 1989: 340 underground and 116 aboveground", source: bulletin-2009-kassenova-semipalatinsk, quote: "In all, the Soviet Union conducted 456 nuclear tests at Semipalatinsk (340 underground and 116 aboveground), starting with that first one in August 1949 and ending with the final test on October 19, 1989."}
-  narration: "**Semipalatinsk.** After Hiroshima and Nagasaki, Stalin ordered a Soviet bomb to catch up with the Americans, Togzhan Kassenova writes; Soviet leaders chose the Semipalatinsk region and kept local people ignorant of its purpose. Kassenova writes that on the rainy, windy morning of 29 August 1949, test personnel fired the first bomb knowing the weather increased nearby people’s exposure to fallout. The military ran the site in secrecy and withheld radiation data; testing continued until 19 October 1989, with totals of 456 in her figures, 468 in Kazakhstan’s Finnish embassy’s, about 500 in the closing decree. That first morning’s radioactive cloud reached settlements whose inhabitants had received no explanation."
+  focus: dispensary-no-4
+  time: "1957"
+  reveal: [dispensary-no-4, scientific-research-institute-for-radiation-medicine-and-ecology, soviet-nuclear-tests-at-semipalatinsk, semey, soviet-government]
+  reveal_claims: [soviet-nuclear-tests-at-semipalatinsk#c7, soviet-nuclear-tests-at-semipalatinsk#c8, soviet-nuclear-tests-at-semipalatinsk#c9, dispensary-no-4#c1, scientific-research-institute-for-radiation-medicine-and-ecology#c1, soviet-nuclear-tests-at-semipalatinsk#c4, soviet-nuclear-tests-at-semipalatinsk#c13]
+  overlay: {kind: quote, source: bulletin-2009-kassenova-semipalatinsk, quote: "In 1957, the military built the Anti-Brucellosis Dispensary No. 4, purportedly to monitor tuberculosis infections in the area. In reality, though, the facility was built to secretly observe the impacts of radiation exposure from nuclear testing on local people.", caption: "Togzhan Kassenova, Bulletin of the Atomic Scientists, 2009 (an opinion piece)"}
+  narration: "**Two clinics, two studies.** Near Semipalatinsk, between 1957 and 1960 Dr. Bahiya Atchabarov led doctors examining villagers. In a later interview reported by Kassenova, he said they found illness directly correlated with radiation: bleeding from mouths, respiratory tracts and genitals, and changes to skin and mucous membranes. Military doctors blamed environment and poverty; Kassenova says the military’s Dispensary No. 4 secretly observed radiation effects under cover of monitoring tuberculosis. Authorities forced Atchabarov’s team to stop; its twelve classified volumes became public only after the Soviet collapse. Gulsum Kakimzhanova remembered her father’s hair falling out overnight; only later, as a trained biologist, did she conclude radiation likely caused it. She helped others find medical and social care while testing’s consequences outlasted the secrecy."
   duration: 13
 
 - shot: under-the-clouds
@@ -201,14 +159,25 @@ The islanders petitioned the United Nations, sued for their land and left island
   narration: "**Under the clouds.** Karipbek Kuyukov recalled his parents climbing a hill to watch the nuclear mushrooms, unaware of the danger; born without arms in Yegyndybulak, about 100 kilometres from the site, he attributes that to their exposure and says people were “treated as guinea pigs.” He learned to paint with his feet and mouth; Kassenova also reports babies born with missing limbs. In the military’s secret town of Kurchatov, Natalya Zhdanova remembered another life from 1968 to 2000: test notices alongside cinema listings, relatives working at the site, no fear, she recalled, “maybe because nobody was suffering from leukemia or other diseases.” Kuyukov carried his experience into his paintings and campaigning."
   duration: 13
 
-- shot: dispensary-no-4
+- shot: what-it-did-to-health
   view: graph
-  focus: dispensary-no-4
-  time: "1957"
-  reveal: [dispensary-no-4, scientific-research-institute-for-radiation-medicine-and-ecology, soviet-nuclear-tests-at-semipalatinsk, semey, soviet-government]
-  reveal_claims: [soviet-nuclear-tests-at-semipalatinsk#c7, soviet-nuclear-tests-at-semipalatinsk#c8, soviet-nuclear-tests-at-semipalatinsk#c9, dispensary-no-4#c1, scientific-research-institute-for-radiation-medicine-and-ecology#c1, soviet-nuclear-tests-at-semipalatinsk#c4, soviet-nuclear-tests-at-semipalatinsk#c13]
-  overlay: {kind: quote, source: bulletin-2009-kassenova-semipalatinsk, quote: "In 1957, the military built the Anti-Brucellosis Dispensary No. 4, purportedly to monitor tuberculosis infections in the area. In reality, though, the facility was built to secretly observe the impacts of radiation exposure from nuclear testing on local people.", caption: "Togzhan Kassenova, Bulletin of the Atomic Scientists, 2009 (an opinion piece)"}
-  narration: "**Two clinics, two studies.** Between 1957 and 1960 Dr. Bahiya Atchabarov led doctors examining villagers near Semipalatinsk. In a later interview reported by Kassenova, he said they found illness directly correlated with radiation: bleeding from mouths, respiratory tracts and genitals, and changes to skin and mucous membranes. Military doctors blamed environment and poverty; Kassenova says the military’s Dispensary No. 4 secretly observed radiation effects under cover of monitoring tuberculosis. Authorities forced Atchabarov’s team to stop; its twelve classified volumes became public only after the Soviet collapse. Gulsum Kakimzhanova remembered her father’s hair falling out overnight; only later, as a trained biologist, did she conclude radiation likely caused it. She helped others find medical and social care while testing’s consequences outlasted the secrecy."
+  focus: lijon-eknilang
+  time: "1976"
+  reveal: [lijon-eknilang, rongelap-atoll, utirik-atoll, castle-bravo, us-nuclear-tests-in-the-marshall-islands, rongelap-resettlement-1957]
+  reveal_claims: [lijon-eknilang#c2, rongelap-atoll#c2, utirik-atoll#c2, us-nuclear-tests-in-the-marshall-islands#c5, rongelap-resettlement-1957#c3, lijon-eknilang#c3]
+  overlay: {kind: quote, source: icj-1995-11-14-eknilang, quote: "I cannot have children. I have had miscarriages on seven occasions. On one of those occasions, I miscarried after four months. The child I miscarried was severely deformed; it had only one eye.", caption: "Lijon Eknilang, to the International Court of Justice, 14 November 1995"}
+  narration: "**What it did to health.** Eknilang recalled in 1995 that Lekoj Anjain’s body returned in a coffin; his father John listed the dead and those sent away for thyroid surgery, fearing they would forget the names. She reported thyroid surgery and seven miscarriages. The U.S. radiation-experiments committee identified thyroid abnormalities and one fatal leukemia case as major late effects. A Brookhaven doctor counted three thyroid cancers each on Utirik and Rongelap in 1976, despite Utirik’s estimated dose being a tenth as high; the National Cancer Institute estimated 530 extra lifetime cancers among 14,000 exposed. Eknilang said officials used illnesses in the “control group” to dismiss her community’s fears; the committee considered it likely that many controls had also been exposed."
+  duration: 13
+
+- shot: bikini-again
+  view: map
+  camera: {center: [165.4, 11.6], zoom: 8.0, pitch: 0, duration: 6}
+  places: [bikini-atoll, kili-island]
+  time: "1978-09"
+  reveal: [bikini-resettlement-1968-1978, bikini-atoll, atomic-energy-commission, us-government, kili-island, lyndon-b-johnson]
+  reveal_claims: [bikini-resettlement-1968-1978#c1, bikini-resettlement-1968-1978#c2, bikini-resettlement-1968-1978#c3, section-177-agreement#c3, bikini-resettlement-1968-1978#c4]
+  overlay: {kind: quote, source: niedenthal-1997-bikini, quote: "There’s virtually no radiation left and we can find no discernible effect on either plant or animal life", caption: "Atomic Energy Commission, 1969, as quoted in a 1997 history of the Bikini people"}
+  narration: "**Bikini again.** Following agency discussions begun in 1967 and Atomic Energy Commission advice, Lyndon Johnson promised the Bikinians in June 1968 that they could return home; the Commission assured them in 1969, “There’s virtually no radiation left”. Families returned, but when 1975 tests found more radioactivity than expected, the islanders sued in federal court for a complete survey. In April 1978 doctors found radiation levels in many of Bikini’s 139 residents well above the U.S. limit; officials removed them again that September. The Bikinians pursued compensation in Juda v. United States, but the case was dismissed after the 1986 Compact took effect, leaving their claim dependent on the settlement replacing the courts."
   duration: 13
 
 - shot: february-1989
@@ -232,6 +201,26 @@ The islanders petitioned the United Nations, sued for their land and left island
   narration: "**29 August 1991.** Nazarbayev signed Decree No. 409 closing Semipalatinsk forty-two years after its first test. His decree said Kazakhstan had fulfilled its duty to establish Soviet-U.S. nuclear parity and was acting “in deference to social demands.” Two million had signed the movement’s petition, Kassenova reports; Nicholas Morrison, citing her, says Kazakhstan’s government feared unrest from a protest planned for that day, after Moscow’s failed coup. Arman Suleimenov recounts that Soviet security agencies had drafted a plan to end testing only in January 1993. In 2012 Nazarbayev recalled signing despite fierce Soviet military-industry opposition. He ordered medical help and compensation for people living with what the tests had left."
   duration: 13
 
+- shot: what-was-paid
+  view: graph
+  focus: nuclear-claims-tribunal
+  time: "2004-12"
+  reveal: [section-177-agreement, nuclear-claims-tribunal, republic-of-the-marshall-islands, us-government]
+  reveal_claims: [section-177-agreement#c1, section-177-agreement#c4, section-177-agreement#c3, nuclear-claims-tribunal#c1]
+  overlay: {kind: stat, value: "$71.7 million", label: "Paid by the Nuclear Claims Tribunal on personal-injury awards of over $87 million, to 1,917 people, as of December 2004, by the Congressional Research Service’s account", source: crs-2005-rl32811-changed-circumstances, quote: "As of December 2004, the NCT had paid $71.7 million on personal injury awards totaling over $87 million to 1,917 individuals."}
+  narration: "**What was paid.** In 2021 Enewetak’s lawyer David Cohen took the unpaid awards to Congress: the 1986 Compact had accepted U.S. responsibility for compensation and supplied $150 million for a full and final settlement, under which the Marshall Islands legislature created a tribunal. By December 2004 it had paid $71.7 million of over $87 million in injury awards to 1,917 people; over forty percent of awardees died before full payment. Land awards were $563 million for Bikini and $386 million for Enewetak; Cohen listed $307 million for Utrik and $1.03 billion for Rongelap, almost all unpaid. Payments stopped in January 2009 and later lawsuits were dismissed; Cohen put unpaid awards above $3 billion in 2021 dollars and asked Congress to address that debt."
+  duration: 13
+
+- shot: the-us-answer
+  view: graph
+  focus: changed-circumstances-petition
+  time: "2004-11"
+  reveal: [changed-circumstances-petition, us-government, us-congress, republic-of-the-marshall-islands]
+  reveal_claims: [changed-circumstances-petition#c1, changed-circumstances-petition#c2, changed-circumstances-petition#c3]
+  overlay: {kind: quote, source: crs-2005-rl32811-changed-circumstances, quote: "the Marshall Islands' request does not qualify as \"changed circumstances\" within the meaning of Article IX of the nuclear claims settlement agreement", caption: "U.S. interagency report of November 2004, as quoted by the Congressional Research Service"}
+  narration: "**The U.S. answer.** Eknilang said ERUB sent her sister Chiyoko Tamayose to a congressional hearing to speak for nuclear survivors. The Marshall Islands had asked Congress in 2000 for about $3.3 billion, invoking injuries unforeseen in 1986 that made compensation “manifestly inadequate.” A 2004 State, Energy and Defense report rejected that case, saying present fallout effects were limited to northerly atolls and the tribunal awarded too liberally; Dick Thornburgh’s review for the Marshall Islands found the tribunal proper. In 2023 Washington still called the Compact and tribunal the full settlement of all claims, while the Marshallese still claimed about $3 billion; Eknilang said Tamayose never got to tell her story there."
+  duration: 13
+
 - shot: how-many
   view: graph
   focus: soviet-nuclear-tests-at-semipalatinsk
@@ -239,6 +228,17 @@ The islanders petitioned the United Nations, sued for their land and left island
   reveal: [soviet-nuclear-tests-at-semipalatinsk, kazakhstan, nursultan-nazarbayev, karipbek-kuyukov, closure-of-semipalatinsk-test-site]
   reveal_claims: [soviet-nuclear-tests-at-semipalatinsk#c3, karipbek-kuyukov#c2, closure-of-semipalatinsk-test-site#c3, karipbek-kuyukov#c3]
   overlay: {kind: stat, value: "220,000", label: "People counted as affected by the Semipalatinsk tests, as Togzhan Kassenova reports it; about 37,200 of them at 350 to 990 millisieverts. Kazakhstan’s embassy in Finland says more than 1.3 million", source: bulletin-2009-kassenova-semipalatinsk, quote: "At the very least, a majority of the 220,000 affected people were exposed to an estimated dose of between 7 millisieverts and 350 millisieverts, and about 37,200 residents were exposed to radiation doses between 350 and 990 millisieverts during the period of atmospheric testing."}
-  narration: "**How many.** Kuyukov took his paintings and testimony abroad, explaining his purpose: “My main mission on this land is to do everything I can for people like me to be the last victims of nuclear tests”. Behind him stood counts measuring different things: 220,000 affected, most receiving 7–350 millisieverts and about 37,200 receiving 350–990, in the 2008 Kazakh-Japanese study Kassenova cites; more than 1.3 million exposed, Kazakhstan’s embassy says; more than 1.5 million who suffered, a state institute says. After 1991 Kazakhstan ordered medical help and compensation. The counts of doses, exposure and suffering carry different meanings; Kuyukov’s demand was that no new generation should join them."
+  narration: "**How many.** In Kazakhstan, Kuyukov took his paintings and testimony abroad, explaining his purpose: “My main mission on this land is to do everything I can for people like me to be the last victims of nuclear tests”. Behind him stood counts measuring different things: 220,000 affected, most receiving 7–350 millisieverts and about 37,200 receiving 350–990, in the 2008 Kazakh-Japanese study Kassenova cites; more than 1.3 million exposed, Kazakhstan’s embassy says; more than 1.5 million who suffered, a state institute says. After 1991 Kazakhstan ordered medical help and compensation. The counts of doses, exposure and suffering carry different meanings; Kuyukov’s demand was that no new generation should join them."
+  duration: 13
+
+- shot: the-dome
+  view: map
+  camera: {center: [162.35, 11.55], zoom: 10.5, pitch: 0, duration: 6}
+  places: [runit-island, enewetak-atoll]
+  time: "2020-06"
+  reveal: [runit-dome, runit-island, enewetak-atoll, us-department-of-energy, us-nuclear-tests-in-the-marshall-islands]
+  reveal_claims: [runit-dome#c1, runit-island#c1, us-nuclear-tests-in-the-marshall-islands#c7, us-nuclear-tests-in-the-marshall-islands#c9]
+  overlay: {kind: stat, value: "100,000+", label: "Cubic yards of contaminated soil and debris sealed in the Runit Dome, by the U.S. Department of Energy’s count", source: doe-2020-runit-dome-report, quote: "The containment structure, built in the late 1970s, contains over 100,000 cubic yards of radioactively contaminated soil and debris that were encapsulated in concrete (waste pile) inside an unlined nuclear test crater"}
+  narration: "**The dome.** In 2019 U.N. Secretary-General António Guterres said President Hilda Heine feared radioactive material leaking from Runit Dome, “a kind of coffin.” The U.S. had sealed over 100,000 cubic yards of contaminated soil and debris in an unlined test crater on Runit Island, Enewetak, under a concrete cap completed in 1979; a U.N. expert reported information in 2012 that its structure was “substandard.” The Energy Department’s 2020 answer said the dome faced no immediate collapse or failure, no data showed measurable environmental harm, and the Marshall Islands had assumed responsibility. It acknowledged islanders’ concern and planned groundwater monitoring to determine whether the contents affected the surrounding environment."
   duration: 13
 ```
