@@ -73,6 +73,16 @@ Two Purdue companies pleaded guilty thirteen years apart. Neither company plea c
   narration: "**A letter on Valentine’s Day.** The Massachusetts complaint recounts a mother’s letter to Purdue on 14 February 2001: her son had died at 28 on New Year’s Day; his wife especially missed him on Valentine’s Day. The complaint says Richard Sackler had already received a sales representative’s 26 January report of a high-school meeting organized by mothers whose children had overdosed on OxyContin and died; they compared doctors’ OxyContin to heroin. It quotes the letter asking why Purdue made 80 and 160 mg pills when it knew they would kill young people, and a staff member responding: “I see a liability issue here. Any suggestions?” The complaint later alleges hundreds of patients died after taking Purdue’s drugs; David Sackler told Congress his family denied liability."
   duration: 13
 
+- shot: what-purdue-told-doctors
+  view: graph
+  focus: purdue-frederick-company
+  time: "2001-03"
+  reveal: [purdue-frederick-company, purdue-frederick-plea-2007, oxycontin, us-district-court-western-district-of-virginia]
+  reveal_claims: [purdue-frederick-plea-2007#c6]
+  overlay: {kind: quote, source: doj-wdva-2007-05-10-purdue-frederick-plea, quote: "Purdue’s supervisors and employees falsely and misleadingly marketed OxyContin as less addictive, less subject to abuse, and less likely to cause withdrawal than other pain medications.", caption: "Statement of facts filed in court, as summarized by the U.S. Attorney, 2007"}
+  narration: "**What Purdue told doctors.** In March 2001, Purdue supervisors and employees faced reports of possible withdrawal symptoms in study patients and decided not to write up the findings, fearing they would “add to the current negative press”, according to the facts filed in court. Sales representatives falsely told doctors OxyContin produced less euphoria, carried less abuse potential than short-acting opioids and could “weed out” addicts and drug seekers. Supervisors also trained them to say its oxycodone was harder to extract, although Purdue’s own study showed crushing a 10 mg tablet and drawing it through cotton into a syringe could recover about 68 percent. Brownlee told the Senate the company knew its claims were false; those choices became evidence in the criminal case."
+  duration: 13
+
 - shot: abingdon-2007
   view: map
   camera: {center: [-81.9756, 36.7097], zoom: 9.5, pitch: 30, duration: 6}
@@ -82,16 +92,6 @@ Two Purdue companies pleaded guilty thirteen years apart. Neither company plea c
   reveal_claims: [purdue-frederick-plea-2007#c1, michael-friedman#c2, howard-udell#c2, paul-goldenheim#c2]
   overlay: {kind: quote, source: doj-wdva-2007-05-10-purdue-frederick-plea, quote: "The Purdue Frederick Company, Inc., pleaded guilty to felony misbranding OxyContin with the intent to defraud and mislead.", caption: "U.S. Attorney’s Office, Western District of Virginia, 10 May 2007"}
   narration: "**Abingdon, 2007.** On 10 May 2007, president Michael Friedman, legal chief Howard Udell and former medical chief Paul Goldenheim pleaded guilty to misdemeanors in Abingdon, Virginia; Purdue Frederick pleaded guilty to felony misbranding with intent to defraud and mislead. All four admitted Purdue marketed OxyContin as less addictive, less abusable and less likely to cause withdrawal without supporting research, the U.S. Attorney said; Massachusetts later alleged the Sacklers voted that these men, but no family member, should plead. Company and executives agreed to pay $634,515,475, including $19 million from Friedman, $8 million from Udell and $7.5 million from Goldenheim. The judge accepted the pleas on 20 July and imposed three years’ probation on the men under a misdemeanor requiring no proof of intent or knowledge, as Brownlee explained to the Senate."
-  duration: 13
-
-- shot: what-purdue-told-doctors
-  view: graph
-  focus: purdue-frederick-company
-  time: "2001-03"
-  reveal: [purdue-frederick-company, purdue-frederick-plea-2007, oxycontin, us-district-court-western-district-of-virginia]
-  reveal_claims: [purdue-frederick-plea-2007#c6]
-  overlay: {kind: quote, source: doj-wdva-2007-05-10-purdue-frederick-plea, quote: "Purdue’s supervisors and employees falsely and misleadingly marketed OxyContin as less addictive, less subject to abuse, and less likely to cause withdrawal than other pain medications.", caption: "Statement of facts filed in court, as summarized by the U.S. Attorney, 2007"}
-  narration: "**What Purdue told doctors.** In March 2001, Purdue supervisors and employees faced reports of possible withdrawal symptoms in study patients and decided not to write up the findings, fearing they would “add to the current negative press”, according to the facts filed in court. Sales representatives falsely told doctors OxyContin produced less euphoria, carried less abuse potential than short-acting opioids and could “weed out” addicts and drug seekers. Supervisors also trained them to say its oxycodone was harder to extract, although Purdue’s own study showed crushing a 10 mg tablet and drawing it through cotton into a syringe could recover about 68 percent. Brownlee told the Senate the company knew its claims were false; those choices became evidence in the criminal case."
   duration: 13
 
 - shot: a-forum
@@ -218,16 +218,6 @@ Two Purdue companies pleaded guilty thirteen years apart. Neither company plea c
   narration: "**Deleting the documents.** Federal prosecutors quote McKinsey senior partner Martin Elling emailing a colleague on 4 July 2018 about “eliminating all our documents and emails”, warning that “as things get tougher there someone might turn to us.” He deleted Purdue files, pleaded guilty in January 2025 to destroying records to impede a Justice Department matter, and received six months in prison. McKinsey agreed on 13 December 2024 to pay $650 million, including a civil settlement exceeding $323 million resolving allegations, with a five-year deferred prosecution agreement charging its U.S. subsidiary with felony record destruction and misdemeanor conspiracy to aid and abet misbranding, accompanied by 71 pages of agreed facts. The department credited the firm’s cooperation and dismissal of two partners, including Elling; it now faced document-retention and compliance requirements."
   duration: 13
 
-- shot: after-the-ruling
-  view: graph
-  focus: purdue-plan-effective-2026
-  time: "2026-05-01"
-  reveal: [purdue-plan-effective-2026, knoa-pharma, stamford-connecticut, purdue-pharma, us-bankruptcy-court-southern-district-of-new-york]
-  reveal_claims: [purdue-plan-effective-2026#c1, purdue-plan-effective-2026#c3]
-  overlay: {kind: stat, value: "$7.4 billion", label: "Cash the new plan delivers to creditors, in Purdue’s lawyers’ account", source: davispolk-purdue-completes-chapter-11-restructuring, quote: "The plan delivers approximately $7.4 billion in cash to creditors, with up to an additional $500 million contingent on proceeds from the sale of the Sacklers’ international pharmaceutical businesses"}
-  narration: "**After the ruling.** Purdue’s lawyers at Davis Polk say they sought to prevent litigation from destroying value and kept injunctions in place to protect Judge Shelley Chapman’s mediation and hold the deal together. Victims who objected to the earlier plan had demanded a public jury trial. The lawyers report that mediation produced more Sackler money and consensual releases; Judge Sean Lane confirmed the plan on 18 November 2025, and it took effect on 1 May 2026. They put creditor cash at about $7.4 billion, including up to $6.5–$7 billion from the Sacklers, with $1.5 billion paid that day, and up to $865 million for individual victims; operations passed to Knoa Pharma. Connecticut’s attorney general said the agreement would bring more than 30 million company documents into public view."
-  duration: 13
-
 - shot: the-count
   view: graph
   focus: opioid-overdose-epidemic
@@ -236,5 +226,15 @@ Two Purdue companies pleaded guilty thirteen years apart. Neither company plea c
   reveal_claims: [opioid-overdose-epidemic#c1, opioid-overdose-epidemic#c2]
   overlay: {kind: quote, source: doj-2020-11-24-purdue-pleads-guilty, quote: "The abuse and diversion of prescription opioids has contributed to a national tragedy of addiction and deaths, in addition to those caused by illicit street opioids", caption: "Deputy Attorney General Jeffrey Rosen, 24 November 2020"}
   narration: "**The count.** Alexis Pleus told Congress in 2021 of parents whose children moved from pills to heroin when pills became unaffordable. CDC describes prescription opioids from the 1990s, heroin from 2010 and illicit fentanyl from 2013 as three waves, counting nearly 727,000 opioid overdose deaths in 1999–2022, including about 82,000 of nearly 108,000 overdose deaths in 2022. The Supreme Court cited roughly 247,000 prescription-opioid deaths in 1999–2019 and placed Purdue at the center of the crisis; those totals span many drugs. CDC’s provisional 2024 figures fell to 80,391 overdose deaths, 54,743 involving opioids, from 110,037 and 83,140 in 2023. Pleus asked Congress to close the loophole that, she said, allowed the Sacklers and others to profit from the death and destruction they had caused."
+  duration: 13
+
+- shot: after-the-ruling
+  view: graph
+  focus: purdue-plan-effective-2026
+  time: "2026-05-01"
+  reveal: [purdue-plan-effective-2026, knoa-pharma, stamford-connecticut, purdue-pharma, us-bankruptcy-court-southern-district-of-new-york]
+  reveal_claims: [purdue-plan-effective-2026#c1, purdue-plan-effective-2026#c3]
+  overlay: {kind: stat, value: "$7.4 billion", label: "Cash the new plan delivers to creditors, in Purdue’s lawyers’ account", source: davispolk-purdue-completes-chapter-11-restructuring, quote: "The plan delivers approximately $7.4 billion in cash to creditors, with up to an additional $500 million contingent on proceeds from the sale of the Sacklers’ international pharmaceutical businesses"}
+  narration: "**After the ruling.** Purdue’s lawyers at Davis Polk say they sought to prevent litigation from destroying value and kept injunctions in place to protect Judge Shelley Chapman’s mediation and hold the deal together. Victims who objected to the earlier plan had demanded a public jury trial. The lawyers report that mediation produced more Sackler money and consensual releases; Judge Sean Lane confirmed the plan on 18 November 2025, and it took effect on 1 May 2026. They put creditor cash at about $7.4 billion, including up to $6.5–$7 billion from the Sacklers, with $1.5 billion paid that day, and up to $865 million for individual victims; operations passed to Knoa Pharma. Connecticut’s attorney general said the agreement would bring more than 30 million company documents into public view."
   duration: 13
 ```
