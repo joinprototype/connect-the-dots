@@ -33,6 +33,15 @@ Rose Cipollone sued while she had lung cancer; her son carried on after she and 
   narration: "**The Plaza.** Paul Hahn sent telegrams summoning the other cigarette chiefs to New York; on 14 December 1953 they gathered at the Plaza Hotel, facing newspaper reports linking their products to cancer. Judge Kessler later found they understood the danger to their companies’ economic future and met to answer the public’s growing anxiety. Kessler reports that the executives described Liggett as expecting that “in the course of time the whole thing would blow over.” Hahn and the men who came authorized hiring Hill & Knowlton and arranged to meet John Hill the next day: competitors would now answer the cancer studies together."
   duration: 13
 
+- shot: ten-months-earlier
+  view: graph
+  focus: rj-reynolds-tobacco
+  time: "1953-02"
+  reveal: [rj-reynolds-tobacco, plaza-meetings-1953]
+  overlay: {kind: "quote", source: "kessler-final-opinion-2006", quote: "Studies of clinical data tend to confirm the relationship between heavy and prolonged tobacco smoking and incidence of cancer of the lung.", caption: "Claude Teague, R. J. Reynolds, February 1953, as quoted by Judge Kessler"}
+  narration: "**Ten months earlier.** In February 1953, before the hotel meetings, Reynolds scientist Claude Teague put the cancer evidence into a report: “Survey of Cancer Research with Emphasis on Possible Carcinogens from Tobacco.” Clinical studies, as Kessler quotes him, tended to confirm a relationship between heavy, prolonged smoking and lung cancer. Kessler found that Reynolds recognized smoking as a cause of disease in mice that year. Teague’s qualified assessment of the human evidence stayed inside the company; ten months later Reynolds joined the Plaza meetings, and the makers’ public statement denied proof that cigarette smoking caused lung cancer."
+  duration: 13
+
 - shot: a-frank-statement
   view: graph
   focus: frank-statement
@@ -41,15 +50,6 @@ Rose Cipollone sued while she had lung cancer; her son carried on after she and 
   reveal_claims: [hill-and-knowlton#c1, tobacco-industry-research-committee#c1, tobacco-industry-research-committee#c2, tobacco-institute#c1, paul-m-hahn#c2, philip-morris-usa#c1, rj-reynolds-tobacco#c1, brown-and-williamson#c1, american-tobacco-company#c1, lorillard-tobacco#c1]
   overlay: {kind: "quote", source: "kessler-final-opinion-2006", quote: "With the creation of TIRC in January 1954, the Defendants established a sophisticated public relations vehicle -- based on the premise of conducting independent scientific research -- to deny the harms of smoking and reassure the public.", caption: "Judge Gladys Kessler, findings of fact, 2006"}
   narration: "**A Frank Statement.** John Hill met the executives at the Plaza on 15 December 1953; his firm’s memorandum framed the task as “confidence, and how to establish it”. The executives hired Hill & Knowlton, which was not a defendant in the later case, and on 4 January 1954 placed a full-page advertisement in 448 newspapers: “there is no proof that cigarette smoking is one of the causes” of lung cancer, they said, promising research assistance. Hahn became the research committee’s temporary chairman; it became the Council for Tobacco Research in 1964, while the Tobacco Institute followed in 1958, both served by Hill & Knowlton. Kessler found that the committee’s promise of independent science served to deny smoking’s harms and reassure the public."
-  duration: 13
-
-- shot: ten-months-earlier
-  view: graph
-  focus: rj-reynolds-tobacco
-  time: "1953-02"
-  reveal: [rj-reynolds-tobacco, plaza-meetings-1953]
-  overlay: {kind: "quote", source: "kessler-final-opinion-2006", quote: "Studies of clinical data tend to confirm the relationship between heavy and prolonged tobacco smoking and incidence of cancer of the lung.", caption: "Claude Teague, R. J. Reynolds, February 1953, as quoted by Judge Kessler"}
-  narration: "**Ten months earlier.** In February 1953, before the hotel meetings, Reynolds scientist Claude Teague put the cancer evidence into a report: “Survey of Cancer Research with Emphasis on Possible Carcinogens from Tobacco.” Clinical studies, as Kessler quotes him, tended to confirm a relationship between heavy, prolonged smoking and lung cancer. Kessler found that Reynolds recognized smoking as a cause of disease in mice that year. Teague’s qualified assessment of the human evidence stayed inside the company; ten months later Reynolds joined the Plaza meetings, and the makers’ public statement denied proof that cigarette smoking caused lung cancer."
   duration: 13
 
 - shot: january-1964
@@ -81,6 +81,15 @@ Rose Cipollone sued while she had lung cancer; her son carried on after she and 
   narration: "**The product.** In a confidential 1972 report, Philip Morris’s William Dunn explained smoking in terms of what the smoker sought: nicotine. He called it the industry’s product and urged colleagues to treat the pack as a container for a day’s supply; at Reynolds that year, Claude Teague said nicotine delivery should govern cigarette design. Judge Kessler found that the makers designed and composed cigarettes to deliver nicotine at levels that created and sustained addiction, while falsely denying they did so. The D.C. Circuit included those denials among the strands of the fraud: the design decisions inside the companies became evidence against their public assurances."
   duration: 13
 
+- shot: tomorrows-customer
+  view: graph
+  focus: philip-morris-usa
+  time: "1981-03-31"
+  reveal: [philip-morris-usa, master-settlement-agreement]
+  overlay: {kind: "quote", source: "kessler-final-opinion-2006", quote: "Today's teenager is tomorrow's potential regular customer, and the overwhelming majority of smokers first begin to smoke while still in their teens.", caption: "Philip Morris Research Center report, 31 March 1981, as quoted by Judge Kessler"}
+  narration: "**Tomorrow’s customer.** A Philip Morris Research Center report dated 31 March 1981 called teenagers tomorrow’s potential regular customers and identified the teenage years as the time of brand choice. In his later trial testimony, Bennett LeBow gave the business calculation plainly: if tobacco companies stopped marketing to children, he said, they would lack enough customers to stay in business within 25 to 30 years. Judge Kessler found that the makers marketed to people under twenty-one, including under-eighteens, to replace smokers who died. The D.C. Circuit left their challenge to that finding undecided because she had ordered no remedy specifically for youth marketing; the 1998 settlement separately banned targeting youth and using cartoons."
+  duration: 13
+
 - shot: under-oath
   view: map
   camera: {center: [-77.0369, 38.9072], zoom: 11.5, pitch: 30, duration: 6}
@@ -91,24 +100,6 @@ Rose Cipollone sued while she had lung cancer; her son carried on after she and 
   overlay: {kind: "quote", source: "kessler-final-opinion-2006", quote: "Mr. Campbell: I believe nicotine is not addictive, yes.", caption: "William Campbell, Philip Morris, under oath, 14 April 1994"}
   narration: "**Under oath.** In Washington on 14 April 1994, Philip Morris chief William Campbell told a House subcommittee he believed nicotine was not addictive; Thomas Sandefur of Brown & Williamson, Andrew Tisch of Lorillard and Donald Johnston of American said the same. Reynolds’s James Johnston denied that cigarettes or nicotine met the classic definitions of addiction, while Liggett’s Edward Horrigan denied manipulating nicotine to hook smokers. Judge Kessler held this testimony protected as petitioning Congress and not actionable; her fraud findings concerned statements to smokers and the public. The makers argued they had merely kept older, narrower definitions; she found a concerted effort to misrepresent how hard quitting was, and held them liable for that public deception."
   duration: 16
-
-- shot: low-tar
-  view: graph
-  focus: united-states-v-philip-morris
-  time: "2006-08-17"
-  reveal: [philip-morris-usa, rj-reynolds-tobacco, united-states-v-philip-morris]
-  overlay: {kind: "quote", source: "us-v-philip-morris-corrective-statements-2012", quote: "\"Low tar\" and filtered cigarette smokers inhale essentially the same amount of tar and nicotine as they would from regular cigarettes.", caption: "Court-ordered statement, 2012 (the court’s words, not the makers’)"}
-  narration: "**Light and low tar.** Testifying in 2005, Bennett LeBow explained why Liggett still sold “light” cigarettes: he said it could not stop and stay in business. The government alleged the makers sold “light” and “low tar” cigarettes as less harmful when they were not; Judge Kessler found their denials false, and the D.C. Circuit affirmed. The makers argued that the Federal Trade Commission had blessed the labels, but the appeals court rejected that defense under a Supreme Court ruling. Kessler barred the descriptors; the appeals court exempted foreign activity with no domestic effect, leaving the makers to change the labels used at home."
-  duration: 13
-
-- shot: tomorrows-customer
-  view: graph
-  focus: philip-morris-usa
-  time: "1981-03-31"
-  reveal: [philip-morris-usa, master-settlement-agreement]
-  overlay: {kind: "quote", source: "kessler-final-opinion-2006", quote: "Today's teenager is tomorrow's potential regular customer, and the overwhelming majority of smokers first begin to smoke while still in their teens.", caption: "Philip Morris Research Center report, 31 March 1981, as quoted by Judge Kessler"}
-  narration: "**Tomorrow’s customer.** In his trial testimony, Bennett LeBow gave the business calculation plainly: if tobacco companies stopped marketing to children, he said, they would lack enough customers to stay in business within 25 to 30 years. A Philip Morris Research Center report dated 31 March 1981 had called teenagers tomorrow’s potential regular customers and identified the teenage years as the time of brand choice. Judge Kessler found that the makers marketed to people under twenty-one, including under-eighteens, to replace smokers who died. The D.C. Circuit left their challenge to that finding undecided because she had ordered no remedy specifically for youth marketing; the 1998 settlement separately banned targeting youth and using cartoons."
-  duration: 13
 
 - shot: breaking-ranks
   view: graph
@@ -129,6 +120,15 @@ Rose Cipollone sued while she had lung cancer; her son carried on after she and 
   overlay: {kind: "quote", source: "master-settlement-agreement-1998", quote: "an admission or concession or evidence of ( 1 ) any liability or any wrongdoing whatsoever on the part of any Released Party", caption: "Master Settlement Agreement, no determination or admission"}
   narration: "**The states sue.** Mississippi attorney general Mike Moore took the makers to court in 1994 over the cost of treating smoking-related illness; other states followed, and four settled separately in 1997 and 1998. On 23 November 1998, forty-six states and the four largest makers, with Liggett, signed the Master Settlement Agreement to resolve the states’ claims, leaving individual smokers’ claims intact. The makers denied every allegation and settled without admitting liability or wrongdoing; the settlement required the Tobacco Institute and Council for Tobacco Research to dissolve. The Public Health Law Center estimated payments through 2015 at about $106 billion, with payments continuing: the states had secured money for costs their health systems kept bearing."
   duration: 15
+
+- shot: low-tar
+  view: graph
+  focus: united-states-v-philip-morris
+  time: "2006-08-17"
+  reveal: [philip-morris-usa, rj-reynolds-tobacco, united-states-v-philip-morris]
+  overlay: {kind: "quote", source: "us-v-philip-morris-corrective-statements-2012", quote: "\"Low tar\" and filtered cigarette smokers inhale essentially the same amount of tar and nicotine as they would from regular cigarettes.", caption: "Court-ordered statement, 2012 (the court’s words, not the makers’)"}
+  narration: "**Light and low tar.** Testifying in 2005, Bennett LeBow explained why Liggett still sold “light” cigarettes: he said it could not stop and stay in business. The government alleged the makers sold “light” and “low tar” cigarettes as less harmful when they were not; Judge Kessler found their denials false, and the D.C. Circuit affirmed. The makers argued that the Federal Trade Commission had blessed the labels, but the appeals court rejected that defense under a Supreme Court ruling. Kessler barred the descriptors; the appeals court exempted foreign activity with no domestic effect, leaving the makers to change the labels used at home."
+  duration: 13
 
 - shot: the-papers
   view: graph
@@ -161,6 +161,16 @@ Rose Cipollone sued while she had lung cancer; her son carried on after she and 
   narration: "**What she could order.** Judge Kessler could not make the companies surrender the roughly $280–289 billion the government sought: an earlier appeals ruling limited racketeering remedies to preventing future violations. She ordered an end to false statements and descriptors such as “light,” corrective statements, and document depositories; the makers said they had admitted smoking’s harms for years, while she found their essential position virtually unchanged. On 22 May 2009 the D.C. Circuit affirmed liability except for the already dissolved Council and Institute, sending four remedy issues back. The Supreme Court denied review in 2010, leaving the companies liable and the courts still deciding what they must tell smokers."
   duration: 16
 
+- shot: sugar
+  view: graph
+  focus: sugar-research-foundation
+  time: "2016-11"
+  reveal: [sugar-research-foundation, d-mark-hegsted, project-226, sugar-industry-and-chd-research, harvard-university, sugar-association]
+  reveal_claims: [sugar-research-foundation#c1, sugar-research-foundation#c2, d-mark-hegsted#c1, sugar-association#c2]
+  overlay: {kind: "quote", source: "kearns-schmidt-glantz-2016-jama-sugar", quote: "I will be disappointed if this aspect is drowned out in a cascade of review and general interpretation.", caption: "The foundation’s Hickson to Hegsted, 30 July 1965, about claims that sucrose contributes to heart disease, as quoted by Kearns, Schmidt and Glantz"}
+  narration: "**Sugar.** Kearns, Schmidt and Glantz quote Sugar Research Foundation executive John Hickson pressing Harvard’s Mark Hegsted in July 1965 to address claims linking sucrose to heart disease. Hegsted replied, “We are well aware of your particular interest in carbohydrate and will cover this as well as we can.” The foundation paid Hegsted and Robert McGandy $6,500 together for their 1967 review, overseen by Fredrick Stare, without disclosing its funding. The researchers found the review downplayed evidence linking sucrose to heart disease, describing evidence of industry influence as circumstantial, with no direct evidence of rewriting. The Sugar Association disputed their interpretation and sugar’s unique role in heart disease, while saying the foundation should have been more transparent and standards differed then."
+  duration: 16
+
 - shot: corrective-statements
   view: graph
   focus: united-states-v-philip-morris
@@ -169,6 +179,16 @@ Rose Cipollone sued while she had lung cancer; her son carried on after she and 
   overlay: {kind: "quote", source: "us-v-philip-morris-dc-cir-2017", quote: "A Federal Court has ordered [Defendants] to make this statement about [the topic of the statement].", caption: "The preamble as approved by the D.C. Circuit, 25 April 2017"}
   narration: "**Corrective statements.** In 2012 Judge Kessler prescribed statements on five subjects, opening with the court’s finding that the companies had deliberately deceived the American public; she said truthful corrections would prevent future fraudulent messages. The makers appealed, and in 2015 the D.C. Circuit held that recounting past deception exceeded the forward-looking authority of the racketeering law, while leaving the bulleted facts standing. Kessler’s 2016 rewrite retained “Here is the truth”; in April 2017 Judge David Sentelle’s opinion removed those words too. The fraud finding remained, but the ordered introduction now said only that a federal court required the statement: the companies still had to publish the facts."
   duration: 13
+
+- shot: oil
+  view: graph
+  focus: exxonmobil
+  time: "2017-08-23"
+  reveal: [exxonmobil, assessing-exxonmobils-climate-change-communications, addendum-to-assessing-exxonmobils-climate-change-communications, geoffrey-supran, naomi-oreskes, harvard-university]
+  reveal_claims: [exxonmobil#c10, geoffrey-supran#c3]
+  overlay: {kind: "stat", value: "83% vs 12%", label: "Documents acknowledging human-caused climate change, peer-reviewed papers vs advertorials, by Supran and Oreskes, 2017", source: "supran-oreskes-2017-erl", quote: "accounting for expressions of reasonable doubt, 83% of peer-reviewed papers and 80% of internal documents acknowledge that climate change is real and human-caused, yet only 12% of advertorials do so, with 81% instead expressing doubt."}
+  narration: "**Oil.** ExxonMobil challenged readers to examine its documents; in 2017 Geoffrey Supran and Naomi Oreskes took up that invitation, comparing 187 communications. Among documents taking a position, they counted acknowledgment of human-caused climate change in 83% of peer-reviewed papers and 80% of internal documents, against 12% of Mobil and ExxonMobil advertorials, concluding the company misled the public without judging legality. ExxonMobil called the study “inaccurate and preposterous” and accused it of obscuring Exxon’s separateness from Mobil; the authors replied that they identified each advertorial’s company. Supran and Oreskes stood by their finding that the company’s public messages differed from its internal and scientific communications."
+  duration: 18
 
 - shot: in-their-words
   view: graph
@@ -187,24 +207,4 @@ Rose Cipollone sued while she had lung cancer; her son carried on after she and 
   overlay: {kind: "stat", value: "Over 7 million", label: "Deaths a year from tobacco worldwide, WHO fact sheet of June 2026", source: "who-tobacco-fact-sheet-2026", quote: "Tobacco kills more than 7 million people each year, including over 1.6 million non-smokers who are exposed to second-hand smoke."}
   narration: "**The toll.** In 2012 Judge Kessler required the makers to tell Americans that smoking kills an average of 1,200 of them every day. Her 2006 findings had put the combined annual U.S. toll of smoking and secondhand smoke at nearly 440,000; the World Health Organization’s June 2026 figure covers tobacco worldwide, more than 7 million deaths a year, including over 1.6 million non-smokers exposed to secondhand smoke. These figures describe different populations and years. Rose Cipollone’s son had carried on after lung cancer killed his mother; Kessler’s order now required the companies themselves to put smoking’s fatal consequences before their customers."
   duration: 13
-
-- shot: sugar
-  view: graph
-  focus: sugar-research-foundation
-  time: "1965/1967"
-  reveal: [sugar-research-foundation, d-mark-hegsted, project-226, sugar-industry-and-chd-research, harvard-university, sugar-association]
-  reveal_claims: [sugar-research-foundation#c1, sugar-research-foundation#c2, d-mark-hegsted#c1, sugar-association#c2]
-  overlay: {kind: "quote", source: "kearns-schmidt-glantz-2016-jama-sugar", quote: "I will be disappointed if this aspect is drowned out in a cascade of review and general interpretation.", caption: "The foundation’s Hickson to Hegsted, 30 July 1965, about claims that sucrose contributes to heart disease, as quoted by Kearns, Schmidt and Glantz"}
-  narration: "**Sugar.** Kearns, Schmidt and Glantz quote Sugar Research Foundation executive John Hickson pressing Harvard’s Mark Hegsted in July 1965 to address claims linking sucrose to heart disease. Hegsted replied, “We are well aware of your particular interest in carbohydrate and will cover this as well as we can.” The foundation paid Hegsted and Robert McGandy $6,500 together for their 1967 review, overseen by Fredrick Stare, without disclosing its funding. The researchers found the review downplayed evidence linking sucrose to heart disease, describing evidence of industry influence as circumstantial, with no direct evidence of rewriting. The Sugar Association disputed their interpretation and sugar’s unique role in heart disease, while saying the foundation should have been more transparent and standards differed then."
-  duration: 16
-
-- shot: oil
-  view: graph
-  focus: exxonmobil
-  time: "2017-08-23"
-  reveal: [exxonmobil, assessing-exxonmobils-climate-change-communications, addendum-to-assessing-exxonmobils-climate-change-communications, geoffrey-supran, naomi-oreskes, harvard-university]
-  reveal_claims: [exxonmobil#c10, geoffrey-supran#c3]
-  overlay: {kind: "stat", value: "83% vs 12%", label: "Documents acknowledging human-caused climate change, peer-reviewed papers vs advertorials, by Supran and Oreskes, 2017", source: "supran-oreskes-2017-erl", quote: "accounting for expressions of reasonable doubt, 83% of peer-reviewed papers and 80% of internal documents acknowledge that climate change is real and human-caused, yet only 12% of advertorials do so, with 81% instead expressing doubt."}
-  narration: "**Oil.** ExxonMobil challenged readers to examine its documents; in 2017 Geoffrey Supran and Naomi Oreskes took up that invitation, comparing 187 communications. Among documents taking a position, they counted acknowledgment of human-caused climate change in 83% of peer-reviewed papers and 80% of internal documents, against 12% of Mobil and ExxonMobil advertorials, concluding the company misled the public without judging legality. ExxonMobil called the study “inaccurate and preposterous” and accused it of obscuring Exxon’s separateness from Mobil; the authors replied that they identified each advertorial’s company. Supran and Oreskes stood by their finding that the company’s public messages differed from its internal and scientific communications."
-  duration: 18
 ```
