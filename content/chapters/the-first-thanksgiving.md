@@ -217,6 +217,17 @@ Ousamequin made an agreement with the newcomers after epidemics devastated Wampa
   narration: "**Congress looks.** In January 1865 Representative Orth moved for Congress to investigate Sand Creek. The Joint Committee on the Conduct of the War found Chivington had deliberately planned and executed a massacre, knowing the camp’s friendly character. It reported competing explanations for his conduct: political ambition, or avoiding dangerous service elsewhere. In October officials persuaded a handful of Cheyenne and Arapaho chiefs to sign the Treaty of the Little Arkansas. It condemned the “gross and wanton outrages” at Sand Creek and promised reparations, while removing Colorado from their treaty lands. The Park Service says the reparations were never paid. The chiefs’ treaty recorded the outrage and surrendered more land."
   duration: 13
 
+- shot: the-nations-today
+  view: map
+  camera: {center: [-70.4817, 41.6483], zoom: 10.0, pitch: 20, duration: 6}
+  places: [mashpee-massachusetts]
+  time: "1870/2021"
+  reveal: [mashpee-wampanoag-tribe, wampanoag-tribe-of-gay-head, mashpee-district-abolished-1870, mashpee-children-sent-to-carlisle, mashpee-reservation-decision-2021, bryan-newland]
+  reveal_claims: [mashpee-wampanoag-tribe#c1, mashpee-wampanoag-tribe#c2, mashpee-wampanoag-tribe#c4, mashpee-district-abolished-1870#c1, mashpee-children-sent-to-carlisle#c1, mashpee-reservation-decision-2021#c1, mashpee-reservation-decision-2021#c2]
+  overlay: {kind: quote, source: mashpee-wampanoag-timeline, quote: "1870: Legislature authorized the conveyance of the remaining 3,000 - 5,000 acres in tribal ownership, abolished the Mashpee district, and created the town of Mashpee. The federal government did not approve this transaction as required by the 1790 Trade and Intercourse Act.", caption: "Mashpee Wampanoag Tribe, A Brief Timeline of Wampanoag History"}
+  narration: "**The nations today.** In 2021 Assistant Secretary Bryan Newland confirmed Mashpee’s reservation status. Behind that decision lay a federal land claim filed in 1976, recognition in 2007 and reservation approval in 2015. Mashpee’s timeline records what its citizens had endured: Massachusetts abolished their district in 1870 and authorized conveyance of its remaining 3,000–5,000 acres without the federal approval required by the 1790 Act; it records children being sent to Carlisle Indian School in 1904–1916 under the federal assimilation policy. Mashpee and Aquinnah remain federally recognized tribal governments, and Mashpee describes more than 12,000 years in its homeland. The reservation decision continued their long struggle for land and recognition."
+  duration: 13
+
 - shot: land-after-1887
   view: graph
   focus: general-allotment-act
@@ -269,27 +280,6 @@ Ousamequin made an agreement with the newcomers after epidemics devastated Wampa
   narration: "**The speech.** On Cole’s Hill in 1970, James delivered his rejected speech at the first National Day of Mourning, UAINE recounts. He said the Pilgrims had robbed his ancestors’ graves and that within fifty years the Wampanoag would no longer be free. His words also set a task: “today we must work towards a more humane America, a more Indian America”, where honor, truth and brotherhood would prevail. UAINE explains why it keeps gathering: Thanksgiving recalls “the genocide of millions of Native people, the theft of Native lands and the erasure of Native cultures.” Plimoth Patuxet likewise describes Thanksgiving as a day of mourning for many Wampanoag people. James’s refusal became an annual occasion to remember ancestors and protest harms that continue."
   duration: 13
 
-- shot: the-nations-today
-  view: map
-  camera: {center: [-70.4817, 41.6483], zoom: 10.0, pitch: 20, duration: 6}
-  places: [mashpee-massachusetts]
-  time: "1870/2021"
-  reveal: [mashpee-wampanoag-tribe, wampanoag-tribe-of-gay-head, mashpee-district-abolished-1870, mashpee-children-sent-to-carlisle, mashpee-reservation-decision-2021, bryan-newland]
-  reveal_claims: [mashpee-wampanoag-tribe#c1, mashpee-wampanoag-tribe#c2, mashpee-wampanoag-tribe#c4, mashpee-district-abolished-1870#c1, mashpee-children-sent-to-carlisle#c1, mashpee-reservation-decision-2021#c1, mashpee-reservation-decision-2021#c2]
-  overlay: {kind: quote, source: mashpee-wampanoag-timeline, quote: "1870: Legislature authorized the conveyance of the remaining 3,000 - 5,000 acres in tribal ownership, abolished the Mashpee district, and created the town of Mashpee. The federal government did not approve this transaction as required by the 1790 Trade and Intercourse Act.", caption: "Mashpee Wampanoag Tribe, A Brief Timeline of Wampanoag History"}
-  narration: "**The nations today.** In 2021 Assistant Secretary Bryan Newland confirmed Mashpee’s reservation status. Behind that decision lay a federal land claim filed in 1976, recognition in 2007 and reservation approval in 2015. Mashpee’s timeline records what its citizens had endured: Massachusetts abolished their district in 1870 and authorized conveyance of its remaining 3,000–5,000 acres without the federal approval required by the 1790 Act; it records children being sent to Carlisle Indian School in 1904–1916 under the federal assimilation policy. Mashpee and Aquinnah remain federally recognized tribal governments, and Mashpee describes more than 12,000 years in its homeland. The reservation decision continued their long struggle for land and recognition."
-  duration: 13
-
-- shot: the-medals
-  view: graph
-  focus: wounded-knee-medals-review
-  time: "1990/2025"
-  reveal: [wounded-knee-medals-review, senate-concurrent-resolution-153, pete-hegseth, lloyd-austin, seventh-cavalry-regiment, cheyenne-river-sioux-tribe, standing-rock-sioux-tribe, national-congress-of-american-indians]
-  reveal_claims: [lloyd-austin#c1, pete-hegseth#c1, wounded-knee-medals-review#c1, senate-concurrent-resolution-153#c1, cheyenne-river-sioux-tribe#c1, standing-rock-sioux-tribe#c1, national-congress-of-american-indians#c1, us-congress#c33]
-  overlay: {kind: quote, source: ncai-wounded-knee-medals-2025, quote: "Secretary Pete Hegseth made this decision on his own concurrence with no contact or request for consultation to the Tribes.", caption: "Chairman Ryman LeBeau, Cheyenne River Sioux Tribe, 27 September 2025"}
-  narration: "**The medals.** In 1990 Congress expressed “deep regret” to Wounded Knee’s survivors and descendants. It left twenty soldiers’ Medals of Honor in place. The awards cited bravery, rescuing fellow troops and dislodging Indians concealed in a ravine, the AP reports. By September 2025 Cheyenne River Sioux Chairman Ryman LeBeau was demanding revocation: “There is no honor in murder.” He said Secretary Pete Hegseth had decided to retain them without contacting or consulting the tribes. LeBeau’s call for revocation challenged a Pentagon review that had left all twenty awards in place."
-  duration: 13
-
 - shot: the-2024-review
   view: graph
   focus: wounded-knee-medals-review
@@ -316,5 +306,15 @@ Ousamequin made an agreement with the newcomers after epidemics devastated Wampa
   reveal: [federal-indian-boarding-school-initiative, deb-haaland, bryan-newland, boarding-school-report-2022, boarding-school-report-vol-2-2024, us-department-of-the-interior, biden-remarks-at-gila-river-2024, joe-biden]
   reveal_claims: [deb-haaland#c1, deb-haaland#c3, federal-indian-boarding-school-initiative#c1, bryan-newland#c1, bryan-newland#c2, joe-biden#c3, national-day-of-mourning#c1]
   narration: "**October 2024.** At the Gila River Indian Community on 25 October 2024, Joe Biden asked for silence for the children and generations living with trauma. He said the federal government had never formally apologized for the boarding schools, then did so: “I formally apologize, as President of the United States of America, for what we did.” Congress had apologized for Wounded Knee in 1990, the AP notes. An audience member challenged Biden over Gaza, asking: “How can you apologize for a genocide while committing a genocide in Palestine?” Biden said he had come to right a wrong; the apology did not end the demands. UAINE continues its Thanksgiving gatherings on Cole’s Hill, with the next announced for Thursday, 26 November 2026."
+  duration: 13
+
+- shot: the-medals
+  view: graph
+  focus: wounded-knee-medals-review
+  time: "2025-09-27"
+  reveal: [wounded-knee-medals-review, senate-concurrent-resolution-153, pete-hegseth, lloyd-austin, seventh-cavalry-regiment, cheyenne-river-sioux-tribe, standing-rock-sioux-tribe, national-congress-of-american-indians]
+  reveal_claims: [lloyd-austin#c1, pete-hegseth#c1, wounded-knee-medals-review#c1, senate-concurrent-resolution-153#c1, cheyenne-river-sioux-tribe#c1, standing-rock-sioux-tribe#c1, national-congress-of-american-indians#c1, us-congress#c33]
+  overlay: {kind: quote, source: ncai-wounded-knee-medals-2025, quote: "Secretary Pete Hegseth made this decision on his own concurrence with no contact or request for consultation to the Tribes.", caption: "Chairman Ryman LeBeau, Cheyenne River Sioux Tribe, 27 September 2025"}
+  narration: "**The medals.** In 1990 Congress expressed “deep regret” to Wounded Knee’s survivors and descendants. It left twenty soldiers’ Medals of Honor in place. The awards cited bravery, rescuing fellow troops and dislodging Indians concealed in a ravine, the AP reports. By September 2025 Cheyenne River Sioux Chairman Ryman LeBeau was demanding revocation: “There is no honor in murder.” He said Secretary Pete Hegseth had decided to retain them without contacting or consulting the tribes. LeBeau’s call for revocation challenged a Pentagon review that had left all twenty awards in place."
   duration: 13
 ```
