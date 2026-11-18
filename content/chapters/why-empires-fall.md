@@ -107,16 +107,6 @@ Augustine answered an accusation after [Rome's sack](/c/the-fall-of-rome/); Proc
   overlay: {kind: "quote", source: "treaty-of-nanking-1842-text", quote: "the sum of Six Millions of Dollars as the value of Opium", caption: "Treaty of Nanking, Article IV, 29 August 1842"}
   narration: "**The price of the surrendered opium.** The opium surrendered to Lin became a British demand for compensation in the Treaty of Nanking, signed aboard the Cornwallis on 29 August 1842 to end the First Opium War. The emperor agreed to cede Hong Kong, open five ports to British residence and trade, and pay $6 million for the opium, $3 million for insolvent Hong merchants' debts and $12 million for Britain's expedition: $21 million in all under Article VII, with specified ransom deductions. The treaty called the opium surrender a ransom for British subjects imprisoned and threatened with death. Qing rule continued, but its freedom to set terms had narrowed; could borrowing to defend a state produce a similar loss of freedom?"
 
-- shot: ottoman-debt
-  view: graph
-  picture: none
-  time: "1854/1881"
-  focus: ottoman-default-1875
-  reveal: [ottoman-empire, ottoman-default-1875, ottoman-public-debt-administration]
-  reveal_claims: [ottoman-default-1875#c1, ottoman-default-1875#c2, ottoman-default-1875#c3, ottoman-public-debt-administration#c1, ottoman-public-debt-administration#c2]
-  overlay: {kind: "quote", source: "quataert-2005-the-ottoman-empire-1700-1922", quote: "But finally, aware of the risks, they took out the first loans, to help finance Ottoman participation in the Crimean war of 1853-1856.", caption: "Donald Quataert on Ottoman administrators' decision to borrow"}
-  narration: "**Borrowing to defend the state.** Loss of freedom to act also worried Ottoman administrators: they feared foreign loans would bring European control, but historian Donald Quataert says they borrowed in 1854 to finance participation in the Crimean War. In October 1875 the government announced it would pay only half its foreign coupons in cash, pleading a budget deficit; in 1881 it accepted a Debt Administration run by creditors. Quataert describes its officials collecting taxes for foreign bondholders, while further loans continued to finance military and bureaucratic expansion. The state survived this surrender of revenue; its leaders still had to choose how to defend it when war came in 1914."
-
 - shot: pressure-from-outside
   view: graph
   picture: none
@@ -125,7 +115,7 @@ Augustine answered an accusation after [Rome's sack](/c/the-fall-of-rome/); Proc
   reveal: [talaat-pasha, henry-morgenthau-sr, goeben-and-breslau-1914, ottoman-empire, world-war-i]
   reveal_claims: [goeben-and-breslau-1914#c8, goeben-and-breslau-1914#c9, goeben-and-breslau-1914#c6, goeben-and-breslau-1914#c4]
   overlay: {kind: "quote", source: "morgenthau-1918-ambassador-morgenthaus-story", quote: "We shall use Germany to help us reconstruct and defend the country until we are able to govern ourselves with our own strength.", caption: "Talaat, as recalled by U.S. ambassador Henry Morgenthau in his 1918 memoir"}
-  narration: "**An ally until the state can stand alone.** When war came in 1914, Ottoman leaders in Constantinople proclaimed neutrality while mobilizing, U.S. ambassador Henry Morgenthau later recalled. He reports Talaat's private argument for German help: use it to rebuild and defend the country until it could stand alone. Quataert later judged that Ottoman statesmen feared neutrality would bring partition, and that the war between the great coalitions doomed the empire. In Talaat's reported argument, reconstruction with an ally's help would let the state defend itself."
+  narration: "**An ally until the state can stand alone.** Ottoman leaders faced their own choice about defending the state when war came in 1914: in Constantinople, they proclaimed neutrality while mobilizing, U.S. ambassador Henry Morgenthau later recalled. He reports Talaat's private argument for German help: use it to rebuild and defend the country until it could stand alone. Quataert later judged that Ottoman statesmen feared neutrality would bring partition, and that the war between the great coalitions doomed the empire. In Talaat's reported argument, reconstruction with an ally's help would let the state defend itself."
 
 - shot: reform-accounts
   view: map
@@ -189,10 +179,20 @@ Augustine answered an accusation after [Rome's sack](/c/the-fall-of-rome/); Proc
   overlay: {kind: "quote", source: "whc-gorbachev-resignation-1991", quote: "Events went a different way. The policy prevailed of dismembering this country and disuniting the state, with which I cannot agree.", caption: "Gorbachev's farewell address, 25 December 1991"}
   narration: "**He leaves, still arguing.** After the November warning, the leaders of Russia, Ukraine and Belarus signed the Belovezha agreement on 8 December 1991 to replace the USSR with the Commonwealth of Independent States. On 25 December, Gorbachev said its creation had brought him to resign; he rejected dismemberment, having supported republican sovereignty and preservation of the Union together, and said such a decision required a popular expression of will. He blamed resistance for lost time, said the old system collapsed before the new one could work, and called the August coup the blow that brought the crisis to its limit. He defended the historic correctness of reform and urged people to preserve their democratic gains."
 
+- shot: ottoman-debt
+  view: graph
+  picture: none
+  time: "2005"
+  focus: ottoman-default-1875
+  reveal: [ottoman-empire, ottoman-default-1875, ottoman-public-debt-administration]
+  reveal_claims: [ottoman-default-1875#c1, ottoman-default-1875#c2, ottoman-default-1875#c3, ottoman-public-debt-administration#c1, ottoman-public-debt-administration#c2]
+  overlay: {kind: "quote", source: "quataert-2005-the-ottoman-empire-1700-1922", quote: "But finally, aware of the risks, they took out the first loans, to help finance Ottoman participation in the Crimean war of 1853-1856.", caption: "Donald Quataert on Ottoman administrators' decision to borrow"}
+  narration: "**Borrowing to defend the state.** Historian Donald Quataert traced another state's loss of freedom to act: Ottoman administrators feared foreign loans would bring European control, but he says they borrowed in 1854 to finance participation in the Crimean War. In October 1875 the government announced it would pay only half its foreign coupons in cash, pleading a budget deficit; in 1881 it accepted a Debt Administration run by creditors. Quataert describes its officials collecting taxes for foreign bondholders, while further loans continued to finance military and bureaucratic expansion. The state survived this surrender of revenue; its leaders also had to choose how to defend it when war came in 1914."
+
 - shot: transformation
   view: graph
   picture: none
-  time: "0410/1991"
+  time: "2007-04"
   focus: dissolution-of-the-soviet-union
   reveal: [augustine-of-hippo, procopius, qing-government, yegor-gaidar, chris-miller, dissolution-of-the-soviet-union, the-struggle-to-save-the-soviet-economy]
   reveal_claims: [dissolution-of-the-soviet-union#c10, dissolution-of-the-soviet-union#c11, dissolution-of-the-soviet-union#c12, dissolution-of-the-soviet-union#c14]
