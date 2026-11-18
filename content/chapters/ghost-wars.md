@@ -83,16 +83,6 @@ The people making those decisions gave different reasons: resisting Moscow, secu
   narration: "**Did the CIA deal with him?** In November 1998 Taliban aide Wakil Ahmed called bin Laden a former U.S.-supported guerrilla; diplomat Alan Eastham answered that he might have fought beside a U.S.-funded group, but “we had never heard his name during that period and did not support him at that time.” The claim endured: the Christian Science Monitor’s Wilson obituary later included bin Laden among rebels Wilson funded. The 9/11 Commission found little or no U.S. assistance to bin Laden’s circle; its endnote pairs one CIA interview reporting little contact with Ayman al Zawahiri’s memoir denying American money or training for Arab fighters. Eastham’s reply left the Taliban facing Washington’s demand to expel a man it described as Washington’s former ally."
   duration: 13
 
-- shot: what-is-documented
-  view: graph
-  focus: osama-bin-laden
-  time: "1993"
-  reveal: [osama-bin-laden, maktab-al-khidmat, cia, us-government]
-  reveal_claims: [osama-bin-laden#c3, embassy-bombings-1998#c3]
-  overlay: {kind: quote, source: 911-commission-report-2004, quote: "Agreeing that the U.S. embassy in Nairobi was an easy target because a car bomb could be parked close by, they began to form a plan.", caption: "9/11 Commission on the surveillance reports reviewed by bin Laden and other al Qaeda leaders"}
-  narration: "**An instructor cases Nairobi.** In December 1993 Ali Mohamed led an al Qaeda team casing targets in Nairobi, the 9/11 Commission found. A former Egyptian officer, he had moved to the United States, enlisted in the U.S. Army and become an instructor at Fort Bragg; he also trained extremists in Brooklyn. There, al Khifa, a Bureau of Services outpost in a mosque, recruited in the United States, while bin Laden’s volunteers drew largely on private Golden Chain money from Saudi Arabia and the Gulf. The team developed photographs in a Nairobi apartment; after reviewing its diagrams, bin Laden and his military chiefs judged the embassy an easy car-bomb target and began planning."
-  duration: 13
-
 - shot: february-1989
   view: graph
   focus: soviet-withdrawal-from-afghanistan
@@ -101,6 +91,16 @@ The people making those decisions gave different reasons: resisting Moscow, secu
   reveal_claims: [soviet-withdrawal-from-afghanistan#c1]
   overlay: {kind: quote, source: brzezinski-1998-nouvel-observateur, quote: "What is most important to the history of the world? The Taliban or the collapse of the Soviet empire?", caption: "Zbigniew Brzezinski, Le Nouvel Observateur, 1998 (English translation)"}
   narration: "**The last troops leave.** The last Soviet forces left Afghanistan on 15 February 1989. More than 14,000 Soviet soldiers and hundreds of thousands of Afghan combatants and civilians had died, by RFE/RL’s count; the National Security Archive gives one million deaths, the State Department millions of lives. Asked in 1998 about regret, Brzezinski called the operation “an excellent idea” that drew Moscow into “the Afghan trap.” Asked next about aiding future terrorists, he answered, “What is most important to the history of the world? The Taliban or the collapse of the Soviet empire?” When his interviewer called Islamic fundamentalism a world menace, he replied, “Nonsense!” Soviet soldiers had gone, but the armed factions remained."
+  duration: 13
+
+- shot: what-is-documented
+  view: graph
+  focus: osama-bin-laden
+  time: "1993"
+  reveal: [osama-bin-laden, maktab-al-khidmat, cia, us-government]
+  reveal_claims: [osama-bin-laden#c3, embassy-bombings-1998#c3]
+  overlay: {kind: quote, source: 911-commission-report-2004, quote: "Agreeing that the U.S. embassy in Nairobi was an easy target because a car bomb could be parked close by, they began to form a plan.", caption: "9/11 Commission on the surveillance reports reviewed by bin Laden and other al Qaeda leaders"}
+  narration: "**An instructor cases Nairobi.** In December 1993 Ali Mohamed led an al Qaeda team casing targets in Nairobi, the 9/11 Commission found. A former Egyptian officer, he had moved to the United States, enlisted in the U.S. Army and become an instructor at Fort Bragg; he also trained extremists in Brooklyn. There, al Khifa, a Bureau of Services outpost in a mosque, recruited in the United States, while bin Laden’s volunteers drew largely on private Golden Chain money from Saudi Arabia and the Gulf. The team developed photographs in a Nairobi apartment; after reviewing its diagrams, bin Laden and his military chiefs judged the embassy an easy car-bomb target and began planning."
   duration: 13
 
 - shot: kandahar-1994
@@ -257,16 +257,6 @@ The people making those decisions gave different reasons: resisting Moscow, secu
   narration: "**Paying for a road to stay open.** A former senior USAID official recalled infantry commanders saying, “Turn this money off. We’re having to look for people and projects to spend money on.” Congress’s inspector general, SIGAR, counted $145 billion on reconstruction and another $837 billion in Defense Department warfighting costs by August 2021. It found security contractors paying insurgents substantial shares of their U.S. awards to leave convoys and project sites alone, making them unofficial subcontractors; money also reached the insurgency through corruption. SIGAR blamed U.S. misunderstanding of local allies’ incentives: paying to protect American assets was helping finance the people who threatened them."
   duration: 13
 
-- shot: payments-since-2021
-  view: graph
-  focus: us-funds-benefitting-the-taliban-controlled-government
-  time: "2024-05"
-  reveal: [us-funds-benefitting-the-taliban-controlled-government, sigar, fall-of-kabul-2021, taliban]
-  reveal_claims: [sigar#c2, fall-of-kabul-2021#c4, fall-of-kabul-2021#c6]
-  overlay: {kind: stat, value: "$10.9 million", label: "At least what 38 U.S.-funded aid groups paid the Taliban-controlled government in taxes, fees and utilities, August 2021 to May 2023, by SIGAR’s 2024 count", source: sigar-2024-05-24-22-ar, quote: "From August 2021 to May 2023, 38 implementing partners reported paying an estimated $10.9 million to the Taliban-controlled government for continued operations in Afghanistan."}
-  narration: "**The cost of staying to help.** After the Taliban’s return, a UN agency official told SIGAR the agency tried “to minimize the activities that could be liable to more taxation.” U.S. aid since August 2021 exceeded $2.8 billion; workers delivering it faced taxes, fees and utility bills imposed as conditions of operating, as they had under Ghani’s administration. Of 144 groups SIGAR asked, 65 answered; 38 reported at least $10.9 million paid from August 2021 to May 2023. SIGAR called that likely a fraction because UN agencies did not track their subawardees’ payments. Continuing aid meant money kept reaching the Taliban-controlled government."
-  duration: 13
-
 - shot: was-it-for-the-money
   view: graph
   focus: us-war-in-afghanistan
@@ -275,5 +265,15 @@ The people making those decisions gave different reasons: resisting Moscow, secu
   reveal_claims: [us-war-in-afghanistan#c3, us-war-in-afghanistan#c2]
   overlay: {kind: stat, value: "over $2 trillion", label: "U.S. spending on the war in Afghanistan, 2001 to 2019, by Brown University’s Costs of War project", source: brown-costs-of-war-budgetary-costs, quote: "From 2001 to 2019, the U.S. spent over $2 trillion on the war in Afghanistan."}
   narration: "**Was it for the money?** Bush justified war by al Qaeda’s attacks and the Taliban’s refusal to surrender its leaders. SIGAR describes changing aims, including eliminating al Qaeda, decimating its Taliban hosts, denying terrorist safe haven, building Afghan security forces and helping the civilian government become legitimate and capable enough to win Afghans’ trust. In August 2021 Biden insisted nation building had never been the mission. Brown’s Costs of War project counts over $2 trillion spent on Afghanistan through 2019, and an estimated $8 trillion across the post-9/11 wars including veterans’ care. [[the-cost-of-war|The Cost of War]] follows the companies paid. SIGAR found reconstruction projects had inadvertently funded insurgents: decisions to fight and rebuild sent money to contractors and enemies alike."
+  duration: 13
+
+- shot: payments-since-2021
+  view: graph
+  focus: us-funds-benefitting-the-taliban-controlled-government
+  time: "2024-05"
+  reveal: [us-funds-benefitting-the-taliban-controlled-government, sigar, fall-of-kabul-2021, taliban]
+  reveal_claims: [sigar#c2, fall-of-kabul-2021#c4, fall-of-kabul-2021#c6]
+  overlay: {kind: stat, value: "$10.9 million", label: "At least what 38 U.S.-funded aid groups paid the Taliban-controlled government in taxes, fees and utilities, August 2021 to May 2023, by SIGAR’s 2024 count", source: sigar-2024-05-24-22-ar, quote: "From August 2021 to May 2023, 38 implementing partners reported paying an estimated $10.9 million to the Taliban-controlled government for continued operations in Afghanistan."}
+  narration: "**The cost of staying to help.** After the Taliban’s return, a UN agency official told SIGAR the agency tried “to minimize the activities that could be liable to more taxation.” U.S. aid since August 2021 exceeded $2.8 billion; workers delivering it faced taxes, fees and utility bills imposed as conditions of operating, as they had under Ghani’s administration. Of 144 groups SIGAR asked, 65 answered; 38 reported at least $10.9 million paid from August 2021 to May 2023. SIGAR called that likely a fraction because UN agencies did not track their subawardees’ payments. Continuing aid meant money kept reaching the Taliban-controlled government."
   duration: 13
 ```
