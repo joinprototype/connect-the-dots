@@ -20,6 +20,27 @@ La Roche-Posay Anthelios Wet Skin SPF 50+ met its label in the batch tested, one
   narration: "**Who stands behind this sunscreen’s promise, and does the bottle deliver it?** On 12 June 2025, CHOICE chief Ashley de Silva released tests of twenty sunscreens sold in Australia: sixteen fell short of their labels, but the tested batch of La Roche-Posay Anthelios Wet Skin SPF 50+ measured 72 and passed. He said consumers expected the number on the bottle to match its contents; his investigation challenged manufacturers to show their evidence. Follow this bottle back through its brand, its corporate owner and shareholders, then through the rules and tests that make a promise of protection something a buyer can check."
   duration: 16
 
+- shot: does-sunscreen-cut-cancer
+  view: map
+  time: "2011-01-20"
+  camera: {"center": [152.96, -26.63], "zoom": 9.0, "pitch": 20, "duration": 6}
+  places: ["nambour"]
+  reveal: ["nambour-skin-cancer-trial", "nambour", "sunscreen", "green-1999-lancet-report", "green-2011-jco-report"]
+  reveal_claims: ["nambour-skin-cancer-trial#c1", "nambour-skin-cancer-trial#c2", "green-1999-lancet-report#c1", "green-2011-jco-report#c1"]
+  overlay: {kind: "quote", source: "green-2011-jco", quote: "The reduction in invasive melanomas was substantial (n = 3 in active v 11 in control group; HR, 0.27; 95% CI, 0.08 to 0.97)", caption: "Green and colleagues, 2011 follow-up of the Nambour trial"}
+  narration: "**Weigh the reason to keep using sunscreen.** The bottle’s promise has evidence from regular sunscreen use behind it: in 1992, Green’s team assigned 1,621 Nambour residents to daily SPF 15-plus sunscreen or use as they chose. Their 1999 report found fewer squamous-cell tumors with daily use, though first-cancer rates did not clearly differ and basal-cell cancer showed no clear benefit. Follow-up published in 2011 counted 11 melanomas against 22, narrowly short of statistical significance; invasive melanomas numbered 3 against 11, a statistically significant difference. The team concluded that regular adult use might prevent melanoma. These residents tested a prevention practice over years, giving a reason to seek reliable sunscreen while CHOICE’s measurements help judge particular batches."
+  duration: 16
+
+- shot: accused-settled
+  view: graph
+  time: "2014-07-10"
+  focus: loreal-usa
+  reveal: ["loreal", "loreal-usa", "lancome", "asa", "federal-trade-commission"]
+  reveal_claims: ["loreal#c4", "loreal-usa#c1", "loreal-usa#c2", "loreal-usa#c3"]
+  overlay: {kind: "quote", source: "ftc-loreal-analysis-2014", quote: "The consent agreement in this matter settles alleged violations of federal law prohibiting unfair or deceptive acts or practices.", caption: "FTC analysis of the proposed L’Oréal USA consent order, 2014"}
+  narration: "**Weigh the owner’s advertising record.** L’Oréal’s history includes actual advertising bans: the ASA’s 2011 report records two banned ads for foundation and face cream, including Julia Roberts promoting Lancôme foundation, under guidance against misleading retouching. In 2014, the FTC alleged that L’Oréal USA made unsubstantiated gene-targeting claims and false scientific-proof claims for Génifique and Youth Code. L’Oréal USA agreed to a proposed consent order requiring competent and reliable evidence for gene claims; the FTC described it as settling allegations. The order’s covered-product definition excluded sunscreens. These cream and foundation cases bear on confidence in advertising; the Anthelios batch had its own passing measurement. A related question is what reliable sun protection can accomplish."
+  duration: 16
+
 - shot: who-owns-loreal
   view: graph
   time: "2021-12-07"
@@ -138,27 +159,6 @@ La Roche-Posay Anthelios Wet Skin SPF 50+ met its label in the batch tested, one
   reveal_claims: ["choice-sunscreen-test-2025#c4"]
   overlay: {kind: "quote", source: "choice-sunscreen-test-page", quote: "UPDATE 4 December, 2025: Another sunscreen that didn’t meet its claimed SPF in our testing, Cancer Council Clear Zinc Kids SPF50+ 110g, is recalled.", caption: "CHOICE’s December update, following the TGA’s September action"}
   narration: "**Another tested product is recalled.** On 4 December, CHOICE reported a recall of Cancer Council Clear Zinc Kids SPF50+ 110g, which its comparison had measured at SPF 33. A product that fell short in the June comparison was now being removed from sale, following the withdrawals and pauses in CHOICE’s earlier updates. Anthelios remained one of the four products whose tested batches had met their labels in June. For its buyer, these developments sharpened the distinction between a corporate assurance, a laboratory measurement and a recall. The owner’s advertising record offered another way to weigh an assurance, alongside the passing result for this batch."
-  duration: 16
-
-- shot: accused-settled
-  view: graph
-  time: "2011/2014"
-  focus: loreal-usa
-  reveal: ["loreal", "loreal-usa", "lancome", "asa", "federal-trade-commission"]
-  reveal_claims: ["loreal#c4", "loreal-usa#c1", "loreal-usa#c2", "loreal-usa#c3"]
-  overlay: {kind: "quote", source: "ftc-loreal-analysis-2014", quote: "The consent agreement in this matter settles alleged violations of federal law prohibiting unfair or deceptive acts or practices.", caption: "FTC analysis of the proposed L’Oréal USA consent order, 2014"}
-  narration: "**Weigh the owner’s advertising record.** L’Oréal’s history includes actual advertising bans: the ASA’s 2011 report records two banned ads for foundation and face cream, including Julia Roberts promoting Lancôme foundation, under guidance against misleading retouching. In 2014, the FTC alleged that L’Oréal USA made unsubstantiated gene-targeting claims and false scientific-proof claims for Génifique and Youth Code. L’Oréal USA agreed to a proposed consent order requiring competent and reliable evidence for gene claims; the FTC described it as settling allegations. The order’s covered-product definition excluded sunscreens. These cream and foundation cases bear on confidence in advertising; the Anthelios batch had its own passing measurement. The remaining question is what reliable sun protection can accomplish."
-  duration: 16
-
-- shot: does-sunscreen-cut-cancer
-  view: map
-  time: "1992/2011"
-  camera: {"center": [152.96, -26.63], "zoom": 9.0, "pitch": 20, "duration": 6}
-  places: ["nambour"]
-  reveal: ["nambour-skin-cancer-trial", "nambour", "sunscreen", "green-1999-lancet-report", "green-2011-jco-report"]
-  reveal_claims: ["nambour-skin-cancer-trial#c1", "nambour-skin-cancer-trial#c2", "green-1999-lancet-report#c1", "green-2011-jco-report#c1"]
-  overlay: {kind: "quote", source: "green-2011-jco", quote: "The reduction in invasive melanomas was substantial (n = 3 in active v 11 in control group; HR, 0.27; 95% CI, 0.08 to 0.97)", caption: "Green and colleagues, 2011 follow-up of the Nambour trial"}
-  narration: "**Weigh the reason to keep using sunscreen.** That question has longer evidence behind it: in 1992, Green’s team assigned 1,621 Nambour residents to daily SPF 15-plus sunscreen or use as they chose. Their 1999 report found fewer squamous-cell tumors with daily use, though first-cancer rates did not clearly differ and basal-cell cancer showed no clear benefit. Follow-up published in 2011 counted 11 melanomas against 22, narrowly short of statistical significance; invasive melanomas numbered 3 against 11, a statistically significant difference. The team concluded that regular adult use might prevent melanoma. These residents tested a prevention practice over years, giving a reason to seek reliable sunscreen while CHOICE’s measurements help judge particular batches."
   duration: 16
 
 - shot: the-bottle-answers
