@@ -90,24 +90,31 @@ pub fn story(s: &Site, ch: &Told, steps: &[Value], next: &[Value]) -> anyhow::Re
         111..=160 => "mid",
         _ => "long",
     });
+    let opener = opener_span(ch.shots);
+    let stamp = |i: usize, label: &Value| match (i, &opener) {
+        (0, Some(span)) => json!(span),
+        _ => label.clone(),
+    };
     let scenes: Vec<Value> = ch
         .shots
         .iter()
         .zip(steps)
-        .map(|(shot, step)| {
+        .enumerate()
+        .map(|(i, (shot, step))| {
             let html = step["narration_html"].as_str().unwrap_or_default();
             let (heading, body) = match HEADING.captures(html) {
                 Some(c) => (Some(c[1].trim_end_matches(['.', ':']).to_string()), format!("<p>{}", &html[c[0].len()..])),
                 None => (None, html.to_string()),
             };
-            json!({ "when": step["time_label"], "heading": heading, "body": body.replace("<p></p>", ""), "proof": proof(s, shot), "picture": step["picture"] })
+            json!({ "when": stamp(i, &step["time_label"]), "heading": heading, "body": body.replace("<p></p>", ""), "proof": proof(s, shot), "picture": step["picture"] })
         })
         .collect();
     // what the picture needs of each scene, in the prototype's short names
     let pictures: Vec<Value> = ch
         .shots
         .iter()
-        .map(|shot| {
+        .enumerate()
+        .map(|(i, shot)| {
             let mut v = json!({ "v": if shot["view"] == "map" { "map" } else { "graph" } });
             if let (Some(c), Some(z)) = (shot["camera"]["center"].as_array(), shot["camera"]["zoom"].as_f64()) {
                 v["c"] = json!([c.first(), c.get(1), z]);
@@ -116,6 +123,9 @@ pub fn story(s: &Site, ch: &Told, steps: &[Value], next: &[Value]) -> anyhow::Re
                 if !shot[key].is_null() {
                     v[short] = shot[key].clone();
                 }
+            }
+            if i == 0 && opener.is_some() {
+                v["t"] = stamp(0, &Value::Null);
             }
             v
         })
@@ -186,6 +196,19 @@ fn proof(s: &Site, shot: &Value) -> Option<Value> {
     Some(json!({ "kind": kind, "quote": o["quote"], "caption": o["caption"], "value": o["value"], "label": o["label"], "source": source }))
 }
 
+/// An opening scene dated in a later year than the scene after it frames the whole story (the question
+/// asked first, or the answer told first): its stamp is the story's span, "1898–1947", so the reader is
+/// not set back in time at the second scene by one late date.
+fn opener_span(shots: &[Value]) -> Option<String> {
+    let year = |s: &Value| s["t"].as_f64().map(|t| t.floor() as i32);
+    if year(shots.first()?)? <= year(shots.get(1)?)? {
+        return None;
+    }
+    let years: Vec<i32> = shots.iter().filter_map(year).collect();
+    let label = |y: i32| if y < 0 { format!("{} BCE", -y) } else { y.to_string() };
+    Some(format!("{}–{}", label(*years.iter().min()?), label(*years.iter().max()?)))
+}
+
 /// The opening lines and the rest of the intro. The first paragraph opens the story when it is short;
 /// a long one gives its first sentences, cut only where no tag is open.
 fn opening(html: &str) -> (Option<String>, String) {
@@ -251,6 +274,17 @@ fn letters(html: &str) -> usize {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn an_opener_dated_after_the_next_scene_is_stamped_with_the_span() {
+        let shots = |ts: &[f64]| ts.iter().map(|t| json!({ "t": t })).collect::<Vec<_>>();
+        assert_eq!(opener_span(&shots(&[1947.2, 1898.1, 1912.0, 1947.9])).as_deref(), Some("1898–1947"));
+        assert_eq!(opener_span(&shots(&[410.6, -49.0, 476.0])).as_deref(), Some("49 BCE–476"));
+        // in date order, or the same year, the opener keeps its own date
+        assert_eq!(opener_span(&shots(&[1898.1, 1898.9, 1947.0])), None);
+        assert_eq!(opener_span(&shots(&[1898.9, 1898.1])), None);
+        assert_eq!(opener_span(&[json!({}), json!({ "t": 1900.0 })]), None, "an undated opener");
+    }
 
     #[test]
     fn a_short_first_paragraph_opens_the_story() {

@@ -82,10 +82,12 @@ export class StoryPictures {
     return this.mark(id, x, y, more);
   }
 
-  /** The cover: the story's first places, far out; or its whole web, when it never visits the Earth. */
+  /** The cover: where the first scene is, far out, when it is on the map; else the story's whole web. Never a
+   *  later scene's places: the opening lines are about the first, and a place met halfway through (Hong
+   *  Kong, scene 3 of a story that opens in Washington) would open the story somewhere it does not. */
   cover(): Scene {
     const key = `c:${this.d.id}`;
-    const first = this.d.scenes.find((s) => s.v === 'map' && s.c);
+    const first = this.d.scenes[0]?.v === 'map' ? this.d.scenes[0] : undefined;
     if (first?.c) {
       const z = Math.max(2.6, Math.min(first.c[2] - 8, 3.4));
       const marks = (first.p ?? []).map((id) => this.onEarth(id, { label: 'strong', rank: 10, r: 9 })).filter((m): m is Mark => !!m);
