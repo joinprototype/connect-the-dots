@@ -104,7 +104,7 @@ Who stood to gain, and who bore the risk? The road begins with a law intended to
   view: "graph"
   focus: "gelsinger-gene-therapy-trial"
   picture: "none"
-  time: "2000-09/2000-11"
+  time: "2000-11"
   reveal: ["gelsinger-gene-therapy-trial", "jesse-gelsinger", "paul-gelsinger", "james-m-wilson", "university-of-pennsylvania"]
   reveal_claims: ["gelsinger-gene-therapy-trial#c7", "gelsinger-gene-therapy-trial#c2"]
   overlay: {kind: "quote", source: "dp-2000-11-gelsinger-suit-settled", quote: "An apology from them would go a long way", caption: "Paul Gelsinger, quoted by the Daily Pennsylvanian, November 2000"}
@@ -131,6 +131,16 @@ Who stood to gain, and who bore the risk? The road begins with a law intended to
   reveal_claims: ["gelsinger-gene-therapy-trial#c8", "gelsinger-gene-therapy-trial#c1"]
   overlay: {kind: "quote", source: "fda-2002-02-08-wilson-hearing", quote: "No final decision by FDA has been made at this time on your eligibility to continue to use investigational drugs.", caption: "FDA notice of opportunity for a hearing, 8 February 2002"}
   narration: "**The FDA offers a hearing.** On 8 February 2002 the FDA said Wilson’s explanation inadequately answered its alleged violations and offered a hearing, asserting that delegation left him responsible for all aspects of the study. “There is no justification for the protocol violations or for not reporting pertinent animal data to the oversight authorities,” Paul told the Daily Pennsylvanian. Wilson said Jesse’s death could not have been predicted from animal trials and sought a resolution with the agency; Paul also demanded system reform. The FDA expressly said no final eligibility decision had been made; the settlement came three years later."
+  duration: 13
+
+- shot: "what-studies-count"
+  view: "graph"
+  focus: "bayh-dole-act"
+  picture: "none"
+  time: "2003"
+  reveal: ["bayh-dole-act", "promoting-objectivity-in-research-rule", "national-institutes-of-health"]
+  overlay: {kind: "stat", value: "About 1 in 4", label: "Investigators with industry affiliations, estimated in a 2003 review of 37 studies", source: "bekelman-2003-jama-financial-conflicts", quote: "Approximately one fourth of investigators have industry affiliations", caption: "Bekelman, Li and Gross, JAMA, 2003"}
+  narration: "**Beyond one laboratory.** The FDA’s case leaves a wider question: how common were financial ties, and did they track the answers research produced? In a 2003 review, Justin Bekelman and colleagues screened 1,664 citations and included 37 studies; Bekelman extracted their data. They estimated that about a quarter of investigators had industry affiliations and roughly two thirds of academic institutions held equity in start-ups sponsoring research there. Eight articles covering 1,140 studies linked sponsorship to pro-industry conclusions, with pooled odds of 3.60 times those for other sponsorship. That association counted a pattern; it did not determine why Jesse’s trial continued."
   duration: 13
 
 - shot: "settled-2005"
@@ -166,16 +176,6 @@ Who stood to gain, and who bore the risk? The road begins with a law intended to
   narration: "**Wilson looks back.** In 2009 Wilson told Scientific American that earlier toxicities had seemed expected from animal studies and manageable, but acknowledged that the protocol lacked clarity about when ammonia had to meet the threshold; he did not think Jesse’s ammonia level caused his death. He suspected a rare antibody reaction, which he said could not be proved without pretreatment blood samples. Saying he was not trying to dodge responsibility, he expressed remorse: “I’m sorry.” He advised researchers to avoid potential financial conflicts, leave human testing of their therapies to others, and ask whether the worst possible outcome was acceptable; had he asked that in 1999, he said, he would not have proceeded."
   duration: 13
 
-- shot: "what-studies-count"
-  view: "graph"
-  focus: "bayh-dole-act"
-  picture: "none"
-  time: "2003"
-  reveal: ["bayh-dole-act", "promoting-objectivity-in-research-rule", "national-institutes-of-health"]
-  overlay: {kind: "stat", value: "About 1 in 4", label: "Investigators with industry affiliations, estimated in a 2003 review of 37 studies", source: "bekelman-2003-jama-financial-conflicts", quote: "Approximately one fourth of investigators have industry affiliations", caption: "Bekelman, Li and Gross, JAMA, 2003"}
-  narration: "**Beyond one laboratory.** Wilson’s account leaves a wider question: how common were financial ties, and did they track the answers research produced? In a 2003 review, Justin Bekelman and colleagues screened 1,664 citations and included 37 studies; Bekelman extracted their data. They estimated that about a quarter of investigators had industry affiliations and roughly two thirds of academic institutions held equity in start-ups sponsoring research there. Eight articles covering 1,140 studies linked sponsorship to pro-industry conclusions, with pooled odds of 3.60 times those for other sponsorship. That association counted a pattern; it did not determine why Jesse’s trial continued."
-  duration: 13
-
 - shot: "the-defence"
   view: "graph"
   focus: "bayh-dole-act"
@@ -183,7 +183,7 @@ Who stood to gain, and who bore the risk? The road begins with a law intended to
   time: "2011"
   reveal: ["bayh-dole-act", "stanford-university", "national-institutes-of-health", "fda"]
   overlay: {kind: "stat", value: "153", label: "Approved drugs, vaccines or new uses traced to public-sector research over forty years", source: "stevens-2011-nejm-public-sector-drugs", quote: "We found that during the past 40 years, 153 new FDA-approved drugs, vaccines, or new indications for existing drugs were discovered through research carried out in PSRIs.", caption: "Stevens and colleagues, New England Journal of Medicine, 2011"}
-  narration: "**What collaboration produced.** A pattern of favorable conclusions still leaves the reason universities sought commercial partners. Ashley Stevens and colleagues identified FDA-approved medicines and vaccines discovered at public-sector research institutions, then classified their uses and potential therapeutic effects. Their 2011 study traced 153 drugs, vaccines or new uses of existing drugs to those institutions over forty years, with more than half treating or preventing cancer or infectious disease. The count supports the promise of public research reaching patients, without estimating Bayh-Dole’s effect. It leaves the question of safeguards inside that collaboration."
+  narration: "**What collaboration produced.** Beyond Wilson’s advice, the pattern of favorable conclusions still leaves the reason universities sought commercial partners. Ashley Stevens and colleagues identified FDA-approved medicines and vaccines discovered at public-sector research institutions, then classified their uses and potential therapeutic effects. Their 2011 study traced 153 drugs, vaccines or new uses of existing drugs to those institutions over forty years, with more than half treating or preventing cancer or infectious disease. The count supports the promise of public research reaching patients, without estimating Bayh-Dole’s effect. It leaves the question of safeguards inside that collaboration."
   duration: 13
 
 - shot: "the-big-review"
