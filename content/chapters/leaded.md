@@ -96,6 +96,16 @@ Engineers promised more efficient engines; doctors warned that tiny doses could 
   narration: "**The committee.** David Edsall helped judge a study of 252 men. The committee reported no definite signs of lead absorption in drivers after about two years using fuel with no more than one part tetraethyl lead to 1,300 parts gasoline by volume; garage workers showed more absorption, but little beside lead-industry workers. Its January 1926 report found no present grounds for prohibition under proper controls, while warning longer exposure might bring poisoning or less obvious chronic disease. It asked for continued study; Edsall called the report “half-baked”, according to The Nation. Ethyl’s president volunteered to follow the recommended rules. The Public Health Service later said that pledge removed pressure for state regulations, which were never adopted. A conditional finding left sales governed by an industry promise."
   duration: 13
 
+- shot: nineteen-fifty-nine
+  view: graph
+  focus: surgeon-general-ad-hoc-committee-1959
+  time: "1959-03-30"
+  reveal: [surgeon-general-ad-hoc-committee-1959, robert-a-kehoe, ethyl-corporation, e-i-du-pont-de-nemours, us-public-health-service]
+  reveal_claims: [surgeon-general-ad-hoc-committee-1959#c1, surgeon-general-ad-hoc-committee-1959#c2, surgeon-general-ad-hoc-committee-1959#c3, surgeon-general-ad-hoc-committee-1959#c4]
+  overlay: {kind: quote, source: sg-adhoc-committee-tel-1959, quote: "It is regrettable that the investigations recommended by the Surgeon General's Committee in 1926 were not carried out.", caption: "Surgeon General’s ad hoc committee, letter of 30 March 1959"}
+  narration: "**1959.** On 30 March, committee chairman Harold Magnuson sent the Surgeon General advice about allowing more lead in gasoline. Ethyl and du Pont supplied figures; Robert Kehoe attended as Ethyl’s medical consultant. No state or federal law governed TEL’s hygienic effects, the Public Health Service reported; industry observed 3 cc per gallon. Magnuson’s committee regretted that the studies requested in 1926 had never been carried out. Without medical data it could give no conclusive answer, and some authorities thought Americans close to tolerable absorption limits. Yet it found no data showing an increase would significantly worsen the air-pollution hazard. Magnuson signed a recommendation permitting rises of no more than 0.25 cc a year, despite the questions still unanswered."
+  duration: 13
+
 - shot: cincinnati
   view: map
   camera: {center: [-84.5125, 39.1], zoom: 9.8, pitch: 30, duration: 6}
@@ -105,16 +115,6 @@ Engineers promised more efficient engines; doctors warned that tiny doses could 
   reveal_claims: [robert-a-kehoe#c2, robert-a-kehoe#c4, robert-a-kehoe#c3, cincinnati-college-of-medicine#c1, robert-a-kehoe#c1, general-motors#c5, e-i-du-pont-de-nemours#c3, ethyl-corporation#c3]
   overlay: {kind: quote, source: kehoe-1961-harben-lectures, quote: "My deep thanks are due also to the industrial organizations that have financed these investigations", caption: "Robert Kehoe, Harben Lectures, 1960"}
   narration: "**Cincinnati.** Robert Kehoe accepted part-time medical work on tetraethyl lead for GM’s chemical company in June 1924, Ethyl’s research director recalled. At Cincinnati’s Kettering Laboratory he spent some thirty years measuring lead in ordinary people. In his 1960 lectures he thanked the industrial organisations financing the work; The Nation identifies GM, du Pont and Ethyl, a $130,000 gift, and an industry-paid salary lasting half a century. Kehoe put the onset of poisoning near 80 micrograms per 100 grams of blood. Because he found no evidence of a present public-health threat from airborne lead, he saw “no great or immediate urgency” in resolving it. His measurements supplied the reassurance against which later scientists would have to argue."
-  duration: 13
-
-- shot: nineteen-fifty-nine
-  view: graph
-  focus: surgeon-general-ad-hoc-committee-1959
-  time: "1959-03-30"
-  reveal: [surgeon-general-ad-hoc-committee-1959, robert-a-kehoe, ethyl-corporation, e-i-du-pont-de-nemours, us-public-health-service]
-  reveal_claims: [surgeon-general-ad-hoc-committee-1959#c1, surgeon-general-ad-hoc-committee-1959#c2, surgeon-general-ad-hoc-committee-1959#c3, surgeon-general-ad-hoc-committee-1959#c4]
-  overlay: {kind: quote, source: sg-adhoc-committee-tel-1959, quote: "It is regrettable that the investigations recommended by the Surgeon General's Committee in 1926 were not carried out.", caption: "Surgeon General’s ad hoc committee, letter of 30 March 1959"}
-  narration: "**1959.** On 30 March, committee chairman Harold Magnuson sent the Surgeon General advice about allowing more lead in gasoline. Ethyl and du Pont supplied figures; Robert Kehoe attended as Ethyl’s medical consultant. No state or federal law governed TEL’s hygienic effects, the Public Health Service reported; industry observed 3 cc per gallon. Magnuson’s committee regretted that the studies requested in 1926 had never been carried out. Without medical data it could give no conclusive answer, and some authorities thought Americans close to tolerable absorption limits. Yet it found no data showing an increase would significantly worsen the air-pollution hazard. Magnuson signed a recommendation permitting rises of no more than 0.25 cc a year, despite the questions still unanswered."
   duration: 13
 
 - shot: pasadena
@@ -158,6 +158,16 @@ Engineers promised more efficient engines; doctors warned that tiny doses could 
   narration: "**Ethyl goes to court.** Judge J. Skelly Wright faced the question Ethyl, du Pont and others had brought to court: must EPA prove actual harm before acting? A three-judge panel struck down the rule on 20 December 1974, with one dissent; the full court vacated that decision on 17 March 1975. On 19 March 1976, Wright wrote for a five-to-four majority upholding EPA: the law allowed precaution before actual harm was proved. Judge Wilkey’s dissent called the scientific evidence scant and the rule arbitrary and capricious. Even EPA’s calculations drew in part on Kehoe’s experiments. The Supreme Court refused the appeal, according to The Nation, leaving EPA able to reduce exposure without first waiting for demonstrated injury."
   duration: 13
 
+- shot: the-needleman-fight
+  view: graph
+  focus: herbert-needleman
+  time: "1979"
+  reveal: [herbert-needleman, needleman-1979-dentine-lead, needleman-misconduct-inquiries-1990s, c-b-ernhart, sandra-scarr, university-of-pittsburgh, us-environmental-protection-agency]
+  reveal_claims: [herbert-needleman#c1, herbert-needleman#c2, c-b-ernhart#c2, sandra-scarr#c2, needleman-misconduct-inquiries-1990s#c1, needleman-misconduct-inquiries-1990s#c2, needleman-misconduct-inquiries-1990s#c5]
+  overlay: {kind: "quote", source: "globe-2017-needleman-obituary", quote: "Any house I can afford will be no different from the house I live in now.", caption: "A mother answering Needleman’s warning about lead paint, in his later recollection"}
+  narration: "**The Needleman fight.** In Philadelphia, Herbert Needleman warned a mother about lead paint. “Where can I go?” she replied, he recalled. His 1979 baby-teeth study found 58 high-lead children scored below 100 low-lead children; none of 39 other variables explained the gap. NPR reports unnamed scientists representing lead companies in lawsuits accused him of cherry-picking. In 1993 Ernhart and Scarr said research integrity required reporting suspected misconduct and that their examination was halted. NPR reports Pittsburgh found no misconduct and procedural mischaracterisations that did not change the findings. The Globe reports federal investigators cleared him but found an unrepresentative population, without finding it changed his conclusions. EPA’s 1984 reanalysis confirmed the association. The journal published Needleman’s correction in 1994. NPR credits his findings with helping accelerate the phase-out."
+  duration: 13
+
 - shot: blood-and-the-last-step
   view: graph
   focus: us-lead-phase-out
@@ -178,16 +188,6 @@ Engineers promised more efficient engines; doctors warned that tiny doses could 
   narration: "**Children.** Bruce Lanphear and colleagues asked what happened to children below the blood-lead levels long treated as acceptable. In 2005 they pooled seven studies following 1,333 children, including those whose measured levels never reached 10 micrograms per deciliter. After a 2019 correction, they estimated a loss of 6.7 IQ points (interval 4.1–9.3) as lead rose from 2.4 to 30, and 3.8 points (2.3–5.3) from 2.4 to 10. The authors said EPA and other investigators found the corrected data errors had only minor effects on the results. Their children carried lead from all sources; EPA identified paint as a primary source of childhood poisoning. Against Kehoe’s threshold near 80, their findings pressed the question of protection down to far smaller exposures."
   duration: 13
 
-- shot: the-needleman-fight
-  view: graph
-  focus: herbert-needleman
-  time: "1979"
-  reveal: [herbert-needleman, needleman-1979-dentine-lead, needleman-misconduct-inquiries-1990s, c-b-ernhart, sandra-scarr, university-of-pittsburgh, us-environmental-protection-agency]
-  reveal_claims: [herbert-needleman#c1, herbert-needleman#c2, c-b-ernhart#c2, sandra-scarr#c2, needleman-misconduct-inquiries-1990s#c1, needleman-misconduct-inquiries-1990s#c2, needleman-misconduct-inquiries-1990s#c5]
-  overlay: {kind: "quote", source: "globe-2017-needleman-obituary", quote: "Any house I can afford will be no different from the house I live in now.", caption: "A mother answering Needleman’s warning about lead paint, in his later recollection"}
-  narration: "**The Needleman fight.** In Philadelphia, Herbert Needleman warned a mother about lead paint. “Where can I go?” she replied, he recalled. His 1979 baby-teeth study found 58 high-lead children scored below 100 low-lead children; none of 39 other variables explained the gap. NPR reports unnamed scientists representing lead companies in lawsuits accused him of cherry-picking. In 1993 Ernhart and Scarr said research integrity required reporting suspected misconduct and that their examination was halted. NPR reports Pittsburgh found no misconduct and procedural mischaracterisations that did not change the findings. The Globe reports federal investigators cleared him but found an unrepresentative population, without finding it changed his conclusions. EPA’s 1984 reanalysis confirmed the association. The journal published Needleman’s correction in 1994. NPR credits his findings with helping accelerate the phase-out."
-  duration: 13
-
 - shot: the-crime-story
   view: graph
   focus: nevin-2000-lead-iq-crime
@@ -196,16 +196,6 @@ Engineers promised more efficient engines; doctors warned that tiny doses could 
   reveal_claims: [us-lead-phase-out#c4, us-lead-phase-out#c3]
   overlay: {kind: "quote", source: "drum-2013-mother-jones-lead-crime", quote: "I learned about lead because I was pregnant and living in old housing in Harvard Square", caption: "Jessica Wolpaw Reyes, interview with Kevin Drum, 2013"}
   narration: "**The crime story.** Pregnant and living in old housing in Harvard Square, Jessica Wolpaw Reyes began learning about lead, she told Mother Jones. She went on to test whether exposure caused later crime by comparing states’ differing declines in gasoline lead. Her 2007 study estimated an elasticity around 0.8: a 10 percent lead reduction, an 8 percent violent-crime reduction. In 2013 Kevin Drum wrote that gasoline lead might explain 90 percent of U.S. violent crime’s rise and fall over the preceding half-century, citing Rick Nevin’s curve-fitting study of variation in crime rates. Drum also warned that “a single correlation between two curves isn’t all that impressive.” A concern about exposure during pregnancy had become a disputed explanation for a country’s crime rates."
-  duration: 13
-
-- shot: what-the-studies-add-up-to
-  view: graph
-  focus: lead-crime-meta-analysis-2022
-  time: "2022"
-  reveal: [lead-crime-meta-analysis-2022, nevin-2000-lead-iq-crime, reyes-2007-lead-and-crime, us-lead-phase-out, wright-2008-lead-arrests, cincinnati]
-  reveal_claims: [us-lead-phase-out#c5, lead-crime-meta-analysis-2022#c1, lead-crime-meta-analysis-2022#c2, cincinnati#c1]
-  overlay: {kind: stat, value: "7–28%", label: "Share of the 54% fall in U.S. homicide that lead abatement may explain, by a 2022 meta-analysis (main estimate about 15%)", source: higney-2022-lead-crime-meta-analysis, quote: "Our estimates suggest the abatement of lead pollution may be responsible for 7–28% of the fall in homicide in the US."}
-  narration: "**What the studies add up to.** In 2022 Anthony Higney’s team pooled estimates to test the lead-crime relationship. They found publication bias overstated the effect: elasticity 0.09 against Reyes’s 0.8, and mean partial correlation 0.01 among natural-experiment studies. They estimated lead abatement might explain 7–28 percent of the 54 percent U.S. homicide decline between 1976 and 2009. Separately, researchers followed 250 Cincinnati residents from areas of old, lead-contaminated housing: arrest-rate ratios ranged from 1.07 to 1.48 per 5 micrograms per deciliter, with two of six intervals including 1. Higney’s team excluded Wright’s Cincinnati study because they could not convert its risk ratios with the available data. Combining studies required comparable measurements; their estimate concerned a share of the homicide decline."
   duration: 13
 
 - shot: algeria
@@ -217,5 +207,15 @@ Engineers promised more efficient engines; doctors warned that tiny doses could 
   reveal_claims: [end-of-leaded-petrol-2021#c1, end-of-leaded-petrol-2021#c2, end-of-leaded-petrol-2021#c3, end-of-leaded-petrol-2021#c4]
   overlay: {kind: quote, source: aljazeera-2021-leaded-petrol-ended, quote: "“The successful enforcement of the ban on leaded petrol is a huge milestone for global health and our environment,” said Inger Andersen, executive director of UNEP", caption: "Inger Andersen, UNEP executive director, 30 August 2021"}
   narration: "**Algeria.** On 30 August 2021, UNEP director Inger Andersen hailed a milestone for health and the environment: Algeria, the last country using leaded petrol, had exhausted its supplies in July. The United States, China and India had stopped earlier. UNEP projected more than 1.2 million premature deaths prevented annually and $2.44 trillion saved; the dollar estimate came from a 2010 study counting lower medical costs and reduced crime. The announcement marked nearly a century of petrol sales ending, while other uses persisted: EPA’s 1996 notice still allowed leaded fuel for aircraft and other off-road uses. Ending road use stopped another generation of cars from adding lead to the air; the exposure already left behind remained."
+  duration: 13
+
+- shot: what-the-studies-add-up-to
+  view: graph
+  focus: lead-crime-meta-analysis-2022
+  time: "2022"
+  reveal: [lead-crime-meta-analysis-2022, nevin-2000-lead-iq-crime, reyes-2007-lead-and-crime, us-lead-phase-out, wright-2008-lead-arrests, cincinnati]
+  reveal_claims: [us-lead-phase-out#c5, lead-crime-meta-analysis-2022#c1, lead-crime-meta-analysis-2022#c2, cincinnati#c1]
+  overlay: {kind: stat, value: "7–28%", label: "Share of the 54% fall in U.S. homicide that lead abatement may explain, by a 2022 meta-analysis (main estimate about 15%)", source: higney-2022-lead-crime-meta-analysis, quote: "Our estimates suggest the abatement of lead pollution may be responsible for 7–28% of the fall in homicide in the US."}
+  narration: "**What the studies add up to.** In 2022 Anthony Higney’s team pooled estimates to test the lead-crime relationship. They found publication bias overstated the effect: elasticity 0.09 against Reyes’s 0.8, and mean partial correlation 0.01 among natural-experiment studies. They estimated lead abatement might explain 7–28 percent of the 54 percent U.S. homicide decline between 1976 and 2009. Separately, researchers followed 250 Cincinnati residents from areas of old, lead-contaminated housing: arrest-rate ratios ranged from 1.07 to 1.48 per 5 micrograms per deciliter, with two of six intervals including 1. Higney’s team excluded Wright’s Cincinnati study because they could not convert its risk ratios with the available data. Combining studies required comparable measurements; their estimate concerned a share of the homicide decline."
   duration: 13
 ```
