@@ -2,6 +2,10 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.5.24 (2026-11-17)
+
+- 54 stories now run forward in time: no scene after the first is dated before the one before it. Scenes moved into date order with the sentences that join them, and a scene weighing an argument is dated when the argument was made; no fact, quote or source changed.
+
 ## 0.5.23 (2026-11-17)
 
 - A story opens on where its first scene is, or on its own web of names: 25 stories opened on a place from a later scene, such as Hong Kong at the start of How America Became a Superpower.
