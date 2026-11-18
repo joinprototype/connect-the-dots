@@ -15,21 +15,11 @@ Farmers risked punishment to keep more of their harvest. Leaders opened markets 
 - shot: the-answer
   view: map
   camera: {center: [104.0, 35.0], zoom: 3.4, pitch: 0, duration: 6}
-  time: "1978/2023"
+  time: "2026-10-08"
   reveal: [reform-and-opening-up, deng-xiaoping, world-bank, world-bank-china-figures, world-bank-china-overview, poverty-alleviation-white-paper-2021, chinese-government]
   reveal_claims: [world-bank#c1, world-bank#c2, reform-and-opening-up#c3, reform-and-opening-up#c4, reform-and-opening-up#c8, chinese-government#c8, deng-xiaoping#c2]
   overlay: {kind: stat, value: "$157 to $12,951", label: "China’s output (GDP) per person in current U.S. dollars, 1978 and 2023, World Development Indicators, World Bank. Current dollars do not remove price rises", source: wb-china-gdp-per-capita, quote: "\"date\":\"2023\",\"value\":12951.1782397043"}
   narration: "**The answer, in numbers.** In Beijing in December 1978 Deng Xiaoping urged letting some people earn more first, saying their neighbours would follow. By World Bank figures, output (GDP) per person rose from about $157 in 1978 to $12,951 in 2023, in current U.S. dollars. On its $3.00-a-day line (2021 prices), 97 percent lived below it in 1981; its table lists zero from 2019. The Bank separately counts almost 800 million leaving extreme poverty since 1978, but 15.2 percent below $8.30 a day in 2024. China’s 2021 white paper counts over 770 million rural people escaping poverty, using its own line: 2,300 yuan annually at 2010 prices. Those measures count different people; behind the rise were choices about who could prosper first."
-  duration: 13
-
-- shot: whose-numbers
-  view: graph
-  focus: us-embassy-cable-07beijing1760
-  time: "2007-03-15"
-  reveal: [us-embassy-cable-07beijing1760, li-keqiang, us-department-of-state, forensic-examination-of-chinas-national-accounts-2019, xilu-chen]
-  reveal_claims: [li-keqiang#c1, reform-and-opening-up#c5, xilu-chen#c1, li-keqiang#c2]
-  overlay: {kind: quote, source: wikileaks-07beijing1760, quote: "GDP figures are \"man-made\" and therefore unreliable, Li said.", caption: "Leaked U.S. embassy cable of 15 March 2007 on a dinner with Li Keqiang, then Party Secretary of Liaoning; he was speaking of his province"}
-  narration: "**Whose numbers.** The World Bank’s totals begin with China’s own statistics. At the U.S. ambassador’s residence on 12 March 2007, Liaoning Party Secretary Li Keqiang explained over dinner how he judged his province’s economy. GDP figures were “man-made”; he watched electricity use, rail cargo and loans instead. Cargo incurred charges by weight, loans incurred interest: money depended on those measures. Other figures were “for reference only”, he said, smiling, according to the confidential embassy cable sent three days later. In 2019 Xilu Chen and three colleagues estimated that official national growth in 2010–2016 was overstated by about 1.8 percentage points, while finding the statistics bureau’s corrections roughly accurate until 2008. Li had given the ambassador a different way to watch his province’s growth."
   duration: 13
 
 - shot: after-mao
@@ -137,6 +127,26 @@ Farmers risked punishment to keep more of their harvest. Leaders opened markets 
   narration: "**The WTO and the China shock.** When WTO ministers approved China’s entry on 10 November 2001, trade minister Shi Guangsheng called for developing countries to help write trade rules, share globalization’s opportunities and avoid a widening gap between rich and poor. China had applied to GATT in July 1986; a WTO working party followed in December 1995. It became the 143rd member on 11 December 2001. David Autor and colleagues report an estimate that Chinese import growth cost the United States 2.4 million jobs in 1999–2011, while recognizing hundreds of millions lifted from poverty in China and 250 million workers moving from farms to cities. The authors caution that the estimate may omit further effects on U.S. employment. They find wages and labour-force participation remained depressed for at least a decade in exposed U.S. communities."
   duration: 13
 
+- shot: whose-numbers
+  view: graph
+  focus: us-embassy-cable-07beijing1760
+  time: "2007-03-15"
+  reveal: [us-embassy-cable-07beijing1760, li-keqiang, us-department-of-state, forensic-examination-of-chinas-national-accounts-2019, xilu-chen]
+  reveal_claims: [li-keqiang#c1, reform-and-opening-up#c5, xilu-chen#c1, li-keqiang#c2]
+  overlay: {kind: quote, source: wikileaks-07beijing1760, quote: "GDP figures are \"man-made\" and therefore unreliable, Li said.", caption: "Leaked U.S. embassy cable of 15 March 2007 on a dinner with Li Keqiang, then Party Secretary of Liaoning; he was speaking of his province"}
+  narration: "**Whose numbers.** The World Bank’s totals begin with China’s own statistics. At the U.S. ambassador’s residence on 12 March 2007, Liaoning Party Secretary Li Keqiang explained over dinner how he judged his province’s economy. GDP figures were “man-made”; he watched electricity use, rail cargo and loans instead. Cargo incurred charges by weight, loans incurred interest: money depended on those measures. Other figures were “for reference only”, he said, smiling, according to the confidential embassy cable sent three days later. In 2019 Xilu Chen and three colleagues estimated that official national growth in 2010–2016 was overstated by about 1.8 percentage points, while finding the statistics bureau’s corrections roughly accurate until 2008. Li had given the ambassador a different way to watch his province’s growth."
+  duration: 13
+
+- shot: other-accounts
+  view: graph
+  focus: yasheng-huang
+  time: "2008"
+  reveal: [yasheng-huang, capitalism-with-chinese-characteristics-2008, nicholas-lardy, markets-over-mao-2014, reform-and-opening-up]
+  reveal_claims: [reform-and-opening-up#c6, reform-and-opening-up#c7, reform-and-opening-up#c9]
+  overlay: {kind: quote, source: piie-lardy-markets-over-mao, quote: "China’s economic transformation since the late 1970s came about because market forces were introduced into the economy", caption: "Nicholas Lardy’s argument, summarized by the Peterson Institute, 2014. He also disputes a dramatic expansion of the state’s role during the Hu-Wen years"}
+  narration: "**Other accounts.** Presenting his book in 2008, Yasheng Huang faced Eswar Prasad’s question: why had China grown so fast in the 1990s despite a policy reversal? Carnegie reports that Huang clarified he meant rural policy. Rural private firms drove 1980s growth, he argued; later loan restrictions, taxes and reduced health and education services turned policy against them. His rural poverty counts fell by 154 million in 1978–1988 and 62 million in 1989–1999. He acknowledged meaningful urban reform, but said rural citizens paid for it. Carnegie also reports the Party had abolished rural tax, reduced education and health fees, and revised rural finance. Huang urged rural priority because, he said, people there usually understood market principles intuitively."
+  duration: 13
+
 - shot: four-trillion
   view: graph
   focus: chinese-stimulus-2008
@@ -205,14 +215,5 @@ Farmers risked punishment to keep more of their harvest. Leaders opened markets 
   reveal_claims: [evergrande-liquidation-order-2024#c1, evergrande-liquidation-order-2024#c2, hong-kong-high-court#c1, china-evergrande-group#c2, evergrande-liquidation-order-2024#c3]
   overlay: {kind: stat, value: "$333 billion", label: "Evergrande’s liabilities, 2.39 trillion yuan, as Bloomberg reported when a Hong Kong court ordered it wound up on 29 January 2024", source: bloomberg-2024-evergrande-liquidation, quote: "The ruling makes the homebuilder, which has $333 billion in liabilities, the most prominent symbol so far of China’s real estate crisis"}
   narration: "**Property and debt.** In Hong Kong’s High Court on 29 January 2024, Judge Linda Chan said Evergrande had not fulfilled its promises. “The company said it will do one, two, three”, she said. “None of that has been done”. She ordered the developer wound up with $333 billion in liabilities, but said a scheme of arrangement remained possible. Chief executive Shawn Siu said the company “is sorry about the winding-up order” and promised home deliveries. In March, China’s securities regulator accused its onshore unit of a fraud valued at about $78 billion, a separate allegation from the liquidation order. Chan’s order put the group into liquidators’ hands; Siu said the company would communicate with them while continuing operations and delivering homes."
-  duration: 13
-
-- shot: other-accounts
-  view: graph
-  focus: yasheng-huang
-  reveal: [yasheng-huang, capitalism-with-chinese-characteristics-2008, nicholas-lardy, markets-over-mao-2014, reform-and-opening-up]
-  reveal_claims: [reform-and-opening-up#c6, reform-and-opening-up#c7, reform-and-opening-up#c9]
-  overlay: {kind: quote, source: piie-lardy-markets-over-mao, quote: "China’s economic transformation since the late 1970s came about because market forces were introduced into the economy", caption: "Nicholas Lardy’s argument, summarized by the Peterson Institute, 2014. He also disputes a dramatic expansion of the state’s role during the Hu-Wen years"}
-  narration: "**Other accounts.** Presenting his book in 2008, Yasheng Huang faced Eswar Prasad’s question: why had China grown so fast in the 1990s despite a policy reversal? Carnegie reports that Huang clarified he meant rural policy. Rural private firms drove 1980s growth, he argued; later loan restrictions, taxes and reduced health and education services turned policy against them. His rural poverty counts fell by 154 million in 1978–1988 and 62 million in 1989–1999. He acknowledged meaningful urban reform, but said rural citizens paid for it. Carnegie also reports the Party had abolished rural tax, reduced education and health fees, and revised rural finance. Huang urged rural priority because, he said, people there usually understood market principles intuitively."
   duration: 13
 ```
