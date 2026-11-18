@@ -198,17 +198,6 @@ This story follows the people who built settlements, promised independence, orde
   narration: "**Sadat and Begin sign a different bargain.** In September 1978, Anwar Sadat and Menachem Begin met Jimmy Carter at Camp David. Five years earlier, on 6 October 1973, Yom Kippur for Israelis, Egypt and Syria had attacked Israeli forces; U.S. resupply of Israel brought an Arab oil embargo, as [The Oil Weapon](/c/the-oil-weapon/) follows. Now the leaders signed a framework stating that security was enhanced by peace and cooperation between countries with normal relations. Their March 1979 treaty ended the state of war and required Israeli withdrawal from Sinai. The framework also promised West Bank and Gaza talks leading to transitional arrangements of no more than five years. Egypt and Israel made peace; the Palestinian settlement remained a promise of further negotiations."
   duration: 13
 
-- shot: life-under-occupation
-  view: map
-  camera: {center: [35.25, 31.95], zoom: 8.2, pitch: 0, duration: 6}
-  places: [west-bank, jerusalem]
-  time: "2026-10-15"
-  reveal: [west-bank-settlement-and-restrictions, west-bank, jerusalem, ocha, un-human-rights-office, international-court-of-justice, israel]
-  reveal_claims: [west-bank-settlement-and-restrictions#c1, west-bank-settlement-and-restrictions#c2, west-bank-settlement-and-restrictions#c3, west-bank-settlement-and-restrictions#c4, west-bank-settlement-and-restrictions#c5, west-bank-settlement-and-restrictions#c6, west-bank-settlement-and-restrictions#c7, west-bank-settlement-and-restrictions#c9]
-  overlay: {kind: "quote", source: "ocha-humanitarian-situation-report-2026-10-15-west-bank", quote: "Hanin holds her daughter’s school notebook, retrieved from beneath the rubble of their home after it was demolished by Israeli authorities in At Tur, East Jerusalem.", caption: "OCHA, October 2026: a mother after the demolition of her home"}
-  narration: "**Hanin holds a notebook.** In October 2026, Hanin held her daughter's school notebook, recovered from their demolished At Tur home; residents told OCHA they had been prevented from retrieving belongings. OCHA counted 96 displaced by demolitions in two weeks, five Palestinians killed and over 240 injured by Israeli forces or settlers, 74 percent of injuries in settler attacks. Volker Türk warned of ethnic cleansing in Hebron. Settlements began in 1967; the ICJ calls them unlawful, counting about 465,000 settlers in the West Bank and 230,000 in East Jerusalem by 2023. Israel exclusively administers Area C, over 60 percent of the West Bank; B'Tselem counted 59 permanent checkpoints in 2010. Israel cited security concerns to the Court; Tomka, Abraham and Aurescu dissented on several points. Demolitions left more families seeking shelter."
-  duration: 13
-
 - shot: uprising-and-declarations
   view: graph
   focus: first-intifada
@@ -280,26 +269,6 @@ This story follows the people who built settlements, promised independence, orde
   narration: "**Ohad sends a warning.** The UN Commission of Inquiry reports that at Be’eri on 7 October 2023, Ohad Cohen hid with his family and texted a cousin at 11:47 about gunmen massacring residents and burning homes. It found attackers killed him and his baby Mila. It found Hamas and other armed groups committed the war crime of murdering civilians, targeted civilians with rockets and took 252 hostages, also a war crime; it found a pattern of sexual violence but could not verify all rape reports. Israel did not respond to the inquiry. Israeli sources counted over 1,200 killed, at least 809 civilians; the ICJ also gives over 1,200. By 21 May 2024, 128 hostages were released or rescued, 128 remained; over 12,500 rockets and mortar shells had been fired by 26 May."
   duration: 13
 
-- shot: the-count
-  view: graph
-  focus: gaza-war
-  time: "2026-10-15"
-  reveal: [gaza-war, un-human-rights-office, ocha, gaza-strip, israel, coi-genocide-finding-2025, international-court-of-justice]
-  reveal_claims: [gaza-war#c1, gaza-war#c10, gaza-war#c11, gaza-war#c12, gaza-war#c13, gaza-war#c14, gaza-war#c15, gaza-war#c16, gaza-war#c17, coi-genocide-finding-2025#c1, coi-genocide-finding-2025#c2, coi-genocide-finding-2025#c3]
-  overlay: {kind: "quote", source: "un-news-commission-of-inquiry-genocide-2025-09-16", quote: "It is clear that there is an intent to destroy the Palestinians in Gaza through acts that meet the criteria set forth in the Genocide Convention.", caption: "Navi Pillay, chair of the UN Commission of Inquiry, September 2025: the commission’s finding, which Israel rejects"}
-  narration: "**Pillay demands action.** In Geneva in September 2025, Navi Pillay demanded action on her commission's finding that Israel committed genocide in Gaza, which Israel rejects and no court has made. Gaza's health ministry counted 34,535 killed through 30 April 2024. OHCHR verified 8,119 by 2 September 2024, requiring three independent sources: a minimum. JTA reported on 29 January 2026 that the ministry's total since 7 October 2023 had reached 71,667, including over 450 since the ceasefire. JTA noted longstanding UN and rights-group confidence in the ministry's data; Israel claimed two to three civilians killed per militant. OCHA counted 937 aid trucks manifested, 807 offloaded, in two October 2026 weeks. Pillay called on governments to act while civilians still depended on aid deliveries."
-  duration: 13
-
-- shot: south-africa-v-israel
-  view: graph
-  focus: south-africa-v-israel
-  time: "2026-05-21"
-  reveal: [south-africa-v-israel, south-africa, international-court-of-justice, israel]
-  reveal_claims: [south-africa-v-israel#c1, south-africa-v-israel#c2, south-africa-v-israel#c3, south-africa-v-israel#c4, south-africa-v-israel#c6, south-africa-v-israel#c7, south-africa-v-israel#c8, south-africa-v-israel#c9, south-africa-v-israel#c10, south-africa-v-israel#c5]
-  overlay: {kind: quote, source: icj-south-africa-v-israel-order-2024-01-26, quote: "at least some of the rights claimed by South Africa and for which it is seeking protection are plausible", caption: "International Court of Justice, order of 26 January 2024"}
-  narration: "**Barak votes for aid.** On 26 January 2024, Israel's judge ad hoc Aharon Barak joined the ICJ's 16–1 votes to prevent and punish genocidal incitement and enable aid. The Court voted 15–2 to require prevention of genocidal acts, including by Israel's military. South Africa had applied in December 2023 alleging Genocide Convention breaches; the Court found some claimed rights plausible, without deciding whether genocide occurred. Israel said it acted “to defend itself, to terminate the threats against it and to rescue the hostages”. The judges called for hostage release, did not order South Africa's requested ceasefire and said definitive factual findings were premature. Further orders followed in March and May; pleadings extend to 2029. Barak's votes helped make incitement prevention and humanitarian relief binding demands."
-  duration: 13
-
 - shot: the-july-2024-opinion
   view: graph
   focus: icj-opinion-2024
@@ -318,6 +287,37 @@ This story follows the people who built settlements, promised independence, orde
   reveal_claims: [icc-warrants-2024#c1, icc-warrants-2024#c2, icc-warrants-2024#c3, icc-warrants-2024#c4, icc-warrants-2024#c5, icc-warrants-2024#c6, icc-warrants-2024#c7, icc-appeals-decision-2025#c1, icc-appeals-decision-2025#c2, icc-warrants-2024#c8]
   overlay: {kind: quote, source: icc-pre-trial-chamber-decision-2024-11-21, quote: "The Chamber issued warrants of arrest for two individuals, Mr Benjamin Netanyahu and Mr Yoav Gallant, for crimes against humanity and war crimes committed from at least 8 October 2023 until at least 20 May 2024", caption: "International Criminal Court, 21 November 2024"}
   narration: "**Decisions over food, then warrants.** On 21 November 2024, ICC judges issued warrants for Netanyahu and Gallant on reasonable grounds of responsibility for the war crime of starvation and crimes against humanity of murder, persecution and other inhumane acts. They found grounds to believe the men knowingly deprived Gaza's civilians of essentials, without identifying a clear military justification. They could not establish every element of extermination. Hamas commander Mohammed Deif faced a warrant for murder, extermination, torture, rape and hostage-taking; proceedings ended in February 2025 after his reported death. Israel challenged jurisdiction; the judges rejected that challenge as premature, preserving later challenges, before the Appeals Chamber sent it back on 24 April 2025. The Chamber said increased aid followed outside pressure. The warrants sought arrests so the allegations could be tried."
+  duration: 13
+
+- shot: life-under-occupation
+  view: map
+  camera: {center: [35.25, 31.95], zoom: 8.2, pitch: 0, duration: 6}
+  places: [west-bank, jerusalem]
+  time: "2026-10-15"
+  reveal: [west-bank-settlement-and-restrictions, west-bank, jerusalem, ocha, un-human-rights-office, international-court-of-justice, israel]
+  reveal_claims: [west-bank-settlement-and-restrictions#c1, west-bank-settlement-and-restrictions#c2, west-bank-settlement-and-restrictions#c3, west-bank-settlement-and-restrictions#c4, west-bank-settlement-and-restrictions#c5, west-bank-settlement-and-restrictions#c6, west-bank-settlement-and-restrictions#c7, west-bank-settlement-and-restrictions#c9]
+  overlay: {kind: "quote", source: "ocha-humanitarian-situation-report-2026-10-15-west-bank", quote: "Hanin holds her daughter’s school notebook, retrieved from beneath the rubble of their home after it was demolished by Israeli authorities in At Tur, East Jerusalem.", caption: "OCHA, October 2026: a mother after the demolition of her home"}
+  narration: "**Hanin holds a notebook.** In October 2026, Hanin held her daughter's school notebook, recovered from their demolished At Tur home; residents told OCHA they had been prevented from retrieving belongings. OCHA counted 96 displaced by demolitions in two weeks, five Palestinians killed and over 240 injured by Israeli forces or settlers, 74 percent of injuries in settler attacks. Volker Türk warned of ethnic cleansing in Hebron. Settlements began in 1967; the ICJ calls them unlawful, counting about 465,000 settlers in the West Bank and 230,000 in East Jerusalem by 2023. Israel exclusively administers Area C, over 60 percent of the West Bank; B'Tselem counted 59 permanent checkpoints in 2010. Israel cited security concerns to the Court; Tomka, Abraham and Aurescu dissented on several points. Demolitions left more families seeking shelter."
+  duration: 13
+
+- shot: the-count
+  view: graph
+  focus: gaza-war
+  time: "2026-10-15"
+  reveal: [gaza-war, un-human-rights-office, ocha, gaza-strip, israel, coi-genocide-finding-2025, international-court-of-justice]
+  reveal_claims: [gaza-war#c1, gaza-war#c10, gaza-war#c11, gaza-war#c12, gaza-war#c13, gaza-war#c14, gaza-war#c15, gaza-war#c16, gaza-war#c17, coi-genocide-finding-2025#c1, coi-genocide-finding-2025#c2, coi-genocide-finding-2025#c3]
+  overlay: {kind: "quote", source: "un-news-commission-of-inquiry-genocide-2025-09-16", quote: "It is clear that there is an intent to destroy the Palestinians in Gaza through acts that meet the criteria set forth in the Genocide Convention.", caption: "Navi Pillay, chair of the UN Commission of Inquiry, September 2025: the commission’s finding, which Israel rejects"}
+  narration: "**Pillay demands action.** In Geneva in September 2025, Navi Pillay demanded action on her commission's finding that Israel committed genocide in Gaza, which Israel rejects and no court has made. Gaza's health ministry counted 34,535 killed through 30 April 2024. OHCHR verified 8,119 by 2 September 2024, requiring three independent sources: a minimum. JTA reported on 29 January 2026 that the ministry's total since 7 October 2023 had reached 71,667, including over 450 since the ceasefire. JTA noted longstanding UN and rights-group confidence in the ministry's data; Israel claimed two to three civilians killed per militant. OCHA counted 937 aid trucks manifested, 807 offloaded, in two October 2026 weeks. Pillay called on governments to act while civilians still depended on aid deliveries."
+  duration: 13
+
+- shot: south-africa-v-israel
+  view: graph
+  focus: south-africa-v-israel
+  time: "2026-05-21"
+  reveal: [south-africa-v-israel, south-africa, international-court-of-justice, israel]
+  reveal_claims: [south-africa-v-israel#c1, south-africa-v-israel#c2, south-africa-v-israel#c3, south-africa-v-israel#c4, south-africa-v-israel#c6, south-africa-v-israel#c7, south-africa-v-israel#c8, south-africa-v-israel#c9, south-africa-v-israel#c10, south-africa-v-israel#c5]
+  overlay: {kind: quote, source: icj-south-africa-v-israel-order-2024-01-26, quote: "at least some of the rights claimed by South Africa and for which it is seeking protection are plausible", caption: "International Court of Justice, order of 26 January 2024"}
+  narration: "**Barak votes for aid.** On 26 January 2024, Israel's judge ad hoc Aharon Barak joined the ICJ's 16–1 votes to prevent and punish genocidal incitement and enable aid. The Court voted 15–2 to require prevention of genocidal acts, including by Israel's military. South Africa had applied in December 2023 alleging Genocide Convention breaches; the Court found some claimed rights plausible, without deciding whether genocide occurred. Israel said it acted “to defend itself, to terminate the threats against it and to rescue the hostages”. The judges called for hostage release, did not order South Africa's requested ceasefire and said definitive factual findings were premature. Further orders followed in March and May; pleadings extend to 2029. Barak's votes helped make incitement prevention and humanitarian relief binding demands."
   duration: 13
 
 - shot: the-ceasefire
