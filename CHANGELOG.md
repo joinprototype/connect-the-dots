@@ -2,6 +2,10 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.5.25 (2026-11-18)
+
+- Every entry's page now tells search engines what it is about: a person, an organization, a place or a work, with its name, its summary, its picture and the same entry in Wikidata where the page links to one. Nothing a reader sees has changed.
+
 ## 0.5.24 (2026-11-17)
 
 - 54 stories now run forward in time: no scene after the first is dated before the one before it. Scenes moved into date order with the sentences that join them, and a scene weighing an argument is dated when the argument was made; no fact, quote or source changed.
