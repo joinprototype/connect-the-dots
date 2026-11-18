@@ -25,6 +25,43 @@ Flight attendants called from hijacked planes. Passengers voted to fight back. P
   narration: "**Tuesday morning.** Aboard American 11 from Boston on 11 September 2001, Betty Ong used an airphone to report a hijacking when the cockpit would not answer; she stayed on the call for about 25 minutes. She and fellow flight attendant Amy Sweeney passed on hijackers’ seat numbers, and Sweeney’s last words were “Oh my God we are way too low.” At 8:46:40 the plane struck the World Trade Center’s North Tower; at 9:03:11 United 175, also from Boston, struck the South Tower. The Commission found that the nineteen men aboard four flights belonged to al Qaeda, led by Osama bin Laden: their attack would kill 2,973 people."
   duration: 13
 
+- shot: the-idea
+  view: graph
+  picture: none
+  focus: khalid-sheikh-mohammed
+  time: "1996"
+  reveal: [khalid-sheikh-mohammed, osama-bin-laden, al-qaeda, tora-bora-meeting-1996, afghanistan]
+  reveal_claims: [tora-bora-meeting-1996#c1, tora-bora-meeting-1996#c2, khalid-sheikh-mohammed#c1, osama-bin-laden#c1, khalid-sheikh-mohammed#c2]
+  overlay: {kind: quote, source: 911-commission-report-2004, quote: "KSM also presented a proposal for an operation that would involve training pilots who would crash planes into buildings in the United States.", caption: "The 9/11 Commission Report, on a meeting in 1996"}
+  narration: "**The idea.** Before that Tuesday morning, at Tora Bora in mid-1996, Khalid Sheikh Mohammed offered Osama bin Laden a menu of attacks, including training pilots to crash planes into U.S. buildings, according to the Commission’s reconstruction from interrogation reports. By his later statements to interrogators, his hostility sprang from U.S. policy favoring Israel; he sought al Qaeda’s money and operatives while retaining his independence. KSM said he refused a formal oath to bin Laden; the Commission neither conducted his interrogations nor controlled which questions were asked. Bin Laden approved the operation in late 1998 or early 1999, apparently at Atef’s urging, turning the proposal into preparations for an attack."
+  duration: 13
+
+- shot: kuala-lumpur
+  view: map
+  picture: none
+  camera: {center: [101.6953, 3.1478], zoom: 5.2, pitch: 20, duration: 6}
+  places: [kuala-lumpur, los-angeles]
+  routes: [[kuala-lumpur, los-angeles]]
+  time: "2000-01-15"
+  reveal: [kuala-lumpur-meeting-2000, khalid-al-mihdhar, nawaf-al-hazmi, cia, kuala-lumpur, los-angeles]
+  reveal_claims: [kuala-lumpur-meeting-2000#c1, kuala-lumpur-meeting-2000#c2, hazmi-and-mihdhar-in-california-2000#c3, kuala-lumpur-meeting-2000#c4]
+  overlay: {kind: quote, source: 911-commission-report-2004, quote: "None of this information—about Mihdhar’s U.S. visa or Hazmi’s travel to the United States—went to the FBI, and nothing more was done to track any of the three until January 2001, when the investigation of another bombing, that of the USS Cole, reignited interest in Khallad.", caption: "The 9/11 Commission Report"}
+  narration: "**Kuala Lumpur.** According to the Commission, a CIA desk officer saw links between men heading for a January 2000 gathering in Kuala Lumpur and the 1998 embassy bombings, and suspected something more nefarious was afoot. The agency tracked Khalid al-Mihdhar, who held a U.S. visa, and learned that his companion Nawaf al-Hazmi flew to Los Angeles on 15 January, on the same flight as Mihdhar. When the trail went cold, the desk officer moved to other work; by the March cable reporting Hazmi’s travel, the officer no longer had responsibility for follow-up, the Commission found. The CIA requested no State Department watchlisting and passed neither man’s travel information to the FBI; both would check in for American 77."
+  duration: 13
+
+- shot: two-men-in-california
+  view: map
+  picture: none
+  camera: {center: [-117.9, 33.4], zoom: 7.2, pitch: 20, duration: 6}
+  places: [los-angeles, san-diego]
+  routes: [[los-angeles, san-diego]]
+  time: "2000-02-01"
+  reveal: [hazmi-and-mihdhar-in-california-2000, los-angeles, san-diego]
+  reveal_claims: [hazmi-and-mihdhar-in-california-2000#c4]
+  overlay: {kind: quote, source: 911-commission-report-2004, quote: "We do not know whether the lunch encounter occurred by chance or design. We know about it because Bayoumi told law enforcement that it happened.", caption: "The 9/11 Commission Report, on Omar al-Bayoumi"}
+  narration: "**Two men in California.** In a Culver City restaurant on 1 February 2000, Omar al-Bayoumi offered to help Hazmi and Mihdhar settle in San Diego; by his telling they had just reached Los Angeles, knew nobody and were struggling. They had arrived in January and reached San Diego by 4 February; he found an apartment, co-signed the lease and advanced a deposit repaid on the spot, but never gave them money, the Commission found. It thought he may have dissembled, but found no credible evidence that he believed in violent extremism or knowingly helped extremists; nor that Fahad al-Thumairy, an imam and accredited Saudi diplomat in Los Angeles, helped them, though “a logical person to consider”. Whether the encounter was chance or design remained unresolved; the men had a place to live."
+  duration: 13
+
 - shot: the-towers-fall
   view: map
   picture: none
@@ -34,7 +71,7 @@ Flight attendants called from hijacked planes. Passengers voted to fight back. P
   reveal: [september-11-attacks, world-trade-center]
   reveal_claims: [september-11-attacks#c6, september-11-attacks#c18]
   overlay: {kind: quote, source: 911-commission-report-2004, quote: "Incredibly, twelve firefighters, one PAPD officer, and three civilians who were descending stairwell B of the North Tower survived its collapse.", caption: "The 9/11 Commission Report"}
-  narration: "**The towers fall.** In the North Tower, hundreds died at impact and hundreds more remained alive but trapped; later, Port Authority police officers slowed their own descent to help civilians who could not walk. At 9:58:59 the South Tower collapsed in ten seconds, killing every civilian and emergency worker inside, and others in the concourse and on the streets. At 10:28:25 the North Tower collapsed, killing all civilians still alive on its upper floors, an undetermined number below, and scores of first responders. Twelve firefighters, a Port Authority officer and three civilians descending stairwell B survived its collapse; rescue now meant searching the wreckage."
+  narration: "**The towers fall.** On the morning of the attacks, in the North Tower, hundreds died at impact and hundreds more remained alive but trapped; later, Port Authority police officers slowed their own descent to help civilians who could not walk. At 9:58:59 the South Tower collapsed in ten seconds, killing every civilian and emergency worker inside, and others in the concourse and on the streets. At 10:28:25 the North Tower collapsed, killing all civilians still alive on its upper floors, an undetermined number below, and scores of first responders. Twelve firefighters, a Port Authority officer and three civilians descending stairwell B survived its collapse; rescue now meant searching the wreckage."
   duration: 13
 
 - shot: the-pentagon
@@ -84,17 +121,6 @@ Flight attendants called from hijacked planes. Passengers voted to fight back. P
   narration: "**The dead.** Brett Eagleson was fifteen when his father died in the attacks; in 2021 he told ABC News, “We've never recovered him, not even a trace”. The Commission counted 2,973 deaths, the largest loss of life on U.S. soil from a hostile attack: people on all four flights, workers in the towers and Pentagon, and responders. Families first sued Saudi Arabia in 2003; after a judge allowed their case to proceed in 2025, Eagleson said they sought “accountability, justice, and closure in their memory”. For him, the search for what happened had outlasted two decades without his father’s remains."
   duration: 13
 
-- shot: the-idea
-  view: graph
-  picture: none
-  focus: khalid-sheikh-mohammed
-  time: "1996"
-  reveal: [khalid-sheikh-mohammed, osama-bin-laden, al-qaeda, tora-bora-meeting-1996, afghanistan]
-  reveal_claims: [tora-bora-meeting-1996#c1, tora-bora-meeting-1996#c2, khalid-sheikh-mohammed#c1, osama-bin-laden#c1, khalid-sheikh-mohammed#c2]
-  overlay: {kind: quote, source: 911-commission-report-2004, quote: "KSM also presented a proposal for an operation that would involve training pilots who would crash planes into buildings in the United States.", caption: "The 9/11 Commission Report, on a meeting in 1996"}
-  narration: "**The idea.** At Tora Bora in mid-1996, Khalid Sheikh Mohammed offered Osama bin Laden a menu of attacks, including training pilots to crash planes into U.S. buildings, according to the Commission’s reconstruction from interrogation reports. By his later statements to interrogators, his hostility sprang from U.S. policy favoring Israel; he sought al Qaeda’s money and operatives while retaining his independence. KSM said he refused a formal oath to bin Laden; the Commission neither conducted his interrogations nor controlled which questions were asked. Bin Laden approved the operation in late 1998 or early 1999, apparently at Atef’s urging, turning the proposal into preparations for an attack."
-  duration: 13
-
 - shot: what-it-cost
   view: graph
   picture: none
@@ -115,19 +141,6 @@ Flight attendants called from hijacked planes. Passengers voted to fight back. P
   reveal_claims: [pre-9-11-trading-inquiry#c1, pre-9-11-trading-inquiry#c2]
   overlay: {kind: quote, source: 911-commission-report-2004, quote: "Exhaustive investigations by the Securities and Exchange Commission, FBI, and other agencies have uncovered no evidence that anyone with advance knowledge of the attacks profited through securities transactions.", caption: "The 9/11 Commission Report"}
   narration: "**Did anyone profit?** On 9 September 2001 an options newsletter publisher faxed subscribers a recommendation to trade American Airlines options; investigators later traced much of the next day’s suspicious American trading to that advice. A U.S. institutional investor bought 95 percent of United Airlines put options on 6 September as part of a strategy that also bought American shares; the Commission found that investor had no conceivable al Qaeda ties. Highly publicized allegations turned those trades into a question of advance knowledge. The SEC, FBI and other agencies investigated and found innocuous explanations for the unusual trades, with no evidence that anyone profited in securities through foreknowledge of the attacks."
-  duration: 13
-
-- shot: kuala-lumpur
-  view: map
-  picture: none
-  camera: {center: [101.6953, 3.1478], zoom: 5.2, pitch: 20, duration: 6}
-  places: [kuala-lumpur, los-angeles]
-  routes: [[kuala-lumpur, los-angeles]]
-  time: "2000-01-15"
-  reveal: [kuala-lumpur-meeting-2000, khalid-al-mihdhar, nawaf-al-hazmi, cia, kuala-lumpur, los-angeles]
-  reveal_claims: [kuala-lumpur-meeting-2000#c1, kuala-lumpur-meeting-2000#c2, hazmi-and-mihdhar-in-california-2000#c3, kuala-lumpur-meeting-2000#c4]
-  overlay: {kind: quote, source: 911-commission-report-2004, quote: "None of this information—about Mihdhar’s U.S. visa or Hazmi’s travel to the United States—went to the FBI, and nothing more was done to track any of the three until January 2001, when the investigation of another bombing, that of the USS Cole, reignited interest in Khallad.", caption: "The 9/11 Commission Report"}
-  narration: "**Kuala Lumpur.** According to the Commission, a CIA desk officer saw links between men heading for a January 2000 gathering in Kuala Lumpur and the 1998 embassy bombings, and suspected something more nefarious was afoot. The agency tracked Khalid al-Mihdhar, who held a U.S. visa, and learned that his companion Nawaf al-Hazmi flew to Los Angeles on 15 January, on the same flight as Mihdhar. When the trail went cold, the desk officer moved to other work; by the March cable reporting Hazmi’s travel, the officer no longer had responsibility for follow-up, the Commission found. The CIA requested no State Department watchlisting and passed neither man’s travel information to the FBI; both would check in for American 77."
   duration: 13
 
 - shot: phoenix
@@ -176,6 +189,28 @@ Flight attendants called from hijacked planes. Passengers voted to fight back. P
   narration: "**Someday someone will die.** The Commission recounts how, on 28 August 2001, a Cole case agent read a lead marked Routine to find Mihdhar and asked to help; an FBI analyst told him intelligence-sharing rules barred criminal investigators from the search. By 21 August an FBI analyst at the CIA had found the old travel cables, and Mihdhar and Hazmi went on the watchlist on 24 August. Now the agent protested that someday someone would die, while the analyst claimed the rules were court-ordered. The Commission found everyone confused about those rules: more resources and another approach might have found the men, with luck as well as skill, but the search failed to stop them boarding."
   duration: 13
 
+- shot: a-hoax
+  view: graph
+  picture: none
+  focus: al-manar-broadcast-2001-09-17
+  time: "2001-09-17"
+  reveal: [al-manar-broadcast-2001-09-17, absent-workers-hoax-2001, al-manar, world-trade-center]
+  reveal_claims: [al-manar-broadcast-2001-09-17#c1, al-manar-broadcast-2001-09-17#c2, absent-workers-hoax-2001#c2]
+  overlay: {kind: quote, source: state-dept-contemporary-global-anti-semitism-2008, quote: "This tentative estimate that 4,000 Israelis had been in two of the largest metropolitan areas of the United States in early September 2001 was then transformed into the false claim that 4,000 Israelis or Jews did not report for work at the World Trade Center on September 11.", caption: "The U.S. State Department, 2008, on how the claim began"}
+  narration: "**A hoax.** On 17 September 2001 an Al-Manar commentator falsely claimed that 4,000 Israeli World Trade Center workers had stayed home; the State Department identified this as the first known broadcast of an anti-Semitic conspiracy theory about Jews or Israelis being warned. It traced the number’s apparent origin to a 12 September Jerusalem Post article, “Hundreds of Israelis missing in World Trade Center attack”: Israel’s Foreign Ministry had names of 4,000 Israelis believed to be near the towers or Pentagon, meaning New York and Washington. Missing people became people supposedly forewarned, with another false version claiming Mossad had warned Jewish workers. On 24 October Syria’s ambassador to Iran, Turki Muhammad Saqr, repeated the false absence claim at an Iranian Foreign Ministry conference, carrying a television falsehood into diplomacy."
+  duration: 13
+
+- shot: shown-false
+  view: graph
+  picture: none
+  focus: absent-workers-hoax-2001
+  time: "2001-10-24"
+  reveal: [absent-workers-hoax-2001, world-trade-center, september-11-attacks]
+  reveal_claims: [absent-workers-hoax-2001#c1, absent-workers-hoax-2001#c2, absent-workers-hoax-2001#c3]
+  overlay: {kind: quote, source: state-dept-contemporary-global-anti-semitism-2008, quote: "The fact is, there was no mass absence of any group of people at the World Trade Center on September 11.", caption: "The U.S. State Department, 2008"}
+  narration: "**Shown false.** The Forward reported in March 2002 that Oded Ellner, back in Israel, had declined interviews “because we went through a very difficult period and we are not ready for this.” He and four other men arrested in New Jersey said they had been held in solitary confinement, beaten, deprived of food and questioned blindfolded in their underwear. Some anti-Israel outlets suggested those detained Israelis knew of the attacks beforehand; the Forward’s sources said their release showed they had been cleared of that suspicion. The State Department found no mass absence from the towers: among the Commission’s 2,973 dead were Jewish victims whose funerals took place at synagogues and temples."
+  duration: 13
+
 - shot: the-commission
   view: graph
   picture: none
@@ -185,19 +220,6 @@ Flight attendants called from hijacked planes. Passengers voted to fight back. P
   reveal_claims: [thomas-kean#c1, lee-hamilton#c1, national-commission-on-terrorist-attacks#c1, national-commission-on-terrorist-attacks#c3]
   overlay: {kind: quote, source: 911-commission-report-2004, quote: "We believe the 9/11 attacks revealed four kinds of failures: in imagination, policy, capabilities, and management.", caption: "The 9/11 Commission Report"}
   narration: "**The Commission.** In July 2004 Thomas Kean and Lee Hamilton put their names to a report asking how another such tragedy could be prevented. Congress and the President had created their commission under Public Law 107-306 on 27 November 2002, with Kean as chair and Hamilton as vice chair; they said their aim was to identify lessons rather than assign individual blame. Before judging, they asked whether apparently obvious clues could have meant anything given what people could reasonably have known or done then. Their report named failures of imagination, policy, capabilities and management, making the missed opportunities a matter of public record."
-  duration: 13
-
-- shot: two-men-in-california
-  view: map
-  picture: none
-  camera: {center: [-117.9, 33.4], zoom: 7.2, pitch: 20, duration: 6}
-  places: [los-angeles, san-diego]
-  routes: [[los-angeles, san-diego]]
-  time: "2000-02-01"
-  reveal: [hazmi-and-mihdhar-in-california-2000, los-angeles, san-diego]
-  reveal_claims: [hazmi-and-mihdhar-in-california-2000#c4]
-  overlay: {kind: quote, source: 911-commission-report-2004, quote: "We do not know whether the lunch encounter occurred by chance or design. We know about it because Bayoumi told law enforcement that it happened.", caption: "The 9/11 Commission Report, on Omar al-Bayoumi"}
-  narration: "**Two men in California.** In a Culver City restaurant on 1 February 2000, Omar al-Bayoumi offered to help Hazmi and Mihdhar settle in San Diego; by his telling they had just reached Los Angeles, knew nobody and were struggling. They had arrived in January and reached San Diego by 4 February; he found an apartment, co-signed the lease and advanced a deposit repaid on the spot, but never gave them money, the Commission found. It thought he may have dissembled, but found no credible evidence that he believed in violent extremism or knowingly helped extremists; nor that Fahad al-Thumairy, an imam and accredited Saudi diplomat in Los Angeles, helped them, though “a logical person to consider”. Whether the encounter was chance or design remained unresolved; the men had a place to live."
   duration: 13
 
 - shot: the-saudi-question
@@ -253,28 +275,6 @@ Flight attendants called from hijacked planes. Passengers voted to fight back. P
   reveal_claims: [families-suit-against-saudi-arabia#c1, families-suit-against-saudi-arabia#c2]
   overlay: {kind: quote, source: abc-2025-judge-lets-911-families-sue-saudi-arabia, quote: "\"Although KSA attempts to offer seemingly innocent explanations or context, they are either self-contradictory or not strong enough to overcome the inference that KSA had employed Bayoumi and Thumairy to assist the hijackers.\"", caption: "Judge George Daniels, 28 August 2025, refusing to dismiss. It is not a verdict"}
   narration: "**The suit.** On 28 August 2025 Judge George Daniels refused to dismiss families’ claims, first filed in 2003: Daniels ruled that the families had offered reasonable evidence that Saudi Arabia sent Omar al-Bayoumi and Fahad al-Thumairy to help the hijackers. Daniels noted significant funds from a senior Saudi cabinet member in a Thumairy account; Thumairy said they paid mosque expenses, and Bayoumi denied being co-opted by Saudi intelligence. The ruling let families pursue evidence; Saudi Arabia denies the allegations and calls itself “a sworn enemy of Al Qaeda.” On 7 October 2026 its lawyers argued sovereign immunity before an appeals court; lawyers expect no ruling before early 2027, leaving the families’ case unresolved."
-  duration: 13
-
-- shot: a-hoax
-  view: graph
-  picture: none
-  focus: al-manar-broadcast-2001-09-17
-  time: "2001-09-17"
-  reveal: [al-manar-broadcast-2001-09-17, absent-workers-hoax-2001, al-manar, world-trade-center]
-  reveal_claims: [al-manar-broadcast-2001-09-17#c1, al-manar-broadcast-2001-09-17#c2, absent-workers-hoax-2001#c2]
-  overlay: {kind: quote, source: state-dept-contemporary-global-anti-semitism-2008, quote: "This tentative estimate that 4,000 Israelis had been in two of the largest metropolitan areas of the United States in early September 2001 was then transformed into the false claim that 4,000 Israelis or Jews did not report for work at the World Trade Center on September 11.", caption: "The U.S. State Department, 2008, on how the claim began"}
-  narration: "**A hoax.** On 17 September 2001 an Al-Manar commentator falsely claimed that 4,000 Israeli World Trade Center workers had stayed home; the State Department identified this as the first known broadcast of an anti-Semitic conspiracy theory about Jews or Israelis being warned. It traced the number’s apparent origin to a 12 September Jerusalem Post article, “Hundreds of Israelis missing in World Trade Center attack”: Israel’s Foreign Ministry had names of 4,000 Israelis believed to be near the towers or Pentagon, meaning New York and Washington. Missing people became people supposedly forewarned, with another false version claiming Mossad had warned Jewish workers. On 24 October Syria’s ambassador to Iran, Turki Muhammad Saqr, repeated the false absence claim at an Iranian Foreign Ministry conference, carrying a television falsehood into diplomacy."
-  duration: 13
-
-- shot: shown-false
-  view: graph
-  picture: none
-  focus: absent-workers-hoax-2001
-  time: "2001-10-24"
-  reveal: [absent-workers-hoax-2001, world-trade-center, september-11-attacks]
-  reveal_claims: [absent-workers-hoax-2001#c1, absent-workers-hoax-2001#c2, absent-workers-hoax-2001#c3]
-  overlay: {kind: quote, source: state-dept-contemporary-global-anti-semitism-2008, quote: "The fact is, there was no mass absence of any group of people at the World Trade Center on September 11.", caption: "The U.S. State Department, 2008"}
-  narration: "**Shown false.** The Forward reported in March 2002 that Oded Ellner, back in Israel, had declined interviews “because we went through a very difficult period and we are not ready for this.” He and four other men arrested in New Jersey said they had been held in solitary confinement, beaten, deprived of food and questioned blindfolded in their underwear. Some anti-Israel outlets suggested those detained Israelis knew of the attacks beforehand; the Forward’s sources said their release showed they had been cleared of that suspicion. The State Department found no mass absence from the towers: among the Commission’s 2,973 dead were Jewish victims whose funerals took place at synagogues and temples."
   duration: 13
 
 ```
