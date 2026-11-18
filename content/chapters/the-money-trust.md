@@ -22,14 +22,15 @@ Behind those board seats were decisions made at a dam, a steel works, a company 
   narration: "**The hearing.** In Washington on 19 December 1912, Samuel Untermyer pressed J. P. Morgan before Arsène Pujo’s House subcommittee: could one man control the nation’s money? Morgan answered, “All the money in Christendom and all the banks in Christendom can not control it.” But when Untermyer asked how he chose whom to lend to, Morgan put character before collateral: “Before money or anything else. Money can not buy it.” A man he distrusted could bring every bond in Christendom and still get nothing. The committee would now put that personal power beside the seats Morgan and his associates held on corporate boards."
   duration: 13
 
-- shot: the-map-of-boards
-  view: graph
-  focus: pujo-report-1913
-  time: "1913-02-28"
-  reveal: [pujo-report-1913, national-city-bank-of-new-york, jp-morgan-and-co, henry-clay-frick, j-p-morgan-jr, william-rockefeller, john-d-rockefeller, standard-oil]
-  reveal_claims: [j-p-morgan-jr#c2, henry-clay-frick#c3, william-rockefeller#c1, william-rockefeller#c2, john-d-rockefeller#c6, pujo-report-1913#c1, john-d-rockefeller#c1]
-  overlay: {kind: stat, value: "341 directorships", label: "Held in 112 corporations by men of J. P. Morgan & Co. and four banks grouped with it, by the Pujo report, 1913", source: pujo-report-1913-text, quote: "In all, 341 directorships in 112 corporations having aggregate resources or capitalization of $22,245,000,000."}
-  narration: "**The map of boards.** On 28 February 1913, Pujo submitted his committee’s report to the House: men from Morgan’s firm and four banks grouped with it held 341 directorships in 112 corporations. At National City Bank, Henry Clay Frick, J. P. Morgan Jr. and William Rockefeller sat together; William owned 10,000 of its 250,000 shares, John D. Rockefeller 1,750. The majority found no written pact, but found that the community of interest it called a money trust existed. The minority rejected that name while finding “a dangerous concentration of credit”. The majority urged Congress to prohibit shared directors at potentially competing financial institutions: the connections it had charted became targets for legislation."
+- shot: convicts
+  view: map
+  camera: {center: [-86.9, 33.55], zoom: 9.4, pitch: 30, duration: 6}
+  places: [birmingham-alabama]
+  time: "1888"
+  reveal: [alabama-convict-lease, tennessee-coal-iron-and-railroad, us-steel, birmingham-alabama]
+  reveal_claims: [alabama-convict-lease#c1, alabama-convict-lease#c2, us-steel#c1]
+  overlay: {kind: stat, value: "233 deaths", label: "Among 1,710 Alabama state prisoners in the mines in 1896, in the two years before, by the Encyclopedia of Alabama. County prisoners: 181 deaths among 745", source: eoa-convict-lease, quote: "In 1896, state prisoners in the mines numbered 1,710. During the previous two years, 233 men had died."}
+  narration: "**Convicts.** Before the bankers faced Congress, a fiscal crisis drove Alabama to seek revenue in 1875, the Encyclopedia of Alabama says; warden John G. Bass began leasing prisoners for monthly payments, grading men by strength and skill. In 1888 Tennessee Coal, Iron and Railroad secured all able-bodied state prisoners for ten years. The Encyclopedia of Alabama describes contractors whipping prisoners to enforce work; over 95 percent of county prisoners and 90 percent of state prisoners were African American. For the two years before 1896 it counts 233 state-prisoner deaths and 181 county-prisoner deaths. U.S. Steel bought TCI in 1907; in 1912 TCI announced it would use only free workers. Alabama took over the prison mines and sold their coal itself. The state’s system continued until 1928."
   duration: 13
 
 - shot: the-lake
@@ -126,17 +127,6 @@ Behind those board seats were decisions made at a dam, a steel works, a company 
   narration: "**The Tennessee deal.** On 4 November 1907, Elbert Gary and Henry Clay Frick came to Roosevelt for U.S. Steel: a New York firm would fail, they said, unless Steel bought its Tennessee Coal and Iron stock. Roosevelt recorded that they presented the purchase as the only way to avert failure. He told them he could not advise it, but did not consider it his duty to forbid it. Later he defended his decision: “I was not misled” and “The action was emphatically for the general good.” U.S. Steel acquired the company. Taft’s government later sued over this purchase and others; in 1920 the Supreme Court affirmed dismissal. The acquisition also brought Alabama’s prison mines into Steel’s business."
   duration: 13
 
-- shot: convicts
-  view: map
-  camera: {center: [-86.9, 33.55], zoom: 9.4, pitch: 30, duration: 6}
-  places: [birmingham-alabama]
-  time: "1888"
-  reveal: [alabama-convict-lease, tennessee-coal-iron-and-railroad, us-steel, birmingham-alabama]
-  reveal_claims: [alabama-convict-lease#c1, alabama-convict-lease#c2, us-steel#c1]
-  overlay: {kind: stat, value: "233 deaths", label: "Among 1,710 Alabama state prisoners in the mines in 1896, in the two years before, by the Encyclopedia of Alabama. County prisoners: 181 deaths among 745", source: eoa-convict-lease, quote: "In 1896, state prisoners in the mines numbered 1,710. During the previous two years, 233 men had died."}
-  narration: "**Convicts.** The Encyclopedia of Alabama says a fiscal crisis drove Alabama to seek revenue in 1875; warden John G. Bass began leasing prisoners for monthly payments, grading men by strength and skill. In 1888 Tennessee Coal, Iron and Railroad secured all able-bodied state prisoners for ten years. The Encyclopedia of Alabama describes contractors whipping prisoners to enforce work; over 95 percent of county prisoners and 90 percent of state prisoners were African American. For the two years before 1896 it counts 233 state-prisoner deaths and 181 county-prisoner deaths. U.S. Steel bought TCI in 1907; in 1912 TCI announced it would use only free workers. Alabama took over the prison mines and sold their coal itself. The state’s system continued until 1928."
-  duration: 13
-
 - shot: children-in-the-mines
   view: graph
   focus: lewis-hine
@@ -155,6 +145,26 @@ Behind those board seats were decisions made at a dam, a steel works, a company 
   reveal_claims: [sinking-of-the-titanic#c1, sinking-of-the-titanic#c2, sinking-of-the-titanic#c3, white-star-line#c1, jp-morgan-and-co#c2, j-p-morgan-jr#c3, j-bruce-ismay#c1]
   overlay: {kind: quote, source: pujo-hearings-1912-part-15, quote: "Not controlled; no. The voting trust controlled it.", caption: "J. P. Morgan, asked about the International Mercantile Marine Co., 19 December 1912"}
   narration: "**The ship.** At 10:30 a.m. on 19 April 1912, Senator William Alden Smith opened a hearing at New York’s Waldorf-Astoria and called J. Bruce Ismay to testify. Titanic, the White Star liner on which the company president had travelled, had sunk four days earlier. Smith’s mandate was to determine responsibility and recommend laws to prevent another disaster. The Senate traced ownership to International Mercantile Marine, organized by Morgan & Co. in 1902; Morgan Jr. sat on its board. Asked that December whether he controlled it, the elder Morgan answered, “Not controlled; no. The voting trust controlled it.” He was one of its five trustees. Smith’s inquiry into the wreck brought company officers before the Senate to answer for the ship’s loss."
+  duration: 13
+
+- shot: the-map-of-boards
+  view: graph
+  focus: pujo-report-1913
+  time: "1913-02-28"
+  reveal: [pujo-report-1913, national-city-bank-of-new-york, jp-morgan-and-co, henry-clay-frick, j-p-morgan-jr, william-rockefeller, john-d-rockefeller, standard-oil]
+  reveal_claims: [j-p-morgan-jr#c2, henry-clay-frick#c3, william-rockefeller#c1, william-rockefeller#c2, john-d-rockefeller#c6, pujo-report-1913#c1, john-d-rockefeller#c1]
+  overlay: {kind: stat, value: "341 directorships", label: "Held in 112 corporations by men of J. P. Morgan & Co. and four banks grouped with it, by the Pujo report, 1913", source: pujo-report-1913-text, quote: "In all, 341 directorships in 112 corporations having aggregate resources or capitalization of $22,245,000,000."}
+  narration: "**The map of boards.** On 28 February 1913, Pujo followed the testimony with his committee’s report to the House: men from Morgan’s firm and four banks grouped with it held 341 directorships in 112 corporations. At National City Bank, Henry Clay Frick, J. P. Morgan Jr. and William Rockefeller sat together; William owned 10,000 of its 250,000 shares, John D. Rockefeller 1,750. The majority found no written pact, but found that the community of interest it called a money trust existed. The minority rejected that name while finding “a dangerous concentration of credit”. The majority urged Congress to prohibit shared directors at potentially competing financial institutions: the connections it had charted became targets for legislation."
+  duration: 13
+
+- shot: stand-by-you
+  view: graph
+  focus: john-d-rockefeller-jr
+  time: "1913-10-06"
+  reveal: [john-d-rockefeller-jr, colorado-fuel-and-iron, colorado-coalfield-strike-1913, john-d-rockefeller]
+  reveal_claims: [colorado-coalfield-strike-1913#c1, colorado-coalfield-strike-1913#c2, john-d-rockefeller-jr#c1, john-d-rockefeller-jr#c2, john-d-rockefeller-jr#c4]
+  overlay: {kind: quote, source: cir-hearings-vol9-1916, quote: "Whatever the outcome may be, we will stand by you to the end.", caption: "John D. Rockefeller Jr. to L. M. Bowers, chairman of the Colorado Fuel & Iron Company, 6 October 1913, read into the record by the Commission"}
+  narration: "**Stand by you.** On 6 October 1913, Rockefeller Jr.’s office assured CF&I chairman L. M. Bowers it would stand by him to the end. The Rockefellers held stock and bonds; the younger Rockefeller was a director. His letter called opposition to unionizing the mines a service to employees. A later letter said Bowers’s fight served the company, other Colorado companies, national business interests and workers alike. Publicly, Rockefeller defended each worker’s freedom to work independently. Bowers reported bankers agreeing to finance the state militia. After Ludlow he asked Rockefeller to pass his description of the fighting to friendly papers; the reply in Rockefeller’s name regretted further lawlessness. His office’s assurances tied a distant director to the company’s stand against the union and became evidence before the Commission."
   duration: 13
 
 - shot: ludlow
@@ -186,16 +196,6 @@ Behind those board seats were decisions made at a dam, a steel works, a company 
   reveal_claims: [ludlow-massacre#c5, colorado-coalfield-strike-1913#c3]
   overlay: {kind: quote, source: colorado-guard-board-ludlow-1914, quote: "Private Albert Martin, while dying, or after death, was horribly mutilated by the strikers.", caption: "Colorado Guard board of officers, finding 6, 1914"}
   narration: "**The strikers.** The Guard’s board reported that Private Albert Martin advanced with a small squad at Ludlow and was shot in the neck. It said his comrades withdrew under fire and left him under cover; when they reached him near dark, he was dead and mutilated. It blamed strikers, using language that also disparaged immigrant miners. House investigators called the attack on Berwind “inexcusable”: men alleged to be strikers or their friends shot into homes and wounded two children. They called the guards’ machine-gun attack on Forbes “equally unjustifiable”; a boy of about twelve survived nine wounds and appeared before them. Across the coalfield people on both sides were killed and wounded. Survivors brought the fighting’s consequences into the hearing room."
-  duration: 13
-
-- shot: stand-by-you
-  view: graph
-  focus: john-d-rockefeller-jr
-  time: "1913-10-06"
-  reveal: [john-d-rockefeller-jr, colorado-fuel-and-iron, colorado-coalfield-strike-1913, john-d-rockefeller]
-  reveal_claims: [colorado-coalfield-strike-1913#c1, colorado-coalfield-strike-1913#c2, john-d-rockefeller-jr#c1, john-d-rockefeller-jr#c2, john-d-rockefeller-jr#c4]
-  overlay: {kind: quote, source: cir-hearings-vol9-1916, quote: "Whatever the outcome may be, we will stand by you to the end.", caption: "John D. Rockefeller Jr. to L. M. Bowers, chairman of the Colorado Fuel & Iron Company, 6 October 1913, read into the record by the Commission"}
-  narration: "**Stand by you.** On 6 October 1913, Rockefeller Jr.’s office assured CF&I chairman L. M. Bowers it would stand by him to the end. The Rockefellers held stock and bonds; the younger Rockefeller was a director. His letter called opposition to unionizing the mines a service to employees. A later letter said Bowers’s fight served the company, other Colorado companies, national business interests and workers alike. Publicly, Rockefeller defended each worker’s freedom to work independently. Bowers reported bankers agreeing to finance the state militia. After Ludlow he asked Rockefeller to pass his description of the fighting to friendly papers; the reply in Rockefeller’s name regretted further lawlessness. His office’s assurances tied a distant director to the company’s stand against the union and became evidence before the Commission."
   duration: 13
 
 - shot: his-answer
