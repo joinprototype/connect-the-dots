@@ -411,7 +411,7 @@ Shot fields (v0; the full list is in [data-contract.md](data-contract.md)):
 |---|---|
 | `shot` | Shot name |
 | `view` | `map`, `graph` or `timeline` |
-| `camera`, `lens`, `perspective`, `time`, `focus` | Where the view is |
+| `camera`, `lens`, `perspective`, `time`, `focus` | Where the view is. `time` runs forward: after the first scene, none is dated in an earlier year than the one before it (`ctd check` warns), and an argument is dated when it was made. The first may frame the whole story; when it is dated after the second, Read stamps it with the story's span |
 | `reveal` | Entities that appear |
 | `reveal_claims` | Claims whose links draw |
 | `places`, `routes` | Places to mark and lines to draw on the map |

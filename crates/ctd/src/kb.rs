@@ -1399,6 +1399,34 @@ fn check_shot_refs(kb: &Kb, refs: &ShotRefs, file: &str, shot: &Value, diags: &m
     }
 }
 
+/// A story's scenes run forward in time: one warning for the scenes dated in an earlier year than the
+/// dated scene before them. The first scene may frame the whole story (the question, or the answer told
+/// first; Read stamps it with the story's span), so the count starts after it. An argument or explanation
+/// is dated when it was made, not by the years it is about.
+fn back_in_time(file: &str, shots: &[Value]) -> Option<Diag> {
+    let year = |s: &Value| s["t"].as_f64().map(|t| t.floor() as i32);
+    let mut last: Option<i32> = None;
+    let mut back = Vec::new();
+    for shot in shots.iter().skip(1) {
+        let Some(y) = year(shot) else { continue };
+        if let Some(prev) = last.filter(|&p| y < p) {
+            back.push(format!("`{}` ({y} after {prev})", shot_name(shot)));
+        }
+        last = Some(y);
+    }
+    if back.is_empty() {
+        return None;
+    }
+    let n = back.len();
+    let shown: Vec<String> = back.into_iter().take(3).collect();
+    let more = if n > 3 { format!(" and {} more", n - 3) } else { String::new() };
+    let steps = if n == 1 { "scene goes" } else { "scenes go" };
+    Some(
+        Diag::warn(file, format!("{n} {steps} back in time: {}{more}", shown.join(", ")))
+            .hint("put the scenes in date order; date an argument when it was made"),
+    )
+}
+
 /// Reads a shot's date, then checks its borders: a file with no period for that date draws nothing.
 fn date_shot(kb: &Kb, file: &str, shot: &mut Value, diags: &mut Vec<Diag>) {
     let name = shot_name(shot).to_string();
@@ -1459,6 +1487,9 @@ fn chapter(kb: &Kb, doc: &ChapterDoc, withheld: &HashSet<&str>, diags: &mut Vec<
     if shots.is_empty() {
         diags.push(Diag::warn(file, "chapter has no ```scene shots"));
     }
+    if let Some(d) = back_in_time(file, &shots) {
+        diags.push(d);
+    }
     Some(Chapter {
         id: f.id.clone(),
         title: f.title.clone(),
@@ -1481,6 +1512,21 @@ pub(crate) mod tests {
         diag::Level,
         testkit::{entity, file, load, said, source, try_load},
     };
+
+    #[test]
+    fn scenes_that_go_back_in_time_are_named() {
+        let story = |times: &[&str]| {
+            let shots: String = times.iter().enumerate().map(|(i, t)| format!("- shot: s{i}\n  time: \"{t}\"\n")).collect();
+            file("content/chapters/told.md", &format!("---\nid: told\ntype: chapter\ntitle: Told\n---\n\n```scene\n{shots}```\n"))
+        };
+        // the opener may frame the story; after it, 1912 after 1947 is a step back, and only that one
+        let (_, diags) = load("kb-back-in-time", &[story(&["1947", "1898", "1912", "1947-09", "1890/1912"])]);
+        let w = said(&diags, "back in time");
+        assert_eq!(w.len(), 1, "{diags:?}");
+        assert!(w[0].contains("1 scene goes back in time: `s4` (1890 after 1947)"), "{w:?}");
+        let (_, diags) = load("kb-in-order", &[story(&["2026", "1898", "1898-12", "1947"])]);
+        assert!(said(&diags, "back in time").is_empty());
+    }
 
     #[test]
     fn numbers_read_like_numbers() {
