@@ -43,14 +43,14 @@ Between 1962 and 1971 the U.S. Air Force sprayed about 19 million gallons of her
   narration: "**Learning to spray.** Waiting in the Philippines in December 1961, Captain Carl Marshall practiced spray patterns without chemicals. His detachment would begin Operation Ranch Hand in 1962, stripping cover and destroying crops to deprive the enemy of food. Orange, White and Blue took their names from barrel bands. Policy confined spraying to areas remote from population; Jeanne Stellman’s data instead show 3,181 hamlets sprayed directly, with 2.1 to 4.8 million people present. The Air Force history counts 18 million gallons across a fifth of South Vietnam’s jungles and 36% of its mangroves; other counts range from 17.7 to 20.3 million gallons. Those flights left both a damaged landscape and people who would ask who had supplied the spray."
   duration: 13
 
-- shot: seven-makers
+- shot: what-the-government-knew
   view: graph
-  focus: agent-orange
-  time: "1967-03"
-  reveal: [agent-orange, dow-chemical, monsanto, diamond-shamrock, hercules-inc, uniroyal]
-  reveal_claims: [dow-chemical#c2, monsanto#c1, monsanto#c3, diamond-shamrock#c1, hercules-inc#c1, uniroyal#c1]
-  overlay: {kind: stat, value: "over 99%", label: "Share of the Agent Orange used in Vietnam made by seven companies, by a federal court in 1984. Monsanto called the former company “one of nine wartime government contractors”; it said the government set specifications and decided when, where and how the herbicide was used", source: agent-orange-597-fsupp-740-1984, quote: "Thompson Chemical Corporation, T.H. Agriculture & Nutrition, and Uniroyal, Inc., manufactured over 99% of a herbicide called Agent Orange used by the military in Vietnam between 1965 and 1970."}
-  narration: "**The mixed barrels.** In Brooklyn in 1984, Judge Jack Weinstein confronted a problem for veterans seeking damages: no one could trace whose Orange had reached whom. Dow, Monsanto, Hercules, Diamond Shamrock, Uniroyal, Thompson Chemical and T.H. Agriculture & Nutrition made over 99% of it. Drums bore an orange stripe and contract number, no warning; in Vietnam their contents were mixed. Weinstein’s review put dioxin below 1 part per million in some makers’ product and above 10 in one. The makers said they were compelled: Commerce’s March 1967 order under the Defense Production Act “essentially commandeered all of the Defendants’ capacity”; the Supreme Court’s 1996 summary also credited the government with superior knowledge of hazards. The mixed tanks left plaintiffs pursuing seven suppliers without a trail to an individual barrel."
+  focus: government-contractor-defense
+  time: "1963-05-09"
+  reveal: [government-contractor-defense, us-government, agent-orange, agent-orange-settlement-1984]
+  reveal_claims: [government-contractor-defense#c1]
+  overlay: {kind: quote, source: agent-orange-597-fsupp-740-1984, quote: "The government and the plaintiffs argue that the evidence would allow the inference that not until 1970 did the government learn what the defendants knew in 1965 about the dangers of dioxin in low concentrations and of the VPC method for detecting dioxin.", caption: "Judge Jack Weinstein, 1984, on the government’s and the veterans’ answer"}
+  narration: "**The warning that stopped short.** Weinstein reports testimony that a President’s Science Advisory Committee member did not warn Johnson in 1965 because he did not consider the health threat serious. In his 1984 settlement review, Weinstein sampled evidence of government knowledge: Army staff briefed the committee on 9 May 1963, Edgewood scientists knew of dioxin before 1959, and officials knew workers faced hazards at high concentrations. Veterans and the government nevertheless argued it learned only in 1970 what makers knew in 1965 about danger at 1 ppm and the sensitive detection method. Weinstein thought the makers could establish an initial case for the contractor defense. What officials knew, even without telling the President, could help shield suppliers from suit."
   duration: 13
 
 - shot: what-the-makers-knew
@@ -63,34 +63,24 @@ Between 1962 and 1971 the U.S. Air Force sprayed about 19 million gallons of her
   narration: "**A warning inside the industry.** A Hercules employee’s July 1965 memo recorded fear of congressional investigation and restrictive pesticide laws. That March, Dow had gathered other makers to discuss dioxin; Monsanto was invited but did not attend. Reviewing veterans’ evidence favorably in 1984, Weinstein said a jury could find longstanding knowledge of workers’ chloracne, liver damage and other diseases, and Dow’s knowledge by 1965 of hazards at 1 ppm. He wrote that Dow and others expressed fear of government intervention “disastrous to the entire herbicide industry.” The Army had learned in 1952 of Monsanto’s 1949 Nitro accident. Evidence suggested Dow and Hercules cut dioxin below 1 ppm while Monsanto’s and Diamond Shamrock’s stayed higher. Those differing responses became evidence in veterans’ efforts to hold the makers responsible."
   duration: 13
 
-- shot: what-the-government-knew
+- shot: seven-makers
   view: graph
-  focus: government-contractor-defense
-  time: "1963-05-09"
-  reveal: [government-contractor-defense, us-government, agent-orange, agent-orange-settlement-1984]
-  reveal_claims: [government-contractor-defense#c1]
-  overlay: {kind: quote, source: agent-orange-597-fsupp-740-1984, quote: "The government and the plaintiffs argue that the evidence would allow the inference that not until 1970 did the government learn what the defendants knew in 1965 about the dangers of dioxin in low concentrations and of the VPC method for detecting dioxin.", caption: "Judge Jack Weinstein, 1984, on the government’s and the veterans’ answer"}
-  narration: "**The warning that stopped short.** Weinstein reports testimony that a President’s Science Advisory Committee member did not warn Johnson in 1965 because he did not consider the health threat serious. In his 1984 settlement review, Weinstein sampled evidence of government knowledge: Army staff briefed the committee on 9 May 1963, Edgewood scientists knew of dioxin before 1959, and officials knew workers faced hazards at high concentrations. Veterans and the government nevertheless argued it learned only in 1970 what makers knew in 1965 about danger at 1 ppm and the sensitive detection method. Weinstein thought the makers could establish an initial case for the contractor defense. What officials knew, even without telling the President, could help shield suppliers from suit."
+  focus: agent-orange
+  time: "1967-03"
+  reveal: [agent-orange, dow-chemical, monsanto, diamond-shamrock, hercules-inc, uniroyal]
+  reveal_claims: [dow-chemical#c2, monsanto#c1, monsanto#c3, diamond-shamrock#c1, hercules-inc#c1, uniroyal#c1]
+  overlay: {kind: stat, value: "over 99%", label: "Share of the Agent Orange used in Vietnam made by seven companies, by a federal court in 1984. Monsanto called the former company “one of nine wartime government contractors”; it said the government set specifications and decided when, where and how the herbicide was used", source: agent-orange-597-fsupp-740-1984, quote: "Thompson Chemical Corporation, T.H. Agriculture & Nutrition, and Uniroyal, Inc., manufactured over 99% of a herbicide called Agent Orange used by the military in Vietnam between 1965 and 1970."}
+  narration: "**The mixed barrels.** In Brooklyn in 1984, Judge Jack Weinstein confronted a problem for veterans seeking damages: no one could trace whose Orange had reached whom. Dow, Monsanto, Hercules, Diamond Shamrock, Uniroyal, Thompson Chemical and T.H. Agriculture & Nutrition made over 99% of it. Drums bore an orange stripe and contract number, no warning; in Vietnam their contents were mixed. Weinstein’s review put dioxin below 1 part per million in some makers’ product and above 10 in one. The makers said they were compelled: Commerce’s March 1967 order under the Defense Production Act “essentially commandeered all of the Defendants’ capacity”; the Supreme Court’s 1996 summary also credited the government with superior knowledge of hazards. The mixed tanks left plaintiffs pursuing seven suppliers without a trail to an individual barrel."
   duration: 13
 
-- shot: the-makers-answer
+- shot: the-end-of-orange
   view: graph
-  focus: dow-chemical
-  time: "2021-05-10"
-  reveal: [dow-chemical, monsanto, bayer, us-government, agent-orange]
-  reveal_claims: [dow-chemical#c2, tran-to-nga-suit-in-france#c3]
-  overlay: {kind: quote, source: dow-agent-orange-page, quote: "The U.S. government bears the responsibility for its own military actions, including the development and use of Agent Orange in Vietnam.", caption: "Dow, on its Agent Orange page"}
-  narration: "**The makers’ answer.** In France in 2021, Bayer’s lawyers faced Tran To Nga’s demand that suppliers answer for the herbicide. Bayer, Monsanto’s owner, argued they “could not be held responsible for the use that the American military made of their product.” Dow’s public position likewise puts responsibility on Washington: the makers “were compelled by the U.S. government to produce Agent Orange”. Its page says decades of study “have not established a causal link to any diseases, birth defects or other transgenerational effects.” The companies asked courts to leave responsibility with the state that ordered and used the spray."
-  duration: 13
-
-- shot: the-governments-answer
-  view: graph
-  focus: us-government
-  time: "1984-05-10"
-  reveal: [us-government, us-department-of-justice, us-supreme-court, agent-orange-settlement-1984, vava-v-dow-chemical]
-  reveal_claims: [agent-orange-settlement-1984#c4, agent-orange-settlement-1984#c6, agent-orange-settlement-1984#c8, vava-v-dow-chemical#c7]
-  overlay: {kind: quote, source: agent-orange-818-f2d-145-1987, quote: "we affirm the district court's dismissal of actions against the United States by veterans on the grounds that they are barred by the Feres doctrine and the discretionary function exception to the Federal Tort Claims Act.", caption: "U.S. Court of Appeals for the Second Circuit, 1987"}
-  narration: "**An empty place at the table.** In 1984 Weinstein was preparing to hear veterans’ claims in Brooklyn when the government refused settlement talks. It told his court it spent about $70 million yearly treating veterans claiming exposure, “even though causality has not been shown”. The Reagan administration repeatedly questioned veterans’ claims, according to the Congressional Research Service. When makers sought reimbursement, Justice Department lawyers promised to fight; in 1996 the Supreme Court denied recovery. Veterans’ own suits against the United States had failed: the Second Circuit affirmed dismissal in 1987 under military-service and discretionary-function immunity. In 2005 government lawyers entered the Vietnamese case on the makers’ side, defending the suppliers while the state itself remained protected from the veterans’ suits."
+  focus: suspension-of-agent-orange-1970
+  time: "1970-04-15"
+  reveal: [suspension-of-agent-orange-1970, operation-ranch-hand, us-government]
+  reveal_claims: [suspension-of-agent-orange-1970#c1, suspension-of-agent-orange-1970#c2, suspension-of-agent-orange-1970#c3]
+  overlay: {kind: quote, source: buckingham-operation-ranch-hand-1982, quote: "The Department of Defense will temporarily suspend the use of 2,4,5-T (orange) in all military operations pending a more thorough evaluation of the situation.", caption: "Deputy Secretary of Defense to the Joint Chiefs, 15 April 1970"}
+  narration: "**Foster asks for suspension.** In April 1970 John Foster, the Pentagon’s research director, urged stopping Orange in Vietnam. The U.S. had just banned most domestic uses of its component 2,4,5-T; continuing abroad, he argued, risked adverse public reaction. A government study had found birth defects in mice in June 1966; further analysis in early 1969 brought no restriction on Vietnam spraying. Buckingham says the Joint Chiefs’ chairman opposed tighter military than civilian restrictions and feared a temporary restriction would be hard to remove. Foster prevailed: on 15 April Defense suspended Orange pending evaluation. Pilots sprayed other herbicides until the last Ranch Hand herbicide mission on 7 January 1971; ending Orange left compensation unresolved."
   duration: 13
 
 - shot: chemical-warfare
@@ -103,14 +93,14 @@ Between 1962 and 1971 the U.S. Air Force sprayed about 19 million gallons of her
   narration: "**Ford draws a line.** In 1975 President Gerald Ford renounced first use of herbicides in war as national policy, the year the Geneva Protocol took force for the United States. He maintained that the Protocol did not cover herbicides. In 1969 the U.S. argued herbicides were unknown in 1925 and outside the Protocol, voting against a UN resolution that said otherwise; in 1970 senators rejected a military anti-plant chemical ban, 62–22. Ford’s renunciation did not settle the legal claims from Vietnam. Weinstein ruled in 2005 that spraying violated no plaintiffs’ rights under international law; in 2008 the Second Circuit found no sufficiently precise prohibition. Those rulings closed a legal route without deciding whether anyone had been harmed."
   duration: 13
 
-- shot: the-end-of-orange
+- shot: the-governments-answer
   view: graph
-  focus: suspension-of-agent-orange-1970
-  time: "1970-04-15"
-  reveal: [suspension-of-agent-orange-1970, operation-ranch-hand, us-government]
-  reveal_claims: [suspension-of-agent-orange-1970#c1, suspension-of-agent-orange-1970#c2, suspension-of-agent-orange-1970#c3]
-  overlay: {kind: quote, source: buckingham-operation-ranch-hand-1982, quote: "The Department of Defense will temporarily suspend the use of 2,4,5-T (orange) in all military operations pending a more thorough evaluation of the situation.", caption: "Deputy Secretary of Defense to the Joint Chiefs, 15 April 1970"}
-  narration: "**Foster asks for suspension.** In April 1970 John Foster, the Pentagon’s research director, urged stopping Orange in Vietnam. The U.S. had just banned most domestic uses of its component 2,4,5-T; continuing abroad, he argued, risked adverse public reaction. A government study had found birth defects in mice in June 1966; further analysis in early 1969 brought no restriction on Vietnam spraying. Buckingham says the Joint Chiefs’ chairman opposed tighter military than civilian restrictions and feared a temporary restriction would be hard to remove. Foster prevailed: on 15 April Defense suspended Orange pending evaluation. Pilots sprayed other herbicides until the last Ranch Hand herbicide mission on 7 January 1971; ending Orange left compensation unresolved."
+  focus: us-government
+  time: "1984-05-10"
+  reveal: [us-government, us-department-of-justice, us-supreme-court, agent-orange-settlement-1984, vava-v-dow-chemical]
+  reveal_claims: [agent-orange-settlement-1984#c4, agent-orange-settlement-1984#c6, agent-orange-settlement-1984#c8, vava-v-dow-chemical#c7]
+  overlay: {kind: quote, source: agent-orange-818-f2d-145-1987, quote: "we affirm the district court's dismissal of actions against the United States by veterans on the grounds that they are barred by the Feres doctrine and the discretionary function exception to the Federal Tort Claims Act.", caption: "U.S. Court of Appeals for the Second Circuit, 1987"}
+  narration: "**An empty place at the table.** In 1984 Weinstein was preparing to hear veterans’ claims in Brooklyn when the government refused settlement talks. It told his court it spent about $70 million yearly treating veterans claiming exposure, “even though causality has not been shown”. The Reagan administration repeatedly questioned veterans’ claims, according to the Congressional Research Service. When makers sought reimbursement, Justice Department lawyers promised to fight; in 1996 the Supreme Court denied recovery. Veterans’ own suits against the United States had failed: the Second Circuit affirmed dismissal in 1987 under military-service and discretionary-function immunity. In 2005 government lawyers entered the Vietnamese case on the makers’ side, defending the suppliers while the state itself remained protected from the veterans’ suits."
   duration: 13
 
 - shot: the-settlement
@@ -152,27 +142,6 @@ Between 1962 and 1971 the U.S. Air Force sprayed about 19 million gallons of her
   narration: "**Zumwalt challenges the VA.** In May 1990 Admiral Elmo Zumwalt, the Veterans Affairs Secretary’s special assistant, challenged the way his department judged veterans. As naval commander in Vietnam, he wrote, he had known of unrecorded spraying missions. He charged political interference in a CDC study and partiality in the VA’s advisory committee; his review linked Agent Orange, on an “at least as likely as not” basis, to illnesses including birth defects. A federal court had already struck down the VA’s chloracne-only service-connection rule in Nehmer in 1989. On 6 February 1991 the Agent Orange Act became law, presuming three diseases service-connected and commissioning outside scientific reviews. Veterans now had a route to benefits that did not require proving their individual cases in court."
   duration: 13
 
-- shot: what-the-academy-found
-  view: graph
-  focus: veterans-and-agent-orange-update-11-2018
-  time: "2018"
-  reveal: [institute-of-medicine, veterans-and-agent-orange-1994, veterans-and-agent-orange-update-2014, veterans-and-agent-orange-update-11-2018, us-department-of-veterans-affairs]
-  reveal_claims: [institute-of-medicine#c1, veterans-and-agent-orange-update-2014#c1]
-  overlay: {kind: quote, source: nam-veterans-and-agent-orange-update-11-2018-summary, quote: "Soft-tissue sarcoma (including heart) * Non-Hodgkin lymphoma * Chronic lymphocytic leukemia (including hairy cell leukemia and other chronic B-cell leukemias) * Hodgkin lymphoma Chloracne", caption: "Veterans and Agent Orange: Update 11 (2018). “Sufficient evidence”; hypertension and MGUS were added in 2018"}
-  narration: "**Evidence that changed the list.** Cypel and colleagues compared Army Chemical Corps veterans who sprayed herbicides with those who did not. The review committee said their 2016 study helped persuade it to reclassify hypertension in 2018 because it used a large sample, appropriate controls and validated health outcomes. Hypertension joined “sufficient evidence”, alongside newly assessed MGUS: seven conditions altogether. Reviewers split over type 2 diabetes’s category. Birth defects in veterans’ children remained “inadequate or insufficient”, though law covers spina bifida. In 1994 reviewers judged veterans’ exposure generally lower than workers’, with definitive data lacking; Ranch Hand airmen were an exception, and others likely received doses associated with health effects. The committee assessed population associations rather than individual causation, giving benefits officials evidence for decisions affecting living veterans."
-  duration: 13
-
-- shot: vietnams-case
-  view: map
-  camera: {center: [107.5, 13.0], zoom: 5.2, pitch: 0, duration: 6}
-  places: [vietnam, da-nang, bien-hoa]
-  time: "2012"
-  reveal: [vietnam-association-for-victims-of-agent-orange, vietnam, da-nang, bien-hoa]
-  reveal_claims: [operation-ranch-hand#c6, vietnam-association-for-victims-of-agent-orange#c1]
-  overlay: {kind: stat, value: "at least 3 million", label: "Vietnamese seriously ill from exposure, by the Vietnam Association of Victims of Agent Orange’s estimate; it puts the exposed at 2.1 to 4.8 million (CRS, 2012)", source: crs-rl34761-2012, quote: "Vietnam Association of Victims of Agent Orange/Dioxin (VAVA) estimates that 2.1 million to 4.8 million Vietnamese were exposed to Agent Orange during the war and at least 3 million suffer serious health problems due to that exposure."}
-  narration: "**The ambassador’s answer.** U.S. ambassador Michael Marine explained his uncertainty about helping Agent Orange victims in remarks quoted by CRS: “I cannot say whether or not I have myself seen a victim of Agent Orange.” His reason: “We just don't have the scientific evidence to make that statement with certainty.” Vietnam attributed unusually high birth defects and illness across generations to exposure; its ministry counted over 365,000 affected veterans and descendants. VAVA estimated at least three million people seriously ill. CRS describes the resulting U.S. policy distinction: Washington offered research and cleanup where serious contamination was found, while questioning Vietnam’s evidence connecting exposure to illness and resisting direct health assistance. Marine’s demand for scientific certainty left Vietnamese families seeking recognition as well as cleaner land."
-  duration: 13
-
 - shot: the-suit
   view: graph
   focus: vava-v-dow-chemical
@@ -191,6 +160,37 @@ Between 1962 and 1971 the U.S. Air Force sprayed about 19 million gallons of her
   reveal_claims: [vava-v-dow-chemical#c4, vava-v-dow-chemical#c5, vava-v-dow-chemical#c6]
   overlay: {kind: quote, source: agent-orange-517-f3d-104-2008, quote: "Inasmuch as Agent Orange was intended for defoliation and for destruction of crops only, its use did not violate the international norms relied upon here, since those norms would not necessarily prohibit the deployment of materials that are only secondarily, and not intentionally, harmful to humans.", caption: "The Second Circuit, 22 February 2008, on why the international-law claims failed"}
   narration: "**Weinstein closes the case.** On 10 March 2005, Weinstein dismissed the Vietnamese suit in Brooklyn. Domestic claims failed under the contractor defense. For the motion to dismiss, he treated Agent Orange as a herbicide rather than a poison, allowing it “may have caused some results analogous to those of poisons.” He left causation aside: “there is no need to pursue this issue at this time.” In 2008 appellate judges affirmed because it was used for defoliation, not as a poison designed for or targeting people. The Supreme Court declined review on 2 March 2009, ending this case and the U.S. veterans’ last suits. For Vietnamese claimants, those legal decisions shut the American courts without a verdict on what had caused their suffering."
+  duration: 13
+
+- shot: vietnams-case
+  view: map
+  camera: {center: [107.5, 13.0], zoom: 5.2, pitch: 0, duration: 6}
+  places: [vietnam, da-nang, bien-hoa]
+  time: "2012"
+  reveal: [vietnam-association-for-victims-of-agent-orange, vietnam, da-nang, bien-hoa]
+  reveal_claims: [operation-ranch-hand#c6, vietnam-association-for-victims-of-agent-orange#c1]
+  overlay: {kind: stat, value: "at least 3 million", label: "Vietnamese seriously ill from exposure, by the Vietnam Association of Victims of Agent Orange’s estimate; it puts the exposed at 2.1 to 4.8 million (CRS, 2012)", source: crs-rl34761-2012, quote: "Vietnam Association of Victims of Agent Orange/Dioxin (VAVA) estimates that 2.1 million to 4.8 million Vietnamese were exposed to Agent Orange during the war and at least 3 million suffer serious health problems due to that exposure."}
+  narration: "**The ambassador’s answer.** U.S. ambassador Michael Marine explained his uncertainty about helping Agent Orange victims in remarks quoted by CRS: “I cannot say whether or not I have myself seen a victim of Agent Orange.” His reason: “We just don't have the scientific evidence to make that statement with certainty.” Vietnam attributed unusually high birth defects and illness across generations to exposure; its ministry counted over 365,000 affected veterans and descendants. VAVA estimated at least three million people seriously ill. CRS describes the resulting U.S. policy distinction: Washington offered research and cleanup where serious contamination was found, while questioning Vietnam’s evidence connecting exposure to illness and resisting direct health assistance. Marine’s demand for scientific certainty left Vietnamese families seeking recognition as well as cleaner land."
+  duration: 13
+
+- shot: what-the-academy-found
+  view: graph
+  focus: veterans-and-agent-orange-update-11-2018
+  time: "2018"
+  reveal: [institute-of-medicine, veterans-and-agent-orange-1994, veterans-and-agent-orange-update-2014, veterans-and-agent-orange-update-11-2018, us-department-of-veterans-affairs]
+  reveal_claims: [institute-of-medicine#c1, veterans-and-agent-orange-update-2014#c1]
+  overlay: {kind: quote, source: nam-veterans-and-agent-orange-update-11-2018-summary, quote: "Soft-tissue sarcoma (including heart) * Non-Hodgkin lymphoma * Chronic lymphocytic leukemia (including hairy cell leukemia and other chronic B-cell leukemias) * Hodgkin lymphoma Chloracne", caption: "Veterans and Agent Orange: Update 11 (2018). “Sufficient evidence”; hypertension and MGUS were added in 2018"}
+  narration: "**Evidence that changed the list.** Cypel and colleagues compared Army Chemical Corps veterans who sprayed herbicides with those who did not. The review committee said their 2016 study helped persuade it to reclassify hypertension in 2018 because it used a large sample, appropriate controls and validated health outcomes. Hypertension joined “sufficient evidence”, alongside newly assessed MGUS: seven conditions altogether. Reviewers split over type 2 diabetes’s category. Birth defects in veterans’ children remained “inadequate or insufficient”, though law covers spina bifida. In 1994 reviewers judged veterans’ exposure generally lower than workers’, with definitive data lacking; Ranch Hand airmen were an exception, and others likely received doses associated with health effects. The committee assessed population associations rather than individual causation, giving benefits officials evidence for decisions affecting living veterans."
+  duration: 13
+
+- shot: the-makers-answer
+  view: graph
+  focus: dow-chemical
+  time: "2021-05-10"
+  reveal: [dow-chemical, monsanto, bayer, us-government, agent-orange]
+  reveal_claims: [dow-chemical#c2, tran-to-nga-suit-in-france#c3]
+  overlay: {kind: quote, source: dow-agent-orange-page, quote: "The U.S. government bears the responsibility for its own military actions, including the development and use of Agent Orange in Vietnam.", caption: "Dow, on its Agent Orange page"}
+  narration: "**The makers’ answer.** In France in 2021, Bayer’s lawyers faced Tran To Nga’s demand that suppliers answer for the herbicide. Bayer, Monsanto’s owner, argued they “could not be held responsible for the use that the American military made of their product.” Dow’s public position likewise puts responsibility on Washington: the makers “were compelled by the U.S. government to produce Agent Orange”. Its page says decades of study “have not established a causal link to any diseases, birth defects or other transgenerational effects.” The companies asked courts to leave responsibility with the state that ordered and used the spray."
   duration: 13
 
 - shot: tran-to-nga
