@@ -44,16 +44,6 @@ These 20 moments follow the people who warned, investigated, settled and chose h
   narration: "**A case the SEC won.** At midnight on 15 April 1964, Texas Gulf Sulphur employee Crawford ordered 300 shares; at 8:30 the next morning, another 300. He and two other insiders said they believed the drilling news was already public. The Second Circuit held good faith insufficient: their belief had to be reasonable. To prevent insiders beating disclosure, it judged trades by when orders were placed, rather than executed. The SEC had sued over stock purchases and options accepted before drilling results were public; on 13 August 1968 the court held that trading with knowledge of the results broke Rule 10b-5. It upheld dismissal for one defendant and for two others' options, while requiring insiders to wait until investors could receive the news too."
   duration: 13
 
-- shot: the-eighties
-  view: graph
-  focus: sec-v-drexel-burnham-lambert
-  time: "1988"
-  reveal: [sec-v-drexel-burnham-lambert, sec, us-district-court-southern-district-of-new-york]
-  reveal_claims: [sec-v-drexel-burnham-lambert#c1, sec-v-drexel-burnham-lambert#c2, sec-v-drexel-burnham-lambert#c3]
-  overlay: {kind: quote, source: sec-v-drexel-burnham-lambert-837fsupp587, quote: "Additionally, Drexel was required to disgorge the sum of $350 million and Michael Milken disgorged the sum of $400 million.", caption: "Judge Milton Pollack, SEC v. Drexel Burnham Lambert, 1 December 1993, on the outcome of the SEC’s 1988 suit"}
-  narration: "**The eighties.** In 1984 Ivan Boesky worried about being stuck holding Fischbach shares, but Michael Milken assured him he would not lose money, according to Judge Milton Pollack's later findings. Boesky bought without disclosing the arrangement in public filings; Milken later denied joining a scheme to break a takeover restriction and described “little to no downside risk”, but Pollack credited Boesky. His revelations landed him in jail in 1987 and led to the SEC's 1988 suit, which permanently enjoined Drexel Burnham Lambert, Milken and others. Drexel and Milken also pleaded guilty to felonies in prosecutors' criminal cases, while the SEC litigation required them to disgorge $350 million and $400 million respectively."
-  duration: 13
-
 - shot: the-vesco-case
   view: graph
   focus: vesco-case
@@ -64,24 +54,14 @@ These 20 moments follow the people who warned, investigated, settled and chose h
   narration: "**The Vesco case.** Former Attorney General John Mitchell faced a New York grand jury's indictment on 10 May 1973. Prosecutors alleged that he, Maurice Stans and Harry Sears conspired to influence an SEC fraud investigation in exchange for financier Robert Vesco's secret $200,000 contribution to Nixon's reelection campaign; Vesco was also indicted for attempting to impede the investigation. Mitchell and Stans contested the charges at trial. On 28 April 1974 the jury acquitted both men on every charge, ending the prosecution against them in the Vesco case."
   duration: 13
 
-- shot: what-the-inspector-found
+- shot: the-eighties
   view: graph
-  focus: sec-oig-madoff-report-2009
-  time: "2009-08-31"
-  reveal: [sec-oig-madoff-report-2009, sec-office-of-inspector-general, h-david-kotz, harry-markopolos, madoff-ponzi-scheme, sec]
-  reveal_claims: [sec-office-of-inspector-general#c2, h-david-kotz#c1, madoff-ponzi-scheme#c2, madoff-ponzi-scheme#c3, madoff-ponzi-scheme#c4, madoff-ponzi-scheme#c5, madoff-ponzi-scheme#c6]
-  overlay: {kind: stat, value: "6 complaints", label: "Substantive complaints about Madoff the SEC received from 1992 to 2008, by its inspector general’s count", source: chrg-111shrg55785-madoff-2009-09-10, quote: "the SEC received six substantive complaints that raised significant red flags concerning Madoff’s investment adviser operations"}
-  narration: "**What the inspector found.** Harry Markopolos sent the SEC written warnings about Bernard Madoff in 2000, 2001, 2005, 2007 and 2008, he told Congress; his 2005 complaint listed roughly 30 red flags pointing to a Ponzi scheme. H. David Kotz found investigators discounted him because he was no insider and suspected he wanted a bounty, although his likeliest explanation, a Ponzi scheme, carried none. The inspector general's report ran over 450 pages: two investigations and three examinations without independent verification of Madoff's trades, when a proper examination could have uncovered the fraud. Kotz found “no evidence of improper influence from the top”; warnings investigators had dismissed now brought their own work before Congress."
-  duration: 13
-
-- shot: in-this-case-we-failed
-  view: graph
-  focus: robert-khuzami
-  time: "2009-09-10"
-  reveal: [robert-khuzami, senate-hearing-madoff-report-2009, senate-banking-committee, bernard-madoff, sec]
-  reveal_claims: [robert-khuzami#c1, senate-hearing-madoff-report-2009#c1, senate-hearing-madoff-report-2009#c3, bernard-madoff#c1, bernard-madoff#c2]
-  overlay: {kind: quote, source: chrg-111shrg55785-madoff-2009-09-10, quote: "Simply stated, in this case, we failed in our fundamental mission to protect investors", caption: "Robert Khuzami, SEC Director of Enforcement, to the Senate Banking Committee, 10 September 2009"}
-  narration: "**“In this case, we failed.”** Before senators on 10 September 2009, Robert Khuzami, Enforcement director since 30 March, accepted the Madoff findings; Madoff had received 150 years on 29 June. He defended the agency's 75-year enforcement tradition: 45 Ponzi actions that year, and 458 actions since late January against 359 in the same 2008 period, by the SEC's count. Officials described annual tips differently: hundreds of thousands, over 700,000, or tens of thousands requiring staff review. Khuzami proposed cutting management levels almost 40 percent to return experienced investigators to front-line work and promised an Office of Market Intelligence to collect, prioritize and monitor the next warnings."
+  focus: sec-v-drexel-burnham-lambert
+  time: "1988"
+  reveal: [sec-v-drexel-burnham-lambert, sec, us-district-court-southern-district-of-new-york]
+  reveal_claims: [sec-v-drexel-burnham-lambert#c1, sec-v-drexel-burnham-lambert#c2, sec-v-drexel-burnham-lambert#c3]
+  overlay: {kind: quote, source: sec-v-drexel-burnham-lambert-837fsupp587, quote: "Additionally, Drexel was required to disgorge the sum of $350 million and Michael Milken disgorged the sum of $400 million.", caption: "Judge Milton Pollack, SEC v. Drexel Burnham Lambert, 1 December 1993, on the outcome of the SEC’s 1988 suit"}
+  narration: "**The eighties.** In 1984 Ivan Boesky worried about being stuck holding Fischbach shares, but Michael Milken assured him he would not lose money, according to Judge Milton Pollack's later findings. Boesky bought without disclosing the arrangement in public filings; Milken later denied joining a scheme to break a takeover restriction and described “little to no downside risk”, but Pollack credited Boesky. His revelations landed him in jail in 1987 and led to the SEC's 1988 suit, which permanently enjoined Drexel Burnham Lambert, Milken and others. Drexel and Milken also pleaded guilty to felonies in prosecutors' criminal cases, while the SEC litigation required them to disgorge $350 million and $400 million respectively."
   duration: 13
 
 - shot: four-times
@@ -93,26 +73,6 @@ These 20 moments follow the people who warned, investigated, settled and chose h
   reveal_claims: [stanford-ponzi-scheme#c2, stanford-ponzi-scheme#c3, stanford-ponzi-scheme#c1, allen-stanford#c1, stanford-ponzi-scheme#c5, stanford-ponzi-scheme#c6]
   overlay: {kind: stat, value: "Four times", label: "By the inspector general’s account, SEC Fort Worth examiners concluded in 1997, 1998, 2002 and 2004 that Stanford’s certificates of deposit were likely a Ponzi or similar scheme", source: chrg-111shrg63685-stanford-2010-09-22, quote: "Fort Worth examiners conducted examinations of Stanford in 1997, 1998, 2002, and 2004, concluding in each instance that Stanford’s CDs were likely a Ponzi or similar scheme."}
   narration: "**Four times.** In Fort Worth in 1998, Allen Stanford failed to produce documents sought voluntarily by SEC Enforcement; officials closed their inquiry after three months. Examiners kept pressing: in 1997, 1998, 2002 and 2004 they concluded his certificates of deposit were likely a Ponzi or similar scheme, yet Enforcement made “no meaningful effort” until late 2005, the inspector general found in March 2010. The inquiry found no improper relationship behind that reluctance; the SEC filed an emergency civil action in February 2009, and Khuzami told senators in 2010 that the agency could not evade responsibility. A jury later convicted Stanford, including for obstructing an SEC investigation, and a judge sentenced him to 110 years."
-  duration: 13
-
-- shot: what-a-count-counts
-  view: graph
-  focus: sec
-  time: "2009-03"
-  reveal: [sec, sec-oig-stanford-report-2010, stanford-ponzi-scheme, senate-hearing-stanford-report-2010]
-  reveal_claims: [stanford-ponzi-scheme#c2, senate-hearing-stanford-report-2010#c3, stanford-ponzi-scheme#c7]
-  overlay: {kind: quote, source: gao-09-358, quote: "By these indicators, Enforcement activity has generally been level in recent years.", caption: "Government Accountability Office, March 2009"}
-  narration: "**What a count counts.** Fort Worth officials discouraged complex cases because they believed case totals determined performance ratings, H. David Kotz found; they did not consider Stanford a quick win. Khuzami offered senators another explanation in 2010: staff had wanted perhaps too high a level of admissible proof and should have acted sooner. In 2009 the SEC told the House it brought about 600 enforcement actions annually, while GAO found activity generally level and two penalty policies producing fewer, smaller penalties. Investigators warned GAO that tallies could be incomplete and vulnerable to manipulation. Khuzami described a change: staff would be judged by a case's importance, including its protection of investors, instead of emphasizing how many actions they filed."
-  duration: 13
-
-- shot: the-revolving-door
-  view: graph
-  focus: gao-report-sec-post-employment-controls-2011
-  time: "2011-07"
-  reveal: [gao-report-sec-post-employment-controls-2011, gao, dodd-frank-act, sec, sec-oig-stanford-report-2010]
-  reveal_claims: [gao#c1, dodd-frank-act#c1, stanford-ponzi-scheme#c8]
-  overlay: {kind: stat, value: "224 people", label: "Filed notices to appear before the SEC within two years of leaving, from 136 entities; sixteen of them, mostly law and consulting firms, accounted for about 35 percent (GAO, 2011)", source: gao-11-654, quote: "We found that SEC received these notices from 224 individuals employed at 136 separate entities ranging from financial companies to legal and consulting firms."}
-  narration: "**The revolving door.** In 2006 Spence Barasch briefly represented Stanford until SEC ethics officials told him it was improper; he had helped quash Stanford investigations as Fort Worth's Enforcement head, Kotz reported. Dodd-Frank sent GAO to examine such moves in 2011. Missing records prevented a total count despite 224 former employees' notices to appear before the SEC. Officials and industry and academic interviewees told GAO private-sector opportunities could help recruit experts, while academics and advocacy groups raised concerns about apparent conflicts. GAO found controls similar to other agencies'; earlier inquiries it cited had not concluded former employees violated postemployment restrictions. Ethics advice was inconsistently documented, and the SEC agreed to write documentation standards."
   duration: 13
 
 - shot: a-voluntary-program
@@ -136,14 +96,34 @@ These 20 moments follow the people who warned, investigated, settled and chose h
   narration: "**On site, too late.** Erik Sirri, the SEC's former trading-and-markets director, later explained the choice: supervisors focused on liquidity because securities firms had no lender of last resort. The agency assigned no resident examiners, unlike bank regulators, but met firms monthly; in 2006 it pressed Bear Stearns about funding, and Bear reduced that exposure. Yet the SEC knew of Bear's mortgage concentration and leverage without demanding changes, the Financial Crisis Inquiry Commission found. In March 2008, during Bear's “four-day death spiral”, the SEC was on site conducting its first CSE exam since Bear's entrance exam over two years earlier, the commission reports; Mary Schapiro later called the program unsuccessful at prudential supervision."
   duration: 13
 
-- shot: the-majoritys-words
+- shot: what-the-inspector-found
   view: graph
-  focus: fcic
-  time: "2011-01"
-  reveal: [fcic, financial-crisis-inquiry-report, sec, christopher-cox, consolidated-supervised-entities-program]
-  reveal_claims: [fcic#c1, consolidated-supervised-entities-program#c6, christopher-cox#c1, christopher-cox#c2]
-  overlay: {kind: quote, source: fcic-2011-final-report, quote: "the Securities and Exchange Commission could have required more capital and halted risky practices at the big investment banks. It did not.", caption: "Financial Crisis Inquiry Commission, 2011: the report of six of its ten members"}
-  narration: "**The majority's words.** Days before Bear Stearns collapsed in March 2008, SEC chairman Christopher Cox expressed “comfort about the capital cushions”, the Financial Crisis Inquiry Commission reports; he later called the supervisory program “fundamentally flawed from the beginning”. Six of ten commissioners concluded regulators had ample power and chose not to use it, describing the program as widely viewed as a failure. Three dissenters agreed it failed but argued no regulator could force the firms to build capital; a fourth, Peter Wallison, called SEC supervision weak while rejecting that weakness as evidence of a cause of the crisis. The program ended in September 2008, leaving an argument over whether the watchdog had lacked power or failed to use it."
+  focus: sec-oig-madoff-report-2009
+  time: "2009-08-31"
+  reveal: [sec-oig-madoff-report-2009, sec-office-of-inspector-general, h-david-kotz, harry-markopolos, madoff-ponzi-scheme, sec]
+  reveal_claims: [sec-office-of-inspector-general#c2, h-david-kotz#c1, madoff-ponzi-scheme#c2, madoff-ponzi-scheme#c3, madoff-ponzi-scheme#c4, madoff-ponzi-scheme#c5, madoff-ponzi-scheme#c6]
+  overlay: {kind: stat, value: "6 complaints", label: "Substantive complaints about Madoff the SEC received from 1992 to 2008, by its inspector general’s count", source: chrg-111shrg55785-madoff-2009-09-10, quote: "the SEC received six substantive complaints that raised significant red flags concerning Madoff’s investment adviser operations"}
+  narration: "**What the inspector found.** Harry Markopolos sent the SEC written warnings about Bernard Madoff in 2000, 2001, 2005, 2007 and 2008, he told Congress; his 2005 complaint listed roughly 30 red flags pointing to a Ponzi scheme. H. David Kotz found investigators discounted him because he was no insider and suspected he wanted a bounty, although his likeliest explanation, a Ponzi scheme, carried none. The inspector general's report ran over 450 pages: two investigations and three examinations without independent verification of Madoff's trades, when a proper examination could have uncovered the fraud. Kotz found “no evidence of improper influence from the top”; warnings investigators had dismissed now brought their own work before Congress."
+  duration: 13
+
+- shot: in-this-case-we-failed
+  view: graph
+  focus: robert-khuzami
+  time: "2009-09-10"
+  reveal: [robert-khuzami, senate-hearing-madoff-report-2009, senate-banking-committee, bernard-madoff, sec]
+  reveal_claims: [robert-khuzami#c1, senate-hearing-madoff-report-2009#c1, senate-hearing-madoff-report-2009#c3, bernard-madoff#c1, bernard-madoff#c2]
+  overlay: {kind: quote, source: chrg-111shrg55785-madoff-2009-09-10, quote: "Simply stated, in this case, we failed in our fundamental mission to protect investors", caption: "Robert Khuzami, SEC Director of Enforcement, to the Senate Banking Committee, 10 September 2009"}
+  narration: "**“In this case, we failed.”** Before senators on 10 September 2009, Robert Khuzami, Enforcement director since 30 March, accepted the Madoff findings; Madoff had received 150 years on 29 June. He defended the agency's 75-year enforcement tradition: 45 Ponzi actions that year, and 458 actions since late January against 359 in the same 2008 period, by the SEC's count. Officials described annual tips differently: hundreds of thousands, over 700,000, or tens of thousands requiring staff review. Khuzami proposed cutting management levels almost 40 percent to return experienced investigators to front-line work and promised an Office of Market Intelligence to collect, prioritize and monitor the next warnings."
+  duration: 13
+
+- shot: what-a-count-counts
+  view: graph
+  focus: sec
+  time: "2009-03"
+  reveal: [sec, sec-oig-stanford-report-2010, stanford-ponzi-scheme, senate-hearing-stanford-report-2010]
+  reveal_claims: [stanford-ponzi-scheme#c2, senate-hearing-stanford-report-2010#c3, stanford-ponzi-scheme#c7]
+  overlay: {kind: quote, source: gao-09-358, quote: "By these indicators, Enforcement activity has generally been level in recent years.", caption: "Government Accountability Office, March 2009"}
+  narration: "**What a count counts.** Fort Worth officials discouraged complex cases because they believed case totals determined performance ratings, H. David Kotz found; they did not consider Stanford a quick win. Khuzami offered senators another explanation in 2010: staff had wanted perhaps too high a level of admissible proof and should have acted sooner. In 2009 the SEC told the House it brought about 600 enforcement actions annually, while GAO found activity generally level and two penalty policies producing fewer, smaller penalties. Investigators warned GAO that tallies could be incomplete and vulnerable to manipulation. Khuzami described a change: staff would be judged by a case's importance, including its protection of investors, instead of emphasizing how many actions they filed."
   duration: 13
 
 - shot: the-cases
@@ -154,6 +134,26 @@ These 20 moments follow the people who warned, investigated, settled and chose h
   reveal_claims: [angelo-mozilo#c2, angelo-mozilo#c3, goldman-sachs#c1]
   overlay: {kind: quote, source: sec-2010-07-15-press-2010-123-goldman, quote: "In agreeing to the SEC's largest-ever penalty paid by a Wall Street firm, Goldman also acknowledged that its marketing materials for the subprime product contained incomplete information.", caption: "SEC press release on Goldman Sachs, 15 July 2010"}
   narration: "**Cases from the crisis.** The SEC alleged Angelo Mozilo concealed Countrywide's growing credit risk as it pursued market share: investors heard assurances of prime-quality mortgages while loans were privately called “toxic”. It also charged him with insider trading. In October 2010 he agreed to pay $67.5 million and accept a permanent public-company officer and director ban, without admitting or denying the allegations. The SEC called his penalty its largest from a public company's senior executive. Goldman Sachs had agreed in July to pay $550 million over one deal without admitting or denying the allegations, while acknowledging incomplete marketing information; the SEC called its penalty the largest from a Wall Street firm. Khuzami said complexity would not shield violations; both cases ended in settlements rather than trials."
+  duration: 13
+
+- shot: the-revolving-door
+  view: graph
+  focus: gao-report-sec-post-employment-controls-2011
+  time: "2011-07"
+  reveal: [gao-report-sec-post-employment-controls-2011, gao, dodd-frank-act, sec, sec-oig-stanford-report-2010]
+  reveal_claims: [gao#c1, dodd-frank-act#c1, stanford-ponzi-scheme#c8]
+  overlay: {kind: stat, value: "224 people", label: "Filed notices to appear before the SEC within two years of leaving, from 136 entities; sixteen of them, mostly law and consulting firms, accounted for about 35 percent (GAO, 2011)", source: gao-11-654, quote: "We found that SEC received these notices from 224 individuals employed at 136 separate entities ranging from financial companies to legal and consulting firms."}
+  narration: "**The revolving door.** In 2006 Spence Barasch briefly represented Stanford until SEC ethics officials told him it was improper; he had helped quash Stanford investigations as Fort Worth's Enforcement head, Kotz reported. Dodd-Frank sent GAO to examine such moves in 2011. Missing records prevented a total count despite 224 former employees' notices to appear before the SEC. Officials and industry and academic interviewees told GAO private-sector opportunities could help recruit experts, while academics and advocacy groups raised concerns about apparent conflicts. GAO found controls similar to other agencies'; earlier inquiries it cited had not concluded former employees violated postemployment restrictions. Ethics advice was inconsistently documented, and the SEC agreed to write documentation standards."
+  duration: 13
+
+- shot: the-majoritys-words
+  view: graph
+  focus: fcic
+  time: "2011-01"
+  reveal: [fcic, financial-crisis-inquiry-report, sec, christopher-cox, consolidated-supervised-entities-program]
+  reveal_claims: [fcic#c1, consolidated-supervised-entities-program#c6, christopher-cox#c1, christopher-cox#c2]
+  overlay: {kind: quote, source: fcic-2011-final-report, quote: "the Securities and Exchange Commission could have required more capital and halted risky practices at the big investment banks. It did not.", caption: "Financial Crisis Inquiry Commission, 2011: the report of six of its ten members"}
+  narration: "**The majority's words.** Days before Bear Stearns collapsed in March 2008, SEC chairman Christopher Cox expressed “comfort about the capital cushions”, the Financial Crisis Inquiry Commission reports; he later called the supervisory program “fundamentally flawed from the beginning”. Six of ten commissioners concluded regulators had ample power and chose not to use it, describing the program as widely viewed as a failure. Three dissenters agreed it failed but argued no regulator could force the firms to build capital; a fourth, Peter Wallison, called SEC supervision weak while rejecting that weakness as evidence of a cause of the crisis. The program ended in September 2008, leaving an argument over whether the watchdog had lacked power or failed to use it."
   duration: 13
 
 - shot: neither-admit-nor-deny
