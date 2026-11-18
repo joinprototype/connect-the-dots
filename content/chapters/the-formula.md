@@ -24,27 +24,6 @@ Mothers sought help, doctors changed nursery routines, executives defended their
   narration: "**Mina brings Eti in.** In Dhaka in 2007, Mina brought her eight-week-old daughter Eti to the diarrhoea hospital after vomiting turned to diarrhoea; now the baby's cheek rested against her collarbone in a packed, sweltering ward. Mina said she had wanted to breastfeed, but when she struggled, no one offered advice or support, and Eti had been bottlefed almost since birth. Dr Iqbal Kabir pointed to a poster of a crossed-out bottle: formula mixed with dirty water and unsterile bottles, he said, brought babies here, with infants now making up as many as 70% of admissions against almost none twenty-five years earlier. Joanna Moorhead reported Eti recovering and Mina, after seeing a breastfeeding counsellor, agreeing to try breastfeeding again."
   duration: 13
 
-- shot: the-risk
-  view: graph
-  focus: who-pooled-analysis-2000
-  time: "2000"
-  reveal: [who-pooled-analysis-2000, world-health-organization]
-  reveal_claims: [world-health-organization#c13]
-  overlay: {kind: stat, value: "14.2 times", label: "Risk of dying of diarrhoea for babies fully weaned from the breast, against babies breastfed with no other milk. Two urban areas of southern Brazil, 1987", source: victora-1987-lancet-brazil, quote: "Compared with infants who were breast-fed with no milk supplements, and after adjusting for confounding variables, those completely weaned had 14.2 and 3.6 times the risk of death from diarrhoea and respiratory infections, respectively."}
-  narration: "**Feeding choices in an epidemic.** In 2000, the WHO Collaborative Study Team said its pooled studies could help shape feeding policy during the HIV epidemic: protection from breastfeeding changed with age, and substitutes' safety in poor families mattered. Cesar Victora and colleagues' 1987 study in two urban areas of southern Brazil showed the stakes: after adjustment for other factors, babies fully weaned from the breast had 14.2 times the risk of dying of diarrhoea compared with babies breastfed without other milk; under two months, the figure was 23.3. Victora's team found cow's milk and formula seemed equally hazardous; the WHO team found protection strongest when mothers had little education. The WHO team's reason for weighing age was practical: protection declined through infancy but continued in the second year, so feeding choices carried different risks at different ages."
-  duration: 13
-
-- shot: kingston
-  view: map
-  camera: {center: [-76.7936, 17.9712], zoom: 10.5, pitch: 30, duration: 6}
-  places: [kingston-jamaica]
-  time: "1978-05-23"
-  reveal: [kingston-jamaica]
-  reveal_claims: [senate-infant-formula-hearing-1978#c5]
-  overlay: {kind: quote, source: us-senate-1978-infant-formula-hearing, quote: "The mother said, when we asked her how she made it up, “I make it up according to the instructions on the tin.”", caption: "Dr Allan Jackson, University of the West Indies, to the U.S. Senate, 23 May 1978"}
-  narration: "**A tin for two children.** At his Kingston unit for starving children, Dr Allan Jackson asked a mother how she prepared their milk: she said she followed the tin's instructions, but could not read. A tin meant to last her baby three days had fed both children for two weeks; neither had been breastfed. Her eighteen-month-old girl weighed 12 pounds, eight after malnutrition's fluid disappeared; her four-month-old boy weighed five, down from seven at birth. Telling senators in 1978, Jackson thought breastfeeding might have spared the boy malnutrition, while the girl's condition could not be attributed solely to bottle feeding: malnutrition came first, he said, but formula made it worse and harder to treat."
-  duration: 13
-
 - shot: the-baby-killer
   view: map
   camera: {center: [-0.1276, 51.5072], zoom: 10.2, pitch: 30, duration: 6}
@@ -98,6 +77,17 @@ Mothers sought help, doctors changed nursery routines, executives defended their
   narration: "**From a ward to a boycott.** Patricia Young told senators in 1978 that she had seen a baby wasted by malnutrition in a South African hospital in 1966, then returned home and joined church work on corporate responsibility; her longstanding involvement with hunger drew her into the formula campaign. Church investors sued Bristol-Myers over its baby formula sales in 1976. On 4 July 1977 INFACT, in Minneapolis, called a boycott of Nestlé products: its chronology says Nestlé refused to stop what campaigners called unethical marketing. These were different companies, and Nestlé's Ballarin would tell the Senate that its U.S. company sold no formula; shoppers were being asked to put pressure on the Swiss parent."
   duration: 13
 
+- shot: kingston
+  view: map
+  camera: {center: [-76.7936, 17.9712], zoom: 10.5, pitch: 30, duration: 6}
+  places: [kingston-jamaica]
+  time: "1978-05-23"
+  reveal: [kingston-jamaica]
+  reveal_claims: [senate-infant-formula-hearing-1978#c5]
+  overlay: {kind: quote, source: us-senate-1978-infant-formula-hearing, quote: "The mother said, when we asked her how she made it up, “I make it up according to the instructions on the tin.”", caption: "Dr Allan Jackson, University of the West Indies, to the U.S. Senate, 23 May 1978"}
+  narration: "**A tin for two children.** At his Kingston unit for starving children, Dr Allan Jackson asked a mother how she prepared their milk: she said she followed the tin's instructions, but could not read. A tin meant to last her baby three days had fed both children for two weeks; neither had been breastfed. Her eighteen-month-old girl weighed 12 pounds, eight after malnutrition's fluid disappeared; her four-month-old boy weighed five, down from seven at birth. Telling senators in 1978, Jackson thought breastfeeding might have spared the boy malnutrition, while the girl's condition could not be attributed solely to bottle feeding: malnutrition came first, he said, but formula made it worse and harder to treat."
+  duration: 13
+
 - shot: kennedy-asks
   view: map
   camera: {center: [-77.0369, 38.9072], zoom: 11.2, pitch: 30, duration: 6}
@@ -138,16 +128,6 @@ Mothers sought help, doctors changed nursery routines, executives defended their
   reveal_claims: [senate-infant-formula-hearing-1978#c4]
   overlay: {kind: stat, value: "47.2%", label: "Fall in deaths among nearly 10,000 newborns at Baguio General Hospital after babies were kept with their mothers, as Dr Clavano told the Senate in 1978", source: us-senate-1978-infant-formula-hearing, quote: "in nearly 10,000 newborn babies, we were able to reduce our deaths by 47.2 percent, and our diseases by 58 percent."}
   narration: "**Clavano changes the nursery.** When Dr Navidad Clavano headed paediatrics at Baguio General Hospital in 1973–74, many babies were separated from their mothers and bottlefed. She told senators in 1978 why she changed course: “we were committing some errors”; her team returned babies to their mothers two hours after birth. Outside the hospital, she said, mothers diluted formula because a tin cost more than a father earned, yet should last only three days. In her hospital's before-and-after study of nearly 10,000 newborns from 1973 to 1976, she reported what followed the return to breastfeeding: deaths down 47.2% and disease down 58%."
-  duration: 13
-
-- shot: the-count
-  view: graph
-  focus: derrick-jelliffe
-  time: "2016"
-  reveal: [derrick-jelliffe, unicef, world-health-organization, who-pooled-analysis-2000]
-  reveal_claims: [world-health-organization#c13]
-  overlay: {kind: stat, value: "823,000", label: "Under-5 deaths a year that near-universal breastfeeding could prevent, by the 2016 Lancet series' estimate. It names no company", source: victora-2016-lancet-breastfeeding, quote: "The scaling up of breastfeeding to a near universal level could prevent 823,000 annual deaths in children younger than 5 years and 20,000 annual deaths from breast cancer."}
-  narration: "**Jelliffe corrects the count.** In the 1978 hearing, Kennedy repeated a figure of ten million infant lives saved each year by a return to breastfeeding. Derrick Jelliffe clarified that his estimate, partly a guess, counted preventable cases of diarrhoea and marasmus in developing countries, of which many would be fatal. UNICEF's James Grant estimated a million preventable infant deaths a year in 1981; a Lancet series modelled 823,000 preventable under-five deaths annually in 2016, counting feeding risks across populations rather than one company's customers. Jelliffe's answer separated a count of illnesses from a death toll."
   duration: 13
 
 - shot: the-code
@@ -191,6 +171,16 @@ Mothers sought help, doctors changed nursery routines, executives defended their
   narration: "**Johnson announces a truce.** Stouffer's Edwin Frantz later reported that INFACT's Douglas Johnson announced the boycott was over on 25 January 1984; the joint statement instead announced suspension and commended Nestlé's leadership in compliance. December's concerns included educational materials, warnings, gifts and free hospital supplies; Reason reported that Muskie's commission found Nestlé abiding by the code. In October 1989, Sojourners' Danny Duncan Collum dated campaigners' renewed boycott of Nestlé and American Home Products to October 1988; Joanna Moorhead's Guardian history placed resumption in 1989 after IBFAN's 1988 allegations about free supplies. Collum reported Nestlé saying gifts served only mothers unable to breastfeed; in 2007 Nestlé said it gave hospitals no free supplies. Hospital donations had reopened the fight."
   duration: 13
 
+- shot: the-risk
+  view: graph
+  focus: who-pooled-analysis-2000
+  time: "2000"
+  reveal: [who-pooled-analysis-2000, world-health-organization]
+  reveal_claims: [world-health-organization#c13]
+  overlay: {kind: stat, value: "14.2 times", label: "Risk of dying of diarrhoea for babies fully weaned from the breast, against babies breastfed with no other milk. Two urban areas of southern Brazil, 1987", source: victora-1987-lancet-brazil, quote: "Compared with infants who were breast-fed with no milk supplements, and after adjusting for confounding variables, those completely weaned had 14.2 and 3.6 times the risk of death from diarrhoea and respiratory infections, respectively."}
+  narration: "**Feeding choices in an epidemic.** In 2000, the WHO Collaborative Study Team said its pooled studies could help shape feeding policy during the HIV epidemic: protection from breastfeeding changed with age, and substitutes' safety in poor families mattered. Cesar Victora and colleagues' 1987 study in two urban areas of southern Brazil showed the stakes: after adjustment for other factors, babies fully weaned from the breast had 14.2 times the risk of dying of diarrhoea compared with babies breastfed without other milk; under two months, the figure was 23.3. Victora's team found cow's milk and formula seemed equally hazardous; the WHO team found protection strongest when mothers had little education. The WHO team's reason for weighing age was practical: protection declined through infancy but continued in the second year, so feeding choices carried different risks at different ages."
+  duration: 13
+
 - shot: dhaka-again
   view: map
   camera: {center: [90.4125, 23.8103], zoom: 11.4, pitch: 30, duration: 6}
@@ -202,6 +192,25 @@ Mothers sought help, doctors changed nursery routines, executives defended their
   narration: "**A third of a wage.** Waiting with nine-month-old Nur at a Dhaka clinic in 2007, Happi Akther said she had begun bottlefeeding him at about a month because she felt she lacked milk and “No one had any other ideas”; her two earlier babies had died soon after birth. Nur's Lactogen cost 800 taka (£2) a week against her husband's £6 wage: “The milk uses up all our money.” Other mothers told the Guardian that doctors had directed them to a brand, often Lactogen; Save the Children's Costanza de Toma said Nestlé's leaflets picturing that tin violated the code if handed to mothers. A doctor's recommendation could become a weekly bill taking a third of a family's wage."
   duration: 13
 
+- shot: left-open
+  view: graph
+  focus: nestle
+  time: "2007"
+  reveal: [nestle, who-breast-milk-substitutes-code, bern-libel-case, nestle-boycott, senate-infant-formula-hearing-1978]
+  overlay: {kind: quote, source: guardian-2007-05-15-milking-it, quote: "when I've got a big enough bundle, I take them home and burn them", caption: "Dr Khaliq Zaman, Dhaka, to The Guardian, 2007"}
+  narration: "**Zaman says he burns the sheets.** At Sajida hospital in Dhaka in 2007, Dr Khaliq Zaman held a formula-branded pen beside pads picturing tins, including Nestlé's. He told Joanna Moorhead that representatives kept visiting despite his recommending breastfeeding, and Nestlé had brought a New Year cake. Zaman said the sheets let mothers ask shopkeepers for the pictured tin; he told Moorhead he never handed them out and burned his bundles at home. Nestlé's Robin Tickle called the pads a safety measure for mothers already prescribed formula; its Hilary Parsons replied that the Guardian had shown no violation and that Nestlé applied the whole code in developing countries. For Zaman, the pictures led mothers to a purchase; for Tickle, they identified a prescription."
+  duration: 13
+
+- shot: the-count
+  view: graph
+  focus: derrick-jelliffe
+  time: "2016"
+  reveal: [derrick-jelliffe, unicef, world-health-organization, who-pooled-analysis-2000]
+  reveal_claims: [world-health-organization#c13]
+  overlay: {kind: stat, value: "823,000", label: "Under-5 deaths a year that near-universal breastfeeding could prevent, by the 2016 Lancet series' estimate. It names no company", source: victora-2016-lancet-breastfeeding, quote: "The scaling up of breastfeeding to a near universal level could prevent 823,000 annual deaths in children younger than 5 years and 20,000 annual deaths from breast cancer."}
+  narration: "**Jelliffe corrects the count.** In the 1978 hearing, Kennedy repeated a figure of ten million infant lives saved each year by a return to breastfeeding. Derrick Jelliffe clarified that his estimate, partly a guess, counted preventable cases of diarrhoea and marasmus in developing countries, of which many would be fatal. UNICEF's James Grant estimated a million preventable infant deaths a year in 1981; a Lancet series modelled 823,000 preventable under-five deaths annually in 2016, counting feeding risks across populations rather than one company's customers. Jelliffe's answer separated a count of illnesses from a death toll."
+  duration: 13
+
 - shot: counting-the-code
   view: graph
   focus: who-breast-milk-substitutes-code
@@ -210,14 +219,5 @@ Mothers sought help, doctors changed nursery routines, executives defended their
   reveal_claims: [nestle#c14, world-health-organization#c11, unicef#c1, ibfan#c1]
   overlay: {kind: stat, value: "219 of 1,614", label: "Incidences of non-compliance with the WHO code that the Access to Nutrition Initiative found in five markets in 2024 and that concerned Nestlé products. 290 concerned Danone and 142 Abbott", source: atni-2024-bms-index, quote: "A total of 290 incidences of non-compliance with the Code concerned BMS products sold by Danone, 219 incidences concerned Nestlé BMS products, and, in descending order, 142 incidences were observed for Abbott"}
   narration: "**Spahn calls for compliance.** In 2024, Access to Nutrition Initiative board member Kathy Spahn warned that formula companies were using online channels to undermine mothers' confidence; its index found none of eighteen companies fully aligned with the code, with Nestlé among the top five at 20–33%. In five markets, 219 of 1,614 incidents concerned Nestlé products, against 290 for Danone and 142 for Abbott. Nestlé rejected the methodology, saying absolute counts could unfairly penalise large portfolios. Governments had acted too: WHO, UNICEF and IBFAN counted 136 of 194 countries with some legal measure in 2020, including 79 banning promotion in health facilities, leaving companies facing both national law and monitors' broader test of the code."
-  duration: 13
-
-- shot: left-open
-  view: graph
-  focus: nestle
-  time: "2007"
-  reveal: [nestle, who-breast-milk-substitutes-code, bern-libel-case, nestle-boycott, senate-infant-formula-hearing-1978]
-  overlay: {kind: quote, source: guardian-2007-05-15-milking-it, quote: "when I've got a big enough bundle, I take them home and burn them", caption: "Dr Khaliq Zaman, Dhaka, to The Guardian, 2007"}
-  narration: "**Zaman says he burns the sheets.** At Sajida hospital in Dhaka in 2007, Dr Khaliq Zaman held a formula-branded pen beside pads picturing tins, including Nestlé's. He told Joanna Moorhead that representatives kept visiting despite his recommending breastfeeding, and Nestlé had brought a New Year cake. Zaman said the sheets let mothers ask shopkeepers for the pictured tin; he told Moorhead he never handed them out and burned his bundles at home. Nestlé's Robin Tickle called the pads a safety measure for mothers already prescribed formula; its Hilary Parsons replied that the Guardian had shown no violation and that Nestlé applied the whole code in developing countries. For Zaman, the pictures led mothers to a purchase; for Tickle, they identified a prescription."
   duration: 13
 ```
