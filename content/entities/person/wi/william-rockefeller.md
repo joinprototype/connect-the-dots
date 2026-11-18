@@ -19,4 +19,9 @@ claims:
     as_of: "1913"
     src:
       - {s: pujo-report-1913-text, at: "Section 7, National City Bank of New York", quote: "Among the principal stockholders are James Stillman, with 47,498 shares out of a total of 250,000; his son, James A. Stillman, with 2,500; J. P. Morgan &Co., with 15,000; Kidder, Peabody & Co., with 1,000; William Rockefeller, with 10,000; John D. Rockefeller, with 1,750;"}
+  - id: c3
+    rel: owns_stake
+    to: south-improvement-company
+    src:
+      - {s: tarbell-history-standard-oil-1904, at: "Vol. 1, ch. 2", quote: "The company most heavily interested in the South Improvement Company was the Standard Oil of Cleveland, J. D. Rockefeller, William Rockefeller and H. M. Flagler, all stockholders of that company, each having 180 shares—540 in the company."}
 ---
