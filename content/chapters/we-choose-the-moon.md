@@ -25,6 +25,17 @@ This story follows how they got there, in the words of those who were there: who
   narration: "**Sputnik.** At the Soviet embassy in Washington on 4 October 1957, Roger Launius says John Hagen was trying to learn whether Soviet scientists were closer to launch than his overdue, over-budget Vanguard team. In Launius's telling, Hagen turned pale at news that Sputnik was already in orbit, though the historian doubts it warranted such alarm. The first satellite was a 183-pound sphere carrying a radio beacon, against the 3.5-pound satellite the U.S. planned. Hagen's team had been beaten; the U.S. State Department traces the consequences into both the space race and the arms race."
   duration: 14
 
+- shot: what-came-before
+  view: map
+  camera: {center: [10.75, 51.5], zoom: 5.2, pitch: 25, duration: 6}
+  places: [mittelbau-dora]
+  time: "1944"
+  reveal: [mittelbau-dora, forced-labor-at-mittelbau, wernher-von-braun]
+  reveal_claims: [forced-labor-at-mittelbau#c1, forced-labor-at-mittelbau#c2]
+  overlay: {kind: stat, value: "Over 20,000", label: "Deaths at Mittelbau, by one historian's estimate", source: ushmm-mittelbau-dora, quote: "Wagner estimates that over 8,000 died during the evacuations, raising the final Mittelbau toll to over 20,000."}
+  narration: "**What came before.** Between late 1943 and February 1945, von Braun visited the Nordhausen area about fifteen times, he later testified, conveying design changes and acceptance criteria for V-2 rockets assembled underground by enslaved Mittelbau-Dora prisoners. NASA's biography says he knew the terrible conditions and took part in decisions about using slave labor; he had joined the Nazi Party in 1937 and become a junior SS officer in 1940. Historian Jens-Christian Wagner estimates the Mittelbau death toll at over 20,000, including over 8,000 during evacuations. In 1945, U.S. forces removed missile parts and personnel before Soviet occupation, helping set Operation Paperclip in motion."
+  duration: 15
+
 - shot: nasa-is-born
   view: graph
   focus: nasa
@@ -34,6 +45,18 @@ This story follows how they got there, in the words of those who were there: who
   overlay: {kind: quote, source: nasa-sputnik-origins, quote: "During the summer of 1958 Congress passed the National Aeronautics and Space Act and the president signed it into law on 29 July 1958.", caption: "NASA History Office"}
   narration: "**A new agency.** In February 1958, after Sputnik and with pressure mounting in Washington, President Eisenhower asked his science adviser for a plan. He had resisted proposals for a new agency; he now accepted one built around the existing aeronautics research body, NACA. In Launius's reading, its civilian character and quiet research culture suited Eisenhower's wish to explore space without worsening Cold War tensions. His administration worked with congressional leaders on the bill, and he signed it on 29 July, giving the next president an agency to send to the Moon."
   duration: 12
+
+- shot: the-rocket-man
+  view: map
+  camera: {center: [-86.6, 34.7], zoom: 5.4, pitch: 25, duration: 6}
+  places: [huntsville-alabama]
+  photo: {url: "https://images-assets.nasa.gov/image/6517792/6517792~large.jpg", alt: "Wernher von Braun at the Marshall Space Flight Center", credit: "NASA / Marshall Space Flight Center"}
+  time: "1960-07-01"
+  reveal: [wernher-von-braun, marshall-space-flight-center, saturn-v, huntsville-alabama]
+  reveal_claims: [wernher-von-braun#c4, marshall-space-flight-center#c2]
+  overlay: {kind: quote, source: redstone-von-braun-bio, quote: "Von Braun came to the United States in September 1945 under contract with the U.S. Army Ordnance Corps as part of Operation Paperclip.", caption: "U.S. Army, Redstone Arsenal"}
+  narration: "**The rocket man.** On 1 July 1960, in Huntsville, Alabama, Wernher von Braun and his team moved from the Army into NASA, forming the core of Marshall Space Flight Center. Eisenhower's transfer gave them the task of building giant Saturn rockets; von Braun became Saturn V's chief architect. He had surrendered to the Americans at the war's end and arrived in September 1945 through Operation Paperclip with an initial group of about 125. NASA's biography traces his work for the German army to his desire to build large rockets; those skills now served a lunar program, carrying their wartime past with them."
+  duration: 13
 
 - shot: first-human
   view: graph
@@ -79,50 +102,6 @@ This story follows how they got there, in the words of those who were there: who
   narration: "**Because they are hard.** At Rice University's Houston stadium on 12 September 1962, Kennedy urged Americans to choose the hard task because it would organize their energies and skills. In the White House Cabinet Room on 21 November, he pressed NASA's leaders to make the landing their priority, telling them, “I’m not that interested in space.” Kennedy told NASA that beating the Soviets and showing America had passed them after starting behind was his only justification for the pace and extraordinary expense."
   duration: 10
 
-- shot: the-rocket-man
-  view: map
-  camera: {center: [-86.6, 34.7], zoom: 5.4, pitch: 25, duration: 6}
-  places: [huntsville-alabama]
-  photo: {url: "https://images-assets.nasa.gov/image/6517792/6517792~large.jpg", alt: "Wernher von Braun at the Marshall Space Flight Center", credit: "NASA / Marshall Space Flight Center"}
-  time: "1960-07-01"
-  reveal: [wernher-von-braun, marshall-space-flight-center, saturn-v, huntsville-alabama]
-  reveal_claims: [wernher-von-braun#c4, marshall-space-flight-center#c2]
-  overlay: {kind: quote, source: redstone-von-braun-bio, quote: "Von Braun came to the United States in September 1945 under contract with the U.S. Army Ordnance Corps as part of Operation Paperclip.", caption: "U.S. Army, Redstone Arsenal"}
-  narration: "**The rocket man.** On 1 July 1960, in Huntsville, Alabama, Wernher von Braun and his team moved from the Army into NASA, forming the core of Marshall Space Flight Center. Eisenhower's transfer gave them the task of building giant Saturn rockets; von Braun became Saturn V's chief architect. He had surrendered to the Americans at the war's end and arrived in September 1945 through Operation Paperclip with an initial group of about 125. NASA's biography traces his work for the German army to his desire to build large rockets; those skills now served a lunar program, carrying their wartime past with them."
-  duration: 13
-
-- shot: what-came-before
-  view: map
-  camera: {center: [10.75, 51.5], zoom: 5.2, pitch: 25, duration: 6}
-  places: [mittelbau-dora]
-  time: "1944"
-  reveal: [mittelbau-dora, forced-labor-at-mittelbau, wernher-von-braun]
-  reveal_claims: [forced-labor-at-mittelbau#c1, forced-labor-at-mittelbau#c2]
-  overlay: {kind: stat, value: "Over 20,000", label: "Deaths at Mittelbau, by one historian's estimate", source: ushmm-mittelbau-dora, quote: "Wagner estimates that over 8,000 died during the evacuations, raising the final Mittelbau toll to over 20,000."}
-  narration: "**What came before.** Between late 1943 and February 1945, von Braun visited the Nordhausen area about fifteen times, he later testified, conveying design changes and acceptance criteria for V-2 rockets assembled underground by enslaved Mittelbau-Dora prisoners. NASA's biography says he knew the terrible conditions and took part in decisions about using slave labor; he had joined the Nazi Party in 1937 and become a junior SS officer in 1940. Historian Jens-Christian Wagner estimates the Mittelbau death toll at over 20,000, including over 8,000 during evacuations. In 1945, U.S. forces removed missile parts and personnel before Soviet occupation, helping set Operation Paperclip in motion."
-  duration: 15
-
-- shot: the-price
-  view: graph
-  focus: apollo-program
-  photo: {url: "https://images-assets.nasa.gov/image/KSC-69P-372/KSC-69P-372~large.jpg", alt: "The Apollo 11 Saturn V rolls out of the Vehicle Assembly Building", credit: "NASA / Kennedy Space Center"}
-  time: "1965"
-  reveal: [apollo-program, nasa, saturn-v]
-  reveal_claims: [apollo-program#c6]
-  overlay: {kind: stat, value: "400,000", label: "Americans working on Apollo at its peak", source: nasa-langley-first-step, quote: "At its peak, the Apollo program employed 400,000 Americans and required the support of over 20,000 industrial firms and universities."}
-  narration: "**The price.** At Rice in September 1962, Kennedy told his audience that space spending would rise above fifty cents a week for every American, arguing that “we must pay what needs to be paid.” The undertaking grew to employ 400,000 Americans at its peak, supported by over 20,000 firms and universities. NASA's chief historian puts Apollo's bill at about $25 billion in the money of the time, with spending peaking above 4 percent of the national budget; an earlier NASA history puts the agency's 1965 share at 5.3 percent. Kennedy's promise required years of appropriations, and NASA's leaders had to keep the money coming."
-  duration: 12
-
-- shot: two-ways-to-count
-  view: graph
-  focus: apollo-program
-  time: "1963"
-  reveal: [apollo-program, nasa]
-  reveal_claims: [apollo-program#c1, apollo-program#c5]
-  overlay: {kind: stat, value: "$25.8 billion", label: "Spent on Apollo, 1960 to 1973, by the Planetary Society, from NASA budget papers", source: planetary-apollo-cost, quote: "The United States spent $25.8 billion on Project Apollo between 1960 and 1973"}
-  narration: "**Two ways to count.** In 1963, James Webb put forward a funding projection above $35 billion for NASA through 1970. Early Apollo estimates had been about $20 billion; Launius says Webb stretched them so NASA could finish even if later budgets fell short of its requests. Launius credits Webb's ties with Congress and Lyndon Johnson for sustaining Apollo through the decade. The $35 billion was an agency-wide projection, not Apollo's final bill: Launius puts that at $25.4 billion in dollars of the time, while the Planetary Society counts $25.8 billion for 1960–1973 from NASA budget papers, including support and facilities. By 1973, NASA's budget proposal declared Apollo's objectives accomplished and requested no funding for fiscal 1974."
-  duration: 14
-
 - shot: the-computer
   view: map
   camera: {center: [-76.4, 37.1], zoom: 6.4, pitch: 25, duration: 6}
@@ -134,6 +113,27 @@ This story follows how they got there, in the words of those who were there: who
   overlay: {kind: quote, source: nasa-kj-science, quote: "If she says they’re good, then I am ready to go.", caption: "John Glenn on Katherine Johnson, before his flight in 1962"}
   narration: "**The computer.** Before John Glenn's 1962 flight, Katherine Johnson sat at Langley checking an electronic computer's trajectory because Glenn had asked for her verdict before he would go. She had joined the all-black West Area Computing Section in 1953, when a computer could be a person; in her later recollection, “So I checked it, and it was correct.” She said she liked going to the root of a question, and liked the work itself. Glenn flew; the orbital calculations also helped solve how Apollo's lunar lander would meet the command ship above the Moon, and NASA calls her calculations critical to the landings."
   duration: 14
+
+- shot: two-ways-to-count
+  view: graph
+  focus: apollo-program
+  time: "1963"
+  reveal: [apollo-program, nasa]
+  reveal_claims: [apollo-program#c1, apollo-program#c5]
+  overlay: {kind: stat, value: "$25.8 billion", label: "Spent on Apollo, 1960 to 1973, by the Planetary Society, from NASA budget papers", source: planetary-apollo-cost, quote: "The United States spent $25.8 billion on Project Apollo between 1960 and 1973"}
+  narration: "**Two ways to count.** In 1963, James Webb put forward a funding projection above $35 billion for NASA through 1970. Early Apollo estimates had been about $20 billion; Launius says Webb stretched them so NASA could finish even if later budgets fell short of its requests. Launius credits Webb's ties with Congress and Lyndon Johnson for sustaining Apollo through the decade. The $35 billion was an agency-wide projection, not Apollo's final bill: Launius puts that at $25.4 billion in dollars of the time, while the Planetary Society counts $25.8 billion for 1960–1973 from NASA budget papers, including support and facilities. By 1973, NASA's budget proposal declared Apollo's objectives accomplished and requested no funding for fiscal 1974."
+  duration: 14
+
+- shot: the-price
+  view: graph
+  focus: apollo-program
+  photo: {url: "https://images-assets.nasa.gov/image/KSC-69P-372/KSC-69P-372~large.jpg", alt: "The Apollo 11 Saturn V rolls out of the Vehicle Assembly Building", credit: "NASA / Kennedy Space Center"}
+  time: "1965"
+  reveal: [apollo-program, nasa, saturn-v]
+  reveal_claims: [apollo-program#c6]
+  overlay: {kind: stat, value: "400,000", label: "Americans working on Apollo at its peak", source: nasa-langley-first-step, quote: "At its peak, the Apollo program employed 400,000 Americans and required the support of over 20,000 industrial firms and universities."}
+  narration: "**The price.** At Rice in September 1962, Kennedy told his audience that space spending would rise above fifty cents a week for every American, arguing that “we must pay what needs to be paid.” The undertaking grew to employ 400,000 Americans at its peak, supported by over 20,000 firms and universities. NASA's chief historian puts Apollo's bill at about $25 billion in the money of the time, with spending peaking above 4 percent of the national budget; an earlier NASA history puts the agency's 1965 share at 5.3 percent. Kennedy's promise required years of appropriations, and NASA's leaders had to keep the money coming."
+  duration: 12
 
 - shot: the-fire
   view: graph
