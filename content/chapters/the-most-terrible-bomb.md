@@ -170,16 +170,6 @@ The two bombs killed between 110,000 and 210,000 people, across the most credibl
   narration: "**The emperor speaks.** On the night of 9–10 August, Hirohito faced leaders split 3 to 3 and ordered surrender, conditional on keeping the emperor. On 10 August Truman halted atomic attacks during negotiations; Henry Wallace’s diary records his objection to killing “all those kids.” The Department of Energy’s history reports that on 14 August, after the Allied reply, Hirohito told his cabinet to accept: “I cannot endure the thought of letting my people suffer any longer”. Next day he spoke to Japan by radio. He invoked the bomb and warned that continued fighting would bring the nation’s obliteration. His voice carried the decision out of the council room to the people who would have to obey it."
   duration: 13
 
-- shot: the-case-for
-  view: graph
-  focus: henry-l-stimson
-  time: "1947"
-  reveal: [henry-l-stimson, harry-s-truman, bombing-of-hiroshima, world-war-ii]
-  reveal_claims: [henry-l-stimson#c1, henry-l-stimson#c3]
-  overlay: {kind: quote, source: trumanlib-rethink2, quote: "no man in our position and subject to our responsibilities, holding in his hand a weapon of such possibilities for accomplishing this purpose and saving those lives, could have failed to use it and afterward looked his countrymen in the face", caption: "Henry Stimson, 1947"}
-  narration: "**The case for.** In his 1947 defense, Stimson said his purpose was victory at the least cost in his soldiers’ lives. He said an invasion might cost over a million American casualties. Okinawa had left over 12,000 Americans, 100,000 Japanese and perhaps 100,000 Okinawans dead. He argued that atomic shock would strengthen peace advocates, weaken the military party and create dread of further atomic attacks. In his private diary in May 1945, he had also seen the bomb as a “master card” in diplomacy with Moscow. His public defense centered on saving lives. John Ray Skates argued in 1994 that ending the war early saved more Japanese lives than American lives."
-  duration: 13
-
 - shot: the-case-against
   view: graph
   focus: dwight-d-eisenhower
@@ -189,13 +179,14 @@ The two bombs killed between 110,000 and 210,000 people, across the most credibl
   narration: "**The case against.** In his 1963 memoir, Dwight Eisenhower recalled Stimson visiting his headquarters in Germany in July 1945 and expecting agreement. Eisenhower said he answered that Japan was already defeated and the bomb unnecessary; he also feared shocking world opinion with a weapon no longer needed to save American lives. By his recollection, Stimson was deeply disturbed by the reply. Admiral William Leahy wrote in 1950 that the blockade and conventional bombing had already made Japan ready to surrender. He called the atomic bomb a “barbarous weapon” of “no material assistance.” Their objections challenged the necessity that Stimson’s defense would make central."
   duration: 13
 
-- shot: still-argued
+- shot: the-case-for
   view: graph
-  focus: surrender-of-japan
-  time: "1997"
-  reveal: [surrender-of-japan, bombing-of-hiroshima, bombing-of-nagasaki, soviet-union]
-  overlay: {kind: quote, source: trumanlib-rethink2, quote: "But no, the bomb was probably not necessary to end the war within a fairly short time without an invasion of Japan. And no, the bomb was not necessary to save the lives of hundreds of thousands of American troops", caption: "Historian J. Samuel Walker, 1997, printed by the Truman Library"}
-  narration: "**Still argued.** In July 1945 Truman faced a choice: use the bomb now, or let the war continue while awaiting Soviet entry and Japan’s response. Assessing that choice in 1997, J. Samuel Walker distinguished ending the war fastest from ending it without invading. He judged the bomb necessary for the earliest end and for saving perhaps several thousand American troops, but probably unnecessary to end the war fairly soon without invasion. He rejected the claim that it was necessary to save hundreds of thousands of American troops. Gar Alperovitz argued that the bomb also served to intimidate Moscow and that Japan would have surrendered without it. Truman’s decision killed people in two cities; what waiting would have cost remained contested."
+  focus: henry-l-stimson
+  time: "1947"
+  reveal: [henry-l-stimson, harry-s-truman, bombing-of-hiroshima, world-war-ii]
+  reveal_claims: [henry-l-stimson#c1, henry-l-stimson#c3]
+  overlay: {kind: quote, source: trumanlib-rethink2, quote: "no man in our position and subject to our responsibilities, holding in his hand a weapon of such possibilities for accomplishing this purpose and saving those lives, could have failed to use it and afterward looked his countrymen in the face", caption: "Henry Stimson, 1947"}
+  narration: "**The case for.** In his 1947 defense, Stimson said his purpose was victory at the least cost in his soldiers’ lives. He said an invasion might cost over a million American casualties. Okinawa had left over 12,000 Americans, 100,000 Japanese and perhaps 100,000 Okinawans dead. He argued that atomic shock would strengthen peace advocates, weaken the military party and create dread of further atomic attacks. In his private diary in May 1945, he had also seen the bomb as a “master card” in diplomacy with Moscow. His public defense centered on saving lives. John Ray Skates argued in 1994 that ending the war early saved more Japanese lives than American lives."
   duration: 13
 
 - shot: the-race
@@ -216,5 +207,14 @@ The two bombs killed between 110,000 and 210,000 people, across the most credibl
   reveal_claims: [oppenheimer-clearance-case#c1, oppenheimer-clearance-case#c2]
   overlay: {kind: quote, source: cbs-oppenheimer-1965, quote: "Now I am become death, the destroyer of worlds", caption: "J. Robert Oppenheimer in a 1965 NBC interview, quoting the Bhagavad-Gita"}
   narration: "**What they said after.** Oppenheimer requested a hearing after his clearance was suspended in December 1953. In 1954 the Atomic Energy Commission stripped it away despite its board finding “no evidence of disloyalty”; the board faulted his opposition to hydrogen-bomb development. That November, Linus Pauling recorded Einstein calling the Roosevelt letter his “one great mistake”, with “some justification”: fear of a German bomb. In 1965 Oppenheimer recalled Trinity through “Now I am become death, the destroyer of worlds”. He called ending the war this way “certainly cruel” but said: “But I am not, as of today, confident that a better course was then open.” He also said his part in killing over 100,000 and injuring a comparable number left his conscience uneasy. In 2022 the Department of Energy vacated the clearance decision as a “flawed process.”"
+  duration: 13
+
+- shot: still-argued
+  view: graph
+  focus: surrender-of-japan
+  time: "1997"
+  reveal: [surrender-of-japan, bombing-of-hiroshima, bombing-of-nagasaki, soviet-union]
+  overlay: {kind: quote, source: trumanlib-rethink2, quote: "But no, the bomb was probably not necessary to end the war within a fairly short time without an invasion of Japan. And no, the bomb was not necessary to save the lives of hundreds of thousands of American troops", caption: "Historian J. Samuel Walker, 1997, printed by the Truman Library"}
+  narration: "**Still argued.** In July 1945 Truman faced a choice: use the bomb now, or let the war continue while awaiting Soviet entry and Japan’s response. Assessing that choice in 1997, J. Samuel Walker distinguished ending the war fastest from ending it without invading. He judged the bomb necessary for the earliest end and for saving perhaps several thousand American troops, but probably unnecessary to end the war fairly soon without invasion. He rejected the claim that it was necessary to save hundreds of thousands of American troops. Gar Alperovitz argued that the bomb also served to intimidate Moscow and that Japan would have surrendered without it. Truman’s decision killed people in two cities; what waiting would have cost remained contested."
   duration: 13
 ```
