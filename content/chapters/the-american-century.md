@@ -22,6 +22,16 @@ The scale changed through decisions: overseas occupation, more than $10 billion 
   narration: "**The answer is ships, credit and rules.** McKinley ordered overseas occupation; Wilson entered the European war; Roosevelt expanded aid; Truman proposed new commitments. Presidents and Congress helped set the terms of postwar money and recovery. State’s histories put U.S. government loans to the First World War Allies above $10 billion and wartime Lend-Lease aid near $50 billion, in dollars of those years; private bank lending was a separate stream. By 1944, 44 governments were negotiating monetary rules centered on gold and the dollar. In 1947 Truman said Britain could no longer finance Greece and asked Congress to take over. Washington could offer money and attach conditions; the Soviet government refused the recovery framework built on that offer."
   duration: 13
 
+- shot: sea-power-and-markets
+  view: "graph"
+  time: "1890"
+  focus: "us-government"
+  reveal: ["us-government", "theodore-roosevelt", "panama-canal-construction", "government-of-colombia", "jp-morgan-and-co"]
+  reveal_claims: ["theodore-roosevelt#c3", "panama-canal-construction#c1", "government-of-colombia#c1", "dawes-plan#c2", "william-mckinley#c5", "william-mckinley#c2"]
+  overlay: {kind: "quote", source: "us-rise-mahan-1890", quote: "the use and control of the sea is and has been a great factor in the history of the world", caption: "Alfred Thayer Mahan, The Influence of Sea Power upon History, 1890"}
+  narration: "**Accident, prayer, or a master plan?** Popular versions of that rise make expansion reluctant and accidental, or a world empire planned from the outset. Philip Zelikow instead reconstructs successive choices: McKinley considered leaving the Philippines with Spain except for a coaling station, then demanded more. Blount reproduces September 1898 instructions invoking commerce and requiring Luzon. Mahan’s 1890 sea-power argument linked commerce, ships and colonies; McKinley’s changing demands concerned which islands to take. The prayer story comes through James Rusling’s 1903 recollection of a November 1899 conversation: Rusling recalled McKinley saying prayer led him to take and Christianize the islands. Zelikow says Rusling’s religious gloss cannot be distinguished from McKinley’s phrasing. McKinley’s actual occupation order imposed sovereignty while promising friendship."
+  duration: 13
+
 - shot: remember-the-maine
   view: "graph"
   time: "1898-03-28"
@@ -189,19 +199,9 @@ The scale changed through decisions: overseas occupation, more than $10 billion 
   duration: 13
   picture: "none"
 
-- shot: sea-power-and-markets
-  view: "graph"
-  time: "1890/1912"
-  focus: "us-government"
-  reveal: ["us-government", "theodore-roosevelt", "panama-canal-construction", "government-of-colombia", "jp-morgan-and-co"]
-  reveal_claims: ["theodore-roosevelt#c3", "panama-canal-construction#c1", "government-of-colombia#c1", "dawes-plan#c2", "william-mckinley#c5", "william-mckinley#c2"]
-  overlay: {kind: "quote", source: "us-rise-mahan-1890", quote: "the use and control of the sea is and has been a great factor in the history of the world", caption: "Alfred Thayer Mahan, The Influence of Sea Power upon History, 1890"}
-  narration: "**Accident, prayer, or a master plan?** Popular versions make expansion reluctant and accidental, or a world empire planned from the outset. Philip Zelikow instead reconstructs successive choices: McKinley considered leaving the Philippines with Spain except for a coaling station, then demanded more. Blount reproduces September 1898 instructions invoking commerce and requiring Luzon. Mahan’s 1890 sea-power argument linked commerce, ships and colonies; McKinley’s changing demands concerned which islands to take. The prayer story comes through James Rusling’s 1903 recollection of a November 1899 conversation: Rusling recalled McKinley saying prayer led him to take and Christianize the islands. Zelikow says Rusling’s religious gloss cannot be distinguished from McKinley’s phrasing. McKinley’s actual occupation order imposed sovereignty while promising friendship."
-  duration: 13
-
 - shot: whose-american-century
   view: "graph"
-  time: "1941/1952"
+  time: "1972"
   focus: "us-government"
   reveal: ["us-government", "franklin-d-roosevelt", "george-marshall", "marshall-plan", "world-bank", "soviet-government"]
   reveal_claims: ["franklin-d-roosevelt#c3", "bretton-woods-conference#c4", "george-marshall#c2", "marshall-plan#c4", "marshall-plan#c3", "marshall-plan#c7"]
