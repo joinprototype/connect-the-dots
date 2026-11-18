@@ -2,6 +2,11 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.5.23 (2026-11-17)
+
+- A story opens on where its first scene is, or on its own web of names: 25 stories opened on a place from a later scene, such as Hong Kong at the start of How America Became a Superpower.
+- A story's opening scene, when it frames the whole story, shows the years the story spans ("1890–1947") instead of one late date followed by a jump back in time.
+
 ## 0.5.22 (2026-11-17)
 
 - Links to every other page show a new picture of the site, black on white like the site itself, where they showed the old dark one.
