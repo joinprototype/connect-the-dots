@@ -201,16 +201,6 @@ Behind them stood people making choices: a ruler warned of rebellion, a widow ch
   narration: "**Delhi, 1911.** On 7 December George V arrived at Delhi's fort, met by Viceroy Hardinge. Five days later he rose at the Durbar with a paper absent from the programme: India's capital would move from Calcutta to Delhi. In his later memoir, Hardinge advocated moving the capital and reuniting Bengal as a means of reconciliation, recalled urging “extreme secrecy”, and called Calcutta's legislature “a field for intrigue” under Bengali influence. On the 15th the king laid a foundation stone before a site had been chosen. Hardinge wrote that he had the stones quietly moved a year later. Fortescue called the start “decidedly modest”. The public imperial gesture preceded the choice of a site."
   duration: 13
 
-- shot: lutyens
-  view: graph
-  focus: edwin-lutyens
-  time: "1913"
-  reveal: [edwin-lutyens, new-delhi, charles-hardinge, my-indian-years]
-  reveal_claims: [edwin-lutyens#c1, edwin-lutyens#c2]
-  overlay: {kind: quote, source: byron-1931-new-delhi, quote: "Like all humanists, Sir Edwin Lutyens had drunk of the European past, and he now drank of the Indian.", caption: "Robert Byron, New Delhi, 1931"}
-  narration: "**Lutyens.** Lutyens came to Delhi on the committee studying the site, then faced Hardinge over the price of his designs. In the viceroy's later memoir, Baker's plans were admirable and within the estimate; Lutyens's beautiful plans ignored cost, so Hardinge demanded reductions. Hardinge later recalled that Lutyens told others, including the Queen, that Hardinge had spoiled them. The viceroy defended an allowance of more than half a million pounds for Government House. Cost constrained the materials too: Robert Byron describes the intended Mughal red and white stone, with white marble giving way to sandstone because of expense. The budget helped determine the capital's visible stone."
-  duration: 13
-
 - shot: what-came-of-it
   view: graph
   focus: mughal-empire
@@ -219,5 +209,15 @@ Behind them stood people making choices: a ruler warned of rebellion, a widow ch
   reveal_claims: [humayuns-tomb#c1]
   overlay: {kind: quote, source: asi-2002-humayuns-tomb-world-heritage-series, quote: "This style of raising a dome had been prevalent in West Asia for a while before Mirak Mirza Ghiyas brought it to India.", caption: "Archaeological Survey of India, Humayun's Tomb and Adjacent Monuments, 2002"}
   narration: "**What came of it.** Lutyens chose red and white for the Viceroy's House, following Mughal taste in Robert Byron's description; expense meant sandstone replaced the hoped-for marble. That is the particular borrowing Byron identifies in New Delhi. Separately, Yule thought the Ming had built on Khanbaliq's old traces in Beijing. The Archaeological Survey describes Haji Begum's commission bringing a Persian dome to Delhi, and Timur taking masons to Samarkand as booty: building could carry coercion as well as forms. Babur's memoir counts 680 local stone-cutters on his Agra buildings each day. Behind imperial commissions stood people cutting stone; in New Delhi, an architect's choice of colours met a viceroy's demand to cut costs."
+  duration: 13
+
+- shot: lutyens
+  view: graph
+  focus: edwin-lutyens
+  time: "1913"
+  reveal: [edwin-lutyens, new-delhi, charles-hardinge, my-indian-years]
+  reveal_claims: [edwin-lutyens#c1, edwin-lutyens#c2]
+  overlay: {kind: quote, source: byron-1931-new-delhi, quote: "Like all humanists, Sir Edwin Lutyens had drunk of the European past, and he now drank of the Indian.", caption: "Robert Byron, New Delhi, 1931"}
+  narration: "**Lutyens.** Lutyens came to Delhi on the committee studying the site, then faced Hardinge over the price of his designs. In the viceroy's later memoir, Baker's plans were admirable and within the estimate; Lutyens's beautiful plans ignored cost, so Hardinge demanded reductions. Hardinge later recalled that Lutyens told others, including the Queen, that Hardinge had spoiled them. The viceroy defended an allowance of more than half a million pounds for Government House. Cost constrained the materials too: Robert Byron describes the intended Mughal red and white stone, with white marble giving way to sandstone because of expense. The budget helped determine the capital's visible stone."
   duration: 13
 ```
