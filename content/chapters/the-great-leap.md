@@ -64,26 +64,6 @@ These are different events, not one tally: the famine, the political campaigns, 
   narration: "**Letters that never left.** In Xinyang, Henan, starving people posted more than a thousand letters begging for help; the post office confiscated them, NPR reports, and people who tried to leave were sent to labour camps. Ian Johnson, summarising Yang Jisheng, puts the toll there at one in eight. Yang had his own loss: at eighteen, he rushed home from boarding school too late to save the uncle who had raised him as his father. He later told NPR: “I thought it was my fault.” As a Xinhua reporter, he used his credentials to enter archives and piece together the famine. His Tombstone appeared in Hong Kong in 2008 and remained banned on the mainland in 2012; the bereaved son had made his investigation public."
   duration: 13
 
-- shot: counting-the-dead
-  view: graph
-  focus: great-chinese-famine
-  time: "1962"
-  reveal: [great-chinese-famine, yang-jisheng, frank-dikotter, cormac-o-grada, resolution-on-party-history-1981]
-  reveal_claims: [great-chinese-famine#c4, great-chinese-famine#c5, cormac-o-grada#c1, yang-jisheng#c2]
-  overlay: {kind: stat, value: "18 to 45 million", label: "Estimated deaths: earlier demographers 18 to 32.5 million (as Ó Gráda gives them), Yang Jisheng 36 million, Dikötter at least 45 million. Yang's and Dikötter's totals both include deaths by violence", source: ograda-2011-great-leap-into-famine, quote: "far beyond the range of between 18 million and 32.5 million proposed hitherto by specialist demographers"}
-  narration: "**Counting the dead.** In summer 1962, Sichuan's public security chief sent provincial boss Li Jingquan a handwritten list reporting 10.6 million deaths in 1958–1961, Dikötter says. Earlier demographers used official censuses; Ó Gráda gives their estimates as 18 to 32.5 million. Johnson says Yang's 36 million unnatural deaths include government-instigated torture and murder; NPR reports continued grain exports. Dikötter's minimum of 45 million also includes violence: he adds fifty per cent to Cao Shuji's 32.5 million using discrepancies between archives and gazetteers, Ó Gráda explains. Ó Gráda objects that Dikötter assumes an implausibly low normal death rate. The Party's 1981 history records serious losses without a figure. Yang called his book a memorial to his father and the other victims, giving the uncounted dead a tombstone."
-  duration: 13
-
-- shot: two-explanations
-  view: graph
-  focus: yang-jisheng
-  time: "2012"
-  reveal: [mao-zedong, great-chinese-famine, great-leap-forward, soviet-government, cormac-o-grada, yang-jisheng]
-  reveal_claims: [great-chinese-famine#c1, great-chinese-famine#c2, great-leap-forward#c3, mao-zedong#c8, yang-jisheng#c2, mao-zedong#c5]
-  overlay: {kind: quote, source: npr-2012-11-10-yang-tombstone, quote: "If a country can't face its own history, then it has no future.", caption: "Yang Jisheng, speaking through a translator to NPR in 2012"}
-  narration: "**Publishing for change.** Yang Jisheng spent ten years secretly collecting evidence, NPR reports. He feared Tombstone might become his own tombstone, but wanted Chinese readers to know their history; by 2012, banned on the mainland, it circulated in counterfeit, photocopied and electronic versions. He told NPR: “If a country can't face its own history, then it has no future.” Ian Johnson describes Yang's argument as officials, from village chiefs to Mao, knowing what was happening but letting ideology override lives. The Party's 1981 history chiefly blames the Leap and the campaign against “Right opportunism”, alongside natural calamities and Soviet contract cancellations; it dates rural policy corrections to winter 1960. Yang hoped new leaders would bring change, NPR reports; publishing was his way to press for it."
-  duration: 13
-
 - shot: lhasa-march-1959
   view: map
   camera: {center: [91.14, 29.65], zoom: 9.2, pitch: 30, duration: 6}
@@ -93,6 +73,16 @@ These are different events, not one tally: the famine, the political campaigns, 
   reveal_claims: [lhasa-march-1959#c1, lhasa-march-1959#c3, lhasa-march-1959#c2, chinese-government#c1, 14th-dalai-lama#c1, 14th-dalai-lama#c2]
   overlay: {kind: quote, source: scio-2021-tibet-since-1951, quote: "some members of the Tibetan ruling class wanted to preserve serfdom forever, and staged a full-scale armed rebellion in March 1959", caption: "China's State Council, white paper of May 2021"}
   narration: "**Leaving Lhasa.** In March 1959 the Dalai Lama left Tibet. His office says Chinese troops brutally suppressed a national uprising in Lhasa after China's invasion of Tibet, forcing him into exile. China's State Council gives the opposite explanation: members of the ruling class staged an armed rebellion to preserve serfdom, and the central government quelled it to abolish that system. It also says the CIA helped him flee and airdropped weapons to rebels. The Party's 1981 history calls Tibet's earlier incorporation peaceful liberation. The Dalai Lama's office describes what he did next: from exile, his administration appealed to the United Nations, which adopted resolutions in 1959, 1961 and 1965. His departure carried the dispute beyond Lhasa."
+  duration: 13
+
+- shot: counting-the-dead
+  view: graph
+  focus: great-chinese-famine
+  time: "1962"
+  reveal: [great-chinese-famine, yang-jisheng, frank-dikotter, cormac-o-grada, resolution-on-party-history-1981]
+  reveal_claims: [great-chinese-famine#c4, great-chinese-famine#c5, cormac-o-grada#c1, yang-jisheng#c2]
+  overlay: {kind: stat, value: "18 to 45 million", label: "Estimated deaths: earlier demographers 18 to 32.5 million (as Ó Gráda gives them), Yang Jisheng 36 million, Dikötter at least 45 million. Yang's and Dikötter's totals both include deaths by violence", source: ograda-2011-great-leap-into-famine, quote: "far beyond the range of between 18 million and 32.5 million proposed hitherto by specialist demographers"}
+  narration: "**Counting the dead.** In summer 1962, Sichuan's public security chief sent provincial boss Li Jingquan a handwritten list reporting 10.6 million deaths in 1958–1961, Dikötter says. Earlier demographers used official censuses; Ó Gráda gives their estimates as 18 to 32.5 million. Johnson says Yang's 36 million unnatural deaths include government-instigated torture and murder; NPR reports continued grain exports. Dikötter's minimum of 45 million also includes violence: he adds fifty per cent to Cao Shuji's 32.5 million using discrepancies between archives and gazetteers, Ó Gráda explains. Ó Gráda objects that Dikötter assumes an implausibly low normal death rate. The Party's 1981 history records serious losses without a figure. Yang called his book a memorial to his father and the other victims, giving the uncounted dead a tombstone."
   duration: 13
 
 - shot: may-1966
@@ -157,6 +147,16 @@ These are different events, not one tally: the famine, the political campaigns, 
   narration: "**The ambassador's telegram.** On 5 June 1989, Britain's ambassador Alan Donald sent London a report of at least 10,000 civilian deaths, Hong Kong Free Press reports. His information had passed from an unnamed State Council member through an intermediary whose name was redacted. The source described soldiers shooting wounded people and medical crews; Donald also relayed the source's warning that some State Council members thought civil war imminent. Angry citizens had already told U.S. embassy officers of more than 10,000 killed on 4 June. These were reported estimates, with different chains of witnesses and informants. Donald's telegram carried one of the highest counts, and an account of fear inside the government, to London."
   duration: 13
 
+- shot: two-explanations
+  view: graph
+  focus: yang-jisheng
+  time: "2012"
+  reveal: [mao-zedong, great-chinese-famine, great-leap-forward, soviet-government, cormac-o-grada, yang-jisheng]
+  reveal_claims: [great-chinese-famine#c1, great-chinese-famine#c2, great-leap-forward#c3, mao-zedong#c8, yang-jisheng#c2, mao-zedong#c5]
+  overlay: {kind: quote, source: npr-2012-11-10-yang-tombstone, quote: "If a country can't face its own history, then it has no future.", caption: "Yang Jisheng, speaking through a translator to NPR in 2012"}
+  narration: "**Publishing for change.** Yang Jisheng spent ten years secretly collecting evidence, NPR reports. He feared Tombstone might become his own tombstone, but wanted Chinese readers to know their history; by 2012, banned on the mainland, it circulated in counterfeit, photocopied and electronic versions. He told NPR: “If a country can't face its own history, then it has no future.” Ian Johnson describes Yang's argument as officials, from village chiefs to Mao, knowing what was happening but letting ideology override lives. The Party's 1981 history chiefly blames the Leap and the campaign against “Right opportunism”, alongside natural calamities and Soviet contract cancellations; it dates rural policy corrections to winter 1960. Yang hoped new leaders would bring change, NPR reports; publishing was his way to press for it."
+  duration: 13
+
 - shot: xinjiang-2019
   view: map
   camera: {center: [86.0, 41.0], zoom: 4.6, pitch: 20, duration: 6}
@@ -166,6 +166,16 @@ These are different events, not one tally: the famine, the political campaigns, 
   reveal_claims: [xinjiang#c2, chinese-government#c5, xinjiang-training-centres#c2, xinjiang-training-centres#c4, chinese-government#c10]
   overlay: {kind: quote, source: icij-2019-china-cables, quote: "strictly manage and control student activities to prevent escapes during class, eating periods, toilet breaks, bath time, medical treatment, family visits, etc.", caption: "The leaked 2017 manual, quoted by ICIJ; China calls the documents fabricated"}
   narration: "**The locked doors.** In November 2017, Xinjiang security official Zhu Hailun approved a secret camp manual, according to the International Consortium of Investigative Journalists (ICIJ), which published it in 2019. It orders staff to prevent escapes and double-lock dormitory doors. Publicly, China's UK embassy denied there were detention camps: the centres prevented terrorism and trainees' freedom was fully guaranteed; it called the leaks “pure fabrication and fake news.” ICIJ says experts verified the documents, including James Mulvenon of SOS International, who called them “very authentic”; The UN human rights office later verified some such documents as highly likely authentic, while being unable to verify others. The manual's controls reached meals, toilet breaks and visits: in the instructions ICIJ published, keeping people inside governed ordinary acts throughout the day."
+  duration: 13
+
+- shot: the-numbers
+  view: graph
+  focus: un-human-rights-office
+  time: "2019"
+  reveal: [un-human-rights-office, chinese-government, xinjiang, ohchr-xinjiang-assessment-2022]
+  reveal_claims: [chinese-government#c4, un-human-rights-office#c2, un-human-rights-office#c4]
+  overlay: {kind: stat, value: "48.7 per cent", label: "Fall in Xinjiang's birth rate from 2017 to 2019, in official figures as cited by the UN Human Rights Office", source: ohchr-2022-xinjiang-assessment, quote: "the birth rate in Xinjiang dropped approximately 48.7 per cent, from 15.88 per thousand in 2017 to 8.14 per thousand in 2019."}
+  narration: "**Births and punishments.** Women told UN investigators that officials forced abortions or IUD insertions after they reached the permitted number of children; women also described threatened internment or imprisonment for exceeding limits. OHCHR considered the first-hand accounts credible. China's embassy had answered genocide allegations in 2021 with population growth: 10.17 million Uygurs in 2010 to 12.72 million in 2018. OHCHR cites different government census figures: 10 million in 2010 and 11.6 million in 2020. It also records a 48.7 per cent birth-rate fall, from 15.88 to 8.14 per thousand in 2017–2019, against 10.48 nationally. Uyghur-majority areas accounted for most of that fall, which it calls unusual and stark. Its coercion finding rests on testimony and policies as well as numbers, bringing women's constrained choices into the assessment."
   duration: 13
 
 - shot: genocide-said-washington
@@ -196,16 +206,6 @@ These are different events, not one tally: the famine, the political campaigns, 
   reveal_claims: [chinese-government#c3, chinese-government#c4, chinese-government#c5, chinese-government#c11]
   overlay: {kind: quote, source: embassy-2022-09-03-remarks-on-ohchr-report, quote: "This so-called assessment is orchestrated and produced by the US and some Western forces and is completely illegal, null and void.", caption: "Spokesperson of China's embassy in the United States, September 2022"}
   narration: "**Wang Wenbin answers.** At his 1 September 2022 briefing, foreign ministry spokesman Wang Wenbin called the UN report a Western tool for “using Xinjiang to contain China”, as CGTN reports. He said more than 60 countries had opposed publication and claimed the report stopped short of endorsing genocide, forced labour, religious repression or forced sterilisation. China's note to the UN called the accusations fabricated and defended its measures as curbing terrorism. OHCHR records the government's account of thousands of attacks that killed many civilians and hundreds of police officers. Wang's answer cast the assessment as an attempt to weaken China; Beijing's reply defended the security policies the investigators had asked it to change."
-  duration: 13
-
-- shot: the-numbers
-  view: graph
-  focus: un-human-rights-office
-  time: "2019"
-  reveal: [un-human-rights-office, chinese-government, xinjiang, ohchr-xinjiang-assessment-2022]
-  reveal_claims: [chinese-government#c4, un-human-rights-office#c2, un-human-rights-office#c4]
-  overlay: {kind: stat, value: "48.7 per cent", label: "Fall in Xinjiang's birth rate from 2017 to 2019, in official figures as cited by the UN Human Rights Office", source: ohchr-2022-xinjiang-assessment, quote: "the birth rate in Xinjiang dropped approximately 48.7 per cent, from 15.88 per thousand in 2017 to 8.14 per thousand in 2019."}
-  narration: "**Births and punishments.** Women told UN investigators that officials forced abortions or IUD insertions after they reached the permitted number of children; women also described threatened internment or imprisonment for exceeding limits. OHCHR considered the first-hand accounts credible. China's embassy had answered genocide allegations in 2021 with population growth: 10.17 million Uygurs in 2010 to 12.72 million in 2018. OHCHR cites different government census figures: 10 million in 2010 and 11.6 million in 2020. It also records a 48.7 per cent birth-rate fall, from 15.88 to 8.14 per thousand in 2017–2019, against 10.48 nationally. Uyghur-majority areas accounted for most of that fall, which it calls unusual and stark. Its coercion finding rests on testimony and policies as well as numbers, bringing women's constrained choices into the assessment."
   duration: 13
 
 - shot: now
