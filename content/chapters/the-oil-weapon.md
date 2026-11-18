@@ -22,16 +22,15 @@ In October 1973 a war in the Middle East brought an embargo on oil to the United
   narration: "**Baghdad, 1960.** When oil companies cut Middle Eastern crude prices in August 1960, Saudi petroleum director Abdulla Tariki was already advocating joint regulation of output to maintain prices, a U.S. memorandum reported. From 10 to 14 September, Iran, Iraq, Kuwait, Saudi Arabia and Venezuela created the Organization of the Petroleum Exporting Countries (OPEC) in Baghdad. In OPEC’s telling, seven multinational companies, the Seven Sisters, dominated the market; four enter this story. The founders demanded restoration of the old prices and pledged not to profit if a company punished another member: the producers were organizing to bargain together."
   duration: 13
 
-- shot: who-ran-aramco
+- shot: kuwaits-savings
   view: graph
-  focus: aramco
-  time: "1973"
-  reveal: [aramco, exxonmobil, mobil, chevron, texaco, standard-oil, standard-oil-v-united-states, ahmed-zaki-yamani]
-  reveal_claims: [exxonmobil#c1, mobil#c1, chevron#c1, texaco#c1, standard-oil-v-united-states#c7, standard-oil-v-united-states#c8, standard-oil-v-united-states#c9]
-  overlay: {kind: quote, source: frus-1969-76-v36-d6, quote: "control over all oil operations is our objective", caption: "Ahmed Zaki Yamani’s stated goal, recorded in a State Department memorandum, 10 June 1969"}
-  narration: "**Who ran Aramco.** In Beirut in June 1968, Saudi oil minister Ahmed Zaki Yamani publicly proposed government shares in the foreign oil concessions; a State Department memorandum recorded his goal: “control over all oil operations is our objective”. In Saudi Arabia, the Arabian American Oil Company, Aramco, produced the oil, and the Department’s glossary listed four U.S. corporate owners: Socal 30 percent, Texaco 30, Esso 30 and Mobil 10. Esso (Exxon), Socal (Chevron) and Mobil descended from Standard Oil, which the Supreme Court broke up in 1911, as The Trust tells. Yamani’s proposal put government ownership on the table alongside the price of each barrel."
+  focus: kuwait-investment-authority
+  time: "1953-02"
+  reveal: [kuwait, kuwait-investment-authority, blackrock]
+  reveal_claims: [kuwait#c2, kuwait-investment-authority#c1]
+  overlay: {kind: quote, source: kia-about, quote: "in February 1953, established the Kuwait Investment Board (KIB) headquartered in the City of London with a mandate to invest surplus oil revenue and reduce Kuwait’s reliance on a single finite resource", caption: "Kuwait Investment Authority, on its own history"}
+  narration: "**Kuwait’s savings.** In February 1953, Sheikh Abdullah Al-Salem Al-Sabah established the Kuwait Investment Board in London, twenty years before oil ministers announced their production cut in Kuwait. The Kuwait Investment Authority says his mandate was to invest surplus oil revenue and “reduce Kuwait’s reliance on a single finite resource”. The authority, acting for Kuwait’s government, appears in BlackRock’s 2026 proxy with 5.14 percent of the company. Money earned from the resource could buy assets beyond it; Who Owns BlackRock and Vanguard follows where those savings went."
   duration: 13
-
 - shot: tehran-1971
   view: map
   camera: {center: [51.39, 35.689], zoom: 6.0, pitch: 20, duration: 6}
@@ -41,6 +40,16 @@ In October 1973 a war in the Middle East brought an embargo on oil to the United
   reveal_claims: [oil-price-talks-of-1971#c1, oil-price-talks-of-1971#c2, mohammad-reza-pahlavi#c2]
   overlay: {kind: quote, source: frus-1969-76-v36-d91, quote: "OPEC’s oil tax victory over the oil companies earlier this year marked a definite shift in bargaining power in favor of the exporting countries.", caption: "State Department intelligence note, 11 August 1971"}
   narration: "**Tehran and Tripoli, 1971.** In London on 23 January, U.S. energy official James Akins warned oil executives that negotiating with all OPEC members together would bring the most extreme demands. Most accepted his view, and the companies planned proposals for Tehran and Tripoli. By August, State Department intelligence judged that OPEC had won “large tax increases in oil exports under threat of a shutdown in production.” Its members were now considering partial control of the producing subsidiaries: higher taxes had opened the next struggle, over ownership."
+  duration: 13
+
+- shot: who-ran-aramco
+  view: graph
+  focus: aramco
+  time: "1973"
+  reveal: [aramco, exxonmobil, mobil, chevron, texaco, standard-oil, standard-oil-v-united-states, ahmed-zaki-yamani]
+  reveal_claims: [exxonmobil#c1, mobil#c1, chevron#c1, texaco#c1, standard-oil-v-united-states#c7, standard-oil-v-united-states#c8, standard-oil-v-united-states#c9]
+  overlay: {kind: quote, source: frus-1969-76-v36-d6, quote: "control over all oil operations is our objective", caption: "Ahmed Zaki Yamani’s stated goal, recorded in a State Department memorandum, 10 June 1969"}
+  narration: "**Who ran Aramco.** In Beirut in June 1968, Saudi oil minister Ahmed Zaki Yamani publicly proposed government shares in the foreign oil concessions; a State Department memorandum recorded his goal: “control over all oil operations is our objective”. In Saudi Arabia, the Arabian American Oil Company, Aramco, produced the oil, and the Department’s glossary listed four U.S. corporate owners: Socal 30 percent, Texaco 30, Esso 30 and Mobil 10. Esso (Exxon), Socal (Chevron) and Mobil descended from Standard Oil, which the Supreme Court broke up in 1911, as The Trust tells. Yamani’s proposal put government ownership on the table alongside the price of each barrel."
   duration: 13
 
 - shot: a-friend-asks
@@ -210,13 +219,4 @@ In October 1973 a war in the Middle East brought an embargo on oil to the United
   narration: "**A reserve underground.** On 22 December 1975, Ford signed the Energy Policy and Conservation Act, setting a policy of storing up to 1 billion barrels in a Strategic Petroleum Reserve. In his later account, he called the law “an inadequate measure” and recalled meeting key lawmakers at least thirty-three times: “People still didn’t believe that the energy crisis was real.” He warned that growing imports would leave America twice as vulnerable to an embargo in less than three years. The reserve received its first 412,000 barrels in 1977: the law began turning the fear of another cutoff into oil held for an emergency."
   duration: 13
 
-- shot: kuwaits-savings
-  view: graph
-  focus: kuwait-investment-authority
-  time: "1953-02"
-  reveal: [kuwait, kuwait-investment-authority, blackrock]
-  reveal_claims: [kuwait#c2, kuwait-investment-authority#c1]
-  overlay: {kind: quote, source: kia-about, quote: "in February 1953, established the Kuwait Investment Board (KIB) headquartered in the City of London with a mandate to invest surplus oil revenue and reduce Kuwait’s reliance on a single finite resource", caption: "Kuwait Investment Authority, on its own history"}
-  narration: "**Kuwait’s savings.** In February 1953, Sheikh Abdullah Al-Salem Al-Sabah established the Kuwait Investment Board in London, twenty years before oil ministers announced their production cut in Kuwait. The Kuwait Investment Authority says his mandate was to invest surplus oil revenue and “reduce Kuwait’s reliance on a single finite resource”. The authority, acting for Kuwait’s government, appears in BlackRock’s 2026 proxy with 5.14 percent of the company. Money earned from the resource could buy assets beyond it; Who Owns BlackRock and Vanguard follows where those savings went."
-  duration: 13
 ```
