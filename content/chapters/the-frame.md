@@ -157,16 +157,6 @@ A frame maker could now reach a customer through a brand, a shop and a vision pl
   narration: "**The optician and the price police.** An optical-store manager described rivals monitoring prices as a “price police” to France's competition authority. It found Luxottica sent recommended prices during 2005–2014, recruited retailers to monitor compliance, and punished holdouts with delayed deliveries, withdrawn approval or blocked accounts. In court, Luxottica argued that restricting promotions protected its investment in brand image. The authority fined it about €125 million in July 2021, with much smaller fines on LVMH and Chanel for online-sales bans; it put Luxottica at 45% of French sunglasses by value in 2011 and 21% of prescription frames, judging economic damage moderate. EssilorLuxottica called the fine highly disproportionate and unfounded. After Paris rejected its appeal on 12 December 2024, it appealed again on 13 January 2025."
   duration: 13
 
-- shot: other-cases
-  view: graph
-  focus: essilorluxottica
-  time: "2025"
-  reveal: [essilorluxottica, essilor, turkish-competition-authority, greek-competition-authority, open-competition-inquiries-2025]
-  reveal_claims: [essilor#c2, essilor#c3, essilorluxottica#c4, open-competition-inquiries-2025#c1, open-competition-inquiries-2025#c2]
-  overlay: {kind: quote, source: essilorluxottica-2025-interim-report, quote: "in 2024, in the United States, the Federal Trade Commission (FTC) issued a Civil Investigative Demand to Group subsidiaries in connection to business practices in the optical industry.", caption: "EssilorLuxottica Interim Financial Report, 2025"}
-  narration: "**Milleri signs the report.** In Paris on 28 July 2025, chief executive Francesco Milleri signed EssilorLuxottica's interim report. Inside, management explained why €81 million paid to France was booked as a deposit: it considered a loss unlikely and the decision meritless. France had fined Essilor in October 2022 for discriminating against online sellers of certain prescription lenses; Paris upheld it in December 2024. The group also appealed Turkey's August 2023 fine of 492 million lira for breaching an exclusivity commitment and abusive bundling. Greece's inquiry, begun in 2022, and the FTC's 2024 Civil Investigative Demand remained investigations without findings. Disputing the fines, the company said it was cooperating with investigators; the money already transferred awaited the appeals."
-  duration: 13
-
 - shot: grandvision-supreme
   view: graph
   focus: essilorluxottica
@@ -175,6 +165,16 @@ A frame maker could now reach a customer through a brand, a shop and a vision pl
   reveal_claims: [grandvision-review-2021#c1, essilorluxottica#c1, essilorluxottica#c2]
   overlay: {kind: stat, value: "About 350 stores", label: "Optical stores EssilorLuxottica had to sell in Belgium, Italy and the Netherlands for EU approval of GrandVision, 2021", source: aop-2021-03-26-grandvision, quote: "The approval is conditional on the divestment of some of EssilorLuxottica’s optical retail businesses in Belgium, the Netherlands and Italy – totalling around 350 stores – to address competition concerns in the optical retail market."}
   narration: "**Vestager demands stores.** In March 2021 Margrethe Vestager required EssilorLuxottica to give up about 350 optical stores in Belgium, Italy and the Netherlands to buy GrandVision. A larger retail network could let it restrict rival opticians' access to its brands, she said, leaving customers less choice and higher prices. The Commission cleared the purchase with those conditions. In October 2024 the group paid VF Corporation $1.5 billion cash for Supreme, a streetwear brand. Chief executive Francesco Milleri said jointly with his deputy that Supreme offered “a direct connection to new audiences”; after buying more places to sell glasses, the company had bought a brand reaching customers beyond eyewear."
+  duration: 13
+
+- shot: other-cases
+  view: graph
+  focus: essilorluxottica
+  time: "2025"
+  reveal: [essilorluxottica, essilor, turkish-competition-authority, greek-competition-authority, open-competition-inquiries-2025]
+  reveal_claims: [essilor#c2, essilor#c3, essilorluxottica#c4, open-competition-inquiries-2025#c1, open-competition-inquiries-2025#c2]
+  overlay: {kind: quote, source: essilorluxottica-2025-interim-report, quote: "in 2024, in the United States, the Federal Trade Commission (FTC) issued a Civil Investigative Demand to Group subsidiaries in connection to business practices in the optical industry.", caption: "EssilorLuxottica Interim Financial Report, 2025"}
+  narration: "**Milleri signs the report.** In Paris on 28 July 2025, chief executive Francesco Milleri signed EssilorLuxottica's interim report. Inside, management explained why €81 million paid to France was booked as a deposit: it considered a loss unlikely and the decision meritless. France had fined Essilor in October 2022 for discriminating against online sellers of certain prescription lenses; Paris upheld it in December 2024. The group also appealed Turkey's August 2023 fine of 492 million lira for breaching an exclusivity commitment and abusive bundling. Greece's inquiry, begun in 2022, and the FTC's 2024 Civil Investigative Demand remained investigations without findings. Disputing the fines, the company said it was cooperating with investigators; the money already transferred awaited the appeals."
   duration: 13
 
 - shot: meta-glasses
