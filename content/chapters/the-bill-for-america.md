@@ -170,6 +170,17 @@ Louis XVI's ministers borrowed, offered reforms and fought over who should pay. 
   narration: "**The Declaration, August 1789.** As Lafayette prepared to bring his declaration of rights before the Assembly, he asked Jefferson to return “the Bill of Rights with your Notes”. He presented his draft on 11 July, three days before the Bastille fell; the editors of Jefferson's papers judge Jefferson's influence certain, though impossible to measure. On 26 August the Assembly approved its own declaration, whose preamble blamed public calamities on ignorance, neglect or contempt of human rights. Article 14 declared citizens' right to consent to taxes and know how their money was spent."
   duration: 13
 
+- shot: weighing-the-bill
+  view: graph
+  focus: french-revolution
+  picture: none
+  time: "1789"
+  reveal: [french-revolution, french-royal-debt-and-deficit, bad-harvests-in-france-1770-1789, tax-privileges-in-old-regime-france, enlightenment-ideas-in-france, eugene-white, french-intervention-in-the-american-war, velde-weir-1992-financial-market-and-debt-policy]
+  reveal_claims: [french-royal-debt-and-deficit#c1, french-royal-debt-and-deficit#c2, french-intervention-in-the-american-war#c2, bad-harvests-in-france-1770-1789#c1, enlightenment-ideas-in-france#c1, french-revolution#c3]
+  overlay: {kind: quote, source: white-1989-ancien-regime-financial-dilemma, quote: "While the collapse of the monarchy has been attributed to persistent peacetime deficits, these did not appear until the mid-1780s when earlier reforms and successful budget policies were abandoned by reactionary finance ministers.", caption: "Eugene White, Journal of Economic History, 1989"}
+  narration: "**Weighing the bill.** The struggle over taxes had a longer history: before France entered the war, Turgot warned that “the first gunshot will drive the state to bankruptcy”, the Cambridge coursebook says; Louis XVI disregarded him and followed Vergennes, who put prestige before cost. In 1787 the king dismissed Calonne, who proposed taxing privileged landowners, then the Notables, who demanded his accounts. Eugene White argues that continuing earlier fiscal reforms could have averted the crisis of 1788–1789; Velde and Weir emphasize obstacles to raising taxes that made royal borrowing risky and expensive. Louis's later death left the struggle over payment unsettled: White argues that competing economic interests fought to shift the inherited deficit's burden, altering and prolonging the Revolution."
+  duration: 13
+
 - shot: the-key-crosses-the-sea
   view: map
   camera: {center: [-40.0, 44.0], zoom: 2.7, pitch: 0, duration: 6}
@@ -224,16 +235,5 @@ Louis XVI's ministers borrowed, offered reforms and fought over who should pay. 
   reveal_claims: [american-debt-to-france#c2, american-debt-to-france#c3, american-debt-to-france#c5, alexander-hamilton#c1]
   overlay: {kind: quote, source: founders-jefferson-to-washington-1793-06-06, quote: "We are then to examine what are our good reasons for the refusal, which of them may be spoken out, and which may not. 1. want of confidence in the continuance of the present form of government, and consequently that advances to them might commit us with their successors. This cannot be spoken out.", caption: "Jefferson to Washington, 6 June 1793"}
   narration: "**Who pays whom, 1793.** On 6 June Jefferson wrote Washington about France's request for early repayment to buy American food: the cabinet agreed to refuse, but Hamilton proposed giving no reasons. Jefferson feared a bare refusal would damage friendship; privately, he listed distrust of the French government's survival first, then wrote, “This cannot be spoken out.” He favored advancing that year's instalments if it risked neither war nor paying twice; the reply he sent on 11 June cited inability to borrow abroad and risks to credit. Regular payments had resumed in 1790; in 1795 banker James Swan privately assumed the French government's claims at a higher interest rate and resold them for profit, ending the government-to-government debt."
-  duration: 13
-
-- shot: weighing-the-bill
-  view: graph
-  focus: french-revolution
-  picture: none
-  time: "1789"
-  reveal: [french-revolution, french-royal-debt-and-deficit, bad-harvests-in-france-1770-1789, tax-privileges-in-old-regime-france, enlightenment-ideas-in-france, eugene-white, french-intervention-in-the-american-war, velde-weir-1992-financial-market-and-debt-policy]
-  reveal_claims: [french-royal-debt-and-deficit#c1, french-royal-debt-and-deficit#c2, french-intervention-in-the-american-war#c2, bad-harvests-in-france-1770-1789#c1, enlightenment-ideas-in-france#c1, french-revolution#c3]
-  overlay: {kind: quote, source: white-1989-ancien-regime-financial-dilemma, quote: "While the collapse of the monarchy has been attributed to persistent peacetime deficits, these did not appear until the mid-1780s when earlier reforms and successful budget policies were abandoned by reactionary finance ministers.", caption: "Eugene White, Journal of Economic History, 1989"}
-  narration: "**Weighing the bill.** Before France entered the war, Turgot warned that “the first gunshot will drive the state to bankruptcy”, the Cambridge coursebook says; Louis XVI disregarded him and followed Vergennes, who put prestige before cost. In 1787 the king dismissed Calonne, who proposed taxing privileged landowners, then the Notables, who demanded his accounts. Eugene White argues that continuing earlier fiscal reforms could have averted the crisis of 1788–1789; Velde and Weir emphasize obstacles to raising taxes that made royal borrowing risky and expensive. Louis's death left the struggle over payment unsettled: White argues that competing economic interests fought to shift the inherited deficit's burden, altering and prolonging the Revolution."
   duration: 13
 ```
