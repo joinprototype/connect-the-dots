@@ -145,17 +145,6 @@ A presidential adviser’s seat, a vote on an executive’s pay, a question abou
   narration: "**Two votes on one award.** After a court rescinded Musk’s 2018 award, Tesla director Kathleen Wilson-Thompson’s one-person committee sought another shareholder vote. In June 2024 BlackRock Investment Stewardship (BIS) said it backed ratification because Musk and Tesla had met the performance milestones, making support financially beneficial for clients. BIS still had concerns about the award’s structure and size, and opposed director James Murdoch over board independence and oversight. Vanguard said its funds opposed the award in 2018, but looking back removed its concern that Musk could earn huge pay without outperforming peers. BIS cautioned against treating support as a general endorsement of such awards. Tesla counted support from holders of 72% of shares excluding Musk and related persons; the directors asked the court to give the vote effect."
   duration: 22
 
-- shot: "money-and-a-partnership"
-  view: "graph"
-  lens: "money"
-  focus: "xai"
-  time: "2026-02-02"
-  reveal: [blackrock, xai, ai-infrastructure-partnership, microsoft, spacex, elon-musk]
-  reveal_claims: [blackrock#c10, blackrock#c11, xai#c1, microsoft#c8, spacex#c1, elon-musk#c19]
-  overlay: {kind: quote, source: blackrock-2025-03-19-aip, quote: "AI has the potential to transform the global economy if we can build the necessary infrastructure to support it.", caption: "Larry Fink, BlackRock press release, 19 March 2025"}
-  narration: "**Money and a partnership.** In March 2025 Fink welcomed xAI into the AI Infrastructure Partnership announced by BlackRock, Microsoft and MGX. AI needed infrastructure, he said; combining expertise with private capital created “unique investment opportunities for our clients.” Musk’s xAI had named BlackRock among investors in its $6 billion Series C in December 2024, without specifying its contribution or naming either man personally. In February 2026 SpaceX acquired xAI; explaining the deal, Musk said he expected computing in space to become cheaper within two to three years. The investment and partnership now connected BlackRock to a company inside SpaceX."
-  duration: 20
-
 - shot: "griffin-on-musk"
   view: "graph"
   focus: "ken-griffin"
@@ -164,16 +153,6 @@ A presidential adviser’s seat, a vote on an executive’s pay, a question abou
   overlay: {kind: quote, source: fortune-2025-02-13-griffin-musk-doge, quote: "Absolutely. But he doesn’t have a lot of time. As a taxpayer, I’m so appreciative.", caption: "Ken Griffin, UBS Financial Services Conference, February 2025, as reported by Fortune"}
   narration: "**Griffin on Musk.** At a UBS conference in Key Biscayne, Florida, in February 2025, Griffin thanked Musk “from the bottom of my heart” for his federal DOGE cuts. He said bureaucrats knew only how to spend taxpayers’ money. “Is he breaking a lot of glass?” he asked, answering: “Absolutely. But he doesn’t have a lot of time. As a taxpayer, I’m so appreciative.” Fortune reported cuts to education, foreign aid and diversity initiatives, and said DOGE had supplied no evidence for its claimed daily savings. Griffin also warned that Trump’s tariffs damaged trust in the U.S. as a trading partner. His praise gave Musk’s cuts public backing while his tariff warning challenged another administration policy."
   duration: 15
-
-- shot: "fink-and-musk-in-person"
-  view: "graph"
-  focus: "fink-musk-davos-conversation-2026-01-22"
-  time: "2026-01-22"
-  reveal: [saudi-us-investment-forum-lunch-2025-05-13, fink-musk-davos-conversation-2026-01-22, state-dinner-for-xi-jinping-2026-09-24, larry-fink, elon-musk, world-economic-forum]
-  reveal_claims: [saudi-us-investment-forum-lunch-2025-05-13#c1, saudi-us-investment-forum-lunch-2025-05-13#c2, fink-musk-davos-conversation-2026-01-22#c1, fink-musk-davos-conversation-2026-01-22#c2, state-dinner-for-xi-jinping-2026-09-24#c1, state-dinner-for-xi-jinping-2026-09-24#c2, larry-fink#c10]
-  overlay: {kind: quote, source: wef-2026-01-22-musk-fink, quote: "I mean, there's so many myths around Elon Musk. I could tell you he's a great friend. And I constantly learn so much from him.", caption: "Larry Fink, closing the Davos session, 22 January 2026, World Economic Forum transcript"}
-  narration: "**Fink and Musk, in person.** At Davos on 22 January 2026, Fink, the World Economic Forum’s interim co-chair, chose to question Musk about AI, robotics, energy and space. He said Musk’s experience executing such projects was why the conversation mattered, then closed by calling him “a great friend.” On 13 May 2025 Fox Business saw both at the Saudi royal court in Riyadh ahead of lunch with Trump and listed both as investment-forum speakers. On 24 September 2026 both appeared on the White House invitee list for Xi Jinping’s state dinner; Griffin appeared on none of these lists. Fink’s questions had given Musk a Davos stage to explain his companies’ ambitions."
-  duration: 22
 
 - shot: "a-filing-not-a-finding"
   view: "graph"
@@ -206,6 +185,27 @@ A presidential adviser’s seat, a vote on an executive’s pay, a question abou
   overlay: {kind: "quote", source: "de-supreme-2025-12-19-tesla", quote: "total rescission leaves Musk uncompensated for his time and efforts over a period of six years.", caption: "Delaware Supreme Court’s reason for reversing rescission, 19 December 2025"}
   narration: "**The court’s last word, for now.** Musk appealed after Delaware’s Court of Chancery rescinded his 2018 award in January 2024, finding the directors failed to prove it entirely fair. That December it refused to give the shareholders’ second vote effect. The shareholder argued rescission would reverse 8% dilution of Tesla’s shares. Musk and the directors argued that undoing the award could not return the six years he had spent meeting its milestones. On 19 December 2025 the Supreme Court agreed that rescission could not restore the parties’ earlier positions. The Justices had varying views on liability and left that question undecided; they reinstated the plan and awarded the shareholder plaintiff $1 in nominal damages."
   duration: 20
+
+- shot: "money-and-a-partnership"
+  view: "graph"
+  lens: "money"
+  focus: "xai"
+  time: "2026-02-02"
+  reveal: [blackrock, xai, ai-infrastructure-partnership, microsoft, spacex, elon-musk]
+  reveal_claims: [blackrock#c10, blackrock#c11, xai#c1, microsoft#c8, spacex#c1, elon-musk#c19]
+  overlay: {kind: quote, source: blackrock-2025-03-19-aip, quote: "AI has the potential to transform the global economy if we can build the necessary infrastructure to support it.", caption: "Larry Fink, BlackRock press release, 19 March 2025"}
+  narration: "**Money and a partnership.** In March 2025 Fink welcomed xAI into the AI Infrastructure Partnership announced by BlackRock, Microsoft and MGX. AI needed infrastructure, he said; combining expertise with private capital created “unique investment opportunities for our clients.” Musk’s xAI had named BlackRock among investors in its $6 billion Series C in December 2024, without specifying its contribution or naming either man personally. In February 2026 SpaceX acquired xAI; explaining the deal, Musk said he expected computing in space to become cheaper within two to three years. The investment and partnership now connected BlackRock to a company inside SpaceX."
+  duration: 20
+
+- shot: "fink-and-musk-in-person"
+  view: "graph"
+  focus: "fink-musk-davos-conversation-2026-01-22"
+  time: "2026-01-22"
+  reveal: [saudi-us-investment-forum-lunch-2025-05-13, fink-musk-davos-conversation-2026-01-22, state-dinner-for-xi-jinping-2026-09-24, larry-fink, elon-musk, world-economic-forum]
+  reveal_claims: [saudi-us-investment-forum-lunch-2025-05-13#c1, saudi-us-investment-forum-lunch-2025-05-13#c2, fink-musk-davos-conversation-2026-01-22#c1, fink-musk-davos-conversation-2026-01-22#c2, state-dinner-for-xi-jinping-2026-09-24#c1, state-dinner-for-xi-jinping-2026-09-24#c2, larry-fink#c10]
+  overlay: {kind: quote, source: wef-2026-01-22-musk-fink, quote: "I mean, there's so many myths around Elon Musk. I could tell you he's a great friend. And I constantly learn so much from him.", caption: "Larry Fink, closing the Davos session, 22 January 2026, World Economic Forum transcript"}
+  narration: "**Fink and Musk, in person.** At Davos on 22 January 2026, Fink, the World Economic Forum’s interim co-chair, chose to question Musk about AI, robotics, energy and space. He said Musk’s experience executing such projects was why the conversation mattered, then closed by calling him “a great friend.” On 13 May 2025 Fox Business saw both at the Saudi royal court in Riyadh ahead of lunch with Trump and listed both as investment-forum speakers. On 24 September 2026 both appeared on the White House invitee list for Xi Jinping’s state dinner; Griffin appeared on none of these lists. Fink’s questions had given Musk a Davos stage to explain his companies’ ambitions."
+  duration: 22
 
 - shot: "what-the-record-shows"
   view: "graph"
