@@ -25,6 +25,16 @@ Most lines come from agency and Justice Department records of court cases, lobby
   narration: "**Seize control.** On 10 October 1988 Vito Russo delivered his Why We Fight speech outside the Department of Health and Human Services in Washington; the next day ACT UP activists went to the FDA’s headquarters in Rockville, Maryland, demanding faster research and approval of AIDS drugs. ACT UP counts about 1,500 people; the FDA says hundreds surrounded its building. In the agency’s own history, the activists believed its approval process was keeping treatments from patients and costing lives. The FDA credits their protest with pushing it to write accelerated approval rules, opening another route to treatment for desperately ill patients."
   duration: 13
 
+- shot: what-an-agency-can-be
+  view: graph
+  focus: thalidomide-review-1960
+  time: "1960"
+  reveal: [thalidomide-review-1960, frances-kelsey, thalidomide, drug-amendments-of-1962, fda]
+  reveal_claims: [thalidomide-review-1960#c1, thalidomide-review-1960#c2, thalidomide-review-1960#c3, thalidomide-review-1960#c4, frances-kelsey#c1]
+  overlay: {kind: quote, source: fda-exhibit-frances-oldham-kelsey, quote: "Dr. Kelsey, despite constant pressure from the company, refused to approve the application because of its inadequate evidence.", caption: "FDA history exhibit on Frances Oldham Kelsey"}
+  narration: "**Thalidomide.** In 1960 Frances Kelsey joined the FDA’s handful of medical officers and received a thalidomide application: the drug was already sold in dozens of countries. The company kept sending what it called proof of safety, but, in the FDA’s history, Kelsey insisted on scientifically reliable evidence and refused approval despite constant pressure. About a year later researchers in Germany and Australia linked thalidomide to severe birth defects affecting thousands of babies. It was never marketed in the U.S. Her refusal helped avert that disaster, and the near miss helped bring the 1962 Drug Amendments; prescription-drug fees arrived only in 1992, three decades after her decision to keep asking for evidence."
+  duration: 13
+
 - shot: a-trash-can
   view: map
   camera: {center: [-76.6122, 39.2904], zoom: 10.4, pitch: 30, duration: 6}
@@ -76,45 +86,14 @@ Most lines come from agency and Justice Department records of court cases, lobby
   narration: "**A fee for speed.** In 1992 Commissioner David Kessler faced an FDA that said it could not afford more reviewers; median drug approvals had taken 29 months in the late 1980s. Manufacturers feared fees would go to the Treasury to reduce debt; they also argued that delays kept them from recovering research costs, the Congressional Research Service reports. Kessler secured their support by accepting review-time targets and promising fees would supplement tax funding. Congress enacted PDUFA on 29 October, declaring prompt approval of safe, effective drugs critical to public health; C. Michael White later linked the law to AIDS protests. The FDA gained the funding route it had sought for decades, initially for new drugs; generic makers would not pay fees until fiscal 2013."
   duration: 13
 
-- shot: a-tenth-to-three-quarters
+- shot: the-label
   view: graph
-  focus: fda
-  time: "2025"
-  reveal: [fda, fda-pdufa-financial-report-fy2025, congressional-research-service, crs-pdufa-vi-report-2017, crs-user-fee-programs-in-brief-2017]
-  reveal_claims: [fda#c12, congressional-research-service#c1, congressional-research-service#c2]
-  overlay: {kind: stat, value: "9.7% to 64.7%", label: "Industry fees as a share of the FDA’s human drugs program, 1994 to 2016 (CRS table of FDA budget figures)", source: crs-r44864-pdufa-2017-reauthorization, quote: "In the first year of PDUFA contributions to the FDA budget, user fee revenue accounted for 9.7% of the Human Drugs total program level. By FY2016, user fee revenue increased to 64.7% of the Human Drugs program"}
-  narration: "**Three-quarters of the review program.** In 1992 Kessler promised manufacturers that fees would supplement tax funding; in 2025 FDA officials still had to meet that spending condition before using fees. The scale had changed: the Congressional Research Service puts fees at 9.7% of the human drugs program in 1994 and 64.7% in 2016, including generic and biosimilar fees from 2013. For the narrower drug-review program, CRS gives 56% of costs in 2007 and 72% in 2016; the FDA’s 2025 report gives 74%, 76%, 74%, 78% and 77% of obligations for 2021–25, rounding two years differently from earlier reports. These are different measures, and fees remain restricted to review costs. By 2016 they supported 3,351 full-time-equivalent employees in the human drugs program, making renewal legislation “must-pass” in the CRS’s description."
-  duration: 13
-
-- shot: every-five-years
-  view: graph
-  focus: pdufa-vii-goals-letter
-  time: "2022"
-  reveal: [pdufa-vii-goals-letter, fda, c-michael-white, asbmb-today-why-is-the-fda-funded, congressional-research-service, crs-pdufa-vi-report-2017, crs-user-fee-programs-in-brief-2017]
-  reveal_claims: [fda#c11, c-michael-white#c1, congressional-research-service#c1, congressional-research-service#c2]
-  overlay: {kind: quote, source: asbmb-2021-why-is-the-fda-funded-in-part-by-the-companies-it-regulates, quote: "In 1987, it took 29 months from the time a new drug application was filed by the manufacturer for the FDA to decide whether to approve a medication in the U.S. In 2014, it only took 13 months and by 2018, it was down to 10 months.", caption: "C. Michael White, University of Connecticut, in ASBMB Today, 2021"}
-  narration: "**Every five years.** In 2021 pharmacist C. Michael White questioned a bargain due for renewal in 2022: were patients getting faster treatment at the cost of safety? He credited fees with cutting reviews to 10 months by 2018, but cited a study in which 21% of drugs approved before PDUFA were later withdrawn or given boxed warnings, against 27% after. White suggested senior officials overturning scientists’ recommendations and lower approval burdens as possible reasons for more safety problems emerging after approval. CRS reported the general view that PDUFA had succeeded through more reviewers and shorter waits, alongside critics’ fears for scientists’ impartiality. Every five years FDA officials must negotiate again with industry, publish minutes, invite public comment and meet patient groups monthly: each renewal puts the terms back before Congress."
-  duration: 13
-
-- shot: across-the-atlantic
-  view: map
-  camera: {center: [4.9041, 52.3676], zoom: 9.6, pitch: 30, duration: 6}
-  places: [amsterdam]
-  time: "2026"
-  reveal: [european-medicines-agency, amsterdam]
-  reveal_claims: [european-medicines-agency#c1]
-  overlay: {kind: stat, value: "91.5%", label: "Share of the European Medicines Agency’s 2026 budget that comes from fees and charges", source: ema-funding, quote: "Around 91.5% of the Agency’s budget derives from fees and charges, 8.2% from the European Union (EU) contribution for public-health issues and 0.2% from other sources."}
-  narration: "**Across the Atlantic.** In Amsterdam, the European Medicines Agency plans to pay national regulators €240.4 million in 2026. The EMA says it compensates them because they evaluate applications and supply staff for its scientific committees, working groups and other activities. To fund reviews, scientific advice, inspections and safety monitoring throughout a medicine’s life, the agency charges companies fees. For 2026, it budgets €615.5 million: 91.5% from fees and charges and 8.2% from the EU. These figures cover an entire agency, a broader measure than the FDA’s drug-review figures. The EMA’s stated reason for sending money to national authorities is to pay for the work of the people evaluating medicines across Europe."
-  duration: 13
-
-- shot: the-most-of-any-industry
-  view: graph
-  focus: phrma
-  time: "2023"
-  reveal: [phrma, olivier-wouters, lobbying-expenditures-study-jama-2020, phrma-lobbying-reports-2009, phrma-lobbying-reports-2015, phrma-lobbying-reports-2019, phrma-lobbying-reports-2022, phrma-lobbying-reports-2023]
-  reveal_claims: [olivier-wouters#c1, phrma#c1, phrma#c2, phrma#c3, phrma#c4, phrma#c5]
-  overlay: {kind: stat, value: "$4.7 billion", label: "Federal lobbying reported by the pharmaceutical and health product industry, 1999 to 2018, in 2018 dollars: the most of any industry", source: wouters-2020-lobbying-pharmaceutical-industry, quote: "the pharmaceutical and health product industry recorded the highest spending of all industries ($4.7 billion [7.3%])"}
-  narration: "**The most of any industry.** On 20 July 2022 Paul J. Larsen signed PhRMA’s quarterly lobbying disclosure, listing PDUFA renewal among its issues before Congress. The wider drug and health-product industry reported $4.7 billion in federal lobbying from 1999 to 2018, the most of any industry, Olivier Wouters found using OpenSecrets data adjusted to 2018 dollars. Wouters reports a concrete bargain: PhRMA and the American Medical Association supported the Affordable Care Act only after commitments from the Obama administration and Senator Max Baucus against Canadian drug imports, Medicare drug-price negotiation and reductions in Medicare physician payments. Drug makers secured protections against cheaper imports and government price bargaining; doctors secured protection for their Medicare payments. Their support for reform came with terms protecting their separate interests."
+  focus: oxycontin-approval-1995
+  time: "1995"
+  reveal: [oxycontin-approval-1995, oxycontin, curtis-wright, purdue-pharma, fda, david-kessler]
+  reveal_claims: [oxycontin-approval-1995#c1, oxycontin-approval-1995#c2, oxycontin-approval-1995#c3, oxycontin-approval-1995#c4, curtis-wright#c1, curtis-wright#c2, david-kessler#c2, purdue-pharma#c1]
+  overlay: {kind: quote, source: new-yorker-2017-keefe-family-that-built-an-empire-of-pain, quote: "I found out pretty fast that it wasn’t true.", caption: "Former Purdue salesman Steven May on the label’s reassurance about abuse, speaking to Patrick Radden Keefe, The New Yorker, 2017"}
+  narration: "**The label.** In 1995 Curtis Wright oversaw the FDA review that let Purdue sell OxyContin with a label saying its delayed absorption “is believed to reduce the abuse liability”. Purdue had run no clinical studies of its addictiveness or potential for abuse, Patrick Radden Keefe reports; Commissioner David Kessler later said he was “not involved in the approval”. Wright left the agency shortly afterward and joined Purdue within two years. An internal 1995 launch memo said Purdue did “not want to niche” OxyContin just for cancer pain. Salesman Steven May later recalled believing he was helping millions in pain; when doctors raised addiction, he recited the label’s reassurance. “I found out pretty fast that it wasn’t true.” The approved wording had become a sales answer to doctors’ fears."
   duration: 13
 
 - shot: tauzin-and-phrma
@@ -127,24 +106,14 @@ Most lines come from agency and Justice Department records of court cases, lobby
   narration: "**Tauzin and PhRMA.** Billy Tauzin helped draft the Medicare drug benefit, signed on 8 December 2003, with its bar on federal interference in price negotiations. NBC called the law “a boon” to drug makers and reported PhRMA pursued the Energy and Commerce chairman that December and Nancy Pelosi called his consideration “inappropriate”; his aide dated the first approach to mid-January 2004. Named PhRMA president in December 2004 at a reported $1 million–$2 million yearly, Tauzin denied any link to the bill or talks while working on it. Recovering from cancer, he said: “I realized that I wanted to work in an industry whose mission is no less than saving and enhancing lives”. NBC reported watchdogs agreed even the conduct he denied would have broken no laws; he began representing drug makers the day after leaving Congress."
   duration: 13
 
-- shot: the-cosmetics-law
+- shot: vioxx
   view: graph
-  focus: modernization-of-cosmetics-regulation-act
-  time: "2022-12-29"
-  reveal: [modernization-of-cosmetics-regulation-act, consolidated-appropriations-act-2023, personal-care-products-council, pcpc-lobbying-reports-2022, lezlee-westine, dianne-feinstein, personal-care-products-safety-act, us-congress]
-  reveal_claims: [modernization-of-cosmetics-regulation-act#c4, personal-care-products-council#c1, lezlee-westine#c1, dianne-feinstein#c2, dianne-feinstein#c2, dianne-feinstein#c2, dianne-feinstein#c2, us-congress#c24]
-  overlay: {kind: quote, source: fda-mocra-page, quote: "Neither the law nor FDA regulations require specific tests to demonstrate the safety of individual products or ingredients.", caption: "FDA’s page on the Modernization of Cosmetics Regulation Act"}
-  narration: "**The cosmetics law.** Senator Dianne Feinstein’s 2015 cosmetics bill proposed charging industry fees for stronger oversight; it received a hearing, but neither it nor three later versions passed on its own. The 2021 version also proposed fees. On 29 December 2022, Congress’s spending bill finally carried the Modernization of Cosmetics Regulation Act into law, authorizing $14.2 million for 2023 without an industry fee. Lezlee Westine, the Personal Care Products Council’s chief, welcomed what she called a “truly historic moment” after more than a decade, saying reform would strengthen consumer trust. The FDA called it its most significant expansion of cosmetics powers since 1938: it could now order mandatory recalls."
-  duration: 13
-
-- shot: council-reports
-  view: graph
-  focus: modernization-of-cosmetics-regulation-act
-  time: "2022-12-29"
-  reveal: [modernization-of-cosmetics-regulation-act, consolidated-appropriations-act-2023, personal-care-products-council, pcpc-lobbying-reports-2022, lezlee-westine, dianne-feinstein, personal-care-products-safety-act, us-congress]
-  reveal_claims: [modernization-of-cosmetics-regulation-act#c4, personal-care-products-council#c1, lezlee-westine#c1, dianne-feinstein#c2, dianne-feinstein#c2, dianne-feinstein#c2, dianne-feinstein#c2, us-congress#c24]
-  overlay: {kind: quote, source: cosmetics-business-2023-us-bodies-welcome-mocra, quote: "We entered this process advocating for well-crafted, science-based federal reforms to enhance our industry’s ability to innovate and to modernise regulation that has largely been unchanged for 80 years", caption: "Karin Ross, the council’s executive vice president of government affairs, after MoCRA became law"}
-  narration: "**Council reports.** In 2022 Karin Ross lobbied for the Personal Care Products Council; after the cosmetics law passed, she explained the council’s aim: “to enhance our industry’s ability to innovate and to modernise regulation that has largely been unchanged for 80 years”. The council reported $1.55 million in lobbying expenses across all issues that year, naming both MoCRA and bills such as the No PFAS in Cosmetics Act. Ross’s statement supplies the council’s position on reform. The FDA says neither the law nor its regulations require specific tests for individual products or ingredients. Companies can choose how to substantiate safety, but must maintain records supporting adequate safety substantiation, with data derived from scientifically robust methods."
+  focus: vioxx
+  time: "2004-11-18"
+  reveal: [vioxx, merck, vioxx-withdrawal-2004, vioxx-senate-hearing-2004, david-graham, senate-finance-committee, graham-testimony-2004]
+  reveal_claims: [merck#c1, vioxx-withdrawal-2004#c1, vioxx-withdrawal-2004#c2, vioxx-senate-hearing-2004#c1, vioxx-senate-hearing-2004#c2, vioxx-senate-hearing-2004#c3, david-graham#c1, david-graham#c2]
+  overlay: {kind: quote, source: graham-2004-11-18-senate-finance-testimony, quote: "I would argue that the FDA, as currently configured, is incapable of protecting America against another Vioxx.", caption: "David Graham, FDA drug-safety scientist, to the Senate Finance Committee, 18 November 2004"}
+  narration: "**Vioxx.** Before the Senate Finance Committee on 18 November 2004, FDA scientist David Graham described being threatened with exclusion from a conference unless he changed his Vioxx conclusions. He said an internal email argued that because the FDA was not contemplating a high-dose warning, he should change his conclusions. Merck had voluntarily withdrawn the drug on 30 September over heart-attack and stroke risks, five years after its May 1999 approval. Graham estimated nearly 28,000 excess heart attacks or sudden deaths from his study, or 88,000–139,000 using Merck’s trial risks; he said 30–40% probably died. He accused the drug center of treating industry as its client. He brought Congress a warning: the agency, as configured, could not protect Americans against another Vioxx."
   duration: 13
 
 - shot: jobs-after-the-agency
@@ -167,26 +136,6 @@ Most lines come from agency and Justice Department records of court cases, lobby
   narration: "**After the panel.** In 2018 Charles Piller followed the money after doctors finished voting on FDA advisory panels. His investigation, described in Medical Xpress, examined federal payment records for 2013–16: 26 of 107 physician advisers later received more than $100,000 from makers of drugs they reviewed or competitors, in earnings or research support. Oncologist Vinay Prasad saw a career incentive: “It's in their best interest to play nice with the companies.” He also cautioned that the payments might not be quid pro quo. Piller urged the FDA to tighten restrictions on work after service, moving the question from advisers’ interests when they voted to the money that followed."
   duration: 13
 
-- shot: what-the-agency-says
-  view: graph
-  focus: fda
-  time: "2023"
-  reveal: [fda, fda-advisory-committee-report-fy2023]
-  reveal_claims: [fda#c13]
-  overlay: {kind: quote, source: usc-18-207-post-employment-restrictions, quote: "knowingly makes, with the intent to influence, any communication to or appearance before any officer or employee of any department, agency, court, or court-martial of the United States or the District of Columbia, on behalf of any other person", caption: "18 U.S.C. 207(a)(2): the first of its conditions, within 2 years of leaving federal service"}
-  narration: "**What the agency says it does.** In fiscal 2023 FDA officials granted 23 conflict-of-interest waivers, allowing advisers to participate despite financial interests; the agency counted them at under 3 percent of meeting participants. Under its stated rule, an official must judge that the need for an adviser’s services outweighs the potential conflict and publish both the interest and the reason before the meeting. Those disclosures concern the moment of service. After leaving government, officials can take industry jobs, but federal law bars certain contacts for two years on another’s behalf about particular matters previously under their responsibility. The restriction follows them into their next job, limiting how they can approach their former colleagues."
-  duration: 13
-
-- shot: the-label
-  view: graph
-  focus: oxycontin-approval-1995
-  time: "1995"
-  reveal: [oxycontin-approval-1995, oxycontin, curtis-wright, purdue-pharma, fda, david-kessler]
-  reveal_claims: [oxycontin-approval-1995#c1, oxycontin-approval-1995#c2, oxycontin-approval-1995#c3, oxycontin-approval-1995#c4, curtis-wright#c1, curtis-wright#c2, david-kessler#c2, purdue-pharma#c1]
-  overlay: {kind: quote, source: new-yorker-2017-keefe-family-that-built-an-empire-of-pain, quote: "I found out pretty fast that it wasn’t true.", caption: "Former Purdue salesman Steven May on the label’s reassurance about abuse, speaking to Patrick Radden Keefe, The New Yorker, 2017"}
-  narration: "**The label.** In 1995 Curtis Wright oversaw the FDA review that let Purdue sell OxyContin with a label saying its delayed absorption “is believed to reduce the abuse liability”. Purdue had run no clinical studies of its addictiveness or potential for abuse, Patrick Radden Keefe reports; Commissioner David Kessler later said he was “not involved in the approval”. Wright left the agency shortly afterward and joined Purdue within two years. An internal 1995 launch memo said Purdue did “not want to niche” OxyContin just for cancer pain. Salesman Steven May later recalled believing he was helping millions in pain; when doctors raised addiction, he recited the label’s reassurance. “I found out pretty fast that it wasn’t true.” The approved wording had become a sales answer to doctors’ fears."
-  duration: 13
-
 - shot: two-pleas
   view: graph
   focus: purdue-pharma
@@ -197,14 +146,34 @@ Most lines come from agency and Justice Department records of court cases, lobby
   narration: "**Two pleas.** In Newark on 24 November 2020 prosecutor Rachael Honig said Purdue Pharma admitted marketing opioids to providers it had reason to believe were diverting them to abusers. Purdue admitted facilitating dispensing without legitimate medical purpose, lying to the DEA to increase quotas, and kickbacks to doctors and health-records company Practice Fusion to induce prescriptions and referrals. It pleaded guilty to three felonies. In 2007 Purdue Frederick had pleaded guilty to felony misbranding with intent to defraud and mislead; FDA investigators found it trained salespeople to call OxyContin less addictive than other opioids; it agreed to pay $600 million. In 2020 Purdue agreed to a $3.544 billion criminal fine, $2 billion forfeiture and a $2.8 billion unsecured bankruptcy claim; the civil allegations carried no determination of liability. The bankruptcy court approved the financial terms."
   duration: 13
 
-- shot: vioxx
+- shot: every-five-years
   view: graph
-  focus: vioxx
-  time: "2004-11-18"
-  reveal: [vioxx, merck, vioxx-withdrawal-2004, vioxx-senate-hearing-2004, david-graham, senate-finance-committee, graham-testimony-2004]
-  reveal_claims: [merck#c1, vioxx-withdrawal-2004#c1, vioxx-withdrawal-2004#c2, vioxx-senate-hearing-2004#c1, vioxx-senate-hearing-2004#c2, vioxx-senate-hearing-2004#c3, david-graham#c1, david-graham#c2]
-  overlay: {kind: quote, source: graham-2004-11-18-senate-finance-testimony, quote: "I would argue that the FDA, as currently configured, is incapable of protecting America against another Vioxx.", caption: "David Graham, FDA drug-safety scientist, to the Senate Finance Committee, 18 November 2004"}
-  narration: "**Vioxx.** Before the Senate Finance Committee on 18 November 2004, FDA scientist David Graham described being threatened with exclusion from a conference unless he changed his Vioxx conclusions. He said an internal email argued that because the FDA was not contemplating a high-dose warning, he should change his conclusions. Merck had voluntarily withdrawn the drug on 30 September over heart-attack and stroke risks, five years after its May 1999 approval. Graham estimated nearly 28,000 excess heart attacks or sudden deaths from his study, or 88,000–139,000 using Merck’s trial risks; he said 30–40% probably died. He accused the drug center of treating industry as its client. He brought Congress a warning: the agency, as configured, could not protect Americans against another Vioxx."
+  focus: pdufa-vii-goals-letter
+  time: "2022"
+  reveal: [pdufa-vii-goals-letter, fda, c-michael-white, asbmb-today-why-is-the-fda-funded, congressional-research-service, crs-pdufa-vi-report-2017, crs-user-fee-programs-in-brief-2017]
+  reveal_claims: [fda#c11, c-michael-white#c1, congressional-research-service#c1, congressional-research-service#c2]
+  overlay: {kind: quote, source: asbmb-2021-why-is-the-fda-funded-in-part-by-the-companies-it-regulates, quote: "In 1987, it took 29 months from the time a new drug application was filed by the manufacturer for the FDA to decide whether to approve a medication in the U.S. In 2014, it only took 13 months and by 2018, it was down to 10 months.", caption: "C. Michael White, University of Connecticut, in ASBMB Today, 2021"}
+  narration: "**Every five years.** In 2021 pharmacist C. Michael White questioned a bargain due for renewal in 2022: were patients getting faster treatment at the cost of safety? He credited fees with cutting reviews to 10 months by 2018, but cited a study in which 21% of drugs approved before PDUFA were later withdrawn or given boxed warnings, against 27% after. White suggested senior officials overturning scientists’ recommendations and lower approval burdens as possible reasons for more safety problems emerging after approval. CRS reported the general view that PDUFA had succeeded through more reviewers and shorter waits, alongside critics’ fears for scientists’ impartiality. Every five years FDA officials must negotiate again with industry, publish minutes, invite public comment and meet patient groups monthly: each renewal puts the terms back before Congress."
+  duration: 13
+
+- shot: the-cosmetics-law
+  view: graph
+  focus: modernization-of-cosmetics-regulation-act
+  time: "2022-12-29"
+  reveal: [modernization-of-cosmetics-regulation-act, consolidated-appropriations-act-2023, personal-care-products-council, pcpc-lobbying-reports-2022, lezlee-westine, dianne-feinstein, personal-care-products-safety-act, us-congress]
+  reveal_claims: [modernization-of-cosmetics-regulation-act#c4, personal-care-products-council#c1, lezlee-westine#c1, dianne-feinstein#c2, dianne-feinstein#c2, dianne-feinstein#c2, dianne-feinstein#c2, us-congress#c24]
+  overlay: {kind: quote, source: fda-mocra-page, quote: "Neither the law nor FDA regulations require specific tests to demonstrate the safety of individual products or ingredients.", caption: "FDA’s page on the Modernization of Cosmetics Regulation Act"}
+  narration: "**The cosmetics law.** Senator Dianne Feinstein’s 2015 cosmetics bill proposed charging industry fees for stronger oversight; it received a hearing, but neither it nor three later versions passed on its own. The 2021 version also proposed fees. On 29 December 2022, Congress’s spending bill finally carried the Modernization of Cosmetics Regulation Act into law, authorizing $14.2 million for 2023 without an industry fee. Lezlee Westine, the Personal Care Products Council’s chief, welcomed what she called a “truly historic moment” after more than a decade, saying reform would strengthen consumer trust. The FDA called it its most significant expansion of cosmetics powers since 1938: it could now order mandatory recalls."
+  duration: 13
+
+- shot: council-reports
+  view: graph
+  focus: modernization-of-cosmetics-regulation-act
+  time: "2022-12-29"
+  reveal: [modernization-of-cosmetics-regulation-act, consolidated-appropriations-act-2023, personal-care-products-council, pcpc-lobbying-reports-2022, lezlee-westine, dianne-feinstein, personal-care-products-safety-act, us-congress]
+  reveal_claims: [modernization-of-cosmetics-regulation-act#c4, personal-care-products-council#c1, lezlee-westine#c1, dianne-feinstein#c2, dianne-feinstein#c2, dianne-feinstein#c2, dianne-feinstein#c2, us-congress#c24]
+  overlay: {kind: quote, source: cosmetics-business-2023-us-bodies-welcome-mocra, quote: "We entered this process advocating for well-crafted, science-based federal reforms to enhance our industry’s ability to innovate and to modernise regulation that has largely been unchanged for 80 years", caption: "Karin Ross, the council’s executive vice president of government affairs, after MoCRA became law"}
+  narration: "**Council reports.** In 2022 Karin Ross lobbied for the Personal Care Products Council; after the cosmetics law passed, she explained the council’s aim: “to enhance our industry’s ability to innovate and to modernise regulation that has largely been unchanged for 80 years”. The council reported $1.55 million in lobbying expenses across all issues that year, naming both MoCRA and bills such as the No PFAS in Cosmetics Act. Ross’s statement supplies the council’s position on reform. The FDA says neither the law nor its regulations require specific tests for individual products or ingredients. Companies can choose how to substantiate safety, but must maintain records supporting adequate safety substantiation, with data derived from scientifically robust methods."
   duration: 13
 
 - shot: aduhelm
@@ -217,13 +186,44 @@ Most lines come from agency and Justice Department records of court cases, lobby
   narration: "**Aduhelm.** In December 2022 Democratic House chairs Carolyn Maloney and Frank Pallone released their investigation of Biogen’s Alzheimer’s drug. FDA officials had granted accelerated approval in June 2021 after advisers declined to recommend traditional approval; Roll Call says the accelerated route was never put to them. The chairs found at least 115 FDA–Biogen contacts in 12 months and a jointly written panel briefing. Biogen cited an FDA internal review finding pre-filing interactions appropriate; the FDA said its review found officials acted appropriately and defended frequent contact as necessary to informed decisions. The chairs published Biogen’s internal board presentation declaring “Our ambition is to make history” and its $56,000 annual price. Maloney said transparency was necessary to earn public trust and hoped for reform; approval was withdrawn on 1 November 2024."
   duration: 13
 
-- shot: what-an-agency-can-be
+- shot: the-most-of-any-industry
   view: graph
-  focus: thalidomide-review-1960
-  time: "1960"
-  reveal: [thalidomide-review-1960, frances-kelsey, thalidomide, drug-amendments-of-1962, fda]
-  reveal_claims: [thalidomide-review-1960#c1, thalidomide-review-1960#c2, thalidomide-review-1960#c3, thalidomide-review-1960#c4, frances-kelsey#c1]
-  overlay: {kind: quote, source: fda-exhibit-frances-oldham-kelsey, quote: "Dr. Kelsey, despite constant pressure from the company, refused to approve the application because of its inadequate evidence.", caption: "FDA history exhibit on Frances Oldham Kelsey"}
-  narration: "**Thalidomide.** In 1960 Frances Kelsey joined the FDA’s handful of medical officers and received a thalidomide application: the drug was already sold in dozens of countries. The company kept sending what it called proof of safety, but, in the FDA’s history, Kelsey insisted on scientifically reliable evidence and refused approval despite constant pressure. About a year later researchers in Germany and Australia linked thalidomide to severe birth defects affecting thousands of babies. It was never marketed in the U.S. Her refusal helped avert that disaster, and the near miss helped bring the 1962 Drug Amendments; prescription-drug fees arrived only in 1992, three decades after her decision to keep asking for evidence."
+  focus: phrma
+  time: "2023"
+  reveal: [phrma, olivier-wouters, lobbying-expenditures-study-jama-2020, phrma-lobbying-reports-2009, phrma-lobbying-reports-2015, phrma-lobbying-reports-2019, phrma-lobbying-reports-2022, phrma-lobbying-reports-2023]
+  reveal_claims: [olivier-wouters#c1, phrma#c1, phrma#c2, phrma#c3, phrma#c4, phrma#c5]
+  overlay: {kind: stat, value: "$4.7 billion", label: "Federal lobbying reported by the pharmaceutical and health product industry, 1999 to 2018, in 2018 dollars: the most of any industry", source: wouters-2020-lobbying-pharmaceutical-industry, quote: "the pharmaceutical and health product industry recorded the highest spending of all industries ($4.7 billion [7.3%])"}
+  narration: "**The most of any industry.** On 20 July 2022 Paul J. Larsen signed PhRMA’s quarterly lobbying disclosure, listing PDUFA renewal among its issues before Congress. The wider drug and health-product industry reported $4.7 billion in federal lobbying from 1999 to 2018, the most of any industry, Olivier Wouters found using OpenSecrets data adjusted to 2018 dollars. Wouters reports a concrete bargain: PhRMA and the American Medical Association supported the Affordable Care Act only after commitments from the Obama administration and Senator Max Baucus against Canadian drug imports, Medicare drug-price negotiation and reductions in Medicare physician payments. Drug makers secured protections against cheaper imports and government price bargaining; doctors secured protection for their Medicare payments. Their support for reform came with terms protecting their separate interests."
+  duration: 13
+
+- shot: what-the-agency-says
+  view: graph
+  focus: fda
+  time: "2023"
+  reveal: [fda, fda-advisory-committee-report-fy2023]
+  reveal_claims: [fda#c13]
+  overlay: {kind: quote, source: usc-18-207-post-employment-restrictions, quote: "knowingly makes, with the intent to influence, any communication to or appearance before any officer or employee of any department, agency, court, or court-martial of the United States or the District of Columbia, on behalf of any other person", caption: "18 U.S.C. 207(a)(2): the first of its conditions, within 2 years of leaving federal service"}
+  narration: "**What the agency says it does.** In fiscal 2023 FDA officials granted 23 conflict-of-interest waivers, allowing advisers to participate despite financial interests; the agency counted them at under 3 percent of meeting participants. Under its stated rule, an official must judge that the need for an adviser’s services outweighs the potential conflict and publish both the interest and the reason before the meeting. Those disclosures concern the moment of service. After leaving government, officials can take industry jobs, but federal law bars certain contacts for two years on another’s behalf about particular matters previously under their responsibility. The restriction follows them into their next job, limiting how they can approach their former colleagues."
+  duration: 13
+
+- shot: a-tenth-to-three-quarters
+  view: graph
+  focus: fda
+  time: "2025"
+  reveal: [fda, fda-pdufa-financial-report-fy2025, congressional-research-service, crs-pdufa-vi-report-2017, crs-user-fee-programs-in-brief-2017]
+  reveal_claims: [fda#c12, congressional-research-service#c1, congressional-research-service#c2]
+  overlay: {kind: stat, value: "9.7% to 64.7%", label: "Industry fees as a share of the FDA’s human drugs program, 1994 to 2016 (CRS table of FDA budget figures)", source: crs-r44864-pdufa-2017-reauthorization, quote: "In the first year of PDUFA contributions to the FDA budget, user fee revenue accounted for 9.7% of the Human Drugs total program level. By FY2016, user fee revenue increased to 64.7% of the Human Drugs program"}
+  narration: "**Three-quarters of the review program.** In 1992 Kessler promised manufacturers that fees would supplement tax funding; in 2025 FDA officials still had to meet that spending condition before using fees. The scale had changed: the Congressional Research Service puts fees at 9.7% of the human drugs program in 1994 and 64.7% in 2016, including generic and biosimilar fees from 2013. For the narrower drug-review program, CRS gives 56% of costs in 2007 and 72% in 2016; the FDA’s 2025 report gives 74%, 76%, 74%, 78% and 77% of obligations for 2021–25, rounding two years differently from earlier reports. These are different measures, and fees remain restricted to review costs. By 2016 they supported 3,351 full-time-equivalent employees in the human drugs program, making renewal legislation “must-pass” in the CRS’s description."
+  duration: 13
+
+- shot: across-the-atlantic
+  view: map
+  camera: {center: [4.9041, 52.3676], zoom: 9.6, pitch: 30, duration: 6}
+  places: [amsterdam]
+  time: "2026"
+  reveal: [european-medicines-agency, amsterdam]
+  reveal_claims: [european-medicines-agency#c1]
+  overlay: {kind: stat, value: "91.5%", label: "Share of the European Medicines Agency’s 2026 budget that comes from fees and charges", source: ema-funding, quote: "Around 91.5% of the Agency’s budget derives from fees and charges, 8.2% from the European Union (EU) contribution for public-health issues and 0.2% from other sources."}
+  narration: "**Across the Atlantic.** In Amsterdam, the European Medicines Agency plans to pay national regulators €240.4 million in 2026. The EMA says it compensates them because they evaluate applications and supply staff for its scientific committees, working groups and other activities. To fund reviews, scientific advice, inspections and safety monitoring throughout a medicine’s life, the agency charges companies fees. For 2026, it budgets €615.5 million: 91.5% from fees and charges and 8.2% from the EU. These figures cover an entire agency, a broader measure than the FDA’s drug-review figures. The EMA’s stated reason for sending money to national authorities is to pay for the work of the people evaluating medicines across Europe."
   duration: 13
 ```
