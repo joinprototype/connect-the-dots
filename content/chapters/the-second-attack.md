@@ -105,16 +105,6 @@ Johnson and Bush ordered force; sailors, intelligence officers and senators face
   narration: "**The time they had not taken.** On 20 February 1968 Fulbright faced McNamara after three months' staff work found considerable evidence that the patrol aimed to provoke Hanoi and ample grounds to doubt boats were there on 4 August. An interrogation report said a captured North Vietnamese commander strongly denied an attack; Fulbright recalled that Nitze had shown him a supposedly conclusive cable withheld from staff. When McNamara called suggestions of a government plot “monstrous,” Fulbright denied suggesting a conspiracy and said conflicting evidence warranted time to evaluate it: “which we didn't do.” McNamara would still call the evidence convincing in his memoir, while Fulbright's questioning reopened the decision he had helped carry through Congress."
   duration: 13
 
-- shot: what-the-nsa-historian-found
-  view: graph
-  focus: robert-j-hanyok
-  time: "2005"
-  reveal: [robert-j-hanyok, national-security-agency, hanyok-skunks-bogies, gulf-of-tonkin-incident, vietnam-war]
-  reveal_claims: [robert-j-hanyok#c1, gulf-of-tonkin-resolution#c1, vietnam-war#c1]
-  overlay: {kind: quote, source: nsa-hanyok-2001-skunks-bogies, quote: "what was issued in the Gulf of Tonkin summaries beginning late on 4 August was deliberately skewed to support the notion that there had been an attack.", caption: "Robert Hanyok, NSA historian, on what NSA issued, not on the White House"}
-  narration: "**Fifteen out of 122.** Hanyok went back through 122 intercept reports; NSA's defense of the attack had relied on fifteen. He found staff deliberately skewed summaries and kept out nearly 90 percent of the reports, believing an attack had happened and explaining contrary evidence away. He found no support for pressure from above and could not establish who ordered the selection or why; Johnson's speed also remained unclear, though he mentioned a suggestion that the warning offered an excuse to secure a resolution. The selective summaries became the basis for answers to congressional inquiries, so senators asking what had happened received the same narrowed evidence again."
-  duration: 13
-
 - shot: no-doubt
   view: graph
   focus: dick-cheney
@@ -125,14 +115,25 @@ Johnson and Bush ordered force; sailors, intelligence officers and senators face
   narration: "**The risk of waiting.** In Nashville on 26 August 2002, Vice President Dick Cheney told veterans there was no doubt Saddam held weapons of mass destruction. Analysts had told him before the Gulf War that Saddam was five or ten years from a bomb, he recalled, but afterward they learned he had been much closer: “The risks of inaction are far greater than the risk of action.” The Senate committee in 2008 found possession claims generally substantiated by intelligence, but ongoing-production claims more certain than the judgments behind them. Most early and mid-2002 reports left room for doubt about production while senior officials spoke with certainty; Cheney made waiting itself part of the case for action."
   duration: 13
 
-- shot: the-estimate
+- shot: downing-street
+  view: map
+  camera: {center: [-0.1276, 51.5034], zoom: 12.4, pitch: 30, duration: 6}
+  places: [london]
+  time: "2002-07-23"
+  reveal: [downing-street-meeting-2002, downing-street-memo, matthew-rycroft, richard-dearlove, secret-intelligence-service, tony-blair, british-government, london]
+  reveal_claims: [downing-street-meeting-2002#c1, downing-street-meeting-2002#c2, matthew-rycroft#c1, downing-street-meeting-2002#c3, downing-street-meeting-2002#c5, richard-dearlove#c1, downing-street-meeting-2002#c7]
+  overlay: {kind: quote, source: sunday-times-2005-05-01-downing-street-memo, quote: "Bush wanted to remove Saddam, through military action, justified by the conjunction of terrorism and WMD. But the intelligence and facts were being fixed around the policy.", caption: "Matthew Rycroft's minute of the Prime Minister's meeting, 23 July 2002, recording a report by “C”"}
+  narration: "**A minute he would dispute.** Matthew Rycroft's minute records MI6 chief Richard Dearlove reporting on 23 July 2002 that military action was seen as inevitable and intelligence and facts were being fixed around policy. It records Blair saying an Iraqi refusal of inspectors would help politically and legally, and agreement to prepare for British participation, with firm decisions awaiting fuller planning. Dearlove later told the Iraq Inquiry he meant joining terrorism to Iraq and might have said fitted; Rycroft checked his notes and left the minute unchanged. In 2005 Blair denied fixing facts and said they chose the U.N. route to resolve Iraq's weapons issue; Bush denied deciding on force then, saying they sought peace but Saddam ignored the U.N."
+  duration: 13
+
+- shot: 77-to-23
   view: graph
-  focus: ssci-iraq-prewar-report-2004
-  time: "2004-07-09"
-  reveal: [ssci-iraq-prewar-report-2004, senate-select-committee-on-intelligence, cia, george-tenet]
-  reveal_claims: [senate-select-committee-on-intelligence#c3, george-tenet#c1, invasion-of-iraq-2003#c9, george-tenet#c3]
-  overlay: {kind: quote, source: ssci-2004-prewar-iraq, quote: "Most of the major key judgments in the Intelligence Community's October 2002 National Intelligence Estimate (NIE), Iraq's Continuing Programs for Weapons of Mass Destruction, either overstated, or were not supported by, the underlying intelligence reporting.", caption: "Senate Select Committee on Intelligence, July 2004, with additional views"}
-  narration: "**Three weeks for an estimate.** On 9 September 2002 Senator Richard Durbin asked George Tenet for a coordinated assessment of Iraq's weapons and a public summary so Americans could understand the issue. Tenet ordered the estimate; it took three weeks rather than months and reached Congress before the force vote. Energy accepted nuclear rebuilding but doubted the aluminum tubes were for it; State's intelligence bureau rejected the nuclear case. The 2004 Senate investigation sided with State and found major judgments overstated or unsupported, without evidence political pressure caused them. Durbin, Rockefeller and Levin said it failed to explain intense pressure; the CIA ombudsman described his worst hammering in 32 years over terrorism links. Durbin's request had brought lawmakers an estimate whose central judgments the investigation would reject."
+  focus: senate-vote-on-the-iraq-resolution-2002
+  time: "2002-10-10"
+  reveal: [senate-vote-on-the-iraq-resolution-2002, robert-byrd, john-mccain, us-congress, gulf-of-tonkin-resolution, vietnam-war]
+  reveal_claims: [senate-vote-on-the-iraq-resolution-2002#c1, senate-vote-on-the-iraq-resolution-2002#c2, senate-vote-on-the-iraq-resolution-2002#c3, robert-byrd#c1, john-mccain#c2, gulf-of-tonkin-resolution#c1]
+  overlay: {kind: quote, source: crec-2002-10-10-senate, quote: "Mr. President, this is a Tonkin Gulf resolution all over again.", caption: "Senator Robert Byrd, 10 October 2002"}
+  narration: "**Byrd remembers his vote.** On 10 October 2002 Senator Robert Byrd told colleagues preparing to authorize force against Iraq that he had voted on Tonkin thirty-eight years earlier: the administration's claims then were untrue, and senators had learned too late they had not taken enough time. John McCain answered that calling Tonkin the cause of Vietnam's tragedy was simplistic, the resolution was window dressing, and Congress could have stopped the war. This time senators had requested the intelligence estimate before voting, but Byrd's warning failed to stop the authorization: Senate 77 to 23, House 296 to 133. Bush now had congressional authority for the decision that would send troops into Iraq."
   duration: 13
 
 - shot: curveball
@@ -166,25 +167,14 @@ Johnson and Bush ordered force; sailors, intelligence officers and senators face
   narration: "**Powell puts his name to it.** At the U.N. on 5 February 2003, Colin Powell assured the Security Council that every statement rested on solid sources. The day before, a CIA deputy emailed a colleague that “this war's going to happen regardless of what Curve Ball said or didn't say” but said reservations still deserved a warning. A division chief later recalled warning Tenet about problems with the reporting, which Tenet denied; the Senate found no evidence Tenet had been told of the doubts. It also found much CIA material overstated, misleading or incorrect, and said the agency should have warned Powell about biological sources—material he had now presented with his assurance of its reliability attached."
   duration: 13
 
-- shot: painful
+- shot: the-estimate
   view: graph
-  focus: colin-powell
-  time: "2005-09"
-  reveal: [colin-powell, george-tenet, powell-un-address-2003]
-  reveal_claims: [colin-powell#c1, colin-powell#c2]
-  overlay: {kind: quote, source: cbs-2005-09-09-powell-painful, quote: "I'm the one who presented it to the world, and (it) will always be a part of my record. It was painful. It is painful now,", caption: "Colin Powell to Barbara Walters, ABC News, September 2005"}
-  narration: "**His name stays on it.** In September 2005 Powell told ABC's Barbara Walters that presenting the weapons claims had left a “blot” on his record. He said Tenet believed the briefings accurate, but intelligence officers knew some sources were bad and failed to speak up: “That devastated me.” He said he had never seen evidence connecting Baghdad to September 11, yet still supported Bush's decision because the President judged Iraq's continuing violation of U.N. resolutions intolerable. Powell's reason for supporting force survived the collapse of the claims he had delivered, and the U.N. presentation remained, as he put it, “a part of my record.”"
-  duration: 13
-
-- shot: downing-street
-  view: map
-  camera: {center: [-0.1276, 51.5034], zoom: 12.4, pitch: 30, duration: 6}
-  places: [london]
-  time: "2002-07-23"
-  reveal: [downing-street-meeting-2002, downing-street-memo, matthew-rycroft, richard-dearlove, secret-intelligence-service, tony-blair, british-government, london]
-  reveal_claims: [downing-street-meeting-2002#c1, downing-street-meeting-2002#c2, matthew-rycroft#c1, downing-street-meeting-2002#c3, downing-street-meeting-2002#c5, richard-dearlove#c1, downing-street-meeting-2002#c7]
-  overlay: {kind: quote, source: sunday-times-2005-05-01-downing-street-memo, quote: "Bush wanted to remove Saddam, through military action, justified by the conjunction of terrorism and WMD. But the intelligence and facts were being fixed around the policy.", caption: "Matthew Rycroft's minute of the Prime Minister's meeting, 23 July 2002, recording a report by “C”"}
-  narration: "**A minute he would dispute.** Matthew Rycroft's minute records MI6 chief Richard Dearlove reporting on 23 July 2002 that military action was seen as inevitable and intelligence and facts were being fixed around policy. It records Blair saying an Iraqi refusal of inspectors would help politically and legally, and agreement to prepare for British participation, with firm decisions awaiting fuller planning. Dearlove later told the Iraq Inquiry he meant joining terrorism to Iraq and might have said fitted; Rycroft checked his notes and left the minute unchanged. In 2005 Blair denied fixing facts and said they chose the U.N. route to resolve Iraq's weapons issue; Bush denied deciding on force then, saying they sought peace but Saddam ignored the U.N."
+  focus: ssci-iraq-prewar-report-2004
+  time: "2004-07-09"
+  reveal: [ssci-iraq-prewar-report-2004, senate-select-committee-on-intelligence, cia, george-tenet]
+  reveal_claims: [senate-select-committee-on-intelligence#c3, george-tenet#c1, invasion-of-iraq-2003#c9, george-tenet#c3]
+  overlay: {kind: quote, source: ssci-2004-prewar-iraq, quote: "Most of the major key judgments in the Intelligence Community's October 2002 National Intelligence Estimate (NIE), Iraq's Continuing Programs for Weapons of Mass Destruction, either overstated, or were not supported by, the underlying intelligence reporting.", caption: "Senate Select Committee on Intelligence, July 2004, with additional views"}
+  narration: "**Three weeks for an estimate.** On 9 September 2002 Senator Richard Durbin asked George Tenet for a coordinated assessment of Iraq's weapons and a public summary so Americans could understand the issue. Tenet ordered the estimate; it took three weeks rather than months and reached Congress before the force vote. Energy accepted nuclear rebuilding but doubted the aluminum tubes were for it; State's intelligence bureau rejected the nuclear case. The 2004 Senate investigation sided with State and found major judgments overstated or unsupported, without evidence political pressure caused them. Durbin, Rockefeller and Levin said it failed to explain intense pressure; the CIA ombudsman described his worst hammering in 32 years over terrorism links. Durbin's request had brought lawmakers an estimate whose central judgments the investigation would reject."
   duration: 13
 
 - shot: nothing-there
@@ -197,6 +187,26 @@ Johnson and Bush ordered force; sailors, intelligence officers and senators face
   narration: "**What Saddam hoped to keep.** Saddam sought an end to sanctions while preserving capacity to rebuild weapons afterward, the Iraq Survey Group concluded, identifying Iran as his chief reason for wanting that capacity. Investigators searched from June 2003 and described weapons that were not there; the Senate's summary records no nuclear restart, no biological production after 1996 and no chemical caches, though pre-1991 chemical munitions turned up. Iraq had repeatedly lied about earlier programs, the 2004 Senate report noted, while analysts discounted U.N. inspectors who found no germ-weapons work at a suspect site. Saddam's future intentions had coexisted with absent stockpiles, leaving officials defending a war whose promised weapons could not be found."
   duration: 13
 
+- shot: what-the-nsa-historian-found
+  view: graph
+  focus: robert-j-hanyok
+  time: "2005"
+  reveal: [robert-j-hanyok, national-security-agency, hanyok-skunks-bogies, gulf-of-tonkin-incident, vietnam-war]
+  reveal_claims: [robert-j-hanyok#c1, gulf-of-tonkin-resolution#c1, vietnam-war#c1]
+  overlay: {kind: quote, source: nsa-hanyok-2001-skunks-bogies, quote: "what was issued in the Gulf of Tonkin summaries beginning late on 4 August was deliberately skewed to support the notion that there had been an attack.", caption: "Robert Hanyok, NSA historian, on what NSA issued, not on the White House"}
+  narration: "**Fifteen out of 122.** Hanyok went back through 122 intercept reports; NSA's defense of the attack had relied on fifteen. He found staff deliberately skewed summaries and kept out nearly 90 percent of the reports, believing an attack had happened and explaining contrary evidence away. He found no support for pressure from above and could not establish who ordered the selection or why; Johnson's speed also remained unclear, though he mentioned a suggestion that the warning offered an excuse to secure a resolution. The selective summaries became the basis for answers to congressional inquiries, so senators asking what had happened received the same narrowed evidence again."
+  duration: 13
+
+- shot: painful
+  view: graph
+  focus: colin-powell
+  time: "2005-09"
+  reveal: [colin-powell, george-tenet, powell-un-address-2003]
+  reveal_claims: [colin-powell#c1, colin-powell#c2]
+  overlay: {kind: quote, source: cbs-2005-09-09-powell-painful, quote: "I'm the one who presented it to the world, and (it) will always be a part of my record. It was painful. It is painful now,", caption: "Colin Powell to Barbara Walters, ABC News, September 2005"}
+  narration: "**His name stays on it.** In September 2005 Powell told ABC's Barbara Walters that presenting the weapons claims had left a “blot” on his record. He said Tenet believed the briefings accurate, but intelligence officers knew some sources were bad and failed to speak up: “That devastated me.” He said he had never seen evidence connecting Baghdad to September 11, yet still supported Bush's decision because the President judged Iraq's continuing violation of U.N. resolutions intolerable. Powell's reason for supporting force survived the collapse of the claims he had delivered, and the U.N. presentation remained, as he put it, “a part of my record.”"
+  duration: 13
+
 - shot: two-readings
   view: graph
   focus: ssci-iraq-public-statements-report-2008
@@ -207,14 +217,14 @@ Johnson and Bush ordered force; sailors, intelligence officers and senators face
   narration: "**Two senators face the same speeches.** In April 2008 Chairman Jay Rockefeller called claims of an Iraq–al-Qa'ida operational partnership fundamentally misleading; the Senate intelligence committee approved its report 10 to 5. It found partnership claims unsubstantiated and claims that Saddam was ready to give terrorists weapons contradicted by intelligence. Rockefeller wrote that the committee rendered no judgment as to why officials made unsupported statements. Vice Chairman Christopher Bond and the minority dissented, calling it a partisan exercise: policymakers' statements were substantiated, and the intelligence was faulty. Bush had said in 2005 that intelligence services worldwide shared the weapons judgment; the senators' competing conclusions carried the argument over officials' responsibility beyond the search for weapons."
   duration: 13
 
-- shot: 77-to-23
+- shot: what-the-records-separate
   view: graph
-  focus: senate-vote-on-the-iraq-resolution-2002
-  time: "2002-10-10"
-  reveal: [senate-vote-on-the-iraq-resolution-2002, robert-byrd, john-mccain, us-congress, gulf-of-tonkin-resolution, vietnam-war]
-  reveal_claims: [senate-vote-on-the-iraq-resolution-2002#c1, senate-vote-on-the-iraq-resolution-2002#c2, senate-vote-on-the-iraq-resolution-2002#c3, robert-byrd#c1, john-mccain#c2, gulf-of-tonkin-resolution#c1]
-  overlay: {kind: quote, source: crec-2002-10-10-senate, quote: "Mr. President, this is a Tonkin Gulf resolution all over again.", caption: "Senator Robert Byrd, 10 October 2002"}
-  narration: "**Byrd remembers his vote.** On 10 October 2002 Senator Robert Byrd told colleagues preparing to authorize force against Iraq that he had voted on Tonkin thirty-eight years earlier: the administration's claims then were untrue, and senators had learned too late they had not taken enough time. John McCain answered that calling Tonkin the cause of Vietnam's tragedy was simplistic, the resolution was window dressing, and Congress could have stopped the war. This time senators had requested the intelligence estimate before voting, but Byrd's warning failed to stop the authorization: Senate 77 to 23, House 296 to 133. Bush now had congressional authority for the decision that would send troops into Iraq."
+  focus: invasion-of-iraq-2003
+  time: "2008"
+  reveal: [gulf-of-tonkin-incident, invasion-of-iraq-2003, lyndon-b-johnson, robert-mcnamara, george-w-bush]
+  reveal_claims: [george-w-bush#c6, george-w-bush#c7]
+  overlay: {kind: quote, source: bush-2005-12-14-iraqi-elections, quote: "the intelligence turned out to be wrong. As President, I'm responsible for the decision to go into Iraq", caption: "George W. Bush, 14 December 2005"}
+  narration: "**Bush: still the right decision.** At the Woodrow Wilson Center in Washington on 14 December 2005, Bush accepted responsibility for invading Iraq and acknowledged that much intelligence was wrong. He defended his choice by saying September 11 had changed how he saw threats: waiting for them to materialize could mean waiting too long. McNamara had defended retaliation in 1968 as senators challenged his assurances; Hanyok found deliberate suppression inside NSA, the 2005 commission found intelligence errors in Iraq, and the Senate found some official statements contradicted by intelligence. Bush pledged to reform intelligence while continuing the war he still called the right decision."
   duration: 13
 
 - shot: the-dead
@@ -225,16 +235,6 @@ Johnson and Bush ordered force; sailors, intelligence officers and senators face
   reveal_claims: [invasion-of-iraq-2003#c11]
   overlay: {kind: quote, source: who-2008-iraq-family-health-survey, quote: "However, in the absence of comprehensive death registration and hospital reporting, household surveys are the best we can do.", caption: "Mohamed Ali, WHO statistician and survey co-author, 9 January 2008"}
   narration: "**Families answer.** WHO statistician Mohamed Ali said incomplete death registers made household surveys the best available option; Iraq's health minister said insecurity prevented some visits. Their survey estimated 151,000 violent Iraqi deaths, March 2003–June 2006 (104,000–223,000). A 2013 survey estimated 405,000 excess deaths through June 2011 (48,000–751,000), before migration adjustment: 461,000 afterward. Iraq Body Count documents 200,065–226,628 civilian deaths; Rockefeller counted over 4,000 Americans by 2008. For Vietnam, the National Archives holds 58,220 U.S. military fatal casualty records from 8 June 1956, labelled not official statistics; in 1995 Hanoi's news agency reported 1.1 million Communist fighters, nearly 2 million civilians and 223,748 South Vietnamese soldiers dead. These counts cover different people, periods and causes. Ali's survey estimated 128 violent deaths daily in the invasion's first year, using households when registers could not supply the answers."
-  duration: 13
-
-- shot: what-the-records-separate
-  view: graph
-  focus: invasion-of-iraq-2003
-  time: "2008"
-  reveal: [gulf-of-tonkin-incident, invasion-of-iraq-2003, lyndon-b-johnson, robert-mcnamara, george-w-bush]
-  reveal_claims: [george-w-bush#c6, george-w-bush#c7]
-  overlay: {kind: quote, source: bush-2005-12-14-iraqi-elections, quote: "the intelligence turned out to be wrong. As President, I'm responsible for the decision to go into Iraq", caption: "George W. Bush, 14 December 2005"}
-  narration: "**Bush: still the right decision.** At the Woodrow Wilson Center in Washington on 14 December 2005, Bush accepted responsibility for invading Iraq and acknowledged that much intelligence was wrong. He defended his choice by saying September 11 had changed how he saw threats: waiting for them to materialize could mean waiting too long. McNamara had defended retaliation in 1968 as senators challenged his assurances; Hanyok found deliberate suppression inside NSA, the 2005 commission found intelligence errors in Iraq, and the Senate found some official statements contradicted by intelligence. Bush pledged to reform intelligence while continuing the war he still called the right decision."
   duration: 13
 
 ```
