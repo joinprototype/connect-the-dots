@@ -63,6 +63,17 @@ In 2026 the ten largest newspaper owners controlled about two-thirds of local da
   narration: "**The theory.** In 1988 Edward Herman and Noam Chomsky published Manufacturing Consent, asking how news could serve owners without an owner giving an order. Their five-filter model begins with ownership; in Joan Pedro's sympathetic survey, employees learn to work “in accordance with the desires of those who pay them”, with no conspiracy or direct pressure required. Critics called the model conspiratorial and deterministic, said it overstated the propaganda system's power and neglected journalistic professionalism; Pedro says its authors rebutted most criticisms. Herman and Chomsky had moved the argument inside the workplace, toward the decisions reporters make before a proprietor ever calls."
   duration: 13
 
+- shot: london-2012
+  view: map
+  camera: {"center": [-0.1276, 51.5072], "zoom": 10.8, "pitch": 30, "duration": 6}
+  places: ["london"]
+  time: "2012-11-29"
+  reveal: [leveson-inquiry, rupert-murdoch, news-corp, london]
+  reveal_claims: [rupert-murdoch#c1, leveson-inquiry#c1, leveson-inquiry#c2]
+  overlay: {"kind": "quote", "source": "leveson-2012-report-volume-1", "quote": "at the Mail I enjoy total freedom from proprietorial and managerial interference, a freedom that is not necessarily found in other newspaper groups.", "caption": "Paul Dacre, Daily Mail editor, to the Leveson Inquiry"}
+  narration: "**London, 2012.** Paul Dacre told the Leveson Inquiry he had turned down editorships at the Times and Telegraph because the Daily Mail gave him freedom from owners and managers. He said Labour could hardly have gone to war in Iraq without Murdoch's papers' support; Murdoch told the inquiry that politicians could read his opinions in the Sun. Leveson recorded guaranteed independence at the Times and Sunday Times, but Murdoch's active interest in the Sun and News of the World, which closed in July 2011 after phone hacking. The press had failed to investigate itself, Leveson found, with one exception: Nick Davies began uncovering the truth. An editor's choice of employer had become testimony about owners' reach; another journalist's investigation brought that reach under public examination."
+  duration: 13
+
 - shot: washington-2013
   view: map
   camera: {"center": [-77.0369, 38.9072], "zoom": 11.4, "pitch": 30, "duration": 6}
@@ -74,45 +85,24 @@ In 2026 the ten largest newspaper owners controlled about two-thirds of local da
   narration: "**Washington, 2013.** Don Graham faced seven straight years of falling revenue at The Washington Post: innovations had brought readers, he told employees, but not enough money, and cost cuts had a limit. On 5 August 2013 his family agreed to sell to Amazon founder Jeff Bezos for $250 million in cash, a personal purchase that did not involve Amazon. “We were certain the paper would survive under our ownership, but we wanted it to do more than that. We wanted it to succeed”, Graham explained. Bezos promised employees, “The paper's duty will remain to its readers and not to the private interests of its owners”; the family's answer to shrinking revenue put the newspaper in one man's hands."
   duration: 13
 
-- shot: no-endorsement
+- shot: must-run
   view: graph
-  focus: washington-post-no-endorsement-2024
-  time: "2024-10-25"
-  reveal: [washington-post-no-endorsement-2024, jeff-bezos, the-washington-post, blue-origin]
-  reveal_claims: [washington-post-no-endorsement-2024#c1, washington-post-no-endorsement-2024#c2]
-  overlay: {"kind": "quote", "source": "npr-2024-washington-post-endorsement-cancellations", "quote": "No quid pro quo of any kind is at work here", "caption": "Jeff Bezos, as reported by NPR, October 2024"}
-  narration: "**No endorsement.** In October 2024 Jeff Bezos blocked the Post's planned Harris endorsement, citing a “perception of bias.” Blue Origin executives met Trump that day; Bezos said he had not known, had neither consulted nor informed a candidate, and denied any quid pro quo. NPR noted Blue Origin's multibillion-dollar NASA contract and Amazon's suit over a $10 billion Pentagon cloud contract; Bezos acknowledged, “I am not an ideal owner of The Post” on the appearance of conflict. NPR also credited his support for Trump-era coverage and lack of interference with reporting on his businesses. Robert Kagan resigned, calling the decision “bending the knee”; NPR reported 300,000 digital-subscription cancellations between its revelation and Election Day, citing someone with direct knowledge."
+  focus: sinclair-broadcast-group
+  time: "2018-04-02"
+  reveal: [sinclair-station-purchases-2017, sinclair-broadcast-group, local-news-and-national-politics]
+  reveal_claims: [sinclair-station-purchases-2017#c4, sinclair-station-purchases-2017#c3, sinclair-station-purchases-2017#c1, sinclair-station-purchases-2017#c2]
+  overlay: {"kind": "quote", "source": "martin-mccrain-2018-washington-post-sinclair", "quote": "Stations bought by Sinclair reduce coverage of local politics, increase national coverage and move the ideological tone of coverage in a conservative direction relative to other stations operating in the same market.", "caption": "Gregory Martin and Joshua McCrain, 2018"}
+  narration: "**Must-run.** In April 2018 Sinclair news chief Scott Livingston defended a script anchors at nearly 200 stations had been ordered to read: it warned about fake news on social media, he said, and the reporting was nonpartisan. Jane Hall of American University called making journalists read it “a corporate piece of propaganda, in my opinion”. NPR described the Smith-family-controlled company as the country's largest broadcaster, sending stations compulsory segments including conservative commentary. A study comparing purchased stations with others in their markets found national politics coverage up about 25 percent, local politics down about 10 percent, a rightward shift and a very small viewer loss. In 2023 Sinclair laid off its Gainesville station's entire newsroom and replaced local reporting with its national program."
   duration: 13
 
-- shot: a-cartoon-then-a-column
+- shot: alden
   view: graph
-  focus: washington-post-opinion-turn-2025
-  time: "2025-02-26"
-  reveal: [washington-post-opinion-turn-2025, ann-telnaes, jeff-bezos, the-washington-post]
-  reveal_claims: [washington-post-opinion-turn-2025#c1, washington-post-opinion-turn-2025#c2, washington-post-opinion-turn-2025#c3, ann-telnaes#c1, washington-post-opinion-turn-2025#c4, washington-post-opinion-turn-2025#c5, washington-post-opinion-turn-2025#c6]
-  overlay: {"kind": "quote", "source": "npr-2025-telnaes-quits-washington-post", "quote": "We have to have the freedom to say what we want to say", "caption": "Ann Telnaes, after resigning from The Washington Post, January 2025"}
-  narration: "**A cartoon, then a column.** Before Christmas, Ann Telnaes submitted a sketch of tech chiefs, Bezos among them, bringing money to Trump; in January 2025 she resigned after opinion editor David Shipley rejected it. Shipley said a column had run and another was scheduled: “The only bias was against repetition.” On 26 February Bezos said he had offered Shipley the job of leading opinion pages defending “personal liberties and free markets,” views he called “underserved”; Shipley had declined, and opposing views would appear elsewhere. Post reporter Jeff Stein called the change “Massive encroachment” and said he would quit immediately if Bezos interfered with news, while saying he had felt no interference with his own reporting."
-  duration: 13
-
-- shot: three-hundred-journalists
-  view: graph
-  focus: the-washington-post
-  time: "2026-02-04"
-  reveal: [washington-post-layoffs-2026, the-washington-post, jeff-bezos, amazon]
-  reveal_claims: [washington-post-layoffs-2026#c1, washington-post-layoffs-2026#c2, washington-post-layoffs-2026#c3]
-  overlay: {"kind": "stat", "value": "One third", "label": "Share of its workforce The Washington Post cut on 4 February 2026, NPR reported", "source": "npr-2026-bezos-orders-washington-post-layoffs", "quote": "The Washington Post moved Wednesday at the behest of owner Jeff Bezos to cut a third of its entire workforce."}
-  narration: "**Three hundred journalists.** On a newsroom Zoom call on 4 February 2026, executive editor Matt Murray announced a “strategic reset” to compete in the era of artificial intelligence. At Bezos's behest, the Post cut a third of its workforce, including more than 300 journalists, NPR reported; publisher Will Lewis had told staff in 2024 of $177 million lost over two years. Former editor Marty Baron called it “among the darkest days” and blamed Bezos for worsening the paper’s woes by killing the Harris endorsement, NPR reported. NPR credited Bezos with never interfering in news coverage and funding about 85 percent newsroom growth at its peak; he and the acting chief said consumer data would drive decisions. Lewis stepped down days after the cuts, leaving a smaller newsroom to carry on."
-  duration: 13
-
-- shot: los-angeles
-  view: map
-  camera: {"center": [-118.2437, 34.0522], "zoom": 10.4, "pitch": 30, "duration": 6}
-  places: ["los-angeles"]
-  time: "2024-10"
-  reveal: [patrick-soon-shiong, los-angeles-times, la-times-no-endorsement-2024, tribune-publishing, los-angeles]
-  reveal_claims: [patrick-soon-shiong#c1, la-times-no-endorsement-2024#c1, la-times-no-endorsement-2024#c2, patrick-soon-shiong#c2]
-  overlay: {"kind": "stat", "value": "About 20,000", "label": "Los Angeles Times subscribers who canceled after the endorsement was killed, NPR reported", "source": "npr-2025-telnaes-quits-washington-post", "quote": "Approximately 20,000 Los Angeles Times subscribers canceled."}
-  narration: "**Los Angeles.** In October 2024 Patrick Soon-Shiong stopped his Los Angeles Times editorial board from endorsing Harris. He later told NPR he acted against reflexive liberal bias and because the board had not interviewed her; he had previously spoken with Trump. Journalists had praised his rebuilding of the newsroom in 2021 despite eight-figure deficits, when he also held nearly 24 percent of Tribune Publishing and abstained from the vote on Alden's takeover. His spokesperson called that stake a passive investment and said his focus was his other papers; in Los Angeles he exercised his power over an endorsement, and about 20,000 subscribers canceled."
+  focus: alden-global-capital
+  time: "2021-05-21"
+  reveal: [alden-global-capital, tribune-publishing, chicago-tribune]
+  reveal_claims: [alden-global-capital#c1, alden-global-capital#c2, chicago-tribune#c1]
+  overlay: {"kind": "quote", "source": "denver-post-2018-as-vultures-circle", "quote": "Consider this editorial and this Sunday’s Perspective offerings a plea to Alden — owner of Digital First Media, one of the largest newspaper chains in the country — to rethink its business strategy across all its newspaper holdings.", "caption": "The Denver Post's editorial board, 2018"}
+  narration: "**Alden.** In a February 2021 recording obtained by NPR, Chicago Tribune editor Colin McMahon warned journalists that Alden sought profit margins above 20 percent, against 10 to 13; in May, shareholders approved selling Tribune Publishing to the fund, already a 32 percent holder. President Heath Freeman said the purchase “reaffirms our commitment to the newspaper industry” and that his aim was to make publications operate sustainably over the long term. The NewsGuild counted average staff cuts of 75 percent at Alden's guild papers over six years; the Baltimore Sun, already reduced under Tribune, had about 80 journalists against 400 two decades earlier. Alden declined NPR's comment requests. Denver Post editors had pleaded in 2018 for Alden to rethink its business strategy; McMahon's warning carried those stakes into another newsroom."
   duration: 13
 
 - shot: wilmington-2023
@@ -135,15 +125,35 @@ In 2026 the ten largest newspaper owners controlled about two-thirds of local da
   narration: "**Hosts and executives.** AP reported that in a 16 November 2020 memo Rupert Murdoch wrote, “We don't want to antagonize Trump further”; under oath he said the election was fair. AP reported that Fox hosts and executives disbelieved the Dominion claims but aired them partly to recover viewers angered by Fox's correct Arizona call. Fox defended its broadcasts as reporting a sitting president's allegations: it “never reported those to be true”. On 18 April 2023 the company settled for $787.5 million, acknowledged the court's rulings and admitted no error; Lachlan Murdoch later called settlement a business decision “clearly in the best interests of the company and its shareholders.” Fox had closed one case; Smartmatic's separate $2.7 billion suit remained open in May 2026, when an appeals court granted Fox more discovery."
   duration: 13
 
-- shot: london-2012
+- shot: no-endorsement
+  view: graph
+  focus: washington-post-no-endorsement-2024
+  time: "2024-10-25"
+  reveal: [washington-post-no-endorsement-2024, jeff-bezos, the-washington-post, blue-origin]
+  reveal_claims: [washington-post-no-endorsement-2024#c1, washington-post-no-endorsement-2024#c2]
+  overlay: {"kind": "quote", "source": "npr-2024-washington-post-endorsement-cancellations", "quote": "No quid pro quo of any kind is at work here", "caption": "Jeff Bezos, as reported by NPR, October 2024"}
+  narration: "**No endorsement.** In October 2024 Jeff Bezos blocked the Post's planned Harris endorsement, citing a “perception of bias.” Blue Origin executives met Trump that day; Bezos said he had not known, had neither consulted nor informed a candidate, and denied any quid pro quo. NPR noted Blue Origin's multibillion-dollar NASA contract and Amazon's suit over a $10 billion Pentagon cloud contract; Bezos acknowledged, “I am not an ideal owner of The Post” on the appearance of conflict. NPR also credited his support for Trump-era coverage and lack of interference with reporting on his businesses. Robert Kagan resigned, calling the decision “bending the knee”; NPR reported 300,000 digital-subscription cancellations between its revelation and Election Day, citing someone with direct knowledge."
+  duration: 13
+
+- shot: los-angeles
   view: map
-  camera: {"center": [-0.1276, 51.5072], "zoom": 10.8, "pitch": 30, "duration": 6}
-  places: ["london"]
-  time: "2012-11-29"
-  reveal: [leveson-inquiry, rupert-murdoch, news-corp, london]
-  reveal_claims: [rupert-murdoch#c1, leveson-inquiry#c1, leveson-inquiry#c2]
-  overlay: {"kind": "quote", "source": "leveson-2012-report-volume-1", "quote": "at the Mail I enjoy total freedom from proprietorial and managerial interference, a freedom that is not necessarily found in other newspaper groups.", "caption": "Paul Dacre, Daily Mail editor, to the Leveson Inquiry"}
-  narration: "**London, 2012.** Paul Dacre told the Leveson Inquiry he had turned down editorships at the Times and Telegraph because the Daily Mail gave him freedom from owners and managers. He said Labour could hardly have gone to war in Iraq without Murdoch's papers' support; Murdoch told the inquiry that politicians could read his opinions in the Sun. Leveson recorded guaranteed independence at the Times and Sunday Times, but Murdoch's active interest in the Sun and News of the World, which closed in July 2011 after phone hacking. The press had failed to investigate itself, Leveson found, with one exception: Nick Davies began uncovering the truth. An editor's choice of employer had become testimony about owners' reach; another journalist's investigation brought that reach under public examination."
+  camera: {"center": [-118.2437, 34.0522], "zoom": 10.4, "pitch": 30, "duration": 6}
+  places: ["los-angeles"]
+  time: "2024-10"
+  reveal: [patrick-soon-shiong, los-angeles-times, la-times-no-endorsement-2024, tribune-publishing, los-angeles]
+  reveal_claims: [patrick-soon-shiong#c1, la-times-no-endorsement-2024#c1, la-times-no-endorsement-2024#c2, patrick-soon-shiong#c2]
+  overlay: {"kind": "stat", "value": "About 20,000", "label": "Los Angeles Times subscribers who canceled after the endorsement was killed, NPR reported", "source": "npr-2025-telnaes-quits-washington-post", "quote": "Approximately 20,000 Los Angeles Times subscribers canceled."}
+  narration: "**Los Angeles.** In October 2024 Patrick Soon-Shiong stopped his Los Angeles Times editorial board from endorsing Harris. He later told NPR he acted against reflexive liberal bias and because the board had not interviewed her; he had previously spoken with Trump. Journalists had praised his rebuilding of the newsroom in 2021 despite eight-figure deficits, when he also held nearly 24 percent of Tribune Publishing and abstained from the vote on Alden's takeover. His spokesperson called that stake a passive investment and said his focus was his other papers; in Los Angeles he exercised his power over an endorsement, and about 20,000 subscribers canceled."
+  duration: 13
+
+- shot: a-cartoon-then-a-column
+  view: graph
+  focus: washington-post-opinion-turn-2025
+  time: "2025-02-26"
+  reveal: [washington-post-opinion-turn-2025, ann-telnaes, jeff-bezos, the-washington-post]
+  reveal_claims: [washington-post-opinion-turn-2025#c1, washington-post-opinion-turn-2025#c2, washington-post-opinion-turn-2025#c3, ann-telnaes#c1, washington-post-opinion-turn-2025#c4, washington-post-opinion-turn-2025#c5, washington-post-opinion-turn-2025#c6]
+  overlay: {"kind": "quote", "source": "npr-2025-telnaes-quits-washington-post", "quote": "We have to have the freedom to say what we want to say", "caption": "Ann Telnaes, after resigning from The Washington Post, January 2025"}
+  narration: "**A cartoon, then a column.** Before Christmas, Ann Telnaes submitted a sketch of tech chiefs, Bezos among them, bringing money to Trump; in January 2025 she resigned after opinion editor David Shipley rejected it. Shipley said a column had run and another was scheduled: “The only bias was against repetition.” On 26 February Bezos said he had offered Shipley the job of leading opinion pages defending “personal liberties and free markets,” views he called “underserved”; Shipley had declined, and opposing views would appear elsewhere. Post reporter Jeff Stein called the change “Massive encroachment” and said he would quit immediately if Bezos interfered with news, while saying he had felt no interference with his own reporting."
   duration: 13
 
 - shot: washington-2025
@@ -176,24 +186,24 @@ In 2026 the ten largest newspaper owners controlled about two-thirds of local da
   narration: "**Two newsrooms.** On 21 December 2025 Sharyn Alfonsi emailed colleagues, calling Bari Weiss's decision to pull her Salvadoran-prison report “not an editorial decision, it is a political one.” NPR reported that Weiss said the story added nothing beyond reporting two months earlier and sought principals on the record and on camera. AP reported that Alfonsi said officials had declined repeated interview requests; it aired on 18 January 2026 without officials on camera, adding White House and Homeland Security statements. On 6 October 2026 David Ellison, who had appointed Weiss, closed the $111 billion purchase of CNN's owner. Poynter reported his promise of editorial independence: “Correct,” he answered when asked whether he would refrain from interference. NPR said a journalists' board would follow within six months, recalling Murdoch had ignored and overridden such boards; another newsroom faced an owner's promise."
   duration: 13
 
-- shot: must-run
+- shot: dead-bought-owned
   view: graph
-  focus: sinclair-broadcast-group
-  time: "2018-04-02"
-  reveal: [sinclair-station-purchases-2017, sinclair-broadcast-group, local-news-and-national-politics]
-  reveal_claims: [sinclair-station-purchases-2017#c4, sinclair-station-purchases-2017#c3, sinclair-station-purchases-2017#c1, sinclair-station-purchases-2017#c2]
-  overlay: {"kind": "quote", "source": "martin-mccrain-2018-washington-post-sinclair", "quote": "Stations bought by Sinclair reduce coverage of local politics, increase national coverage and move the ideological tone of coverage in a conservative direction relative to other stations operating in the same market.", "caption": "Gregory Martin and Joshua McCrain, 2018"}
-  narration: "**Must-run.** In April 2018 Sinclair news chief Scott Livingston defended a script anchors at nearly 200 stations had been ordered to read: it warned about fake news on social media, he said, and the reporting was nonpartisan. Jane Hall of American University called making journalists read it “a corporate piece of propaganda, in my opinion”. NPR described the Smith-family-controlled company as the country's largest broadcaster, sending stations compulsory segments including conservative commentary. A study comparing purchased stations with others in their markets found national politics coverage up about 25 percent, local politics down about 10 percent, a rightward shift and a very small viewer loss. In 2023 Sinclair laid off its Gainesville station's entire newsroom and replaced local reporting with its national program."
+  focus: what-drives-media-slant
+  time: "2025-10-02"
+  reveal: [what-drives-media-slant, matthew-gentzkow, jesse-shapiro, local-news-and-national-politics, manufacturing-consent]
+  reveal_claims: [matthew-gentzkow#c1, jesse-shapiro#c1]
+  overlay: {"kind": "stat", "value": "28%", "label": "Share of Americans with a great deal or fair amount of trust in the mass media, Gallup, 2025 (40% in 2020)", "source": "gallup-2025-trust-in-media-new-low", "quote": "Americans’ confidence in the mass media has edged down to a new low, with just 28% expressing a “great deal” or “fair amount” of trust in newspapers, television and radio to report the news fully, accurately and fairly."}
+  narration: "**Dead? Bought? Owned?** Matthew Gentzkow and Jesse Shapiro tested whose preferences shaped 429 U.S. dailies in 2000–2005: readers explained about 20 percent of slant variation, owners far less. Their comparison cannot capture single-paper owners, television or what all papers share; Sinclair's acquisitions brought measurable shifts. Bezos and Soon-Shiong changed endorsements and opinion pages; NPR credited Bezos with leaving news coverage alone, while the Church Committee documented paid CIA ties in 1976. Gallup found trust at 28 percent in 2025, down from 40 percent in 2020 and 68–72 percent in the 1970s, with Republicans at eight percent; it did not ask why. The economists had found newspapers responding strongly to readers’ politics, giving the argument over owners another source of pressure to reckon with."
   duration: 13
 
-- shot: alden
+- shot: three-hundred-journalists
   view: graph
-  focus: alden-global-capital
-  time: "2021-05-21"
-  reveal: [alden-global-capital, tribune-publishing, chicago-tribune]
-  reveal_claims: [alden-global-capital#c1, alden-global-capital#c2, chicago-tribune#c1]
-  overlay: {"kind": "quote", "source": "denver-post-2018-as-vultures-circle", "quote": "Consider this editorial and this Sunday’s Perspective offerings a plea to Alden — owner of Digital First Media, one of the largest newspaper chains in the country — to rethink its business strategy across all its newspaper holdings.", "caption": "The Denver Post's editorial board, 2018"}
-  narration: "**Alden.** In a February 2021 recording obtained by NPR, Chicago Tribune editor Colin McMahon warned journalists that Alden sought profit margins above 20 percent, against 10 to 13; in May, shareholders approved selling Tribune Publishing to the fund, already a 32 percent holder. President Heath Freeman said the purchase “reaffirms our commitment to the newspaper industry” and that his aim was to make publications operate sustainably over the long term. The NewsGuild counted average staff cuts of 75 percent at Alden's guild papers over six years; the Baltimore Sun, already reduced under Tribune, had about 80 journalists against 400 two decades earlier. Alden declined NPR's comment requests. Denver Post editors had pleaded in 2018 for Alden to rethink its business strategy; McMahon's warning carried those stakes into another newsroom."
+  focus: the-washington-post
+  time: "2026-02-04"
+  reveal: [washington-post-layoffs-2026, the-washington-post, jeff-bezos, amazon]
+  reveal_claims: [washington-post-layoffs-2026#c1, washington-post-layoffs-2026#c2, washington-post-layoffs-2026#c3]
+  overlay: {"kind": "stat", "value": "One third", "label": "Share of its workforce The Washington Post cut on 4 February 2026, NPR reported", "source": "npr-2026-bezos-orders-washington-post-layoffs", "quote": "The Washington Post moved Wednesday at the behest of owner Jeff Bezos to cut a third of its entire workforce."}
+  narration: "**Three hundred journalists.** On a newsroom Zoom call on 4 February 2026, executive editor Matt Murray announced a “strategic reset” to compete in the era of artificial intelligence. At Bezos's behest, the Post cut a third of its workforce, including more than 300 journalists, NPR reported; publisher Will Lewis had told staff in 2024 of $177 million lost over two years. Former editor Marty Baron called it “among the darkest days” and blamed Bezos for worsening the paper’s woes by killing the Harris endorsement, NPR reported. NPR credited Bezos with never interfering in news coverage and funding about 85 percent newsroom growth at its peak; he and the acting chief said consumer data would drive decisions. Lewis stepped down days after the cuts, leaving a smaller newsroom to carry on."
   duration: 13
 
 - shot: what-is-left
@@ -215,16 +225,6 @@ In 2026 the ten largest newspaper owners controlled about two-thirds of local da
   reveal_claims: [donald-trump#c10, the-wall-street-journal#c1, rupert-murdoch#c4, rupert-murdoch#c3, pulitzer-prizes-2026-local-reporting#c2, pulitzer-prizes-2026-local-reporting#c3]
   overlay: {"kind": "quote", "source": "npr-2026-trump-wsj-suit-dismissed", "quote": "\"The Amended Complaint falls short of pleading actual malice,\" Gayles wrote.", "caption": "U.S. District Judge Darrin Gayles, 31 October 2026, as reported by NPR"}
   narration: "**What still gets out.** In 2025 the Wall Street Journal, which NPR called the Murdochs' paper, reported that a letter bearing Donald Trump's name was in a 2003 birthday album for Jeffrey Epstein. Trump denied writing it, called the story “false, malicious, and defamatory,” and sued the Journal and Rupert Murdoch for $10 billion. A federal judge dismissed it in April, let him refile, and on 31 October 2026 dismissed it with prejudice: the complaint “falls short of pleading actual malice,” and the Journal's story had not ignored his denial. The ruling did not decide who wrote the letter. The 2026 Pulitzer for Public Service went to The Washington Post, Bezos's paper, for reporting on the administration's overhaul of federal agencies; ProPublica, a nonprofit, shared one of two local-reporting prizes with the Connecticut Mirror, for a series on towing companies."
-  duration: 13
-
-- shot: dead-bought-owned
-  view: graph
-  focus: what-drives-media-slant
-  time: "2025-10-02"
-  reveal: [what-drives-media-slant, matthew-gentzkow, jesse-shapiro, local-news-and-national-politics, manufacturing-consent]
-  reveal_claims: [matthew-gentzkow#c1, jesse-shapiro#c1]
-  overlay: {"kind": "stat", "value": "28%", "label": "Share of Americans with a great deal or fair amount of trust in the mass media, Gallup, 2025 (40% in 2020)", "source": "gallup-2025-trust-in-media-new-low", "quote": "Americans’ confidence in the mass media has edged down to a new low, with just 28% expressing a “great deal” or “fair amount” of trust in newspapers, television and radio to report the news fully, accurately and fairly."}
-  narration: "**Dead? Bought? Owned?** Matthew Gentzkow and Jesse Shapiro tested whose preferences shaped 429 U.S. dailies in 2000–2005: readers explained about 20 percent of slant variation, owners far less. Their comparison cannot capture single-paper owners, television or what all papers share; Sinclair's acquisitions brought measurable shifts. Bezos and Soon-Shiong changed endorsements and opinion pages; NPR credited Bezos with leaving news coverage alone, while the Church Committee documented paid CIA ties in 1976. Gallup found trust at 28 percent in 2025, down from 40 percent in 2020 and 68–72 percent in the 1970s, with Republicans at eight percent; it did not ask why. The economists had found newspapers responding strongly to readers’ politics, giving the argument over owners another source of pressure to reckon with."
   duration: 13
 
 ```
