@@ -146,14 +146,45 @@ Fort Pitt is the thread because its journal, correspondence, account and testimo
   narration: "**Women and children beyond the count.** The losses Lewis described as weakness reached British Indian agent William Johnson through Delaware leader Killibuck in March 1765. Killibuck said the Shawnees had lost 149 men in three months from sickness more than a year earlier, besides women and children. He also reported many smallpox deaths the previous summer. His words preserve both a number and the people that number excludes. Historians would set this testimony beside the gifts, the invoice and the officers’ letters to test how far the paper trail reached."
   duration: 13
 
+- shot: intent-and-the-word
+  view: graph
+  focus: scholarly-debate-over-the-word-genocide
+  time: "1948-12-09"
+  reveal: [scholarly-debate-over-the-word-genocide, genocide-convention, guenter-lewy, david-stannard]
+  reveal_claims: [scholarly-debate-over-the-word-genocide#c2, scholarly-debate-over-the-word-genocide#c4, scholarly-debate-over-the-word-genocide#c8]
+  overlay: {kind: quote, caption: "Genocide Convention, Article II, 9 December 1948", source: genocide-convention-1948-avalon, quote: "intent to destroy, in whole or in part, a national, ethnical, racial or religious group, as such:"}
+  narration: "**Can the deaths be called genocide?** The recorded losses leave the question of intent. The 1948 Genocide Convention requires intent to destroy a protected group, wholly or partly; it includes killing, serious harm, destructive living conditions, prevention of births and forced transfer of children. In his 2004 reply to David Stannard, Guenter Lewy excluded inadvertent epidemic deaths from that definition, while allowing that some massacres could qualify. Stannard, as Lewy quotes him, counted people killed by introduced disease among victims of genocidal war. Fort Pitt supplies explicit intent to infect; the hemisphere’s missing millions cannot by themselves establish the intentions behind each death."
+  duration: 13
+
+- shot: the-answer
+  view: graph
+  focus: smallpox-blankets-at-fort-pitt-1763
+  time: "2000"
+  reveal: [smallpox-blankets-at-fort-pitt-1763, amherst-bouquet-letters-1763, old-world-diseases, great-dying-of-the-americas, david-s-jones]
+  reveal_claims: [smallpox-blankets-at-fort-pitt-1763#c1, smallpox-blankets-at-fort-pitt-1763#c2, smallpox-blankets-at-fort-pitt-1763#c6, smallpox-blankets-at-fort-pitt-1763#c17, smallpox-blankets-at-fort-pitt-1763#c8, amherst-bouquet-letters-1763#c3, old-world-diseases#c1, great-dying-of-the-americas#c3]
+  overlay: {kind: quote, caption: "Trent’s journal, 24 June 1763, quoted by Fenn", source: fenn-2000-biological-warfare, quote: "I hope it will have the desired effect."}
+  narration: "**What Fort Pitt proves.** Trent’s journal, Ecuyer’s certification and the paid invoice establish British military responsibility for an attempt to spread smallpox. Amherst and Bouquet’s letters establish their own proposals; the June gift preceded them. No reliable death toll can be assigned to the blankets. The wider catastrophe involved diseases carried by Europeans and Africans; David S. Jones stresses that hunger and colonial disruption also shaped vulnerability. Jeffrey Ostler reports a scholarly consensus that deliberate infection was rare; Fenn argues that Fort Pitt suggests it may have been less rare than it seems. Neither position turns this documented attempt into an explanation for hemisphere-wide losses. Conquest, removal, massacres and later abuses elsewhere are other stories. Killibuck’s women and children remain outside his count."
+  duration: 13
+
+
+- shot: what-survival-means
+  view: graph
+  focus: scholarly-debate-over-the-word-genocide
+  time: "2016-05-12"
+  reveal: [scholarly-debate-over-the-word-genocide, roxanne-dunbar-ortiz, gary-clayton-anderson, jeffrey-ostler]
+  reveal_claims: [scholarly-debate-over-the-word-genocide#c1, scholarly-debate-over-the-word-genocide#c3, scholarly-debate-over-the-word-genocide#c5]
+  overlay: {kind: quote, caption: "Roxanne Dunbar-Ortiz, 2016", source: dunbar-ortiz-2016-yes-genocide, quote: "The objective of US authorities was to terminate their existence as peoples—not as random individuals."}
+  narration: "**Does survival answer the charge?** The argument over intention also turns on what it meant to destroy a people. In 2016 Roxanne Dunbar-Ortiz rejected the claim that survival disproves genocide: she argued that U.S. policy aimed to end Native nations as peoples through removal, boarding schools and termination. She quoted Gary Clayton Anderson arguing that many survived and mass murder on the scale of European cases was never implemented; his term for removal is ethnic cleansing. Jeffrey Ostler’s 2015 survey also recorded Native scholars’ concern that genocide histories could reinforce the image of vanishing peoples. Their disagreement concerns nations’ continued existence as well as the body count."
+  duration: 13
+
 - shot: testing-the-effect
   view: graph
   focus: smallpox-blankets-at-fort-pitt-1763
-  time: "2000/2018"
+  time: "2018-11-15"
   reveal: [smallpox-blankets-at-fort-pitt-1763, biological-warfare-in-eighteenth-century-north-america, elizabeth-fenn, war-enslavement-and-famine-after-1492]
   reveal_claims: [smallpox-blankets-at-fort-pitt-1763#c5, smallpox-blankets-at-fort-pitt-1763#c9, war-enslavement-and-famine-after-1492#c1]
   overlay: {kind: quote, caption: "Philip Ranlet, interviewed by HISTORY in 2018", source: history-com-2018-blankets, quote: "There is no evidence that the scheme worked"}
-  narration: "**The attempt and its effect.** Reading these reports in 2000, Elizabeth Fenn called the timing of the outbreak uncanny; citing Michael McConnell, she allowed multiple sources of infection. John M’Cullough, fifteen and a captive in 1763, later recalled infection following an attack on sick settlers along the Juniata River; his account appeared in 1808. Interviewed in 2018, Philip Ranlet said there was no evidence the blanket scheme worked; Paul Kelton said they could not be sure. Kelton argued that British destruction of corn and homes made refugees far more vulnerable to disease than infected blankets did. Uncertain transmission leaves the deliberate attempt intact, while opening a larger question about deaths caused through conquest."
+  narration: "**The attempt and its effect.** Reading the Fort Pitt reports in 2000, Elizabeth Fenn called the timing of the outbreak uncanny; citing Michael McConnell, she allowed multiple sources of infection. John M’Cullough, fifteen and a captive in 1763, later recalled infection following an attack on sick settlers along the Juniata River; his account appeared in 1808. Interviewed in 2018, Philip Ranlet said there was no evidence the blanket scheme worked; Paul Kelton said they could not be sure. Kelton argued that British destruction of corn and homes made refugees far more vulnerable to disease than infected blankets did. Uncertain transmission leaves the deliberate attempt intact, while opening a larger question about deaths caused through conquest."
   duration: 13
 
 - shot: the-larger-count
@@ -165,35 +196,4 @@ Fort Pitt is the thread because its journal, correspondence, account and testimo
   overlay: {kind: stat, value: "60.5 million", label: "Estimated population in 1492; middle half of the range: 44.8–78.2 million", source: koch-2019-great-dying, quote: "From 119 published regional population estimates we calculate a pre-1492 CE population of 60.5 million"}
   narration: "**The hemisphere cannot be counted from a blanket.** That larger loss was Alexander Koch’s problem in 2019: could abandoned farmland and regrowing forests after mass death explain a fall in atmospheric carbon dioxide? His team pooled 119 published regional population estimates, without judging their relative quality. They calculated 60.5 million people in the Americas in 1492, with the middle half of their range between 44.8 and 78.2 million, and about 90 percent lost by 1600. Studies they reviewed put losses between 40 and 95 percent. These are reconstructions from later censuses, tribute records, settlements and other evidence. Their central decline predates Fort Pitt by more than a century; it cannot be attributed to the 1763 attempt."
   duration: 13
-
-- shot: intent-and-the-word
-  view: graph
-  focus: scholarly-debate-over-the-word-genocide
-  time: "1948/2004"
-  reveal: [scholarly-debate-over-the-word-genocide, genocide-convention, guenter-lewy, david-stannard]
-  reveal_claims: [scholarly-debate-over-the-word-genocide#c2, scholarly-debate-over-the-word-genocide#c4, scholarly-debate-over-the-word-genocide#c8]
-  overlay: {kind: quote, caption: "Genocide Convention, Article II, 9 December 1948", source: genocide-convention-1948-avalon, quote: "intent to destroy, in whole or in part, a national, ethnical, racial or religious group, as such:"}
-  narration: "**Can the deaths be called genocide?** The estimated toll leaves the question of intent. The 1948 Genocide Convention requires intent to destroy a protected group, wholly or partly; it includes killing, serious harm, destructive living conditions, prevention of births and forced transfer of children. In his 2004 reply to David Stannard, Guenter Lewy excluded inadvertent epidemic deaths from that definition, while allowing that some massacres could qualify. Stannard, as Lewy quotes him, counted people killed by introduced disease among victims of genocidal war. Fort Pitt supplies explicit intent to infect; the hemisphere’s missing millions cannot by themselves establish the intentions behind each death."
-  duration: 13
-
-- shot: what-survival-means
-  view: graph
-  focus: scholarly-debate-over-the-word-genocide
-  time: "2015/2016"
-  reveal: [scholarly-debate-over-the-word-genocide, roxanne-dunbar-ortiz, gary-clayton-anderson, jeffrey-ostler]
-  reveal_claims: [scholarly-debate-over-the-word-genocide#c1, scholarly-debate-over-the-word-genocide#c3, scholarly-debate-over-the-word-genocide#c5]
-  overlay: {kind: quote, caption: "Roxanne Dunbar-Ortiz, 2016", source: dunbar-ortiz-2016-yes-genocide, quote: "The objective of US authorities was to terminate their existence as peoples—not as random individuals."}
-  narration: "**Does survival answer the charge?** The argument over intention also turns on what it meant to destroy a people. In 2016 Roxanne Dunbar-Ortiz rejected the claim that survival disproves genocide: she argued that U.S. policy aimed to end Native nations as peoples through removal, boarding schools and termination. She quoted Gary Clayton Anderson arguing that many survived and mass murder on the scale of European cases was never implemented; his term for removal is ethnic cleansing. Jeffrey Ostler’s 2015 survey also recorded Native scholars’ concern that genocide histories could reinforce the image of vanishing peoples. Their disagreement concerns nations’ continued existence as well as the body count."
-  duration: 13
-
-- shot: the-answer
-  view: graph
-  focus: smallpox-blankets-at-fort-pitt-1763
-  time: "1763/2019"
-  reveal: [smallpox-blankets-at-fort-pitt-1763, amherst-bouquet-letters-1763, old-world-diseases, great-dying-of-the-americas, david-s-jones]
-  reveal_claims: [smallpox-blankets-at-fort-pitt-1763#c1, smallpox-blankets-at-fort-pitt-1763#c2, smallpox-blankets-at-fort-pitt-1763#c6, smallpox-blankets-at-fort-pitt-1763#c17, smallpox-blankets-at-fort-pitt-1763#c8, amherst-bouquet-letters-1763#c3, old-world-diseases#c1, great-dying-of-the-americas#c3]
-  overlay: {kind: quote, caption: "Trent’s journal, 24 June 1763, quoted by Fenn", source: fenn-2000-biological-warfare, quote: "I hope it will have the desired effect."}
-  narration: "**What Fort Pitt proves.** Trent’s journal, Ecuyer’s certification and the paid invoice establish British military responsibility for an attempt to spread smallpox. Amherst and Bouquet’s letters establish their own proposals; the June gift preceded them. No reliable death toll can be assigned to the blankets. The wider catastrophe involved diseases carried by Europeans and Africans; David S. Jones stresses that hunger and colonial disruption also shaped vulnerability. Jeffrey Ostler reports a scholarly consensus that deliberate infection was rare; Fenn argues that Fort Pitt suggests it may have been less rare than it seems. Neither position turns this documented attempt into an explanation for hemisphere-wide losses. Conquest, removal, massacres and later abuses elsewhere are other stories. Killibuck’s women and children remain outside his count."
-  duration: 13
-
 ```
