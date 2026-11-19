@@ -74,39 +74,6 @@ BlackRock and Vanguard hold shares in most large American companies, for the peo
   narration: "**Fink buys businesses with shares.** In October 1999 Fink took BlackRock onto the stock market, with PNC keeping 70%. In 2006 he combined it with Merrill Lynch's fund business, giving Merrill 49.3%; BlackRock advertised the combination's technology and global perspective under the words “Opportunity favors the prepared mind.” In 2009 he bought Barclays Global Investors, maker of iShares, for $15.2 billion, giving Barclays 19.8%. Each deal enlarged the business Fink led while putting another bank among its biggest owners; those banks could later turn their BlackRock shares into cash."
   duration: 16
 
-- shot: "owners-leave"
-  view: "graph"
-  lens: "money"
-  focus: "blackrock"
-  time: "2020-06"
-  reveal: ["blackrock", "merrill-lynch", "barclays", "pnc-financial-services"]
-  reveal_claims: ["merrill-lynch#c1", "barclays#c1", "pnc-financial-services#c1"]
-  overlay: {kind: "quote", source: "pnc-2020-05-11-blackrock-sale-release", quote: "realizing a substantial return on our investment, significantly enhancing our already strong balance sheet and liquidity, and leaving PNC very well-positioned to take advantage of potential investment opportunities that history has shown can arise in disrupted markets.", caption: "William Demchak, PNC sale announcement, 11 May 2020"}
-  narration: "**Demchak chooses cash.** In May 2020 PNC chief executive William Demchak announced the sale of its 22% BlackRock stake after a quarter-century as an owner. He said the sale would strengthen PNC's balance sheet and liquidity, freeing it to pursue opportunities in disrupted markets and removing regulatory obligations attached to the holding. Other bank owners had already gone: BlackRock bought back Bank of America's last shares, inherited from Merrill Lynch, in June 2011, and Barclays sold all its shares in May 2012. PNC's May 2020 exit ended the succession of large bank owners and left BlackRock's ownership spread among market investors."
-  duration: 16
-
-- shot: "today"
-  view: "graph"
-  lens: "money"
-  focus: "blackrock"
-  time: "2026-03"
-  reveal: ["blackrock", "larry-fink", "vanguard-capital-management", "the-vanguard-group", "kuwait-investment-authority"]
-  reveal_claims: ["vanguard-capital-management#c1", "the-vanguard-group#c6", "kuwait-investment-authority#c1"]
-  overlay: {kind: "quote", source: "blackrock-2026-chairmans-letter", quote: "Ensuring more people can own a stake in their country’s growth.", caption: "Larry Fink, chairman’s letter, 2026"}
-  narration: "**The manager has shareholders too.** In March 2026 Fink used his annual letter as BlackRock's chairman to argue that more people should own a stake in their country's growth. The company he led had its own large shareholders: Vanguard Capital Management, a wholly owned Vanguard subsidiary, reported 6.87%, mostly for Vanguard funds; the Kuwait Investment Authority held 5.14% for the Government of Kuwait. Vanguard's filing said its subsidiary could direct sales of securities held by funds and clients. Bogle's fund investors thus helped own a rival manager, placing another layer between the people saving money and the executives running it."
-  duration: 14
-
-- shot: "for-clients"
-  view: "graph"
-  lens: "money"
-  focus: "blackrock"
-  time: "2026-03"
-  reveal: ["blackrock", "larry-fink", "vanguard-capital-management", "state-street", "tesla", "microsoft", "amazon"]
-  reveal_claims: ["blackrock#c1", "blackrock#c2", "blackrock#c3", "vanguard-capital-management#c2", "vanguard-capital-management#c3", "vanguard-capital-management#c4", "state-street#c1", "state-street#c2", "state-street#c3"]
-  overlay: {kind: "quote", source: "blackrock-2026-chairmans-letter", quote: "When people invest their savings—over decades, not days—the capital markets put that money to work, financing companies, infrastructure, and jobs.", caption: "Larry Fink’s public argument for long-term investing, 2026"}
-  narration: "**Who carries the loss?** In his 2026 letter, Fink argued for widening access to investment, citing his parents' savings: he said investing alongside the American economy had helped them retire comfortably. Through their funds, BlackRock and Vanguard's managers hold roughly 5% to 8% of companies such as Tesla, Microsoft and Amazon for clients, mostly fund investors who receive the gains and losses; State Street reports hundreds of millions of Microsoft and Amazon shares on the same basis. The managers handle the shares and vote part of them, giving the people making those voting decisions a reach far beyond their own savings."
-  duration: 20
-
 - shot: "legal-argument"
   view: "graph"
   lens: "all"
@@ -115,7 +82,7 @@ BlackRock and Vanguard hold shares in most large American companies, for the peo
   reveal: ["einer-elhauge", "horizontal-shareholding", "common-ownership-of-us-airlines"]
   reveal_claims: ["einer-elhauge#c1", "common-ownership-of-us-airlines#c4"]
   overlay: {kind: "quote", source: "elhauge-2016-hlr-horizontal-shareholding", quote: "An economic blockbuster has recently been exposed. A small group of institutions has acquired large shareholdings in horizontal competitors throughout our economy, causing them to compete less vigorously with each other.", caption: "Einer Elhauge, Harvard Law Review, March 2016"}
-  narration: "**Elhauge asks for enforcement.** In March 2016, Harvard law professor Einer Elhauge took overlapping airline shareholdings as an opening example: seven shareholders controlling 60% of United also held large stakes in its rivals. When investors hold shares in competing companies, economists call it common ownership; Elhauge argued in the Harvard Law Review that it makes competitors compete less and can break antitrust law. He recommended enforcement to undo anticompetitive holdings, arguing that they helped explain high executive pay and rising inequality. His choice was to treat the ownership pattern as a reason for legal action, putting the funds' diversification before antitrust authorities as a possible source of harm."
+  narration: "**Elhauge asks for enforcement.** The asset managers' growing reach raised a question about competition. In March 2016, Harvard law professor Einer Elhauge took overlapping airline shareholdings as an opening example: seven shareholders controlling 60% of United also held large stakes in its rivals. When investors hold shares in competing companies, economists call it common ownership; Elhauge argued in the Harvard Law Review that it makes competitors compete less and can break antitrust law. He recommended enforcement to undo anticompetitive holdings, arguing that they helped explain high executive pay and rising inequality. His choice was to treat the ownership pattern as a reason for legal action, putting the funds' diversification before antitrust authorities as a possible source of harm."
   duration: 16
 
 - shot: "big-three"
@@ -160,6 +127,17 @@ BlackRock and Vanguard hold shares in most large American companies, for the peo
   narration: "**Novick and Golub ask the FTC to hold back.** On 15 January 2019, BlackRock vice chairman Barbara Novick and chief risk officer Bennett Golub signed a letter to the U.S. Federal Trade Commission. BlackRock had called the evidence fragile in 2017; now they cited Analysis Group, a consultant the company hired, which reported that changing two assumptions removed the statistically significant link to fares. They argued that proposed remedies would harm everyday investors and asked regulators not to base policy on the airline study. Their letter moved the fight from what the researchers had measured to whether it justified changing the rules for funds."
   duration: 16
 
+- shot: "owners-leave"
+  view: "graph"
+  lens: "money"
+  focus: "blackrock"
+  time: "2020-06"
+  reveal: ["blackrock", "merrill-lynch", "barclays", "pnc-financial-services"]
+  reveal_claims: ["merrill-lynch#c1", "barclays#c1", "pnc-financial-services#c1"]
+  overlay: {kind: "quote", source: "pnc-2020-05-11-blackrock-sale-release", quote: "realizing a substantial return on our investment, significantly enhancing our already strong balance sheet and liquidity, and leaving PNC very well-positioned to take advantage of potential investment opportunities that history has shown can arise in disrupted markets.", caption: "William Demchak, PNC sale announcement, 11 May 2020"}
+  narration: "**Demchak chooses cash.** Who owned BlackRock was changing too. In May 2020 PNC chief executive William Demchak announced the sale of its 22% BlackRock stake after a quarter-century as an owner. He said the sale would strengthen PNC's balance sheet and liquidity, freeing it to pursue opportunities in disrupted markets and removing regulatory obligations attached to the holding. Other bank owners had already gone: BlackRock bought back Bank of America's last shares, inherited from Merrill Lynch, in June 2011, and Barclays sold all its shares in May 2012. PNC's May 2020 exit ended the succession of large bank owners and left BlackRock's ownership spread among market investors."
+  duration: 16
+
 - shot: "vanguard-replies"
   view: "graph"
   lens: "all"
@@ -168,7 +146,7 @@ BlackRock and Vanguard hold shares in most large American companies, for the peo
   reveal: ["the-vanguard-group", "common-ownership-of-us-airlines"]
   reveal_claims: ["common-ownership-of-us-airlines#c2"]
   overlay: {kind: "quote", source: "vanguard-ftc-hsr-letter-2021-02-01", quote: "The common ownership concept is an unproven hypothesis that should, at a minimum, be studied in greater depth before becoming a part of the rules implementing the Hart-Scott-Rodino Act", caption: "Vanguard, letter to the U.S. Federal Trade Commission, 1 February 2021"}
-  narration: "**Davis and Robinson resist a new rule.** On 1 February 2021, Vanguard's chief investment officer Gregory Davis and general counsel Anne Robinson signed a letter asking the same agency to reconsider proposed rules for reporting acquisitions. They called common ownership an unproven hypothesis, arguing that regulators needed evidence of harm and a weighing of costs and benefits before acting. Their letter said Vanguard's fund advisers make decisions for the funds' shareholders, without coordinating with other advisers or investors. They asked the FTC to keep that hypothesis out of its rules, while researchers continued to test the relationship the firms rejected."
+  narration: "**Davis and Robinson resist a new rule.** On 1 February 2021, Vanguard's chief investment officer Gregory Davis and general counsel Anne Robinson signed a letter asking the FTC, which had received BlackRock's letter, to reconsider proposed rules for reporting acquisitions. They called common ownership an unproven hypothesis, arguing that regulators needed evidence of harm and a weighing of costs and benefits before acting. Their letter said Vanguard's fund advisers make decisions for the funds' shareholders, without coordinating with other advisers or investors. They asked the FTC to keep that hypothesis out of its rules, while researchers continued to test the relationship the firms rejected."
   duration: 12
 
 - shot: "later-work"
@@ -203,6 +181,28 @@ BlackRock and Vanguard hold shares in most large American companies, for the peo
   narration: "**Tecu and her co-authors defend the result.** In their August 2022 reply, Isabel Tecu and her co-authors rebuilt the comparison used to separate market-share changes from ownership changes. They argued that their critics' method produced a mechanical correlation, and that a valid comparison still showed ownership changes predicting price changes. Tecu had already argued that studies challenging their results did not establish that no such effects existed; Einer Elhauge had answered an earlier draft too. The reply kept the original claim of harm in dispute and left policymakers facing competing answers to the same question about passengers' fares."
   duration: 15
 
+- shot: "today"
+  view: "graph"
+  lens: "money"
+  focus: "blackrock"
+  time: "2026-03"
+  reveal: ["blackrock", "larry-fink", "vanguard-capital-management", "the-vanguard-group", "kuwait-investment-authority"]
+  reveal_claims: ["vanguard-capital-management#c1", "the-vanguard-group#c6", "kuwait-investment-authority#c1"]
+  overlay: {kind: "quote", source: "blackrock-2026-chairmans-letter", quote: "Ensuring more people can own a stake in their country’s growth.", caption: "Larry Fink, chairman’s letter, 2026"}
+  narration: "**The manager has shareholders too.** As researchers disputed the effects of shared ownership, BlackRock's own shareholders showed how one manager could hold a stake in another. In March 2026 Fink used his annual letter as BlackRock's chairman to argue that more people should own a stake in their country's growth. The company he led had its own large shareholders: Vanguard Capital Management, a wholly owned Vanguard subsidiary, reported 6.87%, mostly for Vanguard funds; the Kuwait Investment Authority held 5.14% for the Government of Kuwait. Vanguard's filing said its subsidiary could direct sales of securities held by funds and clients. Bogle's fund investors thus helped own a rival manager, placing another layer between the people saving money and the executives running it."
+  duration: 14
+
+- shot: "for-clients"
+  view: "graph"
+  lens: "money"
+  focus: "blackrock"
+  time: "2026-03"
+  reveal: ["blackrock", "larry-fink", "vanguard-capital-management", "state-street", "tesla", "microsoft", "amazon"]
+  reveal_claims: ["blackrock#c1", "blackrock#c2", "blackrock#c3", "vanguard-capital-management#c2", "vanguard-capital-management#c3", "vanguard-capital-management#c4", "state-street#c1", "state-street#c2", "state-street#c3"]
+  overlay: {kind: "quote", source: "blackrock-2026-chairmans-letter", quote: "When people invest their savings—over decades, not days—the capital markets put that money to work, financing companies, infrastructure, and jobs.", caption: "Larry Fink’s public argument for long-term investing, 2026"}
+  narration: "**Who carries the loss?** In his 2026 letter, Fink argued for widening access to investment, citing his parents' savings: he said investing alongside the American economy had helped them retire comfortably. Through their funds, BlackRock and Vanguard's managers hold roughly 5% to 8% of companies such as Tesla, Microsoft and Amazon for clients, mostly fund investors who receive the gains and losses; State Street reports hundreds of millions of Microsoft and Amazon shares on the same basis. The managers handle the shares and vote part of them, giving the people making those voting decisions a reach far beyond their own savings."
+  duration: 20
+
 - shot: "explore"
   view: "graph"
   lens: "all"
@@ -210,7 +210,7 @@ BlackRock and Vanguard hold shares in most large American companies, for the peo
   time: "2026-03"
   reveal: ["blackrock", "the-vanguard-group", "state-street", "vanguard-funds", "vanguard-capital-management", "larry-fink", "john-c-bogle", "blackstone", "pnc-financial-services", "merrill-lynch", "barclays", "kuwait-investment-authority", "tesla", "microsoft", "amazon", "common-ownership-of-us-airlines", "anticompetitive-effects-of-common-ownership", "common-ownership-does-not-have-anticompetitive-effects"]
   overlay: {kind: "quote", source: "europarl-2020-05-common-ownership-study", quote: "To conclude, whether and in which circumstances common ownership is beneficial or deleterious for competition, innovation, and, ultimately, citizen welfare is still an open debate.", caption: "Study for the European Parliament, May 2020"}
-  narration: "**A decision still waiting.** In May 2020, Maarten Pieter Schinkel and fellow researchers delivered a study requested by the European Parliament's economic affairs committee. They faced a practical question: whether shared ownership called for changes to competition policy, alongside rules encouraging shareholders to engage with companies. They called its benefits and harms still an open debate and warned that changing competition tools for unproven concerns in European banking could be premature. Bogle had chosen fund ownership and Fink had built a listed manager; those choices now reached into a continuing argument over how savers' money should be represented, and how customers should be protected."
+  narration: "**A decision still waiting.** The managers' reach had already drawn scrutiny in May 2020, when Maarten Pieter Schinkel and fellow researchers delivered a study requested by the European Parliament's economic affairs committee. They faced a practical question: whether shared ownership called for changes to competition policy, alongside rules encouraging shareholders to engage with companies. They called its benefits and harms still an open debate and warned that changing competition tools for unproven concerns in European banking could be premature. Bogle had chosen fund ownership and Fink had built a listed manager; those choices now reached into a continuing argument over how savers' money should be represented, and how customers should be protected."
   explore: true
   duration: 13
 ```
