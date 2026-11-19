@@ -60,13 +60,17 @@ claims:
     rel: adopted
     to: stock-act-2012
     when: "2012"
+    note: "Senate passage 96–3 on 2 February; House amendment 417–2 on 9 February; Senate cloture 96–3 on 22 March, followed by concurrence in the House amendment without a further roll call."
     src:
       - {s: public-law-112-105-stock-act, at: "Sec. 4(a)", quote: "Members of Congress and employees of Congress are not exempt from the insider trading prohibitions arising under the securities laws"}
+      - {s: congressional-record-2012-02-02-stock-act, at: "Senate roll call 14", quote: "The result was announced—yeas 96, nays 3, as follows:"}
+      - {s: congressional-record-2012-02-09-stock-act, at: "Daily Digest, House, roll call 47", quote: "417 yeas to 2 nays, Roll No. 47."}
+      - {s: congressional-record-2012-03-22-stock-act, at: "Daily Digest, Senate, roll call 56", quote: "By 96 yeas to 3 nays (Vote No. 56), three-fifths of those Senators duly chosen and sworn, having voted in the affirmative, Senate agreed to the motion to close further debate on the Reid motion to concur in the amendment of the House to the bill."}
   - id: c8
     rel: adopted
     to: public-law-113-7
     when: "2013-04-12"
-    note: "The Senate passed it by unanimous consent on 11 April 2013 and the House by unanimous consent on 12 April."
+    note: "Chris Coons moved Senate consideration and passage without intervening debate on 11 April 2013; both chambers acted by unanimous consent, the House on 12 April."
     src:
       - {s: rollcall-2013-04-11-senate-quietly-curtails, at: "Article", quote: "The Senate bill passed Thursday by unanimous consent goes beyond a simple delay."}
       - {s: rollcall-2013-04-12-obama-house-follow, at: "Article", quote: "Both chambers passed the bill by unanimous consent after leaders in both parties and the White House refused to answer CQ Roll Call’s questions about the process all week."}
