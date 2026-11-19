@@ -232,6 +232,7 @@ The Party's retreat also mattered: in the Library of Congress study's explanatio
   duration: 12
 
 - shot: why-it-fell
+  time: "2005-04-25"
   view: graph
   lens: all
   focus: dissolution-of-the-soviet-union
