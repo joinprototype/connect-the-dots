@@ -7,3 +7,11 @@ version = "0.5.25"
 edition = "2024"
 rust-version = "1.85"
 license = "AGPL-3.0-only"
+
+# Keep local builds compact: full debug info made target/debug grow past 18 GB.
+# Line tables keep file:line in panics and backtraces; dependencies carry none.
+[profile.dev]
+debug = "line-tables-only"
+
+[profile.dev.package."*"]
+debug = false
