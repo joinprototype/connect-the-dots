@@ -30,4 +30,10 @@ claims:
     note: "He answers a 2019 draft of the paper."
     src:
       - {s: elhauge-2020-hblr-horizontal-shareholding-harms, quote: "But their claims are based on three modifications to the regression, none of which support their conclusion."}
+  - id: c4
+    rel: appears_in
+    to: texas-coal-dismissal-order
+    role: "his 2016 article is cited in the Clayton Act analysis"
+    src:
+      - {s: edtx-coal-dismissal-order-2025, at: "Part III.A, p. 28", quote: "Einer Elhauge, Horizontal Shareholding, 129 HARV. L. REV. 1267 (2016)."}
 ---

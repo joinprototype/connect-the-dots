@@ -3,64 +3,43 @@ uid: 01M55MPWMVMFQPREYR2AZY6VJM
 id: who-owns-blackrock-and-vanguard
 type: chapter
 title: Who Owns BlackRock and Vanguard?
-subtitle: From a firm under Blackstone's umbrella and a fund company owned by its own funds to today’s holders, and the debate about their reach
-summary: BlackRock began in 1988 under Blackstone and later had PNC, Merrill Lynch and Barclays as big shareholders; Vanguard is owned by its own funds. Who holds them now, and what each side says about their reach.
+subtitle: Who owns the two fund managers, who casts the votes, and what happened when states challenged that power
+summary: Vanguard’s funds own their manager and public shareholders own BlackRock. Both advisers vote shares for investors, a power Texas challenged in federal court.
 featured: true
 ---
 
-BlackRock and Vanguard hold shares in most large American companies, for the people invested in their funds. This story follows who owned the two firms themselves, from 1974 and 1988 to today, then lets each side of a debate about their reach speak in its own words.
+Who can use the votes attached to savers’ money? Vanguard’s funds own their manager, and BlackRock’s public shareholders own theirs. The votes on the shares the funds buy can go to an adviser. A study of airline fares asked what that power could do, and a lawsuit over coal put its limits before a federal judge.
 
 ```scene
 - shot: "open"
   view: "map"
   camera: {center: [-74.6, 40.35], zoom: 6.0, duration: 5}
   places: ["blackrock", "the-vanguard-group"]
-  overlay: {kind: "quote", source: "bogle-1997-09-16-spirit-of-entrepreneurship", quote: "the funds would now manage themselves, with an eye solely on the interests of their shareholders", caption: "John C. Bogle, recalling Vanguard’s founding in 1997"}
-  narration: "**Two firms, two answers.** When John C. Bogle built Vanguard, he put ownership in the hands of its funds, and through them their investors. Larry Fink's BlackRock became a listed company: among its largest holders in March 2026 were Vanguard Capital Management, with 6.87% mostly for Vanguard funds, and Kuwait's investment authority, with 5.14% for its government. BlackRock now has its head office at 50 Hudson Yards in New York; Vanguard's is in Malvern, Pennsylvania. Both hold shares in many of America's largest companies for fund investors, but the choices that determined who owned the managers began with Bogle losing his job."
+  overlay: {kind: "quote", source: "bogle-1997-09-16-spirit-of-entrepreneurship", quote: "the funds would now manage themselves, with an eye solely on the interests of their shareholders", caption: "John C. Bogle in 1997, recalling the founding of Vanguard in 1974"}
+  narration: "**Who can vote with your savings?** Vanguard’s funds own Vanguard, and BlackRock’s shareholders own BlackRock. In a 2017 study, Jan Fichtner and his colleagues added the shares managed by BlackRock, Vanguard and State Street and ranked the total first at 438 of 500 S&P 500 companies. They suggested that the three could function as a permanent governing board for much of corporate America, an idea that turns on who gets the returns, who casts the votes, and whether the firms act together. Start with the board that still heard John C. Bogle out after he lost his job."
   duration: 16
+  time: "2026-06-30"
 
 - shot: "vanguard-1974"
   view: "graph"
   lens: "all"
   focus: "the-vanguard-group"
   time: "1974-09-24"
-  reveal: ["john-c-bogle", "wellington-management-company", "the-vanguard-group"]
-  reveal_claims: ["john-c-bogle#c2", "john-c-bogle#c1"]
+  reveal: ["john-c-bogle", "wellington-management-company", "the-vanguard-group", "vanguard-funds", "vanguard-500-index-fund"]
+  reveal_claims: ["john-c-bogle#c2", "john-c-bogle#c1", "john-c-bogle#c3", "the-vanguard-group#c8", "vanguard-funds#c1"]
   overlay: {kind: "quote", source: "bogle-1997-09-16-spirit-of-entrepreneurship", quote: "I had no thought whatsoever that the structure just put in place would remain intact.", caption: "John C. Bogle on the compromise he accepted in 1974, recalled in 1997"}
-  narration: "**Fired, with one board left to persuade.** John C. Bogle had joined Wellington in 1951 and become president in 1967; on 23 January 1974, its board fired him, 10 votes to 2. The next day he took his idea for a fund-owned company to the funds' separate board, where, he recalled in 1997, he still had a fighting chance. He accepted a compromise: Vanguard, incorporated that September and operating from May 1975, would handle administration while Wellington kept investment management and marketing. Yet, by his later account, he said little about his intention to bring those businesses inside too: “I had no thought whatsoever that the structure just put in place would remain intact.”"
+  narration: "**One board left to persuade.** Wellington’s board fired Bogle on January 23, 1974 by ten votes to two. The next day, he took his proposal to the funds’ own board, where, he recalled in 1997, a legally required independent majority gave him a fighting chance. He accepted a compromise under which the funds would own Vanguard, incorporated that September, and Vanguard would handle administration while Wellington kept investment management and marketing. Bogle recalled keeping quiet about his plans to bring both jobs inside, and in August 1976 he put the new company to work for individual investors with a fund that tracked the S&P 500."
   duration: 15
-
-- shot: "owned-by-funds"
-  view: "graph"
-  lens: "money"
-  focus: "the-vanguard-group"
-  time: "1976-08-31"
-  reveal: ["john-c-bogle", "the-vanguard-group", "vanguard-funds", "vanguard-500-index-fund"]
-  reveal_claims: ["john-c-bogle#c3", "the-vanguard-group#c8", "vanguard-funds#c1", "vanguard-500-index-fund#c1"]
-  overlay: {kind: "quote", source: "bogle-1997-09-16-spirit-of-entrepreneurship", quote: "The idea was simple in concept: the funds would now manage themselves, with an eye solely on the interests of their shareholders, rather than entrust the management role to an external company seeking profit for itself.", caption: "John C. Bogle on the idea behind Vanguard's structure, recalled in 1997"}
-  narration: "**Whose profit?** Bogle's proposal put Vanguard in the hands of its funds, and so their investors, instead of an outside owner collecting profits. Looking back in 1997, Bogle wondered whether entrepreneurship, foresight or self-preservation had driven him to propose the structure after his firing. In August 1976 he launched First Index Investment Trust, now Vanguard 500 Index Fund, giving individual investors access to indexing. That fund now provides about 14% of Vanguard's capital; people buying into it help own the company that manages their savings."
-  duration: 16
-
-- shot: "blackstone-1988"
-  view: "graph"
-  lens: "money"
-  focus: "blackstone-financial-management"
-  time: "1988"
-  reveal: ["larry-fink", "first-boston", "blackstone-financial-management", "blackstone", "stephen-a-schwarzman", "peter-g-peterson"]
-  reveal_claims: ["larry-fink#c5", "larry-fink#c4", "stephen-a-schwarzman#c1", "peter-g-peterson#c1", "blackstone#c2", "blackstone#c1"]
-  overlay: {kind: "quote", source: "vanity-fair-2010-04-fink", quote: "We didn’t have the risk tools to understand that risk.", caption: "Larry Fink, recalling his First Boston loss in a 2010 interview"}
-  narration: "**Fink starts again with risk.** In 1988 Larry Fink left First Boston after his department had lost $100 million in 1986; he denied being fired, while the bank said he had no option of keeping his job. Suzanna Andrews reports that Fink vowed to understand the risks he took; he told her clients depended on Wall Street to measure theirs, a job it did poorly. He and seven colleagues formed Blackstone Financial Management under Blackstone, founded by Stephen Schwarzman and Peter Peterson; he chose to offer clients both investment and risk management. Blackstone supplied a $5 million credit line for half the business, according to King of Capital."
-  duration: 17
 
 - shot: "sold-1995"
   view: "graph"
   lens: "money"
   focus: "blackrock"
   time: "1995-02-28"
-  reveal: ["blackstone-financial-management", "blackrock", "blackstone", "stephen-a-schwarzman", "pnc-financial-services"]
-  reveal_claims: ["blackstone-financial-management#c1", "pnc-financial-services#c2", "blackstone#c1"]
+  reveal: ["larry-fink", "first-boston", "blackstone-financial-management", "blackrock", "blackstone", "stephen-a-schwarzman", "pnc-financial-services"]
+  reveal_claims: ["larry-fink#c5", "larry-fink#c4", "blackstone-financial-management#c1", "pnc-financial-services#c2", "blackstone#c1"]
   overlay: {kind: "quote", source: "vanity-fair-2010-04-fink", quote: "Fink split from Blackstone, the loser in a fight with Schwarzman over the unit’s share of Blackstone’s equity", caption: "Suzanna Andrews, Vanity Fair, 2010"}
-  narration: "**Schwarzman lets it go.** By 1994, Fink and Schwarzman were fighting over equity; Suzanna Andrews reports that insiders described the dispute as a struggle for control. The business had taken the name BlackRock in 1992. Schwarzman's Blackstone agreed that June to sell to PNC, a Pittsburgh bank, which completed the roughly $240 million purchase in February 1995. Looking back in 2013, Schwarzman called the sale a heroic mistake. His decision put BlackRock under a bank owner that would hold on through its stock-market listing and two large acquisitions."
+  narration: "**Fink takes on an outside owner.** When Larry Fink started over in 1988, he wanted to offer the kind of risk management he said Wall Street had failed to give clients. Blackstone backed his new firm with a $5 million credit line, according to Suzanna Andrews. She reported that Fink later split from Stephen Schwarzman over the unit’s share of Blackstone’s equity, a fight insiders described as a struggle for control. Schwarzman chose to sell Blackstone’s interest to Pittsburgh’s PNC, which paid about $240 million for the whole company and would stay invested as Fink took it public and bought two fund businesses."
   duration: 16
 
 - shot: "growing"
@@ -71,7 +50,7 @@ BlackRock and Vanguard hold shares in most large American companies, for the peo
   reveal: ["blackrock", "pnc-financial-services", "merrill-lynch", "merrill-lynch-investment-managers", "barclays", "barclays-global-investors"]
   reveal_claims: ["pnc-financial-services#c3", "blackrock#c5", "merrill-lynch-investment-managers#c1", "merrill-lynch#c1", "blackrock#c6", "barclays-global-investors#c1", "barclays#c1"]
   overlay: {kind: "quote", source: "blackrock-history-2026", quote: "Opportunity favors the prepared mind.", caption: "BlackRock’s advertisement for the Merrill Lynch combination, 3 October 2006"}
-  narration: "**Fink buys businesses with shares.** In October 1999 Fink took BlackRock onto the stock market, with PNC keeping 70%. In 2006 he combined it with Merrill Lynch's fund business, giving Merrill 49.3%; BlackRock advertised the combination's technology and global perspective under the words “Opportunity favors the prepared mind.” In 2009 he bought Barclays Global Investors, maker of iShares, for $15.2 billion, giving Barclays 19.8%. Each deal enlarged the business Fink led while putting another bank among its biggest owners; those banks could later turn their BlackRock shares into cash."
+  narration: "**Fink buys businesses with shares.** After BlackRock went public, Fink used its shares to bring in Merrill Lynch’s investment business in 2006 and Barclays Global Investors, home of iShares, in 2009. BlackRock’s annual filings put Merrill’s interest at about 49.3% of fully diluted capital and 45% of voting common stock at closing. Barclays received a 19.8% economic interest and about 4.8% of outstanding common stock at its closing. The Barclays deal also combined two portfolios managed for clients, giving economists studying airline fares a way to examine what changes when the same firm manages more shares in competing companies."
   duration: 16
 
 - shot: "legal-argument"
@@ -82,7 +61,7 @@ BlackRock and Vanguard hold shares in most large American companies, for the peo
   reveal: ["einer-elhauge", "horizontal-shareholding", "common-ownership-of-us-airlines"]
   reveal_claims: ["einer-elhauge#c1", "common-ownership-of-us-airlines#c4"]
   overlay: {kind: "quote", source: "elhauge-2016-hlr-horizontal-shareholding", quote: "An economic blockbuster has recently been exposed. A small group of institutions has acquired large shareholdings in horizontal competitors throughout our economy, causing them to compete less vigorously with each other.", caption: "Einer Elhauge, Harvard Law Review, March 2016"}
-  narration: "**Elhauge asks for enforcement.** The asset managers' growing reach raised a question about competition. In March 2016, Harvard law professor Einer Elhauge took overlapping airline shareholdings as an opening example: seven shareholders controlling 60% of United also held large stakes in its rivals. When investors hold shares in competing companies, economists call it common ownership; Elhauge argued in the Harvard Law Review that it makes competitors compete less and can break antitrust law. He recommended enforcement to undo anticompetitive holdings, arguing that they helped explain high executive pay and rising inequality. His choice was to treat the ownership pattern as a reason for legal action, putting the funds' diversification before antitrust authorities as a possible source of harm."
+  narration: "**Elhauge asks for enforcement.** In March 2016, Harvard law professor Einer Elhauge turned the economists’ early airline paper into a case for antitrust enforcement. Drawing on their 2015 working paper, he wrote that seven shareholders accounted for 60% of United Airlines shares in 2013–15 and also held substantial holdings in its rivals. He argued that one investor’s stakes across competing businesses, known as common ownership, could give those businesses an incentive to compete less vigorously and that the Clayton Act could reach such holdings when they harmed competition."
   duration: 16
 
 - shot: "big-three"
@@ -92,7 +71,7 @@ BlackRock and Vanguard hold shares in most large American companies, for the peo
   time: "2017-04"
   reveal: ["blackrock", "the-vanguard-group", "state-street", "microsoft"]
   overlay: {kind: "quote", source: "fichtner-heemskerk-garcia-bernardo-2017-big-three", quote: "We comprehensively map the ownership of the Big Three in the United States and find that together they constitute the largest shareholder in 88 percent of the S&P 500 firms.", caption: "Jan Fichtner, Eelke M. Heemskerk and Javier Garcia-Bernardo, Business and Politics, 2017"}
-  narration: "**Who casts the votes?** In 2017 Jan Fichtner and his colleagues mapped what investors' move into index funds had placed in managers' hands. They found BlackRock, Vanguard and State Street together to be the largest shareholder in 88% of S&P 500 companies, and then examined how the managers used their votes: they sided with company management in more than 90% of votes. Their question was whether funds that largely stay invested could still exert power over executives. The voting records showed managers actively choosing sides, making the next question concrete: could holding competing companies also change what customers paid?"
+  narration: "**From holdings to ballots.** Fichtner and his colleagues took the question of influence to the voting records in 2017. Their 438-company count added BlackRock, Vanguard and State Street’s holdings and compared the combined position with other shareholders. They argued that index managers could exercise influence because they tended to stay invested, and found that managers generally voted consistently across their own funds. Each of the three sided with company management in more than 90% of sampled votes, much like most active mutual funds in the study."
   duration: 15
 
 - shot: "airline-study"
@@ -103,7 +82,7 @@ BlackRock and Vanguard hold shares in most large American companies, for the peo
   reveal: ["common-ownership-of-us-airlines", "anticompetitive-effects-of-common-ownership", "jose-azar", "martin-c-schmalz", "isabel-tecu", "blackrock", "the-vanguard-group"]
   reveal_claims: ["common-ownership-of-us-airlines#c1", "common-ownership-of-us-airlines#c2", "common-ownership-of-us-airlines#c3", "jose-azar#c1", "martin-c-schmalz#c1", "isabel-tecu#c1"]
   overlay: {kind: "quote", source: "azar-schmalz-tecu-2018-jof", quote: "We conclude that a hidden social cost—reduced product market competition—accompanies the private benefits of diversification and good governance.", caption: "José Azar, Martin C. Schmalz and Isabel Tecu, 2018 abstract"}
-  narration: "**Put a price on diversification.** For their 2018 study, José Azar and his colleagues followed U.S. airline routes from 2001 to 2014, comparing changes in ticket prices with changes in shared ownership. They also used the combination of two large asset managers to examine changes in ownership. Against a world where airlines were separately owned, they estimated fares 3% to 7% higher and called reduced competition a hidden social cost of diversification. The benefit to people spreading their savings across companies came, in their finding, with a cost to passengers; that conclusion put the managers' holdings at the centre of a dispute over fares."
+  narration: "**Put a price on diversification.** José Azar, Martin Schmalz and Isabel Tecu followed U.S. routes and used BlackRock’s acquisition of Barclays Global Investors to examine shifts in common ownership and fares. In their 2018 paper they found that changes in overlapping holdings tracked changes in fares on the same routes, even when they isolated ownership changes from the acquisition. In their model, fares ran 3% to 7% higher than under separate ownership or if airlines ignored the incentives of overlapping owners. The authors argued that diversification could benefit savers while costing some of those same people more as passengers."
   duration: 15
 
 - shot: "founders-warning"
@@ -112,8 +91,8 @@ BlackRock and Vanguard hold shares in most large American companies, for the peo
   focus: "john-c-bogle"
   time: "2018-11-29"
   reveal: ["john-c-bogle", "the-vanguard-group", "vanguard-500-index-fund", "blackrock"]
-  overlay: {kind: "quote", source: "bogle-1997-09-16-spirit-of-entrepreneurship", quote: "the mission remains unchanged: a fair shake for fund shareholders.", caption: "John C. Bogle on Vanguard’s mission in 1997, before his 2018 warning"}
-  narration: "**Bogle warns about the industry he helped build.** On 29 November 2018, Bogle used the Wall Street Journal to warn where the growth of index funds might lead: the three biggest could eventually own 30% or more of the U.S. stock market. He had opened indexing to individual investors in 1976; now he wrote that such concentration would not serve the national interest. He also insisted that index funds' enormous value should not be ignored. The founder defended what investors had gained while calling attention to the voting power accumulating in a few managers' hands, a problem his successors would have to answer."
+  overlay: {kind: "quote", source: "wsj-2018-11-29-bogle-index-funds", quote: "I do not believe that such concentration would serve the national interest", caption: "John C. Bogle, The Wall Street Journal, 29 November 2018"}
+  narration: "**Bogle asks what success could cost.** In November 2018, Bogle called the index fund an exceptional advance for investors and asked what would happen if it became too successful. He foresaw index funds potentially holding half of U.S. stocks and warned that concentrating so much voting power would disserve the national interest. For the managers, the prospect of limits on how they invested savers’ money brought the question to the Federal Trade Commission."
   duration: 16
 
 - shot: "blackrock-replies"
@@ -124,18 +103,7 @@ BlackRock and Vanguard hold shares in most large American companies, for the peo
   reveal: ["blackrock", "common-ownership-of-us-airlines", "anticompetitive-effects-of-common-ownership"]
   reveal_claims: ["common-ownership-of-us-airlines#c1", "common-ownership-of-us-airlines#c3", "blackrock#c8"]
   overlay: {kind: "quote", source: "blackrock-ftc-hearing-8-letter-2019-01-15", quote: "When the aforementioned erroneous assumptions are corrected, Analysis Group finds no statistically significant relationship between ‘common ownership’ and airline ticket prices.", caption: "BlackRock, letter to the U.S. Federal Trade Commission, 15 January 2019"}
-  narration: "**Novick and Golub ask the FTC to hold back.** On 15 January 2019, BlackRock vice chairman Barbara Novick and chief risk officer Bennett Golub signed a letter to the U.S. Federal Trade Commission. BlackRock had called the evidence fragile in 2017; now they cited Analysis Group, a consultant the company hired, which reported that changing two assumptions removed the statistically significant link to fares. They argued that proposed remedies would harm everyday investors and asked regulators not to base policy on the airline study. Their letter moved the fight from what the researchers had measured to whether it justified changing the rules for funds."
-  duration: 16
-
-- shot: "owners-leave"
-  view: "graph"
-  lens: "money"
-  focus: "blackrock"
-  time: "2020-06"
-  reveal: ["blackrock", "merrill-lynch", "barclays", "pnc-financial-services"]
-  reveal_claims: ["merrill-lynch#c1", "barclays#c1", "pnc-financial-services#c1"]
-  overlay: {kind: "quote", source: "pnc-2020-05-11-blackrock-sale-release", quote: "realizing a substantial return on our investment, significantly enhancing our already strong balance sheet and liquidity, and leaving PNC very well-positioned to take advantage of potential investment opportunities that history has shown can arise in disrupted markets.", caption: "William Demchak, PNC sale announcement, 11 May 2020"}
-  narration: "**Demchak chooses cash.** Who owned BlackRock was changing too. In May 2020 PNC chief executive William Demchak announced the sale of its 22% BlackRock stake after a quarter-century as an owner. He said the sale would strengthen PNC's balance sheet and liquidity, freeing it to pursue opportunities in disrupted markets and removing regulatory obligations attached to the holding. Other bank owners had already gone: BlackRock bought back Bank of America's last shares, inherited from Merrill Lynch, in June 2011, and Barclays sold all its shares in May 2012. PNC's May 2020 exit ended the succession of large bank owners and left BlackRock's ownership spread among market investors."
+  narration: "**Novick and Golub ask the FTC to hold back.** In January 2019, BlackRock’s Barbara Novick and Bennett Golub argued that proposed restrictions on overlapping holdings, including forced sales, would hurt everyday investors. Analysis Group, a consultant BlackRock hired, changed how the airline study treated shareholders’ control during bankruptcy and how it counted the financial incentives of managers who earn fees. BlackRock said the consultant found no statistically significant link to fares after changing those assumptions, and Vanguard would ask the FTC to look at how the funds themselves were organized."
   duration: 16
 
 - shot: "vanguard-replies"
@@ -143,10 +111,10 @@ BlackRock and Vanguard hold shares in most large American companies, for the peo
   lens: "all"
   focus: "the-vanguard-group"
   time: "2021-02-01"
-  reveal: ["the-vanguard-group", "common-ownership-of-us-airlines"]
+  reveal: ["the-vanguard-group", "common-ownership-of-us-airlines", "federal-trade-commission", "hart-scott-rodino-act-1976"]
   reveal_claims: ["common-ownership-of-us-airlines#c2"]
   overlay: {kind: "quote", source: "vanguard-ftc-hsr-letter-2021-02-01", quote: "The common ownership concept is an unproven hypothesis that should, at a minimum, be studied in greater depth before becoming a part of the rules implementing the Hart-Scott-Rodino Act", caption: "Vanguard, letter to the U.S. Federal Trade Commission, 1 February 2021"}
-  narration: "**Davis and Robinson resist a new rule.** On 1 February 2021, Vanguard's chief investment officer Gregory Davis and general counsel Anne Robinson signed a letter asking the FTC, which had received BlackRock's letter, to reconsider proposed rules for reporting acquisitions. They called common ownership an unproven hypothesis, arguing that regulators needed evidence of harm and a weighing of costs and benefits before acting. Their letter said Vanguard's fund advisers make decisions for the funds' shareholders, without coordinating with other advisers or investors. They asked the FTC to keep that hypothesis out of its rules, while researchers continued to test the relationship the firms rejected."
+  narration: "**Whose assets would the rule count?** In February 2021, Vanguard’s Gregory Davis and Anne Robinson answered the same concern by urging the FTC to leave common ownership out of its proposed rules for reporting acquisitions until the agency could show harm and weigh the costs of acting. They said each fund’s assets were held for its shareholders, who shared the returns in proportion to their investment, including people saving for retirement or college. Advisers had to act for each fund under its own mandate and, they told the FTC, made those decisions independently of other advisers."
   duration: 12
 
 - shot: "later-work"
@@ -156,63 +124,106 @@ BlackRock and Vanguard hold shares in most large American companies, for the peo
   time: "2021-09"
   reveal: ["jose-azar", "common-ownership-of-us-airlines", "anticompetitive-effects-of-common-ownership", "blackrock", "the-vanguard-group", "state-street"]
   overlay: {kind: "quote", source: "azar-vives-2021-revisiting", quote: "We also find that common ownership by the “Big Three” (BlackRock, Vanguard and State Street) is associated with lower airline prices, while common ownership by shareholders other than the Big Three is associated with higher prices.", caption: "José Azar and Xavier Vives, working paper, September 2021"}
-  narration: "**Azar widens the test.** In September 2021, José Azar returned to airline prices with economist Xavier Vives, adding what they called a crucial missing variable: owners' holdings across different industries. They wrote that they chose airlines to compare their results directly with earlier studies. Their working paper reported higher prices with ownership shared within industries and lower prices with ownership shared across industries, with no aggregate effect. It associated common ownership by BlackRock, Vanguard and State Street with lower fares, and common ownership by other shareholders with higher ones. Adding the wider portfolio changed what the same industry appeared to show, making the identity of the owners and the construction of the test central to the argument."
+  narration: "**Azar widens the test.** In September 2021, José Azar and Xavier Vives returned to airlines so they could compare their results with the earlier work. Within-industry overlap was associated with higher fares and overlap across industries with lower fares. The predicted net effect varied by route and averaged positive because some investors’ portfolios were overweight in airlines. The Big Three’s overall estimate pointed to lower fares, with statistical significance in only some specifications. Its within-industry estimate turned positive once the model accounted for holdings across industries."
   duration: 15
-
-- shot: "second-study"
-  view: "graph"
-  lens: "all"
-  focus: "common-ownership-does-not-have-anticompetitive-effects"
-  time: "2022-09"
-  reveal: ["common-ownership-does-not-have-anticompetitive-effects", "anticompetitive-effects-of-common-ownership", "common-ownership-of-us-airlines", "patrick-dennis", "kristopher-gerardi", "carola-schenone"]
-  reveal_claims: ["common-ownership-does-not-have-anticompetitive-effects#c1", "common-ownership-of-us-airlines#c5", "patrick-dennis#c1", "kristopher-gerardi#c1", "carola-schenone#c1"]
-  overlay: {kind: "quote", source: "dennis-gerardi-schenone-2022-jof", quote: "This paper reevaluates this evidence and shows that the documented positive correlation between common ownership and airline ticket prices stems from the market share component of the common ownership measure, and not the ownership and control components.", caption: "Patrick Dennis, Kristopher Gerardi and Carola Schenone, The Journal of Finance, 2022"}
-  narration: "**Dennis separates the ingredients.** In 2022 Patrick Dennis and his colleagues went back to the evidence linking airline fares and common ownership, testing which part of the ownership measure produced the relationship. Their paper in the Journal of Finance attributed the positive link to airlines' market shares, rather than ownership or control. They also reported that results depended on how investor control was measured and what powers shareholders were assumed to retain during bankruptcy. They were challenging the test behind the earlier conclusion; their answer prompted the original authors to contest whether the new test really separated ownership from market share."
-  duration: 16
 
 - shot: "authors-reply"
   view: "graph"
   lens: "all"
   focus: "common-ownership-does-not-have-anticompetitive-effects"
-  time: "2022-09"
+  time: "2022-08"
   reveal: ["common-ownership-does-not-have-anticompetitive-effects", "refutation-of-common-ownership-does-not-have-anticompetitive-effects", "jose-azar", "martin-c-schmalz", "isabel-tecu", "einer-elhauge"]
   reveal_claims: ["refutation-of-common-ownership-does-not-have-anticompetitive-effects#c1", "isabel-tecu#c3", "einer-elhauge#c3", "jose-azar#c2", "martin-c-schmalz#c2", "isabel-tecu#c2"]
   overlay: {kind: "quote", source: "azar-schmalz-tecu-2022-refutation", quote: "Contrary to DGS’ claims, ownership changes do predict price changes once one constructs a valid placebo that actually separates the variation from market shares from the variation in ownership.", caption: "José Azar, Martin C. Schmalz and Isabel Tecu, working paper, August 2022"}
-  narration: "**Tecu and her co-authors defend the result.** In their August 2022 reply, Isabel Tecu and her co-authors rebuilt the comparison used to separate market-share changes from ownership changes. They argued that their critics' method produced a mechanical correlation, and that a valid comparison still showed ownership changes predicting price changes. Tecu had already argued that studies challenging their results did not establish that no such effects existed; Einer Elhauge had answered an earlier draft too. The reply kept the original claim of harm in dispute and left policymakers facing competing answers to the same question about passengers' fares."
+  narration: "**What drove the fare correlation?** Patrick Dennis, Kristopher Gerardi and Carola Schenone attributed the fare correlation to airlines’ market shares in a paper forthcoming in the Journal of Finance, which published it in October 2022. In August, Tecu, Azar and Schmalz argued that airlines entering and leaving routes made the critics’ supposedly fixed-market-share measure mechanically correlate with market shares. With a test they said isolated ownership changes, they still found those changes predicted fares. Their dispute over how to infer an effect on prices left open Elhauge’s question of when antitrust law should reach overlapping holdings."
   duration: 15
+
+- shot: "tesla-ballot"
+  view: "graph"
+  lens: "all"
+  overlay: {kind: "quote", source: "delaware-chancery-tornetta-2024", quote: "a single material disclosure failure invalidates", caption: "Tesla shareholder Richard Tornetta’s post-trial argument, quoted by the Delaware Court of Chancery"}
+  duration: 16
+  focus: "tesla-ceo-pay-vote-2024"
+  time: "2024-06-13"
+  reveal: ["tesla-ceo-pay-vote-2024", "tesla", "elon-musk", "blackrock", "the-vanguard-group"]
+  reveal_claims: ["tesla-ceo-pay-vote-2024#c1", "tesla-ceo-pay-vote-2024#c2", "tesla-ceo-pay-vote-2024#c3", "tesla-ceo-pay-vote-2024#c4", "tesla-ceo-pay-vote-2024#c5"]
+  narration: "**The vote to restore Musk’s award.** At Tesla, shareholder Richard Tornetta argued that a material disclosure failure in the proxy should void Elon Musk’s 2018 pay award. After Delaware’s Court of Chancery rescinded the award in January 2024, Tesla put it to shareholders again on June 13. BlackRock’s stewardship team backed ratification because Tesla and Musk had met the milestones, while it still had concerns about the award’s size and structure. Vanguard’s team still found the pay unusually large, yet reversed its 2018 opposition because Tesla’s realized returns had outpaced peers and the broader market."
+
+- shot: "coal-filing"
+  view: "graph"
+  lens: "all"
+  focus: "states-v-blackrock-vanguard-state-street-coal-suit"
+  time: "2024-11-27"
+  reveal: ["states-v-blackrock-vanguard-state-street-coal-suit", "texas-office-of-the-attorney-general", "blackrock", "the-vanguard-group", "state-street"]
+  reveal_claims: ["states-v-blackrock-vanguard-state-street-coal-suit#c4", "states-v-blackrock-vanguard-state-street-coal-suit#c7"]
+  overlay: {kind: "quote", source: "texas-ag-coal-announcement-2024", quote: "artificially reduce the energy supply, and raise prices", caption: "Ken Paxton’s allegation when he filed suit, 27 November 2024"}
+  narration: "**Paxton takes the managers to court.** The question of how managers use delegated votes reached a federal court on November 27, 2024, when Texas Attorney General Ken Paxton and ten other states sued BlackRock, Vanguard and State Street, alleging that they agreed to use their holdings across rival coal producers to cut output and raise prices. The states pointed to the firms’ participation in climate initiatives and to BlackRock and State Street’s votes against or withheld from coal-company directors. In February, BlackRock had said it was shifting participation in Climate Action 100+ to its international business because the initiative would ask members to use client assets to pursue emissions cuts, and that its international team would pursue decarbonization in votes and meetings only at clients’ direction."
+  duration: 16
+
+- shot: "coal-response"
+  view: "graph"
+  lens: "all"
+  focus: "states-v-blackrock-vanguard-state-street-coal-suit"
+  time: "2025-06"
+  reveal: ["states-v-blackrock-vanguard-state-street-coal-suit", "clayton-antitrust-act", "sherman-antitrust-act", "federal-trade-commission", "us-department-of-justice", "blackrock", "the-vanguard-group", "state-street"]
+  reveal_claims: ["states-v-blackrock-vanguard-state-street-coal-suit#c4", "states-v-blackrock-vanguard-state-street-coal-suit#c6", "states-v-blackrock-vanguard-state-street-coal-suit#c10"]
+  overlay: {kind: "quote", source: "ftc-doj-coal-statement-of-interest-2025", quote: "they allow shareholder advocacy for better corporate governance", caption: "FTC and Department of Justice, 22 May 2025"}
+  narration: "**Where does ordinary voting end?** The coalition grew to 13 states in the January 16 amended complaint, which alleged that customers paid higher utility bills because of the output cuts. On May 22, the FTC and Justice Department told the court that antitrust law generally permits ordinary governance advocacy, but using stock to stifle competition could cost a fund its exemption for investments made solely for investment. Bloomberg reported that the firms’ lawyers told the court in June there was no evidence the managers coordinated investment decisions or told any producer to cut output."
+  duration: 16
+
+- shot: "coal-in-court"
+  view: "graph"
+  lens: "all"
+  overlay: {kind: "quote", source: "edtx-coal-dismissal-order-2025", quote: "At this stage in the proceeding, the Court must assume that Plaintiffs’ allegations are true.", caption: "Judge Jeremy D. Kernodle explains the standard for dismissal, 1 August 2025"}
+  duration: 16
+  focus: "states-v-blackrock-vanguard-state-street-coal-suit"
+  time: "2025-08-01"
+  reveal: ["states-v-blackrock-vanguard-state-street-coal-suit", "texas-office-of-the-attorney-general", "texas-coal-dismissal-order", "einer-elhauge", "clayton-antitrust-act", "sherman-antitrust-act", "federal-trade-commission", "us-department-of-justice", "blackrock", "the-vanguard-group", "state-street"]
+  reveal_claims: ["states-v-blackrock-vanguard-state-street-coal-suit#c4", "states-v-blackrock-vanguard-state-street-coal-suit#c5", "states-v-blackrock-vanguard-state-street-coal-suit#c6", "states-v-blackrock-vanguard-state-street-coal-suit#c7", "states-v-blackrock-vanguard-state-street-coal-suit#c8", "states-v-blackrock-vanguard-state-street-coal-suit#c9", "states-v-blackrock-vanguard-state-street-coal-suit#c10", "einer-elhauge#c4"]
+  narration: "**The judge lets 18 counts proceed.** On August 1, Judge Jeremy Kernodle cited Elhauge and a paper by Fiona Scott Morton and Herbert Hovenkamp in ruling that the Clayton Act could reach the alleged use of stock to lessen competition. Taking the states’ factual allegations as true at the pleading stage, he let 18 counts proceed, including four consumer-protection claims against BlackRock, and dismissed three. The states alleged that savers who chose funds marketed as having no environmental, social or governance investment strategy would have chosen differently had they known how BlackRock allegedly used the funds’ votes and meetings. BlackRock pointed to its public stewardship disclosures and warned that forced sales of coal shares could raise energy prices, while State Street told ESG Dive, “There is no collusion here,” and Vanguard said it would defend the case."
+
+- shot: "tesla-policy-choice"
+  view: "graph"
+  lens: "all"
+  focus: "tesla-ceo-pay-vote-2025"
+  time: "2025-12"
+  reveal: ["tesla-ceo-pay-vote-2025", "tesla", "the-vanguard-group", "elon-musk"]
+  reveal_claims: ["tesla-ceo-pay-vote-2025#c2", "tesla-ceo-pay-vote-2025#c5", "tesla-ceo-pay-vote-2025#c6"]
+  overlay: {kind: "quote", source: "vanguard-2025-12-executive-pay-tesla", quote: "Glass Lewis ESG Policy: 18%; Mirror Voting Policy: <1%; Vanguard-Advised Funds Policy: 35%.", caption: "Vanguard’s count of policy selections across eight funds, December 2025"}
+  narration: "**One fund, a choice of voting policies.** The coal suit raised the question of who chooses a fund’s voting policy, a question Vanguard’s existing program put to savers in eligible funds. In its December account of Tesla’s November 6 vote on a new Musk award, 35% of participating investors’ policy selections across eight funds as of the record date went to Vanguard’s policy, under which its team backed the award after finding Musk central to Tesla’s strategy, and 18% went to the Glass Lewis ESG Policy, which opposed it. Each policy applied to participating savers’ proportionate holdings. Tesla’s inspector counted 1.89 billion votes for the award and 565 million against across the whole meeting, under a rule that included shares held by Elon and Kimbal Musk."
+  duration: 16
+
+- shot: "investor-choice"
+  view: "graph"
+  lens: "all"
+  overlay: {kind: "quote", source: "vanguard-texas-settlement-statement-2026", quote: "it allows us to put this distraction behind us and focus on what matters", caption: "Vanguard’s statement on why it settled, 26 February 2026"}
+  duration: 16
+  focus: "vanguard-settlement-with-states-2026"
+  time: "2026-02-26"
+  reveal: ["the-vanguard-group", "vanguard-settlement-with-states-2026", "texas-office-of-the-attorney-general", "states-v-blackrock-vanguard-state-street-coal-suit", "blackrock", "state-street"]
+  reveal_claims: ["vanguard-settlement-with-states-2026#c1", "vanguard-settlement-with-states-2026#c4", "vanguard-settlement-with-states-2026#c5", "vanguard-settlement-with-states-2026#c6", "vanguard-settlement-with-states-2026#c7", "vanguard-settlement-with-states-2026#c8", "vanguard-settlement-with-states-2026#c9"]
+  narration: "**Vanguard settles and keeps its governance votes.** In February 2026 Vanguard agreed to pay $29.5 million to 13 states without admitting liability, and Paxton urged other institutions to follow the deal. Vanguard said the terms reaffirmed existing practices and let it refocus on investors. Vanguard kept the right to vote and talk with boards about governance, and agreed to limits including a ban on directing portfolio companies’ operations. It also agreed to make commercially reasonable efforts by June 2027 to extend its existing voting choice program to funds accounting for at least half of the U.S. equity assets in the U.S. funds it advises. The case continued against BlackRock and State Street when Vanguard settled."
 
 - shot: "today"
   view: "graph"
   lens: "money"
   focus: "blackrock"
-  time: "2026-03"
-  reveal: ["blackrock", "larry-fink", "vanguard-capital-management", "the-vanguard-group", "kuwait-investment-authority"]
-  reveal_claims: ["vanguard-capital-management#c1", "the-vanguard-group#c6", "kuwait-investment-authority#c1"]
-  overlay: {kind: "quote", source: "blackrock-2026-chairmans-letter", quote: "Ensuring more people can own a stake in their country’s growth.", caption: "Larry Fink, chairman’s letter, 2026"}
-  narration: "**The manager has shareholders too.** As researchers disputed the effects of shared ownership, BlackRock's own shareholders showed how one manager could hold a stake in another. In March 2026 Fink used his annual letter as BlackRock's chairman to argue that more people should own a stake in their country's growth. The company he led had its own large shareholders: Vanguard Capital Management, a wholly owned Vanguard subsidiary, reported 6.87%, mostly for Vanguard funds; the Kuwait Investment Authority held 5.14% for the Government of Kuwait. Vanguard's filing said its subsidiary could direct sales of securities held by funds and clients. Bogle's fund investors thus helped own a rival manager, placing another layer between the people saving money and the executives running it."
+  time: "2026-04-27"
+  reveal: ["blackrock", "pnc-financial-services", "vanguard-capital-management", "the-vanguard-group", "vanguard-funds", "kuwait-investment-authority"]
+  reveal_claims: ["pnc-financial-services#c1", "vanguard-capital-management#c1", "the-vanguard-group#c6", "vanguard-funds#c1", "kuwait-investment-authority#c1"]
+  overlay: {kind: "quote", source: "pnc-2020-05-11-blackrock-sale-release", quote: "significantly enhancing our already strong balance sheet and liquidity", caption: "PNC chief executive William Demchak on selling the bank’s BlackRock shares, 11 May 2020"}
+  narration: "**Who holds BlackRock’s shares now?** PNC chief executive William Demchak said in 2020 that selling PNC’s remaining 22.4% interest in the firm it bought in 1995 would give the bank cash to pursue opportunities in disrupted markets. BlackRock’s April 10, 2026 proxy listed Kuwait’s investment authority at 5.14%, held on behalf of its government. Separately, Vanguard Capital Management’s April 27 filing reported sole power to sell or direct the sale of 10.7 million BlackRock shares as of March 31, or 6.87% of the class. It counted holdings in funds or portions of funds it managed and in affiliates’ client accounts, while reporting sole voting power over about 1.46 million of those shares. The funds and clients bear the gains and losses on the holdings."
   duration: 14
 
 - shot: "for-clients"
   view: "graph"
   lens: "money"
   focus: "blackrock"
-  time: "2026-03"
-  reveal: ["blackrock", "larry-fink", "vanguard-capital-management", "state-street", "tesla", "microsoft", "amazon"]
-  reveal_claims: ["blackrock#c1", "blackrock#c2", "blackrock#c3", "vanguard-capital-management#c2", "vanguard-capital-management#c3", "vanguard-capital-management#c4", "state-street#c1", "state-street#c2", "state-street#c3"]
-  overlay: {kind: "quote", source: "blackrock-2026-chairmans-letter", quote: "When people invest their savings—over decades, not days—the capital markets put that money to work, financing companies, infrastructure, and jobs.", caption: "Larry Fink’s public argument for long-term investing, 2026"}
-  narration: "**Who carries the loss?** In his 2026 letter, Fink argued for widening access to investment, citing his parents' savings: he said investing alongside the American economy had helped them retire comfortably. Through their funds, BlackRock and Vanguard's managers hold roughly 5% to 8% of companies such as Tesla, Microsoft and Amazon for clients, mostly fund investors who receive the gains and losses; State Street reports hundreds of millions of Microsoft and Amazon shares on the same basis. The managers handle the shares and vote part of them, giving the people making those voting decisions a reach far beyond their own savings."
+  time: "2026-06-30"
+  reveal: ["blackrock", "the-vanguard-group", "vanguard-funds", "vanguard-capital-management", "blackrock-stewardship-year-2025", "vanguard-proxy-year-2025", "blackrock-voting-choice", "state-street", "tesla", "microsoft", "amazon"]
+  reveal_claims: ["blackrock#c2", "blackrock#c3", "vanguard-capital-management#c2", "vanguard-capital-management#c3", "vanguard-capital-management#c4", "state-street#c1", "state-street#c2", "state-street#c3", "vanguard-funds#c1", "vanguard-proxy-year-2025#c1", "vanguard-proxy-year-2025#c3", "blackrock-stewardship-year-2025#c1", "blackrock-stewardship-year-2025#c2"]
+  overlay: {kind: "stat", source: "blackrock-stewardship-annual-report-2025", value: "$885 billion", label: "Index equity assets using BlackRock Voting Choice out of $3.76 trillion eligible at the end of 2025", quote: "The program is available to client assets representing $3.76 trillion of BlackRock’s $7.7 trillion total index equity AUM, with clients representing approximately $885 billion in index equity AUM exercising this option."}
+  narration: "**The returns and the votes.** In the U.S. and under its own policy, Vanguard backed 97% of 23,631 management proposals to elect directors and none of 261 shareholder proposals on environmental and social issues in its proxy year to June 2025. BlackRock’s index stewardship team, which reports separately from its active team, voted on more than 154,000 proposals worldwide in calendar 2025 and sided with management on about 90% of director elections. Fund investors bear the gains and losses, and advisers vote the shares entrusted to them, with eligible retail investors at both firms able to pick a policy for their portion. Under the coal settlement Vanguard keeps its governance votes and agrees to leave decisions about operations with the companies."
   duration: 20
-
-- shot: "explore"
-  view: "graph"
-  lens: "all"
-  focus: "blackrock"
-  time: "2026-03"
-  reveal: ["blackrock", "the-vanguard-group", "state-street", "vanguard-funds", "vanguard-capital-management", "larry-fink", "john-c-bogle", "blackstone", "pnc-financial-services", "merrill-lynch", "barclays", "kuwait-investment-authority", "tesla", "microsoft", "amazon", "common-ownership-of-us-airlines", "anticompetitive-effects-of-common-ownership", "common-ownership-does-not-have-anticompetitive-effects"]
-  overlay: {kind: "quote", source: "europarl-2020-05-common-ownership-study", quote: "To conclude, whether and in which circumstances common ownership is beneficial or deleterious for competition, innovation, and, ultimately, citizen welfare is still an open debate.", caption: "Study for the European Parliament, May 2020"}
-  narration: "**A decision still waiting.** The managers' reach had already drawn scrutiny in May 2020, when Maarten Pieter Schinkel and fellow researchers delivered a study requested by the European Parliament's economic affairs committee. They faced a practical question: whether shared ownership called for changes to competition policy, alongside rules encouraging shareholders to engage with companies. They called its benefits and harms still an open debate and warned that changing competition tools for unproven concerns in European banking could be premature. Bogle had chosen fund ownership and Fink had built a listed manager; those choices now reached into a continuing argument over how savers' money should be represented, and how customers should be protected."
   explore: true
-  duration: 13
 ```
-
-Explore further: open [[blackrock]]'s page for its owners over time, read "Who is behind BlackRock?" on its question page, or see every side at once on "Who benefited from common ownership of US airlines?".
