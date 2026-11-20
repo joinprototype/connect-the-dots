@@ -44,12 +44,19 @@ claims:
   - id: c6
     rel: appears_in
     to: seven-myths-of-the-spanish-conquest
-    role: "argues the god story was invented after the conquest, and that Moctezuma's welcome was a courtesy, not to be read literally"
+    role: "reads the welcome as royal courtesy and argues that Franciscans appear to have invented the identification of Cortés with Quetzalcoatl after the conquest"
     according_to: [matthew-restall]
-    note: "Restall's words as printed in a classroom lesson sheet, with its brackets; the book itself was not read, and no scholar who disputes him was read."
     src:
       - {s: restall-seven-myths-via-sheg, at: "Document C, excerpt 2", quote: "For this reason, Franciscans such as Motolinía appear to have invented the Cortés-Quetzalcoatl identification after Conquest.", by: matthew-restall}
       - {s: restall-seven-myths-via-sheg, at: "Document C, excerpt 1", quote: "Thus Moctezuma’s assertion that he and his predecessors were just safeguarding the rulership of the Mexica empire in anticipation of Cortés’s arrival is not to be taken literally.", by: matthew-restall}
+  - id: c7
+    rel: appears_in
+    to: florentine-codex
+    according_to: [florentine-codex]
+    note: "Book 12 remembers Moctezuma greeting Cortés with flowers, garlands and gold necklaces."
+    src:
+      - {s: florentine-codex-book-12-1975, at: "Book 12, chapter 16", quote: "descend upon thy mat, upon thy seat"}
+      - {s: bernal-diaz-lockhart-1844-v1, at: "Volume 1, chapter 88, for the date of the entry", quote: "the 8th of November, 1519"}
 ---
 
 Cortés and his party enter the Mexica capital on 8 November 1519.

@@ -56,4 +56,16 @@ claims:
     when: "1944-06-22"
     src:
       - {s: "servicemens-readjustment-act-1944", at: "58 Stat. 301", quote: "Approved June 22, 1944."}
+  - id: enacted-fair-labor-standards-act
+    rel: enacted
+    to: fair-labor-standards-act
+    when: "1938-06-25"
+    src:
+      - {s: fair-labor-standards-act-1938, at: "52 Stat. 1069, approval", quote: "Approved, June 25, 1938."}
+  - id: enacted-walsh-healey-act
+    rel: enacted
+    to: walsh-healey-act
+    when: "1936-06-30"
+    src:
+      - {s: walsh-healey-public-contracts-act, at: "49 Stat. 2040, approval", quote: "Approved, June 30, 1936."}
 ---

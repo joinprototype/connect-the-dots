@@ -35,7 +35,7 @@ claims:
     rel: involved
     to: charles-v
     according_to: [hernan-cortes]
-    note: "Cortés writes that he asked Moctezuma to have the lords of the provinces contribute gold, and that what he set aside for the king came to this sum. It is his count."
+    note: "Cortés says he told Moctezuma that Charles V needed gold for works he had ordered. Cortés valued the gold and other valuables he set aside for the king at more than 100,000 ducats."
     src:
       - {s: cortes-letters-macnutt-1908-v1, at: "Second Letter", quote: "jewels of gold, and silver, and the feather-work, and the stones, and the many other things of value which I assigned and allotted to Your Sacred Majesty, amounting to the sum of one hundred thousand ducats and more."}
   - id: c6
@@ -69,6 +69,21 @@ claims:
     note: "Cortés told Charles V that royal service and Spanish security required keeping Moctezuma in his power, while reporting that he had promised Moctezuma liberty."
     src:
       - {s: "cortes-letters-macnutt-1908-v1", at: "Second Letter", quote: "and to our security, that Montezuma should be in my power, and not at his entire liberty"}
+  - id: c10
+    rel: appears_in
+    to: florentine-codex
+    according_to: [florentine-codex]
+    note: "Book 12 says the nobles Moctezuma summoned to supply the Spaniards stopped obeying him, though provisions continued."
+    src:
+      - {s: florentine-codex-book-12-1975, at: "Book 12, chapter 17", quote: "no longer did they obey him. They only grew angry."}
+  - id: c11
+    rel: involved
+    to: itzquauhtzin
+    when: "1519-11"
+    role: captive held with Moctezuma
+    according_to: [florentine-codex]
+    src:
+      - {s: florentine-codex-book-12-1975, at: "Book 12, chapter 17", quote: "With him was Itzquauhtzin"}
 ---
 
 Soon after arriving, Cortés took Moctezuma to the Spanish quarters. Cortés writes that it was to settle the killing of Spaniards on the coast; the Nahua account describes a seizure.
