@@ -47,6 +47,13 @@ claims:
     src:
       - {s: bernal-diaz-lockhart-1844-v1, at: "volume 1, Cortés questions Alvarado", quote: "Alvarado could certainly not deny this, but assured him he had selected that opportunity to punish them that it might come the more unexpectedly, and strike the greater terror among them"}
       - {s: bernal-diaz-lockhart-1844-v1, at: "volume 1, Cortés questions Alvarado", quote: "he told Alvarado, rather sharply, that he saw very little truth in all this"}
+  - id: c6
+    rel: involved
+    to: moctezuma-ii
+    according_to: [hernan-cortes]
+    note: "Cortés reports that Narváez offered to free Moctezuma and meant to take Cortés and his company prisoner."
+    src:
+      - {s: cortes-letters-macnutt-1908-v1, at: "Second Letter, p. 278", quote: "he would deliver him, for he had come to take me and all my company"}
 ---
 
 In May 1520, while Cortés was on the coast, Alvarado's men attacked Mexica gathered for the feast of Toxcatl in Tenochtitlan; the Spanish and Nahua accounts disagree about why.

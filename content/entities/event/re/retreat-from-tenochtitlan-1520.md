@@ -4,7 +4,7 @@ id: retreat-from-tenochtitlan-1520
 type: event
 name: "Retreat from Tenochtitlan, 1520"
 aliases: ["La Noche Triste"]
-summary: "In 1520 the Spaniards and their allies fought their way out of the capital. Cortés counts the Spanish and allied dead and the lost gold; Bernal Díaz counts far more Spanish dead."
+summary: "In 1520 the Spaniards and their allies fought their way out of the capital. Cortés counted the dead after fighting through Tacuba. Bernal Díaz counted troops killed or captured over five days, through the battle of Otumpan."
 when: "1520"
 place: tenochtitlan
 coords: [-99.1314, 19.435]
@@ -13,7 +13,7 @@ claims:
     rel: involved
     to: hernan-cortes
     according_to: [hernan-cortes]
-    note: "The figures and the loss of the gold are Cortés's account."
+    note: "Writing after describing the fighting through Tacuba, Cortés counts more than 150 Spaniards and more than 2,000 allies killed. He also reports losing the gold his men carried on the retreat."
     src:
       - {s: cortes-letters-macnutt-1908-v1, at: "Second Letter", quote: "We found that over one hundred and fifty Spaniards were killed in this fight, forty-five mares and horses, and more than two thousand of the Indians who had aided the Spaniards"}
       - {s: cortes-letters-macnutt-1908-v1, at: "Second Letter", quote: "many of the Spaniards and horses were killed, likewise, and all the gold, and jewels, and many other things which we carried, and all the artillery, were lost"}
@@ -21,9 +21,9 @@ claims:
     rel: involved
     to: bernal-diaz-del-castillo
     according_to: [bernal-diaz-del-castillo]
-    note: "Bernal Díaz gives this count while faulting another chronicler for treating the defeat as a mere nothing; it is far higher than Cortés's."
+    note: "Bernal Díaz counts more than 870 of his troops and more than 1,200 Tlaxcalans killed or captured over five days, including the battle of Otumpan."
     src:
-      - {s: bernal-diaz-lockhart-1844-v1, at: "volume 1", quote: "where above 860 of our men were killed, for out of 1300 soldiers who had marched into the town to the relief of Pedro de Alvarado, which made out the united forces of Narvaez and Cortes, only 440 escaped"}
+      - {s: bernal-diaz-lockhart-1844-v1, at: "volume 1", quote: "In five days, including the battle of Otumpan, we lost in killed, and those who were taken prisoners, above 870 of our troops, and above 1200 Tlascallans"}
   - id: c3
     rel: appears_in
     to: letters-of-cortes
@@ -50,6 +50,14 @@ claims:
     note: "After Maxixcatzin died of smallpox, Cortés says he recognized his son as heir in Charles V’s name."
     src:
       - {s: "cortes-letters-macnutt-1908-v2", at: "Third Letter", quote: "they prayed me to recognise him as his heir. And I in the name of Your Majesty did this"}
+  - id: c7
+    rel: appears_in
+    to: florentine-codex
+    according_to: [florentine-codex]
+    note: "A woman fetching water gave the alarm as the Spaniards and their allies left. Boats from Tenochtitlan and Tlatelolco came at them."
+    src:
+      - {s: florentine-codex-book-12-1975, at: "Book 12, chapter 24", quote: "woman fetching water who saw them."}
+      - {s: britannica-cuitlahuac, at: "Date of the night retreat", quote: "of June 30, 1520."}
 ---
 
-In 1520 the Spaniards and their allies fought their way out of the capital. Cortés counts the Spanish and allied dead and the lost gold; Bernal Díaz counts far more Spanish dead.
+In 1520 the Spaniards and their allies fought their way out of the capital. Cortés counted the dead after fighting through Tacuba. Bernal Díaz counted troops killed or captured over five days, through the battle of Otumpan.

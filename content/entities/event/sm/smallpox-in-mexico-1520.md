@@ -27,6 +27,14 @@ claims:
     src:
       - {s: florentine-codex-book-12-1975, at: "Book 12", quote: "first there came to be prevalent a great sickness, a plague"}
       - {s: florentine-codex-book-12-1975, at: "Book 12", quote: "There was indeed perishing; many indeed died of it."}
+  - id: c4
+    rel: involved
+    to: cuitlahuac
+    when: "1520"
+    role: died of smallpox
+    according_to: [bernal-diaz-del-castillo]
+    src:
+      - {s: bernal-diaz-lockhart-1844-v1, at: "Volume 1, chapter 130", quote: "the former, who beat us out of the town, had died of the smallpox."}
 ---
 
 A smallpox epidemic spread through central Mexico in 1520 and after; the Spanish and Nahua accounts both record it.
