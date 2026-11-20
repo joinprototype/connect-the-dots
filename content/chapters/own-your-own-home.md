@@ -118,7 +118,7 @@ In 1919 the U.S. Department of Labor urged families to prepare to own a home. Th
   time: "1944-06-22"
   focus: "va-home-loan-guaranty"
   picture: "none"
-  reveal: ["va-home-loan-guaranty", "servicemens-readjustment-act", "veterans-administration", "franklin-d-roosevelt"]
+  reveal: ["va-home-loan-guaranty", "servicemens-readjustment-act", "us-department-of-veterans-affairs", "franklin-d-roosevelt"]
   reveal_claims: ["servicemens-readjustment-act#c1", "franklin-d-roosevelt#c7"]
   overlay: {kind: "quote", source: "servicemens-readjustment-act-1944", quote: "for the guaranty by the Administrator of not to exceed 50 per centum of a loan or loans", caption: "Servicemen’s Readjustment Act, §500(a), 22 June 1944"}
   narration: "**Bring your discharge papers.** A veteran could start at a private lender’s counter, too. The 1944 GI Bill generally let the Veterans Administration guarantee up to half a qualifying loan within a $2,000 total limit per veteran, with interest capped at 4 percent a year and repayment at 20 years. The law let the agency guarantee all of a qualifying second loan within that same overall limit. In February 1945 instructions circulated by the Dallas Fed advised lenders to ask for discharge or separation papers or equivalent proof where practicable and to handle the credit and appraisal reports."
