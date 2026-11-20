@@ -99,6 +99,15 @@ Inside the firms, employees had warned about the risks and the pressure to keep 
   narration: "**What became of them.** By February 2007, S&P’s surveillance head was reporting a senior analyst’s warning that mortgage ratings would not hold through the year. On 10 July, S&P put 612 classes on watch and Moody’s downgraded 399 subprime securities, beginning what the Senate report calls the first mass downgrades in U.S. history. The commission counted 83% of Moody’s 2006 triple-A mortgage securities eventually downgraded, 73% to junk. For the broader 2006–07 subprime set, analysts cited by the Senate found over 90% cut from triple-A to junk by 2010. These were rating cuts, not default counts; some securities also failed outright. The Senate found that downgrades forced sales and left investors holding securities whose value was collapsing."
   duration: 13
 
+- shot: what-sp-acknowledged
+  view: graph
+  focus: standard-and-poors
+  time: "2007-02"
+  reveal: [standard-and-poors, mortgage-backed-security, july-2007-mass-downgrades]
+  overlay: {kind: stat, value: "11 deals", label: "Put on watch by S&P in February 2007, against the roughly 30 its surveillance staff recommended, per the agreed statement of facts", source: doj-2015-02-03-sp-statement-of-facts, quote: "a committee that included members of S&P’s RMBS New Issue group was convened on February 12 2007, and that committee decided to place only 18 RMBS tranches from 11 RMBS transactions on CreditWatch negative."}
+  narration: "**What S&P acknowledged.** Months before the mass downgrades, in November 2006, S&P’s surveillance head circulated a spreadsheet: over half its 2006 subprime deals had severely delinquent loans amounting to at least 25% of the lowest slice’s loss protection. In February 2007, her staff recommended watching subordinate slices of about 30 deals; a committee including new-deal raters chose 18 slices in 11. She wrote she was “fine with where we are”; colleagues said she complained executives blocked downgrades for fear of hurting business. S&P’s settlement also acknowledged a separate, earlier episode: during CDO Evaluator updates in 2004–05, its CDO chief described matrix testing as “in part based upon business decisions, considerations.” That matrix was not adopted. Until 10 July 2007, S&P kept issuing and confirming grades on CDOs substantially backed by subprime mortgage securities."
+  duration: 13
+
 - shot: washington-october-2008
   view: map
   camera: {center: [-77.0369, 38.9072], zoom: 11.6, pitch: 30, duration: 6}
@@ -189,15 +198,6 @@ Inside the firms, employees had warned about the risks and the pressure to keep 
   reveal_claims: [keith-hennessey#c1, douglas-holtz-eakin#c1, bill-thomas#c1, peter-wallison#c1]
   overlay: {kind: quote, source: fcic-2011-final-report, quote: "While bad information created by credit rating agencies was an essential cause of the crisis, it is less clear why they did this.", caption: "Keith Hennessey, Douglas Holtz-Eakin and Bill Thomas, dissenting, 2011"}
   narration: "**Why they did it.** When the commission delivered its report in January 2011, Keith Hennessey, Douglas Holtz-Eakin and Bill Thomas chose to dissent. The majority said the agencies put market share and profit above ratings quality and integrity. The three accepted bad ratings as an essential cause of the crisis but questioned the explanation: bad models, pressure to win business and government-created limits on competition were hypotheses the three proposed. Peter Wallison dissented separately, calling criticism of analysts for missing future losses “sheer hindsight.” The Senate report also identified limited competition. The commissioners agreed neither on what the firms could have foreseen nor on why they failed; their split left different explanations for lawmakers to act on."
-  duration: 13
-
-- shot: what-sp-acknowledged
-  view: graph
-  focus: standard-and-poors
-  time: "2007-02"
-  reveal: [standard-and-poors, mortgage-backed-security, july-2007-mass-downgrades]
-  overlay: {kind: stat, value: "11 deals", label: "Put on watch by S&P in February 2007, against the roughly 30 its surveillance staff recommended, per the agreed statement of facts", source: doj-2015-02-03-sp-statement-of-facts, quote: "a committee that included members of S&P’s RMBS New Issue group was convened on February 12 2007, and that committee decided to place only 18 RMBS tranches from 11 RMBS transactions on CreditWatch negative."}
-  narration: "**What S&P acknowledged.** In November 2006, S&P’s surveillance head circulated a spreadsheet: over half its 2006 subprime deals had severely delinquent loans amounting to at least 25% of the lowest slice’s loss protection. In February 2007, her staff recommended watching subordinate slices of about 30 deals; a committee including new-deal raters chose 18 slices in 11. She wrote she was “fine with where we are”; colleagues said she complained executives blocked downgrades for fear of hurting business. S&P’s settlement also acknowledged a separate, earlier episode: during CDO Evaluator updates in 2004–05, its CDO chief described matrix testing as “in part based upon business decisions, considerations.” That matrix was not adopted. Until 10 July 2007, S&P kept issuing and confirming grades on CDOs substantially backed by subprime mortgage securities."
   duration: 13
 
 - shot: sp-settles

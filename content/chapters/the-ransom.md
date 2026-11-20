@@ -156,16 +156,6 @@ In November 1519 Hernán Cortés entered Tenochtitlan. In November 1532 Francisc
   narration: "**The sentence.** At Cajamarca in July 1533, Pizarro sentenced Atahualpa for treason, to burn unless he became Christian; secretary Xerez justified execution as security for the Christians. Cousin Pedro Pizarro blamed Almagro, officials and interpreter Felipillo, saying the governor consented against his will and that Almagro and the officials wanted Atahualpa dead to end the treasure proclamation excluding newcomers. Atahualpa had already ordered Huascar killed in captivity, as Pedro Pizarro and Salcamayhua relate; the cousin says he waited until Pizarro assured him of his own life. In Pedro Pizarro’s later telling, Atahualpa accepted baptism on condition he would not be burned; he was strangled before Soto returned reporting no army."
   duration: 13
 
-- shot: valladolid-1550
-  view: graph
-  focus: valladolid-debate
-  time: "1550"
-  reveal: [valladolid-debate, bartolome-de-las-casas, juan-gines-de-sepulveda, charles-v, valladolid, francis-augustus-macnutt]
-  reveal_claims: [valladolid-debate#c2, valladolid-debate#c3, valladolid-debate#c4]
-  overlay: {kind: quote, source: macnutt-las-casas-1909, quote: "So enormous are the errors and scandalous propositions, contrary to all evangelical truth and to all Christianity that the Doctor Sepulveda has accumulated", caption: "Las Casas at Valladolid, as MacNutt gives his opening"}
-  narration: "**Valladolid, 1550.** Bartolomé de las Casas faced Sepúlveda before the council Charles V convened at Valladolid to judge whether conquest wars could be just. In his admiring biographer MacNutt’s telling, Sepúlveda defended war by the Indians’ sins, their supposed rudeness, the spread of Christianity, and their killing and sacrifice of one another. Las Casas read the pope’s grant as a duty to convert; his thirty propositions called the conquests tyrannical and void, since unjust war could confer no rights. MacNutt calls it a moral victory for Las Casas."
-  duration: 13
-
 - shot: the-mountain
   view: map
   camera: {center: [-65.7533, -19.5892], zoom: 11.6, pitch: 45, duration: 6}
@@ -174,7 +164,17 @@ In November 1519 Hernán Cortés entered Tenochtitlan. In November 1532 Francisc
   reveal: [discovery-of-potosi-silver, potosi, pedro-cieza-de-leon, crown-of-castile, chronicle-of-peru]
   reveal_claims: [discovery-of-potosi-silver#c1, discovery-of-potosi-silver#c2, discovery-of-potosi-silver#c3, discovery-of-potosi-silver#c5, discovery-of-potosi-silver#c6]
   overlay: {kind: stat, value: "more than 3,000,000 ducats", label: "The king’s fifths from Potosí, 1548 to 1551, as Cieza de León valued them", source: cieza-travels-markham-1864, quote: "From the year 1548 to 1551 the royal fifths were valued at more than three millions of ducats, which is more than the Spaniards got from Atahualpa"}
-  narration: "**The mountain.** Hualpa found silver on Potosí and worked it secretly before telling another man, who told the Spaniard Villaroel, in Markham’s note citing Acosta. Villaroel began work in April 1545; Cieza de León instead dates first working to 1546 in the English translation, 1547 in a modern Spanish edition. When he visited in 1549, miners gave the holder a silver mark weekly, two for a rich mine, though the English reverses who paid whom. By his valuation the king’s fifths alone reached more than three million ducats in 1548–51, exceeding what Spaniards took from Atahualpa; a vein a man had kept secret became a continuing royal income."
+  narration: "**The mountain.** At Cajamarca, the Crown took its fifth of a ransom. At Potosí, Hualpa found silver and worked it secretly before telling another man, who told the Spaniard Villaroel, in Markham’s note citing Acosta. Villaroel began work in April 1545; Cieza de León instead dates first working to 1546 in the English translation, 1547 in a modern Spanish edition. When he visited in 1549, miners gave the holder a silver mark weekly, two for a rich mine, though the English reverses who paid whom. By his valuation the king’s fifths alone reached more than three million ducats in 1548–51, exceeding what Spaniards took from Atahualpa; a vein a man had kept secret became a continuing royal income."
+  duration: 13
+
+- shot: valladolid-1550
+  view: graph
+  focus: valladolid-debate
+  time: "1550"
+  reveal: [valladolid-debate, bartolome-de-las-casas, juan-gines-de-sepulveda, charles-v, valladolid, francis-augustus-macnutt]
+  reveal_claims: [valladolid-debate#c2, valladolid-debate#c3, valladolid-debate#c4]
+  overlay: {kind: quote, source: macnutt-las-casas-1909, quote: "So enormous are the errors and scandalous propositions, contrary to all evangelical truth and to all Christianity that the Doctor Sepulveda has accumulated", caption: "Las Casas at Valladolid, as MacNutt gives his opening"}
+  narration: "**Valladolid, 1550.** As the Crown took its fifth from Potosí, Bartolomé de las Casas faced Sepúlveda before the council Charles V convened at Valladolid to judge whether conquest wars could be just. In his admiring biographer MacNutt’s telling, Sepúlveda defended war by the Indians’ sins, their supposed rudeness, the spread of Christianity, and their killing and sacrifice of one another. Las Casas read the pope’s grant as a duty to convert; his thirty propositions called the conquests tyrannical and void, since unjust war could confer no rights. MacNutt calls it a moral victory for Las Casas."
   duration: 13
 
 - shot: the-mita
@@ -190,7 +190,7 @@ In November 1519 Hernán Cortés entered Tenochtitlan. In November 1532 Francisc
 - shot: borrowed-money
   view: graph
   focus: imperial-election-of-1519
-  time: "1519"
+  time: "1575"
   reveal: [imperial-election-of-1519, charles-v, fugger-firm, castilian-payment-stops, philip-ii-of-spain, carlos-alvarez-nogal, christophe-chamley]
   reveal_claims: [imperial-election-of-1519#c1, imperial-election-of-1519#c3, castilian-payment-stops#c1, castilian-payment-stops#c2, castilian-payment-stops#c4]
   overlay: {kind: quote, source: habsburger-net-fugger, quote: "Money from the Fuggers was also used to pay bribes to the electoral princes in connection with the election of Charles V as Holy Roman Emperor in 1519", caption: "Christina Linsboth, The World of the Habsburgs"}
@@ -200,11 +200,11 @@ In November 1519 Hernán Cortés entered Tenochtitlan. In November 1532 Francisc
 - shot: the-price-of-silver
   view: graph
   focus: price-revolution
-  time: "1520/1650"
+  time: "2007-01"
   reveal: [price-revolution, american-silver-imports, earl-j-hamilton, john-h-munro, american-treasure-and-the-price-revolution, munro-review-of-hamilton]
   reveal_claims: [price-revolution#c1, price-revolution#c2, price-revolution#c3, price-revolution#c4, price-revolution#c5]
   overlay: {kind: quote, source: munro-eh-net-review-of-hamilton, quote: "only a minority of us today espouse a basically monetary explanation for the European Price Revolution (ca. 1515/20-1650) — though no such explanation can be purely monetary.", caption: "John Munro, EH.Net, 2007"}
-  narration: "**The price of silver.** John Munro reports that Earl J. Hamilton recorded in his preface 30,750 hours spent with his wife collecting and processing Spanish bullion, price and wage figures. For his 1934 book, as Munro explains, Hamilton sought to test the idea that more money raised prices, making American silver chiefly, if not entirely, responsible for much of the inflation around 1520–1650, principally in 1540–1600. Defending a modified version in 2007, the reviewer admitted that he too had misread Hamilton’s dates, and that only a minority now favored a basically monetary explanation. Even in his defense of Hamilton, silver alone could not explain Europe’s rising prices."
+  narration: "**The price of silver.** To investigate how American silver might have affected European prices, Earl J. Hamilton and his wife collected and processed Spanish bullion, price and wage figures. John Munro reports that Hamilton recorded 30,750 hours of that work in his preface. For his 1934 book, as Munro explains, Hamilton sought to test the idea that more money raised prices, making American silver chiefly, if not entirely, responsible for much of the inflation around 1520–1650, principally in 1540–1600. Defending a modified version in 2007, the reviewer admitted that he too had misread Hamilton’s dates, and that only a minority now favored a basically monetary explanation. Even in his defense of Hamilton, silver alone could not explain Europe’s rising prices."
   duration: 13
 
 - shot: an-apology-asked

@@ -15,11 +15,23 @@ Every line drawn below is a sourced link. Lines marked "according to" are one so
 - shot: open
   view: map
   camera: {globe: true, center: [-100, 40], zoom: 2.2, duration: 6}
+  time: "1975"
   places: [seattle, albuquerque, cambridge-massachusetts, menlo-park, langley-virginia]
   reveal: [bill-gates, jeff-bezos, mark-zuckerberg]
   overlay: {kind: quote, source: historylink-21161-microsoft-albuquerque, quote: "We went to work, day and night", caption: "Bill Gates, recalling the rush to write Altair BASIC"}
   narration: "**The paper tape.** In 1975 Paul Allen flew to Albuquerque carrying BASIC on paper tape. He and Bill Gates had written it in eight weeks; now Allen had to make it work for a customer. Gates later remembered Allen's amazement when it ran. The Harvard dropout, Jeff Bezos driving west from Wall Street, Mark Zuckerberg coding in a Harvard dorm: each familiar beginning depended on other people choosing to help. Those choices put a school terminal, family savings and investors' money behind the founders."
   duration: 7
+
+- shot: bezos-family
+  view: graph
+  lens: power
+  focus: jeff-bezos
+  time: "1969"
+  reveal: [jeff-bezos, jackie-bezos, mike-bezos, lawrence-preston-gise, atomic-energy-commission]
+  reveal_claims: [jackie-bezos#c1, mike-bezos#c1, jackie-bezos#c2, lawrence-preston-gise#c4, lawrence-preston-gise#c3, lawrence-preston-gise#c1]
+  overlay: {kind: quote, source: achievement-jeff-bezos, quote: "We would build cranes to lift the gears out.", caption: "Jeff Bezos, recalling ranch summers with his grandfather, 2001"}
+  narration: "**The broken bulldozer.** Years before the drive west, the young Jeff Bezos helped repair a D-6 Caterpillar bulldozer on his grandfather's Texas ranch. They built cranes to lift out its gears, he recalled in 2001. His grandfather, Lawrence Preston Gise, had run the Atomic Energy Commission's operations for seven states from Albuquerque before retiring to the ranch. Gise's daughter Jackie married Mike Bezos when Jeff was four; Jeff spent his childhood summers with Gise. Bezos described those months as a lesson in self-reliance: his grandfather even did his own veterinary work on the cattle. Long before he left a secure job to build Amazon, he had worked beside someone who repaired what broke."
+  duration: 10
 
 - shot: gates-family
   view: graph
@@ -28,7 +40,7 @@ Every line drawn below is a sourced link. Lines marked "according to" are one so
   reveal: [bill-gates, william-h-gates-sr, mary-maxwell-gates, lakeside-school, harvard-university, paul-allen]
   reveal_claims: [william-h-gates-sr#c1, mary-maxwell-gates#c1, william-h-gates-sr#c2, bill-gates#c4, paul-allen#c3, bill-gates#c5]
   overlay: {kind: quote, source: gates-foundation-lakeside-2005, quote: "For a while, I even thought about failing the entrance exam.", caption: "Bill Gates, recalling his sixth-grade decision, Lakeside School, 2005"}
-  narration: "**The entrance exam.** In sixth grade, Bill Gates considered failing Lakeside's entrance exam. Lakeside meant jackets, ties and morning chapel, he recalled in 2005, but he decided to do his best. His parents had urged him to apply: William H. Gates Sr., a Seattle lawyer who co-founded a leading firm, and Mary Maxwell Gates, a banker's daughter, university regent and corporate director. At Lakeside he met Paul Allen and learned to program on a terminal paid for by the Mothers Club. Gates later left Harvard without a degree, dividing his time with Albuquerque until January 1977. The school his parents chose had given him both a machine and a future business partner."
+  narration: "**The entrance exam.** For Bill Gates, family help began with a school application. In sixth grade, Bill Gates considered failing Lakeside's entrance exam. Lakeside meant jackets, ties and morning chapel, he recalled in 2005, but he decided to do his best. His parents had urged him to apply: William H. Gates Sr., a Seattle lawyer who co-founded a leading firm, and Mary Maxwell Gates, a banker's daughter, university regent and corporate director. At Lakeside he met Paul Allen and learned to program on a terminal paid for by the Mothers Club. Gates later left Harvard without a degree, dividing his time with Albuquerque until January 1977. The school his parents chose had given him both a machine and a future business partner."
   duration: 10
 
 - shot: traf-o-data
@@ -120,16 +132,6 @@ Every line drawn below is a sourced link. Lines marked "according to" are one so
   narration: "**The price Gates asked for.** Gates preferred to keep Microsoft private, according to Goldman Sachs, which ran its first public offering. But employee options were pushing it toward 500 shareholders and mandatory SEC registration. Facing the sale, he asked the banks for a $16–$19 price range, below their $17–$20 recommendation; Goldman says the lower range made a further cut unlikely. Demand then pushed the agreed price to $21. On 13 March 1986 the shares closed at $28, and the offering raised $61 million for Microsoft. The company Gates had hoped to keep private now had public shareholders and money to expand."
   duration: 12
 
-- shot: bezos-family
-  view: graph
-  lens: power
-  focus: jeff-bezos
-  reveal: [jeff-bezos, jackie-bezos, mike-bezos, lawrence-preston-gise, atomic-energy-commission]
-  reveal_claims: [jackie-bezos#c1, mike-bezos#c1, jackie-bezos#c2, lawrence-preston-gise#c4, lawrence-preston-gise#c3, lawrence-preston-gise#c1]
-  overlay: {kind: quote, source: achievement-jeff-bezos, quote: "We would build cranes to lift the gears out.", caption: "Jeff Bezos, recalling ranch summers with his grandfather, 2001"}
-  narration: "**The broken bulldozer.** On his grandfather's Texas ranch, the young Jeff Bezos helped repair a D-6 Caterpillar bulldozer. They built cranes to lift out its gears, he recalled in 2001. His grandfather, Lawrence Preston Gise, had run the Atomic Energy Commission's operations for seven states from Albuquerque before retiring to the ranch. Gise's daughter Jackie married Mike Bezos when Jeff was four; Jeff spent his childhood summers with Gise. Bezos described those months as a lesson in self-reliance: his grandfather even did his own veterinary work on the cattle. Long before he left a secure job to build Amazon, he had worked beside someone who repaired what broke."
-  duration: 10
-
 - shot: central-park
   view: map
   camera: {center: [-98, 40], zoom: 3, duration: 4}
@@ -173,6 +175,18 @@ Every line drawn below is a sourced link. Lines marked "according to" are one so
   reveal_claims: [kleiner-perkins#c1, jackie-bezos#c3, john-doerr#c2]
   overlay: {kind: stat, value: "41%", label: "Share of Amazon's stock the prospectus says Bezos would hold right after the May 1997 offering", source: amazon-s1a-1997-05-14, quote: "will be beneficially owned approximately 41% by Jeffrey P. Bezos, the Company's President, Chief Executive Officer and Chairman of the Board"}
   narration: "**Selling shares, keeping a stake.** In May 1997 Bezos took Amazon toward a public offering of 3,000,000 shares. The company would sell every one of them; he would sell none. Amazon told investors it expected to use part of the money to fund operating losses. Its prospectus put Bezos's stake afterward at about 41%, his family and family trusts at about 10%, and 14.3% under Kleiner Perkins partner John Doerr, who disclaimed ownership beyond his proportional interest. Two of Bezos's siblings had each bought 30,000 shares at $0.3333 in May 1996. Bezos and his family would retain about 51% of voting power, enough to control director elections, the prospectus warned."
+  duration: 12
+
+- shot: thiel-palantir-cia
+  view: map
+  camera: {center: [-98, 39], zoom: 3, duration: 4}
+  time: "2003-06-25"
+  places: [menlo-park, langley-virginia]
+  routes: [[menlo-park, langley-virginia]]
+  reveal: [peter-thiel, palantir-technologies, in-q-tel, cia, keyhole-inc, google, google-earth]
+  reveal_claims: [peter-thiel#c4, in-q-tel#c2, cia#c2, cia#c3, in-q-tel#c1, google#c1, keyhole-inc#c1]
+  overlay: {kind: quote, source: iqt-2003-06-25-keyhole, quote: "In-Q-Tel  invested in Keyhole because it offers government and commercial users a new  capability to radically enhance critical decision making.", caption: "Gilman Louie, In-Q-Tel chief executive, 25 June 2003"}
+  narration: "**The investor with an intelligence customer.** In-Q-Tel backed a company Google would later acquire. In June 2003 In-Q-Tel chief executive Gilman Louie announced a February equity investment in Keyhole, whose imagery product already served commercial customers, consumers and television news. Louie said its tools would \"radically enhance critical decision making.\" His firm, set up and funded by the CIA, invested on behalf of the National Imagery and Mapping Agency, which used Keyhole to support U.S. troops in Iraq. In-Q-Tel also became an early backer of Palantir, co-founded by Peter Thiel in 2003. That was a separate deal from Thiel's Facebook investment. Google later acquired Keyhole and turned it into Google Earth; In-Q-Tel had invested in an already commercial product."
   duration: 12
 
 - shot: facemash
@@ -231,27 +245,16 @@ Every line drawn below is a sourced link. Lines marked "according to" are one so
   narration: "**Signing away the dispute.** In 2008 Cameron and Tyler Winklevoss and Divya Narendra agreed to exchange ConnectU for cash and Facebook shares. They had sued Zuckerberg and Facebook first in 2004, alleging he took their idea; he called that \"completely false\" in the Crimson. Facebook countersued, alleging they hacked its site and spammed its users. A legal paper reported the settlement's value as $65 million. The three later alleged Facebook misled them about its shares' value, but the Ninth Circuit rejected their securities claims and enforced their agreement. They had settled before any court decided whose idea it was. Initial financier Eduardo Saverin and Facebook also sued each other, settling in 2009 on unpublished terms. The settlements ended the fights over the company's beginnings while leaving it to grow under Zuckerberg."
   duration: 14
 
-- shot: thiel-palantir-cia
-  view: map
-  camera: {center: [-98, 39], zoom: 3, duration: 4}
-  places: [menlo-park, langley-virginia]
-  routes: [[menlo-park, langley-virginia]]
-  reveal: [peter-thiel, palantir-technologies, in-q-tel, cia, keyhole-inc, google, google-earth]
-  reveal_claims: [peter-thiel#c4, in-q-tel#c2, cia#c2, cia#c3, in-q-tel#c1, google#c1, keyhole-inc#c1]
-  overlay: {kind: quote, source: iqt-2003-06-25-keyhole, quote: "In-Q-Tel  invested in Keyhole because it offers government and commercial users a new  capability to radically enhance critical decision making.", caption: "Gilman Louie, In-Q-Tel chief executive, 25 June 2003"}
-  narration: "**The investor with an intelligence customer.** In June 2003 In-Q-Tel chief executive Gilman Louie announced a February equity investment in Keyhole, whose imagery product already served commercial customers, consumers and television news. Louie said its tools would \"radically enhance critical decision making.\" His firm, set up and funded by the CIA, invested on behalf of the National Imagery and Mapping Agency, which used Keyhole to support U.S. troops in Iraq. In-Q-Tel also became an early backer of Palantir, co-founded by Peter Thiel in 2003. That was a separate deal from Thiel's Facebook investment. Google later acquired Keyhole and turned it into Google Earth; In-Q-Tel had invested in an already commercial product."
-  duration: 12
-
 - shot: luck-and-help
   view: graph
   lens: "all"
   focus: "jeff-bezos"
+  time: "2017-05-25"
   reveal: [bill-gates, lakeside-school, jeff-bezos, mike-bezos, jackie-bezos, mark-zuckerberg]
   reveal_claims: [bill-gates#c4, mike-bezos#c2, jackie-bezos#c3, mark-zuckerberg#c3]
   overlay: {kind: quote, source: harvard-gazette-2017-05-25-zuckerberg, quote: "We all know we don’t succeed just by having a good idea or working hard. We succeed by being lucky too.", caption: "Mark Zuckerberg, Harvard commencement, 25 May 2017"}
   narration: "**What they could afford to risk.** Back at Harvard in 2017, Zuckerberg told graduates what had made his departure possible: \"If I had to support my family growing up instead of having time to code,\" he would not be standing there. Gates had told Lakeside in 2005, \"luckily, I got in.\" At Harvard in 2007 he said graduates had been given much \"in talent, privilege, and opportunity\". Zuckerberg turned that acknowledgment into a proposal: give more people a cushion against failure. He said: \"People like me should pay for it.\" The founder who could afford to try was asking his fellow graduates to help others take the same risk."
   duration: 12
-
 - shot: explore
   view: graph
   lens: all

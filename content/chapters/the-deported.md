@@ -61,6 +61,7 @@ The journeys killed thousands; forced labor, hunger and disease killed many more
   duration: 16
 
 - shot: german-cost
+  time: "1942-01"
   view: graph
   lens: history
   focus: deportation-of-volga-germans-1941
@@ -117,6 +118,7 @@ The journeys killed thousands; forced labor, hunger and disease killed many more
   duration: 15
 
 - shot: the-case
+  time: "1944-09-05"
   view: graph
   lens: history
   focus: deportation-of-chechens-and-ingush-1944
@@ -127,6 +129,7 @@ The journeys killed thousands; forced labor, hunger and disease killed many more
   duration: 17
 
 - shot: toll
+  time: "1944"
   view: graph
   lens: history
   focus: pohl-m-chechen-ingush-in-kazakstan
@@ -135,16 +138,6 @@ The journeys killed thousands; forced labor, hunger and disease killed many more
   overlay: {kind: stat, value: "23.3%", label: "of Chechens, Ingush, Balkars and Karachays in Kazakhstan died in 1944-49, by an NKVD report on excess deaths (Kazakhstan only; transit counted separately)", source: pohl-m-article-chechen-ingush-kazakstan, quote: "101,036 Chechens, Ingush, Balkardians, and Karachaevtsy died in this period (23.3 percent of the deportees), 485 Kalmycks (20.7 percent), 443 Crimean Tatars (10.1 percent), and 19,501 Germans, representing 8.9 percent of the German exiles."}
   narration: "**Kuznetsov reports no incidents.** Receiving the trains in 1944, NKVD official M. Kuznetsov reported 1,361 Chechens and Ingush dead en route, 0.27 percent, and no incidents during unloading. Zauresh Saktaganova sets that beside D. Khodzhaev's estimate of 200,000 Chechen and 30,000 Ingush deaths, whose accuracy she questions. Michaela Pohl calls transit tallies undercounts: bodies had been removed along the route. For Kazakhstan alone, an NKVD excess-death report counts 125,564 deaths among 760,642 special settlers in 1944–49, 16.5 percent; Chechens, Ingush, Balkars and Karachays account for 101,036, or 23.3 percent. Comparing arrivals with the 1949 census, she estimates about 23,700 dead in Akmola, roughly 35 percent of Chechens and Ingush and 49 percent of Balkars there. Survivors remained under police command."
   duration: 18
-
-- shot: exile
-  view: graph
-  lens: history
-  focus: special-settlement
-  reveal: [special-settlement, ukaz-1948-exile-forever, supreme-soviet-of-the-ussr, soviet-government, deportation-of-crimean-tatars-1944]
-  reveal_claims: [soviet-government#c7, supreme-soviet-of-the-ussr#c3, deportation-of-crimean-tatars-1944#c13, deportation-of-chechens-and-ingush-1944#c8, deportation-of-chechens-and-ingush-1944#c16]
-  overlay: {kind: quote, source: pohl-2024-crimean-tatars-special-settlers, quote: "those resettled to distant regions of the Soviet Union by decrees of people in the high leadership are exiled forever, without the right to return to their previous places of residence.", caption: "Presidium decree of 26 November 1948, in J. Otto Pohl's English (2024)"}
-  narration: "**Khaidiev would not vote.** In secret-police testimony quoted by Michaela Pohl, Chechen deportee Muskhadzhi Khaidiev in Alma-Ata said he would refuse to vote in 1946: the government “did not send us to Kazakstan to live, but to die”. He would gladly vote for an Anglo-American government because it would be better than the Soviet one, he said. Pohl contrasts Nikolai Bugai’s argument that labor mobilization improved settlers’ position, without minimizing deportation’s brutality, with J. Otto Pohl’s argument that removal constituted “acts of ethnically motivated murder” because destinations were known to have deadly living conditions. Beria had installed 429 special commandants to prevent escape. The regime began with the 1929–31 campaign against kulaks and was codified on 8 January 1945. On 26 November 1948, the Presidium made exile permanent and prescribed twenty years of hard labor for leaving."
-  duration: 17
 
 - shot: crimea-decree
   view: map
@@ -160,6 +153,7 @@ The journeys killed thousands; forced labor, hunger and disease killed many more
   duration: 16
 
 - shot: accusation
+  time: "1944-05-10"
   view: graph
   lens: history
   focus: deportation-of-crimean-tatars-1944
@@ -170,6 +164,7 @@ The journeys killed thousands; forced labor, hunger and disease killed many more
   duration: 17
 
 - shot: crimea-count
+  time: "1944-10-10"
   view: graph
   lens: history
   focus: deportation-of-crimean-tatars-1944
@@ -191,6 +186,7 @@ The journeys killed thousands; forced labor, hunger and disease killed many more
   duration: 17
 
 - shot: turkey
+  time: "1945-07-07"
   view: graph
   lens: history
   focus: turkey
@@ -199,6 +195,17 @@ The journeys killed thousands; forced labor, hunger and disease killed many more
   overlay: {kind: quote, source: pohl-2000-paper-crimean-tatars, quote: "The real reason for the deportation of the Crimean Tatars appears to be related to Soviet foreign policy objectives in the Middle East.", caption: "J. Otto Pohl, 2000: his reading of why the Crimean Tatars were deported"}
   narration: "**Molotov demands bases.** In March 1945 Molotov told Turkey's ambassador that Moscow would not renew their neutrality treaty. On 7 July he demanded naval bases in the Straits and the cession of Kars and Ardahan. J. Otto Pohl reads the earlier deportations, in 1943–44, as preparation for this pressure: removing peoples with ties to Turkey, he argues, guarded against assistance to Ankara in a conflict. The decrees accused deportees of collaboration; his explanation instead connects their removal to Moscow's plans beyond the border. Molotov's demands made control of the Straits and two provinces an open dispute with Turkey."
   duration: 16
+
+- shot: exile
+  view: graph
+  lens: history
+  focus: special-settlement
+  time: "1948-11-26"
+  reveal: [special-settlement, ukaz-1948-exile-forever, supreme-soviet-of-the-ussr, soviet-government, deportation-of-crimean-tatars-1944]
+  reveal_claims: [soviet-government#c7, supreme-soviet-of-the-ussr#c3, deportation-of-crimean-tatars-1944#c13, deportation-of-chechens-and-ingush-1944#c8, deportation-of-chechens-and-ingush-1944#c16]
+  overlay: {kind: quote, source: pohl-2024-crimean-tatars-special-settlers, quote: "those resettled to distant regions of the Soviet Union by decrees of people in the high leadership are exiled forever, without the right to return to their previous places of residence.", caption: "Presidium decree of 26 November 1948, in J. Otto Pohl's English (2024)"}
+  narration: "**Khaidiev would not vote.** In exile in Alma-Ata, Chechen deportee Muskhadzhi Khaidiev said he would refuse to vote in 1946. As he put it in secret-police testimony quoted by Michaela Pohl, the government “did not send us to Kazakstan to live, but to die”. He would gladly vote for an Anglo-American government because it would be better than the Soviet one, he said. Pohl contrasts Nikolai Bugai’s argument that labor mobilization improved settlers’ position, without minimizing deportation’s brutality, with J. Otto Pohl’s argument that removal constituted “acts of ethnically motivated murder” because destinations were known to have deadly living conditions. Beria had installed 429 special commandants to prevent escape. The regime began with the 1929–31 campaign against kulaks and was codified on 8 January 1945. On 26 November 1948, the Presidium made exile permanent and prescribed twenty years of hard labor for leaving."
+  duration: 17
 
 - shot: secret-speech
   view: map
@@ -225,6 +232,7 @@ The journeys killed thousands; forced labor, hunger and disease killed many more
   duration: 16
 
 - shot: who-went-home
+  time: "1957-01"
   view: graph
   lens: history
   focus: return-of-the-deported-peoples-1956-57
@@ -247,6 +255,7 @@ The journeys killed thousands; forced labor, hunger and disease killed many more
   duration: 17
 
 - shot: genocide
+  time: "2004-02-26"
   view: graph
   lens: history
   focus: european-parliament-recommendation-2004-eu-russia

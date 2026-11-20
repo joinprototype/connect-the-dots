@@ -90,16 +90,6 @@ The German Foreign Ministry's telegrams, published in 1958, differ from Lenin's 
   narration: "**Berlin says yes, nearly.** In Bern, German minister Gisbert von Romberg received Berlin's approval on 5 April 1917: the General Staff agreed to passage through Gottmadingen, no passport checks, sealed luggage and safe transit for at most sixty people. On 7 April Berlin accepted Platten's conditions except Clause 2, covering his exclusive control, the locked carriage and its extra-territorial rights: Janson would accompany it for the German trade unions, whose request Berlin said had initiated the arrangement. Lenin's later public report nevertheless described the carriage's extraterritoriality and Platten's control as agreed terms. The travellers set out under an agreement the two sides would describe differently."
   duration: 13
 
-- shot: the-generals-memoir
-  view: graph
-  focus: erich-ludendorff
-  time: "1919"
-  reveal: [erich-ludendorff, german-army-high-command, german-imperial-government, lenin-sealed-train]
-  reveal_claims: [lenin-sealed-train#c9, lenin-sealed-train#c8, german-imperial-government#c4]
-  overlay: {kind: quote, source: ludendorff-1919-war-memories-v2, quote: "By sending Lenin to Russia our Government had, moreover, assumed a great responsibility.", caption: "Erich Ludendorff, My War Memories, 1919"}
-  narration: "**The general writes afterwards.** In his 1919 memoir, Erich Ludendorff, the army's First Quartermaster General, defended sending Lenin: “his journey was justified, for Russia had to be laid low.” The 1917 telegrams had recorded the High Command's assent without naming him; afterwards, in what Z. A. B. Zeman called a tone of “bated breath”, he assigned the “great responsibility” to “our Government”. Ludendorff himself warned that the government should have kept Germany from being dragged into Russia's fall. His military justification came with an admission that the danger could cross back over the frontier."
-  duration: 13
-
 - shot: what-each-side-wanted
   view: graph
   focus: lenin-sealed-train
@@ -107,7 +97,7 @@ The German Foreign Ministry's telegrams, published in 1958, differ from Lenin's 
   reveal: [german-imperial-government, bolsheviks, vladimir-lenin, nadezhda-krupskaya, lenin-sealed-train]
   reveal_claims: [german-imperial-government#c7, bolsheviks#c2]
   overlay: {kind: quote, source: zeman-1958-germany-revolution-russia, quote: "Since their immediate departure would be greatly in our interests, I urgently recommend that permission should be granted at once, accepting the conditions laid down.", caption: "Gisbert von Romberg, German minister in Bern, 4 April 1917"}
-  narration: "**What each side wanted.** On 4 April 1917, Romberg urged Berlin to approve the exiles' immediate departure, calling it “greatly in our interests”. Lenin had already signed the Bolshevik leaders' judgment that the proposal was “fully acceptable”: passage was guaranteed regardless of their politics or views on continuing the war. Krupskaya later said Berlin thought revolution would be a disaster for Russia; the Bolsheviks aimed for a victorious proletarian revolution, expecting attacks over their journey but believing the masses would follow. Both accepted the crossing for their own stated reasons, and Platten prepared to lead the group home."
+  narration: "**What each side wanted.** Berlin's answer followed Romberg's recommendation of 4 April 1917, in which he urged approval of the exiles' immediate departure, calling it “greatly in our interests”. Lenin had already signed the Bolshevik leaders' judgment that the proposal was “fully acceptable”: passage was guaranteed regardless of their politics or views on continuing the war. Krupskaya later said Berlin thought revolution would be a disaster for Russia; the Bolsheviks aimed for a victorious proletarian revolution, expecting attacks over their journey but believing the masses would follow. Both accepted the crossing for their own stated reasons, and Platten prepared to lead the group home."
   duration: 13
 
 - shot: who-was-aboard
@@ -236,6 +226,16 @@ The German Foreign Ministry's telegrams, published in 1958, differ from Lenin's 
   narration: "**What came of it.** On 3 March 1918 at Brest-Litovsk, Grigori Sokolnikov, a passenger on Lenin's train, faced Germany's terms after its renewed attack. The Bolsheviks had taken power less than seven months after Lenin's arrival; their delegate said Russia must sign to spare workers and peasants further slaughter and save the revolution. Sokolnikov protested that the terms deprived frontier populations of self-determination and restored land to landlords. Soviet Russia signed that day. Ludendorff later credited both Brest-Litovsk and the preliminary peace of Buftea with easing the Eastern Front, while warning that real peace with Russia had not arrived. The train passenger had signed Russia out of the war; the Soviet state's road would run through the Union's founding to its dissolution in 1991."
   explore: true
   duration: 14
+
+- shot: the-generals-memoir
+  view: graph
+  focus: erich-ludendorff
+  time: "1919"
+  reveal: [erich-ludendorff, german-army-high-command, german-imperial-government, lenin-sealed-train]
+  reveal_claims: [lenin-sealed-train#c9, lenin-sealed-train#c8, german-imperial-government#c4]
+  overlay: {kind: quote, source: ludendorff-1919-war-memories-v2, quote: "By sending Lenin to Russia our Government had, moreover, assumed a great responsibility.", caption: "Erich Ludendorff, My War Memories, 1919"}
+  narration: "**The general writes afterwards.** In his 1919 memoir, Erich Ludendorff, the army's First Quartermaster General, defended sending Lenin in the first place: “his journey was justified, for Russia had to be laid low.” The 1917 telegrams had recorded the High Command's assent without naming him; afterwards, in what Z. A. B. Zeman called a tone of “bated breath”, he assigned the “great responsibility” to “our Government”. Ludendorff himself warned that the government should have kept Germany from being dragged into Russia's fall. His military justification came with an admission that the danger could cross back over the frontier."
+  duration: 13
 ```
 
 Explore further: follow the road ahead in The Rise and Fall of the Soviet Union, or the road behind in Thirty-Seven Days.

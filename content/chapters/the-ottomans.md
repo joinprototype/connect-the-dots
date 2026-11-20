@@ -113,6 +113,7 @@ Ibn Battuta, the Byzantine historian Doukas in English translation, the Cairo ch
 - shot: merit
   view: graph
   focus: janissary-corps
+  time: "1555"
   reveal: ["devshirme", "janissary-corps", "busbecq", "end-of-the-janissaries-1826", "mahmud-ii"]
   reveal_claims: ["devshirme#c4", "devshirme#c1", "devshirme#c2", "devshirme#c3", "janissary-corps#c2", "janissary-corps#c1", "end-of-the-janissaries-1826#c1", "end-of-the-janissaries-1826#c2", "busbecq#c2"]
   overlay: {kind: quote, source: busbecq-forster-1881-turkish-letters, quote: "These are not our ideas, with us there is no opening left for merit; birth is the standard for everything", caption: "Busbecq, Habsburg envoy, on how the Ottoman court promoted men, 1550s"}
@@ -122,6 +123,7 @@ Ibn Battuta, the Byzantine historian Doukas in English translation, the Cairo ch
 - shot: paid-in-revenue
   view: graph
   focus: timar-system
+  time: "1569"
   reveal: ["timar-system", "capitulations", "ottoman-empire", "gulhane-edict-1839"]
   reveal_claims: ["timar-system#c1", "timar-system#c2", "capitulations#c2", "gulhane-edict-1839#c1", "gulhane-edict-1839#c2", "gulhane-edict-1839#c3"]
   overlay: {kind: "quote", source: "quataert-2005-the-ottoman-empire-1700-1922", quote: "Ottoman Christians and Jews for many centuries had been required to pay a special tax ( cizye ) in cash, that assured them state protection in the exercise of their religion.", caption: "Donald Quataert on what Christian and Jewish subjects had to pay"}
@@ -138,24 +140,6 @@ Ibn Battuta, the Byzantine historian Doukas in English translation, the Cairo ch
   narration: "**Why a sultan promised safety.** On 3 November 1839, the sultan explained his reforms: disregard of the laws had turned strength into “weakness and poverty” over 150 years, and a man whose life and honour were endangered might turn to violence against the government. Secure him instead, the edict argued, and “he will not depart from the ways of loyalty”; protect his property and his love of prince and country would grow. The edict, in an English translation with no named translator, promised security of life, honour and fortune, fixed taxes, four or five years' conscription and public trials and regular judgment before any execution, extending the concessions to every religion and sect. Its public bargain was protection in return for loyalty, to restore the state's strength."
   duration: 13
 
-- shot: both-directions
-  view: graph
-  focus: ottoman-communal-violence-1821-1896
-  reveal: ["ottoman-communal-violence-1821-1896", "ottoman-empire", "istanbul"]
-  reveal_claims: ["ottoman-communal-violence-1821-1896#c1", "ottoman-communal-violence-1821-1896#c2", "ottoman-communal-violence-1821-1896#c3", "ottoman-communal-violence-1821-1896#c4", "ottoman-communal-violence-1821-1896#c5"]
-  overlay: {kind: "quote", source: "quataert-2005-the-ottoman-empire-1700-1922", quote: "In 1895-1896, lower-class Muslims, perhaps with official connivance, murdered large numbers of Armenians in the capital.", caption: "Donald Quataert on the killings in Istanbul"}
-  narration: "**Who would protect them?** Under Abdulhamid II, lower-class Muslims murdered large numbers of Armenians in the capital in 1895–1896, “perhaps with official connivance,” in Quataert's account. Greeks slaughtered Muslims at Tripolis in 1821; Ottoman officials killed or deported the entire population of Chios in 1822, and Muslim fellow subjects killed thousands of Christians at Damascus in 1860. For Bulgaria in 1876, he counts Christians murdering 1,000 Muslims, then Muslims slaughtering 3,700 Christians. The promises of protection had failed people on both sides; their suffering reached European readers through reporting that, in his account, foregrounded Christians and ignored Muslims."
-  duration: 13
-
-- shot: decline-tested
-  view: graph
-  focus: ottoman-sieges-of-vienna
-  reveal: ["gulhane-edict-1839", "ottoman-sieges-of-vienna", "ottoman-empire"]
-  reveal_claims: ["ottoman-sieges-of-vienna#c2", "ottoman-sieges-of-vienna#c3"]
-  overlay: {kind: quote, source: quataert-2005-the-ottoman-empire-1700-1922, quote: "Here is the real story of decline. Falling further and further behind Europe, the Ottomans shared a fate with the entire world but for Japan", caption: "Donald Quataert on Ottoman decline, 1700-1922"}
-  narration: "**The sultan's diagnosis.** The sultan issuing the 1839 edict described a state that had lost its strength because men stopped observing its laws, and prescribed new institutions to recover it. Quataert disputes the familiar diagnosis that power moving from sultans to viziers and other households weakened the empire: he sees internal transformation, while European states grew stronger. In that reading, the empire of 1750 was less powerful relative to Europe than in 1600, and the defeat at Vienna in 1683 marked the permanent reversal. The sultan's proposed remedy would demand an army and administration that his successors had to pay for."
-  duration: 13
-
 - shot: the-bill
   view: graph
   focus: ottoman-public-debt-administration
@@ -164,6 +148,16 @@ Ibn Battuta, the Byzantine historian Doukas in English translation, the Cairo ch
   reveal_claims: ["ottoman-default-1875#c1", "ottoman-default-1875#c3", "ottoman-default-1875#c2", "ottoman-public-debt-administration#c1", "ottoman-public-debt-administration#c2", "ottoman-default-1875#c4"]
   overlay: {kind: stat, value: "£200 million", label: "Foreign debt on which the Ottoman government defaulted in 1875, by Donald Blaisdell (1929)", source: blaisdell-1929-european-financial-control, quote: "In 1875 the Ottoman Government defaulted the charges on a foreign debt of two hundred million pounds sterling."}
   narration: "**Half the coupon.** The sultan's officials first borrowed abroad to finance the Crimean War of 1853–1856, despite the risk of European control; under Abdul Aziz, foreign ambassadors encouraged his purchases of ironclads, and loan followed loan, in Blaisdell's account. From 1854 to 1875 they borrowed over a billion dollars, then on 6 October 1875 publicly explained their choice: a deficit of five million Turkish pounds meant paying only half the coupons in cash; by March 1876 some went unpaid. Abdulhamid II ceded revenues and powers to creditors through the Debt Administration in 1881. It had over 3,000 collecting agents then, against Quataert's undated 5,000 officials: the borrowers' need for money had brought foreign collectors inside the state."
+  duration: 13
+
+- shot: both-directions
+  view: graph
+  focus: ottoman-communal-violence-1821-1896
+  time: "1895"
+  reveal: ["ottoman-communal-violence-1821-1896", "ottoman-empire", "istanbul"]
+  reveal_claims: ["ottoman-communal-violence-1821-1896#c1", "ottoman-communal-violence-1821-1896#c2", "ottoman-communal-violence-1821-1896#c3", "ottoman-communal-violence-1821-1896#c4", "ottoman-communal-violence-1821-1896#c5"]
+  overlay: {kind: "quote", source: "quataert-2005-the-ottoman-empire-1700-1922", quote: "In 1895-1896, lower-class Muslims, perhaps with official connivance, murdered large numbers of Armenians in the capital.", caption: "Donald Quataert on the killings in Istanbul"}
+  narration: "**Who would protect them?** Under the same sultan, Abdulhamid II, lower-class Muslims murdered large numbers of Armenians in the capital in 1895–1896, “perhaps with official connivance,” in Quataert's account. Greeks slaughtered Muslims at Tripolis in 1821; Ottoman officials killed or deported the entire population of Chios in 1822, and Muslim fellow subjects killed thousands of Christians at Damascus in 1860. For Bulgaria in 1876, he counts Christians murdering 1,000 Muslims, then Muslims slaughtering 3,700 Christians. The promises of protection had failed people on both sides; their suffering reached European readers through reporting that, in his account, foregrounded Christians and ignored Muslims."
   duration: 13
 
 - shot: nineteen-oh-eight
@@ -227,5 +221,15 @@ Ibn Battuta, the Byzantine historian Doukas in English translation, the Cairo ch
   reveal_claims: ["abolition-of-the-caliphate-1924#c1", "abolition-of-the-caliphate-1924#c2", "treaty-of-lausanne-1923#c2", "treaty-of-lausanne-1923#c4", "treaty-of-lausanne-1923#c3", "treaty-of-lausanne-1923#c1", "capitulations#c1", "grand-national-assembly-of-turkey#c1", "abolition-of-the-caliphate-1924#c3", "abolition-of-the-caliphate-1924#c4"]
   overlay: {kind: "quote", source: "kemal-1927-speech-english-1929", quote: "constitutes a flagrant violation of the independence of the Republic.", caption: "Kemal on the caliph’s demand for official recognition, in a January 1924 cipher reply reproduced in his 1927 speech"}
   narration: "**No other authority.** In January 1924 Kemal replied to the caliph's complaints about his status and money; his cipher telegram, reproduced in his 1927 speech, called the office only “an historical memory.” He said its secretaries and chamberlains sustained the caliph's dream of power, called its claims a violation of the republic's independence, and agreed with ministers to suppress it. On 3 March 1924 the Assembly passed Law No. 431, deposing the caliph and abolishing the office, dated 3 March 1340 in the Ottoman fiscal calendar; Quataert instead dates its end 1923 and attributes the empire's end to war and agreement between the Great Powers and Turkish nationalists. Young Turk leaders had suspended capitulations during the war, Lausanne abolished them completely, and Kemal's settlement left the dynasty without either office."
+  duration: 13
+
+- shot: decline-tested
+  view: graph
+  focus: ottoman-sieges-of-vienna
+  time: "2005"
+  reveal: ["gulhane-edict-1839", "ottoman-sieges-of-vienna", "ottoman-empire"]
+  reveal_claims: ["ottoman-sieges-of-vienna#c2", "ottoman-sieges-of-vienna#c3"]
+  overlay: {kind: quote, source: quataert-2005-the-ottoman-empire-1700-1922, quote: "Here is the real story of decline. Falling further and further behind Europe, the Ottomans shared a fate with the entire world but for Japan", caption: "Donald Quataert on Ottoman decline, 1700-1922"}
+  narration: "**The sultan's diagnosis.** Long before that settlement, the sultan issuing the 1839 edict described a state that had lost its strength because men stopped observing its laws, and prescribed new institutions to recover it. Quataert disputes the familiar diagnosis that power moving from sultans to viziers and other households weakened the empire: he sees internal transformation, while European states grew stronger. In that reading, the empire of 1750 was less powerful relative to Europe than in 1600, and the defeat at Vienna in 1683 marked the permanent reversal. The sultan's proposed remedy would demand an army and administration that his successors had to pay for."
   duration: 13
 ```
