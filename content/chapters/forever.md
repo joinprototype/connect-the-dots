@@ -3,218 +3,192 @@ uid: 01M6DHS2D0TXJEHGR905SBJKQN
 id: forever
 type: chapter
 title: Forever
-subtitle: Who made the diamond trade, why, and who holds it now
-summary: In 1871 a hill on a South African farm turned out to be diamond ground. Within two decades one company wrote of regulating its output to the market demand, and by the 1940s an advertising agency was selling Americans on the diamond ring. Here is the road from Kimberley to the jewelry counter, from court records, regulators, the companies' own words, and the writers who disputed them.
+subtitle: The business behind the diamond engagement ring
+summary: "Harry Oppenheimer authorized a $10,000 survey in 1938. N. W. Ayer used ads, wedding news and film to make the diamond engagement ring a sign of lasting love. In 2000, De Beers set out to sell diamonds under its own brand."
 featured: true
 ---
 
-In 1871 a hill on a South African farm turned out to be diamond ground. In 1947 an advertising copywriter wrote four words that went into De Beers advertisements for decades.
-
-By 2000, De Beers said it sold about two-thirds of the world’s rough diamonds, down from roughly 85 percent in the early 1980s. Anglo American later took an 85 percent stake in the company; Botswana holds the other 15 percent. Behind those shares lie decisions about how many stones to mine, whom to let buy them, and what a ring should mean to the person paying for it.
-
 ```scene
-- shot: fifty-thousand-men
-  view: map
-  camera: {center: [24.7623, -28.7323], zoom: 10.8, pitch: 30, duration: 6}
-  places: [kimberley]
-  time: "1871-07"
-  reveal: [kimberley-diamond-rush, kimberley, cecil-rhodes]
-  reveal_claims: [kimberley-diamond-rush#c1, kimberley-diamond-rush#c2]
-  overlay: {kind: stat, value: "up to 50,000 men", label: "An estimate reported by De Beers’s general manager in 1902, who added that the Fields never held that many at once", source: williams-1902-diamond-mines-of-south-africa, quote: "it has been estimated that the rush which built up these mining camps and covered the surrounding farms with prospectors brought fifty thousand men to the new Diamond Fields in the first year, though the shifting population of the Fields did not rise as high as that at any one time"}
-  narration: "**Fifty thousand men.** At Kimberley, Cecil Rhodes found that his brother’s diamond claim did not pay. He sold miners ice cream and water, then bought a pump; when miners could not pay cash, he took shares in their claims, in Jennifer Pequignot’s history. Diamonds had been found on the De Beers farm in May 1871 and at Kimberley in July. De Beers manager Gardner Williams later put the first year’s arrivals at an estimated fifty thousand men, never all there together; he cited another writer’s estimate of thirty thousand African arrivals annually for seven years. Men came to dig, but Rhodes’s business serving them was turning their claims into his holdings."
-  duration: 13
-
-- shot: regulate-the-output
+- shot: the-promise-and-the-stockpile
   view: graph
   focus: de-beers
-  time: "1888-03-12"
-  reveal: [de-beers, cecil-rhodes, barney-barnato, kimberley]
-  reveal_claims: [cecil-rhodes#c1, cecil-rhodes#c2, barney-barnato#c1, barney-barnato#c2]
-  overlay: {kind: quote, source: williams-1902-diamond-mines-of-south-africa, quote: "By the formation of De Beers Consolidated Mines Limited, it became practicable to design and conduct mining operations systematically and economically and to regulate the output to the market demand.", caption: "Gardner Williams, general manager of De Beers, The Diamond Mines of South Africa, 1902"}
-  narration: "**Regulate the output.** At Kimberley, Rhodes kept bidding against Barney Barnato until shares cost more than even Barnato thought reasonable and competition drove diamond prices below profitable levels, in manager Gardner Williams’s telling. Barnato finally accepted Rhodes’s offer for his interest, taking De Beers shares. On 12 March 1888, De Beers Consolidated Mines was formed; four men held all but twenty-five shares. Williams gave the purpose plainly: the company could now “regulate the output to the market demand.” Williams says Rhodes told shareholders that two mines alone could produce twice the diamonds the world required. In Williams’s telling, consolidation made production control possible."
-  duration: 13
-
-- shot: the-compound
-  view: map
-  camera: {center: [24.7623, -28.7323], zoom: 13.4, pitch: 40, duration: 6}
-  places: [kimberley]
-  time: "1902"
-  reveal: [de-beers, kimberley]
-  overlay: {kind: quote, source: williams-1902-diamond-mines-of-south-africa, quote: "Until the expiration of his contract, no native can go through the compound gate, except by special permission, or when he is taken under guard before a magistrate", caption: "Gardner Williams, general manager of De Beers, The Diamond Mines of South Africa, 1902"}
-  narration: "**The compound.** At Kimberley, general manager Gardner Williams defended keeping African workers behind fences as a way to stop diamond theft. By his 1902 description, seventeen walled compounds stood on the Diamond Fields, twelve belonging to De Beers; the largest held three thousand workers behind ten-foot iron fences. Wire netting overhead stopped stones being thrown outside. Williams pointed to a hospital, a church and a swimming bath; he called food and shelter deductions “moderate charges deducted from their pay.” Workers needed permission to leave before their contracts ended, except under guard to a magistrate. Williams describes men entering detention naked near the end of their contracts, receiving blankets and remaining under white guards’ supervision for five days so swallowed diamonds would not leave with them."
-  duration: 13
-
-- shot: anglo-american
-  view: graph
-  focus: ernest-oppenheimer
-  time: "1929"
-  reveal: [ernest-oppenheimer, anglo-american, de-beers]
-  reveal_claims: [ernest-oppenheimer#c1, ernest-oppenheimer#c2, ernest-oppenheimer#c3]
-  overlay: {kind: stat, value: "1929", label: "The year Ernest Oppenheimer became chairman of De Beers, twelve years after he founded Anglo American", source: pequignot-2019-why-a-diamond-means-forever, quote: "In 1929 he became the chairman of the company."}
-  narration: "**Anglo American.** On 16 February 1932, Ernest Oppenheimer and the De Beers board voted to stop diamond mining by the end of March. In Jennifer Pequignot’s history, he had initially kept production going, expecting an ordinary recession; the company ran short of capital, and the board chose closure to cut spending to the minimum. De Beers’s own history says all its mines closed that year. Oppenheimer had founded Anglo American in 1917; when it became a major De Beers shareholder in 1926, he joined the board, becoming chairman in 1929. He now ran Rhodes’s company, but ownership could not make people buy its stones. The search for customers would take his son to an advertising agency."
-  duration: 13
-
-- shot: one-channel
-  view: graph
-  focus: central-selling-organisation
-  time: "2006"
-  reveal: [central-selling-organisation, diamond-trading-company, de-beers]
-  reveal_claims: [central-selling-organisation#c1, central-selling-organisation#c2, diamond-trading-company#c1]
-  overlay: {kind: stat, value: "93", label: "Sightholders, the approved wholesalers allowed to buy rough diamonds from De Beers, in 2006", source: sullivan-v-db-investments-667f3d273, quote: "In 2006, DTC had ninety-three sightholders"}
-  narration: "**Mostly one channel.** In 2000, chairman Nicky Oppenheimer announced a change: De Beers would move “from being custodian of the market” to industry leader. Its share had fallen from roughly 85 percent in the early 1980s to two-thirds by its own count. It renamed the Central Selling Organization the Diamond Trading Company. The New York Times identified another reason: a competitive image could help overcome U.S. antitrust barriers to opening American operations. De Beers still sold chiefly to approved buyers: 125 sightholders in 2000, 93 in 2006. The Third Circuit later called De Beers’s twentieth-century wholesale dominance undisputed; American buyers alleged worldwide coordination through competitors’ agreements, production limits, resale restrictions and marketing. A new name and marketing strategy would have to contend with those lawsuits."
+  time: "2000-08-22"
+  reveal: [de-beers, n-w-ayer, a-diamond-is-forever, central-selling-organisation]
+  reveal_claims: [de-beers#c1, de-beers#c3, central-selling-organisation#c1]
+  overlay: {kind: stat, value: "$4.8 billion to $2.7 billion", label: "De Beers’s reported stockpile value, from 1998 to mid-2000", source: nyt-2000-cowell-controversy-over-diamonds, quote: "stockpile to $2.7 billion as of the middle of the year from a $4.8 billion inventory in 1998."}
+  narration: "**How did De Beers make the diamond ring a promise it could sell?** In August 2000, De Beers credited a surge in rough diamond sales with bringing its stockpile down from $4.8 billion in 1998 to $2.7 billion by mid-2000. By then, N. W. Ayer had paired the ring with a promise of lasting love in ads, wedding news and even a film. It started in 1938, when Harry Oppenheimer authorized $10,000 for an ad agency to ask Americans what a diamond meant to them."
   duration: 13
 
 - shot: a-plan-for-america
   view: graph
   focus: n-w-ayer
   time: "1938-12-02"
-  reveal: [de-beers, n-w-ayer, ernest-oppenheimer]
-  reveal_claims: [de-beers#c1]
-  overlay: {kind: quote, source: pequignot-2019-why-a-diamond-means-forever, quote: "These young women indicated that they would prefer a new car, a fur coat, or a trip abroad to a diamond engagement ring.", caption: "Jennifer Pequignot on N. W. Ayer’s 1938 survey for De Beers"}
-  narration: "**A plan for America.** In September 1938, Ernest Oppenheimer sent Harry to meet executives of Philadelphia’s N. W. Ayer & Son. In Jennifer Pequignot’s history, the father saw American buyers as a way to sell surplus diamonds and stabilize a trade battered by the Depression and approaching war. Harry chose research: on 2 December he authorized $10,000 for a survey of about 4,100 married people and 1,000 students. Ayer’s survey found Americans most closely linked diamonds with love, and fewer than two-thirds of the women owned diamond engagement rings. The young women surveyed preferred a car, a fur coat or a trip abroad. Ayer’s task was to make a ring compete with things its prospective customers said they wanted more."
+  reveal: [n-w-ayer, de-beers, ernest-oppenheimer]
+  reveal_claims: [de-beers#c1, ernest-oppenheimer#c3]
+  overlay: {kind: quote, source: pequignot-2019-why-a-diamond-means-forever, quote: "Diamond Market Investigation Survey and Report.", caption: "Title of the survey Harry Oppenheimer authorized in December 1938, cited by Jennifer Pequignot"}
+  narration: "**Harry authorizes a survey.** In historian Jennifer Pequignot’s account, Ernest Oppenheimer and the De Beers board voted in 1932 to suspend mining because the company was running out of money. By 1938, she writes, Ernest saw a way to steady the market by selling the surplus to Americans. At a September meeting with his son Harry, executives at the Philadelphia agency N. W. Ayer proposed starting with surveys. On December 2 Harry authorized $10,000 for the research, and Ayer asked about 4,100 married people and 1,000 college-age men and women what they thought of diamonds and whether they would buy one."
   duration: 13
 
-- shot: a-suit-in-new-york
+- shot: the-first-ad
   view: graph
-  focus: us-v-de-beers-1945
-  time: "1945-05-21"
-  reveal: [industrial-diamonds-dispute-1941, us-v-de-beers-1945, de-beers, us-department-of-justice, us-supreme-court, franklin-d-roosevelt, ernest-oppenheimer]
-  reveal_claims: [industrial-diamonds-dispute-1941#c1, industrial-diamonds-dispute-1941#c2, us-v-de-beers-1945#c1, us-v-de-beers-1945#c3, de-beers#c4, de-beers#c5]
-  overlay: {kind: quote, source: scotus-325us212-de-beers-mines-v-united-states, quote: "The complaint sought equitable relief based upon a charge that the defendants were engaged in a conspiracy to restrain and monopolize the commerce of the United States with foreign nations in gem and industrial diamonds, in violation of §§ 1 and 2 of the Sherman Act", caption: "U.S. Supreme Court, De Beers Consolidated Mines v. United States, 1945"}
-  narration: "**A suit in New York.** During the war, Roosevelt ordered the purchase of 6.5 million carats of industrial diamonds for weapons production. In Jennifer Pequignot’s history, partly drawing on Edward Jay Epstein, Ernest Oppenheimer refused: he argued that an American surplus sold after the war could destabilize the market. Pequignot also reports that he disputed the shortage, citing regular U.S. sales; he sold one million carats, and she says the apparent shortage crisis passed by 1943. In 1945, U.S. prosecutors sued De Beers and others in New York, alleging conspiracy to restrain and monopolize gem and industrial-diamond trade. A district judge froze their American property. On 21 May, the Supreme Court overturned the freeze without deciding the charge. The Third Circuit later described De Beers’s long record of avoiding American jurisdiction."
+  focus: diamond-engagement-ring
+  time: "1939-08-06"
+  reveal: [diamond-engagement-ring, n-w-ayer, de-beers]
+  reveal_claims: [n-w-ayer#c2]
+  overlay: {kind: quote, source: pequignot-2019-why-a-diamond-means-forever, quote: "These young women indicated that they would prefer a new car, a fur coat, or a trip abroad to a diamond engagement ring.", caption: "Jennifer Pequignot on the results of Ayer’s survey for De Beers"}
+  narration: "**A ring against a car.** Ayer’s respondents associated diamonds most closely with love, but fewer than two-thirds of the women surveyed owned a diamond engagement ring. In August 1939, Ayer ran its first De Beers ring ad in Ladies’ Home Journal and urged jewelers to join the campaign. Pequignot says the agency chose to pair ads that linked diamonds with love with publicity that put the stones into everyday life. The war soon gave Ayer a different problem with the name behind the ring."
+  duration: 13
+
+- shot: a-wartime-setback
+  view: graph
+  focus: industrial-diamonds-dispute-1941
+  time: "1943"
+  reveal: [industrial-diamonds-dispute-1941, de-beers, franklin-d-roosevelt, ernest-oppenheimer, n-w-ayer]
+  reveal_claims: [industrial-diamonds-dispute-1941#c1, industrial-diamonds-dispute-1941#c2]
+  overlay: {kind: quote, source: pequignot-2019-why-a-diamond-means-forever, quote: "This stalemate meant that De Beers and N.W. Ayer could once again revive their advertising and promotional campaigns in the United States.", caption: "Jennifer Pequignot on the easing of the wartime dispute by 1943"}
+  narration: "**The war interrupts the campaign.** When President Franklin Roosevelt ordered the purchase of 6.5 million carats of industrial diamonds for arms production, Ernest Oppenheimer refused to fill the order. In Pequignot’s account, he disputed the shortage because De Beers had regularly sold industrial diamonds to the U.S. government, and he feared that Washington would sell any excess after the war and unsettle prices. He eventually agreed to sell one million carats, and by 1943 the apparent shortage had eased. Ayer could resume its campaign, Pequignot writes, with the added job of repairing De Beers’s reputation."
+  duration: 13
+
+- shot: a-custom-grown
+  view: map
+  camera: {center: [-98.0, 39.0], zoom: 3.2, pitch: 12, duration: 6}
+  places: [united-states]
+  time: "1944-06-01"
+  reveal: [united-states, n-w-ayer, diamond-engagement-ring, de-beers]
+  reveal_claims: [n-w-ayer#c2]
+  overlay: {kind: quote, source: pequignot-2019-why-a-diamond-means-forever, quote: "Three Out of Four Brides Get Diamond Rings", caption: "Title of a 1944 Ayer publicity release, cited by Jennifer Pequignot"}
+  narration: "**Fifty blue handkerchiefs.** When Ayer resumed promotion, publicist Dorothy Dignam put the ring into wedding news. On June 1, 1944, she mailed fifty newspaper editors blue handkerchiefs, each with a hand-painted pink rose and a diamond ring. Her letter joked that the editor might cry at a wedding. The gift was meant to prompt editors to mention the bride’s ring without naming De Beers, Pequignot writes, so the interest looked like it came from the public."
+  duration: 13
+
+- shot: a-film-for-jewelers
+  view: graph
+  focus: n-w-ayer
+  time: "1945"
+  reveal: [n-w-ayer, de-beers, diamond-engagement-ring, united-states]
+  reveal_claims: [n-w-ayer#c2]
+  overlay: {kind: quote, source: pequignot-2019-why-a-diamond-means-forever, quote: "A movie short on diamonds Use it FREE", caption: "Ayer ad offering its film to jewelers, 1947, cited by Jennifer Pequignot"}
+  narration: "**A proposal on film.** Ayer took the ring beyond newsprint with The Eternal Gem. The film started showing at schools and churches in 1945, and it showed viewers famous diamonds, how stones were cut, and a Marine giving his girlfriend a diamond engagement ring. Pequignot writes that Ayer offered films to jewelers for free because it hoped a generation of young viewers would grow up wanting a ring of their own."
   duration: 13
 
 - shot: a-late-night-in-1947
   view: graph
   focus: frances-gerety
   time: "1947"
-  reveal: [frances-gerety, a-diamond-is-forever, n-w-ayer, de-beers]
-  reveal_claims: [frances-gerety#c1, frances-gerety#c2, n-w-ayer#c1, de-beers#c3]
-  overlay: {kind: quote, source: pequignot-2019-why-a-diamond-means-forever, quote: "something, not sure if it was right or not, and went to bed.", caption: "Frances Gerety on writing the line, in a 1998 N. W. Ayer oral history, as quoted by Jennifer Pequignot"}
-  narration: "**A late night in 1947.** In her 1998 oral history, as quoted by Jennifer Pequignot, Frances Gerety recalled needing a slogan for a De Beers advertisement. Late that night, the Philadelphia copywriter scribbled a line and went to bed, “not sure if it was right or not”. She credited her boss Gerold Lauck with the idea of adding a line. In her recollection, she and her colleagues thought it good, without seeing anything extraordinary in it. Within a year, “a diamond is forever” was De Beers’s official slogan. The company later called it the twentieth century’s greatest advertising tagline. A few uncertain words at the end of a working day became a promise repeated across decades of advertisements."
+  reveal: [frances-gerety, a-diamond-is-forever, n-w-ayer, de-beers, diamond-engagement-ring]
+  reveal_claims: [frances-gerety#c1, frances-gerety#c2, n-w-ayer#c1]
+  overlay: {kind: quote, source: pequignot-2019-why-a-diamond-means-forever, quote: "a psychological necessity capable of competing successfully at the retail level with utility goods and services.", caption: "N. W. Ayer’s internal strategy for De Beers, 1947, quoted by Jennifer Pequignot"}
+  narration: "**Four words before bed.** By 1947 Ayer’s strategy called for making the ring feel necessary even when buyers had other things to pay for. That year in Philadelphia, copywriter Frances Gerety was finishing a De Beers ad late one night. In a 1998 oral history she credited her boss, Gerold Lauck, with the idea of a line that would recur across the ads, and recalled scribbling something down before bed, “not sure if it was right or not”. Within a year De Beers made her four words its official slogan, “A Diamond is Forever”."
   duration: 13
 
-- shot: a-custom-grown
+- shot: what-she-wrote-in-her-diary
+  view: graph
+  focus: a-diamond-is-forever
+  time: "1953"
+  reveal: [a-diamond-is-forever, diamond-engagement-ring, n-w-ayer, frances-gerety, de-beers]
+  reveal_claims: [n-w-ayer#c1, n-w-ayer#c2, de-beers#c3]
+  overlay: {kind: quote, source: pequignot-2019-why-a-diamond-means-forever, quote: "produced a 27 minute full Technicolor film titled A Diamond is Forever.", caption: "Jennifer Pequignot on the Diamond Information Center’s 1953 film"}
+  narration: "**The last word in her diary.** Ayer’s Diamond Information Center took Gerety’s line back to the movies in 1953. Its 27-minute film opened on a young woman looking at her engagement ring, then traced the moments that led to the proposal and traveled to South Africa to show the work that went into the stone. At the end, the woman wrote one word in her diary, “Forever.”"
+  duration: 13
+
+- shot: forever-on-television
+  view: graph
+  focus: a-diamond-is-forever
+  time: "1955-01-23"
+  reveal: [a-diamond-is-forever, diamond-engagement-ring, n-w-ayer, de-beers, united-states]
+  reveal_claims: [n-w-ayer#c2, de-beers#c3]
+  overlay: {kind: stat, value: "Over 23 million", label: "Americans reached across all showings, by Ayer’s count", source: pequignot-2019-why-a-diamond-means-forever, quote: "the agency claimed that the film had reached an audience of over 23 million Americans."}
+  narration: "**From theaters to television.** Columbia Pictures distributed Ayer’s film to about 3,500 theaters in its first year, Pequignot writes. Ayer arranged another 14,000 showings at clubs, schools and churches, and the film aired on national television on January 23, 1955. Ayer claimed a total audience of more than 23 million Americans. The agency had put the ring before millions of potential buyers, and its ads would eventually tell them how much to pay."
+  duration: 13
+
+- shot: two-months-salary
   view: graph
   focus: diamond-engagement-ring
-  time: "1955-01-23"
-  reveal: [diamond-engagement-ring, tiffany-and-co, n-w-ayer, de-beers, frances-gerety]
-  reveal_claims: [tiffany-and-co#c1, n-w-ayer#c2, frances-gerety#c2]
-  overlay: {kind: "quote", source: "pequignot-2019-why-a-diamond-means-forever", quote: "a psychological necessity capable of competing successfully at the retail level with utility goods and services.", caption: "N. W. Ayer’s 1947 strategy plan for De Beers, quoted by Jennifer Pequignot"}
-  narration: "**A custom, grown.** On 1 June 1944, in New York, Ayer publicist Dorothy Dignam sent fifty newspaper editors blue handkerchiefs painted with a rose and a diamond ring. Her letter joked about tears at weddings; the purpose, Jennifer Pequignot explains, was to get rings mentioned in wedding news. Ayer’s 1947 strategy called for making the ring “a psychological necessity capable of competing successfully at the retail level with utility goods and services.” Pequignot credits ads and publicity with reviving and spreading a previously unestablished custom. Ayer claimed three brides in four received diamond rings in 1944, and 80 percent in 1959. It claimed over 23 million viewers after its 27-minute film aired on television on 23 January 1955."
+  time: "1980"
+  reveal: [diamond-engagement-ring, n-w-ayer, de-beers, a-diamond-is-forever]
+  reveal_claims: [n-w-ayer#c2, de-beers#c3]
+  overlay: {kind: quote, source: pequignot-2019-why-a-diamond-means-forever, quote: "I wanted to get Beth a diamond engagement ring as big and beautiful as our future together looked.", caption: "Ayer ad for De Beers, 1980, quoted by Jennifer Pequignot"}
+  narration: "**Two months’ salary.** After De Beers sold its surplus of small diamonds in the late 1970s, Pequignot writes, it turned to Ayer to persuade buyers to move up to larger stones. Ayer concluded from consumer testing that men needed a price guide. In a 1980 ad, a man described the ring he gave his fiancée Beth, and the copy advised a buyer to spend two months’ salary. Ayer had put a price on the promise for the man at the jewelry counter."
   duration: 13
 
 - shot: one-writers-case
   view: graph
   focus: edward-jay-epstein
   time: "1982"
-  reveal: [edward-jay-epstein, the-rise-and-fall-of-diamonds, de-beers]
-  reveal_claims: [edward-jay-epstein#c1]
-  overlay: {kind: quote, source: csm-1982-review-rise-and-fall-of-diamonds, quote: "In fact, DeBeers has claimed that it controls 80 percent of the world diamond trade, but Epstein maintains it controls only 50 to 60 percent.", caption: "The Christian Science Monitor, 1982, on Edward Jay Epstein’s The Rise and Fall of Diamonds"}
-  narration: "**One writer’s case.** In 1982, Edward Jay Epstein challenged what a buyer was paying for in The Rise and Fall of Diamonds. As the Christian Science Monitor’s reviewer described his argument, De Beers’s control of supply and Ayer’s advertisements had made a “diamond invention”: men should buy the ring, and women should keep it forever. Epstein disputed the company’s claimed 80 percent control of the trade, putting it at 50 to 60 percent. He described women reselling stones for 60 percent of wholesale and predicted a crash. A ring sold as lasting wealth could bring its owner much less when she needed to sell; his challenge put the resale counter beside the engagement advertisement."
+  reveal: [edward-jay-epstein, the-rise-and-fall-of-diamonds, de-beers, n-w-ayer, diamond-engagement-ring]
+  reveal_claims: [edward-jay-epstein#c1, n-w-ayer#c2]
+  overlay: {kind: quote, source: csm-1982-review-rise-and-fall-of-diamonds, quote: "In fact, DeBeers has claimed that it controls 80 percent of the world diamond trade, but Epstein maintains it controls only 50 to 60 percent.", caption: "The Christian Science Monitor on Edward Jay Epstein’s The Rise and Fall of Diamonds, 1982"}
+  narration: "**At the resale counter.** When women in Edward Jay Epstein’s 1982 book went to sell their diamonds, some got only 60 percent of the wholesale price, far below what the stones had cost at retail, the Christian Science Monitor’s reviewer wrote. In the reviewer’s account, Epstein argued that Ayer’s ads told men to buy a ring and women to keep it as a family treasure, discouraging resale. He predicted a crash. De Beers was still using Gerety’s line when it changed agencies."
   duration: 13
 
-- shot: two-courts
+- shot: de-beers-leaves-ayer
   view: graph
-  focus: de-beers-centenary-ag
-  time: "2004-07-13"
-  reveal: [de-beers-centenary-ag, us-department-of-justice, us-district-court-southern-ohio, de-beers, us-district-court-new-jersey]
-  reveal_claims: [de-beers-centenary-ag#c1, de-beers-centenary-ag#c2, de-beers-centenary-ag#c3, de-beers#c6]
-  overlay: {kind: stat, value: "$10 million", label: "Fine De Beers Centenary AG was sentenced to pay after pleading guilty in 2004 to conspiring to fix the price of industrial diamonds", source: doj-2004-de-beers-centenary-pleads-guilty, quote: "De Beers Centenary AG pled guilty today and was sentenced to pay a $10 million criminal fine to resolve a longstanding indictment for conspiring to fix the price of industrial diamonds in the United States and elsewhere"}
-  narration: "**Two courts.** On 13 July 2004, antitrust chief R. Hewitt Pate announced De Beers Centenary AG’s guilty plea in Columbus, Ohio, as evidence of his department’s persistence. A 1994 indictment alleged agreements to raise industrial-diamond list prices in 1991–92; General Electric, the alleged co-conspirator, was tried and acquitted. The court lacked jurisdiction over Centenary until it consented in 2004, admitted those agreements and received a $10 million fine. Gem-diamond buyers separately alleged price-fixing and monopolization. De Beers refused to appear, incurred defaults, then sought talks and agreed to $295 million and an injunction. It continued to deny wrongdoing, the Third Circuit noted when upholding the settlement classes in 2011. One company admitted a crime; the gem-diamond litigation ended with compensation and restrictions."
+  focus: n-w-ayer
+  time: "1996-01-01"
+  reveal: [n-w-ayer, de-beers, frances-gerety, a-diamond-is-forever]
+  reveal_claims: [de-beers#c1, de-beers#c3, frances-gerety#c2]
+  overlay: {kind: quote, source: pequignot-2019-why-a-diamond-means-forever, quote: "De Beers wanted all of its advertising to be consolidated into one company.", caption: "Stephen Lussier’s reason for the move, as reported by Jennifer Pequignot"}
+  narration: "**The slogan goes with the account.** On January 1, 1996, De Beers moved its U.S. advertising from Ayer to J. Walter Thompson, which already handled most of its work abroad. Marketing director Stephen Lussier said De Beers wanted one agency for all its advertising. De Beers took Gerety’s slogan with it. As the company kept selling the ring as a promise of love, campaigners raised a question about what buying one could pay for."
   duration: 13
 
-- shot: the-mines-under-apartheid
+- shot: uncertified-stones-from-angola
   view: map
-  camera: {center: [25.0, -29.0], zoom: 4.6, pitch: 20, duration: 6}
-  places: [south-africa]
+  camera: {center: [17.9, -11.8], zoom: 4.1, pitch: 0, duration: 6}
+  places: [angola]
   time: "1998"
-  reveal: [trc-business-and-labour-hearing, truth-and-reconciliation-commission, anglo-american, south-africa]
-  reveal_claims: [trc-business-and-labour-hearing#c1, trc-business-and-labour-hearing#c2, trc-business-and-labour-hearing#c3]
-  overlay: {kind: quote, source: trc-1998-final-report-vol4-business-and-labour, quote: "The shameful history of subhuman compound conditions, brutal suppression of striking workers, racist practices and meagre wages is central to understanding the origins and nature of apartheid.", caption: "South Africa’s Truth and Reconciliation Commission, Report, volume 4, 1998"}
-  narration: "**The mines under apartheid.** Harry Oppenheimer asked South Africa’s government for a more stable mining workforce. Yet Anglo American, De Beers’s sister company, failed to build even the family housing the law allowed, the Truth and Reconciliation Commission reported in 1998. Anglo accepted it could have been a better corporate citizen, but blamed race politics for depressed black wages. The commission found that mining companies themselves had enlisted the state to secure cheap migrant labour, and bore great moral responsibility for its hardships. It found that employers’ control of recruitment depressed black mineworkers’ wages; real African gold-mine wages were higher in 1915 than in 1970. Anglo’s submission sidestepped that wage issue, the commission concluded."
+  reveal: [un-diamond-embargo-angola-1998, un-security-council, angola, global-witness, de-beers]
+  reveal_claims: [un-diamond-embargo-angola-1998#c1, un-diamond-embargo-angola-1998#c2]
+  overlay: {kind: quote, source: un-1998-sc6530-resolution-1173-angola, quote: "to prohibit the direct or indirect import from Angola to their territory of all diamonds that are not controlled through the Certificate of Origin regime of the GURN", caption: "UN Security Council resolution 1173, June 12, 1998"}
+  narration: "**What a purchase could finance.** Global Witness brought the trade in conflict diamonds to public attention in 1998. Alan Cowell of The New York Times reported that human rights groups accused De Beers of buying illicit stones from rebels and rulers who used the proceeds to fund wars, and that De Beers repeatedly denied ties to Angolan rebels. In June 1998, the UN Security Council directed states to ban imports of Angolan diamonds outside the Angolan government’s certificate-of-origin system. The question of where the stones came from reached De Beers’s own buying desk."
+  duration: 13
+
+- shot: de-beers-changes-what-it-buys
+  view: graph
+  focus: de-beers
+  time: "2000-03"
+  reveal: [de-beers, central-selling-organisation, global-witness, un-diamond-embargo-angola-1998]
+  reveal_claims: [central-selling-organisation#c1, un-diamond-embargo-angola-1998#c1]
+  overlay: {kind: quote, source: nyt-2000-cowell-controversy-over-diamonds, quote: "In March, it announced plans to certify all diamonds sold to its sightholders as nonconflict stones.", caption: "Alan Cowell on De Beers’s March 2000 announcement"}
+  narration: "**De Beers changes what it buys.** In October 1999, De Beers suspended purchases outside its own stones and existing contracts. In March it announced it would certify the diamonds it sold to its approved buyers, known as sightholders, as free of conflict stones. De Beers also called for a chain of warranties that would follow the stones through the trade to the jewelry store, Cowell reported. The Security Council would soon turn to rough diamonds from Sierra Leone."
   duration: 13
 
 - shot: blood-diamonds
   view: map
-  camera: {center: [3.0, -1.0], zoom: 2.7, pitch: 0, duration: 6}
-  places: [angola, sierra-leone]
+  camera: {center: [-11.8, 8.5], zoom: 5.0, pitch: 0, duration: 6}
+  places: [sierra-leone]
   time: "2000-07-05"
-  reveal: [un-diamond-embargo-angola-1998, un-diamond-embargo-sierra-leone-2000, un-security-council, angola, sierra-leone, de-beers]
-  reveal_claims: [un-diamond-embargo-angola-1998#c1, un-diamond-embargo-angola-1998#c2, un-diamond-embargo-sierra-leone-2000#c1, un-diamond-embargo-sierra-leone-2000#c2, un-diamond-embargo-sierra-leone-2000#c3, de-beers#c8]
-  overlay: {kind: quote, source: un-2000-resolution-1306-sierra-leone, quote: "Expressing its concern at the role played by the illicit trade in diamonds in fuelling the conflict in Sierra Leone", caption: "UN Security Council resolution 1306, 5 July 2000"}
-  narration: "**Blood diamonds.** In 2000, De Beers chairman Nicky Oppenheimer explained its stand: “the moral imperative and also the fear of what might happen to the diamond industry”. Human rights groups accused it of buying illicit stones from rebels and rulers; the New York Times described often-denied Angolan rebel ties. Since October 1999, De Beers had suspended buying outside its mines and contractual purchases. The UN Security Council adopted a conditional ban on uncertified Angolan diamonds on 12 June 1998 and banned Sierra Leone’s rough diamonds on 5 July 2000; the Council stressed legitimate trade’s economic importance. Edward Jay Epstein saw another consequence: in the Times’s paraphrase, UN policing kept cheaper stones from the market. He called it “Another brilliant coup” as Oppenheimer’s company embraced certification."
+  reveal: [un-diamond-embargo-sierra-leone-2000, un-security-council, sierra-leone, de-beers]
+  reveal_claims: [un-diamond-embargo-sierra-leone-2000#c1, un-diamond-embargo-sierra-leone-2000#c2]
+  overlay: {kind: quote, source: un-2000-resolution-1306-sierra-leone, quote: "Expressing its concern at the role played by the illicit trade in diamonds in fuelling the conflict in Sierra Leone", caption: "UN Security Council resolution 1306, July 5, 2000"}
+  narration: "**An import ban on Sierra Leone’s rough stones.** On July 5, the UN Security Council directed states to block imports of all rough diamonds from Sierra Leone, citing the role of the illicit trade in fueling the war. Stones certified by Sierra Leone’s government would be exempt once a UN committee reported to the Council that an effective certification system was fully operating. De Beers put its own guarantee in writing that month."
   duration: 13
 
-- shot: a-scheme-and-its-critics
+- shot: the-price-of-dealing-in-conflict-stones
   view: graph
-  focus: kimberley-process
-  time: "2011-12-02"
-  reveal: [kimberley-process, global-witness, un-diamond-embargo-angola-1998, un-diamond-embargo-sierra-leone-2000]
-  reveal_claims: [global-witness#c1, un-diamond-embargo-angola-1998#c3, un-diamond-embargo-sierra-leone-2000#c4]
-  overlay: {kind: quote, source: global-witness-2011-leaves-kimberley-process, quote: "Nearly nine years after the Kimberley Process was launched, the sad truth is that most consumers still cannot be sure where their diamonds come from, nor whether they are financing armed violence or abusive regimes", caption: "Charmian Gooch, Global Witness, 2 December 2011"}
-  narration: "**A scheme, and its critics.** On 2 December 2011, Charmian Gooch announced Global Witness’s departure from the Kimberley Process, which her group said it had helped establish. Her group said Zimbabwe’s army had killed around 200 miners at Marange in 2008, yet the scheme had authorized exports from two companies there. Gooch urged consumers not to buy Marange stones and suppliers not to sell them. Launched in 2003, the scheme’s participants said government certification could seriously reduce diamonds’ role in war. Its definition covered rough diamonds financing rebels or their allies against legitimate governments. Global Witness said its refusal to evolve left most consumers unable to know whether they financed violence or abusive regimes. Gooch’s departure carried that challenge beyond the certification table to the shop counter."
+  focus: de-beers
+  time: "2000-08-22"
+  reveal: [de-beers, global-witness, edward-jay-epstein, un-diamond-embargo-angola-1998, un-diamond-embargo-sierra-leone-2000]
+  reveal_claims: [un-diamond-embargo-sierra-leone-2000#c3, de-beers#c7, de-beers#c8]
+  overlay: {kind: quote, source: nyt-2000-cowell-controversy-over-diamonds, quote: "It was the moral imperative and also the fear of what might happen to the diamond industry", caption: "Nicky Oppenheimer to Rapaport Diamond Report, July 2000, quoted by Alan Cowell"}
+  narration: "**A guarantee with a penalty.** De Beers’s July code promised that the company and its associates would keep conflict diamonds out of their sales. By August it had told its 125 sightholders they would lose access to De Beers stones if they dealt in conflict diamonds. Corporate affairs director Bill Lear told Cowell that De Beers had initially felt it was the wrong target, then came to see policing the trade as part of its job. Global Witness’s Charmian Gooch credited pressure from campaigners, while Epstein told Cowell the embargoes helped keep cheaper stones off the market. De Beers was also giving its approved buyers new instructions for selling the stones they could buy."
   duration: 13
 
-- shot: soviet-diamonds
-  view: map
-  camera: {center: [95.0, 62.0], zoom: 2.1, pitch: 0, duration: 6}
-  places: [russia, soviet-union]
-  time: "2022-04-07"
-  reveal: [alrosa, glavalmazzoloto, de-beers-centenary-ag, soviet-union, russia, us-treasury, g7-russian-diamond-restrictions-2024, united-states]
-  reveal_claims: [glavalmazzoloto#c1, glavalmazzoloto#c2, alrosa#c1, alrosa#c2, alrosa#c3, g7-russian-diamond-restrictions-2024#c1, g7-russian-diamond-restrictions-2024#c2]
-  overlay: {kind: quote, source: foreign-policy-2009-shor-are-diamonds-russias-best-friend, quote: "Beginning in 1959, Russia began selling all of its rough diamonds to De Beers in a not-so-secret arrangement that left a loophole allowing for 20 percent to be cut locally and sold on world markets.", caption: "Russell Shor, Foreign Policy, 2009"}
-  narration: "**Soviet diamonds.** In 1990, De Beers faced a choice: let Soviet stones reach world markets independently or secure an exclusive deal. The Christian Science Monitor reported that De Beers analysts feared Moscow’s foreign-exchange needs would trigger dumping and a price collapse, and that Moscow might leave the Central Selling Organization. De Beers Centenary agreed to a five-year exclusive export deal with a $1 billion loan. In 2022, U.S. Treasury official Brian Nelson gave a different reason for restricting trade: pressure on businesses funding Russia’s war against Ukraine. Treasury counted Alrosa at 28 percent of global diamond mining; on 7 April, full blocking sanctions replaced February’s debt and equity restrictions. On 6 December 2023, G7 leaders agreed to restrict non-industrial Russian diamond imports from 1 January 2024."
-  duration: 13
-
-- shot: what-a-mine-gives-a-country
-  view: map
-  camera: {center: [24.7, -22.3], zoom: 5.0, pitch: 20, duration: 6}
-  places: [botswana]
-  time: "1969"
-  reveal: [debswana, government-of-botswana, de-beers, botswana, botswana-diamond-economy, okavango-diamond-company]
-  reveal_claims: [de-beers#c2, government-of-botswana#c1, government-of-botswana#c2, government-of-botswana#c4, okavango-diamond-company#c1, botswana-diamond-economy#c1, botswana-diamond-economy#c2, botswana-diamond-economy#c3]
-  overlay: {kind: quote, source: debswana-our-history, quote: "For our people, every diamond purchase represents food on the table; better living conditions; better healthcare; potable and safe drinking water; more roads to connect our remote communities; and much more.", caption: "Festus Mogae, President of Botswana, 7 June 2006, as quoted on Debswana’s website"}
-  narration: "**What a mine gives a country.** On 7 June 2006, President Festus Mogae said diamond purchases meant food, healthcare and roads. Minister Lefoko Moagi recalled in 2023 how Botswana negotiated its stake: experts secured an initial 15 percent of Debswana, royalties and taxes; renegotiation in 1975 secured half. Moagi said Orapa’s revenues financed the opening of Letlhakane and Jwaneng, and diamonds came to supply 70 percent of export earnings and half of government revenue. The IMF linked a 3 percent economic contraction in 2024 to falling diamond output. Botswana also negotiated more stones to sell itself: De Beers says Botswana’s Okavango Diamond Company sells 30 percent of Debswana production from 2025, rising to 50 percent from 2035."
-  duration: 13
-
-- shot: anglo-steps-back
+- shot: one-channel
   view: graph
-  focus: anglo-american
-  time: "2024-05-14"
-  reveal: [de-beers-separation-from-anglo-american, anglo-american, de-beers, government-of-botswana]
-  reveal_claims: [anglo-american#c1, de-beers-separation-from-anglo-american#c1, de-beers-separation-from-anglo-american#c2, de-beers-separation-from-anglo-american#c3, anglo-american#c3, government-of-botswana#c4]
-  overlay: {kind: "quote", source: "anglo-2024-05-14-accelerates-delivery-of-strategy", quote: "We expect that a radically simpler business will deliver sustainable incremental value creation through a step change in operational performance and cost reduction.", caption: "Duncan Wanblad, Anglo American chief executive, 14 May 2024"}
-  narration: "**Anglo steps back.** On 14 May 2024, Anglo American chief executive Duncan Wanblad chose a simpler business built around copper, iron ore and crop nutrients. He said simplification would improve operations and cut costs; De Beers would be sold or demerged for greater strategic flexibility. Anglo held 85 percent, having bought the Oppenheimer family’s 40 percent in 2012; Botswana held the remaining 15 percent. In February 2025, Anglo cut De Beers’s book value by $2.9 billion, citing diamond market conditions. On 20 October 2026, it was still working toward a transaction in a challenging market. The promised separation still lay ahead."
+  focus: diamond-trading-company
+  time: "2000-08-22"
+  reveal: [central-selling-organisation, diamond-trading-company, de-beers, diamond-engagement-ring]
+  reveal_claims: [central-selling-organisation#c1, central-selling-organisation#c2, diamond-trading-company#c1]
+  overlay: {kind: quote, source: nyt-2000-cowell-controversy-over-diamonds, quote: "we weren't generating the demand for the world's production; the process was built around creating more demand to reduce the stockpile.", caption: "Stephen Lussier, De Beers consumer marketing director, quoted by Alan Cowell in August 2000"}
+  narration: "**A different job for advertising.** Lussier told Cowell that diamonds were doing poorly against other luxury goods and that the old push to draw down the stockpile had failed to generate demand for the world’s output. De Beers renamed its sales arm the Diamond Trading Company and wanted continued access to its stones to depend on whether sightholders could market them as luxury goods. Cowell wrote that a more competitive image could also help De Beers make its case to U.S. antitrust regulators. The company introduced the Forevermark logo to distinguish its own gems."
   duration: 13
 
-- shot: who-sells
+- shot: what-forever-bought
   view: graph
-  focus: lvmh
-  time: "2021-01-07"
-  reveal: [lvmh, tiffany-and-co, bernard-arnault, richemont, cartier, signet-jewelers, kay-jewelers, zales, jared, rand-precision-cut-diamonds, de-beers-diamond-jewellers, de-beers]
-  reveal_claims: [lvmh#c1, bernard-arnault#c1, cartier#c1, kay-jewelers#c1, zales#c1, jared#c1, tiffany-and-co#c2, lvmh#c2, de-beers#c10]
-  overlay: {kind: stat, value: "€15.3 billion", label: "Sales of Richemont’s jewellery houses, Cartier among them, in the year to 31 March 2025", source: richemont-2025-05-fy25-results, quote: "Our Jewellery Maisons – Buccellati, Cartier, Van Cleef & Arpels and Vhernier since October – saw their sales reach € 15.3 billion, growing by 8% at actual and constant exchange rates."}
-  narration: "**Who sells.** In November 2019, Bernard Arnault promised to develop Tiffany as LVMH agreed to pay $135 a share, about $16.2 billion. Tiffany dated its ring’s symbolism of commitment to 1886. In October 2020, the companies settled Delaware litigation at $131.50 a share; Arnault affirmed “the formidable potential of the Tiffany brand”. The sale completed on 7 January 2021. Other retailers had scale too: Cartier’s owner Richemont reported €15.3 billion in annual jewelry-house sales; Signet called itself the world’s largest diamond-jewelry retailer in 2023, with about 2,800 stores including Kay, Zales and Jared. Tiffany majority-owned a De Beers sightholder in 2006; LVMH shared a jewelry company with De Beers from 2001 to 2017. LVMH now owned Tiffany’s place at the counter."
-  duration: 13
-
-- shot: made-in-a-lab
-  view: graph
-  focus: lab-grown-diamond
-  time: "2018-08-16"
-  reveal: [lab-grown-diamond, ftc-jewelry-guides, federal-trade-commission, lightbox, de-beers, pandora]
-  reveal_claims: [federal-trade-commission#c2, ftc-jewelry-guides#c1, de-beers#c9, lightbox#c2, lightbox#c1, pandora#c1]
-  overlay: {kind: "quote", source: "fashionunited-2025-05-09-de-beers-to-close-lightbox", quote: "The planned closure of Lightbox reflects our commitment to natural diamonds.", caption: "Al Cook, De Beers chief executive, May 2025"}
-  narration: "**Made in a lab.** In May 2025, De Beers chief executive Al Cook announced Lightbox’s closure. He cited “our commitment to natural diamonds” while warning that lab-grown prices would keep falling: De Beers said wholesale prices had dropped 90 percent since 2018. Its own brand launched that year at $800 a carat and sold as low as $500 by May 2024. The FTC had dropped natural from its diamond definition in August 2018 because lab-created stones with the same properties were also diamonds; its Guides advised clear labeling. Pandora announced it would stop using mined stones on 4 May 2021. The IMF identified cheaper lab-grown diamonds as a risk to Botswana in 2024. Cook chose to concentrate on mined gems as cheaper lab-grown stones competed for buyers."
-  duration: 13
-
-- shot: gold
-  view: graph
-  focus: minamata-convention
-  time: "2017-08"
-  reveal: [minamata-convention, artisanal-and-small-scale-gold-mining, richemont, cartier]
-  reveal_claims: [minamata-convention#c1, cartier#c1]
-  overlay: {kind: quote, source: minamata-convention-text-2019, quote: "Every year, as much as 9,000 tons of mercury are released into the atmosphere, in water and on land. The largest source of mercury emissions is artisanal and small-scale gold mining", caption: "Inger Andersen, Executive Director of UN Environment, foreword to the Minamata Convention booklet, 2019"}
-  narration: "**Gold.** In 2019, UN Environment chief Inger Andersen urged a shift of investment away from mercury-polluting industries. She pointed to permanent neurological damage and named small-scale gold mining as the largest source of mercury emissions. For small-scale miners who use mercury, amalgamation extracts gold from ore. The Minamata Convention, in force since August 2017, requires its parties with such mining to take steps to reduce mercury use and releases, and eliminate them where feasible. Andersen called for affordable technologies to make that possible. At the jewelry counter, gold carried another cost: Cartier’s owner Richemont said higher raw-material prices, notably gold, weighed on profits in the year to March 2025. The treaty put an obligation on its parties to change how miners obtained that metal."
+  focus: de-beers
+  time: "2000-08-22"
+  reveal: [de-beers, a-diamond-is-forever, diamond-engagement-ring, n-w-ayer, diamond-trading-company]
+  reveal_claims: [de-beers#c1, n-w-ayer#c2, de-beers#c3, diamond-trading-company#c1]
+  overlay: {kind: quote, source: nyt-2000-cowell-controversy-over-diamonds, quote: "move from being custodian of the market, which was never a very satisfactory position, to being the leader of the industry", caption: "Nicky Oppenheimer on De Beers’s strategy, quoted by Alan Cowell in August 2000"}
+  narration: "**What the promise bought.** Forevermark put a seller’s name behind the promise Ayer had helped make familiar through ads, wedding news and film. The mines of southern Africa, the deals for Soviet stones and the rise of lab-grown diamonds trace other routes to the jewelry counter. In Pequignot’s account, Ernest Oppenheimer wanted Americans to buy the surplus and steady the market in 1938. By 2000, Lussier said that selling down the stockpile had failed to build enough demand. Nicky Oppenheimer said De Beers would step back from managing the market and lead the industry with its own diamonds."
   duration: 13
 ```
