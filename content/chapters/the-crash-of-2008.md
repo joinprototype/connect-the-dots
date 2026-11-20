@@ -173,36 +173,6 @@ Lenders sold mortgages, bankers turned them into bonds, and investors trusted th
   narration: "**What it cost.** The new law could not restore lost homes. California appraiser Karen Mann told the commission in September 2010 that her daughter's family sought a loan modification and found a short-sale buyer after their payment rose; neither effort worked, and medical problems helped drive the couple and four children into Mann's home. Mann said the lender offered modification talks two months after bankruptcy was completed; the children changed schools while adults endured “pain and emotional suffering” as they tried to rebuild. Unemployment rose from 5% to 10%, home prices fell about 30%, the S&P 500 fell 57%, and the economy shed 3.6 million jobs in 2008, the largest annual plunge since records began in 1940. By January 2011 the commission counted nearly $11 trillion in lost household wealth."
   duration: 13
 
-- shot: proving-a-crime
-  view: graph
-  focus: kareem-serageldin
-  time: "2014-04-30"
-  reveal: [us-department-of-justice, end-of-mozilo-criminal-investigation, angelo-mozilo, ralph-cioffi, matthew-tannin, lee-farkas, kareem-serageldin, credit-suisse]
-  reveal_claims: [end-of-mozilo-criminal-investigation#c1, end-of-mozilo-criminal-investigation#c2, ralph-cioffi#c3, matthew-tannin#c3, lee-farkas#c2, kareem-serageldin#c2, financial-crisis-of-2008#c11, financial-crisis-of-2008#c12]
-  overlay: {kind: "quote", source: "eisinger-2014-04-30-corporate-impunity", quote: "I made a mistake. I take responsibility.", caption: "Kareem Serageldin to Jesse Eisinger, published 30 April 2014"}
-  narration: "**Proving a crime.** Valukas’s public report raised the question: what could be proved as a crime? In January 2013, Justice Department criminal chief Lanny Breuer told Frontline he needed to “prove beyond a reasonable doubt every element of a crime”. That required proving individual intent, separate from his concern about bank prosecutions’ economic effects. “No banker went to jail” fails: Credit Suisse’s Kareem Serageldin pleaded guilty to conspiring to falsify bank records and received 30 months in November 2013; Jesse Eisinger’s April 2014 count was narrower, one Wall Street executive jailed for his role in the crisis. Lee Farkas’s 30 years punished a mortgage lender’s chairman, while Ralph Cioffi and Matthew Tannin were acquitted of all criminal charges."
-  duration: 15
-
-- shot: the-records
-  view: graph
-  focus: sec
-  time: "2014-08-21"
-  reveal: [sec, angelo-mozilo, goldman-sachs, bank-of-america, us-department-of-justice]
-  reveal_claims: [angelo-mozilo#c3, goldman-sachs#c1, bank-of-america#c3]
-  overlay: {kind: quote, source: doj-2014-08-21-bank-of-america-settlement, quote: "the Department of Justice has reached a $16.65 billion settlement with Bank of America Corporation – the largest civil settlement with a single entity in American history", caption: "U.S. Department of Justice, 21 August 2014"}
-  narration: "**How the cases ended.** Civil cases brought different outcomes. In October 2010 Mozilo agreed to pay a $67.5 million settlement and accepted a permanent ban from serving as an officer or director of a public company without admitting or denying the SEC’s allegations; the SEC’s John McCoy said the deal would give shareholders relief and reinforce full risk disclosure. Goldman Sachs settled for $550 million that year without admitting or denying allegations, but acknowledged its marketing “contained incomplete information.” In August 2014 Bank of America agreed to $16.65 billion covering itself, Countrywide and Merrill Lynch, admitting it sold billions in mortgage securities without disclosing key loan-quality facts. The agreement committed $7 billion to consumer relief; DOJ reserved potential criminal prosecution and individuals’ civil liability."
-  duration: 13
-
-- shot: the-tarp-ledger
-  view: graph
-  focus: emergency-economic-stabilization-act
-  time: "2023-09-30"
-  reveal: [emergency-economic-stabilization-act, us-treasury, henry-paulson, aig]
-  reveal_claims: [emergency-economic-stabilization-act#c1]
-  overlay: {kind: "quote", source: "fcic-2011-final-report", quote: "The whole reason for designing the program was so many banks would take it, would have the capital, and that would lead to lending.", caption: "Henry Paulson’s later explanation to the commission; the report also found no specific requirement to lend"}
-  narration: "**Money out, money back.** The rescue law of 3 October 2008 authorized TARP; all its programs had closed by September 2023. Paulson told the commission he wanted banks to accept capital so they would lend, though the program imposed no specific lending requirement. As of 30 September 2023, Treasury’s Office of Financial Stability counted $443.5 billion disbursed across bank, credit-market, AIG, auto and housing programs against $700 billion authorized, and $425.5 billion collected. Including additional Treasury AIG-share proceeds, collections were $443.1 billion; Treasury separately reported approximately $31.1 billion in lifetime cost, mostly from foreclosure prevention. The ledger counts money returned to Treasury; it does not count what families lost."
-  duration: 15
-
 - shot: the-majority
   view: graph
   focus: financial-crisis-inquiry-report
@@ -210,7 +180,7 @@ Lenders sold mortgages, bankers turned them into bonds, and investors trusted th
   reveal: [fcic, financial-crisis-inquiry-report, phil-angelides, brooksley-born, financial-crisis-of-2008]
   reveal_claims: [phil-angelides#c1, brooksley-born#c2, financial-crisis-of-2008#c1, fcic#c2]
   overlay: {kind: quote, source: fcic-2011-final-report, quote: "We conclude this financial crisis was avoidable. The crisis was the result of human action and inaction, not of Mother Nature or computer models gone haywire.", caption: "The commission’s six-member majority, January 2011"}
-  narration: "**Why: the majority.** The rescue ledger could close; the argument over responsibility could not. In January 2011 Brooksley Born and chairman Phil Angelides backed a six-member majority calling the crisis avoidable: failures of regulation, corporate risk management, excessive borrowing and opaque mortgage securities had spread losses into panic, while inconsistent rescues added uncertainty. The majority rejected the claim that housing goals drove the collapse: they contributed only marginally to Fannie’s and Freddie’s purchases of risky mortgages, it found, and those firms were not the primary cause. Born’s 1998 effort to examine derivatives had been opposed; she now endorsed the reason for tracing those decisions: accepting that no one could have foreseen or prevented the disaster would let it happen again."
+  narration: "**Why: the majority.** The commission had counted the losses. Its members disagreed over who bore responsibility. In January 2011 Brooksley Born and chairman Phil Angelides backed a six-member majority calling the crisis avoidable: failures of regulation, corporate risk management, excessive borrowing and opaque mortgage securities had spread losses into panic, while inconsistent rescues added uncertainty. The majority rejected the claim that housing goals drove the collapse: they contributed only marginally to Fannie’s and Freddie’s purchases of risky mortgages, it found, and those firms were not the primary cause. Born’s 1998 effort to examine derivatives had been opposed; she now endorsed the reason for tracing those decisions: accepting that no one could have foreseen or prevented the disaster would let it happen again."
   duration: 13
 
 - shot: three-dissent
@@ -232,4 +202,34 @@ Lenders sold mortgages, bankers turned them into bonds, and investors trusted th
   overlay: {kind: quote, source: fcic-2011-final-report, quote: "I believe that the sine qua non of the financial crisis was U.S. government housing policy", caption: "Peter J. Wallison, dissenting alone, January 2011"}
   narration: "**Why: one more.** Peter Wallison disputed both explanations: government housing policy, he argued, produced 27 million subprime and other risky mortgages, half the U.S. total; the majority found housing goals only marginal contributors to Fannie’s and Freddie’s risky purchases. Congress passed Dodd-Frank before understanding the causes, he argued: “To avoid the next financial crisis, we must understand what caused the one from which we are now slowly emerging”. Home loans became rated securities, leveraged bets, panic and public rescue; the commissioners disagreed over which decisions drove that chain. Who answered for it? Serageldin and Farkas received prison sentences; Cioffi and Tannin were acquitted of all criminal charges; Mozilo and major banks reached civil settlements, some without admitting or denying allegations."
   duration: 13
+
+- shot: proving-a-crime
+  view: graph
+  focus: kareem-serageldin
+  time: "2014-04-30"
+  reveal: [us-department-of-justice, end-of-mozilo-criminal-investigation, angelo-mozilo, ralph-cioffi, matthew-tannin, lee-farkas, kareem-serageldin, credit-suisse]
+  reveal_claims: [end-of-mozilo-criminal-investigation#c1, end-of-mozilo-criminal-investigation#c2, ralph-cioffi#c3, matthew-tannin#c3, lee-farkas#c2, kareem-serageldin#c2, financial-crisis-of-2008#c11, financial-crisis-of-2008#c12]
+  overlay: {kind: "quote", source: "eisinger-2014-04-30-corporate-impunity", quote: "I made a mistake. I take responsibility.", caption: "Kareem Serageldin to Jesse Eisinger, published 30 April 2014"}
+  narration: "**Proving a crime.** The commission debated what caused the crash. Valukas’s public report had raised a different question about what could be proved as a crime. In January 2013, Justice Department criminal chief Lanny Breuer told Frontline he needed to “prove beyond a reasonable doubt every element of a crime”. That required proving individual intent, separate from his concern about bank prosecutions’ economic effects. “No banker went to jail” fails: Credit Suisse’s Kareem Serageldin pleaded guilty to conspiring to falsify bank records and received 30 months in November 2013; Jesse Eisinger’s April 2014 count was narrower, one Wall Street executive jailed for his role in the crisis. Lee Farkas’s 30 years punished a mortgage lender’s chairman, while Ralph Cioffi and Matthew Tannin were acquitted of all criminal charges."
+  duration: 15
+
+- shot: the-records
+  view: graph
+  focus: sec
+  time: "2014-08-21"
+  reveal: [sec, angelo-mozilo, goldman-sachs, bank-of-america, us-department-of-justice]
+  reveal_claims: [angelo-mozilo#c3, goldman-sachs#c1, bank-of-america#c3]
+  overlay: {kind: quote, source: doj-2014-08-21-bank-of-america-settlement, quote: "the Department of Justice has reached a $16.65 billion settlement with Bank of America Corporation – the largest civil settlement with a single entity in American history", caption: "U.S. Department of Justice, 21 August 2014"}
+  narration: "**How the cases ended.** Civil cases brought different outcomes. In October 2010 Mozilo agreed to pay a $67.5 million settlement and accepted a permanent ban from serving as an officer or director of a public company without admitting or denying the SEC’s allegations; the SEC’s John McCoy said the deal would give shareholders relief and reinforce full risk disclosure. Goldman Sachs settled for $550 million that year without admitting or denying allegations, but acknowledged its marketing “contained incomplete information.” In August 2014 Bank of America agreed to $16.65 billion covering itself, Countrywide and Merrill Lynch, admitting it sold billions in mortgage securities without disclosing key loan-quality facts. The agreement committed $7 billion to consumer relief; DOJ reserved potential criminal prosecution and individuals’ civil liability."
+  duration: 13
+
+- shot: the-tarp-ledger
+  view: graph
+  focus: emergency-economic-stabilization-act
+  time: "2023-09-30"
+  reveal: [emergency-economic-stabilization-act, us-treasury, henry-paulson, aig]
+  reveal_claims: [emergency-economic-stabilization-act#c1]
+  overlay: {kind: "quote", source: "fcic-2011-final-report", quote: "The whole reason for designing the program was so many banks would take it, would have the capital, and that would lead to lending.", caption: "Henry Paulson’s later explanation to the commission; the report also found no specific requirement to lend"}
+  narration: "**Money out, money back.** The rescue law of 3 October 2008 authorized TARP; all its programs had closed by September 2023. Paulson told the commission he wanted banks to accept capital so they would lend, though the program imposed no specific lending requirement. As of 30 September 2023, Treasury’s Office of Financial Stability counted $443.5 billion disbursed across bank, credit-market, AIG, auto and housing programs against $700 billion authorized, and $425.5 billion collected. Including additional Treasury AIG-share proceeds, collections were $443.1 billion; Treasury separately reported approximately $31.1 billion in lifetime cost, mostly from foreclosure prevention. The ledger counts money returned to Treasury; it does not count what families lost."
+  duration: 15
 ```
