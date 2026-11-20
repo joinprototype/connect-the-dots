@@ -2,6 +2,14 @@
 
 What changed in each version of the site. [docs/deploy.md](docs/deploy.md#versions) says when the number goes up.
 
+## 0.5.26 (2026-11-20)
+
+- Eight new stories: The Conquest of Persia (Alexander), The Berlin Conference, Window on the West (Muscovy to Catherine II), Taken in His Own City (the fall of Tenochtitlan), The Company and the Bulbs (the Dutch Republic, Banda and the tulip crash), Torches of Freedom (Bernays), Nine to Five, and Own Your Own Home.
+- Six stories retold as one storyline in date order: The Mongol Empire, The Trading Floor, The MAX, Forever, Fuel Island, and The Red Rubber (the Congo). The Ransom now follows Atahualpa's ransom to Philip II's credit freeze; the conquest of Mexico it used to tell is its own story. Who Owns BlackRock and Vanguard? adds the funds' votes and the coal antitrust suit.
+- No story steps back in time any more: fourteen more were put in date order, and undated scenes got their dates.
+- The Palm Beach Case says what Michael Freeman argued in London on 16 November, beside the medical examiner's answer.
+- 74 sources gained an Internet Archive copy; Henry B. Payne joins the oil record.
+
 ## 0.5.25 (2026-11-18)
 
 - Every entry's page now tells search engines what it is about: a person, an organization, a place or a work, with its name, its summary, its picture and the same entry in Wikidata where the page links to one. Nothing a reader sees has changed.
