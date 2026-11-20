@@ -163,7 +163,7 @@ The Torah’s five books supply the thread: a law handed to readers, translated 
 
 - shot: the-answer
   view: graph
-  time: "-1399~/1455"
+  time: "1455"
   focus: gutenberg-bible
   reveal: ["torah", "septuagint", "jerome", "vulgate", "gutenberg-bible"]
   reveal_claims: ["translation-of-the-septuagint#c6", "jerome#c3", "gutenberg-bible#c4"]
