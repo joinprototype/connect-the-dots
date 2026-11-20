@@ -39,4 +39,11 @@ claims:
       - {s: csb-torrance-final-report-2017, at: "Section 4.1.3, manager’s meeting notes", quote: "Does the leaking spent slide valve invalidate the Variance?"}
       - {s: csb-torrance-final-report-2017, at: "Section 4.2, incident consequences", quote: "Four contract employees who were working nearby sought first aid for injuries sustained while fleeing the area."}
       - {s: consumer-watchdog-2016-torrance-rand, quote: "motorists paying at least $2.4 billion in higher pump prices in the following six months, according to a recent RAND study"}
+  - id: c6
+    rel: involved
+    to: exxonmobil
+    role: "the owner-operator from which investigators sought information about safeguards against an acid release"
+    src:
+      - {s: csb-torrance-news-release-2017, quote: "The CSB investigation also discovered that a large piece of debris from the explosion narrowly missed hitting a tank containing tens of thousands of pounds of modified hydrofluoric acid, or MHF."}
+      - {s: csb-torrance-final-report-2017, at: "Section 4.2.1, modified hydrofluoric acid near miss", quote: "ExxonMobil continues to refuse to provide the CSB with information detailing safeguards to prevent or mitigate a release of HF."}
 ---
