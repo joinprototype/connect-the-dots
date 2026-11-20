@@ -18,4 +18,12 @@ claims:
     role: "says its funds do not dictate strategy, nominate board members or submit shareholder proposals"
     src:
       - {s: vanguard-proxy-year-voting-report-2025, quote: "we do not seek to dictate strategy or operations, nor do the Vanguard-advised funds submit shareholder proposals or nominate board members."}
+  - id: c3
+    rel: involved
+    to: the-vanguard-group
+    role: "reported 0% support among 261 U.S. environmental and social shareholder proposals"
+    note: "The report covers only the votes cast under the Vanguard-Advised Funds Policy. It excludes votes by external managers and votes on behalf of investors who selected another policy."
+    src:
+      - {s: vanguard-proxy-year-voting-report-2025, at: "U.S. table, Board oversight of strategy and risk", quote: "Environmental and social                —           —          261            0%"}
+      - {s: vanguard-proxy-year-voting-report-2025, at: "Scope, footnote 1", quote: "Throughout this document, “we” refers to Vanguard’s Investment Stewardship program and “the funds” refers to Vanguard-advised fund shares voted pursuant to the Vanguard-Advised Funds Policy."}
 ---
