@@ -747,6 +747,10 @@ fn copy_assets(root: &Path, out: &Path) -> Result<Value> {
     let web_dist = root.join("web").join("dist");
     if web_dist.exists() {
         copy_dir(&web_dist, &out.join("assets"))?;
+    } else {
+        // Pages still build, without their maps, graphs or styles, and nothing in them fails to load:
+        // say so, or a check of the built site passes on pages a reader would never see.
+        eprintln!("warning: web/dist is missing: pages are built without maps, graphs or styles (npm --prefix web run build)");
     }
     let has_asset = |name: &str| out.join("assets").join(name).exists();
     Ok(json!({

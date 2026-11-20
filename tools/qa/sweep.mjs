@@ -57,6 +57,7 @@ if (!cdp) {
 }
 const { ws, send, done } = cdp;
 let errors = [];
+const urls = new Map();
 let loaded = null;
 ws.addEventListener('message', (ev) => {
   const msg = JSON.parse(ev.data);
@@ -64,8 +65,15 @@ ws.addEventListener('message', (ev) => {
   else if (msg.method === 'Runtime.exceptionThrown') errors.push(msg.params.exceptionDetails.exception?.description || msg.params.exceptionDetails.text);
   else if (msg.method === 'Runtime.consoleAPICalled' && msg.params.type === 'error') errors.push(msg.params.args.map((a) => a.value ?? a.description ?? '').join(' '));
   else if (msg.method === 'Log.entryAdded' && msg.params.entry.level === 'error') errors.push(`${msg.params.entry.text} ${msg.params.entry.url || ''}`);
-  // pages load what they show (ADR-0017): no page reads the whole graph
-  else if (msg.method === 'Network.requestWillBeSent' && /\/data\/(graph|search)\.json(\?|$)/.test(msg.params.request.url)) errors.push(`requested ${msg.params.request.url}`);
+  else if (msg.method === 'Network.requestWillBeSent') {
+    // pages load what they show (ADR-0017): no page reads the whole graph
+    if (/\/data\/(graph|search)\.json(\?|$)/.test(msg.params.request.url)) errors.push(`requested ${msg.params.request.url}`);
+    urls.set(msg.params.requestId, msg.params.request.url);
+  }
+  // a script, style or data file that fails to load leaves a page without its map or styles, and
+  // logs nothing the checks above see (2026-11-19: a build without web/dist swept clean)
+  else if (msg.method === 'Network.loadingFailed' && !msg.params.canceled && !/ERR_ABORTED/.test(msg.params.errorText)) errors.push(`failed to load ${urls.get(msg.params.requestId) || msg.params.requestId} (${msg.params.errorText})`);
+  else if (msg.method === 'Network.responseReceived' && msg.params.response.status >= 400 && msg.params.response.url.startsWith(base)) errors.push(`${msg.params.response.status} ${msg.params.response.url}`);
 });
 await send('Runtime.enable');
 await send('Log.enable');
