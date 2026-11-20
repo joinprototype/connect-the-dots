@@ -29,6 +29,18 @@ claims:
       - {s: macnutt-las-casas-1909, at: "Life, ch. XXI, the colonists’ proposal", quote: "the considerable sum the petitioners would gladly pay."}
       - {s: macnutt-las-casas-1909, at: "Life, ch. XXI, the joint letter", quote: "by Las Casas and Fray Domingo de Santo Tomas jointly, was addressed to Philip II."}
       - {s: macnutt-las-casas-1909, at: "Life, ch. XXI, the royal decision", quote: "was adverse to making the encomiendas hereditary or perpetual."}
+  - id: c4
+    rel: authored
+    to: proscription-of-william-the-silent
+    when: "1580-03-15"
+    src:
+      - {s: "philip-ban-1580", at: "Royal edict", quote: "25,000 gold crowns, in land or cash at his choice", by: "philip-ii-of-spain"}
+  - id: c5
+    rel: appears_in
+    to: act-of-abjuration
+    role: "sovereignty repudiated by the States General"
+    src:
+      - {s: "act-abjuration-1581", at: "Operative declaration", quote: "that the King of Spain has forfeited, ipso jure, all hereditary right to the sovereignty of those countries", by: "states-general-of-the-dutch-republic"}
 ---
 
 King of Castile from 1556; three times halted payments on his loans from bankers.

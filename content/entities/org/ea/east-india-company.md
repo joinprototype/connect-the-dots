@@ -24,4 +24,12 @@ claims:
       - {s: hansard-1840-04-08, quote: "the opium monopoly enjoyed by the East-India Company"}
       - {s: hansard-1840-04-08, quote: "They do not wish to increase but to lessen the use, or rather the abuse, of opium, by making the price, both at home and abroad, as high as possible, consistently with a regard to the state of the markets, so as not to be undersold by foreign powers", by: east-india-company}
       - {s: hansard-1840-04-08, quote: "it was directly encouraged first by the East India Company, and then in Canton by the supercargoes"}
+  - id: c3
+    rel: party_to
+    to: anglo-dutch-treaty-1619
+    when: "1619"
+    role: "the treaty assigned it a share of trade and a role in joint defense"
+    src:
+      - {s: "anglo-dutch-imperial-experiments", at: "The 1619 Treaty, nn. 101–102", quote: "shall try to reduce by common effort in the Indies all merchandise to a reasonable price."}
+      - {s: "anglo-dutch-imperial-experiments", at: "The 1619 Treaty, n. 102", quote: "a certain price below which it will not be lawful for some or others to sell them."}
 ---
