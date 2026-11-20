@@ -31,6 +31,21 @@ claims:
     note: "The share Ford used in its 1965 U.S. war-damage claim, per its own report."
     src:
       - {s: ford-2001-research-findings-ford-werke, at: "section 12", quote: "the claim reduced in keeping with Ford’s 56.575 percent ownership of Ford-Werke", by: ford-motor-company}
+  - id: c4
+    rel: adopted
+    to: eight-hour-day
+    when: "1914-01-12"
+    note: "The company started with male factory workers. The museum dates adoption for women workers to October 1916."
+    src:
+      - {s: ford-motor-company-chronology, at: "January 12, 1914", quote: "$5 daily wage for 8-hour day replaces $2.34 for 9-hour day for male factory workers."}
+  - id: c5
+    rel: adopted
+    to: forty-hour-workweek
+    when: "1926"
+    note: "The Henry Ford museum dates adoption to May 1 for factory workers and August 1 for office workers."
+    src:
+      - {s: ford-motor-company-chronology, at: "May 1, 1926", quote: "Five-day, 40-hour work week adopted for factory workers. Adopted for office workers on August 1, 1926."}
+      - {s: loc-ford-five-day-week, at: "Ford News, October 15, 1926", quote: "Five working days of eight hours, with no overtimes, is to constitute a week’s work for U.S. company employees.", by: ford-motor-company}
 ---
 
 Ford signed an agreement with the Soviet government in 1929, and owned most of [[ford-werke]] in Germany; see the [[ford-soviet-agreement-1929]].

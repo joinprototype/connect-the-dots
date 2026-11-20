@@ -36,4 +36,16 @@ claims:
     src:
       - {s: "nara-milestone-lend-lease-act", at: "Act of 11 March 1941"}
       - {s: "us-rise-lend-lease-history", at: "Congressional passage and Roosevelt’s signature"}
+  - id: enacted-fair-labor-standards-act
+    rel: enacted
+    to: fair-labor-standards-act
+    when: "1938-06-25"
+    src:
+      - {s: fair-labor-standards-act-1938, at: "52 Stat. 1069, approval", quote: "Approved, June 25, 1938."}
+  - id: enacted-walsh-healey-act
+    rel: enacted
+    to: walsh-healey-act
+    when: "1936-06-30"
+    src:
+      - {s: walsh-healey-public-contracts-act, at: "49 Stat. 2040, approval", quote: "Approved, June 30, 1936."}
 ---

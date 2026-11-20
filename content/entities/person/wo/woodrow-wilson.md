@@ -55,4 +55,10 @@ claims:
     according_to: ["woodrow-wilson"]
     src:
       - {s: "us-rise-fourteen-points", at: "Points I, III, V and XIV"}
+  - id: enacted-adamson-act
+    rel: enacted
+    to: adamson-act
+    when: "1916-09-03"
+    src:
+      - {s: adamson-act-statutes-at-large-p722, at: "39 Stat. 722, approval", quote: "Approved, September 3, 1916."}
 ---

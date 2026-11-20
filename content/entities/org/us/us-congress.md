@@ -376,4 +376,45 @@ claims:
     src:
       - {s: fcic-2011-final-report, at: "p. 29", quote: "So in 1933 Congress passed the Glass-Steagall Act, which, among other changes, established the Federal Deposit Insurance Corporation."}
 
+  - id: c69
+    rel: authored
+    to: adamson-act
+    when: "1916-09"
+    note: "The act set the eight-hour standard for covered interstate train crews."
+    src:
+      - {s: rail-debate, at: "September 1 House debate, Rep. William Adamson", quote: "This is an emergency measure."}
+      - {s: adamson-act-statutes-at-large, at: "39 Stat. 721, § 1", quote: "standard of a day’s work for the purpose of reckoning the compensation"}
+  - id: c70
+    rel: authored
+    to: fair-labor-standards-act
+    when: "1938-06"
+    note: "Congress phased in a weekly overtime threshold of 44, then 42, then 40 hours."
+    src:
+      - {s: house-wage-and-hour-debate-1938, at: "May 23 House debate, Mary Norton, p. 7279", quote: "help the underpaid workers of our country, reduce the relief rolls, and spread employment."}
+      - {s: house-wage-and-hour-debate-1938, at: "May 23 House debate, Eugene Cox on the agricultural exemption", quote: "agriculture cannot live under the provisions of this law."}
+      - {s: fair-labor-standards-conference-report-1938, at: "Conference report, p. 30", quote: "for the first year, 42 hours a week for the second year, and 40 hours"}
+      - {s: fair-labor-standards-act-1938, at: "52 Stat. 1063, § 7(a)(3)", quote: "for a workweek longer than forty hours"}
+      - {s: womens-bureau-household-and-farm-workers-1939, at: "Household Employees and Farm Workers", quote: "The Fair Labor Standards Act gives no protection to agricultural workers nor to household workers."}
+      - {s: fair-labor-standards-act-1938, at: "52 Stat. 1067, § 13(a)(6)", quote: "any employee employed in agriculture"}
+      - {s: fair-labor-standards-act-1938, at: "52 Stat. 1067, § 13(a)(2)", quote: "whose selling or servicing is in intrastate commerce"}
+      - {s: fair-labor-standards-act-1938, at: "52 Stat. 1068, § 13(b)(2)", quote: "or (2) any employee of an employer subject to the provisions of Part I of the Interstate Commerce Act."}
+  - id: c71
+    rel: adopted
+    to: forty-hour-workweek
+    when: "1940-10-24"
+    note: "Section 7 generally required at least time and a half for hours beyond 40 for covered employees, with exceptions for certain collective agreements and seasonal operations."
+    src:
+      - {s: fair-labor-standards-act-1938, at: "52 Stat. 1063, § 7(a)(3)", quote: "for a workweek longer than forty hours"}
+      - {s: labor-department-annual-report-1939, at: "Wage and Hour Division, p. 5", quote: "On October 24,1940, the “ceiling” is to be lowered again to 40 hours a week."}
+      - {s: fair-labor-standards-act-1938, at: "52 Stat. 1063, § 7(a), overtime rate", quote: "at a rate not less than one and one-half times the regular rate at which he is employed."}
+      - {s: fair-labor-standards-act-1938, at: "52 Stat. 1063, § 7(b)(3), seasonal exception", quote: "in an industry found by the Administrator to be of a seasonal nature"}
+  - id: c72
+    rel: authored
+    to: walsh-healey-act
+    when: "1936-06"
+    note: "The Labor Department reported that the steel industry adopted 40 hours in March 1937 and became eligible to bid on federal supply contracts."
+    src:
+      - {s: walsh-healey-public-contracts-act, at: "49 Stat. 2037, § 1(c)", quote: "excess of eight hours in any one day or in excess of forty hours"}
+      - {s: walsh-healey-public-contracts-act, at: "49 Stat. 2039, § 6, pay for overtime", quote: "which rate shall be not less than one and one-half times the basic hourly rate received by any employee affected."}
+      - {s: labor-department-annual-report-1937, at: "Public Contracts Division, Achievements of the Act", quote: "the steel industry announced the general adoption of the 40-hour week, enabling it to bid on Government contracts"}
 ---
