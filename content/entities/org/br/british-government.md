@@ -74,4 +74,10 @@ claims:
     note: "The rules are an agreement made under Article XXVI of the treaty."
     src:
       - {s: tientsin-rules-of-trade-1858-text, quote: "Opium will henceforth pay thirty taels per pieul Import Duty. The importer will sell it only at the port. It will be carried into the interior by Chinese only, and only as Chinese property"}
+  - id: c11
+    rel: signatory_of
+    to: anglo-german-agreement-1890
+    when: "1890-07-01"
+    src:
+      - {s: anglo-german-1890, at: "Preamble", quote: "have, on behalf of their respective governments, reached the following agreement after deliberating on various issues pertaining to the colonial interests of Germany and Great Britain:"}
 ---

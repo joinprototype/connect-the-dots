@@ -58,6 +58,12 @@ claims:
     src:
       - {s: zeman-1958-germany-revolution-russia, at: "doc. 27: Minister in Bern to the Foreign Ministry, telegram no. 603, 4 April 1917", quote: "Since their immediate departure would be greatly in our interests, I urgently recommend that permission should be granted at once, accepting the conditions laid down."}
       - {s: zeman-1958-germany-revolution-russia, at: "doc. 15: State Secretary to the Foreign Ministry Liaison Officer at General Headquarters, 23 March 1917", quote: "Since it is in our interests that the influence of the radical wing of the Russian revolutionaries should prevail, it would seem to me advisable to allow transit to the revolutionaries there."}
+  - id: c8
+    rel: signatory_of
+    to: anglo-german-agreement-1890
+    when: "1890-07-01"
+    src:
+      - {s: anglo-german-1890, at: "Preamble", quote: "have, on behalf of their respective governments, reached the following agreement after deliberating on various issues pertaining to the colonial interests of Germany and Great Britain:"}
 ---
 
 In the First World War the German government tried to knock Russia out of the war. Its Foreign Ministry paid [[alexander-parvus]] to promote revolution, let [[vladimir-lenin]] cross Germany in April 1917 on the [[lenin-sealed-train|sealed train]], and, by its own State Secretary's account, kept "a steady flow of funds" going to the [[bolsheviks]]. In March 1918 it imposed the [[treaty-of-brest-litovsk]] on Soviet Russia.
