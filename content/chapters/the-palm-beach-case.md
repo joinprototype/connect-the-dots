@@ -222,11 +222,11 @@ The women who were girls at the time come first, in their own words. Nothing her
   view: graph
   picture: none
   focus: michael-baden
-  time: "2026-10"
+  time: "2026-11-16"
   reveal: [death-of-jeffrey-epstein, michael-baden, michael-freeman, barbara-sampson, office-of-chief-medical-examiner-new-york-city]
   reveal_claims: [michael-baden#c2, barbara-sampson#c2, office-of-chief-medical-examiner-new-york-city#c1, michael-baden#c1, barbara-sampson#c1, michael-freeman#c1]
   overlay: {kind: quote, source: doj-oig-2023-epstein-mcc-report, quote: "Additionally, none of the 15 inmates who agreed to be interviewed in connection with this investigation, 10 of whom were housed in the SHU on August 9 and 10, had any credible information suggesting that Epstein's cause of death was something other than suicide.", caption: "Justice Department Inspector General, June 2023. Freeman has stated no conclusion."}
-  narration: "**The doubt.** Questions about Epstein’s death persisted. The medical examiner ruled the cause hanging and the manner suicide. In October 2019 Michael Baden, a pathologist hired by Epstein’s brother, said neck fractures were more indicative of homicide; the examiner stood by her finding, and NPR noted such fractures are linked to both hanging and strangulation. The examiner told the Inspector General there were no defensive wounds of the kind a homicide would leave. The Inspector General found no evidence contradicting the FBI’s finding of no criminality. Michael Freeman, a professor of forensic medicine, was given the autopsy files by the brother, who says it was not done on his behalf. Freeman will present in London on 16 November and has not stated his conclusions."
+  narration: "**The doubt.** The medical examiner ruled the cause hanging and the manner suicide. In October 2019 Michael Baden, a pathologist hired by Epstein’s brother, said neck fractures were more indicative of homicide; the examiner stood by her finding, and NPR noted such fractures are linked to both hanging and strangulation. The examiner told the Inspector General there were no defensive wounds of the kind a homicide would leave. The Inspector General found no evidence contradicting the FBI’s finding of no criminality. In London on 16 November 2026, forensic scientist Michael Freeman, given the autopsy file by the brother, who says the review was not done on his behalf, argued the injuries are most plausibly explained by homicidal strangulation. Journals had so far rejected his analysis, the New York Times reported; the medical examiner’s office stands by its finding of suicide."
   duration: 13
 
 - shot: where-it-stands
