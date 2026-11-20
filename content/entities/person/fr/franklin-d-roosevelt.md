@@ -36,4 +36,24 @@ claims:
     src:
       - {s: "nara-milestone-lend-lease-act", at: "Act of 11 March 1941"}
       - {s: "us-rise-lend-lease-history", at: "Congressional passage and Roosevelt’s signature"}
+  - id: c5
+    rel: "enacted"
+    to: "home-owners-loan-act"
+    when: "1933-06-13"
+    src:
+      - {s: "home-owners-loan-act-1933", at: "48 Stat. 136", quote: "Approved, June 13, 1933."}
+      - {s: "fdr-1933-mortgage-message", at: "Congressional Record, p. 1618", quote: "protect small-home owners from foreclosure"}
+  - id: c6
+    rel: "enacted"
+    to: "national-housing-act"
+    when: "1934-06-27"
+    src:
+      - {s: "national-housing-act-1934", at: "48 Stat. 1265", quote: "Approved, June 27, 1934."}
+      - {s: "fdr-1934-home-repair-construction-message", at: "Second phase of the proposed program", quote: "It provides mutual mortgage insurance under governmental direction to enable private agencies to make first-mortgage loans on newly constructed houses up to 80 percent of the appraised value of the property"}
+  - id: c7
+    rel: "enacted"
+    to: "servicemens-readjustment-act"
+    when: "1944-06-22"
+    src:
+      - {s: "servicemens-readjustment-act-1944", at: "58 Stat. 301", quote: "Approved June 22, 1944."}
 ---
