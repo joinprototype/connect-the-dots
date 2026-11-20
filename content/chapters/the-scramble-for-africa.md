@@ -164,38 +164,6 @@ On 15 November 1884, Otto von Bismarck opened a conference at 77 Wilhelmstraße 
   overlay: {kind: quote, source: southwest-blue-book, quote: "We were placed on the island, men, women, and children. We were beaten daily by the Germans, who used sjamboks.", caption: "Edward Fredericks, sworn testimony on his imprisonment at Shark Island, published in the 1918 Administrator’s report"}
   narration: "**Peace, then Shark Island.** In Germany’s southwest protectorate, Edward Fredericks testified that German forces took him prisoner in 1906, after his people had made peace, and sent him to Shark Island, where German personnel beat prisoners daily and guards raped girls. In April 1907 the German commander Ludwig von Estorff ordered prisoners off the island, reporting that 1,032 of the 1,795 people held there since September 1906 had died. Germany and Namibia’s initialled declaration says thousands died from hunger, disease and exhaustion from forced labour before the camps closed in 1908, and that Germany seized ancestral land after the war."
 
-- shot: an-old-promise-at-brussels
-  view: graph
-  focus: general-act-of-berlin-1885
-  picture: none
-  time: "1908-01-23"
-  reveal: [general-act-of-berlin-1885, us-and-british-representations-1908, commission-report-1905, boali, belgium, congo-free-state]
-  reveal_claims: [general-act-of-berlin-1885#c3, us-and-british-representations-1908#c1, us-and-british-representations-1908#c2, commission-of-inquiry-1904-05#c8]
-  overlay: {kind: quote, source: frus-1908-d516, quote: "we reserved our right of approval of annexation until assured that the same would provide for the carrying into effect of the humanitarian provisions of the Berlin act", caption: "U.S. minister Henry Lane Wilson to Washington, 23 January 1908"}
-  narration: "**The promise comes back.** Forced labour had also brought people in the Congo to testify about what happened under Leopold’s rule. In 1903 a refugee told Roger Casement, “Our Chiefs were hanged, and we were killed and starved and worked beyond endurance to get rubber.” Boali told the Free State’s commissioners that a sentry shot her after she refused his advances, then took her for dead and cut off her foot for her anklet. As Belgium considered annexation in January 1908, U.S. minister Henry Lane Wilson told Belgium that Washington was reserving its approval until assured that annexation would put into effect the protections promised at Berlin and reinforced at Brussels in 1890."
-
-- shot: the-date-in-the-decree
-  view: map
-  picture: none
-  camera: {center: [4.3517, 50.8503], zoom: 9.6, pitch: 25}
-  places: [brussels]
-  time: "1908-11-15"
-  reveal: [congo-annexation-1908, congo-free-state, belgian-congo, belgium, brussels]
-  reveal_claims: [congo-annexation-1908#c1, congo-annexation-1908#c2, congo-free-state#c2]
-  overlay: {kind: quote, source: frus-1908-d560, quote: "as the date on which the Government of the King will assume the exercise of sovereignty in its colonial possessions.", caption: "Belgian Foreign Minister Jules Davignon's notice to Wilson, 6 November 1908"}
-  narration: "**Belgium sets the date.** On 6 November Foreign Minister Jules Davignon sent a notice that Belgium would take over the Congo Free State on 15 November. Britain’s minister left it unanswered, and Wilson acknowledged it as a courtesy while keeping Washington’s position open under the conditions he had set out in January. Belgium took sovereignty on the appointed day. [The Red Rubber](/c/the-congo/)"
-
-- shot: the-map-in-the-shop
-  view: map
-  picture: none
-  camera: {center: [24, -9], zoom: 2.9, globe: true}
-  places: [zambezi-corridor-west, chobe-zambezi-confluence, lake-victoria-first-parallel-east]
-  time: "1914"
-  reveal: [belgian-congo, german-east-africa, german-southwest-africa, anglo-german-agreement-1890, boma, kinshasa]
-  reveal_claims: [anglo-german-agreement-1890#c1, anglo-german-agreement-1890#c2, congo-annexation-1908#c2]
-  overlay: {kind: quote, source: africa-map-archive-1914, quote: "Roman numerals are used to identify the districts and other administrative divisions in the Belgian Congo and German East Africa.", caption: "Library of Congress description of the map Afrika, published in Hamburg in 1914"}
-  narration: "**A map for sale.** The [1914 sheet printed in Hamburg](https://lccn.loc.gov/2021668660) gives Germany’s Southwest African colony a colour distinct from Belgium’s Congo. The key identifies forts, military posts, railways in service and planned lines, while Roman numerals pick out administrative districts in the Belgian Congo and German East Africa. Those marks put administrative districts and transport routes on the same sheet as the Southwest African colony where Germany had used war and camps to hold the territory."
-
 - shot: what-germany-called-it
   view: graph
   focus: germany-namibia-joint-declaration-2021
@@ -216,3 +184,5 @@ On 15 November 1884, Otto von Bismarck opened a conference at 77 Wilhelmstraße 
   overlay: {kind: quote, source: ota-ntla-petition-2021, quote: "shall negotiate directly with the Federal Republic of Germany", caption: "Ovaherero Traditional Authority and Nama Traditional Leaders Association, joint statement of 7 September 2021"}
   narration: "**Who speaks for the descendants?** The Nama Traditional Leaders Association petitioned Namibia’s Parliament to restart talks, then joined the Ovaherero Traditional Authority in rejecting the proposed agreement, saying both governments had excluded the victims’ descendants from direct talks. They invoked Namibia’s 2006 parliamentary resolution, which they said called for the affected communities or their representatives to negotiate directly with Germany, with Namibia’s government as an interested party. They asserted the right to speak for themselves and called for land restitution and compensation for lasting harm. Berlin’s Act set rules for coastal claims and separate bargains drew boundaries. Germany held its southwestern claim through war and genocide, and the two organizations insisted on negotiating directly over what Germany owed."
 ```
+
+The same Berlin promise to protect the people of the Congo basin comes back in [The Red Rubber](/c/the-congo/), where Congolese testimony reached the diplomats weighing Belgium’s takeover in 1908.
