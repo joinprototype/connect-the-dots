@@ -39,7 +39,7 @@ claims:
     rel: involved
     to: potosi
     according_to: [pedro-cieza-de-leon]
-    note: "In Cieza's Spanish the Indians who went into a mine gave its holder a mark of silver, or two if it was rich, each week, and half a mark to encomenderos if the holder had no mine. Markham's English (quoted nowhere in this story) reverses it: the holder gives the Indians a mark."
+    note: "In Cieza's Spanish the Indians who went into a mine gave its holder a mark of silver, or two if it was rich, each week, and half a mark to encomenderos if the holder had no mine. Markham’s English makes the mine holder the one who pays."
     src:
       - {s: cieza-cronica-del-peru-pease-2005-es, at: "ch. 109", quote: "al que tenía mina, le daban los indios que en ella entraban un marco. Y si era muy rica dos cada semana."}
       - {s: cieza-cronica-del-peru-pease-2005-es, at: "ch. 109", quote: "Y si no tenía mina, a los señores encomenderos de indios les daban medio marco cada semana."}

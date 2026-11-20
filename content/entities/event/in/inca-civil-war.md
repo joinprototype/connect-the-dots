@@ -64,6 +64,14 @@ claims:
     note: "Pedro Pizarro’s later narrative says Atahualpa refused Huascar’s summons to Cuzco, answering that Quito needed an Inca governor."
     src:
       - {s: "pedro-pizarro-means-1921-v1", at: "Pedro Pizarro, after Huayna Capac’s death", quote: "as he had to have an Inga there [in Quito] as a governor"}
+  - id: c10
+    rel: involved
+    to: huascar
+    according_to: [juan-de-santa-cruz-pachacuti-yamqui-salcamayhua]
+    note: "Salcamayhua says Atahualpa’s captains insulted Huascar’s mother, Mama Ocllo. When Huascar challenged them, Quisquis struck him. Salcamayhua says Quisquis ordered the deaths of Huascar’s children and servants in the palace of Puca-marca."
+    src:
+      - {s: salcamayhua-antiquities-markham-1873, at: "Antiquities, p. 118, Huascar in captivity", quote: "pass judgment on his descent"}
+      - {s: salcamayhua-antiquities-markham-1873, at: "Antiquities, p. 118, orders at Puca-marca", quote: "and all his servants, up to fifteen hundred persons, who were within the palace"}
 ---
 
 War between Huascar at Cuzco and his brother Atahualpa at Quito, ended in Atahualpa's favour as the Spaniards landed.

@@ -22,6 +22,22 @@ claims:
     according_to: [francisco-de-xerez, pedro-pizarro]
     src:
       - {s: xerez-reports-markham-1872, at: "Xerez", quote: "sentenced Atabaliba to death"}
+  - id: c3
+    rel: appears_in
+    to: antiquities-of-peru
+    according_to: [juan-de-santa-cruz-pachacuti-yamqui-salcamayhua]
+    note: "After Atahualpa’s death, Salcamayhua has Manco Inca and the local chiefs offer obedience at the Apurímac bridge. He says Pizarro and Valverde asked for richer garments and that Pizarro dressed Manco in the emperor’s name."
+    src:
+      - {s: salcamayhua-antiquities-markham-1873, at: "Antiquities, p. 119, the meeting at Apurímac", quote: "who had come to offer obedience and become Christians."}
+      - {s: salcamayhua-antiquities-markham-1873, at: "Antiquities, p. 119, the garments of Huayna Capac", quote: "Pizarro put them on him in the name of the Emperor."}
+  - id: c4
+    rel: appears_in
+    to: pedro-pizarro-relation
+    according_to: [pedro-pizarro]
+    note: "After Atahualpa’s death, Pedro Pizarro says the governor appointed another son of Huayna Capac ruler and told the troops that any treasure they found from then on would be for all, which pleased Almagro’s men."
+    src:
+      - {s: pedro-pizarro-means-1921-v1, at: "Relation, pp. 227–228, the next ruler", quote: "the Marquis Don Francisco Pizarro raised up as Lord Tubalipa, a son of Guainacapa and a brother"}
+      - {s: pedro-pizarro-means-1921-v1, at: "Relation, pp. 228–229, the terms for future treasure", quote: "saying that thenceforward all the treasure which should be found"}
 ---
 
 Spanish captain who led the party that took Atahualpa at Cajamarca in 1532.

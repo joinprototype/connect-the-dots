@@ -33,6 +33,7 @@ claims:
     according_to: [juan-de-santa-cruz-pachacuti-yamqui-salcamayhua]
     src:
       - {s: salcamayhua-antiquities-markham-1873, at: "Salcamayhua", quote: "after he had spoken with the friar Vicente de Valverde, when twelve thousand men were killed"}
+      - {s: salcamayhua-antiquities-markham-1873, at: "Antiquities, p. 119, how people understood the gunfire", quote: "when they fired off their guns, it was supposed to be Uiracocha."}
   - id: c5
     rel: involved
     to: cajamarca
@@ -77,6 +78,23 @@ claims:
     src:
       - {s: "xerez-reports-markham-1872", at: "Xerez, before Atahualpa entered Cajamarca", quote: "Tell your lord to come when and how he pleases, and that, in what way soever he may come, I will receive him as a friend and brother.", by: "francisco-pizarro"}
       - {s: "xerez-reports-markham-1872", at: "Xerez, preparations for the attack", quote: "the cavalry mounted, when they heard the cry of Santiago."}
+  - id: c11
+    rel: appears_in
+    to: pedro-pizarro-relation
+    according_to: [pedro-pizarro]
+    note: "Pedro Pizarro says the Spaniards put bells on their horses to frighten Atahualpa’s people. He credits the scouts who said the Spaniards themselves were afraid."
+    src:
+      - {s: pedro-pizarro-means-1921-v1, at: "Relation, pp. 179–180, before Atahualpa entered", quote: "their horses’ trappings with bells in order to fill the Indians with fear."}
+      - {s: pedro-pizarro-means-1921-v1, at: "Relation, p. 180, what the scouts reported", quote: "made water without knowing it out of sheer terror."}
+  - id: c12
+    rel: appears_in
+    to: pedro-pizarro-relation
+    according_to: [pedro-pizarro]
+    note: "Pedro Pizarro says Spaniards killed the Lord of Chincha in his litter and killed Atahualpa’s bearers as others stepped in. He says Francisco Pizarro wounded his hand stopping one man from killing Atahualpa."
+    src:
+      - {s: pedro-pizarro-means-1921-v1, at: "Relation, p. 184, the two litters", quote: "[the latter of] whom they killed there in his litter"}
+      - {s: pedro-pizarro-means-1921-v1, at: "Relation, p. 184, Atahualpa’s bearers", quote: "others at once took their places and held it aloft"}
+      - {s: pedro-pizarro-means-1921-v1, at: "Relation, p. 185, Pizarro’s order", quote: "Let no one wound the Indian on pain of death.", by: francisco-pizarro}
 ---
 
 On 16 November 1532 Pizarro seized Atahualpa in the plaza of Cajamarca and his men opened fire. Xerez says two thousand were killed and that no Indian raised arms against a Spaniard.
