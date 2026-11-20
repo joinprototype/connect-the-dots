@@ -18,4 +18,5 @@ claims:
     when: "2023/.."
     src:
       - {s: cec-sbx12-abx21-implementation, quote: "The Division of Petroleum Market Oversight (DPMO) will be created as a new and independent division within the CEC responsible for oversight, investigation, economic analysis, and policy recommendations related to the transportation fuels market."}
+      - {s: cbs-sacramento-2024-wspa-response, quote: "the director of the CEC's Petroleum Market Oversight division"}
 ---
