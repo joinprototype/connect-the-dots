@@ -71,28 +71,6 @@ The women who were girls at the time come first, in their own words. Nothing her
   narration: "**Kept from them.** In January 2008, four months after signing, the government wrote to Courtney Wild that her case was “currently under investigation.” The Eleventh Circuit later said the government’s efforts went from passive nondisclosure toward “active misrepresentation,” and that prosecutors appear to have “worked hand-in-hand with Epstein’s lawyers—or at the very least acceded to their requests.” The Justice Department’s own review differed: it found no evidence the lack of consultation was meant to silence the girls, said an FBI employee, not the prosecutors, sent the letters, and called the statement “not false” but said the letters “risked misleading the victims.” It called collusion a “misimpression.” The government has said the letters were technically accurate."
   duration: 13
 
-- shot: poor-judgment
-  view: graph
-  picture: none
-  focus: alexander-acosta
-  time: "2020-11"
-  reveal: [alexander-acosta, opr-report-on-the-epstein-agreement, doj-office-of-professional-responsibility]
-  reveal_claims: [alexander-acosta#c3, doj-office-of-professional-responsibility#c2]
-  overlay: {kind: quote, source: doj-opr-2020-epstein-report, quote: "Nevertheless, OPR concludes that Acosta's decision to resolve the federal investigation through the NPA constitutes poor judgment.", caption: "Justice Department Office of Professional Responsibility, November 2020. It found no professional misconduct."}
-  narration: "**What the Justice Department found.** Its Office of Professional Responsibility, reviewing its own lawyers and with no power over state officials, worked from February 2019 to November 2020 on the prosecutors’ conduct, not Epstein’s crimes. It found Acosta’s decision “constitutes poor judgment” and the agreement “a flawed mechanism,” and that he showed poor judgment in not making sure the state would tell victims of the plea hearing. It found no professional misconduct by him or four others: no clear rule then required consulting victims before charges. And it found no evidence he acted from corruption or because of Epstein’s wealth, status or associations. No survivor’s response to the report was read for this story."
-  duration: 13
-
-- shot: their-answers
-  view: graph
-  picture: none
-  focus: barry-krischer
-  time: "2019-07-10"
-  reveal: [alexander-acosta, barry-krischer, palm-beach-county-state-attorneys-office]
-  reveal_claims: [alexander-acosta#c1, barry-krischer#c1]
-  overlay: {kind: quote, source: tnd-2025-10-17-acosta-oversight-transcript, quote: "the trial was a crapshoot, and we just wanted the guy to go to jail,", caption: "Alexander Acosta, to the House Oversight Committee, September 2025, as reported"}
-  narration: "**Their answers.** In 2019 Acosta said the aim was to “put Epstein behind bars,” and that the state attorney’s office “was ready to let Epstein walk free.” Barry Krischer, the state attorney, replied that after the grand jury returned one count, Acosta’s office drafted an indictment that was dropped after talks between Epstein’s lawyers and Acosta in which his office had no part. “The U.S. Attorney’s Office always had the ability to file its own federal charges,” he said; Acosta “should not be allowed to rewrite history.” In 2025 Acosta told a House committee, as reported, why he favoured the deal."
-  duration: 13
-
 - shot: thirteen-months
   view: map
   picture: none
@@ -150,6 +128,17 @@ The women who were girls at the time come first, in their own words. Nothing her
   narration: "**Charged in New York.** Epstein was arrested on 6 July 2019. The indictment, unsealed two days later, charged sex trafficking of minors and conspiracy, from 2002 to 2005, in New York and Palm Beach. These were accusations; he pleaded not guilty, and no court decided them. Why New York acted is told two ways: Acosta wrote it rested on “new evidence”; NPR’s account says the Herald’s series spurred it. The sources here do not choose. Acosta resigned as Labor Secretary on 12 July."
   duration: 13
 
+- shot: their-answers
+  view: graph
+  picture: none
+  focus: barry-krischer
+  time: "2019-07-10"
+  reveal: [alexander-acosta, barry-krischer, palm-beach-county-state-attorneys-office]
+  reveal_claims: [alexander-acosta#c1, barry-krischer#c1]
+  overlay: {kind: quote, source: tnd-2025-10-17-acosta-oversight-transcript, quote: "the trial was a crapshoot, and we just wanted the guy to go to jail,", caption: "Alexander Acosta, to the House Oversight Committee, September 2025, as reported"}
+  narration: "**Their answers.** After Epstein’s arrest in 2019, Acosta defended the deal, saying the aim was to “put Epstein behind bars,” and that the state attorney’s office “was ready to let Epstein walk free.” Barry Krischer, the state attorney, replied that after the grand jury returned one count, Acosta’s office drafted an indictment that was dropped after talks between Epstein’s lawyers and Acosta in which his office had no part. “The U.S. Attorney’s Office always had the ability to file its own federal charges,” he said; Acosta “should not be allowed to rewrite history.” In 2025 Acosta told a House committee, as reported, why he favoured the deal."
+  duration: 13
+
 - shot: their-day
   view: map
   picture: none
@@ -162,6 +151,17 @@ The women who were girls at the time come first, in their own words. Nothing her
   narration: "**Their day in court.** Epstein died on 10 August. On 27 August Judge Richard Berman, no relation to the U.S. Attorney, let his accusers speak, then dismissed the indictment on 29 August. Wild said his death “robbed” them of the chance to confront him. Virginia Giuffre said she became “a victim of Jeffrey Epstein and Ghislaine Maxwell and the horrible acts they committed against me.” Her 2015 defamation suit against Maxwell survived Maxwell’s motion to end it in March 2017 and settled that May; a settlement is not a finding. Giuffre died in April 2025. Her family called her “a fierce warrior in the fight against sexual abuse and sex trafficking.”"
   duration: 13
 
+- shot: poor-judgment
+  view: graph
+  picture: none
+  focus: alexander-acosta
+  time: "2020-11"
+  reveal: [alexander-acosta, opr-report-on-the-epstein-agreement, doj-office-of-professional-responsibility]
+  reveal_claims: [alexander-acosta#c3, doj-office-of-professional-responsibility#c2]
+  overlay: {kind: quote, source: doj-opr-2020-epstein-report, quote: "Nevertheless, OPR concludes that Acosta's decision to resolve the federal investigation through the NPA constitutes poor judgment.", caption: "Justice Department Office of Professional Responsibility, November 2020. It found no professional misconduct."}
+  narration: "**What the Justice Department found.** The Justice Department’s Office of Professional Responsibility, reviewing its own lawyers and with no power over state officials, worked from February 2019 to November 2020 on the prosecutors’ conduct, not Epstein’s crimes. It found Acosta’s decision “constitutes poor judgment” and the agreement “a flawed mechanism,” and that he showed poor judgment in not making sure the state would tell victims of the plea hearing. It found no professional misconduct by him or four others: no clear rule then required consulting victims before charges. And it found no evidence he acted from corruption or because of Epstein’s wealth, status or associations. No survivor’s response to the report was read for this story."
+  duration: 13
+
 - shot: every-remedy-denied
   view: graph
   picture: none
@@ -170,7 +170,7 @@ The women who were girls at the time come first, in their own words. Nothing her
   reveal: [in-re-wild-opinion-of-2021, us-court-of-appeals-eleventh-circuit, courtney-wild, doe-v-united-states]
   reveal_claims: [us-court-of-appeals-eleventh-circuit#c2, courtney-wild#c2, us-court-of-appeals-eleventh-circuit#c1]
   overlay: {kind: quote, source: ca11-2021-in-re-wild, quote: "We have the profoundest sympathy for Ms. Wild and others like her, who suffered unspeakable horror at Epstein's hands, only to be left in the dark—and, so it seems, affirmatively misled—by government attorneys.", caption: "Eleventh Circuit, In re Courtney Wild, 15 April 2021"}
-  narration: "**Every remedy denied.** After Epstein died, Judge Marra held his death mooted the question of the agreement’s validity and denied every remedy; the victims had won a finding and lost on remedy. In April 2020 a divided Eleventh Circuit panel said the Act did not apply before charges; that opinion was vacated. At the full court’s hearing in December 2020 a Justice Department lawyer told it: “Although we are sympathetic to Ms. Wild and apologize to her for what happened, her legal arguments are incorrect.” In April 2021 the full court ruled the Act gives no freestanding suit, with four judges dissenting. It left open whether rights attach before charges."
+  narration: "**Every remedy denied.** In Wild’s case, Judge Marra held after Epstein died that his death mooted the question of the agreement’s validity and denied every remedy; the victims had won a finding and lost on remedy. In April 2020 a divided Eleventh Circuit panel said the Act did not apply before charges; that opinion was vacated. At the full court’s hearing in December 2020 a Justice Department lawyer told it: “Although we are sympathetic to Ms. Wild and apologize to her for what happened, her legal arguments are incorrect.” In April 2021 the full court ruled the Act gives no freestanding suit, with four judges dissenting. It left open whether rights attach before charges."
   duration: 13
 
 - shot: the-cell
@@ -185,17 +185,6 @@ The women who were girls at the time come first, in their own words. Nothing her
   narration: "**The cell.** On 23 July 2019 Epstein was found with marks on his neck. His cellmate told officers he had tried to hang himself; Epstein first said the cellmate tried to kill him, then that he did not know what happened. He left suicide watch on 24 July and observation on 30 July, with a written order that he have a cellmate at all times. On 8 August staff were told the cellmate was leaving; “no action was taken.” No counts were done after 4 p.m. on 9 August and no rounds after about 10:40 p.m. Two officers were charged, admitted falsely certifying the checks, and had the charges dismissed. The medical examiner ruled suicide."
   duration: 13
 
-- shot: the-doubt
-  view: graph
-  picture: none
-  focus: michael-baden
-  time: "2026-10"
-  reveal: [death-of-jeffrey-epstein, michael-baden, michael-freeman, barbara-sampson, office-of-chief-medical-examiner-new-york-city]
-  reveal_claims: [michael-baden#c2, barbara-sampson#c2, office-of-chief-medical-examiner-new-york-city#c1, michael-baden#c1, barbara-sampson#c1, michael-freeman#c1]
-  overlay: {kind: quote, source: doj-oig-2023-epstein-mcc-report, quote: "Additionally, none of the 15 inmates who agreed to be interviewed in connection with this investigation, 10 of whom were housed in the SHU on August 9 and 10, had any credible information suggesting that Epstein's cause of death was something other than suicide.", caption: "Justice Department Inspector General, June 2023. Freeman has stated no conclusion."}
-  narration: "**The doubt.** The medical examiner ruled the cause hanging and the manner suicide. In October 2019 Michael Baden, a pathologist hired by Epstein’s brother, said neck fractures were more indicative of homicide; the examiner stood by her finding, and NPR noted such fractures are linked to both hanging and strangulation. The examiner told the Inspector General there were no defensive wounds of the kind a homicide would leave. The Inspector General found no evidence contradicting the FBI’s finding of no criminality. Michael Freeman, a professor of forensic medicine, was given the autopsy files by the brother, who says it was not done on his behalf. Freeman will present in London on 16 November and has not stated his conclusions."
-  duration: 13
-
 - shot: the-july-2025-memo
   view: graph
   picture: none
@@ -204,7 +193,7 @@ The women who were girls at the time come first, in their own words. Nothing her
   reveal: [doj-fbi-memo-on-epstein-2025-07-07, us-department-of-justice, fbi, death-of-jeffrey-epstein]
   reveal_claims: [us-department-of-justice#c1, fbi#c2, us-department-of-justice#c11]
   overlay: {kind: stat, value: "One minute", label: "Missing from the released video, 11:59 p.m. to midnight. Attorney General Bondi said the same minute is missing every night; that explanation is hers.", source: npr-2025-07-08-doj-memo-epstein, quote: "a full minute is missing from basically 11:59 p.m. to 12 a.m."}
-  narration: "**The July 2025 memo.** In a two-page memo the Justice Department and FBI said that Epstein died by suicide and that video showed “nobody entered any of the tiers” that night. The Inspector General found the recorded video covered only the unit’s common area and showed no one approaching the tiers; no recording shows the tier itself. The released video lacks one minute, 11:59 p.m. to midnight. Then Attorney General Pam Bondi said “every night should have the same minute missing”; that is her explanation. In May 2026 a judge ordered the release of an apparent suicide note from the July incident; CBS has not verified it."
+  narration: "**The July 2025 memo.** The Justice Department and FBI returned to Epstein’s death in a two-page memo, saying that he died by suicide and that video showed “nobody entered any of the tiers” that night. The Inspector General found the recorded video covered only the unit’s common area and showed no one approaching the tiers; no recording shows the tier itself. The released video lacks one minute, 11:59 p.m. to midnight. Then Attorney General Pam Bondi said “every night should have the same minute missing”; that is her explanation. In May 2026 a judge ordered the release of an apparent suicide note from the July incident; CBS has not verified it."
   duration: 13
 
 - shot: ghislaine-maxwell
@@ -215,7 +204,7 @@ The women who were girls at the time come first, in their own words. Nothing her
   reveal: [united-states-v-maxwell, ghislaine-maxwell, us-district-court-southern-district-of-new-york]
   reveal_claims: [ghislaine-maxwell#c1, ghislaine-maxwell#c3, us-district-court-southern-district-of-new-york#c5]
   overlay: {kind: quote, source: sdny-2021-12-29-maxwell-verdict-statement, quote: "Their courage and willingness to face their abuser made this case, and today’s result, possible.", caption: "U.S. Attorney Damian Williams, 29 December 2021"}
-  narration: "**Ghislaine Maxwell.** A jury found her guilty on 29 December 2021, after a one-month trial, on five of six counts, among them sex trafficking of a minor; she was acquitted on one. Women testified at the trial. On 28 June 2022 Judge Alison Nathan sentenced her to 240 months. After the Supreme Court declined her appeal, her lawyer said: “this fight isn’t over.” Counts of his victims differ by who counted and when: 34 minors on the 2007 list, “more than 30” in the courts, 80 found by Brown, 136 to 150 paid by the compensation fund, and over one thousand in the 2025 memo."
+  narration: "**Ghislaine Maxwell.** In the New York case against Maxwell, a jury found her guilty on 29 December 2021, after a one-month trial, on five of six counts, among them sex trafficking of a minor; she was acquitted on one. Women testified at the trial. On 28 June 2022 Judge Alison Nathan sentenced her to 240 months. After the Supreme Court declined her appeal, her lawyer said: “this fight isn’t over.” Counts of his victims differ by who counted and when: 34 minors on the 2007 list, “more than 30” in the courts, 80 found by Brown, 136 to 150 paid by the compensation fund, and over one thousand in the 2025 memo."
   duration: 13
 
 - shot: the-district-line
@@ -227,6 +216,17 @@ The women who were girls at the time come first, in their own words. Nothing her
   reveal_claims: [us-court-of-appeals-second-circuit#c2, us-supreme-court#c4]
   overlay: {kind: quote, source: ca2-2024-united-states-v-maxwell, quote: "There is nothing in the NPA that affirmatively shows that the NPA was intended to bind multiple districts.", caption: "Second Circuit, United States v. Maxwell, 17 September 2024"}
   narration: "**The district line.** Maxwell argued the 2007 agreement, which shielded “any potential co-conspirators,” barred her New York case. On 17 September 2024 the Second Circuit disagreed: where the agreement is not silent, its scope is “expressly limited to the Southern District of Florida.” The Supreme Court declined to hear her on 6 October 2025. The ruling concerned Maxwell. Epstein died before trial, and the sources read here show no ruling on whether the agreement barred his own case."
+  duration: 13
+
+- shot: the-doubt
+  view: graph
+  picture: none
+  focus: michael-baden
+  time: "2026-10"
+  reveal: [death-of-jeffrey-epstein, michael-baden, michael-freeman, barbara-sampson, office-of-chief-medical-examiner-new-york-city]
+  reveal_claims: [michael-baden#c2, barbara-sampson#c2, office-of-chief-medical-examiner-new-york-city#c1, michael-baden#c1, barbara-sampson#c1, michael-freeman#c1]
+  overlay: {kind: quote, source: doj-oig-2023-epstein-mcc-report, quote: "Additionally, none of the 15 inmates who agreed to be interviewed in connection with this investigation, 10 of whom were housed in the SHU on August 9 and 10, had any credible information suggesting that Epstein's cause of death was something other than suicide.", caption: "Justice Department Inspector General, June 2023. Freeman has stated no conclusion."}
+  narration: "**The doubt.** Questions about Epstein’s death persisted. The medical examiner ruled the cause hanging and the manner suicide. In October 2019 Michael Baden, a pathologist hired by Epstein’s brother, said neck fractures were more indicative of homicide; the examiner stood by her finding, and NPR noted such fractures are linked to both hanging and strangulation. The examiner told the Inspector General there were no defensive wounds of the kind a homicide would leave. The Inspector General found no evidence contradicting the FBI’s finding of no criminality. Michael Freeman, a professor of forensic medicine, was given the autopsy files by the brother, who says it was not done on his behalf. Freeman will present in London on 16 November and has not stated his conclusions."
   duration: 13
 
 - shot: where-it-stands
