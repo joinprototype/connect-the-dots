@@ -24,14 +24,14 @@ claims:
     rel: involved
     to: moctezuma-ii
     according_to: [florentine-codex]
-    note: "Book 12 says the Spaniards cast out the bodies of Moctezuma and Itzquauhtzin, who had died; the passage as read here does not say who killed him. The scan's English is partly garbled at this line; the book's list of illustrations and the Nahuatl word omjcque (they died) agree. An editors' note in the same book, from the same scan, says the many versions of his death fall into two groups, one that the Spaniards killed him and one that a stone struck him as he tried to calm his people."
+    note: "Book 12 leaves Moctezuma’s killer unnamed. It says the Spaniards cast out the bodies of Moctezuma and Itzquauhtzin, and people reclaimed Moctezuma’s body and cremated him."
     src:
       - {s: florentine-codex-book-12-1975, at: "Book 12", quote: "And when they were seen, when they were known to be Moctezuma and Itzquauhtzin, then they quickly took up Moctezuma in their arms."}
   - id: c4
     rel: involved
     to: moctezuma-ii
     according_to: [francis-augustus-macnutt]
-    note: "MacNutt: the Spaniards attributed his death to the stone; the Mexicans asserted Cortés had him put to death. He quotes Durán as saying they found him dead with chains on his feet and five dagger wounds in his breast. These are accounts reported, not findings."
+    note: "MacNutt: the Spaniards attributed his death to the stone; the Mexicans asserted Cortés had him put to death. He quotes Durán as saying they found him dead with chains on his feet and five dagger wounds in his breast."
     src:
       - {s: macnutt-notes-letters-of-cortes-1908, at: "Appendix VII", quote: "by the Mexicans, it was on the contrary, asserted that he was put to death by Cortes"}
       - {s: macnutt-notes-letters-of-cortes-1908, at: "Appendix VII", quote: "They found him dead with chains upon his feet, and five dagger wounds in his breast"}

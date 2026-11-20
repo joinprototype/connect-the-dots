@@ -43,6 +43,7 @@ claims:
     rel: appears_in
     to: letters-of-cortes
     according_to: [hernan-cortes]
+    note: "Cortés accused his allies of killing and torture. He said about 900 Spaniards could not prevent more than 150,000 allies from plundering and that he had held back earlier for fear of losing the city’s wealth."
     src:
       - {s: cortes-letters-macnutt-1908-v2, at: "Third Letter", quote: "we were about nine hundred Spaniards, and they more than one hundred and fifty thousand men"}
       - {s: cortes-letters-macnutt-1908-v2, at: "Third Letter", quote: "we had more trouble in preventing our allies from killing and inflicting tortures than we had in fighting with the Indians"}
@@ -50,9 +51,9 @@ claims:
     rel: appears_in
     to: letters-of-cortes
     according_to: [hernan-cortes]
-    note: "Cortés's count of one day's slaughter and prisoners, and what he says of the cries. He puts the killing on his allies; the story gives it as his claim."
+    note: "Cortés estimated that more than 40,000 people were killed or captured that day. He says Spanish troops charged with their allies and that he ordered Sandoval’s boats to surround the defenders and join the attack."
     src:
-      - {s: cortes-letters-macnutt-1908-v2, at: "Third Letter", quote: "such was the slaughter done that day on water and on land"}
+      - {s: cortes-letters-macnutt-1908-v2, at: "Third Letter", quote: "we charged amongst them ourselves, as well as our friends, according as we pleased."}
       - {s: cortes-letters-macnutt-1908-v2, at: "Third Letter", quote: "they numbered in all more than forty thousand men; and such were the shrieks and the weeping of the women and children that there was none whose heart did not break"}
   - id: c8
     rel: involved
@@ -61,6 +62,55 @@ claims:
     note: "Cortés says he ordered his allies not to hurt emaciated women and children leaving the city."
     src:
       - {s: "cortes-letters-macnutt-1908-v2", at: "Third Letter", quote: "who came out so emaciated and thin, that it was the greatest pity in the world to behold them, so I ordered our friends not to hurt them."}
+  - id: c9
+    rel: involved
+    to: hernan-cortes
+    according_to: [hernan-cortes]
+    note: "Cortés says envoys from Texcoco invited him to enter on 31 December 1520. He demanded restitution as a condition of peace and says the ruler and many residents fled after he arrived."
+    src:
+      - {s: cortes-letters-macnutt-1908-v2, at: "Third Letter, pp. 13–15", quote: "they invited us to enter the city, where by their deeds, we should recognise their sincerity."}
+  - id: c10
+    rel: involved
+    to: tlaxcala
+    according_to: [hernan-cortes]
+    note: "Cortés describes Tlaxcalan captains guarding the column that brought the pieces of thirteen boats to Texcoco."
+    src:
+      - {s: cortes-letters-macnutt-1908-v2, at: "Third Letter, p. 31", quote: "the bringing of thirteen small ships overland a distance of about eighteen leagues."}
+  - id: c11
+    rel: appears_in
+    to: letters-of-cortes
+    according_to: [hernan-cortes]
+    note: "Cortés credits workers from Acolhuacan and Texcoco with digging the launch canal and dates putting the boats into it to 28 April 1521."
+    src:
+      - {s: cortes-letters-macnutt-1908-v2, at: "Third Letter, p. 59", quote: "canal on the twenty-eighth of April"}
+  - id: c12
+    rel: involved
+    to: tenochtitlan
+    according_to: [hernan-cortes]
+    note: "Cortés says his captains cut the city’s fresh water supply on his orders before the siege began on 30 May."
+    src:
+      - {s: cortes-letters-macnutt-1908-v2, at: "Third Letter, pp. 64–65", quote: "as I had commanded them, to cut off the aqueducts"}
+  - id: c13
+    rel: appears_in
+    to: florentine-codex
+    according_to: [florentine-codex]
+    note: "Book 12 recounts hunger, bad water and illness among people caught in the siege."
+    src:
+      - {s: florentine-codex-book-12-1975, at: "Book 12, chapter 35", quote: "And all the common folk suffered much."}
+  - id: c14
+    rel: appears_in
+    to: florentine-codex
+    according_to: [florentine-codex]
+    note: "People at Tlatelolco wept as they saw the temple burning and expected plunder."
+    src:
+      - {s: florentine-codex-book-12-1975, at: "Book 12, chapter 36", quote: "there was weeping, there were tearful greetings."}
+  - id: c15
+    rel: appears_in
+    to: florentine-codex
+    according_to: [florentine-codex]
+    note: "In Book 12, people call out that Cuauhtémoc is going to surrender. Spanish gunfire kills people before the general departure, and some of the Spaniards’ allies are killed on the road after people begin leaving."
+    src:
+      - {s: florentine-codex-book-12-1975, at: "Book 12, chapter 40", quote: "Let there be leaving! Eat the greens!"}
 ---
 
 The siege that began on 30 May 1521 ended on 13 August 1521 with the capture of Cuauhtémoc.
