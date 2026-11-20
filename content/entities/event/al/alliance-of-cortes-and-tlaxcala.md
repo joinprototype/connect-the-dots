@@ -12,7 +12,7 @@ claims:
     rel: involved
     to: tlaxcala
     according_to: [bernal-diaz-del-castillo]
-    note: "Bernal Díaz reports a speech by the Tlaxcalan lord Xicotencatl, from memory. No account written by a Tlaxcalan was read for this story."
+    note: "Bernal Díaz recalls Xicotencatl explaining why Tlaxcala initially fought the Spaniards in 1519."
     src:
       - {s: bernal-diaz-lockhart-1844-v1, at: "volume 1", quote: "they believed we had been sent by their enemy Motecusuma, who had often before used fraud and treachery to enter their country for the sake of plunder"}
   - id: c2
@@ -46,6 +46,15 @@ claims:
     note: "After the retreat in 1520, Maxixcatzin defended the Spanish alliance by pointing to wealth, respect and renewed access to salt, in the speech Bernal Díaz recalled in old age."
     src:
       - {s: "bernal-diaz-lockhart-1844-v1", at: "volume 1, speech after the retreat", quote: "it is since that time only we eat salt again", by: "maxixcatzin"}
+  - id: c7
+    rel: involved
+    to: tlaxcala
+    when: "1520-07"
+    according_to: [bernal-diaz-del-castillo]
+    note: "After the Spanish defeat and Cuitláhuac’s accession, the younger Xicotencatl urged Tlaxcala to ally with Mexico, Díaz recalls. He held out the gold and cloth the Spaniards had brought as spoils."
+    src:
+      - {s: bernal-diaz-lockhart-1844-v1, at: "Volume 1, after the retreat", quote: "the present moment was particularly favorable, as the Mexicans had just elected a new monarch in the person of Cuitlahuatzin."}
+      - {s: bernal-diaz-lockhart-1844-v1, at: "Volume 1, after the retreat", quote: "they would all become wealthy personages by such a booty."}
 ---
 
 After fighting him, the lords of Tlaxcala made peace with Cortés in 1519 and joined him against Moctezuma's rule; Bernal Díaz gives their reasons from memory.
