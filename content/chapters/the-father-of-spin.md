@@ -77,7 +77,7 @@ summary: "American Tobacco wanted more customers. Edward Bernays got women smoki
   reveal: [bertha-hunt, torches-of-freedom-march, edward-bernays, american-tobacco-company]
   reveal_claims: [torches-of-freedom-march#c2, torches-of-freedom-march#c3, torches-of-freedom-march#c4]
   overlay: {kind: "quote", source: "murphree-2015-archive", quote: "Girls to Smoke during Parade", caption: "Oakland Tribune headline, March 31, 1929, reproduced by Vanessa Murphree"}
-  narration: "**The news goes out first.** On the day before Easter, a release sent in Hunt’s name announced that young women would smoke on Fifth Avenue and argued that the right to smoke in public should belong to everyone, as Ganahl recounts. Hill had hired Bernays to sell more Lucky Strikes. By Easter morning the *Oakland Tribune* was telling readers what the women were about to do. [Ganahl’s account of the release](https://barabern.wordpress.com/2012/10/20/bernays-papers/)"
+  narration: "**The news goes out first.** On the day before Easter, a release sent in Hunt’s name announced that young women would smoke on Fifth Avenue and argued that the right to smoke in public should belong to everyone, as Ganahl recounts. Hill had hired Bernays to sell more Lucky Strikes. By Easter morning the *Oakland Tribune* was telling readers what the women were about to do."
 
 - shot: a-walk-on-fifth-avenue
   view: map
@@ -87,7 +87,7 @@ summary: "American Tobacco wanted more customers. Edward Bernays got women smoki
   reveal: [new-york-city, torches-of-freedom-march, bertha-hunt, edward-bernays]
   reveal_claims: [torches-of-freedom-march#c1, torches-of-freedom-march#c2, torches-of-freedom-march#c4]
   overlay: {kind: "quote", source: "trinity-torches-exhibit", quote: "lighting the way to the day when women would smoke on the street as casually as men.", caption: "An unnamed walker’s explanation as reported by The New York Times, April 1, 1929"}
-  narration: "**A walk on Fifth Avenue.** With the word out, women lit up on Easter Sunday and strolled between St. Thomas’s and St. Patrick’s at the height of the parade, the *Times* reported. One walker, whom the paper left unnamed, explained that the cigarettes stood for a day when women could smoke on the street as casually as men. A photographer caught Nancy Hale, a *Vogue* writer and editor, smoking beside her husband. In Murphree’s research, Hale was the only walker for whom there was clear evidence of payment. [Hale’s papers at Smith College](https://web.archive.org/web/2024/http://asteria.fivecolleges.edu/findaids/sophiasmith/mnsss26.html)"
+  narration: "**A walk on Fifth Avenue.** With the word out, women lit up on Easter Sunday and strolled between St. Thomas’s and St. Patrick’s at the height of the parade, the *Times* reported. One walker, whom the paper left unnamed, explained that the cigarettes stood for a day when women could smoke on the street as casually as men. A photographer caught Nancy Hale, a *Vogue* writer and editor, smoking beside her husband. In Murphree’s research, Hale was the only walker for whom there was clear evidence of payment."
 
 - shot: editors-pick-their-story
   view: graph
@@ -96,7 +96,7 @@ summary: "American Tobacco wanted more customers. Edward Bernays got women smoki
   reveal: [torches-of-freedom-march, bertha-hunt, american-tobacco-company]
   reveal_claims: [torches-of-freedom-march#c3, torches-of-freedom-march#c4]
   overlay: {kind: "quote", source: "murphree-2015-archive", quote: "Paraders Ignore 10 Girl Smokers", caption: "New York World headline, April 1, 1929, reproduced by Vanessa Murphree"}
-  narration: "**Editors pick their story.** On April 1 the *Times* counted about a dozen in its parade report, the *New York World* counted ten and said paraders ignored them, and the *Evening Graphic* called them a sensation. In Murphree’s comparison most reporters counted closer to six and probably left out male escorts. The *Times* reported that two women named a preferred brand when asked. American Tobacco could tell women to reach for a Lucky in its own ads, while the editors chose what to make of the smokers. [American Tobacco’s 1929 ad](https://tobacco.stanford.edu/cigarette/img1108/)"
+  narration: "**Editors pick their story.** On April 1 the *Times* counted about a dozen in its parade report, the *New York World* counted ten and said paraders ignored them, and the *Evening Graphic* called them a sensation. In Murphree’s comparison most reporters counted closer to six and probably left out male escorts. The *Times* reported that two women named a preferred brand when asked. American Tobacco could tell women to reach for a Lucky in its own ads, while the editors chose what to make of the smokers."
 
 - shot: the-picture-travels
   view: graph
@@ -159,7 +159,7 @@ summary: "American Tobacco wanted more customers. Edward Bernays got women smoki
   reveal: [torches-of-freedom-march, bertha-hunt, edward-bernays, american-tobacco-company]
   reveal_claims: [torches-of-freedom-march#c2, torches-of-freedom-march#c3, torches-of-freedom-march#c4]
   overlay: {kind: "quote", source: "murphree-2015-archive", quote: "although there was indeed significant coverage, it was not nearly as celebratory as Bernays claimed.", caption: "Vanessa Murphree, American Journalism, 2015"}
-  narration: "**Counting the coverage.** The march also had a reputation to check, amplified by Tye’s claim of near-universal coverage and the Museum of Public Relations’ account of a lasting effect on women’s smoking. Murphree examined more than 250 articles and reports that her database searches to supplement the scrapbooks turned up 35 stories, mostly wire copy. The scrapbooks themselves had gaps and included the same wire stories printed in different papers. Across the clippings she found substantial coverage and a mixed reception, including editors who called out the publicity. [Murphree’s account of the search](https://www.american-journalism.org/teaching-our-journal/teaching-our-journal-edward-bernayss-1929-torches-of-freedom-march/) · [Museum of Public Relations](https://www.prmuseum.org/pioneer-edward-bernays)"
+  narration: "**Counting the coverage.** The march also had a reputation to check, amplified by Tye’s claim of near-universal coverage and the Museum of Public Relations’ account of a lasting effect on women’s smoking. Murphree examined more than 250 articles and reports that her database searches to supplement the scrapbooks turned up 35 stories, mostly wire copy. The scrapbooks themselves had gaps and included the same wire stories printed in different papers. Across the clippings she found substantial coverage and a mixed reception, including editors who called out the publicity."
 
 - shot: what-one-march-could-do
   view: graph
